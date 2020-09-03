@@ -111,65 +111,7 @@ enum ApiKey {
     static var notificationId: String{ return "notificationId"}
     static var membershipCredits: String{ return "membershipCredits"}
     static var isSubscribed: String{ return "isSubscribed"}
-    static var accountVerified: String{ return "accountVerified"}
     
-    static var subcategoryID: String { return "subcategoryId"}
-    static var totalvideoCount: String { return "totalvideoCount"}
-    static var totalcategoryCount: String { return "totalcategoryCount"}
-    static var totalteacherCount: String { return "totalteacherCount"}
-    static var categoryData: String { return "categoryData"}
-    static var teacherData: String { return "teacherData"}
-    static var videoData: String { return "videoData"}
-    static var creatorType: String{ return "creatorType"}
-    static var videoDatumDescription: String{ return "description"}
-    static var views: String{ return "views"}
-    static var previewURL: String{ return "previewUrl"}
-    static var creditDetails: String{ return "creditDetails"}
-    static var categoryName: String{ return "categoryName"}
-    static var subcategoryName: String{ return "subcategoryName"}
-    static var isOwner: String{ return "isOwner"}
-    static var id: String{ return "id"}
-    static var availabilityEndDate: String{ return "availabilityEndDate"}
-    static var subscriptionEndDate: String{ return "subscriptionEndDate"}
-    
-    static var progress : String { return "progress" }
-    static var error : String { return "error" }
-    static var teacherId : String {return "teacherId"}
-    static var startDate : String {return "startDate"}
-    static var endDate : String {return "endDate"}
-    static var reason : String{ return "reason"}
-    static var comments : String{ return "comments"}
-    
-    static var searchType : String{ return "searchType"}
-    static var referenceId : String{ return "referenceId"}
-    static var searched : String{ return "searched"}
-    
-    static var frontDocument : String{ return "frontDocument"}
-    static var backDocument : String{ return "backDocument"}
-    
-    static var subcategoryFilter : String{ return "subcategoryFilter"}
-    static var creditPointFilter : String{ return "creditPointFilter"}
-    static var ratingFilter : String{ return "ratingFilter"}
-    static var dateFilter : String{ return "dateFilter"}
-    static var videosBought : String{ return "videosBought"}
-    static var creditSort : String{ return "creditSort"}
-    static var creditFilter : String{ return "creditFilter"}
-    static var sortBy : String{ return "sortBy"}
-    static var filterBy: String{ return "filterBy"}
-    static var allCategoryId: String{ return "all12345"}
-    static var sortType: String { return "sortType"}
-    
-    static var aps: String{ return "aps"}
-    static var alert: String{ return "alert"}
-    static var body: String{ return "body"}
-    static var notificationType: String{ return "notificationType"}
-    static var action: String{ return "action"}
-    static var calendarDate: String{ return "calendarDate"}
-    
-    static var isSubscribtionCancelled: String{ return "isSubscribtionCancelled"}
-    
-    static var calendarId: String{ return "calendarId"}
-    static var ids: String{ return "ids"}
 }
 
 //MARK:- Api Code
