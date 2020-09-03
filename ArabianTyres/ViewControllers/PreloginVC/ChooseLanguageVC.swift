@@ -70,6 +70,7 @@ class ChooseLanguageVC: BaseVC {
         self.continueBtn.backgroundColor = AppColors.primaryBlueColor
         self.continueBtn.titleLabel?.textColor = .white
         self.continueBtn.isUserInteractionEnabled = true
+        AppUserDefaults.save(value: LocalizedString.english.localized, forKey: .currentLanguage)
     }
     
     @IBAction func arabicBtnAction(_ sender: UIButton) {
@@ -82,6 +83,7 @@ class ChooseLanguageVC: BaseVC {
         self.continueBtn.backgroundColor = AppColors.primaryBlueColor
         self.continueBtn.titleLabel?.textColor = .white
         self.continueBtn.isUserInteractionEnabled = true
+        AppUserDefaults.save(value: LocalizedString.arabic.localized, forKey: .currentLanguage)
     }
     
 }
@@ -135,6 +137,14 @@ extension ChooseLanguageVC : UICollectionViewDelegate, UICollectionViewDataSourc
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
          printDebug(collectionView.frame.size.height)
         return CGSize(width: UIScreen.width, height: collectionView.frame.size.height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
 }
 
