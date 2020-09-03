@@ -37,7 +37,6 @@ enum AppRouter {
                 AppUserDefaults.removeAllValues()
                 AppUserDefaults.save(value: lang, forKey: .currentLanguage)
                 AppUserDefaults.save(value: true, forKey: .isLanguageSelect)
-                AppRouter.makeLoginOptionVCRoot()
             }
         } else {
         }
@@ -70,8 +69,8 @@ enum AppRouter {
     }
     
     static func goToDovelopmentVC(vc: UIViewController){
-        let scene = HomeVC.instantiate(fromAppStoryboard: .Prelogin)
-        vc.navigationController?.pushViewController(scene, animated: true)
+//        let scene = HomeVC.instantiate(fromAppStoryboard: .Prelogin)
+//        vc.navigationController?.pushViewController(scene, animated: true)
     }
     
     static func goToUserHome() {

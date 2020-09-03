@@ -13,6 +13,9 @@ target 'ArabianTyres' do
   pod 'Kingfisher'
   pod 'SkyFloatingLabelTextField', '~> 3.0'
   pod 'DZNEmptyDataSet'
+  pod 'GoogleSignIn'
+  pod 'FBSDKLoginKit'
+  pod 'NVActivityIndicatorView'
   #pod for Toast Message
     pod 'Toaster'
 	

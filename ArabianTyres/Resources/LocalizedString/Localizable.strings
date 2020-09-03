@@ -5,3 +5,13 @@
   Created by Admin on 03/09/20.
   Copyright © 2020 Admin. All rights reserved.
 */
+
+// MARK: - Alert Values
+//==============================
+"chooseOptions" = "Choose Options";
+"chooseFromGallery" = "Choose From Gallery";
+"takePhoto" = "Camera";
+"cancel" = "Cancel";
+"removePicture" = "Remove Picture";
+"alert" = "Alert";
+"settings" = "Settings";

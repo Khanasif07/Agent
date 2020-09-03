@@ -12,13 +12,13 @@ import AssetsLibrary
 import AVFoundation
 import Photos
 import MobileCoreServices
-//import NVActivityIndicatorView
+import NVActivityIndicatorView
 
 protocol RemovePictureDelegate{
     func removepicture()
 }
 
-extension UIViewController: NVActivityIndicatorViewable {
+extension UIViewController {
     
     func topMostViewController() -> UIViewController {
            if self.presentedViewController == nil {
@@ -367,7 +367,7 @@ extension UIViewController: NVActivityIndicatorViewable {
         //        let color =  UIColor(patternImage:AppGradientImage.imageWithGradientColor(colorOne: AppColors.themeColorOne, colorTwo: AppColors.themeColorTwo, startPoint: CGPoint(x: 0, y: 0), endPoint: CGPoint(x: 1, y: 1)))
         
         //        startAnimating(CGSize(width: 50, height: 50), type: NVActivityIndicatorType.ballRotateChase, color: color, backgroundColor: AppColors.clearColor)
-        startAnimating(CGSize(width: 50, height: 50), type: NVActivityIndicatorType.circleStrokeSpin, color: UIColor.white, backgroundColor: UIColor.black.withAlphaComponent(0.5))
+//        startAnimating(CGSize(width: 50, height: 50), type: NVActivityIndicatorType.circleStrokeSpin, color: UIColor.white, backgroundColor: UIColor.black.withAlphaComponent(0.5))
     }
     
     // Keyboard appearing notifications

@@ -187,19 +187,19 @@ extension UITextField{
         toolBar.sizeToFit()
         
         // Adding Button ToolBar
-        let doneButton = UIBarButtonItem(title: "Done", style: .plain) { (_) in
-            
-//            self.text = datePicker.date.convertToString()
-            self.resignFirstResponder()
-            
-            didSelectDate(datePicker.date)
-        }
+//        let doneButton = UIBarButtonItem(title: "Done", style: .plain) { (_) in
+//
+////            self.text = datePicker.date.convertToString()
+//            self.resignFirstResponder()
+//
+//            didSelectDate(datePicker.date)
+//        }
         
         let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain) { (_) in
-            self.resignFirstResponder()
-        }
-        toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
+//        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain) { (_) in
+//            self.resignFirstResponder()
+//        }
+//        toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
         toolBar.isUserInteractionEnabled = true
         self.inputAccessoryView = toolBar
     }

@@ -53,9 +53,9 @@ var isCurrentUserType : UserType {
     let user = AppUserDefaults.value(forKey: .currentUserType).stringValue
     switch user{
     case "student":
-        return .student
+        return .user
     case "teacher":
-        return .teacher
+        return .garageOwner
     default:
         return .none
     }

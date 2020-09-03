@@ -58,7 +58,7 @@ class CommonFunctions {
     class func hideActivityLoader() {
         DispatchQueue.mainQueueAsync {
             if let vc = AppDelegate.shared.window?.rootViewController {
-                vc.stopAnimating()
+//                vc.stopAnimating()
             }
         }
     }
@@ -119,24 +119,5 @@ class CommonFunctions {
                   .foregroundColor: color,.underlineStyle: 1,NSAttributedString.Key.underlineColor:color]
               attributedString.addAttributes(attributes, range: NSRange(location: 0, length: attributedString.length))
         return attributedString
-    }
-    
-    class func setUpAdvanceLabel(level: VideoLevel,label: UILabel){
-        if level == .advance{
-            label.textColor = AppColors.orangePink
-            label.backgroundColor = AppColors.pale
-        }else if level == .intermediate{
-            label.textColor = AppColors.mediumPurple
-            label.backgroundColor = AppColors.paleLavender
-        }else{
-            label.textColor = AppColors.algae
-            label.backgroundColor = AppColors.ice
-        }
-        label.text = level.rawValue
-    }
-    class func timeFormatted(_ totalSeconds: Int) -> String {
-        let seconds: Int = totalSeconds % 60
-        let minutes: Int = (totalSeconds / 60) % 60
-        return String(format: "%02d:%02d", minutes, seconds)
     }
 }

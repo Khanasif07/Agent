@@ -40,7 +40,7 @@ enum AppNetworking {
                             DispatchQueue.main.async(execute: { () -> Void in
                                 printDebug("Response : ========================>\n\(jsonDataDict)")
                                 if let code = jsonDataDict[ApiKey.statusCode] as? Int,code == 498 || code == 440 || code == 403{
-                                    AppRouter.logout(isSessionExpire: true)
+//                                    AppRouter.logout(isSessionExpire: true)
                                 }else{
                                     success(JSON(jsonDataDict))
                                 }

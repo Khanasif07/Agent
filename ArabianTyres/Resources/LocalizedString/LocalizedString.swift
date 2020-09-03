@@ -16,6 +16,16 @@ enum LocalizedString : String {
     case ok = "ok"
     case dot = "\u{2022}"
     
+    // MARK: - Alert Values
+    //==============================
+    case chooseOptions = "chooseOptions"
+    case chooseFromGallery = "chooseFromGallery"
+    case takePhoto = "takePhoto"
+    case cancel = "cancel"
+    case removePicture = "removePicture"
+    case alert
+    case settings
+    
 }
 
 
