@@ -25,6 +25,13 @@ enum LocalizedString : String {
     case removePicture = "removePicture"
     case alert
     case settings
+    case english
+    case arabic
+    case continueTitle
+    
+    case tutorialTitle1 = "tutorialTitle1"
+    case tutorialTitle2 = "tutorialTitle2"
+    case tutorialTitle3 = "tutorialTitle3"
     
 }
 

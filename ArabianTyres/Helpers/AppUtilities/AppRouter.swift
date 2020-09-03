@@ -25,7 +25,6 @@ enum AppRouter {
     // MARK: - Show Landing Screen
     //===========================
     static func checkAppInitializationFlow() {
-        //        AppRouter.goToTestingVC()
         if isUserLoggedin {
             switch isCurrentUserType {
             case .user:
@@ -39,12 +38,13 @@ enum AppRouter {
                 AppUserDefaults.save(value: true, forKey: .isLanguageSelect)
             }
         } else {
+            self.makeChooseLanguageVCRoot()
         }
     }
     
     static func goToTestingVC(){
-//        let homeScene = AddValidityVC.instantiate(fromAppStoryboard: .UploadVideos)
-//        setAsWindowRoot(homeScene)
+        let homeScene = ChooseLanguageVC.instantiate(fromAppStoryboard: .Prelogin)
+        setAsWindowRoot(homeScene)
     }
     
     static func goToTutorialVC(vc: UIViewController){
@@ -53,13 +53,13 @@ enum AppRouter {
     }
     
     static func makeChooseRoleVCRoot(){
-//        let scene = ChooseRoleVC.instantiate(fromAppStoryboard: .Prelogin)
+//        let scene = ChooseLanguageVC.instantiate(fromAppStoryboard: .Prelogin)
 //        setAsWindowRoot(scene)
     }
     
     static func makeChooseLanguageVCRoot(){
-//        let scene = ChooseLanguageVC.instantiate(fromAppStoryboard: .Prelogin)
-//        setAsWindowRoot(scene)
+        let scene = ChooseLanguageVC.instantiate(fromAppStoryboard: .Prelogin)
+        setAsWindowRoot(scene)
     }
     
     static func goToChooseRoleVC(vc: UIViewController, guestCompletion: (()->())? = nil){

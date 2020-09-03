@@ -40,19 +40,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func setUpTextField(){
-        UITextField.appearance().tintColor = AppColors.paleRed
-        UISearchBar.appearance().tintColor = AppColors.paleRed
-        UIToolbar.appearance().tintColor = AppColors.paleRed
-        UIButton.appearance().tintColor = AppColors.paleRed
-        UIBarButtonItem.appearance().tintColor = AppColors.paleRed
+        UITextField.appearance().tintColor = AppColors.fontPrimaryColor
+        UISearchBar.appearance().tintColor = AppColors.fontPrimaryColor
+        UIToolbar.appearance().tintColor = AppColors.fontPrimaryColor
+        UIButton.appearance().tintColor = AppColors.fontPrimaryColor
+        UIBarButtonItem.appearance().tintColor = AppColors.fontPrimaryColor
     }
     
     func setUpAppearance(){
-        UITextField.appearance().tintColor = AppColors.paleRed
-        UISearchBar.appearance().tintColor = AppColors.paleRed
-        UIToolbar.appearance().tintColor = AppColors.paleRed
-        UIButton.appearance().tintColor = AppColors.paleRed
-        UIBarButtonItem.appearance().tintColor = AppColors.paleRed
+        UITextField.appearance().tintColor = AppColors.fontPrimaryColor
+        UISearchBar.appearance().tintColor = AppColors.fontPrimaryColor
+        UIToolbar.appearance().tintColor = AppColors.fontPrimaryColor
+        UIButton.appearance().tintColor = AppColors.fontPrimaryColor
+        UIBarButtonItem.appearance().tintColor = AppColors.fontPrimaryColor
     }
     
     func setUpKeyboard(){

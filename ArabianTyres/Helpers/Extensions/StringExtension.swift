@@ -24,13 +24,13 @@ extension String {
     ///Returns a localized string
     var localized:String {
         
-        switch AppUserDefaults.value(forKey: .currentLanguage).stringValue{
-        case SelectedLangauage.esponal.rawValue:
-            return self.localizedString(lang: "es")
-        default:
-            return self.localizedString(lang: "en")
-        }
-        //        return NSLocalizedString(self, tableName: nil, bundle: Bundle.main, value: "", comment: "")
+        //        switch AppUserDefaults.value(forKey: .currentLanguage).stringValue{
+        //        case SelectedLangauage.esponal.rawValue:
+        //            return self.localizedString(lang: "es")
+        //        default:
+        //            return self.localizedString(lang: "en")
+        //        }
+        return NSLocalizedString(self, tableName: nil, bundle: Bundle.main, value: "", comment: "")
     }
     
     ///Removes leading and trailing white spaces from the string

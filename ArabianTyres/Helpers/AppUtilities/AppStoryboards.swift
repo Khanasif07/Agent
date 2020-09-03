@@ -11,7 +11,7 @@ import UIKit
 
 enum AppStoryboard : String {
     
-    case Prelogin, Teacher, Home ,UserProfile,TeacherHome , PostLogin , UploadVideos , Filter, PlayList , Explore , PopUp , SearchResult, Search, StudentExplore, Accounts , Subscription , Membership , ActiveMembership, Calendar
+    case Prelogin, PostLogin
 }
 
 extension AppStoryboard {

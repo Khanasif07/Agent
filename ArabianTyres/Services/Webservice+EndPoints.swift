@@ -8,14 +8,9 @@
 
 import Foundation
 
-let baseUrl = "https://studiodevapi.appskeeper.com/api/v1/"//dev
-//let baseUrl = "https://studioqaapi.appskeeper.com/api/v1/" //QA URL
-//let baseUrl = "https://studiostgapi.appskeeper.com/api/v1/" //Staging URL
-
-let deepBaseLink = "https://studiodevapi.appskeeper.com"   //dev
-//let deepBaseLink = "https://studioqaapi.appskeeper.com"   //QA
-//let deepBaseLink = "https://studiostgapi.appskeeper.com"   //Staging
-
+let baseUrl = "http://arabiantyersdevapi.appskeeper.com"
+//API path: http://arabiantyersdevapi.appskeeper.com/api/v1/
+//Swagger Url: http://arabiantyersdevapi.appskeeper.com/api-docs/swagger
 let settingsUrl = ""
 
 extension WebServices {
