@@ -1,0 +1,6 @@
+framework module Pods_ArabianTyres {
+  umbrella header "Pods-ArabianTyres-umbrella.h"
+
+  export *
+  module * { export * }
+}
