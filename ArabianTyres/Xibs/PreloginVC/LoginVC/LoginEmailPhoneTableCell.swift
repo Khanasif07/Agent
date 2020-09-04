@@ -12,6 +12,7 @@ import SkyFloatingLabelTextField
 class LoginEmailPhoneTableCell: UITableViewCell {
     
     var signupBtnTapped: ((UIButton)->())?
+    var phoneNoBtnTapped: ((UIButton)->())?
     
     @IBOutlet weak var forgotPassBtn: UIButton!
     @IBOutlet weak var dontHaveAccountLbl: UILabel!
@@ -68,6 +69,9 @@ class LoginEmailPhoneTableCell: UITableViewCell {
 
     
     @IBAction func phoneNoBtnAction(_ sender: UIButton) {
+        if let handle = phoneNoBtnTapped{
+            handle(sender)
+        }
     }
     
     @IBAction func forgotPassBtnAction(_ sender: UIButton) {

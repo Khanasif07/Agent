@@ -72,6 +72,10 @@ extension LoginVC : UITableViewDelegate, UITableViewDataSource {
                 guard let `self` = self else { return }
                 AppRouter.goToSignUpVC(vc: self)
             }
+            cell.phoneNoBtnTapped = { [weak self]  (sender) in
+                guard let `self` = self else { return }
+                AppRouter.goToSignWithPhoneVC(vc: self)
+            }
             return cell
         default:
             let cell = tableView.dequeueCell(with: LoginSocialTableCell.self, indexPath: indexPath)

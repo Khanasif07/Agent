@@ -17,6 +17,7 @@
 		844D81DB2502408900550334 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844D81DA2502408900550334 /* SignUpVC.swift */; };
 		844D81DF250243B300550334 /* SignUpTopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844D81DD250243B300550334 /* SignUpTopCell.swift */; };
 		844D81E0250243B300550334 /* SignUpTopCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844D81DE250243B300550334 /* SignUpTopCell.xib */; };
+		844D81E325025D9600550334 /* LoginWithPhoneVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844D81E225025D9600550334 /* LoginWithPhoneVC.swift */; };
 		8481F9FD2500AA9A00AB6EFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481F9FC2500AA9A00AB6EFB /* AppDelegate.swift */; };
 		8481F9FF2500AA9A00AB6EFB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481F9FE2500AA9A00AB6EFB /* SceneDelegate.swift */; };
 		8481FA062500AA9B00AB6EFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8481FA052500AA9B00AB6EFB /* Assets.xcassets */; };
@@ -99,6 +100,7 @@
 		844D81DA2502408900550334 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		844D81DD250243B300550334 /* SignUpTopCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTopCell.swift; sourceTree = "<group>"; };
 		844D81DE250243B300550334 /* SignUpTopCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpTopCell.xib; sourceTree = "<group>"; };
+		844D81E225025D9600550334 /* LoginWithPhoneVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWithPhoneVC.swift; sourceTree = "<group>"; };
 		8481F9F92500AA9A00AB6EFB /* ArabianTyres.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArabianTyres.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8481F9FC2500AA9A00AB6EFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8481F9FE2500AA9A00AB6EFB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -240,6 +242,14 @@
 				844D81DE250243B300550334 /* SignUpTopCell.xib */,
 			);
 			path = SignUpVC;
+			sourceTree = "<group>";
+		};
+		844D81E125025D5200550334 /* LoginWithPhoneVC */ = {
+			isa = PBXGroup;
+			children = (
+				844D81E225025D9600550334 /* LoginWithPhoneVC.swift */,
+			);
+			path = LoginWithPhoneVC;
 			sourceTree = "<group>";
 		};
 		8481F9F02500AA9A00AB6EFB = {
@@ -484,6 +494,7 @@
 		8481FA822500EE0600AB6EFB /* PreloginVC */ = {
 			isa = PBXGroup;
 			children = (
+				844D81E125025D5200550334 /* LoginWithPhoneVC */,
 				844D81D92502406700550334 /* SignUpVC */,
 				8481FAAD25015D4600AB6EFB /* LoginVC */,
 				8481FAAC25015D1200AB6EFB /* ChooseLanguageVC */,
@@ -691,6 +702,7 @@
 				8481FA3B2500BDFF00AB6EFB /* NotificationExtension.swift in Sources */,
 				8481FA672500BFB900AB6EFB /* AppStoryboards.swift in Sources */,
 				8481FA2F2500BCBF00AB6EFB /* LocalizedString.swift in Sources */,
+				844D81E325025D9600550334 /* LoginWithPhoneVC.swift in Sources */,
 				8481FA392500BDED00AB6EFB /* UIColorExtension.swift in Sources */,
 				8481FA272500BB7300AB6EFB /* Webservices.swift in Sources */,
 				8481FA332500BD4A00AB6EFB /* CustomDatePicker.swift in Sources */,
