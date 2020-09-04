@@ -44,10 +44,6 @@ class ChooseLanguageVC: BaseVC {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        self.englishBtnView.layer.borderWidth = 1.0
-        self.arabicBtnView.layer.borderWidth = 1.0
-        self.englishBtnView.layer.borderColor = AppColors.primaryBlueLightShade.cgColor
-        self.arabicBtnView.layer.borderColor = AppColors.primaryBlueLightShade.cgColor
         self.arabicBtnView.round(radius: 4.0)
         self.englishBtnView.round(radius: 4.0)
         self.continueBtn.round(radius: 4.0)
@@ -60,11 +56,17 @@ class ChooseLanguageVC: BaseVC {
     
     // MARK: - IBActions
     //===========================
+    
+    @IBAction func continueBtnAction(_ sender: UIButton) {
+        let scene = LoginVC.instantiate(fromAppStoryboard: .Prelogin)
+        self.navigationController?.pushViewController(scene, animated: true)
+    }
+    
     @IBAction func englishBtnAction(_ sender: UIButton) {
-        self.englishBtn.setImage(#imageLiteral(resourceName: "group1431"), for: .normal)
-        self.arabicBtn.setImage(#imageLiteral(resourceName: "roundUnSelected"), for: .normal)
         self.englishBtnView.layer.borderColor = AppColors.primaryBlueColor.cgColor
         self.arabicBtnView.layer.borderColor = AppColors.primaryBlueLightShade.cgColor
+        self.englishBtn.setImage(#imageLiteral(resourceName: "group1431"), for: .normal)
+        self.arabicBtn.setImage(#imageLiteral(resourceName: "roundUnSelected"), for: .normal)
         self.englishBtnView.layer.borderWidth = 1.5
         self.arabicBtnView.layer.borderWidth = 1.0
         self.continueBtn.backgroundColor = AppColors.primaryBlueColor
@@ -85,6 +87,9 @@ class ChooseLanguageVC: BaseVC {
         self.continueBtn.isUserInteractionEnabled = true
         AppUserDefaults.save(value: LocalizedString.arabic.localized, forKey: .currentLanguage)
     }
+    
+    
+    
     
 }
 
@@ -118,6 +123,10 @@ extension ChooseLanguageVC {
         self.arabicBtn.setImage(#imageLiteral(resourceName: "roundUnSelected"), for: .normal)
         self.englishBtn.setImage(#imageLiteral(resourceName: "roundUnSelected"), for: .normal)
         self.continueBtn.isUserInteractionEnabled = false
+        self.englishBtnView.layer.borderWidth = 1.0
+        self.arabicBtnView.layer.borderWidth = 1.0
+        self.englishBtnView.layer.borderColor = AppColors.primaryBlueLightShade.cgColor
+        self.arabicBtnView.layer.borderColor = AppColors.primaryBlueLightShade.cgColor
     }
 }
 

@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		6708BB6B77017B3BB26B7782 /* Pods_ArabianTyres.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2C00CD38A98EBA313A070C9 /* Pods_ArabianTyres.framework */; };
+		844CBD1A2501F7D5009BE668 /* LoginTopTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844CBD182501F7D5009BE668 /* LoginTopTableCell.swift */; };
+		844CBD1B2501F7D5009BE668 /* LoginTopTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844CBD192501F7D5009BE668 /* LoginTopTableCell.xib */; };
+		844CBD1E2501FA31009BE668 /* LoginSocialTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844CBD1C2501FA31009BE668 /* LoginSocialTableCell.swift */; };
+		844CBD1F2501FA31009BE668 /* LoginSocialTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844CBD1D2501FA31009BE668 /* LoginSocialTableCell.xib */; };
+		844CBD222501FFC0009BE668 /* LoginEmailPhoneTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844CBD202501FFC0009BE668 /* LoginEmailPhoneTableCell.swift */; };
+		844CBD232501FFC0009BE668 /* LoginEmailPhoneTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844CBD212501FFC0009BE668 /* LoginEmailPhoneTableCell.xib */; };
 		8481F9FD2500AA9A00AB6EFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481F9FC2500AA9A00AB6EFB /* AppDelegate.swift */; };
 		8481F9FF2500AA9A00AB6EFB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481F9FE2500AA9A00AB6EFB /* SceneDelegate.swift */; };
 		8481FA062500AA9B00AB6EFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8481FA052500AA9B00AB6EFB /* Assets.xcassets */; };
@@ -75,10 +81,19 @@
 		8481FAA3250143BD00AB6EFB /* NunitoSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8481FAA2250143BD00AB6EFB /* NunitoSans-Regular.ttf */; };
 		8481FAA5250143C500AB6EFB /* NunitoSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8481FAA4250143C500AB6EFB /* NunitoSans-SemiBold.ttf */; };
 		8481FAA7250143CD00AB6EFB /* NunitoSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8481FAA6250143CD00AB6EFB /* NunitoSans-SemiBoldItalic.ttf */; };
+		8481FAA925015AA500AB6EFB /* CustommTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8481FAA825015AA500AB6EFB /* CustommTextField.xib */; };
+		8481FAAB25015CBC00AB6EFB /* CustommTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481FAAA25015CBC00AB6EFB /* CustommTextField.swift */; };
+		8481FAAF25015D9000AB6EFB /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481FAAE25015D9000AB6EFB /* LoginVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		19AB33EFB3362961FDB4026A /* Pods-ArabianTyres.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArabianTyres.debug.xcconfig"; path = "Target Support Files/Pods-ArabianTyres/Pods-ArabianTyres.debug.xcconfig"; sourceTree = "<group>"; };
+		844CBD182501F7D5009BE668 /* LoginTopTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTopTableCell.swift; sourceTree = "<group>"; };
+		844CBD192501F7D5009BE668 /* LoginTopTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginTopTableCell.xib; sourceTree = "<group>"; };
+		844CBD1C2501FA31009BE668 /* LoginSocialTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSocialTableCell.swift; sourceTree = "<group>"; };
+		844CBD1D2501FA31009BE668 /* LoginSocialTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginSocialTableCell.xib; sourceTree = "<group>"; };
+		844CBD202501FFC0009BE668 /* LoginEmailPhoneTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEmailPhoneTableCell.swift; sourceTree = "<group>"; };
+		844CBD212501FFC0009BE668 /* LoginEmailPhoneTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginEmailPhoneTableCell.xib; sourceTree = "<group>"; };
 		8481F9F92500AA9A00AB6EFB /* ArabianTyres.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArabianTyres.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8481F9FC2500AA9A00AB6EFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8481F9FE2500AA9A00AB6EFB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -148,6 +163,9 @@
 		8481FAA2250143BD00AB6EFB /* NunitoSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NunitoSans-Regular.ttf"; sourceTree = "<group>"; };
 		8481FAA4250143C500AB6EFB /* NunitoSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NunitoSans-SemiBold.ttf"; sourceTree = "<group>"; };
 		8481FAA6250143CD00AB6EFB /* NunitoSans-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NunitoSans-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		8481FAA825015AA500AB6EFB /* CustommTextField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustommTextField.xib; sourceTree = "<group>"; };
+		8481FAAA25015CBC00AB6EFB /* CustommTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustommTextField.swift; sourceTree = "<group>"; };
+		8481FAAE25015D9000AB6EFB /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		8A21614890BB1C8443A578F3 /* Pods-ArabianTyres.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArabianTyres.release.xcconfig"; path = "Target Support Files/Pods-ArabianTyres/Pods-ArabianTyres.release.xcconfig"; sourceTree = "<group>"; };
 		B2C00CD38A98EBA313A070C9 /* Pods_ArabianTyres.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArabianTyres.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -179,6 +197,28 @@
 				8A21614890BB1C8443A578F3 /* Pods-ArabianTyres.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		844CBD162501F76D009BE668 /* ChooseLanguageVC */ = {
+			isa = PBXGroup;
+			children = (
+				8481FA892501081000AB6EFB /* TutorialCollCell.xib */,
+				8481FA882501081000AB6EFB /* TutorialCollCell.swift */,
+			);
+			path = ChooseLanguageVC;
+			sourceTree = "<group>";
+		};
+		844CBD172501F785009BE668 /* LoginVC */ = {
+			isa = PBXGroup;
+			children = (
+				844CBD182501F7D5009BE668 /* LoginTopTableCell.swift */,
+				844CBD192501F7D5009BE668 /* LoginTopTableCell.xib */,
+				844CBD1C2501FA31009BE668 /* LoginSocialTableCell.swift */,
+				844CBD1D2501FA31009BE668 /* LoginSocialTableCell.xib */,
+				844CBD202501FFC0009BE668 /* LoginEmailPhoneTableCell.swift */,
+				844CBD212501FFC0009BE668 /* LoginEmailPhoneTableCell.xib */,
+			);
+			path = LoginVC;
 			sourceTree = "<group>";
 		};
 		8481F9F02500AA9A00AB6EFB = {
@@ -343,6 +383,8 @@
 			children = (
 				8481FA322500BD4A00AB6EFB /* CustomDatePicker.swift */,
 				8481FA342500BD8C00AB6EFB /* CommonFunctions.swift */,
+				8481FAA825015AA500AB6EFB /* CustommTextField.xib */,
+				8481FAAA25015CBC00AB6EFB /* CustommTextField.swift */,
 			);
 			path = CustomClasses;
 			sourceTree = "<group>";
@@ -422,7 +464,8 @@
 		8481FA822500EE0600AB6EFB /* PreloginVC */ = {
 			isa = PBXGroup;
 			children = (
-				8481FA842500EEC400AB6EFB /* ChooseLanguageVC.swift */,
+				8481FAAD25015D4600AB6EFB /* LoginVC */,
+				8481FAAC25015D1200AB6EFB /* ChooseLanguageVC */,
 			);
 			path = PreloginVC;
 			sourceTree = "<group>";
@@ -437,8 +480,8 @@
 		8481FA86250107B600AB6EFB /* PreloginVC */ = {
 			isa = PBXGroup;
 			children = (
-				8481FA882501081000AB6EFB /* TutorialCollCell.swift */,
-				8481FA892501081000AB6EFB /* TutorialCollCell.xib */,
+				844CBD172501F785009BE668 /* LoginVC */,
+				844CBD162501F76D009BE668 /* ChooseLanguageVC */,
 			);
 			path = PreloginVC;
 			sourceTree = "<group>";
@@ -448,6 +491,22 @@
 			children = (
 			);
 			path = PostloginVC;
+			sourceTree = "<group>";
+		};
+		8481FAAC25015D1200AB6EFB /* ChooseLanguageVC */ = {
+			isa = PBXGroup;
+			children = (
+				8481FA842500EEC400AB6EFB /* ChooseLanguageVC.swift */,
+			);
+			path = ChooseLanguageVC;
+			sourceTree = "<group>";
+		};
+		8481FAAD25015D4600AB6EFB /* LoginVC */ = {
+			isa = PBXGroup;
+			children = (
+				8481FAAE25015D9000AB6EFB /* LoginVC.swift */,
+			);
+			path = LoginVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -516,13 +575,17 @@
 				8481FA312500BCD800AB6EFB /* Localizable.strings in Resources */,
 				8481FA972501438500AB6EFB /* NunitoSans-ExtraBoldItalic.ttf in Resources */,
 				8481FA9B2501439700AB6EFB /* NunitoSans-ExtraLightItalic.ttf in Resources */,
+				844CBD232501FFC0009BE668 /* LoginEmailPhoneTableCell.xib in Resources */,
+				844CBD1F2501FA31009BE668 /* LoginSocialTableCell.xib in Resources */,
 				8481FAA5250143C500AB6EFB /* NunitoSans-SemiBold.ttf in Resources */,
 				8481FA912501436600AB6EFB /* NunitoSans-Bold.ttf in Resources */,
 				8481FA9D250143A200AB6EFB /* NunitoSans-Italic.ttf in Resources */,
+				8481FAA925015AA500AB6EFB /* CustommTextField.xib in Resources */,
 				8481FA952501437C00AB6EFB /* NunitoSans-ExtraBold.ttf in Resources */,
 				8481FA992501438F00AB6EFB /* NunitoSans-ExtraLight.ttf in Resources */,
 				8481FA932501437000AB6EFB /* NunitoSans-BoldItalic.ttf in Resources */,
 				8481FA812500DC8800AB6EFB /* Main.storyboard in Resources */,
+				844CBD1B2501F7D5009BE668 /* LoginTopTableCell.xib in Resources */,
 				8481FA8D2501435100AB6EFB /* NunitoSans-Black.ttf in Resources */,
 				8481FA062500AA9B00AB6EFB /* Assets.xcassets in Resources */,
 				8481FAA7250143CD00AB6EFB /* NunitoSans-SemiBoldItalic.ttf in Resources */,
@@ -609,13 +672,16 @@
 				8481FA392500BDED00AB6EFB /* UIColorExtension.swift in Sources */,
 				8481FA272500BB7300AB6EFB /* Webservices.swift in Sources */,
 				8481FA332500BD4A00AB6EFB /* CustomDatePicker.swift in Sources */,
+				844CBD1A2501F7D5009BE668 /* LoginTopTableCell.swift in Sources */,
 				8481FA852500EEC400AB6EFB /* ChooseLanguageVC.swift in Sources */,
 				8481FA552500BF0700AB6EFB /* DispatchQueueExtension.swift in Sources */,
 				8481FA532500BEF900AB6EFB /* StringExtension.swift in Sources */,
 				8481FA652500BFAD00AB6EFB /* AppColors.swift in Sources */,
 				8481FA3F2500BE2800AB6EFB /* UITextFieldExtension.swift in Sources */,
+				844CBD222501FFC0009BE668 /* LoginEmailPhoneTableCell.swift in Sources */,
 				8481FA692500BFC700AB6EFB /* DeviceDetails.swift in Sources */,
 				8481FA212500BB2100AB6EFB /* GoogleLoginController.swift in Sources */,
+				8481FAAB25015CBC00AB6EFB /* CustommTextField.swift in Sources */,
 				8481FA232500BB5400AB6EFB /* AppNetworking.swift in Sources */,
 				8481FA1F2500BAFB00AB6EFB /* AppleLoginController.swift in Sources */,
 				8481FA772500C5CD00AB6EFB /* CountryData.swift in Sources */,
@@ -626,6 +692,8 @@
 				8481FA3D2500BE1C00AB6EFB /* UIColor+Additions.swift in Sources */,
 				8481FA352500BD8C00AB6EFB /* CommonFunctions.swift in Sources */,
 				8481FA6F2500BFEF00AB6EFB /* AppGlobals.swift in Sources */,
+				844CBD1E2501FA31009BE668 /* LoginSocialTableCell.swift in Sources */,
+				8481FAAF25015D9000AB6EFB /* LoginVC.swift in Sources */,
 				8481FA452500BE7600AB6EFB /* UIViewControllerExtension.swift in Sources */,
 				8481FA5D2500BF7100AB6EFB /* AppEnums.swift in Sources */,
 				8481FA252500BB6400AB6EFB /* Webservice+EndPoints.swift in Sources */,
