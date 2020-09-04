@@ -209,6 +209,7 @@
                         <outlet property="arabicBtn" destination="vWJ-np-Rg5" id="VqW-Qj-3d8"/>
                         <outlet property="arabicBtnView" destination="cri-NO-Zcs" id="qlP-WF-Zpr"/>
                         <outlet property="arabicLbl" destination="GnC-dK-O3k" id="f1j-7S-Q3t"/>
+                        <outlet property="chooseLangLbl" destination="u6B-FK-BEk" id="h8H-bZ-ASA"/>
                         <outlet property="continueBtn" destination="qdR-eO-3IG" id="WfI-hb-t2t"/>
                         <outlet property="englishBtn" destination="p7V-VE-AAt" id="cAu-l3-glg"/>
                         <outlet property="englishBtnView" destination="4DE-yw-XT7" id="8fY-XM-v1L"/>
@@ -274,9 +275,6 @@
                                     <state key="normal" title="SKIP LOGIN &amp; CONTINUE">
                                         <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.76470588235294112" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
-                                    <connections>
-                                        <action selector="skipLoginAndContinueAction:" destination="n2Z-6v-clm" eventType="touchUpInside" id="gQX-7O-GSB"/>
-                                    </connections>
                                 </button>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fvp-vM-J2x">
                                     <rect key="frame" x="208" y="44.5" width="144" height="1"/>
@@ -308,6 +306,114 @@
                 </view>
             </objects>
             <point key="canvasLocation" x="2003" y="147"/>
+        </scene>
+        <!--Sign UpVC-->
+        <scene sceneID="sIi-58-RBG">
+            <objects>
+                <viewController storyboardIdentifier="SignUpVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ejh-FG-eD1" customClass="SignUpVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VEv-7x-6nX">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fAF-w6-04F">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mca-sL-fTF">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="mca-sL-fTF" secondAttribute="bottom" id="1rx-Pn-nuc"/>
+                                    <constraint firstItem="mca-sL-fTF" firstAttribute="leading" secondItem="fAF-w6-04F" secondAttribute="leading" id="CMv-hh-Mxo"/>
+                                    <constraint firstAttribute="trailing" secondItem="mca-sL-fTF" secondAttribute="trailing" id="NVk-Lm-DpE"/>
+                                    <constraint firstItem="mca-sL-fTF" firstAttribute="top" secondItem="fAF-w6-04F" secondAttribute="top" id="WaI-so-lx5"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="BrH-Xe-Eqs" firstAttribute="trailing" secondItem="fAF-w6-04F" secondAttribute="trailing" id="1sj-mR-xrX"/>
+                            <constraint firstItem="BrH-Xe-Eqs" firstAttribute="bottom" secondItem="fAF-w6-04F" secondAttribute="bottom" id="Doc-6g-Rz3"/>
+                            <constraint firstItem="fAF-w6-04F" firstAttribute="leading" secondItem="BrH-Xe-Eqs" secondAttribute="leading" id="wyw-bs-YYX"/>
+                            <constraint firstItem="fAF-w6-04F" firstAttribute="top" secondItem="BrH-Xe-Eqs" secondAttribute="top" id="xQB-iZ-weM"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="BrH-Xe-Eqs"/>
+                    </view>
+                    <connections>
+                        <outlet property="footerView" destination="VQd-ra-jZl" id="Wce-ZK-BmF"/>
+                        <outlet property="headerView" destination="ThJ-gE-zfC" id="eXZ-EN-MyO"/>
+                        <outlet property="mainTableView" destination="mca-sL-fTF" id="byr-ca-MkX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SWb-3b-X2q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="ThJ-gE-zfC">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ph-aY-dGY">
+                            <rect key="frame" x="157.5" y="17" width="60.5" height="23.5"/>
+                            <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="5Ph-aY-dGY" secondAttribute="bottom" constant="9.5" id="Hq9-X7-f16"/>
+                        <constraint firstItem="5Ph-aY-dGY" firstAttribute="centerX" secondItem="FzW-UU-eVO" secondAttribute="centerX" id="MNV-k2-526"/>
+                        <constraint firstAttribute="top" secondItem="5Ph-aY-dGY" secondAttribute="top" constant="-17" id="sij-bG-HXY"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="FzW-UU-eVO"/>
+                </view>
+                <view contentMode="scaleToFill" id="VQd-ra-jZl">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HjX-jN-PZs">
+                            <rect key="frame" x="0.0" y="6" width="375" height="54"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2au-iG-wPz">
+                                    <rect key="frame" x="208" y="22" width="144" height="29"/>
+                                    <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="12"/>
+                                    <state key="normal" title="SKIP LOGIN &amp; CONTINUE">
+                                        <color key="titleColor" red="0.1960784314" green="0.30980392159999998" blue="0.76470588240000004" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="skipLoginAndContinueAction:" destination="Ejh-FG-eD1" eventType="touchUpInside" id="3gt-9Q-3b3"/>
+                                    </connections>
+                                </button>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vts-K7-Nzf">
+                                    <rect key="frame" x="208" y="44.5" width="144" height="1"/>
+                                    <color key="backgroundColor" red="0.1960784314" green="0.30980392159999998" blue="0.76470588240000004" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="1" id="gv7-OJ-q37"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="2au-iG-wPz" secondAttribute="trailing" constant="23" id="8X4-gi-hNy"/>
+                                <constraint firstItem="Vts-K7-Nzf" firstAttribute="trailing" secondItem="2au-iG-wPz" secondAttribute="trailing" id="BCk-YV-Rx6"/>
+                                <constraint firstItem="Vts-K7-Nzf" firstAttribute="top" secondItem="2au-iG-wPz" secondAttribute="bottom" constant="-6.5" id="KBU-EH-kNJ"/>
+                                <constraint firstItem="Vts-K7-Nzf" firstAttribute="leading" secondItem="2au-iG-wPz" secondAttribute="leading" id="XzK-Lj-p1E"/>
+                                <constraint firstItem="2au-iG-wPz" firstAttribute="top" secondItem="HjX-jN-PZs" secondAttribute="top" constant="22" id="f0h-LK-dz8"/>
+                                <constraint firstAttribute="bottom" secondItem="Vts-K7-Nzf" secondAttribute="bottom" constant="8.5" id="l9D-fP-dIg"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstItem="HjX-jN-PZs" firstAttribute="leading" secondItem="PX0-uo-y41" secondAttribute="leading" id="1qP-ab-mPJ"/>
+                        <constraint firstItem="HjX-jN-PZs" firstAttribute="bottom" secondItem="PX0-uo-y41" secondAttribute="bottom" id="QCb-xA-BHq"/>
+                        <constraint firstItem="PX0-uo-y41" firstAttribute="trailing" secondItem="HjX-jN-PZs" secondAttribute="trailing" id="iGC-ig-hg0"/>
+                        <constraint firstAttribute="top" secondItem="HjX-jN-PZs" secondAttribute="top" constant="-6" id="wYn-8b-YbQ"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="PX0-uo-y41"/>
+                </view>
+            </objects>
+            <point key="canvasLocation" x="2786" y="147"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="RYd-a4-dWc">

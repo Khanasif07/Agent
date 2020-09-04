@@ -14,6 +14,9 @@
 		844CBD1F2501FA31009BE668 /* LoginSocialTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844CBD1D2501FA31009BE668 /* LoginSocialTableCell.xib */; };
 		844CBD222501FFC0009BE668 /* LoginEmailPhoneTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844CBD202501FFC0009BE668 /* LoginEmailPhoneTableCell.swift */; };
 		844CBD232501FFC0009BE668 /* LoginEmailPhoneTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844CBD212501FFC0009BE668 /* LoginEmailPhoneTableCell.xib */; };
+		844D81DB2502408900550334 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844D81DA2502408900550334 /* SignUpVC.swift */; };
+		844D81DF250243B300550334 /* SignUpTopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844D81DD250243B300550334 /* SignUpTopCell.swift */; };
+		844D81E0250243B300550334 /* SignUpTopCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844D81DE250243B300550334 /* SignUpTopCell.xib */; };
 		8481F9FD2500AA9A00AB6EFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481F9FC2500AA9A00AB6EFB /* AppDelegate.swift */; };
 		8481F9FF2500AA9A00AB6EFB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481F9FE2500AA9A00AB6EFB /* SceneDelegate.swift */; };
 		8481FA062500AA9B00AB6EFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8481FA052500AA9B00AB6EFB /* Assets.xcassets */; };
@@ -81,7 +84,6 @@
 		8481FAA3250143BD00AB6EFB /* NunitoSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8481FAA2250143BD00AB6EFB /* NunitoSans-Regular.ttf */; };
 		8481FAA5250143C500AB6EFB /* NunitoSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8481FAA4250143C500AB6EFB /* NunitoSans-SemiBold.ttf */; };
 		8481FAA7250143CD00AB6EFB /* NunitoSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8481FAA6250143CD00AB6EFB /* NunitoSans-SemiBoldItalic.ttf */; };
-		8481FAA925015AA500AB6EFB /* CustommTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8481FAA825015AA500AB6EFB /* CustommTextField.xib */; };
 		8481FAAB25015CBC00AB6EFB /* CustommTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481FAAA25015CBC00AB6EFB /* CustommTextField.swift */; };
 		8481FAAF25015D9000AB6EFB /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481FAAE25015D9000AB6EFB /* LoginVC.swift */; };
 /* End PBXBuildFile section */
@@ -94,6 +96,9 @@
 		844CBD1D2501FA31009BE668 /* LoginSocialTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginSocialTableCell.xib; sourceTree = "<group>"; };
 		844CBD202501FFC0009BE668 /* LoginEmailPhoneTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEmailPhoneTableCell.swift; sourceTree = "<group>"; };
 		844CBD212501FFC0009BE668 /* LoginEmailPhoneTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginEmailPhoneTableCell.xib; sourceTree = "<group>"; };
+		844D81DA2502408900550334 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
+		844D81DD250243B300550334 /* SignUpTopCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTopCell.swift; sourceTree = "<group>"; };
+		844D81DE250243B300550334 /* SignUpTopCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpTopCell.xib; sourceTree = "<group>"; };
 		8481F9F92500AA9A00AB6EFB /* ArabianTyres.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArabianTyres.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8481F9FC2500AA9A00AB6EFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8481F9FE2500AA9A00AB6EFB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -163,7 +168,6 @@
 		8481FAA2250143BD00AB6EFB /* NunitoSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NunitoSans-Regular.ttf"; sourceTree = "<group>"; };
 		8481FAA4250143C500AB6EFB /* NunitoSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NunitoSans-SemiBold.ttf"; sourceTree = "<group>"; };
 		8481FAA6250143CD00AB6EFB /* NunitoSans-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NunitoSans-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
-		8481FAA825015AA500AB6EFB /* CustommTextField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustommTextField.xib; sourceTree = "<group>"; };
 		8481FAAA25015CBC00AB6EFB /* CustommTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustommTextField.swift; sourceTree = "<group>"; };
 		8481FAAE25015D9000AB6EFB /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		8A21614890BB1C8443A578F3 /* Pods-ArabianTyres.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArabianTyres.release.xcconfig"; path = "Target Support Files/Pods-ArabianTyres/Pods-ArabianTyres.release.xcconfig"; sourceTree = "<group>"; };
@@ -219,6 +223,23 @@
 				844CBD212501FFC0009BE668 /* LoginEmailPhoneTableCell.xib */,
 			);
 			path = LoginVC;
+			sourceTree = "<group>";
+		};
+		844D81D92502406700550334 /* SignUpVC */ = {
+			isa = PBXGroup;
+			children = (
+				844D81DA2502408900550334 /* SignUpVC.swift */,
+			);
+			path = SignUpVC;
+			sourceTree = "<group>";
+		};
+		844D81DC2502438000550334 /* SignUpVC */ = {
+			isa = PBXGroup;
+			children = (
+				844D81DD250243B300550334 /* SignUpTopCell.swift */,
+				844D81DE250243B300550334 /* SignUpTopCell.xib */,
+			);
+			path = SignUpVC;
 			sourceTree = "<group>";
 		};
 		8481F9F02500AA9A00AB6EFB = {
@@ -383,7 +404,6 @@
 			children = (
 				8481FA322500BD4A00AB6EFB /* CustomDatePicker.swift */,
 				8481FA342500BD8C00AB6EFB /* CommonFunctions.swift */,
-				8481FAA825015AA500AB6EFB /* CustommTextField.xib */,
 				8481FAAA25015CBC00AB6EFB /* CustommTextField.swift */,
 			);
 			path = CustomClasses;
@@ -464,6 +484,7 @@
 		8481FA822500EE0600AB6EFB /* PreloginVC */ = {
 			isa = PBXGroup;
 			children = (
+				844D81D92502406700550334 /* SignUpVC */,
 				8481FAAD25015D4600AB6EFB /* LoginVC */,
 				8481FAAC25015D1200AB6EFB /* ChooseLanguageVC */,
 			);
@@ -480,6 +501,7 @@
 		8481FA86250107B600AB6EFB /* PreloginVC */ = {
 			isa = PBXGroup;
 			children = (
+				844D81DC2502438000550334 /* SignUpVC */,
 				844CBD172501F785009BE668 /* LoginVC */,
 				844CBD162501F76D009BE668 /* ChooseLanguageVC */,
 			);
@@ -580,7 +602,7 @@
 				8481FAA5250143C500AB6EFB /* NunitoSans-SemiBold.ttf in Resources */,
 				8481FA912501436600AB6EFB /* NunitoSans-Bold.ttf in Resources */,
 				8481FA9D250143A200AB6EFB /* NunitoSans-Italic.ttf in Resources */,
-				8481FAA925015AA500AB6EFB /* CustommTextField.xib in Resources */,
+				844D81E0250243B300550334 /* SignUpTopCell.xib in Resources */,
 				8481FA952501437C00AB6EFB /* NunitoSans-ExtraBold.ttf in Resources */,
 				8481FA992501438F00AB6EFB /* NunitoSans-ExtraLight.ttf in Resources */,
 				8481FA932501437000AB6EFB /* NunitoSans-BoldItalic.ttf in Resources */,
@@ -700,6 +722,7 @@
 				8481FA612500BF9300AB6EFB /* AppUserDefaults.swift in Sources */,
 				8481FA572500BF1A00AB6EFB /* URLExtension.swift in Sources */,
 				8481FA4B2500BEB600AB6EFB /* DoubleExtension.swift in Sources */,
+				844D81DB2502408900550334 /* SignUpVC.swift in Sources */,
 				8481FA712500BFFD00AB6EFB /* AppFonts.swift in Sources */,
 				8481FA512500BEEC00AB6EFB /* DictionaryExtension.swift in Sources */,
 				8481FA1D2500BAC700AB6EFB /* FacebookController.swift in Sources */,
@@ -712,6 +735,7 @@
 				8481FA7B2500CC2C00AB6EFB /* BaseVC.swift in Sources */,
 				8481FA5F2500BF8400AB6EFB /* AppRouter.swift in Sources */,
 				8481F9FD2500AA9A00AB6EFB /* AppDelegate.swift in Sources */,
+				844D81DF250243B300550334 /* SignUpTopCell.swift in Sources */,
 				8481FA6B2500BFD500AB6EFB /* AWSS3Manager.swift in Sources */,
 				8481FA412500BE3800AB6EFB /* UILabelExtension.swift in Sources */,
 				8481F9FF2500AA9A00AB6EFB /* SceneDelegate.swift in Sources */,

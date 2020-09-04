@@ -32,7 +32,21 @@ enum LocalizedString : String {
     case tutorialTitle1 = "tutorialTitle1"
     case tutorialTitle2 = "tutorialTitle2"
     case tutorialTitle3 = "tutorialTitle3"
+    case login_with_emailId = "login_with_emailId"
+    case chooseLanguage = "chooseLanguage"
     
+    // MARK: - Login VC Values
+    //==============================
+    case emailID = "emailId"
+    case password = "password"
+    case emailIdPlaceHolder = "emailIdPlaceHolder"
+    case usePhoneNumber = "usePhoneNumber"
+    case forgotPassword = "forgotPassword"
+    case sign_in = "sign_in"
+    case signupcap = "signupcap"
+    case Login_with_social_accounts = "Login_with_social_accounts"
+    case sKIP_LOGIN_CONTINUE = "sKIP_LOGIN_CONTINUE"
+    case dont_have_an_account = "dont_have_an_account"
 }
 
 

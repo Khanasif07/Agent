@@ -39,10 +39,30 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="BSK-qQ-mG2">
                                         <rect key="frame" x="0.0" y="0.0" width="333" height="92"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6kf-Kl-XWN" customClass="CustommTextField" customModule="ArabianTyres">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6kf-Kl-XWN">
                                                 <rect key="frame" x="0.0" y="0.0" width="333" height="60"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H30-LC-ggZ" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                                        <rect key="frame" x="0.0" y="5" width="333" height="55"/>
+                                                        <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                                                <color key="value" red="0.54117647058823526" green="0.54509803921568623" blue="0.61960784313725492" alpha="0.4026912384969325" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Email"/>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
+                                                                <color key="value" red="0.54117647058823526" green="0.54509803921568623" blue="0.61960784313725492" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </textField>
+                                                </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
+                                                    <constraint firstItem="H30-LC-ggZ" firstAttribute="top" secondItem="6kf-Kl-XWN" secondAttribute="top" constant="5" id="9hO-r3-dby"/>
+                                                    <constraint firstItem="H30-LC-ggZ" firstAttribute="leading" secondItem="6kf-Kl-XWN" secondAttribute="leading" id="N0L-y7-fws"/>
+                                                    <constraint firstAttribute="bottom" secondItem="H30-LC-ggZ" secondAttribute="bottom" id="UWY-G7-RLI"/>
+                                                    <constraint firstAttribute="trailing" secondItem="H30-LC-ggZ" secondAttribute="trailing" id="Zfc-zJ-MP5"/>
                                                     <constraint firstAttribute="height" constant="60" id="p59-si-2Rl"/>
                                                 </constraints>
                                             </view>
@@ -50,23 +70,49 @@
                                                 <rect key="frame" x="207" y="60" width="126" height="32"/>
                                                 <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="14"/>
                                                 <state key="normal" title="Use Phone Number"/>
+                                                <connections>
+                                                    <action selector="phoneNoBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="HGH-xO-i2l"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="GTP-OM-24n">
                                         <rect key="frame" x="0.0" y="92" width="333" height="92"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="djY-2b-ccd" customClass="CustommTextField" customModule="ArabianTyres">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="djY-2b-ccd">
                                                 <rect key="frame" x="0.0" y="0.0" width="333" height="60"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w9f-wj-cW3" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                                        <rect key="frame" x="0.0" y="5" width="333" height="55"/>
+                                                        <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                                                <color key="value" red="0.54117647058823526" green="0.54509803921568623" blue="0.61960784313725492" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Password"/>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
+                                                                <color key="value" red="0.54117647058823526" green="0.54509803921568623" blue="0.61960784313725492" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </textField>
+                                                </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="w9f-wj-cW3" secondAttribute="bottom" id="BsZ-K5-Cqx"/>
+                                                    <constraint firstItem="w9f-wj-cW3" firstAttribute="leading" secondItem="djY-2b-ccd" secondAttribute="leading" id="JHI-CA-NVv"/>
+                                                    <constraint firstItem="w9f-wj-cW3" firstAttribute="top" secondItem="djY-2b-ccd" secondAttribute="top" constant="5" id="VAm-FO-7Nd"/>
                                                     <constraint firstAttribute="height" constant="60" id="gHF-gv-FaZ"/>
+                                                    <constraint firstAttribute="trailing" secondItem="w9f-wj-cW3" secondAttribute="trailing" id="x4I-PX-cvm"/>
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sRl-E7-svb">
                                                 <rect key="frame" x="222" y="60" width="111" height="32"/>
                                                 <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="14"/>
                                                 <state key="normal" title="Forgot Password"/>
+                                                <connections>
+                                                    <action selector="forgotPassBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="KQJ-De-rbB"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -85,6 +131,9 @@
                                         <state key="normal" title="Sign in">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="signInBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="YxP-rh-WN8"/>
+                                        </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="OZM-xD-hjn">
                                         <rect key="frame" x="61.5" y="65" width="210.5" height="19.5"/>
@@ -102,6 +151,9 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="60" height="19.5"/>
                                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="14"/>
                                                         <state key="normal" title="SIGN UP"/>
+                                                        <connections>
+                                                            <action selector="signupBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="vJL-pu-WHI"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -141,8 +193,10 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="dontHaveAccountLbl" destination="arj-Ey-1Qv" id="Ypq-NF-lvC"/>
+                <outlet property="emailTxtField" destination="H30-LC-ggZ" id="zbU-CH-Tbq"/>
                 <outlet property="forgotPassBtn" destination="sRl-E7-svb" id="AME-0O-n5m"/>
                 <outlet property="loginWithEmailPhoneLbl" destination="7wX-et-QRA" id="nh6-Mw-bOD"/>
+                <outlet property="passTxtField" destination="w9f-wj-cW3" id="Wm0-Tm-lh6"/>
                 <outlet property="phoneNoBtn" destination="3At-SR-5MG" id="Dfc-x9-T8y"/>
                 <outlet property="signInBtn" destination="mPf-KA-PiS" id="IV1-P4-K2G"/>
                 <outlet property="signUpBtn" destination="dai-Yf-J2e" id="i2F-fl-5dO"/>

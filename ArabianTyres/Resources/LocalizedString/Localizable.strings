@@ -24,3 +24,18 @@
 "tutorialTitle1" = "A hassle free car tyre repair service";
 "tutorialTitle2" = "Battery is lifeline of any vehicle";
 "tutorialTitle3" = "A quality oil is lifeline of any vehicle";
+"chooseLanguage" = "Choose Language";
+"login_with_emailId" = "Login with Email Id";
+
+// MARK: - Login VC Values
+//==============================
+"emailId" = "Email Id";
+"password" = "Password";
+"emailIdPlaceHolder" = "Email";
+"usePhoneNumber" = "Use Phone Number";
+"forgotPassword" = "Forgot Password";
+"sign_in" = "Sign in";
+"signupcap" = "SIGN UP";
+"Login_with_social_accounts" = "Login with Social Accounts";
+"sKIP_LOGIN_CONTINUE" = "SKIP LOGIN & CONTINUE";
+"dont_have_an_account" = "Don’t have an account?";

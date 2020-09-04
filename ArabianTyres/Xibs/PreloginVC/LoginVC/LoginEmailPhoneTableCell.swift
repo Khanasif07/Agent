@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import SkyFloatingLabelTextField
 
 class LoginEmailPhoneTableCell: UITableViewCell {
+    
+    var signupBtnTapped: ((UIButton)->())?
     
     @IBOutlet weak var forgotPassBtn: UIButton!
     @IBOutlet weak var dontHaveAccountLbl: UILabel!
@@ -16,15 +19,43 @@ class LoginEmailPhoneTableCell: UITableViewCell {
     @IBOutlet weak var phoneNoBtn: UIButton!
     @IBOutlet weak var loginWithEmailPhoneLbl: UILabel!
     @IBOutlet weak var signUpBtn: UIButton!
+    @IBOutlet weak var emailTxtField: SkyFloatingLabelTextField!
+    @IBOutlet weak var passTxtField: SkyFloatingLabelTextField!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.setUpColor()
+        self.setUpTextField()
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         self.signInBtn.round(radius: 4.0)
+    }
+    
+    
+    
+    public func setUpTextField(){
+        self.dontHaveAccountLbl.text = LocalizedString.dont_have_an_account.localized
+        self.forgotPassBtn.setTitle(LocalizedString.forgotPassword.localized, for: .normal)
+        self.loginWithEmailPhoneLbl.text = LocalizedString.login_with_emailId.localized
+        self.emailTxtField.title = LocalizedString.emailIdPlaceHolder.localized
+        self.passTxtField.title = LocalizedString.password.localized
+        self.emailTxtField.selectedTitle = LocalizedString.emailIdPlaceHolder.localized
+        self.passTxtField.selectedTitle = LocalizedString.password.localized
+        self.emailTxtField.placeholder = LocalizedString.emailID.localized
+        self.passTxtField.placeholder = LocalizedString.password.localized
+        self.passTxtField.lineColor = AppColors.fontTertiaryColor
+        self.emailTxtField.lineColor = AppColors.fontTertiaryColor
+        self.emailTxtField.selectedLineColor =
+        AppColors.fontTertiaryColor
+        self.passTxtField.selectedLineColor =
+               AppColors.fontTertiaryColor
+        self.emailTxtField.selectedTitleColor = AppColors.fontTertiaryColor
+        self.passTxtField.selectedTitleColor = AppColors.fontTertiaryColor
+        self.signUpBtn.setTitle(LocalizedString.signupcap.localized, for: .normal)
+        self.signInBtn.setTitle(LocalizedString.sign_in.localized, for: .normal)
+        self.passTxtField.isSecureTextEntry = true
     }
     
     public func setUpColor(){
@@ -35,4 +66,20 @@ class LoginEmailPhoneTableCell: UITableViewCell {
         self.signUpBtn.setTitleColor(AppColors.primaryBlueColor, for: .normal)
     }
 
+    
+    @IBAction func phoneNoBtnAction(_ sender: UIButton) {
+    }
+    
+    @IBAction func forgotPassBtnAction(_ sender: UIButton) {
+    }
+    
+    @IBAction func signInBtnAction(_ sender: UIButton) {
+    }
+    
+    @IBAction func signupBtnAction(_ sender: UIButton) {
+        if let handle = signupBtnTapped{
+            handle(sender)
+        }
+    }
+    
 }

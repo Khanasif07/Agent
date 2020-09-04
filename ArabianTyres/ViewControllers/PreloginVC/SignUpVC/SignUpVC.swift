@@ -1,4 +1,12 @@
 //
+//  SignUpVC.swift
+//  ArabianTyres
+//
+//  Created by Admin on 04/09/20.
+//  Copyright © 2020 Admin. All rights reserved.
+//
+
+//
 //  LoginVC.swift
 //  ArabianTyres
 //
@@ -7,10 +15,12 @@
 //
 import UIKit
 
-class LoginVC: BaseVC {
+class SignUpVC: BaseVC {
     
     // MARK: - IBOutlets
     //===========================
+    
+    @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var mainTableView: UITableView!
     @IBOutlet var footerView: UIView!
     
@@ -25,17 +35,16 @@ class LoginVC: BaseVC {
     }
     
     // MARK: - IBActions
-    //==========================
-    
+    //===========================
     @IBAction func skipLoginAndContinueAction(_ sender: UIButton) {
-    }
+   }
     
     
 }
 
 // MARK: - Extension For Functions
 //===========================
-extension LoginVC {
+extension SignUpVC {
     
     private func initialSetup() {
         self.tableViewSetUp()
@@ -44,33 +53,28 @@ extension LoginVC {
     public func tableViewSetUp(){
         self.mainTableView.delegate = self
         self.mainTableView.dataSource = self
+        self.mainTableView.tableHeaderView = headerView
         self.mainTableView.tableFooterView = footerView
-        self.mainTableView.registerCell(with: LoginTopTableCell.self)
         self.mainTableView.registerCell(with: LoginSocialTableCell.self)
-        self.mainTableView.registerCell(with: LoginEmailPhoneTableCell.self)
+        self.mainTableView.registerCell(with: SignUpTopCell.self)
     }
 }
 
 // MARK: - Extension For TableView
 //===========================
-extension LoginVC : UITableViewDelegate, UITableViewDataSource {
+extension SignUpVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0:
-            let cell = tableView.dequeueCell(with: LoginTopTableCell.self, indexPath: indexPath)
-            return cell
-        case 1:
-            let cell = tableView.dequeueCell(with: LoginEmailPhoneTableCell.self, indexPath: indexPath)
-            cell.emailTxtField.delegate = self
-            cell.passTxtField.delegate = self
-            cell.signupBtnTapped = { [weak self]  (sender) in
+            let cell = tableView.dequeueCell(with: SignUpTopCell.self, indexPath: indexPath)
+            cell.signInBtnTapped = { [weak self]  (sender) in
                 guard let `self` = self else { return }
-                AppRouter.goToSignUpVC(vc: self)
+                self.navigationController?.popViewController(animated: true)
             }
             return cell
         default:
@@ -81,21 +85,5 @@ extension LoginVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
-    }
-}
-
-// MARK: - Extension For TextField Delegate
-//====================================
-extension LoginVC : UITextFieldDelegate{
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        printDebug(textField)
-    }
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        printDebug(textField)
-    }
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        return true
     }
 }

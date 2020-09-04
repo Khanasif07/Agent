@@ -27,6 +27,7 @@ class ChooseLanguageVC: BaseVC {
     @IBOutlet weak var englishBtnView: UIView!
     @IBOutlet weak var continueBtn: UIButton!
     @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var chooseLangLbl: UILabel!
     
     // MARK: - Variables
     //===========================
@@ -127,6 +128,7 @@ extension ChooseLanguageVC {
         self.arabicBtnView.layer.borderWidth = 1.0
         self.englishBtnView.layer.borderColor = AppColors.primaryBlueLightShade.cgColor
         self.arabicBtnView.layer.borderColor = AppColors.primaryBlueLightShade.cgColor
+        self.chooseLangLbl.text = LocalizedString.chooseLanguage.localized
     }
 }
 

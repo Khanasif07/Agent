@@ -52,6 +52,11 @@ enum AppRouter {
 //        vc.navigationController?.pushViewController(scene, animated: true)
     }
     
+    static func goToSignUpVC(vc: UIViewController){
+        let scene = SignUpVC.instantiate(fromAppStoryboard: .Prelogin)
+        vc.navigationController?.pushViewController(scene, animated: true)
+    }
+    
     static func makeChooseRoleVCRoot(){
 //        let scene = ChooseLanguageVC.instantiate(fromAppStoryboard: .Prelogin)
 //        setAsWindowRoot(scene)
