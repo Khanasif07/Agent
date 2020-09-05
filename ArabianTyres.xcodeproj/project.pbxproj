@@ -18,6 +18,9 @@
 		844D81DF250243B300550334 /* SignUpTopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844D81DD250243B300550334 /* SignUpTopCell.swift */; };
 		844D81E0250243B300550334 /* SignUpTopCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844D81DE250243B300550334 /* SignUpTopCell.xib */; };
 		844D81E325025D9600550334 /* LoginWithPhoneVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844D81E225025D9600550334 /* LoginWithPhoneVC.swift */; };
+		844D81E5250271B400550334 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844D81E4250271B400550334 /* LoginViewModel.swift */; };
+		844D81E72502723D00550334 /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844D81E62502723C00550334 /* SignUpModel.swift */; };
+		844D81E92502751D00550334 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844D81E82502751D00550334 /* SignUpViewModel.swift */; };
 		8481F9FD2500AA9A00AB6EFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481F9FC2500AA9A00AB6EFB /* AppDelegate.swift */; };
 		8481F9FF2500AA9A00AB6EFB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481F9FE2500AA9A00AB6EFB /* SceneDelegate.swift */; };
 		8481FA062500AA9B00AB6EFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8481FA052500AA9B00AB6EFB /* Assets.xcassets */; };
@@ -87,6 +90,7 @@
 		8481FAA7250143CD00AB6EFB /* NunitoSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8481FAA6250143CD00AB6EFB /* NunitoSans-SemiBoldItalic.ttf */; };
 		8481FAAB25015CBC00AB6EFB /* CustommTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481FAAA25015CBC00AB6EFB /* CustommTextField.swift */; };
 		8481FAAF25015D9000AB6EFB /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481FAAE25015D9000AB6EFB /* LoginVC.swift */; };
+		84E166E4250362DE00C2F2EF /* SuccessPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E166E3250362DE00C2F2EF /* SuccessPopupVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -101,6 +105,9 @@
 		844D81DD250243B300550334 /* SignUpTopCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTopCell.swift; sourceTree = "<group>"; };
 		844D81DE250243B300550334 /* SignUpTopCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpTopCell.xib; sourceTree = "<group>"; };
 		844D81E225025D9600550334 /* LoginWithPhoneVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWithPhoneVC.swift; sourceTree = "<group>"; };
+		844D81E4250271B400550334 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		844D81E62502723C00550334 /* SignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
+		844D81E82502751D00550334 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		8481F9F92500AA9A00AB6EFB /* ArabianTyres.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArabianTyres.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8481F9FC2500AA9A00AB6EFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8481F9FE2500AA9A00AB6EFB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -172,6 +179,7 @@
 		8481FAA6250143CD00AB6EFB /* NunitoSans-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NunitoSans-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		8481FAAA25015CBC00AB6EFB /* CustommTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustommTextField.swift; sourceTree = "<group>"; };
 		8481FAAE25015D9000AB6EFB /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		84E166E3250362DE00C2F2EF /* SuccessPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessPopupVC.swift; sourceTree = "<group>"; };
 		8A21614890BB1C8443A578F3 /* Pods-ArabianTyres.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArabianTyres.release.xcconfig"; path = "Target Support Files/Pods-ArabianTyres/Pods-ArabianTyres.release.xcconfig"; sourceTree = "<group>"; };
 		B2C00CD38A98EBA313A070C9 /* Pods_ArabianTyres.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArabianTyres.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -231,6 +239,7 @@
 			isa = PBXGroup;
 			children = (
 				844D81DA2502408900550334 /* SignUpVC.swift */,
+				844D81E82502751D00550334 /* SignUpViewModel.swift */,
 			);
 			path = SignUpVC;
 			sourceTree = "<group>";
@@ -311,6 +320,7 @@
 			children = (
 				8481FA762500C5CD00AB6EFB /* CountryData.swift */,
 				8481FA782500C64400AB6EFB /* UserModel.swift */,
+				844D81E62502723C00550334 /* SignUpModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -337,6 +347,7 @@
 		8481FA152500B9F600AB6EFB /* CommonControllers */ = {
 			isa = PBXGroup;
 			children = (
+				84E166E2250362BF00C2F2EF /* SuccessPopupVC */,
 				8481FA1B2500BA9400AB6EFB /* FacebookManager */,
 				8481FA1A2500BA8A00AB6EFB /* AppleManager */,
 				8481FA192500BA7F00AB6EFB /* GoogleManager */,
@@ -538,8 +549,17 @@
 			isa = PBXGroup;
 			children = (
 				8481FAAE25015D9000AB6EFB /* LoginVC.swift */,
+				844D81E4250271B400550334 /* LoginViewModel.swift */,
 			);
 			path = LoginVC;
+			sourceTree = "<group>";
+		};
+		84E166E2250362BF00C2F2EF /* SuccessPopupVC */ = {
+			isa = PBXGroup;
+			children = (
+				84E166E3250362DE00C2F2EF /* SuccessPopupVC.swift */,
+			);
+			path = SuccessPopupVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -710,6 +730,7 @@
 				8481FA852500EEC400AB6EFB /* ChooseLanguageVC.swift in Sources */,
 				8481FA552500BF0700AB6EFB /* DispatchQueueExtension.swift in Sources */,
 				8481FA532500BEF900AB6EFB /* StringExtension.swift in Sources */,
+				844D81E5250271B400550334 /* LoginViewModel.swift in Sources */,
 				8481FA652500BFAD00AB6EFB /* AppColors.swift in Sources */,
 				8481FA3F2500BE2800AB6EFB /* UITextFieldExtension.swift in Sources */,
 				844CBD222501FFC0009BE668 /* LoginEmailPhoneTableCell.swift in Sources */,
@@ -727,6 +748,7 @@
 				8481FA352500BD8C00AB6EFB /* CommonFunctions.swift in Sources */,
 				8481FA6F2500BFEF00AB6EFB /* AppGlobals.swift in Sources */,
 				844CBD1E2501FA31009BE668 /* LoginSocialTableCell.swift in Sources */,
+				84E166E4250362DE00C2F2EF /* SuccessPopupVC.swift in Sources */,
 				8481FAAF25015D9000AB6EFB /* LoginVC.swift in Sources */,
 				8481FA452500BE7600AB6EFB /* UIViewControllerExtension.swift in Sources */,
 				8481FA5D2500BF7100AB6EFB /* AppEnums.swift in Sources */,
@@ -739,6 +761,8 @@
 				8481FA512500BEEC00AB6EFB /* DictionaryExtension.swift in Sources */,
 				8481FA1D2500BAC700AB6EFB /* FacebookController.swift in Sources */,
 				8481FA4F2500BED600AB6EFB /* UIImageExtension.swift in Sources */,
+				844D81E92502751D00550334 /* SignUpViewModel.swift in Sources */,
+				844D81E72502723D00550334 /* SignUpModel.swift in Sources */,
 				8481FA8A2501081000AB6EFB /* TutorialCollCell.swift in Sources */,
 				8481FA472500BE9400AB6EFB /* UICollectionView+UICollectionViewCellExtension.swift in Sources */,
 				8481FA4D2500BEC700AB6EFB /* UIScreen + Extension.swift in Sources */,

@@ -6,7 +6,7 @@ target 'ArabianTyres' do
   use_frameworks!
 
   # Pods for ArabianTyres
-
+  
   pod 'SwiftyJSON'
   pod 'IQKeyboardManagerSwift'
   pod ‘AWSS3’
@@ -17,7 +17,19 @@ target 'ArabianTyres' do
   pod 'FBSDKLoginKit'
   pod 'NVActivityIndicatorView'
   #pod for Toast Message
-    pod 'Toaster'
-	
-
+  pod 'Toaster'
+  
+  
+  # Recommended: Add the Firebase pod for Google Analytics
+  pod 'Firebase/Analytics'
+  # Chat related pods
+  pod 'Firebase/Auth'
+  pod 'Firebase/Database'
+  pod 'Firebase/Messaging'
+  pod 'Firebase/Firestore'
+  pod 'MessageKit'
+  pod 'Firebase/Storage'
+  pod 'Firebase/Crashlytics'
+  
+  
 end

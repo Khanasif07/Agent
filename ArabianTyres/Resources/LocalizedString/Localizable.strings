@@ -1,10 +1,10 @@
 /* 
-  Localizable.strings
-  ArabianTyres
-
-  Created by Admin on 03/09/20.
-  Copyright © 2020 Admin. All rights reserved.
-*/
+ Localizable.strings
+ ArabianTyres
+ 
+ Created by Admin on 03/09/20.
+ Copyright © 2020 Admin. All rights reserved.
+ */
 
 // MARK: - Alert Values
 //==============================
@@ -36,6 +36,38 @@
 "forgotPassword" = "Forgot Password";
 "sign_in" = "Sign in";
 "signupcap" = "SIGN UP";
+"signup_with_social_accounts" = "Sign up with Social Accounts";
 "Login_with_social_accounts" = "Login with Social Accounts";
 "sKIP_LOGIN_CONTINUE" = "SKIP LOGIN & CONTINUE";
+"skip_signup_continue" = "SKIP SIGN UP & CONTINUE";
 "dont_have_an_account" = "Don’t have an account?";
+
+
+// MARK: - Validation Messages
+//==================================
+"pleaseEnterValidEmail" = "Please enter a valid email address";
+"pleaseEnterValidPassword" = "Please enter an alpha-numeric password with atleast 8 characters and one uppercase letter";
+"nameShouldBeAtleastMinCharacters" = "Minimum length of first name should be greater than or equal to 3";
+"phoneNoShouldBeAtleastMinCharacters" = "Phone number length must be 8 to 14 charcters long";
+"pleaseEnterEmail" = "Please enter email address";
+"pleaseEnterPassword" = "Please enter password";
+"pleaseEnterPhoneNumber" = "Please enter Phone number";
+"enterPhoneNumber" = "Enter Phone number";
+"pleaseEntertName" = "Please enter name";
+"pleaseEnterNickName" = "Please enter nickname";
+"pleaseFillAllTheFields" = "Please fill all the fields";
+"pleaseEnterNewPassword" = "Please enter New Password";
+"pleaseEnterConfirmNewPassword" = "Please enter Confirm Password";
+"passwordsDoNotMatch" = "New Password and Confirm Password should be same";
+"pleaseChooseCountryCode" = "Please choose CountryCode";
+"pleaseEnterValidPhoneNo" = "Please enter valid Phone number";
+"pleaseEnterEducation" = "Please enter education";
+"pleaseEnterExperience" = "Please enter experience";
+"pleaseEnterDob" = "Please enter date of birth";
+"phoneNumber" = "Phone Number";
+
+// MARK: - Signup VC Values
+//==============================
+"bySigningDec" = "By Signing Up you are agree to our";
+"tos" = " ToS "; 
+"privacyPolicy" = "Privacy Policy";

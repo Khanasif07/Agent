@@ -45,8 +45,42 @@ enum LocalizedString : String {
     case sign_in = "sign_in"
     case signupcap = "signupcap"
     case Login_with_social_accounts = "Login_with_social_accounts"
+    case signup_with_social_accounts = "signup_with_social_accounts"
     case sKIP_LOGIN_CONTINUE = "sKIP_LOGIN_CONTINUE"
+    case skip_signup_continue = "skip_signup_continue"
     case dont_have_an_account = "dont_have_an_account"
+    
+    // MARK: - Validation Messages
+    //==================================
+    case pleaseEnterValidEmail = "pleaseEnterValidEmail"
+    case pleaseEnterValidPassword = "pleaseEnterValidPassword"
+    case nameShouldBeAtleastMinCharacters = "nameShouldBeAtleastMinCharacters"
+    case phoneNoShouldBeAtleastMinCharacters = "phoneNoShouldBeAtleastMinCharacters"
+    case pleaseEnterName = "pleaseEntertName"
+    case pleaseEnterNickName = "pleaseEnterNickName"
+    case pleaseEnterEmail = "pleaseEnterEmail"
+    case pleaseEnterPassword = "pleaseEnterPassword"
+    case pleaseEnterValidPhoneNo = "pleaseEnterValidPhoneNo"
+    case pleaseEnterPhoneNumber = "pleaseEnterPhoneNumber"
+    case enterPhoneNumber = "enterPhoneNumber"
+    case pleaseEnterZip = "pleaseEnterZip"
+    case pleaseFillAllTheFields = "pleaseFillAllTheFields"
+    case pleaseEnterNewPassword = "pleaseEnterNewPassword"
+    case pleaseEnterConfirmNewPassword = "pleaseEnterConfirmNewPassword"
+    case passwordsDoNotMatch = "passwordsDoNotMatch"
+    case pleaseChooseCountryCode = "pleaseChooseCountryCode"
+    case enterCorrectPhoneNo = "enterCorrectPhoneNo"
+    case pleaseEnterEducation = "pleaseEnterEducation"
+    case pleaseEnterExperience = "pleaseEnterExperience"
+    case pleaseEnterDob = "pleaseEnterDob"
+    case phoneNumber = "phoneNumber"
+    
+    // MARK: - Sign Up VC Values
+    //==============================
+    case bySigningDec = "bySigningDec"
+    case tos = "tos"
+    case privacyPolicy = "privacyPolicy"
+    
 }
 
 

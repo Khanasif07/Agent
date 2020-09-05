@@ -219,3 +219,32 @@ extension WebServices {
         
     }
 }
+
+//MARK: WebServices
+//===========================
+extension WebServices{
+    // MARK:- Sign Up
+    //===============
+    static func signUp(parameters: JSONDictionary,
+                       success: @escaping SuccessResponse,
+                       failure: @escaping FailureResponse) {
+        
+        self.commonPostAPI(parameters: parameters, endPoint: .signUp, success: { (json) in
+            AppUserDefaults.save(value: json[ApiKey.data][ApiKey._id].stringValue, forKey: .userId)
+            success(json)
+        }) { (error) -> (Void) in
+            failure(error)
+        }
+    }
+    // MARK:- Sign In
+    //===============
+    static func login(parameters: JSONDictionary,
+                      success: @escaping SuccessResponse,
+                      failure: @escaping FailureResponse) {
+        self.commonPostAPI(parameters: parameters, endPoint: .login,loader: true, success: { (json) in
+            success(json)
+        }) { (error) -> (Void) in
+            failure(error)
+        }
+    }
+}

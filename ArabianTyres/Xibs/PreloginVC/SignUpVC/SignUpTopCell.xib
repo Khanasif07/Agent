@@ -290,8 +290,8 @@
                 <outlet property="alreadyHaveAcctLbl" destination="nMq-pR-FNf" id="gCU-Ct-Qkr"/>
                 <outlet property="confirmPassTxtField" destination="iwq-3H-gLo" id="Bmb-tp-3Nw"/>
                 <outlet property="emailIdTxtField" destination="Kcz-Gw-53b" id="zSa-ES-804"/>
-                <outlet property="emailTxtField" destination="yfi-po-mPk" id="ktx-Xf-EeB"/>
                 <outlet property="mobNoTxtField" destination="KlE-OE-HuT" id="Y2G-GY-60p"/>
+                <outlet property="nameTxtField" destination="yfi-po-mPk" id="ONc-UB-FId"/>
                 <outlet property="passTxtField" destination="1vP-6Q-req" id="gfR-K9-ZZT"/>
                 <outlet property="privacyLbl" destination="tkA-wv-5cV" id="40p-nl-L28"/>
                 <outlet property="signInBtn" destination="K4q-oS-r53" id="bnz-1X-61a"/>

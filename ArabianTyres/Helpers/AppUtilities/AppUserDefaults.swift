@@ -80,17 +80,30 @@ extension AppUserDefaults {
         case authorization
         case accesstoken
         case isLanguageSelect
-        case fullUserProfile
-        case isSignup
-        case isCompleteProfile
-        case isChooseRole
-        case isLogin
-        case isStudent
-        case isTeacher
-        case currentUserType
-        case teacherProfile
-        case studentProfile
         case currentLanguage
         case isGuestMode
+        case tutorialDisplayed
+        case userType
+        case currentUserType
+        case fullUserProfile
+        case forgotPassword
+        case checkInDetails
+        case loggedIn
+        case appInstalled
+        case latitude
+        case uid
+        case roomId
+        case defaultEmail
+        case defaultPassword
+        case fcmToken
+        case token
+        case longitude
+        case loggedOut
+        case name
+        case userId
+        case contactFetchDate
+        case pushNotificationStatus
+        case canChangePassword
+        case unreadCount
     }
 }

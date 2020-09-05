@@ -12,6 +12,7 @@ import SkyFloatingLabelTextField
 class LoginEmailPhoneTableCell: UITableViewCell {
     
     var signupBtnTapped: ((UIButton)->())?
+    var signInBtnTapped: ((UIButton)->())?
     var phoneNoBtnTapped: ((UIButton)->())?
     
     @IBOutlet weak var forgotPassBtn: UIButton!
@@ -57,6 +58,16 @@ class LoginEmailPhoneTableCell: UITableViewCell {
         self.signUpBtn.setTitle(LocalizedString.signupcap.localized, for: .normal)
         self.signInBtn.setTitle(LocalizedString.sign_in.localized, for: .normal)
         self.passTxtField.isSecureTextEntry = true
+        let show = UIButton()
+        show.isSelected = false
+        show.addTarget(self, action: #selector(secureTextField(_:)), for: .touchUpInside)
+        self.passTxtField.setButtonToRightView(btn: show, selectedImage: #imageLiteral(resourceName: "icPasswordHide"), normalImage: #imageLiteral(resourceName: "icPasswordHide"), size: CGSize(width: 22, height: 22))
+    }
+    
+    
+    @objc func secureTextField(_ sender: UIButton){
+        sender.isSelected.toggle()
+        self.passTxtField.isSecureTextEntry = !sender.isSelected
     }
     
     public func setUpColor(){
@@ -78,6 +89,9 @@ class LoginEmailPhoneTableCell: UITableViewCell {
     }
     
     @IBAction func signInBtnAction(_ sender: UIButton) {
+        if let handle = signInBtnTapped{
+            handle(sender)
+        }
     }
     
     @IBAction func signupBtnAction(_ sender: UIButton) {

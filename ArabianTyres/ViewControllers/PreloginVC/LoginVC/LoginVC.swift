@@ -9,6 +9,8 @@ import UIKit
 
 class LoginVC: BaseVC {
     
+    var viewModel = LoginViewModel()
+    
     // MARK: - IBOutlets
     //===========================
     @IBOutlet weak var mainTableView: UITableView!
@@ -49,6 +51,24 @@ extension LoginVC {
         self.mainTableView.registerCell(with: LoginSocialTableCell.self)
         self.mainTableView.registerCell(with: LoginEmailPhoneTableCell.self)
     }
+    
+    private func getDict() -> JSONDictionary{
+        let dict : JSONDictionary = [ApiKey.email : self.viewModel.model.email,
+                                     ApiKey.password : self.viewModel.model.password,
+                                     ApiKey.device : [ApiKey.platform : "ios", ApiKey.token : DeviceDetail.deviceToken].toJSONString() ?? ""]
+        return dict
+    }
+    
+    private func signIn(){
+        self.view.endEditing(true)
+        if self.viewModel.checkSignupValidations(parameters: getDict()).status{
+            self.viewModel.signIn(getDict())
+        }else{
+            if !self.viewModel.checkSignupValidations(parameters: getDict()).message.isEmpty{
+                self.showAlert(msg: self.viewModel.checkSignupValidations(parameters: getDict()).message)
+            }
+        }
+    }
 }
 
 // MARK: - Extension For TableView
@@ -76,6 +96,10 @@ extension LoginVC : UITableViewDelegate, UITableViewDataSource {
                 guard let `self` = self else { return }
                 AppRouter.goToSignWithPhoneVC(vc: self)
             }
+            cell.signInBtnTapped = { [weak self]  (sender) in
+                guard let `self` = self else { return }
+                self.signIn()
+            }
             return cell
         default:
             let cell = tableView.dequeueCell(with: LoginSocialTableCell.self, indexPath: indexPath)
@@ -92,14 +116,28 @@ extension LoginVC : UITableViewDelegate, UITableViewDataSource {
 //====================================
 extension LoginVC : UITextFieldDelegate{
     func textFieldDidEndEditing(_ textField: UITextField) {
-        printDebug(textField)
-    }
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        printDebug(textField)
+        let text = textField.text?.byRemovingLeadingTrailingWhiteSpaces ?? ""
+        let cell = mainTableView.cell(forItem: textField) as? LoginEmailPhoneTableCell
+        switch textField {
+        case cell?.emailTxtField:
+            self.viewModel.model.email = text
+        default:
+            self.viewModel.model.password = text
+        }
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        return true
+        let cell = mainTableView.cell(forItem: textField) as? LoginEmailPhoneTableCell
+        let currentString: NSString = textField.text! as NSString
+        let newString: NSString =
+            currentString.replacingCharacters(in: range, with: string) as NSString
+        switch textField {
+        case cell?.emailTxtField:
+            return (string.checkIfValidCharaters(.email) || string.isEmpty) && newString.length <= 50
+        case cell?.passTxtField:
+            return (string.checkIfValidCharaters(.password) || string.isEmpty) && newString.length <= 19
+        default:
+            return false
+        }
     }
 }

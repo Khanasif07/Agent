@@ -26,7 +26,6 @@ class LoginWithPhoneVC: BaseVC {
     //===========================
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         initialSetup()
     }
     
@@ -56,6 +55,13 @@ extension LoginWithPhoneVC {
     public func setupTextField(){
         self.phoneTextField.keyboardType = .numberPad
         self.phoneTextField.delegate = self
+        self.phoneTextField.title = LocalizedString.phoneNumber.localized
+        self.phoneTextField.selectedTitle = LocalizedString.phoneNumber.localized
+        self.phoneTextField.placeholder = LocalizedString.enterPhoneNumber.localized
+        self.phoneTextField.lineColor = AppColors.fontTertiaryColor
+        self.phoneTextField.selectedLineColor =
+            AppColors.fontTertiaryColor
+        self.phoneTextField.selectedTitleColor = AppColors.fontTertiaryColor
     }
 }
 
@@ -73,10 +79,14 @@ extension LoginWithPhoneVC: UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
-        if range.location == 0 && (string == " ") {
+        let currentString: NSString = textField.text! as NSString
+        let newString: NSString =
+            currentString.replacingCharacters(in: range, with: string) as NSString
+        switch textField {
+        case phoneTextField:
+            return (string.checkIfValidCharaters(.mobileNumber) || string.isEmpty) && newString.length <= 16
+        default:
             return false
         }
-        return true
     }
 }

@@ -23,10 +23,24 @@ class SignUpTopCell: UITableViewCell {
     @IBOutlet weak var passTxtField: SkyFloatingLabelTextField!
     @IBOutlet weak var mobNoTxtField: SkyFloatingLabelTextField!
     @IBOutlet weak var emailIdTxtField: SkyFloatingLabelTextField!
-    @IBOutlet weak var emailTxtField: SkyFloatingLabelTextField!
+    @IBOutlet weak var nameTxtField: SkyFloatingLabelTextField!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.setUpAttributedString()
+    }
+    
+    private func setUpAttributedString(){
+        let attributedString = NSMutableAttributedString(string: LocalizedString.bySigningDec.localized, attributes: [
+            .font: UIFont.systemFont(ofSize: 13.0),
+            .foregroundColor: AppColors.fontTertiaryColor
+        ])
+        attributedString.append(NSAttributedString(string: LocalizedString.tos.localized, attributes: [NSAttributedString.Key.foregroundColor: AppColors.primaryBlueColor,NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 13.0)]))
+        attributedString.append(NSAttributedString(string: "&", attributes: [NSAttributedString.Key.foregroundColor: AppColors.fontTertiaryColor,NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13.0)]))
+        attributedString.append(NSAttributedString(string: LocalizedString.privacyPolicy.localized, attributes: [NSAttributedString.Key.foregroundColor: AppColors.primaryBlueColor,NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 13.0)]))
+        
+        privacyLbl.attributedText = attributedString
+        
     }
     
     override func layoutSubviews() {

@@ -7,12 +7,16 @@
 //
 
 import UIKit
+import Firebase
+import GoogleSignIn
+import FirebaseMessaging
 import IQKeyboardManagerSwift
+import UserNotifications
 import AWSS3
 
 @UIApplicationMain
 
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate , MessagingDelegate , UNUserNotificationCenterDelegate{
     
     static var shared: AppDelegate { return UIApplication.shared.delegate as! AppDelegate }
     var window: UIWindow?
@@ -27,6 +31,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    
+    
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+        if fcmToken != AppUserDefaults.value(forKey: .fcmToken).stringValue {
+            print(fcmToken)
+        }
+        AppUserDefaults.save(value: fcmToken , forKey: .fcmToken) // Used for saving device token
+    }
+    
     // Setup IQKeyboard Manager (Third party for handling keyboard in app)
     private func setUpKeyboardSetup() {
         IQKeyboardManager.shared.enable = true
@@ -37,6 +50,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ app: UIApplication, open url: URL,
                      options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         return true
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        InstanceID.instanceID().instanceID(handler: { (result, error) in
+            if let error = error {
+                print("Error fetching remote instange ID: \(error)")
+            } else if let result = result {
+                print("Remote instance ID token: \(result.token)")
+            }
+        })
     }
     
     private func setUpTextField(){
