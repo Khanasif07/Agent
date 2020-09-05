@@ -247,4 +247,34 @@ extension WebServices{
             failure(error)
         }
     }
+    
+    // MARK:- Verify Otp
+    //=================
+    static func verifyOtp(parameters: JSONDictionary,
+                          success: @escaping (_ model : UserModel) -> (),
+                          failure: @escaping FailureResponse) {
+        self.commonPostAPI(parameters: parameters, endPoint: .verifyOtp, loader: true, success: { (json) in
+            let user = UserModel.init(json[ApiKey.data])
+            UserModel.main = user
+            let accessToken = json[ApiKey.data][ApiKey.authToken].stringValue
+            AppUserDefaults.save(value: accessToken, forKey: .accesstoken)
+            AppUserDefaults.save(value: json[ApiKey.data][ApiKey.currentRole].stringValue, forKey: .currentUserType)
+            success(user)
+        }) { (error) -> (Void) in
+            failure(error)
+        }
+    }
+    
+    // MARK:- Resent  Otp
+    //=================
+    static func resetOtp(parameters: JSONDictionary,
+                         success: @escaping ResponseMessage,
+                         failure: @escaping FailureResponse) {
+        self.commonPostAPI(parameters: parameters, endPoint: .resendOtp,loader: true, success: { (json) in
+            success(json[ApiKey.message].stringValue)
+        }) { (error) -> (Void) in
+            failure(error)
+        }
+    }
+    
 }

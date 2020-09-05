@@ -7,7 +7,7 @@
 //
 
 import UIKit
-//import SKToast
+import Toaster
 import SwiftyJSON
 import CoreLocation
 import MobileCoreServices
@@ -17,9 +17,22 @@ import CoreTelephony
 class CommonFunctions {
 
     /// Show Toast With Message
+    /// Show Toast With Message
     static func showToastWithMessage(_ msg: String, completion: (() -> Swift.Void)? = nil) {
-
+        DispatchQueue.mainQueueAsync {
+            ToastView.appearance().font = UIFont.systemFont(ofSize: 14.0)
+            ToastView.appearance().textColor = .white
+            ToastView.appearance().backgroundColor = AppColors.primaryBlueColor
+            if msg.count > 60 {
+                let toast = Toast(text: msg, delay: 0.3, duration: 5)
+                toast.show()
+            } else {
+                let toast = Toast(text: msg, delay: 0.3, duration: 0.7)
+                toast.show()
+            }
+        }
     }
+    
     
     /// Delay Functions
     class func delay(delay:Double, closure:@escaping ()->()) {

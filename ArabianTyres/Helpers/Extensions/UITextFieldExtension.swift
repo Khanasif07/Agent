@@ -187,19 +187,19 @@ extension UITextField{
         toolBar.sizeToFit()
         
         // Adding Button ToolBar
-//        let doneButton = UIBarButtonItem(title: "Done", style: .plain) { (_) in
-//
-////            self.text = datePicker.date.convertToString()
-//            self.resignFirstResponder()
-//
-//            didSelectDate(datePicker.date)
-//        }
+        //        let doneButton = UIBarButtonItem(title: "Done", style: .plain) { (_) in
+        //
+        ////            self.text = datePicker.date.convertToString()
+        //            self.resignFirstResponder()
+        //
+        //            didSelectDate(datePicker.date)
+        //        }
         
         let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-//        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain) { (_) in
-//            self.resignFirstResponder()
-//        }
-//        toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
+        //        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain) { (_) in
+        //            self.resignFirstResponder()
+        //        }
+        //        toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
         toolBar.isUserInteractionEnabled = true
         self.inputAccessoryView = toolBar
     }
@@ -263,10 +263,10 @@ extension UITextField {
         container.translatesAutoresizingMaskIntoConstraints = false
         
         // Create triangle
-//        let triangle = TriangleTop()
-//        triangle.backgroundColor = .clear
-//        triangle.translatesAutoresizingMaskIntoConstraints = false
-//        container.addSubview(triangle)
+        //        let triangle = TriangleTop()
+        //        triangle.backgroundColor = .clear
+        //        triangle.translatesAutoresizingMaskIntoConstraints = false
+        //        container.addSubview(triangle)
         
         // Create red line
         let line = UIView()
@@ -292,10 +292,10 @@ extension UITextField {
         container.addSubview(label)
         
         // Set constraints for triangle
-//        triangle.heightAnchor.constraint(equalToConstant: 10).isActive = true
-//        triangle.widthAnchor.constraint(equalToConstant: 15).isActive = true
-//        triangle.topAnchor.constraint(equalTo: container.topAnchor, constant: -10).isActive = true
-//        triangle.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -15).isActive = true
+        //        triangle.heightAnchor.constraint(equalToConstant: 10).isActive = true
+        //        triangle.widthAnchor.constraint(equalToConstant: 15).isActive = true
+        //        triangle.topAnchor.constraint(equalTo: container.topAnchor, constant: -10).isActive = true
+        //        triangle.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -15).isActive = true
         
         // Set constraints for line
         line.heightAnchor.constraint(equalToConstant: 3).isActive = true
@@ -306,7 +306,7 @@ extension UITextField {
         // Set constraints for label
         label.topAnchor.constraint(equalTo: line.bottomAnchor, constant: 0).isActive = true
         label.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: 0).isActive = true
-//        label.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 0).isActive = true
+        //        label.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 0).isActive = true
         label.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: 0).isActive = true
         label.widthAnchor.constraint(equalToConstant: self.superview!.width).isActive = true
         
@@ -319,9 +319,9 @@ extension UITextField {
         } else {
             self.addSubview(container)
         }
-    
-//        self.addSubview(container)
-//        UIApplication.shared.keyWindow!.addSubview(container)
+        
+        //        self.addSubview(container)
+        //        UIApplication.shared.keyWindow!.addSubview(container)
         
         // Set constraints for container
         container.widthAnchor.constraint(lessThanOrEqualTo: superview!.widthAnchor, multiplier: 1).isActive = true
@@ -365,9 +365,9 @@ extension UITextField {
             }
         }
         
-//         Don't hide keyboard after click by icon
-//        UIViewController.isCatchTappedAround = false
-//        self.endEditing(false)
+        //         Don't hide keyboard after click by icon
+        //        UIViewController.isCatchTappedAround = false
+        //        self.endEditing(false)
     }
 }
 
@@ -393,5 +393,24 @@ class TriangleTop: UIView {
         
         context.setFillColor(#colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1).cgColor)
         context.fillPath()
+    }
+}
+
+//MARK:- OTP TEXTFIELD DELEGATE
+//=============================
+protocol OTPTextFieldDelegate: class {
+    
+    func deleteBackward(index: Int)
+}
+
+//MARK:- OTP TEXTFIELD DECALARATION
+//=================================
+class OTPTextField: UITextField {
+    
+    weak var otpDelegate: OTPTextFieldDelegate?
+    
+    override func deleteBackward() {
+        super.deleteBackward()
+        otpDelegate?.deleteBackward(index: self.tag)
     }
 }

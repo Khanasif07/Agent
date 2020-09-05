@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6708BB6B77017B3BB26B7782 /* Pods_ArabianTyres.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2C00CD38A98EBA313A070C9 /* Pods_ArabianTyres.framework */; };
+		843DFD1E2503F017000DE6EB /* OtpVerificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DFD1D2503F017000DE6EB /* OtpVerificationVC.swift */; };
+		843DFD202503F93A000DE6EB /* OtpVerificationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DFD1F2503F93A000DE6EB /* OtpVerificationVM.swift */; };
 		844CBD1A2501F7D5009BE668 /* LoginTopTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844CBD182501F7D5009BE668 /* LoginTopTableCell.swift */; };
 		844CBD1B2501F7D5009BE668 /* LoginTopTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844CBD192501F7D5009BE668 /* LoginTopTableCell.xib */; };
 		844CBD1E2501FA31009BE668 /* LoginSocialTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844CBD1C2501FA31009BE668 /* LoginSocialTableCell.swift */; };
@@ -95,6 +97,8 @@
 
 /* Begin PBXFileReference section */
 		19AB33EFB3362961FDB4026A /* Pods-ArabianTyres.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArabianTyres.debug.xcconfig"; path = "Target Support Files/Pods-ArabianTyres/Pods-ArabianTyres.debug.xcconfig"; sourceTree = "<group>"; };
+		843DFD1D2503F017000DE6EB /* OtpVerificationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpVerificationVC.swift; sourceTree = "<group>"; };
+		843DFD1F2503F93A000DE6EB /* OtpVerificationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpVerificationVM.swift; sourceTree = "<group>"; };
 		844CBD182501F7D5009BE668 /* LoginTopTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTopTableCell.swift; sourceTree = "<group>"; };
 		844CBD192501F7D5009BE668 /* LoginTopTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginTopTableCell.xib; sourceTree = "<group>"; };
 		844CBD1C2501FA31009BE668 /* LoginSocialTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSocialTableCell.swift; sourceTree = "<group>"; };
@@ -211,6 +215,15 @@
 				8A21614890BB1C8443A578F3 /* Pods-ArabianTyres.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		843DFD1C2503EFF5000DE6EB /* OtpVerificationVC */ = {
+			isa = PBXGroup;
+			children = (
+				843DFD1D2503F017000DE6EB /* OtpVerificationVC.swift */,
+				843DFD1F2503F93A000DE6EB /* OtpVerificationVM.swift */,
+			);
+			path = OtpVerificationVC;
 			sourceTree = "<group>";
 		};
 		844CBD162501F76D009BE668 /* ChooseLanguageVC */ = {
@@ -505,6 +518,7 @@
 		8481FA822500EE0600AB6EFB /* PreloginVC */ = {
 			isa = PBXGroup;
 			children = (
+				843DFD1C2503EFF5000DE6EB /* OtpVerificationVC */,
 				844D81E125025D5200550334 /* LoginWithPhoneVC */,
 				844D81D92502406700550334 /* SignUpVC */,
 				8481FAAD25015D4600AB6EFB /* LoginVC */,
@@ -718,6 +732,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8481FA592500BF2900AB6EFB /* UIViewExtension.swift in Sources */,
+				843DFD1E2503F017000DE6EB /* OtpVerificationVC.swift in Sources */,
 				8481FA5B2500BF3B00AB6EFB /* CommonExtension.swift in Sources */,
 				8481FA3B2500BDFF00AB6EFB /* NotificationExtension.swift in Sources */,
 				8481FA672500BFB900AB6EFB /* AppStoryboards.swift in Sources */,
@@ -731,6 +746,7 @@
 				8481FA552500BF0700AB6EFB /* DispatchQueueExtension.swift in Sources */,
 				8481FA532500BEF900AB6EFB /* StringExtension.swift in Sources */,
 				844D81E5250271B400550334 /* LoginViewModel.swift in Sources */,
+				843DFD202503F93A000DE6EB /* OtpVerificationVM.swift in Sources */,
 				8481FA652500BFAD00AB6EFB /* AppColors.swift in Sources */,
 				8481FA3F2500BE2800AB6EFB /* UITextFieldExtension.swift in Sources */,
 				844CBD222501FFC0009BE668 /* LoginEmailPhoneTableCell.swift in Sources */,

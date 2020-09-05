@@ -72,10 +72,9 @@ enum AppRouter {
         setAsWindowRoot(scene)
     }
     
-    static func goToChooseRoleVC(vc: UIViewController, guestCompletion: (()->())? = nil){
-//        let scene = ChooseRoleVC.instantiate(fromAppStoryboard: .Prelogin)
-//        scene.guestCompletion = guestCompletion
-//        vc.navigationController?.pushViewController(scene, animated: true)
+    static func goToOtpVerificationVC(vc: UIViewController){
+        let scene = OtpVerificationVC.instantiate(fromAppStoryboard: .Prelogin)
+        vc.navigationController?.pushViewController(scene, animated: true)
     }
     
     static func goToDovelopmentVC(vc: UIViewController){

@@ -75,6 +75,9 @@
                                                 </connections>
                                             </button>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="6kf-Kl-XWN" firstAttribute="width" secondItem="BSK-qQ-mG2" secondAttribute="width" id="jOj-FU-xch"/>
+                                        </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="GTP-OM-24n">
                                         <rect key="frame" x="0.0" y="92" width="333" height="92"/>
@@ -99,6 +102,7 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
+                                                    <constraint firstItem="w9f-wj-cW3" firstAttribute="width" secondItem="djY-2b-ccd" secondAttribute="width" id="486-OW-2gw"/>
                                                     <constraint firstAttribute="bottom" secondItem="w9f-wj-cW3" secondAttribute="bottom" id="BsZ-K5-Cqx"/>
                                                     <constraint firstItem="w9f-wj-cW3" firstAttribute="leading" secondItem="djY-2b-ccd" secondAttribute="leading" id="JHI-CA-NVv"/>
                                                     <constraint firstItem="w9f-wj-cW3" firstAttribute="top" secondItem="djY-2b-ccd" secondAttribute="top" constant="5" id="VAm-FO-7Nd"/>
@@ -117,6 +121,10 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="djY-2b-ccd" firstAttribute="width" secondItem="zW9-Lj-Ujo" secondAttribute="width" id="0xj-7c-CMi"/>
+                                    <constraint firstItem="6kf-Kl-XWN" firstAttribute="width" secondItem="zW9-Lj-Ujo" secondAttribute="width" id="5IT-Yi-IoC"/>
+                                </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="6S5-zh-VIY">
                                 <rect key="frame" x="21" y="236" width="333" height="84.5"/>

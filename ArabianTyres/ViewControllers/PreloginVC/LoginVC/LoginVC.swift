@@ -26,6 +26,11 @@ class LoginVC: BaseVC {
         initialSetup()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.mainTableView.reloadData()
+    }
+    
     // MARK: - IBActions
     //==========================
     
@@ -65,7 +70,7 @@ extension LoginVC {
             self.viewModel.signIn(getDict())
         }else{
             if !self.viewModel.checkSignupValidations(parameters: getDict()).message.isEmpty{
-                self.showAlert(msg: self.viewModel.checkSignupValidations(parameters: getDict()).message)
+                CommonFunctions.showToastWithMessage(self.viewModel.checkSignupValidations(parameters: getDict()).message)
             }
         }
     }

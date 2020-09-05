@@ -41,6 +41,9 @@ class LoginWithPhoneVC: BaseVC {
         self.pop()
     }
     
+    @IBAction func sendOtpAction(_ sender: UIButton) {
+        AppRouter.goToOtpVerificationVC(vc: self)
+    }
     
 }
 
