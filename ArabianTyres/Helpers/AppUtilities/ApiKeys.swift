@@ -22,6 +22,7 @@ enum ApiKey {
     static var contentType: String { return "Content-Type" }
     static var data: String { return "data" }
     static var accessToken: String { return "access_token"}
+    static var userType : String { return "userType"}
 
     static var name : String {return "name"}
     static var nickName : String {return "nick_name"}

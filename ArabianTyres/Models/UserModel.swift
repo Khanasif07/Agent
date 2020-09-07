@@ -24,9 +24,7 @@ struct UserModel{
     var emailVerified : Int
     var image : String
     var isDelete : Int
-    var language : String
     var name : String
-    var nickName : String
     var otp : String
     var otpExpiry : String
     var password : String
@@ -34,9 +32,7 @@ struct UserModel{
     var phoneVerified : Int
     var status : String
     var updatedAt : String
-    var isStudent : Bool
-    var isTeacher : Bool
-    var currentRole : String
+    var userType : String
     
     init() {
         self.init(JSON([:]))
@@ -51,9 +47,7 @@ struct UserModel{
         self.emailVerified = json[ApiKey.emailVerified].intValue
         self.image = json[ApiKey.image].stringValue
         self.isDelete = json[ApiKey.isDelete].intValue
-        self.language = json[ApiKey.language].stringValue
         self.name = json[ApiKey.name].stringValue
-        self.nickName = json[ApiKey.nickName].stringValue
         self.otp = json[ApiKey.otp].stringValue
         self.otpExpiry = json[ApiKey.otpExpiry].stringValue
         self.password = json[ApiKey.password].stringValue
@@ -61,9 +55,7 @@ struct UserModel{
         self.phoneVerified = json[ApiKey.phoneVerified].intValue
         self.status = json[ApiKey.status].stringValue
         self.updatedAt = json[ApiKey.updatedAt].stringValue
-        self.isTeacher = json[ApiKey.isTeacher].boolValue
-        self.isStudent = json[ApiKey.isStudent].boolValue
-        self.currentRole = json[ApiKey.currentRole].stringValue
+        self.userType = json[ApiKey.currentRole].stringValue
     }
     
     func saveToUserDefaults() {
@@ -77,9 +69,7 @@ struct UserModel{
             ApiKey.emailVerified : emailVerified,
             ApiKey.image : image,
             ApiKey.isDelete : isDelete,
-            ApiKey.language : language,
             ApiKey.name : name,
-            ApiKey.nickName : nickName,
             ApiKey.otp : otp,
             ApiKey.otpExpiry : otpExpiry,
             ApiKey.password : password,
@@ -87,8 +77,7 @@ struct UserModel{
             ApiKey.phoneVerified : phoneVerified,
             ApiKey.status : status,
             ApiKey.updatedAt : updatedAt,
-            ApiKey.currentRole : currentRole,
-            
+            ApiKey.userType : userType
         ]
         AppUserDefaults.save(value: dict, forKey: .fullUserProfile)
     }

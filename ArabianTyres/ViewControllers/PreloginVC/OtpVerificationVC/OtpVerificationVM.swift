@@ -35,8 +35,8 @@ class OtpVerificationVM{
     //MARK:- Functions
     //Function for verify OTP
     func verifyOTP(dict: JSONDictionary){
-        WebServices.verifyOtp(parameters: dict, success: { (model) in
-            self.delegate?.otpVerifiedSuccessfully(message: "")
+        WebServices.verifyOtp(parameters: dict, success: { (userModel) in
+            self.delegate?.otpVerifiedSuccessfully(message: "Otp Verified Successfully")
             }) { (error) -> (Void) in
                 self.delegate?.otpVerificationFailed(error: error.localizedDescription)
             }

@@ -52,12 +52,12 @@ var isUserLoggedin: Bool {
 var isCurrentUserType : UserType {
     let user = AppUserDefaults.value(forKey: .currentUserType).stringValue
     switch user{
-    case "student":
+    case "basic":
         return .user
-    case "teacher":
+    case "garageOwner":
         return .garageOwner
     default:
-        return .none
+        return .guest
     }
 }
 

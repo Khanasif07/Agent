@@ -173,7 +173,7 @@ extension SignUpVC : UITextFieldDelegate{
 extension SignUpVC : CountryDelegate{
     func sendCountryCode(code: String) {
         let cell = mainTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? SignUpTopCell
-        self.viewModel.model.countryCode = code.replacingOccurrences(of: "+", with: "")
+        self.viewModel.model.countryCode = code
         cell?.countryCodeLbl.text = code
     }
 }

@@ -254,11 +254,11 @@ extension WebServices{
                           success: @escaping (_ model : UserModel) -> (),
                           failure: @escaping FailureResponse) {
         self.commonPostAPI(parameters: parameters, endPoint: .verifyOtp, loader: true, success: { (json) in
-            let user = UserModel.init(json[ApiKey.data])
+            let user = UserModel(json[ApiKey.data])
             UserModel.main = user
             let accessToken = json[ApiKey.data][ApiKey.authToken].stringValue
             AppUserDefaults.save(value: accessToken, forKey: .accesstoken)
-            AppUserDefaults.save(value: json[ApiKey.data][ApiKey.currentRole].stringValue, forKey: .currentUserType)
+            AppUserDefaults.save(value: json[ApiKey.data][ApiKey.userType].stringValue, forKey: .currentUserType)
             success(user)
         }) { (error) -> (Void) in
             failure(error)

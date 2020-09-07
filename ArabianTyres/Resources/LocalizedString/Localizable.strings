@@ -19,8 +19,15 @@
 "arabic" = "عربى";
 "continueTitle" = "Continue";
 
+//MARK: - Home TabBar Values
+//========================
+"home" = "Home";
+"setting" = "Setting";
+"notification" = "Notification";
+"profile" = "Profile";
 
-
+// MARK: - Tutorial Screen
+//==============================
 "tutorialTitle1" = "A hassle free car tyre repair service";
 "tutorialTitle2" = "Battery is lifeline of any vehicle";
 "tutorialTitle3" = "A quality oil is lifeline of any vehicle";

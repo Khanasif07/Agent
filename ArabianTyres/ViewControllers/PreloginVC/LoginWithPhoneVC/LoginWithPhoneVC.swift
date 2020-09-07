@@ -50,7 +50,6 @@ class LoginWithPhoneVC: BaseVC {
     
     @IBAction func sendOtpAction(_ sender: UIButton) {
         self.sendOtp()
-        AppRouter.goToOtpVerificationVC(vc: self, phoneNo: "8896880327",countryCode: "+91")
     }
     
 }
@@ -66,6 +65,7 @@ extension LoginWithPhoneVC {
     }
     
     public func setupTextField(){
+        self.countryCodeLbl.text = "+91"
         self.phoneTextField.keyboardType = .numberPad
         self.phoneTextField.delegate = self
         self.phoneTextField.title = LocalizedString.phoneNumber.localized
@@ -83,7 +83,7 @@ extension LoginWithPhoneVC {
     }
     
     private func getDict() -> JSONDictionary{
-        let dict : JSONDictionary = [ApiKey.phoneNo: self.phoneTextField.text?.byRemovingLeadingTrailingWhiteSpaces ?? "",ApiKey.countryCode: "", ApiKey.device : [ApiKey.platform : "ios", ApiKey.token : DeviceDetail.deviceToken].toJSONString() ?? ""]
+        let dict : JSONDictionary = [ApiKey.phoneNo:  self.viewModel.phoneNo,ApiKey.countryCode: self.viewModel.countryCode, ApiKey.device : [ApiKey.platform : "ios", ApiKey.token : DeviceDetail.deviceToken].toJSONString() ?? ""]
         return dict
     }
     
@@ -141,7 +141,7 @@ extension LoginWithPhoneVC: LoginWithPhoneVMDelegate {
 //=========================
 extension LoginWithPhoneVC : CountryDelegate{
     func sendCountryCode(code: String) {
-        self.viewModel.countryCode = code.replacingOccurrences(of: "+", with: "")
+        self.viewModel.countryCode = code
         self.countryCodeLbl.text = code
     }
 }

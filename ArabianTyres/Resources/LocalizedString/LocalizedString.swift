@@ -16,6 +16,13 @@ enum LocalizedString : String {
     case ok = "ok"
     case dot = "\u{2022}"
     
+    //MARK:- User TabBar Values
+    //=========================
+    case home
+    case setting
+    case notification
+    case profile
+    
     // MARK: - Alert Values
     //==============================
     case chooseOptions = "chooseOptions"
