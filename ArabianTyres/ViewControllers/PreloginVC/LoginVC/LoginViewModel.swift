@@ -11,8 +11,8 @@ import Foundation
 protocol SignInVMDelegate: NSObjectProtocol {
     
     func willSignIn()
-    func signUpSuccess(userModel: UserModel)
-    func signUpFailed(message: String)
+    func signInSuccess(userModel: UserModel)
+    func signInFailed(message: String)
     func invalidInput(message: String)
 }
 
@@ -24,13 +24,13 @@ struct LoginViewModel {
     func signIn(_ parameters: JSONDictionary) {
         WebServices.login(parameters: parameters, success: { (user) in
             let userModel = UserModel()
-            self.delegate?.signUpSuccess(userModel: userModel)
+            self.delegate?.signInSuccess(userModel: userModel)
         }) { (error) -> (Void) in
-            self.delegate?.signUpFailed(message: error.localizedDescription)
+            self.delegate?.signInFailed(message: error.localizedDescription)
         }
     }
     
-    func checkSignupValidations(parameters: JSONDictionary) -> (status: Bool, message: String) {
+    func checkSignInValidations(parameters: JSONDictionary) -> (status: Bool, message: String) {
         var validationStatus = true
         var errorMessage = ""
         guard let email = parameters[ApiKey.email] as? String else{

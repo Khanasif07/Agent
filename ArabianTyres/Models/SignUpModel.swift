@@ -14,7 +14,8 @@ struct  SignUpModel{
     var name: String = ""
     var email : String = ""
     var password: String = ""
-    var countryCode: String = ""
+    var confirmPasssword: String = ""
+    var countryCode: String = "+91"
     var phoneNo: String = ""
     
     init(){}

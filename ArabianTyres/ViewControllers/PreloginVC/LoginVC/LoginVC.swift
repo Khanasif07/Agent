@@ -6,6 +6,7 @@
 //  Copyright © 2020 Admin. All rights reserved.
 //
 import UIKit
+import Foundation
 
 class LoginVC: BaseVC {
     
@@ -45,6 +46,7 @@ class LoginVC: BaseVC {
 extension LoginVC {
     
     private func initialSetup() {
+        self.viewModel.delegate = self
         self.tableViewSetUp()
     }
     
@@ -66,11 +68,11 @@ extension LoginVC {
     
     private func signIn(){
         self.view.endEditing(true)
-        if self.viewModel.checkSignupValidations(parameters: getDict()).status{
+        if self.viewModel.checkSignInValidations(parameters: getDict()).status{
             self.viewModel.signIn(getDict())
         }else{
-            if !self.viewModel.checkSignupValidations(parameters: getDict()).message.isEmpty{
-                CommonFunctions.showToastWithMessage(self.viewModel.checkSignupValidations(parameters: getDict()).message)
+            if !self.viewModel.checkSignInValidations(parameters: getDict()).message.isEmpty{
+                CommonFunctions.showToastWithMessage(self.viewModel.checkSignInValidations(parameters: getDict()).message)
             }
         }
     }
@@ -118,7 +120,7 @@ extension LoginVC : UITableViewDelegate, UITableViewDataSource {
 }
 
 // MARK: - Extension For TextField Delegate
-//====================================
+//=========================================
 extension LoginVC : UITextFieldDelegate{
     func textFieldDidEndEditing(_ textField: UITextField) {
         let text = textField.text?.byRemovingLeadingTrailingWhiteSpaces ?? ""
@@ -144,5 +146,23 @@ extension LoginVC : UITextFieldDelegate{
         default:
             return false
         }
+    }
+}
+
+// MARK: - SignInVMDelegate
+//=========================================
+extension LoginVC: SignInVMDelegate {
+    func willSignIn() {
+    }
+    
+    func signInSuccess(userModel: UserModel) {
+        CommonFunctions.showToastWithMessage("")
+    }
+    
+    func signInFailed(message: String) {
+        CommonFunctions.showToastWithMessage(message)
+    }
+    
+    func invalidInput(message: String) {
     }
 }

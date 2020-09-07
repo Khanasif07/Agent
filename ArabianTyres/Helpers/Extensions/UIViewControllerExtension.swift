@@ -362,12 +362,19 @@ extension UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    /// Start Loader
+    // Start Loader
     func startNYLoader() {
-        //        let color =  UIColor(patternImage:AppGradientImage.imageWithGradientColor(colorOne: AppColors.themeColorOne, colorTwo: AppColors.themeColorTwo, startPoint: CGPoint(x: 0, y: 0), endPoint: CGPoint(x: 1, y: 1)))
-        
-        //        startAnimating(CGSize(width: 50, height: 50), type: NVActivityIndicatorType.ballRotateChase, color: color, backgroundColor: AppColors.clearColor)
-//        startAnimating(CGSize(width: 50, height: 50), type: NVActivityIndicatorType.circleStrokeSpin, color: UIColor.white, backgroundColor: UIColor.black.withAlphaComponent(0.5))
+        let view = NVActivityIndicatorView.init(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+        view.type = .ballSpinFadeLoader
+        view.color = AppColors.primaryBlueColor 
+        view.padding =  170
+        view.startAnimating()
+        self.view.addSubview(view)
+    }
+    
+    func stopAnimating() {
+        self.view.subviews.last?.removeFromSuperview()
     }
     
     // Keyboard appearing notifications

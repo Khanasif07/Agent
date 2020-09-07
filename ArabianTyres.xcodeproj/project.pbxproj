@@ -8,8 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		6708BB6B77017B3BB26B7782 /* Pods_ArabianTyres.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2C00CD38A98EBA313A070C9 /* Pods_ArabianTyres.framework */; };
+		843CD3A32505409C00945937 /* LoginWithPhoneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843CD3A22505409C00945937 /* LoginWithPhoneViewModel.swift */; };
 		843DFD1E2503F017000DE6EB /* OtpVerificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DFD1D2503F017000DE6EB /* OtpVerificationVC.swift */; };
 		843DFD202503F93A000DE6EB /* OtpVerificationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DFD1F2503F93A000DE6EB /* OtpVerificationVM.swift */; };
+		843F004625060725001A78EC /* CountryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F004425060725001A78EC /* CountryVC.swift */; };
+		843F004925060798001A78EC /* CountryVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F004825060798001A78EC /* CountryVM.swift */; };
+		843F004D25060822001A78EC /* CountryCodeTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F004B25060822001A78EC /* CountryCodeTableCell.swift */; };
+		843F004E25060822001A78EC /* CountryCodeTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 843F004C25060822001A78EC /* CountryCodeTableCell.xib */; };
 		844CBD1A2501F7D5009BE668 /* LoginTopTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844CBD182501F7D5009BE668 /* LoginTopTableCell.swift */; };
 		844CBD1B2501F7D5009BE668 /* LoginTopTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844CBD192501F7D5009BE668 /* LoginTopTableCell.xib */; };
 		844CBD1E2501FA31009BE668 /* LoginSocialTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844CBD1C2501FA31009BE668 /* LoginSocialTableCell.swift */; };
@@ -97,8 +102,13 @@
 
 /* Begin PBXFileReference section */
 		19AB33EFB3362961FDB4026A /* Pods-ArabianTyres.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArabianTyres.debug.xcconfig"; path = "Target Support Files/Pods-ArabianTyres/Pods-ArabianTyres.debug.xcconfig"; sourceTree = "<group>"; };
+		843CD3A22505409C00945937 /* LoginWithPhoneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWithPhoneViewModel.swift; sourceTree = "<group>"; };
 		843DFD1D2503F017000DE6EB /* OtpVerificationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpVerificationVC.swift; sourceTree = "<group>"; };
 		843DFD1F2503F93A000DE6EB /* OtpVerificationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpVerificationVM.swift; sourceTree = "<group>"; };
+		843F004425060725001A78EC /* CountryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryVC.swift; sourceTree = "<group>"; };
+		843F004825060798001A78EC /* CountryVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryVM.swift; sourceTree = "<group>"; };
+		843F004B25060822001A78EC /* CountryCodeTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeTableCell.swift; sourceTree = "<group>"; };
+		843F004C25060822001A78EC /* CountryCodeTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountryCodeTableCell.xib; sourceTree = "<group>"; };
 		844CBD182501F7D5009BE668 /* LoginTopTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTopTableCell.swift; sourceTree = "<group>"; };
 		844CBD192501F7D5009BE668 /* LoginTopTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginTopTableCell.xib; sourceTree = "<group>"; };
 		844CBD1C2501FA31009BE668 /* LoginSocialTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSocialTableCell.swift; sourceTree = "<group>"; };
@@ -226,6 +236,24 @@
 			path = OtpVerificationVC;
 			sourceTree = "<group>";
 		};
+		843F004325060710001A78EC /* CountryVC */ = {
+			isa = PBXGroup;
+			children = (
+				843F004425060725001A78EC /* CountryVC.swift */,
+				843F004825060798001A78EC /* CountryVM.swift */,
+			);
+			path = CountryVC;
+			sourceTree = "<group>";
+		};
+		843F004A250607F6001A78EC /* CountryVC */ = {
+			isa = PBXGroup;
+			children = (
+				843F004B25060822001A78EC /* CountryCodeTableCell.swift */,
+				843F004C25060822001A78EC /* CountryCodeTableCell.xib */,
+			);
+			path = CountryVC;
+			sourceTree = "<group>";
+		};
 		844CBD162501F76D009BE668 /* ChooseLanguageVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -270,6 +298,7 @@
 			isa = PBXGroup;
 			children = (
 				844D81E225025D9600550334 /* LoginWithPhoneVC.swift */,
+				843CD3A22505409C00945937 /* LoginWithPhoneViewModel.swift */,
 			);
 			path = LoginWithPhoneVC;
 			sourceTree = "<group>";
@@ -518,6 +547,7 @@
 		8481FA822500EE0600AB6EFB /* PreloginVC */ = {
 			isa = PBXGroup;
 			children = (
+				843F004325060710001A78EC /* CountryVC */,
 				843DFD1C2503EFF5000DE6EB /* OtpVerificationVC */,
 				844D81E125025D5200550334 /* LoginWithPhoneVC */,
 				844D81D92502406700550334 /* SignUpVC */,
@@ -537,6 +567,7 @@
 		8481FA86250107B600AB6EFB /* PreloginVC */ = {
 			isa = PBXGroup;
 			children = (
+				843F004A250607F6001A78EC /* CountryVC */,
 				844D81DC2502438000550334 /* SignUpVC */,
 				844CBD172501F785009BE668 /* LoginVC */,
 				844CBD162501F76D009BE668 /* ChooseLanguageVC */,
@@ -651,6 +682,7 @@
 				8481FA952501437C00AB6EFB /* NunitoSans-ExtraBold.ttf in Resources */,
 				8481FA992501438F00AB6EFB /* NunitoSans-ExtraLight.ttf in Resources */,
 				8481FA932501437000AB6EFB /* NunitoSans-BoldItalic.ttf in Resources */,
+				843F004E25060822001A78EC /* CountryCodeTableCell.xib in Resources */,
 				8481FA812500DC8800AB6EFB /* Main.storyboard in Resources */,
 				844CBD1B2501F7D5009BE668 /* LoginTopTableCell.xib in Resources */,
 				8481FA8D2501435100AB6EFB /* NunitoSans-Black.ttf in Resources */,
@@ -743,6 +775,7 @@
 				8481FA332500BD4A00AB6EFB /* CustomDatePicker.swift in Sources */,
 				844CBD1A2501F7D5009BE668 /* LoginTopTableCell.swift in Sources */,
 				8481FA852500EEC400AB6EFB /* ChooseLanguageVC.swift in Sources */,
+				843F004D25060822001A78EC /* CountryCodeTableCell.swift in Sources */,
 				8481FA552500BF0700AB6EFB /* DispatchQueueExtension.swift in Sources */,
 				8481FA532500BEF900AB6EFB /* StringExtension.swift in Sources */,
 				844D81E5250271B400550334 /* LoginViewModel.swift in Sources */,
@@ -774,9 +807,12 @@
 				8481FA4B2500BEB600AB6EFB /* DoubleExtension.swift in Sources */,
 				844D81DB2502408900550334 /* SignUpVC.swift in Sources */,
 				8481FA712500BFFD00AB6EFB /* AppFonts.swift in Sources */,
+				843CD3A32505409C00945937 /* LoginWithPhoneViewModel.swift in Sources */,
 				8481FA512500BEEC00AB6EFB /* DictionaryExtension.swift in Sources */,
 				8481FA1D2500BAC700AB6EFB /* FacebookController.swift in Sources */,
 				8481FA4F2500BED600AB6EFB /* UIImageExtension.swift in Sources */,
+				843F004625060725001A78EC /* CountryVC.swift in Sources */,
+				843F004925060798001A78EC /* CountryVM.swift in Sources */,
 				844D81E92502751D00550334 /* SignUpViewModel.swift in Sources */,
 				844D81E72502723D00550334 /* SignUpModel.swift in Sources */,
 				8481FA8A2501081000AB6EFB /* TutorialCollCell.swift in Sources */,

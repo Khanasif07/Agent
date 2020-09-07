@@ -8,7 +8,7 @@
 
 import Foundation
 
-let baseUrl = "http://arabiantyersdevapi.appskeeper.com"
+let baseUrl = "http://arabiantyersdevapi.appskeeper.com/api/v1/"
 //API path: http://arabiantyersdevapi.appskeeper.com/api/v1/
 //Swagger Url: http://arabiantyersdevapi.appskeeper.com/api-docs/swagger
 let settingsUrl = ""
@@ -19,6 +19,7 @@ extension WebServices {
         case login = "user/login"
         case signUp = "user/signup"
         case verifyOtp = "user/verifyOtp"
+        case sendOtp = "user/sendOtp"
         case resendOtp = "user/resendOtp"
         case forgetPassword = "user/forgetPassword"
         case resetPassword =  "user/resetPassword"

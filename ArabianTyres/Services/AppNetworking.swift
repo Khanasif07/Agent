@@ -111,11 +111,12 @@ enum AppNetworking {
         var updatedHeaders = header
         //        updatedHeaders[ApiKey.Authorization] =  "Basic YWRtaW46MTIzNA=="
         
-        if !UserModel.main.accessToken.isEmpty {
-            updatedHeaders[ApiKey.Authorization] =  "Bearer \(UserModel.main.accessToken)"
-            printDebug("Header=======================>\n\(updatedHeaders)\n")
+        if isUserLoggedin {
+            let strToken: String = AppUserDefaults.value(forKey: .accesstoken).stringValue
+            if !strToken.isEmpty {
+                updatedHeaders[ApiKey.authorization] =  "Bearer \(strToken)"
+            }
         }
-        
         request.allHTTPHeaderFields = updatedHeaders
         
         request.httpBody = postData

@@ -13,6 +13,8 @@ class OtpVerificationVC: BaseVC {
     
     // MARK: - IBOutlets
     //===========================
+    @IBOutlet weak var phoneNoLbl: UILabel!
+    @IBOutlet weak var countryCodeLbl: UILabel!
     @IBOutlet weak var timerLbl: UILabel!
     @IBOutlet weak var resendBtn: UIButton!
     @IBOutlet weak var verifyBtn: UIButton!
@@ -45,6 +47,8 @@ class OtpVerificationVC: BaseVC {
     // MARK: - IBActions
     //===========================
     @IBAction func verifyBtnAction(_ sender: UIButton) {
+        self.view.endEditing(true)
+        self.viewModel.verifyOTP(dict: getDict())
     }
     
     @IBAction func resendOtpBtnAction(_ sender: UIButton) {
@@ -52,9 +56,13 @@ class OtpVerificationVC: BaseVC {
         self.txtFieldViews.forEach({$0.backgroundColor = AppColors.fontTertiaryColor})
         self.otpArray = [String](repeating: "", count: 4)
         timerLbl.isHidden = false
+        otpTxtFields[0].becomeFirstResponder()
         startTimer()
     }
     
+    @IBAction func backBtnAction(_ sender: UIButton) {
+        self.pop()
+    }
     
 }
 
@@ -63,8 +71,11 @@ class OtpVerificationVC: BaseVC {
 extension OtpVerificationVC {
     
     private func initialSetup() {
+        self.viewModel.delegate = self
         setupText()
         self.setUpTextField()
+        self.timerLbl.isHidden = false
+        self.startTimer()
     }
     
     private func setUpTextField() {
@@ -77,7 +88,8 @@ extension OtpVerificationVC {
     }
     
     private func setupText() {
-        
+        self.phoneNoLbl.text = self.viewModel.phoneNo
+        self.countryCodeLbl.text = self.viewModel.countryCode
     }
     
     private func startTimer() {
@@ -99,9 +111,14 @@ extension OtpVerificationVC {
         viewModel.countdownTimer.invalidate()
     }
     
-    func setUpSubmitButton(enable: Bool){
+    private func setUpSubmitButton(enable: Bool){
         verifyBtn.isEnabled = enable
         verifyBtn.alpha = enable ? 1.0 : 0.5
+    }
+    
+    private func getDict() -> JSONDictionary {
+        let dict : JSONDictionary = [ApiKey.phoneNo : self.viewModel.phoneNo , ApiKey.countryCode : self.viewModel.countryCode,ApiKey.otp: self.otpArray.joined(), ApiKey.device : [ApiKey.platform : "ios",ApiKey.token : DeviceDetail.deviceToken].toJSONString() ?? [:]]
+        return dict
     }
 }
 
@@ -151,10 +168,9 @@ extension OtpVerificationVC: OTPTextFieldDelegate ,UITextFieldDelegate{
     }
     
     private func enterOTPText(index: Int, string: String, range: NSRange, isFirst: Bool = false, isLast: Bool = false) {
-        //        otpArray[index] = string
         otpTxtFields[index].text = string
         otpArray[index] = string
-        txtFieldViews[index].backgroundColor = AppColors.primaryBlueColor
+        txtFieldViews[index].backgroundColor = AppColors.warningYellowColor
         if (range.length == 0) {
             if index == 3 {
                 self.otpTxtFields[index].resignFirstResponder()
@@ -170,4 +186,31 @@ extension OtpVerificationVC: OTPTextFieldDelegate ,UITextFieldDelegate{
         }
     }
     
+}
+
+//MARK:- SuccessPopupVCDelegate
+//=======================================
+extension OtpVerificationVC: SuccessPopupVCDelegate{
+    func okBtnAction() {
+        self.dismiss(animated: true, completion: nil)
+    }
+}
+
+//MARK:- SuccessPopupVCDelegate
+//=======================================
+extension OtpVerificationVC: OtpVerificationVMDelegate{
+    func resendSuccess(message: String) {
+        CommonFunctions.showToastWithMessage(message)
+        AppRouter.showSuccessPopUp(vc: self)
+    }
+    func resendFailed(error:String) {
+        CommonFunctions.showToastWithMessage(error)
+    }
+    func otpVerificationFailed(error:String) {
+        CommonFunctions.showToastWithMessage(error)
+    }
+    func otpVerifiedSuccessfully(message: String) {
+        CommonFunctions.showToastWithMessage(message)
+        AppRouter.showSuccessPopUp(vc: self)
+    }
 }

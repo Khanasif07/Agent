@@ -8,14 +8,14 @@
 
 import Foundation
 
-protocol VerificationVMDelegate: class {
+protocol OtpVerificationVMDelegate: class {
     func resendSuccess(message: String)
     func resendFailed(error:String)
     func otpVerificationFailed(error:String)
     func otpVerifiedSuccessfully(message : String)
 }
 
-extension VerificationVMDelegate {
+extension OtpVerificationVMDelegate {
     func resendSuccess(message: String) {}
     func resendFailed(error:String) {}
     func otpVerificationFailed(error:String) {}
@@ -26,15 +26,15 @@ class OtpVerificationVM{
     
     //MARK:- Variables
     //================
-    weak var delegate:VerificationVMDelegate?
+    var countryCode: String = "+91"
+    var phoneNo: String = ""
+    weak var delegate: OtpVerificationVMDelegate?
     var totalTime = 60
     var countdownTimer:Timer!
-    var email = String()
 
     //MARK:- Functions
     //Function for verify OTP
     func verifyOTP(dict: JSONDictionary){
-
         WebServices.verifyOtp(parameters: dict, success: { (model) in
             self.delegate?.otpVerifiedSuccessfully(message: "")
             }) { (error) -> (Void) in
@@ -43,7 +43,7 @@ class OtpVerificationVM{
     }
     
     func resendOTP(){
-            let dict = [ApiKey.email : email]
+            let dict = [ApiKey.phoneNo : phoneNo]
             WebServices.resetOtp(parameters: dict, success: { (message) in
                 self.delegate?.resendSuccess(message: message)
             }) { (error) -> (Void) in

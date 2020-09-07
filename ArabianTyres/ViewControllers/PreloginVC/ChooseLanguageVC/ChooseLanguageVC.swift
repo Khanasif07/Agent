@@ -94,6 +94,9 @@ class ChooseLanguageVC: BaseVC {
         AppUserDefaults.save(value: LocalizedString.arabic.localized, forKey: .currentLanguage)
     }
     
+    @IBAction func scrollToNextPage(_ sender: UIButton) {
+        self.scrollToNextCell()
+    }
     
     
     
@@ -134,6 +137,24 @@ extension ChooseLanguageVC {
         self.englishBtnView.layer.borderColor = AppColors.primaryBlueLightShade.cgColor
         self.arabicBtnView.layer.borderColor = AppColors.primaryBlueLightShade.cgColor
         self.chooseLangLbl.text = LocalizedString.chooseLanguage.localized
+    }
+    
+    private func scrollToNextCell(){
+        if let coll = tutorialCollView{
+            for cell in coll.visibleCells {
+                let indexPath: IndexPath? = coll.indexPath(for: cell)
+                if ((indexPath?.row)! < tutorialImages.count - 1){
+                    let indexPath1: IndexPath?
+                    indexPath1 = IndexPath(row: (indexPath?.row)! + 1, section: (indexPath?.section)!)
+                    coll.scrollToItem(at: indexPath1!, at: .right, animated: true)
+                }
+                else{
+                    let indexPath1: IndexPath?
+                    indexPath1 = IndexPath.init(row: 0, section: (indexPath?.section)!)
+                    coll.scrollToItem(at: indexPath1!, at: .left, animated: true)
+                }
+            }
+        }
     }
 }
 

@@ -14,6 +14,7 @@
 //  Copyright © 2020 Admin. All rights reserved.
 //
 import UIKit
+import Foundation
 
 class SignUpVC: BaseVC {
     
@@ -49,6 +50,7 @@ class SignUpVC: BaseVC {
 extension SignUpVC {
     
     private func initialSetup() {
+        self.viewModel.delegate = self
         self.tableViewSetUp()
         self.setUpButton()
     }
@@ -65,6 +67,23 @@ extension SignUpVC {
     private func setUpButton(){
     self.skipSignUpBtn.setTitle(LocalizedString.skip_signup_continue.localized, for: .normal)
     }
+    
+    private func getDict() -> JSONDictionary{
+        let dict : JSONDictionary = self.viewModel.model.getSignUpModelDict()
+        return dict
+    }
+    
+    private func signUp(){
+        self.view.endEditing(true)
+        if self.viewModel.checkSignupValidations(parameters: getDict()).status{
+            self.viewModel.signUp(getDict())
+        }else{
+            if !self.viewModel.checkSignupValidations(parameters: getDict()).message.isEmpty{
+                showAlert(msg: self.viewModel.checkSignupValidations(parameters: getDict()).message)
+//                CommonFunctions.showToastWithMessage(self.viewModel.checkSignupValidations(parameters: getDict()).message)
+            }
+        }
+    }
 }
 
 // MARK: - Extension For TableView
@@ -79,13 +98,18 @@ extension SignUpVC : UITableViewDelegate, UITableViewDataSource {
         switch indexPath.row {
         case 0:
             let cell = tableView.dequeueCell(with: SignUpTopCell.self, indexPath: indexPath)
-            cell.confirmPassTxtField.delegate = self
-            cell.passTxtField.delegate = self
-            cell.emailIdTxtField.delegate = self
-            cell.mobNoTxtField.delegate = self
+            [cell.nameTxtField,cell.emailIdTxtField,cell.mobNoTxtField,cell.passTxtField,cell.confirmPassTxtField].forEach({$0?.delegate = self})
             cell.signInBtnTapped = { [weak self]  (sender) in
                 guard let `self` = self else { return }
                 self.navigationController?.popViewController(animated: true)
+            }
+            cell.signUpBtnTapped = { [weak self]  (sender) in
+                guard let `self` = self else { return }
+                self.signUp()
+            }
+            cell.countryPickerTapped = { [weak self]  (sender) in
+                guard let `self` = self else { return }
+                AppRouter.showCountryVC(vc: self)
             }
             return cell
         default:
@@ -116,15 +140,61 @@ extension SignUpVC : UITextFieldDelegate{
         case cell?.passTxtField:
             self.viewModel.model.password = text
         default:
-            self.viewModel.model.password = text
+            self.viewModel.model.confirmPasssword = text
         }
         
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if range.location == 0 && (string == " ") {
+        let cell = mainTableView.cell(forItem: textField) as? SignUpTopCell
+        let currentString: NSString = textField.text! as NSString
+        let newString: NSString =
+            currentString.replacingCharacters(in: range, with: string) as NSString
+        switch textField {
+        case cell?.nameTxtField:
+            return (string.checkIfValidCharaters(.name) || string.isEmpty) && newString.length <= 50
+        case cell?.mobNoTxtField:
+            return (string.checkIfValidCharaters(.mobileNumber) || string.isEmpty) && newString.length <= 16
+        case cell?.emailIdTxtField:
+            return (string.checkIfValidCharaters(.email) || string.isEmpty) && newString.length <= 50
+        case cell?.passTxtField:
+            return (string.checkIfValidCharaters(.password) || string.isEmpty) && newString.length <= 19
+        case cell?.confirmPassTxtField:
+            return (string.checkIfValidCharaters(.password) || string.isEmpty) && newString.length <= 19
+        default:
             return false
         }
-        return true
+    }
+}
+
+
+// MARK: - CountryDelegate
+//=========================
+extension SignUpVC : CountryDelegate{
+    func sendCountryCode(code: String) {
+        let cell = mainTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? SignUpTopCell
+        self.viewModel.model.countryCode = code.replacingOccurrences(of: "+", with: "")
+        cell?.countryCodeLbl.text = code
+    }
+}
+
+// MARK: - CountryDelegate
+//=========================
+extension SignUpVC: SignUpVMDelegate{
+    func willSignUp() {
+        
+    }
+    
+    func signUpSuccess(message: String) {
+        CommonFunctions.showToastWithMessage(message)
+        AppRouter.goToOtpVerificationVC(vc: self, phoneNo: self.viewModel.model.phoneNo, countryCode: self.viewModel.model.countryCode)
+    }
+    
+    func signUpFailed(message: String) {
+        CommonFunctions.showToastWithMessage(message)
+    }
+    
+    func invalidInput(message: String) {
+        
     }
 }

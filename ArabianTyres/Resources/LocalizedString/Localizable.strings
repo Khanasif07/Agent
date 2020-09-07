@@ -65,6 +65,11 @@
 "pleaseEnterExperience" = "Please enter experience";
 "pleaseEnterDob" = "Please enter date of birth";
 "phoneNumber" = "Phone Number";
+"enterYourName" = "Enter Your Name";
+"enterYourEmailId" = "Enter Your Email Id";
+"enterYourMobNumber" = "Enter Your Mobile No";
+"confirmPassword" = "Confirm Password";
+"alreadyHaveAnAccount" = "Already have an account?";
 
 // MARK: - Signup VC Values
 //==============================

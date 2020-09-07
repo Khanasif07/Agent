@@ -11,7 +11,7 @@ import Foundation
 protocol SignUpVMDelegate: NSObjectProtocol {
     
     func willSignUp()
-    func signUpSuccess(userModel: UserModel)
+    func signUpSuccess(message: String)
     func signUpFailed(message: String)
     func invalidInput(message: String)
 }
@@ -23,65 +23,66 @@ struct SignUpViewModel {
     weak var delegate: SignUpVMDelegate?
     
     func signUp(_ parameters: JSONDictionary) {
-        
-        guard inputsValidity(parameters: parameters) else { return }
-        
-        WebServices.signUp(parameters: parameters, success: { (user) in
-//            let userModel = UserModel(parameters)
-            self.delegate?.signUpSuccess(userModel: UserModel())
+        WebServices.signUp(parameters: parameters, success: { (json) in
+            self.delegate?.signUpSuccess(message: "Signup successfully, OTP sent to your phone number.")
         }) { (error) -> (Void) in
             self.delegate?.signUpFailed(message: error.localizedDescription)
         }
     }
     
-    func checkValidity(dictionary: JSONDictionary) {
-        guard inputsValidity(parameters: dictionary) else { return }
-    }
-    
-
-    
-    /// Inputs Validity
-    private func inputsValidity(parameters: JSONDictionary) -> Bool {
+    func checkSignupValidations(parameters: JSONDictionary) -> (status: Bool, message: String) {
+        var validationStatus = true
+        var errorMessage = ""
         
-        if let name = parameters[ApiKey.name] as? String {
-            if name.count < 3 || name.count > 30 {
-//                self.delegate?.invalidInput(message: LocalizedString.nameLengthTooLong.localized)
-                return false
-            }
+        guard let name = parameters[ApiKey.name] as? String, !name.isEmpty else{
+            validationStatus = false
+            errorMessage = LocalizedString.pleaseEnterName.localized
+            return (status: validationStatus, message: errorMessage)
         }
         
-        if let phone = parameters[ApiKey.phoneNo] as? String {
-            if !phone.isEmpty {
-                if phone.count < 3 || phone.count > 15 {
-//                    self.delegate?.invalidInput(message: LocalizedString.phoneLengthTooLong.localized)
-                    return false
-                }
-            }
+        guard let email = parameters[ApiKey.email] as? String ,!email.isEmpty  else{
+            validationStatus = false
+            errorMessage = LocalizedString.pleaseEnterEmail.localized
+            return (status: validationStatus, message: errorMessage)
         }
         
-        if let email = parameters[ApiKey.email] as? String {
-            if email.count < 3 || email.count > 60 {
-//                self.delegate?.invalidInput(message: LocalizedString.invalidEmail.localized)
-                return false
-            } else if email.checkIfInvalid(.email) {
-//                self.delegate?.invalidInput(message: LocalizedString.invalidEmail.localized)
-                return false
-            }
+        guard let phoneNo = parameters[ApiKey.phoneNo] as? String ,!phoneNo.isEmpty else{
+            validationStatus = false
+            errorMessage = LocalizedString.pleaseEnterPhoneNumber.localized
+            return (status: validationStatus, message: errorMessage)
         }
         
-        if let password = parameters[ApiKey.password] as? String, !password.isEmpty {
-            if password.count < 6 || password.count > 32  {
-//                self.delegate?.invalidInput(message: LocalizedString.passwordInvalidLength.localized)
-                return false
-            } else if password.checkIfInvalid(.password) {
-//                self.delegate?.invalidInput(message: LocalizedString.invalidPassword.localized)
-                return false
-            }
-        } else {
-//            self.delegate?.invalidInput(message: LocalizedString.enterPassword.localized)
-            return false
+        guard let password = parameters[ApiKey.password] as? String, !password.isEmpty  else{
+            validationStatus = false
+            errorMessage = LocalizedString.pleaseEnterPassword.localized
+            return (status: validationStatus, message: errorMessage)
         }
-        return true
+        
+        if  self.model.confirmPasssword.isEmpty {
+            validationStatus = false
+            errorMessage = LocalizedString.pleaseEnterPassword.localized
+            return (status: validationStatus, message: errorMessage)
+        }
+        
+        if !email.checkIfValid(.email) {
+            validationStatus = false
+            errorMessage =  LocalizedString.pleaseEnterValidEmail.localized
+            return (status: validationStatus, message: errorMessage)
+        }
+        
+        
+        if !phoneNo.checkIfValid(.mobileNumber) {
+            validationStatus = false
+            errorMessage =  LocalizedString.pleaseEnterPhoneNumber.localized
+            return (status: validationStatus, message: errorMessage)
+        }
+        
+        if !password.checkIfValid(.password) {
+            validationStatus = false
+            errorMessage = LocalizedString.pleaseEnterValidPassword.localized
+            return (status: validationStatus, message: errorMessage)
+        }
+        return (status: validationStatus, message: errorMessage)
     }
     
 }

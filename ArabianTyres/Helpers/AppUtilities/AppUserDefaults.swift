@@ -98,6 +98,7 @@ extension AppUserDefaults {
         case fcmToken
         case token
         case longitude
+        case language
         case loggedOut
         case name
         case userId

@@ -60,3 +60,7 @@ var isCurrentUserType : UserType {
         return .none
     }
 }
+
+// for Language
+var selectedLanguage =  AppUserDefaults.value(forKey: .language).stringValue
+

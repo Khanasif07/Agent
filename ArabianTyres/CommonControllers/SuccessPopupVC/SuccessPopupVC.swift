@@ -33,11 +33,6 @@ class SuccessPopupVC: BaseVC {
         initialSetup()
     }
     
-    public func textSetUp(title:String = "Successful",desc: String = "You have successfully reset your old password."){
-        self.successDescLbl.text = desc
-        self.successTitleLbl.text = title
-    }
-    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         self.dataContainerView.addShadow(cornerRadius: 5, color: UIColor.black16, offset: CGSize(width: 0.5, height: 0.5), opacity: 1, shadowRadius: 5)
@@ -58,5 +53,17 @@ extension SuccessPopupVC {
     
     private func initialSetup() {
         self.textSetUp()
+        self.addBlurEffect()
+    }
+    
+    public func textSetUp(title:String = "Successful",desc: String = "You have successfully reset your old password."){
+        self.successDescLbl.text = desc
+        self.successTitleLbl.text = title
+    }
+    
+    private func addBlurEffect(){
+        let blurEffect = UIBlurEffect(style: .light)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        view.addSubview(blurEffectView)
     }
 }

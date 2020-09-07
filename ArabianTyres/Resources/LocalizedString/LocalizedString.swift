@@ -49,6 +49,7 @@ enum LocalizedString : String {
     case sKIP_LOGIN_CONTINUE = "sKIP_LOGIN_CONTINUE"
     case skip_signup_continue = "skip_signup_continue"
     case dont_have_an_account = "dont_have_an_account"
+    case alreadyHaveAnAccount = "alreadyHaveAnAccount"
     
     // MARK: - Validation Messages
     //==================================
@@ -57,11 +58,15 @@ enum LocalizedString : String {
     case nameShouldBeAtleastMinCharacters = "nameShouldBeAtleastMinCharacters"
     case phoneNoShouldBeAtleastMinCharacters = "phoneNoShouldBeAtleastMinCharacters"
     case pleaseEnterName = "pleaseEntertName"
+    case enterYourName = "enterYourName"
     case pleaseEnterNickName = "pleaseEnterNickName"
     case pleaseEnterEmail = "pleaseEnterEmail"
+    case enterYourEmailId = "enterYourEmailId"
     case pleaseEnterPassword = "pleaseEnterPassword"
     case pleaseEnterValidPhoneNo = "pleaseEnterValidPhoneNo"
     case pleaseEnterPhoneNumber = "pleaseEnterPhoneNumber"
+    case enterYourMobNumber = "enterYourMobNumber"
+    case confirmPassword = "confirmPassword"
     case enterPhoneNumber = "enterPhoneNumber"
     case pleaseEnterZip = "pleaseEnterZip"
     case pleaseFillAllTheFields = "pleaseFillAllTheFields"

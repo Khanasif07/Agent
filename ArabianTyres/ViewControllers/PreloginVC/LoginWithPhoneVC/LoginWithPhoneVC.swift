@@ -11,6 +11,8 @@ import SkyFloatingLabelTextField
 
 class LoginWithPhoneVC: BaseVC {
     
+    var viewModel = LoginWithPhoneViewModel()
+    
     // MARK: - IBOutlets
     //===========================
     @IBOutlet weak var dataContainerView: UIView!
@@ -25,6 +27,7 @@ class LoginWithPhoneVC: BaseVC {
     // MARK: - Lifecycle
     //===========================
     override func viewDidLoad() {
+        self.viewModel.delegate = self
         super.viewDidLoad()
         initialSetup()
     }
@@ -41,8 +44,13 @@ class LoginWithPhoneVC: BaseVC {
         self.pop()
     }
     
+    @IBAction func countryCodeTapped(_ sender: UIButton) {
+         AppRouter.showCountryVC(vc: self)
+    }
+    
     @IBAction func sendOtpAction(_ sender: UIButton) {
-        AppRouter.goToOtpVerificationVC(vc: self)
+        self.sendOtp()
+        AppRouter.goToOtpVerificationVC(vc: self, phoneNo: "8896880327",countryCode: "+91")
     }
     
 }
@@ -52,7 +60,9 @@ class LoginWithPhoneVC: BaseVC {
 extension LoginWithPhoneVC {
     
     private func initialSetup() {
+        self.viewModel.delegate = self
         self.setupTextField()
+        self.sendOtpBtnStatus(enable: false)
     }
     
     public func setupTextField(){
@@ -66,19 +76,37 @@ extension LoginWithPhoneVC {
             AppColors.fontTertiaryColor
         self.phoneTextField.selectedTitleColor = AppColors.fontTertiaryColor
     }
+    
+    public func sendOtpBtnStatus(enable: Bool){
+        self.sendOtpBtn.alpha = enable ? 1.0 : 0.5
+        self.sendOtpBtn.isEnabled = enable
+    }
+    
+    private func getDict() -> JSONDictionary{
+        let dict : JSONDictionary = [ApiKey.phoneNo: self.phoneTextField.text?.byRemovingLeadingTrailingWhiteSpaces ?? "",ApiKey.countryCode: "", ApiKey.device : [ApiKey.platform : "ios", ApiKey.token : DeviceDetail.deviceToken].toJSONString() ?? ""]
+        return dict
+    }
+    
+    private func sendOtp(){
+        self.view.endEditing(true)
+        if self.viewModel.checkSendOtpValidations(parameters: getDict()).status{
+            self.viewModel.sendOtp(params: getDict())
+        }else{
+            if !self.viewModel.checkSendOtpValidations(parameters: getDict()).message.isEmpty{
+                showAlert(msg: self.viewModel.checkSendOtpValidations(parameters: getDict()).message)
+                //                CommonFunctions.showToastWithMessage(self.viewModel.checkSignupValidations(parameters: getDict()).message)
+            }
+        }
+    }
 }
 
 // MARK: - Extension For TxtFieldDelegate
-//===========================
-
+//=========================================
 extension LoginWithPhoneVC: UITextFieldDelegate {
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        
-    }
-    
+   
     func textFieldDidEndEditing(_ textField: UITextField) {
-        
+        let text = textField.text?.byRemovingLeadingTrailingWhiteSpaces ?? ""
+        self.viewModel.phoneNo = text
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -87,9 +115,33 @@ extension LoginWithPhoneVC: UITextFieldDelegate {
             currentString.replacingCharacters(in: range, with: string) as NSString
         switch textField {
         case phoneTextField:
+            sendOtpBtnStatus(enable: newString.length >= 10)
             return (string.checkIfValidCharaters(.mobileNumber) || string.isEmpty) && newString.length <= 16
         default:
             return false
         }
+    }
+}
+
+// MARK: - LoginWithPhoneVMDelegate
+//=================================
+extension LoginWithPhoneVC: LoginWithPhoneVMDelegate {
+    func loginWithPhoneSuccess() {
+        CommonFunctions.showToastWithMessage("")
+        AppRouter.goToOtpVerificationVC(vc: self,phoneNo: self.viewModel.phoneNo,countryCode:self.viewModel.countryCode)
+    }
+    
+    func loginWithPhoneFailed(msg: String, error: Error) {
+        CommonFunctions.showToastWithMessage(msg)
+    }
+    
+}
+
+// MARK: - CountryDelegate
+//=========================
+extension LoginWithPhoneVC : CountryDelegate{
+    func sendCountryCode(code: String) {
+        self.viewModel.countryCode = code.replacingOccurrences(of: "+", with: "")
+        self.countryCodeLbl.text = code
     }
 }

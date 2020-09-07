@@ -28,7 +28,7 @@ extension WebServices {
     static func commonPostAPI(parameters: JSONDictionary,
                               endPoint: EndPoint,
                               headers: HTTPHeaders = [:],
-                              loader: Bool = false,
+                              loader: Bool = true,
                               success : @escaping SuccessResponse,
                               failure : @escaping FailureResponse) {
         
@@ -271,6 +271,18 @@ extension WebServices{
                          success: @escaping ResponseMessage,
                          failure: @escaping FailureResponse) {
         self.commonPostAPI(parameters: parameters, endPoint: .resendOtp,loader: true, success: { (json) in
+            success(json[ApiKey.message].stringValue)
+        }) { (error) -> (Void) in
+            failure(error)
+        }
+    }
+    
+    // MARK:- SendOtp  Otp
+    //=================
+    static func sendOtpThroughPhone(parameters: JSONDictionary,
+                         success: @escaping ResponseMessage,
+                         failure: @escaping FailureResponse) {
+        self.commonPostAPI(parameters: parameters, endPoint: .sendOtp,loader: true, success: { (json) in
             success(json[ApiKey.message].stringValue)
         }) { (error) -> (Void) in
             failure(error)

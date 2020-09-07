@@ -8,15 +8,13 @@
 
 import UIKit
 import Toaster
-import SwiftyJSON
-import CoreLocation
-import MobileCoreServices
 import NVActivityIndicatorView
-import CoreTelephony
+import MobileCoreServices
+import AVFoundation
+import AVKit
 
 class CommonFunctions {
 
-    /// Show Toast With Message
     /// Show Toast With Message
     static func showToastWithMessage(_ msg: String, completion: (() -> Swift.Void)? = nil) {
         DispatchQueue.mainQueueAsync {
@@ -71,7 +69,7 @@ class CommonFunctions {
     class func hideActivityLoader() {
         DispatchQueue.mainQueueAsync {
             if let vc = AppDelegate.shared.window?.rootViewController {
-//                vc.stopAnimating()
+                vc.stopAnimating()
             }
         }
     }
@@ -82,33 +80,33 @@ class CommonFunctions {
     }
     
     //get country Code from Locale
-    class func getCountryCode() -> String {
-           
-           let networkInfo = CTTelephonyNetworkInfo()
-           
-           if let carrier = networkInfo.subscriberCellularProvider {
-            if let isoCountryCode = carrier.isoCountryCode {
-                for dict in countryData {
-                    guard let code = dict["code"] else {return "91"}
-                    if isoCountryCode.lowercased() == code.lowercased() {
-                        
-                        return dict["phoneCode"] ?? "91"
-                    }
-                }
-              }
-           }
-           
-        if let countryCode = (Locale.current as NSLocale).object(forKey: .countryCode) as? String {
-            for dict in countryData {
-                guard let code = dict["code"] else {return "91"}
-                if countryCode.lowercased() == code.lowercased() {
-                    
-                    return dict["phoneCode"] ?? "91"
-                }
-            }
-        }
-        return "+91"
-    }
+//    class func getCountryCode() -> String {
+//           
+//           let networkInfo = CTTelephonyNetworkInfo()
+//           
+//           if let carrier = networkInfo.subscriberCellularProvider {
+//            if let isoCountryCode = carrier.isoCountryCode {
+//                for dict in countryData {
+//                    guard let code = dict["code"] else {return "91"}
+//                    if isoCountryCode.lowercased() == code.lowercased() {
+//                        
+//                        return dict["phoneCode"] ?? "91"
+//                    }
+//                }
+//              }
+//           }
+//           
+//        if let countryCode = (Locale.current as NSLocale).object(forKey: .countryCode) as? String {
+//            for dict in countryData {
+//                guard let code = dict["code"] else {return "91"}
+//                if countryCode.lowercased() == code.lowercased() {
+//                    
+//                    return dict["phoneCode"] ?? "91"
+//                }
+//            }
+//        }
+//        return "+91"
+//    }
     
     class func leftViewModeWithPadding(image:UIImage,height:CGFloat,width:CGFloat,leading:CGFloat,gap:CGFloat)->UIView{
               let outerView = UIView(frame: CGRect(x: 0, y: 0, width: Int(width+leading+gap), height: 16) )

@@ -105,8 +105,26 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pah-dg-lgE">
                                         <rect key="frame" x="0.0" y="122" width="332" height="60"/>
                                         <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pUr-mL-0UD">
+                                                <rect key="frame" x="0.0" y="21" width="74" height="30"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+91" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YC9-W7-YfV">
+                                                        <rect key="frame" x="0.0" y="0.0" width="25.5" height="30"/>
+                                                        <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="14"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uMS-5y-193">
+                                                        <rect key="frame" x="25.5" y="0.0" width="48.5" height="30"/>
+                                                        <state key="normal" image="group1431"/>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="74" id="EbK-kQ-Rg1"/>
+                                                </constraints>
+                                            </stackView>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KlE-OE-HuT" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                <rect key="frame" x="0.0" y="5" width="332" height="55"/>
+                                                <rect key="frame" x="102" y="0.0" width="230" height="60"/>
                                                 <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
@@ -126,14 +144,26 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="elP-xx-nox">
+                                                <rect key="frame" x="0.0" y="59" width="74" height="1"/>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1" id="owZ-QC-392"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="KlE-OE-HuT" secondAttribute="trailing" id="4tr-sR-hfV"/>
+                                            <constraint firstAttribute="trailing" secondItem="KlE-OE-HuT" secondAttribute="trailing" id="E9u-0R-JZJ"/>
+                                            <constraint firstItem="KlE-OE-HuT" firstAttribute="leading" secondItem="pUr-mL-0UD" secondAttribute="trailing" constant="28" id="GR4-3c-zJz"/>
+                                            <constraint firstItem="pUr-mL-0UD" firstAttribute="leading" secondItem="Pah-dg-lgE" secondAttribute="leading" id="Gee-4n-Gpd"/>
                                             <constraint firstAttribute="height" constant="60" id="MQv-QS-w85"/>
-                                            <constraint firstItem="KlE-OE-HuT" firstAttribute="leading" secondItem="Pah-dg-lgE" secondAttribute="leading" id="MTe-Xo-9nn"/>
-                                            <constraint firstAttribute="bottom" secondItem="KlE-OE-HuT" secondAttribute="bottom" id="mkI-AC-Wze"/>
-                                            <constraint firstItem="KlE-OE-HuT" firstAttribute="top" secondItem="Pah-dg-lgE" secondAttribute="top" constant="5" id="tff-Pb-uZp"/>
+                                            <constraint firstItem="elP-xx-nox" firstAttribute="leading" secondItem="pUr-mL-0UD" secondAttribute="leading" id="Vcn-fE-4Hv"/>
+                                            <constraint firstItem="elP-xx-nox" firstAttribute="top" secondItem="pUr-mL-0UD" secondAttribute="bottom" constant="8" id="fBv-3g-u2W"/>
+                                            <constraint firstItem="elP-xx-nox" firstAttribute="trailing" secondItem="pUr-mL-0UD" secondAttribute="trailing" id="id5-ic-4HC"/>
+                                            <constraint firstAttribute="bottom" secondItem="KlE-OE-HuT" secondAttribute="bottom" id="n2x-Ct-WZN"/>
+                                            <constraint firstItem="elP-xx-nox" firstAttribute="bottom" secondItem="KlE-OE-HuT" secondAttribute="bottom" id="s4b-Ht-x64"/>
+                                            <constraint firstItem="KlE-OE-HuT" firstAttribute="top" secondItem="Pah-dg-lgE" secondAttribute="top" id="zj6-L9-Xyi"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uee-aX-gA1">
@@ -262,13 +292,23 @@
                                     <constraint firstItem="3LF-ss-gdK" firstAttribute="leading" secondItem="ghA-Xe-4dn" secondAttribute="leading" id="TOb-UL-ueO"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eoE-5x-FzW">
+                                <rect key="frame" x="22" y="148" width="74" height="30"/>
+                                <connections>
+                                    <action selector="countryPickerAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="HrB-Tq-dC8"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="w08-0j-mw4" secondAttribute="trailing" constant="22" id="6Xr-Mv-dn9"/>
                             <constraint firstItem="ghA-Xe-4dn" firstAttribute="top" secondItem="tkA-wv-5cV" secondAttribute="bottom" constant="8" id="6ya-fh-oAf"/>
                             <constraint firstItem="ghA-Xe-4dn" firstAttribute="trailing" secondItem="w08-0j-mw4" secondAttribute="trailing" id="EgJ-Rn-5hx"/>
+                            <constraint firstItem="eoE-5x-FzW" firstAttribute="leading" secondItem="pUr-mL-0UD" secondAttribute="leading" id="OcC-Dk-4fM"/>
+                            <constraint firstItem="eoE-5x-FzW" firstAttribute="top" secondItem="pUr-mL-0UD" secondAttribute="top" id="PSq-X0-3P1"/>
                             <constraint firstItem="w08-0j-mw4" firstAttribute="leading" secondItem="rxu-7h-N5W" secondAttribute="leading" constant="22" id="QKe-vZ-V5j"/>
+                            <constraint firstItem="eoE-5x-FzW" firstAttribute="trailing" secondItem="pUr-mL-0UD" secondAttribute="trailing" id="V2a-E8-Xuu"/>
+                            <constraint firstItem="eoE-5x-FzW" firstAttribute="bottom" secondItem="pUr-mL-0UD" secondAttribute="bottom" id="Z5L-SF-X7b"/>
                             <constraint firstAttribute="bottom" secondItem="ghA-Xe-4dn" secondAttribute="bottom" constant="8" id="eot-5T-WNn"/>
                             <constraint firstItem="tkA-wv-5cV" firstAttribute="top" secondItem="w08-0j-mw4" secondAttribute="bottom" constant="16" id="grE-6v-zu0"/>
                             <constraint firstItem="tkA-wv-5cV" firstAttribute="leading" secondItem="w08-0j-mw4" secondAttribute="leading" id="mFV-RW-goR"/>
@@ -277,7 +317,7 @@
                         </constraints>
                     </view>
                 </subviews>
-                <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <color key="backgroundColor" red="0.96470588235294119" green="0.96862745098039216" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="rxu-7h-N5W" secondAttribute="bottom" constant="4" id="I2K-CX-DX2"/>
                     <constraint firstAttribute="trailing" secondItem="rxu-7h-N5W" secondAttribute="trailing" id="OKo-2i-bam"/>
@@ -289,6 +329,7 @@
             <connections>
                 <outlet property="alreadyHaveAcctLbl" destination="nMq-pR-FNf" id="gCU-Ct-Qkr"/>
                 <outlet property="confirmPassTxtField" destination="iwq-3H-gLo" id="Bmb-tp-3Nw"/>
+                <outlet property="countryCodeLbl" destination="YC9-W7-YfV" id="bug-2j-lZa"/>
                 <outlet property="emailIdTxtField" destination="Kcz-Gw-53b" id="zSa-ES-804"/>
                 <outlet property="mobNoTxtField" destination="KlE-OE-HuT" id="Y2G-GY-60p"/>
                 <outlet property="nameTxtField" destination="yfi-po-mPk" id="ONc-UB-FId"/>
@@ -300,4 +341,7 @@
             <point key="canvasLocation" x="115.94202898550725" y="111.83035714285714"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="group1431" width="24" height="24"/>
+    </resources>
 </document>

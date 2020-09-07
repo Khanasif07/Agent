@@ -72,8 +72,23 @@ enum AppRouter {
         setAsWindowRoot(scene)
     }
     
-    static func goToOtpVerificationVC(vc: UIViewController){
+    static func showSuccessPopUp(vc: UIViewController & SuccessPopupVCDelegate){
+        let scene = SuccessPopupVC.instantiate(fromAppStoryboard: .Prelogin)
+        scene.delegate = vc
+        vc.present(scene, animated: true, completion: nil)
+    }
+    
+    static func showCountryVC(vc: UIViewController & CountryDelegate){
+        let scene = CountryVC.instantiate(fromAppStoryboard: .Prelogin)
+        scene.countryDelegate = vc
+        scene.modalPresentationStyle = .fullScreen
+        vc.present(scene, animated: true, completion: nil)
+    }
+    
+    static func goToOtpVerificationVC(vc: UIViewController,phoneNo: String, countryCode: String){
         let scene = OtpVerificationVC.instantiate(fromAppStoryboard: .Prelogin)
+        scene.viewModel.countryCode = countryCode
+        scene.viewModel.phoneNo = phoneNo
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
