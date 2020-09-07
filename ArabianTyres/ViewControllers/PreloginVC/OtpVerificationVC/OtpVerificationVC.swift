@@ -48,7 +48,8 @@ class OtpVerificationVC: BaseVC {
     //===========================
     @IBAction func verifyBtnAction(_ sender: UIButton) {
         self.view.endEditing(true)
-        self.viewModel.verifyOTP(dict: getDict())
+        AppRouter.showSuccessPopUp(vc: self)
+//        self.viewModel.verifyOTP(dict: getDict())
     }
     
     @IBAction func resendOtpBtnAction(_ sender: UIButton) {

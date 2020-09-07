@@ -33,7 +33,7 @@ struct LoginViewModel {
     func checkSignInValidations(parameters: JSONDictionary) -> (status: Bool, message: String) {
         var validationStatus = true
         var errorMessage = ""
-        guard let email = parameters[ApiKey.email] as? String else{
+        guard let email = parameters[ApiKey.email] as? String,!email.isEmpty  else{
             validationStatus = false
             errorMessage = LocalizedString.pleaseEnterEmail.localized
             return (status: validationStatus, message: errorMessage)

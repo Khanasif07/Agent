@@ -667,7 +667,7 @@ your old password.</string>
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="k0a-nr-yif" firstAttribute="centerX" secondItem="yVF-fh-fth" secondAttribute="centerX" id="3Sk-4c-Z6Q"/>
                                     <constraint firstAttribute="trailing" secondItem="k0a-nr-yif" secondAttribute="trailing" constant="28" id="Mb4-Sg-j2O"/>

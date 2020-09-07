@@ -20,12 +20,12 @@ class CommonFunctions {
         DispatchQueue.mainQueueAsync {
             ToastView.appearance().font = UIFont.systemFont(ofSize: 14.0)
             ToastView.appearance().textColor = .white
-            ToastView.appearance().backgroundColor = AppColors.primaryBlueColor
+            ToastView.appearance().backgroundColor = .black
             if msg.count > 60 {
-                let toast = Toast(text: msg, delay: 0.3, duration: 5)
+                let toast = Toast(text: msg, delay: 0.3, duration: 10)
                 toast.show()
             } else {
-                let toast = Toast(text: msg, delay: 0.3, duration: 0.7)
+                let toast = Toast(text: msg, delay: 0.1, duration: 10)
                 toast.show()
             }
         }
