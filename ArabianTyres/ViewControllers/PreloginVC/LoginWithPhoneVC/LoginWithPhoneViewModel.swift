@@ -10,15 +10,18 @@ import Foundation
 import SwiftyJSON
 
 protocol LoginWithPhoneVMDelegate: class {
-    func loginWithPhoneSuccess()
+    func loginWithPhoneSuccess(msg: String,statusCode:Int)
     func loginWithPhoneFailed(msg: String, error: Error)
+    func forgotPasswordSuccess(msg: String)
+    func forgotPasswordFailed(msg: String, error: Error)
 }
 
 class LoginWithPhoneViewModel {
     
     // MARK: Variables
     //=================================
-    var countryCode: String = ""
+    var isComefromForgotpass : Bool = false
+    var countryCode: String = "+91"
     var phoneNo: String  = ""
     weak var delegate: LoginWithPhoneVMDelegate?
     var loginModel = UserModel()
@@ -28,12 +31,26 @@ class LoginWithPhoneViewModel {
     func sendOtp(params: JSONDictionary,loader: Bool = false) {
         WebServices.sendOtpThroughPhone(parameters: params, success: { [weak self] (json) in
             guard let `self` = self else { return }
-            self.delegate?.loginWithPhoneSuccess()
+            self.delegate?.loginWithPhoneSuccess(msg:"",statusCode: 200)
             printDebug(json)
         }) { [weak self] (error) in
             guard let `self` = self else { return }
-            printDebug(error)
-            self.delegate?.loginWithPhoneFailed(msg: error.localizedDescription, error: error)
+            if (error as NSError).code == 404 {
+                self.delegate?.loginWithPhoneFailed(msg: error.localizedDescription,error: error)
+            }else {
+                self.delegate?.loginWithPhoneFailed(msg: error.localizedDescription,error: error)
+            }
+        }
+    }
+    
+    func forgotPassword(params: JSONDictionary,loader: Bool = false) {
+        WebServices.forgotPassword(parameters: params, success: { [weak self] (json) in
+            guard let `self` = self else { return }
+            self.delegate?.forgotPasswordSuccess(msg:"")
+            printDebug(json)
+        }) { [weak self] (error) in
+            guard let `self` = self else { return }
+            self.delegate?.forgotPasswordFailed(msg: error.localizedDescription,error: error)
         }
     }
     

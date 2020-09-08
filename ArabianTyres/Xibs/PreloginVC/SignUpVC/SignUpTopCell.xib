@@ -116,7 +116,7 @@
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uMS-5y-193">
                                                         <rect key="frame" x="25.5" y="0.0" width="48.5" height="30"/>
-                                                        <state key="normal" image="group1431"/>
+                                                        <state key="normal" image="group3714"/>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -342,6 +342,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="group1431" width="24" height="24"/>
+        <image name="group3714" width="16" height="16"/>
     </resources>
 </document>

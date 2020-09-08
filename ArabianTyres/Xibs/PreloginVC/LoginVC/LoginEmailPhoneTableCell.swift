@@ -14,6 +14,7 @@ class LoginEmailPhoneTableCell: UITableViewCell {
     var signupBtnTapped: ((UIButton)->())?
     var signInBtnTapped: ((UIButton)->())?
     var phoneNoBtnTapped: ((UIButton)->())?
+    var forgotPassBtnTapped: ((UIButton)->())?
     
     @IBOutlet weak var forgotPassBtn: UIButton!
     @IBOutlet weak var dontHaveAccountLbl: UILabel!
@@ -86,6 +87,9 @@ class LoginEmailPhoneTableCell: UITableViewCell {
     }
     
     @IBAction func forgotPassBtnAction(_ sender: UIButton) {
+        if let handle = forgotPassBtnTapped{
+            handle(sender)
+        }
     }
     
     @IBAction func signInBtnAction(_ sender: UIButton) {

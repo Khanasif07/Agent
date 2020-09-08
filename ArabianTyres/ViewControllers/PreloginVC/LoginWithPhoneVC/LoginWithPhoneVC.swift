@@ -24,6 +24,7 @@ class LoginWithPhoneVC: BaseVC {
     // MARK: - Variables
     //===========================
     
+    
     // MARK: - Lifecycle
     //===========================
     override func viewDidLoad() {
@@ -45,13 +46,16 @@ class LoginWithPhoneVC: BaseVC {
     }
     
     @IBAction func countryCodeTapped(_ sender: UIButton) {
-         AppRouter.showCountryVC(vc: self)
+        AppRouter.showCountryVC(vc: self)
     }
     
     @IBAction func sendOtpAction(_ sender: UIButton) {
-        self.sendOtp()
+        if self.viewModel.isComefromForgotpass{
+            self.forgotPassword()
+        } else {
+            self.sendOtp()
+        }
     }
-    
 }
 
 // MARK: - Extension For Functions
@@ -62,6 +66,12 @@ extension LoginWithPhoneVC {
         self.viewModel.delegate = self
         self.setupTextField()
         self.sendOtpBtnStatus(enable: false)
+        if self.viewModel.isComefromForgotpass {
+            self.loginTitle.text = LocalizedString.forgotPassword.localized
+            self.sendOtpBtn.setTitle(LocalizedString.submit.localized, for: .normal)}
+        else {
+            self.loginTitle.text = LocalizedString.login.localized
+            self.sendOtpBtn.setTitle(LocalizedString.sendOtp.localized, for: .normal)}
     }
     
     public func setupTextField(){
@@ -83,8 +93,13 @@ extension LoginWithPhoneVC {
     }
     
     private func getDict() -> JSONDictionary{
-        let dict : JSONDictionary = [ApiKey.phoneNo:  self.viewModel.phoneNo,ApiKey.countryCode: self.viewModel.countryCode, ApiKey.device : [ApiKey.platform : "ios", ApiKey.token : DeviceDetail.deviceToken].toJSONString() ?? ""]
-        return dict
+        if self.viewModel.isComefromForgotpass {
+            let dict : JSONDictionary = [ApiKey.phoneNo:  self.viewModel.phoneNo,ApiKey.countryCode: self.viewModel.countryCode]
+            return dict
+        } else {
+            let dict : JSONDictionary = [ApiKey.phoneNo:  self.viewModel.phoneNo,ApiKey.countryCode: self.viewModel.countryCode, ApiKey.device : [ApiKey.platform : "ios", ApiKey.token : DeviceDetail.deviceToken].toJSONString() ?? ""]
+            return dict
+        }
     }
     
     private func sendOtp(){
@@ -94,7 +109,17 @@ extension LoginWithPhoneVC {
         }else{
             if !self.viewModel.checkSendOtpValidations(parameters: getDict()).message.isEmpty{
                 showAlert(msg: self.viewModel.checkSendOtpValidations(parameters: getDict()).message)
-                //                CommonFunctions.showToastWithMessage(self.viewModel.checkSignupValidations(parameters: getDict()).message)
+            }
+        }
+    }
+    
+    private func forgotPassword(){
+        self.view.endEditing(true)
+        if self.viewModel.checkSendOtpValidations(parameters: getDict()).status{
+            self.viewModel.forgotPassword(params: getDict())
+        }else{
+            if !self.viewModel.checkSendOtpValidations(parameters: getDict()).message.isEmpty{
+                showAlert(msg: self.viewModel.checkSendOtpValidations(parameters: getDict()).message)
             }
         }
     }
@@ -103,7 +128,7 @@ extension LoginWithPhoneVC {
 // MARK: - Extension For TxtFieldDelegate
 //=========================================
 extension LoginWithPhoneVC: UITextFieldDelegate {
-   
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         let text = textField.text?.byRemovingLeadingTrailingWhiteSpaces ?? ""
         self.viewModel.phoneNo = text
@@ -126,8 +151,17 @@ extension LoginWithPhoneVC: UITextFieldDelegate {
 // MARK: - LoginWithPhoneVMDelegate
 //=================================
 extension LoginWithPhoneVC: LoginWithPhoneVMDelegate {
-    func loginWithPhoneSuccess() {
-        ToastView.shared.showLongToast(self.view, msg: "")
+    func forgotPasswordSuccess(msg: String) {
+        ToastView.shared.showLongToast(self.view, msg: msg)
+        AppRouter.goToOtpVerificationVC(vc: self,phoneNo: self.viewModel.phoneNo, countryCode: self.viewModel.countryCode,isComeForVerifyPassword: true)
+    }
+    
+    func forgotPasswordFailed(msg: String, error: Error) {
+        ToastView.shared.showLongToast(self.view, msg: msg)
+    }
+    
+    func loginWithPhoneSuccess(msg: String, statusCode: Int) {
+        ToastView.shared.showLongToast(self.view, msg: msg)
         AppRouter.goToOtpVerificationVC(vc: self,phoneNo: self.viewModel.phoneNo,countryCode:self.viewModel.countryCode)
     }
     

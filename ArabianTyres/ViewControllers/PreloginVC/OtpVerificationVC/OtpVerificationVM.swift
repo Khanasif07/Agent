@@ -7,12 +7,15 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 protocol OtpVerificationVMDelegate: class {
     func resendSuccess(message: String)
     func resendFailed(error:String)
     func otpVerificationFailed(error:String)
     func otpVerifiedSuccessfully(message : String)
+    func verifyForgotPasswordOTPSuccess(message: String)
+    func verifyForgotPasswordOTPFailed(error:String)
 }
 
 extension OtpVerificationVMDelegate {
@@ -20,13 +23,17 @@ extension OtpVerificationVMDelegate {
     func resendFailed(error:String) {}
     func otpVerificationFailed(error:String) {}
     func otpVerifiedSuccessfully(message: String) {}
+    func verifyForgotPasswordOTPSuccess(message: String) {}
+    func verifyForgotPasswordOTPFailed(error:String) {}
 }
 
 class OtpVerificationVM{
     
     //MARK:- Variables
     //================
+    var isComeForVerifyPassword: Bool = false
     var countryCode: String = "+91"
+    var resetToken: String = ""
     var phoneNo: String = ""
     weak var delegate: OtpVerificationVMDelegate?
     var totalTime = 60
@@ -37,14 +44,23 @@ class OtpVerificationVM{
     func verifyOTP(dict: JSONDictionary){
         WebServices.verifyOtp(parameters: dict, success: { (userModel) in
             self.delegate?.otpVerifiedSuccessfully(message: "Otp Verified Successfully")
-            }) { (error) -> (Void) in
-                self.delegate?.otpVerificationFailed(error: error.localizedDescription)
-            }
+        }) { (error) -> (Void) in
+            self.delegate?.otpVerificationFailed(error: error.localizedDescription)
+        }
+    }
+    
+    func verifyForgotPasswordOTP(dict: JSONDictionary){
+        WebServices.verifyForgotPasswordOTP(parameters: dict, success: { (json) in
+            self.resetToken = json[ApiKey.data][ApiKey.resetToken].stringValue
+            self.delegate?.verifyForgotPasswordOTPSuccess(message: "Password Verified Successfully")
+        }) { (error) -> (Void) in
+            self.delegate?.verifyForgotPasswordOTPFailed(error: error.localizedDescription)
+        }
     }
     
     func resendOTP(){
             let dict = [ApiKey.phoneNo : phoneNo]
-            WebServices.resetOtp(parameters: dict, success: { (message) in
+            WebServices.resendOtp(parameters: dict, success: { (message) in
                 self.delegate?.resendSuccess(message: message)
             }) { (error) -> (Void) in
                 self.delegate?.resendFailed(error: error.localizedDescription)

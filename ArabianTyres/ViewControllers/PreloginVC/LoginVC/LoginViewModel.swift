@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 protocol SignInVMDelegate: NSObjectProtocol {
     
@@ -22,9 +23,13 @@ struct LoginViewModel {
     weak var delegate: SignInVMDelegate?
     
     func signIn(_ parameters: JSONDictionary) {
-        WebServices.login(parameters: parameters, success: { (user) in
-            let userModel = UserModel()
-            self.delegate?.signInSuccess(userModel: userModel)
+        WebServices.login(parameters: parameters, success: { (json) in
+            let user = UserModel(json[ApiKey.data])
+            UserModel.main = user
+            let accessToken = json[ApiKey.data][ApiKey.authToken].stringValue
+            AppUserDefaults.save(value: accessToken, forKey: .accesstoken)
+            AppUserDefaults.save(value: json[ApiKey.data][ApiKey.userType].stringValue, forKey: .currentUserType)
+            self.delegate?.signInSuccess(userModel: UserModel.main)
         }) { (error) -> (Void) in
             self.delegate?.signInFailed(message: error.localizedDescription)
         }

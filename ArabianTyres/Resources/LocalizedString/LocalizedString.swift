@@ -32,6 +32,9 @@ enum LocalizedString : String {
     case removePicture = "removePicture"
     case alert
     case settings
+    case submit
+    case login
+    case sendOtp
     case english
     case arabic
     case continueTitle
@@ -62,6 +65,7 @@ enum LocalizedString : String {
     //==================================
     case pleaseEnterValidEmail = "pleaseEnterValidEmail"
     case pleaseEnterValidPassword = "pleaseEnterValidPassword"
+    case passwordDoesNotMatch = "passwordDoesNotMatch"
     case nameShouldBeAtleastMinCharacters = "nameShouldBeAtleastMinCharacters"
     case phoneNoShouldBeAtleastMinCharacters = "phoneNoShouldBeAtleastMinCharacters"
     case pleaseEnterName = "pleaseEntertName"
@@ -75,6 +79,9 @@ enum LocalizedString : String {
     case enterYourMobNumber = "enterYourMobNumber"
     case confirmPassword = "confirmPassword"
     case enterPhoneNumber = "enterPhoneNumber"
+    case enterNewPassword = "enterNewPassword"
+    case newPassword = "newPassword"
+    case confirmNewPassword = "confirmNewPassword"
     case pleaseEnterZip = "pleaseEnterZip"
     case pleaseFillAllTheFields = "pleaseFillAllTheFields"
     case pleaseEnterNewPassword = "pleaseEnterNewPassword"

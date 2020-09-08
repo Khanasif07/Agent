@@ -50,41 +50,49 @@ extension UserTabBarController {
     }
     
     func setupTabBar() {
-        let firstScene = createTabVC(vc: UnderDevelopmentVC.self, storyBoard: .PostLogin)
-        let secondScene = createTabVC(vc: UnderDevelopmentVC.self, storyBoard: .PostLogin)
-        let thirdScene = createTabVC(vc: UnderDevelopmentVC.self, storyBoard: .PostLogin)
-        let fourthScene = createTabVC(vc: UnderDevelopmentVC.self, storyBoard: .PostLogin)
-        self.viewControllers = [firstScene, secondScene, thirdScene, fourthScene]
+        let firstScene = createTabVC(vc: HomeVC.self, storyBoard: .Home)
+        let secondScene = createTabVC(vc: ExploreVC.self, storyBoard: .Home)
+        let thirdScene = createTabVC(vc: NotificationVC.self, storyBoard: .Home)
+        let fourthScene = createTabVC(vc: SettingVC.self, storyBoard: .Home)
+        let fifthScene = createTabVC(vc: ProfileVC.self, storyBoard: .Home)
+        self.viewControllers = [firstScene, secondScene, thirdScene, fourthScene,fifthScene]
         guard let tabBarItems = self.tabBar.items else {return}
         for index in 0...tabBarItems.endIndex - 1 {
             switch index {
             case 0:
                 if let item = self.tabBar.items?[index] {
-                    item.image = #imageLiteral(resourceName: "icHome")
+                    item.image = #imageLiteral(resourceName: "home")
                     item.title = LocalizedString.home.localized
-                    item.selectedImage = #imageLiteral(resourceName: "icHome")
-                    item.setTitleTextAttributes([NSAttributedString.Key.font: AppFonts.MuliRegular.withSize(10)], for: .normal)
+                    item.selectedImage = #imageLiteral(resourceName: "home")
+                    item.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16.0)], for: .normal)
                 }
             case 1:
                 if let item = self.tabBar.items?[index] {
-                    item.image = #imageLiteral(resourceName: "icExplore")
+                    item.image = #imageLiteral(resourceName: "secondTab")
                     item.title = LocalizedString.setting.localized
-                    item.selectedImage = #imageLiteral(resourceName: "icExplore")
-                    item.setTitleTextAttributes([NSAttributedString.Key.font: AppFonts.MuliRegular.withSize(10)], for: .normal)
+                    item.selectedImage = #imageLiteral(resourceName: "secondTab")
+                    item.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16.0)], for: .normal)
                 }
             case 2:
                 if let item = self.tabBar.items?[index] {
-                    item.image = #imageLiteral(resourceName: "group3125")
+                    item.image = #imageLiteral(resourceName: "notification")
                     item.title = LocalizedString.notification.localized
-                    item.selectedImage = #imageLiteral(resourceName: "group3125")
-                    item.setTitleTextAttributes([NSAttributedString.Key.font: AppFonts.MuliRegular.withSize(10)], for: .normal)
+                    item.selectedImage = #imageLiteral(resourceName: "notification")
+                    item.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16.0)], for: .normal)
+                }
+            case 3:
+                if let item = self.tabBar.items?[index] {
+                    item.image = #imageLiteral(resourceName: "setting")
+                    item.title = LocalizedString.setting.localized
+                    item.selectedImage = #imageLiteral(resourceName: "setting")
+                    item.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16.0)], for: .normal)
                 }
             default:
                 if let item = self.tabBar.items?[index] {
-                    item.image = #imageLiteral(resourceName: "icProfile-1")
+                    item.image = #imageLiteral(resourceName: "profile")
                     item.title = LocalizedString.profile.localized
-                    item.selectedImage = #imageLiteral(resourceName: "icProfile-1")
-                    item.setTitleTextAttributes([NSAttributedString.Key.font: AppFonts.MuliRegular.withSize(10)], for: .normal)
+                    item.selectedImage = #imageLiteral(resourceName: "profile")
+                    item.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16.0)], for: .normal)
                 }
             }
         }

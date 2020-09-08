@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1oO-Pe-Sti">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pkO-Qo-rzv">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
@@ -230,7 +230,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tZm-aF-J5j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1147.8260869565217" y="153.34821428571428"/>
+            <point key="canvasLocation" x="2057.971014492754" y="153.34821428571428"/>
         </scene>
         <!--LoginVC-->
         <scene sceneID="cCq-c4-lbL">
@@ -315,7 +315,7 @@
                     <viewLayoutGuide key="safeArea" id="0wL-Q8-oE3"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="2003" y="147"/>
+            <point key="canvasLocation" x="2913.04347826087" y="146.65178571428569"/>
         </scene>
         <!--Sign UpVC-->
         <scene sceneID="sIi-58-RBG">
@@ -424,7 +424,7 @@
                     <viewLayoutGuide key="safeArea" id="PX0-uo-y41"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="2786" y="147"/>
+            <point key="canvasLocation" x="3695.652173913044" y="146.65178571428569"/>
         </scene>
         <!--Login With PhoneVC-->
         <scene sceneID="Nm3-xe-IAP">
@@ -522,7 +522,7 @@ with Country Code  </string>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rxd-Qn-MGX">
                                                 <rect key="frame" x="42" y="0.0" width="32" height="30"/>
-                                                <state key="normal" image="group1431"/>
+                                                <state key="normal" image="group3714"/>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -589,7 +589,7 @@ with Country Code  </string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hEu-cu-aVU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3605.7971014492755" y="146.65178571428569"/>
+            <point key="canvasLocation" x="4515.9420289855079" y="146.65178571428569"/>
         </scene>
         <!--Success PopupVC-->
         <scene sceneID="ou4-vx-fpl">
@@ -711,7 +711,7 @@ your old password.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kFb-Rf-kvk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4358" y="143"/>
+            <point key="canvasLocation" x="5268.115942028986" y="142.63392857142856"/>
         </scene>
         <!--Otp VerificationVC-->
         <scene sceneID="dFW-qy-Lkh">
@@ -970,7 +970,7 @@ your old password.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jIS-HN-aGa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5143" y="140"/>
+            <point key="canvasLocation" x="6052.1739130434789" y="139.95535714285714"/>
         </scene>
         <!--CountryVC-->
         <scene sceneID="nod-Vl-kxh">
@@ -987,8 +987,9 @@ your old password.</string>
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e4t-mY-b2p">
-                                                <rect key="frame" x="16" y="5" width="56" height="34"/>
+                                                <rect key="frame" x="16" y="4" width="53" height="36"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
                                                 <color key="tintColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Cancel">
                                                     <color key="titleColor" red="0.41960784309999999" green="0.41960784309999999" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -1015,7 +1016,7 @@ your old password.</string>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dgt-8f-EeH">
                                         <rect key="frame" x="0.0" y="44" width="414" height="1"/>
-                                        <color key="backgroundColor" red="0.41960784309999999" green="0.41960784309999999" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="j0a-60-Q5j"/>
                                         </constraints>
@@ -1081,30 +1082,171 @@ your old password.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XI0-4g-oci" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5802.898550724638" y="142.63392857142856"/>
+            <point key="canvasLocation" x="6713.04347826087" y="142.63392857142856"/>
+        </scene>
+        <!--Reset PasswordVC-->
+        <scene sceneID="Ix5-c6-EFd">
+            <objects>
+                <viewController storyboardIdentifier="ResetPasswordVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="sD4-ak-dXE" customClass="ResetPasswordVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xa2-N3-9Ti">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gx8-kb-d4r">
+                                <rect key="frame" x="7" y="44" width="414" height="56"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reset Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5RJ-GB-cJt">
+                                        <rect key="frame" x="144" y="16.5" width="126.5" height="23.5"/>
+                                        <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uQz-aK-uXN">
+                                        <rect key="frame" x="6" y="11" width="36" height="34"/>
+                                        <state key="normal" image="icBackward"/>
+                                        <connections>
+                                            <action selector="backBtnAction:" destination="klr-X5-Bul" eventType="touchUpInside" id="9J7-Wc-OUN"/>
+                                            <action selector="backBtnAction:" destination="sD4-ak-dXE" eventType="touchUpInside" id="V0c-BW-u6J"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="5RJ-GB-cJt" firstAttribute="centerX" secondItem="gx8-kb-d4r" secondAttribute="centerX" id="IT1-9a-ddY"/>
+                                    <constraint firstItem="5RJ-GB-cJt" firstAttribute="centerY" secondItem="gx8-kb-d4r" secondAttribute="centerY" id="LXg-nt-GVB"/>
+                                    <constraint firstItem="uQz-aK-uXN" firstAttribute="centerY" secondItem="gx8-kb-d4r" secondAttribute="centerY" id="bxz-ND-s1Y"/>
+                                    <constraint firstAttribute="height" constant="56" id="swV-I1-oZe"/>
+                                    <constraint firstItem="uQz-aK-uXN" firstAttribute="leading" secondItem="gx8-kb-d4r" secondAttribute="leading" constant="6" id="zzP-7z-mgn"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lbe-Gg-Af8">
+                                <rect key="frame" x="0.0" y="100" width="414" height="796"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Set New Password" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cYf-Qc-N7o" userLabel="Please Enter Your  9 Digit Mobile Number with Country Code">
+                                        <rect key="frame" x="16" y="41" width="382" height="19.5"/>
+                                        <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="14"/>
+                                        <color key="textColor" red="0.54117647059999996" green="0.58431372550000005" blue="0.61960784310000006" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="cYf-Qc-N7o" firstAttribute="top" secondItem="lbe-Gg-Af8" secondAttribute="top" constant="41" id="0wc-fU-ZK9"/>
+                                    <constraint firstItem="cYf-Qc-N7o" firstAttribute="leading" secondItem="lbe-Gg-Af8" secondAttribute="leading" constant="16" id="jzl-yt-SMr"/>
+                                    <constraint firstAttribute="trailing" secondItem="cYf-Qc-N7o" secondAttribute="trailing" constant="16" id="r0A-qb-mDd"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IWn-2N-oyc">
+                                <rect key="frame" x="16" y="184.5" width="382" height="275"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="et7-VC-c2c">
+                                        <rect key="frame" x="225" y="201" width="136" height="48"/>
+                                        <color key="backgroundColor" red="0.079948574519999996" green="0.141351648" blue="0.33735437909999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="136" id="dMM-Hs-Nl8"/>
+                                            <constraint firstAttribute="height" constant="48" id="oSb-HO-ZPJ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="16"/>
+                                        <state key="normal" title="Submit">
+                                            <color key="titleColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="sendOtpAction:" destination="klr-X5-Bul" eventType="touchUpInside" id="O58-jl-Q0x"/>
+                                            <action selector="submitBtnAction:" destination="sD4-ak-dXE" eventType="touchUpInside" id="w58-W8-0LD"/>
+                                        </connections>
+                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="E6P-l7-AI4">
+                                        <rect key="frame" x="26" y="44" width="335" height="125"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FwJ-sY-qMM" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                                <rect key="frame" x="0.0" y="0.0" width="335" height="56"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="56" id="8g1-Sl-sOw"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Enter New Password"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                                        <color key="value" red="0.69803921570000005" green="0.69803921570000005" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xKa-QF-8OD" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                                <rect key="frame" x="0.0" y="69" width="335" height="56"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Confirm New Password"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                                        <color key="value" red="0.69803921570000005" green="0.69803921570000005" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="E6P-l7-AI4" secondAttribute="trailing" constant="21" id="098-ES-8Ko"/>
+                                    <constraint firstItem="et7-VC-c2c" firstAttribute="top" secondItem="E6P-l7-AI4" secondAttribute="bottom" constant="32" id="74J-ab-xaa"/>
+                                    <constraint firstAttribute="trailing" secondItem="et7-VC-c2c" secondAttribute="trailing" constant="21" id="Lqo-B5-sJG"/>
+                                    <constraint firstItem="E6P-l7-AI4" firstAttribute="leading" secondItem="IWn-2N-oyc" secondAttribute="leading" constant="26" id="M0H-ob-FiU"/>
+                                    <constraint firstItem="E6P-l7-AI4" firstAttribute="top" secondItem="IWn-2N-oyc" secondAttribute="top" constant="44" id="NET-zL-DKT"/>
+                                    <constraint firstAttribute="bottom" secondItem="et7-VC-c2c" secondAttribute="bottom" constant="26" id="h7n-Ok-OHm"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="IWn-2N-oyc" firstAttribute="top" secondItem="cYf-Qc-N7o" secondAttribute="bottom" constant="24" id="92W-pq-tUc"/>
+                            <constraint firstItem="lbe-Gg-Af8" firstAttribute="bottom" secondItem="xa2-N3-9Ti" secondAttribute="bottom" id="C0c-Wn-6Qv"/>
+                            <constraint firstItem="gx8-kb-d4r" firstAttribute="leading" secondItem="Zen-8Y-thJ" secondAttribute="leading" constant="7" id="KLd-ql-fHj"/>
+                            <constraint firstItem="lbe-Gg-Af8" firstAttribute="leading" secondItem="Zen-8Y-thJ" secondAttribute="leading" id="KjP-Tt-oFs"/>
+                            <constraint firstItem="Zen-8Y-thJ" firstAttribute="trailing" secondItem="lbe-Gg-Af8" secondAttribute="trailing" id="QhW-RG-Ozl"/>
+                            <constraint firstItem="Zen-8Y-thJ" firstAttribute="trailing" secondItem="IWn-2N-oyc" secondAttribute="trailing" constant="16" id="dJL-rq-b8w"/>
+                            <constraint firstItem="Zen-8Y-thJ" firstAttribute="top" secondItem="gx8-kb-d4r" secondAttribute="top" id="jwy-ZT-n5p"/>
+                            <constraint firstItem="IWn-2N-oyc" firstAttribute="leading" secondItem="Zen-8Y-thJ" secondAttribute="leading" constant="16" id="kUd-hf-XDh"/>
+                            <constraint firstItem="gx8-kb-d4r" firstAttribute="trailing" secondItem="Zen-8Y-thJ" secondAttribute="trailing" constant="7" id="koG-6w-FQB"/>
+                            <constraint firstItem="lbe-Gg-Af8" firstAttribute="top" secondItem="gx8-kb-d4r" secondAttribute="bottom" id="x64-nq-pNO"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Zen-8Y-thJ"/>
+                    </view>
+                    <connections>
+                        <outlet property="confirmTxtField" destination="xKa-QF-8OD" id="Udh-mN-luI"/>
+                        <outlet property="dataContainerView" destination="IWn-2N-oyc" id="DJo-hO-rg3"/>
+                        <outlet property="newPassTxtField" destination="FwJ-sY-qMM" id="RFq-N1-yK0"/>
+                        <outlet property="submitBtn" destination="et7-VC-c2c" id="q9y-IP-U6j"/>
+                        <outlet property="titlelbl" destination="5RJ-GB-cJt" id="qTb-TJ-xO0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7lY-hP-hxV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7527" y="146"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="RYd-a4-dWc">
+        <scene sceneID="Xzz-WD-8KO">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="1oO-Pe-Sti" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="pkO-Qo-rzv" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="KhV-rw-z1C">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="coe-3Q-Ec6">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="uvL-9z-jXM" kind="relationship" relationship="rootViewController" id="VoW-XO-9Lj"/>
+                        <segue destination="uvL-9z-jXM" kind="relationship" relationship="rootViewController" id="yo4-D2-kj4"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dIj-KR-Se5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T05-FY-g0i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="237.68115942028987" y="153.34821428571428"/>
+            <point key="canvasLocation" x="1147.8260869565217" y="153.34821428571428"/>
         </scene>
     </scenes>
     <resources>
         <image name="group1431" width="24" height="24"/>
         <image name="group1432" width="74" height="74"/>
         <image name="group3710" width="298" height="145.5"/>
+        <image name="group3714" width="16" height="16"/>
         <image name="icBackward" width="36" height="34"/>
         <image name="union" width="375" height="526"/>
     </resources>

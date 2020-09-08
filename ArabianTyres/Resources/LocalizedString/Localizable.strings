@@ -15,6 +15,9 @@
 "removePicture" = "Remove Picture";
 "alert" = "Alert";
 "settings" = "Settings";
+"submit" = "Submit";
+"login" = "Login";
+"sendOtp" = "Send OTP";
 "english" = "English";
 "arabic" = "عربى";
 "continueTitle" = "Continue";
@@ -52,8 +55,9 @@
 
 // MARK: - Validation Messages
 //==================================
+"newPassword" = "New Password";
 "pleaseEnterValidEmail" = "Please enter a valid email address";
-"pleaseEnterValidPassword" = "Please enter an alpha-numeric password with atleast 8 characters and one uppercase letter";
+"pleaseEnterValidPassword" = "Please enter a valid password (Minimum 8 and max 18 characters, one uppercase and one number)";
 "nameShouldBeAtleastMinCharacters" = "Minimum length of first name should be greater than or equal to 3";
 "phoneNoShouldBeAtleastMinCharacters" = "Phone number length must be 8 to 14 charcters long";
 "pleaseEnterEmail" = "Please enter email address";
@@ -77,6 +81,9 @@
 "enterYourMobNumber" = "Enter Your Mobile No";
 "confirmPassword" = "Confirm Password";
 "alreadyHaveAnAccount" = "Already have an account?";
+"enterNewPassword" = "Enter New Password";
+"confirmNewPassword" = "Confirm New Password";
+"passwordDoesNotMatch" = "Password doesn\'t match";
 
 // MARK: - Signup VC Values
 //==============================

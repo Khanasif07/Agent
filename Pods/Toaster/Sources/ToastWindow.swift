@@ -132,7 +132,7 @@ open class ToastWindow: UIWindow {
     self.frame.origin = .zero
 
     DispatchQueue.main.async {
-      ToastCenter.default.currentToast?.view.setNeedsLayout()
+//      ToastCenter.default.currentToast?.view.setNeedsLayout()
     }
   }
 

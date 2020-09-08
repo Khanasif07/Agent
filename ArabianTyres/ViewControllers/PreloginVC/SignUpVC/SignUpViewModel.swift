@@ -82,6 +82,12 @@ struct SignUpViewModel {
             errorMessage = LocalizedString.pleaseEnterValidPassword.localized
             return (status: validationStatus, message: errorMessage)
         }
+        
+        if password != self.model.confirmPasssword{
+            validationStatus = false
+            errorMessage = LocalizedString.passwordDoesNotMatch.localized
+            return (status: validationStatus, message: errorMessage)
+        }
         return (status: validationStatus, message: errorMessage)
     }
     

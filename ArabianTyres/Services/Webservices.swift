@@ -248,6 +248,18 @@ extension WebServices{
         }
     }
     
+    // MARK:- verifyForgotPasswordOTP Otp
+    //=================
+    static func verifyForgotPasswordOTP(parameters: JSONDictionary,
+                          success: @escaping SuccessResponse,
+                          failure: @escaping FailureResponse) {
+        self.commonPutAPI(parameters: parameters, endPoint: .verifyforgetPasswordOtp, success: { (json) in
+             success(json)
+        }) { (error) -> (Void) in
+             failure(error)
+        }
+    }
+    
     // MARK:- Verify Otp
     //=================
     static func verifyOtp(parameters: JSONDictionary,
@@ -265,9 +277,21 @@ extension WebServices{
         }
     }
     
+    // MARK:- Reset Password APi
+    //=================
+    static func resetPassword(parameters: JSONDictionary,
+                              success: @escaping SuccessResponse,
+                              failure: @escaping FailureResponse) {
+        self.commonPutAPI(parameters: parameters, endPoint: .resetPassword, success: { (json) in
+            success(json)
+        }) { (error) -> (Void) in
+            failure(error)
+        }
+    }
+    
     // MARK:- Resent  Otp
     //=================
-    static func resetOtp(parameters: JSONDictionary,
+    static func resendOtp(parameters: JSONDictionary,
                          success: @escaping ResponseMessage,
                          failure: @escaping FailureResponse) {
         self.commonPostAPI(parameters: parameters, endPoint: .resendOtp,loader: true, success: { (json) in
@@ -289,4 +313,17 @@ extension WebServices{
         }
     }
     
+    // MARK:- ForGot password
+    //=================
+    static func forgotPassword(parameters: JSONDictionary,
+                         success: @escaping ResponseMessage,
+                         failure: @escaping FailureResponse) {
+        self.commonPostAPI(parameters: parameters, endPoint: .forgetPassword,loader: true, success: { (json) in
+            success(json[ApiKey.message].stringValue)
+        }) { (error) -> (Void) in
+            failure(error)
+        }
+    }
+    
 }
+

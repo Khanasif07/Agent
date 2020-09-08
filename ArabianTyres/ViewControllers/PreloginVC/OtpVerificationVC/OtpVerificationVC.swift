@@ -48,7 +48,11 @@ class OtpVerificationVC: BaseVC {
     //===========================
     @IBAction func verifyBtnAction(_ sender: UIButton) {
         self.view.endEditing(true)
-        self.viewModel.verifyOTP(dict: getDict())
+        if self.viewModel.isComeForVerifyPassword{
+            self.viewModel.verifyForgotPasswordOTP(dict: getDict())
+        } else {
+             self.viewModel.verifyOTP(dict: getDict())
+        }
     }
     
     @IBAction func resendOtpBtnAction(_ sender: UIButton) {
@@ -117,8 +121,13 @@ extension OtpVerificationVC {
     }
     
     private func getDict() -> JSONDictionary {
-        let dict : JSONDictionary = [ApiKey.phoneNo : self.viewModel.phoneNo , ApiKey.countryCode : self.viewModel.countryCode,ApiKey.otp: self.otpArray.joined(), ApiKey.device : [ApiKey.platform : "ios",ApiKey.token : DeviceDetail.deviceToken].toJSONString() ?? [:]]
-        return dict
+        if self.viewModel.isComeForVerifyPassword{
+            let dict : JSONDictionary = [ApiKey.phoneNo : self.viewModel.phoneNo , ApiKey.countryCode : self.viewModel.countryCode,ApiKey.otp: self.otpArray.joined()]
+            return dict
+        }else{
+            let dict : JSONDictionary = [ApiKey.phoneNo : self.viewModel.phoneNo , ApiKey.countryCode : self.viewModel.countryCode,ApiKey.otp: self.otpArray.joined(), ApiKey.device : [ApiKey.platform : "ios",ApiKey.token : DeviceDetail.deviceToken].toJSONString() ?? [:]]
+            return dict
+        }
     }
 }
 
@@ -201,7 +210,7 @@ extension OtpVerificationVC: SuccessPopupVCDelegate{
 extension OtpVerificationVC: OtpVerificationVMDelegate{
     func resendSuccess(message: String) {
         ToastView.shared.showLongToast(self.view, msg: message)
-        AppRouter.showSuccessPopUp(vc: self)
+        AppRouter.showSuccessPopUp(vc: self,title: "OTP Verified",desc: "You have successfully verified your mobile no.")
     }
     
     func resendFailed(error:String) {
@@ -209,11 +218,20 @@ extension OtpVerificationVC: OtpVerificationVMDelegate{
     }
     
     func otpVerificationFailed(error:String) {
-         ToastView.shared.showLongToast(self.view, msg: error)
+        ToastView.shared.showLongToast(self.view, msg: error)
     }
     
     func otpVerifiedSuccessfully(message: String) {
         ToastView.shared.showLongToast(self.view, msg: message)
-        AppRouter.showSuccessPopUp(vc: self)
+        AppRouter.showSuccessPopUp(vc: self,title: "OTP Verified",desc: "You have successfully verified your mobile no.")
+    }
+    
+    func verifyForgotPasswordOTPSuccess(message: String) {
+        ToastView.shared.showLongToast(self.view, msg: message)
+        AppRouter.goToResetPasswordVC(vc: self,resetToken: self.viewModel.resetToken)
+    }
+    
+    func verifyForgotPasswordOTPFailed(error:String) {
+        ToastView.shared.showLongToast(self.view, msg: error)
     }
 }
