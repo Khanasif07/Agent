@@ -127,12 +127,12 @@ extension LoginWithPhoneVC: UITextFieldDelegate {
 //=================================
 extension LoginWithPhoneVC: LoginWithPhoneVMDelegate {
     func loginWithPhoneSuccess() {
-        CommonFunctions.showToastWithMessage("")
+        ToastView.shared.showLongToast(self.view, msg: "")
         AppRouter.goToOtpVerificationVC(vc: self,phoneNo: self.viewModel.phoneNo,countryCode:self.viewModel.countryCode)
     }
     
     func loginWithPhoneFailed(msg: String, error: Error) {
-        CommonFunctions.showToastWithMessage(msg)
+        ToastView.shared.showLongToast(self.view, msg: msg)
     }
     
 }

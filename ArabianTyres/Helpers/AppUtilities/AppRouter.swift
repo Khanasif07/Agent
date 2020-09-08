@@ -98,8 +98,8 @@ enum AppRouter {
     }
     
     static func goToUserHome() {
-        let homeScene = UserTabBarController.instantiate(fromAppStoryboard: .Home)
-        setAsWindowRoot(homeScene)
+//        let homeScene = UserTabBarController.instantiate(fromAppStoryboard: .Home)
+//        setAsWindowRoot(homeScene)
     }
     
     static func goToGarageHome(){

@@ -79,8 +79,7 @@ extension SignUpVC {
             self.viewModel.signUp(getDict())
         }else{
             if !self.viewModel.checkSignupValidations(parameters: getDict()).message.isEmpty{
-                showAlert(msg: self.viewModel.checkSignupValidations(parameters: getDict()).message)
-//                CommonFunctions.showToastWithMessage(self.viewModel.checkSignupValidations(parameters: getDict()).message)
+                ToastView.shared.showLongToast(self.view, msg: self.viewModel.checkSignupValidations(parameters: getDict()).message)
             }
         }
     }
@@ -186,12 +185,12 @@ extension SignUpVC: SignUpVMDelegate{
     }
     
     func signUpSuccess(message: String) {
-        CommonFunctions.showToastWithMessage(message)
+        ToastView.shared.showLongToast(self.view, msg: message)
         AppRouter.goToOtpVerificationVC(vc: self, phoneNo: self.viewModel.model.phoneNo, countryCode: self.viewModel.model.countryCode)
     }
     
     func signUpFailed(message: String) {
-        CommonFunctions.showToastWithMessage(message)
+        ToastView.shared.showLongToast(self.view, msg: message)
     }
     
     func invalidInput(message: String) {

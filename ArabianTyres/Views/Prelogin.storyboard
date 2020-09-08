@@ -3,7 +3,6 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -984,38 +983,84 @@ your old password.</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ry-Ju-Hyv">
                                 <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e4t-mY-b2p">
-                                        <rect key="frame" x="183" y="0.0" width="48" height="48"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="tintColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" image="disclouser.png"/>
-                                    </button>
-                                    <searchBar contentMode="redraw" searchBarStyle="prominent" placeholder="Search country" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1CP-ht-Mds">
-                                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PUJ-jh-9yZ">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e4t-mY-b2p">
+                                                <rect key="frame" x="16" y="5" width="56" height="34"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Cancel">
+                                                    <color key="titleColor" red="0.41960784309999999" green="0.41960784309999999" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="cancelBtnAction:" destination="CgC-vd-eIT" eventType="touchUpInside" id="PZk-yS-aS4"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Country Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HXy-jI-E7C">
+                                                <rect key="frame" x="126.5" y="10.5" width="161" height="23.5"/>
+                                                <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="bGL-7c-0fq"/>
+                                            <constraint firstItem="HXy-jI-E7C" firstAttribute="centerY" secondItem="PUJ-jh-9yZ" secondAttribute="centerY" id="Ojk-Mo-LiG"/>
+                                            <constraint firstItem="e4t-mY-b2p" firstAttribute="leading" secondItem="PUJ-jh-9yZ" secondAttribute="leading" constant="16" id="aWR-ff-0fe"/>
+                                            <constraint firstItem="HXy-jI-E7C" firstAttribute="centerX" secondItem="PUJ-jh-9yZ" secondAttribute="centerX" id="dD5-d8-glJ"/>
+                                            <constraint firstAttribute="height" constant="44" id="ytc-aF-Vhw"/>
+                                            <constraint firstItem="e4t-mY-b2p" firstAttribute="centerY" secondItem="PUJ-jh-9yZ" secondAttribute="centerY" id="zJ5-lJ-GnQ"/>
                                         </constraints>
-                                        <color key="tintColor" name="peleRed"/>
-                                        <color key="barTintColor" red="1" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </searchBar>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dgt-8f-EeH">
+                                        <rect key="frame" x="0.0" y="44" width="414" height="1"/>
+                                        <color key="backgroundColor" red="0.41960784309999999" green="0.41960784309999999" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="j0a-60-Q5j"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RtN-OM-Hez">
+                                        <rect key="frame" x="0.0" y="45" width="414" height="82"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search country by name, code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5PL-NE-4Jw">
+                                                <rect key="frame" x="16" y="14" width="382" height="52"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="textFieldDidChanged:" destination="CgC-vd-eIT" eventType="editingChanged" id="rd7-dP-foh"/>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="82" id="4yh-eN-AuW"/>
+                                            <constraint firstItem="5PL-NE-4Jw" firstAttribute="top" secondItem="RtN-OM-Hez" secondAttribute="top" constant="14" id="IvN-S6-ELf"/>
+                                            <constraint firstAttribute="bottom" secondItem="5PL-NE-4Jw" secondAttribute="bottom" constant="16" id="RG9-Il-P0t"/>
+                                            <constraint firstAttribute="trailing" secondItem="5PL-NE-4Jw" secondAttribute="trailing" constant="16" id="hPO-JI-Ytq"/>
+                                            <constraint firstItem="5PL-NE-4Jw" firstAttribute="leading" secondItem="RtN-OM-Hez" secondAttribute="leading" constant="16" id="jJY-Gh-zBQ"/>
+                                        </constraints>
+                                    </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TmH-gZ-zPC">
-                                        <rect key="frame" x="0.0" y="92" width="414" height="760"/>
+                                        <rect key="frame" x="0.0" y="127" width="414" height="725"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="e4t-mY-b2p" firstAttribute="top" secondItem="2ry-Ju-Hyv" secondAttribute="top" id="2li-x6-l3m"/>
+                                    <constraint firstItem="dgt-8f-EeH" firstAttribute="leading" secondItem="2ry-Ju-Hyv" secondAttribute="leading" id="0sP-X8-IaV"/>
+                                    <constraint firstAttribute="trailing" secondItem="dgt-8f-EeH" secondAttribute="trailing" id="6q2-fv-PQZ"/>
+                                    <constraint firstItem="RtN-OM-Hez" firstAttribute="top" secondItem="dgt-8f-EeH" secondAttribute="bottom" id="8xx-TN-h5a"/>
                                     <constraint firstItem="TmH-gZ-zPC" firstAttribute="leading" secondItem="2ry-Ju-Hyv" secondAttribute="leading" id="DSD-aA-fHG"/>
-                                    <constraint firstItem="TmH-gZ-zPC" firstAttribute="top" secondItem="1CP-ht-Mds" secondAttribute="bottom" symbolic="YES" id="O32-Nq-4JI"/>
+                                    <constraint firstItem="PUJ-jh-9yZ" firstAttribute="top" secondItem="2ry-Ju-Hyv" secondAttribute="top" id="HeB-dj-BKQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="PUJ-jh-9yZ" secondAttribute="trailing" id="Lde-LH-94s"/>
+                                    <constraint firstItem="RtN-OM-Hez" firstAttribute="leading" secondItem="2ry-Ju-Hyv" secondAttribute="leading" id="MxA-Lb-4PB"/>
+                                    <constraint firstItem="PUJ-jh-9yZ" firstAttribute="leading" secondItem="2ry-Ju-Hyv" secondAttribute="leading" id="OWx-Ea-M6a"/>
                                     <constraint firstAttribute="bottom" secondItem="TmH-gZ-zPC" secondAttribute="bottom" id="RZR-Q4-Ye3"/>
-                                    <constraint firstItem="e4t-mY-b2p" firstAttribute="centerX" secondItem="2ry-Ju-Hyv" secondAttribute="centerX" id="U9i-H9-Ubv"/>
+                                    <constraint firstItem="dgt-8f-EeH" firstAttribute="top" secondItem="PUJ-jh-9yZ" secondAttribute="bottom" id="Uvl-UY-THJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="RtN-OM-Hez" secondAttribute="trailing" id="W1U-lC-Bg8"/>
                                     <constraint firstAttribute="trailing" secondItem="TmH-gZ-zPC" secondAttribute="trailing" id="dSm-7u-jxw"/>
-                                    <constraint firstAttribute="trailing" secondItem="1CP-ht-Mds" secondAttribute="trailing" symbolic="YES" id="e4Q-GH-Teh"/>
-                                    <constraint firstItem="1CP-ht-Mds" firstAttribute="top" secondItem="e4t-mY-b2p" secondAttribute="bottom" id="nof-0a-iSZ"/>
-                                    <constraint firstItem="1CP-ht-Mds" firstAttribute="leading" secondItem="2ry-Ju-Hyv" secondAttribute="leading" symbolic="YES" id="vwh-fi-gwo"/>
+                                    <constraint firstItem="TmH-gZ-zPC" firstAttribute="top" secondItem="RtN-OM-Hez" secondAttribute="bottom" id="tSB-7D-wst"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1029,14 +1074,14 @@ your old password.</string>
                         <viewLayoutGuide key="safeArea" id="lDK-rg-m7e"/>
                     </view>
                     <connections>
-                        <outlet property="countrySeacrhBar" destination="1CP-ht-Mds" id="ArV-Tt-kGz"/>
                         <outlet property="dropDownbutton" destination="e4t-mY-b2p" id="BcF-UE-feL"/>
+                        <outlet property="searchTxtField" destination="5PL-NE-4Jw" id="yDZ-sw-CzE"/>
                         <outlet property="tableView" destination="TmH-gZ-zPC" id="PM9-2N-akC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XI0-4g-oci" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5803" y="143"/>
+            <point key="canvasLocation" x="5802.898550724638" y="142.63392857142856"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="RYd-a4-dWc">
@@ -1057,14 +1102,10 @@ your old password.</string>
         </scene>
     </scenes>
     <resources>
-        <image name="disclouser.png" width="24" height="24"/>
         <image name="group1431" width="24" height="24"/>
         <image name="group1432" width="74" height="74"/>
         <image name="group3710" width="298" height="145.5"/>
         <image name="icBackward" width="36" height="34"/>
         <image name="union" width="375" height="526"/>
-        <namedColor name="peleRed">
-            <color red="0.32899999618530273" green="0.32400000095367432" blue="0.4779999852180481" alpha="0.33000001311302185" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
     </resources>
 </document>

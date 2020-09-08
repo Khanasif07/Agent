@@ -12,7 +12,7 @@ class CountryVC: BaseVC {
     
     // MARK: - IBOutlets
     //===========================
-    @IBOutlet weak var countrySeacrhBar: UISearchBar!
+    @IBOutlet weak var searchTxtField: UITextField!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var dropDownbutton: UIButton!
     
@@ -25,7 +25,7 @@ class CountryVC: BaseVC {
     //===========================
     override func viewDidLoad() {
         super.viewDidLoad()
-        countrySeacrhBar.delegate = self
+        searchTxtField.delegate = self
         initialSetup()
         viewModel.getCountyData()
         self.dropDownbutton.tintColor = AppColors.fontPrimaryColor
@@ -33,10 +33,15 @@ class CountryVC: BaseVC {
     
     // MARK: - IBActions
     //===========================
-    
-    @IBAction func droDownButtonTapped(_ sender: UIButton) {
+    @IBAction func cancelBtnAction(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func textFieldDidChanged(_ sender: UITextField) {
+        viewModel.searchCountry = sender.text?.byRemovingLeadingTrailingWhiteSpaces ?? ""
+        tableView.reloadData()
+    }
+    
 }
 
 // MARK: - Extension for functions
@@ -47,29 +52,22 @@ extension CountryVC {
         tableView.registerCell(with: CountryCodeTableCell.self)
         tableView.delegate = self
         tableView.dataSource = self
+        let show1 = UIButton()
+        show1.isSelected = false
+        self.searchTxtField.setButtonToRightView(btn: show1, selectedImage: #imageLiteral(resourceName: "icon"), normalImage: #imageLiteral(resourceName: "icon"), size: CGSize(width: 30, height: 30))
     }
 }
 
 //MARK:- UISearchBarDelegate
 //==========================
-extension CountryVC: UISearchBarDelegate{
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        viewModel.searchCountry = searchText
-        tableView.reloadData()
-    }
-    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        return true
-    }
-    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
-        return true
-    }
+extension CountryVC: UITextFieldDelegate{
 }
 
 //MARK:-  UITableViewDelegate
 //===========================
 extension CountryVC: UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 42
+        return 51
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         

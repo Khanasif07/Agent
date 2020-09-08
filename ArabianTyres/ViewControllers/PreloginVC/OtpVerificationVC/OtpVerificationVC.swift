@@ -200,17 +200,20 @@ extension OtpVerificationVC: SuccessPopupVCDelegate{
 //=======================================
 extension OtpVerificationVC: OtpVerificationVMDelegate{
     func resendSuccess(message: String) {
-        CommonFunctions.showToastWithMessage(message)
+        ToastView.shared.showLongToast(self.view, msg: message)
         AppRouter.showSuccessPopUp(vc: self)
     }
+    
     func resendFailed(error:String) {
-        CommonFunctions.showToastWithMessage(error)
+        ToastView.shared.showLongToast(self.view, msg: error)
     }
+    
     func otpVerificationFailed(error:String) {
-        CommonFunctions.showToastWithMessage(error)
+         ToastView.shared.showLongToast(self.view, msg: error)
     }
+    
     func otpVerifiedSuccessfully(message: String) {
-        CommonFunctions.showToastWithMessage(message)
+        ToastView.shared.showLongToast(self.view, msg: message)
         AppRouter.showSuccessPopUp(vc: self)
     }
 }
