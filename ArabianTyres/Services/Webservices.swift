@@ -260,6 +260,19 @@ extension WebServices{
         }
     }
     
+    
+    static func socialLoginAPI(parameters: JSONDictionary,
+                               success: @escaping SuccessResponse,
+                               failure: @escaping FailureResponse) {
+        self.commonPostAPI(parameters: parameters, endPoint: .socialLogin, loader: true, success: { (json) in
+            let user = UserModel.init(json[ApiKey.data])
+            UserModel.main = user
+            success(json)
+        }) { (error) -> (Void) in
+            failure(error)
+        }
+    }
+    
     // MARK:- Verify Otp
     //=================
     static func verifyOtp(parameters: JSONDictionary,

@@ -15,6 +15,13 @@ protocol SignInVMDelegate: NSObjectProtocol {
     func signInSuccess(userModel: UserModel)
     func signInFailed(message: String)
     func invalidInput(message: String)
+    func socailLoginApiSuccess(message: String)
+    func socailLoginApiFailure(message: String)
+}
+
+extension SignInVMDelegate {
+    func socailLoginApiSuccess(message: String) {}
+    func socailLoginApiFailure(message: String) {}
 }
 
 struct LoginViewModel {
@@ -64,4 +71,13 @@ struct LoginViewModel {
         return (status: validationStatus, message: errorMessage)
     }
     
+    func socailLoginApi(parameters : JSONDictionary) {
+        WebServices.socialLoginAPI(parameters: parameters, success: { (json) in
+            
+            self.delegate?.socailLoginApiSuccess(message: "")
+        }) { (error) -> (Void) in
+            self.delegate?.socailLoginApiFailure(message: error.localizedDescription)
+            
+        }
+    }
 }

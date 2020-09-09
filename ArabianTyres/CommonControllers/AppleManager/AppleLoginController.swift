@@ -19,20 +19,20 @@ class AppleLoginController: NSObject{
     weak var delegate : AppleSignInProtocal?
     static let shared = AppleLoginController()
     //============================Apple_Login=========================================
-//
-//    func apploginButton(stackAppleLogin: UIStackView, vc: UIViewController){
-//        if #available(iOS 13.0, *) {
-//            let authorizationButton = ASAuthorizationAppleIDButton(type: .continue, style: .black)
-////            stackAppleLogin.addArrangedSubview(authorizationButton)
-//            stackAppleLogin.insertArrangedSubview(authorizationButton, at: 0)
-//            authorizationButton.addTarget(self, action: #selector(appleSignInTapped), for: .touchUpInside)
-//            AppleLoginController.shared.delegate = vc as? AppleSignInProtocal
-//        } else {
-//            // Fallback on earlier versions
-//        }
-//    }
+
+    func apploginButton(stackAppleLogin: UIStackView, vc: UIViewController){
+        if #available(iOS 13.0, *) {
+            let authorizationButton = ASAuthorizationAppleIDButton(type: .continue, style: .black)
+//            stackAppleLogin.addArrangedSubview(authorizationButton)
+            stackAppleLogin.insertArrangedSubview(authorizationButton, at: 1)
+            authorizationButton.addTarget(self, action: #selector(appleSignInTapped), for: .touchUpInside)
+            AppleLoginController.shared.delegate = vc as? AppleSignInProtocal
+        } else {
+            // Fallback on earlier versions
+        }
+    }
     
-    func appleSignInTapped(vc: UIViewController) {
+    @objc func appleSignInTapped(vc: UIViewController) {
         if #available(iOS 13.0, *) {
             AppleLoginController.shared.delegate = vc as? AppleSignInProtocal
             let provider = ASAuthorizationAppleIDProvider()

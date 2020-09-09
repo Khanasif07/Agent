@@ -225,6 +225,7 @@
 		8481FAAE25015D9000AB6EFB /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		84E166E3250362DE00C2F2EF /* SuccessPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessPopupVC.swift; sourceTree = "<group>"; };
 		8A21614890BB1C8443A578F3 /* Pods-ArabianTyres.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArabianTyres.release.xcconfig"; path = "Target Support Files/Pods-ArabianTyres/Pods-ArabianTyres.release.xcconfig"; sourceTree = "<group>"; };
+		A493133B2508BF68007110E4 /* ArabianTyres.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ArabianTyres.entitlements; sourceTree = "<group>"; };
 		B2C00CD38A98EBA313A070C9 /* Pods_ArabianTyres.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArabianTyres.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -447,6 +448,7 @@
 		8481F9FB2500AA9A00AB6EFB /* ArabianTyres */ = {
 			isa = PBXGroup;
 			children = (
+				A493133B2508BF68007110E4 /* ArabianTyres.entitlements */,
 				8481FA182500BA1E00AB6EFB /* Services */,
 				8481FA172500BA1200AB6EFB /* Helpers */,
 				8481FA162500BA0000AB6EFB /* Views */,
@@ -1111,6 +1113,7 @@
 			baseConfigurationReference = 19AB33EFB3362961FDB4026A /* Pods-ArabianTyres.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ArabianTyres/ArabianTyres.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M3PU2LLYPJ;
 				INFOPLIST_FILE = ArabianTyres/Resources/Info.plist;
@@ -1130,6 +1133,7 @@
 			baseConfigurationReference = 8A21614890BB1C8443A578F3 /* Pods-ArabianTyres.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ArabianTyres/ArabianTyres.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M3PU2LLYPJ;
 				INFOPLIST_FILE = ArabianTyres/Resources/Info.plist;
