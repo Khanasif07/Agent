@@ -39,7 +39,6 @@ extension UserTabBarController {
         self.tabBar.backgroundColor = UIColor.white
         setupTabBar()
         self.delegate = self
-//        setUpNavigationBar()
     }
     
     private func createTabVC(vc: UIViewController.Type, storyBoard: AppStoryboard) -> UIViewController {
@@ -62,47 +61,31 @@ extension UserTabBarController {
             case 0:
                 if let item = self.tabBar.items?[index] {
                     item.image = #imageLiteral(resourceName: "home")
-                    item.title = LocalizedString.home.localized
                     item.selectedImage = #imageLiteral(resourceName: "home")
-                    item.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16.0)], for: .normal)
                 }
             case 1:
                 if let item = self.tabBar.items?[index] {
                     item.image = #imageLiteral(resourceName: "secondTab")
-                    item.title = LocalizedString.setting.localized
                     item.selectedImage = #imageLiteral(resourceName: "secondTab")
-                    item.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16.0)], for: .normal)
                 }
             case 2:
                 if let item = self.tabBar.items?[index] {
                     item.image = #imageLiteral(resourceName: "notification")
-                    item.title = LocalizedString.notification.localized
                     item.selectedImage = #imageLiteral(resourceName: "notification")
-                    item.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16.0)], for: .normal)
                 }
             case 3:
                 if let item = self.tabBar.items?[index] {
                     item.image = #imageLiteral(resourceName: "setting")
-                    item.title = LocalizedString.setting.localized
                     item.selectedImage = #imageLiteral(resourceName: "setting")
-                    item.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16.0)], for: .normal)
                 }
             default:
                 if let item = self.tabBar.items?[index] {
                     item.image = #imageLiteral(resourceName: "profile")
-                    item.title = LocalizedString.profile.localized
                     item.selectedImage = #imageLiteral(resourceName: "profile")
-                    item.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16.0)], for: .normal)
                 }
             }
         }
     }
-    
-//    private func setUpNavigationBar(){
-//        let logo = #imageLiteral(resourceName: "iTunesArtwork")
-//        let imageView = UIImageView(image:logo)
-//        self.navigationItem.titleView = imageView
-//    }
 }
 extension UserTabBarController:UITabBarControllerDelegate{
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController){

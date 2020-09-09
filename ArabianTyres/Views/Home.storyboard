@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CMp-XE-JrL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="NunitoSans-Bold.ttf">
+            <string>NunitoSans-Bold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--NotificationVC-->
         <scene sceneID="94Z-Zm-ooY">
@@ -30,10 +35,65 @@
                     <view key="view" contentMode="scaleToFill" id="vxL-Mf-Vix">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8uw-W0-83G">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="union" translatesAutoresizingMaskIntoConstraints="NO" id="8XJ-0f-emW">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="358.5"/>
+                                    </imageView>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="V4j-pv-1m2">
+                                        <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D4B-la-LWO">
+                                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rga-fs-9yL">
+                                                <rect key="frame" x="181.5" y="10.5" width="51" height="23.5"/>
+                                                <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
+                                                <color key="textColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="Rga-fs-9yL" firstAttribute="centerX" secondItem="D4B-la-LWO" secondAttribute="centerX" id="5Ph-63-wMc"/>
+                                            <constraint firstAttribute="height" constant="44" id="Jts-S6-UpF"/>
+                                            <constraint firstItem="Rga-fs-9yL" firstAttribute="centerY" secondItem="D4B-la-LWO" secondAttribute="centerY" id="ODX-j3-RvZ"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="8XJ-0f-emW" secondAttribute="trailing" id="0xf-Uk-1gZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="D4B-la-LWO" secondAttribute="trailing" id="3ar-aD-0kY"/>
+                                    <constraint firstAttribute="trailing" secondItem="V4j-pv-1m2" secondAttribute="trailing" id="GbJ-YB-wX7"/>
+                                    <constraint firstItem="V4j-pv-1m2" firstAttribute="top" secondItem="D4B-la-LWO" secondAttribute="bottom" id="H3Z-dt-NYd"/>
+                                    <constraint firstItem="8XJ-0f-emW" firstAttribute="top" secondItem="8uw-W0-83G" secondAttribute="top" id="IRm-lM-IOV"/>
+                                    <constraint firstAttribute="bottom" secondItem="V4j-pv-1m2" secondAttribute="bottom" id="Mtv-u8-vcY"/>
+                                    <constraint firstItem="D4B-la-LWO" firstAttribute="leading" secondItem="8uw-W0-83G" secondAttribute="leading" id="OwC-Ha-wYv"/>
+                                    <constraint firstItem="V4j-pv-1m2" firstAttribute="leading" secondItem="8uw-W0-83G" secondAttribute="leading" id="XvN-8B-61B"/>
+                                    <constraint firstItem="8XJ-0f-emW" firstAttribute="height" secondItem="8uw-W0-83G" secondAttribute="height" multiplier="0.4" id="jfj-mz-qeR"/>
+                                    <constraint firstItem="8XJ-0f-emW" firstAttribute="leading" secondItem="8uw-W0-83G" secondAttribute="leading" id="wNg-CZ-B9M"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="8uw-W0-83G" firstAttribute="leading" secondItem="N9i-Ko-nnG" secondAttribute="leading" id="04Q-Dk-oDO"/>
+                            <constraint firstItem="N9i-Ko-nnG" firstAttribute="trailing" secondItem="8uw-W0-83G" secondAttribute="trailing" id="Bzc-wt-3aJ"/>
+                            <constraint firstItem="8uw-W0-83G" firstAttribute="top" secondItem="vxL-Mf-Vix" secondAttribute="top" id="DRJ-zx-LHK"/>
+                            <constraint firstItem="D4B-la-LWO" firstAttribute="top" secondItem="N9i-Ko-nnG" secondAttribute="top" id="EJv-0K-pck"/>
+                            <constraint firstAttribute="bottom" secondItem="8uw-W0-83G" secondAttribute="bottom" id="TvX-uj-hwf"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="N9i-Ko-nnG"/>
                     </view>
                     <navigationItem key="navigationItem" id="lCt-EN-r9D"/>
+                    <connections>
+                        <outlet property="mainTableView" destination="V4j-pv-1m2" id="FfY-H1-sh9"/>
+                        <outlet property="titleLbl" destination="Rga-fs-9yL" id="MRm-S2-2bV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZzD-KS-dTX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -108,11 +168,11 @@
             </objects>
             <point key="canvasLocation" x="-743" y="-196"/>
         </scene>
-        <!--Home-->
+        <!--Navigation Controller-->
         <scene sceneID="TRm-NS-16i">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8RO-GZ-l8a" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" image="home" selectedImage="home" id="FEe-Ax-hLS"/>
+                    <tabBarItem key="tabBarItem" title="" image="home" selectedImage="home" id="FEe-Ax-hLS"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lOQ-9U-WSF">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -127,11 +187,11 @@
             </objects>
             <point key="canvasLocation" x="173.91304347826087" y="-1172.5446428571429"/>
         </scene>
-        <!--Explore-->
+        <!--Navigation Controller-->
         <scene sceneID="OSX-Af-y3C">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gQ3-0k-xJx" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Explore" image="secondTab" selectedImage="secondTab" id="2w9-aJ-8Ev"/>
+                    <tabBarItem key="tabBarItem" title="" image="secondTab" selectedImage="secondTab" id="2w9-aJ-8Ev"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="A0x-3m-kyg">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -146,11 +206,11 @@
             </objects>
             <point key="canvasLocation" x="173.91304347826087" y="-520.3125"/>
         </scene>
-        <!--Notification-->
+        <!--Navigation Controller-->
         <scene sceneID="QXI-ty-388">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0Sc-fS-WX5" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Notification" image="notification" selectedImage="notification" id="PQd-Rr-eWS"/>
+                    <tabBarItem key="tabBarItem" title="" image="notification" selectedImage="notification" id="PQd-Rr-eWS"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ahd-ua-RsA">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -165,11 +225,11 @@
             </objects>
             <point key="canvasLocation" x="173.91304347826087" y="128.57142857142856"/>
         </scene>
-        <!--Setting-->
+        <!--Navigation Controller-->
         <scene sceneID="j4d-Bh-06b">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RZR-Yv-ahB" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Setting" image="setting" selectedImage="setting" id="9Rs-ah-WuD"/>
+                    <tabBarItem key="tabBarItem" title="" image="setting" selectedImage="setting" id="9Rs-ah-WuD"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="IKy-e1-Yyb">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -184,14 +244,13 @@
             </objects>
             <point key="canvasLocation" x="173.91304347826087" y="810.9375"/>
         </scene>
-        <!--Profile-->
+        <!--Navigation Controller-->
         <scene sceneID="Diz-Wd-P6p">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mt1-6G-xyC" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" image="profile" selectedImage="profile" id="2wg-yi-mQI"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="mt1-6G-xyC" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="profile" selectedImage="profile" id="2wg-yi-mQI"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="b2X-gq-Bge">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -210,5 +269,6 @@
         <image name="profile" width="34" height="34"/>
         <image name="secondTab" width="60" height="60"/>
         <image name="setting" width="34" height="34"/>
+        <image name="union" width="375" height="526"/>
     </resources>
 </document>

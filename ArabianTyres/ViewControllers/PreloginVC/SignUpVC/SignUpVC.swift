@@ -40,6 +40,8 @@ class SignUpVC: BaseVC {
     // MARK: - IBActions
     //===========================
     @IBAction func skipLoginAndContinueAction(_ sender: UIButton) {
+        AppUserDefaults.save(value: "guest", forKey: .currentUserType)
+        AppRouter.goToUserHome()
    }
     
     

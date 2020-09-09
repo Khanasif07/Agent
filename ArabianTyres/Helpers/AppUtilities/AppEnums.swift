@@ -17,7 +17,6 @@ enum Signup {
 
 enum UserType {
     case user
-    case garageOwner
     case guest
 }
 

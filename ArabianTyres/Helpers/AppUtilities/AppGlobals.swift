@@ -54,8 +54,6 @@ var isCurrentUserType : UserType {
     switch user{
     case "basic":
         return .user
-    case "garageOwner":
-        return .garageOwner
     default:
         return .guest
     }

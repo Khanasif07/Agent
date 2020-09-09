@@ -8,23 +8,62 @@
 
 import UIKit
 
-class ProfileVC: UIViewController {
-
+class ProfileVC: BaseVC {
+    
+    // MARK: - IBOutlets
+    //===========================
+    @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet weak var mainTableView: UITableView!
+    
+    // MARK: - Variables
+    //===========================
+    
+    // MARK: - Lifecycle
+    //===========================
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        initialSetup()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        .lightContent
     }
-    */
+    
+    // MARK: - IBActions
+    //===========================
+    
+    
+}
 
+// MARK: - Extension For Functions
+//===========================
+extension ProfileVC {
+    
+    private func initialSetup() {
+        self.tableViewSetUp()
+    }
+    
+    private func tableViewSetUp(){
+        self.mainTableView.delegate = self
+        self.mainTableView.dataSource = self
+        self.mainTableView.registerCell(with: ProfileGuestTableCell.self)
+    }
+}
+
+// MARK: - Extension For TableView
+//===========================
+extension ProfileVC : UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueCell(with: ProfileGuestTableCell.self, indexPath: indexPath)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
 }

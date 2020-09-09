@@ -11,50 +11,37 @@ import UIKit
 import SwiftyJSON
 
 enum AppRouter {
-    
-    
-    static var window: UIWindow {
-        if let window = AppDelegate.shared.window {
-            return window
-        }
-        else {
-            AppDelegate.shared.window = UIWindow()
-            return AppDelegate.shared.window!
-        }
-    }
+   
     // MARK: - General Method to set Root VC
     //=========================================
     static func setAsWindowRoot(_ viewController: UIViewController) {
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.setNavigationBarHidden(true, animated: false)
-        self.window.rootViewController = navigationController
-        self.window.makeKeyAndVisible()
+        AppDelegate.shared.window?.rootViewController = navigationController
+        AppDelegate.shared.window?.makeKeyAndVisible()
     }
     
     // MARK: - Show Landing Screen
     //===========================
     static func checkAppInitializationFlow() {
-         self.goToUserHome()
-//        if isUserLoggedin {
-//            switch isCurrentUserType {
-//            case .user:
-//                AppRouter.goToUserHome()
-//            case .garageOwner:
-//                AppRouter.goToGarageHome()
-//            default:
-//                let lang = AppUserDefaults.value(forKey: .currentLanguage).stringValue
-//                AppUserDefaults.removeAllValues()
-//                AppUserDefaults.save(value: lang, forKey: .currentLanguage)
-//                AppUserDefaults.save(value: true, forKey: .isLanguageSelect)
-//            }
-//        } else {
-//            self.makeChooseLanguageVCRoot()
-//        }
+        if isUserLoggedin {
+            switch isCurrentUserType {
+            case .user:
+                AppRouter.goToUserHome()
+            default:
+                let lang = AppUserDefaults.value(forKey: .currentLanguage).stringValue
+                AppUserDefaults.removeAllValues()
+                AppUserDefaults.save(value: lang, forKey: .currentLanguage)
+                AppUserDefaults.save(value: true, forKey: .isLanguageSelect)
+            }
+        } else {
+            self.makeChooseLanguageVCRoot()
+        }
     }
     
     static func goToTestingVC(){
-//        let homeScene = ChooseLanguageVC.instantiate(fromAppStoryboard: .Prelogin)
-//        setAsWindowRoot(homeScene)
+        let homeScene = UserTabBarController.instantiate(fromAppStoryboard: .Home)
+        setAsWindowRoot(homeScene)
     }
     
     static func goToSignUpVC(vc: UIViewController){
@@ -102,14 +89,12 @@ enum AppRouter {
     }
     
     static func goToDovelopmentVC(vc: UIViewController){
-//        let scene = HomeVC.instantiate(fromAppStoryboard: .Prelogin)
-//        vc.navigationController?.pushViewController(scene, animated: true)
+        let scene = UnderDevelopmentVC.instantiate(fromAppStoryboard: .Prelogin)
+        vc.navigationController?.pushViewController(scene, animated: true)
     }
     
     static func goToUserHome() {
         let homeScene = UserTabBarController.instantiate(fromAppStoryboard: .Home)
         setAsWindowRoot(homeScene)
     }
-    
-   
 }

@@ -75,6 +75,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate , MessagingDelegate , UNUs
         UIToolbar.appearance().tintColor = AppColors.fontPrimaryColor
         UIButton.appearance().tintColor = AppColors.fontPrimaryColor
         UIBarButtonItem.appearance().tintColor = AppColors.fontPrimaryColor
+        
+        UITabBar.appearance().isTranslucent = false
+//        UITabBar.appearance().barTintColor = AppColors.primaryBlueColor
+        UITabBar.appearance().tintColor = UIColor.white
+
     }
     
     func setUpAppearance(){

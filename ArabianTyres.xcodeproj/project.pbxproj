@@ -11,6 +11,10 @@
 		84303E69250649D4000BA5C3 /* UserTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84303E68250649D4000BA5C3 /* UserTabBarController.swift */; };
 		84303E6C25064B27000BA5C3 /* UnderDevelopmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84303E6B25064B27000BA5C3 /* UnderDevelopmentVC.swift */; };
 		84303E6E25064CC8000BA5C3 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84303E6D25064CC8000BA5C3 /* Home.storyboard */; };
+		843C8EB925087DD200515F2E /* ProfileGuestTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843C8EB725087DD200515F2E /* ProfileGuestTableCell.swift */; };
+		843C8EBA25087DD200515F2E /* ProfileGuestTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 843C8EB825087DD200515F2E /* ProfileGuestTableCell.xib */; };
+		843C8EBD25089BBE00515F2E /* ProfileUserHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843C8EBB25089BBE00515F2E /* ProfileUserHeaderCell.swift */; };
+		843C8EBE25089BBE00515F2E /* ProfileUserHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 843C8EBC25089BBE00515F2E /* ProfileUserHeaderCell.xib */; };
 		843CD3A32505409C00945937 /* LoginWithPhoneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843CD3A22505409C00945937 /* LoginWithPhoneViewModel.swift */; };
 		843DFD1E2503F017000DE6EB /* OtpVerificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DFD1D2503F017000DE6EB /* OtpVerificationVC.swift */; };
 		843DFD202503F93A000DE6EB /* OtpVerificationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DFD1F2503F93A000DE6EB /* OtpVerificationVM.swift */; };
@@ -116,6 +120,10 @@
 		84303E68250649D4000BA5C3 /* UserTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTabBarController.swift; sourceTree = "<group>"; };
 		84303E6B25064B27000BA5C3 /* UnderDevelopmentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderDevelopmentVC.swift; sourceTree = "<group>"; };
 		84303E6D25064CC8000BA5C3 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		843C8EB725087DD200515F2E /* ProfileGuestTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileGuestTableCell.swift; sourceTree = "<group>"; };
+		843C8EB825087DD200515F2E /* ProfileGuestTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileGuestTableCell.xib; sourceTree = "<group>"; };
+		843C8EBB25089BBE00515F2E /* ProfileUserHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUserHeaderCell.swift; sourceTree = "<group>"; };
+		843C8EBC25089BBE00515F2E /* ProfileUserHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileUserHeaderCell.xib; sourceTree = "<group>"; };
 		843CD3A22505409C00945937 /* LoginWithPhoneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWithPhoneViewModel.swift; sourceTree = "<group>"; };
 		843DFD1D2503F017000DE6EB /* OtpVerificationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpVerificationVC.swift; sourceTree = "<group>"; };
 		843DFD1F2503F93A000DE6EB /* OtpVerificationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpVerificationVM.swift; sourceTree = "<group>"; };
@@ -272,6 +280,17 @@
 				84303E6B25064B27000BA5C3 /* UnderDevelopmentVC.swift */,
 			);
 			path = UnderDevelopmentVC;
+			sourceTree = "<group>";
+		};
+		843C8EB625087D9E00515F2E /* ProfileVC */ = {
+			isa = PBXGroup;
+			children = (
+				843C8EB725087DD200515F2E /* ProfileGuestTableCell.swift */,
+				843C8EB825087DD200515F2E /* ProfileGuestTableCell.xib */,
+				843C8EBB25089BBE00515F2E /* ProfileUserHeaderCell.swift */,
+				843C8EBC25089BBE00515F2E /* ProfileUserHeaderCell.xib */,
+			);
+			path = ProfileVC;
 			sourceTree = "<group>";
 		};
 		843DFD1C2503EFF5000DE6EB /* OtpVerificationVC */ = {
@@ -691,6 +710,7 @@
 		8481FA87250107C000AB6EFB /* PostloginVC */ = {
 			isa = PBXGroup;
 			children = (
+				843C8EB625087D9E00515F2E /* ProfileVC */,
 			);
 			path = PostloginVC;
 			sourceTree = "<group>";
@@ -783,7 +803,9 @@
 			files = (
 				8481FA752500C06900AB6EFB /* PostLogin.storyboard in Resources */,
 				8481FA092500AA9B00AB6EFB /* LaunchScreen.storyboard in Resources */,
+				843C8EBE25089BBE00515F2E /* ProfileUserHeaderCell.xib in Resources */,
 				8481FA312500BCD800AB6EFB /* Localizable.strings in Resources */,
+				843C8EBA25087DD200515F2E /* ProfileGuestTableCell.xib in Resources */,
 				8481FA972501438500AB6EFB /* NunitoSans-ExtraBoldItalic.ttf in Resources */,
 				8481FA9B2501439700AB6EFB /* NunitoSans-ExtraLightItalic.ttf in Resources */,
 				844CBD232501FFC0009BE668 /* LoginEmailPhoneTableCell.xib in Resources */,
@@ -902,6 +924,7 @@
 				8481FA692500BFC700AB6EFB /* DeviceDetails.swift in Sources */,
 				8481FA212500BB2100AB6EFB /* GoogleLoginController.swift in Sources */,
 				84476D3125075F3400AB5E80 /* ProfileVC.swift in Sources */,
+				843C8EB925087DD200515F2E /* ProfileGuestTableCell.swift in Sources */,
 				8481FAAB25015CBC00AB6EFB /* CustommTextField.swift in Sources */,
 				8481FA232500BB5400AB6EFB /* AppNetworking.swift in Sources */,
 				847BC425250796CB00EEEFDC /* ResetPasswordVM.swift in Sources */,
@@ -919,6 +942,7 @@
 				84E166E4250362DE00C2F2EF /* SuccessPopupVC.swift in Sources */,
 				84303E6C25064B27000BA5C3 /* UnderDevelopmentVC.swift in Sources */,
 				8481FAAF25015D9000AB6EFB /* LoginVC.swift in Sources */,
+				843C8EBD25089BBE00515F2E /* ProfileUserHeaderCell.swift in Sources */,
 				8481FA452500BE7600AB6EFB /* UIViewControllerExtension.swift in Sources */,
 				8481FA5D2500BF7100AB6EFB /* AppEnums.swift in Sources */,
 				8481FA252500BB6400AB6EFB /* Webservice+EndPoints.swift in Sources */,

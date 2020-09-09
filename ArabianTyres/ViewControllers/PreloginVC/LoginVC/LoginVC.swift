@@ -36,6 +36,8 @@ class LoginVC: BaseVC {
     //==========================
     
     @IBAction func skipLoginAndContinueAction(_ sender: UIButton) {
+        AppUserDefaults.save(value: "guest", forKey: .currentUserType)
+        AppRouter.goToUserHome()
     }
     
     
@@ -161,6 +163,7 @@ extension LoginVC: SignInVMDelegate {
     
     func signInSuccess(userModel: UserModel) {
          ToastView.shared.showLongToast(self.view, msg: "")
+         AppRouter.goToUserHome()
     }
     
     func signInFailed(message: String) {
