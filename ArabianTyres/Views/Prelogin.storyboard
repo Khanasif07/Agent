@@ -1230,6 +1230,7 @@ your old password.</string>
         <!--Navigation Controller-->
         <scene sceneID="Xzz-WD-8KO">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T05-FY-g0i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="pkO-Qo-rzv" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="coe-3Q-Ec6">
@@ -1240,7 +1241,6 @@ your old password.</string>
                         <segue destination="uvL-9z-jXM" kind="relationship" relationship="rootViewController" id="yo4-D2-kj4"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="T05-FY-g0i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1147.8260869565217" y="153.34821428571428"/>
         </scene>
