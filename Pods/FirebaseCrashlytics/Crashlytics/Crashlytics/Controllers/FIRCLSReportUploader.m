@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#import "Interop/Analytics/Public/FIRAnalyticsInterop.h"
+#import <FirebaseAnalyticsInterop/FIRAnalyticsInterop.h>
 
 #import "FIRCLSApplication.h"
 #import "FIRCLSDataCollectionArbiter.h"
@@ -79,11 +79,10 @@
     return NO;
   }
 
-  if (!self.dataSource.settings.orgID && !self.dataSource.settings.shouldUseNewReportEndpoint) {
-    FIRCLSDebugLog(
-        @"Skipping report with id '%@' this run of the app because Organization ID was "
-        @"nil. Report via the legacy endpoint will upload once settings are download successfully",
-        report.identifier);
+  if (!self.dataSource.settings.orgID) {
+    FIRCLSDebugLog(@"Skipping report with id '%@' this run of the app because Organization ID was "
+                   @"nil. Report will upload once settings are download successfully",
+                   report.identifier);
     return YES;
   }
 
@@ -215,7 +214,9 @@
     }
 
     FIRCLSReportAdapter *adapter =
-        [[FIRCLSReportAdapter alloc] initWithPath:path googleAppId:self.dataSource.googleAppID];
+        [[FIRCLSReportAdapter alloc] initWithPath:path
+                                      googleAppId:self.dataSource.googleAppID
+                                            orgId:self.dataSource.settings.orgID];
 
     GDTCOREvent *event = [self.dataSource.googleTransport eventForTransport];
     event.dataObject = adapter;

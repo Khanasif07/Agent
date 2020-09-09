@@ -19,7 +19,7 @@
 #import "FBSDKCoreKit+Internal.h"
 
 static const int FBSDKMonitorLogThreshold = 100;
-static const double FBSDKMonitorLogFlushIntervalInSeconds = 60;
+static const double FBSDKMonitorLogFlushIntervalInSeconds = 15;
 static const double FBSDKMonitorLogFlushTimerTolerance = FBSDKMonitorLogFlushIntervalInSeconds / 3;
 
 @interface FBSDKMonitor ()
@@ -40,10 +40,6 @@ static NSTimer *_flushTimer;
 
 + (void)enable
 {
-  if (isMonitoringEnabled) {
-    return;
-  }
-
   isMonitoringEnabled = YES;
   [self registerNotifications];
   [self startFlushTimer];
@@ -53,7 +49,7 @@ static NSTimer *_flushTimer;
 {
   if (self.entries) {
     if (isMonitoringEnabled) {
-      [FBSDKTypeUtility array:self.entries addObject:entry];
+      [self.entries addObject:entry];
 
       if (self.entries.count >= FBSDKMonitorLogThreshold) {
         [self flush];
@@ -168,10 +164,6 @@ static NSTimer *_flushTimer;
 
 + (void)disable
 {
-  if (!isMonitoringEnabled) {
-    return;
-  }
-
   isMonitoringEnabled = NO;
 
   [self clearEntries];

@@ -22,7 +22,12 @@
 #import "FBLPromises.h"
 #endif
 
-#import "FirebaseCore/Sources/Private/FirebaseCoreInternal.h"
+#import <FirebaseCore/FIRAppInternal.h>
+#import <FirebaseCore/FIRComponent.h>
+#import <FirebaseCore/FIRComponentContainer.h>
+#import <FirebaseCore/FIRLibrary.h>
+#import <FirebaseCore/FIRLogger.h>
+#import <FirebaseCore/FIROptions.h>
 
 #import "FIRInstallationsAuthTokenResultInternal.h"
 
@@ -84,12 +89,10 @@ NS_ASSUME_NONNULL_BEGIN
                                                       projectID:appOptions.projectID
                                                     GCMSenderID:appOptions.GCMSenderID
                                                     accessGroup:appOptions.appGroupID];
-
-  // `prefetchAuthToken` is disabled due to b/156746574.
   return [self initWithAppOptions:appOptions
                           appName:appName
         installationsIDController:IDController
-                prefetchAuthToken:NO];
+                prefetchAuthToken:YES];
 }
 
 /// The initializer is supposed to be used by tests to inject `installationsStore`.

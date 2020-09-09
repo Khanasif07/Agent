@@ -29,6 +29,7 @@ pb_bytes_array_t *FIRCLSEncodeData(NSData *data);
 
 @property(nonatomic, strong) NSString *folderPath;
 @property(nonatomic, strong) NSString *googleAppID;
+@property(nonatomic, strong) NSString *orgID;
 
 // From metadata.clsrecord
 @property(nonatomic, strong) FIRCLSRecordIdentity *identity;

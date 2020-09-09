@@ -48,7 +48,7 @@
 #import "FWriteRecord.h"
 #import "FWriteTree.h"
 #import "FWriteTreeRef.h"
-#import "FirebaseCore/Sources/Private/FirebaseCoreInternal.h"
+#import <FirebaseCore/FIRLogger.h>
 
 // Size after which we start including the compound hash
 static const NSUInteger kFSizeThresholdForCompoundHash = 1024;
@@ -234,17 +234,13 @@ static const NSUInteger kFSizeThresholdForCompoundHash = 1024;
             if ([write isOverwrite]) {
                 id<FNode> resolvedNode =
                     [FServerValues resolveDeferredValueSnapshot:write.overwrite
-                                                   withSyncTree:self
-                                                         atPath:write.path
-                                                   serverValues:serverValues];
+                                               withServerValues:serverValues];
                 [self.persistenceManager applyUserWrite:resolvedNode
                                     toServerCacheAtPath:write.path];
             } else {
                 FCompoundWrite *resolvedMerge = [FServerValues
                     resolveDeferredValueCompoundWrite:write.merge
-                                         withSyncTree:self
-                                               atPath:write.path
-                                         serverValues:serverValues];
+                                     withServerValues:serverValues];
                 [self.persistenceManager applyUserMerge:resolvedMerge
                                     toServerCacheAtPath:write.path];
             }

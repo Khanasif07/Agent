@@ -26,7 +26,6 @@ NS_ASSUME_NONNULL_BEGIN
 @interface FIRDatabaseConfig : NSObject
 
 - (id)initWithSessionIdentifier:(NSString *)identifier
-                    googleAppID:(NSString *)googleAppID
               authTokenProvider:(id<FAuthTokenProvider>)authTokenProvider;
 
 /**

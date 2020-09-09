@@ -1,5 +1,5 @@
 //
-//   Do any additional setup after loading the view.         self.navigationController?.navigationBar.swift
+//   Do any additional setup after loading the view. 
 //  ArabianTyres
 //
 //  Created by Admin on 03/09/20.

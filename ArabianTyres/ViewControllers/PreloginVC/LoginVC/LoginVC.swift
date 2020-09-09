@@ -9,9 +9,7 @@ import UIKit
 import Foundation
 
 class LoginVC: BaseVC {
-    
-    var viewModel = LoginViewModel()
-    
+        
     // MARK: - IBOutlets
     //===========================
     @IBOutlet weak var mainTableView: UITableView!
@@ -19,6 +17,7 @@ class LoginVC: BaseVC {
     
     // MARK: - Variables
     //===========================
+    var viewModel = LoginViewModel()
     
     // MARK: - Lifecycle
     //===========================
@@ -50,6 +49,10 @@ extension LoginVC {
     private func initialSetup() {
         self.viewModel.delegate = self
         self.tableViewSetUp()
+        AppleLoginController.shared.delegate = self
+        if let cell = mainTableView.cellForRow(at: IndexPath(item: 2, section: 0)) as? LoginSocialTableCell{
+            AppleLoginController.shared.apploginButton(stackAppleLogin: cell.socialBtnStackView, vc: self)
+        }
     }
     
     public func tableViewSetUp(){
@@ -115,14 +118,42 @@ extension LoginVC : UITableViewDelegate, UITableViewDataSource {
             }
             return cell
         default:
-            let cell = tableView.dequeueCell(with: LoginSocialTableCell.self, indexPath: indexPath)
-            return cell
+            return getSocialLoginCell(tableView, indexPath: indexPath)
+            
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
+    
+    func getSocialLoginCell(_ tableView: UITableView , indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueCell(with: LoginSocialTableCell.self, indexPath: indexPath)
+        cell.googleBtnTapped = {[weak self] in
+            guard let self = `self` else { return }
+            GoogleLoginController.shared.login(fromViewController: self, success: { [weak self] (model) in
+                guard let _ = self else {return}
+                printDebug(model)
+                self?.hitSocialLoginAPI(name: model.name, email: model.email, socialId: model.id, socialType: "google", phoneNo: "", profilePicture: model.image?.description ?? "")
+            }) { (error) in
+                printDebug(error.localizedDescription)
+            }
+        }
+        
+        cell.fbBtnTapped = { [weak self] in
+            guard let self = `self` else { return }
+            FacebookController.shared.getFacebookUserInfo(fromViewController: self, isSilentLogin: false, success: { [weak self] (model) in
+                guard let _ = self else {return}
+                printDebug(model)
+                self?.hitSocialLoginAPI(name: model.name, email: model.email, socialId: model.id, socialType: "facebook", phoneNo: "", profilePicture: model.picture?.description ?? "")
+                }, failure: { (error) in
+                    printDebug(error?.localizedDescription.description)
+            })
+
+        }
+        return cell
+    }
+
 }
 
 // MARK: - Extension For TextField Delegate
@@ -158,6 +189,10 @@ extension LoginVC : UITextFieldDelegate{
 // MARK: - SignInVMDelegate
 //=========================================
 extension LoginVC: SignInVMDelegate {
+    func socailLoginApiSuccess(message: String) {
+        AppRouter.goToUserHome()
+    }
+    
     func willSignIn() {
     }
     
@@ -171,4 +206,30 @@ extension LoginVC: SignInVMDelegate {
     
     func invalidInput(message: String) {
     }
+    
+    func hitSocialLoginAPI(name : String , email : String , socialId : String , socialType : String ,phoneNo: String, profilePicture : String){
+        viewModel.socailLoginApi(parameters: getSocialParams(name : name , email : email , socialId : socialId , socialType : socialType ,phoneNo: phoneNo ,profilePicture : profilePicture))
+       
+    }
+
+}
+
+extension LoginVC: AppleSignInProtocal {
+    func getAppleLoginData(loginData: JSONDictionary) {
+        self.hitSocialLoginAPI(name: loginData[ApiKey.name] as? String ?? "", email: loginData[ApiKey.email] as? String ?? "" , socialId: loginData[ApiKey.socialId] as? String ?? "", socialType: "apple", phoneNo: "", profilePicture: "")
+    }
+    
+    func getSocialParams(name : String , email : String , socialId : String , socialType : String ,phoneNo: String ,profilePicture : String) -> JSONDictionary{
+        
+        let dict : JSONDictionary = [ApiKey.socialType: socialType,
+                                     ApiKey.socialId: socialId,
+                                     ApiKey.name: name,
+                                     ApiKey.email: email ,
+                                     ApiKey.phoneNo: phoneNo,
+                                     ApiKey.image: profilePicture,
+                                     ApiKey.countryCode : "",
+                                     ApiKey.device : [ApiKey.platform: "ios", ApiKey.token: DeviceDetail.deviceToken].toJSONString() ?? ""]
+        return dict
+    }
+
 }

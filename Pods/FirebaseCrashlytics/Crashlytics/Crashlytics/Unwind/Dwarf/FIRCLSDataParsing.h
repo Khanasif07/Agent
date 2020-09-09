@@ -14,9 +14,9 @@
 
 #pragma once
 
-#include <stdint.h>
-
 #include "FIRCLSFeatures.h"
+
+#include <stdint.h>
 
 #if CLS_DWARF_UNWINDING_SUPPORTED
 

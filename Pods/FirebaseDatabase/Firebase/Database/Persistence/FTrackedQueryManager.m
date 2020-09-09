@@ -22,7 +22,7 @@
 #import "FPruneForest.h"
 #import "FTrackedQuery.h"
 #import "FUtilities.h"
-#import "FirebaseCore/Sources/Private/FirebaseCoreInternal.h"
+#import <FirebaseCore/FIRLogger.h>
 
 @interface FTrackedQueryManager ()
 

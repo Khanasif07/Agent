@@ -20,7 +20,7 @@
 #import "FIRDatabaseQuery_Private.h"
 #import "FIRDatabase_Private.h"
 #import "FRepo.h"
-#import "FirebaseCore/Sources/Private/FirebaseCoreInternal.h"
+#import <FirebaseCore/FIRLogger.h>
 
 @implementation FRepoManager
 

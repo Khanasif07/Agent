@@ -1299,9 +1299,7 @@
         \"us-gov-east-1\",\
         \"eu-north-1\",\
         \"ap-east-1\",\
-        \"me-south-1\",\
-        \"af-south-1\",\
-        \"eu-south-1\"\
+        \"me-south-1\"\
       ]\
     },\
     \"BucketLoggingStatus\":{\
