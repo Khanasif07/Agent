@@ -54,8 +54,8 @@ extension HomeVC {
         mainCollView.dataSource = self
         mainCollView.registerCell(with: HomeCollectionCell.self)
         dataArray = [DataValue(image: #imageLiteral(resourceName: "maskGroup"), name: LocalizedString.tyre.localized),
-                     DataValue(image: #imageLiteral(resourceName: "maskGroup"), name: LocalizedString.oil.localized),
-                     DataValue(image: #imageLiteral(resourceName: "maskGroup"), name: LocalizedString.battery.localized)]
+                     DataValue(image: #imageLiteral(resourceName: "oil"), name: LocalizedString.oil.localized),
+                     DataValue(image: #imageLiteral(resourceName: "battery"), name: LocalizedString.battery.localized)]
     }
     
 }

@@ -32,6 +32,7 @@ class ProfileSettingVC: BaseVC {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        self.mainTableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
