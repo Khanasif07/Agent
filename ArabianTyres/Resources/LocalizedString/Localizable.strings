@@ -112,3 +112,10 @@
 "reportAnIssue" = "Report an Issue";
 "faq" = "FAQ";
 "referFriend" = "Rafer a Friend";
+
+
+// MARK: - Home  VC Values
+//==============================
+"tyre" = "Tyre";
+"oil" = "Oil";
+"battery" = "Battery";

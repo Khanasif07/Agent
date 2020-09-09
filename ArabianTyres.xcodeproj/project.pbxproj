@@ -22,6 +22,8 @@
 		843C8EC92508B0AE00515F2E /* AGTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843C8EC82508B0AE00515F2E /* AGTableView.swift */; };
 		843C8ECC2508C3A400515F2E /* ProfileSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843C8ECB2508C3A400515F2E /* ProfileSettingVC.swift */; };
 		843C8ECE2508E91700515F2E /* ProfileSettingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843C8ECD2508E91700515F2E /* ProfileSettingVM.swift */; };
+		843C8ED22508FB9300515F2E /* HomeCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843C8ED02508FB9300515F2E /* HomeCollectionCell.swift */; };
+		843C8ED32508FB9300515F2E /* HomeCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 843C8ED12508FB9300515F2E /* HomeCollectionCell.xib */; };
 		843CD3A32505409C00945937 /* LoginWithPhoneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843CD3A22505409C00945937 /* LoginWithPhoneViewModel.swift */; };
 		843DFD1E2503F017000DE6EB /* OtpVerificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DFD1D2503F017000DE6EB /* OtpVerificationVC.swift */; };
 		843DFD202503F93A000DE6EB /* OtpVerificationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DFD1F2503F93A000DE6EB /* OtpVerificationVM.swift */; };
@@ -138,6 +140,8 @@
 		843C8EC82508B0AE00515F2E /* AGTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AGTableView.swift; sourceTree = "<group>"; };
 		843C8ECB2508C3A400515F2E /* ProfileSettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingVC.swift; sourceTree = "<group>"; };
 		843C8ECD2508E91700515F2E /* ProfileSettingVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingVM.swift; sourceTree = "<group>"; };
+		843C8ED02508FB9300515F2E /* HomeCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionCell.swift; sourceTree = "<group>"; };
+		843C8ED12508FB9300515F2E /* HomeCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCollectionCell.xib; sourceTree = "<group>"; };
 		843CD3A22505409C00945937 /* LoginWithPhoneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWithPhoneViewModel.swift; sourceTree = "<group>"; };
 		843DFD1D2503F017000DE6EB /* OtpVerificationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpVerificationVC.swift; sourceTree = "<group>"; };
 		843DFD1F2503F93A000DE6EB /* OtpVerificationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpVerificationVM.swift; sourceTree = "<group>"; };
@@ -326,6 +330,15 @@
 				843C8ECD2508E91700515F2E /* ProfileSettingVM.swift */,
 			);
 			path = ProfileSettingVC;
+			sourceTree = "<group>";
+		};
+		843C8ECF2508FB6B00515F2E /* HomeVC */ = {
+			isa = PBXGroup;
+			children = (
+				843C8ED02508FB9300515F2E /* HomeCollectionCell.swift */,
+				843C8ED12508FB9300515F2E /* HomeCollectionCell.xib */,
+			);
+			path = HomeVC;
 			sourceTree = "<group>";
 		};
 		843DFD1C2503EFF5000DE6EB /* OtpVerificationVC */ = {
@@ -747,6 +760,7 @@
 		8481FA87250107C000AB6EFB /* PostloginVC */ = {
 			isa = PBXGroup;
 			children = (
+				843C8ECF2508FB6B00515F2E /* HomeVC */,
 				843C8EB625087D9E00515F2E /* ProfileVC */,
 			);
 			path = PostloginVC;
@@ -866,6 +880,7 @@
 				8481FAA1250143B500AB6EFB /* NunitoSans-LightItalic.ttf in Resources */,
 				8481FA8B2501081000AB6EFB /* TutorialCollCell.xib in Resources */,
 				8481FA9F250143AB00AB6EFB /* NunitoSans-Light.ttf in Resources */,
+				843C8ED32508FB9300515F2E /* HomeCollectionCell.xib in Resources */,
 				8481FA8F2501435D00AB6EFB /* NunitoSans-BlackItalic.ttf in Resources */,
 				843C8EC62508AE9500515F2E /* ProfileUserInternalCell.xib in Resources */,
 				8481FA732500C04800AB6EFB /* Prelogin.storyboard in Resources */,
@@ -970,6 +985,7 @@
 				8481FA1F2500BAFB00AB6EFB /* AppleLoginController.swift in Sources */,
 				8481FA772500C5CD00AB6EFB /* CountryData.swift in Sources */,
 				847BC423250774E100EEEFDC /* ResetPasswordVC.swift in Sources */,
+				843C8ED22508FB9300515F2E /* HomeCollectionCell.swift in Sources */,
 				8481FA492500BEA400AB6EFB /* DateExtension.swift in Sources */,
 				8481FA632500BFA000AB6EFB /* ApiKeys.swift in Sources */,
 				8481FA372500BDD200AB6EFB /* UITableView+ UITableViewCellExtension.swift in Sources */,

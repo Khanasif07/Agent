@@ -121,6 +121,12 @@ enum LocalizedString : String {
     case reportAnIssue
     case faq
     case referFriend
+    
+    // MARK: - Home  VC Values
+    //==============================
+    case tyre
+    case oil
+    case battery
 }
 
 
