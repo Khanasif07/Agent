@@ -23,6 +23,8 @@ class SuccessPopupVC: BaseVC {
     @IBOutlet weak var dataContainerView: UIView!
     // MARK: - Variables
     //===========================
+    public var desc = ""
+    public var titleLbl = ""
     
     weak var delegate: SuccessPopupVCDelegate?
     
@@ -56,9 +58,9 @@ extension SuccessPopupVC {
         self.addBlurEffect()
     }
     
-    public func textSetUp(title:String = "Successful",desc: String = "You have successfully reset your old password."){
-        self.successDescLbl.text = desc
-        self.successTitleLbl.text = title
+    public func textSetUp(){
+        self.successDescLbl.text = self.desc
+        self.successTitleLbl.text = self.titleLbl
     }
     
     private func addBlurEffect(){

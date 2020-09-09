@@ -100,6 +100,16 @@ enum LocalizedString : String {
     case tos = "tos"
     case privacyPolicy = "privacyPolicy"
     
+    // MARK: - Profile VC Values
+    //==============================
+    case my_vehicle
+    case service_history
+    case payments
+    case saved_cards
+    case added_location
+    case change_password
+
+    
 }
 
 

@@ -90,3 +90,12 @@
 "bySigningDec" = "By Signing Up you are agree to our";
 "tos" = " ToS "; 
 "privacyPolicy" = "Privacy Policy";
+
+// MARK: - Profile VC Values
+//==============================
+"my_vehicle" = "My Vehicle";
+"service_history" = "Service History";
+"payments" = "Payments";
+"saved_cards" = "Saved Cards";
+"added_location" = "Added Location";
+"change_password" = "Change Password";

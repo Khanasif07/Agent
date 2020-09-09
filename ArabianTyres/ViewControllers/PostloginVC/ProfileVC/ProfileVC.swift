@@ -29,6 +29,11 @@ class ProfileVC: BaseVC {
         .lightContent
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.mainTableView.reloadData()
+    }
+    
     // MARK: - IBActions
     //===========================
     
@@ -46,7 +51,48 @@ extension ProfileVC {
     private func tableViewSetUp(){
         self.mainTableView.delegate = self
         self.mainTableView.dataSource = self
+        self.mainTableView.isScrollEnabled = true
         self.mainTableView.registerCell(with: ProfileGuestTableCell.self)
+        self.mainTableView.registerCell(with: ProfileUserHeaderCell.self)
+        self.mainTableView.registerCell(with: ProfileUserBottomCell.self)
+    }
+    
+    private func getcellForTableView(_ tableView: UITableView,_ indexPath : IndexPath)-> UITableViewCell {
+        if isUserLoggedin {
+            switch isCurrentUserType {
+            case .user:
+                switch indexPath.row {
+                case 0:
+                    let cell = tableView.dequeueCell(with: ProfileUserHeaderCell.self, indexPath: indexPath)
+                    return cell
+                default:
+                    let cell = tableView.dequeueCell(with: ProfileUserBottomCell.self, indexPath: indexPath)
+                    cell.settingBtnTapped = { [weak self]  in
+                        guard let `self` = self else { return }
+                    }
+                    return cell
+                }
+            default:
+                let cell = tableView.dequeueCell(with: ProfileGuestTableCell.self, indexPath: indexPath)
+                return cell
+            }
+        } else {
+            let cell = tableView.dequeueCell(with: ProfileGuestTableCell.self, indexPath: indexPath)
+            return cell
+        }
+    }
+    
+    private func returnCellCount()->  Int{
+        if isUserLoggedin {
+            switch isCurrentUserType {
+            case .user:
+                return 2
+            default:
+                return 1
+            }
+        } else {
+            return 1
+        }
     }
 }
 
@@ -55,12 +101,11 @@ extension ProfileVC {
 extension ProfileVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        self.returnCellCount()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueCell(with: ProfileGuestTableCell.self, indexPath: indexPath)
-        return cell
+        self.getcellForTableView(tableView,indexPath)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

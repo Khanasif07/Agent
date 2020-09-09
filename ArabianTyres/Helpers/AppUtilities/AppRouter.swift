@@ -69,7 +69,8 @@ enum AppRouter {
     static func showSuccessPopUp(vc: UIViewController & SuccessPopupVCDelegate,title: String,desc: String){
         let scene = SuccessPopupVC.instantiate(fromAppStoryboard: .Prelogin)
         scene.delegate = vc
-        scene.textSetUp(title: title, desc: desc)
+        scene.titleLbl = title
+        scene.desc = desc
         vc.present(scene, animated: true, completion: nil)
     }
     
