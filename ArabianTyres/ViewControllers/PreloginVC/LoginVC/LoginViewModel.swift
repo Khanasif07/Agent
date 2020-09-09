@@ -73,7 +73,11 @@ struct LoginViewModel {
     
     func socailLoginApi(parameters : JSONDictionary) {
         WebServices.socialLoginAPI(parameters: parameters, success: { (json) in
-            
+            let user = UserModel(json[ApiKey.data])
+            UserModel.main = user
+            let accessToken = json[ApiKey.data][ApiKey.authToken].stringValue
+            AppUserDefaults.save(value: accessToken, forKey: .accesstoken)
+            AppUserDefaults.save(value: json[ApiKey.data][ApiKey.userType].stringValue, forKey: .currentUserType)
             self.delegate?.socailLoginApiSuccess(message: "")
         }) { (error) -> (Void) in
             self.delegate?.socailLoginApiFailure(message: error.localizedDescription)

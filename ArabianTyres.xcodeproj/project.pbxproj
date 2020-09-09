@@ -113,6 +113,7 @@
 		8481FAAB25015CBC00AB6EFB /* CustommTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481FAAA25015CBC00AB6EFB /* CustommTextField.swift */; };
 		8481FAAF25015D9000AB6EFB /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481FAAE25015D9000AB6EFB /* LoginVC.swift */; };
 		84E166E4250362DE00C2F2EF /* SuccessPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E166E3250362DE00C2F2EF /* SuccessPopupVC.swift */; };
+		A493133D2508D231007110E4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A493133C2508D231007110E4 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -226,6 +227,7 @@
 		84E166E3250362DE00C2F2EF /* SuccessPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessPopupVC.swift; sourceTree = "<group>"; };
 		8A21614890BB1C8443A578F3 /* Pods-ArabianTyres.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArabianTyres.release.xcconfig"; path = "Target Support Files/Pods-ArabianTyres/Pods-ArabianTyres.release.xcconfig"; sourceTree = "<group>"; };
 		A493133B2508BF68007110E4 /* ArabianTyres.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ArabianTyres.entitlements; sourceTree = "<group>"; };
+		A493133C2508D231007110E4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B2C00CD38A98EBA313A070C9 /* Pods_ArabianTyres.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArabianTyres.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -478,6 +480,7 @@
 				8481FA282500BC1400AB6EFB /* LocalizedString */,
 				8481FA052500AA9B00AB6EFB /* Assets.xcassets */,
 				8481FA0A2500AA9B00AB6EFB /* Info.plist */,
+				A493133C2508D231007110E4 /* GoogleService-Info.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -820,6 +823,7 @@
 				84303E6E25064CC8000BA5C3 /* Home.storyboard in Resources */,
 				8481FA992501438F00AB6EFB /* NunitoSans-ExtraLight.ttf in Resources */,
 				8481FA932501437000AB6EFB /* NunitoSans-BoldItalic.ttf in Resources */,
+				A493133D2508D231007110E4 /* GoogleService-Info.plist in Resources */,
 				843F004E25060822001A78EC /* CountryCodeTableCell.xib in Resources */,
 				8481FA812500DC8800AB6EFB /* Main.storyboard in Resources */,
 				844CBD1B2501F7D5009BE668 /* LoginTopTableCell.xib in Resources */,

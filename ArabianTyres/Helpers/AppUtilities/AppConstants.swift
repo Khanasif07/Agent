@@ -17,9 +17,9 @@ enum AppConstants {
     static var defaultDate          = "0000-00-00"
     static var emptyString          = ""
     static var whiteSpace           = " "
-    static let facebookAppId = "1353690468354698"//dev
+    static let facebookAppId = "331106654612712"//dev
     
-    static let googleId = "1024099896615-uogtb9tpti7526hvkcmilspkivmchvo7.apps.googleusercontent.com"//testing
+    static let googleId = "945865667688-17hgjjn4tgqikhmcq7ufigggcqta2t75.apps.googleusercontent.com"//testing
     
     static var awss3PoolId          =  "us-east-1:b1f250f2-66a7-4d07-96e9-01817149a439"
     

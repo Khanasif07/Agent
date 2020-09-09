@@ -26,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , MessagingDelegate , UNUs
         self.setUpKeyboardSetup()
         self.setUpTextField()
         AWSS3Manager.shared.setupAmazonS3(withPoolID: AppConstants.awss3PoolId)
+        GoogleLoginController.shared.configure(withClientId: AppConstants.googleId)
         AppRouter.checkAppInitializationFlow()
         return true
     }

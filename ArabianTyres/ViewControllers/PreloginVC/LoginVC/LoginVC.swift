@@ -129,6 +129,28 @@ extension LoginVC : UITableViewDelegate, UITableViewDataSource {
     
     func getSocialLoginCell(_ tableView: UITableView , indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(with: LoginSocialTableCell.self, indexPath: indexPath)
+        cell.googleBtnTapped = {[weak self] in
+            guard let self = `self` else { return }
+            GoogleLoginController.shared.login(fromViewController: self, success: { [weak self] (model) in
+                guard let _ = self else {return}
+                printDebug(model)
+                self?.hitSocialLoginAPI(name: model.name, email: model.email, socialId: model.id, socialType: "google", phoneNo: "", profilePicture: model.image?.description ?? "")
+            }) { (error) in
+                printDebug(error.localizedDescription)
+            }
+        }
+        
+        cell.fbBtnTapped = { [weak self] in
+            guard let self = `self` else { return }
+            FacebookController.shared.getFacebookUserInfo(fromViewController: self, isSilentLogin: false, success: { [weak self] (model) in
+                guard let _ = self else {return}
+                printDebug(model)
+                self?.hitSocialLoginAPI(name: model.name, email: model.email, socialId: model.id, socialType: "facebook", phoneNo: "", profilePicture: model.picture?.description ?? "")
+                }, failure: { (error) in
+                    printDebug(error?.localizedDescription.description)
+            })
+
+        }
         return cell
     }
 
@@ -167,6 +189,10 @@ extension LoginVC : UITextFieldDelegate{
 // MARK: - SignInVMDelegate
 //=========================================
 extension LoginVC: SignInVMDelegate {
+    func socailLoginApiSuccess(message: String) {
+        AppRouter.goToUserHome()
+    }
+    
     func willSignIn() {
     }
     
