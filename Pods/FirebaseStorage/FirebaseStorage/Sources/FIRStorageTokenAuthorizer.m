@@ -19,7 +19,7 @@
 #import "FirebaseStorage/Sources/FIRStorageConstants_Private.h"
 #import "FirebaseStorage/Sources/FIRStorageErrors.h"
 
-#import "Interop/Auth/Public/FIRAuthInterop.h"
+#import <FirebaseAuthInterop/FIRAuthInterop.h>
 
 @implementation FIRStorageTokenAuthorizer {
  @private

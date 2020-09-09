@@ -20,7 +20,7 @@
 #import "FBLPromises.h"
 #endif
 
-#import "FirebaseCore/Sources/Private/FirebaseCoreInternal.h"
+#import <FirebaseCore/FIRApp.h>
 
 #import "FIRCLSUserDefaults.h"
 

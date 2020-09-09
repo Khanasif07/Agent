@@ -66,8 +66,7 @@ NSString *const AppVersion = @"app_version";
                       currentTimestamp:(NSTimeInterval)currentTimestamp {
   NSString *settingsFilePath = self.fileManager.settingsFilePath;
 
-  NSData *data = [self.fileManager dataWithContentsOfFile:settingsFilePath];
-
+  NSData *data = [NSData dataWithContentsOfFile:settingsFilePath];
   if (!data) {
     FIRCLSDebugLog(@"[Crashlytics:Settings] No settings were cached");
 
@@ -174,8 +173,7 @@ NSString *const AppVersion = @"app_version";
 #pragma mark - Convenience Methods
 
 - (NSDictionary *)loadCacheKey {
-  NSData *cacheKeyData =
-      [self.fileManager dataWithContentsOfFile:self.fileManager.settingsCacheKeyPath];
+  NSData *cacheKeyData = [NSData dataWithContentsOfFile:self.fileManager.settingsCacheKeyPath];
 
   if (!cacheKeyData) {
     return nil;
@@ -293,7 +291,7 @@ NSString *const AppVersion = @"app_version";
   return [self errorReportingEnabled];
 }
 
-- (BOOL)collectReportsEnabled {
+- (BOOL)crashReportingEnabled {
   NSNumber *value = [self featuresSettings][@"collect_reports"];
 
   if (value != nil) {

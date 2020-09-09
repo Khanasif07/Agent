@@ -15,6 +15,7 @@
 #pragma once
 
 #include "FIRCLSFeatures.h"
+
 #include "FIRCLSThreadState.h"
 #if CLS_COMPACT_UNWINDING_SUPPORTED
 #include "FIRCLSCompactUnwind.h"

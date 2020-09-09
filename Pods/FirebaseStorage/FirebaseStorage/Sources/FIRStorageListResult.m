@@ -33,12 +33,16 @@
     }
 
     FIRStorageReference *prefixReference = [rootReference child:pathWithoutTrailingSlash];
+    NSAssert([prefixReference.fullPath hasPrefix:reference.fullPath],
+             @"Expected %@ to be a child element of %@", reference, prefixReference);
     [prefixes addObject:prefixReference];
   }
 
   NSArray<NSDictionary<NSString *, NSString *> *> *itemEntries = dictionary[kFIRStorageListItems];
   for (NSDictionary<NSString *, NSString *> *itemEntry in itemEntries) {
     FIRStorageReference *itemReference = [rootReference child:itemEntry[kFIRStorageListItemName]];
+    NSAssert([itemReference.fullPath hasPrefix:reference.fullPath],
+             @"Expected %@ to be a child element of %@", reference, itemReference);
     [items addObject:itemReference];
   }
 

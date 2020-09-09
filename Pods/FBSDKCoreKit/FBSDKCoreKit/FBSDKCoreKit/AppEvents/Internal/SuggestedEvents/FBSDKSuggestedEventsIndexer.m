@@ -29,10 +29,8 @@
 #import <UIKit/UIKit.h>
 
 #import "FBSDKCoreKit+Internal.h"
-#import "FBSDKFeatureExtractor.h"
+#import "FBSDKEventInferencer.h"
 #import "FBSDKMLMacros.h"
-#import "FBSDKModelManager.h"
-#import "FBSDKModelUtility.h"
 
 NSString * const OptInEvents = @"production_events";
 NSString * const UnconfirmedEvents = @"eligible_for_prediction_events";
@@ -78,9 +76,9 @@ static NSMutableSet<NSString *> *_unconfirmedEvents;
   dispatch_once(&onceToken, ^{
 
     // swizzle UIButton
-    [FBSDKSwizzler swizzleSelector:@selector(didMoveToWindow) onClass:[UIControl class] withBlock:^(UIControl *control) {
-      if (control.window && [control isKindOfClass:[UIButton class]]) {
-        [((UIButton *)control) addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchDown];
+    [FBSDKSwizzler swizzleSelector:@selector(didMoveToWindow) onClass:[UIButton class] withBlock:^(UIButton *button) {
+      if (button.window) {
+        [button addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchDown];
       }
     } named:@"suggested_events"];
 
@@ -201,7 +199,7 @@ static NSMutableSet<NSString *> *_unconfirmedEvents;
         if (window.isKeyWindow) {
           [trees insertObject:tree atIndex:0];
         } else {
-          [FBSDKTypeUtility array:trees addObject:tree];
+          [trees addObject:tree];
         }
       }
     }
@@ -213,14 +211,12 @@ static NSMutableSet<NSString *> *_unconfirmedEvents;
       screenName = NSStringFromClass([topMostViewController class]);
     }
 
-    [FBSDKTypeUtility dictionary:viewTree setObject:trees forKey:VIEW_HIERARCHY_VIEW_KEY];
-    [FBSDKTypeUtility dictionary:viewTree setObject:screenName ?: @"" forKey:VIEW_HIERARCHY_SCREEN_NAME_KEY];
+    viewTree[VIEW_HIERARCHY_VIEW_KEY] = trees;
+    viewTree[VIEW_HIERARCHY_SCREEN_NAME_KEY] = screenName ?: @"";
 
     fb_dispatch_on_default_thread(^{
-      NSMutableDictionary<NSString *, id> *viewTreeCopy = [viewTree mutableCopy];
-      float *denseData = [FBSDKFeatureExtractor getDenseFeatures:viewTree];
-      NSString *textFeature = [FBSDKModelUtility normalizeText:[FBSDKFeatureExtractor getTextFeature:text withScreenName:viewTreeCopy[@"screenname"]]];
-      NSString *event = [FBSDKModelManager processSuggestedEvents:textFeature denseData:denseData];
+      NSDictionary<NSString *, NSString *> *result = [FBSDKEventInferencer predict:text viewTree:[viewTree mutableCopy] withLog:YES];
+      NSString *event = result[SUGGEST_EVENT_KEY];
       if (!event || [event isEqualToString:SUGGESTED_EVENT_OTHER]) {
         return;
       }
@@ -231,24 +227,13 @@ static NSMutableSet<NSString *> *_unconfirmedEvents;
                       }];
       } else if ([_unconfirmedEvents containsObject:event]) {
         // Only send back not confirmed events to advertisers
-        [self logSuggestedEvent:event withText:text withDenseFeature:[self getDenseFeaure:denseData] ?: @""];
+        [self logSuggestedEvent:event withText:text withDenseFeature:result[DENSE_FEATURE_KEY] ?: @""];
       }
-      free(denseData);
     });
   });
 }
 
 #pragma mark - Helper Methods
-
-+ (NSString *)getDenseFeaure:(float *)denseData
-{
-  // Get dense feature string
-  NSMutableArray *denseDataArray = [NSMutableArray array];
-  for (int i = 0; i < 30; i++) {
-    [FBSDKTypeUtility array:denseDataArray addObject:[NSNumber numberWithFloat: denseData[i]]];
-  }
-  return [denseDataArray componentsJoinedByString:@","];
-}
 
 + (NSString *)getTextFromContentView:(UIView *)contentView
 {
@@ -256,7 +241,7 @@ static NSMutableSet<NSString *> *_unconfirmedEvents;
   for (UIView *subView in [contentView subviews]) {
     NSString *label = [FBSDKViewHierarchy getText:subView];
     if (label.length > 0) {
-      [FBSDKTypeUtility array:textArray addObject:label];
+      [textArray addObject:label];
     }
   }
   return [textArray componentsJoinedByString:@" "];

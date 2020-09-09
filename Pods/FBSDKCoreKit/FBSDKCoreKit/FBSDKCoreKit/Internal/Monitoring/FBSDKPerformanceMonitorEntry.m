@@ -18,7 +18,7 @@
 
 #import "FBSDKPerformanceMonitorEntry.h"
 
-#import "FBSDKTypeUtility.h"
+#import "FBSDKBasicUtility.h"
 
 static NSString * const FBSDKPerformanceNameKey = @"event_name";
 static NSString * const FBSDKPerformanceStartTimeKey = @"time_start";
@@ -47,11 +47,6 @@ static NSString * const FBSDKPerformanceTimeSpentKey = @"time_spent";
   return entry;
 }
 
-- (NSString *)name
-{
-  return [_name copy];
-}
-
 - (void)encodeWithCoder:(nonnull NSCoder *)encoder {
   if (_name && _startTime && _endTime) {
     [encoder encodeObject:_name forKey:FBSDKPerformanceNameKey];
@@ -74,15 +69,15 @@ static NSString * const FBSDKPerformanceTimeSpentKey = @"time_spent";
 
 - (nonnull NSDictionary *)dictionaryRepresentation {
   NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-  
-  [FBSDKTypeUtility dictionary:dict setObject:_name
-                        forKey:FBSDKPerformanceNameKey];
-  [FBSDKTypeUtility dictionary:dict
-                     setObject:@([_startTime timeIntervalSince1970])
-                        forKey:FBSDKPerformanceStartTimeKey];
-  [FBSDKTypeUtility dictionary:dict
-                     setObject:@([_endTime timeIntervalSinceDate:_startTime])
-                        forKey:FBSDKPerformanceTimeSpentKey];
+
+  [FBSDKBasicUtility dictionary:dict setObject:_name
+                         forKey:FBSDKPerformanceNameKey];
+  [FBSDKBasicUtility dictionary:dict
+                      setObject:@([_startTime timeIntervalSince1970])
+                         forKey:FBSDKPerformanceStartTimeKey];
+  [FBSDKBasicUtility dictionary:dict
+                      setObject:@([_endTime timeIntervalSinceDate:_startTime])
+                         forKey:FBSDKPerformanceTimeSpentKey];
 
   return dict;
 }

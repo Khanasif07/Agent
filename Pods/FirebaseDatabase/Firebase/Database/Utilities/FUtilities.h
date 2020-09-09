@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#import "FirebaseCore/Sources/Private/FirebaseCoreInternal.h"
+#import <FirebaseCore/FIRLogger.h>
 #import <Foundation/Foundation.h>
 
 #import "FParsedUrl.h"
