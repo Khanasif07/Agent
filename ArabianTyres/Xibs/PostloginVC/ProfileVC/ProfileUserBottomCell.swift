@@ -12,7 +12,8 @@ import Foundation
 class ProfileUserBottomCell: UITableViewCell {
     
     var settingBtnTapped: (()->())?
-    
+    var logoutBtnTapped: (()->())?
+    var isComeFromProfile: Bool = false
     var selectItemArray = [LocalizedString.my_vehicle.localized,LocalizedString.service_history.localized,LocalizedString.payments.localized,LocalizedString.saved_cards.localized,LocalizedString.added_location.localized,LocalizedString.change_password.localized,LocalizedString.setting.localized]
     var selectImageArray: [UIImage] = [#imageLiteral(resourceName: "vehicle"),#imageLiteral(resourceName: "serviceHistory"),#imageLiteral(resourceName: "payment"),#imageLiteral(resourceName: "savedCard"),#imageLiteral(resourceName: "addedLocation"),#imageLiteral(resourceName: "group"),#imageLiteral(resourceName: "profileSettting")]
     
@@ -51,12 +52,17 @@ extension ProfileUserBottomCell: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.selectItemArray.endIndex
+        return self.selectImageArray.endIndex
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(with: ProfileUserInternalCell.self, indexPath: indexPath)
         cell.populateCell(title: self.selectItemArray[indexPath.row],img:self.selectImageArray[indexPath.row] )
+        if isComeFromProfile {
+            cell.profileImgView.setBorder(width: 1.0, color: UIColor.init(r: 201, g: 6, b: 3, alpha: 0.1))
+            cell.profileImgView.backgroundColor = UIColor(r: 255, g: 249, b: 249, alpha: 1.0)
+            cell.titleLbl.textColor = UIColor(r: 201, g: 6, b: 3, alpha: 1.0)
+        }
         return cell
     }
     
@@ -65,13 +71,17 @@ extension ProfileUserBottomCell: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath.row {
-        case 6:
+        switch self.selectItemArray[indexPath.row] {
+        case  LocalizedString.logout.localized :
+            if let handle = logoutBtnTapped{
+                handle()
+            }
+        case LocalizedString.setting.localized:
             if let handle = settingBtnTapped{
                 handle()
             }
         default:
-            printDebug("Do nothing")
+            printDebug("Do Nothing")
         }
     }
 }

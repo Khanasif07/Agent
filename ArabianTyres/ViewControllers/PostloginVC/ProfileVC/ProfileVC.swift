@@ -17,6 +17,8 @@ class ProfileVC: BaseVC {
     
     // MARK: - Variables
     //===========================
+    var selectItemArray = [LocalizedString.my_vehicle.localized,LocalizedString.service_history.localized,LocalizedString.payments.localized,LocalizedString.saved_cards.localized,LocalizedString.added_location.localized,LocalizedString.change_password.localized,LocalizedString.setting.localized,LocalizedString.setting.localized,LocalizedString.setting.localized]
+    var selectImageArray: [UIImage] = [#imageLiteral(resourceName: "vehicle"),#imageLiteral(resourceName: "serviceHistory"),#imageLiteral(resourceName: "payment"),#imageLiteral(resourceName: "savedCard"),#imageLiteral(resourceName: "addedLocation"),#imageLiteral(resourceName: "group"),#imageLiteral(resourceName: "profileSettting")]
     
     // MARK: - Lifecycle
     //===========================
@@ -32,6 +34,11 @@ class ProfileVC: BaseVC {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.mainTableView.reloadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     // MARK: - IBActions
@@ -57,7 +64,7 @@ extension ProfileVC {
         self.mainTableView.registerCell(with: ProfileUserBottomCell.self)
     }
     
-    private func getcellForTableView(_ tableView: UITableView,_ indexPath : IndexPath)-> UITableViewCell {
+    private func getCellForTableView(_ tableView: UITableView,_ indexPath : IndexPath)-> UITableViewCell {
         if isUserLoggedin {
             switch isCurrentUserType {
             case .user:
@@ -67,8 +74,11 @@ extension ProfileVC {
                     return cell
                 default:
                     let cell = tableView.dequeueCell(with: ProfileUserBottomCell.self, indexPath: indexPath)
+                    cell.selectItemArray = self.selectItemArray
+                    cell.selectImageArray = self.selectImageArray
                     cell.settingBtnTapped = { [weak self]  in
                         guard let `self` = self else { return }
+                        AppRouter.goToProfileSettingVC(vc: self)
                     }
                     return cell
                 }
@@ -105,7 +115,7 @@ extension ProfileVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        self.getcellForTableView(tableView,indexPath)
+        self.getCellForTableView(tableView,indexPath)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -162,7 +162,6 @@ extension LoginVC: SignInVMDelegate {
     }
     
     func signInSuccess(userModel: UserModel) {
-         ToastView.shared.showLongToast(self.view, msg: "")
          AppRouter.goToUserHome()
     }
     

@@ -24,7 +24,7 @@ extension WebServices {
         case forgetPassword = "user/forgotPassword"
         case resetPassword =  "user/resetpassword"
         case verifyforgetPasswordOtp = "user/verifyforgetPasswordOtp"
-        case logOut = "user/logout"
+        case logout = "user/logout"
         case socialLogin = "user/socialLogin"
         case socialSignup = "user/socialSignup"
 

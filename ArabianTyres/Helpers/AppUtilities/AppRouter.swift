@@ -17,7 +17,9 @@ enum AppRouter {
     static func setAsWindowRoot(_ viewController: UIViewController) {
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.setNavigationBarHidden(true, animated: false)
-        AppDelegate.shared.window?.rootViewController = navigationController
+        UIView.transition(with: AppDelegate.shared.window!, duration: 0.33, options: UIView.AnimationOptions.transitionCrossDissolve, animations: {
+            AppDelegate.shared.window?.rootViewController = navigationController
+        }, completion: nil)
         AppDelegate.shared.window?.makeKeyAndVisible()
     }
     
@@ -44,6 +46,11 @@ enum AppRouter {
         setAsWindowRoot(homeScene)
     }
     
+    static func goToProfileSettingVC(vc: UIViewController){
+           let scene = ProfileSettingVC.instantiate(fromAppStoryboard: .PostLogin)
+            vc.navigationController?.pushViewController(scene, animated: true)
+       }
+    
     static func goToSignUpVC(vc: UIViewController){
         let scene = SignUpVC.instantiate(fromAppStoryboard: .Prelogin)
         vc.navigationController?.pushViewController(scene, animated: true)
@@ -64,6 +71,15 @@ enum AppRouter {
     static func makeChooseLanguageVCRoot(){
         let scene = ChooseLanguageVC.instantiate(fromAppStoryboard: .Prelogin)
         setAsWindowRoot(scene)
+    }
+    
+    static func goToLoginVC(){
+        let scene = LoginVC.instantiate(fromAppStoryboard: .Prelogin)
+        let nvc = UINavigationController(rootViewController: scene)
+        nvc.isNavigationBarHidden = true
+        AppDelegate.shared.window?.rootViewController = nvc
+        AppDelegate.shared.window?.becomeKey()
+        AppDelegate.shared.window?.makeKeyAndVisible()
     }
     
     static func showSuccessPopUp(vc: UIViewController & SuccessPopupVCDelegate,title: String,desc: String){

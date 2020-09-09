@@ -325,5 +325,23 @@ extension WebServices{
         }
     }
     
+    // MARK:- Logout User
+    //===================
+    static func logout(parameters: JSONDictionary,
+                       success: @escaping ResponseMessage,
+                       failure: @escaping FailureResponse) {
+        self.commonPutAPI(parameters: parameters, endPoint: .logout, loader: true, success: { (json) in
+            let code = json[ApiKey.statusCode].intValue
+            let msg = json[ApiKey.message].stringValue
+            switch code {
+            case ApiCode.success:
+                success(msg)
+            default:
+                failure(NSError(code: code, localizedDescription: msg))
+            }
+        }) { (error) -> (Void) in
+            failure(error)
+        }
+    }
 }
 

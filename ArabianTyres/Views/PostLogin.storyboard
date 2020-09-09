@@ -1,7 +1,91 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13142" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12042"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <scenes/>
+    <customFonts key="customFonts">
+        <array key="NunitoSans-Bold.ttf">
+            <string>NunitoSans-Bold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Profile SettingVC-->
+        <scene sceneID="pHO-C3-NFa">
+            <objects>
+                <viewController storyboardIdentifier="ProfileSettingVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mbE-d1-7X0" customClass="ProfileSettingVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BbT-QC-DGC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GWr-YG-LBt">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="067-wF-PmZ">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EWT-Rr-69p">
+                                                <rect key="frame" x="174.5" y="16.5" width="65" height="23.5"/>
+                                                <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6R5-Dm-aIQ">
+                                                <rect key="frame" x="6" y="11" width="36" height="34"/>
+                                                <state key="normal" image="icBackward"/>
+                                                <connections>
+                                                    <action selector="backBtnAction:" destination="mbE-d1-7X0" eventType="touchUpInside" id="MoR-TG-2Kp"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="6R5-Dm-aIQ" firstAttribute="leading" secondItem="067-wF-PmZ" secondAttribute="leading" constant="6" id="4CA-lB-bIY"/>
+                                            <constraint firstItem="EWT-Rr-69p" firstAttribute="centerX" secondItem="067-wF-PmZ" secondAttribute="centerX" id="GB8-WL-y0v"/>
+                                            <constraint firstItem="EWT-Rr-69p" firstAttribute="centerY" secondItem="067-wF-PmZ" secondAttribute="centerY" id="VG4-dH-a4n"/>
+                                            <constraint firstItem="6R5-Dm-aIQ" firstAttribute="centerY" secondItem="067-wF-PmZ" secondAttribute="centerY" id="cGw-4Z-5JX"/>
+                                            <constraint firstAttribute="height" constant="56" id="t1U-jm-WZX"/>
+                                        </constraints>
+                                    </view>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Rgo-h2-0GO">
+                                        <rect key="frame" x="0.0" y="66" width="414" height="786"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.96470588235294119" green="0.96862745098039216" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Rgo-h2-0GO" secondAttribute="trailing" id="DUW-rD-HKg"/>
+                                    <constraint firstItem="067-wF-PmZ" firstAttribute="top" secondItem="GWr-YG-LBt" secondAttribute="top" id="ZNs-Il-RzC"/>
+                                    <constraint firstAttribute="trailing" secondItem="067-wF-PmZ" secondAttribute="trailing" id="o3G-go-rJP"/>
+                                    <constraint firstAttribute="bottom" secondItem="Rgo-h2-0GO" secondAttribute="bottom" id="pf0-EQ-5nM"/>
+                                    <constraint firstItem="067-wF-PmZ" firstAttribute="leading" secondItem="GWr-YG-LBt" secondAttribute="leading" id="svY-cE-YBr"/>
+                                    <constraint firstItem="Rgo-h2-0GO" firstAttribute="leading" secondItem="GWr-YG-LBt" secondAttribute="leading" id="tma-m8-uSf"/>
+                                    <constraint firstItem="Rgo-h2-0GO" firstAttribute="top" secondItem="067-wF-PmZ" secondAttribute="bottom" constant="10" id="vLY-qh-HHu"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="piF-55-Txw" firstAttribute="trailing" secondItem="GWr-YG-LBt" secondAttribute="trailing" id="8vL-gT-aeA"/>
+                            <constraint firstAttribute="bottom" secondItem="GWr-YG-LBt" secondAttribute="bottom" id="Bx4-ZB-VnI"/>
+                            <constraint firstItem="GWr-YG-LBt" firstAttribute="leading" secondItem="piF-55-Txw" secondAttribute="leading" id="OpO-6O-3LV"/>
+                            <constraint firstItem="GWr-YG-LBt" firstAttribute="top" secondItem="piF-55-Txw" secondAttribute="top" id="ysa-lU-dco"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="piF-55-Txw"/>
+                    </view>
+                    <connections>
+                        <outlet property="mainTableView" destination="Rgo-h2-0GO" id="Qi3-dw-bIJ"/>
+                        <outlet property="titleLbl" destination="EWT-Rr-69p" id="8rG-3m-5t0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PWX-L7-LhO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-46" y="146"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icBackward" width="36" height="34"/>
+    </resources>
 </document>

@@ -21,6 +21,7 @@
 "english" = "English";
 "arabic" = "عربى";
 "continueTitle" = "Continue";
+"logout" = "Logout";
 
 //MARK: - Home TabBar Values
 //========================
@@ -99,3 +100,15 @@
 "saved_cards" = "Saved Cards";
 "added_location" = "Added Location";
 "change_password" = "Change Password";
+
+// MARK: - Profile Setting VC Values
+//==============================
+"aboutUs" = "About us";
+"terms_Condition" = "Terms & Condition";
+"privacy_policy" = "Privacy Policy";
+"contactUs" = "Conatct us";
+"changeLanguage" = "Change Language";
+"switchProfileTogarage" = "Switch Profile to Garage Owner";
+"reportAnIssue" = "Report an Issue";
+"faq" = "FAQ";
+"referFriend" = "Rafer a Friend";

@@ -20,6 +20,8 @@
 		843C8EC52508AE9500515F2E /* ProfileUserInternalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843C8EC32508AE9500515F2E /* ProfileUserInternalCell.swift */; };
 		843C8EC62508AE9500515F2E /* ProfileUserInternalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 843C8EC42508AE9500515F2E /* ProfileUserInternalCell.xib */; };
 		843C8EC92508B0AE00515F2E /* AGTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843C8EC82508B0AE00515F2E /* AGTableView.swift */; };
+		843C8ECC2508C3A400515F2E /* ProfileSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843C8ECB2508C3A400515F2E /* ProfileSettingVC.swift */; };
+		843C8ECE2508E91700515F2E /* ProfileSettingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843C8ECD2508E91700515F2E /* ProfileSettingVM.swift */; };
 		843CD3A32505409C00945937 /* LoginWithPhoneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843CD3A22505409C00945937 /* LoginWithPhoneViewModel.swift */; };
 		843DFD1E2503F017000DE6EB /* OtpVerificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DFD1D2503F017000DE6EB /* OtpVerificationVC.swift */; };
 		843DFD202503F93A000DE6EB /* OtpVerificationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DFD1F2503F93A000DE6EB /* OtpVerificationVM.swift */; };
@@ -134,6 +136,8 @@
 		843C8EC32508AE9500515F2E /* ProfileUserInternalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUserInternalCell.swift; sourceTree = "<group>"; };
 		843C8EC42508AE9500515F2E /* ProfileUserInternalCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileUserInternalCell.xib; sourceTree = "<group>"; };
 		843C8EC82508B0AE00515F2E /* AGTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AGTableView.swift; sourceTree = "<group>"; };
+		843C8ECB2508C3A400515F2E /* ProfileSettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingVC.swift; sourceTree = "<group>"; };
+		843C8ECD2508E91700515F2E /* ProfileSettingVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingVM.swift; sourceTree = "<group>"; };
 		843CD3A22505409C00945937 /* LoginWithPhoneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWithPhoneViewModel.swift; sourceTree = "<group>"; };
 		843DFD1D2503F017000DE6EB /* OtpVerificationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpVerificationVC.swift; sourceTree = "<group>"; };
 		843DFD1F2503F93A000DE6EB /* OtpVerificationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpVerificationVM.swift; sourceTree = "<group>"; };
@@ -313,6 +317,15 @@
 				843C8EC82508B0AE00515F2E /* AGTableView.swift */,
 			);
 			path = AGTableView;
+			sourceTree = "<group>";
+		};
+		843C8ECA2508C37F00515F2E /* ProfileSettingVC */ = {
+			isa = PBXGroup;
+			children = (
+				843C8ECB2508C3A400515F2E /* ProfileSettingVC.swift */,
+				843C8ECD2508E91700515F2E /* ProfileSettingVM.swift */,
+			);
+			path = ProfileSettingVC;
 			sourceTree = "<group>";
 		};
 		843DFD1C2503EFF5000DE6EB /* OtpVerificationVC */ = {
@@ -710,6 +723,7 @@
 		8481FA832500EE1500AB6EFB /* PostloginVC */ = {
 			isa = PBXGroup;
 			children = (
+				843C8ECA2508C37F00515F2E /* ProfileSettingVC */,
 				84476D2D25075F0A00AB5E80 /* ExploreVC */,
 				84476D2C25075F0200AB5E80 /* NotificationVC */,
 				84476D2B25075EFC00AB5E80 /* SettingVC */,
@@ -981,9 +995,11 @@
 				843CD3A32505409C00945937 /* LoginWithPhoneViewModel.swift in Sources */,
 				8481FA512500BEEC00AB6EFB /* DictionaryExtension.swift in Sources */,
 				8481FA1D2500BAC700AB6EFB /* FacebookController.swift in Sources */,
+				843C8ECC2508C3A400515F2E /* ProfileSettingVC.swift in Sources */,
 				8481FA4F2500BED600AB6EFB /* UIImageExtension.swift in Sources */,
 				843F004625060725001A78EC /* CountryVC.swift in Sources */,
 				843F004925060798001A78EC /* CountryVM.swift in Sources */,
+				843C8ECE2508E91700515F2E /* ProfileSettingVM.swift in Sources */,
 				844D81E92502751D00550334 /* SignUpViewModel.swift in Sources */,
 				844D81E72502723D00550334 /* SignUpModel.swift in Sources */,
 				84476D3325075F4400AB5E80 /* SettingVC.swift in Sources */,

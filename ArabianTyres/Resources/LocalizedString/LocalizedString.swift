@@ -15,6 +15,7 @@ enum LocalizedString : String {
     case appTitle = "NewProject"
     case ok = "ok"
     case dot = "\u{2022}"
+    case logout
     
     //MARK:- User TabBar Values
     //=========================
@@ -109,7 +110,17 @@ enum LocalizedString : String {
     case added_location
     case change_password
 
-    
+    // MARK: - Profile VC Values
+      //==============================
+    case aboutUs
+    case terms_Condition
+    case privacy_policy
+    case contactUs
+    case changeLanguage
+    case switchProfileTogarage
+    case reportAnIssue
+    case faq
+    case referFriend
 }
 
 
