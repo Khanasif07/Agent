@@ -1027,12 +1027,15 @@ your old password.</string>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RtN-OM-Hez">
                                         <rect key="frame" x="0.0" y="45" width="414" height="82"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search country by name, code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5PL-NE-4Jw">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search country by name, code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5PL-NE-4Jw" customClass="ATCTextField" customModule="ArabianTyres" customModuleProvider="target">
                                                 <rect key="frame" x="16" y="14" width="382" height="52"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="382" id="QMy-53-B78"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
-                                                    <action selector="textFieldDidChanged:" destination="CgC-vd-eIT" eventType="editingChanged" id="rd7-dP-foh"/>
+                                                    <action selector="textFieldDidChanged:" destination="CgC-vd-eIT" eventType="editingDidEnd" id="8sD-bd-caE"/>
                                                 </connections>
                                             </textField>
                                         </subviews>
@@ -1079,7 +1082,7 @@ your old password.</string>
                     </view>
                     <connections>
                         <outlet property="dropDownbutton" destination="e4t-mY-b2p" id="BcF-UE-feL"/>
-                        <outlet property="searchTxtField" destination="5PL-NE-4Jw" id="yDZ-sw-CzE"/>
+                        <outlet property="searchTxtField" destination="5PL-NE-4Jw" id="huo-Ua-RsW"/>
                         <outlet property="tableView" destination="TmH-gZ-zPC" id="PM9-2N-akC"/>
                     </connections>
                 </viewController>
