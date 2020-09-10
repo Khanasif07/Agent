@@ -10,6 +10,9 @@ import UIKit
 
 class ProfileGuestTableCell: UITableViewCell {
     
+    var loginBtnTapped: ((UIButton)->())?
+    var createAccountBtnTapped: ((UIButton)->())?
+    
     @IBOutlet weak var dataContainerView: UIView!
     @IBOutlet weak var createNewAccountBtn: UIButton!
     @IBOutlet weak var loginBtn: UIButton!
@@ -27,8 +30,15 @@ class ProfileGuestTableCell: UITableViewCell {
     
     
     @IBAction func loginBtnAction(_ sender: UIButton) {
+        if let handle = loginBtnTapped{
+            handle(sender)
+        }
     }
+    
     @IBAction func newAccntAction(_ sender: UIButton) {
+        if let handle = createAccountBtnTapped{
+            handle(sender)
+        }
     }
     
 }

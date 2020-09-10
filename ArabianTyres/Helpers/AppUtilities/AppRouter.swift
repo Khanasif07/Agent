@@ -56,6 +56,11 @@ enum AppRouter {
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
+    static func goToLogInVC(vc: UIViewController){
+        let scene = LoginVC.instantiate(fromAppStoryboard: .Prelogin)
+        vc.navigationController?.pushViewController(scene, animated: true)
+    }
+    
     static func goToResetPasswordVC(vc: UIViewController,resetToken: String){
         let scene = ResetPasswordVC.instantiate(fromAppStoryboard: .Prelogin)
         scene.viewModel.resetToken = resetToken
@@ -75,11 +80,12 @@ enum AppRouter {
     
     static func goToLoginVC(){
         let scene = LoginVC.instantiate(fromAppStoryboard: .Prelogin)
-        let nvc = UINavigationController(rootViewController: scene)
-        nvc.isNavigationBarHidden = true
-        AppDelegate.shared.window?.rootViewController = nvc
-        AppDelegate.shared.window?.becomeKey()
-        AppDelegate.shared.window?.makeKeyAndVisible()
+        setAsWindowRoot(scene)
+    }
+    
+    static func goToSignUpVC(){
+        let scene = SignUpVC.instantiate(fromAppStoryboard: .Prelogin)
+        setAsWindowRoot(scene)
     }
     
     static func showSuccessPopUp(vc: UIViewController & SuccessPopupVCDelegate,title: String,desc: String){

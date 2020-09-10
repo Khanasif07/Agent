@@ -121,6 +121,7 @@
 		8481FAA7250143CD00AB6EFB /* NunitoSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8481FAA6250143CD00AB6EFB /* NunitoSans-SemiBoldItalic.ttf */; };
 		8481FAAB25015CBC00AB6EFB /* CustommTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481FAAA25015CBC00AB6EFB /* CustommTextField.swift */; };
 		8481FAAF25015D9000AB6EFB /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481FAAE25015D9000AB6EFB /* LoginVC.swift */; };
+		8495E9442509C824003CA43D /* ProfileVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8495E9432509C824003CA43D /* ProfileVM.swift */; };
 		84E166E4250362DE00C2F2EF /* SuccessPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E166E3250362DE00C2F2EF /* SuccessPopupVC.swift */; };
 		A493133D2508D231007110E4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A493133C2508D231007110E4 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
@@ -242,6 +243,7 @@
 		8481FAA6250143CD00AB6EFB /* NunitoSans-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NunitoSans-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		8481FAAA25015CBC00AB6EFB /* CustommTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustommTextField.swift; sourceTree = "<group>"; };
 		8481FAAE25015D9000AB6EFB /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		8495E9432509C824003CA43D /* ProfileVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVM.swift; sourceTree = "<group>"; };
 		84E166E3250362DE00C2F2EF /* SuccessPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessPopupVC.swift; sourceTree = "<group>"; };
 		8A21614890BB1C8443A578F3 /* Pods-ArabianTyres.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArabianTyres.release.xcconfig"; path = "Target Support Files/Pods-ArabianTyres/Pods-ArabianTyres.release.xcconfig"; sourceTree = "<group>"; };
 		A493133B2508BF68007110E4 /* ArabianTyres.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ArabianTyres.entitlements; sourceTree = "<group>"; };
@@ -391,6 +393,7 @@
 			isa = PBXGroup;
 			children = (
 				84476D3025075F3400AB5E80 /* ProfileVC.swift */,
+				8495E9432509C824003CA43D /* ProfileVM.swift */,
 			);
 			path = ProfileVC;
 			sourceTree = "<group>";
@@ -1027,6 +1030,7 @@
 				84476D3325075F4400AB5E80 /* SettingVC.swift in Sources */,
 				8481FA8A2501081000AB6EFB /* TutorialCollCell.swift in Sources */,
 				8481FA472500BE9400AB6EFB /* UICollectionView+UICollectionViewCellExtension.swift in Sources */,
+				8495E9442509C824003CA43D /* ProfileVM.swift in Sources */,
 				84476D3525075F5600AB5E80 /* NotificationVC.swift in Sources */,
 				8481FA4D2500BEC700AB6EFB /* UIScreen + Extension.swift in Sources */,
 				8481FA792500C64400AB6EFB /* UserModel.swift in Sources */,

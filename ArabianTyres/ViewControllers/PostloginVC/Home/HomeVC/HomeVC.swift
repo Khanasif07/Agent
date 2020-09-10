@@ -11,9 +11,11 @@ import UIKit
 struct DataValue{
     var image:UIImage
     var name:String
-    init(image:UIImage,name:String) {
+    var productColor: UIColor
+    init(image:UIImage,name:String,productColor: UIColor) {
         self.image = image
         self.name = name
+        self.productColor = productColor
     }
 }
 
@@ -22,6 +24,7 @@ class HomeVC: BaseVC {
     
     // MARK: - IBOutlets
     //===========================
+    @IBOutlet weak var userNameLbl: UILabel!
     @IBOutlet weak var mainCollView: UICollectionView!
     
     // MARK: - Variables
@@ -50,12 +53,25 @@ class HomeVC: BaseVC {
 extension HomeVC {
     
     private func initialSetup() {
+        self.dataSetUp()
+        self.collectionViewSetUp()
+    }
+    
+    private func dataSetUp(){
+        if isUserLoggedin{
+            self.userNameLbl.text = "Hi, " + "\(UserModel.main.name)"
+        } else {
+             self.userNameLbl.text = "Hi, User"
+        }
+        self.dataArray = [DataValue(image: #imageLiteral(resourceName: "maskGroup"), name: LocalizedString.tyre.localized,productColor: UIColor(r: 230, g: 240, b: 245, alpha: 1.0)),
+                     DataValue(image: #imageLiteral(resourceName: "oil"), name: LocalizedString.oil.localized,productColor: UIColor(r: 233 , g: 235, b: 239, alpha: 1.0)),
+                     DataValue(image: #imageLiteral(resourceName: "battery"), name: LocalizedString.battery.localized,productColor: UIColor(r: 253, g: 237, b: 223, alpha: 1.0))]
+    }
+    
+    private func collectionViewSetUp(){
         mainCollView.delegate = self
         mainCollView.dataSource = self
         mainCollView.registerCell(with: HomeCollectionCell.self)
-        dataArray = [DataValue(image: #imageLiteral(resourceName: "maskGroup"), name: LocalizedString.tyre.localized),
-                     DataValue(image: #imageLiteral(resourceName: "oil"), name: LocalizedString.oil.localized),
-                     DataValue(image: #imageLiteral(resourceName: "battery"), name: LocalizedString.battery.localized)]
     }
     
 }
@@ -72,6 +88,7 @@ extension HomeVC : UICollectionViewDelegate, UICollectionViewDataSource,UICollec
         let cell = mainCollView.dequeueCell(with: HomeCollectionCell.self, indexPath: indexPath)
         cell.cellImageView.image = dataArray[indexPath.row].image
         cell.cellLabel.text = dataArray[indexPath.row].name
+        cell.cellLabelBackGroundView.backgroundColor = dataArray[indexPath.row].productColor
         return cell
     }
     
@@ -94,7 +111,7 @@ extension HomeVC : UICollectionViewDelegate, UICollectionViewDataSource,UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.row)
+        showAlert(msg: "Under Development")
     }
     
 }

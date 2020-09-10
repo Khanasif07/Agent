@@ -168,7 +168,7 @@ extension WebServices {
     static func commonGetAPI(parameters: JSONDictionary = [:],
                              headers: HTTPHeaders = [:],
                              endPoint: EndPoint,
-                             loader: Bool = false,
+                             loader: Bool = true,
                              success : @escaping SuccessResponse,
                              failure : @escaping FailureResponse){
         
@@ -349,6 +349,25 @@ extension WebServices{
             switch code {
             case ApiCode.success:
                 success(msg)
+            default:
+                failure(NSError(code: code, localizedDescription: msg))
+            }
+        }) { (error) -> (Void) in
+            failure(error)
+        }
+    }
+    
+    // MARK:- My Profile Api
+    //=================
+    static func getMyProfileData(parameters: JSONDictionary,
+                                 success: @escaping SuccessResponse,
+                                 failure: @escaping FailureResponse) {
+        self.commonGetAPI(parameters: parameters,endPoint: .myProfile, success: { (json) in
+            let code = json[ApiKey.statusCode].intValue
+            let msg = json[ApiKey.message].stringValue
+            switch code {
+            case ApiCode.success:
+                success(json)
             default:
                 failure(NSError(code: code, localizedDescription: msg))
             }

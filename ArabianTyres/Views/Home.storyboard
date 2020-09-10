@@ -216,6 +216,7 @@
                     <navigationItem key="navigationItem" id="Vvy-Bo-nDm"/>
                     <connections>
                         <outlet property="mainCollView" destination="CAW-S0-fc3" id="IzA-Xr-L9c"/>
+                        <outlet property="userNameLbl" destination="69m-jt-V00" id="2Qc-FV-zTj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g2t-rf-c4F" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
