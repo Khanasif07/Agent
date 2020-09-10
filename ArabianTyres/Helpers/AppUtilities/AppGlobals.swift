@@ -62,3 +62,10 @@ var isCurrentUserType : UserType {
 // for Language
 var selectedLanguage =  AppUserDefaults.value(forKey: .language).stringValue
 
+extension UIDevice {
+    var hasNotch: Bool {
+        let bottom = UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0
+        return bottom > 0
+    }
+}
+

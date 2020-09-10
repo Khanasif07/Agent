@@ -86,6 +86,11 @@ extension LoginVC {
             }
         }
     }
+    
+    private func showEmailVerificationPopUp(){
+           self.showAlertWithAction(title: "Verify Email", msg: "A verification link will be send to your email address", cancelTitle: "Cancel", actionTitle: "Send", actioncompletion: {
+           }){self.dismiss(animated: true, completion: nil)}
+       }
 }
 
 // MARK: - Extension For TableView
@@ -208,9 +213,6 @@ extension LoginVC: SignInVMDelegate {
     func socailLoginApiFailure(message: String) {
         
     }
-
-    func willSignIn() {
-    }
     
     func signInSuccess(userModel: UserModel) {
          AppRouter.goToUserHome()
@@ -220,7 +222,8 @@ extension LoginVC: SignInVMDelegate {
         ToastView.shared.showLongToast(self.view, msg: message)
     }
     
-    func invalidInput(message: String) {
+    func  emailNotVerified(){
+        self.showEmailVerificationPopUp()
     }
 
 }

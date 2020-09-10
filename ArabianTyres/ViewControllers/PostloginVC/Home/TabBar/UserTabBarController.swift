@@ -52,7 +52,7 @@ class UserTabBarController: UITabBarController {
 extension UserTabBarController {
     
     private func initialSetup() {
-        self.bottomSafeArea = isDeviceIsIphoneX() ? 34.0 : 0.0
+        self.bottomSafeArea = UIDevice.current.hasNotch ? 34.0 : 0.0
         self.navigationController?.navigationBar.isHidden = true
         UITabBar.appearance().tintColor = AppColors.primaryBlueColor
         UITabBar.appearance().unselectedItemTintColor = AppColors.fontTertiaryColor
@@ -124,6 +124,7 @@ extension UserTabBarController:UITabBarControllerDelegate{
         let tabBarItemSize = CGSize(width: tabBar.frame.width / numberOfItems, height: tabBar.frame.height)
         tabBar.selectedImageTintColor = .white
         tabBar.selectionIndicatorImage = UIImage.imageWithColor(color: AppColors.primaryBlueColor, size: tabBarItemSize).resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: 0, bottom: bottomSafeArea, right: 0))
+        printDebug(bottomSafeArea)
         
     }
     
