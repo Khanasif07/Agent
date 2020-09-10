@@ -30,6 +30,7 @@ enum LocalizedString : String {
     case chooseFromGallery = "chooseFromGallery"
     case takePhoto = "takePhoto"
     case cancel = "cancel"
+    case send
     case removePicture = "removePicture"
     case alert
     case settings

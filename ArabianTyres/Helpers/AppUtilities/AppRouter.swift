@@ -16,7 +16,7 @@ enum AppRouter {
     //=========================================
     static func setAsWindowRoot(_ viewController: UIViewController) {
         let navigationController = UINavigationController(rootViewController: viewController)
-        navigationController.setNavigationBarHidden(true, animated: false)
+        navigationController.setNavigationBarHidden(true, animated: true)
         UIView.transition(with: AppDelegate.shared.window!, duration: 0.33, options: UIView.AnimationOptions.transitionCrossDissolve, animations: {
             AppDelegate.shared.window?.rootViewController = navigationController
         }, completion: nil)

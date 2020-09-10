@@ -124,7 +124,6 @@ extension UserTabBarController:UITabBarControllerDelegate{
         let tabBarItemSize = CGSize(width: tabBar.frame.width / numberOfItems, height: tabBar.frame.height)
         tabBar.selectedImageTintColor = .white
         tabBar.selectionIndicatorImage = UIImage.imageWithColor(color: AppColors.primaryBlueColor, size: tabBarItemSize).resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: 0, bottom: bottomSafeArea, right: 0))
-        printDebug(bottomSafeArea)
         
     }
     
@@ -142,7 +141,7 @@ extension UIImage {
         UIRectFill(rect)
     let image: UIImage = UIGraphicsGetImageFromCurrentImageContext() ?? UIImage()
         UIGraphicsEndImageContext()
-        return image
+    return image
     }
 
 }

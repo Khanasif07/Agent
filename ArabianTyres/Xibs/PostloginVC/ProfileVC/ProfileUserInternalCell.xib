@@ -38,10 +38,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iE0-Wl-FOt">
-                                <rect key="frame" x="298" y="18" width="24" height="24"/>
-                                <state key="normal" image="group3689"/>
-                            </button>
                             <view alpha="0.050000000000000003" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Svs-RA-Rdc">
                                 <rect key="frame" x="0.0" y="59" width="322" height="1"/>
                                 <color key="backgroundColor" red="0.54117647058823526" green="0.58431372549019611" blue="0.61960784313725492" alpha="1" colorSpace="calibratedRGB"/>
@@ -49,17 +45,32 @@
                                     <constraint firstAttribute="height" constant="1" id="7wR-Vo-fTt"/>
                                 </constraints>
                             </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4fK-In-1PH">
+                                <rect key="frame" x="298" y="18" width="24" height="24"/>
+                                <subviews>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jmj-2h-x3d">
+                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="24"/>
+                                        <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="14"/>
+                                        <color key="textColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.76470588235294112" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iE0-Wl-FOt">
+                                        <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                        <state key="normal" image="group3689"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="iE0-Wl-FOt" secondAttribute="trailing" id="2eW-Vw-mRn"/>
-                            <constraint firstItem="iE0-Wl-FOt" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ao3-WM-Wx4" secondAttribute="trailing" constant="25" id="4gH-ku-Dc0"/>
                             <constraint firstAttribute="bottom" secondItem="Svs-RA-Rdc" secondAttribute="bottom" id="8wP-Pv-bGD"/>
-                            <constraint firstItem="iE0-Wl-FOt" firstAttribute="centerY" secondItem="7l1-Ga-N5s" secondAttribute="centerY" id="EvL-wK-E6Q"/>
+                            <constraint firstItem="4fK-In-1PH" firstAttribute="centerY" secondItem="7l1-Ga-N5s" secondAttribute="centerY" id="LsV-9d-zTk"/>
                             <constraint firstItem="G0z-dI-7US" firstAttribute="centerY" secondItem="7l1-Ga-N5s" secondAttribute="centerY" id="XMB-bE-D92"/>
                             <constraint firstAttribute="trailing" secondItem="Svs-RA-Rdc" secondAttribute="trailing" id="YjH-QP-Oij"/>
                             <constraint firstItem="Svs-RA-Rdc" firstAttribute="leading" secondItem="7l1-Ga-N5s" secondAttribute="leading" id="bW4-FF-8mP"/>
                             <constraint firstItem="Svs-RA-Rdc" firstAttribute="top" secondItem="G0z-dI-7US" secondAttribute="bottom" constant="11" id="h1u-m2-phA"/>
+                            <constraint firstAttribute="trailing" secondItem="4fK-In-1PH" secondAttribute="trailing" id="j3u-1T-fBc"/>
+                            <constraint firstItem="4fK-In-1PH" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ao3-WM-Wx4" secondAttribute="trailing" constant="10" id="j73-th-WLT"/>
                             <constraint firstItem="ao3-WM-Wx4" firstAttribute="centerY" secondItem="7l1-Ga-N5s" secondAttribute="centerY" id="msh-XL-QW2"/>
                             <constraint firstItem="G0z-dI-7US" firstAttribute="top" secondItem="7l1-Ga-N5s" secondAttribute="top" constant="12" id="nM6-6O-h2g"/>
                             <constraint firstItem="G0z-dI-7US" firstAttribute="leading" secondItem="7l1-Ga-N5s" secondAttribute="leading" id="sMj-cL-l3R"/>
@@ -76,6 +87,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="langLbl" destination="jmj-2h-x3d" id="dg5-xM-abT"/>
                 <outlet property="profileImgView" destination="G0z-dI-7US" id="qe1-JS-sFF"/>
                 <outlet property="titleLbl" destination="ao3-WM-Wx4" id="QVi-0e-zc8"/>
             </connections>

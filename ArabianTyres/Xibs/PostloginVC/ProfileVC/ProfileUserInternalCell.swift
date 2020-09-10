@@ -10,6 +10,7 @@ import UIKit
 
 class ProfileUserInternalCell: UITableViewCell {
     
+    @IBOutlet weak var langLbl: UILabel!
     @IBOutlet weak var profileImgView: UIImageView!
     @IBOutlet weak var titleLbl: UILabel!
     
@@ -24,6 +25,7 @@ class ProfileUserInternalCell: UITableViewCell {
     }
     
     public func populateCell(title: String,img: UIImage){
+        self.langLbl.isHidden = (title == LocalizedString.changeLanguage.localized) ? false : true
         profileImgView.image = img
         titleLbl.text = title
     }

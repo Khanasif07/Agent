@@ -88,7 +88,7 @@ extension LoginVC {
     }
     
     private func showEmailVerificationPopUp(){
-           self.showAlertWithAction(title: "Verify Email", msg: "A verification link will be send to your email address", cancelTitle: "Cancel", actionTitle: "Send", actioncompletion: {
+        self.showAlertWithAction(title: "Verify Email", msg: "A verification link will be send to your email address", cancelTitle: LocalizedString.cancel.localized, actionTitle: LocalizedString.send.localized, actioncompletion: {
            }){self.dismiss(animated: true, completion: nil)}
        }
 }
