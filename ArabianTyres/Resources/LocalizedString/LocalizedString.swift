@@ -121,6 +121,21 @@ enum LocalizedString : String {
     case reportAnIssue
     case faq
     case referFriend
+    
+    case garageRegistration
+    case startRegistration
+    case requirementToRegister
+    case garageLogo
+    case authorisedNameOfServiceCenter
+    case locationOfYourServiceCenter
+    case imagesOfyourServiceCenter
+    case govtIssuedlicensesandDocuments
+    
+    case garageLogoDesc
+    case authorisedNameOfServiceCenterDesc
+    case locationOfYourServiceCenterDesc
+    case imagesOfyourServiceCenterDesc
+    case govtIssuedlicensesandDocumentsDesc
 }
 
 

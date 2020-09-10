@@ -30,6 +30,21 @@ enum AppFonts : String {
     case MuliLight                   = "Muli-Light"
     case MuliRegular                 = "Muli-Regular"
     case MuliLightItalic             = "Muli-LightItalic"
+    
+    case NunitoSansBold             = "NunitoSans-Bold"
+    case NunitoSansRegular          = "NunitoSans-Regular"
+    case NunitoSansLight            = "NunitoSans-Light"
+    case NunitoSansItalic           = "NunitoSans-Italic"
+    case NunitoSansSemiBold         = "NunitoSans-SemiBold"
+    
+    case NunitoSansBlack            = "NunitoSans-Black"
+    case NunitoSansBlackItalic      = "NunitoSans-BlackItalic"
+    case NunitoSansBoldItalic       = "NunitoSans-BoldItalic"
+    case NunitoSansExtraBold        = "NunitoSans-ExtraBold"
+    case NunitoSansExtraBoldItalic  = "NunitoSans-ExtraBoldItalic"
+
+    
+    
 }
 
 extension AppFonts {

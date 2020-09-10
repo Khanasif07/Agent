@@ -112,3 +112,19 @@
 "reportAnIssue" = "Report an Issue";
 "faq" = "FAQ";
 "referFriend" = "Rafer a Friend";
+
+"garageRegistration" = "Garage Registration";
+"startRegistration" = "Start Registration";
+"requirementToRegister" = "Requirement to register\nyour garage";
+
+"garageLogo" = "1. Garage Logo";
+"authorisedNameOfServiceCenter" = "2. Authorised Name of Service Center";
+"locationOfYourServiceCenter" = "3. Location of your Service center";
+"imagesOfyourServiceCenter" = "4. Images of your Service Center";
+"govtIssuedlicensesandDocuments" = "5. Govt. Issued licenses and Documents";
+
+"garageLogoDesc" = "You will have to upload a logo Image(JPG/JPEG) of your Garage or Service center.";
+"authorisedNameOfServiceCenterDesc" = "You will be entering the authorised name of your Garage or Service Center.";
+"locationOfYourServiceCenterDesc" = "You will have to mark the exact location of your Garage or Service center on provided MAP.";
+"imagesOfyourServiceCenterDesc" = "Upload Multiple Images(JPG/JPEG) of your Garage or Service center.";
+"govtIssuedlicensesandDocumentsDesc" = "You will have to upload several Documents like Commercial Registration Doc., Vat certificate, Municipality License and ID of the owner";

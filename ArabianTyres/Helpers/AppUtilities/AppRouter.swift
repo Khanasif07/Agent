@@ -114,4 +114,10 @@ enum AppRouter {
         let homeScene = UserTabBarController.instantiate(fromAppStoryboard: .Home)
         setAsWindowRoot(homeScene)
     }
+    
+    static func goToGarageRegistrationVC(vc: UIViewController){
+         let scene = GarageRegistrationVC.instantiate(fromAppStoryboard: .Garage)
+         vc.navigationController?.pushViewController(scene, animated: true)
+     }
+    
 }
