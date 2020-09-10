@@ -28,6 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , MessagingDelegate , UNUs
         AWSS3Manager.shared.setupAmazonS3(withPoolID: AppConstants.awss3PoolId)
         GoogleLoginController.shared.configure(withClientId: AppConstants.googleId)
         AppRouter.checkAppInitializationFlow()
+        
         return true
     }
     

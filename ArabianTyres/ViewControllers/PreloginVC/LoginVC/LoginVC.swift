@@ -40,8 +40,10 @@ class LoginVC: BaseVC {
     //==========================
     
     @IBAction func skipLoginAndContinueAction(_ sender: UIButton) {
-        AppUserDefaults.save(value: "guest", forKey: .currentUserType)
-        AppRouter.goToUserHome()
+//        AppUserDefaults.save(value: "guest", forKey: .currentUserType)
+//        AppRouter.goToUserHome()
+        
+        AppRouter.goToGarageRegistrationVC(vc: self)
     }
     
     
@@ -205,6 +207,10 @@ extension LoginVC: SignInVMDelegate {
         AppRouter.goToUserHome()
     }
     
+    func socailLoginApiFailure(message: String) {
+        
+    }
+
     func willSignIn() {
     }
     
@@ -217,11 +223,6 @@ extension LoginVC: SignInVMDelegate {
     }
     
     func invalidInput(message: String) {
-    }
-    
-    func hitSocialLoginAPI(name : String , email : String , socialId : String , socialType : String ,phoneNo: String, profilePicture : String){
-        viewModel.socailLoginApi(parameters: getSocialParams(name : name , email : email , socialId : socialId , socialType : socialType ,phoneNo: phoneNo ,profilePicture : profilePicture))
-       
     }
 
 }
@@ -244,4 +245,8 @@ extension LoginVC: AppleSignInProtocal {
         return dict
     }
 
+    func hitSocialLoginAPI(name : String , email : String , socialId : String , socialType : String ,phoneNo: String, profilePicture : String){
+         viewModel.socailLoginApi(parameters: getSocialParams(name : name , email : email , socialId : socialId , socialType : socialType ,phoneNo: phoneNo ,profilePicture : profilePicture))
+        
+     }
 }
