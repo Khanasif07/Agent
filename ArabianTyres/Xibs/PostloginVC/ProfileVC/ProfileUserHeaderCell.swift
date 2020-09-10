@@ -59,7 +59,7 @@ class ProfileUserHeaderCell: UITableViewCell {
     }
     
     @IBAction func emailVerifyBtnAction(_ sender: UIButton) {
-        if let handle = phoneVerifyBtnTapped{
+        if let handle = emailVerifyBtnTapped{
             handle(sender)
         }
     }

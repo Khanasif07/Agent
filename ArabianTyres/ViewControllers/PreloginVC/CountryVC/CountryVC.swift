@@ -12,7 +12,7 @@ class CountryVC: BaseVC {
     
     // MARK: - IBOutlets
     //===========================
-    @IBOutlet weak var searchTxtField: UITextField!
+    @IBOutlet weak var searchTxtField: ATCTextField!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var dropDownbutton: UIButton!
     
@@ -25,10 +25,8 @@ class CountryVC: BaseVC {
     //===========================
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchTxtField.delegate = self
         initialSetup()
         viewModel.getCountyData()
-        self.dropDownbutton.tintColor = AppColors.fontPrimaryColor
     }
     
     // MARK: - IBActions
@@ -49,9 +47,15 @@ class CountryVC: BaseVC {
 extension CountryVC {
     
     private func initialSetup() {
+        self.textFieldSetUp()
         tableView.registerCell(with: CountryCodeTableCell.self)
         tableView.delegate = self
         tableView.dataSource = self
+    }
+    
+    private func textFieldSetUp(){
+        searchTxtField.delegate = self
+        self.dropDownbutton.tintColor = AppColors.fontPrimaryColor
         let show1 = UIButton()
         show1.isSelected = false
         self.searchTxtField.setButtonToRightView(btn: show1, selectedImage: #imageLiteral(resourceName: "icon"), normalImage: #imageLiteral(resourceName: "icon"), size: CGSize(width: 30, height: 30))
@@ -97,3 +101,17 @@ extension CountryVC: UITableViewDataSource{
     }
 }
 
+
+import UIKit
+class ATCTextField: UITextField {
+    let padding = UIEdgeInsets(top: 0, left: 16.0, bottom: 0, right: 8)
+    override open func textRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.inset(by: padding)
+    }
+    override open func placeholderRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.inset(by: padding)
+    }
+    override open func editingRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.inset(by: padding)
+    }
+}

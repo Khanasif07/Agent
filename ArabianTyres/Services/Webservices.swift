@@ -40,8 +40,8 @@ extension WebServices {
             case ApiCode.success: success(json)
             case ApiCode.emailNotVerify : success(json)
             case ApiCode.emailRequired : success(json)
-            case ApiCode.tokenExpired :
-                showTokenExpiredAlert()
+//            case ApiCode.tokenExpired :
+//                showTokenExpiredAlert()
             default: failure(NSError(code: code, localizedDescription: msg))
             }
         }) { (error) in

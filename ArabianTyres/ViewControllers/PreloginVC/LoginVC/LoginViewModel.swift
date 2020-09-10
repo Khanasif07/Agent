@@ -11,12 +11,11 @@ import SwiftyJSON
 
 protocol SignInVMDelegate: NSObjectProtocol {
     
-    func willSignIn()
     func signInSuccess(userModel: UserModel)
     func signInFailed(message: String)
-    func invalidInput(message: String)
     func socailLoginApiSuccess(message: String)
     func socailLoginApiFailure(message: String)
+    func emailNotVerified()
 }
 
 extension SignInVMDelegate {
@@ -38,7 +37,11 @@ struct LoginViewModel {
             AppUserDefaults.save(value: json[ApiKey.data][ApiKey.userType].stringValue, forKey: .currentUserType)
             self.delegate?.signInSuccess(userModel: UserModel.main)
         }) { (error) -> (Void) in
-            self.delegate?.signInFailed(message: error.localizedDescription)
+            if (error as NSError).code == 401 {
+                self.delegate?.emailNotVerified()
+            }else {
+                self.delegate?.signInFailed(message: error.localizedDescription)
+            }
         }
     }
     

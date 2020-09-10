@@ -64,6 +64,7 @@ class SignUpTopCell: UITableViewCell {
         [nameTxtField,emailIdTxtField,mobNoTxtField,passTxtField,confirmPassTxtField].forEach({$0?.selectedTitleColor = AppColors.fontTertiaryColor})
         self.signUpBtn.setTitle(LocalizedString.signupcap.localized, for: .normal)
         self.signInBtn.setTitle(LocalizedString.sign_in.localized, for: .normal)
+        self.signUpBtn.backgroundColor = AppColors.primaryBlueColor
         self.passTxtField.isSecureTextEntry = true
         self.confirmPassTxtField.isSecureTextEntry = true
         self.mobNoTxtField.keyboardType = .numberPad

@@ -149,10 +149,7 @@ extension ProfileVC {
     
     private func showEmailVerificationPopUp(){
         self.showAlertWithAction(title: "Verify Email", msg: "A verification link will be send to your email address", cancelTitle: "Cancel", actionTitle: "Send", actioncompletion: {
-            WebServices.logout(parameters: [:], success: { (message) in
-                AppRouter.makeChooseLanguageVCRoot()
-            }) {_ in self.dismiss(animated: true, completion: nil)}
-        })
+        }){self.dismiss(animated: true, completion: nil)}
     }
     
     private func showPhoneVerificationPopUp(){

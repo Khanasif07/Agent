@@ -15,6 +15,8 @@ class UserTabBarController: UITabBarController {
     
     // MARK: - Variables
     //===========================
+    var bottomSafeArea: CGFloat = 0.0
+    
     
     // MARK: - Lifecycle
     //===========================
@@ -23,6 +25,23 @@ class UserTabBarController: UITabBarController {
         initialSetup()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if #available(iOS 11.0, *) {
+            self.bottomSafeArea = view.safeAreaInsets.bottom
+        } else {
+            self.bottomSafeArea = bottomLayoutGuide.length
+        }
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        if #available(iOS 11.0, *) {
+            self.bottomSafeArea = view.safeAreaInsets.bottom
+        } else {
+            self.bottomSafeArea = bottomLayoutGuide.length
+        }
+    }
     // MARK: - IBActions
     //===========================
     
@@ -33,12 +52,15 @@ class UserTabBarController: UITabBarController {
 extension UserTabBarController {
     
     private func initialSetup() {
+        self.bottomSafeArea = UIDevice.current.hasNotch ? 34.0 : 0.0
         self.navigationController?.navigationBar.isHidden = true
         UITabBar.appearance().tintColor = AppColors.primaryBlueColor
         UITabBar.appearance().unselectedItemTintColor = AppColors.fontTertiaryColor
         self.tabBar.backgroundColor = UIColor.white
-        setupTabBar()
+        self.selectedIndex = 0
         self.delegate = self
+        setupTabBar()
+        firstTabBarSelected()
     }
     
     private func createTabVC(vc: UIViewController.Type, storyBoard: AppStoryboard) -> UIViewController {
@@ -46,6 +68,13 @@ extension UserTabBarController {
         scene.navigationBar.isHidden = true
         scene.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         return scene
+    }
+    
+    private func firstTabBarSelected(){
+        let numberOfItems = CGFloat(self.tabBar.items!.count)
+        let tabBarItemSize = CGSize(width: self.tabBar.frame.width / numberOfItems, height: self.tabBar.frame.height)
+        self.tabBar.selectedImageTintColor = .white
+        self.tabBar.selectionIndicatorImage = UIImage.imageWithColor(color: AppColors.primaryBlueColor, size: tabBarItemSize).resizableImage(withCapInsets: UIEdgeInsets.init(top: 0, left: 0, bottom: bottomSafeArea, right: 0))
     }
     
     func setupTabBar() {
@@ -61,7 +90,7 @@ extension UserTabBarController {
             case 0:
                 if let item = self.tabBar.items?[index] {
                     item.image = #imageLiteral(resourceName: "home")
-                    item.selectedImage = #imageLiteral(resourceName: "home")
+                    item.selectedImage = #imageLiteral(resourceName: "homeSelected")
                 }
             case 1:
                 if let item = self.tabBar.items?[index] {
@@ -91,12 +120,11 @@ extension UserTabBarController {
 }
 extension UserTabBarController:UITabBarControllerDelegate{
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController){
-        
-        let tabBarIndex = tabBarController.selectedIndex
-        
         let numberOfItems = CGFloat(tabBar.items!.count)
         let tabBarItemSize = CGSize(width: tabBar.frame.width / numberOfItems, height: tabBar.frame.height)
-        tabBar.selectionIndicatorImage = UIImage.imageWithColor(color: UIColor.red, size: tabBarItemSize).resizableImage(withCapInsets: UIEdgeInsets.zero)
+        tabBar.selectedImageTintColor = .white
+        tabBar.selectionIndicatorImage = UIImage.imageWithColor(color: AppColors.primaryBlueColor, size: tabBarItemSize).resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: 0, bottom: bottomSafeArea, right: 0))
+        printDebug(bottomSafeArea)
         
     }
     
