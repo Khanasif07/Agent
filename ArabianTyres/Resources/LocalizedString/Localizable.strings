@@ -128,3 +128,9 @@
 "locationOfYourServiceCenterDesc" = "You will have to mark the exact location of your Garage or Service center on provided MAP.";
 "imagesOfyourServiceCenterDesc" = "Upload Multiple Images(JPG/JPEG) of your Garage or Service center.";
 "govtIssuedlicensesandDocumentsDesc" = "You will have to upload several Documents like Commercial Registration Doc., Vat certificate, Municipality License and ID of the owner";
+
+// MARK: - Home  VC Values
+//==============================
+"tyre" = "Tyre";
+"oil" = "Oil";
+"battery" = "Battery";

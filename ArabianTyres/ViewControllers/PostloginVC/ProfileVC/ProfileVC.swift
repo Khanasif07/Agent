@@ -17,6 +17,7 @@ class ProfileVC: BaseVC {
     
     // MARK: - Variables
     //===========================
+    var viewModel = ProfileVM()
     var selectItemArray = [LocalizedString.my_vehicle.localized,LocalizedString.service_history.localized,LocalizedString.payments.localized,LocalizedString.saved_cards.localized,LocalizedString.added_location.localized,LocalizedString.change_password.localized,LocalizedString.setting.localized,LocalizedString.setting.localized,LocalizedString.setting.localized]
     var selectImageArray: [UIImage] = [#imageLiteral(resourceName: "vehicle"),#imageLiteral(resourceName: "serviceHistory"),#imageLiteral(resourceName: "payment"),#imageLiteral(resourceName: "savedCard"),#imageLiteral(resourceName: "addedLocation"),#imageLiteral(resourceName: "group"),#imageLiteral(resourceName: "profileSettting")]
     
@@ -53,6 +54,7 @@ extension ProfileVC {
     
     private func initialSetup() {
         self.tableViewSetUp()
+        self.hitProfileApi()
     }
     
     private func tableViewSetUp(){
@@ -62,6 +64,8 @@ extension ProfileVC {
         self.mainTableView.registerCell(with: ProfileGuestTableCell.self)
         self.mainTableView.registerCell(with: ProfileUserHeaderCell.self)
         self.mainTableView.registerCell(with: ProfileUserBottomCell.self)
+        self.mainTableView.enablePullToRefresh(tintColor: AppColors.errorRedColor ,target: self, selector: #selector(refreshWhenPull(_:)))
+        self.viewModel.delegate = self
     }
     
     private func getCellForTableView(_ tableView: UITableView,_ indexPath : IndexPath)-> UITableViewCell {
@@ -71,6 +75,7 @@ extension ProfileVC {
                 switch indexPath.row {
                 case 0:
                     let cell = tableView.dequeueCell(with: ProfileUserHeaderCell.self, indexPath: indexPath)
+                    cell.populateData(model: self.viewModel.userModel)
                     return cell
                 default:
                     let cell = tableView.dequeueCell(with: ProfileUserBottomCell.self, indexPath: indexPath)
@@ -84,10 +89,26 @@ extension ProfileVC {
                 }
             default:
                 let cell = tableView.dequeueCell(with: ProfileGuestTableCell.self, indexPath: indexPath)
+                cell.loginBtnTapped = { [weak self] (sender) in
+                    guard let `self` = self else { return }
+                    AppRouter.goToLogInVC(vc: self)
+                }
+                cell.createAccountBtnTapped = { [weak self] (sender) in
+                    guard let `self` = self else { return }
+                    AppRouter.goToSignUpVC(vc: self)
+                }
                 return cell
             }
         } else {
             let cell = tableView.dequeueCell(with: ProfileGuestTableCell.self, indexPath: indexPath)
+            cell.loginBtnTapped = { [weak self] (sender) in
+                guard let `self` = self else { return }
+                AppRouter.goToLogInVC(vc: self)
+            }
+            cell.createAccountBtnTapped = { [weak self] (sender) in
+                guard let `self` = self else { return }
+                AppRouter.goToSignUpVC(vc: self)
+            }
             return cell
         }
     }
@@ -104,6 +125,20 @@ extension ProfileVC {
             return 1
         }
     }
+    
+    private func hitProfileApi(){
+        if isUserLoggedin {
+            self.viewModel.getMyProfileData(params: [:])
+        }
+    }
+    
+    @objc func refreshWhenPull(_ sender: UIRefreshControl) {
+        sender.endRefreshing()
+        if isUserLoggedin {
+            self.viewModel.getMyProfileData(params: [:])
+        }
+    }
+    
 }
 
 // MARK: - Extension For TableView
@@ -120,5 +155,18 @@ extension ProfileVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
+    }
+}
+
+// MARK: - ProfileVMDelegate
+//===========================
+extension ProfileVC: ProfileVMDelegate {
+    func getProfileDataSuccess(msg: String) {
+        ToastView.shared.showLongToast(self.view, msg: msg)
+        self.mainTableView.reloadData()
+    }
+    
+    func getProfileDataFailed(msg: String, error: Error) {
+        ToastView.shared.showLongToast(self.view, msg: msg)
     }
 }

@@ -32,5 +32,12 @@ class ProfileUserHeaderCell: UITableViewCell {
         self.editProfileView.round(radius: 4.0)
         self.phoneNoVerifiedView.round()
     }
-
+    
+    func populateData(model: UserModel){
+        profileImgView.setImage_kf(imageString: model.image, placeHolderImage: UIImage(), loader: true)
+        userNameLbl.text = model.name
+        userPhoneNoLbl.text = model.phoneNo.isEmpty ? "N/A" : "\(model.countryCode)" + " \(model.phoneNo)"
+        userEmailLbl.text = model.email.isEmpty ? "N/A" : model.email
+    }
+    
 }

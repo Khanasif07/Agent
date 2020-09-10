@@ -136,6 +136,11 @@ enum LocalizedString : String {
     case locationOfYourServiceCenterDesc
     case imagesOfyourServiceCenterDesc
     case govtIssuedlicensesandDocumentsDesc
+    // MARK: - Home  VC Values
+    //==============================
+    case tyre
+    case oil
+    case battery
 }
 
 

@@ -32,6 +32,7 @@ class ProfileSettingVC: BaseVC {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        self.mainTableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -83,7 +84,7 @@ extension ProfileSettingVC {
                         self.showAlert(title: "Logout", msg: "are you sure you want to logout?") {
                                 WebServices.logout(parameters: [:], success: { (message) in
                                     self.performCleanUp()
-                                    AppRouter.goToLoginVC()
+                                    AppRouter.goToSignUpVC()
                                 }) { (error) -> (Void) in
                                     self.showAlert(msg: error.localizedDescription)
                                 }

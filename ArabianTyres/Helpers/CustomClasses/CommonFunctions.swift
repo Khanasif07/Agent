@@ -22,10 +22,10 @@ class CommonFunctions {
             ToastView.appearance().textColor = .white
             ToastView.appearance().backgroundColor = .black
             if msg.count > 60 {
-                let toast = Toast(text: msg, delay: 0.3, duration: 10)
+                let toast = Toast(text: msg, delay: 0.3, duration: 2)
                 toast.show()
             } else {
-                let toast = Toast(text: msg, delay: 0.1, duration: 10)
+                let toast = Toast(text: msg, delay: 0.3, duration: 2)
                 toast.show()
             }
         }
