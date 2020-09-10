@@ -15,7 +15,7 @@
         <!--Profile SettingVC-->
         <scene sceneID="pHO-C3-NFa">
             <objects>
-                <viewController storyboardIdentifier="ProfileSettingVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mbE-d1-7X0" customClass="ProfileSettingVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileSettingVC" extendedLayoutIncludesOpaqueBars="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mbE-d1-7X0" customClass="ProfileSettingVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BbT-QC-DGC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

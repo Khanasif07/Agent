@@ -37,6 +37,11 @@ class SignUpVC: BaseVC {
         initialSetup()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
     // MARK: - IBActions
     //===========================
     @IBAction func skipLoginAndContinueAction(_ sender: UIButton) {
@@ -102,7 +107,14 @@ extension SignUpVC : UITableViewDelegate, UITableViewDataSource {
             [cell.nameTxtField,cell.emailIdTxtField,cell.mobNoTxtField,cell.passTxtField,cell.confirmPassTxtField].forEach({$0?.delegate = self})
             cell.signInBtnTapped = { [weak self]  (sender) in
                 guard let `self` = self else { return }
-                self.navigationController?.popViewController(animated: true)
+                guard let navController = self.navigationController?.viewControllers else { return }
+                for nav in navController {
+                    if nav is LoginVC{
+                        self.pop()
+                        return
+                    }
+                }
+                AppRouter.goToLoginVC(vc: self)
             }
             cell.signUpBtnTapped = { [weak self]  (sender) in
                 guard let `self` = self else { return }

@@ -21,7 +21,7 @@ struct UserModel{
     var countryCode : String
     var createdAt : String
     var email : String
-    var emailVerified : Int
+    var emailVerified : Bool
     var image : String
     var isDelete : Int
     var name : String
@@ -29,7 +29,7 @@ struct UserModel{
     var otpExpiry : String
     var password : String
     var phoneNo : String
-    var phoneVerified : Int
+    var phoneVerified : Bool
     var status : String
     var updatedAt : String
     var userType : String
@@ -44,7 +44,7 @@ struct UserModel{
         self.countryCode = json[ApiKey.countryCode].stringValue
         self.createdAt = json[ApiKey.createdAt].stringValue
         self.email = json[ApiKey.email].stringValue
-        self.emailVerified = json[ApiKey.emailVerified].intValue
+        self.emailVerified = json[ApiKey.emailVerified].boolValue
         self.image = json[ApiKey.image].stringValue
         self.isDelete = json[ApiKey.isDelete].intValue
         self.name = json[ApiKey.name].stringValue
@@ -52,7 +52,7 @@ struct UserModel{
         self.otpExpiry = json[ApiKey.otpExpiry].stringValue
         self.password = json[ApiKey.password].stringValue
         self.phoneNo = json[ApiKey.phoneNo].stringValue
-        self.phoneVerified = json[ApiKey.phoneVerified].intValue
+        self.phoneVerified = json[ApiKey.phoneVerified].boolValue
         self.status = json[ApiKey.status].stringValue
         self.updatedAt = json[ApiKey.updatedAt].stringValue
         self.userType = json[ApiKey.currentRole].stringValue

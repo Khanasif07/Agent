@@ -76,6 +76,14 @@ extension ProfileVC {
                 case 0:
                     let cell = tableView.dequeueCell(with: ProfileUserHeaderCell.self, indexPath: indexPath)
                     cell.populateData(model: self.viewModel.userModel)
+                    cell.phoneVerifyBtnTapped = { [weak self] (sender) in
+                        guard let `self` = self else { return }
+                        self.showPhoneVerificationPopUp()
+                    }
+                    cell.emailVerifyBtnTapped = { [weak self] (sender) in
+                        guard let `self` = self else { return }
+                        self.showEmailVerificationPopUp()
+                    }
                     return cell
                 default:
                     let cell = tableView.dequeueCell(with: ProfileUserBottomCell.self, indexPath: indexPath)
@@ -91,7 +99,7 @@ extension ProfileVC {
                 let cell = tableView.dequeueCell(with: ProfileGuestTableCell.self, indexPath: indexPath)
                 cell.loginBtnTapped = { [weak self] (sender) in
                     guard let `self` = self else { return }
-                    AppRouter.goToLogInVC(vc: self)
+                    AppRouter.goToLoginVC(vc: self)
                 }
                 cell.createAccountBtnTapped = { [weak self] (sender) in
                     guard let `self` = self else { return }
@@ -103,7 +111,7 @@ extension ProfileVC {
             let cell = tableView.dequeueCell(with: ProfileGuestTableCell.self, indexPath: indexPath)
             cell.loginBtnTapped = { [weak self] (sender) in
                 guard let `self` = self else { return }
-                AppRouter.goToLogInVC(vc: self)
+                AppRouter.goToLoginVC(vc: self)
             }
             cell.createAccountBtnTapped = { [weak self] (sender) in
                 guard let `self` = self else { return }
@@ -139,6 +147,30 @@ extension ProfileVC {
         }
     }
     
+    private func showEmailVerificationPopUp(){
+        self.showAlertWithAction(title: "Verify Email", msg: "A verification link will be send to your email address", cancelTitle: "Cancel", actionTitle: "Send", actioncompletion: {
+            WebServices.logout(parameters: [:], success: { (message) in
+                AppRouter.makeChooseLanguageVCRoot()
+            }) {_ in self.dismiss(animated: true, completion: nil)}
+        })
+    }
+    
+    private func showPhoneVerificationPopUp(){
+        self.showAlertWithAction(title: "Verify Phone", msg: "An OTP will be send to your phone number", cancelTitle: "Cancel", actionTitle: "Send", actioncompletion: {
+             self.sendOtp()
+        }) {self.dismiss(animated: true, completion: nil)}
+    }
+    
+    private func sendOtp(){
+        self.view.endEditing(true)
+        self.viewModel.resendOTP(dict: getSendOtpDict())
+    }
+    
+    private func getSendOtpDict() -> JSONDictionary{
+        let dict : JSONDictionary = [ApiKey.phoneNo:  viewModel.userModel.phoneNo,ApiKey.countryCode: viewModel.userModel.countryCode, ApiKey.device : [ApiKey.platform : "ios", ApiKey.token : DeviceDetail.deviceToken].toJSONString() ?? ""]
+        return dict
+    }
+    
 }
 
 // MARK: - Extension For TableView
@@ -167,6 +199,14 @@ extension ProfileVC: ProfileVMDelegate {
     }
     
     func getProfileDataFailed(msg: String, error: Error) {
+        ToastView.shared.showLongToast(self.view, msg: msg)
+    }
+    
+    func resendOtpSuccess(msg: String){
+        AppRouter.goToOtpVerificationVC(vc: self, phoneNo: self.viewModel.userModel.phoneNo, countryCode: self.viewModel.userModel.countryCode)
+    }
+    
+    func resendOtpFailed(msg: String, error: Error){
         ToastView.shared.showLongToast(self.view, msg: msg)
     }
 }

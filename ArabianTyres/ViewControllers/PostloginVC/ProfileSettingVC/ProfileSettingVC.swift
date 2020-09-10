@@ -37,7 +37,7 @@ class ProfileSettingVC: BaseVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.mainTableView.reloadData()
+        self.tabBarController?.tabBar.isHidden = true
     }
     
     // MARK: - IBActions
@@ -81,14 +81,7 @@ extension ProfileSettingVC {
                     cell.selectImageArray = self.selectImageArray1
                     cell.logoutBtnTapped = {  [weak self]  in
                         guard let `self` = self else { return }
-                        self.showAlert(title: "Logout", msg: "are you sure you want to logout?") {
-                                WebServices.logout(parameters: [:], success: { (message) in
-                                    self.performCleanUp()
-                                    AppRouter.goToSignUpVC()
-                                }) { (error) -> (Void) in
-                                    self.showAlert(msg: error.localizedDescription)
-                                }
-                        }
+                        self.showLogoutPopUp()
                     }
                     return cell
                 }
@@ -118,8 +111,16 @@ extension ProfileSettingVC {
         UserModel.main = UserModel()
         UNUserNotificationCenter.current().removeAllDeliveredNotifications()
     }
+    
+    private func showLogoutPopUp(){
+        self.showAlertWithAction(title: "Logout", msg: "Are you sure you want to logout?", cancelTitle: "Cancel", actionTitle: "Logout", actioncompletion: {
+            WebServices.logout(parameters: [:], success: { (message) in
+                self.performCleanUp()
+                AppRouter.makeChooseLanguageVCRoot()
+            }) {_ in printDebug("Dismiss")}
+        })
+    }
 }
-
 // MARK: - Extension For TableView
 //===========================
 extension ProfileSettingVC : UITableViewDelegate, UITableViewDataSource {

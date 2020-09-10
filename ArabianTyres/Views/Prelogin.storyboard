@@ -21,7 +21,7 @@
         <!--Choose LanguageVC-->
         <scene sceneID="HSC-nK-Apx">
             <objects>
-                <viewController storyboardIdentifier="ChooseLanguageVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="uvL-9z-jXM" customClass="ChooseLanguageVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChooseLanguageVC" extendedLayoutIncludesOpaqueBars="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="uvL-9z-jXM" customClass="ChooseLanguageVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uEG-sX-J3K">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -235,7 +235,7 @@
         <!--LoginVC-->
         <scene sceneID="cCq-c4-lbL">
             <objects>
-                <viewController storyboardIdentifier="LoginVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="n2Z-6v-clm" customClass="LoginVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginVC" extendedLayoutIncludesOpaqueBars="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="n2Z-6v-clm" customClass="LoginVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bAg-0V-Et2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -323,7 +323,7 @@
         <!--Sign UpVC-->
         <scene sceneID="sIi-58-RBG">
             <objects>
-                <viewController storyboardIdentifier="SignUpVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ejh-FG-eD1" customClass="SignUpVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignUpVC" extendedLayoutIncludesOpaqueBars="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ejh-FG-eD1" customClass="SignUpVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VEv-7x-6nX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -432,7 +432,7 @@
         <!--Login With PhoneVC-->
         <scene sceneID="Nm3-xe-IAP">
             <objects>
-                <viewController storyboardIdentifier="LoginWithPhoneVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="klr-X5-Bul" customClass="LoginWithPhoneVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginWithPhoneVC" extendedLayoutIncludesOpaqueBars="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="klr-X5-Bul" customClass="LoginWithPhoneVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7ge-CY-qsf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -597,7 +597,7 @@ with Country Code  </string>
         <!--Success PopupVC-->
         <scene sceneID="ou4-vx-fpl">
             <objects>
-                <viewController storyboardIdentifier="SuccessPopupVC" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="HYe-yG-EJN" customClass="SuccessPopupVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SuccessPopupVC" extendedLayoutIncludesOpaqueBars="YES" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="HYe-yG-EJN" customClass="SuccessPopupVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="I5k-S0-PBr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -719,7 +719,7 @@ your old password.</string>
         <!--Otp VerificationVC-->
         <scene sceneID="dFW-qy-Lkh">
             <objects>
-                <viewController storyboardIdentifier="OtpVerificationVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="MXs-56-LBh" customClass="OtpVerificationVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OtpVerificationVC" extendedLayoutIncludesOpaqueBars="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="MXs-56-LBh" customClass="OtpVerificationVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Azd-8e-aVo">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -978,7 +978,7 @@ your old password.</string>
         <!--CountryVC-->
         <scene sceneID="nod-Vl-kxh">
             <objects>
-                <viewController storyboardIdentifier="CountryVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="CgC-vd-eIT" customClass="CountryVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CountryVC" extendedLayoutIncludesOpaqueBars="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="CgC-vd-eIT" customClass="CountryVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6hW-uz-Dou">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1090,7 +1090,7 @@ your old password.</string>
         <!--Reset PasswordVC-->
         <scene sceneID="Ix5-c6-EFd">
             <objects>
-                <viewController storyboardIdentifier="ResetPasswordVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="sD4-ak-dXE" customClass="ResetPasswordVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ResetPasswordVC" extendedLayoutIncludesOpaqueBars="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="sD4-ak-dXE" customClass="ResetPasswordVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xa2-N3-9Ti">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1230,7 +1230,6 @@ your old password.</string>
         <!--Navigation Controller-->
         <scene sceneID="Xzz-WD-8KO">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="T05-FY-g0i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="pkO-Qo-rzv" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="coe-3Q-Ec6">
@@ -1241,6 +1240,7 @@ your old password.</string>
                         <segue destination="uvL-9z-jXM" kind="relationship" relationship="rootViewController" id="yo4-D2-kj4"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T05-FY-g0i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1147.8260869565217" y="153.34821428571428"/>
         </scene>

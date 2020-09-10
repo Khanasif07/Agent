@@ -10,8 +10,8 @@ import Foundation
 import SwiftyJSON
 
 protocol OtpVerificationVMDelegate: class {
-    func resendSuccess(message: String)
-    func resendFailed(error:String)
+    func resendOtpSuccess(message: String)
+    func resendOtpFailed(error:String)
     func otpVerificationFailed(error:String)
     func otpVerifiedSuccessfully(message : String)
     func verifyForgotPasswordOTPSuccess(message: String)
@@ -58,12 +58,11 @@ class OtpVerificationVM{
         }
     }
     
-    func resendOTP(){
-            let dict = [ApiKey.phoneNo : phoneNo]
-            WebServices.resendOtp(parameters: dict, success: { (message) in
-                self.delegate?.resendSuccess(message: message)
+    func resendOTP(dict: JSONDictionary){
+            WebServices.sendOtpThroughPhone(parameters: dict, success: { (message) in
+                self.delegate?.resendOtpSuccess(message: message)
             }) { (error) -> (Void) in
-                self.delegate?.resendFailed(error: error.localizedDescription)
+                self.delegate?.resendOtpFailed(error: error.localizedDescription)
             }
     }
 

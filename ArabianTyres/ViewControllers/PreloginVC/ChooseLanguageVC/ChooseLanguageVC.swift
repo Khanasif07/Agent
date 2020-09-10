@@ -64,8 +64,7 @@ class ChooseLanguageVC: BaseVC {
     //===========================
     
     @IBAction func continueBtnAction(_ sender: UIButton) {
-        let scene = LoginVC.instantiate(fromAppStoryboard: .Prelogin)
-        self.navigationController?.pushViewController(scene, animated: true)
+        AppRouter.goToLoginVC(vc: self)
     }
     
     @IBAction func englishBtnAction(_ sender: UIButton) {

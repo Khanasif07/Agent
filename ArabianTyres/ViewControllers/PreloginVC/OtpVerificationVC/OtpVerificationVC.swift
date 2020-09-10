@@ -36,6 +36,7 @@ class OtpVerificationVC: BaseVC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         verifyBtn.alpha = 0.5
+        self.tabBarController?.tabBar.isHidden = true
         verifyBtn.isEnabled = false
     }
     
@@ -56,6 +57,7 @@ class OtpVerificationVC: BaseVC {
     }
     
     @IBAction func resendOtpBtnAction(_ sender: UIButton) {
+        self.viewModel.resendOTP(dict: getDictForResendOtp())
         self.otpTxtFields.forEach({$0.text = ""})
         self.txtFieldViews.forEach({$0.backgroundColor = AppColors.fontTertiaryColor})
         self.otpArray = [String](repeating: "", count: 4)
@@ -118,6 +120,12 @@ extension OtpVerificationVC {
     private func setUpSubmitButton(enable: Bool){
         verifyBtn.isEnabled = enable
         verifyBtn.alpha = enable ? 1.0 : 0.5
+    }
+    
+    
+    private func getDictForResendOtp() -> JSONDictionary{
+            let dict : JSONDictionary = [ApiKey.phoneNo:  self.viewModel.phoneNo,ApiKey.countryCode: self.viewModel.countryCode, ApiKey.device : [ApiKey.platform : "ios", ApiKey.token : DeviceDetail.deviceToken].toJSONString() ?? ""]
+            return dict
     }
     
     private func getDict() -> JSONDictionary {
@@ -209,12 +217,11 @@ extension OtpVerificationVC: SuccessPopupVCDelegate{
 //MARK:- SuccessPopupVCDelegate
 //=======================================
 extension OtpVerificationVC: OtpVerificationVMDelegate{
-    func resendSuccess(message: String) {
+    func resendOtpSuccess(message: String) {
         ToastView.shared.showLongToast(self.view, msg: message)
-        AppRouter.showSuccessPopUp(vc: self,title: "OTP Verified",desc: "You have successfully verified your mobile no.")
     }
     
-    func resendFailed(error:String) {
+    func resendOtpFailed(error: String) {
         ToastView.shared.showLongToast(self.view, msg: error)
     }
     

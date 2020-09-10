@@ -13,6 +13,8 @@ import SwiftyJSON
 protocol ProfileVMDelegate: class {
     func getProfileDataSuccess(msg: String)
     func getProfileDataFailed(msg: String, error: Error)
+    func resendOtpSuccess(msg: String)
+    func resendOtpFailed(msg: String, error: Error)
 }
 
 class ProfileVM {
@@ -34,6 +36,14 @@ class ProfileVM {
         }) { [weak self] (error) in
             guard let `self` = self else { return }
             self.delegate?.getProfileDataFailed(msg: error.localizedDescription,error: error)
+        }
+    }
+    
+    func resendOTP(dict: JSONDictionary){
+        WebServices.sendOtpThroughPhone(parameters: dict, success: { (message) in
+            self.delegate?.resendOtpSuccess(msg: message)
+        }) { (error) -> (Void) in
+            self.delegate?.resendOtpFailed(msg: error.localizedDescription, error: error)
         }
     }
     

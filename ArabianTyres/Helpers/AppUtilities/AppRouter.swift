@@ -11,7 +11,7 @@ import UIKit
 import SwiftyJSON
 
 enum AppRouter {
-   
+    
     // MARK: - General Method to set Root VC
     //=========================================
     static func setAsWindowRoot(_ viewController: UIViewController) {
@@ -47,16 +47,16 @@ enum AppRouter {
     }
     
     static func goToProfileSettingVC(vc: UIViewController){
-           let scene = ProfileSettingVC.instantiate(fromAppStoryboard: .PostLogin)
-            vc.navigationController?.pushViewController(scene, animated: true)
-       }
+        let scene = ProfileSettingVC.instantiate(fromAppStoryboard: .PostLogin)
+        vc.navigationController?.pushViewController(scene, animated: true)
+    }
     
     static func goToSignUpVC(vc: UIViewController){
         let scene = SignUpVC.instantiate(fromAppStoryboard: .Prelogin)
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
-    static func goToLogInVC(vc: UIViewController){
+    static func goToLoginVC(vc: UIViewController){
         let scene = LoginVC.instantiate(fromAppStoryboard: .Prelogin)
         vc.navigationController?.pushViewController(scene, animated: true)
     }
@@ -68,22 +68,22 @@ enum AppRouter {
     }
     
     static func goToSignWithPhoneVC(vc: UIViewController,isComefromForgotpass: Bool = false ){
-           let scene = LoginWithPhoneVC.instantiate(fromAppStoryboard: .Prelogin)
-           scene.viewModel.isComefromForgotpass = isComefromForgotpass
-           vc.navigationController?.pushViewController(scene, animated: true)
-       }
+        let scene = LoginWithPhoneVC.instantiate(fromAppStoryboard: .Prelogin)
+        scene.viewModel.isComefromForgotpass = isComefromForgotpass
+        vc.navigationController?.pushViewController(scene, animated: true)
+    }
     
     static func makeChooseLanguageVCRoot(){
         let scene = ChooseLanguageVC.instantiate(fromAppStoryboard: .Prelogin)
         setAsWindowRoot(scene)
     }
     
-    static func goToLoginVC(){
+    static func makeLoginVCRoot(){
         let scene = LoginVC.instantiate(fromAppStoryboard: .Prelogin)
         setAsWindowRoot(scene)
     }
     
-    static func goToSignUpVC(){
+    static func makeSignUpVCRoot(){
         let scene = SignUpVC.instantiate(fromAppStoryboard: .Prelogin)
         setAsWindowRoot(scene)
     }

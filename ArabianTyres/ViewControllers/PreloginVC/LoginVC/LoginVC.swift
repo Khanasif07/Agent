@@ -26,6 +26,11 @@ class LoginVC: BaseVC {
         initialSetup()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.mainTableView.reloadData()
@@ -102,6 +107,13 @@ extension LoginVC : UITableViewDelegate, UITableViewDataSource {
             cell.passTxtField.delegate = self
             cell.signupBtnTapped = { [weak self]  (sender) in
                 guard let `self` = self else { return }
+                guard let navController = self.navigationController?.viewControllers else { return }
+                for nav in navController {
+                    if nav is SignUpVC{
+                        self.pop()
+                        return
+                    }
+                }
                 AppRouter.goToSignUpVC(vc: self)
             }
             cell.phoneNoBtnTapped = { [weak self]  (sender) in
