@@ -77,10 +77,12 @@ extension UserTabBarController {
                 if let item = self.tabBar.items?[index] {
                     item.image = #imageLiteral(resourceName: "setting")
                     item.selectedImage = #imageLiteral(resourceName: "setting")
+                    
                 }
             default:
                 if let item = self.tabBar.items?[index] {
                     item.image = #imageLiteral(resourceName: "profile")
+                    item.image?.withTintColor(AppColors.primaryBlueColor)
                     item.selectedImage = #imageLiteral(resourceName: "profile")
                 }
             }
@@ -89,8 +91,30 @@ extension UserTabBarController {
 }
 extension UserTabBarController:UITabBarControllerDelegate{
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController){
+        
+        let tabBarIndex = tabBarController.selectedIndex
+        
+        let numberOfItems = CGFloat(tabBar.items!.count)
+        let tabBarItemSize = CGSize(width: tabBar.frame.width / numberOfItems, height: tabBar.frame.height)
+        tabBar.selectionIndicatorImage = UIImage.imageWithColor(color: UIColor.red, size: tabBarItemSize).resizableImage(withCapInsets: UIEdgeInsets.zero)
+        
     }
+    
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
        return true
     }
+}
+
+extension UIImage {
+
+  class func imageWithColor(color: UIColor, size: CGSize) -> UIImage {
+    let rect: CGRect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+        UIGraphicsBeginImageContextWithOptions(size, false, 0)
+        color.setFill()
+        UIRectFill(rect)
+    let image: UIImage = UIGraphicsGetImageFromCurrentImageContext() ?? UIImage()
+        UIGraphicsEndImageContext()
+        return image
+    }
+
 }
