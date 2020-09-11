@@ -106,16 +106,23 @@ Service Center</string>
                                                         <color key="textColor" red="0.54117647059999996" green="0.58431372550000005" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icImg" translatesAutoresizingMaskIntoConstraints="NO" id="8YI-0d-MGp">
+                                                    <imageView clipsSubviews="YES" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icImg" translatesAutoresizingMaskIntoConstraints="NO" id="8YI-0d-MGp">
                                                         <rect key="frame" x="16" y="42" width="80" height="80"/>
-                                                    </imageView>
-                                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sbz-Zd-TAl">
-                                                        <rect key="frame" x="16" y="42" width="80" height="80"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="80" id="M8x-9q-Muj"/>
-                                                            <constraint firstAttribute="width" secondItem="sbz-Zd-TAl" secondAttribute="height" multiplier="1:1" id="goc-K6-Lgz"/>
+                                                            <constraint firstAttribute="width" secondItem="8YI-0d-MGp" secondAttribute="height" multiplier="1:1" id="IQn-92-5A1"/>
+                                                            <constraint firstAttribute="height" constant="80" id="etb-TA-Lo9"/>
                                                         </constraints>
-                                                        <state key="normal" image="icImg"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="4"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </imageView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sbz-Zd-TAl">
+                                                        <rect key="frame" x="16" y="42" width="80" height="80"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="10" maxX="10" maxY="0.0"/>
+                                                        <state key="normal" image="editProfile"/>
                                                         <connections>
                                                             <action selector="editLogoBtnAction:" destination="KzW-Im-RfD" eventType="touchUpInside" id="6NV-bQ-yCS"/>
                                                         </connections>
@@ -150,21 +157,21 @@ Service Center</string>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
-                                                    <constraint firstItem="8YI-0d-MGp" firstAttribute="bottom" secondItem="sbz-Zd-TAl" secondAttribute="bottom" id="2xR-wX-sWH"/>
-                                                    <constraint firstItem="8YI-0d-MGp" firstAttribute="leading" secondItem="sbz-Zd-TAl" secondAttribute="leading" id="7o8-Wl-o4T"/>
-                                                    <constraint firstItem="8YI-0d-MGp" firstAttribute="trailing" secondItem="sbz-Zd-TAl" secondAttribute="trailing" id="8Rs-Cf-xw8"/>
-                                                    <constraint firstItem="8YI-0d-MGp" firstAttribute="top" secondItem="sbz-Zd-TAl" secondAttribute="top" id="9Hc-UJ-p8H"/>
+                                                    <constraint firstItem="sbz-Zd-TAl" firstAttribute="leading" secondItem="8YI-0d-MGp" secondAttribute="leading" id="1w1-us-5ig"/>
                                                     <constraint firstItem="8sr-pk-ks3" firstAttribute="top" secondItem="XOC-VN-ukl" secondAttribute="top" constant="13" id="Bhw-ER-fns"/>
                                                     <constraint firstItem="Zbe-FO-vzV" firstAttribute="trailing" secondItem="8sr-pk-ks3" secondAttribute="trailing" id="DSm-Zx-CFT"/>
+                                                    <constraint firstItem="sbz-Zd-TAl" firstAttribute="trailing" secondItem="8YI-0d-MGp" secondAttribute="trailing" id="EPq-au-Q27"/>
                                                     <constraint firstItem="8lt-g9-eBk" firstAttribute="leading" secondItem="8sr-pk-ks3" secondAttribute="leading" id="N60-EY-21C"/>
-                                                    <constraint firstItem="sbz-Zd-TAl" firstAttribute="leading" secondItem="8sr-pk-ks3" secondAttribute="leading" id="SMs-sd-euX"/>
+                                                    <constraint firstItem="8YI-0d-MGp" firstAttribute="leading" secondItem="8sr-pk-ks3" secondAttribute="leading" id="Nmz-k2-e2r"/>
+                                                    <constraint firstItem="8lt-g9-eBk" firstAttribute="top" secondItem="8YI-0d-MGp" secondAttribute="bottom" constant="20" id="W2X-F1-ruC"/>
                                                     <constraint firstItem="8lt-g9-eBk" firstAttribute="trailing" secondItem="8sr-pk-ks3" secondAttribute="trailing" id="XKS-BG-Hot"/>
                                                     <constraint firstItem="Zbe-FO-vzV" firstAttribute="top" secondItem="8lt-g9-eBk" secondAttribute="bottom" constant="32" id="ZSG-6Y-p6R"/>
                                                     <constraint firstAttribute="trailing" secondItem="8sr-pk-ks3" secondAttribute="trailing" constant="16" id="aSQ-GY-xS1"/>
+                                                    <constraint firstItem="sbz-Zd-TAl" firstAttribute="top" secondItem="8YI-0d-MGp" secondAttribute="top" id="dfD-jZ-uil"/>
                                                     <constraint firstItem="8sr-pk-ks3" firstAttribute="leading" secondItem="XOC-VN-ukl" secondAttribute="leading" constant="16" id="hgj-bm-gGO"/>
-                                                    <constraint firstItem="sbz-Zd-TAl" firstAttribute="top" secondItem="8sr-pk-ks3" secondAttribute="bottom" constant="8" id="kcr-8B-xOA"/>
+                                                    <constraint firstItem="8YI-0d-MGp" firstAttribute="top" secondItem="8sr-pk-ks3" secondAttribute="bottom" constant="8" id="k8C-ZZ-I8Y"/>
                                                     <constraint firstAttribute="bottom" secondItem="Zbe-FO-vzV" secondAttribute="bottom" constant="16" id="pu0-1F-7C5"/>
-                                                    <constraint firstItem="8lt-g9-eBk" firstAttribute="top" secondItem="sbz-Zd-TAl" secondAttribute="bottom" constant="20" id="qfU-7c-RLo"/>
+                                                    <constraint firstItem="sbz-Zd-TAl" firstAttribute="bottom" secondItem="8YI-0d-MGp" secondAttribute="bottom" id="yG1-zQ-bil"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -398,6 +405,7 @@ Service Center</string>
         </scene>
     </scenes>
     <resources>
+        <image name="editProfile" width="12" height="14"/>
         <image name="icBackward" width="36" height="34"/>
         <image name="icImg" width="32.5" height="32"/>
     </resources>

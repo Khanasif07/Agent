@@ -765,7 +765,7 @@
 				84476D2A25075EF600AB5E80 /* ProfileVC */,
 				84303E6625064981000BA5C3 /* Home */,
 				A413B9732509E7A00004C534 /* GarageRegistrationVC */,
-				A413B978250A2BEF0004C534 /* AddDetailVC.swift */,
+				A413B97F250A77700004C534 /* AddDetailVC */,
 			);
 			path = PostloginVC;
 			sourceTree = "<group>";
@@ -831,6 +831,14 @@
 				A413B97C250A44400004C534 /* CustomTextView.swift */,
 			);
 			path = CustomTextView;
+			sourceTree = "<group>";
+		};
+		A413B97F250A77700004C534 /* AddDetailVC */ = {
+			isa = PBXGroup;
+			children = (
+				A413B978250A2BEF0004C534 /* AddDetailVC.swift */,
+			);
+			path = AddDetailVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

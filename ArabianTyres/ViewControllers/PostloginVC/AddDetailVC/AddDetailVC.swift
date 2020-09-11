@@ -24,7 +24,6 @@ class AddDetailVC: BaseVC {
     @IBOutlet weak var customTView: CustomTextView!
     @IBOutlet weak var tViewHeightConstraint: NSLayoutConstraint!
     
-    
     // MARK: - Variables
     //===========================
    
@@ -68,7 +67,7 @@ class AddDetailVC: BaseVC {
     }
     
     @IBAction func editLogoBtnAction(_ sender: UIButton) {
-        self.pop()
+        self.captureImage(delegate: self,removedImagePicture: true)
     }
     
     func changeBtnState(isHide: Bool){
@@ -144,5 +143,39 @@ extension AddDetailVC : CustomTextViewDelegate {
         else {
             changeBtnState(isHide: true)
         }
+    }
+}
+
+ extension AddDetailVC: UIImagePickerControllerDelegate,UINavigationControllerDelegate, RemovePictureDelegate {
+ 
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[.editedImage] as? UIImage
+//        CommonFunctions.showActivityLoader()
+         editLogoBtn.setImage(#imageLiteral(resourceName: "vector"), for: .normal)
+         imgView.contentMode = .scaleToFill
+         imgView.image = image
+
+//        image?.upload(progress: { (progress) in
+//            printDebug(progress)
+//        }, completion: { (response,error) in
+//            if let url = response {
+//                CommonFunctions.hideActivityLoader()
+//
+//            }
+//            if let _ = error{
+//                self.showAlert(msg: "Image upload failed")
+//            }
+//        })
+        picker.dismiss(animated: true, completion: nil)
+    }
+
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func removepicture() {
+        imgView.image = #imageLiteral(resourceName: "icImg")
+        imgView.contentMode = .center
+        editLogoBtn.setImage(nil, for: .normal)
     }
 }

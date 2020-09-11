@@ -222,12 +222,11 @@ extension SignUpVC : CountryDelegate{
 //=========================
 extension SignUpVC: SignUpVMDelegate{
     func socailLoginApiSuccess(message: String) {
-        
         AppRouter.goToUserHome()
     }
     
     func socailLoginApiFailure(message: String) {
-        CommonFunctions.showToastWithMessage(message)
+        ToastView.shared.showLongToast(self.view, msg: message)
     }
     
     func willSignUp() {

@@ -40,10 +40,10 @@ class LoginVC: BaseVC {
     //==========================
     
     @IBAction func skipLoginAndContinueAction(_ sender: UIButton) {
-//        AppUserDefaults.save(value: "guest", forKey: .currentUserType)
-//        AppRouter.goToUserHome()
+        AppUserDefaults.save(value: "guest", forKey: .currentUserType)
+        AppRouter.goToUserHome()
         
-        AppRouter.goToAddDetailVC(vc: self)
+//        AppRouter.goToAddDetailVC(vc: self)
         
     }
     
@@ -214,7 +214,7 @@ extension LoginVC: SignInVMDelegate {
     }
     
     func socailLoginApiFailure(message: String) {
-        
+        ToastView.shared.showLongToast(self.view, msg: message)
     }
     
     func signInSuccess(userModel: UserModel) {
