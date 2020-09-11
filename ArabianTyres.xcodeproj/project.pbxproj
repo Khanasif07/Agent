@@ -129,6 +129,7 @@
 		A413B979250A2BEF0004C534 /* AddDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A413B978250A2BEF0004C534 /* AddDetailVC.swift */; };
 		A413B97D250A44410004C534 /* CustomTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A413B97B250A44400004C534 /* CustomTextView.xib */; };
 		A413B97E250A44410004C534 /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A413B97C250A44400004C534 /* CustomTextView.swift */; };
+		A45566CD250B4EAC009E4324 /* RegistraionPendingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45566CC250B4EAC009E4324 /* RegistraionPendingVC.swift */; };
 		A493133D2508D231007110E4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A493133C2508D231007110E4 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -258,6 +259,7 @@
 		A413B978250A2BEF0004C534 /* AddDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDetailVC.swift; sourceTree = "<group>"; };
 		A413B97B250A44400004C534 /* CustomTextView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomTextView.xib; sourceTree = "<group>"; };
 		A413B97C250A44400004C534 /* CustomTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
+		A45566CC250B4EAC009E4324 /* RegistraionPendingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistraionPendingVC.swift; sourceTree = "<group>"; };
 		A493133B2508BF68007110E4 /* ArabianTyres.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ArabianTyres.entitlements; sourceTree = "<group>"; };
 		A493133C2508D231007110E4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B2C00CD38A98EBA313A070C9 /* Pods_ArabianTyres.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArabianTyres.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -766,6 +768,7 @@
 				84303E6625064981000BA5C3 /* Home */,
 				A413B9732509E7A00004C534 /* GarageRegistrationVC */,
 				A413B97F250A77700004C534 /* AddDetailVC */,
+				A45566CC250B4EAC009E4324 /* RegistraionPendingVC.swift */,
 			);
 			path = PostloginVC;
 			sourceTree = "<group>";
@@ -1088,6 +1091,7 @@
 				843C8EC52508AE9500515F2E /* ProfileUserInternalCell.swift in Sources */,
 				84476D3725075F6800AB5E80 /* ExploreVC.swift in Sources */,
 				8481F9FD2500AA9A00AB6EFB /* AppDelegate.swift in Sources */,
+				A45566CD250B4EAC009E4324 /* RegistraionPendingVC.swift in Sources */,
 				844D81DF250243B300550334 /* SignUpTopCell.swift in Sources */,
 				8481FA6B2500BFD500AB6EFB /* AWSS3Manager.swift in Sources */,
 				8481FA412500BE3800AB6EFB /* UILabelExtension.swift in Sources */,

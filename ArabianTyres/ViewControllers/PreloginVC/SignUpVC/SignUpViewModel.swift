@@ -58,6 +58,12 @@ struct SignUpViewModel {
             return (status: validationStatus, message: errorMessage)
         }
         
+        if phoneNo.count < 7 {
+                   validationStatus = false
+                   errorMessage = LocalizedString.pleaseEnterminimumdigitsphonenumber.localized
+                   return (status: validationStatus, message: errorMessage)
+        }
+        
         guard let password = parameters[ApiKey.password] as? String, !password.isEmpty  else{
             validationStatus = false
             errorMessage = LocalizedString.pleaseEnterPassword.localized

@@ -66,6 +66,7 @@
 "pleaseEnterEmail" = "Please enter email address";
 "pleaseEnterPassword" = "Please enter password";
 "pleaseEnterPhoneNumber" = "Please enter Phone number";
+"pleaseEnterminimumdigitsphonenumber" = "Please enter minimum 7 digits phone number";
 "enterPhoneNumber" = "Enter Phone number";
 "pleaseEntertName" = "Please enter name";
 "pleaseEnterNickName" = "Please enter nickname";

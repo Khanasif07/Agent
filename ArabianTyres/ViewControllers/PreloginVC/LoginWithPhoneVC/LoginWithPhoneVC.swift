@@ -145,8 +145,8 @@ extension LoginWithPhoneVC: UITextFieldDelegate {
             currentString.replacingCharacters(in: range, with: string) as NSString
         switch textField {
         case phoneTextField:
-            sendOtpBtnStatus(enable: newString.length >= 10)
-            return (string.checkIfValidCharaters(.mobileNumber) || string.isEmpty) && newString.length <= 16
+            sendOtpBtnStatus(enable: newString.length >= 7)
+            return (string.checkIfValidCharaters(.mobileNumber) || string.isEmpty) && newString.length <= 10
         default:
             return false
         }
