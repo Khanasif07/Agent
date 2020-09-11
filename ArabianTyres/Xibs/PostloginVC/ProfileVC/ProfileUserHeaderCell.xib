@@ -87,7 +87,7 @@
                                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                 </state>
                                                                 <connections>
-                                                                    <action selector="emailVerifyBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ZZZ-Vl-msb"/>
+                                                                    <action selector="phoneVerifyBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Pee-ZJ-4XU"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -126,7 +126,7 @@
                                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                 </state>
                                                                 <connections>
-                                                                    <action selector="phoneVerifyBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="daA-7N-XJD"/>
+                                                                    <action selector="emailVerifyBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="N3H-EX-kt0"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
