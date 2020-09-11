@@ -71,6 +71,7 @@ enum LocalizedString : String {
     case nameShouldBeAtleastMinCharacters = "nameShouldBeAtleastMinCharacters"
     case phoneNoShouldBeAtleastMinCharacters = "phoneNoShouldBeAtleastMinCharacters"
     case pleaseEnterName = "pleaseEntertName"
+    case pleaseEnterMinTwoChar = "pleaseEnterMinTwoChar"
     case enterYourName = "enterYourName"
     case pleaseEnterNickName = "pleaseEnterNickName"
     case pleaseEnterEmail = "pleaseEnterEmail"

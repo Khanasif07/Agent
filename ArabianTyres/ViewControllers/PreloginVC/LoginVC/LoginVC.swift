@@ -24,15 +24,22 @@ class LoginVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
+        setNeedsStatusBarAppearanceUpdate()
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        .darkContent
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tabBarController?.tabBar.isHidden = true
+        setNeedsStatusBarAppearanceUpdate()
+//        self.tabBarController?.tabBar.isHidden = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        setNeedsStatusBarAppearanceUpdate()
         self.mainTableView.reloadData()
     }
     
@@ -42,9 +49,6 @@ class LoginVC: BaseVC {
     @IBAction func skipLoginAndContinueAction(_ sender: UIButton) {
         AppUserDefaults.save(value: "guest", forKey: .currentUserType)
         AppRouter.goToUserHome()
-        
-//        AppRouter.goToAddDetailVC(vc: self)
-        
     }
     
     

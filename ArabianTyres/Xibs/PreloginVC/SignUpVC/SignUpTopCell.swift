@@ -71,11 +71,11 @@ class SignUpTopCell: UITableViewCell {
         let show = UIButton()
         show.isSelected = false
         show.addTarget(self, action: #selector(secureTextField(_:)), for: .touchUpInside)
-        self.passTxtField.setButtonToRightView(btn: show, selectedImage: #imageLiteral(resourceName: "icPasswordHide"), normalImage: #imageLiteral(resourceName: "icPasswordHide"), size: CGSize(width: 22, height: 22))
+        self.passTxtField.setButtonToRightView(btn: show, selectedImage: #imageLiteral(resourceName: "icPasswordView"), normalImage: #imageLiteral(resourceName: "icPasswordHide"), size: CGSize(width: 22, height: 22))
         let show1 = UIButton()
         show1.isSelected = false
         show1.addTarget(self, action: #selector(secureTextField1(_:)), for: .touchUpInside)
-        self.confirmPassTxtField.setButtonToRightView(btn: show1, selectedImage: #imageLiteral(resourceName: "icPasswordHide"), normalImage: #imageLiteral(resourceName: "icPasswordHide"), size: CGSize(width: 22, height: 22))
+        self.confirmPassTxtField.setButtonToRightView(btn: show1, selectedImage: #imageLiteral(resourceName: "icPasswordView"), normalImage: #imageLiteral(resourceName: "icPasswordHide"), size: CGSize(width: 22, height: 22))
     }
     
     

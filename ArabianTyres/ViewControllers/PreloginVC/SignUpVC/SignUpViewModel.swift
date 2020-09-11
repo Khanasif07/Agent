@@ -46,6 +46,12 @@ struct SignUpViewModel {
             return (status: validationStatus, message: errorMessage)
         }
         
+        if name.count < 2 {
+            validationStatus = false
+            errorMessage = LocalizedString.pleaseEnterMinTwoChar.localized
+            return (status: validationStatus, message: errorMessage)
+        }
+        
         guard let email = parameters[ApiKey.email] as? String ,!email.isEmpty  else{
             validationStatus = false
             errorMessage = LocalizedString.pleaseEnterEmail.localized

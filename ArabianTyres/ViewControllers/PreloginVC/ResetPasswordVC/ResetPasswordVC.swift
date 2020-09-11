@@ -29,8 +29,14 @@ class ResetPasswordVC: BaseVC {
         initialSetup()
     }
     
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        .darkContent
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setNeedsStatusBarAppearanceUpdate()
         self.tabBarController?.tabBar.isHidden = true
     }
     

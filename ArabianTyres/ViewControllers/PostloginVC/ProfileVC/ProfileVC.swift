@@ -39,8 +39,14 @@ class ProfileVC: BaseVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setNeedsStatusBarAppearanceUpdate()
         self.tabBarController?.tabBar.isHidden = false
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+    }
+
     
     // MARK: - IBActions
     //===========================
@@ -60,7 +66,6 @@ extension ProfileVC {
     private func tableViewSetUp(){
         self.mainTableView.delegate = self
         self.mainTableView.dataSource = self
-        self.mainTableView.isScrollEnabled = true
         self.mainTableView.registerCell(with: ProfileGuestTableCell.self)
         self.mainTableView.registerCell(with: ProfileUserHeaderCell.self)
         self.mainTableView.registerCell(with: ProfileUserBottomCell.self)
@@ -125,11 +130,14 @@ extension ProfileVC {
         if isUserLoggedin {
             switch isCurrentUserType {
             case .user:
+                self.mainTableView.isScrollEnabled = true
                 return 2
             default:
+                self.mainTableView.isScrollEnabled = false
                 return 1
             }
         } else {
+            self.mainTableView.isScrollEnabled = false
             return 1
         }
     }

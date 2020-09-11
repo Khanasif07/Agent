@@ -33,8 +33,14 @@ class OtpVerificationVC: BaseVC {
         initialSetup()
     }
     
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        .darkContent
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setNeedsStatusBarAppearanceUpdate()
         verifyBtn.alpha = 0.5
         self.tabBarController?.tabBar.isHidden = true
         verifyBtn.isEnabled = false

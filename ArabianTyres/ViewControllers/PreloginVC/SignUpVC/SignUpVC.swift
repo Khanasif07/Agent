@@ -37,8 +37,14 @@ class SignUpVC: BaseVC {
         initialSetup()
     }
     
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        .darkContent
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setNeedsStatusBarAppearanceUpdate()
         self.tabBarController?.tabBar.isHidden = true
     }
     
@@ -198,9 +204,9 @@ extension SignUpVC : UITextFieldDelegate{
         case cell?.emailIdTxtField:
             return (string.checkIfValidCharaters(.email) || string.isEmpty) && newString.length <= 50
         case cell?.passTxtField:
-            return (string.checkIfValidCharaters(.password) || string.isEmpty) && newString.length <= 19
+            return (string.checkIfValidCharaters(.password) || string.isEmpty) && newString.length <= 25
         case cell?.confirmPassTxtField:
-            return (string.checkIfValidCharaters(.password) || string.isEmpty) && newString.length <= 19
+            return (string.checkIfValidCharaters(.password) || string.isEmpty) && newString.length <= 25
         default:
             return false
         }
