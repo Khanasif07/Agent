@@ -15,7 +15,7 @@ protocol SignInVMDelegate: NSObjectProtocol {
     func signInFailed(message: String)
     func socailLoginApiSuccess(message: String)
     func socailLoginApiFailure(message: String)
-    func emailNotVerified()
+    func emailNotVerified(message: String)
 }
 
 extension SignInVMDelegate {
@@ -38,7 +38,7 @@ struct LoginViewModel {
             self.delegate?.signInSuccess(userModel: UserModel.main)
         }) { (error) -> (Void) in
             if (error as NSError).code == 401 {
-                self.delegate?.emailNotVerified()
+                self.delegate?.emailNotVerified(message: error.localizedDescription)
             }else {
                 self.delegate?.signInFailed(message: error.localizedDescription)
             }

@@ -177,8 +177,8 @@ extension WebServices {
             let msg = json[ApiKey.message].stringValue
             switch code {
             case ApiCode.success: success(json)
-            case ApiCode.tokenExpired :
-                showTokenExpiredAlert()
+//            case ApiCode.tokenExpired :
+//                showTokenExpiredAlert()
             default: failure(NSError(code: code, localizedDescription: msg))
             }
         }) { (error) in
@@ -199,8 +199,8 @@ extension WebServices {
             let msg = json[ApiKey.message].stringValue
             switch code {
             case ApiCode.success: success(json)
-            case ApiCode.tokenExpired :
-                showTokenExpiredAlert()
+//            case ApiCode.tokenExpired :
+//                showTokenExpiredAlert()
             default: failure(NSError(code: code, localizedDescription: msg))
             }
         }) { (error) in
@@ -363,6 +363,25 @@ extension WebServices{
                                  success: @escaping SuccessResponse,
                                  failure: @escaping FailureResponse) {
         self.commonGetAPI(parameters: parameters,endPoint: .myProfile, success: { (json) in
+            let code = json[ApiKey.statusCode].intValue
+            let msg = json[ApiKey.message].stringValue
+            switch code {
+            case ApiCode.success:
+                success(json)
+            default:
+                failure(NSError(code: code, localizedDescription: msg))
+            }
+        }) { (error) -> (Void) in
+            failure(error)
+        }
+    }
+    
+    // MARK:- My Profile Api
+    //=================
+    static func sendVerificationLink(parameters: JSONDictionary,
+                                 success: @escaping SuccessResponse,
+                                 failure: @escaping FailureResponse) {
+        self.commonGetAPI(parameters: parameters,endPoint: .emailVerificationLink, success: { (json) in
             let code = json[ApiKey.statusCode].intValue
             let msg = json[ApiKey.message].stringValue
             switch code {

@@ -128,6 +128,7 @@ enum ApiCode {
     static var requiredParametersMissing: Int { return 418 } // Required Parameter Missing or Invalid
     static var tokenExpired: Int { return 401 } // email not Verified in socialLogin case
     static var logoutSuccess: Int { return 403 }
+    static var sessionExpired : Int { return 440 }
     static var emailNotVerify: Int {return 402}
     static var emailRequired: Int {return 406} //Token expired refresh token needed to be generated
 

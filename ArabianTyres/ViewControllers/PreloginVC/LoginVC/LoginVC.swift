@@ -225,8 +225,8 @@ extension LoginVC: SignInVMDelegate {
         ToastView.shared.showLongToast(self.view, msg: message)
     }
     
-    func  emailNotVerified(){
-        self.showEmailVerificationPopUp()
+    func emailNotVerified(message: String){
+        ToastView.shared.showLongToast(self.view, msg: message)
     }
 
 }

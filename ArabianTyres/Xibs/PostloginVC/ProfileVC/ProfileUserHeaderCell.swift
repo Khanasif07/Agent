@@ -47,9 +47,10 @@ class ProfileUserHeaderCell: UITableViewCell {
         userPhoneNoLbl.text = model.phoneNo.isEmpty ? "N/A" : "\(model.countryCode)" + " \(model.phoneNo)"
         userEmailLbl.text = model.email.isEmpty ? "N/A" : model.email
         phoneNoVerifiedView.isHidden = !model.phoneVerified
-        phoneVerifyBtn.isHidden = model.phoneVerified
+        phoneVerifyBtn.isHidden = model.phoneVerified || model.phoneNo.isEmpty
         emailVerifiedView.isHidden = !model.emailVerified
-        emailVerifyBtn.isHidden = model.emailVerified
+        emailVerifyBtn.isHidden = model.emailVerified || model.email.isEmpty
+       
     }
     
     @IBAction func phoneVerifyBtnAction(_ sender: UIButton) {

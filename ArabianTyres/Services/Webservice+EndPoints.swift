@@ -28,6 +28,7 @@ extension WebServices {
         case socialLogin = "user/socialLogin"
         case socialSignup = "user/socialSignup"
         case myProfile = "user/myProfile"
+        case emailVerificationLink = "user/emailVerificationLink"
 
         var path : String {
             let url = baseUrl

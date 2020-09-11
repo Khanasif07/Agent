@@ -9,8 +9,8 @@
 import Foundation
 
 protocol ResetPasswordVMDelegate: class {
-    func resendSuccess(message: String)
-    func resendFailed(error:String)
+    func resetPasswordSuccess(message: String)
+    func resetPasswordFailed(error:String)
 }
 
 extension ResetPasswordVMDelegate {
@@ -31,7 +31,7 @@ class ResetPasswordVM{
     //Function for verify OTP
     func resetPassword(dict: JSONDictionary){
         WebServices.resetPassword(parameters: dict, success: { (json) in
-            self.delegate?.resetPasswordSuccess(message: "Otp Verified Successfully")
+            self.delegate?.resetPasswordSuccess(message: "")
             }) { (error) -> (Void) in
                 self.delegate?.resetPasswordFailed(error: error.localizedDescription)
             }

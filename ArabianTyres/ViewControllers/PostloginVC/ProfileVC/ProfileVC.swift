@@ -149,6 +149,7 @@ extension ProfileVC {
     
     private func showEmailVerificationPopUp(){
         self.showAlertWithAction(title: "Verify Email", msg: "A verification link will be send to your email address", cancelTitle: "Cancel", actionTitle: "Send", actioncompletion: {
+            self.viewModel.sendVerificationLink(dict: [:])
         }){self.dismiss(animated: true, completion: nil)}
     }
     
@@ -190,8 +191,15 @@ extension ProfileVC : UITableViewDelegate, UITableViewDataSource {
 // MARK: - ProfileVMDelegate
 //===========================
 extension ProfileVC: ProfileVMDelegate {
-    func getProfileDataSuccess(msg: String) {
+    func sendVerificationLinkSuccess(msg: String) {
+         ToastView.shared.showLongToast(self.view, msg: msg)
+    }
+    
+    func sendVerificationLinkFailed(msg: String, error: Error) {
         ToastView.shared.showLongToast(self.view, msg: msg)
+    }
+    
+    func getProfileDataSuccess(msg: String) {
         self.mainTableView.reloadData()
     }
     
