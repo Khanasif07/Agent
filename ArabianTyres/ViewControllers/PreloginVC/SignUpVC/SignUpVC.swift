@@ -194,7 +194,7 @@ extension SignUpVC : UITextFieldDelegate{
         case cell?.nameTxtField:
             return (string.checkIfValidCharaters(.name) || string.isEmpty) && newString.length <= 50
         case cell?.mobNoTxtField:
-            return (string.checkIfValidCharaters(.mobileNumber) || string.isEmpty) && newString.length <= 16
+            return (string.checkIfValidCharaters(.mobileNumber) || string.isEmpty) && newString.length <= 10
         case cell?.emailIdTxtField:
             return (string.checkIfValidCharaters(.email) || string.isEmpty) && newString.length <= 50
         case cell?.passTxtField:

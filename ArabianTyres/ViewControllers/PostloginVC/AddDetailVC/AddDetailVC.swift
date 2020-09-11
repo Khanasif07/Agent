@@ -45,7 +45,7 @@ class AddDetailVC: BaseVC {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         containerView.createShadow(shadowColor: #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1))
-        let height = customTView.tView.text.heightOfText(self.customTView.tView.width, font: AppFonts.NunitoSansBold.withSize(16.0))
+        let height = customTView.tView.text.heightOfText(self.customTView.tView.width + 36, font: AppFonts.NunitoSansBold.withSize(16.0))
         printDebug(height)
         tViewHeightConstraint.constant = height + 32
         self.view.layoutIfNeeded()
@@ -117,8 +117,6 @@ extension AddDetailVC {
 }
 
 extension AddDetailVC : CustomTextViewDelegate {
-    
-    
     
     func shouldBegin(_ tView: UITextView) {
         tView.textColor = AppColors.fontPrimaryColor

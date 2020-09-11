@@ -78,6 +78,7 @@ enum LocalizedString : String {
     case pleaseEnterPassword = "pleaseEnterPassword"
     case pleaseEnterValidPhoneNo = "pleaseEnterValidPhoneNo"
     case pleaseEnterPhoneNumber = "pleaseEnterPhoneNumber"
+    case pleaseEnterminimumdigitsphonenumber
     case enterYourMobNumber = "enterYourMobNumber"
     case confirmPassword = "confirmPassword"
     case enterPhoneNumber = "enterPhoneNumber"
