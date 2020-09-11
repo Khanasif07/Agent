@@ -40,8 +40,8 @@ extension WebServices {
             case ApiCode.success: success(json)
             case ApiCode.emailNotVerify : success(json)
             case ApiCode.emailRequired : success(json)
-//            case ApiCode.tokenExpired :
-//                showTokenExpiredAlert()
+            case ApiCode.tokenExpired :
+                showTokenExpiredAlert()
             default: failure(NSError(code: code, localizedDescription: msg))
             }
         }) { (error) in
@@ -54,7 +54,7 @@ extension WebServices {
     static func commonPutAPI(parameters: JSONDictionary,
                              endPoint: EndPoint,
                              headers: HTTPHeaders = [:],
-                             loader: Bool = false,
+                             loader: Bool = true,
                              success : @escaping SuccessResponse,
                              failure : @escaping FailureResponse) {
         AppNetworking.PUT(endPoint: endPoint.path, parameters: parameters, headers: headers, loader: loader, success: { (json) in
