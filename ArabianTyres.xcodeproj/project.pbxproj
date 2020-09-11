@@ -126,6 +126,9 @@
 		A413B9702509E7400004C534 /* Garage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A413B96F2509E7400004C534 /* Garage.storyboard */; };
 		A413B9722509E7960004C534 /* GarageRegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A413B9712509E7960004C534 /* GarageRegistrationVC.swift */; };
 		A413B9762509F0950004C534 /* GarageRegistrationDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A413B9742509F0950004C534 /* GarageRegistrationDetailCell.swift */; };
+		A413B979250A2BEF0004C534 /* AddDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A413B978250A2BEF0004C534 /* AddDetailVC.swift */; };
+		A413B97D250A44410004C534 /* CustomTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A413B97B250A44400004C534 /* CustomTextView.xib */; };
+		A413B97E250A44410004C534 /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A413B97C250A44400004C534 /* CustomTextView.swift */; };
 		A493133D2508D231007110E4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A493133C2508D231007110E4 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -252,6 +255,9 @@
 		A413B96F2509E7400004C534 /* Garage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Garage.storyboard; sourceTree = "<group>"; };
 		A413B9712509E7960004C534 /* GarageRegistrationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageRegistrationVC.swift; sourceTree = "<group>"; };
 		A413B9742509F0950004C534 /* GarageRegistrationDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageRegistrationDetailCell.swift; sourceTree = "<group>"; };
+		A413B978250A2BEF0004C534 /* AddDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDetailVC.swift; sourceTree = "<group>"; };
+		A413B97B250A44400004C534 /* CustomTextView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomTextView.xib; sourceTree = "<group>"; };
+		A413B97C250A44400004C534 /* CustomTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 		A493133B2508BF68007110E4 /* ArabianTyres.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ArabianTyres.entitlements; sourceTree = "<group>"; };
 		A493133C2508D231007110E4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B2C00CD38A98EBA313A070C9 /* Pods_ArabianTyres.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArabianTyres.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -524,6 +530,7 @@
 		8481FA102500B9B500AB6EFB /* Xibs */ = {
 			isa = PBXGroup;
 			children = (
+				A413B97A250A44400004C534 /* CustomTextView */,
 				8481FA87250107C000AB6EFB /* PostloginVC */,
 				8481FA86250107B600AB6EFB /* PreloginVC */,
 			);
@@ -758,6 +765,7 @@
 				84476D2A25075EF600AB5E80 /* ProfileVC */,
 				84303E6625064981000BA5C3 /* Home */,
 				A413B9732509E7A00004C534 /* GarageRegistrationVC */,
+				A413B97F250A77700004C534 /* AddDetailVC */,
 			);
 			path = PostloginVC;
 			sourceTree = "<group>";
@@ -814,6 +822,23 @@
 				A413B9712509E7960004C534 /* GarageRegistrationVC.swift */,
 			);
 			path = GarageRegistrationVC;
+			sourceTree = "<group>";
+		};
+		A413B97A250A44400004C534 /* CustomTextView */ = {
+			isa = PBXGroup;
+			children = (
+				A413B97B250A44400004C534 /* CustomTextView.xib */,
+				A413B97C250A44400004C534 /* CustomTextView.swift */,
+			);
+			path = CustomTextView;
+			sourceTree = "<group>";
+		};
+		A413B97F250A77700004C534 /* AddDetailVC */ = {
+			isa = PBXGroup;
+			children = (
+				A413B978250A2BEF0004C534 /* AddDetailVC.swift */,
+			);
+			path = AddDetailVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -885,6 +910,7 @@
 				843C8EC22508AD4D00515F2E /* ProfileUserBottomCell.xib in Resources */,
 				8481FA972501438500AB6EFB /* NunitoSans-ExtraBoldItalic.ttf in Resources */,
 				8481FA9B2501439700AB6EFB /* NunitoSans-ExtraLightItalic.ttf in Resources */,
+				A413B97D250A44410004C534 /* CustomTextView.xib in Resources */,
 				844CBD232501FFC0009BE668 /* LoginEmailPhoneTableCell.xib in Resources */,
 				844CBD1F2501FA31009BE668 /* LoginSocialTableCell.xib in Resources */,
 				8481FAA5250143C500AB6EFB /* NunitoSans-SemiBold.ttf in Resources */,
@@ -1003,6 +1029,7 @@
 				8481FA3F2500BE2800AB6EFB /* UITextFieldExtension.swift in Sources */,
 				844CBD222501FFC0009BE668 /* LoginEmailPhoneTableCell.swift in Sources */,
 				8481FA692500BFC700AB6EFB /* DeviceDetails.swift in Sources */,
+				A413B97E250A44410004C534 /* CustomTextView.swift in Sources */,
 				8481FA212500BB2100AB6EFB /* GoogleLoginController.swift in Sources */,
 				84476D3125075F3400AB5E80 /* ProfileVC.swift in Sources */,
 				843C8EB925087DD200515F2E /* ProfileGuestTableCell.swift in Sources */,
@@ -1039,6 +1066,7 @@
 				843CD3A32505409C00945937 /* LoginWithPhoneViewModel.swift in Sources */,
 				8481FA512500BEEC00AB6EFB /* DictionaryExtension.swift in Sources */,
 				A413B9722509E7960004C534 /* GarageRegistrationVC.swift in Sources */,
+				A413B979250A2BEF0004C534 /* AddDetailVC.swift in Sources */,
 				8481FA1D2500BAC700AB6EFB /* FacebookController.swift in Sources */,
 				843C8ECC2508C3A400515F2E /* ProfileSettingVC.swift in Sources */,
 				8481FA4F2500BED600AB6EFB /* UIImageExtension.swift in Sources */,

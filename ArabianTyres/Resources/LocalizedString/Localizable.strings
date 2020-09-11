@@ -130,6 +130,17 @@
 "imagesOfyourServiceCenterDesc" = "Upload Multiple Images(JPG/JPEG) of your Garage or Service center.";
 "govtIssuedlicensesandDocumentsDesc" = "You will have to upload several Documents like Commercial Registration Doc., Vat certificate, Municipality License and ID of the owner";
 
+"addDetails" = "Add Details";
+"thisAllAboutMyServiceCenter" = "This is all about my\nService Center";
+"addFollowingGarageDetails" = "Add following garage details";
+"addLogo" = "Add Logo";
+"saveContinue" = "Save & Continue";
+"enterServiceCenterName" = "Enter Service Center Name";
+"serviceCenterName" = "Service Center Name";
+"help" = "Help";
+
+
+
 // MARK: - Home  VC Values
 //==============================
 "tyre" = "Tyre";
