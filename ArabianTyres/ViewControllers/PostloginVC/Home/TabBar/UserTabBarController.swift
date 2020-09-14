@@ -16,6 +16,7 @@ class UserTabBarController: UITabBarController {
     // MARK: - Variables
     //===========================
     var bottomSafeArea: CGFloat = 0.0
+//    var yourView : UIView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: 60, height: 60))
     
     
     // MARK: - Lifecycle
@@ -123,7 +124,7 @@ extension UserTabBarController:UITabBarControllerDelegate{
         let numberOfItems = CGFloat(tabBar.items!.count)
         let tabBarItemSize = CGSize(width: tabBar.frame.width / numberOfItems, height: tabBar.frame.height)
         tabBar.selectedImageTintColor = .white
-        tabBar.selectionIndicatorImage = UIImage.imageWithColor(color: AppColors.primaryBlueColor, size: tabBarItemSize).resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: 0, bottom: bottomSafeArea, right: 0))
+        tabBar.selectionIndicatorImage = UIImage.imageWithColor(color: AppColors.primaryBlueColor, size: tabBarItemSize).resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: 0, bottom: bottomSafeArea, right: 10))
         
     }
     
@@ -135,7 +136,7 @@ extension UserTabBarController:UITabBarControllerDelegate{
 extension UIImage {
 
   class func imageWithColor(color: UIColor, size: CGSize) -> UIImage {
-    let rect: CGRect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+    let rect: CGRect = CGRect(x: 10, y: 0, width: size.width - 20.0, height: size.height)
         UIGraphicsBeginImageContextWithOptions(size, false, 0)
         color.setFill()
         UIRectFill(rect)
@@ -145,3 +146,4 @@ extension UIImage {
     }
 
 }
+

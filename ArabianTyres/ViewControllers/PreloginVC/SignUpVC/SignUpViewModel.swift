@@ -58,6 +58,12 @@ struct SignUpViewModel {
             return (status: validationStatus, message: errorMessage)
         }
         
+        if !email.checkIfValid(.email) {
+            validationStatus = false
+            errorMessage =  LocalizedString.pleaseEnterValidEmail.localized
+            return (status: validationStatus, message: errorMessage)
+        }
+        
         guard let phoneNo = parameters[ApiKey.phoneNo] as? String ,!phoneNo.isEmpty else{
             validationStatus = false
             errorMessage = LocalizedString.pleaseEnterPhoneNumber.localized
@@ -65,9 +71,15 @@ struct SignUpViewModel {
         }
         
         if phoneNo.count < 7 {
-                   validationStatus = false
-                   errorMessage = LocalizedString.pleaseEnterminimumdigitsphonenumber.localized
-                   return (status: validationStatus, message: errorMessage)
+            validationStatus = false
+            errorMessage = LocalizedString.pleaseEnterminimumdigitsphonenumber.localized
+            return (status: validationStatus, message: errorMessage)
+        }
+        
+        if !phoneNo.checkIfValid(.mobileNumber) {
+            validationStatus = false
+            errorMessage =  LocalizedString.pleaseEnterPhoneNumber.localized
+            return (status: validationStatus, message: errorMessage)
         }
         
         guard let password = parameters[ApiKey.password] as? String, !password.isEmpty  else{
@@ -79,19 +91,6 @@ struct SignUpViewModel {
         if  self.model.confirmPasssword.isEmpty {
             validationStatus = false
             errorMessage = LocalizedString.pleaseEnterPassword.localized
-            return (status: validationStatus, message: errorMessage)
-        }
-        
-        if !email.checkIfValid(.email) {
-            validationStatus = false
-            errorMessage =  LocalizedString.pleaseEnterValidEmail.localized
-            return (status: validationStatus, message: errorMessage)
-        }
-        
-        
-        if !phoneNo.checkIfValid(.mobileNumber) {
-            validationStatus = false
-            errorMessage =  LocalizedString.pleaseEnterPhoneNumber.localized
             return (status: validationStatus, message: errorMessage)
         }
         

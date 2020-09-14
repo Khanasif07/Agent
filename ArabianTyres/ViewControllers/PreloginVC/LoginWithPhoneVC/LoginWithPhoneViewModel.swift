@@ -63,11 +63,11 @@ class LoginWithPhoneViewModel {
             return (status: validationStatus, message: errorMessage)
         }
         
-        if !phoneNo.checkIfValid(.mobileNumber) {
-            validationStatus = false
-            errorMessage =  LocalizedString.pleaseEnterPhoneNumber.localized
-            return (status: validationStatus, message: errorMessage)
-        }
+//        if phoneNo.checkIfValid(.mobileNumber) {
+//            validationStatus = false
+//            errorMessage =  LocalizedString.pleaseEnterPhoneNumber.localized
+//            return (status: validationStatus, message: errorMessage)
+//        }
         return (status: validationStatus, message: errorMessage)
     }
 }

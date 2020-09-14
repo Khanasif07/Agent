@@ -116,7 +116,7 @@ extension ProfileSettingVC {
         self.showAlertWithAction(title: "Logout", msg: "Are you sure you want to logout?", cancelTitle: "Cancel", actionTitle: LocalizedString.ok.localized, actioncompletion: {
             WebServices.logout(parameters: [:], success: { (message) in
                 self.performCleanUp()
-                AppRouter.makeChooseLanguageVCRoot()
+                AppRouter.makeLoginVCRoot()
             }) {_ in printDebug("Dismiss")}
         })
     }

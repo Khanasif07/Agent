@@ -41,9 +41,9 @@ class OtpVerificationVC: BaseVC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setNeedsStatusBarAppearanceUpdate()
-        verifyBtn.alpha = 0.5
         self.tabBarController?.tabBar.isHidden = true
         verifyBtn.isEnabled = false
+        resendBtn.isEnabled = false
     }
     
     override func viewDidLayoutSubviews() {
@@ -85,6 +85,7 @@ extension OtpVerificationVC {
     private func initialSetup() {
         self.viewModel.delegate = self
         setupText()
+        self.resendBtn.isEnabled = false
         self.setUpTextField()
         self.timerLbl.isHidden = false
         self.startTimer()
@@ -115,6 +116,7 @@ extension OtpVerificationVC {
             viewModel.totalTime -= 1
         } else {
             endTimer()
+            self.resendBtn.isEnabled = true
         }
     }
     
@@ -224,7 +226,8 @@ extension OtpVerificationVC: SuccessPopupVCDelegate{
 //=======================================
 extension OtpVerificationVC: OtpVerificationVMDelegate{
     func resendOtpSuccess(message: String) {
-        ToastView.shared.showLongToast(self.view, msg: message)
+        setUpSubmitButton(enable: false)
+        self.resendBtn.isEnabled = false
     }
     
     func resendOtpFailed(error: String) {
@@ -236,7 +239,6 @@ extension OtpVerificationVC: OtpVerificationVMDelegate{
     }
     
     func otpVerifiedSuccessfully(message: String) {
-        ToastView.shared.showLongToast(self.view, msg: message)
         AppRouter.showSuccessPopUp(vc: self,title: "OTP Verified",desc: "You have successfully verified your mobile no.")
     }
     

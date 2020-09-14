@@ -42,7 +42,7 @@ class ProfileUserHeaderCell: UITableViewCell {
     }
     
     func populateData(model: UserModel){
-        profileImgView.setImage_kf(imageString: model.image, placeHolderImage: UIImage(), loader: true)
+        profileImgView.setImage_kf(imageString: model.image, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: true)
         userNameLbl.text = model.name.isEmpty ? "N/A" : "\(model.name)"
         userPhoneNoLbl.text = model.phoneNo.isEmpty ? "N/A" : "\(model.countryCode)" + " \(model.phoneNo)"
         userEmailLbl.text = model.email.isEmpty ? "N/A" : model.email

@@ -54,15 +54,15 @@ struct LoginViewModel {
             return (status: validationStatus, message: errorMessage)
         }
         
-        guard let password = parameters[ApiKey.password] as? String, !password.isEmpty  else{
-            validationStatus = false
-            errorMessage = LocalizedString.pleaseEnterPassword.localized
-            return (status: validationStatus, message: errorMessage)
-        }
-        
         if !email.checkIfValid(.email) {
             validationStatus = false
             errorMessage =  LocalizedString.pleaseEnterValidEmail.localized
+            return (status: validationStatus, message: errorMessage)
+        }
+        
+        guard let password = parameters[ApiKey.password] as? String, !password.isEmpty  else{
+            validationStatus = false
+            errorMessage = LocalizedString.pleaseEnterPassword.localized
             return (status: validationStatus, message: errorMessage)
         }
         

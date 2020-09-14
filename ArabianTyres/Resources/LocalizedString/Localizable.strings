@@ -24,6 +24,7 @@
 "arabic" = "عربى";
 "continueTitle" = "Continue";
 "logout" = "Logout";
+"mobileNo" = "Mobile No";
 
 //MARK: - Home TabBar Values
 //========================
@@ -48,7 +49,9 @@
 "usePhoneNumber" = "Use Phone Number";
 "forgotPassword" = "Forgot Password";
 "sign_in" = "Sign in";
+"sign_in_Cap" = "SIGN IN";
 "signupcap" = "SIGN UP";
+"signup" = "Sign up";
 "signup_with_social_accounts" = "Sign up with Social Accounts";
 "Login_with_social_accounts" = "Login with Social Accounts";
 "sKIP_LOGIN_CONTINUE" = "SKIP LOGIN & CONTINUE";

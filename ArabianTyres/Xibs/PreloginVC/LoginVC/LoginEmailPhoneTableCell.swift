@@ -29,6 +29,7 @@ class LoginEmailPhoneTableCell: UITableViewCell {
         super.awakeFromNib()
         self.setUpColor()
         self.setUpTextField()
+        self.addBottomViewToBottom()
     }
     
     override func layoutSubviews() {
@@ -65,6 +66,9 @@ class LoginEmailPhoneTableCell: UITableViewCell {
         self.passTxtField.setButtonToRightView(btn: show, selectedImage: #imageLiteral(resourceName: "icPasswordView"), normalImage: #imageLiteral(resourceName: "icPasswordHide"), size: CGSize(width: 22, height: 22))
     }
     
+    public func addBottomViewToBottom(){
+        self.signUpBtn.addBottomBorderWithColorDefault(color: AppColors.primaryBlueColor, height: 1)
+    }
     
     @objc func secureTextField(_ sender: UIButton){
         sender.isSelected.toggle()

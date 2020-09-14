@@ -30,6 +30,7 @@ class SignUpTopCell: UITableViewCell {
         super.awakeFromNib()
         self.setUpTextField()
         self.setUpAttributedString()
+        self.addBottomViewToBottom()
     }
     
     private func setUpAttributedString(){
@@ -45,6 +46,11 @@ class SignUpTopCell: UITableViewCell {
         
     }
     
+    public func addBottomViewToBottom(){
+        self.signInBtn.addBottomBorderWithColor(color: AppColors.primaryBlueColor, height: 1)
+    }
+    
+    
     public func setUpTextField(){
         self.alreadyHaveAcctLbl.text = LocalizedString.alreadyHaveAnAccount.localized
         self.emailIdTxtField.title = LocalizedString.emailIdPlaceHolder.localized
@@ -59,11 +65,13 @@ class SignUpTopCell: UITableViewCell {
         self.confirmPassTxtField.placeholder = LocalizedString.confirmPassword.localized
         self.nameTxtField.placeholder = LocalizedString.enterYourName.localized
         self.mobNoTxtField.placeholder = LocalizedString.enterYourMobNumber.localized
+        self.mobNoTxtField.title = LocalizedString.mobileNo.localized
+        self.mobNoTxtField.selectedTitle = LocalizedString.mobileNo.localized
         [nameTxtField,emailIdTxtField,mobNoTxtField,passTxtField,confirmPassTxtField].forEach({$0?.lineColor = AppColors.fontTertiaryColor})
         [nameTxtField,emailIdTxtField,mobNoTxtField,passTxtField,confirmPassTxtField].forEach({$0?.selectedLineColor = AppColors.fontTertiaryColor})
         [nameTxtField,emailIdTxtField,mobNoTxtField,passTxtField,confirmPassTxtField].forEach({$0?.selectedTitleColor = AppColors.fontTertiaryColor})
-        self.signUpBtn.setTitle(LocalizedString.signupcap.localized, for: .normal)
-        self.signInBtn.setTitle(LocalizedString.sign_in.localized, for: .normal)
+        self.signUpBtn.setTitle(LocalizedString.signup.localized, for: .normal)
+        self.signInBtn.setTitle(LocalizedString.sign_in_Cap.localized, for: .normal)
         self.signUpBtn.backgroundColor = AppColors.primaryBlueColor
         self.passTxtField.isSecureTextEntry = true
         self.confirmPassTxtField.isSecureTextEntry = true

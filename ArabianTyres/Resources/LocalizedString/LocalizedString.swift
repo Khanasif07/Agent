@@ -40,6 +40,7 @@ enum LocalizedString : String {
     case english
     case arabic
     case continueTitle
+    case mobileNo
     
     case tutorialTitle1 = "tutorialTitle1"
     case tutorialTitle2 = "tutorialTitle2"
@@ -55,7 +56,9 @@ enum LocalizedString : String {
     case usePhoneNumber = "usePhoneNumber"
     case forgotPassword = "forgotPassword"
     case sign_in = "sign_in"
+    case sign_in_Cap
     case signupcap = "signupcap"
+    case signup = "signup"
     case Login_with_social_accounts = "Login_with_social_accounts"
     case signup_with_social_accounts = "signup_with_social_accounts"
     case sKIP_LOGIN_CONTINUE = "sKIP_LOGIN_CONTINUE"
