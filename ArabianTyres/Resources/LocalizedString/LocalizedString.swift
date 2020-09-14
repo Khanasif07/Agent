@@ -96,6 +96,16 @@ enum LocalizedString : String {
     case pleaseEnterExperience = "pleaseEnterExperience"
     case pleaseEnterDob = "pleaseEnterDob"
     case phoneNumber = "phoneNumber"
+    case registerAgain
+    case completeProfile
+    case yourRegistrationRequestIsStillUnder
+    case addFollowingGovtIssuedLicenceOrDocumentsHereForVerification
+    case govtIssuedDoc
+    case commercialRegister
+    case vatCertificate
+    case municipalityLicense
+    case idOfTheOwner
+    
     
     // MARK: - Sign Up VC Values
     //==============================
@@ -148,6 +158,8 @@ enum LocalizedString : String {
     case serviceCenterName
     case saveAndContinueBtn
     case help
+    case addAccounts
+    
     
     
     // MARK: - Home  VC Values

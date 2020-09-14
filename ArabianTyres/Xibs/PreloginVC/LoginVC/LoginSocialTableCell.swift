@@ -28,7 +28,8 @@ class LoginSocialTableCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.setUpButtonInset()
-      
+    
+
     }
     
     override func layoutSubviews() {
@@ -53,5 +54,4 @@ class LoginSocialTableCell: UITableViewCell {
     @IBAction func fbBtnAction(_ sender: UIButton) {
         fbBtnTapped?()
     }
-  
 }

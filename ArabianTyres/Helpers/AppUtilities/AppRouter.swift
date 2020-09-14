@@ -131,4 +131,20 @@ enum AppRouter {
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
+    static func goToRegistraionPendingVC(vc: UIViewController, screenType: RegistraionPendingVC.ScreenType){
+        let scene = RegistraionPendingVC.instantiate(fromAppStoryboard: .Garage)
+        scene.screenType = screenType
+        vc.navigationController?.pushViewController(scene, animated: true)
+    }
+    
+    static func goToUploadDocumentVC(vc: UIViewController){
+        let scene = UploadDocumentVC.instantiate(fromAppStoryboard: .Garage)
+        vc.navigationController?.pushViewController(scene, animated: true)
+    }
+    
+    static func goToAddAccountVC(vc: UIViewController){
+        let scene = AddAccountVC.instantiate(fromAppStoryboard: .Garage)
+        vc.navigationController?.pushViewController(scene, animated: true)
+    }
+    
 }

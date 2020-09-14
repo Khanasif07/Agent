@@ -139,7 +139,16 @@
 "enterServiceCenterName" = "Enter Service Center Name";
 "serviceCenterName" = "Service Center Name";
 "help" = "Help";
-
+"registerAgain" = "Register Again";
+"completeProfile" = "Complete Profile";
+"yourRegistrationRequestIsStillUnder" = "your registration request is still under review we’ll let you know when it’s done";
+"addFollowingGovtIssuedLicenceOrDocumentsHereForVerification" = "Add Following Govt Issued Licence or Documents Here for verification";
+"govtIssuedDoc" = "Govt. Issued Doc";
+"commercialRegister" = "Commercial Register";
+"vatCertificate" = "Vat certificate";
+"idOfTheOwner" = "ID of the owner";
+"municipalityLicense" = "Municipality License";
+"addAccounts" = "Add Accounts";
 
 
 // MARK: - Home  VC Values

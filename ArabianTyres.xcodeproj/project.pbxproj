@@ -129,7 +129,12 @@
 		A413B979250A2BEF0004C534 /* AddDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A413B978250A2BEF0004C534 /* AddDetailVC.swift */; };
 		A413B97D250A44410004C534 /* CustomTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A413B97B250A44400004C534 /* CustomTextView.xib */; };
 		A413B97E250A44410004C534 /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A413B97C250A44400004C534 /* CustomTextView.swift */; };
+		A4213DE0250CB02400BB21B6 /* DocumentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4213DDF250CB02400BB21B6 /* DocumentTableViewCell.swift */; };
+		A45042C7250F2D12001C8905 /* AddAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45042C6250F2D12001C8905 /* AddAccountVC.swift */; };
+		A45042D0250F3846001C8905 /* AddAccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45042CE250F3846001C8905 /* AddAccountTableViewCell.swift */; };
+		A45042D1250F3846001C8905 /* AddAccountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A45042CF250F3846001C8905 /* AddAccountTableViewCell.xib */; };
 		A45566CD250B4EAC009E4324 /* RegistraionPendingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45566CC250B4EAC009E4324 /* RegistraionPendingVC.swift */; };
+		A45566D0250CA6C0009E4324 /* UploadDocumentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45566CF250CA6C0009E4324 /* UploadDocumentVC.swift */; };
 		A493133D2508D231007110E4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A493133C2508D231007110E4 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -259,7 +264,12 @@
 		A413B978250A2BEF0004C534 /* AddDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDetailVC.swift; sourceTree = "<group>"; };
 		A413B97B250A44400004C534 /* CustomTextView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomTextView.xib; sourceTree = "<group>"; };
 		A413B97C250A44400004C534 /* CustomTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
+		A4213DDF250CB02400BB21B6 /* DocumentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentTableViewCell.swift; sourceTree = "<group>"; };
+		A45042C6250F2D12001C8905 /* AddAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountVC.swift; sourceTree = "<group>"; };
+		A45042CE250F3846001C8905 /* AddAccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountTableViewCell.swift; sourceTree = "<group>"; };
+		A45042CF250F3846001C8905 /* AddAccountTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddAccountTableViewCell.xib; sourceTree = "<group>"; };
 		A45566CC250B4EAC009E4324 /* RegistraionPendingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistraionPendingVC.swift; sourceTree = "<group>"; };
+		A45566CF250CA6C0009E4324 /* UploadDocumentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadDocumentVC.swift; sourceTree = "<group>"; };
 		A493133B2508BF68007110E4 /* ArabianTyres.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ArabianTyres.entitlements; sourceTree = "<group>"; };
 		A493133C2508D231007110E4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B2C00CD38A98EBA313A070C9 /* Pods_ArabianTyres.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArabianTyres.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -768,7 +778,9 @@
 				84303E6625064981000BA5C3 /* Home */,
 				A413B9732509E7A00004C534 /* GarageRegistrationVC */,
 				A413B97F250A77700004C534 /* AddDetailVC */,
-				A45566CC250B4EAC009E4324 /* RegistraionPendingVC.swift */,
+				A45566CE250CA654009E4324 /* RegistraionPendingVC */,
+				A45042C8250F2D1F001C8905 /* UploadDocumentVC */,
+				A45042C9250F2D2B001C8905 /* AddAccountVC */,
 			);
 			path = PostloginVC;
 			sourceTree = "<group>";
@@ -789,7 +801,10 @@
 			children = (
 				843C8ECF2508FB6B00515F2E /* HomeVC */,
 				843C8EB625087D9E00515F2E /* ProfileVC */,
-				A413B9742509F0950004C534 /* GarageRegistrationDetailCell.swift */,
+				A45042C3250F2A62001C8905 /* GarageRegistrationVC */,
+				A45042C4250F2A84001C8905 /* UploadDocumentVC */,
+				A45042CE250F3846001C8905 /* AddAccountTableViewCell.swift */,
+				A45042CF250F3846001C8905 /* AddAccountTableViewCell.xib */,
 			);
 			path = PostloginVC;
 			sourceTree = "<group>";
@@ -842,6 +857,46 @@
 				A413B978250A2BEF0004C534 /* AddDetailVC.swift */,
 			);
 			path = AddDetailVC;
+			sourceTree = "<group>";
+		};
+		A45042C3250F2A62001C8905 /* GarageRegistrationVC */ = {
+			isa = PBXGroup;
+			children = (
+				A413B9742509F0950004C534 /* GarageRegistrationDetailCell.swift */,
+			);
+			path = GarageRegistrationVC;
+			sourceTree = "<group>";
+		};
+		A45042C4250F2A84001C8905 /* UploadDocumentVC */ = {
+			isa = PBXGroup;
+			children = (
+				A4213DDF250CB02400BB21B6 /* DocumentTableViewCell.swift */,
+			);
+			path = UploadDocumentVC;
+			sourceTree = "<group>";
+		};
+		A45042C8250F2D1F001C8905 /* UploadDocumentVC */ = {
+			isa = PBXGroup;
+			children = (
+				A45566CF250CA6C0009E4324 /* UploadDocumentVC.swift */,
+			);
+			path = UploadDocumentVC;
+			sourceTree = "<group>";
+		};
+		A45042C9250F2D2B001C8905 /* AddAccountVC */ = {
+			isa = PBXGroup;
+			children = (
+				A45042C6250F2D12001C8905 /* AddAccountVC.swift */,
+			);
+			path = AddAccountVC;
+			sourceTree = "<group>";
+		};
+		A45566CE250CA654009E4324 /* RegistraionPendingVC */ = {
+			isa = PBXGroup;
+			children = (
+				A45566CC250B4EAC009E4324 /* RegistraionPendingVC.swift */,
+			);
+			path = RegistraionPendingVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -938,6 +993,7 @@
 				843C8ED32508FB9300515F2E /* HomeCollectionCell.xib in Resources */,
 				8481FA8F2501435D00AB6EFB /* NunitoSans-BlackItalic.ttf in Resources */,
 				843C8EC62508AE9500515F2E /* ProfileUserInternalCell.xib in Resources */,
+				A45042D1250F3846001C8905 /* AddAccountTableViewCell.xib in Resources */,
 				A413B9702509E7400004C534 /* Garage.storyboard in Resources */,
 				8481FA732500C04800AB6EFB /* Prelogin.storyboard in Resources */,
 			);
@@ -1025,10 +1081,12 @@
 				8481FA852500EEC400AB6EFB /* ChooseLanguageVC.swift in Sources */,
 				843F004D25060822001A78EC /* CountryCodeTableCell.swift in Sources */,
 				8481FA552500BF0700AB6EFB /* DispatchQueueExtension.swift in Sources */,
+				A4213DE0250CB02400BB21B6 /* DocumentTableViewCell.swift in Sources */,
 				8481FA532500BEF900AB6EFB /* StringExtension.swift in Sources */,
 				844D81E5250271B400550334 /* LoginViewModel.swift in Sources */,
 				843DFD202503F93A000DE6EB /* OtpVerificationVM.swift in Sources */,
 				8481FA652500BFAD00AB6EFB /* AppColors.swift in Sources */,
+				A45566D0250CA6C0009E4324 /* UploadDocumentVC.swift in Sources */,
 				8481FA3F2500BE2800AB6EFB /* UITextFieldExtension.swift in Sources */,
 				844CBD222501FFC0009BE668 /* LoginEmailPhoneTableCell.swift in Sources */,
 				8481FA692500BFC700AB6EFB /* DeviceDetails.swift in Sources */,
@@ -1050,6 +1108,7 @@
 				8481FA3D2500BE1C00AB6EFB /* UIColor+Additions.swift in Sources */,
 				8481FA352500BD8C00AB6EFB /* CommonFunctions.swift in Sources */,
 				8481FA6F2500BFEF00AB6EFB /* AppGlobals.swift in Sources */,
+				A45042C7250F2D12001C8905 /* AddAccountVC.swift in Sources */,
 				844CBD1E2501FA31009BE668 /* LoginSocialTableCell.swift in Sources */,
 				84E166E4250362DE00C2F2EF /* SuccessPopupVC.swift in Sources */,
 				84303E6C25064B27000BA5C3 /* UnderDevelopmentVC.swift in Sources */,
@@ -1075,6 +1134,7 @@
 				8481FA4F2500BED600AB6EFB /* UIImageExtension.swift in Sources */,
 				843F004625060725001A78EC /* CountryVC.swift in Sources */,
 				843F004925060798001A78EC /* CountryVM.swift in Sources */,
+				A45042D0250F3846001C8905 /* AddAccountTableViewCell.swift in Sources */,
 				843C8ECE2508E91700515F2E /* ProfileSettingVM.swift in Sources */,
 				844D81E92502751D00550334 /* SignUpViewModel.swift in Sources */,
 				844D81E72502723D00550334 /* SignUpModel.swift in Sources */,

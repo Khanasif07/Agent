@@ -43,7 +43,7 @@ class LoginVC: BaseVC {
         AppUserDefaults.save(value: "guest", forKey: .currentUserType)
         AppRouter.goToUserHome()
         
-//        AppRouter.goToAddDetailVC(vc: self)
+//        AppRouter.goToAddAccountVC(vc: self)
         
     }
     
@@ -57,7 +57,6 @@ extension LoginVC {
     private func initialSetup() {
         self.viewModel.delegate = self
         self.tableViewSetUp()
-        AppleLoginController.shared.delegate = self
         if let cell = mainTableView.cellForRow(at: IndexPath(item: 2, section: 0)) as? LoginSocialTableCell{
             AppleLoginController.shared.apploginButton(stackAppleLogin: cell.socialBtnStackView, vc: self)
         }
@@ -232,6 +231,7 @@ extension LoginVC: SignInVMDelegate {
 }
 
 extension LoginVC: AppleSignInProtocal {
+    
     func getAppleLoginData(loginData: JSONDictionary) {
         self.hitSocialLoginAPI(name: loginData[ApiKey.name] as? String ?? "", email: loginData[ApiKey.email] as? String ?? "" , socialId: loginData[ApiKey.socialId] as? String ?? "", socialType: "apple", phoneNo: "", profilePicture: "")
     }
