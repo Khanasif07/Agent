@@ -104,7 +104,7 @@ struct LoginViewModel {
         }
     }
     
-    func sendOtp(params: JSONDictionary,loader: Bool = false) {
+    func sendOtp(params: JSONDictionary,loader: Bool = true) {
         WebServices.sendOtpThroughPhone(parameters: params, success: { (json) in
             self.delegate?.sendOtpForSocialLoginSuccess(message:"")
             printDebug(json)

@@ -174,8 +174,6 @@ extension WebServices {
             let msg = json[ApiKey.message].stringValue
             switch code {
             case ApiCode.success: success(json)
-//            case ApiCode.tokenExpired :
-//                showTokenExpiredAlert()
             default: failure(NSError(code: code, localizedDescription: msg))
             }
         }) { (error) in
