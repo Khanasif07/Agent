@@ -34,7 +34,7 @@ class AppleLoginController: NSObject{
     
     @objc func appleSignInTapped(vc: UIViewController) {
         if #available(iOS 13.0, *) {
-            AppleLoginController.shared.delegate = vc as? AppleSignInProtocal
+//            AppleLoginController.shared.delegate = vc as? AppleSignInProtocal
             let provider = ASAuthorizationAppleIDProvider()
             let request = provider.createRequest()
             request.requestedScopes = [.fullName, .email]
