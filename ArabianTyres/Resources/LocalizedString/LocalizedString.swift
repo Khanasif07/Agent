@@ -55,6 +55,7 @@ enum LocalizedString : String {
     case emailIdPlaceHolder = "emailIdPlaceHolder"
     case usePhoneNumber = "usePhoneNumber"
     case forgotPassword = "forgotPassword"
+    case addPhoneNumber = "addPhoneNumber"
     case sign_in = "sign_in"
     case sign_in_Cap
     case signupcap = "signupcap"

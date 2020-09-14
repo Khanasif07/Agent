@@ -14,8 +14,12 @@ protocol SignInVMDelegate: NSObjectProtocol {
     func signInSuccess(userModel: UserModel)
     func signInFailed(message: String)
     func socailLoginApiSuccess(message: String)
+    func socailLoginApiSuccessWithoutPhoneNo(message: String)
+    func socailLoginApiSuccessWithoutVerifyPhoneNo(message: String)
     func socailLoginApiFailure(message: String)
     func emailNotVerified(message: String)
+    func sendOtpForSocialLoginSuccess(message: String)
+    func sendOtpForSocialLoginFailed(message: String)
 }
 
 extension SignInVMDelegate {
@@ -80,11 +84,32 @@ struct LoginViewModel {
             UserModel.main = user
             let accessToken = json[ApiKey.data][ApiKey.authToken].stringValue
             AppUserDefaults.save(value: accessToken, forKey: .accesstoken)
-            AppUserDefaults.save(value: json[ApiKey.data][ApiKey.userType].stringValue, forKey: .currentUserType)
-            self.delegate?.socailLoginApiSuccess(message: "")
+            AppUserDefaults.save(value: "basic", forKey: .currentUserType)
+            if UserModel.main.phoneNoAdded && UserModel.main.phoneVerified {
+                self.delegate?.socailLoginApiSuccess(message: "")
+                return
+            }
+            if !UserModel.main.phoneNoAdded{
+                self.delegate?.socailLoginApiSuccessWithoutPhoneNo(message: "")
+                return
+            }
+            if !UserModel.main.phoneVerified && UserModel.main.phoneNoAdded{
+                self.delegate?.socailLoginApiSuccessWithoutVerifyPhoneNo(message: "")
+                return
+            }
+          
         }) { (error) -> (Void) in
             self.delegate?.socailLoginApiFailure(message: error.localizedDescription)
             
+        }
+    }
+    
+    func sendOtp(params: JSONDictionary,loader: Bool = false) {
+        WebServices.sendOtpThroughPhone(parameters: params, success: { (json) in
+            self.delegate?.sendOtpForSocialLoginSuccess(message:"")
+            printDebug(json)
+        }) { (error) in
+            self.delegate?.sendOtpForSocialLoginFailed(message: error.localizedDescription)
         }
     }
 }

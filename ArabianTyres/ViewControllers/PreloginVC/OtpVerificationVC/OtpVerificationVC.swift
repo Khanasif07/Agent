@@ -17,7 +17,7 @@ class OtpVerificationVC: BaseVC {
     @IBOutlet weak var countryCodeLbl: UILabel!
     @IBOutlet weak var timerLbl: UILabel!
     @IBOutlet weak var resendBtn: UIButton!
-    @IBOutlet weak var verifyBtn: UIButton!
+    @IBOutlet weak var verifyBtn: AppButton!
     @IBOutlet var otpTxtFields: [OTPTextField]!
     @IBOutlet var txtFieldViews: [UIView]!
     
@@ -127,7 +127,6 @@ extension OtpVerificationVC {
     
     private func setUpSubmitButton(enable: Bool){
         verifyBtn.isEnabled = enable
-        verifyBtn.alpha = enable ? 1.0 : 0.5
     }
     
     

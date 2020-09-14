@@ -100,6 +100,10 @@ extension SignUpVC {
             }
         }
     }
+    
+    private func signUpBtnStatus()-> Bool{
+        return !self.viewModel.model.name.isEmpty && !self.viewModel.model.email.isEmpty && !self.viewModel.model.phoneNo.isEmpty && !self.viewModel.model.password.isEmpty && !self.viewModel.model.confirmPasssword.isEmpty
+    }
 }
 
 // MARK: - Extension For TableView
@@ -179,14 +183,19 @@ extension SignUpVC : UITextFieldDelegate{
         switch textField {
         case cell?.emailIdTxtField:
             self.viewModel.model.email = text
+            cell?.signUpBtn.isEnabled = signUpBtnStatus()
         case cell?.nameTxtField:
             self.viewModel.model.name = text
+            cell?.signUpBtn.isEnabled = signUpBtnStatus()
         case cell?.mobNoTxtField:
             self.viewModel.model.phoneNo = text
+            cell?.signUpBtn.isEnabled = signUpBtnStatus()
         case cell?.passTxtField:
             self.viewModel.model.password = text
+            cell?.signUpBtn.isEnabled = signUpBtnStatus()
         default:
             self.viewModel.model.confirmPasssword = text
+            cell?.signUpBtn.isEnabled = signUpBtnStatus()
         }
         
     }

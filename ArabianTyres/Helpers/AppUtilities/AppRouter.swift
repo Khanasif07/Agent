@@ -67,9 +67,9 @@ enum AppRouter {
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
-    static func goToSignWithPhoneVC(vc: UIViewController,isComefromForgotpass: Bool = false ){
+    static func goToSignWithPhoneVC(vc: UIViewController,loginOption:LoginWithPhoneOption = .basic ){
         let scene = LoginWithPhoneVC.instantiate(fromAppStoryboard: .Prelogin)
-        scene.viewModel.isComefromForgotpass = isComefromForgotpass
+        scene.loginOption = loginOption
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     

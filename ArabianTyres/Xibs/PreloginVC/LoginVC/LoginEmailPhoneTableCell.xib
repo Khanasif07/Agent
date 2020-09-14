@@ -129,7 +129,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="6S5-zh-VIY">
                                 <rect key="frame" x="21" y="236" width="333" height="84.5"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mPf-KA-PiS">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mPf-KA-PiS" customClass="AppButton" customModule="ArabianTyres">
                                         <rect key="frame" x="0.0" y="0.0" width="333" height="56"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -140,7 +140,7 @@
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="signInBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="YxP-rh-WN8"/>
+                                            <action selector="signInBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="tsx-5U-goL"/>
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="OZM-xD-hjn">
@@ -206,7 +206,7 @@
                 <outlet property="loginWithEmailPhoneLbl" destination="7wX-et-QRA" id="nh6-Mw-bOD"/>
                 <outlet property="passTxtField" destination="w9f-wj-cW3" id="Wm0-Tm-lh6"/>
                 <outlet property="phoneNoBtn" destination="3At-SR-5MG" id="Dfc-x9-T8y"/>
-                <outlet property="signInBtn" destination="mPf-KA-PiS" id="IV1-P4-K2G"/>
+                <outlet property="signInBtn" destination="mPf-KA-PiS" id="25U-EF-ADS"/>
                 <outlet property="signUpBtn" destination="dai-Yf-J2e" id="i2F-fl-5dO"/>
             </connections>
             <point key="canvasLocation" x="136.95652173913044" y="144.30803571428569"/>

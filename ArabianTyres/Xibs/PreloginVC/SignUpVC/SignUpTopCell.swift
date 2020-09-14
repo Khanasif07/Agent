@@ -18,7 +18,7 @@ class SignUpTopCell: UITableViewCell {
     @IBOutlet weak var countryCodeLbl: UILabel!
     @IBOutlet weak var signInBtn: UIButton!
     @IBOutlet weak var alreadyHaveAcctLbl: UILabel!
-    @IBOutlet weak var signUpBtn: UIButton!
+    @IBOutlet weak var signUpBtn: AppButton!
     @IBOutlet weak var privacyLbl: UILabel!
     @IBOutlet weak var confirmPassTxtField: SkyFloatingLabelTextField!
     @IBOutlet weak var passTxtField: SkyFloatingLabelTextField!
@@ -73,6 +73,7 @@ class SignUpTopCell: UITableViewCell {
         self.signUpBtn.setTitle(LocalizedString.signup.localized, for: .normal)
         self.signInBtn.setTitle(LocalizedString.sign_in_Cap.localized, for: .normal)
         self.signUpBtn.backgroundColor = AppColors.primaryBlueColor
+        self.signUpBtn.isEnabled = false
         self.passTxtField.isSecureTextEntry = true
         self.confirmPassTxtField.isSecureTextEntry = true
         self.mobNoTxtField.keyboardType = .numberPad

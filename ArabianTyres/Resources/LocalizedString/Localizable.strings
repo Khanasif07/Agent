@@ -92,6 +92,7 @@
 "confirmNewPassword" = "Confirm New Password";
 "passwordDoesNotMatch" = "Password doesn\'t match";
 "pleaseEnterMinTwoChar" = "Please enter minimum 2 characters";
+"addPhoneNumber" = "Add Phone Number";
 // MARK: - Signup VC Values
 //==============================
 "bySigningDec" = "By Signing Up you are agree to our";

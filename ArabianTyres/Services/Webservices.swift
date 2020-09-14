@@ -39,9 +39,6 @@ extension WebServices {
             switch code {
             case ApiCode.success: success(json)
             case ApiCode.emailNotVerify : success(json)
-            case ApiCode.emailRequired : success(json)
-            case ApiCode.tokenExpired :
-                showTokenExpiredAlert()
             default: failure(NSError(code: code, localizedDescription: msg))
             }
         }) { (error) in
@@ -215,8 +212,6 @@ extension WebServices {
 extension WebServices {
     
     private static func showTokenExpiredAlert() {
-        
-        
     }
 }
 
@@ -283,7 +278,7 @@ extension WebServices{
             UserModel.main = user
             let accessToken = json[ApiKey.data][ApiKey.authToken].stringValue
             AppUserDefaults.save(value: accessToken, forKey: .accesstoken)
-            AppUserDefaults.save(value: json[ApiKey.data][ApiKey.userType].stringValue, forKey: .currentUserType)
+            AppUserDefaults.save(value: "basic", forKey: .currentUserType)
             success(user)
         }) { (error) -> (Void) in
             failure(error)
@@ -332,6 +327,18 @@ extension WebServices{
                          success: @escaping ResponseMessage,
                          failure: @escaping FailureResponse) {
         self.commonPostAPI(parameters: parameters, endPoint: .forgetPassword,loader: true, success: { (json) in
+            success(json[ApiKey.message].stringValue)
+        }) { (error) -> (Void) in
+            failure(error)
+        }
+    }
+    
+    // MARK:- ForGot password
+    //=================
+    static func addPhoneNumber(parameters: JSONDictionary,
+                         success: @escaping ResponseMessage,
+                         failure: @escaping FailureResponse) {
+        self.commonPutAPI(parameters: parameters, endPoint: .addPhoneNo,loader: true, success: { (json) in
             success(json[ApiKey.message].stringValue)
         }) { (error) -> (Void) in
             failure(error)

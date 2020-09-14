@@ -9,6 +9,12 @@
 import UIKit
 import SkyFloatingLabelTextField
 
+enum LoginWithPhoneOption{
+    case forgotPassword
+    case socialUser
+    case basic
+}
+
 class LoginWithPhoneVC: BaseVC {
     
     var viewModel = LoginWithPhoneViewModel()
@@ -18,12 +24,12 @@ class LoginWithPhoneVC: BaseVC {
     @IBOutlet weak var dataContainerView: UIView!
     @IBOutlet weak var loginTitle: UILabel!
     @IBOutlet weak var enterDigitLbl: UILabel!
-    @IBOutlet weak var sendOtpBtn: UIButton!
+    @IBOutlet weak var sendOtpBtn: AppButton!
     @IBOutlet weak var phoneTextField: SkyFloatingLabelTextField!
     @IBOutlet weak var countryCodeLbl: UILabel!
     // MARK: - Variables
     //===========================
-    
+    var loginOption: LoginWithPhoneOption = .basic
     
     // MARK: - Lifecycle
     //===========================
@@ -60,9 +66,11 @@ class LoginWithPhoneVC: BaseVC {
     }
     
     @IBAction func sendOtpAction(_ sender: UIButton) {
-        if self.viewModel.isComefromForgotpass{
+        if self.loginOption == .forgotPassword{
             self.forgotPassword()
-        } else {
+        } else if self.loginOption == .socialUser{
+            self.addPhoneNumber()
+        }else{
             self.sendOtp()
         }
     }
@@ -76,8 +84,11 @@ extension LoginWithPhoneVC {
         self.viewModel.delegate = self
         self.setupTextField()
         self.sendOtpBtnStatus(enable: false)
-        if self.viewModel.isComefromForgotpass {
+        if self.loginOption == .forgotPassword {
             self.loginTitle.text = LocalizedString.forgotPassword.localized
+            self.sendOtpBtn.setTitle(LocalizedString.submit.localized, for: .normal)}
+        else if self.loginOption == .socialUser{
+            self.loginTitle.text = LocalizedString.addPhoneNumber.localized
             self.sendOtpBtn.setTitle(LocalizedString.submit.localized, for: .normal)}
         else {
             self.loginTitle.text = LocalizedString.login.localized
@@ -98,15 +109,17 @@ extension LoginWithPhoneVC {
     }
     
     public func sendOtpBtnStatus(enable: Bool){
-        self.sendOtpBtn.alpha = enable ? 1.0 : 0.5
         self.sendOtpBtn.isEnabled = enable
     }
     
     private func getDict() -> JSONDictionary{
-        if self.viewModel.isComefromForgotpass {
+        if self.loginOption == .forgotPassword {
             let dict : JSONDictionary = [ApiKey.phoneNo:  self.viewModel.phoneNo,ApiKey.countryCode: self.viewModel.countryCode]
             return dict
-        } else {
+        } else if self.loginOption == .socialUser{
+            let dict : JSONDictionary = [ApiKey.phoneNo:  self.viewModel.phoneNo,ApiKey.countryCode: self.viewModel.countryCode]
+            return dict
+        }else {
             let dict : JSONDictionary = [ApiKey.phoneNo:  self.viewModel.phoneNo,ApiKey.countryCode: self.viewModel.countryCode, ApiKey.device : [ApiKey.platform : "ios", ApiKey.token : DeviceDetail.deviceToken].toJSONString() ?? ""]
             return dict
         }
@@ -127,6 +140,17 @@ extension LoginWithPhoneVC {
         self.view.endEditing(true)
         if self.viewModel.checkSendOtpValidations(parameters: getDict()).status{
             self.viewModel.forgotPassword(params: getDict())
+        }else{
+            if !self.viewModel.checkSendOtpValidations(parameters: getDict()).message.isEmpty{
+                showAlert(msg: self.viewModel.checkSendOtpValidations(parameters: getDict()).message)
+            }
+        }
+    }
+    
+    private func  addPhoneNumber(){
+        self.view.endEditing(true)
+        if self.viewModel.checkSendOtpValidations(parameters: getDict()).status{
+            self.viewModel.addPhoneNumber(params: getDict())
         }else{
             if !self.viewModel.checkSendOtpValidations(parameters: getDict()).message.isEmpty{
                 showAlert(msg: self.viewModel.checkSendOtpValidations(parameters: getDict()).message)
@@ -161,6 +185,14 @@ extension LoginWithPhoneVC: UITextFieldDelegate {
 // MARK: - LoginWithPhoneVMDelegate
 //=================================
 extension LoginWithPhoneVC: LoginWithPhoneVMDelegate {
+    func addPhoneNumbersSuccess(msg: String) {
+        AppRouter.goToOtpVerificationVC(vc: self, phoneNo: self.viewModel.phoneNo, countryCode: self.viewModel.countryCode)
+    }
+    
+    func addPhoneNumberFailed(msg: String) {
+        ToastView.shared.showLongToast(self.view, msg: msg)
+    }
+    
     func forgotPasswordSuccess(msg: String) {
         ToastView.shared.showLongToast(self.view, msg: msg)
         AppRouter.goToOtpVerificationVC(vc: self,phoneNo: self.viewModel.phoneNo, countryCode: self.viewModel.countryCode,isComeForVerifyPassword: true)

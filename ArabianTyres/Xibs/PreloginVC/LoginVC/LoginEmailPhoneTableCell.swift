@@ -18,7 +18,7 @@ class LoginEmailPhoneTableCell: UITableViewCell {
     
     @IBOutlet weak var forgotPassBtn: UIButton!
     @IBOutlet weak var dontHaveAccountLbl: UILabel!
-    @IBOutlet weak var signInBtn: UIButton!
+    @IBOutlet weak var signInBtn: AppButton!
     @IBOutlet weak var phoneNoBtn: UIButton!
     @IBOutlet weak var loginWithEmailPhoneLbl: UILabel!
     @IBOutlet weak var signUpBtn: UIButton!
@@ -81,6 +81,7 @@ class LoginEmailPhoneTableCell: UITableViewCell {
         self.signInBtn.backgroundColor = AppColors.primaryBlueColor
         self.forgotPassBtn.setTitleColor(AppColors.fontTertiaryColor, for: .normal)
         self.signUpBtn.setTitleColor(AppColors.primaryBlueColor, for: .normal)
+        self.signInBtn.isEnabled = false
     }
 
     

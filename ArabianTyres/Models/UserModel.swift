@@ -30,6 +30,7 @@ struct UserModel{
     var password : String
     var phoneNo : String
     var phoneVerified : Bool
+    var phoneNoAdded: Bool
     var status : String
     var updatedAt : String
     var userType : String
@@ -54,6 +55,7 @@ struct UserModel{
         self.phoneNo = json[ApiKey.phoneNo].stringValue
         self.phoneVerified = json[ApiKey.phoneVerified].boolValue
         self.status = json[ApiKey.status].stringValue
+        self.phoneNoAdded = json[ApiKey.phoneNoAdded].boolValue
         self.updatedAt = json[ApiKey.updatedAt].stringValue
         self.userType = json[ApiKey.currentRole].stringValue
     }

@@ -25,7 +25,7 @@ class ChooseLanguageVC: BaseVC {
     @IBOutlet weak var englishBtn: UIButton!
     @IBOutlet weak var arabicBtnView: UIView!
     @IBOutlet weak var englishBtnView: UIView!
-    @IBOutlet weak var continueBtn: UIButton!
+    @IBOutlet weak var continueBtn: AppButton!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var chooseLangLbl: UILabel!
     
@@ -74,9 +74,7 @@ class ChooseLanguageVC: BaseVC {
         self.arabicBtn.setImage(#imageLiteral(resourceName: "roundUnSelected"), for: .normal)
         self.englishBtnView.layer.borderWidth = 1.5
         self.arabicBtnView.layer.borderWidth = 1.0
-        self.continueBtn.backgroundColor = AppColors.primaryBlueColor
-        self.continueBtn.titleLabel?.textColor = .white
-        self.continueBtn.isUserInteractionEnabled = true
+        self.continueBtn.isEnabled = true
         AppUserDefaults.save(value: LocalizedString.english.localized, forKey: .currentLanguage)
     }
     
@@ -87,9 +85,7 @@ class ChooseLanguageVC: BaseVC {
         self.arabicBtnView.layer.borderWidth = 1.5
         self.arabicBtnView.layer.borderColor = AppColors.primaryBlueColor.cgColor
         self.englishBtnView.layer.borderColor = AppColors.primaryBlueLightShade.cgColor
-        self.continueBtn.backgroundColor = AppColors.primaryBlueColor
-        self.continueBtn.titleLabel?.textColor = .white
-        self.continueBtn.isUserInteractionEnabled = true
+        self.continueBtn.isEnabled = true
         AppUserDefaults.save(value: LocalizedString.arabic.localized, forKey: .currentLanguage)
     }
     
@@ -130,7 +126,6 @@ extension ChooseLanguageVC {
         self.arabicLbl.text = LocalizedString.arabic.localized
         self.arabicBtn.setImage(#imageLiteral(resourceName: "roundUnSelected"), for: .normal)
         self.englishBtn.setImage(#imageLiteral(resourceName: "roundUnSelected"), for: .normal)
-        self.continueBtn.isUserInteractionEnabled = false
         self.englishBtnView.layer.borderWidth = 1.0
         self.arabicBtnView.layer.borderWidth = 1.0
         self.englishBtnView.layer.borderColor = AppColors.primaryBlueLightShade.cgColor
