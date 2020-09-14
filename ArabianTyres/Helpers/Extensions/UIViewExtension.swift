@@ -919,3 +919,28 @@ extension CACornerMask {
 }
 
 
+extension UIView {
+    func addBottomBorderWithColor(color: UIColor, height: CGFloat) {
+        let border = CALayer()
+        border.backgroundColor = color.cgColor
+        border.frame = CGRect(x:5, y:self.frame.size.height - height - 7.5, width:self.frame.size.width - 10.0, height:height)
+        self.layer.addSublayer(border)
+    }
+    
+    func addBottomBorderWithColorDefault(color: UIColor, height: CGFloat) {
+        let border = CALayer()
+        border.backgroundColor = color.cgColor
+        border.frame = CGRect(x:2.5, y:self.frame.size.height - height + 5.0, width:self.frame.size.width - 5.0, height:height)
+        self.layer.addSublayer(border)
+    }
+}
+
+class AppButton: UIButton {
+    open override var isEnabled: Bool{
+        didSet {
+            alpha = isEnabled ? 1.0 : 0.5
+            backgroundColor = isEnabled ? AppColors.primaryBlueColor : AppColors.primaryBlueLightShade
+            setTitleColor(isEnabled ? .white : AppColors.fontTertiaryColor, for: .normal)
+        }
+    }
+}

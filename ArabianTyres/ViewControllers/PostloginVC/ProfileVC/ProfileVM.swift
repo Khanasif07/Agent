@@ -15,6 +15,8 @@ protocol ProfileVMDelegate: class {
     func getProfileDataFailed(msg: String, error: Error)
     func resendOtpSuccess(msg: String)
     func resendOtpFailed(msg: String, error: Error)
+    func sendVerificationLinkSuccess(msg: String)
+    func sendVerificationLinkFailed(msg: String,error: Error)
 }
 
 class ProfileVM {
@@ -44,6 +46,16 @@ class ProfileVM {
             self.delegate?.resendOtpSuccess(msg: message)
         }) { (error) -> (Void) in
             self.delegate?.resendOtpFailed(msg: error.localizedDescription, error: error)
+        }
+    }
+    
+    
+    func sendVerificationLink(dict: JSONDictionary){
+        WebServices.sendVerificationLink(parameters: dict, success: { (json) in
+            let msg = json[ApiKey.message].stringValue
+            self.delegate?.sendVerificationLinkSuccess(msg: msg)
+        }) { (error) -> (Void) in
+            self.delegate?.sendVerificationLinkFailed(msg: error.localizedDescription, error: error)
         }
     }
     

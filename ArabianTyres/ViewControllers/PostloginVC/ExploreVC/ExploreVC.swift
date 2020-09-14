@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ExploreVC: UIViewController {
+class ExploreVC: BaseVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,6 +16,14 @@ class ExploreVC: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+          .darkContent
+      }
+      
+      override func viewWillAppear(_ animated: Bool) {
+          super.viewWillAppear(animated)
+          setNeedsStatusBarAppearanceUpdate()
+      }
 
     /*
     // MARK: - Navigation

@@ -37,8 +37,14 @@ class SignUpVC: BaseVC {
         initialSetup()
     }
     
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        .darkContent
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setNeedsStatusBarAppearanceUpdate()
         self.tabBarController?.tabBar.isHidden = true
     }
     
@@ -93,6 +99,10 @@ extension SignUpVC {
                 ToastView.shared.showLongToast(self.view, msg: self.viewModel.checkSignupValidations(parameters: getDict()).message)
             }
         }
+    }
+    
+    private func signUpBtnStatus()-> Bool{
+        return !self.viewModel.model.name.isEmpty && !self.viewModel.model.email.isEmpty && !self.viewModel.model.phoneNo.isEmpty && !self.viewModel.model.password.isEmpty && !self.viewModel.model.confirmPasssword.isEmpty
     }
 }
 
@@ -173,14 +183,19 @@ extension SignUpVC : UITextFieldDelegate{
         switch textField {
         case cell?.emailIdTxtField:
             self.viewModel.model.email = text
+            cell?.signUpBtn.isEnabled = signUpBtnStatus()
         case cell?.nameTxtField:
             self.viewModel.model.name = text
+            cell?.signUpBtn.isEnabled = signUpBtnStatus()
         case cell?.mobNoTxtField:
             self.viewModel.model.phoneNo = text
+            cell?.signUpBtn.isEnabled = signUpBtnStatus()
         case cell?.passTxtField:
             self.viewModel.model.password = text
+            cell?.signUpBtn.isEnabled = signUpBtnStatus()
         default:
             self.viewModel.model.confirmPasssword = text
+            cell?.signUpBtn.isEnabled = signUpBtnStatus()
         }
         
     }
@@ -198,9 +213,9 @@ extension SignUpVC : UITextFieldDelegate{
         case cell?.emailIdTxtField:
             return (string.checkIfValidCharaters(.email) || string.isEmpty) && newString.length <= 50
         case cell?.passTxtField:
-            return (string.checkIfValidCharaters(.password) || string.isEmpty) && newString.length <= 19
+            return (string.checkIfValidCharaters(.password) || string.isEmpty) && newString.length <= 25
         case cell?.confirmPassTxtField:
-            return (string.checkIfValidCharaters(.password) || string.isEmpty) && newString.length <= 19
+            return (string.checkIfValidCharaters(.password) || string.isEmpty) && newString.length <= 25
         default:
             return false
         }

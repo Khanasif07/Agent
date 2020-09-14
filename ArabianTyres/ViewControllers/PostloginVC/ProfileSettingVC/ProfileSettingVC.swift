@@ -113,10 +113,11 @@ extension ProfileSettingVC {
     }
     
     private func showLogoutPopUp(){
-        self.showAlertWithAction(title: "Logout", msg: "Are you sure you want to logout?", cancelTitle: "Cancel", actionTitle: "Logout", actioncompletion: {
+        self.showAlertWithAction(title: "Logout", msg: "Are you sure you want to logout?", cancelTitle: "Cancel", actionTitle: LocalizedString.ok.localized, actioncompletion: {
             WebServices.logout(parameters: [:], success: { (message) in
                 self.performCleanUp()
-                AppRouter.makeChooseLanguageVCRoot()
+                AppUserDefaults.save(value: "guest", forKey: .currentUserType)
+                AppRouter.goToUserHome()
             }) {_ in printDebug("Dismiss")}
         })
     }

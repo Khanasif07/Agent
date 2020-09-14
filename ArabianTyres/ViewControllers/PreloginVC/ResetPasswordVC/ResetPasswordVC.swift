@@ -29,8 +29,14 @@ class ResetPasswordVC: BaseVC {
         initialSetup()
     }
     
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        .darkContent
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setNeedsStatusBarAppearanceUpdate()
         self.tabBarController?.tabBar.isHidden = true
     }
     
@@ -144,12 +150,11 @@ extension ResetPasswordVC: UITextFieldDelegate{
 // MARK: - ResetPasswordVMDelegate
 //===============================
 extension ResetPasswordVC: ResetPasswordVMDelegate{
-    func resendSuccess(message: String) {
-        ToastView.shared.showLongToast(self.view, msg: message)
-        AppRouter.showSuccessPopUp(vc: self, title: "Successful", desc: "You have successfully reset your old password.")
+    func resetPasswordSuccess(message: String) {
+        AppRouter.showSuccessPopUp(vc: self, title: "Successful", desc: "Password has been reset successfully")
     }
     
-    func resendFailed(error: String) {
+    func resetPasswordFailed(error: String) {
          ToastView.shared.showLongToast(self.view, msg: error)
     }
 }
@@ -158,6 +163,7 @@ extension ResetPasswordVC: ResetPasswordVMDelegate{
 //===============================
 extension ResetPasswordVC: SuccessPopupVCDelegate {
     func okBtnAction() {
+        AppRouter.makeLoginVCRoot()
         self.dismiss(animated: true, completion: nil)
     }
 }

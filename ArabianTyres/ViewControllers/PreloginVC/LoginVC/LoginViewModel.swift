@@ -14,8 +14,12 @@ protocol SignInVMDelegate: NSObjectProtocol {
     func signInSuccess(userModel: UserModel)
     func signInFailed(message: String)
     func socailLoginApiSuccess(message: String)
+    func socailLoginApiSuccessWithoutPhoneNo(message: String)
+    func socailLoginApiSuccessWithoutVerifyPhoneNo(message: String)
     func socailLoginApiFailure(message: String)
-    func emailNotVerified()
+    func emailNotVerified(message: String)
+    func sendOtpForSocialLoginSuccess(message: String)
+    func sendOtpForSocialLoginFailed(message: String)
 }
 
 extension SignInVMDelegate {
@@ -38,7 +42,7 @@ struct LoginViewModel {
             self.delegate?.signInSuccess(userModel: UserModel.main)
         }) { (error) -> (Void) in
             if (error as NSError).code == 401 {
-                self.delegate?.emailNotVerified()
+                self.delegate?.emailNotVerified(message: error.localizedDescription)
             }else {
                 self.delegate?.signInFailed(message: error.localizedDescription)
             }
@@ -54,15 +58,15 @@ struct LoginViewModel {
             return (status: validationStatus, message: errorMessage)
         }
         
-        guard let password = parameters[ApiKey.password] as? String, !password.isEmpty  else{
-            validationStatus = false
-            errorMessage = LocalizedString.pleaseEnterPassword.localized
-            return (status: validationStatus, message: errorMessage)
-        }
-        
         if !email.checkIfValid(.email) {
             validationStatus = false
             errorMessage =  LocalizedString.pleaseEnterValidEmail.localized
+            return (status: validationStatus, message: errorMessage)
+        }
+        
+        guard let password = parameters[ApiKey.password] as? String, !password.isEmpty  else{
+            validationStatus = false
+            errorMessage = LocalizedString.pleaseEnterPassword.localized
             return (status: validationStatus, message: errorMessage)
         }
         
@@ -80,11 +84,32 @@ struct LoginViewModel {
             UserModel.main = user
             let accessToken = json[ApiKey.data][ApiKey.authToken].stringValue
             AppUserDefaults.save(value: accessToken, forKey: .accesstoken)
-            AppUserDefaults.save(value: json[ApiKey.data][ApiKey.userType].stringValue, forKey: .currentUserType)
-            self.delegate?.socailLoginApiSuccess(message: "")
+            AppUserDefaults.save(value: "basic", forKey: .currentUserType)
+            if UserModel.main.phoneNoAdded && UserModel.main.phoneVerified {
+                self.delegate?.socailLoginApiSuccess(message: "")
+                return
+            }
+            if !UserModel.main.phoneNoAdded{
+                self.delegate?.socailLoginApiSuccessWithoutPhoneNo(message: "")
+                return
+            }
+            if !UserModel.main.phoneVerified && UserModel.main.phoneNoAdded{
+                self.delegate?.socailLoginApiSuccessWithoutVerifyPhoneNo(message: "")
+                return
+            }
+          
         }) { (error) -> (Void) in
             self.delegate?.socailLoginApiFailure(message: error.localizedDescription)
             
+        }
+    }
+    
+    func sendOtp(params: JSONDictionary,loader: Bool = false) {
+        WebServices.sendOtpThroughPhone(parameters: params, success: { (json) in
+            self.delegate?.sendOtpForSocialLoginSuccess(message:"")
+            printDebug(json)
+        }) { (error) in
+            self.delegate?.sendOtpForSocialLoginFailed(message: error.localizedDescription)
         }
     }
 }

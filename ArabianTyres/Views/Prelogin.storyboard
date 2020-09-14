@@ -38,7 +38,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qdR-eO-3IG">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qdR-eO-3IG" customClass="AppButton" customModule="ArabianTyres">
                                         <rect key="frame" x="22" y="783" width="370" height="56"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -49,7 +49,7 @@
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="continueBtnAction:" destination="uvL-9z-jXM" eventType="touchUpInside" id="v4c-O5-dLV"/>
+                                            <action selector="continueBtnAction:" destination="uvL-9z-jXM" eventType="touchUpInside" id="UDd-uG-rAq"/>
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="1Bx-lU-V75">
@@ -220,7 +220,7 @@
                         <outlet property="arabicBtnView" destination="cri-NO-Zcs" id="qlP-WF-Zpr"/>
                         <outlet property="arabicLbl" destination="GnC-dK-O3k" id="f1j-7S-Q3t"/>
                         <outlet property="chooseLangLbl" destination="u6B-FK-BEk" id="h8H-bZ-ASA"/>
-                        <outlet property="continueBtn" destination="qdR-eO-3IG" id="WfI-hb-t2t"/>
+                        <outlet property="continueBtn" destination="qdR-eO-3IG" id="LIv-5W-bbO"/>
                         <outlet property="englishBtn" destination="p7V-VE-AAt" id="cAu-l3-glg"/>
                         <outlet property="englishBtnView" destination="4DE-yw-XT7" id="8fY-XM-v1L"/>
                         <outlet property="englishLbl" destination="1XG-9C-5o8" id="FDC-3Y-5t0"/>
@@ -485,7 +485,7 @@ with Country Code  </string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gn3-Q4-LxI">
                                 <rect key="frame" x="16" y="195.5" width="382" height="188"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vgw-Ct-4iq">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vgw-Ct-4iq" customClass="AppButton" customModule="ArabianTyres">
                                         <rect key="frame" x="225" y="114" width="136" height="48"/>
                                         <color key="backgroundColor" red="0.079948574519999996" green="0.141351648" blue="0.33735437909999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -497,7 +497,7 @@ with Country Code  </string>
                                             <color key="titleColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="sendOtpAction:" destination="klr-X5-Bul" eventType="touchUpInside" id="r1m-MM-0Sv"/>
+                                            <action selector="sendOtpAction:" destination="klr-X5-Bul" eventType="touchUpInside" id="lO0-Xk-OgV"/>
                                         </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kWA-M8-J66" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
@@ -587,7 +587,7 @@ with Country Code  </string>
                         <outlet property="enterDigitLbl" destination="pHr-LJ-ceO" id="jr2-28-Pb9"/>
                         <outlet property="loginTitle" destination="YTK-0M-jDl" id="mqU-2T-vjK"/>
                         <outlet property="phoneTextField" destination="kWA-M8-J66" id="AQ7-b2-hOB"/>
-                        <outlet property="sendOtpBtn" destination="vgw-Ct-4iq" id="6nZ-Ws-0OW"/>
+                        <outlet property="sendOtpBtn" destination="vgw-Ct-4iq" id="lv2-eC-nQV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hEu-cu-aVU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -731,7 +731,7 @@ your old password.</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fT3-ng-7fC">
                                 <rect key="frame" x="16" y="217" width="382" height="232"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CTa-Ma-kmt">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CTa-Ma-kmt" customClass="AppButton" customModule="ArabianTyres" customModuleProvider="target">
                                         <rect key="frame" x="254" y="114" width="107" height="48"/>
                                         <color key="backgroundColor" red="0.079948574519999996" green="0.141351648" blue="0.33735437909999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -743,7 +743,7 @@ your old password.</string>
                                             <color key="titleColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="verifyBtnAction:" destination="MXs-56-LBh" eventType="touchUpInside" id="tck-Rt-Z1p"/>
+                                            <action selector="verifyBtnAction:" destination="MXs-56-LBh" eventType="touchUpInside" id="85g-by-pGZ"/>
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="7iX-Gu-cSX">
@@ -960,7 +960,7 @@ your old password.</string>
                         <outlet property="phoneNoLbl" destination="9PK-qt-tD0" id="eWF-ho-0b1"/>
                         <outlet property="resendBtn" destination="aaq-lG-6Pa" id="6lo-hY-USA"/>
                         <outlet property="timerLbl" destination="eKh-ZH-kwB" id="zqH-Ab-B6O"/>
-                        <outlet property="verifyBtn" destination="CTa-Ma-kmt" id="maO-US-Wa3"/>
+                        <outlet property="verifyBtn" destination="CTa-Ma-kmt" id="sNH-R9-E49"/>
                         <outletCollection property="txtFieldViews" destination="Hmz-It-fdL" collectionClass="NSMutableArray" id="p7L-av-OdG"/>
                         <outletCollection property="txtFieldViews" destination="Fsj-HV-scl" collectionClass="NSMutableArray" id="KG4-lP-Hqn"/>
                         <outletCollection property="txtFieldViews" destination="0e0-7E-VEZ" collectionClass="NSMutableArray" id="5Ca-gU-KR6"/>
@@ -1145,7 +1145,7 @@ your old password.</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IWn-2N-oyc">
                                 <rect key="frame" x="16" y="184.5" width="382" height="275"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="et7-VC-c2c">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="et7-VC-c2c" customClass="AppButton" customModule="ArabianTyres">
                                         <rect key="frame" x="225" y="201" width="136" height="48"/>
                                         <color key="backgroundColor" red="0.079948574519999996" green="0.141351648" blue="0.33735437909999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -1156,10 +1156,6 @@ your old password.</string>
                                         <state key="normal" title="Submit">
                                             <color key="titleColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
-                                        <connections>
-                                            <action selector="sendOtpAction:" destination="klr-X5-Bul" eventType="touchUpInside" id="O58-jl-Q0x"/>
-                                            <action selector="submitBtnAction:" destination="sD4-ak-dXE" eventType="touchUpInside" id="w58-W8-0LD"/>
-                                        </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="E6P-l7-AI4">
                                         <rect key="frame" x="26" y="44" width="335" height="125"/>
@@ -1222,7 +1218,6 @@ your old password.</string>
                         <outlet property="confirmTxtField" destination="xKa-QF-8OD" id="Udh-mN-luI"/>
                         <outlet property="dataContainerView" destination="IWn-2N-oyc" id="DJo-hO-rg3"/>
                         <outlet property="newPassTxtField" destination="FwJ-sY-qMM" id="RFq-N1-yK0"/>
-                        <outlet property="submitBtn" destination="et7-VC-c2c" id="q9y-IP-U6j"/>
                         <outlet property="titlelbl" destination="5RJ-GB-cJt" id="qTb-TJ-xO0"/>
                     </connections>
                 </viewController>

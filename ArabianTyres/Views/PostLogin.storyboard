@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1F6-Pe-8cE">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
@@ -84,8 +84,80 @@
             </objects>
             <point key="canvasLocation" x="-46" y="146"/>
         </scene>
+        <!--ProfileVC-->
+        <scene sceneID="vva-uI-IN0">
+            <objects>
+                <viewController storyboardIdentifier="ProfileVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1F6-Pe-8cE" customClass="ProfileVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4ze-V0-54e">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KfY-pz-kux">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="union" translatesAutoresizingMaskIntoConstraints="NO" id="X6W-Ys-jqn">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="358.5"/>
+                                    </imageView>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Olh-UT-sX0">
+                                        <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZuF-Sy-2XZ">
+                                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kz4-Yt-4jb">
+                                                <rect key="frame" x="181.5" y="10.5" width="51" height="23.5"/>
+                                                <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
+                                                <color key="textColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="4y1-XW-F0o"/>
+                                            <constraint firstItem="kz4-Yt-4jb" firstAttribute="centerY" secondItem="ZuF-Sy-2XZ" secondAttribute="centerY" id="c8C-PV-WoD"/>
+                                            <constraint firstItem="kz4-Yt-4jb" firstAttribute="centerX" secondItem="ZuF-Sy-2XZ" secondAttribute="centerX" id="oQX-Wg-wVu"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="X6W-Ys-jqn" secondAttribute="trailing" id="31L-Pr-m5m"/>
+                                    <constraint firstItem="X6W-Ys-jqn" firstAttribute="height" secondItem="KfY-pz-kux" secondAttribute="height" multiplier="0.4" id="EU6-Ma-wsJ"/>
+                                    <constraint firstItem="Olh-UT-sX0" firstAttribute="leading" secondItem="KfY-pz-kux" secondAttribute="leading" id="Nlb-O2-DCl"/>
+                                    <constraint firstItem="X6W-Ys-jqn" firstAttribute="leading" secondItem="KfY-pz-kux" secondAttribute="leading" id="ShR-hy-P69"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZuF-Sy-2XZ" secondAttribute="trailing" id="UpS-Cc-dXY"/>
+                                    <constraint firstItem="X6W-Ys-jqn" firstAttribute="top" secondItem="KfY-pz-kux" secondAttribute="top" id="XQ3-WY-tOd"/>
+                                    <constraint firstAttribute="trailing" secondItem="Olh-UT-sX0" secondAttribute="trailing" id="c7j-7P-YKS"/>
+                                    <constraint firstItem="ZuF-Sy-2XZ" firstAttribute="leading" secondItem="KfY-pz-kux" secondAttribute="leading" id="lgy-8F-3jx"/>
+                                    <constraint firstItem="Olh-UT-sX0" firstAttribute="top" secondItem="ZuF-Sy-2XZ" secondAttribute="bottom" id="w4w-rl-JX9"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="nwD-dC-yI3" firstAttribute="bottom" secondItem="Olh-UT-sX0" secondAttribute="bottom" id="TDS-aX-m7E"/>
+                            <constraint firstItem="ZuF-Sy-2XZ" firstAttribute="top" secondItem="nwD-dC-yI3" secondAttribute="top" id="XXG-C8-cwT"/>
+                            <constraint firstItem="nwD-dC-yI3" firstAttribute="trailing" secondItem="KfY-pz-kux" secondAttribute="trailing" id="cgc-O9-c5H"/>
+                            <constraint firstItem="KfY-pz-kux" firstAttribute="leading" secondItem="nwD-dC-yI3" secondAttribute="leading" id="rIK-lR-lUI"/>
+                            <constraint firstAttribute="bottom" secondItem="KfY-pz-kux" secondAttribute="bottom" id="vfP-n1-MkH"/>
+                            <constraint firstItem="KfY-pz-kux" firstAttribute="top" secondItem="4ze-V0-54e" secondAttribute="top" id="x6J-ja-tSY"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="nwD-dC-yI3"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ydG-3B-uF5"/>
+                    <connections>
+                        <outlet property="mainTableView" destination="Olh-UT-sX0" id="eJE-Kv-IMn"/>
+                        <outlet property="titleLbl" destination="kz4-Yt-4jb" id="wBn-dn-Z0f"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xQR-Qd-L6C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1003" y="146"/>
+        </scene>
     </scenes>
     <resources>
         <image name="icBackward" width="36" height="34"/>
+        <image name="union" width="375" height="526"/>
     </resources>
 </document>

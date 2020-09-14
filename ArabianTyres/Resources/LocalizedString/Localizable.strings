@@ -13,6 +13,7 @@
 "takePhoto" = "Camera";
 "cancel" = "Cancel";
 "send" = "Send";
+"ok" = "Ok";
 "removePicture" = "Remove Picture";
 "alert" = "Alert";
 "settings" = "Settings";
@@ -23,6 +24,7 @@
 "arabic" = "عربى";
 "continueTitle" = "Continue";
 "logout" = "Logout";
+"mobileNo" = "Mobile No";
 
 //MARK: - Home TabBar Values
 //========================
@@ -47,7 +49,9 @@
 "usePhoneNumber" = "Use Phone Number";
 "forgotPassword" = "Forgot Password";
 "sign_in" = "Sign in";
+"sign_in_Cap" = "SIGN IN";
 "signupcap" = "SIGN UP";
+"signup" = "Sign up";
 "signup_with_social_accounts" = "Sign up with Social Accounts";
 "Login_with_social_accounts" = "Login with Social Accounts";
 "sKIP_LOGIN_CONTINUE" = "SKIP LOGIN & CONTINUE";
@@ -59,7 +63,7 @@
 //==================================
 "newPassword" = "New Password";
 "pleaseEnterValidEmail" = "Please enter a valid email address";
-"pleaseEnterValidPassword" = "Please enter a valid password (Minimum 8 and max 18 characters, one uppercase and one number)";
+"pleaseEnterValidPassword" = "Please enter a valid password (Minimum 6 and max 25 characters, one uppercase and one number)";
 "nameShouldBeAtleastMinCharacters" = "Minimum length of first name should be greater than or equal to 3";
 "phoneNoShouldBeAtleastMinCharacters" = "Phone number length must be 8 to 14 charcters long";
 "pleaseEnterEmail" = "Please enter email address";
@@ -87,7 +91,8 @@
 "enterNewPassword" = "Enter New Password";
 "confirmNewPassword" = "Confirm New Password";
 "passwordDoesNotMatch" = "Password doesn\'t match";
-
+"pleaseEnterMinTwoChar" = "Please enter minimum 2 characters";
+"addPhoneNumber" = "Add Phone Number";
 // MARK: - Signup VC Values
 //==============================
 "bySigningDec" = "By Signing Up you are agree to our";

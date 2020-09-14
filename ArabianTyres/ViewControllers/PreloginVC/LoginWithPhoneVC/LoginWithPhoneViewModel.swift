@@ -14,6 +14,8 @@ protocol LoginWithPhoneVMDelegate: class {
     func loginWithPhoneFailed(msg: String, error: Error)
     func forgotPasswordSuccess(msg: String)
     func forgotPasswordFailed(msg: String, error: Error)
+    func addPhoneNumbersSuccess(msg: String)
+    func addPhoneNumberFailed(msg: String)
 }
 
 class LoginWithPhoneViewModel {
@@ -54,18 +56,23 @@ class LoginWithPhoneViewModel {
         }
     }
     
+    func addPhoneNumber(params: JSONDictionary,loader: Bool = false) {
+        WebServices.addPhoneNumber(parameters: params, success: { [weak self] (json) in
+            guard let `self` = self else { return }
+            self.delegate?.addPhoneNumbersSuccess(msg: "")
+            printDebug(json)
+        }) { [weak self] (error) in
+            guard let `self` = self else { return }
+            self.delegate?.addPhoneNumberFailed(msg: error.localizedDescription)
+        }
+    }
+    
     func checkSendOtpValidations(parameters: JSONDictionary) -> (status: Bool, message: String)  {
         var validationStatus = true
         var errorMessage = ""
         guard let phoneNo = parameters[ApiKey.phoneNo] as? String ,!phoneNo.isEmpty else{
             validationStatus = false
             errorMessage = LocalizedString.pleaseEnterPhoneNumber.localized
-            return (status: validationStatus, message: errorMessage)
-        }
-        
-        if !phoneNo.checkIfValid(.mobileNumber) {
-            validationStatus = false
-            errorMessage =  LocalizedString.pleaseEnterPhoneNumber.localized
             return (status: validationStatus, message: errorMessage)
         }
         return (status: validationStatus, message: errorMessage)

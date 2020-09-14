@@ -17,7 +17,7 @@ class OtpVerificationVC: BaseVC {
     @IBOutlet weak var countryCodeLbl: UILabel!
     @IBOutlet weak var timerLbl: UILabel!
     @IBOutlet weak var resendBtn: UIButton!
-    @IBOutlet weak var verifyBtn: UIButton!
+    @IBOutlet weak var verifyBtn: AppButton!
     @IBOutlet var otpTxtFields: [OTPTextField]!
     @IBOutlet var txtFieldViews: [UIView]!
     
@@ -33,11 +33,17 @@ class OtpVerificationVC: BaseVC {
         initialSetup()
     }
     
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        .darkContent
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        verifyBtn.alpha = 0.5
+        setNeedsStatusBarAppearanceUpdate()
         self.tabBarController?.tabBar.isHidden = true
         verifyBtn.isEnabled = false
+        resendBtn.isEnabled = false
     }
     
     override func viewDidLayoutSubviews() {
@@ -79,6 +85,7 @@ extension OtpVerificationVC {
     private func initialSetup() {
         self.viewModel.delegate = self
         setupText()
+        self.resendBtn.isEnabled = false
         self.setUpTextField()
         self.timerLbl.isHidden = false
         self.startTimer()
@@ -109,6 +116,7 @@ extension OtpVerificationVC {
             viewModel.totalTime -= 1
         } else {
             endTimer()
+            self.resendBtn.isEnabled = true
         }
     }
     
@@ -119,7 +127,6 @@ extension OtpVerificationVC {
     
     private func setUpSubmitButton(enable: Bool){
         verifyBtn.isEnabled = enable
-        verifyBtn.alpha = enable ? 1.0 : 0.5
     }
     
     
@@ -218,7 +225,8 @@ extension OtpVerificationVC: SuccessPopupVCDelegate{
 //=======================================
 extension OtpVerificationVC: OtpVerificationVMDelegate{
     func resendOtpSuccess(message: String) {
-        ToastView.shared.showLongToast(self.view, msg: message)
+        setUpSubmitButton(enable: false)
+        self.resendBtn.isEnabled = false
     }
     
     func resendOtpFailed(error: String) {
@@ -230,7 +238,6 @@ extension OtpVerificationVC: OtpVerificationVMDelegate{
     }
     
     func otpVerifiedSuccessfully(message: String) {
-        ToastView.shared.showLongToast(self.view, msg: message)
         AppRouter.showSuccessPopUp(vc: self,title: "OTP Verified",desc: "You have successfully verified your mobile no.")
     }
     

@@ -18,7 +18,7 @@ class SignUpTopCell: UITableViewCell {
     @IBOutlet weak var countryCodeLbl: UILabel!
     @IBOutlet weak var signInBtn: UIButton!
     @IBOutlet weak var alreadyHaveAcctLbl: UILabel!
-    @IBOutlet weak var signUpBtn: UIButton!
+    @IBOutlet weak var signUpBtn: AppButton!
     @IBOutlet weak var privacyLbl: UILabel!
     @IBOutlet weak var confirmPassTxtField: SkyFloatingLabelTextField!
     @IBOutlet weak var passTxtField: SkyFloatingLabelTextField!
@@ -30,7 +30,7 @@ class SignUpTopCell: UITableViewCell {
         super.awakeFromNib()
         self.setUpTextField()
         self.setUpAttributedString()
-        
+        self.addBottomViewToBottom()
     }
     
     private func setUpAttributedString(){
@@ -46,6 +46,11 @@ class SignUpTopCell: UITableViewCell {
         
     }
     
+    public func addBottomViewToBottom(){
+        self.signInBtn.addBottomBorderWithColor(color: AppColors.primaryBlueColor, height: 1)
+    }
+    
+    
     public func setUpTextField(){
         self.alreadyHaveAcctLbl.text = LocalizedString.alreadyHaveAnAccount.localized
         self.emailIdTxtField.title = LocalizedString.emailIdPlaceHolder.localized
@@ -60,23 +65,26 @@ class SignUpTopCell: UITableViewCell {
         self.confirmPassTxtField.placeholder = LocalizedString.confirmPassword.localized
         self.nameTxtField.placeholder = LocalizedString.enterYourName.localized
         self.mobNoTxtField.placeholder = LocalizedString.enterYourMobNumber.localized
+        self.mobNoTxtField.title = LocalizedString.mobileNo.localized
+        self.mobNoTxtField.selectedTitle = LocalizedString.mobileNo.localized
         [nameTxtField,emailIdTxtField,mobNoTxtField,passTxtField,confirmPassTxtField].forEach({$0?.lineColor = AppColors.fontTertiaryColor})
         [nameTxtField,emailIdTxtField,mobNoTxtField,passTxtField,confirmPassTxtField].forEach({$0?.selectedLineColor = AppColors.fontTertiaryColor})
         [nameTxtField,emailIdTxtField,mobNoTxtField,passTxtField,confirmPassTxtField].forEach({$0?.selectedTitleColor = AppColors.fontTertiaryColor})
-        self.signUpBtn.setTitle(LocalizedString.signupcap.localized, for: .normal)
-        self.signInBtn.setTitle(LocalizedString.sign_in.localized, for: .normal)
+        self.signUpBtn.setTitle(LocalizedString.signup.localized, for: .normal)
+        self.signInBtn.setTitle(LocalizedString.sign_in_Cap.localized, for: .normal)
         self.signUpBtn.backgroundColor = AppColors.primaryBlueColor
+        self.signUpBtn.isEnabled = false
         self.passTxtField.isSecureTextEntry = true
         self.confirmPassTxtField.isSecureTextEntry = true
         self.mobNoTxtField.keyboardType = .numberPad
         let show = UIButton()
         show.isSelected = false
         show.addTarget(self, action: #selector(secureTextField(_:)), for: .touchUpInside)
-        self.passTxtField.setButtonToRightView(btn: show, selectedImage: #imageLiteral(resourceName: "icPasswordHide"), normalImage: #imageLiteral(resourceName: "icPasswordHide"), size: CGSize(width: 22, height: 22))
+        self.passTxtField.setButtonToRightView(btn: show, selectedImage: #imageLiteral(resourceName: "icPasswordView"), normalImage: #imageLiteral(resourceName: "icPasswordHide"), size: CGSize(width: 22, height: 22))
         let show1 = UIButton()
         show1.isSelected = false
         show1.addTarget(self, action: #selector(secureTextField1(_:)), for: .touchUpInside)
-        self.confirmPassTxtField.setButtonToRightView(btn: show1, selectedImage: #imageLiteral(resourceName: "icPasswordHide"), normalImage: #imageLiteral(resourceName: "icPasswordHide"), size: CGSize(width: 22, height: 22))
+        self.confirmPassTxtField.setButtonToRightView(btn: show1, selectedImage: #imageLiteral(resourceName: "icPasswordView"), normalImage: #imageLiteral(resourceName: "icPasswordHide"), size: CGSize(width: 22, height: 22))
     }
     
     

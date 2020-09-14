@@ -42,14 +42,15 @@ class ProfileUserHeaderCell: UITableViewCell {
     }
     
     func populateData(model: UserModel){
-        profileImgView.setImage_kf(imageString: model.image, placeHolderImage: UIImage(), loader: true)
+        profileImgView.setImage_kf(imageString: model.image, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: true)
         userNameLbl.text = model.name.isEmpty ? "N/A" : "\(model.name)"
         userPhoneNoLbl.text = model.phoneNo.isEmpty ? "N/A" : "\(model.countryCode)" + " \(model.phoneNo)"
         userEmailLbl.text = model.email.isEmpty ? "N/A" : model.email
         phoneNoVerifiedView.isHidden = !model.phoneVerified
-        phoneVerifyBtn.isHidden = model.phoneVerified
+        phoneVerifyBtn.isHidden = model.phoneVerified || model.phoneNo.isEmpty
         emailVerifiedView.isHidden = !model.emailVerified
-        emailVerifyBtn.isHidden = model.emailVerified
+        emailVerifyBtn.isHidden = model.emailVerified || model.email.isEmpty
+       
     }
     
     @IBAction func phoneVerifyBtnAction(_ sender: UIButton) {

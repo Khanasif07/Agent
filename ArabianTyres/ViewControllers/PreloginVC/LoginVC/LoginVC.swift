@@ -24,15 +24,22 @@ class LoginVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
+        setNeedsStatusBarAppearanceUpdate()
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        .darkContent
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setNeedsStatusBarAppearanceUpdate()
         self.tabBarController?.tabBar.isHidden = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        setNeedsStatusBarAppearanceUpdate()
         self.mainTableView.reloadData()
     }
     
@@ -46,8 +53,6 @@ class LoginVC: BaseVC {
         AppRouter.goToAddAccountDetailVC(vc: self)
         
     }
-    
-    
 }
 
 // MARK: - Extension For Functions
@@ -77,6 +82,13 @@ extension LoginVC {
                                      ApiKey.device : [ApiKey.platform : "ios", ApiKey.token : DeviceDetail.deviceToken].toJSONString() ?? ""]
         return dict
     }
+    
+    private func getDictForSendOtp() -> JSONDictionary{
+           let dict : JSONDictionary = [ApiKey.phoneNo : self.viewModel.model.email,
+                                        ApiKey.countryCode : self.viewModel.model.password,
+                                        ApiKey.device : [ApiKey.platform : "ios", ApiKey.token : DeviceDetail.deviceToken].toJSONString() ?? ""]
+           return dict
+       }
     
     private func signIn(){
         self.view.endEditing(true)
@@ -133,7 +145,7 @@ extension LoginVC : UITableViewDelegate, UITableViewDataSource {
             }
             cell.forgotPassBtnTapped = { [weak self]  (sender) in
             guard let `self` = self else { return }
-                AppRouter.goToSignWithPhoneVC(vc: self,isComefromForgotpass: true)
+                AppRouter.goToSignWithPhoneVC(vc: self,loginOption: .forgotPassword)
             }
             return cell
         default:
@@ -172,6 +184,10 @@ extension LoginVC : UITableViewDelegate, UITableViewDataSource {
         }
         return cell
     }
+    
+    private func signInBtnStatus()-> Bool{
+          return !self.viewModel.model.email.isEmpty && !self.viewModel.model.password.isEmpty
+      }
 
 }
 
@@ -184,8 +200,10 @@ extension LoginVC : UITextFieldDelegate{
         switch textField {
         case cell?.emailTxtField:
             self.viewModel.model.email = text
+            cell?.signInBtn.isEnabled = signInBtnStatus()
         default:
             self.viewModel.model.password = text
+            cell?.signInBtn.isEnabled = signInBtnStatus()
         }
     }
     
@@ -208,6 +226,22 @@ extension LoginVC : UITextFieldDelegate{
 // MARK: - SignInVMDelegate
 //=========================================
 extension LoginVC: SignInVMDelegate {
+    func sendOtpForSocialLoginSuccess(message: String) {
+        AppRouter.goToOtpVerificationVC(vc: self, phoneNo: UserModel.main.phoneNo, countryCode: UserModel.main.countryCode)
+    }
+    
+    func sendOtpForSocialLoginFailed(message: String) {
+         ToastView.shared.showLongToast(self.view, msg: message)
+    }
+    
+    func socailLoginApiSuccessWithoutPhoneNo(message: String) {
+        AppRouter.goToSignWithPhoneVC(vc: self,loginOption: .socialUser)
+    }
+    
+    func socailLoginApiSuccessWithoutVerifyPhoneNo(message: String) {
+        self.viewModel.sendOtp(params: getDictForSendOtp())
+    }
+    
     func socailLoginApiSuccess(message: String) {
         AppRouter.goToUserHome()
     }
@@ -224,8 +258,8 @@ extension LoginVC: SignInVMDelegate {
         ToastView.shared.showLongToast(self.view, msg: message)
     }
     
-    func  emailNotVerified(){
-        self.showEmailVerificationPopUp()
+    func emailNotVerified(message: String){
+        ToastView.shared.showLongToast(self.view, msg: message)
     }
 
 }
