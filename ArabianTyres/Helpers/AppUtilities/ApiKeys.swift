@@ -131,5 +131,6 @@ enum ApiCode {
     static var logoutSuccess: Int { return 403 } //(Block user)
     static var sessionExpired : Int { return 440 }
     static var emailNotVerify: Int {return 402}
+    
     static var invalidSession: Int {return 498} //(Delete user/ Invalid session)
 }

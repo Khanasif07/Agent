@@ -110,7 +110,7 @@ enum LocalizedString : String {
     case vatCertificate
     case municipalityLicense
     case idOfTheOwner
-    
+    case register
     
     // MARK: - Sign Up VC Values
     //==============================
@@ -164,7 +164,11 @@ enum LocalizedString : String {
     case saveAndContinueBtn
     case help
     case addAccounts
-    
+    case addBankAccountDetails
+    case addCreditDebitCardDetails
+    case and
+    case iAgreeTo
+    case add
     
     
     // MARK: - Home  VC Values

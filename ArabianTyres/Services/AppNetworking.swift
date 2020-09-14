@@ -92,6 +92,14 @@ enum AppNetworking {
             //            }
         }) { (err) in
             if loader { CommonFunctions.hideActivityLoader() }
+            let code = (err as NSError).code
+            switch code {
+            case ApiCode.logoutSuccess,ApiCode.tokenExpired,ApiCode.sessionExpired :
+                AppRouter.showAlert(alertMessage: err.localizedDescription)
+                return
+            default:
+                break
+            }
             failure(err)
         }
     }

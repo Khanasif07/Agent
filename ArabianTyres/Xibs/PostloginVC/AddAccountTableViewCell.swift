@@ -10,15 +10,22 @@ import UIKit
 
 class AddAccountTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var descLbl: UILabel!
+    @IBOutlet weak var containerView : UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        setupFont()
+        containerView.createShadow(shadowColor: #colorLiteral(red: 0.4950264096, green: 0.495038569, blue: 0.4950320721, alpha: 1))
         // Initialization code
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    func setupFont() {
+        descLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
+    }
+    
+    func bindData(text: String) {
+        descLbl.text = text
     }
     
 }

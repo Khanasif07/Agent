@@ -147,4 +147,29 @@ enum AppRouter {
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
+    static func goToAddAccountDetailVC(vc: UIViewController){
+        let scene = AddAccountDetailVC.instantiate(fromAppStoryboard: .Garage)
+        vc.navigationController?.pushViewController(scene, animated: true)
+    }
+    
+    static func showAlert(alertTitle: String = "Alert!", alertMessage: String, preferredStyle: UIAlertController.Style = .alert, actionBtnTitle: String = "OK", isHitLogOutApi : Bool = false) {
+        if isHitLogOutApi {
+            guard let topVC = AppDelegate.shared.topViewController() else {return}
+            let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: preferredStyle)
+            alert.addAction(UIAlertAction(title: actionBtnTitle, style: .default, handler: { action in
+                WebServices.logout(parameters: [:], success: { (msg) in
+                    ToastView.shared.showLongToast(topVC.view, msg: msg)
+                }) { (error) -> (Void) in
+                    ToastView.shared.showLongToast(topVC.view, msg: error.localizedDescription)
+                }
+            }))
+            
+            topVC.present(alert, animated: true, completion: nil)
+        }else {
+            if let topVC = AppDelegate.shared.topViewController() {
+                ToastView.shared.showLongToast(topVC.view, msg: alertMessage)
+            }
+            self.makeLoginVCRoot()
+        }
+    }
 }
