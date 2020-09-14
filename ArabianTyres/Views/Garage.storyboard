@@ -996,6 +996,9 @@ Service Center</string>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TEE-8I-aOG">
                                         <rect key="frame" x="6" y="14" width="36" height="34"/>
                                         <state key="normal" image="icBackward"/>
+                                        <connections>
+                                            <action selector="backBtnAction:" destination="1bs-SP-OPu" eventType="touchUpInside" id="Kgs-tx-1II"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VD0-JI-BKh">
                                         <rect key="frame" x="353" y="17" width="46" height="28"/>
@@ -1008,6 +1011,7 @@ Service Center</string>
                                         </state>
                                         <connections>
                                             <action selector="helpBtnAction:" destination="KzW-Im-RfD" eventType="touchUpInside" id="K9F-QL-IbW"/>
+                                            <action selector="helpBtnAction:" destination="1bs-SP-OPu" eventType="touchUpInside" id="iT2-IP-adx"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="31v-jB-9PI">
@@ -1096,6 +1100,9 @@ Service Center</string>
                                                         <real key="value" value="4"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="addBtnAction:" destination="1bs-SP-OPu" eventType="touchUpInside" id="zQo-zL-qh0"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -1138,6 +1145,15 @@ Service Center</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bSP-aV-5mW"/>
                     </view>
+                    <connections>
+                        <outlet property="addBtn" destination="T6H-eG-CkG" id="rJc-Ps-LgI"/>
+                        <outlet property="confirmAccountNumberTextField" destination="RMz-AO-tu9" id="MIZ-XN-M33"/>
+                        <outlet property="enterAccountNumberTextField" destination="9zd-1x-mwK" id="qxX-7T-6Eo"/>
+                        <outlet property="headingLbl" destination="cso-kv-2qQ" id="STb-p5-Urx"/>
+                        <outlet property="helpBtn" destination="VD0-JI-BKh" id="mTw-6T-Dew"/>
+                        <outlet property="selectYourBankTextField" destination="n2E-oO-pqR" id="R0R-nT-G6f"/>
+                        <outlet property="titleLbl" destination="UYZ-Ao-hmS" id="gT2-uq-Yb9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tXf-tn-Lri" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

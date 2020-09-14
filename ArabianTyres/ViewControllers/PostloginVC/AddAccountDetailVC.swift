@@ -49,7 +49,7 @@ class AddAccountDetailVC: BaseVC {
         self.pop()
     }
     
-    @IBAction func registerBtnAction(_ sender: UIButton) {
+    @IBAction func addBtnAction(_ sender: UIButton) {
         self.pop()
     }
     
