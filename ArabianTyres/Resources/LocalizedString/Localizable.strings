@@ -160,6 +160,13 @@
 "and" = "and";
 "iAgreeTo" = "I Agree to";
 "add" = "Add";
+"selectYourBank" = "Select Your Bank";
+"enterAccountNumber" = "Enter Account Number";
+"confirmAccountNumber" = "Confirm Account Number";
+"selectBank" = "Select Bank";
+"AccountNo" = "Account No";
+"confirmAccountNo" = "Confirm Account No";
+"pleaseEnterYourBankAccountDetails" = "Please Enter Your Bank Account Details";
 // MARK: - Home  VC Values
 //==============================
 "tyre" = "Tyre";

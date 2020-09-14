@@ -169,7 +169,13 @@ enum LocalizedString : String {
     case and
     case iAgreeTo
     case add
-    
+    case selectYourBank
+    case enterAccountNumber
+    case confirmAccountNumber
+    case selectBank
+    case AccountNo
+    case confirmAccountNo
+    case pleaseEnterYourBankAccountDetails
     
     // MARK: - Home  VC Values
     //==============================

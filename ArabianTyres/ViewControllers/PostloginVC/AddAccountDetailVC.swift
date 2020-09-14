@@ -15,15 +15,24 @@ class AddAccountDetailVC: BaseVC {
     //===========================
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var helpBtn: UIButton!
-    @IBOutlet weak var addBtn: UIButton!
+    @IBOutlet weak var addBtn: AppButton!
     @IBOutlet weak var headingLbl: UILabel!
     @IBOutlet weak var selectYourBankTextField: SkyFloatingLabelTextField!
     @IBOutlet weak var enterAccountNumberTextField: SkyFloatingLabelTextField!
     @IBOutlet weak var confirmAccountNumberTextField: SkyFloatingLabelTextField!
+    @IBOutlet weak var containerView: UIView!
 
+    
     // MARK: - Variables
     //===========================
-   
+    var placeHolderArr : [String] = [LocalizedString.selectYourBank.localized,
+                                     LocalizedString.enterAccountNumber.localized,
+                                     LocalizedString.confirmAccountNumber.localized
+                                    ]
+    var titleArr : [String] = [LocalizedString.selectBank.localized,
+                               LocalizedString.AccountNo.localized,
+                               LocalizedString.confirmAccountNo.localized
+                              ]
     // MARK: - Lifecycle
     //===========================
     override func viewDidLoad() {
@@ -34,12 +43,13 @@ class AddAccountDetailVC: BaseVC {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
-
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        containerView.createShadow(shadowColor: #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1))
+    }
     // MARK: - IBActions
     //===========================
-    
-    
-
     
     @IBAction func backBtnAction(_ sender: UIButton) {
         self.pop()
@@ -52,12 +62,6 @@ class AddAccountDetailVC: BaseVC {
     @IBAction func addBtnAction(_ sender: UIButton) {
         self.pop()
     }
-    
-    private func changeBtnState(isHide: Bool){
-        addBtn.backgroundColor = isHide ? AppColors.primaryBlueLightShade : AppColors.primaryBlueColor
-        addBtn.setTitleColor(isHide ? AppColors.fontTertiaryColor : AppColors.backgrougnColor2, for: .normal)
-        addBtn.isUserInteractionEnabled = !isHide
-    }
 
 }
 
@@ -67,20 +71,35 @@ extension AddAccountDetailVC {
     
     private func initialSetup() {
         setupTextAndFont()
-        changeBtnState(isHide: true)
+        setupTextField()
+        addBtn.isEnabled = false
     }
    
     private func setupTextAndFont(){
-        headingLbl.font = AppFonts.NunitoSansBold.withSize(12.0)
-       
         titleLbl.font = AppFonts.NunitoSansBold.withSize(17.0)
+        headingLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
         helpBtn.titleLabel?.font =  AppFonts.NunitoSansSemiBold.withSize(17.0)
         addBtn.titleLabel?.font =  AppFonts.NunitoSansSemiBold.withSize(16.0)
 
         titleLbl.text = LocalizedString.addDetails.localized
+        headingLbl.text = LocalizedString.pleaseEnterYourBankAccountDetails.localized
         helpBtn.setTitle(LocalizedString.help.localized, for: .normal)
         addBtn.setTitle(LocalizedString.add.localized, for: .normal)
        
     }
+    
+    private func setupTextField(){
+        for (index,txtField) in [selectYourBankTextField,enterAccountNumberTextField,confirmAccountNumberTextField].enumerated() {
+            txtField?.delegate = self
+            txtField?.placeholder = placeHolderArr[index]
+            txtField?.title = titleArr[index]
+            txtField?.placeholderFont = AppFonts.NunitoSansBold.withSize(14.0)
+            txtField?.font = AppFonts.NunitoSansBold.withSize(14.0)
+        }
+    }
 }
 
+
+extension AddAccountDetailVC: UITextFieldDelegate {
+    
+}
