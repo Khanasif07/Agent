@@ -85,6 +85,7 @@ struct LoginViewModel {
             let accessToken = json[ApiKey.data][ApiKey.authToken].stringValue
             AppUserDefaults.save(value: accessToken, forKey: .accesstoken)
             AppUserDefaults.save(value: "basic", forKey: .currentUserType)
+            AppUserDefaults.save(value: json[ApiKey.data][ApiKey.phoneVerified].boolValue, forKey: .phoneNoVerified)
             if UserModel.main.phoneNoAdded && UserModel.main.phoneVerified {
                 self.delegate?.socailLoginApiSuccess(message: "")
                 return

@@ -8,7 +8,7 @@
 
 import Foundation
 
-let baseUrl = "http://arabiantyersdevapi.appskeeper.com/api/v1/"
+let baseUrl = "http://arabiantyersqaapi.appskeeper.com/api/v1/"
 //API path: http://arabiantyersdevapi.appskeeper.com/api/v1/
 //Swagger Url: http://arabiantyersdevapi.appskeeper.com/api-docs/swagger
 let settingsUrl = ""

@@ -85,6 +85,7 @@ extension AppUserDefaults {
         case tutorialDisplayed
         case userType
         case currentUserType
+        case phoneNoVerified
         case fullUserProfile
         case forgotPassword
         case checkInDetails

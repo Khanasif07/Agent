@@ -274,6 +274,7 @@ extension WebServices{
         self.commonPostAPI(parameters: parameters, endPoint: .verifyOtp, loader: true, success: { (json) in
             let user = UserModel(json[ApiKey.data])
             UserModel.main = user
+            AppUserDefaults.save(value: json[ApiKey.data][ApiKey.phoneVerified].boolValue, forKey: .phoneNoVerified)
             let token = AppUserDefaults.value(forKey: .accesstoken)
             if token.isEmpty {
                 let accessToken = json[ApiKey.data][ApiKey.authToken].stringValue

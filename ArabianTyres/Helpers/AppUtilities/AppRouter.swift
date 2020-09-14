@@ -27,6 +27,12 @@ enum AppRouter {
     //===========================
     static func checkAppInitializationFlow() {
         if isUserLoggedin {
+            if !isPhoneNoVerified{
+                AppUserDefaults.removeValue(forKey: .accesstoken)
+                UserModel.main = UserModel()
+                AppRouter.makeLoginVCRoot()
+                return
+            }
             switch isCurrentUserType {
             case .user:
                 AppRouter.goToUserHome()
