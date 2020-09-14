@@ -106,7 +106,7 @@
 // MARK: - Profile Setting VC Values
 //==============================
 "aboutUs" = "About us";
-"terms_Condition" = "Terms & Condition";
+"terms_Condition" = "Terms & Conditions";
 "privacy_policy" = "Privacy Policy";
 "contactUs" = "Conatct us";
 "changeLanguage" = "Change Language";
@@ -149,8 +149,12 @@
 "idOfTheOwner" = "ID of the owner";
 "municipalityLicense" = "Municipality License";
 "addAccounts" = "Add Accounts";
-
-
+"addBankAccountDetails" = "Add Bank Account Details";
+"addCreditDebitCardDetails" = "Add Credit/Debit Card Details";
+"register" = "Register";
+"and" = "and";
+"iAgreeTo" = "I Agree to";
+"add" = "Add";
 // MARK: - Home  VC Values
 //==============================
 "tyre" = "Tyre";

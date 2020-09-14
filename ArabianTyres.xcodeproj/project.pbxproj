@@ -133,6 +133,7 @@
 		A45042C7250F2D12001C8905 /* AddAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45042C6250F2D12001C8905 /* AddAccountVC.swift */; };
 		A45042D0250F3846001C8905 /* AddAccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45042CE250F3846001C8905 /* AddAccountTableViewCell.swift */; };
 		A45042D1250F3846001C8905 /* AddAccountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A45042CF250F3846001C8905 /* AddAccountTableViewCell.xib */; };
+		A45042D3250F76D5001C8905 /* AddAccountDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45042D2250F76D5001C8905 /* AddAccountDetailVC.swift */; };
 		A45566CD250B4EAC009E4324 /* RegistraionPendingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45566CC250B4EAC009E4324 /* RegistraionPendingVC.swift */; };
 		A45566D0250CA6C0009E4324 /* UploadDocumentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45566CF250CA6C0009E4324 /* UploadDocumentVC.swift */; };
 		A493133D2508D231007110E4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A493133C2508D231007110E4 /* GoogleService-Info.plist */; };
@@ -268,6 +269,7 @@
 		A45042C6250F2D12001C8905 /* AddAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountVC.swift; sourceTree = "<group>"; };
 		A45042CE250F3846001C8905 /* AddAccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountTableViewCell.swift; sourceTree = "<group>"; };
 		A45042CF250F3846001C8905 /* AddAccountTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddAccountTableViewCell.xib; sourceTree = "<group>"; };
+		A45042D2250F76D5001C8905 /* AddAccountDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountDetailVC.swift; sourceTree = "<group>"; };
 		A45566CC250B4EAC009E4324 /* RegistraionPendingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistraionPendingVC.swift; sourceTree = "<group>"; };
 		A45566CF250CA6C0009E4324 /* UploadDocumentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadDocumentVC.swift; sourceTree = "<group>"; };
 		A493133B2508BF68007110E4 /* ArabianTyres.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ArabianTyres.entitlements; sourceTree = "<group>"; };
@@ -781,6 +783,7 @@
 				A45566CE250CA654009E4324 /* RegistraionPendingVC */,
 				A45042C8250F2D1F001C8905 /* UploadDocumentVC */,
 				A45042C9250F2D2B001C8905 /* AddAccountVC */,
+				A45042D2250F76D5001C8905 /* AddAccountDetailVC.swift */,
 			);
 			path = PostloginVC;
 			sourceTree = "<group>";
@@ -1098,6 +1101,7 @@
 				8481FA232500BB5400AB6EFB /* AppNetworking.swift in Sources */,
 				847BC425250796CB00EEEFDC /* ResetPasswordVM.swift in Sources */,
 				8481FA1F2500BAFB00AB6EFB /* AppleLoginController.swift in Sources */,
+				A45042D3250F76D5001C8905 /* AddAccountDetailVC.swift in Sources */,
 				8481FA772500C5CD00AB6EFB /* CountryData.swift in Sources */,
 				847BC423250774E100EEEFDC /* ResetPasswordVC.swift in Sources */,
 				843C8ED22508FB9300515F2E /* HomeCollectionCell.swift in Sources */,

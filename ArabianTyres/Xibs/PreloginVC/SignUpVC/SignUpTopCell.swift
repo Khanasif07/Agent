@@ -30,6 +30,7 @@ class SignUpTopCell: UITableViewCell {
         super.awakeFromNib()
         self.setUpTextField()
         self.setUpAttributedString()
+        
     }
     
     private func setUpAttributedString(){

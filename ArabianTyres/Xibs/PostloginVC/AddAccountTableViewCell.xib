@@ -17,7 +17,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Lq-oN-euf">
-                        <rect key="frame" x="16" y="16" width="318" height="61"/>
+                        <rect key="frame" x="16" y="14" width="318" height="61"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Bank Account Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JGa-Gh-3sb">
                                 <rect key="frame" x="16" y="22" width="167" height="17"/>
@@ -51,13 +51,17 @@
                 </subviews>
                 <color key="backgroundColor" red="0.96470588235294119" green="0.96862745098039216" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
-                    <constraint firstItem="3Lq-oN-euf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="APv-HA-SmQ"/>
+                    <constraint firstItem="3Lq-oN-euf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="14" id="APv-HA-SmQ"/>
                     <constraint firstAttribute="trailing" secondItem="3Lq-oN-euf" secondAttribute="trailing" constant="16" id="YqZ-KI-ZVG"/>
-                    <constraint firstAttribute="bottom" secondItem="3Lq-oN-euf" secondAttribute="bottom" constant="3" id="jGj-Pb-WBr"/>
+                    <constraint firstAttribute="bottom" secondItem="3Lq-oN-euf" secondAttribute="bottom" constant="5" id="jGj-Pb-WBr"/>
                     <constraint firstItem="3Lq-oN-euf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="nA3-Mv-mBw"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="containerView" destination="3Lq-oN-euf" id="xZ6-Fw-31o"/>
+                <outlet property="descLbl" destination="JGa-Gh-3sb" id="wnU-3Z-xgy"/>
+            </connections>
             <point key="canvasLocation" x="366.66666666666669" y="278.23660714285711"/>
         </tableViewCell>
     </objects>

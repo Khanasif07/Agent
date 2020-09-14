@@ -147,4 +147,9 @@ enum AppRouter {
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
+    static func goToAddAccountDetailVC(vc: UIViewController){
+        let scene = AddAccountDetailVC.instantiate(fromAppStoryboard: .Garage)
+        vc.navigationController?.pushViewController(scene, animated: true)
+    }
+    
 }
