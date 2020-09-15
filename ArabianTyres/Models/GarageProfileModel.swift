@@ -23,5 +23,4 @@ struct GarageProfileModel {
     var accountNumber               : String
 
     
-    init(){}
 }

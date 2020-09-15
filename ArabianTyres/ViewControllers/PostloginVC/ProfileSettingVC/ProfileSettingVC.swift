@@ -76,6 +76,11 @@ extension ProfileSettingVC {
                     let cell = tableView.dequeueCell(with: ProfileUserBottomCell.self, indexPath: indexPath)
                     cell.selectItemArray = self.selectItemArray
                     cell.selectImageArray = self.selectImageArray
+                    
+                    cell.switchProfileToGarage = {  [weak self]  in
+                        guard let `self` = self else { return }
+                        AppRouter.goToGarageRegistrationVC(vc: self)
+                    }
                     return cell
                 default:
                     let cell = tableView.dequeueCell(with: ProfileUserBottomCell.self, indexPath: indexPath)
@@ -86,6 +91,7 @@ extension ProfileSettingVC {
                         guard let `self` = self else { return }
                         self.showLogoutPopUp()
                     }
+                   
                     return cell
                 }
             default:
@@ -140,4 +146,5 @@ extension ProfileSettingVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
+    
 }
