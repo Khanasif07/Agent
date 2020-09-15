@@ -89,6 +89,7 @@ extension ResetPasswordVC {
         show1.isSelected = false
         show1.addTarget(self, action: #selector(secureTextField1(_:)), for: .touchUpInside)
         self.newPassTxtField.setButtonToRightView(btn: show1, selectedImage: #imageLiteral(resourceName: "icPasswordHide"), normalImage: #imageLiteral(resourceName: "icPasswordHide"), size: CGSize(width: 22, height: 22))
+        self.submitBtn.isEnabled = false
     }
     
     @objc func secureTextField(_ sender: UIButton){
@@ -116,6 +117,11 @@ extension ResetPasswordVC {
         let dict : JSONDictionary = [ApiKey.password:  self.viewModel.newPassword,ApiKey.resetToken: self.viewModel.resetToken]
             return dict
     }
+    
+    private func resetBtnStatus()-> Bool{
+        return !self.viewModel.newPassword.isEmpty && !self.viewModel.confirmNewPassword.isEmpty
+    }
+    
 }
 
 // MARK: - UITextFieldDelegate
@@ -126,8 +132,10 @@ extension ResetPasswordVC: UITextFieldDelegate{
         switch textField{
         case newPassTxtField:
             self.viewModel.newPassword = text
+            self.submitBtn.isEnabled = resetBtnStatus()
         default:
             self.viewModel.confirmNewPassword = text
+            self.submitBtn.isEnabled = resetBtnStatus()
         }
     }
     

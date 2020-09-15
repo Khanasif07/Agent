@@ -69,6 +69,9 @@ extension ProfileVC {
         self.mainTableView.registerCell(with: ProfileGuestTableCell.self)
         self.mainTableView.registerCell(with: ProfileUserHeaderCell.self)
         self.mainTableView.registerCell(with: ProfileUserBottomCell.self)
+        let footerView = UIView(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: self.view.frame.width, height:72.0)))
+        footerView.backgroundColor = .clear
+        self.mainTableView.tableFooterView = footerView
         self.mainTableView.enablePullToRefresh(tintColor: AppColors.errorRedColor ,target: self, selector: #selector(refreshWhenPull(_:)))
         self.viewModel.delegate = self
     }

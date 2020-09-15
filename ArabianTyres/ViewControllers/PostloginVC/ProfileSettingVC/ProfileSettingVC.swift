@@ -62,6 +62,9 @@ extension ProfileSettingVC {
         self.mainTableView.dataSource = self
         self.mainTableView.isScrollEnabled = true
         self.mainTableView.registerCell(with: ProfileUserBottomCell.self)
+        let footerView = UIView(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: self.view.frame.width, height:72.0)))
+        footerView.backgroundColor = .clear
+        self.mainTableView.tableFooterView = footerView
     }
     
     private func getcellForTableView(_ tableView: UITableView,_ indexPath : IndexPath)-> UITableViewCell {

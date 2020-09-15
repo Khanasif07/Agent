@@ -122,6 +122,7 @@ extension ChooseLanguageVC {
     public func setUpColor(){
         self.continueBtn.backgroundColor = AppColors.primaryBlueLightShade
         self.continueBtn.setTitle(LocalizedString.continueTitle.localized, for: .normal)
+        self.continueBtn.isEnabled = false
         self.englishLbl.text = LocalizedString.english.localized
         self.arabicLbl.text = LocalizedString.arabic.localized
         self.arabicBtn.setImage(#imageLiteral(resourceName: "roundUnSelected"), for: .normal)
