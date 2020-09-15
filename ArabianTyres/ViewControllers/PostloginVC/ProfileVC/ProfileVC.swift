@@ -18,7 +18,7 @@ class ProfileVC: BaseVC {
     // MARK: - Variables
     //===========================
     var viewModel = ProfileVM()
-    var selectItemArray = [LocalizedString.my_vehicle.localized,LocalizedString.service_history.localized,LocalizedString.payments.localized,LocalizedString.saved_cards.localized,LocalizedString.added_location.localized,LocalizedString.change_password.localized,LocalizedString.setting.localized,LocalizedString.setting.localized,LocalizedString.setting.localized]
+    var selectItemArray = [LocalizedString.my_vehicle.localized,LocalizedString.service_history.localized,LocalizedString.payments.localized,LocalizedString.saved_cards.localized,LocalizedString.added_location.localized,LocalizedString.change_password.localized,LocalizedString.settings.localized]
     var selectImageArray: [UIImage] = [#imageLiteral(resourceName: "vehicle"),#imageLiteral(resourceName: "serviceHistory"),#imageLiteral(resourceName: "payment"),#imageLiteral(resourceName: "savedCard"),#imageLiteral(resourceName: "addedLocation"),#imageLiteral(resourceName: "group"),#imageLiteral(resourceName: "profileSettting")]
     
     // MARK: - Lifecycle
@@ -26,6 +26,7 @@ class ProfileVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
+        self.mainTableView.reloadData()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -224,5 +225,28 @@ extension ProfileVC: ProfileVMDelegate {
     
     func resendOtpFailed(msg: String, error: Error){
         ToastView.shared.showLongToast(self.view, msg: msg)
+    }
+}
+
+
+class LeftAlignedCollectionViewFlowLayout: UICollectionViewFlowLayout {
+    
+    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        let attributes = super.layoutAttributesForElements(in: rect)
+        
+        var leftMargin = sectionInset.left
+        var maxY: CGFloat = -1.0
+        attributes?.forEach { layoutAttribute in
+            if layoutAttribute.frame.origin.y >= maxY {
+                leftMargin = sectionInset.left
+            }
+            
+            layoutAttribute.frame.origin.x = leftMargin
+            
+            leftMargin += layoutAttribute.frame.width + minimumInteritemSpacing
+            maxY = max(layoutAttribute.frame.maxY , maxY)
+        }
+        
+        return attributes
     }
 }

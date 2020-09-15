@@ -9,7 +9,8 @@
 import Foundation
 
 enum AppConstants {
-    static var appName              = "ArabianTyre"
+    static var googlePlaceApiKey = "AIzaSyAmeRcKb4_NVo6ROBq9dwcqJfTydaGitdY"
+    static var appName              = "TARA"
     static var format               = "SELF MATCHES %@"
     static let emailRegex           = "[A-Z0-9a-z.-_]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
     static var mobileRegex          = "^[0-9]{7,15}$"

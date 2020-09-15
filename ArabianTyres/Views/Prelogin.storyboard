@@ -1035,7 +1035,7 @@ your old password.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
-                                                    <action selector="textFieldDidChanged:" destination="CgC-vd-eIT" eventType="editingDidEnd" id="8sD-bd-caE"/>
+                                                    <action selector="textFieldChanged:" destination="CgC-vd-eIT" eventType="editingChanged" id="G7c-AE-Phd"/>
                                                 </connections>
                                             </textField>
                                         </subviews>
