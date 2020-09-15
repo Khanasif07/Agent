@@ -40,7 +40,11 @@ enum AppNetworking {
                             DispatchQueue.main.async(execute: { () -> Void in
                                 printDebug("Response : ========================>\n\(jsonDataDict)")
                                 if let code = jsonDataDict[ApiKey.statusCode] as? Int,code == 498 || code == 440 || code == 403{
-                                    AppRouter.showAlert(alertMessage: "Alert!",isHitLogOutApi: false)
+                                    let msg = jsonDataDict[ApiKey.message] as? String
+                                    AppRouter.showAlert(alertMessage: msg ?? "",isHitLogOutApi: false)
+                                    UserModel.main = UserModel()
+                                    AppUserDefaults.removeAllValues()
+                                    AppUserDefaults.save(value: LocalizedString.english.localized, forKey: .currentLanguage)
                                 }else{
                                     success(JSON(jsonDataDict))
                                 }

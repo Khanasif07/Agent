@@ -165,6 +165,7 @@ enum AppRouter {
             alert.addAction(UIAlertAction(title: actionBtnTitle, style: .default, handler: { action in
                 WebServices.logout(parameters: [:], success: { (msg) in
                     ToastView.shared.showLongToast(topVC.view, msg: msg)
+                    alert.dismiss(animated: true, completion: nil)
                 }) { (error) -> (Void) in
                     ToastView.shared.showLongToast(topVC.view, msg: error.localizedDescription)
                 }
@@ -173,7 +174,8 @@ enum AppRouter {
             topVC.present(alert, animated: true, completion: nil)
         }else {
             if let topVC = AppDelegate.shared.topViewController() {
-                ToastView.shared.showLongToast(topVC.view, msg: alertMessage)
+                CommonFunctions.showToastWithMessage(alertMessage)
+//                ToastView.shared.showLongToast(topVC.view, msg: alertMessage)
             }
             self.makeLoginVCRoot()
         }

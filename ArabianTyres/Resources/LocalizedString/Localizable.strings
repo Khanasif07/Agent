@@ -168,7 +168,7 @@
 "confirmAccountNo" = "Confirm Account No";
 "pleaseEnterYourBankAccountDetails" = "Please Enter Your Bank Account Details";
 "linkedAccount" = "Linked Account";
-
+"completeProfile" = "Complete Profile";
 // MARK: - Home  VC Values
 //==============================
 "tyre" = "Tyre";
