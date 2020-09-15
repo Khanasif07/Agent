@@ -1156,6 +1156,9 @@ your old password.</string>
                                         <state key="normal" title="Submit">
                                             <color key="titleColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="submitBtnAction:" destination="sD4-ak-dXE" eventType="touchUpInside" id="5mi-1T-h4Y"/>
+                                        </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="E6P-l7-AI4">
                                         <rect key="frame" x="26" y="44" width="335" height="125"/>
@@ -1218,6 +1221,7 @@ your old password.</string>
                         <outlet property="confirmTxtField" destination="xKa-QF-8OD" id="Udh-mN-luI"/>
                         <outlet property="dataContainerView" destination="IWn-2N-oyc" id="DJo-hO-rg3"/>
                         <outlet property="newPassTxtField" destination="FwJ-sY-qMM" id="RFq-N1-yK0"/>
+                        <outlet property="submitBtn" destination="et7-VC-c2c" id="VDH-rn-rva"/>
                         <outlet property="titlelbl" destination="5RJ-GB-cJt" id="qTb-TJ-xO0"/>
                     </connections>
                 </viewController>

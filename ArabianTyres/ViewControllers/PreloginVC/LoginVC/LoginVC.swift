@@ -84,8 +84,8 @@ extension LoginVC {
     }
     
     private func getDictForSendOtp() -> JSONDictionary{
-           let dict : JSONDictionary = [ApiKey.phoneNo : self.viewModel.model.email,
-                                        ApiKey.countryCode : self.viewModel.model.password,
+        let dict : JSONDictionary = [ApiKey.phoneNo : UserModel.main.phoneNo,
+                                     ApiKey.countryCode : UserModel.main.countryCode,
                                         ApiKey.device : [ApiKey.platform : "ios", ApiKey.token : DeviceDetail.deviceToken].toJSONString() ?? ""]
            return dict
        }

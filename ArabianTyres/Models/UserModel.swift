@@ -34,6 +34,7 @@ struct UserModel{
     var status : String
     var updatedAt : String
     var userType : String
+    var emailVerifyToken: String
     
     init() {
         self.init(JSON([:]))
@@ -58,6 +59,7 @@ struct UserModel{
         self.phoneNoAdded = json[ApiKey.phoneNoAdded].boolValue
         self.updatedAt = json[ApiKey.updatedAt].stringValue
         self.userType = json[ApiKey.currentRole].stringValue
+        self.emailVerifyToken = json[ApiKey.emailVerifyToken].stringValue
     }
     
     func saveToUserDefaults() {

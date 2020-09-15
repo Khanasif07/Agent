@@ -98,6 +98,7 @@ enum ApiKey {
      static var previewType: String{ return "previewType"}
     static var isLogin: String{ return "isLogin"}
     static var minvideoCount: String{ return "minvideoCount"}
+    static var emailVerifyToken: String { return "emailVerifyToken" }
     
     static var isAlreadyRated: String { return " isAlreadyRated "}
     static var isvideoPurchased: String { return " isvideoPurchased"}

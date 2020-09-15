@@ -59,6 +59,10 @@ var isCurrentUserType : UserType {
     }
 }
 
+var isPhoneNoVerified : Bool {
+    return AppUserDefaults.value(forKey: .phoneNoVerified).boolValue
+}
+
 // for Language
 var selectedLanguage =  AppUserDefaults.value(forKey: .language).stringValue
 

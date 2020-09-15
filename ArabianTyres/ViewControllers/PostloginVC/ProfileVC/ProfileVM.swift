@@ -33,6 +33,8 @@ class ProfileVM {
             guard let `self` = self else { return }
             let msg = json[ApiKey.message].stringValue
             self.userModel = UserModel(json[ApiKey.data])
+            AppUserDefaults.save(value: json[ApiKey.data][ApiKey.phoneVerified].boolValue, forKey: .phoneNoVerified)
+            AppUserDefaults.save(value: json[ApiKey.data][ApiKey.emailVerified].boolValue, forKey: .emailVerified)
             self.delegate?.getProfileDataSuccess(msg:msg)
             printDebug(json)
         }) { [weak self] (error) in
