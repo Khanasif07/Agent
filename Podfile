@@ -19,6 +19,9 @@ target 'ArabianTyres' do
   #pod for Toast Message
   pod 'Toaster'
   
+  pod 'GooglePlaces'
+  pod 'GoogleMaps'
+  pod 'Google-Maps-iOS-Utils'
   
   # Recommended: Add the Firebase pod for Google Analytics
   pod 'Firebase/Analytics'
