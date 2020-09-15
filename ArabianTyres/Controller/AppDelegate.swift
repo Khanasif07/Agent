@@ -9,6 +9,8 @@
 import UIKit
 import Firebase
 import GoogleSignIn
+import GooglePlaces
+import GoogleMaps
 import FirebaseMessaging
 import IQKeyboardManagerSwift
 import UserNotifications
@@ -20,11 +22,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate , MessagingDelegate , UNUs
     
     static var shared: AppDelegate { return UIApplication.shared.delegate as! AppDelegate }
     public var window: UIWindow?
+    var currentLocation : CLLocation?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         sleep(2)
         self.setUpKeyboardSetup()
         self.setUpTextField()
+        GMSServices.provideAPIKey(AppConstants.googlePlaceApiKey)
+        GMSPlacesClient.provideAPIKey(AppConstants.googlePlaceApiKey)
         AWSS3Manager.shared.setupAmazonS3(withPoolID: AppConstants.awss3PoolId)
         GoogleLoginController.shared.configure(withClientId: AppConstants.googleId)
         AppRouter.checkAppInitializationFlow()
@@ -69,6 +74,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate , MessagingDelegate , UNUs
                 print("Remote instance ID token: \(result.token)")
             }
         })
+    }
+    
+    func applicationDidBecomeActive(_ application: UIApplication) {
+          LocationController.sharedLocationManager.fetchCurrentLocation { (location) in
+                  LocationController.sharedLocationManager.currentLocation = location
+              }
     }
     
     private func setUpTextField(){

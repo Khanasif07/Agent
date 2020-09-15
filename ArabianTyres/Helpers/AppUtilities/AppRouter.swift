@@ -48,7 +48,7 @@ enum AppRouter {
     }
     
     static func goToTestingVC(){
-        let homeScene = UserTabBarController.instantiate(fromAppStoryboard: .Home)
+        let homeScene = GarageAddImageVC.instantiate(fromAppStoryboard: .PostLogin)
         setAsWindowRoot(homeScene)
     }
     

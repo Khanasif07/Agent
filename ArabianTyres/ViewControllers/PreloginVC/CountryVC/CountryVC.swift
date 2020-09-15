@@ -35,11 +35,10 @@ class CountryVC: BaseVC {
         self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func textFieldDidChanged(_ sender: UITextField) {
+    @IBAction func textFieldChanged(_ sender: UITextField) {
         viewModel.searchCountry = sender.text?.byRemovingLeadingTrailingWhiteSpaces ?? ""
         tableView.reloadData()
     }
-    
 }
 
 // MARK: - Extension for functions
@@ -54,7 +53,6 @@ extension CountryVC {
     }
     
     private func textFieldSetUp(){
-        searchTxtField.delegate = self
         self.dropDownbutton.tintColor = AppColors.fontPrimaryColor
         let show1 = UIButton()
         show1.isSelected = false
@@ -62,10 +60,6 @@ extension CountryVC {
     }
 }
 
-//MARK:- UISearchBarDelegate
-//==========================
-extension CountryVC: UITextFieldDelegate{
-}
 
 //MARK:-  UITableViewDelegate
 //===========================
@@ -102,7 +96,9 @@ extension CountryVC: UITableViewDataSource{
 }
 
 
-import UIKit
+
+//MARK:- ATCTextField
+//==========================
 class ATCTextField: UITextField {
     let padding = UIEdgeInsets(top: 0, left: 16.0, bottom: 0, right: 8)
     override open func textRect(forBounds bounds: CGRect) -> CGRect {

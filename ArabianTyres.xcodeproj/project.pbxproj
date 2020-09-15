@@ -38,6 +38,7 @@
 		84476D3525075F5600AB5E80 /* NotificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84476D3425075F5600AB5E80 /* NotificationVC.swift */; };
 		84476D3725075F6800AB5E80 /* ExploreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84476D3625075F6800AB5E80 /* ExploreVC.swift */; };
 		844956332510982C00846ED9 /* GarageAddImageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844956322510982C00846ED9 /* GarageAddImageVC.swift */; };
+		844956352510A60900846ED9 /* LocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844956342510A60900846ED9 /* LocationController.swift */; };
 		844CBD1A2501F7D5009BE668 /* LoginTopTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844CBD182501F7D5009BE668 /* LoginTopTableCell.swift */; };
 		844CBD1B2501F7D5009BE668 /* LoginTopTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844CBD192501F7D5009BE668 /* LoginTopTableCell.xib */; };
 		844CBD1E2501FA31009BE668 /* LoginSocialTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844CBD1C2501FA31009BE668 /* LoginSocialTableCell.swift */; };
@@ -175,6 +176,7 @@
 		84476D3425075F5600AB5E80 /* NotificationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationVC.swift; sourceTree = "<group>"; };
 		84476D3625075F6800AB5E80 /* ExploreVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreVC.swift; sourceTree = "<group>"; };
 		844956322510982C00846ED9 /* GarageAddImageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageAddImageVC.swift; sourceTree = "<group>"; };
+		844956342510A60900846ED9 /* LocationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationController.swift; sourceTree = "<group>"; };
 		844CBD182501F7D5009BE668 /* LoginTopTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTopTableCell.swift; sourceTree = "<group>"; };
 		844CBD192501F7D5009BE668 /* LoginTopTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginTopTableCell.xib; sourceTree = "<group>"; };
 		844CBD1C2501FA31009BE668 /* LoginSocialTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSocialTableCell.swift; sourceTree = "<group>"; };
@@ -595,6 +597,7 @@
 			children = (
 				8481F9FE2500AA9A00AB6EFB /* SceneDelegate.swift */,
 				8481F9FC2500AA9A00AB6EFB /* AppDelegate.swift */,
+				844956342510A60900846ED9 /* LocationController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1130,6 +1133,7 @@
 				8481FA3F2500BE2800AB6EFB /* UITextFieldExtension.swift in Sources */,
 				844CBD222501FFC0009BE668 /* LoginEmailPhoneTableCell.swift in Sources */,
 				8481FA692500BFC700AB6EFB /* DeviceDetails.swift in Sources */,
+				844956352510A60900846ED9 /* LocationController.swift in Sources */,
 				A413B97E250A44410004C534 /* CustomTextView.swift in Sources */,
 				8481FA212500BB2100AB6EFB /* GoogleLoginController.swift in Sources */,
 				84476D3125075F3400AB5E80 /* ProfileVC.swift in Sources */,

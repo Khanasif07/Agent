@@ -77,7 +77,7 @@ extension ProfileUserBottomCell: UITableViewDelegate, UITableViewDataSource {
             if let handle = logoutBtnTapped{
                 handle()
             }
-        case LocalizedString.setting.localized:
+        case LocalizedString.settings.localized:
             if let handle = settingBtnTapped{
                 handle()
             }
