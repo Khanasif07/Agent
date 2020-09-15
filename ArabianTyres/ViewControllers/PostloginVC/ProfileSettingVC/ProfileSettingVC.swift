@@ -16,7 +16,7 @@ class ProfileSettingVC: BaseVC {
     @IBOutlet weak var mainTableView: UITableView!
     
     // MARK: - Variables
-    //===========================case aboutUs
+    //===========================
     var selectItemArray = [LocalizedString.aboutUs.localized,LocalizedString.terms_Condition.localized,LocalizedString.privacy_policy.localized,LocalizedString.contactUs.localized,LocalizedString.changeLanguage.localized,LocalizedString.switchProfileTogarage.localized,LocalizedString.reportAnIssue.localized,LocalizedString.faq.localized,LocalizedString.referFriend.localized]
     var selectImageArray: [UIImage] = [#imageLiteral(resourceName: "aboutUs"),#imageLiteral(resourceName: "terms"),#imageLiteral(resourceName: "privacyPolicy"),#imageLiteral(resourceName: "contactUs"),#imageLiteral(resourceName: "changeLang"),#imageLiteral(resourceName: "switchProfile"),#imageLiteral(resourceName: "report"),#imageLiteral(resourceName: "faq"),#imageLiteral(resourceName: "refer")]
     var selectItemArray1 = [LocalizedString.logout.localized]
@@ -77,10 +77,10 @@ extension ProfileSettingVC {
                     cell.selectItemArray = self.selectItemArray
                     cell.selectImageArray = self.selectImageArray
                     
-                    cell.switchProfileToGarage = {  [weak self]  in
-                        guard let `self` = self else { return }
-                        AppRouter.goToGarageRegistrationVC(vc: self)
-                    }
+//                    cell.switchProfileToGarage = {  [weak self]  in
+//                        guard let `self` = self else { return }
+//                        AppRouter.goToGarageRegistrationVC(vc: self)
+//                    }
                     return cell
                 default:
                     let cell = tableView.dequeueCell(with: ProfileUserBottomCell.self, indexPath: indexPath)

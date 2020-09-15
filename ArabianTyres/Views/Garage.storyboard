@@ -1246,9 +1246,8 @@ Service Center</string>
                                                         <color key="textColor" red="0.54117647059999996" green="0.58431372550000005" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T2i-Fn-xqF">
+                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T2i-Fn-xqF">
                                                         <rect key="frame" x="68" y="89" width="240" height="128"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     </view>
                                                     <imageView clipsSubviews="YES" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icImg" translatesAutoresizingMaskIntoConstraints="NO" id="l8O-1u-7wN">
@@ -1301,6 +1300,7 @@ Service Center</string>
                                                 <constraints>
                                                     <constraint firstItem="l8O-1u-7wN" firstAttribute="top" secondItem="ha9-5f-5ZK" secondAttribute="bottom" constant="8" id="1WN-qa-K5v"/>
                                                     <constraint firstItem="ha9-5f-5ZK" firstAttribute="leading" secondItem="ere-Qe-KAg" secondAttribute="leading" constant="16" id="9gC-Ui-qex"/>
+                                                    <constraint firstItem="T2i-Fn-xqF" firstAttribute="leading" secondItem="ha9-5f-5ZK" secondAttribute="leading" id="GOo-9s-eH4"/>
                                                     <constraint firstItem="yH4-3a-ZcD" firstAttribute="leading" secondItem="ha9-5f-5ZK" secondAttribute="leading" id="KFt-KN-rNa"/>
                                                     <constraint firstItem="yH4-3a-ZcD" firstAttribute="top" secondItem="l8O-1u-7wN" secondAttribute="bottom" constant="20" id="NLe-00-W96"/>
                                                     <constraint firstAttribute="trailing" secondItem="ha9-5f-5ZK" secondAttribute="trailing" constant="16" id="Nex-Xz-aLb"/>

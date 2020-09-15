@@ -1352,6 +1352,7 @@
 				CODE_SIGN_ENTITLEMENTS = ArabianTyres/ArabianTyres.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 23FC5W285E;
 				INFOPLIST_FILE = ArabianTyres/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1374,6 +1375,7 @@
 				CODE_SIGN_ENTITLEMENTS = ArabianTyres/ArabianTyres.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 23FC5W285E;
 				INFOPLIST_FILE = ArabianTyres/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
