@@ -174,8 +174,6 @@ extension WebServices {
             let msg = json[ApiKey.message].stringValue
             switch code {
             case ApiCode.success: success(json)
-//            case ApiCode.tokenExpired :
-//                showTokenExpiredAlert()
             default: failure(NSError(code: code, localizedDescription: msg))
             }
         }) { (error) in
@@ -276,8 +274,10 @@ extension WebServices{
         self.commonPostAPI(parameters: parameters, endPoint: .verifyOtp, loader: true, success: { (json) in
             let user = UserModel(json[ApiKey.data])
             UserModel.main = user
-            let accessToken = json[ApiKey.data][ApiKey.authToken].stringValue
-            AppUserDefaults.save(value: accessToken, forKey: .accesstoken)
+            let token = AppUserDefaults.value(forKey: .accesstoken)
+            if token.isEmpty {
+                let accessToken = json[ApiKey.data][ApiKey.authToken].stringValue
+                AppUserDefaults.save(value: accessToken, forKey: .accesstoken)}
             AppUserDefaults.save(value: "basic", forKey: .currentUserType)
             success(user)
         }) { (error) -> (Void) in

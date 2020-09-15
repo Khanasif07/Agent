@@ -101,7 +101,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , MessagingDelegate , UNUs
     func topViewController(_ base: UIViewController? = nil
        ) -> UIViewController? {
         var baseScene = base
-        baseScene = baseScene == nil ? window?.rootViewController : baseScene 
+        baseScene = baseScene == nil ? window?.rootViewController : baseScene
         if let nav = base as? UINavigationController {
             return topViewController(nav.visibleViewController)
         }

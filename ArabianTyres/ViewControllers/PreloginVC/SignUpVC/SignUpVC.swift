@@ -104,6 +104,13 @@ extension SignUpVC {
     private func signUpBtnStatus()-> Bool{
         return !self.viewModel.model.name.isEmpty && !self.viewModel.model.email.isEmpty && !self.viewModel.model.phoneNo.isEmpty && !self.viewModel.model.password.isEmpty && !self.viewModel.model.confirmPasssword.isEmpty
     }
+    
+    private func getDictForSendOtp() -> JSONDictionary{
+        let dict : JSONDictionary = [ApiKey.phoneNo : self.viewModel.model.email,
+                                     ApiKey.countryCode : self.viewModel.model.password,
+                                     ApiKey.device : [ApiKey.platform : "ios", ApiKey.token : DeviceDetail.deviceToken].toJSONString() ?? ""]
+        return dict
+    }
 }
 
 // MARK: - Extension For TableView
@@ -236,6 +243,22 @@ extension SignUpVC : CountryDelegate{
 // MARK: - CountryDelegate
 //=========================
 extension SignUpVC: SignUpVMDelegate{
+    func sendOtpForSocialLoginSuccess(message: String) {
+        AppRouter.goToOtpVerificationVC(vc: self, phoneNo: UserModel.main.phoneNo, countryCode: UserModel.main.countryCode)
+    }
+    
+    func sendOtpForSocialLoginFailed(message: String) {
+         ToastView.shared.showLongToast(self.view, msg: message)
+    }
+    
+    func socailLoginApiSuccessWithoutPhoneNo(message: String) {
+        AppRouter.goToSignWithPhoneVC(vc: self,loginOption: .socialUser)
+    }
+    
+    func socailLoginApiSuccessWithoutVerifyPhoneNo(message: String) {
+        self.viewModel.sendOtp(params: getDictForSendOtp())
+    }
+    
     func socailLoginApiSuccess(message: String) {
         AppRouter.goToUserHome()
     }

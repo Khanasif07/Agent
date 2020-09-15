@@ -96,10 +96,37 @@ extension AddAccountDetailVC {
             txtField?.placeholderFont = AppFonts.NunitoSansBold.withSize(14.0)
             txtField?.font = AppFonts.NunitoSansBold.withSize(14.0)
         }
+        selectYourBankTextField.setImageToRightView(img: #imageLiteral(resourceName: "group3689"), size: CGSize(width: 15.0, height: 15.0))
+        enterAccountNumberTextField.keyboardType = .numberPad
+        confirmAccountNumberTextField.keyboardType = .numberPad
     }
 }
 
 
 extension AddAccountDetailVC: UITextFieldDelegate {
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let currentText = textField.text ?? ""
+        guard let stringRange = Range(range, in: currentText) else { return false }
+        let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+        
+        switch textField {
+        case enterAccountNumberTextField:
+            return updatedText.count <= 16
+        case confirmAccountNumberTextField:
+            return updatedText.count <= 16
+        default:
+            return true
+        }
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        switch textField {
+        case selectYourBankTextField:
+            printDebug("should begin ")
+            return false
+        default:
+            return true
+        }
+    }
 }

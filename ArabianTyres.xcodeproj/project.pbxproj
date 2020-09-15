@@ -137,6 +137,8 @@
 		A45566CD250B4EAC009E4324 /* RegistraionPendingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45566CC250B4EAC009E4324 /* RegistraionPendingVC.swift */; };
 		A45566D0250CA6C0009E4324 /* UploadDocumentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45566CF250CA6C0009E4324 /* UploadDocumentVC.swift */; };
 		A493133D2508D231007110E4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A493133C2508D231007110E4 /* GoogleService-Info.plist */; };
+		A4B74CC425107C6800771974 /* LinkAccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B74CC225107C6800771974 /* LinkAccountTableViewCell.swift */; };
+		A4B74CC525107C6800771974 /* LinkAccountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4B74CC325107C6800771974 /* LinkAccountTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -274,6 +276,8 @@
 		A45566CF250CA6C0009E4324 /* UploadDocumentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadDocumentVC.swift; sourceTree = "<group>"; };
 		A493133B2508BF68007110E4 /* ArabianTyres.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ArabianTyres.entitlements; sourceTree = "<group>"; };
 		A493133C2508D231007110E4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A4B74CC225107C6800771974 /* LinkAccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkAccountTableViewCell.swift; sourceTree = "<group>"; };
+		A4B74CC325107C6800771974 /* LinkAccountTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LinkAccountTableViewCell.xib; sourceTree = "<group>"; };
 		B2C00CD38A98EBA313A070C9 /* Pods_ArabianTyres.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArabianTyres.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -783,7 +787,7 @@
 				A45566CE250CA654009E4324 /* RegistraionPendingVC */,
 				A45042C8250F2D1F001C8905 /* UploadDocumentVC */,
 				A45042C9250F2D2B001C8905 /* AddAccountVC */,
-				A45042D2250F76D5001C8905 /* AddAccountDetailVC.swift */,
+				A4B74CC025107C0E00771974 /* AddAccountDetailVC */,
 			);
 			path = PostloginVC;
 			sourceTree = "<group>";
@@ -806,8 +810,9 @@
 				843C8EB625087D9E00515F2E /* ProfileVC */,
 				A45042C3250F2A62001C8905 /* GarageRegistrationVC */,
 				A45042C4250F2A84001C8905 /* UploadDocumentVC */,
-				A45042CE250F3846001C8905 /* AddAccountTableViewCell.swift */,
-				A45042CF250F3846001C8905 /* AddAccountTableViewCell.xib */,
+				A4B74CC125107C3500771974 /* AddAccountVC */,
+				A4B74CC225107C6800771974 /* LinkAccountTableViewCell.swift */,
+				A4B74CC325107C6800771974 /* LinkAccountTableViewCell.xib */,
 			);
 			path = PostloginVC;
 			sourceTree = "<group>";
@@ -902,6 +907,23 @@
 			path = RegistraionPendingVC;
 			sourceTree = "<group>";
 		};
+		A4B74CC025107C0E00771974 /* AddAccountDetailVC */ = {
+			isa = PBXGroup;
+			children = (
+				A45042D2250F76D5001C8905 /* AddAccountDetailVC.swift */,
+			);
+			path = AddAccountDetailVC;
+			sourceTree = "<group>";
+		};
+		A4B74CC125107C3500771974 /* AddAccountVC */ = {
+			isa = PBXGroup;
+			children = (
+				A45042CE250F3846001C8905 /* AddAccountTableViewCell.swift */,
+				A45042CF250F3846001C8905 /* AddAccountTableViewCell.xib */,
+			);
+			path = AddAccountVC;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -965,6 +987,7 @@
 			files = (
 				8481FA752500C06900AB6EFB /* PostLogin.storyboard in Resources */,
 				8481FA092500AA9B00AB6EFB /* LaunchScreen.storyboard in Resources */,
+				A4B74CC525107C6800771974 /* LinkAccountTableViewCell.xib in Resources */,
 				843C8EBE25089BBE00515F2E /* ProfileUserHeaderCell.xib in Resources */,
 				8481FA312500BCD800AB6EFB /* Localizable.strings in Resources */,
 				843C8EBA25087DD200515F2E /* ProfileGuestTableCell.xib in Resources */,
@@ -1107,6 +1130,7 @@
 				843C8ED22508FB9300515F2E /* HomeCollectionCell.swift in Sources */,
 				8481FA492500BEA400AB6EFB /* DateExtension.swift in Sources */,
 				8481FA632500BFA000AB6EFB /* ApiKeys.swift in Sources */,
+				A4B74CC425107C6800771974 /* LinkAccountTableViewCell.swift in Sources */,
 				8481FA372500BDD200AB6EFB /* UITableView+ UITableViewCellExtension.swift in Sources */,
 				8481FA6D2500BFE400AB6EFB /* AppConstants.swift in Sources */,
 				8481FA3D2500BE1C00AB6EFB /* UIColor+Additions.swift in Sources */,

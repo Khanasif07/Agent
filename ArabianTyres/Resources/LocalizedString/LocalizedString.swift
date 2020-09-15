@@ -176,6 +176,7 @@ enum LocalizedString : String {
     case AccountNo
     case confirmAccountNo
     case pleaseEnterYourBankAccountDetails
+    case linkedAccount
     
     // MARK: - Home  VC Values
     //==============================
