@@ -332,6 +332,9 @@ Service Center</string>
                                                     <real key="value" value="4"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="startRegistraionAction:" destination="09l-eL-0NZ" eventType="touchUpInside" id="QzM-Ym-c4Z"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -994,7 +997,7 @@ Service Center</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TEE-8I-aOG">
-                                        <rect key="frame" x="6" y="14" width="36" height="34"/>
+                                        <rect key="frame" x="6" y="-3" width="72" height="68"/>
                                         <state key="normal" image="icBackward"/>
                                         <connections>
                                             <action selector="backBtnAction:" destination="1bs-SP-OPu" eventType="touchUpInside" id="Kgs-tx-1II"/>

@@ -402,5 +402,18 @@ extension WebServices{
             failure(error)
         }
     }
+    
+    // MARK:- Garage Registration
+    //=================
+    static func garageRegistration(parameters: JSONDictionary,
+                         success: @escaping ResponseMessage,
+                         failure: @escaping FailureResponse) {
+        self.commonPostAPI(parameters: parameters, endPoint: .garageProfile,loader: true, success: { (json) in
+            success(json[ApiKey.message].stringValue)
+        }) { (error) -> (Void) in
+            failure(error)
+        }
+    }
+
 }
 

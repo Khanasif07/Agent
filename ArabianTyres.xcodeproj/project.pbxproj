@@ -140,6 +140,7 @@
 		A4B74CC425107C6800771974 /* LinkAccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B74CC225107C6800771974 /* LinkAccountTableViewCell.swift */; };
 		A4B74CC525107C6800771974 /* LinkAccountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4B74CC325107C6800771974 /* LinkAccountTableViewCell.xib */; };
 		A4B74CC7251094E000771974 /* GarageProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B74CC6251094E000771974 /* GarageProfileModel.swift */; };
+		A4B74CC92510C22700771974 /* GarageRegistrationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B74CC82510C22700771974 /* GarageRegistrationVM.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -280,6 +281,7 @@
 		A4B74CC225107C6800771974 /* LinkAccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkAccountTableViewCell.swift; sourceTree = "<group>"; };
 		A4B74CC325107C6800771974 /* LinkAccountTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LinkAccountTableViewCell.xib; sourceTree = "<group>"; };
 		A4B74CC6251094E000771974 /* GarageProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageProfileModel.swift; sourceTree = "<group>"; };
+		A4B74CC82510C22700771974 /* GarageRegistrationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageRegistrationVM.swift; sourceTree = "<group>"; };
 		B2C00CD38A98EBA313A070C9 /* Pods_ArabianTyres.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArabianTyres.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -849,6 +851,7 @@
 			isa = PBXGroup;
 			children = (
 				A413B9712509E7960004C534 /* GarageRegistrationVC.swift */,
+				A4B74CC82510C22700771974 /* GarageRegistrationVM.swift */,
 			);
 			path = GarageRegistrationVC;
 			sourceTree = "<group>";
@@ -1184,6 +1187,7 @@
 				84476D3725075F6800AB5E80 /* ExploreVC.swift in Sources */,
 				8481F9FD2500AA9A00AB6EFB /* AppDelegate.swift in Sources */,
 				A45566CD250B4EAC009E4324 /* RegistraionPendingVC.swift in Sources */,
+				A4B74CC92510C22700771974 /* GarageRegistrationVM.swift in Sources */,
 				844D81DF250243B300550334 /* SignUpTopCell.swift in Sources */,
 				8481FA6B2500BFD500AB6EFB /* AWSS3Manager.swift in Sources */,
 				8481FA412500BE3800AB6EFB /* UILabelExtension.swift in Sources */,

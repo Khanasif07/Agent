@@ -26,7 +26,8 @@ class AddDetailVC: BaseVC {
     
     // MARK: - Variables
     //===========================
-   
+    var viewModel = GarageRegistrationVM()
+    
     // MARK: - Lifecycle
     //===========================
     override func viewDidLoad() {
@@ -63,7 +64,8 @@ class AddDetailVC: BaseVC {
     }
     
     @IBAction func saveAndContinueAction(_ sender: UIButton) {
-        self.pop()
+        printDebug(GarageProfileModel.shared.getGarageProfileDict())
+        viewModel.setGarageRegistration(params: GarageProfileModel.shared.getGarageProfileDict())
     }
     
     @IBAction func editLogoBtnAction(_ sender: UIButton) {
@@ -136,6 +138,7 @@ extension AddDetailVC : CustomTextViewDelegate {
     
     func textViewValueUpdated(_ tView : UITextView){
         if tView.text.count >= 3 {
+            GarageProfileModel.shared.serviceCenterName = tView.text
             changeBtnState(isHide: false)
         }
         else {
@@ -148,22 +151,21 @@ extension AddDetailVC : CustomTextViewDelegate {
  
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[.editedImage] as? UIImage
-//        CommonFunctions.showActivityLoader()
+        CommonFunctions.showActivityLoader()
          editLogoBtn.setImage(#imageLiteral(resourceName: "vector"), for: .normal)
          imgView.contentMode = .scaleToFill
          imgView.image = image
-
-//        image?.upload(progress: { (progress) in
-//            printDebug(progress)
-//        }, completion: { (response,error) in
-//            if let url = response {
-//                CommonFunctions.hideActivityLoader()
-//
-//            }
-//            if let _ = error{
-//                self.showAlert(msg: "Image upload failed")
-//            }
-//        })
+        image?.upload(progress: { (progress) in
+            printDebug(progress)
+        }, completion: { (response,error) in
+            if let url = response {
+                CommonFunctions.hideActivityLoader()
+                GarageProfileModel.shared.logo = url
+            }
+            if let _ = error{
+                self.showAlert(msg: "Image upload failed")
+            }
+        })
         picker.dismiss(animated: true, completion: nil)
     }
 
