@@ -140,6 +140,7 @@
 		A493133D2508D231007110E4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A493133C2508D231007110E4 /* GoogleService-Info.plist */; };
 		A4B74CC425107C6800771974 /* LinkAccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B74CC225107C6800771974 /* LinkAccountTableViewCell.swift */; };
 		A4B74CC525107C6800771974 /* LinkAccountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4B74CC325107C6800771974 /* LinkAccountTableViewCell.xib */; };
+		A4B74CC7251094E000771974 /* GarageProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B74CC6251094E000771974 /* GarageProfileModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -280,6 +281,7 @@
 		A493133C2508D231007110E4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A4B74CC225107C6800771974 /* LinkAccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkAccountTableViewCell.swift; sourceTree = "<group>"; };
 		A4B74CC325107C6800771974 /* LinkAccountTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LinkAccountTableViewCell.xib; sourceTree = "<group>"; };
+		A4B74CC6251094E000771974 /* GarageProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageProfileModel.swift; sourceTree = "<group>"; };
 		B2C00CD38A98EBA313A070C9 /* Pods_ArabianTyres.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArabianTyres.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -583,6 +585,7 @@
 				8481FA762500C5CD00AB6EFB /* CountryData.swift */,
 				8481FA782500C64400AB6EFB /* UserModel.swift */,
 				844D81E62502723C00550334 /* SignUpModel.swift */,
+				A4B74CC6251094E000771974 /* GarageProfileModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1161,6 +1164,7 @@
 				8481FA612500BF9300AB6EFB /* AppUserDefaults.swift in Sources */,
 				84303E69250649D4000BA5C3 /* UserTabBarController.swift in Sources */,
 				8481FA572500BF1A00AB6EFB /* URLExtension.swift in Sources */,
+				A4B74CC7251094E000771974 /* GarageProfileModel.swift in Sources */,
 				8481FA4B2500BEB600AB6EFB /* DoubleExtension.swift in Sources */,
 				844D81DB2502408900550334 /* SignUpVC.swift in Sources */,
 				8481FA712500BFFD00AB6EFB /* AppFonts.swift in Sources */,

@@ -13,6 +13,7 @@ class ProfileUserBottomCell: UITableViewCell {
     
     var settingBtnTapped: (()->())?
     var logoutBtnTapped: (()->())?
+    var switchProfileToGarage: (()->())?
     var isComeFromProfile: Bool = false
     var selectItemArray = [LocalizedString.my_vehicle.localized,LocalizedString.service_history.localized,LocalizedString.payments.localized,LocalizedString.saved_cards.localized,LocalizedString.added_location.localized,LocalizedString.change_password.localized,LocalizedString.setting.localized]
     var selectImageArray: [UIImage] = [#imageLiteral(resourceName: "vehicle"),#imageLiteral(resourceName: "serviceHistory"),#imageLiteral(resourceName: "payment"),#imageLiteral(resourceName: "savedCard"),#imageLiteral(resourceName: "addedLocation"),#imageLiteral(resourceName: "group"),#imageLiteral(resourceName: "profileSettting")]
@@ -78,6 +79,10 @@ extension ProfileUserBottomCell: UITableViewDelegate, UITableViewDataSource {
             }
         case LocalizedString.setting.localized:
             if let handle = settingBtnTapped{
+                handle()
+            }
+        case LocalizedString.switchProfileTogarage.localized:
+            if let handle = switchProfileToGarage{
                 handle()
             }
         default:
