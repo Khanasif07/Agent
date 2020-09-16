@@ -49,11 +49,17 @@ class GarageRegistrationVC: BaseVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = true
         self.mainTableView.reloadData()
     }
     
     // MARK: - IBActions
     //===========================
+    
+    
+    @IBAction func startRegistraionAction(_ sender: UIButton) {
+        AppRouter.goToAddDetailVC(vc: self)
+    }
     
     @IBAction func backBtnAction(_ sender: UIButton) {
         self.pop()

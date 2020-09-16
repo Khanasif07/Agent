@@ -117,6 +117,20 @@ enum ApiKey {
     static var isSubscribed: String{ return "isSubscribed"}
     static var phoneNoAdded: String { return "phoneNoAdded" }
     
+    static var logo: String { return "logo" }
+    static var latitude: String { return "latitude" }
+    static var longitude: String { return "longitude" }
+    static var address: String { return "address" }
+    static var images: String { return "images" }
+    static var commercialRegister: String { return "commercialRegister" }
+    static var vatCertificate: String { return "vatCertificate" }
+    static var municipalityLicense: String { return "municipalityLicense" }
+    static var ownerId: String { return "ownerId" }
+    static var bank: String { return "bank" }
+    static var accountNumber: String { return "accountNumber" }
+
+    
+    
 }
 
 //MARK:- Api Code

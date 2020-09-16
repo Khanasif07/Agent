@@ -168,7 +168,10 @@
 "confirmAccountNo" = "Confirm Account No";
 "pleaseEnterYourBankAccountDetails" = "Please Enter Your Bank Account Details";
 "linkedAccount" = "Linked Account";
-
+"completeProfile" = "Complete Profile";
+"selectServiceCenterFacility" = "Select Service Center’s Facility";
+"serviceCenterFacility" = "Service Center’s Facility";
+"serviceCenterImage" = "Service Center Image";
 // MARK: - Home  VC Values
 //==============================
 "tyre" = "Tyre";

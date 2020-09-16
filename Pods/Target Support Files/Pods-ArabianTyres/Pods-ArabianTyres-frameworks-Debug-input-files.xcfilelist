@@ -3,6 +3,10 @@ ${BUILT_PRODUCTS_DIR}/AWSCore/AWSCore.framework
 ${BUILT_PRODUCTS_DIR}/AWSS3/AWSS3.framework
 ${BUILT_PRODUCTS_DIR}/AppAuth/AppAuth.framework
 ${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework
+${BUILT_PRODUCTS_DIR}/CropViewController/CropViewController.framework
+${BUILT_PRODUCTS_DIR}/DKCamera/DKCamera.framework
+${BUILT_PRODUCTS_DIR}/DKImagePickerController/DKImagePickerController.framework
+${BUILT_PRODUCTS_DIR}/DKPhotoGallery/DKPhotoGallery.framework
 ${BUILT_PRODUCTS_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework
 ${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework
 ${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework
@@ -16,7 +20,10 @@ ${BUILT_PRODUCTS_DIR}/MessageKit/MessageKit.framework
 ${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework
 ${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework
 ${BUILT_PRODUCTS_DIR}/Protobuf/protobuf.framework
+${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework
 ${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework
+${BUILT_PRODUCTS_DIR}/SwiftRangeSlider/SwiftRangeSlider.framework
+${BUILT_PRODUCTS_DIR}/SwiftyGif/SwiftyGif.framework
 ${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework
 ${BUILT_PRODUCTS_DIR}/Toaster/Toaster.framework
 ${BUILT_PRODUCTS_DIR}/abseil/absl.framework

@@ -50,7 +50,7 @@ class LoginVC: BaseVC {
         AppUserDefaults.save(value: "guest", forKey: .currentUserType)
         AppRouter.goToUserHome()
 
-//        AppRouter.goToAddAccountDetailVC(vc: self)
+//        AppRouter.goToGarageProfileStep2VC(vc: self)
         
     }
 }

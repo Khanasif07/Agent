@@ -113,18 +113,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate , MessagingDelegate , UNUs
        ) -> UIViewController? {
         var baseScene = base
         baseScene = baseScene == nil ? window?.rootViewController : baseScene
-        if let nav = base as? UINavigationController {
+        if let nav = baseScene as? UINavigationController {
             return topViewController(nav.visibleViewController)
         }
-        if let tab = base as? UITabBarController {
+        if let tab = baseScene as? UITabBarController {
             if let selected = tab.selectedViewController {
                 return topViewController(selected)
             }
         }
-        if let presented = base?.presentedViewController {
+        if let presented = baseScene?.presentedViewController {
             return topViewController(presented)
         }
-        return base
+        return baseScene
     }
 }
 

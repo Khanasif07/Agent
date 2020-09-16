@@ -124,9 +124,23 @@ extension AddAccountDetailVC: UITextFieldDelegate {
         switch textField {
         case selectYourBankTextField:
             printDebug("should begin ")
-            return false
+            return true
         default:
             return true
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        guard let text = textField.text else {return}
+        switch textField {
+        case selectYourBankTextField:
+            GarageProfileModel.shared.bankName = text
+        case enterAccountNumberTextField:
+            GarageProfileModel.shared.accountNumber = text
+        case confirmAccountNumberTextField:
+            break
+        default:
+            break
         }
     }
 }
