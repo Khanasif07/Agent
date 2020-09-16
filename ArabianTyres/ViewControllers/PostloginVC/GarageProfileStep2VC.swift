@@ -18,6 +18,8 @@ class GarageProfileStep2VC: BaseVC {
     @IBOutlet weak var helpBtn: UIButton!
     @IBOutlet weak var saveAndContinueBtn: AppButton!
     @IBOutlet weak var headingLbl: UILabel!
+    @IBOutlet weak var serviceCenterNameLbl: UILabel!
+
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var customView : CustomTextView!
     @IBOutlet weak var customCollViewHeightConstraint: NSLayoutConstraint!
@@ -74,14 +76,17 @@ extension GarageProfileStep2VC {
         setupTextAndFont()
         setupCustomView()
         saveAndContinueBtn.isEnabled = false
+//        rangeSlider.resetSlider(value: 2500)
     }
 
     private func setupTextAndFont(){
+        serviceCenterNameLbl.font = AppFonts.NunitoSansSemiBold.withSize(12.0)
         titleLbl.font = AppFonts.NunitoSansBold.withSize(17.0)
         headingLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
         helpBtn.titleLabel?.font =  AppFonts.NunitoSansSemiBold.withSize(17.0)
         saveAndContinueBtn.titleLabel?.font =  AppFonts.NunitoSansSemiBold.withSize(16.0)
 
+        serviceCenterNameLbl.text = LocalizedString.serviceCenterName.localized
         titleLbl.text = LocalizedString.completeProfile.localized
         headingLbl.text = LocalizedString.serviceCenterImage.localized
         helpBtn.setTitle(LocalizedString.help.localized, for: .normal)

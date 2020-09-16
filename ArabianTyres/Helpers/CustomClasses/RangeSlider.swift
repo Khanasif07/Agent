@@ -54,16 +54,16 @@ class RangeSlider: UIView {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = AppFonts.NunitoSansBold.withSize(15.0)
-        label.textColor = #colorLiteral(red: 0.137254902, green: 0.137254902, blue: 0.137254902, alpha: 1)
+        label.font = AppFonts.NunitoSansBold.withSize(13.0)
+        label.textColor = #colorLiteral(red: 0.262745098, green: 0.6941176471, blue: 0.3294117647, alpha: 1)
         return label
     }()
     
     private lazy var minValueLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = AppFonts.NunitoSansBold.withSize(15.0)
-        label.textColor = #colorLiteral(red: 0.137254902, green: 0.137254902, blue: 0.137254902, alpha: 1)
+        label.font = AppFonts.NunitoSansBold.withSize(13.0)
+        label.textColor = #colorLiteral(red: 0.262745098, green: 0.6941176471, blue: 0.3294117647, alpha: 1)
         label.text = "500"
         return label
     }()
@@ -72,7 +72,7 @@ class RangeSlider: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = AppFonts.NunitoSansBold.withSize(13.0)
-        label.textColor = #colorLiteral(red: 0.137254902, green: 0.137254902, blue: 0.137254902, alpha: 1)
+        label.textColor = AppColors.fontTertiaryColor
         label.text = "2500"
         return label
     }()
@@ -93,8 +93,8 @@ class RangeSlider: UIView {
         let slider = CustomSlider()
         slider.translatesAutoresizingMaskIntoConstraints = false
         slider.tintColor = AppColors.fontTertiaryColor
-        slider.minimumTrackTintColor = AppColors.fontTertiaryColor
-        slider.maximumTrackTintColor = #colorLiteral(red: 0.937254902, green: 0.937254902, blue: 0.9568627451, alpha: 1)
+        slider.minimumTrackTintColor = #colorLiteral(red: 0.1607843137, green: 0.2588235294, blue: 0.6235294118, alpha: 1)
+        slider.maximumTrackTintColor = #colorLiteral(red: 0.8941176471, green: 0.8980392157, blue: 0.937254902, alpha: 1)
         slider.addTarget(self, action: #selector(sliderMoved(slider:event:)), for: .valueChanged)
         return slider
     }()
@@ -142,13 +142,13 @@ class RangeSlider: UIView {
     }
     
     func sliderThumbSetUp() {
-        let image = #imageLiteral(resourceName: "group1431")
+        let image = #imageLiteral(resourceName: "group3811")
         fakeSlider.setThumbImage(image, for: .normal)
         slider.setThumbImage(image, for: .normal)
     }
     
     @objc private func sliderMoved(slider: UISlider, event: UIEvent) {
-        titleLabel.text = Int(slider.value * 50).description //String(format: "%.2f", slider.value*50) + " Miles"
+        titleLabel.text = Int(slider.value * 2500).description //String(format: "%.2f", slider.value*50) + " Miles"
         let trackRect = slider.trackRect(forBounds: slider.frame)
         var sliderValueWithPadding = slider.value
         if slider.value > 0.96 {
@@ -161,7 +161,7 @@ class RangeSlider: UIView {
         leftConstraint.isActive = false
         leftConstraint.constant = thumbRect.midX
         leftConstraint.isActive = true
-        self.delegate?.rangeSlider(selectedValue: Int(slider.value * 50))
+        self.delegate?.rangeSlider(selectedValue: Int(slider.value * 2500))
     }
     
     private func updateHandleTintColor() {
