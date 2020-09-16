@@ -23,19 +23,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="151" height="151"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wZh-ov-EHn">
-                                <rect key="frame" x="59" y="59" width="33" height="32"/>
-                                <state key="normal" image="icImg"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.32941176470588235" green="0.33725490196078434" blue="0.36078431372549019" alpha="0.5" colorSpace="custom" customColorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="441-dw-H7a" firstAttribute="top" secondItem="65F-xZ-hPb" secondAttribute="top" id="3KT-vf-4i9"/>
                             <constraint firstAttribute="bottom" secondItem="441-dw-H7a" secondAttribute="bottom" id="9G9-7w-Q7V"/>
-                            <constraint firstItem="wZh-ov-EHn" firstAttribute="centerY" secondItem="65F-xZ-hPb" secondAttribute="centerY" id="dtX-gi-x1R"/>
                             <constraint firstItem="441-dw-H7a" firstAttribute="leading" secondItem="65F-xZ-hPb" secondAttribute="leading" id="eSR-9M-M7A"/>
                             <constraint firstAttribute="trailing" secondItem="441-dw-H7a" secondAttribute="trailing" id="mVZ-pa-ihj"/>
-                            <constraint firstItem="wZh-ov-EHn" firstAttribute="centerX" secondItem="65F-xZ-hPb" secondAttribute="centerX" id="yqG-0d-4cT"/>
                         </constraints>
                     </view>
                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="tx6-Vb-dJD">
@@ -46,10 +40,20 @@
                         </constraints>
                         <color key="color" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </activityIndicatorView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wZh-ov-EHn">
+                        <rect key="frame" x="59.5" y="59.5" width="32" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="32" id="eLR-Ja-Zdq"/>
+                            <constraint firstAttribute="width" secondItem="wZh-ov-EHn" secondAttribute="height" id="lOx-sg-WuJ"/>
+                        </constraints>
+                        <state key="normal" image="icImg"/>
+                    </button>
                 </subviews>
             </view>
             <constraints>
                 <constraint firstItem="tx6-Vb-dJD" firstAttribute="centerX" secondItem="65F-xZ-hPb" secondAttribute="centerX" id="9Kd-uh-EQl"/>
+                <constraint firstItem="wZh-ov-EHn" firstAttribute="centerY" secondItem="65F-xZ-hPb" secondAttribute="centerY" id="Bxi-kb-YxX"/>
+                <constraint firstItem="wZh-ov-EHn" firstAttribute="centerX" secondItem="65F-xZ-hPb" secondAttribute="centerX" id="Dab-3t-QYq"/>
                 <constraint firstItem="65F-xZ-hPb" firstAttribute="bottom" secondItem="gTV-IL-0wX" secondAttribute="bottom" id="PIy-7H-mtA"/>
                 <constraint firstItem="65F-xZ-hPb" firstAttribute="trailing" secondItem="ZTg-uK-7eu" secondAttribute="trailing" id="YQD-Rv-0UQ"/>
                 <constraint firstItem="tx6-Vb-dJD" firstAttribute="centerY" secondItem="65F-xZ-hPb" secondAttribute="centerY" id="ZrX-sW-2Dk"/>

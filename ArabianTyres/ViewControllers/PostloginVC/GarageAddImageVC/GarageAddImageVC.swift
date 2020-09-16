@@ -9,12 +9,14 @@
 import GoogleMaps
 import GooglePlaces
 import UIKit
+import DKImagePickerController
 
 
 class GarageAddImageVC: BaseVC {
     
     // MARK: - IBOutlets
     //===========================
+    @IBOutlet weak var collViewHeightConst: NSLayoutConstraint!
     @IBOutlet weak var locationTextLbl: UILabel!
     @IBOutlet weak var descLbl: UILabel!
     @IBOutlet weak var mainCollView: UICollectionView!
@@ -90,6 +92,7 @@ extension GarageAddImageVC {
         mainCollView.delegate = self
         mainCollView.collectionViewLayout = LeftAlignedCollectionViewFlowLayout()
         mainCollView.registerCell(with: AddImageCollCell.self)
+        self.mainCollView.isScrollEnabled = false
     }
     
     private func locationButtonTapped() {
@@ -123,12 +126,12 @@ extension GarageAddImageVC {
     
    @objc private func addImageBtnTapped(_ sender: UIButton) {
     self.imagesArray.append("Hello")
-    self.mainCollView.reloadData()
+    self.reloadCollectionViewWithUIUpdation()
 //        if !self.hasImageUploaded{
 //            self.showAlert(msg: StringConstants.wait_Img_Upload)
 //            return
 //        }
-//
+
 //        let pickerController = DKImagePickerController()
 //        pickerController.assetType = .allPhotos
 //        pickerController.maxSelectableCount = 1
@@ -141,7 +144,6 @@ extension GarageAddImageVC {
 //
 //            for asset in assets{
 //                if asset.type == .photo{
-//
 //                    asset.fetchOriginalImage { [weak self](image, _) in
 //                        guard let strongSelf = self else{return}
 //                        guard let res = image else {return}
@@ -151,23 +153,23 @@ extension GarageAddImageVC {
 //                            }
 //                        }
 //                    }
-//                }else{
-//
-//                    asset.fetchAVAsset(completeBlock: { (avAsset, infos) in
-//                        if let avAsset = avAsset, let url = self.processSelectedVideo(avAsset: avAsset){
-//                            //self.removeLoader()
-//                            self.compressVideo(videoURL: url, caption: "")
-//                        }else{
-//                            //                            print_debug("Cannot get avasset")
-//                            //                            self.removeLoader()
-//                        }
-//                    })
-//                }
+//                }else {}
 //            }
 //            print("didSelectAssets")
 //            print(assets)
 //        }
 //        self.present(pickerController, animated: true) {}
+    }
+    
+    func reloadCollectionViewWithUIUpdation(){
+        if imagesArray.count > 2 {
+            DispatchQueue.main.async {
+                self.collViewHeightConst.constant = 110 * 2
+            }
+        }
+        DispatchQueue.main.async {
+            self.mainCollView.reloadData()
+        }
     }
 }
 // MARK: - Map and cluster Functions

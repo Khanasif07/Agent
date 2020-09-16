@@ -391,6 +391,7 @@ Service Center</string>
                         <viewLayoutGuide key="safeArea" id="rlz-UL-OuF"/>
                     </view>
                     <connections>
+                        <outlet property="collViewHeightConst" destination="cPQ-vH-6bP" id="5GK-8Y-p4A"/>
                         <outlet property="descLbl" destination="kLB-9F-ymz" id="RM8-7n-cBZ"/>
                         <outlet property="locationTextLbl" destination="LH8-JT-RVv" id="lfw-ic-Kr5"/>
                         <outlet property="logoImgView" destination="Fxo-jU-7gH" id="ISn-1k-zc3"/>
