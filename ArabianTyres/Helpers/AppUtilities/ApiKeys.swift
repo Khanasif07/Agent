@@ -75,6 +75,7 @@ enum ApiKey {
     static var subCategoryId : String { return "subCategoryId"}
     static var level : String { return "level"}
     static var url : String { return "url"}
+    static var mediaType : String { return "mediaType"}
     static var duration : String { return "duration"}
     static var previewUrl : String { return "previewUrl"}
     static var previewDuration : String { return "previewDuration"}

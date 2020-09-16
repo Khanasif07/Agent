@@ -235,7 +235,7 @@ Service Center</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="395-bR-4Si">
-                                                <rect key="frame" x="22" y="107.5" width="376" height="558.5"/>
+                                                <rect key="frame" x="22" y="107.5" width="376" height="552.5"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="battery" translatesAutoresizingMaskIntoConstraints="NO" id="Fxo-jU-7gH">
                                                         <rect key="frame" x="14" y="19" width="60" height="60"/>
@@ -254,8 +254,8 @@ Service Center</string>
                                                         <rect key="frame" x="14" y="19" width="60" height="60"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="10" maxX="10" maxY="0.0"/>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qoH-9f-Vtz">
-                                                        <rect key="frame" x="143" y="486.5" width="217" height="56"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qoH-9f-Vtz" customClass="AppButton" customModule="ArabianTyres">
+                                                        <rect key="frame" x="143" y="480.5" width="217" height="56"/>
                                                         <color key="backgroundColor" red="0.090196078430000007" green="0.1450980392" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="217" id="a8c-nC-jnf"/>
@@ -270,6 +270,9 @@ Service Center</string>
                                                                 <real key="value" value="4"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="saveBtnAction:" destination="84T-NG-NBE" eventType="touchUpInside" id="JjF-KL-WOo"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Garaga" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pDl-hg-iGF">
                                                         <rect key="frame" x="82.5" y="37.5" width="91" height="23.5"/>
@@ -310,13 +313,13 @@ Service Center</string>
                                                         <color key="textColor" red="0.54117647058823526" green="0.58431372549019611" blue="0.61960784313725492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="BHo-7E-5iV">
-                                                        <rect key="frame" x="14" y="374.5" width="346" height="96"/>
+                                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="BHo-7E-5iV">
+                                                        <rect key="frame" x="14" y="374.5" width="346" height="90"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="96" id="cPQ-vH-6bP"/>
+                                                            <constraint firstAttribute="height" constant="90" id="cPQ-vH-6bP"/>
                                                         </constraints>
-                                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Iho-rd-apy">
+                                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Iho-rd-apy">
                                                             <size key="itemSize" width="50" height="50"/>
                                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -391,11 +394,13 @@ Service Center</string>
                         <viewLayoutGuide key="safeArea" id="rlz-UL-OuF"/>
                     </view>
                     <connections>
+                        <outlet property="collViewHeightConst" destination="cPQ-vH-6bP" id="5GK-8Y-p4A"/>
                         <outlet property="descLbl" destination="kLB-9F-ymz" id="RM8-7n-cBZ"/>
                         <outlet property="locationTextLbl" destination="LH8-JT-RVv" id="lfw-ic-Kr5"/>
                         <outlet property="logoImgView" destination="Fxo-jU-7gH" id="ISn-1k-zc3"/>
                         <outlet property="mainCollView" destination="BHo-7E-5iV" id="pFC-e3-PW7"/>
                         <outlet property="mapView" destination="5Ik-gR-wWB" id="9SQ-ZF-fUN"/>
+                        <outlet property="saveContinueBtn" destination="qoH-9f-Vtz" id="Z4L-Ow-eg3"/>
                         <outlet property="titleLbl" destination="EoU-36-J1u" id="i5q-fG-PPj"/>
                     </connections>
                 </viewController>
