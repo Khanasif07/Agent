@@ -21,7 +21,8 @@ class GarageProfileStep2VC: BaseVC {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var customView : CustomTextView!
     @IBOutlet weak var customCollViewHeightConstraint: NSLayoutConstraint!
-
+    @IBOutlet weak var rangeSlider: RangeSlider!
+  
     // MARK: - Variables
     //===========================
     var selectedSkillArr : [String] = []
@@ -69,6 +70,7 @@ class GarageProfileStep2VC: BaseVC {
 extension GarageProfileStep2VC {
 
     private func initialSetup() {
+        rangeSlider.delegate = self
         setupTextAndFont()
         setupCustomView()
         saveAndContinueBtn.isEnabled = false
@@ -159,3 +161,10 @@ extension GarageProfileStep2VC: UICollectionViewDelegate,UICollectionViewDataSou
         return 10.0
     }
 }
+
+extension GarageProfileStep2VC :RangeSliderDelegate{
+    func rangeSlider(selectedValue: Int) {
+        printDebug(selectedValue)
+    }
+}
+

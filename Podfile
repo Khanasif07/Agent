@@ -33,6 +33,7 @@ target 'ArabianTyres' do
   pod 'MessageKit'
   pod 'Firebase/Storage'
   pod 'Firebase/Crashlytics'
-  pod 'SwiftRangeSlider’
+  pod 'SKPhotoBrowser'
+  pod 'RSKImageCropper'
   pod 'DKImagePickerController'
 end

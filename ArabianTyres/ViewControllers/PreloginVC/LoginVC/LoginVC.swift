@@ -47,10 +47,10 @@ class LoginVC: BaseVC {
     //==========================
     
     @IBAction func skipLoginAndContinueAction(_ sender: UIButton) {
-        AppUserDefaults.save(value: "guest", forKey: .currentUserType)
-        AppRouter.goToUserHome()
+//        AppUserDefaults.save(value: "guest", forKey: .currentUserType)
+//        AppRouter.goToUserHome()
 
-//        AppRouter.goToGarageProfileStep2VC(vc: self)
+        AppRouter.goToGarageProfileStep2VC(vc: self)
         
     }
 }
