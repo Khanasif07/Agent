@@ -78,7 +78,7 @@ extension GarageAddImageVC {
         self.mapView.isMyLocationEnabled = true
         self.mapView.delegate = self
         self.locationManager.delegate = self
-        markerView.image = #imageLiteral(resourceName: "notification")
+        markerView.image = #imageLiteral(resourceName: "markerIcon")
         self.gmssMarker = GMSMarker(position: CLLocationCoordinate2D(latitude:  locationValue.latitude, longitude: locationValue.longitude))
         DispatchQueue.main.async {
             self.gmssMarker.map = self.mapView
