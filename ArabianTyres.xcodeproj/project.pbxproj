@@ -131,6 +131,11 @@
 		84B629AE251212FC0080A7C2 /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B629AD251212FC0080A7C2 /* ImageModel.swift */; };
 		84E166E4250362DE00C2F2EF /* SuccessPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E166E3250362DE00C2F2EF /* SuccessPopupVC.swift */; };
 		A4098E742511FF800015B0BD /* RangeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4098E732511FF7F0015B0BD /* RangeSlider.swift */; };
+		A4098E762512274C0015B0BD /* FacilityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4098E752512274C0015B0BD /* FacilityVC.swift */; };
+		A4098E78251228050015B0BD /* FacilityTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4098E77251228050015B0BD /* FacilityTableHeaderView.swift */; };
+		A4098E7A2512288F0015B0BD /* FacilityTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4098E792512288F0015B0BD /* FacilityTableHeaderView.xib */; };
+		A4098E7D251231DD0015B0BD /* FacilityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4098E7B251231DD0015B0BD /* FacilityTableViewCell.swift */; };
+		A4098E7E251231DD0015B0BD /* FacilityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4098E7C251231DD0015B0BD /* FacilityTableViewCell.xib */; };
 		A413B9702509E7400004C534 /* Garage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A413B96F2509E7400004C534 /* Garage.storyboard */; };
 		A413B9722509E7960004C534 /* GarageRegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A413B9712509E7960004C534 /* GarageRegistrationVC.swift */; };
 		A413B9762509F0950004C534 /* GarageRegistrationDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A413B9742509F0950004C534 /* GarageRegistrationDetailCell.swift */; };
@@ -282,6 +287,11 @@
 		84E166E3250362DE00C2F2EF /* SuccessPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessPopupVC.swift; sourceTree = "<group>"; };
 		8A21614890BB1C8443A578F3 /* Pods-ArabianTyres.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArabianTyres.release.xcconfig"; path = "Target Support Files/Pods-ArabianTyres/Pods-ArabianTyres.release.xcconfig"; sourceTree = "<group>"; };
 		A4098E732511FF7F0015B0BD /* RangeSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeSlider.swift; sourceTree = "<group>"; };
+		A4098E752512274C0015B0BD /* FacilityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityVC.swift; sourceTree = "<group>"; };
+		A4098E77251228050015B0BD /* FacilityTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityTableHeaderView.swift; sourceTree = "<group>"; };
+		A4098E792512288F0015B0BD /* FacilityTableHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FacilityTableHeaderView.xib; sourceTree = "<group>"; };
+		A4098E7B251231DD0015B0BD /* FacilityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityTableViewCell.swift; sourceTree = "<group>"; };
+		A4098E7C251231DD0015B0BD /* FacilityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FacilityTableViewCell.xib; sourceTree = "<group>"; };
 		A413B96F2509E7400004C534 /* Garage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Garage.storyboard; sourceTree = "<group>"; };
 		A413B9712509E7960004C534 /* GarageRegistrationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageRegistrationVC.swift; sourceTree = "<group>"; };
 		A413B9742509F0950004C534 /* GarageRegistrationDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageRegistrationDetailCell.swift; sourceTree = "<group>"; };
@@ -839,6 +849,7 @@
 				A45042C9250F2D2B001C8905 /* AddAccountVC */,
 				A4B74CC025107C0E00771974 /* AddAccountDetailVC */,
 				A4B74CCA2510CF6C00771974 /* GarageProfileStep2VC.swift */,
+				A4098E752512274C0015B0BD /* FacilityVC.swift */,
 			);
 			path = PostloginVC;
 			sourceTree = "<group>";
@@ -866,6 +877,10 @@
 				A4B74CC125107C3500771974 /* AddAccountVC */,
 				A4B74CC225107C6800771974 /* LinkAccountTableViewCell.swift */,
 				A4B74CC325107C6800771974 /* LinkAccountTableViewCell.xib */,
+				A4098E77251228050015B0BD /* FacilityTableHeaderView.swift */,
+				A4098E792512288F0015B0BD /* FacilityTableHeaderView.xib */,
+				A4098E7B251231DD0015B0BD /* FacilityTableViewCell.swift */,
+				A4098E7C251231DD0015B0BD /* FacilityTableViewCell.xib */,
 			);
 			path = PostloginVC;
 			sourceTree = "<group>";
@@ -1074,9 +1089,11 @@
 				8481FA812500DC8800AB6EFB /* Main.storyboard in Resources */,
 				844CBD1B2501F7D5009BE668 /* LoginTopTableCell.xib in Resources */,
 				8481FA8D2501435100AB6EFB /* NunitoSans-Black.ttf in Resources */,
+				A4098E7E251231DD0015B0BD /* FacilityTableViewCell.xib in Resources */,
 				8481FA062500AA9B00AB6EFB /* Assets.xcassets in Resources */,
 				8481FAA7250143CD00AB6EFB /* NunitoSans-SemiBoldItalic.ttf in Resources */,
 				8481FAA3250143BD00AB6EFB /* NunitoSans-Regular.ttf in Resources */,
+				A4098E7A2512288F0015B0BD /* FacilityTableHeaderView.xib in Resources */,
 				8481FAA1250143B500AB6EFB /* NunitoSans-LightItalic.ttf in Resources */,
 				8481FA8B2501081000AB6EFB /* TutorialCollCell.xib in Resources */,
 				8481FA9F250143AB00AB6EFB /* NunitoSans-Light.ttf in Resources */,
@@ -1156,6 +1173,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4098E78251228050015B0BD /* FacilityTableHeaderView.swift in Sources */,
 				8481FA592500BF2900AB6EFB /* UIViewExtension.swift in Sources */,
 				843DFD1E2503F017000DE6EB /* OtpVerificationVC.swift in Sources */,
 				8481FA5B2500BF3B00AB6EFB /* CommonExtension.swift in Sources */,
@@ -1173,6 +1191,7 @@
 				8481FA852500EEC400AB6EFB /* ChooseLanguageVC.swift in Sources */,
 				843F004D25060822001A78EC /* CountryCodeTableCell.swift in Sources */,
 				8481FA552500BF0700AB6EFB /* DispatchQueueExtension.swift in Sources */,
+				A4098E7D251231DD0015B0BD /* FacilityTableViewCell.swift in Sources */,
 				A4213DE0250CB02400BB21B6 /* DocumentTableViewCell.swift in Sources */,
 				8481FA532500BEF900AB6EFB /* StringExtension.swift in Sources */,
 				844D81E5250271B400550334 /* LoginViewModel.swift in Sources */,
@@ -1255,6 +1274,7 @@
 				A4B74CC92510C22700771974 /* GarageRegistrationVM.swift in Sources */,
 				844D81DF250243B300550334 /* SignUpTopCell.swift in Sources */,
 				8481FA6B2500BFD500AB6EFB /* AWSS3Manager.swift in Sources */,
+				A4098E762512274C0015B0BD /* FacilityVC.swift in Sources */,
 				A4098E742511FF800015B0BD /* RangeSlider.swift in Sources */,
 				844956332510982C00846ED9 /* GarageAddImageVC.swift in Sources */,
 				8481FA412500BE3800AB6EFB /* UILabelExtension.swift in Sources */,

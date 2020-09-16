@@ -181,6 +181,9 @@ enum LocalizedString : String {
     case selectServiceCenterFacility
     case serviceCenterFacility
     case serviceCenterImage
+    case done
+    case clearAll
+    
     // MARK: - Home  VC Values
     //==============================
     case tyre

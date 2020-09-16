@@ -33,7 +33,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aoL-qe-Qst">
-                                        <rect key="frame" x="6" y="14" width="36" height="34"/>
+                                        <rect key="frame" x="6" y="-3" width="72" height="68"/>
                                         <state key="normal" image="icBackward"/>
                                         <connections>
                                             <action selector="backBtnAction:" destination="KzW-Im-RfD" eventType="touchUpInside" id="ves-IB-WFY"/>
@@ -252,7 +252,7 @@ Service Center</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q61-dS-rD9">
-                                        <rect key="frame" x="6" y="14" width="36" height="34"/>
+                                        <rect key="frame" x="6" y="-3" width="72" height="68"/>
                                         <state key="normal" image="icBackward"/>
                                         <connections>
                                             <action selector="backBtnAction:" destination="09l-eL-0NZ" eventType="touchUpInside" id="ZBT-7N-ZLb"/>
@@ -427,7 +427,7 @@ Service Center</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4tI-oY-Y8Z">
-                                        <rect key="frame" x="6" y="14" width="36" height="34"/>
+                                        <rect key="frame" x="6" y="-3" width="72" height="68"/>
                                         <state key="normal" image="icBackward"/>
                                         <connections>
                                             <action selector="backBtnAction:" destination="jHb-qK-wSR" eventType="touchUpInside" id="44y-qN-4lJ"/>
@@ -587,7 +587,7 @@ Service Center</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VR2-mA-OKd">
-                                        <rect key="frame" x="6" y="14" width="36" height="34"/>
+                                        <rect key="frame" x="6" y="-3" width="72" height="68"/>
                                         <state key="normal" image="icBackward"/>
                                         <connections>
                                             <action selector="backBtnAction:" destination="ned-sa-trC" eventType="touchUpInside" id="8nQ-6Z-zFX"/>
@@ -800,7 +800,7 @@ Service Center</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fwA-Xg-fpL">
-                                        <rect key="frame" x="6" y="14" width="36" height="34"/>
+                                        <rect key="frame" x="6" y="-3" width="72" height="68"/>
                                         <state key="normal" image="icBackward"/>
                                         <connections>
                                             <action selector="backBtnAction:" destination="KzW-Im-RfD" eventType="touchUpInside" id="6fg-cM-fc7"/>
@@ -997,7 +997,7 @@ Service Center</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TEE-8I-aOG">
-                                        <rect key="frame" x="6" y="14" width="36" height="34"/>
+                                        <rect key="frame" x="6" y="-3" width="72" height="68"/>
                                         <state key="normal" image="icBackward"/>
                                         <connections>
                                             <action selector="backBtnAction:" destination="1bs-SP-OPu" eventType="touchUpInside" id="Kgs-tx-1II"/>
@@ -1190,7 +1190,7 @@ Service Center</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xz6-Xe-BwT">
-                                        <rect key="frame" x="6" y="14" width="36" height="34"/>
+                                        <rect key="frame" x="6" y="-3" width="72" height="68"/>
                                         <state key="normal" image="icBackward"/>
                                         <connections>
                                             <action selector="backBtnAction:" destination="scS-Gl-fMP" eventType="touchUpInside" id="qhe-P8-N5Y"/>
@@ -1365,10 +1365,10 @@ Service Center</string>
             </objects>
             <point key="canvasLocation" x="3565" y="-50"/>
         </scene>
-        <!--View Controller-->
+        <!--FacilityVC-->
         <scene sceneID="yZP-nF-2Sc">
             <objects>
-                <viewController id="MNi-yC-bfm" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FacilityVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="MNi-yC-bfm" customClass="FacilityVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="npG-sK-8Bm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1383,9 +1383,13 @@ Service Center</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BSD-fa-2iF">
-                                        <rect key="frame" x="14" y="14" width="30" height="34"/>
+                                        <rect key="frame" x="14" y="14" width="56" height="34"/>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleColor" red="0.54117647058823526" green="0.58431372549019611" blue="0.61960784313725492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="backBtnAction:" destination="scS-Gl-fMP" eventType="touchUpInside" id="sdZ-sC-DHC"/>
+                                            <action selector="cancelBtnAction:" destination="MNi-yC-bfm" eventType="touchUpInside" id="UEb-b4-0Uo"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lae-om-5mI">
@@ -1394,10 +1398,11 @@ Service Center</string>
                                             <constraint firstAttribute="width" constant="46" id="Oey-m7-0ql"/>
                                             <constraint firstAttribute="height" constant="28" id="k0t-fw-cqW"/>
                                         </constraints>
-                                        <state key="normal" title="Help">
-                                            <color key="titleColor" red="0.1960784314" green="0.30980392159999998" blue="0.76470588240000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Done">
+                                            <color key="titleColor" red="0.090196078431372548" green="0.14509803921568626" blue="0.3529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
+                                            <action selector="doneBtnAction:" destination="MNi-yC-bfm" eventType="touchUpInside" id="ZzR-wj-pmO"/>
                                             <action selector="helpBtnAction:" destination="scS-Gl-fMP" eventType="touchUpInside" id="0fW-Qp-wdI"/>
                                         </connections>
                                     </button>
@@ -1423,19 +1428,62 @@ Service Center</string>
                                     <constraint firstAttribute="bottom" secondItem="MPs-CA-54U" secondAttribute="bottom" id="n22-gm-8hp"/>
                                 </constraints>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="uYP-Ud-A6E">
+                                <rect key="frame" x="0.0" y="100" width="414" height="796"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="qJz-Ft-Hhz">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="42"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Services" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1vx-jJ-JBO">
+                                            <rect key="frame" x="14" y="12" width="59" height="18"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kOg-AZ-Tvd">
+                                            <rect key="frame" x="320" y="6" width="78" height="30"/>
+                                            <state key="normal" title="CLEAR ALL">
+                                                <color key="titleColor" red="0.78823529411764703" green="0.023529411764705882" blue="0.011764705882352941" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="clearAllAction:" destination="MNi-yC-bfm" eventType="touchUpInside" id="sQP-aR-D1Z"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.92941176470588238" green="0.92941176470588238" blue="0.92941176470588238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstItem="1vx-jJ-JBO" firstAttribute="centerY" secondItem="qJz-Ft-Hhz" secondAttribute="centerY" id="d4p-pz-xjD"/>
+                                        <constraint firstItem="kOg-AZ-Tvd" firstAttribute="centerY" secondItem="1vx-jJ-JBO" secondAttribute="centerY" id="fXY-Vv-QEb"/>
+                                        <constraint firstItem="1vx-jJ-JBO" firstAttribute="leading" secondItem="qJz-Ft-Hhz" secondAttribute="leading" constant="14" id="gRu-7N-ox1"/>
+                                        <constraint firstAttribute="trailing" secondItem="kOg-AZ-Tvd" secondAttribute="trailing" constant="16" id="qRN-O1-6Pp"/>
+                                    </constraints>
+                                </view>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="uYP-Ud-A6E" firstAttribute="top" secondItem="C4D-9F-wQz" secondAttribute="bottom" id="B4Q-7i-Vdm"/>
+                            <constraint firstItem="uYP-Ud-A6E" firstAttribute="leading" secondItem="j4e-3z-H5d" secondAttribute="leading" id="JPD-dV-FFl"/>
                             <constraint firstItem="C4D-9F-wQz" firstAttribute="leading" secondItem="j4e-3z-H5d" secondAttribute="leading" id="Q7N-fH-B5s"/>
                             <constraint firstItem="C4D-9F-wQz" firstAttribute="trailing" secondItem="j4e-3z-H5d" secondAttribute="trailing" id="TyW-cu-Tzp"/>
+                            <constraint firstAttribute="bottom" secondItem="uYP-Ud-A6E" secondAttribute="bottom" id="eNl-il-raW"/>
                             <constraint firstItem="C4D-9F-wQz" firstAttribute="top" secondItem="j4e-3z-H5d" secondAttribute="top" id="wFC-PN-R8F"/>
+                            <constraint firstItem="j4e-3z-H5d" firstAttribute="trailing" secondItem="uYP-Ud-A6E" secondAttribute="trailing" id="wHM-QR-L54"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="j4e-3z-H5d"/>
                     </view>
+                    <connections>
+                        <outlet property="cancelBtn" destination="BSD-fa-2iF" id="zPC-li-5gL"/>
+                        <outlet property="clearAllBtn" destination="kOg-AZ-Tvd" id="jMC-84-DPV"/>
+                        <outlet property="doneBtn" destination="Lae-om-5mI" id="l6p-fD-ydG"/>
+                        <outlet property="mainTableView" destination="uYP-Ud-A6E" id="ZIs-XY-gQC"/>
+                        <outlet property="titleLbl" destination="bYw-TO-MdX" id="1bK-wd-St9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eVj-Pa-hyd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4457" y="-65"/>
+            <point key="canvasLocation" x="4372" y="-40"/>
         </scene>
     </scenes>
     <resources>

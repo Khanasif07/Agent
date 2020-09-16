@@ -49,7 +49,7 @@ enum AppRouter {
     }
     
     static func goToTestingVC(){
-        let homeScene = GarageAddImageVC.instantiate(fromAppStoryboard: .PostLogin)
+        let homeScene = FacilityVC.instantiate(fromAppStoryboard: .Garage)
         setAsWindowRoot(homeScene)
     }
     
