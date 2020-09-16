@@ -26,25 +26,26 @@ enum AppRouter {
     // MARK: - Show Landing Screen
     //===========================
     static func checkAppInitializationFlow() {
-        if isUserLoggedin {
-            if !isPhoneNoVerified{
-                AppUserDefaults.removeValue(forKey: .accesstoken)
-                UserModel.main = UserModel()
-                AppRouter.makeLoginVCRoot()
-                return
-            }
-            switch isCurrentUserType {
-            case .user:
-                AppRouter.goToUserHome()
-            default:
-                let lang = AppUserDefaults.value(forKey: .currentLanguage).stringValue
-                AppUserDefaults.removeAllValues()
-                AppUserDefaults.save(value: lang, forKey: .currentLanguage)
-                AppUserDefaults.save(value: true, forKey: .isLanguageSelect)
-            }
-        } else {
-            self.makeChooseLanguageVCRoot()
-        }
+        goToTestingVC()
+//        if isUserLoggedin {
+//            if !isPhoneNoVerified{
+//                AppUserDefaults.removeValue(forKey: .accesstoken)
+//                UserModel.main = UserModel()
+//                AppRouter.makeLoginVCRoot()
+//                return
+//            }
+//            switch isCurrentUserType {
+//            case .user:
+//                AppRouter.goToUserHome()
+//            default:
+//                let lang = AppUserDefaults.value(forKey: .currentLanguage).stringValue
+//                AppUserDefaults.removeAllValues()
+//                AppUserDefaults.save(value: lang, forKey: .currentLanguage)
+//                AppUserDefaults.save(value: true, forKey: .isLanguageSelect)
+//            }
+//        } else {
+//            self.makeChooseLanguageVCRoot()
+//        }
     }
     
     static func goToTestingVC(){

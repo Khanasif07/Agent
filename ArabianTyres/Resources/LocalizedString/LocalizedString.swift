@@ -101,6 +101,7 @@ enum LocalizedString : String {
     case pleaseEnterExperience = "pleaseEnterExperience"
     case pleaseEnterDob = "pleaseEnterDob"
     case phoneNumber = "phoneNumber"
+    case wait_Img_Upload
     case registerAgain
     case completeProfile
     case yourRegistrationRequestIsStillUnder

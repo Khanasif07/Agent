@@ -10,12 +10,14 @@ import GoogleMaps
 import GooglePlaces
 import UIKit
 import DKImagePickerController
+import RSKImageCropper
 
 
 class GarageAddImageVC: BaseVC {
     
     // MARK: - IBOutlets
     //===========================
+    @IBOutlet weak var saveContinueBtn: AppButton!
     @IBOutlet weak var collViewHeightConst: NSLayoutConstraint!
     @IBOutlet weak var locationTextLbl: UILabel!
     @IBOutlet weak var descLbl: UILabel!
@@ -34,7 +36,14 @@ class GarageAddImageVC: BaseVC {
     private var mapPermission: Bool = false
     private var isMarkerAnimation : Bool = true
     private var liveAddress : String = ""
-    var imagesArray = [String]()
+    var imagesArray = [ImageModel]()
+    fileprivate var hasImageUploaded = true {
+        didSet {
+            if hasImageUploaded {
+                print("StringConstants.K_PROFILE_PIC_UPLOADED.localized")
+            }
+        }
+    }
     
     // MARK: - Lifecycle
     //===========================
@@ -43,11 +52,15 @@ class GarageAddImageVC: BaseVC {
         initialSetup()
     }
     
-    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.mapView.round(radius: 2.0)
+    }
     // MARK: - IBActions
     //===========================
     
-    
+    @IBAction func saveBtnAction(_ sender: UIButton) {
+    }
 }
 
 // MARK: - Extension For Functions
@@ -58,6 +71,7 @@ extension GarageAddImageVC {
         self.collViewSetUp()
         self.prepareMap()
         self.setAddress()
+        self.saveContinueBtn.isEnabled = false
     }
     
     private func prepareMap() {
@@ -125,46 +139,17 @@ extension GarageAddImageVC {
     }
     
    @objc private func addImageBtnTapped(_ sender: UIButton) {
-    self.imagesArray.append("Hello")
-    self.reloadCollectionViewWithUIUpdation()
-//        if !self.hasImageUploaded{
-//            self.showAlert(msg: StringConstants.wait_Img_Upload)
-//            return
-//        }
-
-//        let pickerController = DKImagePickerController()
-//        pickerController.assetType = .allPhotos
-//        pickerController.maxSelectableCount = 1
-//        pickerController.didSelectAssets = { (assets: [DKAsset]) in
-//
-//            if (self.imagesArray.count > 5){
-////                self.showAlert(msg: StringConstants.Upload5Images.localized)
-//                return
-//            }
-//
-//            for asset in assets{
-//                if asset.type == .photo{
-//                    asset.fetchOriginalImage { [weak self](image, _) in
-//                        guard let strongSelf = self else{return}
-//                        guard let res = image else {return}
-//                        if asset.type == .photo{
-//                            DispatchQueue.main.async {
-//                                Cropper.shared.openCropper(withImage: res, mode: .square, on: strongSelf)
-//                            }
-//                        }
-//                    }
-//                }else {}
-//            }
-//            print("didSelectAssets")
-//            print(assets)
-//        }
-//        self.present(pickerController, animated: true) {}
+    if !self.hasImageUploaded{
+        self.showAlert(msg: LocalizedString.wait_Img_Upload.localized)
+        return
+    }
+    self.captureImage(delegate: self)
     }
     
     func reloadCollectionViewWithUIUpdation(){
         if imagesArray.count > 2 {
             DispatchQueue.main.async {
-                self.collViewHeightConst.constant = 110 * 2
+                self.collViewHeightConst.constant = 90 * 2
             }
         }
         DispatchQueue.main.async {
@@ -253,17 +238,36 @@ extension GarageAddImageVC:UICollectionViewDelegate, UICollectionViewDataSource,
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let imageCell = collectionView.dequeueCell(with: AddImageCollCell.self, indexPath: indexPath)
-        if (indexPath.row == self.imagesArray.count - 1){
+        if !self.hasImageUploaded && (indexPath.row == self.imagesArray.count - 1){
+            imageCell.activityIndictor.isHidden = false
             imageCell.activityIndictor.startAnimating()
         }else{
+            imageCell.activityIndictor.isHidden = true
             imageCell.activityIndictor.stopAnimating()
         }
+        var data: ImageModel?
         if !self.imagesArray.isEmpty && self.imagesArray.count <= 4 && indexPath.item < self.imagesArray.count {
-//            data = self.imagesArray[indexPath.item]
+            data = self.imagesArray[indexPath.item]
+            if let imageUrl = data?.url {
+                if imageUrl.isEmpty {
+                    imageCell.mainImgView.image = data?.image ?? nil
+                } else {
+                    imageCell.mainImgView.sd_setImage(with: URL(string: imageUrl), placeholderImage: #imageLiteral(resourceName: "empty_album") , completed: nil)
+                }
+            }
             
         } else if !self.imagesArray.isEmpty && self.imagesArray.count == 5 && indexPath.item < self.imagesArray.count{
+            data = self.imagesArray[indexPath.item]
+            if let imageUrl = data?.url {
+                    if imageUrl.isEmpty {
+                        imageCell.mainImgView.image = data?.image ?? nil
+                    } else {
+                        imageCell.mainImgView.sd_setImage(with: URL(string: imageUrl), placeholderImage: #imageLiteral(resourceName: "empty_album") , completed: nil)
+                    }
+            }
         }else {
-            imageCell.mainImgView.image = #imageLiteral(resourceName: "group3875")
+            imageCell.activityIndictor.isHidden = true
+            imageCell.mainImgView.image = UIImage()
         }
         
         imageCell.addImgBtn.addTarget(self, action: #selector(addImageBtnTapped(_:)), for: .touchUpInside)
@@ -271,28 +275,24 @@ extension GarageAddImageVC:UICollectionViewDelegate, UICollectionViewDataSource,
         if !self.imagesArray.isEmpty{
             
             if indexPath.item == self.imagesArray.count{
-//                imageCell.crossBtn.isHidden = true
-//                imageCell.addImage.isHidden = false
+//                imageCell.addb.isHidden = true
+                imageCell.addImgBtn.isHidden = false
             }else{
 //                imageCell.crossBtn.isHidden = false
-//                imageCell.addImage.isHidden = true
+                imageCell.addImgBtn.isHidden = true
             }
         }else{
 //            imageCell.crossBtn.isHidden = true
-//            imageCell.addImage.isHidden = false
+               imageCell.addImgBtn.isHidden = false
             
         }
-        
-  
-//        imageCell.addImage.addTarget(self, action: #selector(addEventImageBtnTapped(_:)), for: .touchUpInside)
-        
         return imageCell
     }
     
    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: (self.mainCollView.frame.width / 3) - 5, height: 72.0)
+        return CGSize(width: (self.mainCollView.frame.width / 3) - 5, height: 80.0)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -304,3 +304,39 @@ extension GarageAddImageVC:UICollectionViewDelegate, UICollectionViewDataSource,
     }
 }
 
+
+
+// MARK: - UIImagePickerControllerDelegate
+//===========================
+extension GarageAddImageVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate , RemovePictureDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[.editedImage] as? UIImage
+        hasImageUploaded = false
+        self.imagesArray.append(ImageModel(url: "", mediaType:"image", image: image ?? UIImage()))
+        self.reloadCollectionViewWithUIUpdation()
+        image?.upload(progress: { (progress) in
+            printDebug(progress)
+        }, completion: { (response,error) in
+            if let url = response {
+                self.hasImageUploaded = true
+//                self.viewModel.userImageUrl = url
+//                self.userProfileImgView.image = image
+//                self.viewModel.image = self.userProfileImgView.image
+            }
+            if let _ = error{
+//                self.showAlert(msg: LocalizedString.imageUploadingFailed.localized)
+            }
+        })
+        picker.dismiss(animated: true, completion: nil)
+    }
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    func removepicture() {
+//        self.userProfileImgView.image = #imageLiteral(resourceName: "icProfile")
+//        self.viewModel.image = nil
+//        self.viewModel.userImageUrl = ""
+    }
+}
