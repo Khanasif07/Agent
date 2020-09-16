@@ -84,11 +84,11 @@ extension ResetPasswordVC {
         let show = UIButton()
         show.isSelected = false
         show.addTarget(self, action: #selector(secureTextField(_:)), for: .touchUpInside)
-        self.confirmTxtField.setButtonToRightView(btn: show, selectedImage: #imageLiteral(resourceName: "icPasswordHide"), normalImage: #imageLiteral(resourceName: "icPasswordHide"), size: CGSize(width: 22, height: 22))
+        self.confirmTxtField.setButtonToRightView(btn: show, selectedImage: #imageLiteral(resourceName: "icPasswordView"), normalImage: #imageLiteral(resourceName: "icPasswordHide"), size: CGSize(width: 22, height: 22))
         let show1 = UIButton()
         show1.isSelected = false
         show1.addTarget(self, action: #selector(secureTextField1(_:)), for: .touchUpInside)
-        self.newPassTxtField.setButtonToRightView(btn: show1, selectedImage: #imageLiteral(resourceName: "icPasswordHide"), normalImage: #imageLiteral(resourceName: "icPasswordHide"), size: CGSize(width: 22, height: 22))
+        self.newPassTxtField.setButtonToRightView(btn: show1, selectedImage: #imageLiteral(resourceName: "icPasswordView"), normalImage: #imageLiteral(resourceName: "icPasswordHide"), size: CGSize(width: 22, height: 22))
         self.submitBtn.isEnabled = false
     }
     
