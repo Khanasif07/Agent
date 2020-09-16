@@ -34,5 +34,8 @@ target 'ArabianTyres' do
   pod 'Firebase/Storage'
   pod 'Firebase/Crashlytics'
   
+  #imagePicker
+  pod 'DKImagePickerController'
+  
   
 end

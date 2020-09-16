@@ -52,6 +52,8 @@
 		844D81E5250271B400550334 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844D81E4250271B400550334 /* LoginViewModel.swift */; };
 		844D81E72502723D00550334 /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844D81E62502723C00550334 /* SignUpModel.swift */; };
 		844D81E92502751D00550334 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844D81E82502751D00550334 /* SignUpViewModel.swift */; };
+		846352D02511E34E004216F1 /* AddImageCollCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846352CE2511E34E004216F1 /* AddImageCollCell.swift */; };
+		846352D12511E34E004216F1 /* AddImageCollCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 846352CF2511E34E004216F1 /* AddImageCollCell.xib */; };
 		847BC423250774E100EEEFDC /* ResetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847BC422250774E100EEEFDC /* ResetPasswordVC.swift */; };
 		847BC425250796CB00EEEFDC /* ResetPasswordVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847BC424250796CB00EEEFDC /* ResetPasswordVM.swift */; };
 		8481F9FD2500AA9A00AB6EFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481F9FC2500AA9A00AB6EFB /* AppDelegate.swift */; };
@@ -190,6 +192,8 @@
 		844D81E4250271B400550334 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		844D81E62502723C00550334 /* SignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
 		844D81E82502751D00550334 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		846352CE2511E34E004216F1 /* AddImageCollCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageCollCell.swift; sourceTree = "<group>"; };
+		846352CF2511E34E004216F1 /* AddImageCollCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddImageCollCell.xib; sourceTree = "<group>"; };
 		847BC422250774E100EEEFDC /* ResetPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordVC.swift; sourceTree = "<group>"; };
 		847BC424250796CB00EEEFDC /* ResetPasswordVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordVM.swift; sourceTree = "<group>"; };
 		8481F9F92500AA9A00AB6EFB /* ArabianTyres.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArabianTyres.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -515,6 +519,15 @@
 			path = LoginWithPhoneVC;
 			sourceTree = "<group>";
 		};
+		846352CD2511E323004216F1 /* GarageAddImageVC */ = {
+			isa = PBXGroup;
+			children = (
+				846352CE2511E34E004216F1 /* AddImageCollCell.swift */,
+				846352CF2511E34E004216F1 /* AddImageCollCell.xib */,
+			);
+			path = GarageAddImageVC;
+			sourceTree = "<group>";
+		};
 		847BC421250774D000EEEFDC /* ResetPasswordVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -823,6 +836,7 @@
 		8481FA87250107C000AB6EFB /* PostloginVC */ = {
 			isa = PBXGroup;
 			children = (
+				846352CD2511E323004216F1 /* GarageAddImageVC */,
 				843C8ECF2508FB6B00515F2E /* HomeVC */,
 				843C8EB625087D9E00515F2E /* ProfileVC */,
 				A45042C3250F2A62001C8905 /* GarageRegistrationVC */,
@@ -1019,6 +1033,7 @@
 				8481FA9D250143A200AB6EFB /* NunitoSans-Italic.ttf in Resources */,
 				844D81E0250243B300550334 /* SignUpTopCell.xib in Resources */,
 				8481FA952501437C00AB6EFB /* NunitoSans-ExtraBold.ttf in Resources */,
+				846352D12511E34E004216F1 /* AddImageCollCell.xib in Resources */,
 				84303E6E25064CC8000BA5C3 /* Home.storyboard in Resources */,
 				8481FA992501438F00AB6EFB /* NunitoSans-ExtraLight.ttf in Resources */,
 				8481FA932501437000AB6EFB /* NunitoSans-BoldItalic.ttf in Resources */,
@@ -1197,6 +1212,7 @@
 				8481FA5F2500BF8400AB6EFB /* AppRouter.swift in Sources */,
 				843C8EC52508AE9500515F2E /* ProfileUserInternalCell.swift in Sources */,
 				84476D3725075F6800AB5E80 /* ExploreVC.swift in Sources */,
+				846352D02511E34E004216F1 /* AddImageCollCell.swift in Sources */,
 				8481F9FD2500AA9A00AB6EFB /* AppDelegate.swift in Sources */,
 				A45566CD250B4EAC009E4324 /* RegistraionPendingVC.swift in Sources */,
 				844D81DF250243B300550334 /* SignUpTopCell.swift in Sources */,

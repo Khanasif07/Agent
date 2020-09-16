@@ -10,6 +10,7 @@ import GoogleMaps
 import GooglePlaces
 import UIKit
 
+
 class GarageAddImageVC: BaseVC {
     
     // MARK: - IBOutlets
@@ -88,6 +89,7 @@ extension GarageAddImageVC {
         mainCollView.dataSource = self
         mainCollView.delegate = self
         mainCollView.collectionViewLayout = LeftAlignedCollectionViewFlowLayout()
+        mainCollView.registerCell(with: AddImageCollCell.self)
     }
     
     private func locationButtonTapped() {
@@ -117,6 +119,55 @@ extension GarageAddImageVC {
         CommonFunctions.delay(delay: 1.0) {
              self.isMarkerAnimation = true
         }
+    }
+    
+   @objc private func addImageBtnTapped(_ sender: UIButton) {
+    self.imagesArray.append("Hello")
+    self.mainCollView.reloadData()
+//        if !self.hasImageUploaded{
+//            self.showAlert(msg: StringConstants.wait_Img_Upload)
+//            return
+//        }
+//
+//        let pickerController = DKImagePickerController()
+//        pickerController.assetType = .allPhotos
+//        pickerController.maxSelectableCount = 1
+//        pickerController.didSelectAssets = { (assets: [DKAsset]) in
+//
+//            if (self.imagesArray.count > 5){
+////                self.showAlert(msg: StringConstants.Upload5Images.localized)
+//                return
+//            }
+//
+//            for asset in assets{
+//                if asset.type == .photo{
+//
+//                    asset.fetchOriginalImage { [weak self](image, _) in
+//                        guard let strongSelf = self else{return}
+//                        guard let res = image else {return}
+//                        if asset.type == .photo{
+//                            DispatchQueue.main.async {
+//                                Cropper.shared.openCropper(withImage: res, mode: .square, on: strongSelf)
+//                            }
+//                        }
+//                    }
+//                }else{
+//
+//                    asset.fetchAVAsset(completeBlock: { (avAsset, infos) in
+//                        if let avAsset = avAsset, let url = self.processSelectedVideo(avAsset: avAsset){
+//                            //self.removeLoader()
+//                            self.compressVideo(videoURL: url, caption: "")
+//                        }else{
+//                            //                            print_debug("Cannot get avasset")
+//                            //                            self.removeLoader()
+//                        }
+//                    })
+//                }
+//            }
+//            print("didSelectAssets")
+//            print(assets)
+//        }
+//        self.present(pickerController, animated: true) {}
     }
 }
 // MARK: - Map and cluster Functions
@@ -199,27 +250,22 @@ extension GarageAddImageVC:UICollectionViewDelegate, UICollectionViewDataSource,
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let imageCell = collectionView.dequeueCell(with: UICollectionViewCell(), indexPath: indexPath)
-        let imageCell = UICollectionViewCell()
-//        imageCell.delegate = self
-//        if (indexPath.row == self.imagesArray.count - 1){
-//            imageCell.activityIndicator.startAnimating()
-//        }else{
-//            imageCell.activityIndicator.stopAnimating()
-//        }
-//        if !self.imagesArray.isEmpty && self.imagesArray.count <= 4 && indexPath.item < self.imagesArray.count {
-////            data = self.imagesArray[indexPath.item]
-//            
-//        } else if !self.imagesArray.isEmpty && self.imagesArray.count == 5 && indexPath.item < self.imagesArray.count{
-//        }else {
-//            imageCell.eventImageView.image = #imageLiteral(resourceName: "ryanSpencerCNEiPIxpYiUnsplash")
-//        }
+        let imageCell = collectionView.dequeueCell(with: AddImageCollCell.self, indexPath: indexPath)
+        if (indexPath.row == self.imagesArray.count - 1){
+            imageCell.activityIndictor.startAnimating()
+        }else{
+            imageCell.activityIndictor.stopAnimating()
+        }
+        if !self.imagesArray.isEmpty && self.imagesArray.count <= 4 && indexPath.item < self.imagesArray.count {
+//            data = self.imagesArray[indexPath.item]
+            
+        } else if !self.imagesArray.isEmpty && self.imagesArray.count == 5 && indexPath.item < self.imagesArray.count{
+        }else {
+            imageCell.mainImgView.image = #imageLiteral(resourceName: "group3875")
+        }
         
-//        imageCell.addImage.addTarget(self, action: #selector(addEventImageBtnTapped(_:)), for: .touchUpInside)
-//
-//        let imgType = data?.mediaType ?? "image"
-//        imageCell.videoImageView?.isHidden = imgType == "image"
-//
+        imageCell.addImgBtn.addTarget(self, action: #selector(addImageBtnTapped(_:)), for: .touchUpInside)
+
         if !self.imagesArray.isEmpty{
             
             if indexPath.item == self.imagesArray.count{
@@ -244,7 +290,7 @@ extension GarageAddImageVC:UICollectionViewDelegate, UICollectionViewDataSource,
    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: (self.mainCollView.frame.width / 3) - 5, height: 110 - 5)
+        return CGSize(width: (self.mainCollView.frame.width / 3) - 5, height: 72.0)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
