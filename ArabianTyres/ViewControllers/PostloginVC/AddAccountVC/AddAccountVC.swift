@@ -128,6 +128,9 @@ extension AddAccountVC : UITableViewDelegate, UITableViewDataSource {
         if bankDetailAdded {
             let cell = tableView.dequeueCell(with: LinkAccountTableViewCell.self, indexPath: indexPath)
             cell.popluateData()
+            cell.editBtnTapped = {[weak self] in
+                
+            }
             return cell
 
         }else {

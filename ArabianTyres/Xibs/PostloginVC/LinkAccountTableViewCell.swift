@@ -16,6 +16,9 @@ class LinkAccountTableViewCell: UITableViewCell {
     @IBOutlet weak var editbtn: UIButton!
     @IBOutlet weak var containerView : UIView!
 
+    
+    var editBtnTapped: (()->())?
+    
     override func awakeFromNib() {
         setupFontAndText()
         super.awakeFromNib()
@@ -33,7 +36,7 @@ class LinkAccountTableViewCell: UITableViewCell {
     }
     
     @IBAction func editBtnTapped(_ sender: UIButton) {
-      printDebug("edit btn tapped")
+        editBtnTapped?()
     }
     
     func popluateData(){
