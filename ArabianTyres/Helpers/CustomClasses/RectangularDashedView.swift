@@ -17,10 +17,10 @@ class RectangularDashedView: UIView {
 //            layer.masksToBounds = cornerRadius > 0
 //        }
 //    }
-    @IBInspectable var dashWidth: CGFloat = 0
-    @IBInspectable var dashColor: UIColor = .clear
-    @IBInspectable var dashLength: CGFloat = 0
-    @IBInspectable var betweenDashesSpace: CGFloat = 0
+    @IBInspectable var dashWidth: CGFloat = 1.00
+    @IBInspectable var dashColor: UIColor = #colorLiteral(red: 0.3294117647, green: 0.337254902, blue: 0.3607843137, alpha: 0.5)
+    @IBInspectable var dashLength: CGFloat = 8.0
+    @IBInspectable var betweenDashesSpace: CGFloat = 5.0
     
     var dashBorder: CAShapeLayer?
     
@@ -32,6 +32,7 @@ class RectangularDashedView: UIView {
         dashBorder.strokeColor = dashColor.cgColor
         dashBorder.lineDashPattern = [dashLength, betweenDashesSpace] as [NSNumber]
         dashBorder.frame = bounds
+        
         dashBorder.fillColor = nil
         if cornerRadius > 0 {
             dashBorder.path = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius).cgPath
