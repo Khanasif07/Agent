@@ -40,6 +40,7 @@ class GarageAddImageVC: BaseVC {
     private var isMarkerAnimation : Bool = true
     private var liveAddress : String = ""
     var imagesArray = [ImageModel]()
+    var serviceImagesArray = [String]()
     fileprivate var hasImageUploaded = true {
         didSet {
             if hasImageUploaded {
@@ -67,6 +68,7 @@ class GarageAddImageVC: BaseVC {
     }
     
     @IBAction func saveBtnAction(_ sender: UIButton) {
+        GarageProfileModel.shared.images = self.serviceImagesArray
         AppRouter.goToUploadDocumentVC(vc: self)
     }
 }
@@ -329,9 +331,7 @@ extension GarageAddImageVC: UIImagePickerControllerDelegate, UINavigationControl
         }, completion: { (response,error) in
             if let url = response {
                 self.hasImageUploaded = true
-//                self.viewModel.userImageUrl = url
-//                self.userProfileImgView.image = image
-//                self.viewModel.image = self.userProfileImgView.image
+                self.serviceImagesArray.append(url)
             }
             if let _ = error{
 //                self.showAlert(msg: LocalizedString.imageUploadingFailed.localized)

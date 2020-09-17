@@ -16,7 +16,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="65F-xZ-hPb">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="65F-xZ-hPb" customClass="RectangularDashedView" customModule="ArabianTyres">
                         <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="441-dw-H7a">
@@ -24,13 +24,27 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.32941176470588235" green="0.33725490196078434" blue="0.36078431372549019" alpha="0.5" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="441-dw-H7a" firstAttribute="top" secondItem="65F-xZ-hPb" secondAttribute="top" id="3KT-vf-4i9"/>
                             <constraint firstAttribute="bottom" secondItem="441-dw-H7a" secondAttribute="bottom" id="9G9-7w-Q7V"/>
                             <constraint firstItem="441-dw-H7a" firstAttribute="leading" secondItem="65F-xZ-hPb" secondAttribute="leading" id="eSR-9M-M7A"/>
                             <constraint firstAttribute="trailing" secondItem="441-dw-H7a" secondAttribute="trailing" id="mVZ-pa-ihj"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="dashColor">
+                                <color key="value" red="0.32941176470588235" green="0.33725490196078434" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="dashWidth">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="betweenDashesSpace">
+                                <real key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="dashLength">
+                                <real key="value" value="8"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="tx6-Vb-dJD">
                         <rect key="frame" x="20" y="20" width="40" height="40"/>
@@ -65,7 +79,7 @@
             <connections>
                 <outlet property="activityIndictor" destination="tx6-Vb-dJD" id="iNE-rn-Rkg"/>
                 <outlet property="addImgBtn" destination="wZh-ov-EHn" id="G0O-A0-nl2"/>
-                <outlet property="dataContainerView" destination="65F-xZ-hPb" id="Am5-IC-U5E"/>
+                <outlet property="dataContainerView" destination="65F-xZ-hPb" id="Srq-Ta-oZr"/>
                 <outlet property="mainImgView" destination="441-dw-H7a" id="HE9-qM-xwU"/>
             </connections>
             <point key="canvasLocation" x="210.86956521739131" y="168.41517857142856"/>

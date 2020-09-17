@@ -26,7 +26,7 @@ class GarageAddLocationVC: BaseVC {
     //===========================
     var locationValue = LocationController.sharedLocationManager.locationManager.location?.coordinate ?? CLLocationCoordinate2D(latitude: 34.052238, longitude: -118.24334)
     private var locationManager = CLLocationManager()
-    let markerView = UIImageView(frame:CGRect(x: 0, y: 0, width: 41, height: 56.0))
+    let markerView = UIImageView(frame:CGRect(x: 0, y: 0, width: 21, height: 21))
     var gmssMarker = GMSMarker()
     var getLocation: ((CLLocationCoordinate2D,String)->())?
     var currentZoomLevel: Float = 14.0
@@ -62,6 +62,9 @@ class GarageAddLocationVC: BaseVC {
     
     
     @IBAction func saveAndContinueBtnAction(_ sender: UIButton) {
+        GarageProfileModel.shared.latitude = locationValue.latitude
+        GarageProfileModel.shared.longitude = locationValue.longitude
+        GarageProfileModel.shared.address = liveAddress
         AppRouter.goToGarageAddImageVC(vc: self)
     }
     
@@ -99,13 +102,24 @@ extension GarageAddLocationVC {
             guard let address = response?.firstResult(), let lines = address.lines else { return }
             _ = (address.locality?.isEmpty ?? true) ? ((address.subLocality?.isEmpty ?? true) ? ((address.administrativeArea?.isEmpty ?? true) ? address.country : address.administrativeArea)  : address.subLocality)   : address.locality
             self.serviceAddresslbl.text = "\(lines.joined(separator: ","))"
-            GarageProfileModel.shared.address = "\(lines.joined(separator: ","))"
+            self.liveAddress = "\(lines.joined(separator: ","))"
             self.saveContinueBtn.isEnabled = true
         }
     }
     
     private func addMarkers() {
         mapView.clear()
+    }
+    
+    func moveMarker(coordinate: CLLocationCoordinate2D){
+        CATransaction.begin()
+        CATransaction.setValue(0.0, forKey: kCATransactionAnimationDuration)
+        self.mapView.animate(to: GMSCameraPosition.camera(withLatitude:coordinate.latitude, longitude: coordinate.longitude, zoom: currentZoomLevel))
+        self.gmssMarker.position = CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude)
+        CATransaction.commit()
+        CommonFunctions.delay(delay: 1.0) {
+            self.isMarkerAnimation = true
+        }
     }
 }
 
@@ -138,7 +152,7 @@ extension GarageAddLocationVC :  GMSMapViewDelegate ,CLLocationManagerDelegate {
             self.isMarkerAnimation = false
             let currentCoordinate = mapView.projection.coordinate(for: mapView.center)
             self.locationValue = mapView.projection.coordinate(for: mapView.center)
-//            self.moveMarker(coordinate: currentCoordinate)
+            self.moveMarker(coordinate: currentCoordinate)
             self.setAddress()
         }
         currentZoomLevel = position.zoom
@@ -159,7 +173,10 @@ extension GarageAddLocationVC: GMSAutocompleteViewControllerDelegate {
     
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
         if let address =  place.formattedAddress {
+            self.locationValue = CLLocationCoordinate2D(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
             self.serviceAddresslbl.text = address
+            liveAddress = address
+            moveMarker(coordinate: CLLocationCoordinate2D(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude))
         }
         viewController.dismiss(animated: true)
     }
