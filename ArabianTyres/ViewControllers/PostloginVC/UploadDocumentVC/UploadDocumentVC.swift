@@ -141,7 +141,7 @@ extension UploadDocumentVC: UIImagePickerControllerDelegate,UINavigationControll
         }, completion: { (response,error) in
             if let url = response {
                 CommonFunctions.hideActivityLoader()
-                self.saveImage(imgUrl: url)
+//                self.saveImage(imgUrl: url)
             }
             if let _ = error{
                 self.showAlert(msg: "Image upload failed")
