@@ -198,7 +198,7 @@ extension GarageProfileStep2VC: UICollectionViewDelegate,UICollectionViewDataSou
                             if imageUrl.isEmpty {
                                 imageCell.mainImgView.image = data?.image ?? nil
                             } else {
-                                imageCell.mainImgView.sd_setImage(with: URL(string: imageUrl), placeholderImage: #imageLiteral(resourceName: "empty_album") , completed: nil)
+                                imageCell.mainImgView.setImage_kf(imageString: imageUrl, placeHolderImage: #imageLiteral(resourceName: "icUnCheck"))
                             }
                         }
                         
@@ -208,7 +208,7 @@ extension GarageProfileStep2VC: UICollectionViewDelegate,UICollectionViewDataSou
                                 if imageUrl.isEmpty {
                                     imageCell.mainImgView.image = data?.image ?? nil
                                 } else {
-                                    imageCell.mainImgView.sd_setImage(with: URL(string: imageUrl), placeholderImage: #imageLiteral(resourceName: "empty_album") , completed: nil)
+                                    imageCell.mainImgView.setImage_kf(imageString: imageUrl, placeHolderImage: #imageLiteral(resourceName: "icUnCheck"))
                                 }
                         }
                     }else {
