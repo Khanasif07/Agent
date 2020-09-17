@@ -153,7 +153,7 @@ extension AddAccountVC : UITableViewDelegate, UITableViewDataSource {
 }
 
 
-extension AddAccountVC: BankDetail {
+extension AddAccountVC: BankDetail{
     func BankDetailAdded() {
         bankDetailAdded = true
         registerBtn.isEnabled = checkBtn.isSelected
@@ -164,6 +164,7 @@ extension AddAccountVC: BankDetail {
 extension AddAccountVC: GarageRegistrationVMDelegate {
     func garageRegistrationSuccess(msg: String) {
         CommonFunctions.showToastWithMessage(msg)
+        
     }
     
     func garageRegistrationFailed(msg: String) {

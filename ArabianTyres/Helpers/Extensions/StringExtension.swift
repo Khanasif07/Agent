@@ -211,6 +211,14 @@ extension String {
         return result
     }
     
+    var displaySecureText : String {
+        let firstTwo = self.prefix(2)
+        let lastFour = self.suffix(4)
+        let remainingDigits = self.count - 6
+        let hideText = String(repeating: "*", count: remainingDigits)
+        return firstTwo + hideText + lastFour
+    }
+    
     func stringByAppendingPathComponent(path: String) -> String {
         
         let nsSt = self as NSString

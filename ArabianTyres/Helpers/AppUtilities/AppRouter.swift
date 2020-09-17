@@ -27,25 +27,25 @@ enum AppRouter {
     //===========================
     static func checkAppInitializationFlow() {
         goToTestingVC()
-//        if isUserLoggedin {
-//            if !isPhoneNoVerified{
-//                AppUserDefaults.removeValue(forKey: .accesstoken)
-//                UserModel.main = UserModel()
-//                AppRouter.makeLoginVCRoot()
-//                return
-//            }
-//            switch isCurrentUserType {
-//            case .user:
-//                AppRouter.goToUserHome()
-//            default:
-//                let lang = AppUserDefaults.value(forKey: .currentLanguage).stringValue
-//                AppUserDefaults.removeAllValues()
-//                AppUserDefaults.save(value: lang, forKey: .currentLanguage)
-//                AppUserDefaults.save(value: true, forKey: .isLanguageSelect)
-//            }
-//        } else {
-//            self.makeChooseLanguageVCRoot()
-//        }
+        if isUserLoggedin {
+            if !isPhoneNoVerified{
+                AppUserDefaults.removeValue(forKey: .accesstoken)
+                UserModel.main = UserModel()
+                AppRouter.makeLoginVCRoot()
+                return
+            }
+            switch isCurrentUserType {
+            case .user:
+                AppRouter.goToUserHome()
+            default:
+                let lang = AppUserDefaults.value(forKey: .currentLanguage).stringValue
+                AppUserDefaults.removeAllValues()
+                AppUserDefaults.save(value: lang, forKey: .currentLanguage)
+                AppUserDefaults.save(value: true, forKey: .isLanguageSelect)
+            }
+        } else {
+            self.makeChooseLanguageVCRoot()
+        }
     }
     
     static func goToTestingVC(){
@@ -156,7 +156,7 @@ enum AppRouter {
     
     static func goToAddAccountDetailVC(vc: UIViewController){
         let scene = AddAccountDetailVC.instantiate(fromAppStoryboard: .Garage)
-        scene.delegate = vc as! BankDetail
+        scene.bankDetailDelegate = vc as? BankDetail
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
@@ -177,7 +177,8 @@ enum AppRouter {
     }
     
     static func goToBankListingVC(vc: UIViewController){
-          let scene = BankListingVC.instantiate(fromAppStoryboard: .PostLogin)
+        let scene = BankListingVC.instantiate(fromAppStoryboard: .PostLogin)
+        scene.bankDelegate = vc as? BankListingVMDelegate 
         vc.present(scene, animated: true)
       }
     
