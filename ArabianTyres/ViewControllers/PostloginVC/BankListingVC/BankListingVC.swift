@@ -14,6 +14,7 @@ class BankListingVC: BaseVC {
     @IBOutlet weak var mainTableView: UITableView!
     @IBOutlet weak var searchTxtField: ATCTextField!
     @IBOutlet weak var titleLbl: UILabel!
+    
     // MARK: - Variables
     //===========================
     var viewModel = BankListingVM()
@@ -77,7 +78,7 @@ extension BankListingVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell =  tableView.cellForRow(at: indexPath) as? BankListingTableCell else{ return }
-        bankDelegate?.sendBankCode(code: "+" + "\(cell.bankNameLbl.text ?? "")")
+        bankDelegate?.sendBankCode(code: "\(cell.bankNameLbl.text ?? "")")
         self.dismiss(animated: true, completion: nil)
     }
 }

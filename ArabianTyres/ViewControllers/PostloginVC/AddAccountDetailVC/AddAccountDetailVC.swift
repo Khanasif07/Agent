@@ -37,8 +37,8 @@ class AddAccountDetailVC: BaseVC {
                                LocalizedString.AccountNo.localized,
                                LocalizedString.confirmAccountNo.localized
                               ]
-    weak var delegate : BankDetail?
-    
+    weak var bankDetailDelegate : BankDetail?
+
     // MARK: - Lifecycle
     //===========================
     override func viewDidLoad() {
@@ -66,7 +66,7 @@ class AddAccountDetailVC: BaseVC {
     }
     
     @IBAction func addBtnAction(_ sender: UIButton) {
-        delegate?.BankDetailAdded()
+        bankDetailDelegate?.BankDetailAdded()
         self.pop()
     }
 
@@ -80,7 +80,7 @@ extension AddAccountDetailVC {
         setupTextAndFont()
         setupTextField()
         setData()
-        addBtn.isEnabled = false
+        addBtn.isEnabled = addBtnStatus()
     }
    
     private func setupTextAndFont(){
@@ -101,7 +101,7 @@ extension AddAccountDetailVC {
             txtField?.delegate = self
             txtField?.placeholder = placeHolderArr[index]
             txtField?.title = titleArr[index]
-            txtField?.titleLabel.textColor = AppColors.fontTertiaryColor
+            txtField?.selectedTitleColor = AppColors.fontTertiaryColor
             txtField?.placeholderFont = AppFonts.NunitoSansBold.withSize(14.0)
             txtField?.font = AppFonts.NunitoSansBold.withSize(14.0)
         }
@@ -112,7 +112,6 @@ extension AddAccountDetailVC {
     
     private func setData() {
         if addBtnStatus() {
-            addBtn.isEnabled = addBtnStatus()
             selectYourBankTextField.text = GarageProfileModel.shared.bankName
             enterAccountNumberTextField.text = GarageProfileModel.shared.accountNumber
             confirmAccountNumberTextField.text = GarageProfileModel.shared.confirmAccountNumber
@@ -153,8 +152,7 @@ extension AddAccountDetailVC: UITextFieldDelegate {
         guard let text = textField.text else {return}
         
         switch textField {
-        case selectYourBankTextField:
-            GarageProfileModel.shared.bankName = text
+
         case enterAccountNumberTextField:
             GarageProfileModel.shared.accountNumber = text
         case confirmAccountNumberTextField:
@@ -168,4 +166,11 @@ extension AddAccountDetailVC: UITextFieldDelegate {
      private func addBtnStatus()-> Bool{
          return !GarageProfileModel.shared.bankName.isEmpty && !GarageProfileModel.shared.accountNumber.isEmpty && !GarageProfileModel.shared.confirmAccountNumber.isEmpty
      }
+}
+
+extension AddAccountDetailVC: BankListingVMDelegate{
+    func sendBankCode(code: String) {
+        selectYourBankTextField.text = code
+        GarageProfileModel.shared.bankName = code
+    }
 }

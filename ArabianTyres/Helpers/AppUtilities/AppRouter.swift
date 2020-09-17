@@ -26,6 +26,7 @@ enum AppRouter {
     // MARK: - Show Landing Screen
     //===========================
     static func checkAppInitializationFlow() {
+        goToTestingVC()
         if isUserLoggedin {
             if !isPhoneNoVerified{
                 AppUserDefaults.removeValue(forKey: .accesstoken)
@@ -155,7 +156,7 @@ enum AppRouter {
     
     static func goToAddAccountDetailVC(vc: UIViewController){
         let scene = AddAccountDetailVC.instantiate(fromAppStoryboard: .Garage)
-        scene.delegate = vc as! BankDetail
+        scene.bankDetailDelegate = vc as? BankDetail
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
@@ -176,7 +177,8 @@ enum AppRouter {
     }
     
     static func goToBankListingVC(vc: UIViewController){
-          let scene = BankListingVC.instantiate(fromAppStoryboard: .PostLogin)
+        let scene = BankListingVC.instantiate(fromAppStoryboard: .PostLogin)
+        scene.bankDelegate = vc as? BankListingVMDelegate 
         vc.present(scene, animated: true)
       }
     
