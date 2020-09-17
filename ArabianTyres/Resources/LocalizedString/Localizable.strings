@@ -183,3 +183,12 @@
 "tyre" = "Tyre";
 "oil" = "Oil";
 "battery" = "Battery";
+
+
+ // MARK: - Complete profile 1  VC Values
+ //==============================
+"enterServiceCenterDist" = "Enter Service Center’s District";
+"enterServiceCenterAddress" = "Enter Service Center Address";
+"serviceCenterName" = "meService Center’s Name";
+"serviceCenterDist" = "Service Center’s District";
+"serviceCenterAddress" = "Service Center Address";

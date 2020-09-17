@@ -191,6 +191,15 @@ enum LocalizedString : String {
     case tyre
     case oil
     case battery
+    
+    
+    // MARK: - Complete profile 1  VC Values
+    //==============================
+    case enterServiceCenterDist
+    case enterServiceCenterAddress
+    case serviceCenterDist
+    case serviceCenterAddress
+   
 }
 
 

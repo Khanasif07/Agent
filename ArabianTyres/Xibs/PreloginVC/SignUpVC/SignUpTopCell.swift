@@ -50,7 +50,6 @@ class SignUpTopCell: UITableViewCell {
         self.signInBtn.addBottomBorderWithColor(color: AppColors.primaryBlueColor, height: 1)
     }
     
-    
     public func setUpTextField(){
         self.alreadyHaveAcctLbl.text = LocalizedString.alreadyHaveAnAccount.localized
         self.emailIdTxtField.title = LocalizedString.emailIdPlaceHolder.localized
