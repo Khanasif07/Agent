@@ -13,8 +13,9 @@ class AddImageCollCell: UICollectionViewCell {
     @IBOutlet weak var mainImgView: UIImageView!
     @IBOutlet weak var activityIndictor: UIActivityIndicatorView!
     @IBOutlet weak var addImgBtn: UIButton!
-    
+    @IBOutlet weak var crossBtn: UIButton!
     @IBOutlet weak var dataContainerView: RectangularDashedView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.dataContainerView.round(radius: 4.0)

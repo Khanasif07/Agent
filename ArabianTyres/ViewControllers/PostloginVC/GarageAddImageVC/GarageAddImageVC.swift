@@ -146,6 +146,19 @@ extension GarageAddImageVC {
         }
     }
     
+    @objc private func crossImageBtnTapped(_ sender: UIButton) {
+        if !self.hasImageUploaded{
+            self.showAlert(msg: LocalizedString.wait_Img_Upload.localized)
+            return
+        }
+        if let index = self.mainCollView.indexPath(forItem: sender){
+            if GarageProfileModel.shared.serviceCenterImages.endIndex > index.item {
+                GarageProfileModel.shared.serviceCenterImages.remove(at: index.item)
+            }
+        }
+        self.reloadCollectionViewWithUIUpdation()
+    }
+    
    @objc private func addImageBtnTapped(_ sender: UIButton) {
     if !self.hasImageUploaded{
         self.showAlert(msg: LocalizedString.wait_Img_Upload.localized)
@@ -245,8 +258,11 @@ extension GarageAddImageVC:UICollectionViewDelegate, UICollectionViewDataSource,
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         let imagesArray = GarageProfileModel.shared.serviceCenterImages
         let imageCell = collectionView.dequeueCell(with: AddImageCollCell.self, indexPath: indexPath)
+        imageCell.crossBtn.addTarget(self, action: #selector(crossImageBtnTapped(_:)), for: .touchUpInside)
+        imageCell.addImgBtn.addTarget(self, action: #selector(addImageBtnTapped(_:)), for: .touchUpInside)
         if !self.hasImageUploaded && (indexPath.row == imagesArray.count - 1){
             imageCell.activityIndictor.isHidden = false
             imageCell.activityIndictor.startAnimating()
@@ -278,20 +294,17 @@ extension GarageAddImageVC:UICollectionViewDelegate, UICollectionViewDataSource,
             imageCell.activityIndictor.isHidden = true
             imageCell.mainImgView.image = UIImage()
         }
-        
-        imageCell.addImgBtn.addTarget(self, action: #selector(addImageBtnTapped(_:)), for: .touchUpInside)
-
         if !imagesArray.isEmpty{
             if indexPath.item == imagesArray.count{
-//                imageCell.addb.isHidden = true
+                imageCell.crossBtn.isHidden = true
                 imageCell.addImgBtn.isHidden = false
             }else{
-//                imageCell.crossBtn.isHidden = false
+                imageCell.crossBtn.isHidden = false
                 imageCell.addImgBtn.isHidden = true
             }
         }else{
-//            imageCell.crossBtn.isHidden = true
-               imageCell.addImgBtn.isHidden = false
+            imageCell.crossBtn.isHidden = true
+            imageCell.addImgBtn.isHidden = false
             
         }
         return imageCell
@@ -300,7 +313,7 @@ extension GarageAddImageVC:UICollectionViewDelegate, UICollectionViewDataSource,
    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: ((self.mainCollView.frame.width - 24.0) / 3), height: 80.0)
+        return CGSize(width: ((self.mainCollView.frame.width - 24.0) / 3), height: 85.0)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
