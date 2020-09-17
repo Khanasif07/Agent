@@ -27,29 +27,29 @@ enum AppRouter {
     //===========================
     static func checkAppInitializationFlow() {
         goToTestingVC()
-        if isUserLoggedin {
-            if !isPhoneNoVerified{
-                AppUserDefaults.removeValue(forKey: .accesstoken)
-                UserModel.main = UserModel()
-                AppRouter.makeLoginVCRoot()
-                return
-            }
-            switch isCurrentUserType {
-            case .user:
-                AppRouter.goToUserHome()
-            default:
-                let lang = AppUserDefaults.value(forKey: .currentLanguage).stringValue
-                AppUserDefaults.removeAllValues()
-                AppUserDefaults.save(value: lang, forKey: .currentLanguage)
-                AppUserDefaults.save(value: true, forKey: .isLanguageSelect)
-            }
-        } else {
-            self.makeChooseLanguageVCRoot()
-        }
+//        if isUserLoggedin {
+//            if !isPhoneNoVerified{
+//                AppUserDefaults.removeValue(forKey: .accesstoken)
+//                UserModel.main = UserModel()
+//                AppRouter.makeLoginVCRoot()
+//                return
+//            }
+//            switch isCurrentUserType {
+//            case .user:
+//                AppRouter.goToUserHome()
+//            default:
+//                let lang = AppUserDefaults.value(forKey: .currentLanguage).stringValue
+//                AppUserDefaults.removeAllValues()
+//                AppUserDefaults.save(value: lang, forKey: .currentLanguage)
+//                AppUserDefaults.save(value: true, forKey: .isLanguageSelect)
+//            }
+//        } else {
+//            self.makeChooseLanguageVCRoot()
+//        }
     }
     
     static func goToTestingVC(){
-        let homeScene = BankListingVC.instantiate(fromAppStoryboard: .PostLogin)
+        let homeScene = GarageProfileStep2VC.instantiate(fromAppStoryboard: .Garage)
         setAsWindowRoot(homeScene)
     }
     

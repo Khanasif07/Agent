@@ -344,8 +344,6 @@ extension GarageAddImageVC: UIImagePickerControllerDelegate, UINavigationControl
     
     
     func removepicture() {
-//        self.userProfileImgView.image = #imageLiteral(resourceName: "icProfile")
-//        self.viewModel.image = nil
-//        self.viewModel.userImageUrl = ""
+
     }
 }

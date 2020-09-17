@@ -20,13 +20,13 @@
                         <rect key="frame" x="16" y="16" width="303" height="89"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Linked Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eHf-55-uvn">
-                                <rect key="frame" x="8" y="13" width="93.5" height="13"/>
+                                <rect key="frame" x="8" y="13" width="93.5" height="10"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.3294117647" green="0.33725490200000002" blue="0.36078431370000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="6zg-os-Tsn">
-                                <rect key="frame" x="8" y="36" width="279" height="48"/>
+                                <rect key="frame" x="8" y="33" width="279" height="48"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icHome" translatesAutoresizingMaskIntoConstraints="NO" id="xZc-W1-1uQ">
                                         <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
@@ -83,7 +83,7 @@
                             <constraint firstItem="6zg-os-Tsn" firstAttribute="top" secondItem="eHf-55-uvn" secondAttribute="bottom" constant="10" id="B7n-8U-MkF"/>
                             <constraint firstItem="eHf-55-uvn" firstAttribute="leading" secondItem="A3D-Ot-xO8" secondAttribute="leading" constant="8" id="NlA-eV-2DU"/>
                             <constraint firstItem="eHf-55-uvn" firstAttribute="top" secondItem="A3D-Ot-xO8" secondAttribute="top" constant="13" id="QwM-ps-ykp"/>
-                            <constraint firstAttribute="bottom" secondItem="6zg-os-Tsn" secondAttribute="bottom" constant="5" id="SNB-Hg-eTb"/>
+                            <constraint firstAttribute="bottom" secondItem="6zg-os-Tsn" secondAttribute="bottom" constant="8" id="SNB-Hg-eTb"/>
                             <constraint firstItem="6zg-os-Tsn" firstAttribute="leading" secondItem="eHf-55-uvn" secondAttribute="leading" id="aVl-oX-hKd"/>
                             <constraint firstAttribute="trailing" secondItem="H2j-Pq-f3x" secondAttribute="trailing" constant="9" id="gYd-f0-DSZ"/>
                             <constraint firstItem="H2j-Pq-f3x" firstAttribute="top" secondItem="A3D-Ot-xO8" secondAttribute="top" constant="9" id="gfO-J3-pTs"/>

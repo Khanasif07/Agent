@@ -19,6 +19,8 @@ class GarageProfileStep2VC: BaseVC {
     @IBOutlet weak var saveAndContinueBtn: AppButton!
     @IBOutlet weak var headingLbl: UILabel!
     @IBOutlet weak var serviceCenterNameLbl: UILabel!
+    @IBOutlet weak var mainCollView: UICollectionView!
+    @IBOutlet weak var collViewHeightConst: NSLayoutConstraint!
 
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var customView : CustomTextView!
@@ -28,7 +30,16 @@ class GarageProfileStep2VC: BaseVC {
     // MARK: - Variables
     //===========================
     var selectedSkillArr : [String] = []
-
+    var serviceImagesArray = [String]()
+    var imagesArray = [ImageModel]()
+    fileprivate var hasImageUploaded = true {
+        didSet {
+            if hasImageUploaded {
+                print("StringConstants.K_PROFILE_PIC_UPLOADED.localized")
+            }
+        }
+    }
+    
     // MARK: - Lifecycle
     //===========================
     override func viewDidLoad() {
@@ -63,8 +74,25 @@ class GarageProfileStep2VC: BaseVC {
 
     @IBAction func saveAndContinueAction(_ sender: UIButton) {
     }
-
-
+    
+    func reloadCollectionViewWithUIUpdation(){
+        if imagesArray.count > 2 {
+            DispatchQueue.main.async {
+                self.collViewHeightConst.constant = 90 * 2
+            }
+        }
+        DispatchQueue.main.async {
+            self.mainCollView.reloadData()
+        }
+    }
+    
+    @objc private func addImageBtnTapped(_ sender: UIButton) {
+       if !self.hasImageUploaded{
+           self.showAlert(msg: LocalizedString.wait_Img_Upload.localized)
+           return
+       }
+       self.captureImage(delegate: self)
+       }
 }
 
 // MARK: - Extension For Functions
@@ -76,6 +104,7 @@ extension GarageProfileStep2VC {
         setupTextAndFont()
         setupCustomView()
         saveAndContinueBtn.isEnabled = false
+        self.collViewSetUp()
 //        rangeSlider.resetSlider(value: 2500)
     }
 
@@ -106,6 +135,15 @@ extension GarageProfileStep2VC {
         customView.collView.delegate = self
         customView.collView.dataSource = self
     }
+    
+    private func collViewSetUp(){
+        mainCollView.dataSource = self
+        mainCollView.delegate = self
+        mainCollView.collectionViewLayout = LeftAlignedCollectionViewFlowLayout()
+        mainCollView.registerCell(with: AddImageCollCell.self)
+        mainCollView.isScrollEnabled = false
+    }
+    
 }
 
 extension GarageProfileStep2VC: CustomTextViewDelegate{
@@ -122,22 +160,93 @@ extension GarageProfileStep2VC: CustomTextViewDelegate{
 
 extension GarageProfileStep2VC: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return selectedSkillArr.count
+        if collectionView == customView.collView {
+            return selectedSkillArr.count
+
+        }else {
+            if !self.imagesArray.isEmpty && self.imagesArray.count <= 4{
+                return self.imagesArray.count + 1
+            }else if self.imagesArray.count == 5{
+                return self.imagesArray.count
+            }else{
+                return 1
+            }
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueCell(with: FacilityCollectionViewCell.self, indexPath: indexPath)
-        cell.skillLbl.text = selectedSkillArr[indexPath.item]
-        cell.cancelBtn.addTarget(self, action: #selector(cancelBtnTapped(_:)), for: .touchUpInside)
-        cell.layoutSubviews()
-        return cell
+        if collectionView == customView.collView {
+            let cell = collectionView.dequeueCell(with: FacilityCollectionViewCell.self, indexPath: indexPath)
+                   cell.skillLbl.text = selectedSkillArr[indexPath.item]
+                   cell.cancelBtn.addTarget(self, action: #selector(cancelBtnTapped(_:)), for: .touchUpInside)
+                   cell.layoutSubviews()
+                   return cell
+                   
+        }else {
+            let imageCell = collectionView.dequeueCell(with: AddImageCollCell.self, indexPath: indexPath)
+                    if !self.hasImageUploaded && (indexPath.row == self.imagesArray.count - 1){
+                        imageCell.activityIndictor.isHidden = false
+                        imageCell.activityIndictor.startAnimating()
+                    }else{
+                        imageCell.activityIndictor.isHidden = true
+                        imageCell.activityIndictor.stopAnimating()
+                    }
+                    var data: ImageModel?
+                    if !self.imagesArray.isEmpty && self.imagesArray.count <= 4 && indexPath.item < self.imagesArray.count {
+                        data = self.imagesArray[indexPath.item]
+                        if let imageUrl = data?.url {
+                            if imageUrl.isEmpty {
+                                imageCell.mainImgView.image = data?.image ?? nil
+                            } else {
+                                imageCell.mainImgView.sd_setImage(with: URL(string: imageUrl), placeholderImage: #imageLiteral(resourceName: "empty_album") , completed: nil)
+                            }
+                        }
+                        
+                    } else if !self.imagesArray.isEmpty && self.imagesArray.count == 5 && indexPath.item < self.imagesArray.count{
+                        data = self.imagesArray[indexPath.item]
+                        if let imageUrl = data?.url {
+                                if imageUrl.isEmpty {
+                                    imageCell.mainImgView.image = data?.image ?? nil
+                                } else {
+                                    imageCell.mainImgView.sd_setImage(with: URL(string: imageUrl), placeholderImage: #imageLiteral(resourceName: "empty_album") , completed: nil)
+                                }
+                        }
+                    }else {
+                        imageCell.activityIndictor.isHidden = true
+                        imageCell.mainImgView.image = UIImage()
+                    }
+                    
+                    imageCell.addImgBtn.addTarget(self, action: #selector(addImageBtnTapped(_:)), for: .touchUpInside)
+
+                    if !self.imagesArray.isEmpty{
+                        
+                        if indexPath.item == self.imagesArray.count{
+            //                imageCell.addb.isHidden = true
+                            imageCell.addImgBtn.isHidden = false
+                        }else{
+            //                imageCell.crossBtn.isHidden = false
+                            imageCell.addImgBtn.isHidden = true
+                        }
+                    }else{
+            //            imageCell.crossBtn.isHidden = true
+                           imageCell.addImgBtn.isHidden = false
+                        
+                    }
+                    return imageCell
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return cardSizeForItemAt(collectionView,layout: collectionViewLayout,indexPath: indexPath)
+        if collectionView == customView.collView {
+            return cardSizeForItemAt(collectionView,layout: collectionViewLayout,indexPath: indexPath)
+
+        }else {
+            return CGSize(width: (self.mainCollView.frame.width / 3) - 5, height: 80.0)
+        }
     }
     
     private func cardSizeForItemAt(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, indexPath: IndexPath) -> CGSize {
+        
         let textSize = selectedSkillArr[indexPath.row].sizeCount(withFont: AppFonts.NunitoSansSemiBold.withSize(16.0), boundingSize: CGSize(width: 10000.0, height: collectionView.frame.height))
         
         return CGSize(width: textSize.width + 30, height: 24.0)
@@ -170,6 +279,38 @@ extension GarageProfileStep2VC: UICollectionViewDelegate,UICollectionViewDataSou
 extension GarageProfileStep2VC :RangeSliderDelegate{
     func rangeSlider(selectedValue: Int) {
         printDebug(selectedValue)
+    }
+    
+}
+
+// MARK: - UIImagePickerControllerDelegate
+//===========================
+extension GarageProfileStep2VC: UIImagePickerControllerDelegate, UINavigationControllerDelegate , RemovePictureDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[.editedImage] as? UIImage
+        hasImageUploaded = false
+        self.imagesArray.append(ImageModel(url: "", mediaType:"image", image: image ?? UIImage()))
+        self.reloadCollectionViewWithUIUpdation()
+        image?.upload(progress: { (progress) in
+            printDebug(progress)
+        }, completion: { (response,error) in
+            if let url = response {
+                self.hasImageUploaded = true
+                self.serviceImagesArray.append(url)
+            }
+            if let _ = error{
+//                self.showAlert(msg: LocalizedString.imageUploadingFailed.localized)
+            }
+        })
+        picker.dismiss(animated: true, completion: nil)
+    }
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    func removepicture() {
+
     }
 }
 

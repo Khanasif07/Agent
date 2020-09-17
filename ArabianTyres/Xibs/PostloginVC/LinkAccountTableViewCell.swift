@@ -41,7 +41,7 @@ class LinkAccountTableViewCell: UITableViewCell {
     
     func popluateData(){
         bankNameLbl.text = GarageProfileModel.shared.bankName
-        accNumberLbl.text = GarageProfileModel.shared.accountNumber
+        accNumberLbl.text = GarageProfileModel.shared.accountNumber.displaySecureText
 
 
     }
