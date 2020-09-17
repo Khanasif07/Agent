@@ -16,10 +16,12 @@ class GarageAddLocationVC: BaseVC {
     @IBOutlet weak var descLbl: UILabel!
     
     @IBOutlet weak var serviceAddresslbl: UILabel!
-    @IBOutlet weak var logoImgView: UIButton!
+    @IBOutlet weak var logoImgView: UIImageView!
     @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet weak var garageName: UILabel!
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var saveContinueBtn: AppButton!
+    
     // MARK: - Variables
     //===========================
     var locationValue = LocationController.sharedLocationManager.locationManager.location?.coordinate ?? CLLocationCoordinate2D(latitude: 34.052238, longitude: -118.24334)
@@ -45,6 +47,8 @@ class GarageAddLocationVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
+        logoImgView.image = GarageProfileModel.shared.logo
+        garageName.text = GarageProfileModel.shared.serviceCenterName
     }
     
     // MARK: - IBActions
@@ -56,6 +60,14 @@ class GarageAddLocationVC: BaseVC {
         present(acController, animated: true, completion: nil)
     }
     
+    
+    @IBAction func saveAndContinueBtnAction(_ sender: UIButton) {
+        AppRouter.goToGarageAddImageVC(vc: self)
+    }
+    
+    @IBAction func backBtnAction(_ sender: UIButton) {
+     pop()
+    }
 }
 
 // MARK: - Extension For Functions
@@ -64,7 +76,7 @@ extension GarageAddLocationVC {
     
     private func initialSetup() {
         self.prepareMap()
-        self.setAddress()
+        setAddress()
         self.saveContinueBtn.isEnabled = false
     }
     
@@ -87,6 +99,8 @@ extension GarageAddLocationVC {
             guard let address = response?.firstResult(), let lines = address.lines else { return }
             _ = (address.locality?.isEmpty ?? true) ? ((address.subLocality?.isEmpty ?? true) ? ((address.administrativeArea?.isEmpty ?? true) ? address.country : address.administrativeArea)  : address.subLocality)   : address.locality
             self.serviceAddresslbl.text = "\(lines.joined(separator: ","))"
+            GarageProfileModel.shared.address = "\(lines.joined(separator: ","))"
+            self.saveContinueBtn.isEnabled = true
         }
     }
     
@@ -124,7 +138,7 @@ extension GarageAddLocationVC :  GMSMapViewDelegate ,CLLocationManagerDelegate {
             self.isMarkerAnimation = false
             let currentCoordinate = mapView.projection.coordinate(for: mapView.center)
             self.locationValue = mapView.projection.coordinate(for: mapView.center)
-            self.moveMarker(coordinate: currentCoordinate)
+//            self.moveMarker(coordinate: currentCoordinate)
             self.setAddress()
         }
         currentZoomLevel = position.zoom

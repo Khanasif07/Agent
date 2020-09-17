@@ -17,7 +17,7 @@ class AddDetailVC: BaseVC {
     @IBOutlet weak var headingLbl: UILabel!
     @IBOutlet weak var garageDetailLbl: UILabel!
     @IBOutlet weak var addLogoLbl: UILabel!
-    @IBOutlet weak var saveAndContinueBtn: UIButton!
+    @IBOutlet weak var saveAndContinueBtn: AppButton!
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var editLogoBtn: UIButton!
     @IBOutlet weak var containerView: UIView!
@@ -35,10 +35,6 @@ class AddDetailVC: BaseVC {
         initialSetup()
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
@@ -64,19 +60,19 @@ class AddDetailVC: BaseVC {
     }
     
     @IBAction func saveAndContinueAction(_ sender: UIButton) {
-        printDebug(GarageProfileModel.shared.getGarageProfileDict())
-        viewModel.setGarageRegistration(params: GarageProfileModel.shared.getGarageProfileDict())
+//       if GarageProfileModel.shared.logo.isEmpty {
+//        CommonFunctions.showToastWithMessage(LocalizedString.uploadGarageLogo.localized)
+//        }
+//       else {
+        AppRouter.goToGarageAddLocationVC(vc: self)
+
+//        }
     }
     
     @IBAction func editLogoBtnAction(_ sender: UIButton) {
         self.captureImage(delegate: self,removedImagePicture: true)
     }
     
-    func changeBtnState(isHide: Bool){
-        saveAndContinueBtn.backgroundColor = isHide ? AppColors.primaryBlueLightShade : AppColors.primaryBlueColor
-        saveAndContinueBtn.setTitleColor(isHide ? AppColors.fontTertiaryColor : AppColors.backgrougnColor2, for: .normal)
-        saveAndContinueBtn.isUserInteractionEnabled = !isHide
-    }
 }
 
 // MARK: - Extension For Functions
@@ -84,20 +80,15 @@ class AddDetailVC: BaseVC {
 extension AddDetailVC {
     
     private func initialSetup() {
-        self.tableViewSetUp()
         setupTextAndFont()
         customTView.delegate = self
         customTView.placeHolderTxt = LocalizedString.enterServiceCenterName.localized
         customTView.floatLbl.text = LocalizedString.serviceCenterName.localized
         customTView.rightImgContainerView.isHidden = true
         customTView.leftImgContainerView.isHidden = true
-        changeBtnState(isHide: true)
+        saveAndContinueBtn.isEnabled = false
     }
-    
-    private func tableViewSetUp(){
-     
-    }
-    
+  
     private func setupTextAndFont(){
         titleLbl.font = AppFonts.NunitoSansBold.withSize(17.0)
         helpBtn.titleLabel?.font =  AppFonts.NunitoSansSemiBold.withSize(17.0)
@@ -139,10 +130,10 @@ extension AddDetailVC : CustomTextViewDelegate {
     func textViewValueUpdated(_ tView : UITextView){
         if tView.text.count >= 3 {
             GarageProfileModel.shared.serviceCenterName = tView.text
-            changeBtnState(isHide: false)
+            saveAndContinueBtn.isEnabled = true
         }
         else {
-            changeBtnState(isHide: true)
+            saveAndContinueBtn.isEnabled = false
         }
     }
 }
@@ -160,7 +151,8 @@ extension AddDetailVC : CustomTextViewDelegate {
         }, completion: { (response,error) in
             if let url = response {
                 CommonFunctions.hideActivityLoader()
-                GarageProfileModel.shared.logo = url
+                GarageProfileModel.shared.logo = image
+                GarageProfileModel.shared.logoUrl = url
             }
             if let _ = error{
                 self.showAlert(msg: "Image upload failed")

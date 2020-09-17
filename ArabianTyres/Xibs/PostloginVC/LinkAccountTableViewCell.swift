@@ -14,10 +14,13 @@ class LinkAccountTableViewCell: UITableViewCell {
     @IBOutlet weak var bankNameLbl: UILabel!
     @IBOutlet weak var accNumberLbl: UILabel!
     @IBOutlet weak var editbtn: UIButton!
+    @IBOutlet weak var containerView : UIView!
 
     override func awakeFromNib() {
         setupFontAndText()
         super.awakeFromNib()
+        containerView.createShadow(shadowColor: #colorLiteral(red: 0.4950264096, green: 0.495038569, blue: 0.4950320721, alpha: 1))
+
         // Initialization code
     }
     

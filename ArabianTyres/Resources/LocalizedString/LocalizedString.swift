@@ -183,6 +183,7 @@ enum LocalizedString : String {
     case serviceCenterImage
     case done
     case clearAll
+    case uploadGarageLogo
     
     // MARK: - Home  VC Values
     //==============================

@@ -38,6 +38,7 @@ class ProfileSettingVC: BaseVC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = true
+        self.tabBarController?.tabBar.isTranslucent = true
     }
     
     // MARK: - IBActions
@@ -77,10 +78,10 @@ extension ProfileSettingVC {
                     cell.selectItemArray = self.selectItemArray
                     cell.selectImageArray = self.selectImageArray
                     
-//                    cell.switchProfileToGarage = {  [weak self]  in
-//                        guard let `self` = self else { return }
-//                        AppRouter.goToGarageRegistrationVC(vc: self)
-//                    }
+                    cell.switchProfileToGarage = {  [weak self]  in
+                        guard let `self` = self else { return }
+                        AppRouter.goToGarageRegistrationVC(vc: self)
+                    }
                     return cell
                 default:
                     let cell = tableView.dequeueCell(with: ProfileUserBottomCell.self, indexPath: indexPath)

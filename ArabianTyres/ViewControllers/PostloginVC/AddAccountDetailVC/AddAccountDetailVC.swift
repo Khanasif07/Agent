@@ -9,6 +9,10 @@
 import UIKit
 import SkyFloatingLabelTextField
 
+protocol BankDetail: class {
+        func BankDetailAdded()
+}
+
 class AddAccountDetailVC: BaseVC {
 
     // MARK: - IBOutlets
@@ -33,6 +37,8 @@ class AddAccountDetailVC: BaseVC {
                                LocalizedString.AccountNo.localized,
                                LocalizedString.confirmAccountNo.localized
                               ]
+    weak var delegate : BankDetail?
+    
     // MARK: - Lifecycle
     //===========================
     override func viewDidLoad() {
@@ -60,6 +66,7 @@ class AddAccountDetailVC: BaseVC {
     }
     
     @IBAction func addBtnAction(_ sender: UIButton) {
+        delegate?.BankDetailAdded()
         self.pop()
     }
 
@@ -93,6 +100,7 @@ extension AddAccountDetailVC {
             txtField?.delegate = self
             txtField?.placeholder = placeHolderArr[index]
             txtField?.title = titleArr[index]
+            txtField?.titleLabel.textColor = AppColors.fontTertiaryColor
             txtField?.placeholderFont = AppFonts.NunitoSansBold.withSize(14.0)
             txtField?.font = AppFonts.NunitoSansBold.withSize(14.0)
         }
@@ -132,6 +140,7 @@ extension AddAccountDetailVC: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         guard let text = textField.text else {return}
+        
         switch textField {
         case selectYourBankTextField:
             GarageProfileModel.shared.bankName = text
@@ -141,6 +150,9 @@ extension AddAccountDetailVC: UITextFieldDelegate {
             break
         default:
             break
+        }
+        if !GarageProfileModel.shared.bankName.isEmpty, !GarageProfileModel.shared.accountNumber.isEmpty {
+            addBtn.isEnabled = true
         }
     }
 }

@@ -155,14 +155,26 @@ enum AppRouter {
     
     static func goToAddAccountDetailVC(vc: UIViewController){
         let scene = AddAccountDetailVC.instantiate(fromAppStoryboard: .Garage)
+        scene.delegate = vc as! BankDetail
         vc.navigationController?.pushViewController(scene, animated: true)
     }
-    
     
     static func goToGarageProfileStep2VC(vc: UIViewController){
         let scene = GarageProfileStep2VC.instantiate(fromAppStoryboard: .Garage)
         vc.navigationController?.pushViewController(scene, animated: true)
     }
+    
+    static func goToGarageAddLocationVC(vc: UIViewController){
+        let scene = GarageAddLocationVC.instantiate(fromAppStoryboard: .PostLogin)
+        vc.navigationController?.pushViewController(scene, animated: true)
+    }
+    
+    
+    static func goToGarageAddImageVC(vc: UIViewController){
+        let scene = GarageAddImageVC.instantiate(fromAppStoryboard: .PostLogin)
+        vc.navigationController?.pushViewController(scene, animated: true)
+    }
+    
     static func showAlert(alertTitle: String = "Alert!", alertMessage: String, preferredStyle: UIAlertController.Style = .alert, actionBtnTitle: String = "OK", isHitLogOutApi : Bool = false) {
         if isHitLogOutApi {
             guard let topVC = AppDelegate.shared.topViewController() else {return}

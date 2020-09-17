@@ -10,21 +10,7 @@
 import UIKit
 
 class AddAccountVC: BaseVC {
-   
-   private enum PaymentDetail : CaseIterable {
-        case bankDetail
-        case cardDetail
-        
-        var title : String {
-            switch self {
-            case .bankDetail:
-                return LocalizedString.addBankAccountDetails.localized
-            case .cardDetail:
-                return LocalizedString.addCreditDebitCardDetails.localized
-
-            }
-        }
-    }
+  
     
     // MARK: - IBOutlets
     //===========================
@@ -40,6 +26,7 @@ class AddAccountVC: BaseVC {
 
     // MARK: - Variables
     //===========================
+    var bankDetailAdded = false
    
     // MARK: - Lifecycle
     //===========================
@@ -106,6 +93,8 @@ extension AddAccountVC {
         mainTableView.delegate = self
         mainTableView.dataSource = self
         mainTableView.registerCell(with: AddAccountTableViewCell.self)
+        mainTableView.registerCell(with: LinkAccountTableViewCell.self)
+
         setupTextAndFont()
         changeBtnState(isHide: true)
         addTabGesture()
@@ -133,20 +122,38 @@ extension AddAccountVC {
 }
 
 // MARK: - Extension For TableView
-//===========================
+//================================
 extension AddAccountVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return PaymentDetail.allCases.endIndex
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueCell(with: AddAccountTableViewCell.self, indexPath: indexPath)
-        cell.bindData(text: PaymentDetail.allCases[indexPath.row].title)
-        return cell
+        if bankDetailAdded {
+            let cell = tableView.dequeueCell(with: LinkAccountTableViewCell.self, indexPath: indexPath)
+            return cell
+
+        }else {
+            let cell = tableView.dequeueCell(with: AddAccountTableViewCell.self, indexPath: indexPath)
+            cell.bindData(text: LocalizedString.addBankAccountDetails.localized)
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            bankDetailAdded ? () : AppRouter.goToAddAccountDetailVC(vc: self)
+    }
+}
+
+
+extension AddAccountVC: BankDetail {
+    func BankDetailAdded() {
+        bankDetailAdded = true
+        mainTableView.reloadData()
     }
 }

@@ -11,6 +11,7 @@ import UIKit
 class UploadDocumentVC: BaseVC {
    
     enum Section :CaseIterable{
+       
         case commericalRegister
         case vatCertificate
         case municipalityLicense
@@ -41,10 +42,9 @@ class UploadDocumentVC: BaseVC {
     @IBOutlet weak var headingLbl: UILabel!
     @IBOutlet weak var helpBtn: UIButton!
 
-
-
     // MARK: - Variables
     //===========================
+    var sectionType : Section = .commericalRegister
     
     // MARK: - Lifecycle
     //===========================
@@ -61,7 +61,8 @@ class UploadDocumentVC: BaseVC {
     }
     
     @IBAction func saveAndContinueBtnAction(_ sender: UIButton) {
-      print("save and Continue btn tapped")
+
+        AppRouter.goToAddAccountVC(vc: self)
     }
     
     @IBAction func helpBtnAction(_ sender: UIButton) {
@@ -107,15 +108,66 @@ extension UploadDocumentVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(with: DocumentTableViewCell.self, indexPath: indexPath)
         cell.bindData(text: Section.allCases[indexPath.row].text)
+        cell.docImgView.isHidden = true
+        cell.cancelBtn.isHidden = true
         cell.cancelBtnTapped = {[weak self] in
-            guard let `self` = self else { return }
+            guard let _ = self else { return }
             cell.cancelBtn.isHidden = true
             cell.docImgView.isHidden = true
         }
+        
+        cell.uploadDoc = {[weak self] in
+            guard let `self` = self else { return }
+            self.sectionType = Section.allCases[indexPath.row]
+            self.captureImage(delegate: self,removedImagePicture: true)
+        }
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
+}
+
+extension UploadDocumentVC: UIImagePickerControllerDelegate,UINavigationControllerDelegate, RemovePictureDelegate {
+ 
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[.editedImage] as? UIImage
+        CommonFunctions.showActivityLoader()
+         
+        image?.upload(progress: { (progress) in
+            printDebug(progress)
+        }, completion: { (response,error) in
+            if let url = response {
+                CommonFunctions.hideActivityLoader()
+                self.saveImage(imgUrl: url)
+            }
+            if let _ = error{
+                self.showAlert(msg: "Image upload failed")
+            }
+        })
+        picker.dismiss(animated: true, completion: nil)
+    }
+
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func removepicture() {
+        
+    }
+    
+//    func saveImage(imgUrl: String) {
+//        switch sectionType {
+//        case .commericalRegister:
+//            GarageProfileModel.shared.commercialRegister.append(imgUrl)
+//        case .vatCertificate:
+//            GarageProfileModel.shared.vatCertificate.append(imgUrl)
+//        case .municipalityLicense:
+//            GarageProfileModel.shared.municipalityLicense.append(imgUrl)
+//        case .ownerId:
+//            GarageProfileModel.shared.ownerId.append(imgUrl)
+//        }
+//    }
 }

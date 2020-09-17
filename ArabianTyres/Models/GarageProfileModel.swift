@@ -7,13 +7,15 @@
 //
 
 import Foundation
+import UIKit
 
 struct GarageProfileModel {
     
     
     static var shared = GarageProfileModel()
 
-    var logo                        : String = ""
+    var logoUrl                     : String = ""
+    var logo                        : UIImage? = nil
     var serviceCenterName           : String = ""
     var latitude                    : Double = 0.0
     var longitude                   : Double = 0.0
@@ -29,7 +31,7 @@ struct GarageProfileModel {
     func getGarageProfileDict()-> JSONDictionary {
         
         let dict: JSONDictionary = [
-            ApiKey.logo : logo,
+            ApiKey.logo : logoUrl,
             ApiKey.name: serviceCenterName,
             ApiKey.latitude : latitude,
             ApiKey.longitude : longitude,

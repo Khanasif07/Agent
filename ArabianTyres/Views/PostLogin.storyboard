@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1F6-Pe-8cE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1F6-Pe-8cE">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -33,7 +33,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EWT-Rr-69p">
-                                                <rect key="frame" x="174.5" y="16.5" width="65" height="23.5"/>
+                                                <rect key="frame" x="176" y="18" width="62.5" height="20"/>
                                                 <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -112,7 +112,7 @@
                                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kz4-Yt-4jb">
-                                                <rect key="frame" x="181.5" y="10.5" width="51" height="23.5"/>
+                                                <rect key="frame" x="183" y="12" width="48" height="20"/>
                                                 <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
                                                 <color key="textColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -173,7 +173,7 @@
                                 <rect key="frame" x="0.0" y="22" width="414" height="56"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Images" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EoU-36-J1u">
-                                        <rect key="frame" x="160" y="19" width="94.5" height="23.5"/>
+                                        <rect key="frame" x="161.5" y="21" width="91.5" height="20"/>
                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -181,6 +181,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="369-aQ-QOF">
                                         <rect key="frame" x="6" y="14" width="36" height="34"/>
                                         <state key="normal" image="icBackward"/>
+                                        <connections>
+                                            <action selector="backBtnAction:" destination="84T-NG-NBE" eventType="touchUpInside" id="uhn-xY-38m"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WB8-9b-PWR">
                                         <rect key="frame" x="353" y="17" width="46" height="28"/>
@@ -221,7 +224,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="796"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kLB-9F-ymz">
-                                                <rect key="frame" x="22" y="14" width="376" height="57.5"/>
+                                                <rect key="frame" x="22" y="14" width="376" height="49"/>
                                                 <string key="text">This is all about my
 Service Center</string>
                                                 <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="21"/>
@@ -229,15 +232,15 @@ Service Center</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y48-V0-Bx1">
-                                                <rect key="frame" x="22" y="93.5" width="376" height="0.0"/>
+                                                <rect key="frame" x="22" y="85" width="376" height="0.0"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.54117647059999996" green="0.58431372550000005" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="395-bR-4Si">
-                                                <rect key="frame" x="22" y="107.5" width="376" height="552.5"/>
+                                                <rect key="frame" x="22" y="99" width="376" height="545"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="battery" translatesAutoresizingMaskIntoConstraints="NO" id="Fxo-jU-7gH">
+                                                    <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="battery" translatesAutoresizingMaskIntoConstraints="NO" id="Fxo-jU-7gH">
                                                         <rect key="frame" x="14" y="19" width="60" height="60"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
@@ -255,7 +258,7 @@ Service Center</string>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="10" maxX="10" maxY="0.0"/>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qoH-9f-Vtz" customClass="AppButton" customModule="ArabianTyres">
-                                                        <rect key="frame" x="143" y="480.5" width="217" height="56"/>
+                                                        <rect key="frame" x="143" y="473" width="217" height="56"/>
                                                         <color key="backgroundColor" red="0.090196078430000007" green="0.1450980392" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="217" id="a8c-nC-jnf"/>
@@ -275,22 +278,22 @@ Service Center</string>
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Garaga" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pDl-hg-iGF">
-                                                        <rect key="frame" x="82.5" y="37.5" width="91" height="23.5"/>
+                                                        <rect key="frame" x="82.5" y="39" width="89" height="20"/>
                                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="6LO-dl-dyp">
-                                                        <rect key="frame" x="14" y="111" width="346" height="60"/>
+                                                        <rect key="frame" x="14" y="111" width="346" height="52.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address &amp; Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="94u-lM-Evs">
-                                                                <rect key="frame" x="0.0" y="0.0" width="106" height="16.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="105" height="14"/>
                                                                 <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="12"/>
                                                                 <color key="textColor" red="0.54117647058823526" green="0.58431372549019611" blue="0.61960784313725492" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Canyon Road, Gharb Al Dhahran, Dhahran 34472, Saudi Arabia" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LH8-JT-RVv">
-                                                                <rect key="frame" x="0.0" y="24.5" width="298.5" height="35.5"/>
+                                                                <rect key="frame" x="0.0" y="22" width="294" height="30.5"/>
                                                                 <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="13"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -298,14 +301,14 @@ Service Center</string>
                                                         </subviews>
                                                     </stackView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Ik-gR-wWB" customClass="GMSMapView">
-                                                        <rect key="frame" x="16" y="187" width="344" height="143"/>
+                                                        <rect key="frame" x="16" y="179.5" width="344" height="143"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="143" id="RBX-Wo-Imf"/>
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Images of service center" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eSD-71-Bqs">
-                                                        <rect key="frame" x="14" y="346" width="158" height="20.5"/>
+                                                        <rect key="frame" x="14" y="338.5" width="157" height="20.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="20.5" id="sme-IC-mb4"/>
                                                         </constraints>
@@ -314,7 +317,7 @@ Service Center</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="BHo-7E-5iV">
-                                                        <rect key="frame" x="14" y="374.5" width="346" height="90"/>
+                                                        <rect key="frame" x="14" y="367" width="346" height="90"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="90" id="cPQ-vH-6bP"/>
@@ -396,6 +399,7 @@ Service Center</string>
                     <connections>
                         <outlet property="collViewHeightConst" destination="cPQ-vH-6bP" id="5GK-8Y-p4A"/>
                         <outlet property="descLbl" destination="kLB-9F-ymz" id="RM8-7n-cBZ"/>
+                        <outlet property="garageName" destination="pDl-hg-iGF" id="7K3-Xx-0F3"/>
                         <outlet property="locationTextLbl" destination="LH8-JT-RVv" id="lfw-ic-Kr5"/>
                         <outlet property="logoImgView" destination="Fxo-jU-7gH" id="ISn-1k-zc3"/>
                         <outlet property="mainCollView" destination="BHo-7E-5iV" id="pFC-e3-PW7"/>
@@ -420,7 +424,7 @@ Service Center</string>
                                 <rect key="frame" x="0.0" y="44" width="414" height="56"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I3T-sU-MGv">
-                                        <rect key="frame" x="154.5" y="19" width="105" height="23.5"/>
+                                        <rect key="frame" x="156" y="21" width="102" height="20"/>
                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -428,6 +432,9 @@ Service Center</string>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Sg-Et-tXp">
                                         <rect key="frame" x="6" y="14" width="36" height="34"/>
                                         <state key="normal" image="icBackward"/>
+                                        <connections>
+                                            <action selector="backBtnAction:" destination="UOe-DA-mSq" eventType="touchUpInside" id="dCJ-LX-edV"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jxr-kh-Aja">
                                         <rect key="frame" x="353" y="17" width="46" height="28"/>
@@ -468,7 +475,7 @@ Service Center</string>
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="796"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N5i-yw-9yY">
-                                                <rect key="frame" x="22" y="14" width="376" height="57.5"/>
+                                                <rect key="frame" x="22" y="14" width="376" height="49"/>
                                                 <string key="text">This is all about my
 Service Center</string>
                                                 <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="21"/>
@@ -476,15 +483,15 @@ Service Center</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yod-zx-cco">
-                                                <rect key="frame" x="22" y="93.5" width="376" height="0.0"/>
+                                                <rect key="frame" x="22" y="85" width="376" height="0.0"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.54117647059999996" green="0.58431372550000005" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Njq-g4-42H">
-                                                <rect key="frame" x="22" y="107.5" width="376" height="526.5"/>
+                                                <rect key="frame" x="22" y="99" width="376" height="519"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="battery" translatesAutoresizingMaskIntoConstraints="NO" id="9mc-dm-VHI">
+                                                    <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="battery" translatesAutoresizingMaskIntoConstraints="NO" id="9mc-dm-VHI">
                                                         <rect key="frame" x="14" y="19" width="60" height="60"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
@@ -502,7 +509,7 @@ Service Center</string>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="10" maxX="10" maxY="0.0"/>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KSH-R0-zEV" customClass="AppButton" customModule="ArabianTyres">
-                                                        <rect key="frame" x="143" y="454.5" width="217" height="56"/>
+                                                        <rect key="frame" x="143" y="447" width="217" height="56"/>
                                                         <color key="backgroundColor" red="0.090196078430000007" green="0.1450980392" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="56" id="HwF-7P-Iwr"/>
@@ -518,33 +525,33 @@ Service Center</string>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
-                                                            <action selector="saveBtnAction:" destination="84T-NG-NBE" eventType="touchUpInside" id="HBH-EC-bOI"/>
+                                                            <action selector="saveAndContinueBtnAction:" destination="UOe-DA-mSq" eventType="touchUpInside" id="fu7-q6-7SA"/>
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Garaga" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FBk-Ky-n4Z">
-                                                        <rect key="frame" x="82.5" y="37.5" width="91" height="23.5"/>
+                                                        <rect key="frame" x="82.5" y="39" width="89" height="20"/>
                                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uJe-vy-kQb">
-                                                        <rect key="frame" x="14" y="178" width="346" height="1"/>
+                                                        <rect key="frame" x="14" y="170.5" width="346" height="1"/>
                                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="ewH-VP-5Jk"/>
                                                         </constraints>
                                                     </view>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="MR0-9i-x9C">
-                                                        <rect key="frame" x="14" y="111" width="346" height="60"/>
+                                                        <rect key="frame" x="14" y="111" width="346" height="52.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Service Center Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0kV-7F-tKk">
-                                                                <rect key="frame" x="0.0" y="0.0" width="128" height="16.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="127" height="14"/>
                                                                 <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="12"/>
                                                                 <color key="textColor" red="0.54117647059999996" green="0.58431372550000005" blue="0.61960784310000006" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Canyon Road, Gharb Al Dhahran, Dhahran 34472, Saudi Arabia" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RXM-qq-QJK">
-                                                                <rect key="frame" x="0.0" y="24.5" width="298.5" height="35.5"/>
+                                                                <rect key="frame" x="0.0" y="22" width="294" height="30.5"/>
                                                                 <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="13"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -552,14 +559,14 @@ Service Center</string>
                                                         </subviews>
                                                     </stackView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qzc-Zr-8CD" customClass="GMSMapView">
-                                                        <rect key="frame" x="16" y="251" width="344" height="143"/>
+                                                        <rect key="frame" x="16" y="243.5" width="344" height="143"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="143" id="RUf-tM-i74"/>
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drag pointer to set exact location of your service center" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x9s-zb-Vpm">
-                                                        <rect key="frame" x="14" y="402" width="300.5" height="20.5"/>
+                                                        <rect key="frame" x="14" y="394.5" width="298" height="20.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="20.5" id="9ms-AX-OMW"/>
                                                         </constraints>
@@ -568,7 +575,7 @@ Service Center</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iIC-vp-HTe">
-                                                        <rect key="frame" x="16" y="219" width="51" height="18"/>
+                                                        <rect key="frame" x="16" y="211.5" width="51" height="18"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="18" id="uMX-AR-aNB"/>
                                                         </constraints>
@@ -581,7 +588,7 @@ Service Center</string>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="heC-rA-qEJ">
-                                                        <rect key="frame" x="343" y="217" width="17" height="22"/>
+                                                        <rect key="frame" x="343.5" y="209.5" width="16.5" height="22"/>
                                                         <state key="normal" image="markerIcon"/>
                                                     </button>
                                                 </subviews>
@@ -656,7 +663,8 @@ Service Center</string>
                     </view>
                     <connections>
                         <outlet property="descLbl" destination="N5i-yw-9yY" id="jkD-c9-HCX"/>
-                        <outlet property="logoImgView" destination="a96-TE-pbc" id="O07-Sd-fGa"/>
+                        <outlet property="garageName" destination="FBk-Ky-n4Z" id="nf0-LW-FLM"/>
+                        <outlet property="logoImgView" destination="9mc-dm-VHI" id="zQ9-cc-AWt"/>
                         <outlet property="mapView" destination="qzc-Zr-8CD" id="uCn-Tu-1yH"/>
                         <outlet property="saveContinueBtn" destination="KSH-R0-zEV" id="HEF-W1-DDB"/>
                         <outlet property="serviceAddresslbl" destination="RXM-qq-QJK" id="Dus-ZI-P0J"/>
@@ -671,7 +679,7 @@ Service Center</string>
     <resources>
         <image name="battery" width="135" height="135"/>
         <image name="icBackward" width="36" height="34"/>
-        <image name="markerIcon" width="17" height="22"/>
+        <image name="markerIcon" width="16.5" height="21.5"/>
         <image name="union" width="375" height="526"/>
     </resources>
 </document>

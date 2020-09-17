@@ -142,7 +142,7 @@ class RangeSlider: UIView {
     }
     
     func sliderThumbSetUp() {
-        let image = #imageLiteral(resourceName: "group3811")
+        let image = #imageLiteral(resourceName: "slider")
         fakeSlider.setThumbImage(image, for: .normal)
         slider.setThumbImage(image, for: .normal)
     }

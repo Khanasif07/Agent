@@ -17,9 +17,11 @@ class DocumentTableViewCell: UITableViewCell {
     
     
     var cancelBtnTapped: (()->())?
+    var uploadDoc: (()->())?
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        addGestureOnImage()
         setUpFont()
         setBorder(view: uploadImgView)
         setBorder(view: docImgView)
@@ -27,6 +29,17 @@ class DocumentTableViewCell: UITableViewCell {
     
     @IBAction func cancelBtnAction(_ sender: Any) {
         cancelBtnTapped?()
+    }
+    
+    private func addGestureOnImage() {
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapOnImage(_:)))
+        uploadImgView.isUserInteractionEnabled = true
+        tapGestureRecognizer.numberOfTouchesRequired = 1
+        uploadImgView.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    @objc func tapOnImage(_ sender : UITapGestureRecognizer) {
+        uploadDoc?()
     }
     
     private func setBorder(view: UIImageView) {

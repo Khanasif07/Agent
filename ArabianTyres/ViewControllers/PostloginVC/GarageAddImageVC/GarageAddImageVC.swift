@@ -25,6 +25,9 @@ class GarageAddImageVC: BaseVC {
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var logoImgView: UIImageView!
     @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet weak var garageName: UILabel!
+
+    
     // MARK: - Variables
     //===========================
     var locationValue = LocationController.sharedLocationManager.locationManager.location?.coordinate ?? CLLocationCoordinate2D(latitude: 34.052238, longitude: -118.24334)
@@ -50,6 +53,7 @@ class GarageAddImageVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -58,8 +62,12 @@ class GarageAddImageVC: BaseVC {
     }
     // MARK: - IBActions
     //===========================
+    @IBAction func backBtnAction(_ sender: UIButton) {
+        pop()
+    }
     
     @IBAction func saveBtnAction(_ sender: UIButton) {
+        AppRouter.goToUploadDocumentVC(vc: self)
     }
 }
 
@@ -71,7 +79,9 @@ extension GarageAddImageVC {
         self.collViewSetUp()
         self.prepareMap()
         self.setAddress()
-        self.saveContinueBtn.isEnabled = false
+        self.saveContinueBtn.isEnabled = true
+        logoImgView.image = GarageProfileModel.shared.logo
+        garageName.text = GarageProfileModel.shared.serviceCenterName
     }
     
     private func prepareMap() {
