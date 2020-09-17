@@ -141,8 +141,9 @@ extension AddAccountDetailVC: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         switch textField {
         case selectYourBankTextField:
+            AppRouter.goToBankListingVC(vc: self)
             printDebug("should begin ")
-            return true
+            return false
         default:
             return true
         }
