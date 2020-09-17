@@ -66,6 +66,7 @@ enum LocalizedString : String {
     case skip_signup_continue = "skip_signup_continue"
     case dont_have_an_account = "dont_have_an_account"
     case alreadyHaveAnAccount = "alreadyHaveAnAccount"
+    case imageUploadingFailed
     
     // MARK: - Validation Messages
     //==================================

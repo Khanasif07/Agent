@@ -20,7 +20,7 @@ struct GarageProfileModel {
     var latitude                    : Double = 0.0
     var longitude                   : Double = 0.0
     var address                     : String = ""
-    var serviceCenterImages         : [UIImage] = []
+    var serviceCenterImages         : [ImageModel] = []
     var images                      : [String] = []
     var commercialRegister          : [String] = []
     var vatCertificate              : [String] = []

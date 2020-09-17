@@ -30,7 +30,7 @@ class GarageAddImageVC: BaseVC {
     
     // MARK: - Variables
     //===========================
-    var locationValue = LocationController.sharedLocationManager.locationManager.location?.coordinate ?? CLLocationCoordinate2D(latitude: 34.052238, longitude: -118.24334)
+    var locationValue = LocationController.sharedLocationManager.locationManager.location?.coordinate ?? CLLocationCoordinate2D(latitude: GarageProfileModel.shared.latitude, longitude: GarageProfileModel.shared.longitude)
     private var locationManager = CLLocationManager()
     let markerView = UIImageView(frame:CGRect(x: 0, y: 0, width: 41, height: 56.0))
     var gmssMarker = GMSMarker()
@@ -39,8 +39,6 @@ class GarageAddImageVC: BaseVC {
     private var mapPermission: Bool = false
     private var isMarkerAnimation : Bool = true
     private var liveAddress : String = ""
-    var imagesArray = [ImageModel]()
-    var serviceImagesArray = [String]()
     fileprivate var hasImageUploaded = true {
         didSet {
             if hasImageUploaded {
@@ -68,7 +66,6 @@ class GarageAddImageVC: BaseVC {
     }
     
     @IBAction func saveBtnAction(_ sender: UIButton) {
-        GarageProfileModel.shared.images = self.serviceImagesArray
         AppRouter.goToUploadDocumentVC(vc: self)
     }
 }
@@ -159,7 +156,7 @@ extension GarageAddImageVC {
     }
     
     func reloadCollectionViewWithUIUpdation(){
-        if imagesArray.count > 2 {
+        if GarageProfileModel.shared.serviceCenterImages.endIndex > 2 {
             DispatchQueue.main.async {
                 self.collViewHeightConst.constant = 90 * 2
             }
@@ -237,11 +234,11 @@ extension GarageAddImageVC: GMSAutocompleteViewControllerDelegate {
 //=====
 extension GarageAddImageVC:UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    
-        if !self.imagesArray.isEmpty && self.imagesArray.count <= 4{
-            return self.imagesArray.count + 1
-        }else if self.imagesArray.count == 5{
-            return self.imagesArray.count
+        let imagesArray = GarageProfileModel.shared.serviceCenterImages
+        if !imagesArray.isEmpty && imagesArray.count <= 4{
+            return imagesArray.count + 1
+        }else if imagesArray.count == 5{
+            return imagesArray.count
         }else{
             return 1
         }
@@ -249,8 +246,9 @@ extension GarageAddImageVC:UICollectionViewDelegate, UICollectionViewDataSource,
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let imagesArray = GarageProfileModel.shared.serviceCenterImages
         let imageCell = collectionView.dequeueCell(with: AddImageCollCell.self, indexPath: indexPath)
-        if !self.hasImageUploaded && (indexPath.row == self.imagesArray.count - 1){
+        if !self.hasImageUploaded && (indexPath.row == imagesArray.count - 1){
             imageCell.activityIndictor.isHidden = false
             imageCell.activityIndictor.startAnimating()
         }else{
@@ -258,8 +256,8 @@ extension GarageAddImageVC:UICollectionViewDelegate, UICollectionViewDataSource,
             imageCell.activityIndictor.stopAnimating()
         }
         var data: ImageModel?
-        if !self.imagesArray.isEmpty && self.imagesArray.count <= 4 && indexPath.item < self.imagesArray.count {
-            data = self.imagesArray[indexPath.item]
+        if !imagesArray.isEmpty && imagesArray.count <= 4 && indexPath.item < imagesArray.count {
+            data = imagesArray[indexPath.item]
             if let imageUrl = data?.url {
                 if imageUrl.isEmpty {
                     imageCell.mainImgView.image = data?.image ?? nil
@@ -268,14 +266,14 @@ extension GarageAddImageVC:UICollectionViewDelegate, UICollectionViewDataSource,
                 }
             }
             
-        } else if !self.imagesArray.isEmpty && self.imagesArray.count == 5 && indexPath.item < self.imagesArray.count{
-            data = self.imagesArray[indexPath.item]
+        } else if !imagesArray.isEmpty && imagesArray.count == 5 && indexPath.item < imagesArray.count{
+            data = imagesArray[indexPath.item]
             if let imageUrl = data?.url {
-                    if imageUrl.isEmpty {
-                        imageCell.mainImgView.image = data?.image ?? nil
-                    } else {
-                        imageCell.mainImgView.sd_setImage(with: URL(string: imageUrl), placeholderImage: #imageLiteral(resourceName: "empty_album") , completed: nil)
-                    }
+                if imageUrl.isEmpty {
+                    imageCell.mainImgView.image = data?.image ?? nil
+                } else {
+                    imageCell.mainImgView.sd_setImage(with: URL(string: imageUrl), placeholderImage: #imageLiteral(resourceName: "empty_album") , completed: nil)
+                }
             }
         }else {
             imageCell.activityIndictor.isHidden = true
@@ -284,9 +282,8 @@ extension GarageAddImageVC:UICollectionViewDelegate, UICollectionViewDataSource,
         
         imageCell.addImgBtn.addTarget(self, action: #selector(addImageBtnTapped(_:)), for: .touchUpInside)
 
-        if !self.imagesArray.isEmpty{
-            
-            if indexPath.item == self.imagesArray.count{
+        if !imagesArray.isEmpty{
+            if indexPath.item == imagesArray.count{
 //                imageCell.addb.isHidden = true
                 imageCell.addImgBtn.isHidden = false
             }else{
@@ -320,20 +317,24 @@ extension GarageAddImageVC:UICollectionViewDelegate, UICollectionViewDataSource,
 // MARK: - UIImagePickerControllerDelegate
 //===========================
 extension GarageAddImageVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate , RemovePictureDelegate {
+    func removepicture() {
+    }
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[.editedImage] as? UIImage
         hasImageUploaded = false
-        self.imagesArray.append(ImageModel(url: "", mediaType:"image", image: image ?? UIImage()))
+        GarageProfileModel.shared.serviceCenterImages.append(ImageModel(url: "", mediaType: "image", image: image ?? UIImage()))
         self.reloadCollectionViewWithUIUpdation()
         image?.upload(progress: { (progress) in
             printDebug(progress)
         }, completion: { (response,error) in
             if let url = response {
                 self.hasImageUploaded = true
-                self.serviceImagesArray.append(url)
+                let lastIndex = GarageProfileModel.shared.serviceCenterImages.endIndex
+                GarageProfileModel.shared.serviceCenterImages[lastIndex-1].url = url
             }
             if let _ = error{
-//                self.showAlert(msg: LocalizedString.imageUploadingFailed.localized)
+                self.showAlert(msg: LocalizedString.imageUploadingFailed.localized)
             }
         })
         picker.dismiss(animated: true, completion: nil)
@@ -341,11 +342,5 @@ extension GarageAddImageVC: UIImagePickerControllerDelegate, UINavigationControl
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
-    
-    
-    func removepicture() {
-//        self.userProfileImgView.image = #imageLiteral(resourceName: "icProfile")
-//        self.viewModel.image = nil
-//        self.viewModel.userImageUrl = ""
-    }
+
 }
