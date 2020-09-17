@@ -52,6 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , MessagingDelegate , UNUs
             print(fcmToken)
         }
         AppUserDefaults.save(value: fcmToken , forKey: .fcmToken) // Used for saving device token
+        printDebug(AppUserDefaults.save(value: fcmToken , forKey: .fcmToken))
     }
     
     // Setup IQKeyboard Manager (Third party for handling keyboard in app)
