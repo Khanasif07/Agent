@@ -31,9 +31,21 @@ class UploadDocumentVC: BaseVC {
          
             }
         }
+        
+        var imgArr: [String] {
+            switch self {
+            case .commericalRegister:
+                return GarageProfileModel.shared.commercialRegister
+            case .vatCertificate:
+                return GarageProfileModel.shared.vatCertificate
+            case .municipalityLicense:
+                return GarageProfileModel.shared.municipalityLicense
+            case .ownerId:
+                return GarageProfileModel.shared.ownerId
+            }
+        }
     }
-    
-    
+
     // MARK: - IBOutlets
     //===========================
     @IBOutlet weak var mainTableView: UITableView!
@@ -107,13 +119,17 @@ extension UploadDocumentVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(with: DocumentTableViewCell.self, indexPath: indexPath)
-        cell.bindData(text: Section.allCases[indexPath.row].text)
-        cell.docImgView.isHidden = true
-        cell.cancelBtn.isHidden = true
+        let section = Section.allCases[indexPath.row]
+        cell.bindData(section: section)
+        
         cell.cancelBtnTapped = {[weak self] in
-            guard let _ = self else { return }
-            cell.cancelBtn.isHidden = true
-            cell.docImgView.isHidden = true
+            guard let `self` = self else { return }
+            self.removeImg(indexPath: indexPath.row,isFirstImg : true)
+        }
+        
+        cell.uploadCancelBtnTapped = {[weak self] in
+            guard let `self` = self else { return }
+            self.removeImg(indexPath: indexPath.row,isFirstImg : false)
         }
         
         cell.uploadDoc = {[weak self] in
@@ -121,12 +137,26 @@ extension UploadDocumentVC : UITableViewDelegate, UITableViewDataSource {
             self.sectionType = Section.allCases[indexPath.row]
             self.captureImage(delegate: self,removedImagePicture: true)
         }
-        
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
+    }
+    
+    func removeImg(indexPath: Int,isFirstImg : Bool) {
+        switch sectionType {
+            
+        case .commericalRegister:
+            GarageProfileModel.shared.commercialRegister.remove(at: isFirstImg ? 0 : 1)
+        case .vatCertificate:
+            GarageProfileModel.shared.vatCertificate.remove(at: isFirstImg ? 0 : 1)
+        case .municipalityLicense:
+            GarageProfileModel.shared.municipalityLicense.remove(at: isFirstImg ? 0 : 1)
+        case .ownerId:
+            GarageProfileModel.shared.ownerId.remove(at: isFirstImg ? 0 : 1)
+        }
+        mainTableView.reloadData()
     }
 }
 
@@ -135,7 +165,7 @@ extension UploadDocumentVC: UIImagePickerControllerDelegate,UINavigationControll
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[.editedImage] as? UIImage
         CommonFunctions.showActivityLoader()
-         
+        
         image?.upload(progress: { (progress) in
             printDebug(progress)
         }, completion: { (response,error) in
@@ -158,16 +188,17 @@ extension UploadDocumentVC: UIImagePickerControllerDelegate,UINavigationControll
         
     }
     
-//    func saveImage(imgUrl: String) {
-//        switch sectionType {
-//        case .commericalRegister:
-//            GarageProfileModel.shared.commercialRegister.append(imgUrl)
-//        case .vatCertificate:
-//            GarageProfileModel.shared.vatCertificate.append(imgUrl)
-//        case .municipalityLicense:
-//            GarageProfileModel.shared.municipalityLicense.append(imgUrl)
-//        case .ownerId:
-//            GarageProfileModel.shared.ownerId.append(imgUrl)
-//        }
-//    }
+    func saveImage(imgUrl: String) {
+        switch sectionType {
+        case .commericalRegister:
+            GarageProfileModel.shared.commercialRegister.append(imgUrl)
+        case .vatCertificate:
+            GarageProfileModel.shared.vatCertificate.append(imgUrl)
+        case .municipalityLicense:
+            GarageProfileModel.shared.municipalityLicense.append(imgUrl)
+        case .ownerId:
+            GarageProfileModel.shared.ownerId.append(imgUrl)
+        }
+        mainTableView.reloadData()
+    }
 }

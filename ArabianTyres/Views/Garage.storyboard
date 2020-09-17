@@ -706,7 +706,7 @@ Service Center</string>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rtz-uU-sp1">
                                                     <rect key="frame" x="22" y="51" width="137" height="60"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icTopArrow" translatesAutoresizingMaskIntoConstraints="NO" id="f9a-Bk-sih">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icTopArrow" translatesAutoresizingMaskIntoConstraints="NO" id="f9a-Bk-sih">
                                                             <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <userDefinedRuntimeAttributes>
@@ -736,14 +736,28 @@ Service Center</string>
                                                         <action selector="cancelBtnAction:" destination="5XB-LI-Sgx" eventType="touchUpInside" id="pS2-XR-yYa"/>
                                                     </connections>
                                                 </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ab8-Dh-1eB">
+                                                    <rect key="frame" x="149" y="41" width="20" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="DJb-ni-AjW"/>
+                                                        <constraint firstAttribute="width" secondItem="ab8-Dh-1eB" secondAttribute="height" multiplier="1:1" id="vX6-qv-pV1"/>
+                                                    </constraints>
+                                                    <state key="normal" image="cancel"/>
+                                                    <connections>
+                                                        <action selector="uploadCancelBtnAction:" destination="5XB-LI-Sgx" eventType="touchUpInside" id="ZzD-Pj-Uph"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" red="0.96470588235294119" green="0.96862745098039216" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
+                                                <constraint firstItem="ab8-Dh-1eB" firstAttribute="top" secondItem="N8B-BX-nht" secondAttribute="top" constant="-10" id="4fp-cj-UfS"/>
+                                                <constraint firstItem="ab8-Dh-1eB" firstAttribute="width" secondItem="ab8-Dh-1eB" secondAttribute="height" multiplier="1:1" id="6Q2-EL-GcI"/>
                                                 <constraint firstItem="Mey-ZY-wev" firstAttribute="trailing" secondItem="f9a-Bk-sih" secondAttribute="trailing" constant="10" id="9jb-jW-zaq"/>
                                                 <constraint firstAttribute="bottom" secondItem="Rtz-uU-sp1" secondAttribute="bottom" constant="11" id="E20-MZ-tdh"/>
                                                 <constraint firstItem="sob-NB-2aN" firstAttribute="leading" secondItem="5fg-eB-l6Y" secondAttribute="leading" constant="22" id="H0b-Hf-RjT"/>
                                                 <constraint firstItem="Rtz-uU-sp1" firstAttribute="top" secondItem="sob-NB-2aN" secondAttribute="bottom" constant="10.5" id="HSF-3l-H9X"/>
                                                 <constraint firstItem="sob-NB-2aN" firstAttribute="top" secondItem="5fg-eB-l6Y" secondAttribute="top" constant="20" id="WRb-HP-6cS"/>
+                                                <constraint firstItem="ab8-Dh-1eB" firstAttribute="trailing" secondItem="N8B-BX-nht" secondAttribute="trailing" constant="10" id="YwY-LY-5ld"/>
                                                 <constraint firstItem="Rtz-uU-sp1" firstAttribute="leading" secondItem="sob-NB-2aN" secondAttribute="leading" id="cnk-h2-3IM"/>
                                                 <constraint firstItem="Mey-ZY-wev" firstAttribute="top" secondItem="f9a-Bk-sih" secondAttribute="top" constant="-10" id="h8R-fU-kQl"/>
                                             </constraints>
@@ -752,6 +766,7 @@ Service Center</string>
                                             <outlet property="cancelBtn" destination="Mey-ZY-wev" id="884-sy-ZB8"/>
                                             <outlet property="docImgView" destination="f9a-Bk-sih" id="OMd-JD-CEL"/>
                                             <outlet property="titleLbl" destination="sob-NB-2aN" id="fs4-vO-kmb"/>
+                                            <outlet property="uploadCancelBtn" destination="ab8-Dh-1eB" id="bsI-VJ-rtZ"/>
                                             <outlet property="uploadImgView" destination="N8B-BX-nht" id="JO7-al-uxc"/>
                                         </connections>
                                     </tableViewCell>
@@ -907,7 +922,7 @@ Service Center</string>
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qjx-ob-7zH">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qjx-ob-7zH" customClass="AppButton" customModule="ArabianTyres" customModuleProvider="target">
                                         <rect key="frame" x="22" y="84" width="370" height="56"/>
                                         <color key="backgroundColor" red="0.090196078430000007" green="0.1450980392" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>

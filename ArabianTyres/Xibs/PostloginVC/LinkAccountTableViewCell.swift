@@ -36,4 +36,11 @@ class LinkAccountTableViewCell: UITableViewCell {
       printDebug("edit btn tapped")
     }
     
+    func popluateData(){
+        bankNameLbl.text = GarageProfileModel.shared.bankName
+        accNumberLbl.text = GarageProfileModel.shared.accountNumber
+
+
+    }
+    
 }

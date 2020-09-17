@@ -15,8 +15,11 @@ class DocumentTableViewCell: UITableViewCell {
     @IBOutlet weak var docImgView: UIImageView!
     @IBOutlet weak var cancelBtn : UIButton!
     
-    
+    @IBOutlet weak var uploadCancelBtn : UIButton!
+
     var cancelBtnTapped: (()->())?
+    var uploadCancelBtnTapped: (()->())?
+
     var uploadDoc: (()->())?
     
     override func awakeFromNib() {
@@ -29,6 +32,10 @@ class DocumentTableViewCell: UITableViewCell {
     
     @IBAction func cancelBtnAction(_ sender: Any) {
         cancelBtnTapped?()
+    }
+    
+    @IBAction func uploadCancelBtnAction(_ sender: Any) {
+        uploadCancelBtnTapped?()
     }
     
     private func addGestureOnImage() {
@@ -56,8 +63,29 @@ class DocumentTableViewCell: UITableViewCell {
         titleLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
     }
     
-    func bindData(text: String) {
-        titleLbl.text = text
+    func bindData(section: UploadDocumentVC.Section) {
+        titleLbl.text = section.text
+       
+        if section.imgArr.isEmpty {
+            docImgView.isHidden = true
+            cancelBtn.isHidden = true
+            uploadCancelBtn.isHidden = true
 
+        }else {
+            docImgView.isHidden = false
+            cancelBtn.isHidden = false
+            docImgView?.sd_setImage(with: URL(string: section.imgArr[0]), completed: nil)
+
+            if section.imgArr.count == 2 {
+            uploadImgView.contentMode = .scaleToFill
+            uploadImgView?.sd_setImage(with: URL(string: section.imgArr[1]), completed: nil)
+            uploadCancelBtn.isHidden = false
+
+            }else {
+            uploadCancelBtn.isHidden = true
+            uploadImgView.contentMode = .center
+            uploadImgView.image = #imageLiteral(resourceName: "icTopArrow")
+            }
+        }
     }
 }

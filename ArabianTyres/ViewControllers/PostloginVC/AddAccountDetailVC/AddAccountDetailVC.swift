@@ -144,15 +144,19 @@ extension AddAccountDetailVC: UITextFieldDelegate {
         switch textField {
         case selectYourBankTextField:
             GarageProfileModel.shared.bankName = text
+            addBtn.isEnabled = addBtnStatus()
         case enterAccountNumberTextField:
             GarageProfileModel.shared.accountNumber = text
+            addBtn.isEnabled = addBtnStatus()
         case confirmAccountNumberTextField:
-            break
+            GarageProfileModel.shared.confirmAccountNumber = text
+            addBtn.isEnabled = addBtnStatus()
         default:
             break
         }
-        if !GarageProfileModel.shared.bankName.isEmpty, !GarageProfileModel.shared.accountNumber.isEmpty {
-            addBtn.isEnabled = true
-        }
     }
+
+     private func addBtnStatus()-> Bool{
+         return !GarageProfileModel.shared.bankName.isEmpty && !GarageProfileModel.shared.accountNumber.isEmpty && !GarageProfileModel.shared.confirmAccountNumber.isEmpty
+     }
 }

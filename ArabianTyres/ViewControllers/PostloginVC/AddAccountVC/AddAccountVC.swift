@@ -17,7 +17,7 @@ class AddAccountVC: BaseVC {
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var helpBtn: UIButton!
     @IBOutlet weak var mainTableView: UITableView!
-    @IBOutlet weak var registerBtn: UIButton!
+    @IBOutlet weak var registerBtn: AppButton!
     @IBOutlet weak var checkBtn: UIButton!
     @IBOutlet weak var privacyPolicyLbl: UILabel!
     @IBOutlet weak var iAgreeToLbl: UILabel!
@@ -27,7 +27,8 @@ class AddAccountVC: BaseVC {
     // MARK: - Variables
     //===========================
     var bankDetailAdded = false
-   
+    var viewModel = GarageRegistrationVM()
+
     // MARK: - Lifecycle
     //===========================
     override func viewDidLoad() {
@@ -51,17 +52,11 @@ class AddAccountVC: BaseVC {
     }
     
     @IBAction func registerBtnAction(_ sender: UIButton) {
-        self.pop()
+        viewModel.setGarageRegistration(params: GarageProfileModel.shared.getGarageProfileDict())
     }
 
      @IBAction func checkBtnAction(_ sender: UIButton) {
         checkBtn.isSelected.toggle()
-    }
-    
-    private func changeBtnState(isHide: Bool){
-        registerBtn.backgroundColor = isHide ? AppColors.primaryBlueLightShade : AppColors.primaryBlueColor
-        registerBtn.setTitleColor(isHide ? AppColors.fontTertiaryColor : AppColors.backgrougnColor2, for: .normal)
-        registerBtn.isUserInteractionEnabled = !isHide
     }
     
     private func addTabGesture() {
@@ -90,13 +85,13 @@ class AddAccountVC: BaseVC {
 extension AddAccountVC {
     
     private func initialSetup() {
+        viewModel.delegate = self
         mainTableView.delegate = self
         mainTableView.dataSource = self
         mainTableView.registerCell(with: AddAccountTableViewCell.self)
         mainTableView.registerCell(with: LinkAccountTableViewCell.self)
-
+        registerBtn.isEnabled = false
         setupTextAndFont()
-        changeBtnState(isHide: true)
         addTabGesture()
     }
    
@@ -132,6 +127,7 @@ extension AddAccountVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if bankDetailAdded {
             let cell = tableView.dequeueCell(with: LinkAccountTableViewCell.self, indexPath: indexPath)
+            cell.popluateData()
             return cell
 
         }else {
@@ -154,6 +150,18 @@ extension AddAccountVC : UITableViewDelegate, UITableViewDataSource {
 extension AddAccountVC: BankDetail {
     func BankDetailAdded() {
         bankDetailAdded = true
+        registerBtn.isEnabled = true
         mainTableView.reloadData()
     }
+}
+
+extension AddAccountVC: GarageRegistrationVMDelegate {
+    func garageRegistrationSuccess(msg: String) {
+        CommonFunctions.showToastWithMessage(msg)
+    }
+    
+    func garageRegistrationFailed(msg: String) {
+        CommonFunctions.showToastWithMessage(msg)
+    }
+ 
 }

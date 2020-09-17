@@ -27,7 +27,7 @@ struct GarageProfileModel {
     var ownerId                     : [String] = []
     var bankName                    : String = ""
     var accountNumber               : String = ""
-
+    var confirmAccountNumber        : String = ""
     func getGarageProfileDict()-> JSONDictionary {
         
         let dict: JSONDictionary = [

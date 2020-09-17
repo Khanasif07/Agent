@@ -13,7 +13,7 @@ import SwiftyJSON
 
 protocol GarageRegistrationVMDelegate: class {
     func garageRegistrationSuccess(msg: String)
-    func garageRegistrationFailed(msg: String, error: Error)
+    func garageRegistrationFailed(msg: String)
     
 }
 
@@ -21,18 +21,19 @@ class GarageRegistrationVM {
     
     // MARK: Variables
     //=================================
-    weak var delegate: ProfileVMDelegate?
+    weak var delegate: GarageRegistrationVMDelegate?
     var model = GarageProfileModel()
     // MARK: Functions
     //=================================
     func setGarageRegistration(params: JSONDictionary,loader: Bool = false) {
         WebServices.garageRegistration(parameters: params, success: { [weak self] (msg) in
             guard let `self` = self else { return }
+            self.delegate?.garageRegistrationSuccess(msg: msg)
 //            let msg = json[ApiKey.message].stringValue
             printDebug(msg)
         }) { [weak self] (error) in
             guard let `self` = self else { return }
-            self.delegate?.getProfileDataFailed(msg: error.localizedDescription,error: error)
+            self.delegate?.garageRegistrationFailed(msg: error.localizedDescription)
         }
     }
 }
