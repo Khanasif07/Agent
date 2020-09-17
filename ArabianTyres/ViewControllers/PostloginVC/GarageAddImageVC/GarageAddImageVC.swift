@@ -317,7 +317,6 @@ extension GarageAddImageVC:UICollectionViewDelegate, UICollectionViewDataSource,
 }
 
 
-
 // MARK: - UIImagePickerControllerDelegate
 //===========================
 extension GarageAddImageVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate , RemovePictureDelegate {

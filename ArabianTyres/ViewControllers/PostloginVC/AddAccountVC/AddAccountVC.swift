@@ -57,6 +57,7 @@ class AddAccountVC: BaseVC {
 
      @IBAction func checkBtnAction(_ sender: UIButton) {
         checkBtn.isSelected.toggle()
+        registerBtn.isEnabled = checkBtn.isSelected
     }
     
     private func addTabGesture() {
@@ -93,6 +94,7 @@ extension AddAccountVC {
         registerBtn.isEnabled = false
         setupTextAndFont()
         addTabGesture()
+        bankDetailAdded = fillDataStatus()
     }
    
     private func setupTextAndFont(){
@@ -129,7 +131,8 @@ extension AddAccountVC : UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueCell(with: LinkAccountTableViewCell.self, indexPath: indexPath)
             cell.popluateData()
             cell.editBtnTapped = {[weak self] in
-                
+                guard let `self` = self else {return}
+                AppRouter.goToAddAccountDetailVC(vc: self)
             }
             return cell
 
@@ -153,7 +156,7 @@ extension AddAccountVC : UITableViewDelegate, UITableViewDataSource {
 extension AddAccountVC: BankDetail {
     func BankDetailAdded() {
         bankDetailAdded = true
-        registerBtn.isEnabled = true
+        registerBtn.isEnabled = checkBtn.isSelected
         mainTableView.reloadData()
     }
 }
@@ -167,4 +170,7 @@ extension AddAccountVC: GarageRegistrationVMDelegate {
         CommonFunctions.showToastWithMessage(msg)
     }
  
+    private func fillDataStatus()-> Bool{
+        return !GarageProfileModel.shared.bankName.isEmpty && !GarageProfileModel.shared.accountNumber.isEmpty && !GarageProfileModel.shared.confirmAccountNumber.isEmpty
+    }
 }

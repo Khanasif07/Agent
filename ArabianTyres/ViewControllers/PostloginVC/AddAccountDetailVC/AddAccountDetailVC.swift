@@ -79,6 +79,7 @@ extension AddAccountDetailVC {
     private func initialSetup() {
         setupTextAndFont()
         setupTextField()
+        setData()
         addBtn.isEnabled = false
     }
    
@@ -107,6 +108,15 @@ extension AddAccountDetailVC {
         selectYourBankTextField.setImageToRightView(img: #imageLiteral(resourceName: "group3689"), size: CGSize(width: 15.0, height: 15.0))
         enterAccountNumberTextField.keyboardType = .numberPad
         confirmAccountNumberTextField.keyboardType = .numberPad
+    }
+    
+    private func setData() {
+        if addBtnStatus() {
+            addBtn.isEnabled = addBtnStatus()
+            selectYourBankTextField.text = GarageProfileModel.shared.bankName
+            enterAccountNumberTextField.text = GarageProfileModel.shared.accountNumber
+            confirmAccountNumberTextField.text = GarageProfileModel.shared.confirmAccountNumber
+        }
     }
 }
 
@@ -144,16 +154,14 @@ extension AddAccountDetailVC: UITextFieldDelegate {
         switch textField {
         case selectYourBankTextField:
             GarageProfileModel.shared.bankName = text
-            addBtn.isEnabled = addBtnStatus()
         case enterAccountNumberTextField:
             GarageProfileModel.shared.accountNumber = text
-            addBtn.isEnabled = addBtnStatus()
         case confirmAccountNumberTextField:
             GarageProfileModel.shared.confirmAccountNumber = text
-            addBtn.isEnabled = addBtnStatus()
         default:
             break
         }
+        addBtn.isEnabled = addBtnStatus()
     }
 
      private func addBtnStatus()-> Bool{

@@ -135,7 +135,7 @@ extension UploadDocumentVC : UITableViewDelegate, UITableViewDataSource {
         cell.uploadDoc = {[weak self] in
             guard let `self` = self else { return }
             self.sectionType = Section.allCases[indexPath.row]
-            self.captureImage(delegate: self,removedImagePicture: true)
+            self.captureImage(delegate: self)
         }
         return cell
     }
@@ -161,7 +161,9 @@ extension UploadDocumentVC : UITableViewDelegate, UITableViewDataSource {
 }
 
 extension UploadDocumentVC: UIImagePickerControllerDelegate,UINavigationControllerDelegate, RemovePictureDelegate {
- 
+    func removepicture() {
+    }
+     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[.editedImage] as? UIImage
         CommonFunctions.showActivityLoader()
@@ -171,7 +173,7 @@ extension UploadDocumentVC: UIImagePickerControllerDelegate,UINavigationControll
         }, completion: { (response,error) in
             if let url = response {
                 CommonFunctions.hideActivityLoader()
-//                self.saveImage(imgUrl: url)
+                self.saveImage(imgUrl: url)
             }
             if let _ = error{
                 self.showAlert(msg: "Image upload failed")
@@ -183,11 +185,7 @@ extension UploadDocumentVC: UIImagePickerControllerDelegate,UINavigationControll
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
-    
-    func removepicture() {
-        
-    }
-    
+
     func saveImage(imgUrl: String) {
         switch sectionType {
         case .commericalRegister:
