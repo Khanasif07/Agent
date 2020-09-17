@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		6708BB6B77017B3BB26B7782 /* Pods_ArabianTyres.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2C00CD38A98EBA313A070C9 /* Pods_ArabianTyres.framework */; };
 		842B2FC2251325B900E3CF67 /* RectangularDashedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842B2FC1251325B900E3CF67 /* RectangularDashedView.swift */; };
+		842B2FC52513354B00E3CF67 /* BankListingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842B2FC42513354B00E3CF67 /* BankListingVC.swift */; };
+		842B2FC925133CD200E3CF67 /* BankListingTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842B2FC725133CD200E3CF67 /* BankListingTableCell.swift */; };
+		842B2FCA25133CD200E3CF67 /* BankListingTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 842B2FC825133CD200E3CF67 /* BankListingTableCell.xib */; };
+		842B2FCC25133EC500E3CF67 /* BankListingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842B2FCB25133EC500E3CF67 /* BankListingVM.swift */; };
+		842B2FCE25133F1800E3CF67 /* BankData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842B2FCD25133F1800E3CF67 /* BankData.swift */; };
 		84303E69250649D4000BA5C3 /* UserTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84303E68250649D4000BA5C3 /* UserTabBarController.swift */; };
 		84303E6C25064B27000BA5C3 /* UnderDevelopmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84303E6B25064B27000BA5C3 /* UnderDevelopmentVC.swift */; };
 		84303E6E25064CC8000BA5C3 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84303E6D25064CC8000BA5C3 /* Home.storyboard */; };
@@ -164,6 +169,11 @@
 /* Begin PBXFileReference section */
 		19AB33EFB3362961FDB4026A /* Pods-ArabianTyres.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArabianTyres.debug.xcconfig"; path = "Target Support Files/Pods-ArabianTyres/Pods-ArabianTyres.debug.xcconfig"; sourceTree = "<group>"; };
 		842B2FC1251325B900E3CF67 /* RectangularDashedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangularDashedView.swift; sourceTree = "<group>"; };
+		842B2FC42513354B00E3CF67 /* BankListingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankListingVC.swift; sourceTree = "<group>"; };
+		842B2FC725133CD200E3CF67 /* BankListingTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankListingTableCell.swift; sourceTree = "<group>"; };
+		842B2FC825133CD200E3CF67 /* BankListingTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BankListingTableCell.xib; sourceTree = "<group>"; };
+		842B2FCB25133EC500E3CF67 /* BankListingVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankListingVM.swift; sourceTree = "<group>"; };
+		842B2FCD25133F1800E3CF67 /* BankData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankData.swift; sourceTree = "<group>"; };
 		84303E68250649D4000BA5C3 /* UserTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTabBarController.swift; sourceTree = "<group>"; };
 		84303E6B25064B27000BA5C3 /* UnderDevelopmentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderDevelopmentVC.swift; sourceTree = "<group>"; };
 		84303E6D25064CC8000BA5C3 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
@@ -348,6 +358,24 @@
 				8A21614890BB1C8443A578F3 /* Pods-ArabianTyres.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		842B2FC32513352E00E3CF67 /* BankListingVC */ = {
+			isa = PBXGroup;
+			children = (
+				842B2FC42513354B00E3CF67 /* BankListingVC.swift */,
+				842B2FCB25133EC500E3CF67 /* BankListingVM.swift */,
+			);
+			path = BankListingVC;
+			sourceTree = "<group>";
+		};
+		842B2FC625133CAC00E3CF67 /* BankListingVC */ = {
+			isa = PBXGroup;
+			children = (
+				842B2FC725133CD200E3CF67 /* BankListingTableCell.swift */,
+				842B2FC825133CD200E3CF67 /* BankListingTableCell.xib */,
+			);
+			path = BankListingVC;
 			sourceTree = "<group>";
 		};
 		84303E6625064981000BA5C3 /* Home */ = {
@@ -632,6 +660,7 @@
 				844D81E62502723C00550334 /* SignUpModel.swift */,
 				A4B74CC6251094E000771974 /* GarageProfileModel.swift */,
 				84B629AD251212FC0080A7C2 /* ImageModel.swift */,
+				842B2FCD25133F1800E3CF67 /* BankData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -840,6 +869,7 @@
 		8481FA832500EE1500AB6EFB /* PostloginVC */ = {
 			isa = PBXGroup;
 			children = (
+				842B2FC32513352E00E3CF67 /* BankListingVC */,
 				84B629AF251225EB0080A7C2 /* GarageAddLocationVC */,
 				84495631251095DB00846ED9 /* GarageAddImageVC */,
 				843C8ECA2508C37F00515F2E /* ProfileSettingVC */,
@@ -874,6 +904,7 @@
 		8481FA87250107C000AB6EFB /* PostloginVC */ = {
 			isa = PBXGroup;
 			children = (
+				842B2FC625133CAC00E3CF67 /* BankListingVC */,
 				846352CD2511E323004216F1 /* GarageAddImageVC */,
 				843C8ECF2508FB6B00515F2E /* HomeVC */,
 				843C8EB625087D9E00515F2E /* ProfileVC */,
@@ -1100,6 +1131,7 @@
 				8481FA932501437000AB6EFB /* NunitoSans-BoldItalic.ttf in Resources */,
 				A493133D2508D231007110E4 /* GoogleService-Info.plist in Resources */,
 				843F004E25060822001A78EC /* CountryCodeTableCell.xib in Resources */,
+				842B2FCA25133CD200E3CF67 /* BankListingTableCell.xib in Resources */,
 				8481FA812500DC8800AB6EFB /* Main.storyboard in Resources */,
 				844CBD1B2501F7D5009BE668 /* LoginTopTableCell.xib in Resources */,
 				8481FA8D2501435100AB6EFB /* NunitoSans-Black.ttf in Resources */,
@@ -1204,8 +1236,10 @@
 				844CBD1A2501F7D5009BE668 /* LoginTopTableCell.swift in Sources */,
 				8481FA852500EEC400AB6EFB /* ChooseLanguageVC.swift in Sources */,
 				843F004D25060822001A78EC /* CountryCodeTableCell.swift in Sources */,
+				842B2FCE25133F1800E3CF67 /* BankData.swift in Sources */,
 				8481FA552500BF0700AB6EFB /* DispatchQueueExtension.swift in Sources */,
 				A4098E7D251231DD0015B0BD /* FacilityTableViewCell.swift in Sources */,
+				842B2FC925133CD200E3CF67 /* BankListingTableCell.swift in Sources */,
 				A4213DE0250CB02400BB21B6 /* DocumentTableViewCell.swift in Sources */,
 				8481FA532500BEF900AB6EFB /* StringExtension.swift in Sources */,
 				844D81E5250271B400550334 /* LoginViewModel.swift in Sources */,
@@ -1234,6 +1268,7 @@
 				8481FA632500BFA000AB6EFB /* ApiKeys.swift in Sources */,
 				A4B74CC425107C6800771974 /* LinkAccountTableViewCell.swift in Sources */,
 				A49B7D4C251125AC0057239B /* FacilityCollectionViewCell.swift in Sources */,
+				842B2FC52513354B00E3CF67 /* BankListingVC.swift in Sources */,
 				8481FA372500BDD200AB6EFB /* UITableView+ UITableViewCellExtension.swift in Sources */,
 				8481FA6D2500BFE400AB6EFB /* AppConstants.swift in Sources */,
 				8481FA3D2500BE1C00AB6EFB /* UIColor+Additions.swift in Sources */,
@@ -1285,6 +1320,7 @@
 				843C8EC52508AE9500515F2E /* ProfileUserInternalCell.swift in Sources */,
 				84476D3725075F6800AB5E80 /* ExploreVC.swift in Sources */,
 				846352D02511E34E004216F1 /* AddImageCollCell.swift in Sources */,
+				842B2FCC25133EC500E3CF67 /* BankListingVM.swift in Sources */,
 				8481F9FD2500AA9A00AB6EFB /* AppDelegate.swift in Sources */,
 				A45566CD250B4EAC009E4324 /* RegistraionPendingVC.swift in Sources */,
 				A4B74CC92510C22700771974 /* GarageRegistrationVM.swift in Sources */,
