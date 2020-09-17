@@ -9,8 +9,6 @@
 import GoogleMaps
 import GooglePlaces
 import UIKit
-import DKImagePickerController
-import RSKImageCropper
 
 
 class GarageAddImageVC: BaseVC {
@@ -78,6 +76,7 @@ extension GarageAddImageVC {
         self.collViewSetUp()
         self.prepareMap()
         self.setAddress()
+        self.reloadCollectionViewWithUIUpdation()
         self.saveContinueBtn.isEnabled = true
         logoImgView.image = GarageProfileModel.shared.logo
         garageName.text = GarageProfileModel.shared.serviceCenterName
@@ -262,7 +261,7 @@ extension GarageAddImageVC:UICollectionViewDelegate, UICollectionViewDataSource,
                 if imageUrl.isEmpty {
                     imageCell.mainImgView.image = data?.image ?? nil
                 } else {
-                    imageCell.mainImgView.sd_setImage(with: URL(string: imageUrl), placeholderImage: #imageLiteral(resourceName: "empty_album") , completed: nil)
+                    imageCell.mainImgView.setImage_kf(imageString: imageUrl, placeHolderImage: #imageLiteral(resourceName: "icUnCheck"))
                 }
             }
             
@@ -272,7 +271,7 @@ extension GarageAddImageVC:UICollectionViewDelegate, UICollectionViewDataSource,
                 if imageUrl.isEmpty {
                     imageCell.mainImgView.image = data?.image ?? nil
                 } else {
-                    imageCell.mainImgView.sd_setImage(with: URL(string: imageUrl), placeholderImage: #imageLiteral(resourceName: "empty_album") , completed: nil)
+                    imageCell.mainImgView.setImage_kf(imageString: imageUrl, placeHolderImage: #imageLiteral(resourceName: "icUnCheck"))
                 }
             }
         }else {
@@ -301,15 +300,15 @@ extension GarageAddImageVC:UICollectionViewDelegate, UICollectionViewDataSource,
    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: (self.mainCollView.frame.width / 3) - 5, height: 80.0)
+        return CGSize(width: ((self.mainCollView.frame.width - 24.0) / 3), height: 80.0)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 5
+        return 8
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 5
+        return 8
     }
 }
 
