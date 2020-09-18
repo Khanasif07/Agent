@@ -32,6 +32,41 @@
 			<key>orderHint</key>
 			<integer>4</integer>
 		</dict>
+		<key>CropViewController-TOCropViewControllerBundle.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>46</integer>
+		</dict>
+		<key>CropViewController.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>44</integer>
+		</dict>
+		<key>DKCamera.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>47</integer>
+		</dict>
+		<key>DKImagePickerController-DKImagePickerController.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>49</integer>
+		</dict>
+		<key>DKImagePickerController.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>48</integer>
+		</dict>
+		<key>DKPhotoGallery-DKPhotoGallery.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>51</integer>
+		</dict>
+		<key>DKPhotoGallery.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>50</integer>
+		</dict>
 		<key>DZNEmptyDataSet.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -70,7 +105,7 @@
 		<key>FirebaseAnalyticsInterop.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>45</integer>
+			<integer>52</integer>
 		</dict>
 		<key>FirebaseAuth.xcscheme</key>
 		<dict>
@@ -82,7 +117,7 @@
 		<key>FirebaseAuthInterop.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>46</integer>
+			<integer>53</integer>
 		</dict>
 		<key>FirebaseCore.xcscheme</key>
 		<dict>
@@ -101,7 +136,7 @@
 		<key>FirebaseCoreDiagnosticsInterop.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>47</integer>
+			<integer>54</integer>
 		</dict>
 		<key>FirebaseCrashlytics.xcscheme</key>
 		<dict>
@@ -166,6 +201,11 @@
 			<key>orderHint</key>
 			<integer>29</integer>
 		</dict>
+		<key>Google-Maps-iOS-Utils.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>55</integer>
+		</dict>
 		<key>GoogleAppMeasurement.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -186,6 +226,16 @@
 			<false/>
 			<key>orderHint</key>
 			<integer>22</integer>
+		</dict>
+		<key>GoogleMaps.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>56</integer>
+		</dict>
+		<key>GooglePlaces.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>57</integer>
 		</dict>
 		<key>GoogleSignIn.xcscheme</key>
 		<dict>
@@ -264,12 +314,27 @@
 			<key>orderHint</key>
 			<integer>40</integer>
 		</dict>
+		<key>SDWebImage.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>58</integer>
+		</dict>
 		<key>SkyFloatingLabelTextField.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>41</integer>
+		</dict>
+		<key>SwiftRangeSlider.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>59</integer>
+		</dict>
+		<key>SwiftyGif.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>60</integer>
 		</dict>
 		<key>SwiftyJSON.xcscheme</key>
 		<dict>

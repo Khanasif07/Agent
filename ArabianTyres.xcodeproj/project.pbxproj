@@ -1384,7 +1384,7 @@
 				CODE_SIGN_ENTITLEMENTS = ArabianTyres/ArabianTyres.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 23FC5W285E;
 				INFOPLIST_FILE = ArabianTyres/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1408,7 +1408,7 @@
 				CODE_SIGN_ENTITLEMENTS = ArabianTyres/ArabianTyres.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 23FC5W285E;
 				INFOPLIST_FILE = ArabianTyres/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
