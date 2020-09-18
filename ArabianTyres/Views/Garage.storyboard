@@ -1273,13 +1273,20 @@ Service Center</string>
                                                         <color key="textColor" red="0.54117647059999996" green="0.58431372550000005" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T2i-Fn-xqF">
-                                                        <rect key="frame" x="16" y="42" width="344" height="80"/>
+                                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="LgW-Cw-ewW">
+                                                        <rect key="frame" x="16" y="42" width="344" height="90"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="80" id="bXt-CF-LvE"/>
+                                                            <constraint firstAttribute="height" constant="90" id="CZ8-sq-gcY"/>
                                                         </constraints>
-                                                    </view>
+                                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="HOl-Gq-Ybf">
+                                                            <size key="itemSize" width="50" height="50"/>
+                                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                        </collectionViewFlowLayout>
+                                                        <cells/>
+                                                    </collectionView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yH4-3a-ZcD" customClass="CustomTextView" customModule="ArabianTyres" customModuleProvider="target">
                                                         <rect key="frame" x="16" y="142" width="344" height="60"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -1324,21 +1331,21 @@ Service Center</string>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
                                                     <constraint firstItem="ha9-5f-5ZK" firstAttribute="leading" secondItem="ere-Qe-KAg" secondAttribute="leading" constant="16" id="9gC-Ui-qex"/>
-                                                    <constraint firstItem="T2i-Fn-xqF" firstAttribute="top" secondItem="ha9-5f-5ZK" secondAttribute="bottom" constant="8" id="Cm3-o8-gxQ"/>
                                                     <constraint firstItem="EKp-hc-NiD" firstAttribute="top" secondItem="TKP-lo-rZl" secondAttribute="bottom" constant="30" id="F1l-Mb-RXi"/>
-                                                    <constraint firstItem="T2i-Fn-xqF" firstAttribute="leading" secondItem="ha9-5f-5ZK" secondAttribute="leading" id="GOo-9s-eH4"/>
+                                                    <constraint firstItem="yH4-3a-ZcD" firstAttribute="top" secondItem="LgW-Cw-ewW" secondAttribute="bottom" constant="10" id="Fnc-No-C55"/>
                                                     <constraint firstItem="rno-ni-gNR" firstAttribute="trailing" secondItem="yH4-3a-ZcD" secondAttribute="trailing" id="IzL-Eu-2SX"/>
                                                     <constraint firstItem="yH4-3a-ZcD" firstAttribute="leading" secondItem="ha9-5f-5ZK" secondAttribute="leading" id="KFt-KN-rNa"/>
                                                     <constraint firstItem="rno-ni-gNR" firstAttribute="leading" secondItem="yH4-3a-ZcD" secondAttribute="leading" id="KdM-Ox-dOT"/>
-                                                    <constraint firstAttribute="trailing" secondItem="T2i-Fn-xqF" secondAttribute="trailing" constant="16" id="LHV-Sx-uog"/>
                                                     <constraint firstAttribute="trailing" secondItem="ha9-5f-5ZK" secondAttribute="trailing" constant="16" id="Nex-Xz-aLb"/>
                                                     <constraint firstItem="ha9-5f-5ZK" firstAttribute="top" secondItem="ere-Qe-KAg" secondAttribute="top" constant="13" id="VbZ-mz-0CZ"/>
+                                                    <constraint firstAttribute="trailing" secondItem="LgW-Cw-ewW" secondAttribute="trailing" constant="16" id="b5H-jL-YUp"/>
                                                     <constraint firstItem="yH4-3a-ZcD" firstAttribute="trailing" secondItem="ha9-5f-5ZK" secondAttribute="trailing" id="cd8-WT-zQ2"/>
                                                     <constraint firstItem="TKP-lo-rZl" firstAttribute="top" secondItem="rno-ni-gNR" secondAttribute="bottom" constant="15" id="eEY-9b-Axc"/>
                                                     <constraint firstAttribute="bottom" secondItem="EKp-hc-NiD" secondAttribute="bottom" constant="16" id="eek-cD-jeI"/>
                                                     <constraint firstItem="rno-ni-gNR" firstAttribute="top" secondItem="yH4-3a-ZcD" secondAttribute="bottom" constant="32" id="fTS-Ba-wMd"/>
+                                                    <constraint firstItem="LgW-Cw-ewW" firstAttribute="leading" secondItem="ha9-5f-5ZK" secondAttribute="leading" id="iAZ-dE-Eup"/>
                                                     <constraint firstAttribute="trailing" secondItem="TKP-lo-rZl" secondAttribute="trailing" constant="16" id="m5I-XP-ryw"/>
-                                                    <constraint firstItem="yH4-3a-ZcD" firstAttribute="top" secondItem="T2i-Fn-xqF" secondAttribute="bottom" constant="20" id="r1j-7g-9Bc"/>
+                                                    <constraint firstItem="LgW-Cw-ewW" firstAttribute="top" secondItem="ha9-5f-5ZK" secondAttribute="bottom" constant="8" id="nUK-s5-fjn"/>
                                                     <constraint firstItem="rno-ni-gNR" firstAttribute="leading" secondItem="TKP-lo-rZl" secondAttribute="leading" id="r6G-1A-DpK"/>
                                                     <constraint firstItem="EKp-hc-NiD" firstAttribute="trailing" secondItem="ha9-5f-5ZK" secondAttribute="trailing" id="zOh-1g-YpX"/>
                                                 </constraints>
@@ -1377,11 +1384,13 @@ Service Center</string>
                         <viewLayoutGuide key="safeArea" id="UhV-wH-Etz"/>
                     </view>
                     <connections>
+                        <outlet property="collViewHeightConst" destination="CZ8-sq-gcY" id="KWX-DE-uPn"/>
                         <outlet property="containerView" destination="ere-Qe-KAg" id="eAM-yD-uti"/>
                         <outlet property="customCollViewHeightConstraint" destination="TkR-jz-b62" id="xwk-N6-4iL"/>
                         <outlet property="customView" destination="yH4-3a-ZcD" id="Jfe-zc-bcv"/>
                         <outlet property="headingLbl" destination="ha9-5f-5ZK" id="BOn-FZ-4Re"/>
                         <outlet property="helpBtn" destination="8DP-5d-1o7" id="R8K-gp-seV"/>
+                        <outlet property="mainCollView" destination="LgW-Cw-ewW" id="4rl-Wh-RuQ"/>
                         <outlet property="rangeSlider" destination="TKP-lo-rZl" id="ZM3-jk-ow1"/>
                         <outlet property="saveAndContinueBtn" destination="EKp-hc-NiD" id="Qkd-5P-I5u"/>
                         <outlet property="serviceCenterNameLbl" destination="rno-ni-gNR" id="Aiv-qR-1b0"/>
