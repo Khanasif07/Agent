@@ -150,12 +150,16 @@
 		A413B97D250A44410004C534 /* CustomTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A413B97B250A44400004C534 /* CustomTextView.xib */; };
 		A413B97E250A44410004C534 /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A413B97C250A44400004C534 /* CustomTextView.swift */; };
 		A4213DE0250CB02400BB21B6 /* DocumentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4213DDF250CB02400BB21B6 /* DocumentTableViewCell.swift */; };
+		A43F44B42513BE66002B1014 /* BrandsListingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43F44B32513BE66002B1014 /* BrandsListingVC.swift */; };
+		A4443864251381F700114A75 /* UserHomeScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4443863251381F700114A75 /* UserHomeScreen.storyboard */; };
+		A4443866251387E000114A75 /* VechicleDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4443865251387E000114A75 /* VechicleDetailVC.swift */; };
 		A45042C7250F2D12001C8905 /* AddAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45042C6250F2D12001C8905 /* AddAccountVC.swift */; };
 		A45042D0250F3846001C8905 /* AddAccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45042CE250F3846001C8905 /* AddAccountTableViewCell.swift */; };
 		A45042D1250F3846001C8905 /* AddAccountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A45042CF250F3846001C8905 /* AddAccountTableViewCell.xib */; };
 		A45042D3250F76D5001C8905 /* AddAccountDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45042D2250F76D5001C8905 /* AddAccountDetailVC.swift */; };
 		A45566CD250B4EAC009E4324 /* RegistraionPendingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45566CC250B4EAC009E4324 /* RegistraionPendingVC.swift */; };
 		A45566D0250CA6C0009E4324 /* UploadDocumentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45566CF250CA6C0009E4324 /* UploadDocumentVC.swift */; };
+		A45707C32513B137003BE7DD /* TyreBrandVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45707C22513B137003BE7DD /* TyreBrandVC.swift */; };
 		A493133D2508D231007110E4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A493133C2508D231007110E4 /* GoogleService-Info.plist */; };
 		A49B7D4C251125AC0057239B /* FacilityCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49B7D4A251125AC0057239B /* FacilityCollectionViewCell.swift */; };
 		A49B7D4D251125AC0057239B /* FacilityCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A49B7D4B251125AC0057239B /* FacilityCollectionViewCell.xib */; };
@@ -313,12 +317,16 @@
 		A413B97B250A44400004C534 /* CustomTextView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomTextView.xib; sourceTree = "<group>"; };
 		A413B97C250A44400004C534 /* CustomTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 		A4213DDF250CB02400BB21B6 /* DocumentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentTableViewCell.swift; sourceTree = "<group>"; };
+		A43F44B32513BE66002B1014 /* BrandsListingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandsListingVC.swift; sourceTree = "<group>"; };
+		A4443863251381F700114A75 /* UserHomeScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserHomeScreen.storyboard; sourceTree = "<group>"; };
+		A4443865251387E000114A75 /* VechicleDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VechicleDetailVC.swift; sourceTree = "<group>"; };
 		A45042C6250F2D12001C8905 /* AddAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountVC.swift; sourceTree = "<group>"; };
 		A45042CE250F3846001C8905 /* AddAccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountTableViewCell.swift; sourceTree = "<group>"; };
 		A45042CF250F3846001C8905 /* AddAccountTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddAccountTableViewCell.xib; sourceTree = "<group>"; };
 		A45042D2250F76D5001C8905 /* AddAccountDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountDetailVC.swift; sourceTree = "<group>"; };
 		A45566CC250B4EAC009E4324 /* RegistraionPendingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistraionPendingVC.swift; sourceTree = "<group>"; };
 		A45566CF250CA6C0009E4324 /* UploadDocumentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadDocumentVC.swift; sourceTree = "<group>"; };
+		A45707C22513B137003BE7DD /* TyreBrandVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TyreBrandVC.swift; sourceTree = "<group>"; };
 		A493133B2508BF68007110E4 /* ArabianTyres.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ArabianTyres.entitlements; sourceTree = "<group>"; };
 		A493133C2508D231007110E4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A49B7D4A251125AC0057239B /* FacilityCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacilityCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -707,6 +715,7 @@
 				8481FA802500DC8800AB6EFB /* Main.storyboard */,
 				84303E6D25064CC8000BA5C3 /* Home.storyboard */,
 				A413B96F2509E7400004C534 /* Garage.storyboard */,
+				A4443863251381F700114A75 /* UserHomeScreen.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -884,8 +893,11 @@
 				A45042C8250F2D1F001C8905 /* UploadDocumentVC */,
 				A45042C9250F2D2B001C8905 /* AddAccountVC */,
 				A4B74CC025107C0E00771974 /* AddAccountDetailVC */,
-				A4B74CCA2510CF6C00771974 /* GarageProfileStep2VC.swift */,
-				A4098E752512274C0015B0BD /* FacilityVC.swift */,
+				A43F44B22513BE26002B1014 /* GarageProfileStep2VC */,
+				A43F44B12513BE1A002B1014 /* FacilityVC */,
+				A43F44B02513BE0F002B1014 /* VechicleDetailVC */,
+				A43F44AF2513BE01002B1014 /* TyreBrandVC */,
+				A43F44B32513BE66002B1014 /* BrandsListingVC.swift */,
 			);
 			path = PostloginVC;
 			sourceTree = "<group>";
@@ -979,6 +991,38 @@
 				A413B978250A2BEF0004C534 /* AddDetailVC.swift */,
 			);
 			path = AddDetailVC;
+			sourceTree = "<group>";
+		};
+		A43F44AF2513BE01002B1014 /* TyreBrandVC */ = {
+			isa = PBXGroup;
+			children = (
+				A45707C22513B137003BE7DD /* TyreBrandVC.swift */,
+			);
+			path = TyreBrandVC;
+			sourceTree = "<group>";
+		};
+		A43F44B02513BE0F002B1014 /* VechicleDetailVC */ = {
+			isa = PBXGroup;
+			children = (
+				A4443865251387E000114A75 /* VechicleDetailVC.swift */,
+			);
+			path = VechicleDetailVC;
+			sourceTree = "<group>";
+		};
+		A43F44B12513BE1A002B1014 /* FacilityVC */ = {
+			isa = PBXGroup;
+			children = (
+				A4098E752512274C0015B0BD /* FacilityVC.swift */,
+			);
+			path = FacilityVC;
+			sourceTree = "<group>";
+		};
+		A43F44B22513BE26002B1014 /* GarageProfileStep2VC */ = {
+			isa = PBXGroup;
+			children = (
+				A4B74CCA2510CF6C00771974 /* GarageProfileStep2VC.swift */,
+			);
+			path = GarageProfileStep2VC;
 			sourceTree = "<group>";
 		};
 		A45042C3250F2A62001C8905 /* GarageRegistrationVC */ = {
@@ -1129,6 +1173,7 @@
 				84303E6E25064CC8000BA5C3 /* Home.storyboard in Resources */,
 				8481FA992501438F00AB6EFB /* NunitoSans-ExtraLight.ttf in Resources */,
 				8481FA932501437000AB6EFB /* NunitoSans-BoldItalic.ttf in Resources */,
+				A4443864251381F700114A75 /* UserHomeScreen.storyboard in Resources */,
 				A493133D2508D231007110E4 /* GoogleService-Info.plist in Resources */,
 				843F004E25060822001A78EC /* CountryCodeTableCell.xib in Resources */,
 				842B2FCA25133CD200E3CF67 /* BankListingTableCell.xib in Resources */,
@@ -1232,6 +1277,7 @@
 				8481FA392500BDED00AB6EFB /* UIColorExtension.swift in Sources */,
 				8481FA272500BB7300AB6EFB /* Webservices.swift in Sources */,
 				84476D28250736F700AB5E80 /* ToastView.swift in Sources */,
+				A4443866251387E000114A75 /* VechicleDetailVC.swift in Sources */,
 				8481FA332500BD4A00AB6EFB /* CustomDatePicker.swift in Sources */,
 				844CBD1A2501F7D5009BE668 /* LoginTopTableCell.swift in Sources */,
 				8481FA852500EEC400AB6EFB /* ChooseLanguageVC.swift in Sources */,
@@ -1305,6 +1351,7 @@
 				84B629AE251212FC0080A7C2 /* ImageModel.swift in Sources */,
 				A45042D0250F3846001C8905 /* AddAccountTableViewCell.swift in Sources */,
 				843C8ECE2508E91700515F2E /* ProfileSettingVM.swift in Sources */,
+				A43F44B42513BE66002B1014 /* BrandsListingVC.swift in Sources */,
 				844D81E92502751D00550334 /* SignUpViewModel.swift in Sources */,
 				844D81E72502723D00550334 /* SignUpModel.swift in Sources */,
 				84476D3325075F4400AB5E80 /* SettingVC.swift in Sources */,
@@ -1330,6 +1377,7 @@
 				A4098E742511FF800015B0BD /* RangeSlider.swift in Sources */,
 				844956332510982C00846ED9 /* GarageAddImageVC.swift in Sources */,
 				8481FA412500BE3800AB6EFB /* UILabelExtension.swift in Sources */,
+				A45707C32513B137003BE7DD /* TyreBrandVC.swift in Sources */,
 				843C8EC92508B0AE00515F2E /* AGTableView.swift in Sources */,
 				A4B74CCB2510CF6C00771974 /* GarageProfileStep2VC.swift in Sources */,
 				8481F9FF2500AA9A00AB6EFB /* SceneDelegate.swift in Sources */,

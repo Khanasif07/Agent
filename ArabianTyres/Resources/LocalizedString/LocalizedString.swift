@@ -186,6 +186,17 @@ enum LocalizedString : String {
     case clearAll
     case uploadGarageLogo
     
+    case enterVehicleMake
+    case enterVehicleModel
+    case enterModelYear
+    case enteryYourVehicleDetails
+    case wellGetYouExactTyreSize
+    case vehicleMake
+    case vehicleModel
+    case modelYear
+    case thePreferredOriginForMytyreWouldBe
+    case setYourPreferencesAmongTyreBrandOrCountryOrigin
+    
     // MARK: - Home  VC Values
     //==============================
     case tyre

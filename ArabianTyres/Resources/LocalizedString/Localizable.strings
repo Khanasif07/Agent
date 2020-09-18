@@ -177,6 +177,18 @@
 "done" = "Done";
 "clearAll" = "CLEAR ALL";
 "uploadGarageLogo" = "Upload Garage Logo";
+"enterVehicleMake" = "Enter Vehicle Make";
+"enterVehicleModel" = "Enter Vehicle Model";
+"enterModelYear" = "Enter Model Year";
+"enteryYourVehicleDetails" = "Enter your Vehicle Details";
+"wellGetYouExactTyreSize" = "We’ll get you exact tyre size according to the\nprovided details";
+"vehicleMake" = "Vehicle Make";
+"vehicleModel" = "Vehicle Model";
+"modelYear" = "Model Year";
+"thePreferredOriginForMytyreWouldBe" = "The preferred Origin for my\ntyre would be";
+"setYourPreferencesAmongTyreBrandOrCountryOrigin" = "Set your preferences among tyre\nbrand or country origin";
+
+
 
 // MARK: - Home  VC Values
 //==============================
