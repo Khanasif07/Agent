@@ -51,6 +51,7 @@ class URTyreStep1VC: BaseVC {
         self.pop()
     }
     @IBAction func nextBtnAction(_ sender: UIButton) {
+          AppRouter.goToTyreBrandVC(vc: self)
     }
     
     @IBAction func findRightAction(_ sender: UIButton) {
@@ -82,7 +83,7 @@ extension URTyreStep1VC {
         [widthTxtField,profileTxtField,rimSizeTxtField].forEach({$0?.lineColor = UIColor.clear})
         [widthTxtField,profileTxtField,rimSizeTxtField].forEach({$0?.selectedLineColor = UIColor.clear})
         [widthTxtField,profileTxtField,rimSizeTxtField,numberTyreTxtField].forEach({$0?.selectedTitleColor = AppColors.fontTertiaryColor})
-        self.nextBtn.isEnabled = false
+        self.nextBtn.isEnabled = true
         self.dashView.addDashedBorder()
         self.findRightBtn.addBottomBorderWithColorDefault(color: UIColor.init(r: 50, g: 79, b: 195, alpha: 1.0), height: 1)
     }

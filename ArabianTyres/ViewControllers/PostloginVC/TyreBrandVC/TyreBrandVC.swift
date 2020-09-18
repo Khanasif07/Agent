@@ -65,11 +65,12 @@ class TyreBrandVC: BaseVC {
     //===========================
     
     @IBAction func cancelBtnAction(_ sender: UIButton) {
-        
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func submitBtnAction(_ sender: UIButton) {
-
+        let scene = LocationPopUpVC.instantiate(fromAppStoryboard: .UserHomeScreen)
+        self.present(scene, animated: true, completion: nil)
     }
     
     @IBAction func tyreCheckBtnAction(_ sender: UIButton) {
@@ -97,7 +98,6 @@ extension TyreBrandVC {
        
         countryOriginLbl.text = LocalizedString.countryOrigin.localized
         tyreBrandLbl.text = LocalizedString.tyreBrand.localized
-        
         countryOriginLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
         tyreBrandLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
         thePreferredLbl.text = LocalizedString.thePreferredOriginForMytyreWouldBe.localized
@@ -189,7 +189,7 @@ extension TyreBrandVC : CustomTextViewDelegate{
         switch tView {
        
         case tyreBrandCustomView.tView:
-            AppRouter.goToBrandsListingVC(vc: self, listingType: .brands)
+            AppRouter.goToBrandsListingVC(vc: self)
         case countryOriginCustomView.tView:
             break
             
