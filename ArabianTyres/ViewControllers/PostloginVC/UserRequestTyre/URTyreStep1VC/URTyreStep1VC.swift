@@ -38,6 +38,7 @@ class URTyreStep1VC: BaseVC {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isTranslucent = true
         self.tabBarController?.tabBar.isHidden = true
     }
     
