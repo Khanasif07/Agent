@@ -49,7 +49,7 @@ enum AppRouter {
     }
     
     static func goToTestingVC(){
-        let homeScene = GarageProfileStep2VC.instantiate(fromAppStoryboard: .Garage)
+        let homeScene = VechicleDetailVC.instantiate(fromAppStoryboard: .UserHomeScreen)
         setAsWindowRoot(homeScene)
     }
     
@@ -180,7 +180,19 @@ enum AppRouter {
         let scene = BankListingVC.instantiate(fromAppStoryboard: .PostLogin)
         scene.bankDelegate = vc as? BankListingVMDelegate 
         vc.present(scene, animated: true)
-      }
+    }
+    
+    static func goToTyreBrandVC(vc: UIViewController){
+        let scene = TyreBrandVC.instantiate(fromAppStoryboard: .UserHomeScreen)
+        vc.navigationController?.pushViewController(scene, animated: true)
+    }
+    
+    static func goToBrandsListingVC(vc: UIViewController){
+          let scene = BrandsListingVC.instantiate(fromAppStoryboard: .UserHomeScreen)
+          scene.delegate = vc as? BrandsListnig
+          vc.present(scene, animated: true)
+    }
+    
     
     static func showAlert(alertTitle: String = "Alert!", alertMessage: String, preferredStyle: UIAlertController.Style = .alert, actionBtnTitle: String = "OK", isHitLogOutApi : Bool = false) {
         if isHitLogOutApi {

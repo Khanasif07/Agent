@@ -3,7 +3,6 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,23 +19,23 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dZL-JL-Jgr">
                         <rect key="frame" x="0.0" y="0.0" width="74" height="46"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Yjt-3j-2NU">
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Yjt-3j-2NU">
                                 <rect key="frame" x="5" y="0.0" width="64" height="46"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C7k-8R-uh7">
-                                        <rect key="frame" x="0.0" y="0.0" width="36" height="46"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="39" height="46"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <color key="textColor" name="ceruLean"/>
+                                        <color key="textColor" red="0.10980392156862745" green="0.11372549019607843" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vmd-1T-O6R">
-                                        <rect key="frame" x="41" y="0.0" width="23" height="46"/>
-                                        <state key="normal" image="cancelTagIcon"/>
+                                        <rect key="frame" x="44" y="0.0" width="20" height="46"/>
+                                        <state key="normal" image="cancel"/>
                                     </button>
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.46274509803921571" blue="0.77647058823529413" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.96470588235294119" green="0.96862745098039216" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Yjt-3j-2NU" secondAttribute="trailing" constant="5" id="51b-mC-pyS"/>
                             <constraint firstItem="Yjt-3j-2NU" firstAttribute="leading" secondItem="dZL-JL-Jgr" secondAttribute="leading" constant="5" id="NtF-Ho-dwH"/>
@@ -59,13 +58,15 @@
                     <real key="value" value="4"/>
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="cancelBtn" destination="Vmd-1T-O6R" id="l0Q-Rv-vti"/>
+                <outlet property="containerView" destination="dZL-JL-Jgr" id="pbN-U2-oPY"/>
+                <outlet property="skillLbl" destination="C7k-8R-uh7" id="m3x-bH-J8b"/>
+            </connections>
             <point key="canvasLocation" x="221.73913043478262" y="101.11607142857143"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="cancelTagIcon" width="13" height="13"/>
-        <namedColor name="ceruLean">
-            <color red="0.0" green="0.46274509803921571" blue="0.77647058823529413" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
+        <image name="cancel" width="20" height="20"/>
     </resources>
 </document>
