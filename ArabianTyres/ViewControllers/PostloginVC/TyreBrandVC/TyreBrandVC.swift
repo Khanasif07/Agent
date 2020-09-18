@@ -23,9 +23,12 @@ class TyreBrandVC: BaseVC {
     @IBOutlet weak var countryOriginCustomView: CustomTextView!
     @IBOutlet weak var tBCustomViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var countryOriginViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var tyreBrandLbl: UILabel!
+    @IBOutlet weak var countryOriginLbl: UILabel!
+    @IBOutlet weak var tyreBrandCheckBtn: UIButton!
+    @IBOutlet weak var countryOriginCheckBtn: UIButton!
 
-    
-    
+
     // MARK: - Variables
     //===========================
 
@@ -55,6 +58,8 @@ class TyreBrandVC: BaseVC {
                 tBCustomViewHeightConstraint.constant = tyreBrandCustomView.collView.contentSize.height + 38.0
             }
         }
+        view.layoutIfNeeded()
+        view.setNeedsLayout()
     }
     // MARK: - IBActions
     //===========================
@@ -65,6 +70,15 @@ class TyreBrandVC: BaseVC {
     
     @IBAction func submitBtnAction(_ sender: UIButton) {
 
+    }
+    
+    @IBAction func tyreCheckBtnAction(_ sender: UIButton) {
+        tyreBrandCheckBtn.isSelected.toggle()
+    }
+    
+    @IBAction func countryCheckBtnAction(_ sender: UIButton) {
+        countryOriginCheckBtn.isSelected.toggle()
+        countryOriginViewHeightConstraint.constant = countryOriginCheckBtn.isSelected ? 60.0 : 0.0
     }
    
 }
@@ -80,6 +94,12 @@ extension TyreBrandVC {
     }
     
     private func setupTextFont() {
+       
+        countryOriginLbl.text = LocalizedString.countryOrigin.localized
+        tyreBrandLbl.text = LocalizedString.tyreBrand.localized
+        
+        countryOriginLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
+        tyreBrandLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
         thePreferredLbl.text = LocalizedString.thePreferredOriginForMytyreWouldBe.localized
         setYourPrefernceLbl.text = LocalizedString.setYourPreferencesAmongTyreBrandOrCountryOrigin.localized
         submitBtn.setTitle(LocalizedString.submit.localized, for: .normal)
@@ -91,10 +111,17 @@ extension TyreBrandVC {
     }
     
     private func setupCustomView() {
+        
+        tyreBrandCustomView.placeHolderTxt = LocalizedString.selectTyreBrand.localized
+        countryOriginCustomView.placeHolderTxt = LocalizedString.selectCountryOrigin.localized
+        tyreBrandCustomView.floatLbl.text = LocalizedString.brands.localized
+        countryOriginCustomView.floatLbl.text = LocalizedString.origin.localized
+
         countryOriginCustomView.delegate = self
         tyreBrandCustomView.delegate = self
         tyreBrandCustomView.leftImgContainerView.isHidden = true
         countryOriginCustomView.leftImgContainerView.isHidden = true
+        tyreBrandCustomView.rightImgView.image = #imageLiteral(resourceName: "group3689")
         tyreBrandCustomView.txtViewEditable = false
         countryOriginCustomView.txtViewEditable = false
         tyreBrandCustomView.collView.registerCell(with: FacilityCollectionViewCell.self)
@@ -129,9 +156,9 @@ extension TyreBrandVC: UICollectionViewDelegate,UICollectionViewDataSource,UICol
     }
     
     private func cardSizeForItemAt(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, indexPath: IndexPath) -> CGSize {
-        let textSize = brandListingArr[indexPath.row].sizeCount(withFont: AppFonts.NunitoSansSemiBold.withSize(12.0), boundingSize: CGSize(width: 10000.0, height: collectionView.frame.height))
+        let textSize = brandListingArr[indexPath.row].sizeCount(withFont: AppFonts.NunitoSansSemiBold.withSize(13.0), boundingSize: CGSize(width: 10000.0, height: collectionView.frame.height))
         
-        return CGSize(width: textSize.width + 60, height: 22.0)
+        return CGSize(width: textSize.width + 40, height: 23.0)
     }
 
     @objc func cancelBtnTapped(_ sender : UIButton) {
@@ -162,14 +189,24 @@ extension TyreBrandVC : CustomTextViewDelegate{
         switch tView {
        
         case tyreBrandCustomView.tView:
-            AppRouter.goToBrandsListingVC(vc: self)
-            
+            AppRouter.goToBrandsListingVC(vc: self, listingType: .brands)
         case countryOriginCustomView.tView:
             break
             
         default:
             break
         }
+    }
+    
+    func collViewTapped() {
+//        openSheet()
+    }
+    
+    private func openSheet() {
+        tyreBrandCustomView.collView.isHidden = false
+        let scene = BrandsListingVC.instantiate(fromAppStoryboard: .UserHomeScreen)
+//        scene.selectedItem = brandListingArr
+        self.present(scene, animated: true)
     }
 }
 

@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , MessagingDelegate , UNUs
     var currentLocation : CLLocation?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        sleep(2)
+//        sleep(2)
         self.setUpKeyboardSetup()
         self.setUpTextField()
         GMSServices.provideAPIKey(AppConstants.googlePlaceApiKey)

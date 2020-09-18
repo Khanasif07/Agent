@@ -187,8 +187,19 @@
 "modelYear" = "Model Year";
 "thePreferredOriginForMytyreWouldBe" = "The preferred Origin for my\ntyre would be";
 "setYourPreferencesAmongTyreBrandOrCountryOrigin" = "Set your preferences among tyre\nbrand or country origin";
-
-
+"tyreBrand" = "Tyre Brand";
+"countryOrigin" = "Country Origin";
+"selectTyreBrand" = "Select Tyre Brands";
+"selectCountryOrigin" = "Select Country Origin";
+"brands" = "Brands";
+"origin" = "Origin";
+"selectBrand" = "Select Brands";
+"brandName" = "Brand’s Name";
+"selectCountry" = "Select Country";
+"countryName" = "Country’s Name";
+"arabianTyresWantToAccessYourCurrentLocation" = "Arabian Tyres want to access\nyour current location";
+"allowCureentLocationWillHelpYouInGettingGreatOffers" = "Allow cureent location will help you\nin getting great offers";
+"allow" = "Allow";
 
 // MARK: - Home  VC Values
 //==============================
