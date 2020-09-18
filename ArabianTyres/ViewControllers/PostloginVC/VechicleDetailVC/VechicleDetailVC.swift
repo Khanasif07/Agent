@@ -51,7 +51,7 @@ class VechicleDetailVC: BaseVC {
     //===========================
     
     @IBAction func cancelBtnAction(_ sender: UIButton) {
-        
+        self.pop()
     }
     
     @IBAction func submitBtnAction(_ sender: UIButton) {

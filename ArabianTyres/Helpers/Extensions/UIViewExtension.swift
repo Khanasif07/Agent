@@ -121,16 +121,16 @@ extension UIView {
         }
     }
     
-        ///Sets the border color of the view
-        @IBInspectable var borderColor: UIColor? {
-            get {
-                let color = UIColor(cgColor: layer.borderColor!)
-                return color
-            }
-            set {
-                layer.borderColor = newValue?.cgColor
-            }
+    ///Sets the border color of the view
+    @IBInspectable var borderColor: UIColor? {
+        get {
+            let color = UIColor(cgColor: layer.borderColor!)
+            return color
         }
+        set {
+            layer.borderColor = newValue?.cgColor
+        }
+    }
     
     ///Sets the shadow color of the view
     @IBInspectable var shadowColor:UIColor? {
@@ -174,7 +174,7 @@ extension UIView {
             return layer.shadowRadius
         }
         set {
-            layer.shadowRadius = shadowRadius
+            layer.shadowRadius = newValue
         }
     }
     
@@ -755,7 +755,7 @@ public extension UIView {
         self.layer.position = point
         self.layer.add(keyFrame, forKey: keyFrame.keyPath)
     }
-
+    
 }
 
 
@@ -773,7 +773,7 @@ extension UIView {
         }
         return subviewClass as? UICollectionView
     }
-
+    
     var getTableView : UITableView? {
         
         var subviewClass = self
@@ -786,7 +786,7 @@ extension UIView {
         }
         return subviewClass as? UITableView
     }
-
+    
     var tableViewCell : UITableViewCell? {
         
         var subviewClass = self
@@ -891,7 +891,7 @@ extension UIView {
             }
         }
     }
- 
+    
 }
 
 
@@ -932,6 +932,21 @@ extension UIView {
         border.backgroundColor = color.cgColor
         border.frame = CGRect(x:2.5, y:self.frame.size.height - height + 5.0, width:self.frame.size.width - 5.0, height:height)
         self.layer.addSublayer(border)
+    }
+    
+    func addDashedBorder() {
+        //Create a CAShapeLayer
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.strokeColor = UIColor(r: 138, g: 149, b: 158, alpha: 0.2).cgColor
+        shapeLayer.lineWidth = 2
+        // passing an array with the values [2,3] sets a dash pattern that alternates between a 2-user-space-unit-long painted segment and a 3-user-space-unit-long unpainted segment
+        shapeLayer.lineDashPattern = [2,3]
+        
+        let path = CGMutablePath()
+        path.addLines(between: [CGPoint(x: 0, y: 0),
+                                CGPoint(x: self.frame.width, y: 0)])
+        shapeLayer.path = path
+        layer.addSublayer(shapeLayer)
     }
 }
 

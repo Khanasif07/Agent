@@ -204,3 +204,9 @@
 "serviceCenterName" = "meService Center’s Name";
 "serviceCenterDist" = "Service Center’s District";
 "serviceCenterAddress" = "Service Center Address";
+
+
+"width" = "Width";
+"rimSize" = "Rim Size";
+"quantity" = "Quantity";
+"enter_number_of_tyre_you_want" = "Enter number of tyre you want";

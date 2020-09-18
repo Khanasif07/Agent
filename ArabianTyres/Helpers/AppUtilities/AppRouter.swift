@@ -26,31 +26,30 @@ enum AppRouter {
     // MARK: - Show Landing Screen
     //===========================
     static func checkAppInitializationFlow() {
-        goToTestingVC()
-//        if isUserLoggedin {
-//            if !isPhoneNoVerified{
-//                AppUserDefaults.removeValue(forKey: .accesstoken)
-//                UserModel.main = UserModel()
-//                AppRouter.makeLoginVCRoot()
-//                return
-//            }
-//            switch isCurrentUserType {
-//            case .user:
-//                AppRouter.goToUserHome()
-//            default:
-//                let lang = AppUserDefaults.value(forKey: .currentLanguage).stringValue
-//                AppUserDefaults.removeAllValues()
-//                AppUserDefaults.save(value: lang, forKey: .currentLanguage)
-//                AppUserDefaults.save(value: true, forKey: .isLanguageSelect)
-//            }
-//        } else {
-//            self.makeChooseLanguageVCRoot()
-//        }
+        if isUserLoggedin {
+            if !isPhoneNoVerified{
+                AppUserDefaults.removeValue(forKey: .accesstoken)
+                UserModel.main = UserModel()
+                AppRouter.makeLoginVCRoot()
+                return
+            }
+            switch isCurrentUserType {
+            case .user:
+                AppRouter.goToUserHome()
+            default:
+                let lang = AppUserDefaults.value(forKey: .currentLanguage).stringValue
+                AppUserDefaults.removeAllValues()
+                AppUserDefaults.save(value: lang, forKey: .currentLanguage)
+                AppUserDefaults.save(value: true, forKey: .isLanguageSelect)
+            }
+        } else {
+            self.makeChooseLanguageVCRoot()
+        }
     }
     
-    static func goToTestingVC(){
-        let homeScene = VechicleDetailVC.instantiate(fromAppStoryboard: .UserHomeScreen)
-        setAsWindowRoot(homeScene)
+    static func goToTestingVC(vc: UIViewController){
+        let scene = URTyreStep1VC.instantiate(fromAppStoryboard: .UserRequest)
+        vc.navigationController?.pushViewController(scene, animated: true)
     }
     
     static func goToProfileSettingVC(vc: UIViewController){
@@ -137,6 +136,11 @@ enum AppRouter {
         let scene = AddDetailVC.instantiate(fromAppStoryboard: .Garage)
         vc.navigationController?.pushViewController(scene, animated: true)
     }
+    
+    static func goToVehicleDetailVC(vc: UIViewController){
+           let scene = VechicleDetailVC.instantiate(fromAppStoryboard: .UserHomeScreen)
+           vc.navigationController?.pushViewController(scene, animated: true)
+       }
     
     static func goToRegistraionPendingVC(vc: UIViewController, screenType: RegistraionPendingVC.ScreenType){
         let scene = RegistraionPendingVC.instantiate(fromAppStoryboard: .Garage)

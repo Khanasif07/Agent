@@ -45,6 +45,7 @@ class HomeVC: BaseVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = false
         setNeedsStatusBarAppearanceUpdate()
     }
     
@@ -121,7 +122,7 @@ extension HomeVC : UICollectionViewDelegate, UICollectionViewDataSource,UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        showAlert(msg: "Under Development")
+        AppRouter.goToTestingVC(vc: self)
     }
     
 }

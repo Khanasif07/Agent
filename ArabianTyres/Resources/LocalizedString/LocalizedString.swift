@@ -210,6 +210,11 @@ enum LocalizedString : String {
     case enterServiceCenterAddress
     case serviceCenterDist
     case serviceCenterAddress
+    
+    case width
+    case rimSize
+    case quantity
+    case enter_number_of_tyre_you_want
    
 }
 
