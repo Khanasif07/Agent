@@ -122,7 +122,7 @@ extension HomeVC : UICollectionViewDelegate, UICollectionViewDataSource,UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        AppRouter.goToTestingVC(vc: self)
+//        AppRouter.goToTestingVC(vc: self)
     }
     
 }

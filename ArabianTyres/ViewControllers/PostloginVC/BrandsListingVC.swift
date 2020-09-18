@@ -9,7 +9,7 @@
 import UIKit
 
 protocol BrandsListnig: class {
-    func listing(_ data: [String])
+    func listing(_ data: [String], listingType: ListingType)
 }
 
 
@@ -28,12 +28,12 @@ class BrandsListingVC: BaseVC {
     //===========================
     var selectedSkillArr : [String] = []
     var brandArr = ["All Brands", "MRF","Nokian Tyre","Apollo Tyres","CEAT Ltd","Goodyear","Peerless Tyre","Michelin ","Dunlop","Pirelli","Yokohama"]
-    var selectedItem : [String] = []
+    var selectedBrandsArr : [String] = []
+    var selectedCountryArr : [String] = []
     weak var delegate : BrandsListnig?
     var listingType : ListingType = .brands
     var viewModel = CountryVM()
-
-    
+   
     // MARK: - Lifecycle
     //===========================
     override func viewDidLoad() {
@@ -54,15 +54,13 @@ class BrandsListingVC: BaseVC {
 
     @IBAction func doneBtnAction(_ sender: UIButton) {
         dismiss(animated: true) {
-        self.delegate?.listing(self.selectedItem)
-    }
+            self.delegate?.listing(self.selectedBrandsArr, listingType: self.listingType)
+       }
     }
 
     @IBAction func clearAllAction(_ sender: UIButton) {
         
     }
-
-
 }
 
 // MARK: - Extension For Functions
@@ -105,8 +103,6 @@ extension BrandsListingVC {
 //===========================
 extension BrandsListingVC : UITableViewDelegate, UITableViewDataSource {
    
-    
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         if  (listingType == .brands) {
             return brandArr.count
@@ -124,26 +120,26 @@ extension BrandsListingVC : UITableViewDelegate, UITableViewDataSource {
         view.bottomView.backgroundColor = #colorLiteral(red: 0.9294117647, green: 0.9294117647, blue: 0.9294117647, alpha: 1)
         if listingType == .brands {
             view.categoryName.text = brandArr[section]
+            view.checkBtn.isSelected = selectedBrandsArr.contains(brandArr[section])
 
         }else {
             if let name = viewModel.searchedCountry[section][CountryVM.CountryKeys.name.rawValue]{
                 view.categoryName.text = name
+                view.checkBtn.isSelected = selectedCountryArr.contains(viewModel.searchedCountry[section][CountryVM.CountryKeys.name.rawValue] ?? "")
             }
         }
-        view.checkBtn.isSelected = selectedItem.contains(brandArr[section])
         
         view.cellBtnTapped = { [weak self] in
             guard let `self` = self else {return}
             let item = self.brandArr[section]
             
-            if item == self.brandArr[0] {
-                self.selectedItem.removeAll()
-                self.selectedItem.append(item)
-            }else {
-                if self.selectedItem.contains(self.brandArr[0]) {
-                    self.selectedItem = []
-                }
-                self.selectedItem.contains(item) ? self.selectedItem.removeAll{($0 == item)} : self.selectedItem.append(item)
+            if section == 0 {
+                self.selectedBrandsArr.removeAll()
+                self.selectedBrandsArr = self.brandArr
+                
+            }else if self.selectedBrandsArr != self.brandArr{
+                
+                self.selectedBrandsArr.contains(item) ? self.selectedBrandsArr.removeAll{($0 == item)} : self.selectedBrandsArr.append(item)
             }
             self.mainTableView.reloadData()
         }

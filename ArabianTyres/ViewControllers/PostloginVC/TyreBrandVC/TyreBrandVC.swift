@@ -42,7 +42,8 @@ class TyreBrandVC: BaseVC {
                                  LocalizedString.modelYear.localized
                                 ]
     var brandListingArr :[String] = []
-    
+    var countryListingArr :[String] = []
+
     // MARK: - Lifecycle
     //===========================
     override func viewDidLoad() {
@@ -53,14 +54,16 @@ class TyreBrandVC: BaseVC {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         containerView.createShadow(shadowColor: #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1))
-        if !brandListingArr.isEmpty {
-            if let tyreBrandCustomView = self.tyreBrandCustomView {
-                tBCustomViewHeightConstraint.constant = tyreBrandCustomView.collView.contentSize.height + 38.0
+            if !self.brandListingArr.isEmpty {
+                if let tyreBrandCustomView = self.tyreBrandCustomView {
+                    self.tBCustomViewHeightConstraint.constant = tyreBrandCustomView.collView.contentSize.height + 38.0
+                    printDebug(tBCustomViewHeightConstraint.constant)
+                    printDebug(tyreBrandCustomView.collView.contentSize.height)
             }
         }
-        view.layoutIfNeeded()
-        view.setNeedsLayout()
     }
+    
+    
     // MARK: - IBActions
     //===========================
     
@@ -191,7 +194,8 @@ extension TyreBrandVC : CustomTextViewDelegate{
         case tyreBrandCustomView.tView:
             AppRouter.goToBrandsListingVC(vc: self, listingType: .brands)
         case countryOriginCustomView.tView:
-            break
+            AppRouter.goToBrandsListingVC(vc: self, listingType: .countries)
+
             
         default:
             break
@@ -199,22 +203,33 @@ extension TyreBrandVC : CustomTextViewDelegate{
     }
     
     func collViewTapped() {
-//        openSheet()
+        openSheet()
     }
     
     private func openSheet() {
         tyreBrandCustomView.collView.isHidden = false
         let scene = BrandsListingVC.instantiate(fromAppStoryboard: .UserHomeScreen)
-//        scene.selectedItem = brandListingArr
+        scene.selectedBrandsArr = brandListingArr
         self.present(scene, animated: true)
     }
 }
 
 extension TyreBrandVC: BrandsListnig {
-    func listing(_ data: [String]) {
-        brandListingArr = data
-        tyreBrandCustomView.collView.isHidden = brandListingArr.isEmpty
-        tyreBrandCustomView.collView.reloadData()
+    func listing(_ data: [String],listingType : ListingType) {
+        if listingType == .brands {
+            brandListingArr = data
+            tyreBrandCustomView.collView.isHidden = brandListingArr.isEmpty
+            tyreBrandCustomView.floatLbl.isHidden = brandListingArr.isEmpty
+            tyreBrandCustomView.collView.reloadData()
+           
+        }else {
+            countryListingArr = data
+            countryOriginCustomView.collView.isHidden = brandListingArr.isEmpty
+            countryOriginCustomView.floatLbl.isHidden = brandListingArr.isEmpty
+            countryOriginCustomView.collView.reloadData()
+           
+        }
+        view.layoutIfNeeded()
+        view.setNeedsLayout()
     }
-
 }
