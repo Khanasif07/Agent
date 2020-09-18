@@ -28,3 +28,8 @@ enum SelectedLangauage: String{
     case english = "English"
     case esponal = "Español"
 }
+
+enum ListingType {
+    case brands
+    case countries
+}

@@ -196,7 +196,19 @@ enum LocalizedString : String {
     case modelYear
     case thePreferredOriginForMytyreWouldBe
     case setYourPreferencesAmongTyreBrandOrCountryOrigin
-    
+    case tyreBrand
+    case countryOrigin
+    case selectTyreBrand
+    case selectCountryOrigin
+    case brands
+    case origin
+    case selectBrand
+    case brandName
+    case selectCountry
+    case countryName
+    case arabianTyresWantToAccessYourCurrentLocation
+    case allowCureentLocationWillHelpYouInGettingGreatOffers
+    case allow
     // MARK: - Home  VC Values
     //==============================
     case tyre

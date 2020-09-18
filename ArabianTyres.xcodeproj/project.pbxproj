@@ -168,6 +168,7 @@
 		A4B74CC7251094E000771974 /* GarageProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B74CC6251094E000771974 /* GarageProfileModel.swift */; };
 		A4B74CC92510C22700771974 /* GarageRegistrationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B74CC82510C22700771974 /* GarageRegistrationVM.swift */; };
 		A4B74CCB2510CF6C00771974 /* GarageProfileStep2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B74CCA2510CF6C00771974 /* GarageProfileStep2VC.swift */; };
+		A4B91C3625149BDA00E4811A /* LocationPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B91C3525149BDA00E4811A /* LocationPopUpVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -336,6 +337,7 @@
 		A4B74CC6251094E000771974 /* GarageProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageProfileModel.swift; sourceTree = "<group>"; };
 		A4B74CC82510C22700771974 /* GarageRegistrationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageRegistrationVM.swift; sourceTree = "<group>"; };
 		A4B74CCA2510CF6C00771974 /* GarageProfileStep2VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageProfileStep2VC.swift; sourceTree = "<group>"; };
+		A4B91C3525149BDA00E4811A /* LocationPopUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPopUpVC.swift; sourceTree = "<group>"; };
 		B2C00CD38A98EBA313A070C9 /* Pods_ArabianTyres.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArabianTyres.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -898,6 +900,7 @@
 				A43F44B02513BE0F002B1014 /* VechicleDetailVC */,
 				A43F44AF2513BE01002B1014 /* TyreBrandVC */,
 				A43F44B32513BE66002B1014 /* BrandsListingVC.swift */,
+				A4B91C3525149BDA00E4811A /* LocationPopUpVC.swift */,
 			);
 			path = PostloginVC;
 			sourceTree = "<group>";
@@ -1356,6 +1359,7 @@
 				844D81E72502723D00550334 /* SignUpModel.swift in Sources */,
 				84476D3325075F4400AB5E80 /* SettingVC.swift in Sources */,
 				8481FA8A2501081000AB6EFB /* TutorialCollCell.swift in Sources */,
+				A4B91C3625149BDA00E4811A /* LocationPopUpVC.swift in Sources */,
 				8481FA472500BE9400AB6EFB /* UICollectionView+UICollectionViewCellExtension.swift in Sources */,
 				8495E9442509C824003CA43D /* ProfileVM.swift in Sources */,
 				84476D3525075F5600AB5E80 /* NotificationVC.swift in Sources */,

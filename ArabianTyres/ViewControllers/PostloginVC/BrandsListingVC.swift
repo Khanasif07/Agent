@@ -22,6 +22,7 @@ class BrandsListingVC: BaseVC {
     @IBOutlet weak var doneBtn: UIButton!
     @IBOutlet weak var clearAllBtn: UIButton!
     @IBOutlet weak var mainTableView: UITableView!
+    @IBOutlet weak var brandLbl: UILabel!
 
     // MARK: - Variables
     //===========================
@@ -29,7 +30,10 @@ class BrandsListingVC: BaseVC {
     var brandArr = ["All Brands", "MRF","Nokian Tyre","Apollo Tyres","CEAT Ltd","Goodyear","Peerless Tyre","Michelin ","Dunlop","Pirelli","Yokohama"]
     var selectedItem : [String] = []
     weak var delegate : BrandsListnig?
+    var listingType : ListingType = .brands
+    var viewModel = CountryVM()
 
+    
     // MARK: - Lifecycle
     //===========================
     override func viewDidLoad() {
@@ -73,6 +77,18 @@ extension BrandsListingVC {
     }
 
     private func setupTextAndFont(){
+       
+        if listingType == .brands {
+            titleLbl.text = LocalizedString.selectBrand.localized
+            brandLbl.text = LocalizedString.brandName.localized
+
+        } else {
+            titleLbl.text = LocalizedString.selectCountry.localized
+            brandLbl.text = LocalizedString.countryName.localized
+            viewModel.getCountyData()
+        }
+        titleLbl.font = AppFonts.NunitoSansBold.withSize(17.0)
+        brandLbl.font = AppFonts.NunitoSansBold.withSize(13.0)
         cancelBtn.titleLabel?.font =  AppFonts.NunitoSansSemiBold.withSize(17.0)
         doneBtn.titleLabel?.font =  AppFonts.NunitoSansSemiBold.withSize(17.0)
         clearAllBtn.titleLabel?.font =  AppFonts.NunitoSansSemiBold.withSize(12.0)
@@ -92,7 +108,11 @@ extension BrandsListingVC : UITableViewDelegate, UITableViewDataSource {
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return brandArr.count
+        if  (listingType == .brands) {
+            return brandArr.count
+        }else {
+            return viewModel.searchedCountry.count
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -101,9 +121,17 @@ extension BrandsListingVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = tableView.dequeueHeaderFooter(with: FacilityTableHeaderView.self)
-        view.categoryName.text = brandArr[section]
         view.bottomView.backgroundColor = #colorLiteral(red: 0.9294117647, green: 0.9294117647, blue: 0.9294117647, alpha: 1)
+        if listingType == .brands {
+            view.categoryName.text = brandArr[section]
+
+        }else {
+            if let name = viewModel.searchedCountry[section][CountryVM.CountryKeys.name.rawValue]{
+                view.categoryName.text = name
+            }
+        }
         view.checkBtn.isSelected = selectedItem.contains(brandArr[section])
+        
         view.cellBtnTapped = { [weak self] in
             guard let `self` = self else {return}
             let item = self.brandArr[section]

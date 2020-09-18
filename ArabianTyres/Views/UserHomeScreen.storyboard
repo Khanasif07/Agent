@@ -241,7 +241,7 @@
                                                         <color key="backgroundColor" red="1" green="0.69411764710000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </view>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icTyre" translatesAutoresizingMaskIntoConstraints="NO" id="UqA-4q-rDK">
-                                                        <rect key="frame" x="0.0" y="-70" width="414" height="400"/>
+                                                        <rect key="frame" x="0.0" y="130" width="414" height="200"/>
                                                     </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -285,6 +285,9 @@ brand or country origin</string>
                                                                 </constraints>
                                                                 <state key="normal" image="icUnCheck"/>
                                                                 <state key="selected" image="icCheck"/>
+                                                                <connections>
+                                                                    <action selector="tyreCheckBtnAction:" destination="GOT-y6-IhY" eventType="touchUpInside" id="7Xg-tp-EaC"/>
+                                                                </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tyre Brand" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ah5-jn-amh">
                                                                 <rect key="frame" x="36" y="0.0" width="322" height="30"/>
@@ -312,6 +315,9 @@ brand or country origin</string>
                                                                 </constraints>
                                                                 <state key="normal" image="icUnCheck"/>
                                                                 <state key="selected" image="icCheck"/>
+                                                                <connections>
+                                                                    <action selector="countryCheckBtnAction:" destination="GOT-y6-IhY" eventType="touchUpInside" id="gR4-IW-cgd"/>
+                                                                </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Country Origin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7EK-Kg-wyw">
                                                                 <rect key="frame" x="36" y="0.0" width="318" height="30"/>
@@ -321,7 +327,7 @@ brand or country origin</string>
                                                             </label>
                                                         </subviews>
                                                     </stackView>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VJ7-5D-Ehm" customClass="CustomTextView" customModule="ArabianTyres" customModuleProvider="target">
+                                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VJ7-5D-Ehm" customClass="CustomTextView" customModule="ArabianTyres" customModuleProvider="target">
                                                         <rect key="frame" x="10" y="186" width="354" height="60"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <constraints>
@@ -384,7 +390,7 @@ brand or country origin</string>
                                             <constraint firstAttribute="trailing" secondItem="sbI-me-tj6" secondAttribute="trailing" constant="16" id="Zy6-gI-KgR"/>
                                             <constraint firstItem="O7F-cR-ZbX" firstAttribute="top" secondItem="sbI-me-tj6" secondAttribute="bottom" constant="47" id="apD-Va-YTd"/>
                                             <constraint firstItem="sbI-me-tj6" firstAttribute="top" secondItem="ZDv-0L-9va" secondAttribute="bottom" id="dIi-ia-pJh"/>
-                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="KiL-Zd-HpC" secondAttribute="bottom" constant="50" id="gMg-aB-PZ3"/>
+                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="KiL-Zd-HpC" secondAttribute="bottom" priority="999" constant="50" id="gMg-aB-PZ3"/>
                                             <constraint firstItem="KiL-Zd-HpC" firstAttribute="top" secondItem="O7F-cR-ZbX" secondAttribute="bottom" constant="25" id="hkq-bU-7lr"/>
                                             <constraint firstItem="ZDv-0L-9va" firstAttribute="height" secondItem="diB-ne-4fC" secondAttribute="height" multiplier="300/814" id="wVF-p9-AqK"/>
                                             <constraint firstItem="sbI-me-tj6" firstAttribute="leading" secondItem="diB-ne-4fC" secondAttribute="leading" constant="16" id="y3F-9q-zEH"/>
@@ -397,7 +403,7 @@ brand or country origin</string>
                                     <constraint firstItem="diB-ne-4fC" firstAttribute="top" secondItem="N2t-PW-EhO" secondAttribute="top" id="L6d-76-yqj"/>
                                     <constraint firstAttribute="trailing" secondItem="diB-ne-4fC" secondAttribute="trailing" id="RqS-vj-tlm"/>
                                     <constraint firstAttribute="bottom" secondItem="diB-ne-4fC" secondAttribute="bottom" id="dEB-8h-XHZ"/>
-                                    <constraint firstItem="diB-ne-4fC" firstAttribute="height" secondItem="N2t-PW-EhO" secondAttribute="height" priority="999" id="sqd-0h-CXV"/>
+                                    <constraint firstItem="diB-ne-4fC" firstAttribute="height" secondItem="N2t-PW-EhO" secondAttribute="height" priority="750" id="sqd-0h-CXV"/>
                                     <constraint firstItem="diB-ne-4fC" firstAttribute="width" secondItem="N2t-PW-EhO" secondAttribute="width" id="wJr-6V-4s2"/>
                                 </constraints>
                             </scrollView>
@@ -426,13 +432,17 @@ brand or country origin</string>
                     </view>
                     <connections>
                         <outlet property="containerView" destination="KiL-Zd-HpC" id="6cN-xv-wsd"/>
+                        <outlet property="countryOriginCheckBtn" destination="RMw-vn-ibp" id="MAV-i7-CIL"/>
                         <outlet property="countryOriginCustomView" destination="VJ7-5D-Ehm" id="3wf-LW-xQM"/>
+                        <outlet property="countryOriginLbl" destination="7EK-Kg-wyw" id="7kR-PC-Xy7"/>
                         <outlet property="countryOriginViewHeightConstraint" destination="SMr-dW-9DY" id="XkD-zc-3GD"/>
                         <outlet property="setYourPrefernceLbl" destination="O7F-cR-ZbX" id="cTC-pV-TSP"/>
                         <outlet property="submitBtn" destination="z5m-Nh-zkS" id="Ita-EA-gmp"/>
                         <outlet property="tBCustomViewHeightConstraint" destination="r4N-u9-5Mm" id="50i-GQ-0tY"/>
                         <outlet property="thePreferredLbl" destination="sbI-me-tj6" id="1km-dC-iWG"/>
+                        <outlet property="tyreBrandCheckBtn" destination="xbm-Qc-X7M" id="BXZ-9f-mn4"/>
                         <outlet property="tyreBrandCustomView" destination="3qy-xx-0lY" id="I22-3g-iLc"/>
+                        <outlet property="tyreBrandLbl" destination="Ah5-jn-amh" id="Ng7-0A-g0b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fk8-u6-cKc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -546,6 +556,7 @@ brand or country origin</string>
                         <viewLayoutGuide key="safeArea" id="5KR-pd-hJf"/>
                     </view>
                     <connections>
+                        <outlet property="brandLbl" destination="uK6-xz-7eQ" id="u3W-YK-gg7"/>
                         <outlet property="cancelBtn" destination="2Os-fy-5iw" id="e5P-Uz-Rpi"/>
                         <outlet property="clearAllBtn" destination="Qi9-3a-ZKK" id="i8p-DM-0he"/>
                         <outlet property="doneBtn" destination="oJG-MU-2Ug" id="PIz-iY-tBC"/>
@@ -557,9 +568,163 @@ brand or country origin</string>
             </objects>
             <point key="canvasLocation" x="1713" y="86"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="rNg-Ox-w8b">
+            <objects>
+                <viewController id="05G-v9-Ccw" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="g7U-MN-g1c">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="dKX-Ii-LYL"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2eI-bj-16l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2478" y="86"/>
+        </scene>
+        <!--Location Pop UpVC-->
+        <scene sceneID="QjX-7F-vl6">
+            <objects>
+                <viewController storyboardIdentifier="LocationPopUpVC" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bLg-0Z-xpT" customClass="LocationPopUpVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rR1-fK-TdJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mCc-v1-ges">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D8I-Az-m9l">
+                                        <rect key="frame" x="30" y="260" width="354" height="376"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkGraphic" translatesAutoresizingMaskIntoConstraints="NO" id="YrE-7V-h17">
+                                                <rect key="frame" x="127" y="35" width="100" height="100"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="YrE-7V-h17" secondAttribute="height" id="SfM-qY-zhp"/>
+                                                    <constraint firstAttribute="height" constant="100" id="vci-dc-coh"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yuP-X2-SAc">
+                                                <rect key="frame" x="59.5" y="177" width="235" height="40"/>
+                                                <string key="text">Arabian Tyres want to access
+your current location</string>
+                                                <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
+                                                <color key="textColor" red="0.10980392156862745" green="0.11372549019607843" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mXQ-p8-Ige">
+                                                <rect key="frame" x="59.5" y="224" width="235" height="1"/>
+                                                <color key="backgroundColor" red="0.87450980392156863" green="0.89411764705882346" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1" id="wUp-Gw-nOU"/>
+                                                </constraints>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YWJ-24-7va">
+                                                <rect key="frame" x="59.5" y="237" width="235" height="35"/>
+                                                <string key="text">Allow cureent location will help you
+in getting great offers</string>
+                                                <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="15"/>
+                                                <color key="textColor" red="0.32941176470588235" green="0.33725490196078434" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="8kL-fQ-FnG">
+                                                <rect key="frame" x="59.5" y="300" width="235" height="48"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JBc-qy-9th">
+                                                        <rect key="frame" x="0.0" y="0.0" width="109.5" height="48"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="48" id="yN1-sc-acE"/>
+                                                        </constraints>
+                                                        <state key="normal" title="Cancel">
+                                                            <color key="titleColor" red="0.090196078430000007" green="0.1450980392" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="4"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                <real key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" red="0.090196078430000007" green="0.1450980392" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="cancelBtnAction:" destination="bLg-0Z-xpT" eventType="touchUpInside" id="LdF-0p-kuJ"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lsd-fy-pG3">
+                                                        <rect key="frame" x="125.5" y="0.0" width="109.5" height="48"/>
+                                                        <color key="backgroundColor" red="0.090196078431372548" green="0.14509803921568626" blue="0.3529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <state key="normal" title="Allow">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="4"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="allowBtnAction:" destination="bLg-0Z-xpT" eventType="touchUpInside" id="1Af-U7-SBA"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="mXQ-p8-Ige" firstAttribute="top" secondItem="yuP-X2-SAc" secondAttribute="bottom" constant="7" id="B3M-LQ-Rht"/>
+                                            <constraint firstAttribute="bottom" secondItem="8kL-fQ-FnG" secondAttribute="bottom" constant="28" id="FxZ-iO-YIc"/>
+                                            <constraint firstItem="8kL-fQ-FnG" firstAttribute="trailing" secondItem="YWJ-24-7va" secondAttribute="trailing" id="Gs3-F0-tMr"/>
+                                            <constraint firstItem="mXQ-p8-Ige" firstAttribute="leading" secondItem="yuP-X2-SAc" secondAttribute="leading" id="JLW-kd-Jlz"/>
+                                            <constraint firstItem="YWJ-24-7va" firstAttribute="trailing" secondItem="mXQ-p8-Ige" secondAttribute="trailing" id="JSo-iM-UD0"/>
+                                            <constraint firstItem="YrE-7V-h17" firstAttribute="centerX" secondItem="D8I-Az-m9l" secondAttribute="centerX" id="Vj8-qc-waj"/>
+                                            <constraint firstItem="mXQ-p8-Ige" firstAttribute="trailing" secondItem="yuP-X2-SAc" secondAttribute="trailing" id="cgk-gm-Vci"/>
+                                            <constraint firstItem="YrE-7V-h17" firstAttribute="top" secondItem="D8I-Az-m9l" secondAttribute="top" constant="35" id="nqj-tk-2hq"/>
+                                            <constraint firstItem="yuP-X2-SAc" firstAttribute="top" secondItem="YrE-7V-h17" secondAttribute="bottom" constant="42" id="oo5-jU-0Bw"/>
+                                            <constraint firstItem="8kL-fQ-FnG" firstAttribute="top" secondItem="YWJ-24-7va" secondAttribute="bottom" constant="28" id="qKT-5o-RrN"/>
+                                            <constraint firstItem="YWJ-24-7va" firstAttribute="leading" secondItem="mXQ-p8-Ige" secondAttribute="leading" id="rNs-g7-ngd"/>
+                                            <constraint firstItem="8kL-fQ-FnG" firstAttribute="leading" secondItem="YWJ-24-7va" secondAttribute="leading" id="srJ-y6-9ms"/>
+                                            <constraint firstItem="YWJ-24-7va" firstAttribute="top" secondItem="mXQ-p8-Ige" secondAttribute="bottom" constant="12" id="yfl-FT-Ebc"/>
+                                            <constraint firstItem="yuP-X2-SAc" firstAttribute="centerX" secondItem="D8I-Az-m9l" secondAttribute="centerX" id="zxW-DY-ZSi"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.53825968170000005" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="D8I-Az-m9l" firstAttribute="centerX" secondItem="mCc-v1-ges" secondAttribute="centerX" id="Li4-R7-dbI"/>
+                                    <constraint firstAttribute="trailing" secondItem="D8I-Az-m9l" secondAttribute="trailing" constant="30" id="cqO-J8-bgY"/>
+                                    <constraint firstItem="D8I-Az-m9l" firstAttribute="leading" secondItem="mCc-v1-ges" secondAttribute="leading" constant="30" id="umZ-U1-e5B"/>
+                                    <constraint firstItem="D8I-Az-m9l" firstAttribute="centerY" secondItem="mCc-v1-ges" secondAttribute="centerY" id="xdj-Dz-odn"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="mCc-v1-ges" firstAttribute="top" secondItem="rR1-fK-TdJ" secondAttribute="top" id="3Rg-V3-Xkd"/>
+                            <constraint firstAttribute="bottom" secondItem="mCc-v1-ges" secondAttribute="bottom" id="MTO-P2-a3V"/>
+                            <constraint firstItem="mCc-v1-ges" firstAttribute="leading" secondItem="tFB-AA-OCh" secondAttribute="leading" id="dlG-Pn-x1o"/>
+                            <constraint firstItem="tFB-AA-OCh" firstAttribute="trailing" secondItem="mCc-v1-ges" secondAttribute="trailing" id="gGL-DW-ayB"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="tFB-AA-OCh"/>
+                    </view>
+                    <connections>
+                        <outlet property="allowBtn" destination="Lsd-fy-pG3" id="sX2-Yj-x7D"/>
+                        <outlet property="cancelBtn" destination="JBc-qy-9th" id="UZV-Ot-vEJ"/>
+                        <outlet property="headingLbl" destination="yuP-X2-SAc" id="BDs-FZ-ygB"/>
+                        <outlet property="imgView" destination="YrE-7V-h17" id="SJy-lY-fQe"/>
+                        <outlet property="subHeadingLbl" destination="YWJ-24-7va" id="uL1-jS-n0R"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5xj-xj-B6r" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3329" y="86"/>
+        </scene>
     </scenes>
     <resources>
         <image name="arrow" width="30" height="30"/>
+        <image name="checkGraphic" width="16" height="16"/>
         <image name="genericHybridCarI051" width="337" height="408"/>
         <image name="icCheck" width="30" height="30"/>
         <image name="icTyre" width="200" height="200"/>
