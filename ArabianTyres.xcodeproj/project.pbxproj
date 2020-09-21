@@ -52,6 +52,12 @@
 		844D81E5250271B400550334 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844D81E4250271B400550334 /* LoginViewModel.swift */; };
 		844D81E72502723D00550334 /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844D81E62502723C00550334 /* SignUpModel.swift */; };
 		844D81E92502751D00550334 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844D81E82502751D00550334 /* SignUpViewModel.swift */; };
+		844EB6F625183FDA003A6E3F /* GarageHome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 844EB6F525183FDA003A6E3F /* GarageHome.storyboard */; };
+		844EB6FA25184106003A6E3F /* GarageTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844EB6F925184106003A6E3F /* GarageTabBarController.swift */; };
+		844EB70025184222003A6E3F /* GarageHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844EB6FF25184222003A6E3F /* GarageHomeVC.swift */; };
+		844EB7022518423B003A6E3F /* GarageExploreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844EB7012518423B003A6E3F /* GarageExploreVC.swift */; };
+		844EB70425184259003A6E3F /* GarageSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844EB70325184259003A6E3F /* GarageSettingVC.swift */; };
+		844EB70625184272003A6E3F /* GarageProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844EB70525184272003A6E3F /* GarageProfileVC.swift */; };
 		846352D02511E34E004216F1 /* AddImageCollCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846352CE2511E34E004216F1 /* AddImageCollCell.swift */; };
 		846352D12511E34E004216F1 /* AddImageCollCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 846352CF2511E34E004216F1 /* AddImageCollCell.xib */; };
 		847BC423250774E100EEEFDC /* ResetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847BC422250774E100EEEFDC /* ResetPasswordVC.swift */; };
@@ -196,6 +202,12 @@
 		844D81E4250271B400550334 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		844D81E62502723C00550334 /* SignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
 		844D81E82502751D00550334 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		844EB6F525183FDA003A6E3F /* GarageHome.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GarageHome.storyboard; sourceTree = "<group>"; };
+		844EB6F925184106003A6E3F /* GarageTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageTabBarController.swift; sourceTree = "<group>"; };
+		844EB6FF25184222003A6E3F /* GarageHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageHomeVC.swift; sourceTree = "<group>"; };
+		844EB7012518423B003A6E3F /* GarageExploreVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageExploreVC.swift; sourceTree = "<group>"; };
+		844EB70325184259003A6E3F /* GarageSettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageSettingVC.swift; sourceTree = "<group>"; };
+		844EB70525184272003A6E3F /* GarageProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageProfileVC.swift; sourceTree = "<group>"; };
 		846352CE2511E34E004216F1 /* AddImageCollCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageCollCell.swift; sourceTree = "<group>"; };
 		846352CF2511E34E004216F1 /* AddImageCollCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddImageCollCell.xib; sourceTree = "<group>"; };
 		847BC422250774E100EEEFDC /* ResetPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordVC.swift; sourceTree = "<group>"; };
@@ -331,8 +343,12 @@
 		84303E6625064981000BA5C3 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				84476D2925075EE900AB5E80 /* HomeVC */,
 				84303E672506498B000BA5C3 /* TabBar */,
+				84476D2D25075F0A00AB5E80 /* ExploreVC */,
+				84476D2C25075F0200AB5E80 /* NotificationVC */,
+				84476D2B25075EFC00AB5E80 /* SettingVC */,
+				84476D2A25075EF600AB5E80 /* ProfileVC */,
+				84476D2925075EE900AB5E80 /* HomeVC */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -527,6 +543,58 @@
 			path = LoginWithPhoneVC;
 			sourceTree = "<group>";
 		};
+		844EB6F725184063003A6E3F /* GarageHome */ = {
+			isa = PBXGroup;
+			children = (
+				844EB6FE251841F8003A6E3F /* GarageProfileVC */,
+				844EB6FD251841E7003A6E3F /* GarageSettingVC */,
+				844EB6FC251841D6003A6E3F /* GarageExploreVC */,
+				844EB6FB251841C5003A6E3F /* GarageHomeVC */,
+				844EB6F825184073003A6E3F /* GarageTabBar */,
+			);
+			path = GarageHome;
+			sourceTree = "<group>";
+		};
+		844EB6F825184073003A6E3F /* GarageTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				844EB6F925184106003A6E3F /* GarageTabBarController.swift */,
+			);
+			path = GarageTabBar;
+			sourceTree = "<group>";
+		};
+		844EB6FB251841C5003A6E3F /* GarageHomeVC */ = {
+			isa = PBXGroup;
+			children = (
+				844EB6FF25184222003A6E3F /* GarageHomeVC.swift */,
+			);
+			path = GarageHomeVC;
+			sourceTree = "<group>";
+		};
+		844EB6FC251841D6003A6E3F /* GarageExploreVC */ = {
+			isa = PBXGroup;
+			children = (
+				844EB7012518423B003A6E3F /* GarageExploreVC.swift */,
+			);
+			path = GarageExploreVC;
+			sourceTree = "<group>";
+		};
+		844EB6FD251841E7003A6E3F /* GarageSettingVC */ = {
+			isa = PBXGroup;
+			children = (
+				844EB70325184259003A6E3F /* GarageSettingVC.swift */,
+			);
+			path = GarageSettingVC;
+			sourceTree = "<group>";
+		};
+		844EB6FE251841F8003A6E3F /* GarageProfileVC */ = {
+			isa = PBXGroup;
+			children = (
+				844EB70525184272003A6E3F /* GarageProfileVC.swift */,
+			);
+			path = GarageProfileVC;
+			sourceTree = "<group>";
+		};
 		846352CD2511E323004216F1 /* GarageAddImageVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -654,6 +722,7 @@
 				8481FA802500DC8800AB6EFB /* Main.storyboard */,
 				84303E6D25064CC8000BA5C3 /* Home.storyboard */,
 				A413B96F2509E7400004C534 /* Garage.storyboard */,
+				844EB6F525183FDA003A6E3F /* GarageHome.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -813,12 +882,9 @@
 		8481FA832500EE1500AB6EFB /* PostloginVC */ = {
 			isa = PBXGroup;
 			children = (
+				844EB6F725184063003A6E3F /* GarageHome */,
 				84495631251095DB00846ED9 /* GarageAddImageVC */,
 				843C8ECA2508C37F00515F2E /* ProfileSettingVC */,
-				84476D2D25075F0A00AB5E80 /* ExploreVC */,
-				84476D2C25075F0200AB5E80 /* NotificationVC */,
-				84476D2B25075EFC00AB5E80 /* SettingVC */,
-				84476D2A25075EF600AB5E80 /* ProfileVC */,
 				84303E6625064981000BA5C3 /* Home */,
 				A413B9732509E7A00004C534 /* GarageRegistrationVC */,
 				A413B97F250A77700004C534 /* AddDetailVC */,
@@ -1072,6 +1138,7 @@
 				843C8ED32508FB9300515F2E /* HomeCollectionCell.xib in Resources */,
 				8481FA8F2501435D00AB6EFB /* NunitoSans-BlackItalic.ttf in Resources */,
 				843C8EC62508AE9500515F2E /* ProfileUserInternalCell.xib in Resources */,
+				844EB6F625183FDA003A6E3F /* GarageHome.storyboard in Resources */,
 				A45042D1250F3846001C8905 /* AddAccountTableViewCell.xib in Resources */,
 				A413B9702509E7400004C534 /* Garage.storyboard in Resources */,
 				8481FA732500C04800AB6EFB /* Prelogin.storyboard in Resources */,
@@ -1157,6 +1224,7 @@
 				84476D28250736F700AB5E80 /* ToastView.swift in Sources */,
 				8481FA332500BD4A00AB6EFB /* CustomDatePicker.swift in Sources */,
 				844CBD1A2501F7D5009BE668 /* LoginTopTableCell.swift in Sources */,
+				844EB70625184272003A6E3F /* GarageProfileVC.swift in Sources */,
 				8481FA852500EEC400AB6EFB /* ChooseLanguageVC.swift in Sources */,
 				843F004D25060822001A78EC /* CountryCodeTableCell.swift in Sources */,
 				8481FA552500BF0700AB6EFB /* DispatchQueueExtension.swift in Sources */,
@@ -1167,6 +1235,7 @@
 				8481FA652500BFAD00AB6EFB /* AppColors.swift in Sources */,
 				A45566D0250CA6C0009E4324 /* UploadDocumentVC.swift in Sources */,
 				8481FA3F2500BE2800AB6EFB /* UITextFieldExtension.swift in Sources */,
+				844EB70425184259003A6E3F /* GarageSettingVC.swift in Sources */,
 				844CBD222501FFC0009BE668 /* LoginEmailPhoneTableCell.swift in Sources */,
 				8481FA692500BFC700AB6EFB /* DeviceDetails.swift in Sources */,
 				844956352510A60900846ED9 /* LocationController.swift in Sources */,
@@ -1179,6 +1248,7 @@
 				847BC425250796CB00EEEFDC /* ResetPasswordVM.swift in Sources */,
 				8481FA1F2500BAFB00AB6EFB /* AppleLoginController.swift in Sources */,
 				A45042D3250F76D5001C8905 /* AddAccountDetailVC.swift in Sources */,
+				844EB70025184222003A6E3F /* GarageHomeVC.swift in Sources */,
 				8481FA772500C5CD00AB6EFB /* CountryData.swift in Sources */,
 				847BC423250774E100EEEFDC /* ResetPasswordVC.swift in Sources */,
 				843C8ED22508FB9300515F2E /* HomeCollectionCell.swift in Sources */,
@@ -1210,6 +1280,7 @@
 				844D81DB2502408900550334 /* SignUpVC.swift in Sources */,
 				8481FA712500BFFD00AB6EFB /* AppFonts.swift in Sources */,
 				843CD3A32505409C00945937 /* LoginWithPhoneViewModel.swift in Sources */,
+				844EB6FA25184106003A6E3F /* GarageTabBarController.swift in Sources */,
 				8481FA512500BEEC00AB6EFB /* DictionaryExtension.swift in Sources */,
 				A413B9722509E7960004C534 /* GarageRegistrationVC.swift in Sources */,
 				A413B979250A2BEF0004C534 /* AddDetailVC.swift in Sources */,
@@ -1229,6 +1300,7 @@
 				84476D3525075F5600AB5E80 /* NotificationVC.swift in Sources */,
 				8481FA4D2500BEC700AB6EFB /* UIScreen + Extension.swift in Sources */,
 				8481FA792500C64400AB6EFB /* UserModel.swift in Sources */,
+				844EB7022518423B003A6E3F /* GarageExploreVC.swift in Sources */,
 				8481FA432500BE4600AB6EFB /* UIApplicationExtension.swift in Sources */,
 				8481FA7B2500CC2C00AB6EFB /* BaseVC.swift in Sources */,
 				8481FA5F2500BF8400AB6EFB /* AppRouter.swift in Sources */,
