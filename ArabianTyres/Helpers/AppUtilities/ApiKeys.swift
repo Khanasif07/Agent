@@ -148,4 +148,13 @@ enum ApiCode {
     static var sessionExpired : Int { return 440 }
     static var emailNotVerify: Int {return 402}
     static var invalidSession: Int {return 498} //(Delete user/ Invalid session)
+
+    
+    static var notGarageReg: Int {return 600} // not register
+    static var pendingGarageReg: Int {return 601}//pending Garage Registration
+    static var acceptedGarageReg: Int {return 604} //accepted Garage Registration
+    static var rejectedGarageReg: Int {return 605} //rejected Garage Registration
+    static var garageBlocked: Int {return 602}// garage blocked by admin
+    static var userBlocked: Int {return 603}//user profile blocked by admin
+
 }

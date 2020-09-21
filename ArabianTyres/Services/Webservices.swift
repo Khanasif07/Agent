@@ -59,6 +59,8 @@ extension WebServices {
             let msg = json[ApiKey.message].stringValue
             switch code {
             case ApiCode.success: success(json)
+            case ApiCode.notGarageReg, ApiCode.pendingGarageReg, ApiCode.acceptedGarageReg, ApiCode.rejectedGarageReg, ApiCode.garageBlocked, ApiCode.userBlocked:
+                success(json)
             case ApiCode.tokenExpired :
                 showTokenExpiredAlert()
             default: failure(NSError(code: code, localizedDescription: msg))
@@ -414,6 +416,16 @@ extension WebServices{
             failure(error)
         }
     }
+    
+    static func switchProfile(parameters: JSONDictionary,
+                         success: @escaping SuccessResponse,
+                         failure: @escaping FailureResponse) {
+        self.commonPutAPI(parameters: parameters, endPoint: .switchProfile, success: { (json) in
+                success(json)
+            }) { (error) -> (Void) in
+                failure(error)
+            }
+        }
 
 }
 

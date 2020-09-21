@@ -113,6 +113,7 @@ enum LocalizedString : String {
     case municipalityLicense
     case idOfTheOwner
     case register
+    case yourRegRequestHasBeenAccepted
     
     // MARK: - Sign Up VC Values
     //==============================

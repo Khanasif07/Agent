@@ -14,9 +14,16 @@ import SwiftyJSON
 protocol GarageRegistrationVMDelegate: class {
     func garageRegistrationSuccess(msg: String)
     func garageRegistrationFailed(msg: String)
-    
+    func switchGarageRegistrationSuccess(code: Int, msg : String)
+    func switchGarageRegistrationFailure(msg: String)
 }
 
+extension GarageRegistrationVMDelegate {
+    func garageRegistrationSuccess(msg: String){}
+    func garageRegistrationFailed(msg: String){}
+    func switchGarageRegistrationSuccess(code: Int, msg : String){}
+    func switchGarageRegistrationFailure(msg: String){}
+}
 class GarageRegistrationVM {
     
     // MARK: Variables
@@ -34,6 +41,20 @@ class GarageRegistrationVM {
         }) { [weak self] (error) in
             guard let `self` = self else { return }
             self.delegate?.garageRegistrationFailed(msg: error.localizedDescription)
+        }
+    }
+    
+    func switchGarageProfile() {
+        
+        WebServices.switchProfile(parameters: [:], success: { [weak self] (json) in
+            guard let `self` = self else { return }
+            let code = json[ApiKey.statusCode].intValue
+            let msg = json[ApiKey.message].stringValue
+            self.delegate?.switchGarageRegistrationSuccess(code: code,msg : msg)
+            
+        }) { [weak self] (error) in
+            guard let `self` = self else { return }
+            self.delegate?.switchGarageRegistrationFailure(msg: error.localizedDescription)
         }
     }
 }

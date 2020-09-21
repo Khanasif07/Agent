@@ -11,7 +11,6 @@ import SkyFloatingLabelTextField
 
 
 class TyreBrandVC: BaseVC {
-   
 
     // MARK: - IBOutlets
     //===========================
@@ -31,7 +30,6 @@ class TyreBrandVC: BaseVC {
 
     // MARK: - Variables
     //===========================
-
     var placeHolderArr : [String] = [LocalizedString.enterVehicleMake.localized,
      LocalizedString.enterVehicleModel.localized,
      LocalizedString.enterModelYear.localized
@@ -43,7 +41,7 @@ class TyreBrandVC: BaseVC {
                                 ]
     var brandListingArr :[String] = []
     var countryListingArr :[String] = []
-    var listingType : ListingType = .brands
+//    var listingType : ListingType = .brands
     
     // MARK: - Lifecycle
     //===========================
@@ -135,8 +133,10 @@ extension TyreBrandVC {
         
         countryOriginCustomView.delegate = self
         tyreBrandCustomView.delegate = self
+        tyreBrandCustomView.listingType = .brands
         tyreBrandCustomView.leftImgContainerView.isHidden = true
         countryOriginCustomView.leftImgContainerView.isHidden = true
+        countryOriginCustomView.listingType = .countries
         tyreBrandCustomView.rightImgView.image = #imageLiteral(resourceName: "group3689")
         tyreBrandCustomView.txtViewEditable = false
         countryOriginCustomView.txtViewEditable = false
@@ -241,13 +241,13 @@ extension TyreBrandVC : CustomTextViewDelegate{
         }
     }
     
-    func collViewTapped() {
-        openSheet()
+    func collViewTapped(listingType: ListingType) {
+        openSheet(listingType: listingType)
     }
     
-    private func openSheet() {
+    private func openSheet(listingType: ListingType) {
         tyreBrandCustomView.collView.isHidden = false
-        AppRouter.goToBrandsListingVC(vc: self, listingType: listingType,data : listingType == .brands ? brandListingArr : countryListingArr)
+        AppRouter.goToBrandsListingVC(vc: self, listingType: listingType, data : listingType == .brands ? brandListingArr : countryListingArr)
     }
 }
 
@@ -255,7 +255,7 @@ extension TyreBrandVC: BrandsListnig {
    
     func listing(_ data: [String],listingType : ListingType) {
         if listingType == .brands {
-            self.listingType = listingType
+//            self.listingType = listingType
             brandListingArr = data
             tyreBrandCheckBtn.isSelected = !brandListingArr.isEmpty
             tyreBrandCustomView.collView.isHidden = brandListingArr.isEmpty
@@ -263,13 +263,12 @@ extension TyreBrandVC: BrandsListnig {
             tyreBrandCustomView.collView.reloadData()
            
         }else {
-            self.listingType = listingType
+//            self.listingType = listingType
             countryListingArr = data
             countryOriginCheckBtn.isSelected = !brandListingArr.isEmpty
             countryOriginCustomView.collView.isHidden = countryListingArr.isEmpty
             countryOriginCustomView.floatLbl.isHidden = countryListingArr.isEmpty
             countryOriginCustomView.collView.reloadData()
-           
         }
         view.layoutIfNeeded()
         view.setNeedsLayout()

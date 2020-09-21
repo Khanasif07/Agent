@@ -36,6 +36,8 @@ extension WebServices {
         case emailVerificationLink = "user/emailVerificationLink"
         case addPhoneNo = "user/addPhoneNo"
         case garageProfile = "user/garrageProfile"
+        case switchProfile = "user/switchProfile"
+        
         
         var path : String {
             let url = baseUrl

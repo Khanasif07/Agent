@@ -41,6 +41,7 @@ class GarageRegistrationVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -108,3 +109,5 @@ extension GarageRegistrationVC : UITableViewDelegate, UITableViewDataSource {
         return UITableView.automaticDimension
     }
 }
+
+
