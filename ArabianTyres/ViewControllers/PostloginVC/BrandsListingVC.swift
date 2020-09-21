@@ -9,7 +9,7 @@
 import UIKit
 
 protocol BrandsListnig: class {
-    func listing(_ data: [String])
+    func listing(_ data: [String], listingType: ListingType)
 }
 
 
@@ -28,12 +28,15 @@ class BrandsListingVC: BaseVC {
     //===========================
     var selectedSkillArr : [String] = []
     var brandArr = ["All Brands", "MRF","Nokian Tyre","Apollo Tyres","CEAT Ltd","Goodyear","Peerless Tyre","Michelin ","Dunlop","Pirelli","Yokohama"]
-    var selectedItem : [String] = []
-    weak var delegate : BrandsListnig?
+    var selectedBrandsArr : [String] = []
+    var selectedCountryArr : [String] = []
+    var selectedIndexPath : [Int] = []
     var listingType : ListingType = .brands
     var viewModel = CountryVM()
-
+    var countryArr :[String] = []
     
+    weak var delegate : BrandsListnig?
+
     // MARK: - Lifecycle
     //===========================
     override func viewDidLoad() {
@@ -53,16 +56,16 @@ class BrandsListingVC: BaseVC {
     }
 
     @IBAction func doneBtnAction(_ sender: UIButton) {
+        let list = getSelectedList()
         dismiss(animated: true) {
-        self.delegate?.listing(self.selectedItem)
-    }
+            self.delegate?.listing(list, listingType: self.listingType)
+       }
     }
 
     @IBAction func clearAllAction(_ sender: UIButton) {
-        
+        selectedIndexPath.removeAll()
+        mainTableView.reloadData()
     }
-
-
 }
 
 // MARK: - Extension For Functions
@@ -70,12 +73,55 @@ class BrandsListingVC: BaseVC {
 extension BrandsListingVC {
 
     private func initialSetup() {
+        countryArr = viewModel.getCountriesArr()
+        selectedDataSource()
         setupTextAndFont()
         mainTableView.delegate = self
         mainTableView.dataSource = self
         mainTableView.registerHeaderFooter(with: FacilityTableHeaderView.self)
     }
 
+    
+    private func selectedDataSource(){
+        if (listingType == .brands) {
+            if !selectedBrandsArr.isEmpty {
+                self.selectedBrandsArr = self.selectedBrandsArr.count == self.brandArr.count - 1 ? [self.brandArr[0]] : self.selectedBrandsArr
+            }
+            
+            for (index, item) in brandArr.enumerated() {
+                if selectedBrandsArr.contains(item) {
+                    self.selectedIndexPath.append(index)
+                }
+            }
+        }
+            
+        else {
+            
+            if !selectedCountryArr.isEmpty {
+                self.selectedCountryArr = self.selectedCountryArr.count == self.countryArr.count - 1 ? [self.countryArr[0]] : self.selectedCountryArr
+            }
+            
+            for (index, item) in countryArr.enumerated() {
+                if selectedCountryArr.contains(item) {
+                    self.selectedIndexPath.append(index)
+                }
+            }
+        }
+    }
+
+    private func getSelectedList() -> [String] {
+      
+        var arr : [String] = []
+        
+        if selectedIndexPath.contains(0){
+            selectedIndexPath = Array(1...(listingType == .brands ? self.brandArr.count - 1: self.countryArr.count - 1))
+        }
+        selectedIndexPath.forEach { (index) in
+            arr.append(listingType == .brands ? self.brandArr[index] : self.countryArr[index])
+        }
+        return arr
+    }
+    
     private func setupTextAndFont(){
        
         if listingType == .brands {
@@ -85,7 +131,6 @@ extension BrandsListingVC {
         } else {
             titleLbl.text = LocalizedString.selectCountry.localized
             brandLbl.text = LocalizedString.countryName.localized
-            viewModel.getCountyData()
         }
         titleLbl.font = AppFonts.NunitoSansBold.withSize(17.0)
         brandLbl.font = AppFonts.NunitoSansBold.withSize(13.0)
@@ -105,13 +150,11 @@ extension BrandsListingVC {
 //===========================
 extension BrandsListingVC : UITableViewDelegate, UITableViewDataSource {
    
-    
-    
     func numberOfSections(in tableView: UITableView) -> Int {
-        if  (listingType == .brands) {
+        if (listingType == .brands) {
             return brandArr.count
         }else {
-            return viewModel.searchedCountry.count
+            return countryArr.count
         }
     }
     
@@ -122,28 +165,36 @@ extension BrandsListingVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = tableView.dequeueHeaderFooter(with: FacilityTableHeaderView.self)
         view.bottomView.backgroundColor = #colorLiteral(red: 0.9294117647, green: 0.9294117647, blue: 0.9294117647, alpha: 1)
-        if listingType == .brands {
-            view.categoryName.text = brandArr[section]
+        view.arrowImg.isHidden = true
+        view.categoryName.text = listingType == .brands ? brandArr[section] : countryArr[section]
+        view.checkBtn.isSelected = selectedIndexPath.contains(section) || selectedIndexPath.contains(0)
 
-        }else {
-            if let name = viewModel.searchedCountry[section][CountryVM.CountryKeys.name.rawValue]{
-                view.categoryName.text = name
-            }
-        }
-        view.checkBtn.isSelected = selectedItem.contains(brandArr[section])
         
-        view.cellBtnTapped = { [weak self] in
+        view.cellBtnTapped = { [weak self] (selected) in
             guard let `self` = self else {return}
-            let item = self.brandArr[section]
             
-            if item == self.brandArr[0] {
-                self.selectedItem.removeAll()
-                self.selectedItem.append(item)
-            }else {
-                if self.selectedItem.contains(self.brandArr[0]) {
-                    self.selectedItem = []
+            if section == 0 {
+
+                if self.selectedIndexPath.count == 0 {
+                    self.selectedIndexPath.append(section)
+                }else {
+                    if (self.selectedIndexPath.count == 1 &&  self.selectedIndexPath.contains(0)){
+                        self.selectedIndexPath.removeAll()
+
+                    }else {
+                        self.selectedIndexPath.removeAll()
+                        self.selectedIndexPath.append(section)
+                    }
                 }
-                self.selectedItem.contains(item) ? self.selectedItem.removeAll{($0 == item)} : self.selectedItem.append(item)
+            }else{
+                if self.selectedIndexPath.count == 1 &&  self.selectedIndexPath.contains(0) {
+                   self.selectedIndexPath = Array(1...self.brandArr.count - 1)
+                   self.selectedIndexPath.removeAll{($0 == section)}
+                }else {
+                   
+                   self.selectedIndexPath.contains(section) ? self.selectedIndexPath.removeAll{($0 == section)} : self.selectedIndexPath.append(section)
+                   self.selectedIndexPath = self.selectedIndexPath.count == self.brandArr.count - 1 ? [0] : self.selectedIndexPath
+                }
             }
             self.mainTableView.reloadData()
         }

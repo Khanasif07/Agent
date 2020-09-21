@@ -41,9 +41,6 @@ class LocationPopUpVC: BaseVC {
     @IBAction func allowBtnAction(_ sender: UIButton) {
    
     }
-
-
-
 }
 
 // MARK: - Extension For Functions

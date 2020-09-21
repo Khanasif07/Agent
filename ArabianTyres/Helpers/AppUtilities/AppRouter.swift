@@ -26,30 +26,31 @@ enum AppRouter {
     // MARK: - Show Landing Screen
     //===========================
     static func checkAppInitializationFlow() {
-        if isUserLoggedin {
-            if !isPhoneNoVerified{
-                AppUserDefaults.removeValue(forKey: .accesstoken)
-                UserModel.main = UserModel()
-                AppRouter.makeLoginVCRoot()
-                return
-            }
-            switch isCurrentUserType {
-            case .user:
-                AppRouter.goToUserHome()
-            default:
-                let lang = AppUserDefaults.value(forKey: .currentLanguage).stringValue
-                AppUserDefaults.removeAllValues()
-                AppUserDefaults.save(value: lang, forKey: .currentLanguage)
-                AppUserDefaults.save(value: true, forKey: .isLanguageSelect)
-            }
-        } else {
-            self.makeChooseLanguageVCRoot()
-        }
+        goToTestingVC()
+//        if isUserLoggedin {
+//            if !isPhoneNoVerified{
+//                AppUserDefaults.removeValue(forKey: .accesstoken)
+//                UserModel.main = UserModel()
+//                AppRouter.makeLoginVCRoot()
+//                return
+//            }
+//            switch isCurrentUserType {
+//            case .user:
+//                AppRouter.goToUserHome()
+//            default:
+//                let lang = AppUserDefaults.value(forKey: .currentLanguage).stringValue
+//                AppUserDefaults.removeAllValues()
+//                AppUserDefaults.save(value: lang, forKey: .currentLanguage)
+//                AppUserDefaults.save(value: true, forKey: .isLanguageSelect)
+//            }
+//        } else {
+//            self.makeChooseLanguageVCRoot()
+//        }
     }
     
-    static func goToTestingVC(vc: UIViewController){
-        let scene = URTyreStep1VC.instantiate(fromAppStoryboard: .UserRequest)
-        vc.navigationController?.pushViewController(scene, animated: true)
+    static func goToTestingVC(){
+        let scene = TyreBrandVC.instantiate(fromAppStoryboard: .UserHomeScreen)
+        setAsWindowRoot(scene)
     }
     
     static func goToProfileSettingVC(vc: UIViewController){
@@ -191,10 +192,16 @@ enum AppRouter {
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
-    static func goToBrandsListingVC(vc: UIViewController){
-          let scene = BrandsListingVC.instantiate(fromAppStoryboard: .UserHomeScreen)
-          scene.delegate = vc as? BrandsListnig
-          vc.present(scene, animated: true)
+    static func goToBrandsListingVC(vc: UIViewController,listingType : ListingType,data : [String]){
+        let scene = BrandsListingVC.instantiate(fromAppStoryboard: .UserHomeScreen)
+        if listingType == .brands {
+            scene.selectedBrandsArr = data
+        }else {
+            scene.selectedCountryArr = data
+        }
+        scene.delegate = vc as? BrandsListnig
+        scene.listingType = listingType
+        vc.present(scene, animated: true)
     }
     
     

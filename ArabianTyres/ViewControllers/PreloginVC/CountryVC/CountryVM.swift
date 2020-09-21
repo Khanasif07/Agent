@@ -21,6 +21,8 @@ class CountryVM{
     
     var filteredCountry:[[String:String]] = []
     var searchCountry: String = ""
+   
+
     var searchedCountry:[[String:String]] {
         if searchCountry.isEmpty{
             return filteredCountry
@@ -37,5 +39,14 @@ class CountryVM{
                 return true
             }
         })
+    }
+    
+    func getCountriesArr() -> [String]{
+        getCountyData()
+        var countryNameArr: [String] = ["All Country"]
+        for dict in filteredCountry {
+            countryNameArr.append(dict[CountryKeys.name.rawValue] ?? "")
+        }
+        return countryNameArr
     }
 }

@@ -10,13 +10,16 @@ import UIKit
 
 class FacilityTableHeaderView: UITableViewHeaderFooterView {
 
+    //MARK:- IBOutlets
     @IBOutlet weak var checkBtn : UIButton!
     @IBOutlet weak var categoryName : UILabel!
     @IBOutlet weak var arrowImg : UIImageView!
     @IBOutlet weak var cellBtn : UIButton!
     @IBOutlet weak var bottomView : UIView!
 
-    var cellBtnTapped : (()->())?
+    var cellBtnTapped : ((Bool)->())?
+    var isSelected : Bool = false
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         categoryName.font = AppFonts.NunitoSansBold.withSize(14.0)
@@ -27,7 +30,8 @@ class FacilityTableHeaderView: UITableViewHeaderFooterView {
     }
     
     @IBAction func cellBtnTapped(_ sender: UIButton) {
-        cellBtnTapped?()
+        isSelected.toggle()
+        cellBtnTapped?(isSelected)
         arrowImg.isHighlighted.toggle()
     }
 }

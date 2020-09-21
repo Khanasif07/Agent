@@ -231,17 +231,17 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="diB-ne-4fC">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="917"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZDv-0L-9va">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="330"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="363"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AqH-Xv-OiM">
-                                                        <rect key="frame" x="207" y="0.0" width="207" height="280"/>
+                                                        <rect key="frame" x="207" y="0.0" width="207" height="313"/>
                                                         <color key="backgroundColor" red="1" green="0.69411764710000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </view>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icTyre" translatesAutoresizingMaskIntoConstraints="NO" id="UqA-4q-rDK">
-                                                        <rect key="frame" x="0.0" y="130" width="414" height="200"/>
+                                                        <rect key="frame" x="0.0" y="163" width="414" height="200"/>
                                                     </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -256,7 +256,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="1000" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sbI-me-tj6">
-                                                <rect key="frame" x="16" y="330" width="382" height="50.5"/>
+                                                <rect key="frame" x="16" y="363" width="382" height="50.5"/>
                                                 <string key="text">The preferred Origin for my
 tyre would be</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
@@ -264,7 +264,7 @@ tyre would be</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O7F-cR-ZbX">
-                                                <rect key="frame" x="16" y="427.5" width="382" height="33.5"/>
+                                                <rect key="frame" x="16" y="460.5" width="382" height="33.5"/>
                                                 <string key="text">Set your preferences among tyre
 brand or country origin</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -272,7 +272,7 @@ brand or country origin</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KiL-Zd-HpC">
-                                                <rect key="frame" x="16" y="486" width="382" height="348"/>
+                                                <rect key="frame" x="16" y="519" width="382" height="348"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="vCx-ks-sWz">
                                                         <rect key="frame" x="8" y="12" width="358" height="30"/>
@@ -390,9 +390,8 @@ brand or country origin</string>
                                             <constraint firstAttribute="trailing" secondItem="sbI-me-tj6" secondAttribute="trailing" constant="16" id="Zy6-gI-KgR"/>
                                             <constraint firstItem="O7F-cR-ZbX" firstAttribute="top" secondItem="sbI-me-tj6" secondAttribute="bottom" constant="47" id="apD-Va-YTd"/>
                                             <constraint firstItem="sbI-me-tj6" firstAttribute="top" secondItem="ZDv-0L-9va" secondAttribute="bottom" id="dIi-ia-pJh"/>
-                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="KiL-Zd-HpC" secondAttribute="bottom" priority="999" constant="50" id="gMg-aB-PZ3"/>
+                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="KiL-Zd-HpC" secondAttribute="bottom" priority="998" constant="50" id="gMg-aB-PZ3"/>
                                             <constraint firstItem="KiL-Zd-HpC" firstAttribute="top" secondItem="O7F-cR-ZbX" secondAttribute="bottom" constant="25" id="hkq-bU-7lr"/>
-                                            <constraint firstItem="ZDv-0L-9va" firstAttribute="height" secondItem="diB-ne-4fC" secondAttribute="height" multiplier="300/814" id="wVF-p9-AqK"/>
                                             <constraint firstItem="sbI-me-tj6" firstAttribute="leading" secondItem="diB-ne-4fC" secondAttribute="leading" constant="16" id="y3F-9q-zEH"/>
                                             <constraint firstItem="z5m-Nh-zkS" firstAttribute="width" secondItem="diB-ne-4fC" secondAttribute="width" multiplier="150/414" id="yL1-rH-djc"/>
                                         </constraints>
@@ -421,6 +420,7 @@ brand or country origin</string>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="ZDv-0L-9va" firstAttribute="height" secondItem="tL8-PP-DMn" secondAttribute="height" multiplier="330/814" id="9qv-og-pUZ"/>
                             <constraint firstItem="nRH-sV-gaB" firstAttribute="top" secondItem="hRN-aq-0a7" secondAttribute="top" id="Dsz-c5-C7X"/>
                             <constraint firstItem="N2t-PW-EhO" firstAttribute="bottom" secondItem="tL8-PP-DMn" secondAttribute="bottom" id="FOo-bi-cJ8"/>
                             <constraint firstItem="hRN-aq-0a7" firstAttribute="trailing" secondItem="N2t-PW-EhO" secondAttribute="trailing" id="HoM-fN-brP"/>
@@ -567,21 +567,6 @@ brand or country origin</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wm7-Xe-zz1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1713" y="86"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="rNg-Ox-w8b">
-            <objects>
-                <viewController id="05G-v9-Ccw" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="g7U-MN-g1c">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="dKX-Ii-LYL"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2eI-bj-16l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2478" y="86"/>
         </scene>
         <!--Location Pop UpVC-->
         <scene sceneID="QjX-7F-vl6">
