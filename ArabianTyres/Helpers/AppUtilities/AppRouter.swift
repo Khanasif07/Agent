@@ -129,9 +129,9 @@ enum AppRouter {
     }
     
     static func goToGarageRegistrationVC(vc: UIViewController){
-         let scene = GarageRegistrationVC.instantiate(fromAppStoryboard: .Garage)
-         vc.navigationController?.pushViewController(scene, animated: true)
-     }
+        let scene = GarageRegistrationVC.instantiate(fromAppStoryboard: .Garage)
+        vc.navigationController?.pushViewController(scene, animated: true)
+    }
     
     static func goToAddDetailVC(vc: UIViewController){
         let scene = AddDetailVC.instantiate(fromAppStoryboard: .Garage)
@@ -139,9 +139,9 @@ enum AppRouter {
     }
     
     static func goToVehicleDetailVC(vc: UIViewController){
-           let scene = VechicleDetailVC.instantiate(fromAppStoryboard: .UserHomeScreen)
-           vc.navigationController?.pushViewController(scene, animated: true)
-       }
+        let scene = VechicleDetailVC.instantiate(fromAppStoryboard: .UserHomeScreen)
+        vc.navigationController?.pushViewController(scene, animated: true)
+    }
     
     static func goToRegistraionPendingVC(vc: UIViewController, screenType: RegistraionPendingVC.ScreenType){
         let scene = RegistraionPendingVC.instantiate(fromAppStoryboard: .Garage)
@@ -165,8 +165,9 @@ enum AppRouter {
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
-    static func goToAddAccountVC(vc: UIViewController){
+    static func goToAddAccountVC(vc: UIViewController, screenType: AddAccountVC.ScreenType){
         let scene = AddAccountVC.instantiate(fromAppStoryboard: .Garage)
+        scene.screenType = screenType
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
@@ -203,6 +204,23 @@ enum AppRouter {
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
+    
+    static func goToURTyreSizeVC(vc: UIViewController){
+        let scene = URTyreSizeVC.instantiate(fromAppStoryboard: .UserRequest)
+        vc.navigationController?.pushViewController(scene, animated: true)
+    }
+    
+    static func presentLocationPopUpVC(vc: UIViewController){
+        let scene = LocationPopUpVC.instantiate(fromAppStoryboard: .UserHomeScreen)
+        vc.navigationController?.present(scene, animated: true, completion: nil)
+    }
+    
+    
+    static func goToURTyreStep1VC(vc: UIViewController){
+        let scene = URTyreStep1VC.instantiate(fromAppStoryboard: .UserRequest)
+        vc.navigationController?.pushViewController(scene, animated: true)
+    }
+    
     static func goToBrandsListingVC(vc: UIViewController,listingType : ListingType,data : [String]){
         let scene = BrandsListingVC.instantiate(fromAppStoryboard: .UserHomeScreen)
         if listingType == .brands {
@@ -233,7 +251,7 @@ enum AppRouter {
         }else {
             if let topVC = AppDelegate.shared.topViewController() {
                 CommonFunctions.showToastWithMessage(alertMessage)
-//                ToastView.shared.showLongToast(topVC.view, msg: alertMessage)
+                //                ToastView.shared.showLongToast(topVC.view, msg: alertMessage)
             }
             self.makeLoginVCRoot()
         }

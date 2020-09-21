@@ -55,7 +55,7 @@ class VechicleDetailVC: BaseVC {
     }
     
     @IBAction func submitBtnAction(_ sender: UIButton) {
-
+        AppRouter.goToURTyreSizeVC(vc: self)
     }
    
 }

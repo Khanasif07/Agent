@@ -26,13 +26,14 @@ class BrandsListingVC: BaseVC {
 
     // MARK: - Variables
     //===========================
+    var viewModel = BrandsListingVM()
     var selectedSkillArr : [String] = []
     var brandArr = ["All Brands", "MRF","Nokian Tyre","Apollo Tyres","CEAT Ltd","Goodyear","Peerless Tyre","Michelin ","Dunlop","Pirelli","Yokohama"]
     var selectedBrandsArr : [String] = []
     var selectedCountryArr : [String] = []
     var selectedIndexPath : [Int] = []
     var listingType : ListingType = .brands
-    var viewModel = CountryVM()
+    var countryViewModel = CountryVM()
     var countryArr :[String] = []
     
     weak var delegate : BrandsListnig?
@@ -73,12 +74,19 @@ class BrandsListingVC: BaseVC {
 extension BrandsListingVC {
 
     private func initialSetup() {
-        countryArr = viewModel.getCountriesArr()
+        self.viewModel.delegate = self
+        countryArr = countryViewModel.getCountriesArr()
         selectedDataSource()
         setupTextAndFont()
         mainTableView.delegate = self
         mainTableView.dataSource = self
         mainTableView.registerHeaderFooter(with: FacilityTableHeaderView.self)
+        self.mainTableView.registerCell(with: LoaderCell.self)
+        self.hitBrandListingApi()
+    }
+    
+    private func hitBrandListingApi(){
+        self.viewModel.getBrandListingData(params: [ApiKey.page: "1",ApiKey.limit : "20"],loader: false)
     }
 
     
@@ -153,6 +161,7 @@ extension BrandsListingVC : UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         if (listingType == .brands) {
             return brandArr.count
+//             self.viewModel.subscriberListings.endIndex +  (self.viewModel.showPaginationLoader ?  1 : 0)
         }else {
             return countryArr.count
         }
@@ -211,5 +220,25 @@ extension BrandsListingVC : UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return CGFloat.leastNormalMagnitude
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        print("displaycell = =",indexPath.row)
+        if cell as? LoaderCell != nil {
+            let params: JSONDictionary = [ApiKey.limit: "20", ApiKey.page: viewModel.currentPage]
+             self.viewModel.getBrandListingData(params: params,loader: false)
+        }
+    }
+}
+
+
+// MARK: - BrandsListingVMDelegate
+//===========================
+extension BrandsListingVC: BrandsListingVMDelegate{
+    func brandListingSuccess(message: String) {
+    }
+    
+    func brandListingFailed(error: String) {
+        
     }
 }

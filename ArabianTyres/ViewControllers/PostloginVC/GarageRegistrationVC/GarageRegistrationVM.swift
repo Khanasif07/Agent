@@ -16,6 +16,9 @@ protocol GarageRegistrationVMDelegate: class {
     func garageRegistrationFailed(msg: String)
     func switchGarageRegistrationSuccess(code: Int, msg : String)
     func switchGarageRegistrationFailure(msg: String)
+    func completeProfileSuccess(msg: String)
+    func completeProfileFailure(msg: String)
+
 }
 
 extension GarageRegistrationVMDelegate {
@@ -23,6 +26,8 @@ extension GarageRegistrationVMDelegate {
     func garageRegistrationFailed(msg: String){}
     func switchGarageRegistrationSuccess(code: Int, msg : String){}
     func switchGarageRegistrationFailure(msg: String){}
+    func completeProfileSuccess(msg: String){}
+    func completeProfileFailure(msg: String){}
 }
 class GarageRegistrationVM {
     
@@ -57,4 +62,17 @@ class GarageRegistrationVM {
             self.delegate?.switchGarageRegistrationFailure(msg: error.localizedDescription)
         }
     }
+    
+    func garageProfile(params: JSONDictionary) {
+        
+        WebServices.completeGarageProfile(parameters: params, success: { [weak self] (msg) in
+            guard let `self` = self else { return }
+            self.delegate?.completeProfileSuccess(msg : msg)
+            
+        }) { [weak self] (error) in
+            guard let `self` = self else { return }
+            self.delegate?.completeProfileFailure(msg: error.localizedDescription)
+        }
+    }
+    
 }

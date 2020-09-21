@@ -60,6 +60,7 @@ class CompleteProfileStep1: BaseVC {
     }
     
     @IBAction func saveContinueAction(_ sender: UIButton) {
+        AppRouter.goToGarageProfileStep2VC(vc: self)
     }
 }
 
@@ -88,7 +89,7 @@ extension CompleteProfileStep1 {
         [nameTxtField,distTxtField,addressTxtField].forEach({$0?.selectedLineColor = AppColors.fontTertiaryColor})
         [nameTxtField,distTxtField,addressTxtField].forEach({$0?.selectedTitleColor = AppColors.fontTertiaryColor})
         self.saveContinueBtn.setTitle(LocalizedString.saveContinue.localized, for: .normal)
-        self.saveContinueBtn.isEnabled = false
+//        self.saveContinueBtn.isEnabled = false
     }
     private func prepareMap() {
         self.mapView.isMyLocationEnabled = true

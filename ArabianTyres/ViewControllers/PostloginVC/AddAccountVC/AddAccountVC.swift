@@ -11,6 +11,10 @@ import UIKit
 
 class AddAccountVC: BaseVC {
   
+    enum ScreenType {
+        case garageProfile
+        case garageRegistration
+    }
     
     // MARK: - IBOutlets
     //===========================
@@ -23,12 +27,14 @@ class AddAccountVC: BaseVC {
     @IBOutlet weak var iAgreeToLbl: UILabel!
     @IBOutlet weak var andLbl: UILabel!
     @IBOutlet weak var termAndConditionLbl: UILabel!
+    @IBOutlet weak var lblContainerView: UIStackView!
 
     // MARK: - Variables
     //===========================
     var bankDetailAdded = false
     var viewModel = GarageRegistrationVM()
-
+    var screenType : ScreenType = .garageRegistration
+    
     // MARK: - Lifecycle
     //===========================
     override func viewDidLoad() {
@@ -52,7 +58,11 @@ class AddAccountVC: BaseVC {
     }
     
     @IBAction func registerBtnAction(_ sender: UIButton) {
-        viewModel.setGarageRegistration(params: GarageProfileModel.shared.getGarageProfileDict())
+        if screenType == .garageRegistration {
+            viewModel.setGarageRegistration(params: GarageProfileModel.shared.getGarageProfileDict())
+        }else {
+            viewModel.garageProfile(params: [:])
+        }
     }
 
      @IBAction func checkBtnAction(_ sender: UIButton) {
@@ -98,6 +108,19 @@ extension AddAccountVC {
     }
    
     private func setupTextAndFont(){
+        if screenType == .garageRegistration {
+            titleLbl.text = LocalizedString.addAccounts.localized
+            registerBtn.setTitle(LocalizedString.register.localized, for: .normal)
+            helpBtn.setTitle(LocalizedString.help.localized, for: .normal)
+
+        }else {
+            checkBtn.isHidden = true
+            lblContainerView.isHidden = true
+            titleLbl.text = LocalizedString.completeProfile.localized
+            registerBtn.setTitle(LocalizedString.submit.localized, for: .normal)
+            helpBtn.setTitle("", for: .normal)
+            helpBtn.setImage(#imageLiteral(resourceName: "group3811"), for: .normal)
+        }
         privacyPolicyLbl.font = AppFonts.NunitoSansBold.withSize(12.0)
         andLbl.font = AppFonts.NunitoSansSemiBold.withSize(13.0)
         termAndConditionLbl.font = AppFonts.NunitoSansBold.withSize(12.0)
@@ -107,9 +130,6 @@ extension AddAccountVC {
         helpBtn.titleLabel?.font =  AppFonts.NunitoSansSemiBold.withSize(17.0)
         registerBtn.titleLabel?.font =  AppFonts.NunitoSansSemiBold.withSize(16.0)
 
-        titleLbl.text = LocalizedString.addAccounts.localized
-        helpBtn.setTitle(LocalizedString.help.localized, for: .normal)
-        registerBtn.setTitle(LocalizedString.register.localized, for: .normal)
         privacyPolicyLbl.text = LocalizedString.privacyPolicy.localized
         andLbl.text = LocalizedString.and.localized
         termAndConditionLbl.text = LocalizedString.terms_Condition.localized

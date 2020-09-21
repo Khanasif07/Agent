@@ -73,6 +73,8 @@ class GarageProfileStep2VC: BaseVC {
     }
 
     @IBAction func saveAndContinueAction(_ sender: UIButton) {
+        
+        AppRouter.goToAddAccountVC(vc: self, screenType: .garageProfile)
     }
     
     func reloadCollectionViewWithUIUpdation(){
@@ -103,7 +105,7 @@ extension GarageProfileStep2VC {
         rangeSlider.delegate = self
         setupTextAndFont()
         setupCustomView()
-        saveAndContinueBtn.isEnabled = false
+        saveAndContinueBtn.isEnabled = true
         self.collViewSetUp()
 //        rangeSlider.resetSlider(value: 2500)
     }

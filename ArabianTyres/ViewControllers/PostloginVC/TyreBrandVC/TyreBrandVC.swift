@@ -78,11 +78,11 @@ class TyreBrandVC: BaseVC {
     //===========================
     
     @IBAction func cancelBtnAction(_ sender: UIButton) {
-        
+        self.pop()
     }
     
     @IBAction func submitBtnAction(_ sender: UIButton) {
-
+        AppRouter.presentLocationPopUpVC(vc: self)
     }
     
     @IBAction func tyreCheckBtnAction(_ sender: UIButton) {
@@ -120,7 +120,12 @@ extension TyreBrandVC {
         thePreferredLbl.font = AppFonts.NunitoSansBold.withSize(21.0)
         setYourPrefernceLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
         submitBtn.titleLabel?.font =  AppFonts.NunitoSansSemiBold.withSize(16.0)
+        submitBtn.isEnabled = false
         
+    }
+    
+    private func submitBtnStatus()-> Bool{
+        return !TyreRequestModel.shared.countries.isEmpty &&  !TyreRequestModel.shared.tyreBrands.isEmpty
     }
     
     private func setupCustomView() {
@@ -235,7 +240,6 @@ extension TyreBrandVC : CustomTextViewDelegate{
             AppRouter.goToBrandsListingVC(vc: self, listingType: .brands, data : brandListingArr)
         case countryOriginCustomView.tView:
             AppRouter.goToBrandsListingVC(vc: self, listingType: .countries, data: countryListingArr)
-            
         default:
             break
         }
@@ -257,6 +261,8 @@ extension TyreBrandVC: BrandsListnig {
         if listingType == .brands {
 //            self.listingType = listingType
             brandListingArr = data
+            TyreRequestModel.shared.tyreBrands = brandListingArr
+            self.submitBtn.isEnabled = submitBtnStatus()
             tyreBrandCheckBtn.isSelected = !brandListingArr.isEmpty
             tyreBrandCustomView.collView.isHidden = brandListingArr.isEmpty
             tyreBrandCustomView.floatLbl.isHidden = brandListingArr.isEmpty
@@ -265,6 +271,8 @@ extension TyreBrandVC: BrandsListnig {
         }else {
 //            self.listingType = listingType
             countryListingArr = data
+            TyreRequestModel.shared.countries = countryListingArr
+            self.submitBtn.isEnabled = submitBtnStatus()
             countryOriginCheckBtn.isSelected = !brandListingArr.isEmpty
             countryOriginCustomView.collView.isHidden = countryListingArr.isEmpty
             countryOriginCustomView.floatLbl.isHidden = countryListingArr.isEmpty

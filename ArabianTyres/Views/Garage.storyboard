@@ -995,6 +995,7 @@ Service Center</string>
                         <outlet property="checkBtn" destination="kHW-ST-Q1y" id="uk3-C4-JP0"/>
                         <outlet property="helpBtn" destination="X5b-SY-caJ" id="rdv-Ii-U8P"/>
                         <outlet property="iAgreeToLbl" destination="47c-qA-aTH" id="KQz-rw-2Gv"/>
+                        <outlet property="lblContainerView" destination="rhN-gK-Ino" id="gfn-j8-j9P"/>
                         <outlet property="mainTableView" destination="5rd-pM-9QU" id="lFE-UK-nN7"/>
                         <outlet property="privacyPolicyLbl" destination="ia2-JE-dKt" id="46M-Mb-0Rc"/>
                         <outlet property="registerBtn" destination="qjx-ob-7zH" id="rsL-7Y-rHz"/>
