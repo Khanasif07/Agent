@@ -58,6 +58,8 @@
 		844EB7022518423B003A6E3F /* GarageExploreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844EB7012518423B003A6E3F /* GarageExploreVC.swift */; };
 		844EB70425184259003A6E3F /* GarageSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844EB70325184259003A6E3F /* GarageSettingVC.swift */; };
 		844EB70625184272003A6E3F /* GarageProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844EB70525184272003A6E3F /* GarageProfileVC.swift */; };
+		844EB70C251846BA003A6E3F /* GarageHomeTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844EB70A251846BA003A6E3F /* GarageHomeTableCell.swift */; };
+		844EB70D251846BA003A6E3F /* GarageHomeTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844EB70B251846BA003A6E3F /* GarageHomeTableCell.xib */; };
 		846352D02511E34E004216F1 /* AddImageCollCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846352CE2511E34E004216F1 /* AddImageCollCell.swift */; };
 		846352D12511E34E004216F1 /* AddImageCollCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 846352CF2511E34E004216F1 /* AddImageCollCell.xib */; };
 		847BC423250774E100EEEFDC /* ResetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847BC422250774E100EEEFDC /* ResetPasswordVC.swift */; };
@@ -208,6 +210,8 @@
 		844EB7012518423B003A6E3F /* GarageExploreVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageExploreVC.swift; sourceTree = "<group>"; };
 		844EB70325184259003A6E3F /* GarageSettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageSettingVC.swift; sourceTree = "<group>"; };
 		844EB70525184272003A6E3F /* GarageProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageProfileVC.swift; sourceTree = "<group>"; };
+		844EB70A251846BA003A6E3F /* GarageHomeTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageHomeTableCell.swift; sourceTree = "<group>"; };
+		844EB70B251846BA003A6E3F /* GarageHomeTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GarageHomeTableCell.xib; sourceTree = "<group>"; };
 		846352CE2511E34E004216F1 /* AddImageCollCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageCollCell.swift; sourceTree = "<group>"; };
 		846352CF2511E34E004216F1 /* AddImageCollCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddImageCollCell.xib; sourceTree = "<group>"; };
 		847BC422250774E100EEEFDC /* ResetPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordVC.swift; sourceTree = "<group>"; };
@@ -595,6 +599,37 @@
 			path = GarageProfileVC;
 			sourceTree = "<group>";
 		};
+		844EB70725184642003A6E3F /* Garage */ = {
+			isa = PBXGroup;
+			children = (
+				844EB70925184692003A6E3F /* GarageHomeVC */,
+				A45042C4250F2A84001C8905 /* UploadDocumentVC */,
+				A49B7D49251125AC0057239B /* FacilityCollectionViewCell */,
+				A45042C3250F2A62001C8905 /* GarageRegistrationVC */,
+				A4B74CC125107C3500771974 /* AddAccountVC */,
+				846352CD2511E323004216F1 /* GarageAddImageVC */,
+			);
+			path = Garage;
+			sourceTree = "<group>";
+		};
+		844EB70825184653003A6E3F /* User */ = {
+			isa = PBXGroup;
+			children = (
+				843C8EB625087D9E00515F2E /* ProfileVC */,
+				843C8ECF2508FB6B00515F2E /* HomeVC */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		844EB70925184692003A6E3F /* GarageHomeVC */ = {
+			isa = PBXGroup;
+			children = (
+				844EB70A251846BA003A6E3F /* GarageHomeTableCell.swift */,
+				844EB70B251846BA003A6E3F /* GarageHomeTableCell.xib */,
+			);
+			path = GarageHomeVC;
+			sourceTree = "<group>";
+		};
 		846352CD2511E323004216F1 /* GarageAddImageVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -911,13 +946,8 @@
 		8481FA87250107C000AB6EFB /* PostloginVC */ = {
 			isa = PBXGroup;
 			children = (
-				846352CD2511E323004216F1 /* GarageAddImageVC */,
-				843C8ECF2508FB6B00515F2E /* HomeVC */,
-				843C8EB625087D9E00515F2E /* ProfileVC */,
-				A45042C3250F2A62001C8905 /* GarageRegistrationVC */,
-				A45042C4250F2A84001C8905 /* UploadDocumentVC */,
-				A49B7D49251125AC0057239B /* FacilityCollectionViewCell */,
-				A4B74CC125107C3500771974 /* AddAccountVC */,
+				844EB70825184653003A6E3F /* User */,
+				844EB70725184642003A6E3F /* Garage */,
 				A4B74CC225107C6800771974 /* LinkAccountTableViewCell.swift */,
 				A4B74CC325107C6800771974 /* LinkAccountTableViewCell.xib */,
 			);
@@ -1106,6 +1136,7 @@
 				8481FA092500AA9B00AB6EFB /* LaunchScreen.storyboard in Resources */,
 				A4B74CC525107C6800771974 /* LinkAccountTableViewCell.xib in Resources */,
 				843C8EBE25089BBE00515F2E /* ProfileUserHeaderCell.xib in Resources */,
+				844EB70D251846BA003A6E3F /* GarageHomeTableCell.xib in Resources */,
 				8481FA312500BCD800AB6EFB /* Localizable.strings in Resources */,
 				843C8EBA25087DD200515F2E /* ProfileGuestTableCell.xib in Resources */,
 				843C8EC22508AD4D00515F2E /* ProfileUserBottomCell.xib in Resources */,
@@ -1238,6 +1269,7 @@
 				844EB70425184259003A6E3F /* GarageSettingVC.swift in Sources */,
 				844CBD222501FFC0009BE668 /* LoginEmailPhoneTableCell.swift in Sources */,
 				8481FA692500BFC700AB6EFB /* DeviceDetails.swift in Sources */,
+				844EB70C251846BA003A6E3F /* GarageHomeTableCell.swift in Sources */,
 				844956352510A60900846ED9 /* LocationController.swift in Sources */,
 				A413B97E250A44410004C534 /* CustomTextView.swift in Sources */,
 				8481FA212500BB2100AB6EFB /* GoogleLoginController.swift in Sources */,

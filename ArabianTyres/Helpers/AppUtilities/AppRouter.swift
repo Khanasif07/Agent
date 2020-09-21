@@ -35,12 +35,10 @@ enum AppRouter {
             }
             switch isCurrentUserType {
             case .user:
-                AppRouter.goToUserHome()
+                AppRouter.goToGarageHome()
+//                AppRouter.goToUserHome()
             default:
-                let lang = AppUserDefaults.value(forKey: .currentLanguage).stringValue
-                AppUserDefaults.removeAllValues()
-                AppUserDefaults.save(value: lang, forKey: .currentLanguage)
-                AppUserDefaults.save(value: true, forKey: .isLanguageSelect)
+                AppRouter.goToGarageHome()
             }
         } else {
             self.makeChooseLanguageVCRoot()
@@ -127,10 +125,15 @@ enum AppRouter {
         setAsWindowRoot(homeScene)
     }
     
+    static func goToGarageHome() {
+        let homeScene = GarageTabBarController.instantiate(fromAppStoryboard: .GarageHome)
+        setAsWindowRoot(homeScene)
+    }
+    
     static func goToGarageRegistrationVC(vc: UIViewController){
-         let scene = GarageRegistrationVC.instantiate(fromAppStoryboard: .Garage)
-         vc.navigationController?.pushViewController(scene, animated: true)
-     }
+        let scene = GarageRegistrationVC.instantiate(fromAppStoryboard: .Garage)
+        vc.navigationController?.pushViewController(scene, animated: true)
+    }
     
     static func goToAddDetailVC(vc: UIViewController){
         let scene = AddDetailVC.instantiate(fromAppStoryboard: .Garage)
@@ -180,7 +183,7 @@ enum AppRouter {
         }else {
             if let topVC = AppDelegate.shared.topViewController() {
                 CommonFunctions.showToastWithMessage(alertMessage)
-//                ToastView.shared.showLongToast(topVC.view, msg: alertMessage)
+                //                ToastView.shared.showLongToast(topVC.view, msg: alertMessage)
             }
             self.makeLoginVCRoot()
         }
