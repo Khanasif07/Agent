@@ -49,7 +49,7 @@ enum AppRouter {
     }
     
     static func goToTestingVC(){
-        let scene = TyreBrandVC.instantiate(fromAppStoryboard: .UserHomeScreen)
+        let scene = TyreRequestedVC.instantiate(fromAppStoryboard: .UserHomeScreen)
         setAsWindowRoot(scene)
     }
     
@@ -149,6 +149,17 @@ enum AppRouter {
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
+    static func goToCompleteProfileStep1VC(vc: UIViewController){
+        let scene = CompleteProfileStep1.instantiate(fromAppStoryboard: .PostLogin)
+        vc.navigationController?.pushViewController(scene, animated: true)
+    }
+    
+    
+    
+    static func goToTyreRequestedVC(vc: UIViewController){
+        let scene = TyreRequestedVC.instantiate(fromAppStoryboard: .UserHomeScreen)
+        vc.navigationController?.pushViewController(scene, animated: true)
+    }
     static func goToUploadDocumentVC(vc: UIViewController){
         let scene = UploadDocumentVC.instantiate(fromAppStoryboard: .Garage)
         vc.navigationController?.pushViewController(scene, animated: true)

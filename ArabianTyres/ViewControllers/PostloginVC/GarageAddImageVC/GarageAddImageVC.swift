@@ -10,7 +10,6 @@ import GoogleMaps
 import GooglePlaces
 import UIKit
 
-
 class GarageAddImageVC: BaseVC {
     
     // MARK: - IBOutlets
@@ -351,6 +350,7 @@ extension GarageAddImageVC: UIImagePickerControllerDelegate, UINavigationControl
         })
         picker.dismiss(animated: true, completion: nil)
     }
+  
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }

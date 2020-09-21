@@ -24,6 +24,7 @@ class CompleteProfileStep1: BaseVC {
     @IBOutlet weak var logoImgView: UIImageView!
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var saveContinueBtn: AppButton!
+    
     // MARK: - Variables
     //===========================
     var locationValue = LocationController.sharedLocationManager.locationManager.location?.coordinate ?? CLLocationCoordinate2D(latitude: GarageProfileModel.shared.latitude, longitude: GarageProfileModel.shared.longitude)
@@ -74,8 +75,8 @@ extension CompleteProfileStep1 {
     
     public func setUpTextField(){
         self.distTxtField.title = LocalizedString.serviceCenterDist.localized
-        self.nameTxtField.title = LocalizedString.serviceCenterName.localized
-        self.nameTxtField.selectedTitle = LocalizedString.serviceCenterName.localized
+        self.nameTxtField.title = LocalizedString.serviceCenterNames.localized
+        self.nameTxtField.selectedTitle = LocalizedString.serviceCenterNames.localized
         self.distTxtField.selectedTitle = LocalizedString.serviceCenterDist.localized
         self.nameTxtField.placeholder = LocalizedString.enterServiceCenterName.localized
         self.addressTxtField.placeholder = LocalizedString.enterServiceCenterAddress.localized

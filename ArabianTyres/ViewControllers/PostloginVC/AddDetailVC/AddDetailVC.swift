@@ -83,7 +83,7 @@ extension AddDetailVC {
         setupTextAndFont()
         customTView.delegate = self
         customTView.placeHolderTxt = LocalizedString.enterServiceCenterName.localized
-        customTView.floatLbl.text = LocalizedString.serviceCenterName.localized
+        customTView.floatLbl.text = LocalizedString.serviceCenterNames.localized
         customTView.rightImgContainerView.isHidden = true
         customTView.leftImgContainerView.isHidden = true
         saveAndContinueBtn.isEnabled = false
@@ -123,7 +123,7 @@ extension AddDetailVC : CustomTextViewDelegate {
         if tView.text == ""{
             customTView.floatLbl.isHidden = true
             customTView.placeHolderTxt = LocalizedString.enterServiceCenterName.localized
-            customTView.floatLbl.text = LocalizedString.serviceCenterName.localized
+            customTView.floatLbl.text = LocalizedString.serviceCenterNames.localized
         }
     }
     

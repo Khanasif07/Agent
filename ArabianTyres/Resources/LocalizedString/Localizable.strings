@@ -144,7 +144,7 @@
 "addLogo" = "Add Logo";
 "saveContinue" = "Save & Continue";
 "enterServiceCenterName" = "Enter Service Center Name";
-"serviceCenterName" = "Service Center Name";
+"serviceCenterNames" = "Service Center Name";
 "help" = "Help";
 "registerAgain" = "Register Again";
 "completeProfile" = "Complete Profile";
