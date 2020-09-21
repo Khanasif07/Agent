@@ -129,7 +129,13 @@ enum ApiKey {
     static var ownerId: String { return "ownerId" }
     static var bank: String { return "bank" }
     static var accountNumber: String { return "accountNumber" }
-
+    
+    static var width: String { return "width" }
+    static var profile: String { return "profile" }
+    static var rimSize: String { return "rimSize" }
+    static var countries: String { return "countries" }
+    static var tyreBrands: String { return "tyreBrands" }
+    
     
     
 }

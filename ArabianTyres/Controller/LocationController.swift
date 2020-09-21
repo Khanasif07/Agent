@@ -178,3 +178,6 @@ class LocationController : NSObject, CLLocationManagerDelegate {
         }
     }
 }
+
+
+

@@ -31,10 +31,14 @@ class URTyreSizeVC: BaseVC {
     
     // MARK: - IBActions
     //===========================
+    @IBAction func proccedBtnAction(_ sender: UIButton) {
+        NotificationCenter.default.post(name: Notification.Name.SelectedTyreSizeSuccess, object: nil)
+        self.navigationController?.popViewControllers(controllersToPop: 2, animated: true)
+    }
     @IBAction func backBtnAction(_ sender: UIButton) {
         self.pop()
     }
-    
+   
     
 }
 
@@ -43,7 +47,7 @@ class URTyreSizeVC: BaseVC {
 extension URTyreSizeVC {
     
     private func initialSetup() {
-        self.proceedBtn.isEnabled = false
+        self.proceedBtn.isEnabled = true
         mainTableView.registerCell(with: URTyreSizeTableCell.self)
         mainTableView.delegate = self
         mainTableView.dataSource = self

@@ -414,6 +414,37 @@ extension WebServices{
             failure(error)
         }
     }
+    
+    // MARK:- Post Tyre Request
+    //=========================
+    static func postTyreRequest(parameters: JSONDictionary,
+                         success: @escaping ResponseMessage,
+                         failure: @escaping FailureResponse) {
+        self.commonPostAPI(parameters: parameters, endPoint: .userTyreRequest,loader: true, success: { (json) in
+            success(json[ApiKey.message].stringValue)
+        }) { (error) -> (Void) in
+            failure(error)
+        }
+    }
+    
+    // MARK:- Brand Listing Data
+    //=================
+    static func getBrandListingData(parameters: JSONDictionary,
+                                 success: @escaping SuccessResponse,
+                                 failure: @escaping FailureResponse) {
+        self.commonGetAPI(parameters: parameters,endPoint: .userServiceBrands, success: { (json) in
+            let code = json[ApiKey.statusCode].intValue
+            let msg = json[ApiKey.message].stringValue
+            switch code {
+            case ApiCode.success:
+                success(json)
+            default:
+                failure(NSError(code: code, localizedDescription: msg))
+            }
+        }) { (error) -> (Void) in
+            failure(error)
+        }
+    }
 
 }
 

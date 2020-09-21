@@ -58,6 +58,9 @@ class URTyreStep1VC: BaseVC {
         AppRouter.goToVehicleDetailVC(vc: self)
     }
     
+    @objc func selectedTyreSizeSuccess(){
+        
+    }
 }
 
 // MARK: - Extension For Functions
@@ -65,6 +68,7 @@ class URTyreStep1VC: BaseVC {
 extension URTyreStep1VC {
     
     private func initialSetup() {
+        NotificationCenter.default.addObserver(self, selector: #selector(selectedTyreSizeSuccess), name: Notification.Name.SelectedTyreSizeSuccess, object: nil)
         self.setUpTextField()
         self.pickerViewSetUp()
     }
@@ -85,7 +89,6 @@ extension URTyreStep1VC {
         [widthTxtField,profileTxtField,rimSizeTxtField,numberTyreTxtField].forEach({$0?.selectedTitleColor = AppColors.fontTertiaryColor})
         self.nextBtn.isEnabled = true
         self.dashView.addDashedBorder()
-        self.findRightBtn.addBottomBorderWithColorDefault(color: UIColor.init(r: 50, g: 79, b: 195, alpha: 1.0), height: 1)
         self.nextBtn.isEnabled = false
     }
     

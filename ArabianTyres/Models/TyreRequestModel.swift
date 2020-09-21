@@ -18,27 +18,19 @@ struct TyreRequestModel {
     var profile                        : String = ""
     var rimSize           : String = ""
     var quantity                    : Int = 0
-    var selectedBrands                  : [String] = []
-    var selectedCountry                     : [String] = []
+    var tyreBrands                  : [String] = []
+    var countries                     : [String] = []
     var latitude : String = ""
     var longitude: String = ""
-    func getGarageProfileDict()-> JSONDictionary {
+    
+    func getTyreRequestDict()-> JSONDictionary {
         
-        let dict: JSONDictionary = [:
-//            ApiKey.logo : logoUrl,
-//            ApiKey.name: serviceCenterName,
-//            ApiKey.latitude : latitude,
-//            ApiKey.longitude : longitude,
-//            ApiKey.address : address,
-//            ApiKey.images : images,
-//            ApiKey.commercialRegister : commercialRegister,
-//            ApiKey.vatCertificate : vatCertificate,
-//            ApiKey.municipalityLicense : municipalityLicense,
-//            ApiKey.ownerId : ownerId,
-//            ApiKey.bank : bankName,
-//            ApiKey.accountNumber : accountNumber
-            
-        ]
+        let dict: JSONDictionary = [
+            ApiKey.width : width,
+            ApiKey.profile: profile,
+            ApiKey.rimSize : rimSize,
+            ApiKey.tyreBrands : tyreBrands,
+            ApiKey.countries : countries,ApiKey.latitude:latitude,ApiKey.longitude: longitude]
 
         return dict
     }

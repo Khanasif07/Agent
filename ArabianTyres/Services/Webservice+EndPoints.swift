@@ -8,8 +8,8 @@
 
 import Foundation
 
-//let baseUrl = "http://arabiantyersdevapi.appskeeper.com/api/v1/"//dev url
-let baseUrl = "http://arabiantyersqaapi.appskeeper.com/api/v1/" //qa url
+let baseUrl = "http://arabiantyersdevapi.appskeeper.com/api/v1/"//dev url
+//let baseUrl = "http://arabiantyersqaapi.appskeeper.com/api/v1/" //qa url
 //let baseUrl = "http://arabiantyersstgapi.appskeeper.com/api/v1/"//stag url
 
 
@@ -36,6 +36,8 @@ extension WebServices {
         case emailVerificationLink = "user/emailVerificationLink"
         case addPhoneNo = "user/addPhoneNo"
         case garageProfile = "user/garrageProfile"
+        case userTyreRequest = "user/services/tyre-request"
+        case userServiceBrands = "user/services/brands"
         
         var path : String {
             let url = baseUrl

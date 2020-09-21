@@ -10,9 +10,6 @@
         <array key="NunitoSans-Bold.ttf">
             <string>NunitoSans-Bold</string>
         </array>
-        <array key="NunitoSans-Regular.ttf">
-            <string>NunitoSans-Regular</string>
-        </array>
         <array key="NunitoSans-SemiBold.ttf">
             <string>NunitoSans-SemiBold</string>
         </array>
@@ -88,7 +85,7 @@ looking for?</string>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="45" id="Z2q-Eb-uhC"/>
                                                                                 </constraints>
-                                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                                <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="14"/>
                                                                                 <textInputTraits key="textInputTraits"/>
                                                                                 <userDefinedRuntimeAttributes>
                                                                                     <userDefinedRuntimeAttribute type="number" keyPath="lineHeight">
@@ -126,7 +123,7 @@ looking for?</string>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="45" id="9VP-WD-6yU"/>
                                                                                 </constraints>
-                                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                                <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="14"/>
                                                                                 <textInputTraits key="textInputTraits"/>
                                                                                 <userDefinedRuntimeAttributes>
                                                                                     <userDefinedRuntimeAttribute type="number" keyPath="lineHeight">
@@ -164,7 +161,7 @@ looking for?</string>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="45" id="Bih-QE-IXc"/>
                                                                                 </constraints>
-                                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                                <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="14"/>
                                                                                 <textInputTraits key="textInputTraits"/>
                                                                                 <userDefinedRuntimeAttributes>
                                                                                     <userDefinedRuntimeAttribute type="number" keyPath="lineHeight">
@@ -211,29 +208,43 @@ looking for?</string>
                                                             <action selector="nextBtnAction:" destination="uZL-xP-exo" eventType="touchUpInside" id="haW-z5-Pkm"/>
                                                         </connections>
                                                     </button>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ktG-PK-aci">
-                                                        <rect key="frame" x="16" y="103.5" width="226" height="30"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="ktG-PK-aci">
+                                                        <rect key="frame" x="16" y="103.5" width="228" height="30"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not sure about the size?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sqc-h7-12I">
-                                                                <rect key="frame" x="0.0" y="6" width="142" height="18"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="142" height="30"/>
                                                                 <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="13"/>
                                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="frU-qL-MHq">
-                                                                <rect key="frame" x="142" y="4" width="84" height="22"/>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="ZfE-Ba-aRb">
+                                                                <rect key="frame" x="144" y="0.0" width="84" height="30"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="frU-qL-MHq">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="84" height="29"/>
+                                                                        <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="12"/>
+                                                                        <state key="normal" title="Find Right Size">
+                                                                            <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.76470588235294112" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        </state>
+                                                                        <connections>
+                                                                            <action selector="findRightAction:" destination="uZL-xP-exo" eventType="touchUpInside" id="Euw-Gd-Eo5"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ClN-I5-Gci">
+                                                                        <rect key="frame" x="0.0" y="29" width="84" height="1"/>
+                                                                        <color key="backgroundColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.76470588235294112" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="1" id="SAT-p1-ovM"/>
+                                                                        </constraints>
+                                                                    </view>
+                                                                </subviews>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="height" constant="22" id="jLl-zO-0vV"/>
+                                                                    <constraint firstItem="ClN-I5-Gci" firstAttribute="width" secondItem="frU-qL-MHq" secondAttribute="width" id="PNM-Es-Xew"/>
                                                                 </constraints>
-                                                                <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="12"/>
-                                                                <state key="normal" title="Find Right Size"/>
-                                                                <connections>
-                                                                    <action selector="findRightAction:" destination="uZL-xP-exo" eventType="touchUpInside" id="Euw-Gd-Eo5"/>
-                                                                </connections>
-                                                            </button>
+                                                            </stackView>
                                                         </subviews>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="30" id="Q6X-BP-46R"/>
+                                                            <constraint firstAttribute="height" constant="30" id="HQc-FA-5WR"/>
                                                         </constraints>
                                                     </stackView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of tyre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bwz-fa-8mT">
@@ -250,14 +261,14 @@ looking for?</string>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="yqN-FC-kJX"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="NunitoSans-Regular" family="Nunito Sans" pointSize="15"/>
+                                                        <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Enter number of tyre you want"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="feu-eZ-cGu">
-                                                        <rect key="frame" x="16" y="165" width="350" height="1"/>
+                                                        <rect key="frame" x="0.0" y="165" width="382" height="1"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="XEV-ri-kc7"/>
@@ -270,14 +281,14 @@ looking for?</string>
                                                     <constraint firstItem="xVw-Ps-Lcx" firstAttribute="leading" secondItem="K2c-h9-JtS" secondAttribute="leading" constant="16" id="1qS-ps-30j"/>
                                                     <constraint firstItem="gjX-b0-YvN" firstAttribute="top" secondItem="bwz-fa-8mT" secondAttribute="bottom" constant="10" id="EgV-X2-Ze7"/>
                                                     <constraint firstAttribute="bottom" secondItem="LH3-Us-so6" secondAttribute="bottom" constant="16" id="GZi-CC-OHx"/>
-                                                    <constraint firstItem="feu-eZ-cGu" firstAttribute="top" secondItem="ktG-PK-aci" secondAttribute="bottom" constant="31.5" id="Iz4-tq-W1r"/>
-                                                    <constraint firstAttribute="trailing" secondItem="feu-eZ-cGu" secondAttribute="trailing" constant="16" id="K1W-Wj-xyN"/>
+                                                    <constraint firstAttribute="trailing" secondItem="feu-eZ-cGu" secondAttribute="trailing" id="K1W-Wj-xyN"/>
+                                                    <constraint firstItem="feu-eZ-cGu" firstAttribute="top" secondItem="ktG-PK-aci" secondAttribute="bottom" constant="31.5" id="LZQ-tw-R85"/>
                                                     <constraint firstAttribute="trailing" secondItem="LH3-Us-so6" secondAttribute="trailing" constant="16" id="TXo-mh-N7e"/>
                                                     <constraint firstAttribute="trailing" secondItem="Ipp-51-wjs" secondAttribute="trailing" constant="16" id="Wr4-Yd-2Eq"/>
                                                     <constraint firstItem="gjX-b0-YvN" firstAttribute="leading" secondItem="bwz-fa-8mT" secondAttribute="leading" id="XCT-4P-kh1"/>
                                                     <constraint firstItem="Ipp-51-wjs" firstAttribute="top" secondItem="xVw-Ps-Lcx" secondAttribute="bottom" constant="8" id="ZNR-3V-p80"/>
                                                     <constraint firstItem="bwz-fa-8mT" firstAttribute="leading" secondItem="K2c-h9-JtS" secondAttribute="leading" constant="16" id="ffQ-T2-xJU"/>
-                                                    <constraint firstItem="feu-eZ-cGu" firstAttribute="leading" secondItem="K2c-h9-JtS" secondAttribute="leading" constant="16" id="j4W-Un-SQv"/>
+                                                    <constraint firstItem="feu-eZ-cGu" firstAttribute="leading" secondItem="K2c-h9-JtS" secondAttribute="leading" id="j4W-Un-SQv"/>
                                                     <constraint firstItem="ktG-PK-aci" firstAttribute="top" secondItem="Ipp-51-wjs" secondAttribute="bottom" constant="8" id="jN2-QF-xaY"/>
                                                     <constraint firstItem="ktG-PK-aci" firstAttribute="leading" secondItem="K2c-h9-JtS" secondAttribute="leading" constant="16" id="jj9-gZ-dTt"/>
                                                     <constraint firstItem="xVw-Ps-Lcx" firstAttribute="top" secondItem="K2c-h9-JtS" secondAttribute="top" constant="16" id="oYm-EI-4kY"/>
@@ -475,6 +486,9 @@ the provided details.</string>
                                         <state key="normal" title="Proceed">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="proccedBtnAction:" destination="qAh-dG-X0L" eventType="touchUpInside" id="EF0-no-hcq"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>

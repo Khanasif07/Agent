@@ -65,6 +65,10 @@
 		844EB71425187CD0003A6E3F /* URTyreSizeTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844EB71225187CD0003A6E3F /* URTyreSizeTableCell.swift */; };
 		844EB71525187CD0003A6E3F /* URTyreSizeTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844EB71325187CD0003A6E3F /* URTyreSizeTableCell.xib */; };
 		844EB71725189916003A6E3F /* TyreRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844EB71625189916003A6E3F /* TyreRequestModel.swift */; };
+		844EB71A2518BC5A003A6E3F /* LocationPopUpVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844EB7192518BC5A003A6E3F /* LocationPopUpVM.swift */; };
+		844EB71D2518C59F003A6E3F /* BrandsListingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844EB71C2518C59F003A6E3F /* BrandsListingVM.swift */; };
+		844EB7212518C9C3003A6E3F /* LoaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844EB71F2518C9C3003A6E3F /* LoaderCell.swift */; };
+		844EB7222518C9C3003A6E3F /* LoaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844EB7202518C9C3003A6E3F /* LoaderCell.xib */; };
 		846352D02511E34E004216F1 /* AddImageCollCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846352CE2511E34E004216F1 /* AddImageCollCell.swift */; };
 		846352D12511E34E004216F1 /* AddImageCollCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 846352CF2511E34E004216F1 /* AddImageCollCell.xib */; };
 		847BC423250774E100EEEFDC /* ResetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847BC422250774E100EEEFDC /* ResetPasswordVC.swift */; };
@@ -239,6 +243,10 @@
 		844EB71225187CD0003A6E3F /* URTyreSizeTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URTyreSizeTableCell.swift; sourceTree = "<group>"; };
 		844EB71325187CD0003A6E3F /* URTyreSizeTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = URTyreSizeTableCell.xib; sourceTree = "<group>"; };
 		844EB71625189916003A6E3F /* TyreRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TyreRequestModel.swift; sourceTree = "<group>"; };
+		844EB7192518BC5A003A6E3F /* LocationPopUpVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPopUpVM.swift; sourceTree = "<group>"; };
+		844EB71C2518C59F003A6E3F /* BrandsListingVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandsListingVM.swift; sourceTree = "<group>"; };
+		844EB71F2518C9C3003A6E3F /* LoaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderCell.swift; sourceTree = "<group>"; };
+		844EB7202518C9C3003A6E3F /* LoaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoaderCell.xib; sourceTree = "<group>"; };
 		846352CE2511E34E004216F1 /* AddImageCollCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageCollCell.swift; sourceTree = "<group>"; };
 		846352CF2511E34E004216F1 /* AddImageCollCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddImageCollCell.xib; sourceTree = "<group>"; };
 		847BC422250774E100EEEFDC /* ResetPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordVC.swift; sourceTree = "<group>"; };
@@ -608,6 +616,9 @@
 		844EB6EF25148381003A6E3F /* UserRequestTyre */ = {
 			isa = PBXGroup;
 			children = (
+				844EB71B2518C585003A6E3F /* BrandListingVC */,
+				A43F44B02513BE0F002B1014 /* VechicleDetailVC */,
+				844EB7182518BC3F003A6E3F /* LocationPopUpVC */,
 				844EB70E251875E6003A6E3F /* URTyreSizeVC */,
 				844EB6F025148390003A6E3F /* URTyreStep1VC */,
 			);
@@ -637,6 +648,33 @@
 				844EB71325187CD0003A6E3F /* URTyreSizeTableCell.xib */,
 			);
 			path = URTyreSizeVC;
+			sourceTree = "<group>";
+		};
+		844EB7182518BC3F003A6E3F /* LocationPopUpVC */ = {
+			isa = PBXGroup;
+			children = (
+				A4B91C3525149BDA00E4811A /* LocationPopUpVC.swift */,
+				844EB7192518BC5A003A6E3F /* LocationPopUpVM.swift */,
+			);
+			path = LocationPopUpVC;
+			sourceTree = "<group>";
+		};
+		844EB71B2518C585003A6E3F /* BrandListingVC */ = {
+			isa = PBXGroup;
+			children = (
+				A43F44B32513BE66002B1014 /* BrandsListingVC.swift */,
+				844EB71C2518C59F003A6E3F /* BrandsListingVM.swift */,
+			);
+			path = BrandListingVC;
+			sourceTree = "<group>";
+		};
+		844EB71E2518C9A3003A6E3F /* CustomLoaderCell */ = {
+			isa = PBXGroup;
+			children = (
+				844EB71F2518C9C3003A6E3F /* LoaderCell.swift */,
+				844EB7202518C9C3003A6E3F /* LoaderCell.xib */,
+			);
+			path = CustomLoaderCell;
 			sourceTree = "<group>";
 		};
 		846352CD2511E323004216F1 /* GarageAddImageVC */ = {
@@ -695,6 +733,7 @@
 		8481FA102500B9B500AB6EFB /* Xibs */ = {
 			isa = PBXGroup;
 			children = (
+				844EB71E2518C9A3003A6E3F /* CustomLoaderCell */,
 				A413B97A250A44400004C534 /* CustomTextView */,
 				8481FA87250107C000AB6EFB /* PostloginVC */,
 				8481FA86250107B600AB6EFB /* PreloginVC */,
@@ -954,10 +993,7 @@
 				A4B74CC025107C0E00771974 /* AddAccountDetailVC */,
 				A43F44B22513BE26002B1014 /* GarageProfileStep2VC */,
 				A43F44B12513BE1A002B1014 /* FacilityVC */,
-				A43F44B02513BE0F002B1014 /* VechicleDetailVC */,
 				A43F44AF2513BE01002B1014 /* TyreBrandVC */,
-				A43F44B32513BE66002B1014 /* BrandsListingVC.swift */,
-				A4B91C3525149BDA00E4811A /* LocationPopUpVC.swift */,
 				A4FEF8EB2518744900D58C13 /* TyreRequestedVC.swift */,
 			);
 			path = PostloginVC;
@@ -1254,6 +1290,7 @@
 				8481FA062500AA9B00AB6EFB /* Assets.xcassets in Resources */,
 				8481FAA7250143CD00AB6EFB /* NunitoSans-SemiBoldItalic.ttf in Resources */,
 				844EB71525187CD0003A6E3F /* URTyreSizeTableCell.xib in Resources */,
+				844EB7222518C9C3003A6E3F /* LoaderCell.xib in Resources */,
 				8481FAA3250143BD00AB6EFB /* NunitoSans-Regular.ttf in Resources */,
 				A4098E7A2512288F0015B0BD /* FacilityTableHeaderView.xib in Resources */,
 				8481FAA1250143B500AB6EFB /* NunitoSans-LightItalic.ttf in Resources */,
@@ -1348,12 +1385,14 @@
 				844D81E325025D9600550334 /* LoginWithPhoneVC.swift in Sources */,
 				8481FA392500BDED00AB6EFB /* UIColorExtension.swift in Sources */,
 				8481FA272500BB7300AB6EFB /* Webservices.swift in Sources */,
+				844EB71D2518C59F003A6E3F /* BrandsListingVM.swift in Sources */,
 				84476D28250736F700AB5E80 /* ToastView.swift in Sources */,
 				A4443866251387E000114A75 /* VechicleDetailVC.swift in Sources */,
 				8481FA332500BD4A00AB6EFB /* CustomDatePicker.swift in Sources */,
 				844CBD1A2501F7D5009BE668 /* LoginTopTableCell.swift in Sources */,
 				8481FA852500EEC400AB6EFB /* ChooseLanguageVC.swift in Sources */,
 				843F004D25060822001A78EC /* CountryCodeTableCell.swift in Sources */,
+				844EB71A2518BC5A003A6E3F /* LocationPopUpVM.swift in Sources */,
 				842B2FCE25133F1800E3CF67 /* BankData.swift in Sources */,
 				844EB71725189916003A6E3F /* TyreRequestModel.swift in Sources */,
 				8481FA552500BF0700AB6EFB /* DispatchQueueExtension.swift in Sources */,
@@ -1400,6 +1439,7 @@
 				A45042C7250F2D12001C8905 /* AddAccountVC.swift in Sources */,
 				844CBD1E2501FA31009BE668 /* LoginSocialTableCell.swift in Sources */,
 				84E166E4250362DE00C2F2EF /* SuccessPopupVC.swift in Sources */,
+				844EB7212518C9C3003A6E3F /* LoaderCell.swift in Sources */,
 				84303E6C25064B27000BA5C3 /* UnderDevelopmentVC.swift in Sources */,
 				8481FAAF25015D9000AB6EFB /* LoginVC.swift in Sources */,
 				843C8EBD25089BBE00515F2E /* ProfileUserHeaderCell.swift in Sources */,
