@@ -102,7 +102,6 @@ extension AddAccountVC {
         andLbl.font = AppFonts.NunitoSansSemiBold.withSize(13.0)
         termAndConditionLbl.font = AppFonts.NunitoSansBold.withSize(12.0)
         iAgreeToLbl.font = AppFonts.NunitoSansSemiBold.withSize(13.0)
-
         
         titleLbl.font = AppFonts.NunitoSansBold.withSize(17.0)
         helpBtn.titleLabel?.font =  AppFonts.NunitoSansSemiBold.withSize(17.0)
@@ -164,7 +163,7 @@ extension AddAccountVC: BankDetail{
 extension AddAccountVC: GarageRegistrationVMDelegate {
     func garageRegistrationSuccess(msg: String) {
         CommonFunctions.showToastWithMessage(msg)
-        
+        AppRouter.goToRegistraionPendingVC(vc: self, screenType: .accept)
     }
     
     func garageRegistrationFailed(msg: String) {

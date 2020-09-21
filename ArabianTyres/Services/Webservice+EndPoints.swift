@@ -37,7 +37,6 @@ extension WebServices {
         case addPhoneNo = "user/addPhoneNo"
         case garageProfile = "user/garrageProfile"
         
-        
         var path : String {
             let url = baseUrl
             return url + self.rawValue

@@ -162,7 +162,7 @@ enum LocalizedString : String {
     case addLogo
     case saveContinue
     case enterServiceCenterName
-    case serviceCenterName
+    case serviceCenterNames
     case saveAndContinueBtn
     case help
     case addAccounts

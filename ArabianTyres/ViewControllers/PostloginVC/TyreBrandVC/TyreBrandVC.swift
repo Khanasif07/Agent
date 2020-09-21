@@ -55,18 +55,23 @@ class TyreBrandVC: BaseVC {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         containerView.createShadow(shadowColor: #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1))
+      
         if !self.brandListingArr.isEmpty {
             if let tyreBrandCustomView = self.tyreBrandCustomView {
                 self.tBCustomViewHeightConstraint.constant = tyreBrandCustomView.collView.contentSize.height + 38.0
                 printDebug(tBCustomViewHeightConstraint.constant)
                 printDebug(tyreBrandCustomView.collView.contentSize.height)
             }
+        }else {
+                self.tBCustomViewHeightConstraint.constant = 60.0
         }
         
         if !self.countryListingArr.isEmpty {
             if let countryOriginCustomView = self.countryOriginCustomView {
                 self.countryOriginViewHeightConstraint.constant = countryOriginCustomView.collView.contentSize.height + 38.0
             }
+        }else {
+            self.countryOriginViewHeightConstraint.constant = countryOriginCheckBtn.isSelected ? 60.0 : 0.0
         }
     }
     

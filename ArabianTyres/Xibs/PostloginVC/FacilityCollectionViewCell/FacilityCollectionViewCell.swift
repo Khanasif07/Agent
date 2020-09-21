@@ -14,6 +14,7 @@ class FacilityCollectionViewCell : UICollectionViewCell {
     @IBOutlet weak var skillLbl: UILabel!
     @IBOutlet weak var cancelBtn: UIButton!
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var cancelBtnHeightConstraint: NSLayoutConstraint!
 
     
     override func awakeFromNib() {

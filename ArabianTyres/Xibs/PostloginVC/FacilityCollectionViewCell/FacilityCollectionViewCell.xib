@@ -61,6 +61,7 @@
             </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="cancelBtn" destination="Vmd-1T-O6R" id="l0Q-Rv-vti"/>
+                <outlet property="cancelBtnHeightConstraint" destination="eq1-4p-atK" id="FK3-HU-ifH"/>
                 <outlet property="containerView" destination="dZL-JL-Jgr" id="pbN-U2-oPY"/>
                 <outlet property="skillLbl" destination="C7k-8R-uh7" id="m3x-bH-J8b"/>
             </connections>

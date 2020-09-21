@@ -115,7 +115,7 @@ extension GarageProfileStep2VC {
         helpBtn.titleLabel?.font =  AppFonts.NunitoSansSemiBold.withSize(17.0)
         saveAndContinueBtn.titleLabel?.font =  AppFonts.NunitoSansSemiBold.withSize(16.0)
 
-        serviceCenterNameLbl.text = LocalizedString.serviceCenterName.localized
+        serviceCenterNameLbl.text = LocalizedString.serviceCenterNames.localized
         titleLbl.text = LocalizedString.completeProfile.localized
         headingLbl.text = LocalizedString.serviceCenterImage.localized
         helpBtn.setTitle(LocalizedString.help.localized, for: .normal)
