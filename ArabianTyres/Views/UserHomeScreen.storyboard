@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -34,7 +34,7 @@
                                                         <color key="backgroundColor" red="1" green="0.69411764705882351" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </view>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="genericHybridCarI051" translatesAutoresizingMaskIntoConstraints="NO" id="F49-eN-RgT">
-                                                        <rect key="frame" x="-260" y="-128" width="674" height="816"/>
+                                                        <rect key="frame" x="77" y="76" width="337" height="408"/>
                                                     </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.96470588235294119" green="0.96862745098039216" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -461,7 +461,7 @@ brand or country origin</string>
                                 <rect key="frame" x="0.0" y="44" width="414" height="56"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Brands" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RWt-7K-71T">
-                                        <rect key="frame" x="153.5" y="21" width="107" height="20"/>
+                                        <rect key="frame" x="153" y="19" width="108.5" height="23.5"/>
                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -580,7 +580,7 @@ brand or country origin</string>
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D8I-Az-m9l">
-                                        <rect key="frame" x="30" y="260" width="354" height="376"/>
+                                        <rect key="frame" x="30" y="254" width="354" height="388.5"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkGraphic" translatesAutoresizingMaskIntoConstraints="NO" id="YrE-7V-h17">
                                                 <rect key="frame" x="127" y="35" width="100" height="100"/>
@@ -590,7 +590,7 @@ brand or country origin</string>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yuP-X2-SAc">
-                                                <rect key="frame" x="59.5" y="177" width="235" height="40"/>
+                                                <rect key="frame" x="54" y="177" width="246" height="46.5"/>
                                                 <string key="text">Arabian Tyres want to access
 your current location</string>
                                                 <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
@@ -598,14 +598,14 @@ your current location</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mXQ-p8-Ige">
-                                                <rect key="frame" x="59.5" y="224" width="235" height="1"/>
+                                                <rect key="frame" x="54" y="230.5" width="246" height="1"/>
                                                 <color key="backgroundColor" red="0.87450980392156863" green="0.89411764705882346" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="wUp-Gw-nOU"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YWJ-24-7va">
-                                                <rect key="frame" x="59.5" y="237" width="235" height="35"/>
+                                                <rect key="frame" x="54" y="243.5" width="246" height="41"/>
                                                 <string key="text">Allow cureent location will help you
 in getting great offers</string>
                                                 <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="15"/>
@@ -613,10 +613,10 @@ in getting great offers</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="8kL-fQ-FnG">
-                                                <rect key="frame" x="59.5" y="300" width="235" height="48"/>
+                                                <rect key="frame" x="54" y="312.5" width="246" height="48"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JBc-qy-9th">
-                                                        <rect key="frame" x="0.0" y="0.0" width="109.5" height="48"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="115" height="48"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="48" id="yN1-sc-acE"/>
@@ -640,7 +640,7 @@ in getting great offers</string>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lsd-fy-pG3">
-                                                        <rect key="frame" x="125.5" y="0.0" width="109.5" height="48"/>
+                                                        <rect key="frame" x="131" y="0.0" width="115" height="48"/>
                                                         <color key="backgroundColor" red="0.090196078431372548" green="0.14509803921568626" blue="0.3529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Allow">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -697,6 +697,7 @@ in getting great offers</string>
                     <connections>
                         <outlet property="allowBtn" destination="Lsd-fy-pG3" id="sX2-Yj-x7D"/>
                         <outlet property="cancelBtn" destination="JBc-qy-9th" id="UZV-Ot-vEJ"/>
+                        <outlet property="dataContainerView" destination="D8I-Az-m9l" id="O4l-K3-MXS"/>
                         <outlet property="headingLbl" destination="yuP-X2-SAc" id="BDs-FZ-ygB"/>
                         <outlet property="imgView" destination="YrE-7V-h17" id="SJy-lY-fQe"/>
                         <outlet property="subHeadingLbl" destination="YWJ-24-7va" id="uL1-jS-n0R"/>

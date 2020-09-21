@@ -75,11 +75,11 @@ class TyreBrandVC: BaseVC {
     //===========================
     
     @IBAction func cancelBtnAction(_ sender: UIButton) {
-        
+        self.pop()
     }
     
     @IBAction func submitBtnAction(_ sender: UIButton) {
-
+        AppRouter.presentLocationPopUpVC(vc: self)
     }
     
     @IBAction func tyreCheckBtnAction(_ sender: UIButton) {

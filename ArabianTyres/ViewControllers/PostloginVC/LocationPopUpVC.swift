@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import GoogleMaps
+import CoreLocation
 
 class LocationPopUpVC: BaseVC {
 
     // MARK: - IBOutlets
     //===========================
+    @IBOutlet weak var dataContainerView: UIView!
     @IBOutlet weak var headingLbl: UILabel!
     @IBOutlet weak var subHeadingLbl: UILabel!
     @IBOutlet weak var cancelBtn: UIButton!
@@ -19,6 +22,10 @@ class LocationPopUpVC: BaseVC {
     @IBOutlet weak var imgView: UIImageView!
 
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.dataContainerView.addShadow(cornerRadius: 5, color: UIColor.black16, offset: CGSize(width: 0.5, height: 0.5), opacity: 1, shadowRadius: 5)
+    }
     // MARK: - Variables
     //===========================
    

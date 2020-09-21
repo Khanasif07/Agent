@@ -86,12 +86,14 @@ extension URTyreStep1VC {
         self.nextBtn.isEnabled = true
         self.dashView.addDashedBorder()
         self.findRightBtn.addBottomBorderWithColorDefault(color: UIColor.init(r: 50, g: 79, b: 195, alpha: 1.0), height: 1)
+        self.nextBtn.isEnabled = false
     }
     
     private func pickerViewSetUp() {
         self.widthTxtField.delegate = self
         self.profileTxtField.delegate  = self
         self.rimSizeTxtField.delegate = self
+        self.numberTyreTxtField.delegate = self
         self.widthPicker.delegate = self
         self.profilePicker.delegate = self
         self.rimSizePicker.delegate = self
@@ -102,6 +104,10 @@ extension URTyreStep1VC {
         self.profileTxtField.inputView = profilePicker
         self.rimSizeTxtField.inputView = rimSizePicker
         self.numberTyreTxtField.keyboardType = .numberPad
+    }
+    
+    private func nextBtnStatus()-> Bool{
+        return TyreRequestModel.shared.quantity != 0 && !TyreRequestModel.shared.width.isEmpty && !TyreRequestModel.shared.profile.isEmpty && !TyreRequestModel.shared.rimSize.isEmpty
     }
     
     //MARK:- Custom Picker View Data Array
@@ -122,17 +128,36 @@ extension URTyreStep1VC: UITextFieldDelegate{
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == widthTxtField {
             if let text = textField.text {
-                if text.isEmpty{widthTxtField.text = self.widthPicker.dataArray.first}}
+                if text.isEmpty{
+                    widthTxtField.text = self.widthPicker.dataArray.first
+                    TyreRequestModel.shared.width = text
+                }}
             tempTextField = widthTxtField
         } else if textField == profileTxtField {
             if let text = textField.text {
-                if text.isEmpty{profileTxtField.text = self.profilePicker.dataArray.first}}
+                if text.isEmpty{
+                    profileTxtField.text = self.profilePicker.dataArray.first
+                    TyreRequestModel.shared.profile = text
+                }}
             tempTextField = profileTxtField
         } else if textField == rimSizeTxtField {
             if let text = textField.text {
-                if text.isEmpty{rimSizeTxtField.text = self.rimSizePicker.dataArray.first}}
+                if text.isEmpty{
+                    rimSizeTxtField.text = self.rimSizePicker.dataArray.first
+                    TyreRequestModel.shared.rimSize = text
+                }}
             tempTextField = rimSizeTxtField }
         else {}
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        switch textField {
+        case numberTyreTxtField:
+            TyreRequestModel.shared.quantity = Int(textField.text ?? "") ?? 0
+            self.nextBtn.isEnabled = nextBtnStatus()
+        default:
+            printDebug("Do nothing")
+        }
     }
 }
 
@@ -144,9 +169,16 @@ extension URTyreStep1VC: WCCustomPickerViewDelegate {
         printDebug(text)
         if tempTextField == widthTxtField {
             widthTxtField.text = text
+            TyreRequestModel.shared.width = text
+            self.nextBtn.isEnabled = nextBtnStatus()
         } else if tempTextField == profileTxtField {
             profileTxtField.text = text
+            TyreRequestModel.shared.profile = text
+            self.nextBtn.isEnabled = nextBtnStatus()
         } else if tempTextField == rimSizeTxtField {
-            rimSizeTxtField.text = text }
+            rimSizeTxtField.text = text
+            TyreRequestModel.shared.rimSize = text
+            self.nextBtn.isEnabled = nextBtnStatus()
+        }
     }
 }

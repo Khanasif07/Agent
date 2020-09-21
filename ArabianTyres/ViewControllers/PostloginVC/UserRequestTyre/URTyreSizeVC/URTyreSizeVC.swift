@@ -32,6 +32,7 @@ class URTyreSizeVC: BaseVC {
     // MARK: - IBActions
     //===========================
     @IBAction func backBtnAction(_ sender: UIButton) {
+        self.pop()
     }
     
     

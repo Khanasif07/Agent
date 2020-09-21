@@ -198,6 +198,12 @@ enum AppRouter {
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
+    static func presentLocationPopUpVC(vc: UIViewController){
+        let scene = LocationPopUpVC.instantiate(fromAppStoryboard: .UserHomeScreen)
+        vc.navigationController?.present(scene, animated: true, completion: nil)
+    }
+    
+    
     static func goToURTyreStep1VC(vc: UIViewController){
         let scene = URTyreStep1VC.instantiate(fromAppStoryboard: .UserRequest)
         vc.navigationController?.pushViewController(scene, animated: true)
