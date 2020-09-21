@@ -26,26 +26,26 @@ enum AppRouter {
     // MARK: - Show Landing Screen
     //===========================
     static func checkAppInitializationFlow() {
-        goToTestingVC()
-//        if isUserLoggedin {
-//            if !isPhoneNoVerified{
-//                AppUserDefaults.removeValue(forKey: .accesstoken)
-//                UserModel.main = UserModel()
-//                AppRouter.makeLoginVCRoot()
-//                return
-//            }
-//            switch isCurrentUserType {
-//            case .user:
-//                AppRouter.goToUserHome()
-//            default:
-//                let lang = AppUserDefaults.value(forKey: .currentLanguage).stringValue
-//                AppUserDefaults.removeAllValues()
-//                AppUserDefaults.save(value: lang, forKey: .currentLanguage)
-//                AppUserDefaults.save(value: true, forKey: .isLanguageSelect)
-//            }
-//        } else {
-//            self.makeChooseLanguageVCRoot()
-//        }
+        //        goToTestingVC()
+        if isUserLoggedin {
+            if !isPhoneNoVerified{
+                AppUserDefaults.removeValue(forKey: .accesstoken)
+                UserModel.main = UserModel()
+                AppRouter.makeLoginVCRoot()
+                return
+            }
+            switch isCurrentUserType {
+            case .user:
+                AppRouter.goToUserHome()
+            default:
+                let lang = AppUserDefaults.value(forKey: .currentLanguage).stringValue
+                AppUserDefaults.removeAllValues()
+                AppUserDefaults.save(value: lang, forKey: .currentLanguage)
+                AppUserDefaults.save(value: true, forKey: .isLanguageSelect)
+            }
+        } else {
+            self.makeChooseLanguageVCRoot()
+        }
     }
     
     static func goToTestingVC(){
@@ -129,9 +129,9 @@ enum AppRouter {
     }
     
     static func goToGarageRegistrationVC(vc: UIViewController){
-         let scene = GarageRegistrationVC.instantiate(fromAppStoryboard: .Garage)
-         vc.navigationController?.pushViewController(scene, animated: true)
-     }
+        let scene = GarageRegistrationVC.instantiate(fromAppStoryboard: .Garage)
+        vc.navigationController?.pushViewController(scene, animated: true)
+    }
     
     static func goToAddDetailVC(vc: UIViewController){
         let scene = AddDetailVC.instantiate(fromAppStoryboard: .Garage)
@@ -139,9 +139,9 @@ enum AppRouter {
     }
     
     static func goToVehicleDetailVC(vc: UIViewController){
-           let scene = VechicleDetailVC.instantiate(fromAppStoryboard: .UserHomeScreen)
-           vc.navigationController?.pushViewController(scene, animated: true)
-       }
+        let scene = VechicleDetailVC.instantiate(fromAppStoryboard: .UserHomeScreen)
+        vc.navigationController?.pushViewController(scene, animated: true)
+    }
     
     static func goToRegistraionPendingVC(vc: UIViewController, screenType: RegistraionPendingVC.ScreenType){
         let scene = RegistraionPendingVC.instantiate(fromAppStoryboard: .Garage)
@@ -192,6 +192,17 @@ enum AppRouter {
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
+    
+    static func goToURTyreSizeVC(vc: UIViewController){
+        let scene = URTyreSizeVC.instantiate(fromAppStoryboard: .UserRequest)
+        vc.navigationController?.pushViewController(scene, animated: true)
+    }
+    
+    static func goToURTyreStep1VC(vc: UIViewController){
+        let scene = URTyreStep1VC.instantiate(fromAppStoryboard: .UserRequest)
+        vc.navigationController?.pushViewController(scene, animated: true)
+    }
+    
     static func goToBrandsListingVC(vc: UIViewController,listingType : ListingType,data : [String]){
         let scene = BrandsListingVC.instantiate(fromAppStoryboard: .UserHomeScreen)
         if listingType == .brands {
@@ -222,7 +233,7 @@ enum AppRouter {
         }else {
             if let topVC = AppDelegate.shared.topViewController() {
                 CommonFunctions.showToastWithMessage(alertMessage)
-//                ToastView.shared.showLongToast(topVC.view, msg: alertMessage)
+                //                ToastView.shared.showLongToast(topVC.view, msg: alertMessage)
             }
             self.makeLoginVCRoot()
         }

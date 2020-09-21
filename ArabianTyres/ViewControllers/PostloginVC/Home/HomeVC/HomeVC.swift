@@ -122,7 +122,12 @@ extension HomeVC : UICollectionViewDelegate, UICollectionViewDataSource,UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        AppRouter.goToTestingVC(vc: self)
+        switch dataArray[indexPath.row].name {
+        case LocalizedString.tyre.localized:
+            AppRouter.goToURTyreStep1VC(vc: self)
+        default:
+            showAlert(msg: "Under Development")
+        }
     }
     
 }
