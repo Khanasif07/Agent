@@ -170,7 +170,7 @@ extension ProfileSettingVC : GarageRegistrationVMDelegate {
         case 603:
             CommonFunctions.showToastWithMessage(msg)
         default:
-            
+            AppRouter.goToGarageHome()
         }
     }
     

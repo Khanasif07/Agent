@@ -138,6 +138,10 @@ enum AppRouter {
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
+    static func goToGarageHome() {
+        let homeScene = GarageTabBarController.instantiate(fromAppStoryboard: .GarageHome)
+        setAsWindowRoot(homeScene)
+    }
     static func goToVehicleDetailVC(vc: UIViewController){
         let scene = VechicleDetailVC.instantiate(fromAppStoryboard: .UserHomeScreen)
         vc.navigationController?.pushViewController(scene, animated: true)
