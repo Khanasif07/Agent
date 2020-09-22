@@ -1191,7 +1191,7 @@ Service Center</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xz6-Xe-BwT">
-                                        <rect key="frame" x="6" y="14" width="36" height="34"/>
+                                        <rect key="frame" x="6" y="-3" width="72" height="68"/>
                                         <state key="normal" image="icBackward"/>
                                         <connections>
                                             <action selector="backBtnAction:" destination="scS-Gl-fMP" eventType="touchUpInside" id="qhe-P8-N5Y"/>

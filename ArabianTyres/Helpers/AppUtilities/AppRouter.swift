@@ -35,10 +35,11 @@ enum AppRouter {
             }
             switch isCurrentUserType {
             case .user:
-                AppRouter.goToGarageHome()
-//                AppRouter.goToUserHome()
+//                AppRouter.goToGarageHome()
+                AppRouter.goToUserHome()
             default:
-                AppRouter.goToGarageHome()
+                AppRouter.goToUserHome()
+//                AppRouter.goToGarageHome()
             }
         } else {
             self.makeChooseLanguageVCRoot()
