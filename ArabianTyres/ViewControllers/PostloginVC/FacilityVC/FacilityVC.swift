@@ -85,7 +85,7 @@ extension FacilityVC {
     }
     
     private func hitApi(){
-        viewModel.fetchFacilityList(params: [ApiKey.page: "1",ApiKey.limit : "20"],loader: false)
+        viewModel.fetchFacilityList(params: [ApiKey.page: "1",ApiKey.limit : "20"])
     }
 }
 

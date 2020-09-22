@@ -210,6 +210,8 @@ enum LocalizedString : String {
     case arabianTyresWantToAccessYourCurrentLocation
     case allowCureentLocationWillHelpYouInGettingGreatOffers
     case allow
+    case installationPriceRange
+    
     // MARK: - Home  VC Values
     //==============================
     case tyre
