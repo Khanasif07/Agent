@@ -24,7 +24,8 @@ class CompleteProfileStep1: BaseVC {
     @IBOutlet weak var logoImgView: UIImageView!
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var saveContinueBtn: AppButton!
-    
+    @IBOutlet weak var editLogoBtn: UIButton!
+
     // MARK: - Variables
     //===========================
     var locationValue = LocationController.sharedLocationManager.locationManager.location?.coordinate ?? CLLocationCoordinate2D(latitude: GarageProfileModel.shared.latitude, longitude: GarageProfileModel.shared.longitude)
@@ -62,6 +63,11 @@ class CompleteProfileStep1: BaseVC {
     @IBAction func saveContinueAction(_ sender: UIButton) {
         AppRouter.goToGarageProfileStep2VC(vc: self)
     }
+    
+    @IBAction func editLogoBtnAction(_ sender: UIButton) {
+        self.captureImage(delegate: self)
+    }
+    
 }
 
 
@@ -206,5 +212,38 @@ extension CompleteProfileStep1: GMSAutocompleteViewControllerDelegate {
     
     func wasCancelled(_ viewController: GMSAutocompleteViewController) {
         viewController.dismiss(animated: true, completion: nil)
+    }
+}
+
+
+ extension CompleteProfileStep1: UIImagePickerControllerDelegate,UINavigationControllerDelegate, RemovePictureDelegate {
+ 
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[.editedImage] as? UIImage
+        CommonFunctions.showActivityLoader()
+         editLogoBtn.setImage(#imageLiteral(resourceName: "vector"), for: .normal)
+         logoImgView.contentMode = .scaleToFill
+         logoImgView.image = image
+        image?.upload(progress: { (progress) in
+            printDebug(progress)
+        }, completion: { (response,error) in
+            if let url = response {
+                CommonFunctions.hideActivityLoader()
+                GarageProfileModel.shared.logo = image
+                GarageProfileModel.shared.logoUrl = url
+            }
+            if let _ = error{
+                self.showAlert(msg: "Image upload failed")
+            }
+        })
+        picker.dismiss(animated: true, completion: nil)
+    }
+
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func removepicture() {
+        
     }
 }
