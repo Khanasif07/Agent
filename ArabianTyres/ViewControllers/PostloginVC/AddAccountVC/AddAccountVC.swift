@@ -122,8 +122,8 @@ extension AddAccountVC {
             lblContainerView.isHidden = true
             titleLbl.text = LocalizedString.completeProfile.localized
             registerBtn.setTitle(LocalizedString.submit.localized, for: .normal)
-//            helpBtn.setTitle(nil, for: .normal)
-            helpBtn.setImage(#imageLiteral(resourceName: "group3874"), for: .normal)
+            helpBtn.setTitle(nil, for: .normal)
+            helpBtn.setImage(#imageLiteral(resourceName: "group3887"), for: .normal)
         }
         privacyPolicyLbl.font = AppFonts.NunitoSansBold.withSize(12.0)
         andLbl.font = AppFonts.NunitoSansSemiBold.withSize(13.0)
