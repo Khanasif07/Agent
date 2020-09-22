@@ -179,7 +179,7 @@ extension BrandsListingVC : UITableViewDelegate, UITableViewDataSource {
         view.checkBtn.isSelected = selectedIndexPath.contains(section) || selectedIndexPath.contains(0)
 
         
-        view.cellBtnTapped = { [weak self] (selected) in
+        view.cellBtnTapped = { [weak self] in
             guard let `self` = self else {return}
             
             if section == 0 {

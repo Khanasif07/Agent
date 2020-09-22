@@ -9,6 +9,10 @@
 
 import UIKit
 
+protocol FacilitiesDelegate: class {
+    func setData(dataArr : [FacilityModel])
+}
+
 class FacilityVC: BaseVC {
 
     // MARK: - IBOutlets
@@ -21,8 +25,10 @@ class FacilityVC: BaseVC {
 
     // MARK: - Variables
     //===========================
-    var selectedSkillArr : [String] = []
-
+    var viewModel = GarageRegistrationVM()
+    var selectedItemArr : [FacilityModel] = []
+    weak var delegate : FacilitiesDelegate?
+    
     // MARK: - Lifecycle
     //===========================
     override func viewDidLoad() {
@@ -38,18 +44,19 @@ class FacilityVC: BaseVC {
     //===========================
 
     @IBAction func cancelBtnAction(_ sender: UIButton) {
-        self.pop()
+        dismiss(animated: true)
     }
-
+    
     @IBAction func doneBtnAction(_ sender: UIButton) {
-        self.pop()
+        dismiss(animated: true) {
+            self.delegate?.setData(dataArr: self.selectedItemArr)
+        }
     }
 
     @IBAction func clearAllAction(_ sender: UIButton) {
-        
+        viewModel.facilityDataArr.map{($0.updateModel())}
+        mainTableView.reloadData()
     }
-
-
 }
 
 // MARK: - Extension For Functions
@@ -57,6 +64,8 @@ class FacilityVC: BaseVC {
 extension FacilityVC {
 
     private func initialSetup() {
+        self.hitApi()
+        viewModel.delegate = self
         setupTextAndFont()
         mainTableView.delegate = self
         mainTableView.dataSource = self
@@ -74,6 +83,10 @@ extension FacilityVC {
         clearAllBtn.setTitle(LocalizedString.clearAll.localized, for: .normal)
 
     }
+    
+    private func hitApi(){
+        viewModel.fetchFacilityList(params: [ApiKey.page: "1",ApiKey.limit : "20"],loader: false)
+    }
 }
 
 
@@ -82,15 +95,26 @@ extension FacilityVC {
 extension FacilityVC : UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        return viewModel.facilityDataArr.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        if viewModel.facilityDataArr[section].isSelected {
+            return viewModel.facilityDataArr[section].category.count
+        }else {
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = tableView.dequeueHeaderFooter(with: FacilityTableHeaderView.self)
+        view.categoryName.text = viewModel.facilityDataArr[section].name
+        view.checkBtn.isSelected = viewModel.facilityDataArr[section].isSubCategorySelected
+        view.cellBtnTapped = { [weak self] in
+        guard let `self` = self else {return}
+            self.viewModel.facilityDataArr[section].isSelected.toggle()
+            self.mainTableView.reloadData()
+        }
         return view
     }
     
@@ -103,11 +127,34 @@ extension FacilityVC : UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(with: FacilityTableViewCell.self, indexPath: indexPath)
+        cell.cellBtnTapped = {[weak self] in
+            guard let `self` = self else {return}
+
+            self.viewModel.facilityDataArr[indexPath.section].isSubCategorySelected = true
+            if self.viewModel.facilityDataArr[indexPath.section].isSubCategorySelected {
+                self.selectedItemArr.append(self.viewModel.facilityDataArr[indexPath.section])
+            }else {
+                self.selectedItemArr.removeAll{($0.id == self.viewModel.facilityDataArr[indexPath.section].id)}
+
+            }
+            self.mainTableView.reloadData()
+        }
         cell.bottomView.isHidden = true
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
+    }
+}
+
+extension FacilityVC :GarageRegistrationVMDelegate{
+  
+    func getfacilitySuccess(){
+        mainTableView.reloadData()
+    }
+    
+    func getfacilityFailure(){
+        
     }
 }

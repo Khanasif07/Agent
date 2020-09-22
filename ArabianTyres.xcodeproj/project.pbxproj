@@ -182,6 +182,7 @@
 		A4B74CCB2510CF6C00771974 /* GarageProfileStep2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B74CCA2510CF6C00771974 /* GarageProfileStep2VC.swift */; };
 		A4B91C3625149BDA00E4811A /* LocationPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B91C3525149BDA00E4811A /* LocationPopUpVC.swift */; };
 		A4FEF8EC2518744900D58C13 /* TyreRequestedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FEF8EB2518744900D58C13 /* TyreRequestedVC.swift */; };
+		A4FEF8F72519064E00D58C13 /* FacilityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FEF8F62519064E00D58C13 /* FacilityModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -364,6 +365,7 @@
 		A4B74CCA2510CF6C00771974 /* GarageProfileStep2VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageProfileStep2VC.swift; sourceTree = "<group>"; };
 		A4B91C3525149BDA00E4811A /* LocationPopUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPopUpVC.swift; sourceTree = "<group>"; };
 		A4FEF8EB2518744900D58C13 /* TyreRequestedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TyreRequestedVC.swift; sourceTree = "<group>"; };
+		A4FEF8F62519064E00D58C13 /* FacilityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityModel.swift; sourceTree = "<group>"; };
 		B2C00CD38A98EBA313A070C9 /* Pods_ArabianTyres.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArabianTyres.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -763,6 +765,7 @@
 				84B629AD251212FC0080A7C2 /* ImageModel.swift */,
 				842B2FCD25133F1800E3CF67 /* BankData.swift */,
 				844EB71625189916003A6E3F /* TyreRequestModel.swift */,
+				A4FEF8F62519064E00D58C13 /* FacilityModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1388,6 +1391,7 @@
 				844EB71D2518C59F003A6E3F /* BrandsListingVM.swift in Sources */,
 				84476D28250736F700AB5E80 /* ToastView.swift in Sources */,
 				A4443866251387E000114A75 /* VechicleDetailVC.swift in Sources */,
+				A4FEF8F72519064E00D58C13 /* FacilityModel.swift in Sources */,
 				8481FA332500BD4A00AB6EFB /* CustomDatePicker.swift in Sources */,
 				844CBD1A2501F7D5009BE668 /* LoginTopTableCell.swift in Sources */,
 				8481FA852500EEC400AB6EFB /* ChooseLanguageVC.swift in Sources */,

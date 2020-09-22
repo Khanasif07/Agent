@@ -18,6 +18,8 @@ protocol GarageRegistrationVMDelegate: class {
     func switchGarageRegistrationFailure(msg: String)
     func completeProfileSuccess(msg: String)
     func completeProfileFailure(msg: String)
+    func getfacilitySuccess()
+    func getfacilityFailure()
 
 }
 
@@ -28,13 +30,26 @@ extension GarageRegistrationVMDelegate {
     func switchGarageRegistrationFailure(msg: String){}
     func completeProfileSuccess(msg: String){}
     func completeProfileFailure(msg: String){}
+    func getfacilitySuccess(){}
+    func getfacilityFailure(){}
+
 }
 class GarageRegistrationVM {
     
     // MARK: Variables
     //=================================
+    var facilityDataArr : [FacilityModel] = []
     weak var delegate: GarageRegistrationVMDelegate?
     var model = GarageProfileModel()
+    var hideLoader: Bool = false
+    var currentPage = 1
+    var totalPages = 1
+    var nextPageAvailable = true
+    var isRequestinApi = false
+    var showPaginationLoader: Bool {
+        return  hideLoader ? false : nextPageAvailable
+    }
+    
     // MARK: Functions
     //=================================
     func setGarageRegistration(params: JSONDictionary,loader: Bool = false) {
@@ -64,7 +79,6 @@ class GarageRegistrationVM {
     }
     
     func garageProfile(params: JSONDictionary) {
-        
         WebServices.completeGarageProfile(parameters: params, success: { [weak self] (msg) in
             guard let `self` = self else { return }
             self.delegate?.completeProfileSuccess(msg : msg)
@@ -75,4 +89,23 @@ class GarageRegistrationVM {
         }
     }
     
+    func fetchFacilityList(params: JSONDictionary,loader: Bool = true,pagination: Bool = false) {
+        if pagination {
+            guard nextPageAvailable, !isRequestinApi else { return }
+        } else {
+            guard !isRequestinApi else { return }
+        }
+        isRequestinApi = true
+        WebServices.userServiceList(parameters: params, success: { [weak self] (json) in
+            guard let `self` = self else { return }
+            let arr = json[ApiKey.data][ApiKey.result].arrayValue.map({FacilityModel.init($0)})
+            self.facilityDataArr = arr
+            self.delegate?.getfacilitySuccess()
+       
+        }) { [weak self] (error) in
+            guard let `self` = self else { return }
+            self.delegate?.getfacilityFailure()
+
+        }
+    }
 }

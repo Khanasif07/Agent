@@ -472,5 +472,16 @@ extension WebServices{
         }
     }
     
+    static func userServiceList(parameters: JSONDictionary,
+                                 success: @escaping SuccessResponse,
+                                 failure: @escaping FailureResponse) {
+        self.commonGetAPI(parameters: parameters,endPoint: .servicesList, success: { (json) in
+            let code = json[ApiKey.statusCode].intValue
+            let msg = json[ApiKey.message].stringValue
+            success(json)
+        }) { (error) -> (Void) in
+            failure(error)
+        }
+    }
 }
 

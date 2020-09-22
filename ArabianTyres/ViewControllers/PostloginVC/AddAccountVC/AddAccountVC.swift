@@ -28,6 +28,8 @@ class AddAccountVC: BaseVC {
     @IBOutlet weak var andLbl: UILabel!
     @IBOutlet weak var termAndConditionLbl: UILabel!
     @IBOutlet weak var lblContainerView: UIStackView!
+    @IBOutlet weak var privacyPolicyBottomView: UIView!
+    @IBOutlet weak var termAndConditionBottomView: UIView!
 
     // MARK: - Variables
     //===========================
@@ -114,12 +116,14 @@ extension AddAccountVC {
             helpBtn.setTitle(LocalizedString.help.localized, for: .normal)
 
         }else {
+            privacyPolicyBottomView.isHidden = true
+            termAndConditionBottomView.isHidden = true
             checkBtn.isHidden = true
             lblContainerView.isHidden = true
             titleLbl.text = LocalizedString.completeProfile.localized
             registerBtn.setTitle(LocalizedString.submit.localized, for: .normal)
-            helpBtn.setTitle("", for: .normal)
-            helpBtn.setImage(#imageLiteral(resourceName: "group3811"), for: .normal)
+            helpBtn.setTitle(nil, for: .normal)
+            helpBtn.setImage(#imageLiteral(resourceName: "group3887"), for: .normal)
         }
         privacyPolicyLbl.font = AppFonts.NunitoSansBold.withSize(12.0)
         andLbl.font = AppFonts.NunitoSansSemiBold.withSize(13.0)
@@ -175,7 +179,7 @@ extension AddAccountVC : UITableViewDelegate, UITableViewDataSource {
 extension AddAccountVC: BankDetail{
     func BankDetailAdded() {
         bankDetailAdded = true
-        registerBtn.isEnabled = checkBtn.isSelected
+        registerBtn.isEnabled = screenType == .garageProfile ? true : checkBtn.isSelected
         mainTableView.reloadData()
     }
 }

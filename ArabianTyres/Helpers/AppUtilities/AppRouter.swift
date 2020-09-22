@@ -221,6 +221,13 @@ enum AppRouter {
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
+    static func goToFacilityVC(vc: UIViewController){
+        let scene = FacilityVC.instantiate(fromAppStoryboard: .Garage)
+        scene.delegate = vc as? FacilitiesDelegate
+        vc.present(scene, animated: true)
+    }
+    
+    
     static func goToBrandsListingVC(vc: UIViewController,listingType : ListingType,data : [String]){
         let scene = BrandsListingVC.instantiate(fromAppStoryboard: .UserHomeScreen)
         if listingType == .brands {
