@@ -141,7 +141,6 @@ enum ApiKey {
     static var serviceId: String { return "serviceId" }
     static var brands: String { return "brands" }
 
-
 }
 
 //MARK:- Api Code

@@ -473,12 +473,31 @@ extension WebServices{
     }
     
     static func userServiceList(parameters: JSONDictionary,
-                                 success: @escaping SuccessResponse,
-                                 failure: @escaping FailureResponse) {
+                                success: @escaping SuccessResponse,
+                                failure: @escaping FailureResponse) {
         self.commonGetAPI(parameters: parameters,endPoint: .servicesList, success: { (json) in
             let code = json[ApiKey.statusCode].intValue
             let msg = json[ApiKey.message].stringValue
             success(json)
+        }) { (error) -> (Void) in
+            failure(error)
+        }
+    }
+    
+        // MARK:- Brand Listing Data
+        //=================
+        static func getCountryListingData(parameters: JSONDictionary,
+                                          success: @escaping SuccessResponse,
+                                          failure: @escaping FailureResponse) {
+            self.commonGetAPI(parameters: parameters,endPoint: .userServiceCountry, success: { (json) in
+                let code = json[ApiKey.statusCode].intValue
+                let msg = json[ApiKey.message].stringValue
+                switch code {
+                case ApiCode.success:
+                    success(json)
+                default:
+                    failure(NSError(code: code, localizedDescription: msg))
+                }
         }) { (error) -> (Void) in
             failure(error)
         }

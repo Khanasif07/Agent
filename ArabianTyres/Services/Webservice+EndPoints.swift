@@ -41,6 +41,7 @@ extension WebServices {
         case userServiceBrands = "user/services/brands"
         case completeGarageProfile = "user/completeGarrageProfile"
         case servicesList = "user/services/list"
+        case userServiceCountry = "user/services/countryList"
         
         var path : String {
             let url = baseUrl

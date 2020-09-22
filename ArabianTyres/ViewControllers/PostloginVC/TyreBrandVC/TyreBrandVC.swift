@@ -39,9 +39,12 @@ class TyreBrandVC: BaseVC {
                                  LocalizedString.vehicleModel.localized,
                                  LocalizedString.modelYear.localized
                                 ]
-    var brandListingArr :[String] = []
-    var countryListingArr :[String] = []
+//    var brandListingArr :[String] = []
+//    var countryListingArr :[String] = []
 //    var listingType : ListingType = .brands
+    var brandListingArr :[TyreBrandModel] = []
+    var countryListingArr :[TyreCountryModel] = []
+    var listingType : ListingType = .brands
     
     // MARK: - Lifecycle
     //===========================
@@ -175,9 +178,9 @@ extension TyreBrandVC: UICollectionViewDelegate,UICollectionViewDataSource,UICol
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(with: FacilityCollectionViewCell.self, indexPath: indexPath)
         if tyreBrandCustomView.collView == collectionView {
-            cell.skillLbl.text = brandListingArr[indexPath.item]
+            cell.skillLbl.text = brandListingArr[indexPath.item].name
         }else {
-            cell.skillLbl.text = countryListingArr[indexPath.item]
+            cell.skillLbl.text = countryListingArr[indexPath.item].name
 
         }
         cell.cancelBtn.addTarget(self, action: #selector(cancelBtnTapped(_:)), for: .touchUpInside)
@@ -190,20 +193,24 @@ extension TyreBrandVC: UICollectionViewDelegate,UICollectionViewDataSource,UICol
     }
     
     private func cardSizeForItemAt(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, indexPath: IndexPath) -> CGSize {
-        let arr = tyreBrandCustomView.collView == collectionView ? brandListingArr : countryListingArr
-        let textSize = arr[indexPath.row].sizeCount(withFont: AppFonts.NunitoSansSemiBold.withSize(13.0), boundingSize: CGSize(width: 10000.0, height: collectionView.frame.height))
+        if tyreBrandCustomView.collView == collectionView {
+            let textSize = brandListingArr[indexPath.row].name.sizeCount(withFont: AppFonts.NunitoSansSemiBold.withSize(13.0), boundingSize: CGSize(width: 10000.0, height: collectionView.frame.height))
+            return CGSize(width: textSize.width + 40, height: 23.0)
+        }else {
+            let textSize = countryListingArr[indexPath.row].name.sizeCount(withFont: AppFonts.NunitoSansSemiBold.withSize(13.0), boundingSize: CGSize(width: 10000.0, height: collectionView.frame.height))
+            return CGSize(width: textSize.width + 40, height: 23.0)
+        }
         
-        return CGSize(width: textSize.width + 40, height: 23.0)
     }
 
     @objc func cancelBtnTapped(_ sender : UIButton) {
         if let indexPath = self.tyreBrandCustomView.collView.indexPath(forItem: sender) {
             printDebug(indexPath)
             brandListingArr.remove(at: indexPath.item)
-//            ProfileStepModel.shared.skills = selectedSkillArr
             if brandListingArr.isEmpty {
                 tyreBrandCustomView.collView.isHidden = true
                 tyreBrandCustomView.floatLbl.isHidden = true
+                tyreBrandCheckBtn.isSelected = false
             }
             tyreBrandCustomView.collView.reloadData()
             view.layoutIfNeeded()
@@ -213,7 +220,6 @@ extension TyreBrandVC: UICollectionViewDelegate,UICollectionViewDataSource,UICol
         if let indexPath = self.countryOriginCustomView.collView.indexPath(forItem: sender) {
             printDebug(indexPath)
             countryListingArr.remove(at: indexPath.item)
-            //            ProfileStepModel.shared.skills = selectedSkillArr
             if countryListingArr.isEmpty {
                 countryOriginCustomView.collView.isHidden = true
                 countryOriginCustomView.floatLbl.isHidden = true
@@ -237,9 +243,9 @@ extension TyreBrandVC : CustomTextViewDelegate{
         switch tView {
        
         case tyreBrandCustomView.tView:
-            AppRouter.goToBrandsListingVC(vc: self, listingType: .brands, data : brandListingArr)
+            AppRouter.goToBrandsListingVC(vc: self, listingType: .brands, brandsData : brandListingArr, countryData: [])
         case countryOriginCustomView.tView:
-            AppRouter.goToBrandsListingVC(vc: self, listingType: .countries, data: countryListingArr)
+            AppRouter.goToBrandsListingVC(vc: self, listingType: .countries, brandsData: [], countryData: countryListingArr)
         default:
             break
         }
@@ -251,17 +257,21 @@ extension TyreBrandVC : CustomTextViewDelegate{
     
     private func openSheet(listingType: ListingType) {
         tyreBrandCustomView.collView.isHidden = false
-        AppRouter.goToBrandsListingVC(vc: self, listingType: listingType, data : listingType == .brands ? brandListingArr : countryListingArr)
+    //    AppRouter.goToBrandsListingVC(vc: self, listingType: listingType, data : listingType == .brands ? brandListingArr : countryListingArr)
+        AppRouter.goToBrandsListingVC(vc: self, listingType: listingType,brandsData :  brandListingArr , countryData: countryListingArr)
     }
 }
 
 extension TyreBrandVC: BrandsListnig {
    
-    func listing(_ data: [String],listingType : ListingType) {
+    func listing(listingType : ListingType,BrandsListings: [TyreBrandModel],countryListings: [TyreCountryModel]) {
         if listingType == .brands {
-//            self.listingType = listingType
-            brandListingArr = data
-            TyreRequestModel.shared.tyreBrands = brandListingArr
+//            brandListingArr = data
+  //          TyreRequestModel.shared.tyreBrands = brandListingArr
+
+            self.listingType = listingType
+            brandListingArr = BrandsListings
+//            TyreRequestModel.shared.tyreBrands = BrandsListings
             self.submitBtn.isEnabled = submitBtnStatus()
             tyreBrandCheckBtn.isSelected = !brandListingArr.isEmpty
             tyreBrandCustomView.collView.isHidden = brandListingArr.isEmpty
@@ -269,11 +279,13 @@ extension TyreBrandVC: BrandsListnig {
             tyreBrandCustomView.collView.reloadData()
            
         }else {
-//            self.listingType = listingType
-            countryListingArr = data
-            TyreRequestModel.shared.countries = countryListingArr
+
+//            TyreRequestModel.shared.countries = countryListings
+            self.listingType = listingType
+            countryListingArr = countryListings
+//            TyreRequestModel.shared.countries = data
             self.submitBtn.isEnabled = submitBtnStatus()
-            countryOriginCheckBtn.isSelected = !brandListingArr.isEmpty
+            countryOriginCheckBtn.isSelected = !countryListingArr.isEmpty
             countryOriginCustomView.collView.isHidden = countryListingArr.isEmpty
             countryOriginCustomView.floatLbl.isHidden = countryListingArr.isEmpty
             countryOriginCustomView.collView.reloadData()

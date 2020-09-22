@@ -26,26 +26,26 @@ enum AppRouter {
     // MARK: - Show Landing Screen
     //===========================
     static func checkAppInitializationFlow() {
-//        goToTestingVC()
-        if isUserLoggedin {
-            if !isPhoneNoVerified{
-                AppUserDefaults.removeValue(forKey: .accesstoken)
-                UserModel.main = UserModel()
-                AppRouter.makeLoginVCRoot()
-                return
-            }
-            switch isCurrentUserType {
-            case .user:
-                AppRouter.goToUserHome()
-            default:
-                let lang = AppUserDefaults.value(forKey: .currentLanguage).stringValue
-                AppUserDefaults.removeAllValues()
-                AppUserDefaults.save(value: lang, forKey: .currentLanguage)
-                AppUserDefaults.save(value: true, forKey: .isLanguageSelect)
-            }
-        } else {
-            self.makeChooseLanguageVCRoot()
-        }
+        goToTestingVC()
+//        if isUserLoggedin {
+//            if !isPhoneNoVerified{
+//                AppUserDefaults.removeValue(forKey: .accesstoken)
+//                UserModel.main = UserModel()
+//                AppRouter.makeLoginVCRoot()
+//                return
+//            }
+//            switch isCurrentUserType {
+//            case .user:
+//                AppRouter.goToUserHome()
+//            default:
+//                let lang = AppUserDefaults.value(forKey: .currentLanguage).stringValue
+//                AppUserDefaults.removeAllValues()
+//                AppUserDefaults.save(value: lang, forKey: .currentLanguage)
+//                AppUserDefaults.save(value: true, forKey: .isLanguageSelect)
+//            }
+//        } else {
+//            self.makeChooseLanguageVCRoot()
+//        }
     }
     
     static func goToTestingVC(){
@@ -228,12 +228,13 @@ enum AppRouter {
     }
     
     
-    static func goToBrandsListingVC(vc: UIViewController,listingType : ListingType,data : [String]){
+//    static func goToBrandsListingVC(vc: UIViewController,listingType : ListingType,data : [String]) {
+    static func goToBrandsListingVC(vc: UIViewController,listingType : ListingType,brandsData : [TyreBrandModel],countryData: [TyreCountryModel]){
         let scene = BrandsListingVC.instantiate(fromAppStoryboard: .UserHomeScreen)
         if listingType == .brands {
-            scene.selectedBrandsArr = data
+            scene.selectedBrandsArr = brandsData
         }else {
-            scene.selectedCountryArr = data
+            scene.selectedCountryArr = countryData
         }
         scene.delegate = vc as? BrandsListnig
         scene.listingType = listingType
