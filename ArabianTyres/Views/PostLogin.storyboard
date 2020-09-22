@@ -588,8 +588,8 @@ Service Center</string>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="heC-rA-qEJ">
-                                                        <rect key="frame" x="337.5" y="209.5" width="16.5" height="22"/>
-                                                        <state key="normal" image="markerIcon"/>
+                                                        <rect key="frame" x="334" y="209.5" width="20" height="22"/>
+                                                        <state key="normal" image="icCurrentLoc"/>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -1083,7 +1083,6 @@ Service Center</string>
         <image name="icBackward" width="36" height="34"/>
         <image name="icCurrentLoc" width="20" height="20"/>
         <image name="icImg" width="32.5" height="32"/>
-        <image name="markerIcon" width="16.5" height="21.5"/>
         <image name="union" width="375" height="526"/>
     </resources>
 </document>

@@ -63,7 +63,7 @@ class AddAccountVC: BaseVC {
         if screenType == .garageRegistration {
             viewModel.setGarageRegistration(params: GarageProfileModel.shared.getGarageProfileDict())
         }else {
-            viewModel.garageProfile(params: [:])
+            viewModel.garageProfile(params: GarageProfileModel.shared.getGarageProfileDict())
         }
     }
 

@@ -29,6 +29,12 @@ struct GarageProfileModel {
     var bankName                    : String = ""
     var accountNumber               : String = ""
     var confirmAccountNumber        : String = ""
+    var serviceCenterDist           : String = ""
+    var minInstallationPrice        : Int = 0
+    var maxInstallationPrice        : Int = 0
+    var services                    : [JSONDictionary] = []
+    
+    
     func getGarageProfileDict()-> JSONDictionary {
         
         let dict: JSONDictionary = [
@@ -43,8 +49,10 @@ struct GarageProfileModel {
             ApiKey.municipalityLicense : municipalityLicense,
             ApiKey.ownerId : ownerId,
             ApiKey.bank : bankName,
-            ApiKey.accountNumber : accountNumber
-            
+            ApiKey.accountNumber : accountNumber,
+            ApiKey.minInstallationPrice : minInstallationPrice,
+            ApiKey.maxInstallationPrice : maxInstallationPrice,
+            ApiKey.services : services
         ]
 
         return dict

@@ -282,7 +282,6 @@ extension GarageProfileStep2VC :RangeSliderDelegate{
     func rangeSlider(selectedValue: Int) {
         printDebug(selectedValue)
     }
-    
 }
 
 // MARK: - UIImagePickerControllerDelegate
@@ -291,14 +290,15 @@ extension GarageProfileStep2VC: UIImagePickerControllerDelegate, UINavigationCon
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[.editedImage] as? UIImage
         hasImageUploaded = false
-        self.imagesArray.append(ImageModel(url: "", mediaType:"image", image: image ?? UIImage()))
+        GarageProfileModel.shared.serviceCenterImages.append(ImageModel(url: "", mediaType: "image", image: image ?? UIImage()))
         self.reloadCollectionViewWithUIUpdation()
         image?.upload(progress: { (progress) in
             printDebug(progress)
         }, completion: { (response,error) in
             if let url = response {
                 self.hasImageUploaded = true
-                self.serviceImagesArray.append(url)
+                let lastIndex = GarageProfileModel.shared.serviceCenterImages.endIndex
+                GarageProfileModel.shared.serviceCenterImages[lastIndex-1].url = url
             }
             if let _ = error{
 //                self.showAlert(msg: LocalizedString.imageUploadingFailed.localized)
@@ -320,6 +320,10 @@ extension GarageProfileStep2VC: UIImagePickerControllerDelegate, UINavigationCon
 extension GarageProfileStep2VC: FacilitiesDelegate {
     func setData(dataArr: [FacilityModel]) {
         selectedFacilitiesArr = dataArr
+        selectedFacilitiesArr.forEach { (model) in
+            let data : JSONDictionary = [ApiKey.serviceId: model.id,ApiKey.brands: []]
+            GarageProfileModel.shared.services.append(data)
+        }
         customView.collView.isHidden = selectedFacilitiesArr.isEmpty
         customView.floatLbl.isHidden = selectedFacilitiesArr.isEmpty
         customView.collView.reloadData()

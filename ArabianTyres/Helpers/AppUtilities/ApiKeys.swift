@@ -135,9 +135,13 @@ enum ApiKey {
     static var rimSize: String { return "rimSize" }
     static var countries: String { return "countries" }
     static var tyreBrands: String { return "tyreBrands" }
-    
-    
-    
+    static var maxInstallationPrice: String { return "maxInstallationPrice" }
+    static var minInstallationPrice: String { return "minInstallationPrice" }
+    static var services: String { return "services" }
+    static var serviceId: String { return "serviceId" }
+    static var brands: String { return "brands" }
+
+
 }
 
 //MARK:- Api Code

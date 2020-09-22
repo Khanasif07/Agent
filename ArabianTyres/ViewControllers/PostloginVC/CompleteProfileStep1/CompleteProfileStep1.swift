@@ -90,10 +90,12 @@ extension CompleteProfileStep1 {
         self.addressTxtField.placeholder = LocalizedString.enterServiceCenterAddress.localized
         self.distTxtField.placeholder = LocalizedString.enterServiceCenterDist.localized
         self.addressTxtField.title = LocalizedString.serviceCenterAddress.localized
-        self.addressTxtField.selectedTitle = LocalizedString.mobileNo.localized
+//        self.addressTxtField.selectedTitle = LocalizedString.mobileNo.localized
         [nameTxtField,distTxtField,addressTxtField].forEach({$0?.lineColor = AppColors.fontTertiaryColor})
         [nameTxtField,distTxtField,addressTxtField].forEach({$0?.selectedLineColor = AppColors.fontTertiaryColor})
         [nameTxtField,distTxtField,addressTxtField].forEach({$0?.selectedTitleColor = AppColors.fontTertiaryColor})
+        [nameTxtField,distTxtField,addressTxtField].forEach({$0?.placeholderColor = AppColors.fontSecondaryColor})
+        [nameTxtField,distTxtField,addressTxtField].forEach({$0?.delegate = self})
         self.saveContinueBtn.setTitle(LocalizedString.saveContinue.localized, for: .normal)
 //        self.saveContinueBtn.isEnabled = false
     }
@@ -245,5 +247,31 @@ extension CompleteProfileStep1: GMSAutocompleteViewControllerDelegate {
     
     func removepicture() {
         
+    }
+}
+
+extension CompleteProfileStep1 : UITextFieldDelegate {
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        guard let text = textField.text else {return}
+        
+        switch textField {
+
+        case nameTxtField:
+            GarageProfileModel.shared.serviceCenterName = text
+        case addressTxtField:
+            GarageProfileModel.shared.address = text
+        case distTxtField:
+            GarageProfileModel.shared.serviceCenterDist = text
+        
+        default:
+            break
+        }
+        saveContinueBtn.isEnabled = addBtnStatus()
+    }
+
+    
+    private func addBtnStatus()-> Bool{
+        return !GarageProfileModel.shared.serviceCenterName.isEmpty && !GarageProfileModel.shared.address.isEmpty && !GarageProfileModel.shared.serviceCenterDist.isEmpty
     }
 }
