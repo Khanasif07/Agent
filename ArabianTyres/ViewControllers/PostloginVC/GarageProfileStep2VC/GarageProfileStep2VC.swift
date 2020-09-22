@@ -108,7 +108,7 @@ extension GarageProfileStep2VC {
         setupCustomView()
         saveAndContinueBtn.isEnabled = true
         self.collViewSetUp()
-        rangeSlider.resetSlider(value: 2500)
+//        rangeSlider.resetSlider(value: 2500)
     }
 
     private func setupTextAndFont(){
@@ -133,6 +133,7 @@ extension GarageProfileStep2VC {
         customView.rightImgView.image = #imageLiteral(resourceName: "group3689")
         customView.delegate = self
         customView.txtViewEditable = false
+        customView.collView.collectionViewLayout = LeftAlignedCollectionViewFlowLayout()
 
         customView.collView.registerCell(with: FacilityCollectionViewCell.self)
         customView.collView.delegate = self
@@ -320,12 +321,14 @@ extension GarageProfileStep2VC: UIImagePickerControllerDelegate, UINavigationCon
 extension GarageProfileStep2VC: FacilitiesDelegate {
     func setData(dataArr: [FacilityModel]) {
         selectedFacilitiesArr = dataArr
+        customView.collView.isHidden = selectedFacilitiesArr.isEmpty
+        customView.floatLbl.isHidden = selectedFacilitiesArr.isEmpty
+        customView.collView.reloadData()
+        view.layoutIfNeeded()
+        view.setNeedsLayout()
         selectedFacilitiesArr.forEach { (model) in
             let data : JSONDictionary = [ApiKey.serviceId: model.id,ApiKey.brands: []]
             GarageProfileModel.shared.services.append(data)
         }
-        customView.collView.isHidden = selectedFacilitiesArr.isEmpty
-        customView.floatLbl.isHidden = selectedFacilitiesArr.isEmpty
-        customView.collView.reloadData()
     }
 }

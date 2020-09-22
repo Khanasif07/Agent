@@ -186,8 +186,8 @@ extension AddAccountVC: BankDetail{
 
 extension AddAccountVC: GarageRegistrationVMDelegate {
     func garageRegistrationSuccess(msg: String) {
-        CommonFunctions.showToastWithMessage(msg)
-        AppRouter.goToRegistraionPendingVC(vc: self, screenType: .accept)
+//        CommonFunctions.showToastWithMessage(msg)
+        AppRouter.goToRegistraionPendingVC(vc: self, screenType: .pending)
     }
     
     func garageRegistrationFailed(msg: String) {

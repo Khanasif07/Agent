@@ -60,8 +60,8 @@ class ProfileVC: BaseVC {
 extension ProfileVC {
     
     private func initialSetup() {
-        self.tableViewSetUp()
         self.hitProfileApi()
+        self.tableViewSetUp()
     }
     
     private func tableViewSetUp(){

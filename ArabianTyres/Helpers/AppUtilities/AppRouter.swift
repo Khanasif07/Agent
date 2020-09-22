@@ -49,7 +49,7 @@ enum AppRouter {
     }
     
     static func goToTestingVC(){
-        let scene = TyreBrandVC.instantiate(fromAppStoryboard: .UserHomeScreen)
+        let scene = GarageProfileStep2VC.instantiate(fromAppStoryboard: .Garage)
         setAsWindowRoot(scene)
     }
     

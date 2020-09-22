@@ -97,8 +97,9 @@ extension CompleteProfileStep1 {
         [nameTxtField,distTxtField,addressTxtField].forEach({$0?.placeholderColor = AppColors.fontSecondaryColor})
         [nameTxtField,distTxtField,addressTxtField].forEach({$0?.delegate = self})
         self.saveContinueBtn.setTitle(LocalizedString.saveContinue.localized, for: .normal)
-//        self.saveContinueBtn.isEnabled = false
+        self.saveContinueBtn.isEnabled = false
     }
+    
     private func prepareMap() {
         self.mapView.isMyLocationEnabled = true
         self.mapView.delegate = self

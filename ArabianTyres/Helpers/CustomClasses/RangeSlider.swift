@@ -81,7 +81,7 @@ class RangeSlider: UIView {
     
     private lazy var fakeSlider: CustomSlider = {
         let slider = CustomSlider()
-        slider.isUserInteractionEnabled = true
+        slider.isUserInteractionEnabled = false
         slider.tintColor = .clear
         slider.minimumTrackTintColor = .clear
         slider.maximumTrackTintColor = .clear
