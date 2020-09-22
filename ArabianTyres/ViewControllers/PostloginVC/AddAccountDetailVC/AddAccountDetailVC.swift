@@ -69,7 +69,6 @@ class AddAccountDetailVC: BaseVC {
         bankDetailDelegate?.BankDetailAdded()
         self.pop()
     }
-
 }
 
 // MARK: - Extension For Functions

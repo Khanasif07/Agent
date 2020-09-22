@@ -26,7 +26,7 @@ enum AppRouter {
     // MARK: - Show Landing Screen
     //===========================
     static func checkAppInitializationFlow() {
-        //        goToTestingVC()
+//        goToTestingVC()
         if isUserLoggedin {
             if !isPhoneNoVerified{
                 AppUserDefaults.removeValue(forKey: .accesstoken)
@@ -49,7 +49,7 @@ enum AppRouter {
     }
     
     static func goToTestingVC(){
-        let scene = TyreRequestedVC.instantiate(fromAppStoryboard: .UserHomeScreen)
+        let scene = GarageProfileStep2VC.instantiate(fromAppStoryboard: .Garage)
         setAsWindowRoot(scene)
     }
     
@@ -138,6 +138,10 @@ enum AppRouter {
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
+    static func goToGarageHome() {
+        let homeScene = GarageTabBarController.instantiate(fromAppStoryboard: .GarageHome)
+        setAsWindowRoot(homeScene)
+    }
     static func goToVehicleDetailVC(vc: UIViewController){
         let scene = VechicleDetailVC.instantiate(fromAppStoryboard: .UserHomeScreen)
         vc.navigationController?.pushViewController(scene, animated: true)
@@ -165,8 +169,9 @@ enum AppRouter {
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
-    static func goToAddAccountVC(vc: UIViewController){
+    static func goToAddAccountVC(vc: UIViewController, screenType: AddAccountVC.ScreenType){
         let scene = AddAccountVC.instantiate(fromAppStoryboard: .Garage)
+        scene.screenType = screenType
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
@@ -218,6 +223,13 @@ enum AppRouter {
     static func goToURTyreStep1VC(vc: UIViewController){
         let scene = URTyreStep1VC.instantiate(fromAppStoryboard: .UserRequest)
         vc.navigationController?.pushViewController(scene, animated: true)
+    }
+    
+
+    static func goToFacilityVC(vc: UIViewController){
+        let scene = FacilityVC.instantiate(fromAppStoryboard: .Garage)
+        scene.delegate = vc as? FacilitiesDelegate
+        vc.present(scene, animated: true)
     }
     
     static func goToBrandsListingVC(vc: UIViewController,listingType : ListingType,brandsData : [TyreBrandModel],countryData: [TyreCountryModel]){

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -461,7 +461,7 @@ brand or country origin</string>
                                 <rect key="frame" x="0.0" y="44" width="414" height="56"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Brands" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RWt-7K-71T">
-                                        <rect key="frame" x="153" y="19" width="108.5" height="23.5"/>
+                                        <rect key="frame" x="153.5" y="21" width="107" height="20"/>
                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -582,7 +582,7 @@ brand or country origin</string>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D8I-Az-m9l">
                                         <rect key="frame" x="30" y="260" width="354" height="376"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="group3710" translatesAutoresizingMaskIntoConstraints="NO" id="YrE-7V-h17">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="grp" translatesAutoresizingMaskIntoConstraints="NO" id="YrE-7V-h17">
                                                 <rect key="frame" x="127" y="35" width="100" height="100"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="YrE-7V-h17" secondAttribute="height" id="SfM-qY-zhp"/>
@@ -697,7 +697,6 @@ in getting great offers</string>
                     <connections>
                         <outlet property="allowBtn" destination="Lsd-fy-pG3" id="sX2-Yj-x7D"/>
                         <outlet property="cancelBtn" destination="JBc-qy-9th" id="UZV-Ot-vEJ"/>
-                        <outlet property="dataContainerView" destination="D8I-Az-m9l" id="O4l-K3-MXS"/>
                         <outlet property="headingLbl" destination="yuP-X2-SAc" id="BDs-FZ-ygB"/>
                         <outlet property="imgView" destination="YrE-7V-h17" id="SJy-lY-fQe"/>
                         <outlet property="subHeadingLbl" destination="YWJ-24-7va" id="uL1-jS-n0R"/>
@@ -802,8 +801,8 @@ tyre would be</string>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WZj-Lp-DCS">
                                                 <rect key="frame" x="218" y="460" width="180" height="60"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="group3889" translatesAutoresizingMaskIntoConstraints="NO" id="SDn-bV-Kgu">
-                                                        <rect key="frame" x="16" y="14" width="34" height="32"/>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="group32" translatesAutoresizingMaskIntoConstraints="NO" id="SDn-bV-Kgu">
+                                                        <rect key="frame" x="16" y="21" width="34" height="18.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="34" id="zVS-rp-P9m"/>
                                                         </constraints>
@@ -1079,9 +1078,10 @@ tyre would be</string>
     <resources>
         <image name="arrow" width="30" height="30"/>
         <image name="genericHybridCarI051" width="337" height="408"/>
-        <image name="group3710" width="107" height="107"/>
+        <image name="group32" width="36" height="18.5"/>
         <image name="group3888" width="34" height="34"/>
         <image name="group3889" width="34" height="32"/>
+        <image name="grp" width="107" height="107"/>
         <image name="icCheck" width="30" height="30"/>
         <image name="icTyre" width="200" height="200"/>
         <image name="icUnCheck" width="30" height="30"/>

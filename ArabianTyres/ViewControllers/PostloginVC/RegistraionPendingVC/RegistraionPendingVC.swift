@@ -49,7 +49,14 @@ class RegistraionPendingVC: BaseVC {
     }
     
     @IBAction func completeProfileBtnAction(_ sender: UIButton) {
-
+        switch screenType {
+        case .pending:
+            break
+        case .rejected:
+            break
+        case .accept:
+            AppRouter.goToCompleteProfileStep1VC(vc: self)
+        }
     }
 }
 
@@ -78,6 +85,7 @@ extension RegistraionPendingVC {
             bottomStackView.isHidden = true
             subHeadingLbl.isHidden = true
             completeProfileBtn.isHidden = false
+            headingLbl.text = LocalizedString.yourRegRequestHasBeenAccepted.localized
             completeProfileBtn.setTitle(LocalizedString.completeProfile.localized, for: .normal)
             imgView.image = #imageLiteral(resourceName: "group3875")
 

@@ -29,7 +29,7 @@ class GarageProfileStep2VC: BaseVC {
   
     // MARK: - Variables
     //===========================
-    var selectedSkillArr : [String] = []
+    var selectedFacilitiesArr : [FacilityModel] = []
     var serviceImagesArray = [String]()
     var imagesArray = [ImageModel]()
     fileprivate var hasImageUploaded = true {
@@ -54,10 +54,12 @@ class GarageProfileStep2VC: BaseVC {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         containerView.createShadow(shadowColor: #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1))
-        if !selectedSkillArr.isEmpty {
+        if !selectedFacilitiesArr.isEmpty {
             if let customView = self.customView {
                 customCollViewHeightConstraint.constant = customView.collView.contentSize.height + 38.0
             }
+        }else{
+                customCollViewHeightConstraint.constant = 60.0
         }
     }
 
@@ -73,6 +75,7 @@ class GarageProfileStep2VC: BaseVC {
     }
 
     @IBAction func saveAndContinueAction(_ sender: UIButton) {
+        AppRouter.goToAddAccountVC(vc: self, screenType: .garageProfile)
     }
     
     func reloadCollectionViewWithUIUpdation(){
@@ -103,7 +106,7 @@ extension GarageProfileStep2VC {
         rangeSlider.delegate = self
         setupTextAndFont()
         setupCustomView()
-        saveAndContinueBtn.isEnabled = false
+        saveAndContinueBtn.isEnabled = true
         self.collViewSetUp()
 //        rangeSlider.resetSlider(value: 2500)
     }
@@ -115,7 +118,7 @@ extension GarageProfileStep2VC {
         helpBtn.titleLabel?.font =  AppFonts.NunitoSansSemiBold.withSize(17.0)
         saveAndContinueBtn.titleLabel?.font =  AppFonts.NunitoSansSemiBold.withSize(16.0)
 
-        serviceCenterNameLbl.text = LocalizedString.serviceCenterNames.localized
+        serviceCenterNameLbl.text = LocalizedString.installationPriceRange.localized
         titleLbl.text = LocalizedString.completeProfile.localized
         headingLbl.text = LocalizedString.serviceCenterImage.localized
         helpBtn.setTitle(LocalizedString.help.localized, for: .normal)
@@ -130,6 +133,7 @@ extension GarageProfileStep2VC {
         customView.rightImgView.image = #imageLiteral(resourceName: "group3689")
         customView.delegate = self
         customView.txtViewEditable = false
+        customView.collView.collectionViewLayout = LeftAlignedCollectionViewFlowLayout()
 
         customView.collView.registerCell(with: FacilityCollectionViewCell.self)
         customView.collView.delegate = self
@@ -148,12 +152,11 @@ extension GarageProfileStep2VC {
 
 extension GarageProfileStep2VC: CustomTextViewDelegate{
     func shouldBegin(_ tView: UITextView) {
-        printDebug("should begin tapped")
-
+        AppRouter.goToFacilityVC(vc: self)
     }
     
-    func collViewTapped() {
-        printDebug("collection view tapped")
+    func collViewTapped(listingType: ListingType) {
+        AppRouter.goToFacilityVC(vc: self)
     }
 }
 
@@ -161,7 +164,7 @@ extension GarageProfileStep2VC: CustomTextViewDelegate{
 extension GarageProfileStep2VC: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == customView.collView {
-            return selectedSkillArr.count
+            return selectedFacilitiesArr.count
 
         }else {
             if !self.imagesArray.isEmpty && self.imagesArray.count <= 4{
@@ -177,10 +180,10 @@ extension GarageProfileStep2VC: UICollectionViewDelegate,UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == customView.collView {
             let cell = collectionView.dequeueCell(with: FacilityCollectionViewCell.self, indexPath: indexPath)
-                   cell.skillLbl.text = selectedSkillArr[indexPath.item]
-                   cell.cancelBtn.addTarget(self, action: #selector(cancelBtnTapped(_:)), for: .touchUpInside)
-                   cell.layoutSubviews()
-                   return cell
+            cell.skillLbl.text = selectedFacilitiesArr[indexPath.item].name
+            cell.cancelBtn.addTarget(self, action: #selector(cancelBtnTapped(_:)), for: .touchUpInside)
+            cell.layoutSubviews()
+            return cell
                    
         }else {
             let imageCell = collectionView.dequeueCell(with: AddImageCollCell.self, indexPath: indexPath)
@@ -247,16 +250,16 @@ extension GarageProfileStep2VC: UICollectionViewDelegate,UICollectionViewDataSou
     
     private func cardSizeForItemAt(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, indexPath: IndexPath) -> CGSize {
         
-        let textSize = selectedSkillArr[indexPath.row].sizeCount(withFont: AppFonts.NunitoSansSemiBold.withSize(16.0), boundingSize: CGSize(width: 10000.0, height: collectionView.frame.height))
+        let textSize = selectedFacilitiesArr[indexPath.item].name.sizeCount(withFont: AppFonts.NunitoSansSemiBold.withSize(16.0), boundingSize: CGSize(width: 10000.0, height: collectionView.frame.height))
         
-        return CGSize(width: textSize.width + 30, height: 24.0)
+        return CGSize(width: textSize.width + 20, height: 24.0)
     }
 
     @objc func cancelBtnTapped(_ sender : UIButton) {
         if let indexPath = self.customView.collView.indexPath(forItem: sender) {
             printDebug(indexPath)
-            selectedSkillArr.remove(at: indexPath.item)
-            if selectedSkillArr.isEmpty {
+            selectedFacilitiesArr.remove(at: indexPath.item)
+            if selectedFacilitiesArr.isEmpty {
                 customView.collView.isHidden = true
                 customView.floatLbl.isHidden = true
             }
@@ -280,7 +283,6 @@ extension GarageProfileStep2VC :RangeSliderDelegate{
     func rangeSlider(selectedValue: Int) {
         printDebug(selectedValue)
     }
-    
 }
 
 // MARK: - UIImagePickerControllerDelegate
@@ -289,14 +291,15 @@ extension GarageProfileStep2VC: UIImagePickerControllerDelegate, UINavigationCon
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[.editedImage] as? UIImage
         hasImageUploaded = false
-        self.imagesArray.append(ImageModel(url: "", mediaType:"image", image: image ?? UIImage()))
+        GarageProfileModel.shared.serviceCenterImages.append(ImageModel(url: "", mediaType: "image", image: image ?? UIImage()))
         self.reloadCollectionViewWithUIUpdation()
         image?.upload(progress: { (progress) in
             printDebug(progress)
         }, completion: { (response,error) in
             if let url = response {
                 self.hasImageUploaded = true
-                self.serviceImagesArray.append(url)
+                let lastIndex = GarageProfileModel.shared.serviceCenterImages.endIndex
+                GarageProfileModel.shared.serviceCenterImages[lastIndex-1].url = url
             }
             if let _ = error{
 //                self.showAlert(msg: LocalizedString.imageUploadingFailed.localized)
@@ -314,3 +317,18 @@ extension GarageProfileStep2VC: UIImagePickerControllerDelegate, UINavigationCon
     }
 }
 
+
+extension GarageProfileStep2VC: FacilitiesDelegate {
+    func setData(dataArr: [FacilityModel]) {
+        selectedFacilitiesArr = dataArr
+        customView.collView.isHidden = selectedFacilitiesArr.isEmpty
+        customView.floatLbl.isHidden = selectedFacilitiesArr.isEmpty
+        customView.collView.reloadData()
+        view.layoutIfNeeded()
+        view.setNeedsLayout()
+        selectedFacilitiesArr.forEach { (model) in
+            let data : JSONDictionary = [ApiKey.serviceId: model.id,ApiKey.brands: []]
+            GarageProfileModel.shared.services.append(data)
+        }
+    }
+}

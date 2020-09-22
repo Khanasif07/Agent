@@ -12,7 +12,7 @@ import Foundation
 
 // MARK: - Result
 struct TyreBrandModel: Codable , Equatable{
-    let id, updatedAt, name, createdAt: String
+    var id, updatedAt, name, createdAt: String
     let isDelete: Bool
     let categoryID: String
     let iconImage: String

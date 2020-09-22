@@ -21,8 +21,8 @@ class ProfileSettingVC: BaseVC {
     var selectImageArray: [UIImage] = [#imageLiteral(resourceName: "aboutUs"),#imageLiteral(resourceName: "terms"),#imageLiteral(resourceName: "privacyPolicy"),#imageLiteral(resourceName: "contactUs"),#imageLiteral(resourceName: "changeLang"),#imageLiteral(resourceName: "switchProfile"),#imageLiteral(resourceName: "report"),#imageLiteral(resourceName: "faq"),#imageLiteral(resourceName: "refer")]
     var selectItemArray1 = [LocalizedString.logout.localized]
     var selectImageArray1: [UIImage] = [#imageLiteral(resourceName: "logout")]
-    
-    
+    var viewModel = GarageRegistrationVM()
+
     // MARK: - Lifecycle
     //===========================
     override func viewDidLoad() {
@@ -48,6 +48,9 @@ class ProfileSettingVC: BaseVC {
         self.pop()
     }
     
+    func hitGarageSwitchApi(){
+        viewModel.switchGarageProfile()
+    }
 }
 
 // MARK: - Extension For Functions
@@ -56,6 +59,7 @@ extension ProfileSettingVC {
     
     private func initialSetup() {
         self.tableViewSetUp()
+        viewModel.delegate = self
     }
     
     private func tableViewSetUp(){
@@ -80,7 +84,7 @@ extension ProfileSettingVC {
                     
                     cell.switchProfileToGarage = {  [weak self]  in
                         guard let `self` = self else { return }
-                        AppRouter.goToGarageRegistrationVC(vc: self)
+                        self.hitGarageSwitchApi()
                     }
                     return cell
                 default:
@@ -148,4 +152,29 @@ extension ProfileSettingVC : UITableViewDelegate, UITableViewDataSource {
         return UITableView.automaticDimension
     }
     
+}
+
+extension ProfileSettingVC : GarageRegistrationVMDelegate {
+    func switchGarageRegistrationSuccess(code: Int, msg : String){
+        switch code {
+        case 600:
+            AppRouter.goToGarageRegistrationVC(vc: self)
+        case 601:
+            AppRouter.goToRegistraionPendingVC(vc: self, screenType: .pending)
+        case 605:
+            AppRouter.goToRegistraionPendingVC(vc: self, screenType: .rejected)
+        case 604:
+            AppRouter.goToRegistraionPendingVC(vc: self, screenType: .accept)
+        case 602:
+            CommonFunctions.showToastWithMessage(msg)
+        case 603:
+            CommonFunctions.showToastWithMessage(msg)
+        default:
+            AppRouter.goToGarageHome()
+        }
+    }
+    
+    func switchGarageRegistrationFailure(msg: String){
+        CommonFunctions.showToastWithMessage(msg)
+    }
 }

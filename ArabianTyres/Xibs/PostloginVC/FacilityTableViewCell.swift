@@ -13,6 +13,8 @@ class FacilityTableViewCell: UITableViewCell {
     @IBOutlet weak var checkBtn : UIButton!
     @IBOutlet weak var subCategoryName : UILabel!
     @IBOutlet weak var bottomView : UIView!
+   
+    var cellBtnTapped : (()->())?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,5 +23,6 @@ class FacilityTableViewCell: UITableViewCell {
     
     @IBAction func checkBtnAction(_ sender: UIButton) {
         checkBtn.isSelected.toggle()
+        cellBtnTapped?()
     }
 }

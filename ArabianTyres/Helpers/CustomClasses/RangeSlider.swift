@@ -64,6 +64,7 @@ class RangeSlider: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = AppFonts.NunitoSansBold.withSize(13.0)
         label.textColor = #colorLiteral(red: 0.262745098, green: 0.6941176471, blue: 0.3294117647, alpha: 1)
+        label.isHidden = true
         label.text = "500"
         return label
     }()
@@ -73,6 +74,7 @@ class RangeSlider: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = AppFonts.NunitoSansBold.withSize(13.0)
         label.textColor = AppColors.fontTertiaryColor
+        label.isHidden = true
         label.text = "2500"
         return label
     }()

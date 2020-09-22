@@ -9,7 +9,7 @@
 import UIKit
 
 protocol BrandsListnig: class {
-    func listing(_ data: [String], listingType: ListingType,BrandsListings: [TyreBrandModel],countryListings: [TyreCountryModel])
+    func listing( listingType: ListingType,BrandsListings: [TyreBrandModel],countryListings: [TyreCountryModel])
 }
 
 
@@ -53,9 +53,14 @@ class BrandsListingVC: BaseVC {
     }
     
     @IBAction func doneBtnAction(_ sender: UIButton) {
-        let list = getSelectedList()
+        var list :[Any] = []
+        if listingType == .brands {
+            list = getSelectedBrandList()
+        }else {
+            list = getSelectedCountryList()
+        }
         dismiss(animated: true) {
-            self.delegate?.listing(list, listingType: self.listingType,BrandsListings: self.selectedBrandsArr,countryListings:self.selectedCountryArr )
+            self.delegate?.listing(listingType: self.listingType,BrandsListings: list as? [TyreBrandModel] ?? [] ,countryListings: list as? [TyreCountryModel] ?? [] )
         }
     }
     
@@ -120,14 +125,26 @@ extension BrandsListingVC {
         }
     }
     
-    private func getSelectedList() -> [String] {
+    private func getSelectedBrandList() -> [TyreBrandModel] {
         
-        var arr : [String] = []
+        var arr : [TyreBrandModel] = []
         if selectedIndexPath.contains(0){
-            selectedIndexPath = Array(1...(listingType == .brands ? self.viewModel.brandsListings.count - 1: self.viewModel.countryListings.count - 1))
+            selectedIndexPath = Array(1...self.viewModel.brandsListings.count - 1)
         }
         selectedIndexPath.forEach { (index) in
-            arr.append(listingType == .brands ? self.viewModel.brandsListings[index].name : self.viewModel.countryListings[index].name)
+            arr.append(self.viewModel.brandsListings[index]) //: //self.viewModel.countryListings[index])
+        }
+        return arr
+    }
+    
+    private func getSelectedCountryList() -> [TyreCountryModel] {
+        
+        var arr : [TyreCountryModel] = []
+        if selectedIndexPath.contains(0){
+            selectedIndexPath = Array(1...self.viewModel.countryListings.count - 1)
+        }
+        selectedIndexPath.forEach { (index) in
+            arr.append(self.viewModel.countryListings[index]) //: //self.viewModel.countryListings[index])
         }
         return arr
     }
@@ -180,7 +197,7 @@ extension BrandsListingVC : UITableViewDelegate, UITableViewDataSource {
         view.checkBtn.isSelected = selectedIndexPath.contains(section) || selectedIndexPath.contains(0)
         
         
-        view.cellBtnTapped = { [weak self] (selected) in
+        view.cellBtnTapped = { [weak self] in
             guard let `self` = self else {return}
             
             if section == 0 {

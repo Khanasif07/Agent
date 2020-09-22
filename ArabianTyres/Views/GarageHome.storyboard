@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5p8-eV-cRU">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="NunitoSans-Bold.ttf">
+            <string>NunitoSans-Bold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Garage ExploreVC-->
+        <scene sceneID="4Cc-H8-cOr">
+            <objects>
+                <viewController storyboardIdentifier="GarageExploreVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="EvM-Lh-2ZM" customClass="GarageExploreVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nKm-gu-222">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Under Development" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VLJ-7o-xPO">
+                                <rect key="frame" x="128" y="439" width="157" height="23.5"/>
+                                <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="VLJ-7o-xPO" firstAttribute="centerY" secondItem="Bid-Vf-mai" secondAttribute="centerY" id="UgM-tX-mUD"/>
+                            <constraint firstItem="VLJ-7o-xPO" firstAttribute="centerX" secondItem="Bid-Vf-mai" secondAttribute="centerX" id="f1A-JU-BT7"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Bid-Vf-mai"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="m3D-K3-A2s"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zx2-yl-r7S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="858" y="103"/>
+        </scene>
+        <!--Garage SettingVC-->
+        <scene sceneID="Lbg-1B-6gd">
+            <objects>
+                <viewController storyboardIdentifier="GarageSettingVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JO3-ss-3mH" customClass="GarageSettingVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ugd-SI-EqH">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Under Development" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cXX-c1-ruU">
+                                <rect key="frame" x="128" y="439" width="157" height="23.5"/>
+                                <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="cXX-c1-ruU" firstAttribute="centerX" secondItem="tyo-Lr-Feu" secondAttribute="centerX" id="6Mf-Se-B0X"/>
+                            <constraint firstItem="cXX-c1-ruU" firstAttribute="centerY" secondItem="tyo-Lr-Feu" secondAttribute="centerY" id="Yqj-9H-JmQ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="tyo-Lr-Feu"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="6sj-lX-3zr"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JU9-qb-SSf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="962" y="790"/>
+        </scene>
+        <!--Garage ProfileVC-->
+        <scene sceneID="bXT-6p-dxh">
+            <objects>
+                <viewController storyboardIdentifier="GarageProfileVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Air-qz-MyE" customClass="GarageProfileVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DdV-d1-SXV">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Under Development" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UH0-AP-5sv">
+                                <rect key="frame" x="128" y="439" width="157" height="23.5"/>
+                                <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="UH0-AP-5sv" firstAttribute="centerX" secondItem="XgF-dV-8O5" secondAttribute="centerX" id="0rt-2P-ZNp"/>
+                            <constraint firstItem="UH0-AP-5sv" firstAttribute="centerY" secondItem="XgF-dV-8O5" secondAttribute="centerY" id="7Yt-xI-TEa"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="XgF-dV-8O5"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="x64-wc-a7W"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gkl-ye-8u1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="858" y="1590"/>
+        </scene>
+        <!--Garage HomeVC-->
+        <scene sceneID="hax-d7-JBa">
+            <objects>
+                <viewController storyboardIdentifier="GarageHomeVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kGq-nU-rZv" customClass="GarageHomeVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="w9o-Bm-RDC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="01G-PB-BH1">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9fU-T0-Tcz">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="98"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="hLN-OY-EcT">
+                                                <rect key="frame" x="26" y="34.5" width="77.5" height="29"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi, User" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OY4-gC-MIS">
+                                                        <rect key="frame" x="0.0" y="0.0" width="77.5" height="29"/>
+                                                        <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="21"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="98" id="ccH-bU-FLd"/>
+                                            <constraint firstItem="hLN-OY-EcT" firstAttribute="centerY" secondItem="9fU-T0-Tcz" secondAttribute="centerY" id="hEW-n5-Daf"/>
+                                            <constraint firstItem="hLN-OY-EcT" firstAttribute="leading" secondItem="9fU-T0-Tcz" secondAttribute="leading" constant="26" id="tSs-oR-C5r"/>
+                                        </constraints>
+                                    </view>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LVt-2a-yeF">
+                                        <rect key="frame" x="0.0" y="98" width="414" height="671"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="LVt-2a-yeF" firstAttribute="top" secondItem="9fU-T0-Tcz" secondAttribute="bottom" id="6un-K8-SCB"/>
+                                    <constraint firstAttribute="trailing" secondItem="LVt-2a-yeF" secondAttribute="trailing" id="7zr-S7-JQs"/>
+                                    <constraint firstAttribute="bottom" secondItem="LVt-2a-yeF" secondAttribute="bottom" id="Eae-OX-iiT"/>
+                                    <constraint firstAttribute="trailing" secondItem="9fU-T0-Tcz" secondAttribute="trailing" id="MAD-bN-EUq"/>
+                                    <constraint firstItem="LVt-2a-yeF" firstAttribute="leading" secondItem="01G-PB-BH1" secondAttribute="leading" id="XLf-z1-mIn"/>
+                                    <constraint firstItem="9fU-T0-Tcz" firstAttribute="leading" secondItem="01G-PB-BH1" secondAttribute="leading" id="fGx-7J-cP1"/>
+                                    <constraint firstItem="9fU-T0-Tcz" firstAttribute="top" secondItem="01G-PB-BH1" secondAttribute="top" id="lOn-eT-7Gp"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Y0p-ju-Rhd" firstAttribute="bottom" secondItem="01G-PB-BH1" secondAttribute="bottom" id="2o9-Nr-l00"/>
+                            <constraint firstItem="Y0p-ju-Rhd" firstAttribute="trailing" secondItem="01G-PB-BH1" secondAttribute="trailing" id="Dmh-Te-3QP"/>
+                            <constraint firstItem="Y0p-ju-Rhd" firstAttribute="leading" secondItem="01G-PB-BH1" secondAttribute="leading" id="Zyf-vo-NR5"/>
+                            <constraint firstItem="Y0p-ju-Rhd" firstAttribute="top" secondItem="01G-PB-BH1" secondAttribute="top" id="er7-en-lKZ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Y0p-ju-Rhd"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="jew-RZ-I0L"/>
+                    <connections>
+                        <outlet property="mainTableView" destination="LVt-2a-yeF" id="8SK-41-syS"/>
+                        <outlet property="titleLbl" destination="OY4-gC-MIS" id="20A-nq-5MG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eDd-YB-xMb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="931.88405797101461" y="-558.48214285714278"/>
+        </scene>
+        <!--Garage Tab Bar Controller-->
+        <scene sceneID="WDw-1Q-0La">
+            <objects>
+                <tabBarController storyboardIdentifier="GarageTabBarController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5p8-eV-cRU" customClass="GarageTabBarController" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="kIj-6V-wWI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="h86-y5-adk" kind="relationship" relationship="viewControllers" id="3nA-LP-tzo"/>
+                        <segue destination="mdq-yL-bJn" kind="relationship" relationship="viewControllers" id="SrQ-pa-pcX"/>
+                        <segue destination="KWX-Pe-ABp" kind="relationship" relationship="viewControllers" id="VZG-Qm-S0K"/>
+                        <segue destination="v0w-pZ-lRp" kind="relationship" relationship="viewControllers" id="1qN-UG-jMY"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="go0-Df-F7M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-896" y="-234"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="l85-Bo-xdm">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="h86-y5-adk" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="home" selectedImage="homeSelected" id="CaP-9S-rbG"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="K9P-Ar-7OC">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="kGq-nU-rZv" kind="relationship" relationship="rootViewController" id="uZF-wb-kAq"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XxQ-dh-N3a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="21.739130434782609" y="-558.48214285714278"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Q5b-iJ-DjP">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mdq-yL-bJn" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="secondTab" selectedImage="secondTab" id="gZg-Oh-s6l"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gA5-cW-Ttp">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="EvM-Lh-2ZM" kind="relationship" relationship="rootViewController" id="6uq-fE-eAY"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sPH-2h-aKa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="21.739130434782609" y="89.732142857142847"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="gnm-vE-Vdk">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KWX-Pe-ABp" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="setting" selectedImage="setting" id="zBi-ce-RWX"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="HvP-kG-Q6c">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="JO3-ss-3mH" kind="relationship" relationship="rootViewController" id="MZO-oE-D3c"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xYN-Sx-Fqq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="22" y="790"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="YTq-sB-aO1">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="v0w-pZ-lRp" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="profile" selectedImage="profile" id="B2H-DX-Ocm"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Sm1-xJ-9xR">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Air-qz-MyE" kind="relationship" relationship="rootViewController" id="vYR-Rg-MSj"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uju-qB-nMm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="55" y="1590"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="home" width="60" height="60"/>
+        <image name="homeSelected" width="34" height="34"/>
+        <image name="profile" width="34" height="34"/>
+        <image name="secondTab" width="60" height="60"/>
+        <image name="setting" width="34" height="34"/>
+    </resources>
+</document>

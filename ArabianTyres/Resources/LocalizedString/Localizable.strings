@@ -200,13 +200,13 @@
 "arabianTyresWantToAccessYourCurrentLocation" = "Arabian Tyres want to access\nyour current location";
 "allowCureentLocationWillHelpYouInGettingGreatOffers" = "Allow cureent location will help you\nin getting great offers";
 "allow" = "Allow";
-
-// MARK: - Home  VC Values
+"installationPriceRange" = "Installation Price Range";
+ // MARK: - Home  VC Values
 //==============================
 "tyre" = "Tyre";
 "oil" = "Oil";
 "battery" = "Battery";
-
+"yourRegRequestHasBeenAccepted" = "Your Registration Request has been Accepted. Kindly complete your profile";
 
  // MARK: - Complete profile 1  VC Values
  //==============================

@@ -11,7 +11,6 @@ import SkyFloatingLabelTextField
 
 
 class TyreBrandVC: BaseVC {
-   
 
     // MARK: - IBOutlets
     //===========================
@@ -31,7 +30,6 @@ class TyreBrandVC: BaseVC {
 
     // MARK: - Variables
     //===========================
-
     var placeHolderArr : [String] = [LocalizedString.enterVehicleMake.localized,
      LocalizedString.enterVehicleModel.localized,
      LocalizedString.enterModelYear.localized
@@ -41,6 +39,9 @@ class TyreBrandVC: BaseVC {
                                  LocalizedString.vehicleModel.localized,
                                  LocalizedString.modelYear.localized
                                 ]
+//    var brandListingArr :[String] = []
+//    var countryListingArr :[String] = []
+//    var listingType : ListingType = .brands
     var brandListingArr :[TyreBrandModel] = []
     var countryListingArr :[TyreCountryModel] = []
     var listingType : ListingType = .brands
@@ -140,8 +141,10 @@ extension TyreBrandVC {
         
         countryOriginCustomView.delegate = self
         tyreBrandCustomView.delegate = self
+        tyreBrandCustomView.listingType = .brands
         tyreBrandCustomView.leftImgContainerView.isHidden = true
         countryOriginCustomView.leftImgContainerView.isHidden = true
+        countryOriginCustomView.listingType = .countries
         tyreBrandCustomView.rightImgView.image = #imageLiteral(resourceName: "group3689")
         tyreBrandCustomView.txtViewEditable = false
         countryOriginCustomView.txtViewEditable = false
@@ -207,6 +210,7 @@ extension TyreBrandVC: UICollectionViewDelegate,UICollectionViewDataSource,UICol
             if brandListingArr.isEmpty {
                 tyreBrandCustomView.collView.isHidden = true
                 tyreBrandCustomView.floatLbl.isHidden = true
+                tyreBrandCheckBtn.isSelected = false
             }
             tyreBrandCustomView.collView.reloadData()
             view.layoutIfNeeded()
@@ -247,23 +251,27 @@ extension TyreBrandVC : CustomTextViewDelegate{
         }
     }
     
-    func collViewTapped() {
-        openSheet()
+    func collViewTapped(listingType: ListingType) {
+        openSheet(listingType: listingType)
     }
     
-    private func openSheet() {
+    private func openSheet(listingType: ListingType) {
         tyreBrandCustomView.collView.isHidden = false
+    //    AppRouter.goToBrandsListingVC(vc: self, listingType: listingType, data : listingType == .brands ? brandListingArr : countryListingArr)
         AppRouter.goToBrandsListingVC(vc: self, listingType: listingType,brandsData :  brandListingArr , countryData: countryListingArr)
     }
 }
 
 extension TyreBrandVC: BrandsListnig {
    
-    func listing(_ data: [String],listingType : ListingType,BrandsListings: [TyreBrandModel],countryListings: [TyreCountryModel]) {
+    func listing(listingType : ListingType,BrandsListings: [TyreBrandModel],countryListings: [TyreCountryModel]) {
         if listingType == .brands {
+//            brandListingArr = data
+  //          TyreRequestModel.shared.tyreBrands = brandListingArr
+
             self.listingType = listingType
             brandListingArr = BrandsListings
-            TyreRequestModel.shared.tyreBrands = data
+//            TyreRequestModel.shared.tyreBrands = BrandsListings
             self.submitBtn.isEnabled = submitBtnStatus()
             tyreBrandCheckBtn.isSelected = !brandListingArr.isEmpty
             tyreBrandCustomView.collView.isHidden = brandListingArr.isEmpty
@@ -271,15 +279,16 @@ extension TyreBrandVC: BrandsListnig {
             tyreBrandCustomView.collView.reloadData()
            
         }else {
+
+//            TyreRequestModel.shared.countries = countryListings
             self.listingType = listingType
             countryListingArr = countryListings
-            TyreRequestModel.shared.countries = data
+//            TyreRequestModel.shared.countries = data
             self.submitBtn.isEnabled = submitBtnStatus()
-            countryOriginCheckBtn.isSelected = !brandListingArr.isEmpty
+            countryOriginCheckBtn.isSelected = !countryListingArr.isEmpty
             countryOriginCustomView.collView.isHidden = countryListingArr.isEmpty
             countryOriginCustomView.floatLbl.isHidden = countryListingArr.isEmpty
             countryOriginCustomView.collView.reloadData()
-           
         }
         view.layoutIfNeeded()
         view.setNeedsLayout()

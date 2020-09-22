@@ -13,7 +13,7 @@ import Foundation
 struct TyreCountryModel: Codable ,Equatable{
     let createdAt, updatedAt, type: String
     let flag: String
-    let name: String
+    var name: String
     let isDelete: Bool
     let categoryID, id, status: String
     

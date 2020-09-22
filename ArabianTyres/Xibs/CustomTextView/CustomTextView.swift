@@ -13,14 +13,14 @@ protocol CustomTextViewDelegate: class {
     func didBegin(_ tView : UITextView)
     func endEditing(_ tView : UITextView)
     func textViewValueUpdated(_ tView : UITextView)
-    func collViewTapped()
+    func collViewTapped(listingType: ListingType)
 }
 
 extension CustomTextViewDelegate {
     func textViewValueUpdated(_ tView : UITextView){}
     func didBegin(_ tView : UITextView) {}
     func endEditing(_ tView : UITextView) {}
-    func collViewTapped() {}
+    func collViewTapped(listingType: ListingType) {}
 }
 
 class CustomTextView: UIView {
@@ -41,6 +41,8 @@ class CustomTextView: UIView {
     var txtViewEditable = true
     var isCollViewHidden : Bool = true
     weak var delegate : CustomTextViewDelegate?
+    var listingType : ListingType = .brands
+    
     var placeHolderTxt : String = ""{
         didSet {
             tView.text = placeHolderTxt
@@ -117,8 +119,7 @@ extension CustomTextView : UITextViewDelegate {
     }
     
     @objc func handleTap(_ sender: UITapGestureRecognizer) {
-        printDebug("collview tapped")
-        delegate?.collViewTapped()
+        delegate?.collViewTapped(listingType: listingType)
     }
     
     func textViewDidChange(_ textView: UITextView) {

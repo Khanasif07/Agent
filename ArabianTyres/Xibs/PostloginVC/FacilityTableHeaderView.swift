@@ -17,8 +17,7 @@ class FacilityTableHeaderView: UITableViewHeaderFooterView {
     @IBOutlet weak var cellBtn : UIButton!
     @IBOutlet weak var bottomView : UIView!
 
-    var cellBtnTapped : ((Bool)->())?
-    var isSelected : Bool = false
+    var cellBtnTapped : (()->())?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,8 +29,7 @@ class FacilityTableHeaderView: UITableViewHeaderFooterView {
     }
     
     @IBAction func cellBtnTapped(_ sender: UIButton) {
-        isSelected.toggle()
-        cellBtnTapped?(isSelected)
+        cellBtnTapped?()
         arrowImg.isHighlighted.toggle()
     }
 }

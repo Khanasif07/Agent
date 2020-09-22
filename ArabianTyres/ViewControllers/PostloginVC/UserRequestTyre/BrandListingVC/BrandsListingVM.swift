@@ -83,6 +83,9 @@ class BrandsListingVM{
                 isRequestinApi = false
                 if currentPage == 1 {
                     self.brandsListings = modelList
+                    var allModel = TyreBrandModel()
+                    allModel.name = "All Brands"
+                    self.brandsListings.insert(allModel, at: 0)
                 } else {
                     self.brandsListings.append(contentsOf: modelList)
                 }
@@ -113,6 +116,9 @@ class BrandsListingVM{
                 isRequestinApi = false
                 if currentPage == 1 {
                     self.countryListings = modelList
+                    var allModel = TyreCountryModel()
+                    allModel.name = "All Country"
+                    self.countryListings.insert(allModel, at: 0)
                 } else {
                     self.countryListings.append(contentsOf: modelList)
                 }

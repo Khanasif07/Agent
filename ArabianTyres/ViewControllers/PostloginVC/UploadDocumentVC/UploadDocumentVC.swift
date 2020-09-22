@@ -74,7 +74,7 @@ class UploadDocumentVC: BaseVC {
     
     @IBAction func saveAndContinueBtnAction(_ sender: UIButton) {
 
-        AppRouter.goToAddAccountVC(vc: self)
+        AppRouter.goToAddAccountVC(vc: self, screenType: .garageRegistration)
     }
     
     @IBAction func helpBtnAction(_ sender: UIButton) {

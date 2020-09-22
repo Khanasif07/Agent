@@ -30,7 +30,7 @@ class BankListingVC: BaseVC {
     // MARK: - IBActions
     //===========================
     @IBAction func cancelBtnAction(_ sender: UIButton) {
-        self.pop()
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func textFieldChanged(_ sender: UITextField) {

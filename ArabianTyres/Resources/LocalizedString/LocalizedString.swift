@@ -113,6 +113,7 @@ enum LocalizedString : String {
     case municipalityLicense
     case idOfTheOwner
     case register
+    case yourRegRequestHasBeenAccepted
     
     // MARK: - Sign Up VC Values
     //==============================
@@ -209,6 +210,8 @@ enum LocalizedString : String {
     case arabianTyresWantToAccessYourCurrentLocation
     case allowCureentLocationWillHelpYouInGettingGreatOffers
     case allow
+    case installationPriceRange
+    
     // MARK: - Home  VC Values
     //==============================
     case tyre
