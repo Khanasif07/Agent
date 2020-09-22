@@ -70,6 +70,7 @@
 		844EB7212518C9C3003A6E3F /* LoaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844EB71F2518C9C3003A6E3F /* LoaderCell.swift */; };
 		844EB7222518C9C3003A6E3F /* LoaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844EB7202518C9C3003A6E3F /* LoaderCell.xib */; };
 		844EB72425199370003A6E3F /* TyreBrandModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844EB72325199370003A6E3F /* TyreBrandModel.swift */; };
+		844EB7262519C012003A6E3F /* TyreCountryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844EB7252519C012003A6E3F /* TyreCountryModel.swift */; };
 		846352D02511E34E004216F1 /* AddImageCollCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846352CE2511E34E004216F1 /* AddImageCollCell.swift */; };
 		846352D12511E34E004216F1 /* AddImageCollCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 846352CF2511E34E004216F1 /* AddImageCollCell.xib */; };
 		847BC423250774E100EEEFDC /* ResetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847BC422250774E100EEEFDC /* ResetPasswordVC.swift */; };
@@ -249,6 +250,7 @@
 		844EB71F2518C9C3003A6E3F /* LoaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderCell.swift; sourceTree = "<group>"; };
 		844EB7202518C9C3003A6E3F /* LoaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoaderCell.xib; sourceTree = "<group>"; };
 		844EB72325199370003A6E3F /* TyreBrandModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TyreBrandModel.swift; sourceTree = "<group>"; };
+		844EB7252519C012003A6E3F /* TyreCountryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TyreCountryModel.swift; sourceTree = "<group>"; };
 		846352CE2511E34E004216F1 /* AddImageCollCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageCollCell.swift; sourceTree = "<group>"; };
 		846352CF2511E34E004216F1 /* AddImageCollCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddImageCollCell.xib; sourceTree = "<group>"; };
 		847BC422250774E100EEEFDC /* ResetPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordVC.swift; sourceTree = "<group>"; };
@@ -766,6 +768,7 @@
 				842B2FCD25133F1800E3CF67 /* BankData.swift */,
 				844EB71625189916003A6E3F /* TyreRequestModel.swift */,
 				844EB72325199370003A6E3F /* TyreBrandModel.swift */,
+				844EB7252519C012003A6E3F /* TyreCountryModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1408,6 +1411,7 @@
 				843DFD202503F93A000DE6EB /* OtpVerificationVM.swift in Sources */,
 				8481FA652500BFAD00AB6EFB /* AppColors.swift in Sources */,
 				A45566D0250CA6C0009E4324 /* UploadDocumentVC.swift in Sources */,
+				844EB7262519C012003A6E3F /* TyreCountryModel.swift in Sources */,
 				8481FA3F2500BE2800AB6EFB /* UITextFieldExtension.swift in Sources */,
 				844CBD222501FFC0009BE668 /* LoginEmailPhoneTableCell.swift in Sources */,
 				8481FA692500BFC700AB6EFB /* DeviceDetails.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  TyreBrandModel.swift
+//  TyreCountryModel.swift
 //  ArabianTyres
 //
 //  Created by Admin on 22/09/20.
@@ -7,25 +7,24 @@
 //
 
 import Foundation
+import Foundation
 
 
-
-// MARK: - Result
-struct TyreBrandModel: Codable , Equatable{
-    let id, updatedAt, name, createdAt: String
+struct TyreCountryModel: Codable ,Equatable{
+    let createdAt, updatedAt, type: String
+    let flag: String
+    let name: String
     let isDelete: Bool
-    let categoryID: String
-    let iconImage: String
-    let type, status: String
+    let categoryID, id, status: String
     
     enum CodingKeys: String, CodingKey {
-        case id = "_id"
-        case updatedAt, name, createdAt, isDelete
+        case createdAt, updatedAt, type, flag, name, isDelete
         case categoryID = "categoryId"
-        case iconImage, type, status
+        case id = "_id"
+        case status
     }
     
-   static func == (lhs: TyreBrandModel, rhs: TyreBrandModel) -> Bool {
+    static func == (lhs: TyreCountryModel, rhs: TyreCountryModel) -> Bool {
         return (lhs.id == rhs.id)
     }
     
@@ -36,7 +35,7 @@ struct TyreBrandModel: Codable , Equatable{
         createdAt = ""
         isDelete = false
         categoryID = ""
-        iconImage = ""
+        flag = ""
         type = ""
         status = ""
     }
