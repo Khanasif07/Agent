@@ -29,7 +29,7 @@ class BrandsListingVC: BaseVC {
     var viewModel = BrandsListingVM()
     var selectedSkillArr : [String] = []
     var brandArr = ["All Brands", "MRF","Nokian Tyre","Apollo Tyres","CEAT Ltd","Goodyear","Peerless Tyre","Michelin ","Dunlop","Pirelli","Yokohama"]
-    var selectedBrandsArr : [String] = []
+    var selectedBrandsArr : [TyreBrandModel] = []
     var selectedCountryArr : [String] = []
     var selectedIndexPath : [Int] = []
     var listingType : ListingType = .brands
@@ -86,17 +86,17 @@ extension BrandsListingVC {
     }
     
     private func hitBrandListingApi(){
-        self.viewModel.getBrandListingData(params: [ApiKey.page: "1",ApiKey.limit : "20"],loader: false)
+        self.viewModel.getBrandListingData(params: [ApiKey.page: "1",ApiKey.limit : "20",ApiKey.type: "Tyres"],loader: false)
     }
 
     
     private func selectedDataSource(){
         if (listingType == .brands) {
             if !selectedBrandsArr.isEmpty {
-                self.selectedBrandsArr = self.selectedBrandsArr.count == self.brandArr.count - 1 ? [self.brandArr[0]] : self.selectedBrandsArr
+                self.selectedBrandsArr = self.selectedBrandsArr.count == self.viewModel.brandsListings.count - 1 ? [self.viewModel.brandsListings[0]] : self.selectedBrandsArr
             }
             
-            for (index, item) in brandArr.enumerated() {
+            for (index, item) in self.viewModel.brandsListings.enumerated() {
                 if selectedBrandsArr.contains(item) {
                     self.selectedIndexPath.append(index)
                 }
@@ -122,10 +122,10 @@ extension BrandsListingVC {
         var arr : [String] = []
         
         if selectedIndexPath.contains(0){
-            selectedIndexPath = Array(1...(listingType == .brands ? self.brandArr.count - 1: self.countryArr.count - 1))
+            selectedIndexPath = Array(1...(listingType == .brands ? self.viewModel.brandsListings.count - 1: self.countryArr.count - 1))
         }
         selectedIndexPath.forEach { (index) in
-            arr.append(listingType == .brands ? self.brandArr[index] : self.countryArr[index])
+            arr.append(listingType == .brands ? self.viewModel.brandsListings[index].name : self.countryArr[index])
         }
         return arr
     }
@@ -160,7 +160,7 @@ extension BrandsListingVC : UITableViewDelegate, UITableViewDataSource {
    
     func numberOfSections(in tableView: UITableView) -> Int {
         if (listingType == .brands) {
-            return brandArr.count
+            return self.viewModel.brandsListings.endIndex
 //             self.viewModel.subscriberListings.endIndex +  (self.viewModel.showPaginationLoader ?  1 : 0)
         }else {
             return countryArr.count
@@ -174,8 +174,9 @@ extension BrandsListingVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = tableView.dequeueHeaderFooter(with: FacilityTableHeaderView.self)
         view.bottomView.backgroundColor = #colorLiteral(red: 0.9294117647, green: 0.9294117647, blue: 0.9294117647, alpha: 1)
-        view.arrowImg.isHidden = true
-        view.categoryName.text = listingType == .brands ? brandArr[section] : countryArr[section]
+        view.arrowImg.isHidden = listingType == .brands ? false : true
+        view.categoryName.text = listingType == .brands ? self.viewModel.brandsListings[section].name : countryArr[section]
+        view.arrowImg.setImage_kf(imageString: self.viewModel.brandsListings[section].iconImage, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: true)
         view.checkBtn.isSelected = selectedIndexPath.contains(section) || selectedIndexPath.contains(0)
 
         
@@ -236,9 +237,9 @@ extension BrandsListingVC : UITableViewDelegate, UITableViewDataSource {
 //===========================
 extension BrandsListingVC: BrandsListingVMDelegate{
     func brandListingSuccess(message: String) {
+        self.mainTableView.reloadData()
     }
     
     func brandListingFailed(error: String) {
-        
     }
 }

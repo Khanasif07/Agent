@@ -220,12 +220,12 @@ enum AppRouter {
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
-    static func goToBrandsListingVC(vc: UIViewController,listingType : ListingType,data : [String]){
+    static func goToBrandsListingVC(vc: UIViewController,listingType : ListingType,data : [TyreBrandModel],countryData: [String]){
         let scene = BrandsListingVC.instantiate(fromAppStoryboard: .UserHomeScreen)
         if listingType == .brands {
             scene.selectedBrandsArr = data
         }else {
-            scene.selectedCountryArr = data
+            scene.selectedCountryArr = countryData
         }
         scene.delegate = vc as? BrandsListnig
         scene.listingType = listingType

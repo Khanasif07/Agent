@@ -41,7 +41,7 @@ class TyreBrandVC: BaseVC {
                                  LocalizedString.vehicleModel.localized,
                                  LocalizedString.modelYear.localized
                                 ]
-    var brandListingArr :[String] = []
+    var brandListingArr :[TyreBrandModel] = []
     var countryListingArr :[String] = []
     var listingType : ListingType = .brands
     
@@ -191,7 +191,7 @@ extension TyreBrandVC: UICollectionViewDelegate,UICollectionViewDataSource,UICol
     
     private func cardSizeForItemAt(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, indexPath: IndexPath) -> CGSize {
         let arr = tyreBrandCustomView.collView == collectionView ? brandListingArr : countryListingArr
-        let textSize = arr[indexPath.row].sizeCount(withFont: AppFonts.NunitoSansSemiBold.withSize(13.0), boundingSize: CGSize(width: 10000.0, height: collectionView.frame.height))
+        let textSize = arr[indexPath.row].name.sizeCount(withFont: AppFonts.NunitoSansSemiBold.withSize(13.0), boundingSize: CGSize(width: 10000.0, height: collectionView.frame.height))
         
         return CGSize(width: textSize.width + 40, height: 23.0)
     }
@@ -237,9 +237,9 @@ extension TyreBrandVC : CustomTextViewDelegate{
         switch tView {
        
         case tyreBrandCustomView.tView:
-            AppRouter.goToBrandsListingVC(vc: self, listingType: .brands, data : brandListingArr)
+            AppRouter.goToBrandsListingVC(vc: self, listingType: .brands, data : brandListingArr, countryData: [])
         case countryOriginCustomView.tView:
-            AppRouter.goToBrandsListingVC(vc: self, listingType: .countries, data: countryListingArr)
+            AppRouter.goToBrandsListingVC(vc: self, listingType: .countries, data: [TyreBrandModel], countryData: countryListingArr)
         default:
             break
         }
@@ -257,7 +257,7 @@ extension TyreBrandVC : CustomTextViewDelegate{
 
 extension TyreBrandVC: BrandsListnig {
    
-    func listing(_ data: [String],listingType : ListingType) {
+    func listing(_ data: [TyreBrandModel],listingType : ListingType) {
         if listingType == .brands {
             self.listingType = listingType
             brandListingArr = data
