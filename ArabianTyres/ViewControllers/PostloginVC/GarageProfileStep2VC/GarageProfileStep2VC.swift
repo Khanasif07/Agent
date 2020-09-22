@@ -108,7 +108,7 @@ extension GarageProfileStep2VC {
         setupCustomView()
         saveAndContinueBtn.isEnabled = true
         self.collViewSetUp()
-//        rangeSlider.resetSlider(value: 2500)
+        rangeSlider.resetSlider(value: 2500)
     }
 
     private func setupTextAndFont(){

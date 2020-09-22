@@ -114,7 +114,7 @@ Service Center</string>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icImg" translatesAutoresizingMaskIntoConstraints="NO" id="8YI-0d-MGp">
                                                                 <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
-                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <color key="backgroundColor" red="0.96470588235294119" green="0.96862745098039216" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="8YI-0d-MGp" secondAttribute="height" multiplier="1:1" id="IQn-92-5A1"/>
                                                                     <constraint firstAttribute="height" constant="80" id="etb-TA-Lo9"/>

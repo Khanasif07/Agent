@@ -49,12 +49,32 @@ struct GarageProfileModel {
             ApiKey.municipalityLicense : municipalityLicense,
             ApiKey.ownerId : ownerId,
             ApiKey.bank : bankName,
-            ApiKey.accountNumber : accountNumber,
-            ApiKey.minInstallationPrice : minInstallationPrice,
-            ApiKey.maxInstallationPrice : maxInstallationPrice,
-            ApiKey.services : services
+            ApiKey.accountNumber : accountNumber
+           
         ]
 
         return dict
     }
+    
+    func getCompleteProfileDict()-> JSONDictionary {
+           
+           let dict: JSONDictionary = [
+               ApiKey.logo : logoUrl,
+               ApiKey.name: serviceCenterName,
+               ApiKey.latitude : latitude,
+               ApiKey.longitude : longitude,
+               ApiKey.address : address,
+               ApiKey.images : images,
+               ApiKey.bank : bankName,
+               ApiKey.accountNumber : accountNumber,
+               ApiKey.minInstallationPrice : minInstallationPrice,
+               ApiKey.maxInstallationPrice : maxInstallationPrice,
+               ApiKey.services : services,
+               ApiKey.district: serviceCenterDist
+           ]
+
+           return dict
+       }
+       
+    
 }

@@ -170,7 +170,8 @@ extension ProfileSettingVC : GarageRegistrationVMDelegate {
         case 603:
             CommonFunctions.showToastWithMessage(msg)
         default:
-            break
+            CommonFunctions.showToastWithMessage(msg)
+
         }
     }
     

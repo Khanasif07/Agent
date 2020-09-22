@@ -140,7 +140,7 @@ enum ApiKey {
     static var services: String { return "services" }
     static var serviceId: String { return "serviceId" }
     static var brands: String { return "brands" }
-
+    static var district : String { return "district" }
 }
 
 //MARK:- Api Code
