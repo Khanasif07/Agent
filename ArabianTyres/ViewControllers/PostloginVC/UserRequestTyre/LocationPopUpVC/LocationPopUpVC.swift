@@ -26,15 +26,15 @@ class LocationPopUpVC: BaseVC {
         super.viewDidLayoutSubviews()
         self.dataContainerView.addShadow(cornerRadius: 5, color: UIColor.black16, offset: CGSize(width: 0.5, height: 0.5), opacity: 1, shadowRadius: 5)
     }
+    
     // MARK: - Variables
     //===========================
     private var locationValue = LocationController.sharedLocationManager.locationManager.location?.coordinate ?? CLLocationCoordinate2D(latitude: 34.052238, longitude: -118.24334)
     var viewModel = LocationPopUpVM()
     private var locationManager = CLLocationManager()
     private var isLocationEnable : Bool = true
-    
-    
-    
+    private var isHitApi: Bool = false
+    var onAllowTap: (()->())?
     // MARK: - Lifecycle
     //===========================
     override func viewDidLoad() {
@@ -50,6 +50,7 @@ class LocationPopUpVC: BaseVC {
     }
     
     @IBAction func allowBtnAction(_ sender: UIButton) {
+        self.isHitApi =  true
         self.setupLocations()
     }
 }
@@ -64,6 +65,7 @@ extension LocationPopUpVC {
     }
     
     private func setupTextAndFont(){
+        self.isHitApi = false
         self.locationManager.delegate = self
         headingLbl.text = LocalizedString.arabianTyresWantToAccessYourCurrentLocation.localized
         subHeadingLbl.text = LocalizedString.allowCureentLocationWillHelpYouInGettingGreatOffers.localized
@@ -130,11 +132,13 @@ extension LocationPopUpVC {
 
 extension LocationPopUpVC: LocationPopUpVMDelegate{
     func postTyreRequestFailed(error: String) {
-        
+        ToastView.shared.showLongToast(self.view, msg: error)
     }
     
     func postTyreRequestSuccess(message: String) {
-        
+        self.dismiss(animated: false) {
+            self.onAllowTap?()
+        }
     }
 }
 
@@ -151,13 +155,11 @@ extension LocationPopUpVC: CLLocationManagerDelegate {
             LocationController.sharedLocationManager.fetchCurrentLocation { [weak self] (location) in
                 guard let strongSelf = self else { return }
                 strongSelf.isLocationEnable = true
-                printDebug(location.coordinate.latitude)
-                printDebug(location.coordinate.longitude)
                 TyreRequestModel.shared.latitude = "\(location.coordinate.latitude)"
                 TyreRequestModel.shared.longitude = "\(location.coordinate.longitude)"
-                AppUserDefaults.save(value: location.coordinate.latitude, forKey: .latitude)
-                AppUserDefaults.save(value: location.coordinate.longitude, forKey: .longitude)
-                strongSelf.viewModel.postTyreRequest(dict: TyreRequestModel.shared.getTyreRequestDict())
+                if strongSelf.isHitApi {
+                    strongSelf.viewModel.postTyreRequest(dict: TyreRequestModel.shared.getTyreRequestDict())
+                }
             }
         default:
             self.isLocationEnable = false

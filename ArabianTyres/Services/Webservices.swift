@@ -71,26 +71,26 @@ extension WebServices {
     }
     
     // MARK:- Common PUT API
-       //=======================
-       static func commonPatchAPI(parameters: JSONDictionary,
-                                endPoint: EndPoint,
-                                headers: HTTPHeaders = [:],
-                                loader: Bool = false,
-                                success : @escaping SuccessResponse,
-                                failure : @escaping FailureResponse) {
-           AppNetworking.PATCH(endPoint: endPoint.path, parameters: parameters, headers: headers, loader: loader, success: { (json) in
-               let code = json[ApiKey.statusCode].intValue
-               let msg = json[ApiKey.message].stringValue
-               switch code {
-               case ApiCode.success: success(json)
-               case ApiCode.tokenExpired :
-                   showTokenExpiredAlert()
-               default: failure(NSError(code: code, localizedDescription: msg))
-               }
-           }) { (error) in
-               failure(error)
-           }
-       }
+    //=======================
+    static func commonPatchAPI(parameters: JSONDictionary,
+                               endPoint: EndPoint,
+                               headers: HTTPHeaders = [:],
+                               loader: Bool = false,
+                               success : @escaping SuccessResponse,
+                               failure : @escaping FailureResponse) {
+        AppNetworking.PATCH(endPoint: endPoint.path, parameters: parameters, headers: headers, loader: loader, success: { (json) in
+            let code = json[ApiKey.statusCode].intValue
+            let msg = json[ApiKey.message].stringValue
+            switch code {
+            case ApiCode.success: success(json)
+            case ApiCode.tokenExpired :
+                showTokenExpiredAlert()
+            default: failure(NSError(code: code, localizedDescription: msg))
+            }
+        }) { (error) in
+            failure(error)
+        }
+    }
     // MARK:- Common DELETE API
     //=======================================
     static func commonDeleteAPI(parameters: JSONDictionary,
@@ -196,8 +196,8 @@ extension WebServices {
             let msg = json[ApiKey.message].stringValue
             switch code {
             case ApiCode.success: success(json)
-//            case ApiCode.tokenExpired :
-//                showTokenExpiredAlert()
+                //            case ApiCode.tokenExpired :
+            //                showTokenExpiredAlert()
             default: failure(NSError(code: code, localizedDescription: msg))
             }
         }) { (error) in
@@ -246,12 +246,12 @@ extension WebServices{
     // MARK:- verifyForgotPasswordOTP Otp
     //=================
     static func verifyForgotPasswordOTP(parameters: JSONDictionary,
-                          success: @escaping SuccessResponse,
-                          failure: @escaping FailureResponse) {
+                                        success: @escaping SuccessResponse,
+                                        failure: @escaping FailureResponse) {
         self.commonPutAPI(parameters: parameters, endPoint: .verifyforgetPasswordOtp, success: { (json) in
-             success(json)
+            success(json)
         }) { (error) -> (Void) in
-             failure(error)
+            failure(error)
         }
     }
     
@@ -303,8 +303,8 @@ extension WebServices{
     // MARK:- Resent  Otp
     //=================
     static func resendOtp(parameters: JSONDictionary,
-                         success: @escaping ResponseMessage,
-                         failure: @escaping FailureResponse) {
+                          success: @escaping ResponseMessage,
+                          failure: @escaping FailureResponse) {
         self.commonPostAPI(parameters: parameters, endPoint: .resendOtp,loader: true, success: { (json) in
             success(json[ApiKey.message].stringValue)
         }) { (error) -> (Void) in
@@ -315,8 +315,8 @@ extension WebServices{
     // MARK:- SendOtp  Otp
     //=================
     static func sendOtpThroughPhone(parameters: JSONDictionary,
-                         success: @escaping ResponseMessage,
-                         failure: @escaping FailureResponse) {
+                                    success: @escaping ResponseMessage,
+                                    failure: @escaping FailureResponse) {
         self.commonPostAPI(parameters: parameters, endPoint: .sendOtp,loader: true, success: { (json) in
             success(json[ApiKey.message].stringValue)
         }) { (error) -> (Void) in
@@ -327,8 +327,8 @@ extension WebServices{
     // MARK:- ForGot password
     //=================
     static func forgotPassword(parameters: JSONDictionary,
-                         success: @escaping ResponseMessage,
-                         failure: @escaping FailureResponse) {
+                               success: @escaping ResponseMessage,
+                               failure: @escaping FailureResponse) {
         self.commonPostAPI(parameters: parameters, endPoint: .forgetPassword,loader: true, success: { (json) in
             success(json[ApiKey.message].stringValue)
         }) { (error) -> (Void) in
@@ -339,8 +339,8 @@ extension WebServices{
     // MARK:- ForGot password
     //=================
     static func addPhoneNumber(parameters: JSONDictionary,
-                         success: @escaping ResponseMessage,
-                         failure: @escaping FailureResponse) {
+                               success: @escaping ResponseMessage,
+                               failure: @escaping FailureResponse) {
         self.commonPutAPI(parameters: parameters, endPoint: .addPhoneNo,loader: true, success: { (json) in
             success(json[ApiKey.message].stringValue)
         }) { (error) -> (Void) in
@@ -389,8 +389,8 @@ extension WebServices{
     // MARK:- My Profile Api
     //=================
     static func sendVerificationLink(parameters: JSONDictionary,
-                                 success: @escaping SuccessResponse,
-                                 failure: @escaping FailureResponse) {
+                                     success: @escaping SuccessResponse,
+                                     failure: @escaping FailureResponse) {
         self.commonGetAPI(parameters: parameters,endPoint: .emailVerificationLink, success: { (json) in
             let code = json[ApiKey.statusCode].intValue
             let msg = json[ApiKey.message].stringValue
@@ -408,8 +408,8 @@ extension WebServices{
     // MARK:- Garage Registration
     //=================
     static func garageRegistration(parameters: JSONDictionary,
-                         success: @escaping ResponseMessage,
-                         failure: @escaping FailureResponse) {
+                                   success: @escaping ResponseMessage,
+                                   failure: @escaping FailureResponse) {
         self.commonPostAPI(parameters: parameters, endPoint: .garageProfile,loader: true, success: { (json) in
             success(json[ApiKey.message].stringValue)
         }) { (error) -> (Void) in
@@ -420,19 +420,19 @@ extension WebServices{
     // MARK:- Switch Profile
     //=========================
     static func switchProfile(parameters: JSONDictionary,
-                         success: @escaping SuccessResponse,
-                         failure: @escaping FailureResponse) {
+                              success: @escaping SuccessResponse,
+                              failure: @escaping FailureResponse) {
         self.commonPutAPI(parameters: parameters, endPoint: .switchProfile, success: { (json) in
-                success(json)
-            }) { (error) -> (Void) in
-                failure(error)
-            }
+            success(json)
+        }) { (error) -> (Void) in
+            failure(error)
+        }
     }
     // MARK:- Post Tyre Request
     //=========================
     static func postTyreRequest(parameters: JSONDictionary,
-                         success: @escaping ResponseMessage,
-                         failure: @escaping FailureResponse) {
+                                success: @escaping ResponseMessage,
+                                failure: @escaping FailureResponse) {
         self.commonPostAPI(parameters: parameters, endPoint: .userTyreRequest,loader: true, success: { (json) in
             success(json[ApiKey.message].stringValue)
         }) { (error) -> (Void) in
@@ -443,9 +443,28 @@ extension WebServices{
     // MARK:- Brand Listing Data
     //=================
     static func getBrandListingData(parameters: JSONDictionary,
-                                 success: @escaping SuccessResponse,
-                                 failure: @escaping FailureResponse) {
+                                    success: @escaping SuccessResponse,
+                                    failure: @escaping FailureResponse) {
         self.commonGetAPI(parameters: parameters,endPoint: .userServiceBrands, success: { (json) in
+            let code = json[ApiKey.statusCode].intValue
+            let msg = json[ApiKey.message].stringValue
+            switch code {
+            case ApiCode.success:
+                success(json)
+            default:
+                failure(NSError(code: code, localizedDescription: msg))
+            }
+        }) { (error) -> (Void) in
+            failure(error)
+        }
+    }
+    
+    // MARK:- Brand Listing Data
+    //=================
+    static func getCountryListingData(parameters: JSONDictionary,
+                                      success: @escaping SuccessResponse,
+                                      failure: @escaping FailureResponse) {
+        self.commonGetAPI(parameters: parameters,endPoint: .userServiceCountry, success: { (json) in
             let code = json[ApiKey.statusCode].intValue
             let msg = json[ApiKey.message].stringValue
             switch code {
@@ -462,10 +481,10 @@ extension WebServices{
     // MARK:- Complete Garage Profile
     //==============================
     static func completeGarageProfile(parameters: JSONDictionary,
-                     success: @escaping ResponseMessage,
-                     failure: @escaping FailureResponse) {
-    self.commonPutAPI(parameters: parameters, endPoint: .completeGarageProfile, success: { (json) in
-           let msg = json[ApiKey.message].stringValue
+                                      success: @escaping ResponseMessage,
+                                      failure: @escaping FailureResponse) {
+        self.commonPutAPI(parameters: parameters, endPoint: .completeGarageProfile, success: { (json) in
+            let msg = json[ApiKey.message].stringValue
             success(msg)
         }) { (error) -> (Void) in
             failure(error)
@@ -484,23 +503,5 @@ extension WebServices{
         }
     }
     
-        // MARK:- Brand Listing Data
-        //=================
-        static func getCountryListingData(parameters: JSONDictionary,
-                                          success: @escaping SuccessResponse,
-                                          failure: @escaping FailureResponse) {
-            self.commonGetAPI(parameters: parameters,endPoint: .userServiceCountry, success: { (json) in
-                let code = json[ApiKey.statusCode].intValue
-                let msg = json[ApiKey.message].stringValue
-                switch code {
-                case ApiCode.success:
-                    success(json)
-                default:
-                    failure(NSError(code: code, localizedDescription: msg))
-                }
-        }) { (error) -> (Void) in
-            failure(error)
-        }
-    }
 }
 

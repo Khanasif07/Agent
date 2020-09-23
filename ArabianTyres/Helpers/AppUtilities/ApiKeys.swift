@@ -133,8 +133,10 @@ enum ApiKey {
     static var width: String { return "width" }
     static var profile: String { return "profile" }
     static var rimSize: String { return "rimSize" }
+    static var quantity: String { return "quantity"}
     static var countries: String { return "countries" }
     static var tyreBrands: String { return "tyreBrands" }
+
     static var maxInstallationPrice: String { return "maxInstallationPrice" }
     static var minInstallationPrice: String { return "minInstallationPrice" }
     static var services: String { return "services" }
@@ -142,6 +144,7 @@ enum ApiKey {
     static var brands: String { return "brands" }
     static var district : String { return "district" }
     static var garageProfile : String { return "garageProfile" }
+
 
 }
 

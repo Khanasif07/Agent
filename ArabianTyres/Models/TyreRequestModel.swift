@@ -18,6 +18,8 @@ struct TyreRequestModel {
     var profile                        : String = ""
     var rimSize           : String = ""
     var quantity                    : Int = 0
+    var tyreBrandsListing                  : [String] = []
+    var countriesListing                   : [String] = []
     var tyreBrands                  : [String] = []
     var countries                     : [String] = []
     var latitude : String = ""
@@ -29,6 +31,7 @@ struct TyreRequestModel {
             ApiKey.width : width,
             ApiKey.profile: profile,
             ApiKey.rimSize : rimSize,
+            ApiKey.quantity: quantity,
             ApiKey.tyreBrands : tyreBrands,
             ApiKey.countries : countries,ApiKey.latitude:latitude,ApiKey.longitude: longitude]
 
