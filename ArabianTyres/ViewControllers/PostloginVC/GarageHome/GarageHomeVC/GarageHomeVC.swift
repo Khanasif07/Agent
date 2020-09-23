@@ -84,7 +84,7 @@ extension GarageHomeVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(with: GarageHomeTableCell.self, indexPath: indexPath)
         cell.populateData(model: self.dataArray[indexPath.row])
-        return UITableViewCell()
+        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
