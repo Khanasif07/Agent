@@ -80,6 +80,7 @@ extension CompleteProfileStep1 {
         self.setUpTextField()
         self.prepareMap()
         self.setAddress()
+        viewModel.delegate = self
         self.viewModel.getMyProfileData(params: [:])
     }
     
@@ -115,6 +116,7 @@ extension CompleteProfileStep1 {
         let camera = GMSCameraPosition.camera(withLatitude: locationValue.latitude, longitude: locationValue.longitude, zoom: 14.0)
         mapView.animate(to: camera)
     }
+    
     private func setAddress() {
         GMSGeocoder().reverseGeocodeCoordinate(locationValue) { (response, error) in
             
@@ -157,7 +159,16 @@ extension CompleteProfileStep1 {
             self.isMarkerAnimation = true
         }
     }
+    
+    func setPreFillData() {
+        logoImgView.contentMode = .scaleToFill
+        logoImgView.setImage_kf(imageString: GarageProfileModel.shared.logoUrl, placeHolderImage: #imageLiteral(resourceName: "icImg"), loader: true)
+        addressTxtField.text = GarageProfileModel.shared.address
+        nameTxtField.text = GarageProfileModel.shared.serviceCenterName
+        distTxtField.text = GarageProfileModel.shared.serviceCenterDist
+    }
 }
+
 // MARK: - Map and cluster Functions
 //==================================
 extension CompleteProfileStep1 :  GMSMapViewDelegate ,CLLocationManagerDelegate {
@@ -276,5 +287,14 @@ extension CompleteProfileStep1 : UITextFieldDelegate {
     
     private func addBtnStatus()-> Bool{
         return !GarageProfileModel.shared.serviceCenterName.isEmpty && !GarageProfileModel.shared.address.isEmpty && !GarageProfileModel.shared.serviceCenterDist.isEmpty
+    }
+}
+
+extension CompleteProfileStep1 :ProfileVMDelegate{
+    func getProfileDataSuccess(msg: String) {
+        setPreFillData()
+    }
+    func getProfileDataFailed(msg: String, error: Error) {
+        
     }
 }

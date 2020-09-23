@@ -86,7 +86,7 @@ struct GarageProfilePreFillModel {
        var latitude                    : Double = 0.0
        var longitude                   : Double = 0.0
        var address                     : String = ""
-       var serviceCenterImages         : [ImageModel] = []
+       var serviceCenterImages         : [String] = []
        var images                      : [String] = []
        var commercialRegister          : [String] = []
        var vatCertificate              : [String] = []
@@ -103,22 +103,42 @@ struct GarageProfilePreFillModel {
     
     init(_ json : JSON = JSON()) {
         self.logoUrl = json[ApiKey.logo].stringValue
+        self.serviceCenterName = json[ApiKey.name].stringValue
         self.bankName = json[ApiKey.bank].stringValue
         self.address = json[ApiKey.address].stringValue
         self.maxInstallationPrice = json[ApiKey.maxInstallationPrice].intValue
         self.minInstallationPrice = json[ApiKey.minInstallationPrice].intValue
         
-//        self.commercialRegister = json[ApiKey.commercialRegister].arrayValue.map{(($0 as? String))}
-//        self.municipalityLicense = json[ApiKey.municipalityLicense].arrayValue.st
-//        self.commercialRegister = json[ApiKey.commercialRegister].arrayValue.map{(ImageModel(withJSON: $0))}
-//        self.commercialRegister = json[ApiKey.commercialRegister].arrayValue.map{(ImageModel(withJSON: $0))}
+        self.commercialRegister = json[ApiKey.commercialRegister].arrayValue.map{(($0.stringValue))}
+        self.municipalityLicense = json[ApiKey.municipalityLicense].arrayValue.map{(($0.stringValue))}
+        self.vatCertificate = json[ApiKey.commercialRegister].arrayValue.map{(($0.stringValue))}
+        self.ownerId = json[ApiKey.commercialRegister].arrayValue.map{(($0.stringValue))}
 
         self.latitude = json[ApiKey.latitude].doubleValue
         self.longitude = json[ApiKey.longitude].doubleValue
         
-//        self.accountNumber = json[ApiKey.accountNumber].stringValue
-//        self.serviceCenterDist = json[ApiKey.district].stringValue
-//        self.serviceCenterImages = json[ApiKey.images]
+        self.accountNumber = json[ApiKey.accountNumber].stringValue
+        self.serviceCenterDist = json[ApiKey.district].stringValue
+        self.serviceCenterImages = json[ApiKey.images].arrayValue.map{(($0.stringValue))}
+
+    }
+    
+    func updateGarageProfileModel(_ model: GarageProfilePreFillModel) {
+        GarageProfileModel.shared.logoUrl = model.logoUrl
+        GarageProfileModel.shared.serviceCenterName = model.serviceCenterName
+        GarageProfileModel.shared.bankName = model.bankName
+        GarageProfileModel.shared.address = model.address
+        GarageProfileModel.shared.maxInstallationPrice = model.maxInstallationPrice
+        GarageProfileModel.shared.minInstallationPrice = model.minInstallationPrice
+        GarageProfileModel.shared.commercialRegister = model.commercialRegister
+        GarageProfileModel.shared.municipalityLicense = model.municipalityLicense
+        GarageProfileModel.shared.vatCertificate = model.vatCertificate
+        GarageProfileModel.shared.ownerId = model.ownerId
+        GarageProfileModel.shared.latitude = model.latitude
+        GarageProfileModel.shared.longitude = model.longitude
+        GarageProfileModel.shared.accountNumber = model.accountNumber
+        GarageProfileModel.shared.serviceCenterDist = model.serviceCenterDist
+//        GarageProfileModel.shared.serviceCenterImages = model.serviceCenterImages
 
     }
 }

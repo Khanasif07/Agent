@@ -173,8 +173,9 @@ enum AppRouter {
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
-    static func goToAddAccountDetailVC(vc: UIViewController){
+    static func goToAddAccountDetailVC(vc: UIViewController, screenType: AddAccountVC.ScreenType){
         let scene = AddAccountDetailVC.instantiate(fromAppStoryboard: .Garage)
+        scene.screenType = screenType
         scene.bankDetailDelegate = vc as? BankDetail
         vc.navigationController?.pushViewController(scene, animated: true)
     }

@@ -36,12 +36,13 @@ class AddAccountVC: BaseVC {
     var bankDetailAdded = false
     var viewModel = GarageRegistrationVM()
     var screenType : ScreenType = .garageRegistration
-    
+
     // MARK: - Lifecycle
     //===========================
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
+        setPreFillData()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -88,9 +89,15 @@ class AddAccountVC: BaseVC {
     
     @objc func handleprivacyPolicyTap(_ sender: UITapGestureRecognizer) {
         printDebug("privacy policy tap")
-
+        
     }
     
+    func setPreFillData() {
+        if screenType == .garageProfile {
+            bankDetailAdded = true
+            mainTableView.reloadData()
+        }
+    }
 }
 
 // MARK: - Extension For Functions
@@ -155,7 +162,7 @@ extension AddAccountVC : UITableViewDelegate, UITableViewDataSource {
             cell.popluateData()
             cell.editBtnTapped = {[weak self] in
                 guard let `self` = self else {return}
-                AppRouter.goToAddAccountDetailVC(vc: self)
+                AppRouter.goToAddAccountDetailVC(vc: self, screenType: self.screenType)
             }
             return cell
 
@@ -171,7 +178,7 @@ extension AddAccountVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            bankDetailAdded ? () : AppRouter.goToAddAccountDetailVC(vc: self)
+        bankDetailAdded ? () : AppRouter.goToAddAccountDetailVC(vc: self, screenType: screenType)
     }
 }
 
