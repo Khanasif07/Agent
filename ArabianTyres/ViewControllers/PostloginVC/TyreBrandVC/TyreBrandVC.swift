@@ -271,6 +271,9 @@ extension TyreBrandVC: BrandsListnig {
             TyreRequestModel.shared.tyreBrands = BrandsListings.map({ (tyreModel) -> String in
                 return tyreModel.id
             })
+            TyreRequestModel.shared.tyreBrandsListing = BrandsListings.map({ (tyreModel) -> String in
+                return tyreModel.name
+            })
             self.submitBtn.isEnabled = submitBtnStatus()
             tyreBrandCheckBtn.isSelected = !brandListingArr.isEmpty
             tyreBrandCustomView.collView.isHidden = brandListingArr.isEmpty
@@ -281,6 +284,9 @@ extension TyreBrandVC: BrandsListnig {
             self.listingType = listingType
             countryListingArr = countryListings
             TyreRequestModel.shared.countries = countryListings.map({ (tyreCountryModel) -> String in
+                return tyreCountryModel.id
+            })
+            TyreRequestModel.shared.countriesListing = countryListings.map({ (tyreCountryModel) -> String in
                 return tyreCountryModel.name
             })
             self.submitBtn.isEnabled = submitBtnStatus()

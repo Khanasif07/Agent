@@ -60,6 +60,10 @@ class CommonFunctions {
     class func showActivityLoader() {
         DispatchQueue.mainQueueAsync {
             if let vc = AppDelegate.shared.window?.rootViewController {
+                if let presentedVC = vc.presentingViewController{
+                    presentedVC.startNYLoader()
+                    return
+                }
                 vc.startNYLoader()
             }
         }
@@ -69,6 +73,10 @@ class CommonFunctions {
     class func hideActivityLoader() {
         DispatchQueue.mainQueueAsync {
             if let vc = AppDelegate.shared.window?.rootViewController {
+                if let presentedVC = vc.presentingViewController{
+                    presentedVC.stopAnimating()
+                    return
+                }
                 vc.stopAnimating()
             }
         }

@@ -215,9 +215,10 @@ enum AppRouter {
     
     static func presentLocationPopUpVC(vc: UIViewController){
         let scene = LocationPopUpVC.instantiate(fromAppStoryboard: .UserHomeScreen)
-        let navigationController = UINavigationController(rootViewController: scene)
-        navigationController.modalPresentationStyle = .overFullScreen
-        vc.present(navigationController, animated: true, completion: nil)
+//        let navigationController = UINavigationController(rootViewController: scene)
+//        navigationController.modalPresentationStyle = .overFullScreen
+        vc.navigationController?.pushViewController(scene, animated: true)
+//        vc.present(navigationController, animated: true, completion: nil)
     }
     
     
