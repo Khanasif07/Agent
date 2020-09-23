@@ -35,6 +35,7 @@ class ProfileVM {
             self.userModel = UserModel(json[ApiKey.data])
             AppUserDefaults.save(value: json[ApiKey.data][ApiKey.phoneVerified].boolValue, forKey: .phoneNoVerified)
             AppUserDefaults.save(value: json[ApiKey.data][ApiKey.emailVerified].boolValue, forKey: .emailVerified)
+            
             self.delegate?.getProfileDataSuccess(msg:msg)
             printDebug(json)
         }) { [weak self] (error) in

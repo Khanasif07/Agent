@@ -216,8 +216,12 @@ enum AppRouter {
     
     static func presentLocationPopUpVC(vc: UIViewController){
         let scene = LocationPopUpVC.instantiate(fromAppStoryboard: .UserHomeScreen)
+        scene.onAllowTap = {
+            AppRouter.goToTyreRequestedVC(vc: vc)
+        }
         vc.modalPresentationStyle = .overFullScreen
         vc.present(scene, animated: true, completion: nil)
+        
     }
     
     

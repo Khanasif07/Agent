@@ -34,7 +34,7 @@ class LocationPopUpVC: BaseVC {
     private var locationManager = CLLocationManager()
     private var isLocationEnable : Bool = true
     private var isHitApi: Bool = false
-    
+    var onAllowTap: (()->())?
     // MARK: - Lifecycle
     //===========================
     override func viewDidLoad() {
@@ -136,8 +136,9 @@ extension LocationPopUpVC: LocationPopUpVMDelegate{
     }
     
     func postTyreRequestSuccess(message: String) {
-        self.dismiss(animated: true, completion: nil)
-        AppRouter.goToTyreRequestedVC(vc: self)
+        self.dismiss(animated: false) {
+            self.onAllowTap?()
+        }
     }
 }
 
