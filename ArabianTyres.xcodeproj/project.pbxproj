@@ -73,6 +73,8 @@
 		844EB7262519C012003A6E3F /* TyreCountryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844EB7252519C012003A6E3F /* TyreCountryModel.swift */; };
 		846352D02511E34E004216F1 /* AddImageCollCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846352CE2511E34E004216F1 /* AddImageCollCell.swift */; };
 		846352D12511E34E004216F1 /* AddImageCollCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 846352CF2511E34E004216F1 /* AddImageCollCell.xib */; };
+		8470D1FA251B36C700790768 /* GarageProfileHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8470D1F8251B36C700790768 /* GarageProfileHeaderCell.swift */; };
+		8470D1FB251B36C700790768 /* GarageProfileHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8470D1F9251B36C700790768 /* GarageProfileHeaderCell.xib */; };
 		847BC423250774E100EEEFDC /* ResetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847BC422250774E100EEEFDC /* ResetPasswordVC.swift */; };
 		847BC425250796CB00EEEFDC /* ResetPasswordVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847BC424250796CB00EEEFDC /* ResetPasswordVM.swift */; };
 		8481F9FD2500AA9A00AB6EFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481F9FC2500AA9A00AB6EFB /* AppDelegate.swift */; };
@@ -262,6 +264,8 @@
 		844EB7252519C012003A6E3F /* TyreCountryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TyreCountryModel.swift; sourceTree = "<group>"; };
 		846352CE2511E34E004216F1 /* AddImageCollCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageCollCell.swift; sourceTree = "<group>"; };
 		846352CF2511E34E004216F1 /* AddImageCollCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddImageCollCell.xib; sourceTree = "<group>"; };
+		8470D1F8251B36C700790768 /* GarageProfileHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageProfileHeaderCell.swift; sourceTree = "<group>"; };
+		8470D1F9251B36C700790768 /* GarageProfileHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GarageProfileHeaderCell.xib; sourceTree = "<group>"; };
 		847BC422250774E100EEEFDC /* ResetPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordVC.swift; sourceTree = "<group>"; };
 		847BC424250796CB00EEEFDC /* ResetPasswordVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordVM.swift; sourceTree = "<group>"; };
 		8481F9F92500AA9A00AB6EFB /* ArabianTyres.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArabianTyres.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -708,6 +712,15 @@
 			path = GarageAddImageVC;
 			sourceTree = "<group>";
 		};
+		8470D1F7251B36A600790768 /* GarageProfileVC */ = {
+			isa = PBXGroup;
+			children = (
+				8470D1F8251B36C700790768 /* GarageProfileHeaderCell.swift */,
+				8470D1F9251B36C700790768 /* GarageProfileHeaderCell.xib */,
+			);
+			path = GarageProfileVC;
+			sourceTree = "<group>";
+		};
 		847BC421250774D000EEEFDC /* ResetPasswordVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -1040,6 +1053,7 @@
 		8481FA87250107C000AB6EFB /* PostloginVC */ = {
 			isa = PBXGroup;
 			children = (
+				8470D1F7251B36A600790768 /* GarageProfileVC */,
 				A4A6DEEC251A157C00564020 /* GarageHomeVC */,
 				844EB71125187CA8003A6E3F /* URTyreSizeVC */,
 				842B2FC625133CAC00E3CF67 /* BankListingVC */,
@@ -1358,6 +1372,7 @@
 				8481FA9B2501439700AB6EFB /* NunitoSans-ExtraLightItalic.ttf in Resources */,
 				A413B97D250A44410004C534 /* CustomTextView.xib in Resources */,
 				844CBD232501FFC0009BE668 /* LoginEmailPhoneTableCell.xib in Resources */,
+				8470D1FB251B36C700790768 /* GarageProfileHeaderCell.xib in Resources */,
 				844CBD1F2501FA31009BE668 /* LoginSocialTableCell.xib in Resources */,
 				8481FAA5250143C500AB6EFB /* NunitoSans-SemiBold.ttf in Resources */,
 				8481FA912501436600AB6EFB /* NunitoSans-Bold.ttf in Resources */,
@@ -1597,6 +1612,7 @@
 				A4A6DEE8251A123800564020 /* GarageSettingVC.swift in Sources */,
 				844956332510982C00846ED9 /* GarageAddImageVC.swift in Sources */,
 				8481FA412500BE3800AB6EFB /* UILabelExtension.swift in Sources */,
+				8470D1FA251B36C700790768 /* GarageProfileHeaderCell.swift in Sources */,
 				A45707C32513B137003BE7DD /* TyreBrandVC.swift in Sources */,
 				843C8EC92508B0AE00515F2E /* AGTableView.swift in Sources */,
 				A4B74CCB2510CF6C00771974 /* GarageProfileStep2VC.swift in Sources */,

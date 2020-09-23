@@ -35,7 +35,8 @@ enum AppRouter {
             }
             switch isCurrentUserType {
             case .user:
-                AppRouter.goToUserHome()
+                 AppRouter.goToGarageHome()
+//                AppRouter.goToUserHome()
             default:
                 let lang = AppUserDefaults.value(forKey: .currentLanguage).stringValue
                 AppUserDefaults.removeAllValues()
@@ -215,7 +216,6 @@ enum AppRouter {
     
     static func presentLocationPopUpVC(vc: UIViewController){
         let scene = LocationPopUpVC.instantiate(fromAppStoryboard: .UserHomeScreen)
-//        let navigationController = UINavigationController(rootViewController: scene)
         vc.modalPresentationStyle = .overFullScreen
         vc.present(scene, animated: true, completion: nil)
     }

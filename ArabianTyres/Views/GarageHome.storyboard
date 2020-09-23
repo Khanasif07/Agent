@@ -21,7 +21,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Under Development" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VLJ-7o-xPO">
-                                <rect key="frame" x="128" y="439" width="157" height="23.5"/>
+                                <rect key="frame" x="128.5" y="439" width="157" height="23.5"/>
                                 <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -49,7 +49,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Under Development" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cXX-c1-ruU">
-                                <rect key="frame" x="128" y="439" width="157" height="23.5"/>
+                                <rect key="frame" x="128.5" y="439" width="157" height="23.5"/>
                                 <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -76,25 +76,76 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Under Development" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UH0-AP-5sv">
-                                <rect key="frame" x="128" y="439" width="157" height="23.5"/>
-                                <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LxT-be-8ys">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jjp-Ve-QZH">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="358.5"/>
+                                        <color key="backgroundColor" red="0.1960784314" green="0.30980392159999998" blue="0.76470588240000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </imageView>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vNV-c7-uFg">
+                                        <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MGY-jR-Li1">
+                                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mlb-lx-XYQ">
+                                                <rect key="frame" x="181.5" y="10.5" width="51" height="23.5"/>
+                                                <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
+                                                <color key="textColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F4J-LI-kJm">
+                                                <rect key="frame" x="370" y="8" width="28" height="28"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" image="group3835"/>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="mlb-lx-XYQ" firstAttribute="centerY" secondItem="MGY-jR-Li1" secondAttribute="centerY" id="0cv-gr-SYe"/>
+                                            <constraint firstAttribute="height" constant="44" id="JrR-j6-5eQ"/>
+                                            <constraint firstAttribute="trailing" secondItem="F4J-LI-kJm" secondAttribute="trailing" constant="16" id="LvU-dk-3yS"/>
+                                            <constraint firstItem="mlb-lx-XYQ" firstAttribute="centerX" secondItem="MGY-jR-Li1" secondAttribute="centerX" id="tvk-se-xtN"/>
+                                            <constraint firstItem="F4J-LI-kJm" firstAttribute="centerY" secondItem="MGY-jR-Li1" secondAttribute="centerY" id="yBW-xP-EVm"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="MGY-jR-Li1" secondAttribute="trailing" id="3Gz-er-Fpe"/>
+                                    <constraint firstItem="MGY-jR-Li1" firstAttribute="leading" secondItem="LxT-be-8ys" secondAttribute="leading" id="9Rb-dy-jIx"/>
+                                    <constraint firstAttribute="trailing" secondItem="vNV-c7-uFg" secondAttribute="trailing" id="Fnt-Z4-QlE"/>
+                                    <constraint firstItem="Jjp-Ve-QZH" firstAttribute="leading" secondItem="LxT-be-8ys" secondAttribute="leading" id="GV9-uw-vHR"/>
+                                    <constraint firstItem="Jjp-Ve-QZH" firstAttribute="top" secondItem="LxT-be-8ys" secondAttribute="top" id="KjE-jK-IVS"/>
+                                    <constraint firstItem="vNV-c7-uFg" firstAttribute="leading" secondItem="LxT-be-8ys" secondAttribute="leading" id="V4A-kM-qhd"/>
+                                    <constraint firstItem="vNV-c7-uFg" firstAttribute="top" secondItem="MGY-jR-Li1" secondAttribute="bottom" id="WeT-zg-dD3"/>
+                                    <constraint firstItem="Jjp-Ve-QZH" firstAttribute="height" secondItem="LxT-be-8ys" secondAttribute="height" multiplier="0.4" id="WkX-XR-8zj"/>
+                                    <constraint firstAttribute="bottom" secondItem="vNV-c7-uFg" secondAttribute="bottom" id="crY-pU-B8k"/>
+                                    <constraint firstAttribute="trailing" secondItem="Jjp-Ve-QZH" secondAttribute="trailing" id="vV9-OO-piA"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="UH0-AP-5sv" firstAttribute="centerX" secondItem="XgF-dV-8O5" secondAttribute="centerX" id="0rt-2P-ZNp"/>
-                            <constraint firstItem="UH0-AP-5sv" firstAttribute="centerY" secondItem="XgF-dV-8O5" secondAttribute="centerY" id="7Yt-xI-TEa"/>
+                            <constraint firstItem="LxT-be-8ys" firstAttribute="leading" secondItem="XgF-dV-8O5" secondAttribute="leading" id="Cj9-HI-a9e"/>
+                            <constraint firstItem="MGY-jR-Li1" firstAttribute="top" secondItem="XgF-dV-8O5" secondAttribute="top" id="OEe-Fo-gxa"/>
+                            <constraint firstItem="LxT-be-8ys" firstAttribute="bottom" secondItem="DdV-d1-SXV" secondAttribute="bottom" id="UAS-5m-9CQ"/>
+                            <constraint firstAttribute="top" secondItem="LxT-be-8ys" secondAttribute="top" id="f6q-kh-wgy"/>
+                            <constraint firstItem="XgF-dV-8O5" firstAttribute="trailing" secondItem="LxT-be-8ys" secondAttribute="trailing" id="iQv-M8-gB6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XgF-dV-8O5"/>
                     </view>
                     <navigationItem key="navigationItem" id="x64-wc-a7W"/>
+                    <connections>
+                        <outlet property="mainTableView" destination="vNV-c7-uFg" id="6qc-9O-8VT"/>
+                        <outlet property="titleLbl" destination="mlb-lx-XYQ" id="9Xe-x0-Q6c"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gkl-ye-8u1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="858" y="1590"/>
+            <point key="canvasLocation" x="857.97101449275374" y="1589.7321428571429"/>
         </scene>
         <!--Garage HomeVC-->
         <scene sceneID="hax-d7-JBa">
@@ -244,11 +295,10 @@
         <!--Navigation Controller-->
         <scene sceneID="YTq-sB-aO1">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="v0w-pZ-lRp" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="v0w-pZ-lRp" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="profile" selectedImage="profile" id="B2H-DX-Ocm"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Sm1-xJ-9xR">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -262,6 +312,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="group3835" width="28" height="28"/>
         <image name="home" width="60" height="60"/>
         <image name="homeSelected" width="34" height="34"/>
         <image name="profile" width="34" height="34"/>
