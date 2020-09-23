@@ -8,6 +8,7 @@
 
 import UIKit
 import SkyFloatingLabelTextField
+import TTRangeSlider
 
 class GarageProfileStep2VC: BaseVC {
 
@@ -25,7 +26,7 @@ class GarageProfileStep2VC: BaseVC {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var customView : CustomTextView!
     @IBOutlet weak var customCollViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var rangeSlider: RangeSlider!
+    @IBOutlet weak var rangeSlider: TTRangeSlider!
   
     // MARK: - Variables
     //===========================
@@ -103,16 +104,31 @@ class GarageProfileStep2VC: BaseVC {
 extension GarageProfileStep2VC {
 
     private func initialSetup() {
-        rangeSlider.delegate = self
         setupTextAndFont()
         setupCustomView()
         saveAndContinueBtn.isEnabled = true
         self.collViewSetUp()
+        handleRangeSlider()
 //        rangeSlider.resetSlider(value: 2500)
     }
-
+    
+    private func handleRangeSlider(){
+        rangeSlider.minLabelFont = AppFonts.NunitoSansSemiBold.withSize(12.0)
+        rangeSlider.maxLabelFont = AppFonts.NunitoSansSemiBold.withSize(12.0)
+        rangeSlider.handleImage = #imageLiteral(resourceName: "slider")
+        rangeSlider.delegate = self
+        rangeSlider.minValue = 500
+        rangeSlider.maxValue = 2500
+        rangeSlider.selectedMinimum = 500
+        rangeSlider.selectedMaximum = 800
+        rangeSlider.selectedHandleDiameterMultiplier = 1
+        let formatter = NumberFormatter()
+        formatter.positiveSuffix = "SAR"
+        rangeSlider.numberFormatterOverride = formatter
+    }
+    
     private func setupTextAndFont(){
-        serviceCenterNameLbl.font = AppFonts.NunitoSansSemiBold.withSize(12.0)
+        serviceCenterNameLbl.font = AppFonts.NunitoSansSemiBold.withSize(13.0)
         titleLbl.font = AppFonts.NunitoSansBold.withSize(17.0)
         headingLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
         helpBtn.titleLabel?.font =  AppFonts.NunitoSansSemiBold.withSize(17.0)
@@ -279,9 +295,12 @@ extension GarageProfileStep2VC: UICollectionViewDelegate,UICollectionViewDataSou
     }
 }
 
-extension GarageProfileStep2VC :RangeSliderDelegate{
-    func rangeSlider(selectedValue: Int) {
-        printDebug(selectedValue)
+extension GarageProfileStep2VC : TTRangeSliderDelegate{
+    func didEndTouches(in sender: TTRangeSlider!) {
+        GarageProfileModel.shared.maxInstallationPrice = Int(sender.selectedMaximum.rounded())
+        GarageProfileModel.shared.minInstallationPrice = Int(sender.selectedMinimum.rounded())
+        printDebug(sender.selectedMinimum.rounded())
+        printDebug(sender.selectedMaximum.rounded())
     }
 }
 

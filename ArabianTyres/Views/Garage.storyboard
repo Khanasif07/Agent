@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -33,7 +34,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aoL-qe-Qst">
-                                        <rect key="frame" x="6" y="14" width="36" height="34"/>
+                                        <rect key="frame" x="6" y="-3" width="72" height="68"/>
                                         <state key="normal" image="icBackward"/>
                                         <connections>
                                             <action selector="backBtnAction:" destination="KzW-Im-RfD" eventType="touchUpInside" id="ves-IB-WFY"/>
@@ -264,7 +265,7 @@ Service Center</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q61-dS-rD9">
-                                        <rect key="frame" x="6" y="14" width="36" height="34"/>
+                                        <rect key="frame" x="6" y="-3" width="72" height="68"/>
                                         <state key="normal" image="icBackward"/>
                                         <connections>
                                             <action selector="backBtnAction:" destination="09l-eL-0NZ" eventType="touchUpInside" id="ZBT-7N-ZLb"/>
@@ -439,7 +440,7 @@ Service Center</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4tI-oY-Y8Z">
-                                        <rect key="frame" x="6" y="14" width="36" height="34"/>
+                                        <rect key="frame" x="6" y="-3" width="72" height="68"/>
                                         <state key="normal" image="icBackward"/>
                                         <connections>
                                             <action selector="backBtnAction:" destination="jHb-qK-wSR" eventType="touchUpInside" id="44y-qN-4lJ"/>
@@ -599,7 +600,7 @@ Service Center</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VR2-mA-OKd">
-                                        <rect key="frame" x="6" y="14" width="36" height="34"/>
+                                        <rect key="frame" x="6" y="-3" width="72" height="68"/>
                                         <state key="normal" image="icBackward"/>
                                         <connections>
                                             <action selector="backBtnAction:" destination="ned-sa-trC" eventType="touchUpInside" id="8nQ-6Z-zFX"/>
@@ -827,7 +828,7 @@ Service Center</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fwA-Xg-fpL">
-                                        <rect key="frame" x="6" y="14" width="36" height="34"/>
+                                        <rect key="frame" x="6" y="-3" width="72" height="68"/>
                                         <state key="normal" image="icBackward"/>
                                         <connections>
                                             <action selector="backBtnAction:" destination="KzW-Im-RfD" eventType="touchUpInside" id="6fg-cM-fc7"/>
@@ -1026,7 +1027,7 @@ Service Center</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TEE-8I-aOG">
-                                        <rect key="frame" x="6" y="14" width="36" height="34"/>
+                                        <rect key="frame" x="6" y="-3" width="72" height="68"/>
                                         <state key="normal" image="icBackward"/>
                                         <connections>
                                             <action selector="backBtnAction:" destination="1bs-SP-OPu" eventType="touchUpInside" id="Kgs-tx-1II"/>
@@ -1267,7 +1268,7 @@ Service Center</string>
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="796"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ere-Qe-KAg">
-                                                <rect key="frame" x="22" y="16" width="376" height="449"/>
+                                                <rect key="frame" x="22" y="16" width="376" height="427"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Service Center Image" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ha9-5f-5ZK">
                                                         <rect key="frame" x="16" y="13" width="344" height="21"/>
@@ -1302,15 +1303,45 @@ Service Center</string>
                                                         <color key="textColor" red="0.54117647059999996" green="0.58431372550000005" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TKP-lo-rZl" customClass="RangeSlider" customModule="ArabianTyres" customModuleProvider="target">
-                                                        <rect key="frame" x="16" y="270" width="344" height="77"/>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TKP-lo-rZl" customClass="TTRangeSlider">
+                                                        <rect key="frame" x="16" y="275" width="344" height="50"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <color key="tintColor" red="0.89411764705882346" green="0.89803921568627454" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="77" id="fhk-K7-LrC"/>
+                                                            <constraint firstAttribute="height" constant="50" id="fhk-K7-LrC"/>
                                                         </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="tintColorBetweenHandles">
+                                                                <color key="value" red="0.16078431372549018" green="0.25882352941176467" blue="0.62352941176470589" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="lineBorderColor">
+                                                                <color key="value" name="collectionViewBackground"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="minLabelColour">
+                                                                <color key="value" red="0.2627450980392157" green="0.69411764705882351" blue="0.32941176470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="maxLabelColour">
+                                                                <color key="value" red="0.2627450980392157" green="0.69411764705882351" blue="0.32941176470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="lineHeight">
+                                                                <real key="value" value="7"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="minValue">
+                                                                <real key="value" value="500"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
+                                                                <real key="value" value="2500"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="selectedMinimum">
+                                                                <real key="value" value="500"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="selectedMaximum">
+                                                                <real key="value" value="1000"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EKp-hc-NiD" customClass="AppButton" customModule="ArabianTyres" customModuleProvider="target">
-                                                        <rect key="frame" x="143" y="377" width="217" height="56"/>
+                                                        <rect key="frame" x="143" y="355" width="217" height="56"/>
                                                         <color key="backgroundColor" red="0.090196078430000007" green="0.1450980392" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="56" id="A9D-BC-74J"/>
@@ -1342,7 +1373,7 @@ Service Center</string>
                                                     <constraint firstItem="ha9-5f-5ZK" firstAttribute="top" secondItem="ere-Qe-KAg" secondAttribute="top" constant="13" id="VbZ-mz-0CZ"/>
                                                     <constraint firstAttribute="trailing" secondItem="LgW-Cw-ewW" secondAttribute="trailing" constant="16" id="b5H-jL-YUp"/>
                                                     <constraint firstItem="yH4-3a-ZcD" firstAttribute="trailing" secondItem="ha9-5f-5ZK" secondAttribute="trailing" id="cd8-WT-zQ2"/>
-                                                    <constraint firstItem="TKP-lo-rZl" firstAttribute="top" secondItem="rno-ni-gNR" secondAttribute="bottom" constant="15" id="eEY-9b-Axc"/>
+                                                    <constraint firstItem="TKP-lo-rZl" firstAttribute="top" secondItem="rno-ni-gNR" secondAttribute="bottom" constant="20" id="eEY-9b-Axc"/>
                                                     <constraint firstAttribute="bottom" secondItem="EKp-hc-NiD" secondAttribute="bottom" constant="16" id="eek-cD-jeI"/>
                                                     <constraint firstItem="rno-ni-gNR" firstAttribute="top" secondItem="yH4-3a-ZcD" secondAttribute="bottom" constant="32" id="fTS-Ba-wMd"/>
                                                     <constraint firstItem="LgW-Cw-ewW" firstAttribute="leading" secondItem="ha9-5f-5ZK" secondAttribute="leading" id="iAZ-dE-Eup"/>
@@ -1534,5 +1565,8 @@ Service Center</string>
         <image name="icImg" width="32.5" height="32"/>
         <image name="icTopArrow" width="20.5" height="21"/>
         <image name="icUnCheck" width="30" height="30"/>
+        <namedColor name="collectionViewBackground">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
     </resources>
 </document>

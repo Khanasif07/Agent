@@ -39,9 +39,6 @@ class TyreBrandVC: BaseVC {
                                  LocalizedString.vehicleModel.localized,
                                  LocalizedString.modelYear.localized
                                 ]
-//    var brandListingArr :[String] = []
-//    var countryListingArr :[String] = []
-//    var listingType : ListingType = .brands
     var brandListingArr :[TyreBrandModel] = []
     var countryListingArr :[TyreCountryModel] = []
     var listingType : ListingType = .brands
@@ -93,6 +90,10 @@ class TyreBrandVC: BaseVC {
     }
     
     @IBAction func countryCheckBtnAction(_ sender: UIButton) {
+        countryListingArr = []
+        countryOriginCustomView.collView.isHidden = true
+        countryOriginCustomView.floatLbl.isHidden = true
+        countryOriginCustomView.collView.reloadData()
         countryOriginCheckBtn.isSelected.toggle()
         countryOriginViewHeightConstraint.constant = countryOriginCheckBtn.isSelected ? 60.0 : 0.0
     }

@@ -76,7 +76,6 @@ extension BrandsListingVC {
     
     private func initialSetup() {
         self.viewModel.delegate = self
-        selectedDataSource()
         setupTextAndFont()
         mainTableView.delegate = self
         mainTableView.dataSource = self
@@ -87,7 +86,6 @@ extension BrandsListingVC {
         } else {
             self.hitCountryListingApi()
         }
-        
     }
     
     private func hitBrandListingApi(){
@@ -193,6 +191,7 @@ extension BrandsListingVC : UITableViewDelegate, UITableViewDataSource {
         let view = tableView.dequeueHeaderFooter(with: FacilityTableHeaderView.self)
         view.bottomView.backgroundColor = #colorLiteral(red: 0.9294117647, green: 0.9294117647, blue: 0.9294117647, alpha: 1)
         view.categoryName.text = listingType == .brands ? self.viewModel.brandsListings[section].name : self.viewModel.countryListings[section].name
+        view.arrowImg.isHidden = section == 0 ? true : false
         view.arrowImg.setImage_kf(imageString: listingType == .brands ? self.viewModel.brandsListings[section].iconImage : self.viewModel.countryListings[section].flag, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: true)
         view.checkBtn.isSelected = selectedIndexPath.contains(section) || selectedIndexPath.contains(0)
         
@@ -254,6 +253,7 @@ extension BrandsListingVC : UITableViewDelegate, UITableViewDataSource {
 //===========================
 extension BrandsListingVC: BrandsListingVMDelegate{
     func countryListingSuccess(message: String) {
+        selectedDataSource()
         self.mainTableView.reloadData()
     }
     
@@ -262,6 +262,7 @@ extension BrandsListingVC: BrandsListingVMDelegate{
     }
     
     func brandListingSuccess(message: String) {
+        selectedDataSource()
         self.mainTableView.reloadData()
     }
     
