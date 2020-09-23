@@ -258,7 +258,7 @@ extension BrandsListingVC: BrandsListingVMDelegate{
     }
     
     func countryListingFailed(error: String) {
-        
+        ToastView.shared.showLongToast(self.view, msg: error)
     }
     
     func brandListingSuccess(message: String) {
@@ -266,5 +266,6 @@ extension BrandsListingVC: BrandsListingVMDelegate{
     }
     
     func brandListingFailed(error: String) {
+        ToastView.shared.showLongToast(self.view, msg: error)
     }
 }

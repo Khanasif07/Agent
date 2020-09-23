@@ -257,7 +257,6 @@ extension TyreBrandVC : CustomTextViewDelegate{
     
     private func openSheet(listingType: ListingType) {
         tyreBrandCustomView.collView.isHidden = false
-    //    AppRouter.goToBrandsListingVC(vc: self, listingType: listingType, data : listingType == .brands ? brandListingArr : countryListingArr)
         AppRouter.goToBrandsListingVC(vc: self, listingType: listingType,brandsData :  brandListingArr , countryData: countryListingArr)
     }
 }
@@ -266,12 +265,12 @@ extension TyreBrandVC: BrandsListnig {
    
     func listing(listingType : ListingType,BrandsListings: [TyreBrandModel],countryListings: [TyreCountryModel]) {
         if listingType == .brands {
-//            brandListingArr = data
-  //          TyreRequestModel.shared.tyreBrands = brandListingArr
-
+            brandListingArr = BrandsListings
             self.listingType = listingType
             brandListingArr = BrandsListings
-//            TyreRequestModel.shared.tyreBrands = BrandsListings
+            TyreRequestModel.shared.tyreBrands = BrandsListings.map({ (tyreModel) -> String in
+                return tyreModel.id
+            })
             self.submitBtn.isEnabled = submitBtnStatus()
             tyreBrandCheckBtn.isSelected = !brandListingArr.isEmpty
             tyreBrandCustomView.collView.isHidden = brandListingArr.isEmpty
@@ -279,11 +278,11 @@ extension TyreBrandVC: BrandsListnig {
             tyreBrandCustomView.collView.reloadData()
            
         }else {
-
-//            TyreRequestModel.shared.countries = countryListings
             self.listingType = listingType
             countryListingArr = countryListings
-//            TyreRequestModel.shared.countries = data
+            TyreRequestModel.shared.countries = countryListings.map({ (tyreCountryModel) -> String in
+                return tyreCountryModel.name
+            })
             self.submitBtn.isEnabled = submitBtnStatus()
             countryOriginCheckBtn.isSelected = !countryListingArr.isEmpty
             countryOriginCustomView.collView.isHidden = countryListingArr.isEmpty

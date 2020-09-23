@@ -26,7 +26,6 @@ enum AppRouter {
     // MARK: - Show Landing Screen
     //===========================
     static func checkAppInitializationFlow() {
-//        goToTestingVC()
         if isUserLoggedin {
             if !isPhoneNoVerified{
                 AppUserDefaults.removeValue(forKey: .accesstoken)
@@ -100,13 +99,14 @@ enum AppRouter {
         scene.delegate = vc
         scene.titleLbl = title
         scene.desc = desc
+        vc.modalPresentationStyle = .fullScreen
         vc.present(scene, animated: true, completion: nil)
     }
     
     static func showCountryVC(vc: UIViewController & CountryDelegate){
         let scene = CountryVC.instantiate(fromAppStoryboard: .Prelogin)
         scene.countryDelegate = vc
-        scene.modalPresentationStyle = .fullScreen
+        vc.modalPresentationStyle = .fullScreen
         vc.present(scene, animated: true, completion: nil)
     }
     
@@ -158,8 +158,6 @@ enum AppRouter {
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
-    
-    
     static func goToTyreRequestedVC(vc: UIViewController){
         let scene = TyreRequestedVC.instantiate(fromAppStoryboard: .UserHomeScreen)
         vc.navigationController?.pushViewController(scene, animated: true)
@@ -199,7 +197,8 @@ enum AppRouter {
     
     static func goToBankListingVC(vc: UIViewController){
         let scene = BankListingVC.instantiate(fromAppStoryboard: .PostLogin)
-        scene.bankDelegate = vc as? BankListingVMDelegate 
+        scene.bankDelegate = vc as? BankListingVMDelegate
+        vc.modalPresentationStyle = .fullScreen
         vc.present(scene, animated: true)
     }
     
@@ -216,7 +215,9 @@ enum AppRouter {
     
     static func presentLocationPopUpVC(vc: UIViewController){
         let scene = LocationPopUpVC.instantiate(fromAppStoryboard: .UserHomeScreen)
-        vc.navigationController?.present(scene, animated: true, completion: nil)
+        let navigationController = UINavigationController(rootViewController: scene)
+        navigationController.modalPresentationStyle = .overFullScreen
+        vc.present(navigationController, animated: true, completion: nil)
     }
     
     
@@ -229,6 +230,7 @@ enum AppRouter {
     static func goToFacilityVC(vc: UIViewController){
         let scene = FacilityVC.instantiate(fromAppStoryboard: .Garage)
         scene.delegate = vc as? FacilitiesDelegate
+        vc.modalPresentationStyle = .fullScreen
         vc.present(scene, animated: true)
     }
     
@@ -241,6 +243,7 @@ enum AppRouter {
         }
         scene.delegate = vc as? BrandsListnig
         scene.listingType = listingType
+        vc.modalPresentationStyle = .fullScreen
         vc.present(scene, animated: true)
     }
     
@@ -257,7 +260,6 @@ enum AppRouter {
                     ToastView.shared.showLongToast(topVC.view, msg: error.localizedDescription)
                 }
             }))
-            
             topVC.present(alert, animated: true, completion: nil)
         }else {
             if let topVC = AppDelegate.shared.topViewController() {

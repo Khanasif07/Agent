@@ -129,28 +129,28 @@ extension URTyreStep1VC {
 
 extension URTyreStep1VC: UITextFieldDelegate{
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        if textField == widthTxtField {
-            if let text = textField.text {
-                if text.isEmpty{
-                    widthTxtField.text = self.widthPicker.dataArray.first
-                    TyreRequestModel.shared.width = text
-                }}
-            tempTextField = widthTxtField
-        } else if textField == profileTxtField {
-            if let text = textField.text {
-                if text.isEmpty{
-                    profileTxtField.text = self.profilePicker.dataArray.first
-                    TyreRequestModel.shared.profile = text
-                }}
-            tempTextField = profileTxtField
-        } else if textField == rimSizeTxtField {
-            if let text = textField.text {
-                if text.isEmpty{
-                    rimSizeTxtField.text = self.rimSizePicker.dataArray.first
-                    TyreRequestModel.shared.rimSize = text
-                }}
-            tempTextField = rimSizeTxtField }
-        else {}
+//        if textField == widthTxtField {
+//            if let text = textField.text {
+//                if text.isEmpty{
+//                    widthTxtField.text = self.widthPicker.dataArray.first
+//                    TyreRequestModel.shared.width = text
+//                }}
+//            tempTextField = widthTxtField
+//        } else if textField == profileTxtField {
+//            if let text = textField.text {
+//                if text.isEmpty{
+//                    profileTxtField.text = self.profilePicker.dataArray.first
+//                    TyreRequestModel.shared.profile = text
+//                }}
+//            tempTextField = profileTxtField
+//        } else if textField == rimSizeTxtField {
+//            if let text = textField.text {
+//                if text.isEmpty{
+//                    rimSizeTxtField.text = self.rimSizePicker.dataArray.first
+//                    TyreRequestModel.shared.rimSize = text
+//                }}
+//            tempTextField = rimSizeTxtField }
+//        else {}
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -161,6 +161,35 @@ extension URTyreStep1VC: UITextFieldDelegate{
         default:
             printDebug("Do nothing")
         }
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if textField == widthTxtField {
+            if let text = textField.text {
+                if text.isEmpty{
+                    widthTxtField.text = self.widthPicker.dataArray.first
+                    TyreRequestModel.shared.width = text
+                }}
+            tempTextField = widthTxtField
+            return true
+        } else if textField == profileTxtField {
+            if let text = textField.text {
+                if text.isEmpty{
+                    profileTxtField.text = self.profilePicker.dataArray.first
+                    TyreRequestModel.shared.profile = text
+                }}
+            tempTextField = profileTxtField
+            return true
+        } else if textField == rimSizeTxtField {
+            if let text = textField.text {
+                if text.isEmpty{
+                    rimSizeTxtField.text = self.rimSizePicker.dataArray.first
+                    TyreRequestModel.shared.rimSize = text
+                }}
+            tempTextField = rimSizeTxtField
+            return true
+        }
+        else {return true }
     }
 }
 
