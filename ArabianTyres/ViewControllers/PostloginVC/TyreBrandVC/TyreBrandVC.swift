@@ -111,16 +111,13 @@ extension TyreBrandVC {
     }
     
     private func setupTextFont() {
-       
         countryOriginLbl.text = LocalizedString.countryOrigin.localized
         tyreBrandLbl.text = LocalizedString.tyreBrand.localized
-        
         countryOriginLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
         tyreBrandLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
         thePreferredLbl.text = LocalizedString.thePreferredOriginForMytyreWouldBe.localized
         setYourPrefernceLbl.text = LocalizedString.setYourPreferencesAmongTyreBrandOrCountryOrigin.localized
         submitBtn.setTitle(LocalizedString.submit.localized, for: .normal)
-
         thePreferredLbl.font = AppFonts.NunitoSansBold.withSize(21.0)
         setYourPrefernceLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
         submitBtn.titleLabel?.font =  AppFonts.NunitoSansSemiBold.withSize(16.0)
@@ -129,7 +126,7 @@ extension TyreBrandVC {
     }
     
     private func submitBtnStatus()-> Bool{
-        return !TyreRequestModel.shared.countries.isEmpty &&  !TyreRequestModel.shared.tyreBrands.isEmpty
+        return !TyreRequestModel.shared.countries.isEmpty
     }
     
     private func setupCustomView() {
@@ -138,8 +135,6 @@ extension TyreBrandVC {
         countryOriginCustomView.placeHolderTxt = LocalizedString.selectCountryOrigin.localized
         tyreBrandCustomView.floatLbl.text = LocalizedString.brands.localized
         countryOriginCustomView.floatLbl.text = LocalizedString.origin.localized
-
-        
         countryOriginCustomView.delegate = self
         tyreBrandCustomView.delegate = self
         tyreBrandCustomView.listingType = .brands
@@ -290,7 +285,6 @@ extension TyreBrandVC: BrandsListnig {
             TyreRequestModel.shared.countriesListing = countryListings.map({ (tyreCountryModel) -> String in
                 return tyreCountryModel.name
             })
-            self.submitBtn.isEnabled = submitBtnStatus()
             countryOriginCheckBtn.isSelected = !countryListingArr.isEmpty
             countryOriginCustomView.collView.isHidden = countryListingArr.isEmpty
             countryOriginCustomView.floatLbl.isHidden = countryListingArr.isEmpty

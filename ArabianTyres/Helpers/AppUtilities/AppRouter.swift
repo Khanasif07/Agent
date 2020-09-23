@@ -35,8 +35,7 @@ enum AppRouter {
             }
             switch isCurrentUserType {
             case .user:
-                 AppRouter.goToGarageHome()
-//                AppRouter.goToUserHome()
+                AppRouter.goToUserHome()
             default:
                 let lang = AppUserDefaults.value(forKey: .currentLanguage).stringValue
                 AppUserDefaults.removeAllValues()
@@ -219,7 +218,7 @@ enum AppRouter {
         scene.onAllowTap = {
             AppRouter.goToTyreRequestedVC(vc: vc)
         }
-        vc.modalPresentationStyle = .overFullScreen
+        vc.modalPresentationStyle = .fullScreen
         vc.present(scene, animated: true, completion: nil)
         
     }
