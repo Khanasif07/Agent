@@ -28,6 +28,7 @@ class CompleteProfileStep1: BaseVC {
 
     // MARK: - Variables
     //===========================
+    var viewModel = ProfileVM()
     var locationValue = LocationController.sharedLocationManager.locationManager.location?.coordinate ?? CLLocationCoordinate2D(latitude: GarageProfileModel.shared.latitude, longitude: GarageProfileModel.shared.longitude)
     private var locationManager = CLLocationManager()
     let markerView = UIImageView(frame:CGRect(x: 0, y: 0, width: 41, height: 56.0))
@@ -79,6 +80,7 @@ extension CompleteProfileStep1 {
         self.setUpTextField()
         self.prepareMap()
         self.setAddress()
+        self.viewModel.getMyProfileData(params: [:])
     }
     
     public func setUpTextField(){
