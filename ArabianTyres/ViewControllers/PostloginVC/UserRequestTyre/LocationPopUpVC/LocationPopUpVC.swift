@@ -46,8 +46,7 @@ class LocationPopUpVC: BaseVC {
     //===========================
     
     @IBAction func cancelBtnAction(_ sender: UIButton) {
-        self.pop()
-//        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func allowBtnAction(_ sender: UIButton) {
@@ -137,6 +136,7 @@ extension LocationPopUpVC: LocationPopUpVMDelegate{
     }
     
     func postTyreRequestSuccess(message: String) {
+        self.dismiss(animated: true, completion: nil)
         AppRouter.goToTyreRequestedVC(vc: self)
     }
 }
