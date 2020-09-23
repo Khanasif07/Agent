@@ -38,6 +38,7 @@ class AddAccountDetailVC: BaseVC {
                                LocalizedString.confirmAccountNo.localized
                               ]
     weak var bankDetailDelegate : BankDetail?
+    var screenType : AddAccountVC.ScreenType = .garageRegistration
 
     // MARK: - Lifecycle
     //===========================
@@ -78,6 +79,7 @@ extension AddAccountDetailVC {
     private func initialSetup() {
         setupTextAndFont()
         setupTextField()
+        setPreFillData()
         setData()
         addBtn.isEnabled = addBtnStatus()
     }
@@ -114,6 +116,15 @@ extension AddAccountDetailVC {
             selectYourBankTextField.text = GarageProfileModel.shared.bankName
             enterAccountNumberTextField.text = GarageProfileModel.shared.accountNumber
             confirmAccountNumberTextField.text = GarageProfileModel.shared.confirmAccountNumber
+        }
+    }
+    
+    func setPreFillData() {
+        if screenType == .garageProfile {
+            selectYourBankTextField.text = GarageProfileModel.shared.bankName
+            enterAccountNumberTextField.text = GarageProfileModel.shared.accountNumber
+            confirmAccountNumberTextField.text = GarageProfileModel.shared.accountNumber
+            addBtn.isEnabled = addBtnStatus()
         }
     }
 }

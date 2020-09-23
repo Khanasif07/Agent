@@ -214,12 +214,16 @@ extension BrandsListingVC : UITableViewDelegate, UITableViewDataSource {
                 }
             }else{
                 if self.selectedIndexPath.count == 1 &&  self.selectedIndexPath.contains(0) {
-                    self.selectedIndexPath = Array(1...self.viewModel.brandsListings.count - 1)
+                    self.selectedIndexPath = Array(1...(self.listingType == .brands ? (self.viewModel.brandsListings.count - 1) : (self.viewModel.countryListings.count - 1)))
                     self.selectedIndexPath.removeAll{($0 == section)}
                 }else {
                     
                     self.selectedIndexPath.contains(section) ? self.selectedIndexPath.removeAll{($0 == section)} : self.selectedIndexPath.append(section)
-                    self.selectedIndexPath = self.selectedIndexPath.count == self.viewModel.brandsListings.count - 1 ? [0] : self.selectedIndexPath
+                    if self.listingType == .brands {
+                      self.selectedIndexPath = self.selectedIndexPath.count == self.viewModel.brandsListings.count - 1 ? [0] : self.selectedIndexPath
+                    }else {
+                        self.selectedIndexPath = self.selectedIndexPath.count == self.viewModel.countryListings.count - 1 ? [0] : self.selectedIndexPath
+                    }
                 }
             }
             self.mainTableView.reloadData()

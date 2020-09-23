@@ -19,13 +19,23 @@ protocol ProfileVMDelegate: class {
     func sendVerificationLinkFailed(msg: String,error: Error)
 }
 
+extension ProfileVMDelegate {
+    func getProfileDataSuccess(msg: String){}
+    func getProfileDataFailed(msg: String, error: Error){}
+    func resendOtpSuccess(msg: String){}
+    func resendOtpFailed(msg: String, error: Error){}
+    func sendVerificationLinkSuccess(msg: String){}
+    func sendVerificationLinkFailed(msg: String,error: Error){}
+}
+
 class ProfileVM {
     
     // MARK: Variables
     //=================================
     weak var delegate: ProfileVMDelegate?
     var userModel = UserModel()
-    
+    var preFillModel = GarageProfilePreFillModel()
+
     // MARK: Functions
     //=================================
     func getMyProfileData(params: JSONDictionary,loader: Bool = false) {
@@ -36,6 +46,9 @@ class ProfileVM {
             AppUserDefaults.save(value: json[ApiKey.data][ApiKey.phoneVerified].boolValue, forKey: .phoneNoVerified)
             AppUserDefaults.save(value: json[ApiKey.data][ApiKey.emailVerified].boolValue, forKey: .emailVerified)
             
+            self.preFillModel = GarageProfilePreFillModel(json[ApiKey.data][ApiKey.garageProfile])
+            printDebug(self.preFillModel)
+            self.preFillModel.updateGarageProfileModel(self.preFillModel)
             self.delegate?.getProfileDataSuccess(msg:msg)
             printDebug(json)
         }) { [weak self] (error) in
