@@ -93,6 +93,10 @@ class TyreBrandVC: BaseVC {
     }
     
     @IBAction func countryCheckBtnAction(_ sender: UIButton) {
+        countryListingArr = []
+        countryOriginCustomView.collView.isHidden = true
+        countryOriginCustomView.floatLbl.isHidden = true
+        countryOriginCustomView.collView.reloadData()
         countryOriginCheckBtn.isSelected.toggle()
         countryOriginViewHeightConstraint.constant = countryOriginCheckBtn.isSelected ? 60.0 : 0.0
     }
@@ -256,7 +260,6 @@ extension TyreBrandVC : CustomTextViewDelegate{
     }
     
     private func openSheet(listingType: ListingType) {
-        tyreBrandCustomView.collView.isHidden = false
     //    AppRouter.goToBrandsListingVC(vc: self, listingType: listingType, data : listingType == .brands ? brandListingArr : countryListingArr)
         AppRouter.goToBrandsListingVC(vc: self, listingType: listingType,brandsData :  brandListingArr , countryData: countryListingArr)
     }
@@ -266,7 +269,6 @@ extension TyreBrandVC: BrandsListnig {
    
     func listing(listingType : ListingType,BrandsListings: [TyreBrandModel],countryListings: [TyreCountryModel]) {
         if listingType == .brands {
-//            brandListingArr = data
   //          TyreRequestModel.shared.tyreBrands = brandListingArr
 
             self.listingType = listingType
