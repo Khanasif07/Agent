@@ -489,16 +489,16 @@ brand or country origin</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oJG-MU-2Ug">
-                                        <rect key="frame" x="353" y="17" width="46" height="28"/>
+                                        <rect key="frame" x="329" y="17" width="70" height="28"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="46" id="J3a-KD-me9"/>
                                             <constraint firstAttribute="height" constant="28" id="Ksc-Sy-eJF"/>
                                         </constraints>
-                                        <state key="normal" title="Done">
-                                            <color key="titleColor" red="0.090196078430000007" green="0.1450980392" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="13"/>
+                                        <state key="normal" title="CLEAR ALL">
+                                            <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="doneBtnAction:" destination="ogJ-vs-Kpq" eventType="touchUpInside" id="lYc-cj-DgD"/>
+                                            <action selector="clearAllAction:" destination="ogJ-vs-Kpq" eventType="touchUpInside" id="ySV-yO-iCy"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FXz-Cc-NQB">
@@ -524,62 +524,84 @@ brand or country origin</string>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="0G9-P7-74R">
-                                <rect key="frame" x="0.0" y="100" width="414" height="796"/>
+                                <rect key="frame" x="0.0" y="200" width="414" height="581"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <view key="tableHeaderView" contentMode="scaleToFill" id="92H-OD-qJy">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="42"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brand’s Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uK6-xz-7eQ">
-                                            <rect key="frame" x="14" y="12" width="96" height="18"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qi9-3a-ZKK">
-                                            <rect key="frame" x="320" y="6" width="78" height="30"/>
-                                            <state key="normal" title="CLEAR ALL">
-                                                <color key="titleColor" red="0.78823529410000004" green="0.023529411760000001" blue="0.01176470588" alpha="1" colorSpace="calibratedRGB"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="clearAllAction:" destination="ogJ-vs-Kpq" eventType="touchUpInside" id="fTT-1c-PlG"/>
-                                            </connections>
-                                        </button>
-                                    </subviews>
-                                    <color key="backgroundColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.92941176469999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="Qi9-3a-ZKK" secondAttribute="trailing" constant="16" id="Euu-Oo-mfB"/>
-                                        <constraint firstItem="uK6-xz-7eQ" firstAttribute="centerY" secondItem="92H-OD-qJy" secondAttribute="centerY" id="bNx-WY-4Ds"/>
-                                        <constraint firstItem="uK6-xz-7eQ" firstAttribute="leading" secondItem="92H-OD-qJy" secondAttribute="leading" constant="14" id="nTm-tE-TCj"/>
-                                        <constraint firstItem="Qi9-3a-ZKK" firstAttribute="centerY" secondItem="uK6-xz-7eQ" secondAttribute="centerY" id="ncQ-dp-YYr"/>
-                                    </constraints>
-                                </view>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A6c-OE-OTu">
+                                <rect key="frame" x="0.0" y="116" width="414" height="82"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search Brand by name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ABq-cf-azy" customClass="ATCTextField" customModule="ArabianTyres" customModuleProvider="target">
+                                        <rect key="frame" x="16" y="14" width="382" height="52"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="382" id="ti5-Ol-DPj"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="textFieldChanged:" destination="ogJ-vs-Kpq" eventType="editingChanged" id="QmA-Ph-zjN"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="ABq-cf-azy" secondAttribute="trailing" constant="16" id="Cfs-qD-BVc"/>
+                                    <constraint firstItem="ABq-cf-azy" firstAttribute="top" secondItem="A6c-OE-OTu" secondAttribute="top" constant="14" id="LNg-w0-chd"/>
+                                    <constraint firstAttribute="bottom" secondItem="ABq-cf-azy" secondAttribute="bottom" constant="16" id="O3r-om-NG6"/>
+                                    <constraint firstAttribute="height" constant="82" id="kZZ-Ic-VOj"/>
+                                    <constraint firstItem="ABq-cf-azy" firstAttribute="leading" secondItem="A6c-OE-OTu" secondAttribute="leading" constant="16" id="qFg-eG-x2H"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OV1-7R-nyp" customClass="AppButton" customModule="ArabianTyres" customModuleProvider="target">
+                                <rect key="frame" x="22" y="796" width="370" height="56"/>
+                                <color key="backgroundColor" red="0.090196078430000007" green="0.1450980392" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="pVW-ba-WZe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="16"/>
+                                <state key="normal" title="Done">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="doneBtnAction:" destination="ogJ-vs-Kpq" eventType="touchUpInside" id="31r-L4-dIz"/>
+                                    <action selector="submitBtnAction:" destination="GOT-y6-IhY" eventType="touchUpInside" id="p1w-IW-ZeV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="5KR-pd-hJf" firstAttribute="trailing" secondItem="A6c-OE-OTu" secondAttribute="trailing" id="5sf-lb-ipo"/>
                             <constraint firstItem="AyA-H7-ojF" firstAttribute="top" secondItem="5KR-pd-hJf" secondAttribute="top" id="Cbr-pc-SnU"/>
-                            <constraint firstItem="0G9-P7-74R" firstAttribute="top" secondItem="AyA-H7-ojF" secondAttribute="bottom" id="PnX-5f-xy4"/>
+                            <constraint firstItem="OV1-7R-nyp" firstAttribute="top" secondItem="0G9-P7-74R" secondAttribute="bottom" constant="15" id="P7h-P2-s8a"/>
                             <constraint firstItem="0G9-P7-74R" firstAttribute="leading" secondItem="5KR-pd-hJf" secondAttribute="leading" id="QLF-oS-5Lx"/>
-                            <constraint firstAttribute="bottom" secondItem="0G9-P7-74R" secondAttribute="bottom" id="pz1-gv-je1"/>
+                            <constraint firstItem="0G9-P7-74R" firstAttribute="top" secondItem="A6c-OE-OTu" secondAttribute="bottom" constant="2" id="ScF-xg-zTt"/>
+                            <constraint firstItem="OV1-7R-nyp" firstAttribute="leading" secondItem="5KR-pd-hJf" secondAttribute="leading" constant="22" id="VSj-Av-CY6"/>
+                            <constraint firstItem="5KR-pd-hJf" firstAttribute="leading" secondItem="A6c-OE-OTu" secondAttribute="leading" id="VtJ-WH-T8p"/>
+                            <constraint firstItem="A6c-OE-OTu" firstAttribute="top" secondItem="AyA-H7-ojF" secondAttribute="bottom" constant="16" id="WrU-0I-Mbg"/>
+                            <constraint firstItem="5KR-pd-hJf" firstAttribute="bottom" secondItem="OV1-7R-nyp" secondAttribute="bottom" constant="10" id="bhc-gq-6KX"/>
                             <constraint firstItem="5KR-pd-hJf" firstAttribute="trailing" secondItem="0G9-P7-74R" secondAttribute="trailing" id="sTe-LM-QpU"/>
+                            <constraint firstItem="5KR-pd-hJf" firstAttribute="trailing" secondItem="OV1-7R-nyp" secondAttribute="trailing" constant="22" id="tbg-hH-M4H"/>
                             <constraint firstItem="AyA-H7-ojF" firstAttribute="leading" secondItem="5KR-pd-hJf" secondAttribute="leading" id="yFR-ax-wNM"/>
                             <constraint firstItem="AyA-H7-ojF" firstAttribute="trailing" secondItem="5KR-pd-hJf" secondAttribute="trailing" id="z3v-AP-3e0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5KR-pd-hJf"/>
                     </view>
                     <connections>
-                        <outlet property="brandLbl" destination="uK6-xz-7eQ" id="u3W-YK-gg7"/>
                         <outlet property="cancelBtn" destination="2Os-fy-5iw" id="e5P-Uz-Rpi"/>
-                        <outlet property="clearAllBtn" destination="Qi9-3a-ZKK" id="i8p-DM-0he"/>
-                        <outlet property="doneBtn" destination="oJG-MU-2Ug" id="PIz-iY-tBC"/>
+                        <outlet property="clearAllBtn" destination="oJG-MU-2Ug" id="Tjj-KB-Orb"/>
+                        <outlet property="doneBtn" destination="OV1-7R-nyp" id="Jec-Rf-SXx"/>
                         <outlet property="mainTableView" destination="0G9-P7-74R" id="pdR-EA-jEr"/>
+                        <outlet property="searchTxtField" destination="ABq-cf-azy" id="IHL-Es-gjR"/>
                         <outlet property="titleLbl" destination="RWt-7K-71T" id="vK8-hu-OtP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wm7-Xe-zz1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1713" y="86"/>
+            <point key="canvasLocation" x="1711.5942028985507" y="85.714285714285708"/>
         </scene>
         <!--Location Pop UpVC-->
         <scene sceneID="QjX-7F-vl6">

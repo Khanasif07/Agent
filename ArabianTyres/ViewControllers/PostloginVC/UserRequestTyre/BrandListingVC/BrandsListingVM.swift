@@ -22,6 +22,7 @@ class BrandsListingVM{
     
     //MARK:- Variables
     //================
+    var searchText: String = ""
     var hideLoader: Bool = false
     var currentPage = 1
     var totalPages = 1
@@ -37,6 +38,21 @@ class BrandsListingVM{
     weak var delegate: BrandsListingVMDelegate?
     
     //MARK:- Functions
+    
+    var searchBrandListing : [TyreBrandModel] {
+        if searchText.isEmpty{
+            return brandsListings
+        }
+        return brandsListings.filter({$0.name.contains(s: searchText)})
+    }
+    
+    var searchCountryListing : [TyreCountryModel] {
+           if searchText.isEmpty{
+               return countryListings
+           }
+           return countryListings.filter({$0.name.contains(s: searchText)})
+       }
+    
     func getBrandListingData(params: JSONDictionary,loader: Bool = true,pagination: Bool = false){
         if pagination {
             guard nextPageAvailable, !isRequestinApi else { return }
