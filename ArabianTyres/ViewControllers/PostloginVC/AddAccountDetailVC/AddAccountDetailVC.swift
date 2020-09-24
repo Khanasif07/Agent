@@ -26,7 +26,6 @@ class AddAccountDetailVC: BaseVC {
     @IBOutlet weak var confirmAccountNumberTextField: SkyFloatingLabelTextField!
     @IBOutlet weak var containerView: UIView!
 
-    
     // MARK: - Variables
     //===========================
     var placeHolderArr : [String] = [LocalizedString.selectYourBank.localized,
@@ -67,6 +66,15 @@ class AddAccountDetailVC: BaseVC {
     }
     
     @IBAction func addBtnAction(_ sender: UIButton) {
+        if GarageProfileModel.shared.accountNumber != GarageProfileModel.shared.confirmAccountNumber {
+            CommonFunctions.showToastWithMessage(LocalizedString.accountNumberAreNotSame.localized)
+            return
+        }
+        if GarageProfileModel.shared.accountNumber.count < 10 {
+            CommonFunctions.showToastWithMessage(LocalizedString.minTenDigitInAccountNumber.localized)
+            return
+        }
+        
         bankDetailDelegate?.BankDetailAdded()
         self.pop()
     }
@@ -139,7 +147,7 @@ extension AddAccountDetailVC: UITextFieldDelegate {
         
         switch textField {
         case enterAccountNumberTextField:
-            return updatedText.count <= 16
+            return updatedText.count <= 16 
         case confirmAccountNumberTextField:
             return updatedText.count <= 16
         default:

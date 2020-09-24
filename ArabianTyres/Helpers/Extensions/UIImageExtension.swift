@@ -18,7 +18,7 @@ import ImageIO
 //=====================
 extension UIImageView {
     
-     func setImage_kf(imageString: String, placeHolderImage: UIImage, loader: Bool = true) {
+     func setImage_kf(imageString: String, placeHolderImage: UIImage? = nil, loader: Bool = true) {
            
            if loader {
                self.kf.indicatorType = .activity

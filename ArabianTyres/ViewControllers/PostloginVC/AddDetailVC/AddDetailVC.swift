@@ -60,17 +60,16 @@ class AddDetailVC: BaseVC {
     }
     
     @IBAction func saveAndContinueAction(_ sender: UIButton) {
-//       if GarageProfileModel.shared.logo.isEmpty {
-//        CommonFunctions.showToastWithMessage(LocalizedString.uploadGarageLogo.localized)
-//        }
-//       else {
+       if GarageProfileModel.shared.logoUrl.isEmpty {
+        CommonFunctions.showToastWithMessage(LocalizedString.uploadGarageLogo.localized)
+        }
+       else {
         AppRouter.goToGarageAddLocationVC(vc: self)
-
-//        }
+        }
     }
     
     @IBAction func editLogoBtnAction(_ sender: UIButton) {
-        self.captureImage(delegate: self,removedImagePicture: true)
+        self.captureImage(delegate: self)
     }
     
 }
@@ -80,6 +79,7 @@ class AddDetailVC: BaseVC {
 extension AddDetailVC {
     
     private func initialSetup() {
+        editLogoBtn.setImage(nil, for: .normal)
         setupTextAndFont()
         customTView.delegate = self
         customTView.placeHolderTxt = LocalizedString.enterServiceCenterName.localized

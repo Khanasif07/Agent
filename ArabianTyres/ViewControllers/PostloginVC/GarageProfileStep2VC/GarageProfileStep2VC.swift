@@ -109,6 +109,7 @@ extension GarageProfileStep2VC {
         saveAndContinueBtn.isEnabled = true
         self.collViewSetUp()
         handleRangeSlider()
+        setPreFilledData()
 //        rangeSlider.resetSlider(value: 2500)
     }
     
@@ -126,6 +127,7 @@ extension GarageProfileStep2VC {
         formatter.positiveSuffix = "SAR"
         rangeSlider.numberFormatterOverride = formatter
     }
+    
     
     private func setupTextAndFont(){
         serviceCenterNameLbl.font = AppFonts.NunitoSansSemiBold.withSize(13.0)
@@ -164,6 +166,11 @@ extension GarageProfileStep2VC {
         mainCollView.isScrollEnabled = false
     }
     
+    private func setPreFilledData(){
+        mainCollView.dataSource = self
+        imagesArray = GarageProfileModel.shared.serviceCenterImages
+    }
+
 }
 
 extension GarageProfileStep2VC: CustomTextViewDelegate{

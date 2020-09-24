@@ -30,12 +30,13 @@ class ProfileVC: BaseVC {
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        .lightContent
+        return .lightContent
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.mainTableView.reloadData()
+        self.setNeedsStatusBarAppearanceUpdate()
     }
     
     override func viewWillAppear(_ animated: Bool) {

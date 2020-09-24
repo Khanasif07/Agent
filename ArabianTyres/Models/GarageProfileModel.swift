@@ -43,7 +43,7 @@ struct GarageProfileModel {
             ApiKey.latitude : latitude,
             ApiKey.longitude : longitude,
             ApiKey.address : address,
-            ApiKey.images : images,
+            ApiKey.images : getGarageImgUrl(),
             ApiKey.commercialRegister : commercialRegister,
             ApiKey.vatCertificate : vatCertificate,
             ApiKey.municipalityLicense : municipalityLicense,
@@ -54,6 +54,14 @@ struct GarageProfileModel {
         ]
 
         return dict
+    }
+    
+    func getGarageImgUrl() -> [String] {
+        var arr : [String] = []
+        serviceCenterImages.forEach { (model) in
+            arr.append(model.url)
+        }
+        return arr
     }
     
     func getCompleteProfileDict()-> JSONDictionary {
@@ -86,7 +94,7 @@ struct GarageProfilePreFillModel {
        var latitude                    : Double = 0.0
        var longitude                   : Double = 0.0
        var address                     : String = ""
-       var serviceCenterImages         : [String] = []
+       var serviceCenterImages         : [ImageModel] = []
        var images                      : [String] = []
        var commercialRegister          : [String] = []
        var vatCertificate              : [String] = []
@@ -119,7 +127,7 @@ struct GarageProfilePreFillModel {
         
         self.accountNumber = json[ApiKey.accountNumber].stringValue
         self.serviceCenterDist = json[ApiKey.district].stringValue
-        self.serviceCenterImages = json[ApiKey.images].arrayValue.map{(($0.stringValue))}
+        self.serviceCenterImages = json[ApiKey.images].arrayValue.map{((ImageModel(withJSON: $0)))}
 
     }
     
@@ -138,7 +146,7 @@ struct GarageProfilePreFillModel {
         GarageProfileModel.shared.longitude = model.longitude
         GarageProfileModel.shared.accountNumber = model.accountNumber
         GarageProfileModel.shared.serviceCenterDist = model.serviceCenterDist
-//        GarageProfileModel.shared.serviceCenterImages = model.serviceCenterImages
+        GarageProfileModel.shared.serviceCenterImages = model.serviceCenterImages
 
     }
 }

@@ -138,7 +138,7 @@ extension AddAccountVC {
         iAgreeToLbl.font = AppFonts.NunitoSansSemiBold.withSize(13.0)
         
         titleLbl.font = AppFonts.NunitoSansBold.withSize(17.0)
-        helpBtn.titleLabel?.font =  AppFonts.NunitoSansSemiBold.withSize(17.0)
+        helpBtn.titleLabel?.font =  AppFonts.NunitoSansSemiBold.withSize(16.0)
         registerBtn.titleLabel?.font =  AppFonts.NunitoSansSemiBold.withSize(16.0)
 
         privacyPolicyLbl.text = LocalizedString.privacyPolicy.localized
