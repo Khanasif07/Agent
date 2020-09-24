@@ -27,6 +27,7 @@ class URTyreSizeVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
+        setupTextAndFonts()
     }
     
     // MARK: - IBActions
@@ -52,6 +53,27 @@ extension URTyreSizeVC {
         mainTableView.delegate = self
         mainTableView.dataSource = self
     }
+    
+    private func setupTextAndFonts() {
+        switch categoryType{
+            
+        case .oil:
+
+            titleLbl.text = LocalizedString.selectViscosity.localized
+            topDescLbl.text = LocalizedString.weHaveFoundSutiableOilViscosity.localized
+            bottomDescLbl.text = LocalizedString.pleaseSelectAnyViscosityToProceed.localized
+        case .tyres:
+        
+            titleLbl.text = LocalizedString.selectTyreSize.localized
+            topDescLbl.text = LocalizedString.weHaveFoundSutiableTyreForYourVehicleAsPerTheProvidedDetails.localized
+            bottomDescLbl.text = LocalizedString.pleaseSelectAnyTyreToProceed.localized
+
+        case .battery:
+            titleLbl.text = LocalizedString.alert.localized
+            
+        }
+    }
+
 }
 
 // MARK: - Extension For TableView
@@ -64,6 +86,7 @@ extension URTyreSizeVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(with: URTyreSizeTableCell.self, indexPath: indexPath)
+        cell.bindData(categoryType: categoryType)
         return cell
     }
     

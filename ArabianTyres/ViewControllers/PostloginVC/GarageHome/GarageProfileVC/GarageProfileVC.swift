@@ -60,7 +60,7 @@ class GarageProfileVC: BaseVC {
 extension GarageProfileVC {
     
     private func initialSetup() {
-//        self.hitProfileApi()
+        self.hitProfileApi()
         self.tableViewSetUp()
     }
     
@@ -80,7 +80,7 @@ extension GarageProfileVC {
             switch indexPath.row {
             case 0:
                 let cell = tableView.dequeueCell(with: GarageProfileHeaderCell.self, indexPath: indexPath)
-//                cell.populateData(model: self.viewModel.userModel)
+                cell.populateData(model: self.viewModel.userModel)
                 cell.phoneVerifyBtnTapped = { [weak self] (sender) in
                     guard let `self` = self else { return }
                     self.showPhoneVerificationPopUp()

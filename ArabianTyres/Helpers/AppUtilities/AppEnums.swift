@@ -18,6 +18,7 @@ enum Signup {
 enum UserType {
     case user
     case guest
+    case garage
 }
 
 enum PushNotificationType : String {
@@ -32,4 +33,10 @@ enum SelectedLangauage: String{
 enum ListingType {
     case brands
     case countries
+}
+
+enum Category : String{
+    case oil = "Oil"
+    case tyres = "Tyres"
+    case battery = "Battery"
 }

@@ -33,6 +33,8 @@ class BrandsListingVC: BaseVC {
     var selectedIndexPath : [Int] = []
     var listingType : ListingType = .brands
     weak var delegate : BrandsListnig?
+    var category : Category = .tyres
+    
     
     // MARK: - Lifecycle
     //===========================
@@ -89,11 +91,11 @@ extension BrandsListingVC {
     }
     
     private func hitBrandListingApi(){
-        self.viewModel.getBrandListingData(params: [ApiKey.page: "1",ApiKey.limit : "20",ApiKey.type: "Tyres"],loader: false)
+        self.viewModel.getBrandListingData(params: [ApiKey.page: "1",ApiKey.limit : "20",ApiKey.type: self.category.rawValue],loader: false)
     }
     
     private func hitCountryListingApi(){
-        self.viewModel.getCountryListingData(params: [ApiKey.page: "1",ApiKey.limit : "20",ApiKey.type: "Tyres"],loader: false)
+        self.viewModel.getCountryListingData(params: [ApiKey.page: "1",ApiKey.limit : "20",ApiKey.type: self.category.rawValue],loader: false)
     }
     
     private func selectedDataSource(){

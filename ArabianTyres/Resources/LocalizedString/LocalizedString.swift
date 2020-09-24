@@ -222,7 +222,18 @@ enum LocalizedString : String {
     case allowCureentLocationWillHelpYouInGettingGreatOffers
     case allow
     case installationPriceRange
-    
+    case chooseOilType
+    case theTypeOfOilAreYouLookingFor
+    case thePreferredBrandForMyOilWouldBe
+    case chooseOilBrand
+    case selectType
+    case oilType
+    case selectTyreSize
+    case weHaveFoundSutiableTyreForYourVehicleAsPerTheProvidedDetails
+    case pleaseSelectAnyTyreToProceed
+    case selectViscosity
+    case weHaveFoundSutiableOilViscosity
+    case pleaseSelectAnyViscosityToProceed
     // MARK: - Home  VC Values
     //==============================
     case tyre

@@ -239,9 +239,9 @@ extension TyreBrandVC : CustomTextViewDelegate{
         switch tView {
        
         case tyreBrandCustomView.tView:
-            AppRouter.goToBrandsListingVC(vc: self, listingType: .brands, brandsData : brandListingArr, countryData: [])
+            AppRouter.goToBrandsListingVC(vc: self, listingType: .brands, brandsData : brandListingArr, countryData: [], category: .tyres)
         case countryOriginCustomView.tView:
-            AppRouter.goToBrandsListingVC(vc: self, listingType: .countries, brandsData: [], countryData: countryListingArr)
+            AppRouter.goToBrandsListingVC(vc: self, listingType: .countries, brandsData: [], countryData: countryListingArr, category: .tyres)
         default:
             break
         }
@@ -253,7 +253,7 @@ extension TyreBrandVC : CustomTextViewDelegate{
     
     private func openSheet(listingType: ListingType) {
         tyreBrandCustomView.collView.isHidden = false
-        AppRouter.goToBrandsListingVC(vc: self, listingType: listingType,brandsData :  brandListingArr , countryData: countryListingArr)
+        AppRouter.goToBrandsListingVC(vc: self, listingType: listingType,brandsData :  brandListingArr , countryData: countryListingArr,category: .tyres)
     }
 }
 

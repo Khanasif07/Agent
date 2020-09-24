@@ -215,12 +215,24 @@
 "serviceCenterName" = "meService Center’s Name";
 "serviceCenterDist" = "Service Center’s District";
 "serviceCenterAddress" = "Service Center Address";
-
-
+"chooseOilType" = "Choose Oil Type";
+"theTypeOfOilAreYouLookingFor" = "The type of oil are you\nlooking for?";
+"thePreferredBrandForMyOilWouldBe" = "The preferred brand for my oil\nwould be";
+"chooseOilBrand" = "Choose Oil Brands";
 "width" = "Width";
 "rimSize" = "Rim Size";
 "quantity" = "Quantity";
 "enter_number_of_tyre_you_want" = "Enter number of tyre you want";
+"oilType" = "Oil type";
+"selectType" = "Select type";
+"selectTyreSize" = "Select Tyre Size";
+"weHaveFoundSutiableTyreForYourVehicleAsPerTheProvidedDetails" = "We have found sutiable tyres for your vehicle as per the provided details.";
+
+"pleaseSelectAnyTyreToProceed" = "Please select any tyre to proceed";
+
+"selectViscosity" = "Select Viscosity";
+"weHaveFoundSutiableOilViscosity" = "We have found sutiable oil viscosity for your vehicle as per the provided details.";
+"pleaseSelectAnyViscosityToProceed" = "Please select any viscosity to proceed";
 
 // MARK: - Garage Profile Values
 //==============================

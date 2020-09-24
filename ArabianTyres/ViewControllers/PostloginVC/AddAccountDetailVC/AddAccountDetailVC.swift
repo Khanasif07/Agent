@@ -10,7 +10,7 @@ import UIKit
 import SkyFloatingLabelTextField
 
 protocol BankDetail: class {
-        func BankDetailAdded()
+    func BankDetailAdded()
 }
 
 class AddAccountDetailVC: BaseVC {

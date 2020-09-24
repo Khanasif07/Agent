@@ -169,6 +169,8 @@
 		A43F44B42513BE66002B1014 /* BrandsListingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43F44B32513BE66002B1014 /* BrandsListingVC.swift */; };
 		A4443864251381F700114A75 /* UserHomeScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4443863251381F700114A75 /* UserHomeScreen.storyboard */; };
 		A4443866251387E000114A75 /* VechicleDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4443865251387E000114A75 /* VechicleDetailVC.swift */; };
+		A44E8D74251C817400ACBC4D /* OilBrandsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44E8D73251C817400ACBC4D /* OilBrandsVC.swift */; };
+		A44E8D76251C973800ACBC4D /* OilTypeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44E8D75251C973800ACBC4D /* OilTypeVC.swift */; };
 		A45042C7250F2D12001C8905 /* AddAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45042C6250F2D12001C8905 /* AddAccountVC.swift */; };
 		A45042D0250F3846001C8905 /* AddAccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45042CE250F3846001C8905 /* AddAccountTableViewCell.swift */; };
 		A45042D1250F3846001C8905 /* AddAccountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A45042CF250F3846001C8905 /* AddAccountTableViewCell.xib */; };
@@ -363,6 +365,8 @@
 		A43F44B32513BE66002B1014 /* BrandsListingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandsListingVC.swift; sourceTree = "<group>"; };
 		A4443863251381F700114A75 /* UserHomeScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserHomeScreen.storyboard; sourceTree = "<group>"; };
 		A4443865251387E000114A75 /* VechicleDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VechicleDetailVC.swift; sourceTree = "<group>"; };
+		A44E8D73251C817400ACBC4D /* OilBrandsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OilBrandsVC.swift; sourceTree = "<group>"; };
+		A44E8D75251C973800ACBC4D /* OilTypeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OilTypeVC.swift; sourceTree = "<group>"; };
 		A45042C6250F2D12001C8905 /* AddAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountVC.swift; sourceTree = "<group>"; };
 		A45042CE250F3846001C8905 /* AddAccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountTableViewCell.swift; sourceTree = "<group>"; };
 		A45042CF250F3846001C8905 /* AddAccountTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddAccountTableViewCell.xib; sourceTree = "<group>"; };
@@ -1035,6 +1039,8 @@
 				A43F44B12513BE1A002B1014 /* FacilityVC */,
 				A43F44AF2513BE01002B1014 /* TyreBrandVC */,
 				A4FEF8EB2518744900D58C13 /* TyreRequestedVC.swift */,
+				A44E8D73251C817400ACBC4D /* OilBrandsVC.swift */,
+				A44E8D75251C973800ACBC4D /* OilTypeVC.swift */,
 			);
 			path = PostloginVC;
 			sourceTree = "<group>";
@@ -1541,6 +1547,7 @@
 				842B2FC52513354B00E3CF67 /* BankListingVC.swift in Sources */,
 				8481FA372500BDD200AB6EFB /* UITableView+ UITableViewCellExtension.swift in Sources */,
 				A4FEF8EC2518744900D58C13 /* TyreRequestedVC.swift in Sources */,
+				A44E8D74251C817400ACBC4D /* OilBrandsVC.swift in Sources */,
 				A4A6DEE6251A123800564020 /* GarageProfileVC.swift in Sources */,
 				8481FA6D2500BFE400AB6EFB /* AppConstants.swift in Sources */,
 				8481FA3D2500BE1C00AB6EFB /* UIColor+Additions.swift in Sources */,
@@ -1587,6 +1594,7 @@
 				844D81E92502751D00550334 /* SignUpViewModel.swift in Sources */,
 				844D81E72502723D00550334 /* SignUpModel.swift in Sources */,
 				84476D3325075F4400AB5E80 /* SettingVC.swift in Sources */,
+				A44E8D76251C973800ACBC4D /* OilTypeVC.swift in Sources */,
 				844EB71425187CD0003A6E3F /* URTyreSizeTableCell.swift in Sources */,
 				8481FA8A2501081000AB6EFB /* TutorialCollCell.swift in Sources */,
 				A4B91C3625149BDA00E4811A /* LocationPopUpVC.swift in Sources */,

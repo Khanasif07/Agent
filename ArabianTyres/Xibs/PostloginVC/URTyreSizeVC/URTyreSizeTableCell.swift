@@ -26,5 +26,18 @@ class URTyreSizeTableCell: UITableViewCell {
         self.internalView.round(radius: 4.0)
         self.dataContainerView.addShadow(cornerRadius: 8, color: UIColor.black16, offset: CGSize(width: 0.5, height: 0.5), opacity: 1, shadowRadius: 8)
     }
-
+    
+    
+    func bindData(categoryType: Category) {
+        switch categoryType {
+            
+        case .oil:
+            
+        case .tyres:
+            <#code#>
+        case .battery:
+            break
+     
+        }
+    }
 }
