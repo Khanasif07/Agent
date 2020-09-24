@@ -368,7 +368,7 @@ extension UIViewController {
         view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
         view.type = .ballSpinFadeLoader
         view.color = AppColors.primaryBlueColor 
-        view.padding =  170
+        view.padding =  160
         view.startAnimating()
         self.view.addSubview(view)
     }

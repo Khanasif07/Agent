@@ -221,3 +221,11 @@
 "rimSize" = "Rim Size";
 "quantity" = "Quantity";
 "enter_number_of_tyre_you_want" = "Enter number of tyre you want";
+
+// MARK: - Garage Profile Values
+//==============================
+"service_Completed" = "Service Completed";
+"bank_Account" = "Bank Account";
+"my_Subscription" = "My Subscription";
+"installation_price_range" = "Installation Price Range:";
+"location" = "Location";

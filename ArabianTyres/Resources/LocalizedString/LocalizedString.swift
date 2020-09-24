@@ -131,6 +131,15 @@ enum LocalizedString : String {
     case saved_cards
     case added_location
     case change_password
+    
+    // MARK: - Garage Profile VC Values
+    //==============================
+    case service_Completed
+    case bank_Account
+    case my_Subscription
+    case installation_price_range
+    case location
+   
 
     // MARK: - Profile VC Values
       //==============================
