@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -32,7 +32,10 @@
                                 </constraints>
                                 <state key="normal" image="button_compass.png"/>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="radialCarTireI151" translatesAutoresizingMaskIntoConstraints="NO" id="2uv-1P-9vy">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="oilSplashJ031" translatesAutoresizingMaskIntoConstraints="NO" id="4bw-KH-Wyo">
+                                <rect key="frame" x="-79.5" y="-64" width="324" height="308"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icOil" translatesAutoresizingMaskIntoConstraints="NO" id="2uv-1P-9vy">
                                 <rect key="frame" x="50" y="11" width="200" height="178"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="178" id="STd-H2-Htu"/>
@@ -40,19 +43,19 @@
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PGE-Om-MfH">
-                                <rect key="frame" x="8" y="137.5" width="284" height="54.5"/>
+                                <rect key="frame" x="8" y="143" width="284" height="49"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="yBf-Cx-UMD">
-                                        <rect key="frame" x="8" y="8" width="268" height="38.5"/>
+                                        <rect key="frame" x="8" y="8" width="268" height="33"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="B290 205/55 R16" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BDk-FD-WAI">
-                                                <rect key="frame" x="0.0" y="0.0" width="268" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="268" height="17.5"/>
                                                 <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="15"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Suitable For: Audi Q Series, BMW 5 Series" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="426-bP-WxJ">
-                                                <rect key="frame" x="0.0" y="20.5" width="268" height="18"/>
+                                                <rect key="frame" x="0.0" y="17.5" width="268" height="15.5"/>
                                                 <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="13"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -72,11 +75,12 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="2uv-1P-9vy" firstAttribute="top" secondItem="a6d-ha-D8x" secondAttribute="top" constant="11" id="4eG-4C-tDF"/>
-                            <constraint firstAttribute="bottom" secondItem="2uv-1P-9vy" secondAttribute="bottom" constant="11" id="5yj-Dg-1yU"/>
                             <constraint firstItem="PGE-Om-MfH" firstAttribute="leading" secondItem="a6d-ha-D8x" secondAttribute="leading" constant="8" id="8SB-Fo-W9T"/>
                             <constraint firstItem="2uv-1P-9vy" firstAttribute="centerX" secondItem="a6d-ha-D8x" secondAttribute="centerX" id="CwK-c8-1DO"/>
+                            <constraint firstItem="4bw-KH-Wyo" firstAttribute="centerY" secondItem="2uv-1P-9vy" secondAttribute="centerY" multiplier="0.9" id="DTk-iG-RK3"/>
                             <constraint firstAttribute="bottom" secondItem="PGE-Om-MfH" secondAttribute="bottom" constant="8" id="K3F-rr-DAD"/>
                             <constraint firstItem="DSH-Zw-f3g" firstAttribute="top" secondItem="a6d-ha-D8x" secondAttribute="top" constant="8" id="KN7-oE-MtE"/>
+                            <constraint firstItem="4bw-KH-Wyo" firstAttribute="centerX" secondItem="2uv-1P-9vy" secondAttribute="centerX" multiplier="0.55" id="KfS-oC-mWY"/>
                             <constraint firstItem="DSH-Zw-f3g" firstAttribute="leading" secondItem="a6d-ha-D8x" secondAttribute="leading" constant="8" id="MGj-Tv-oJq"/>
                             <constraint firstAttribute="trailing" secondItem="PGE-Om-MfH" secondAttribute="trailing" constant="8" id="Mey-5I-ZaF"/>
                             <constraint firstItem="2uv-1P-9vy" firstAttribute="centerY" secondItem="a6d-ha-D8x" secondAttribute="centerY" id="nZZ-Mj-Eam"/>
@@ -92,6 +96,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="backImgView" destination="4bw-KH-Wyo" id="UOd-xS-WcY"/>
                 <outlet property="dataContainerView" destination="a6d-ha-D8x" id="dXV-59-lmf"/>
                 <outlet property="internalView" destination="PGE-Om-MfH" id="gmO-Nb-6lg"/>
                 <outlet property="mainImgView" destination="2uv-1P-9vy" id="iIB-FX-mCc"/>
@@ -104,6 +109,7 @@
     </objects>
     <resources>
         <image name="button_compass.png" width="40" height="40"/>
-        <image name="radialCarTireI151" width="200" height="178"/>
+        <image name="icOil" width="168" height="171"/>
+        <image name="oilSplashJ031" width="162" height="154"/>
     </resources>
 </document>

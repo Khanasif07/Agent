@@ -58,12 +58,12 @@ extension URTyreSizeVC {
         switch categoryType{
             
         case .oil:
-
+            proceedBtn.setTitle(LocalizedString.next.localized, for: .normal)
             titleLbl.text = LocalizedString.selectViscosity.localized
             topDescLbl.text = LocalizedString.weHaveFoundSutiableOilViscosity.localized
             bottomDescLbl.text = LocalizedString.pleaseSelectAnyViscosityToProceed.localized
         case .tyres:
-        
+            proceedBtn.setTitle(LocalizedString.proceed.localized, for: .normal)
             titleLbl.text = LocalizedString.selectTyreSize.localized
             topDescLbl.text = LocalizedString.weHaveFoundSutiableTyreForYourVehicleAsPerTheProvidedDetails.localized
             bottomDescLbl.text = LocalizedString.pleaseSelectAnyTyreToProceed.localized

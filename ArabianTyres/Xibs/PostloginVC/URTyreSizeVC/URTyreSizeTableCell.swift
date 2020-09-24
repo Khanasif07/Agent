@@ -15,10 +15,12 @@ class URTyreSizeTableCell: UITableViewCell {
     @IBOutlet weak var tyreVehicleLbl: UILabel!
     @IBOutlet weak var tyreSizeLbl: UILabel!
     @IBOutlet weak var mainImgView: UIImageView!
+    @IBOutlet weak var backImgView: UIImageView!
     @IBOutlet weak var radioBtn: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        backImgView.isHidden = true
     }
     
     override func layoutSubviews() {
@@ -30,11 +32,13 @@ class URTyreSizeTableCell: UITableViewCell {
     
     func bindData(categoryType: Category) {
         switch categoryType {
-            
         case .oil:
-            
+           mainImgView.image = #imageLiteral(resourceName: "icOil")
+           backImgView.isHidden = false
+            break
         case .tyres:
-            <#code#>
+             mainImgView.image = #imageLiteral(resourceName: "radialCarTireI151")
+            break
         case .battery:
             break
      

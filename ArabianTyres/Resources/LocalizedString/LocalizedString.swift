@@ -234,6 +234,8 @@ enum LocalizedString : String {
     case selectViscosity
     case weHaveFoundSutiableOilViscosity
     case pleaseSelectAnyViscosityToProceed
+    case next
+    case proceed
     // MARK: - Home  VC Values
     //==============================
     case tyre

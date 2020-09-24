@@ -233,7 +233,8 @@
 "selectViscosity" = "Select Viscosity";
 "weHaveFoundSutiableOilViscosity" = "We have found sutiable oil viscosity for your vehicle as per the provided details.";
 "pleaseSelectAnyViscosityToProceed" = "Please select any viscosity to proceed";
-
+"next" = "Next";
+"proceed" = "Proceed";
 // MARK: - Garage Profile Values
 //==============================
 "service_Completed" = "Service Completed";
