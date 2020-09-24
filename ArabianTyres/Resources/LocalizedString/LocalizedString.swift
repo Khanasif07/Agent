@@ -236,6 +236,12 @@ enum LocalizedString : String {
     case pleaseSelectAnyViscosityToProceed
     case next
     case proceed
+    case thePreferredBrandForBatteryWouldBe
+    case chooseBatteryBrands
+    case enterNumber
+    case country
+    case chooseYourVehicleDetails
+    case wellGetYouOilAccordingToTheProvidedDetails
     // MARK: - Home  VC Values
     //==============================
     case tyre

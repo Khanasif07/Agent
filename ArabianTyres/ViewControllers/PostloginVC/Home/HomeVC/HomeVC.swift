@@ -129,7 +129,7 @@ extension HomeVC : UICollectionViewDelegate, UICollectionViewDataSource,UICollec
             AppRouter.goToURTyreStep1VC(vc: self)
         case LocalizedString.oil.localized:
             categoryType = .oil
-            AppRouter.goToOilBrandsVC(vc: self)
+            AppRouter.goToVehicleDetailForOilVC(vc: self)
             
         default:
             showAlert(msg: "Under Development")

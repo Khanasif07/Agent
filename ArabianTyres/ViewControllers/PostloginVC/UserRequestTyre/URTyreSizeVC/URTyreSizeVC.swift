@@ -33,8 +33,17 @@ class URTyreSizeVC: BaseVC {
     // MARK: - IBActions
     //===========================
     @IBAction func proccedBtnAction(_ sender: UIButton) {
-        NotificationCenter.default.post(name: Notification.Name.SelectedTyreSizeSuccess, object: nil)
-        self.navigationController?.popViewControllers(controllersToPop: 2, animated: true)
+        switch categoryType{
+        case .oil:
+             AppRouter.goToOilBrandsVC(vc: self)
+            
+        case .tyres:
+            NotificationCenter.default.post(name: Notification.Name.SelectedTyreSizeSuccess, object: nil)
+            self.navigationController?.popViewControllers(controllersToPop: 2, animated: true)
+        case .battery:
+            break
+        }
+        
     }
     @IBAction func backBtnAction(_ sender: UIButton) {
         self.pop()
@@ -95,6 +104,7 @@ extension URTyreSizeVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let cell = mainTableView.cellForRow(at: indexPath) as? URTyreSizeTableCell
+        cell?.radioBtn.isSelected.toggle()
     }
 }

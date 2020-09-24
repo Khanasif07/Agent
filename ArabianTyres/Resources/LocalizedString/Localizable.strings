@@ -235,6 +235,13 @@
 "pleaseSelectAnyViscosityToProceed" = "Please select any viscosity to proceed";
 "next" = "Next";
 "proceed" = "Proceed";
+"thePreferredBrandForBatteryWouldBe" = "The preferred brand for battery\nwould be";
+"chooseBatteryBrands" = "Choose BatteryBrands";
+"enterNumber" = "Enter number";
+"country" = "Country";
+"chooseYourVehicleDetails" = "Choose Your Vehicle Details";
+"wellGetYouOilAccordingToTheProvidedDetails" = "We’ll get you oil according to the provided details";
+
 // MARK: - Garage Profile Values
 //==============================
 "service_Completed" = "Service Completed";

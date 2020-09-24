@@ -73,7 +73,7 @@ class OilTypeVC: BaseVC {
     }
     
     @IBAction func submitBtnAction(_ sender: UIButton) {
-        AppRouter.goToURTyreSizeVC(vc: self)
+        AppRouter.presentLocationPopUpVC(vc: self)
     }
     
     @IBAction func skipBtnAction(_ sender: UIButton) {
@@ -96,7 +96,7 @@ extension OilTypeVC {
         chooseOilTypeLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
        
         thePreferredLbl.text = LocalizedString.theTypeOfOilAreYouLookingFor.localized
-        chooseOilTypeLbl.text = LocalizedString.thePreferredOriginForMytyreWouldBe.localized
+        chooseOilTypeLbl.text = LocalizedString.chooseOilType.localized
         submitBtn.setTitle(LocalizedString.submit.localized, for: .normal)
         submitBtn.titleLabel?.font =  AppFonts.NunitoSansSemiBold.withSize(16.0)
         submitBtn.isEnabled = true

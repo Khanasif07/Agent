@@ -1,5 +1,5 @@
 //
-//  OilBrandsVC.swift
+//  BatteryBrandVC.swift
 //  ArabianTyres
 //
 //  Created by Arvind on 24/09/20.
@@ -7,21 +7,19 @@
 //
 
 import UIKit
-import SkyFloatingLabelTextField
 
-
-class OilBrandsVC: BaseVC {
+class BatteryBrandVC: BaseVC {
 
     // MARK: - IBOutlets
     //===========================
     @IBOutlet weak var thePreferredLbl: UILabel!
-    @IBOutlet weak var chooseOilBrandLbl: UILabel!
+    @IBOutlet weak var chooseBatteryBrandLbl: UILabel!
     @IBOutlet weak var submitBtn: AppButton!
     @IBOutlet weak var skipBtn: AppButton!
 
     @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var oilBrandCustomView: CustomTextView!
-    @IBOutlet weak var oBCustomViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var batteryBrandCustomView: CustomTextView!
+    @IBOutlet weak var bBCustomViewHeightConstraint: NSLayoutConstraint!
    
 
 
@@ -57,11 +55,11 @@ class OilBrandsVC: BaseVC {
         containerView.createShadow(shadowColor: #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1))
       
         if !self.brandListingArr.isEmpty {
-            if let oilBrandCustomView = self.oilBrandCustomView {
-                self.oBCustomViewHeightConstraint.constant = oilBrandCustomView.collView.contentSize.height + 38.0
+            if let batteryBrandCustomView = self.batteryBrandCustomView {
+                self.bBCustomViewHeightConstraint.constant = batteryBrandCustomView.collView.contentSize.height + 38.0
             }
         }else {
-                self.oBCustomViewHeightConstraint.constant = 60.0
+                self.bBCustomViewHeightConstraint.constant = 60.0
         }
     }
     
@@ -74,8 +72,7 @@ class OilBrandsVC: BaseVC {
     }
     
     @IBAction func submitBtnAction(_ sender: UIButton) {
-        AppRouter.goToOilTypeVC(vc: self)
-
+        AppRouter.goToURTyreSizeVC(vc: self)
     }
     
     @IBAction func skipBtnAction(_ sender: UIButton) {
@@ -86,7 +83,7 @@ class OilBrandsVC: BaseVC {
 
 // MARK: - Extension For Functions
 //===========================
-extension OilBrandsVC {
+extension BatteryBrandVC {
     
     private func initialSetup() {
         setupTextFont()
@@ -94,11 +91,12 @@ extension OilBrandsVC {
     }
     
     private func setupTextFont() {
+        
         thePreferredLbl.font = AppFonts.NunitoSansBold.withSize(21.0)
-        chooseOilBrandLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
+        chooseBatteryBrandLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
        
-        thePreferredLbl.text = LocalizedString.thePreferredBrandForMyOilWouldBe.localized
-        chooseOilBrandLbl.text = LocalizedString.chooseOilBrand.localized
+        thePreferredLbl.text = LocalizedString.thePreferredBrandForBatteryWouldBe.localized
+        chooseBatteryBrandLbl.text = LocalizedString.chooseBatteryBrands.localized
         submitBtn.setTitle(LocalizedString.submit.localized, for: .normal)
         submitBtn.titleLabel?.font =  AppFonts.NunitoSansSemiBold.withSize(16.0)
         submitBtn.isEnabled = true
@@ -110,28 +108,22 @@ extension OilBrandsVC {
     }
     
     private func setupCustomView() {
-        
-        oilBrandCustomView.placeHolderTxt = LocalizedString.selectBrand.localized
-        oilBrandCustomView.floatLbl.text = LocalizedString.brands.localized
-        oilBrandCustomView.delegate = self
-        oilBrandCustomView.leftImgContainerView.isHidden = true
-        oilBrandCustomView.rightImgView.image = #imageLiteral(resourceName: "group3689")
-        oilBrandCustomView.txtViewEditable = false
-        oilBrandCustomView.collView.registerCell(with: FacilityCollectionViewCell.self)
-        oilBrandCustomView.collView.delegate = self
-        oilBrandCustomView.collView.dataSource = self
+       
+        batteryBrandCustomView.placeHolderTxt = LocalizedString.selectBrand.localized
+        batteryBrandCustomView.floatLbl.text = LocalizedString.brands.localized
+        batteryBrandCustomView.delegate = self
+        batteryBrandCustomView.leftImgContainerView.isHidden = true
+        batteryBrandCustomView.rightImgView.image = #imageLiteral(resourceName: "group3689")
+        batteryBrandCustomView.txtViewEditable = false
+        batteryBrandCustomView.collView.registerCell(with: FacilityCollectionViewCell.self)
+        batteryBrandCustomView.collView.delegate = self
+        batteryBrandCustomView.collView.dataSource = self
       
     }
-    
 }
-
-extension OilBrandsVC :UITextFieldDelegate {
-    
-}
-
 
 //MARK:-CollectionView Delegate and DataSource
-extension OilBrandsVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+extension BatteryBrandVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
             return countryListingArr.count
@@ -158,14 +150,14 @@ extension OilBrandsVC: UICollectionViewDelegate,UICollectionViewDataSource,UICol
     }
 
     @objc func cancelBtnTapped(_ sender : UIButton) {
-        if let indexPath = self.oilBrandCustomView.collView.indexPath(forItem: sender) {
+        if let indexPath = self.batteryBrandCustomView.collView.indexPath(forItem: sender) {
             printDebug(indexPath)
             brandListingArr.remove(at: indexPath.item)
             if brandListingArr.isEmpty {
-                oilBrandCustomView.collView.isHidden = true
-                oilBrandCustomView.floatLbl.isHidden = true
+                batteryBrandCustomView.collView.isHidden = true
+                batteryBrandCustomView.floatLbl.isHidden = true
             }
-            oilBrandCustomView.collView.reloadData()
+            batteryBrandCustomView.collView.reloadData()
             view.layoutIfNeeded()
             view.setNeedsLayout()
         }
@@ -180,11 +172,11 @@ extension OilBrandsVC: UICollectionViewDelegate,UICollectionViewDataSource,UICol
     }
 }
 
-extension OilBrandsVC : CustomTextViewDelegate{
+extension BatteryBrandVC : CustomTextViewDelegate{
     func shouldBegin(_ tView: UITextView) {
         switch tView {
        
-        case oilBrandCustomView.tView:
+        case batteryBrandCustomView.tView:
             AppRouter.goToBrandsListingVC(vc: self, listingType: .brands, brandsData : brandListingArr, countryData: [], category: .oil)
         default:
             break
@@ -196,12 +188,12 @@ extension OilBrandsVC : CustomTextViewDelegate{
     }
     
     private func openSheet(listingType: ListingType) {
-        oilBrandCustomView.collView.isHidden = false
+        batteryBrandCustomView.collView.isHidden = false
         AppRouter.goToBrandsListingVC(vc: self, listingType: listingType,brandsData :  brandListingArr , countryData: countryListingArr, category: .oil)
     }
 }
 
-extension OilBrandsVC: BrandsListnig {
+extension BatteryBrandVC: BrandsListnig {
    
     func listing(listingType : ListingType,BrandsListings: [TyreBrandModel],countryListings: [TyreCountryModel]) {
         if listingType == .brands {
@@ -215,9 +207,9 @@ extension OilBrandsVC: BrandsListnig {
                 return tyreModel.name
             })
             self.submitBtn.isEnabled = submitBtnStatus()
-            oilBrandCustomView.collView.isHidden = brandListingArr.isEmpty
-            oilBrandCustomView.floatLbl.isHidden = brandListingArr.isEmpty
-            oilBrandCustomView.collView.reloadData()
+            batteryBrandCustomView.collView.isHidden = brandListingArr.isEmpty
+            batteryBrandCustomView.floatLbl.isHidden = brandListingArr.isEmpty
+            batteryBrandCustomView.collView.reloadData()
            
         }
         view.layoutIfNeeded()

@@ -171,6 +171,9 @@
 		A4443866251387E000114A75 /* VechicleDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4443865251387E000114A75 /* VechicleDetailVC.swift */; };
 		A44E8D74251C817400ACBC4D /* OilBrandsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44E8D73251C817400ACBC4D /* OilBrandsVC.swift */; };
 		A44E8D76251C973800ACBC4D /* OilTypeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44E8D75251C973800ACBC4D /* OilTypeVC.swift */; };
+		A44E8D78251CBC3B00ACBC4D /* BatteryBrandVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44E8D77251CBC3B00ACBC4D /* BatteryBrandVC.swift */; };
+		A44E8D7A251CBF9500ACBC4D /* VehicleDetailForBatteryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44E8D79251CBF9500ACBC4D /* VehicleDetailForBatteryVC.swift */; };
+		A44E8D7C251CD24900ACBC4D /* VehicleDetailForOilVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44E8D7B251CD24900ACBC4D /* VehicleDetailForOilVC.swift */; };
 		A45042C7250F2D12001C8905 /* AddAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45042C6250F2D12001C8905 /* AddAccountVC.swift */; };
 		A45042D0250F3846001C8905 /* AddAccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45042CE250F3846001C8905 /* AddAccountTableViewCell.swift */; };
 		A45042D1250F3846001C8905 /* AddAccountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A45042CF250F3846001C8905 /* AddAccountTableViewCell.xib */; };
@@ -367,6 +370,9 @@
 		A4443865251387E000114A75 /* VechicleDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VechicleDetailVC.swift; sourceTree = "<group>"; };
 		A44E8D73251C817400ACBC4D /* OilBrandsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OilBrandsVC.swift; sourceTree = "<group>"; };
 		A44E8D75251C973800ACBC4D /* OilTypeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OilTypeVC.swift; sourceTree = "<group>"; };
+		A44E8D77251CBC3B00ACBC4D /* BatteryBrandVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryBrandVC.swift; sourceTree = "<group>"; };
+		A44E8D79251CBF9500ACBC4D /* VehicleDetailForBatteryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleDetailForBatteryVC.swift; sourceTree = "<group>"; };
+		A44E8D7B251CD24900ACBC4D /* VehicleDetailForOilVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleDetailForOilVC.swift; sourceTree = "<group>"; };
 		A45042C6250F2D12001C8905 /* AddAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountVC.swift; sourceTree = "<group>"; };
 		A45042CE250F3846001C8905 /* AddAccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountTableViewCell.swift; sourceTree = "<group>"; };
 		A45042CF250F3846001C8905 /* AddAccountTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddAccountTableViewCell.xib; sourceTree = "<group>"; };
@@ -1041,6 +1047,9 @@
 				A4FEF8EB2518744900D58C13 /* TyreRequestedVC.swift */,
 				A44E8D73251C817400ACBC4D /* OilBrandsVC.swift */,
 				A44E8D75251C973800ACBC4D /* OilTypeVC.swift */,
+				A44E8D77251CBC3B00ACBC4D /* BatteryBrandVC.swift */,
+				A44E8D79251CBF9500ACBC4D /* VehicleDetailForBatteryVC.swift */,
+				A44E8D7B251CD24900ACBC4D /* VehicleDetailForOilVC.swift */,
 			);
 			path = PostloginVC;
 			sourceTree = "<group>";
@@ -1517,6 +1526,7 @@
 				8481FA532500BEF900AB6EFB /* StringExtension.swift in Sources */,
 				844D81E5250271B400550334 /* LoginViewModel.swift in Sources */,
 				843DFD202503F93A000DE6EB /* OtpVerificationVM.swift in Sources */,
+				A44E8D7C251CD24900ACBC4D /* VehicleDetailForOilVC.swift in Sources */,
 				8481FA652500BFAD00AB6EFB /* AppColors.swift in Sources */,
 				A45566D0250CA6C0009E4324 /* UploadDocumentVC.swift in Sources */,
 				844EB7262519C012003A6E3F /* TyreCountryModel.swift in Sources */,
@@ -1568,6 +1578,7 @@
 				8481FA252500BB6400AB6EFB /* Webservice+EndPoints.swift in Sources */,
 				A4A6DEE9251A123800564020 /* GarageExploreVC.swift in Sources */,
 				843C8EC12508AD4D00515F2E /* ProfileUserBottomCell.swift in Sources */,
+				A44E8D78251CBC3B00ACBC4D /* BatteryBrandVC.swift in Sources */,
 				A4A6DEE5251A123800564020 /* GarageTabBarController.swift in Sources */,
 				8481FA612500BF9300AB6EFB /* AppUserDefaults.swift in Sources */,
 				84303E69250649D4000BA5C3 /* UserTabBarController.swift in Sources */,
@@ -1624,6 +1635,7 @@
 				A45707C32513B137003BE7DD /* TyreBrandVC.swift in Sources */,
 				843C8EC92508B0AE00515F2E /* AGTableView.swift in Sources */,
 				A4B74CCB2510CF6C00771974 /* GarageProfileStep2VC.swift in Sources */,
+				A44E8D7A251CBF9500ACBC4D /* VehicleDetailForBatteryVC.swift in Sources */,
 				8481F9FF2500AA9A00AB6EFB /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

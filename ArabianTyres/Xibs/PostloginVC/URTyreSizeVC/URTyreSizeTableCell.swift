@@ -33,7 +33,7 @@ class URTyreSizeTableCell: UITableViewCell {
     func bindData(categoryType: Category) {
         switch categoryType {
         case .oil:
-           mainImgView.image = #imageLiteral(resourceName: "icOil")
+           mainImgView.image =  #imageLiteral(resourceName: "icOil")
            backImgView.isHidden = false
             break
         case .tyres:

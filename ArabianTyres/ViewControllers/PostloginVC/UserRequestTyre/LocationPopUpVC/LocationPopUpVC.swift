@@ -36,6 +36,8 @@ class LocationPopUpVC: BaseVC {
     private var isHitApi: Bool = false
     var onAllowTap: (()->())?
     // MARK: - Lifecycle
+
+
     //===========================
     override func viewDidLoad() {
         super.viewDidLoad()

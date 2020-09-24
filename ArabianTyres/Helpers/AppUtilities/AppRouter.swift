@@ -210,6 +210,21 @@ enum AppRouter {
     }
     
     
+    static func goToBatteryBrandVC(vc: UIViewController){
+        let scene = BatteryBrandVC.instantiate(fromAppStoryboard: .UserHomeScreen)
+        vc.navigationController?.pushViewController(scene, animated: true)
+    }
+    
+    static func goToVehicleDetailForBatteryVC(vc: UIViewController){
+        let scene = VehicleDetailForBatteryVC.instantiate(fromAppStoryboard: .UserHomeScreen)
+        vc.navigationController?.pushViewController(scene, animated: true)
+    }
+    
+    static func goToVehicleDetailForOilVC(vc: UIViewController){
+           let scene = VehicleDetailForOilVC.instantiate(fromAppStoryboard: .UserHomeScreen)
+           vc.navigationController?.pushViewController(scene, animated: true)
+    }
+    
     static func goToURTyreSizeVC(vc: UIViewController){
         let scene = URTyreSizeVC.instantiate(fromAppStoryboard: .UserRequest)
         vc.navigationController?.pushViewController(scene, animated: true)

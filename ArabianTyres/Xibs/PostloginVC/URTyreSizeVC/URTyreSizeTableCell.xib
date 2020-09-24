@@ -31,15 +31,15 @@
                                     <constraint firstAttribute="height" constant="30" id="GZd-4Y-1nf"/>
                                 </constraints>
                                 <state key="normal" image="button_compass.png"/>
+                                <state key="selected" image="icFillCircle"/>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="oilSplashJ031" translatesAutoresizingMaskIntoConstraints="NO" id="4bw-KH-Wyo">
-                                <rect key="frame" x="-79.5" y="-64" width="324" height="308"/>
+                                <rect key="frame" x="19" y="-11" width="162" height="154"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icOil" translatesAutoresizingMaskIntoConstraints="NO" id="2uv-1P-9vy">
-                                <rect key="frame" x="50" y="11" width="200" height="178"/>
+                                <rect key="frame" x="66" y="11" width="168" height="110"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="178" id="STd-H2-Htu"/>
-                                    <constraint firstAttribute="width" constant="200" id="maq-vM-X5b"/>
+                                    <constraint firstAttribute="height" constant="110" id="STd-H2-Htu"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PGE-Om-MfH">
@@ -74,16 +74,16 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="2uv-1P-9vy" firstAttribute="centerX" secondItem="4bw-KH-Wyo" secondAttribute="centerX" multiplier="1.5" id="3a2-ah-1bl"/>
                             <constraint firstItem="2uv-1P-9vy" firstAttribute="top" secondItem="a6d-ha-D8x" secondAttribute="top" constant="11" id="4eG-4C-tDF"/>
                             <constraint firstItem="PGE-Om-MfH" firstAttribute="leading" secondItem="a6d-ha-D8x" secondAttribute="leading" constant="8" id="8SB-Fo-W9T"/>
                             <constraint firstItem="2uv-1P-9vy" firstAttribute="centerX" secondItem="a6d-ha-D8x" secondAttribute="centerX" id="CwK-c8-1DO"/>
-                            <constraint firstItem="4bw-KH-Wyo" firstAttribute="centerY" secondItem="2uv-1P-9vy" secondAttribute="centerY" multiplier="0.9" id="DTk-iG-RK3"/>
                             <constraint firstAttribute="bottom" secondItem="PGE-Om-MfH" secondAttribute="bottom" constant="8" id="K3F-rr-DAD"/>
                             <constraint firstItem="DSH-Zw-f3g" firstAttribute="top" secondItem="a6d-ha-D8x" secondAttribute="top" constant="8" id="KN7-oE-MtE"/>
-                            <constraint firstItem="4bw-KH-Wyo" firstAttribute="centerX" secondItem="2uv-1P-9vy" secondAttribute="centerX" multiplier="0.55" id="KfS-oC-mWY"/>
                             <constraint firstItem="DSH-Zw-f3g" firstAttribute="leading" secondItem="a6d-ha-D8x" secondAttribute="leading" constant="8" id="MGj-Tv-oJq"/>
                             <constraint firstAttribute="trailing" secondItem="PGE-Om-MfH" secondAttribute="trailing" constant="8" id="Mey-5I-ZaF"/>
-                            <constraint firstItem="2uv-1P-9vy" firstAttribute="centerY" secondItem="a6d-ha-D8x" secondAttribute="centerY" id="nZZ-Mj-Eam"/>
+                            <constraint firstItem="PGE-Om-MfH" firstAttribute="top" secondItem="2uv-1P-9vy" secondAttribute="bottom" constant="22" id="UBn-1i-n8p"/>
+                            <constraint firstItem="2uv-1P-9vy" firstAttribute="centerY" secondItem="4bw-KH-Wyo" secondAttribute="centerY" id="UWU-Ah-HHk"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -109,6 +109,7 @@
     </objects>
     <resources>
         <image name="button_compass.png" width="40" height="40"/>
+        <image name="icFillCircle" width="30" height="30"/>
         <image name="icOil" width="168" height="171"/>
         <image name="oilSplashJ031" width="162" height="154"/>
     </resources>
