@@ -719,7 +719,7 @@ Service Center</string>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rtz-uU-sp1">
                                                     <rect key="frame" x="22" y="51" width="137" height="60"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icTopArrow" translatesAutoresizingMaskIntoConstraints="NO" id="f9a-Bk-sih">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icTopArrow" translatesAutoresizingMaskIntoConstraints="NO" id="f9a-Bk-sih">
                                                             <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <userDefinedRuntimeAttributes>

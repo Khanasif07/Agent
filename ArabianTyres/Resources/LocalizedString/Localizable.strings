@@ -58,8 +58,8 @@
 "skip_signup_continue" = "SKIP SIGN UP & CONTINUE";
 "dont_have_an_account" = "Don’t have an account?";
 "imageUploadingFailed" = "Image uploading failed";
-
-
+"accountNumberAreNotSame" = "Account number doesn't match";
+"minTenDigitInAccountNumber" = "Minimum Ten Digit In Account Number";
 // MARK: - Validation Messages
 //==================================
 "newPassword" = "New Password";

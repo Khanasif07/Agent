@@ -74,10 +74,11 @@ class DocumentTableViewCell: UITableViewCell {
         }else {
             docImgView.isHidden = false
             cancelBtn.isHidden = false
-            docImgView.setImage_kf(imageString: section.imgArr[0], placeHolderImage: #imageLiteral(resourceName: "icUnCheck"))
+            docImgView.contentMode = .center
+            docImgView.setImage_kf(imageString: section.imgArr[0], placeHolderImage: #imageLiteral(resourceName: "icTopArrow"))
             if section.imgArr.count == 2 {
             uploadImgView.contentMode = .scaleToFill
-            docImgView.setImage_kf(imageString: section.imgArr[1], placeHolderImage: #imageLiteral(resourceName: "icUnCheck"))
+            uploadImgView.setImage_kf(imageString: section.imgArr[1], placeHolderImage: #imageLiteral(resourceName: "icTopArrow"))
             uploadCancelBtn.isHidden = false
 
             }else {

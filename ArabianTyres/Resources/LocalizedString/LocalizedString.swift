@@ -67,6 +67,8 @@ enum LocalizedString : String {
     case dont_have_an_account = "dont_have_an_account"
     case alreadyHaveAnAccount = "alreadyHaveAnAccount"
     case imageUploadingFailed
+    case accountNumberAreNotSame
+    case minTenDigitInAccountNumber
     
     // MARK: - Validation Messages
     //==================================
