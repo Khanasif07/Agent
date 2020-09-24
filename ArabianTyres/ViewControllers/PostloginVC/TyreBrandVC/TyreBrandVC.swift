@@ -126,7 +126,7 @@ extension TyreBrandVC {
     }
     
     private func submitBtnStatus()-> Bool{
-        return !TyreRequestModel.shared.countries.isEmpty
+        return !TyreRequestModel.shared.tyreBrands.isEmpty
     }
     
     private func setupCustomView() {

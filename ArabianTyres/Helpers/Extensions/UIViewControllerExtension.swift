@@ -299,8 +299,8 @@ extension UIViewController {
         let titleFont = [NSAttributedString.Key.font: AppFonts.MuliRegular.withSize(16)]
         let messageFont = [NSAttributedString.Key.font: AppFonts.MuliRegular.withSize(14)]
         
-        let titleAttrString = NSMutableAttributedString(string: title, attributes: titleFont)
-        let messageAttrString = NSMutableAttributedString(string: msg, attributes: messageFont)
+        _ = NSMutableAttributedString(string: title, attributes: titleFont)
+        _ = NSMutableAttributedString(string: msg, attributes: messageFont)
         DispatchQueue.main.async {
             let alertViewController = UIAlertController(title: title, message: msg, preferredStyle: UIAlertController.Style.alert)
             let okAction = UIAlertAction(title: "Ok", style: UIAlertAction.Style.default) { (action : UIAlertAction) -> Void in
@@ -321,8 +321,8 @@ extension UIViewController {
         let titleFont = [NSAttributedString.Key.font: AppFonts.MuliRegular.withSize(16)]
         let messageFont = [NSAttributedString.Key.font: AppFonts.MuliRegular.withSize(14)]
         
-        let titleAttrString = NSMutableAttributedString(string: title, attributes: titleFont)
-        let messageAttrString = NSMutableAttributedString(string: msg, attributes: messageFont)
+        _ = NSMutableAttributedString(string: title, attributes: titleFont)
+        _ = NSMutableAttributedString(string: msg, attributes: messageFont)
         DispatchQueue.main.async {
             let alertViewController = UIAlertController(title: title, message: msg, preferredStyle: UIAlertController.Style.alert)
             let okAction = UIAlertAction(title: actionTitle, style: UIAlertAction.Style.default) { (action : UIAlertAction) -> Void in

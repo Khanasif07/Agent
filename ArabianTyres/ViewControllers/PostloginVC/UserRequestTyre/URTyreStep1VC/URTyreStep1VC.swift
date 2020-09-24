@@ -13,8 +13,8 @@ class URTyreStep1VC: BaseVC {
     
     // MARK: - IBOutlets
     //===========================
+    @IBOutlet weak var dashView: CustomDashedView!
     @IBOutlet weak var findRightBtn: UIButton!
-    @IBOutlet weak var dashView: UIView!
     @IBOutlet weak var nextBtn: AppButton!
     @IBOutlet weak var chooseSizeLbl: UILabel!
     @IBOutlet weak var titleLbl: UILabel!
@@ -88,7 +88,6 @@ extension URTyreStep1VC {
         [widthTxtField,profileTxtField,rimSizeTxtField].forEach({$0?.selectedLineColor = UIColor.clear})
         [widthTxtField,profileTxtField,rimSizeTxtField,numberTyreTxtField].forEach({$0?.selectedTitleColor = AppColors.fontTertiaryColor})
         self.nextBtn.isEnabled = true
-        self.dashView.addDashedBorder()
         self.nextBtn.isEnabled = false
     }
     

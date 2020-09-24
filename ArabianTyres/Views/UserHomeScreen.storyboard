@@ -234,7 +234,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="diB-ne-4fC">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="917"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="938"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZDv-0L-9va">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="363"/>
@@ -275,10 +275,10 @@ brand or country origin</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KiL-Zd-HpC">
-                                                <rect key="frame" x="16" y="519" width="382" height="348"/>
+                                                <rect key="frame" x="16" y="519" width="382" height="369"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="vCx-ks-sWz">
-                                                        <rect key="frame" x="8" y="12" width="358" height="30"/>
+                                                        <rect key="frame" x="12.5" y="12" width="357" height="30"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xbm-Qc-X7M">
                                                                 <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
@@ -293,7 +293,7 @@ brand or country origin</string>
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tyre Brand" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ah5-jn-amh">
-                                                                <rect key="frame" x="36" y="0.0" width="322" height="30"/>
+                                                                <rect key="frame" x="36" y="0.0" width="321" height="30"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -301,14 +301,21 @@ brand or country origin</string>
                                                         </subviews>
                                                     </stackView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3qy-xx-0lY" customClass="CustomTextView" customModule="ArabianTyres" customModuleProvider="target">
-                                                        <rect key="frame" x="10" y="54" width="354" height="60"/>
+                                                        <rect key="frame" x="14.5" y="54" width="353" height="60"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="r4N-u9-5Mm"/>
                                                         </constraints>
                                                     </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="52o-Kb-LCz" customClass="CustomDashedView" customModule="ArabianTyres" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="138" width="382" height="25"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="25" id="OCH-2p-yfc"/>
+                                                        </constraints>
+                                                    </view>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="XiY-SO-HAj">
-                                                        <rect key="frame" x="10" y="144" width="354" height="30"/>
+                                                        <rect key="frame" x="14.5" y="165" width="353" height="30"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RMw-vn-ibp">
                                                                 <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
@@ -323,7 +330,7 @@ brand or country origin</string>
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Country Origin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7EK-Kg-wyw">
-                                                                <rect key="frame" x="36" y="0.0" width="318" height="30"/>
+                                                                <rect key="frame" x="36" y="0.0" width="317" height="30"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -331,14 +338,14 @@ brand or country origin</string>
                                                         </subviews>
                                                     </stackView>
                                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VJ7-5D-Ehm" customClass="CustomTextView" customModule="ArabianTyres" customModuleProvider="target">
-                                                        <rect key="frame" x="10" y="186" width="354" height="60"/>
+                                                        <rect key="frame" x="14.5" y="207" width="353" height="60"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="SMr-dW-9DY"/>
                                                         </constraints>
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z5m-Nh-zkS" customClass="AppButton" customModule="ArabianTyres" customModuleProvider="target">
-                                                        <rect key="frame" x="217" y="276" width="150" height="56"/>
+                                                        <rect key="frame" x="217" y="297" width="150" height="56"/>
                                                         <color key="backgroundColor" red="0.090196078430000007" green="0.1450980392" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="56" id="EZH-EU-fbF"/>
@@ -361,18 +368,21 @@ brand or country origin</string>
                                                     <constraint firstItem="XiY-SO-HAj" firstAttribute="trailing" secondItem="3qy-xx-0lY" secondAttribute="trailing" id="0et-9o-R6n"/>
                                                     <constraint firstItem="z5m-Nh-zkS" firstAttribute="top" secondItem="VJ7-5D-Ehm" secondAttribute="bottom" constant="30" id="0kU-k1-1We"/>
                                                     <constraint firstItem="3qy-xx-0lY" firstAttribute="leading" secondItem="vCx-ks-sWz" secondAttribute="leading" constant="2" id="2KX-nH-teh"/>
-                                                    <constraint firstItem="XiY-SO-HAj" firstAttribute="top" secondItem="3qy-xx-0lY" secondAttribute="bottom" constant="30" id="3bP-vn-Ks0"/>
                                                     <constraint firstItem="vCx-ks-sWz" firstAttribute="top" secondItem="KiL-Zd-HpC" secondAttribute="top" constant="12" id="5VA-x3-3q5"/>
+                                                    <constraint firstAttribute="trailing" secondItem="52o-Kb-LCz" secondAttribute="trailing" id="66k-V0-ZX7"/>
                                                     <constraint firstItem="3qy-xx-0lY" firstAttribute="trailing" secondItem="vCx-ks-sWz" secondAttribute="trailing" constant="-2" id="7PI-fK-egB"/>
                                                     <constraint firstItem="VJ7-5D-Ehm" firstAttribute="top" secondItem="XiY-SO-HAj" secondAttribute="bottom" constant="12" id="Bmf-5K-vUS"/>
                                                     <constraint firstItem="XiY-SO-HAj" firstAttribute="leading" secondItem="3qy-xx-0lY" secondAttribute="leading" id="C2t-CY-S9W"/>
                                                     <constraint firstItem="VJ7-5D-Ehm" firstAttribute="leading" secondItem="XiY-SO-HAj" secondAttribute="leading" id="CbZ-0F-lGZ"/>
                                                     <constraint firstAttribute="bottom" secondItem="z5m-Nh-zkS" secondAttribute="bottom" constant="16" id="LnE-HB-W9E"/>
-                                                    <constraint firstAttribute="trailing" secondItem="vCx-ks-sWz" secondAttribute="trailing" constant="16" id="WFH-qJ-9Gg"/>
+                                                    <constraint firstAttribute="trailing" secondItem="vCx-ks-sWz" secondAttribute="trailing" constant="12.5" id="WFH-qJ-9Gg"/>
+                                                    <constraint firstItem="XiY-SO-HAj" firstAttribute="top" secondItem="52o-Kb-LCz" secondAttribute="bottom" constant="2" id="dpI-MS-n5J"/>
                                                     <constraint firstItem="VJ7-5D-Ehm" firstAttribute="trailing" secondItem="XiY-SO-HAj" secondAttribute="trailing" id="dwE-gI-Lqt"/>
                                                     <constraint firstAttribute="trailing" secondItem="z5m-Nh-zkS" secondAttribute="trailing" constant="15" id="jAW-Yn-RWU"/>
-                                                    <constraint firstItem="vCx-ks-sWz" firstAttribute="leading" secondItem="KiL-Zd-HpC" secondAttribute="leading" constant="8" id="lCm-mT-NSd"/>
+                                                    <constraint firstItem="52o-Kb-LCz" firstAttribute="leading" secondItem="KiL-Zd-HpC" secondAttribute="leading" id="kTI-s3-kU9"/>
+                                                    <constraint firstItem="vCx-ks-sWz" firstAttribute="leading" secondItem="KiL-Zd-HpC" secondAttribute="leading" constant="12.5" id="lCm-mT-NSd"/>
                                                     <constraint firstItem="3qy-xx-0lY" firstAttribute="top" secondItem="vCx-ks-sWz" secondAttribute="bottom" constant="12" id="sYX-o0-EUb"/>
+                                                    <constraint firstItem="52o-Kb-LCz" firstAttribute="top" secondItem="3qy-xx-0lY" secondAttribute="bottom" constant="24" id="suA-eZ-njr"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -583,17 +593,17 @@ brand or country origin</string>
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D8I-Az-m9l">
-                                        <rect key="frame" x="30" y="260" width="354" height="376"/>
+                                        <rect key="frame" x="30" y="254" width="354" height="388.5"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="grp" translatesAutoresizingMaskIntoConstraints="NO" id="YrE-7V-h17">
-                                                <rect key="frame" x="127" y="35" width="100" height="100"/>
+                                                <rect key="frame" x="126.99999999999999" y="35" width="100.00000000000004" height="100.00000000000003"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="YrE-7V-h17" secondAttribute="height" id="SfM-qY-zhp"/>
                                                     <constraint firstAttribute="height" constant="100" id="vci-dc-coh"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yuP-X2-SAc">
-                                                <rect key="frame" x="59.5" y="177" width="235" height="40"/>
+                                                <rect key="frame" x="54" y="177" width="246" height="46.5"/>
                                                 <string key="text">Arabian Tyres want to access
 your current location</string>
                                                 <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
@@ -601,14 +611,14 @@ your current location</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mXQ-p8-Ige">
-                                                <rect key="frame" x="59.5" y="224" width="235" height="1"/>
+                                                <rect key="frame" x="54" y="230.5" width="246" height="1"/>
                                                 <color key="backgroundColor" red="0.87450980392156863" green="0.89411764705882346" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="wUp-Gw-nOU"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YWJ-24-7va">
-                                                <rect key="frame" x="59.5" y="237" width="235" height="35"/>
+                                                <rect key="frame" x="54" y="243.5" width="246" height="41"/>
                                                 <string key="text">Allow cureent location will help you
 in getting great offers</string>
                                                 <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="15"/>
@@ -616,10 +626,10 @@ in getting great offers</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="8kL-fQ-FnG">
-                                                <rect key="frame" x="59.5" y="300" width="235" height="48"/>
+                                                <rect key="frame" x="54" y="312.5" width="246" height="48"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JBc-qy-9th">
-                                                        <rect key="frame" x="0.0" y="0.0" width="109.5" height="48"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="115" height="48"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="48" id="yN1-sc-acE"/>
@@ -643,7 +653,7 @@ in getting great offers</string>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lsd-fy-pG3">
-                                                        <rect key="frame" x="125.5" y="0.0" width="109.5" height="48"/>
+                                                        <rect key="frame" x="131" y="0.0" width="115" height="48"/>
                                                         <color key="backgroundColor" red="0.090196078431372548" green="0.14509803921568626" blue="0.3529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Allow">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -722,7 +732,7 @@ in getting great offers</string>
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vnX-hW-sOe">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="970"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="991"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dO1-4h-0z0">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="363"/>
@@ -931,8 +941,15 @@ Service With</string>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5aa-VK-NOD" customClass="CustomDashedView" customModule="ArabianTyres" customModuleProvider="target">
+                                                <rect key="frame" x="16" y="745" width="382" height="25"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="25" id="QKe-2h-2Sv"/>
+                                                </constraints>
+                                            </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qnn-81-M5O">
-                                                <rect key="frame" x="16" y="749" width="382" height="99"/>
+                                                <rect key="frame" x="16" y="770" width="382" height="99"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nUH-B4-pob">
                                                         <rect key="frame" x="15" y="16" width="52.5" height="19.5"/>
@@ -971,7 +988,7 @@ Service With</string>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2uW-7o-gnV" customClass="AppButton" customModule="ArabianTyres">
-                                                <rect key="frame" x="16" y="864" width="382" height="56"/>
+                                                <rect key="frame" x="16" y="885" width="382" height="56"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="56" id="RB6-zq-6pt"/>
                                                 </constraints>
@@ -996,7 +1013,6 @@ Service With</string>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="dO1-4h-0z0" secondAttribute="trailing" id="79P-Pt-yGN"/>
                                             <constraint firstItem="b7G-Ss-1Fj" firstAttribute="top" secondItem="pAE-My-qPS" secondAttribute="bottom" constant="18" id="8YI-d8-duu"/>
-                                            <constraint firstItem="Qnn-81-M5O" firstAttribute="top" secondItem="uOp-Fj-S6r" secondAttribute="bottom" constant="4" id="AYm-KX-kmc"/>
                                             <constraint firstItem="pAE-My-qPS" firstAttribute="top" secondItem="dO1-4h-0z0" secondAttribute="bottom" id="AjO-H7-g51"/>
                                             <constraint firstItem="mlV-rf-7hY" firstAttribute="width" secondItem="Yx5-Gl-qXZ" secondAttribute="width" id="BHz-eX-K4E"/>
                                             <constraint firstItem="WZj-Lp-DCS" firstAttribute="leading" secondItem="Yx5-Gl-qXZ" secondAttribute="trailing" constant="22" id="CiW-MD-GCd"/>
@@ -1011,13 +1027,17 @@ Service With</string>
                                             <constraint firstItem="Yx5-Gl-qXZ" firstAttribute="leading" secondItem="b7G-Ss-1Fj" secondAttribute="leading" id="Qgb-SA-b4u"/>
                                             <constraint firstItem="dO1-4h-0z0" firstAttribute="top" secondItem="vnX-hW-sOe" secondAttribute="top" id="THb-UH-tbX"/>
                                             <constraint firstItem="wQX-gk-BSE" firstAttribute="leading" secondItem="mlV-rf-7hY" secondAttribute="leading" id="YzS-UG-a9b"/>
+                                            <constraint firstItem="5aa-VK-NOD" firstAttribute="trailing" secondItem="uOp-Fj-S6r" secondAttribute="trailing" id="ap0-KR-bGj"/>
                                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="2uW-7o-gnV" secondAttribute="bottom" priority="750" constant="50" id="b5I-Ll-Gia"/>
                                             <constraint firstItem="uOp-Fj-S6r" firstAttribute="leading" secondItem="wQX-gk-BSE" secondAttribute="leading" id="bEa-cz-V4b"/>
                                             <constraint firstAttribute="trailing" secondItem="uOp-Fj-S6r" secondAttribute="trailing" constant="16" id="bhF-iz-LX8"/>
                                             <constraint firstItem="mlV-rf-7hY" firstAttribute="top" secondItem="Yx5-Gl-qXZ" secondAttribute="bottom" constant="16" id="cgZ-cf-gCO"/>
                                             <constraint firstItem="2uW-7o-gnV" firstAttribute="leading" secondItem="vnX-hW-sOe" secondAttribute="leading" constant="16" id="fGT-Jq-hU2"/>
+                                            <constraint firstItem="Qnn-81-M5O" firstAttribute="top" secondItem="5aa-VK-NOD" secondAttribute="bottom" id="gRh-C9-GQH"/>
                                             <constraint firstAttribute="trailing" secondItem="2uW-7o-gnV" secondAttribute="trailing" constant="16" id="iTh-RO-Lqh"/>
+                                            <constraint firstItem="5aa-VK-NOD" firstAttribute="leading" secondItem="uOp-Fj-S6r" secondAttribute="leading" id="iaV-X9-7ee"/>
                                             <constraint firstItem="pAE-My-qPS" firstAttribute="leading" secondItem="vnX-hW-sOe" secondAttribute="leading" constant="16" id="mM3-74-Mfw"/>
+                                            <constraint firstItem="5aa-VK-NOD" firstAttribute="top" secondItem="uOp-Fj-S6r" secondAttribute="bottom" id="n4P-xJ-bul"/>
                                             <constraint firstAttribute="trailing" secondItem="pAE-My-qPS" secondAttribute="trailing" constant="16" id="rjL-oY-I8q"/>
                                             <constraint firstItem="b7G-Ss-1Fj" firstAttribute="leading" secondItem="pAE-My-qPS" secondAttribute="leading" id="v3V-gx-Kj3"/>
                                             <constraint firstItem="2uW-7o-gnV" firstAttribute="top" secondItem="Qnn-81-M5O" secondAttribute="bottom" constant="16" id="vMZ-xL-j8T"/>

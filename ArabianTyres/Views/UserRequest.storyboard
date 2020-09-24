@@ -60,7 +60,7 @@ looking for?</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K2c-h9-JtS">
-                                                <rect key="frame" x="16" y="403.5" width="382" height="381.5"/>
+                                                <rect key="frame" x="16" y="403.5" width="382" height="381"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose the size of tyre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xVw-Ps-Lcx">
                                                         <rect key="frame" x="16" y="16" width="147.5" height="19.5"/>
@@ -191,7 +191,7 @@ looking for?</string>
                                                         </subviews>
                                                     </stackView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LH3-Us-so6" customClass="AppButton" customModule="ArabianTyres" customModuleProvider="target">
-                                                        <rect key="frame" x="216" y="309.5" width="150" height="56"/>
+                                                        <rect key="frame" x="216" y="309" width="150" height="56"/>
                                                         <color key="backgroundColor" red="0.090196078430000007" green="0.1450980392" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="56" id="A2x-Pa-3cf"/>
@@ -248,7 +248,7 @@ looking for?</string>
                                                         </subviews>
                                                     </stackView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of tyre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bwz-fa-8mT">
-                                                        <rect key="frame" x="16" y="190" width="98" height="19.5"/>
+                                                        <rect key="frame" x="16" y="189.5" width="98" height="19.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="19.5" id="vt7-JD-IpM"/>
                                                         </constraints>
@@ -257,7 +257,7 @@ looking for?</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gjX-b0-YvN" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                        <rect key="frame" x="16" y="219.5" width="350" height="50"/>
+                                                        <rect key="frame" x="16" y="219" width="350" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="yqN-FC-kJX"/>
                                                         </constraints>
@@ -267,11 +267,11 @@ looking for?</string>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Enter number of tyre you want"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="feu-eZ-cGu">
-                                                        <rect key="frame" x="0.0" y="157.5" width="382" height="1"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="feu-eZ-cGu" customClass="CustomDashedView" customModule="ArabianTyres" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="149.5" width="382" height="25"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="1" id="XEV-ri-kc7"/>
+                                                            <constraint firstAttribute="height" constant="25" id="XEV-ri-kc7"/>
                                                         </constraints>
                                                     </view>
                                                 </subviews>
@@ -282,7 +282,7 @@ looking for?</string>
                                                     <constraint firstItem="gjX-b0-YvN" firstAttribute="top" secondItem="bwz-fa-8mT" secondAttribute="bottom" constant="10" id="EgV-X2-Ze7"/>
                                                     <constraint firstAttribute="bottom" secondItem="LH3-Us-so6" secondAttribute="bottom" constant="16" id="GZi-CC-OHx"/>
                                                     <constraint firstAttribute="trailing" secondItem="feu-eZ-cGu" secondAttribute="trailing" id="K1W-Wj-xyN"/>
-                                                    <constraint firstItem="feu-eZ-cGu" firstAttribute="top" secondItem="ktG-PK-aci" secondAttribute="bottom" constant="31.5" id="LZQ-tw-R85"/>
+                                                    <constraint firstItem="feu-eZ-cGu" firstAttribute="top" secondItem="ktG-PK-aci" secondAttribute="bottom" constant="23.5" id="LZQ-tw-R85"/>
                                                     <constraint firstAttribute="trailing" secondItem="LH3-Us-so6" secondAttribute="trailing" constant="16" id="TXo-mh-N7e"/>
                                                     <constraint firstAttribute="trailing" secondItem="Ipp-51-wjs" secondAttribute="trailing" constant="16" id="Wr4-Yd-2Eq"/>
                                                     <constraint firstItem="gjX-b0-YvN" firstAttribute="leading" secondItem="bwz-fa-8mT" secondAttribute="leading" id="XCT-4P-kh1"/>
@@ -292,7 +292,7 @@ looking for?</string>
                                                     <constraint firstItem="ktG-PK-aci" firstAttribute="top" secondItem="Ipp-51-wjs" secondAttribute="bottom" constant="8" id="jN2-QF-xaY"/>
                                                     <constraint firstItem="ktG-PK-aci" firstAttribute="leading" secondItem="K2c-h9-JtS" secondAttribute="leading" constant="16" id="jj9-gZ-dTt"/>
                                                     <constraint firstItem="xVw-Ps-Lcx" firstAttribute="top" secondItem="K2c-h9-JtS" secondAttribute="top" constant="16" id="oYm-EI-4kY"/>
-                                                    <constraint firstItem="bwz-fa-8mT" firstAttribute="top" secondItem="feu-eZ-cGu" secondAttribute="bottom" constant="31.5" id="sbT-bX-7yC"/>
+                                                    <constraint firstItem="bwz-fa-8mT" firstAttribute="top" secondItem="feu-eZ-cGu" secondAttribute="bottom" constant="15" id="sbT-bX-7yC"/>
                                                     <constraint firstItem="LH3-Us-so6" firstAttribute="top" secondItem="gjX-b0-YvN" secondAttribute="bottom" constant="40" id="vvg-l7-Okz"/>
                                                     <constraint firstAttribute="trailing" secondItem="gjX-b0-YvN" secondAttribute="trailing" constant="16" id="w9m-9X-raV"/>
                                                 </constraints>
@@ -371,7 +371,7 @@ looking for?</string>
                     </view>
                     <connections>
                         <outlet property="chooseSizeLbl" destination="xVw-Ps-Lcx" id="eJ1-jf-yiV"/>
-                        <outlet property="dashView" destination="feu-eZ-cGu" id="W6h-gb-GGJ"/>
+                        <outlet property="dashView" destination="feu-eZ-cGu" id="JW1-Ak-48Z"/>
                         <outlet property="findRightBtn" destination="frU-qL-MHq" id="yJ1-Q3-mdF"/>
                         <outlet property="nextBtn" destination="LH3-Us-so6" id="ioh-tr-eoZ"/>
                         <outlet property="numberTyreTxtField" destination="gjX-b0-YvN" id="A2m-yM-z7Z"/>
