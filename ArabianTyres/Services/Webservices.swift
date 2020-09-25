@@ -459,7 +459,7 @@ extension WebServices{
         }
     }
     
-    // MARK:- Brand Listing Data
+    // MARK:- Country Listing Data
     //=================
     static func getCountryListingData(parameters: JSONDictionary,
                                       success: @escaping SuccessResponse,
@@ -477,6 +477,45 @@ extension WebServices{
             failure(error)
         }
     }
+    
+    // MARK:- Make Listing Data
+    //=================
+    static func getMakeListingData(parameters: JSONDictionary,
+                                   success: @escaping SuccessResponse,
+                                   failure: @escaping FailureResponse) {
+        self.commonGetAPI(parameters: parameters,endPoint: .userServiceMake, success: { (json) in
+            let code = json[ApiKey.statusCode].intValue
+            let msg = json[ApiKey.message].stringValue
+            switch code {
+            case ApiCode.success:
+                success(json)
+            default:
+                failure(NSError(code: code, localizedDescription: msg))
+            }
+        }) { (error) -> (Void) in
+            failure(error)
+        }
+    }
+    
+    // MARK:- Model Listing Data
+      //=================
+      static func getModelListingData(parameters: JSONDictionary,
+                                     success: @escaping SuccessResponse,
+                                     failure: @escaping FailureResponse) {
+          self.commonGetAPI(parameters: parameters,endPoint: .userServiceModel, success: { (json) in
+              let code = json[ApiKey.statusCode].intValue
+              let msg = json[ApiKey.message].stringValue
+              switch code {
+              case ApiCode.success:
+                  success(json)
+              default:
+                  failure(NSError(code: code, localizedDescription: msg))
+              }
+          }) { (error) -> (Void) in
+              failure(error)
+          }
+      }
+       
     
     // MARK:- Complete Garage Profile
     //==============================

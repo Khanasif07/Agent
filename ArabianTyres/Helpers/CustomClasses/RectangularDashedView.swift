@@ -11,12 +11,7 @@ import UIKit
 
 class RectangularDashedView: UIView {
     
-//    @IBInspectable var cornerRadius: CGFloat = 0 {
-//        didSet {
-//            layer.cornerRadius = cornerRadius
-//            layer.masksToBounds = cornerRadius > 0
-//        }
-//    }
+
     @IBInspectable var dashWidth: CGFloat = 1.00
     @IBInspectable var dashColor: UIColor = #colorLiteral(red: 0.3294117647, green: 0.337254902, blue: 0.3607843137, alpha: 0.5)
     @IBInspectable var dashLength: CGFloat = 8.0
@@ -43,3 +38,4 @@ class RectangularDashedView: UIView {
         self.dashBorder = dashBorder
     }
 }
+

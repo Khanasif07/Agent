@@ -22,6 +22,7 @@ class BrandsListingVM{
     
     //MARK:- Variables
     //================
+    var searchText: String = ""
     var hideLoader: Bool = false
     var currentPage = 1
     var totalPages = 1
@@ -32,11 +33,30 @@ class BrandsListingVM{
     }
     var brandsListings:[TyreBrandModel] = []
     var countryListings:[TyreCountryModel] = []
+    var selectedBrandsArr : [TyreBrandModel] = []
+    var selectedCountryArr : [TyreCountryModel] = []
     var memberCountLbl: Int = 0
     
     weak var delegate: BrandsListingVMDelegate?
+
+    var searchBrandListing : [TyreBrandModel] {
+        if searchText.isEmpty{
+            return brandsListings
+        }
+        return brandsListings.filter({$0.name.lowercased().contains(s: searchText.lowercased())})
+    }
+    
+    var searchCountryListing : [TyreCountryModel] {
+           if searchText.isEmpty{
+               return countryListings
+           }
+        return countryListings.filter({$0.name.lowercased().contains(s: searchText.lowercased())})
+       }
+    
     
     //MARK:- Functions
+    
+    
     func getBrandListingData(params: JSONDictionary,loader: Bool = true,pagination: Bool = false){
         if pagination {
             guard nextPageAvailable, !isRequestinApi else { return }
@@ -132,4 +152,44 @@ class BrandsListingVM{
             }
         }
     }
+    
+    
+      func removeSelectedBrands(model : TyreBrandModel) {
+          if self.selectedBrandsArr.count != 0 {
+              for power in self.selectedBrandsArr.enumerated() {
+                  if power.element.id == model.id {
+                      self.selectedBrandsArr.remove(at: power.offset)
+                      break
+                  }
+              }
+          }
+      }
+      
+      func setSelectedBrands(model : TyreBrandModel) {
+          if self.brandsListings.count != 0 {
+              self.selectedBrandsArr.append(model)
+          } else {
+              self.selectedBrandsArr = [model]
+          }
+      }
+    
+    func removeSelectedCountry(model : TyreCountryModel) {
+        if self.selectedCountryArr.count != 0 {
+            for power in self.selectedCountryArr.enumerated() {
+                if power.element.id == model.id {
+                    self.selectedCountryArr.remove(at: power.offset)
+                    break
+                }
+            }
+        }
+    }
+    
+    func setSelectedCountry(model : TyreCountryModel) {
+        if self.countryListings.count != 0 {
+            self.selectedCountryArr.append(model)
+        } else {
+            self.selectedCountryArr = [model]
+        }
+    }
+      
 }

@@ -122,6 +122,10 @@ extension HomeVC : UICollectionViewDelegate, UICollectionViewDataSource,UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if !isUserLoggedin{
+            showAlert(msg: "Under Development")
+            return
+        }
         switch dataArray[indexPath.row].name {
         case LocalizedString.tyre.localized:
             categoryType = .tyres

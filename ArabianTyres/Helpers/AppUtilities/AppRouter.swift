@@ -240,6 +240,13 @@ enum AppRouter {
         
     }
     
+    static func presentBottomSheetVC(vc: UIViewController){
+        let scene = BottomSheetVC.instantiate(fromAppStoryboard: .PostLogin)
+        vc.modalPresentationStyle = .fullScreen
+        vc.present(scene, animated: true, completion: nil)
+        
+    }
+    
     
     static func goToURTyreStep1VC(vc: UIViewController){
         let scene = URTyreStep1VC.instantiate(fromAppStoryboard: .UserRequest)
@@ -267,11 +274,11 @@ enum AppRouter {
     static func goToBrandsListingVC(vc: UIViewController,listingType : ListingType,brandsData : [TyreBrandModel],countryData: [TyreCountryModel], category: Category){
         let scene = BrandsListingVC.instantiate(fromAppStoryboard: .UserHomeScreen)
         if listingType == .brands {
-            scene.selectedBrandsArr = brandsData
+            scene.viewModel.selectedBrandsArr = brandsData
         }else {
-            scene.selectedCountryArr = countryData
+            scene.viewModel.selectedCountryArr = countryData
         }
-        scene.category = category
+//        scene.category = category
         scene.delegate = vc as? BrandsListnig
         scene.listingType = listingType
         vc.modalPresentationStyle = .fullScreen
