@@ -869,7 +869,7 @@ extension UIView {
         self.layer.insertSublayer(gradient, at: 0)
     }
     
-    func getUnderline(_ color: UIColor = #colorLiteral(red: 0.8392156863, green: 0.8392156863, blue: 0.8392156863, alpha: 1)) {
+    func getUnderline(_ color: UIColor = #colorLiteral(red: 0.09019607843, green: 0.1450980392, blue: 0.3529411765, alpha: 1)) {
         let border = CALayer()
         let width = CGFloat(1.0)
         border.borderColor = color.cgColor

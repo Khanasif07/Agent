@@ -242,6 +242,17 @@ enum LocalizedString : String {
     case country
     case chooseYourVehicleDetails
     case wellGetYouOilAccordingToTheProvidedDetails
+    case numberOfTyre
+    case edit
+    case submitRequest
+    case youAreRequestingForTyreServiceWith
+    case sizeOfTyre
+    case originOfTyre
+    case productYear
+    case skipAndSubmit
+    case chooseQuantity
+    
+    
     // MARK: - Home  VC Values
     //==============================
     case tyre
@@ -249,7 +260,7 @@ enum LocalizedString : String {
     case battery
     
     
-    // MARK: - Complete profile 1  VC Values
+    // MARK:c - Complete profile 1  VC Values
     //==============================
     case enterServiceCenterDist
     case enterServiceCenterAddress

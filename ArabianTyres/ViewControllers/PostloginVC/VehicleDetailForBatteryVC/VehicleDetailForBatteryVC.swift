@@ -16,6 +16,7 @@ class VehicleDetailForBatteryVC: BaseVC {
     //===========================
     @IBOutlet weak var vehicleMakeTextField: SkyFloatingLabelTextField!
     @IBOutlet weak var vehicleModelTextField: SkyFloatingLabelTextField!
+    @IBOutlet weak var productYearTextField: SkyFloatingLabelTextField!
     @IBOutlet weak var batteryNumberTextField: SkyFloatingLabelTextField!
 
     @IBOutlet weak var enterVehicleDetailLbl: UILabel!
@@ -32,11 +33,13 @@ class VehicleDetailForBatteryVC: BaseVC {
 
     var placeHolderArr : [String] = [LocalizedString.enterVehicleMake.localized,
      LocalizedString.enterVehicleModel.localized,
-     LocalizedString.enterNumber.localized
+     LocalizedString.productYear.localized,
+     LocalizedString.chooseQuantity.localized
     ]
    
     var titleArr : [String] = [LocalizedString.vehicleMake.localized,
                                  LocalizedString.vehicleModel.localized,
+                                 LocalizedString.productYear.localized,
                                  ""
                                 ]
    
@@ -76,9 +79,9 @@ extension VehicleDetailForBatteryVC {
     }
     
     private func setupTextField(){
-        for (index,txtField) in [vehicleMakeTextField,vehicleModelTextField,batteryNumberTextField].enumerated() {
+        for (index,txtField) in [vehicleMakeTextField,vehicleModelTextField,productYearTextField,batteryNumberTextField].enumerated() {
             txtField?.delegate = self
-            txtField != batteryNumberTextField ? txtField?.setImageToRightView(img: #imageLiteral(resourceName: "group3714"), size: CGSize(width: 20, height: 20)) : ()
+            txtField?.setImageToRightView(img: #imageLiteral(resourceName: "group3714"), size: CGSize(width: 20, height: 20))
             txtField?.placeholder = placeHolderArr[index]
             txtField?.title = titleArr[index]
             txtField?.selectedTitleColor = AppColors.fontTertiaryColor

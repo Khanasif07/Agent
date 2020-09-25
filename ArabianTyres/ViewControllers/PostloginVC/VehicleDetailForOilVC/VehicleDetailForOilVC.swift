@@ -17,7 +17,6 @@ class VehicleDetailForOilVC: BaseVC {
     @IBOutlet weak var vehicleMakeTextField: SkyFloatingLabelTextField!
     @IBOutlet weak var vehicleModelTextField: SkyFloatingLabelTextField!
     @IBOutlet weak var countryTextField: SkyFloatingLabelTextField!
-
     @IBOutlet weak var vehicleDetailLbl: UILabel!
     @IBOutlet weak var subHeading: UILabel!
     @IBOutlet weak var nextBtn: AppButton!
@@ -34,8 +33,12 @@ class VehicleDetailForOilVC: BaseVC {
     var titleArr : [String] = [LocalizedString.vehicleMake.localized,
                                  LocalizedString.vehicleModel.localized,
                                  LocalizedString.country.localized
-                                ]
-   
+    ]
+    var selectedMakeArr: [MakeModel] = []
+    var selectedModelArr: [ModelData] = []
+    var vehicleDetailtype : VehicleDetailType = .make
+    
+    
     // MARK: - Lifecycle
     //===========================
     override func viewDidLoad() {
@@ -100,9 +103,53 @@ extension VehicleDetailForOilVC {
         
     }
     
+    private func openBottomSheet(type: VehicleDetailType = .make) {
+        let scene = BottomSheetVC.instantiate(fromAppStoryboard: .PostLogin)
+        scene.viewModel.selectedMakeArr = selectedMakeArr
+        scene.vehicleDetailtype = type
+        scene.viewModel.makeId = selectedMakeArr.first?.id ?? ""
+        scene.onSaveBtnAction = { [weak self] (makeData,modelData) in
+            guard let _self = self else {return}
+            if  _self.vehicleDetailtype == .make {
+                _self.selectedMakeArr = makeData
+                _self.vehicleMakeTextField.text = makeData.first?.name ?? ""
+                _self.submitBtnStatus()
+            } else {
+                _self.selectedModelArr = modelData
+                _self.vehicleModelTextField.text = modelData.first?.model ?? ""
+                _self.submitBtnStatus()
+            }
+        }
+        present(scene, animated: true, completion: nil)
+    }
+    
+    private func submitBtnStatus(){
+           self.nextBtn.isEnabled = !(countryTextField.text ?? "").isEmpty && !self.selectedMakeArr.isEmpty && !self.selectedModelArr.isEmpty
+    }
 }
 
 extension VehicleDetailForOilVC :UITextFieldDelegate {
     
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        switch textField {
+        case vehicleMakeTextField:
+            vehicleDetailtype = .make
+            openBottomSheet(type: VehicleDetailType.make)
+        return false
+    case vehicleModelTextField:
+        if self.selectedMakeArr.isEmpty {
+            showAlert(msg: "Please fill make")
+            return false
+        }
+        vehicleDetailtype = .model
+        openBottomSheet(type: VehicleDetailType.model)
+        return false
+    default:
+         return true
+    }
+  }
 }
-

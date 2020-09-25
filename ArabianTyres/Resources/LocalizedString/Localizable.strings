@@ -186,7 +186,7 @@
 "vehicleModel" = "Vehicle Model";
 "modelYear" = "Model Year";
 "thePreferredOriginForMytyreWouldBe" = "The preferred Origin for my\ntyre would be";
-"setYourPreferencesAmongTyreBrandOrCountryOrigin" = "Set your preferences among tyre\nbrand or country origin";
+"setYourPreferencesAmongTyreBrandOrCountryOrigin" = "Set your preferences among tyre brand or\ncountry origin";
 "tyreBrand" = "Tyre Brand";
 "countryOrigin" = "Country Origin";
 "selectTyreBrand" = "Select Tyre Brands";
@@ -241,8 +241,17 @@
 "country" = "Country";
 "chooseYourVehicleDetails" = "Choose Your Vehicle Details";
 "wellGetYouOilAccordingToTheProvidedDetails" = "We’ll get you oil according to the provided details";
+"numberOfTyre" = "Number of Tyre";
+"edit" = "Edit";
+"submitRequest" = "Submit Request";
+"youAreRequestingForTyreServiceWith" = "You are requesting for tyre\nService With";
+"sizeOfTyre" = "Size of tyre";
+"originOfTyre" = "Origin of Tyre";
+"productYear" = "Product Year";
+"skipAndSubmit" = "Skip & Submit ";
+"chooseQuantity" = "Choose Quantity";
 
-// MARK: - Garage Profile Values
+ // MARK: - Garage Profile Values
 //==============================
 "service_Completed" = "Service Completed";
 "bank_Account" = "Bank Account";
