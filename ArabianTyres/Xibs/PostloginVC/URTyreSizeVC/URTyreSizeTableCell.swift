@@ -21,6 +21,11 @@ class URTyreSizeTableCell: UITableViewCell {
         super.awakeFromNib()
     }
     
+    public func  populateData(isPowerSelected: Bool,model: TyreSizeModel){
+        self.tyreSizeLbl.text = "B290 " + "\(model.width)" + "/" +  "\(model.profile)"  + " R" + "\(model.rimSize)"
+        radioBtn.isSelected = isPowerSelected
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         self.internalView.round(radius: 4.0)

@@ -109,10 +109,12 @@ extension VechicleDetailVC {
             if  _self.vehicleDetailtype == .make {
                 _self.selectedMakeArr = makeData
                 _self.vehicleMakeTextField.text = makeData.first?.name ?? ""
+                TyreRequestModel.shared.makeId = makeData.first?.id ?? ""
                 _self.submitBtnStatus()
             } else {
                 _self.selectedModelArr = modelData
                 _self.vehicleModelTextField.text = modelData.first?.model ?? ""
+                 TyreRequestModel.shared.modelName = modelData.first?.model ?? ""
                 _self.submitBtnStatus()
             }
         }
@@ -175,6 +177,7 @@ extension VechicleDetailVC :UITextFieldDelegate {
 extension VechicleDetailVC: WCCustomPickerViewDelegate {
     func userDidSelectRow(_ text: String) {
         modelYearTextField.text = text
+        TyreRequestModel.shared.year = text
         self.submitBtnStatus()
     }
 }

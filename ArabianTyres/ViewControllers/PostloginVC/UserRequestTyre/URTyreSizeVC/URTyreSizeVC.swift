@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DZNEmptyDataSet
 
 class URTyreSizeVC: BaseVC {
     
@@ -21,12 +22,18 @@ class URTyreSizeVC: BaseVC {
     
     // MARK: - Variables
     //===========================
+    var viewModel = URTyreSizeVM()
     
     // MARK: - Lifecycle
     //===========================
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        proceedBtn.round(radius: 4.0)
     }
     
     // MARK: - IBActions
@@ -38,7 +45,7 @@ class URTyreSizeVC: BaseVC {
     @IBAction func backBtnAction(_ sender: UIButton) {
         self.pop()
     }
-   
+    
     
 }
 
@@ -47,10 +54,18 @@ class URTyreSizeVC: BaseVC {
 extension URTyreSizeVC {
     
     private func initialSetup() {
-        self.proceedBtn.isEnabled = true
+        tableViewSetUp()
+        self.viewModel.delegate = self
+        self.viewModel.getTyreSizeListingData(dict: [ApiKey.makeId:TyreRequestModel.shared.makeId,ApiKey.modelName:TyreRequestModel.shared.modelName,ApiKey.year: TyreRequestModel.shared.year])
+    }
+    
+    private func tableViewSetUp(){
+        self.proceedBtn.isEnabled = false
         mainTableView.registerCell(with: URTyreSizeTableCell.self)
         mainTableView.delegate = self
         mainTableView.dataSource = self
+        mainTableView.emptyDataSetSource = self
+        mainTableView.emptyDataSetDelegate = self
     }
 }
 
@@ -59,11 +74,16 @@ extension URTyreSizeVC {
 extension URTyreSizeVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return self.viewModel.tyreSizeListings.endIndex
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(with: URTyreSizeTableCell.self, indexPath: indexPath)
+        let isPowerSelected = self.viewModel.selectedtyreSizeListings.contains(where: {$0.rimSize == self.viewModel.tyreSizeListings[indexPath.row].rimSize})
+        if self.viewModel.tyreSizeListings.endIndex  > 0  {
+            cell.populateData(isPowerSelected: isPowerSelected,model: self.viewModel.tyreSizeListings[indexPath.row])
+        }
+        
         return cell
     }
     
@@ -72,6 +92,52 @@ extension URTyreSizeVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        if self.viewModel.selectedtyreSizeListings.contains(self.viewModel.tyreSizeListings[indexPath.row]) {} else {
+            self.viewModel.selectedtyreSizeListings.removeAll()
+            self.viewModel.selectedtyreSizeListings.append(self.viewModel.tyreSizeListings[indexPath.row])
+            TyreRequestModel.shared.width = "\(self.viewModel.tyreSizeListings[indexPath.row].width)"
+            TyreRequestModel.shared.profile = "\(self.viewModel.tyreSizeListings[indexPath.row].profile)"
+            TyreRequestModel.shared.rimSize = "\(self.viewModel.tyreSizeListings[indexPath.row].rimSize)"
+        }
+        proceedBtn.isEnabled = true
+        mainTableView.reloadData()
     }
+}
+
+// MARK: - Extension For URTyreSizeVMDelegate
+//===========================
+extension URTyreSizeVC: URTyreSizeVMDelegate{
+    func getTyreSizeListingDataSuccess(message: String){
+        self.mainTableView.reloadData()
+    }
+    
+    func getTyreSizeListingDataFailed(error:String){
+        ToastView.shared.showLongToast(self.view, msg: error)
+    }
+}
+
+//MARK: DZNEmptyDataSetSource and DZNEmptyDataSetDelegate
+//================================
+extension URTyreSizeVC : DZNEmptyDataSetSource,DZNEmptyDataSetDelegate {
+    
+    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
+        return  nil
+    }
+    
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        return NSAttributedString(string: "No data Found", attributes: [NSAttributedString.Key.foregroundColor: AppColors.fontTertiaryColor,NSAttributedString.Key.font: AppFonts.NunitoSansBold.withSize(18)])
+    }
+    
+    func emptyDataSetShouldDisplay(_ scrollView: UIScrollView!) -> Bool {
+        return true
+    }
+    
+    func emptyDataSetShouldAllowScroll(_ scrollView: UIScrollView!) -> Bool {
+        return true
+    }
+    
+    func emptyDataSetShouldAllowTouch(_ scrollView: UIScrollView!) -> Bool {
+        return true
+    }
+    
 }

@@ -208,6 +208,7 @@ extension TyreBrandVC: UICollectionViewDelegate,UICollectionViewDataSource,UICol
                 tyreBrandCustomView.floatLbl.isHidden = true
                 tyreBrandCheckBtn.isSelected = false
             }
+            self.submitBtn.isEnabled = submitBtnStatus()
             tyreBrandCustomView.collView.reloadData()
             view.layoutIfNeeded()
             view.setNeedsLayout()
@@ -263,7 +264,6 @@ extension TyreBrandVC: BrandsListnig {
         if listingType == .brands {
             brandListingArr = BrandsListings
             self.listingType = listingType
-            brandListingArr = BrandsListings
             TyreRequestModel.shared.tyreBrands = BrandsListings.map({ (tyreModel) -> String in
                 return tyreModel.id
             })

@@ -218,10 +218,8 @@ extension BrandsListingVC : UITableViewDelegate, UITableViewDataSource {
         let view = tableView.dequeueHeaderFooter(with: FacilityTableHeaderView.self)
         view.bottomView.backgroundColor = #colorLiteral(red: 0.9294117647, green: 0.9294117647, blue: 0.9294117647, alpha: 1)
         view.categoryName.text = listingType == .brands ? self.viewModel.searchBrandListing[section].name : self.viewModel.searchCountryListing[section].name
-        view.arrowImg.isHidden = section == 0 ? true : false
-        view.arrowImg.setImage_kf(imageString: listingType == .brands ? self.viewModel.searchBrandListing[section].iconImage : self.viewModel.searchCountryListing[section].flag, placeHolderImage: #imageLiteral(resourceName: "icUnCheck"), loader: true)
-        //        view.checkBtn.isSelected = selectedIndexPath.contains(section) || selectedIndexPath.contains(0)
-        //
+        view.arrowImg.isHidden = (section == 0 && self.isSearchOn) ? true : false
+        view.arrowImg.setImage_kf(imageString: listingType == .brands ? self.viewModel.searchBrandListing[section].iconImage : "", placeHolderImage: #imageLiteral(resourceName: "icUnCheck"), loader: false)
         if   self.listingType == .brands {
             let isPowerSelected = self.viewModel.selectedBrandsArr.contains(where: {$0.id == (self.isSearchOn ? self.viewModel.searchBrandListing[section].id : self.viewModel.brandsListings[section].id)})
             if self.viewModel.brandsListings.endIndex  > 0  {
@@ -233,43 +231,21 @@ extension BrandsListingVC : UITableViewDelegate, UITableViewDataSource {
                 view.configureCell(isPowerSelected: isPowerSelected, model: (self.isSearchOn ? self.viewModel.searchCountryListing[section] : self.viewModel.countryListings[section]))
             }
         }
-        
-        //
-        
         view.cellBtnTapped = { [weak self] in
             guard let `self` = self else {return}
-            //
-            //            if section == 0 {
-            //
-            //                if self.selectedIndexPath.count == 0 {
-            //                    self.selectedIndexPath.append(section)
-            //                }else {
-            //                    if (self.selectedIndexPath.count == 1 &&  self.selectedIndexPath.contains(0)){
-            //                        self.selectedIndexPath.removeAll()
-            //
-            //                    }else {
-            //                        self.selectedIndexPath.removeAll()
-            //                        self.selectedIndexPath.append(section)
-            //                    }
-            //                }
-            //            }else{
-            //                if self.selectedIndexPath.count == 1 &&  self.selectedIndexPath.contains(0) {
-            //                    self.selectedIndexPath = Array(1...(self.listingType == .brands ? (self.viewModel.searchBrandListing.count - 1) : (self.viewModel.searchCountryListing.count - 1)))
-            //                    self.selectedIndexPath.removeAll{($0 == section)}
-            //                }else {
-            //
-            //                    self.selectedIndexPath.contains(section) ? self.selectedIndexPath.removeAll{($0 == section)} : self.selectedIndexPath.append(section)
-            //                    if self.listingType == .brands {
-            //                      self.selectedIndexPath = self.selectedIndexPath.count == self.viewModel.searchBrandListing.count - 1 ? [0] : self.selectedIndexPath
-            //                    }else {
-            //                        self.selectedIndexPath = self.selectedIndexPath.count == self.viewModel.searchCountryListing.count - 1 ? [0] : self.selectedIndexPath
-            //                    }
-            //                }
-            //            }
-            //
             if self.listingType == .brands {
                 let searchId = self.viewModel.searchBrandListing[section].id
                 let brandId = self.viewModel.brandsListings[section].id
+                if (self.isSearchOn ? searchId.isEmpty : brandId.isEmpty) {
+                    if self.viewModel.selectedBrandsArr.endIndex == self.viewModel.brandsListings.endIndex {
+                        self.viewModel.selectedBrandsArr = []
+                        self.mainTableView.reloadData()
+                    }  else {
+                        self.viewModel.selectedBrandsArr = self.viewModel.brandsListings
+                        self.mainTableView.reloadData()
+                    }
+                      return
+                }
                 if self.viewModel.selectedBrandsArr.contains(where: {$0.id  == (self.isSearchOn ? searchId : brandId)}){
                     self.viewModel.removeSelectedBrands(model: self.isSearchOn ? self.viewModel.searchBrandListing[section] : self.viewModel.brandsListings[section])
                 } else {
@@ -278,13 +254,22 @@ extension BrandsListingVC : UITableViewDelegate, UITableViewDataSource {
             }else {
                 let searchId = self.viewModel.searchCountryListing[section].id
                 let countryId = self.viewModel.countryListings[section].id
+                if (self.isSearchOn ? searchId.isEmpty : countryId.isEmpty) {
+                    if self.viewModel.selectedCountryArr.endIndex == self.viewModel.countryListings.endIndex {
+                        self.viewModel.selectedCountryArr = []
+                        self.mainTableView.reloadData()
+                    }  else {
+                        self.viewModel.selectedCountryArr = self.viewModel.countryListings
+                        self.mainTableView.reloadData()
+                    }
+                      return
+                }
                 if self.viewModel.selectedCountryArr.contains(where: {$0.id  == (self.isSearchOn ? searchId : countryId)}) {
                     self.viewModel.removeSelectedCountry(model: self.isSearchOn ? self.viewModel.searchCountryListing[section] : self.viewModel.countryListings[section])
                 } else {
                     self.viewModel.setSelectedCountry(model: self.isSearchOn ? self.viewModel.searchCountryListing[section] : self.viewModel.countryListings[section])
                 }
             }
-            //
             self.mainTableView.reloadData()
         }
         
@@ -339,7 +324,7 @@ extension BrandsListingVC : DZNEmptyDataSetSource,DZNEmptyDataSetDelegate {
     }
     
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        return NSAttributedString(string: "No Data Found", attributes: [NSAttributedString.Key.foregroundColor: AppColors.fontTertiaryColor,NSAttributedString.Key.font: AppFonts.NunitoSansBold.withSize(18)])
+        return NSAttributedString(string: "", attributes: [NSAttributedString.Key.foregroundColor: AppColors.fontTertiaryColor,NSAttributedString.Key.font: AppFonts.NunitoSansBold.withSize(18)])
     }
    
     func emptyDataSetShouldDisplay(_ scrollView: UIScrollView!) -> Bool {
