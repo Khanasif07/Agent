@@ -9,14 +9,14 @@
 import UIKit
 
 class FacilityTableHeaderView: UITableViewHeaderFooterView {
-
+    
     //MARK:- IBOutlets
     @IBOutlet weak var checkBtn : UIButton!
     @IBOutlet weak var categoryName : UILabel!
     @IBOutlet weak var arrowImg : UIImageView!
     @IBOutlet weak var cellBtn : UIButton!
     @IBOutlet weak var bottomView : UIView!
-
+    
     var cellBtnTapped : (()->())?
     
     override func awakeFromNib() {
@@ -24,9 +24,15 @@ class FacilityTableHeaderView: UITableViewHeaderFooterView {
         categoryName.font = AppFonts.NunitoSansBold.withSize(14.0)
     }
     
-    @IBAction func checkBtnAction(_ sender: UIButton) {
-//        checkBtn.isSelected.toggle()
+    func configureCell(isPowerSelected: Bool, model: TyreBrandModel){
+        checkBtn.isSelected = isPowerSelected
     }
+    
+    func configureCell(isPowerSelected: Bool, model: TyreCountryModel){
+        checkBtn.isSelected = isPowerSelected
+    }
+    
+    
     
     @IBAction func cellBtnTapped(_ sender: UIButton) {
         cellBtnTapped?()
