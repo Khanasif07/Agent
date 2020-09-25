@@ -1068,12 +1068,12 @@
 				A43F44B22513BE26002B1014 /* GarageProfileStep2VC */,
 				A43F44B12513BE1A002B1014 /* FacilityVC */,
 				A43F44AF2513BE01002B1014 /* TyreBrandVC */,
-				A4FEF8EB2518744900D58C13 /* TyreRequestedVC.swift */,
-				A44E8D73251C817400ACBC4D /* OilBrandsVC.swift */,
-				A44E8D75251C973800ACBC4D /* OilTypeVC.swift */,
-				A44E8D77251CBC3B00ACBC4D /* BatteryBrandVC.swift */,
-				A44E8D79251CBF9500ACBC4D /* VehicleDetailForBatteryVC.swift */,
-				A44E8D7B251CD24900ACBC4D /* VehicleDetailForOilVC.swift */,
+				A4F7BA49251DC219009FF659 /* TyreRequestedVC */,
+				A4F7BA4A251DC228009FF659 /* OilBrandsVC */,
+				A4F7BA4B251DC233009FF659 /* OilTypeVC */,
+				A4F7BA4C251DC23E009FF659 /* BatteryBrandVC */,
+				A4F7BA4D251DC249009FF659 /* VehicleDetailForBatteryVC */,
+				A4F7BA4E251DC254009FF659 /* VehicleDetailForOilVC */,
 			);
 			path = PostloginVC;
 			sourceTree = "<group>";
@@ -1356,6 +1356,54 @@
 				A45042CF250F3846001C8905 /* AddAccountTableViewCell.xib */,
 			);
 			path = AddAccountVC;
+			sourceTree = "<group>";
+		};
+		A4F7BA49251DC219009FF659 /* TyreRequestedVC */ = {
+			isa = PBXGroup;
+			children = (
+				A4FEF8EB2518744900D58C13 /* TyreRequestedVC.swift */,
+			);
+			path = TyreRequestedVC;
+			sourceTree = "<group>";
+		};
+		A4F7BA4A251DC228009FF659 /* OilBrandsVC */ = {
+			isa = PBXGroup;
+			children = (
+				A44E8D73251C817400ACBC4D /* OilBrandsVC.swift */,
+			);
+			path = OilBrandsVC;
+			sourceTree = "<group>";
+		};
+		A4F7BA4B251DC233009FF659 /* OilTypeVC */ = {
+			isa = PBXGroup;
+			children = (
+				A44E8D75251C973800ACBC4D /* OilTypeVC.swift */,
+			);
+			path = OilTypeVC;
+			sourceTree = "<group>";
+		};
+		A4F7BA4C251DC23E009FF659 /* BatteryBrandVC */ = {
+			isa = PBXGroup;
+			children = (
+				A44E8D77251CBC3B00ACBC4D /* BatteryBrandVC.swift */,
+			);
+			path = BatteryBrandVC;
+			sourceTree = "<group>";
+		};
+		A4F7BA4D251DC249009FF659 /* VehicleDetailForBatteryVC */ = {
+			isa = PBXGroup;
+			children = (
+				A44E8D79251CBF9500ACBC4D /* VehicleDetailForBatteryVC.swift */,
+			);
+			path = VehicleDetailForBatteryVC;
+			sourceTree = "<group>";
+		};
+		A4F7BA4E251DC254009FF659 /* VehicleDetailForOilVC */ = {
+			isa = PBXGroup;
+			children = (
+				A44E8D7B251CD24900ACBC4D /* VehicleDetailForOilVC.swift */,
+			);
+			path = VehicleDetailForOilVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

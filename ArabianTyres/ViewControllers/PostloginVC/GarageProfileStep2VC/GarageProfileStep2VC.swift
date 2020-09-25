@@ -353,7 +353,7 @@ extension GarageProfileStep2VC: FacilitiesDelegate {
         view.layoutIfNeeded()
         view.setNeedsLayout()
         selectedFacilitiesArr.forEach { (model) in
-            let data : JSONDictionary = [ApiKey.serviceId: model.id,ApiKey.brands: []]
+            let data : JSONDictionary = [ApiKey.serviceId: model.id,ApiKey.serviceName: model.name,ApiKey.brands: []]
             GarageProfileModel.shared.services.append(data)
         }
     }
