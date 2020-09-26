@@ -191,6 +191,12 @@ enum AppRouter {
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
+    static func goToBatteryRequestedVC(vc: UIViewController){
+        let scene = BatteryRequestedVC.instantiate(fromAppStoryboard: .UserHomeScreen)
+        vc.navigationController?.pushViewController(scene, animated: true)
+    }
+    
+    
     
     static func goToGarageAddImageVC(vc: UIViewController){
         let scene = GarageAddImageVC.instantiate(fromAppStoryboard: .PostLogin)

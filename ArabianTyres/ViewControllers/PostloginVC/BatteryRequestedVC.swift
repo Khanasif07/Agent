@@ -1,43 +1,42 @@
 //
-//  TyreRequestedVC.swift
+//  BatteryRequestedVC.swift
 //  ArabianTyres
 //
-//  Created by Arvind on 21/09/20.
+//  Created by Arvind on 25/09/20.
 //  Copyright © 2020 Admin. All rights reserved.
 //
 
 import UIKit
 import SkyFloatingLabelTextField
 
-class TyreRequestedVC: BaseVC {
+class BatteryRequestedVC: BaseVC {
     
     // MARK: - IBOutlets
     //===========================
     @IBOutlet weak var titleLbl: UILabel!
-    @IBOutlet weak var sizeOfTyreLbl: UILabel!
-    @IBOutlet weak var originOfTyreLbl: UILabel!
-    @IBOutlet weak var tyreBrandLbl: UILabel!
-    @IBOutlet weak var numberOfTyreLbl: UILabel!
+    @IBOutlet weak var vechileDetailLbl: UILabel!
+    @IBOutlet weak var batteryBrandLbl: UILabel!
+    @IBOutlet weak var numberOfBatteryLbl: UILabel!
     
-    @IBOutlet weak var tyreWidthLbl: UILabel!
-    @IBOutlet weak var tyreProfileLbl: UILabel!
-    @IBOutlet weak var tyreRimSizeLbl: UILabel!
+    @IBOutlet weak var vehicleMakeLbl: UILabel!
+    @IBOutlet weak var vehicleModelLbl: UILabel!
+    @IBOutlet weak var productYearLbl: UILabel!
     
-    @IBOutlet weak var tyreWidthValueLbl: UILabel!
-    @IBOutlet weak var tyreProfileValueLbl: UILabel!
-    @IBOutlet weak var tyreRimSizeValueLbl: UILabel!
+    @IBOutlet weak var vehicleMakeValueLbl: UILabel!
+    @IBOutlet weak var vehicleModelValueLbl: UILabel!
+    @IBOutlet weak var productYearValueLbl: UILabel!
     @IBOutlet weak var tyreBrandCollView: UICollectionView!
     @IBOutlet weak var tyreBrandCollViewHeightConstraint: NSLayoutConstraint!
     
-    @IBOutlet weak var sizeContainerView: UIView!
-    @IBOutlet weak var numberOfTyreContainerView: UIView!
-    @IBOutlet weak var tyreBrandContainerView: UIView!
-    @IBOutlet weak var numberOfTyreTextField: SkyFloatingLabelTextField!
+    @IBOutlet weak var vechileDetailContainerView: UIView!
+    @IBOutlet weak var numberOfBatteryContainerView: UIView!
+    @IBOutlet weak var batteryBrandContainerView: UIView!
+    @IBOutlet weak var numberOfBatteyTextField: SkyFloatingLabelTextField!
     
     @IBOutlet weak var requestBtn: AppButton!
-    @IBOutlet weak var sizeEditBtn: UIButton!
-    @IBOutlet weak var numberOfTyreBtn: UIButton!
-    @IBOutlet weak var tyreBrandBtn: UIButton!
+    @IBOutlet weak var vechileDetailEditBtn: UIButton!
+    @IBOutlet weak var numberOfBatteryEditBtn: UIButton!
+    @IBOutlet weak var batteryBrandEditBtn: UIButton!
 
 
     // MARK: - Variables
@@ -58,7 +57,7 @@ class TyreRequestedVC: BaseVC {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        [sizeContainerView,numberOfTyreContainerView,tyreBrandContainerView].forEach { (containerView) in
+        [vechileDetailContainerView,numberOfBatteryContainerView,batteryBrandContainerView].forEach { (containerView) in
             containerView.createShadow(shadowColor: #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1))
         }
         
@@ -99,7 +98,7 @@ class TyreRequestedVC: BaseVC {
 
 // MARK: - Extension For Functions
 //===========================
-extension TyreRequestedVC {
+extension BatteryRequestedVC {
     
     private func initialSetup() {
         setupTextAndFont()
@@ -108,38 +107,37 @@ extension TyreRequestedVC {
     }
     
     private func setupTextAndFont(){
-        sizeEditBtn.titleLabel?.font = AppFonts.NunitoSansSemiBold.withSize(15.0)
-        sizeEditBtn.setTitle(LocalizedString.edit.localized, for: .normal)
-        sizeEditBtn.getUnderline()
-        numberOfTyreBtn.getUnderline()
-        tyreBrandBtn.getUnderline()
-        numberOfTyreLbl.text = LocalizedString.numberOfTyre.localized
-        numberOfTyreTextField.delegate = self
-        numberOfTyreTextField.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
-        numberOfTyreTextField.isUserInteractionEnabled = false
+        [vechileDetailEditBtn,numberOfBatteryEditBtn,batteryBrandEditBtn].forEach { (btn) in
+            btn?.titleLabel?.font = AppFonts.NunitoSansSemiBold.withSize(15.0)
+            btn?.setTitle(LocalizedString.edit.localized, for: .normal)
+            btn?.getUnderline()
+        }
+    
+        vechileDetailLbl.text = LocalizedString.vehicleDetails.localized
+        batteryBrandLbl.text = LocalizedString.batteryBrand.localized
+        numberOfBatteryLbl.text = LocalizedString.numberOfBattery.localized
+        titleLbl.text = LocalizedString.batteyRequest.localized
+
+        numberOfBatteyTextField.delegate = self
+        numberOfBatteyTextField.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
+        numberOfBatteyTextField.isUserInteractionEnabled = false
         requestBtn.titleLabel?.font =  AppFonts.NunitoSansSemiBold.withSize(16.0)
         requestBtn.setTitle(LocalizedString.submitRequest.localized, for: .normal)
       
-        titleLbl.text = LocalizedString.youAreRequestingForTyreServiceWith.localized
-        sizeOfTyreLbl.text = LocalizedString.sizeOfTyre.localized
-        originOfTyreLbl.text = LocalizedString.originOfTyre.localized
-        tyreBrandLbl.text = LocalizedString.tyreBrand.localized
-        tyreWidthLbl.text = LocalizedString.width.localized
-        tyreProfileLbl.text = LocalizedString.profile.localized
-        tyreRimSizeLbl.text = LocalizedString.rimSize.localized
+        vehicleMakeLbl.text = LocalizedString.vehicleMake.localized
+        vehicleModelLbl.text = LocalizedString.vehicleModel.localized
+        productYearLbl.text = LocalizedString.productYear.localized
+       
+        vehicleMakeLbl.font = AppFonts.NunitoSansSemiBold.withSize(12.0)
+        vehicleModelLbl.font = AppFonts.NunitoSansSemiBold.withSize(12.0)
+        productYearLbl.font = AppFonts.NunitoSansSemiBold.withSize(12.0)
 
-        tyreWidthLbl.font = AppFonts.NunitoSansSemiBold.withSize(12.0)
-        tyreProfileLbl.font = AppFonts.NunitoSansSemiBold.withSize(12.0)
-        tyreRimSizeLbl.font = AppFonts.NunitoSansSemiBold.withSize(12.0)
-
-        tyreWidthValueLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
-        tyreProfileValueLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
-        tyreRimSizeValueLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
+        vehicleMakeValueLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
+        vehicleModelValueLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
+        productYearValueLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
 
         titleLbl.font = AppFonts.NunitoSansBold.withSize(21.0)
-        sizeOfTyreLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
-        numberOfTyreLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
-        originOfTyreLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
+       
 
     }
     
@@ -152,14 +150,14 @@ extension TyreRequestedVC {
     }
     
     private func populateDataThroughModel(){
-        tyreWidthValueLbl.text = TyreRequestModel.shared.width
-        tyreProfileValueLbl.text = TyreRequestModel.shared.profile
-        tyreRimSizeValueLbl.text = TyreRequestModel.shared.rimSize
+//        tyreWidthValueLbl.text = TyreRequestModel.shared.width
+//        tyreProfileValueLbl.text = TyreRequestModel.shared.profile
+//        tyreRimSizeValueLbl.text = TyreRequestModel.shared.rimSize
     }
     
 }
 
-extension TyreRequestedVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+extension BatteryRequestedVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch collectionView {
         case tyreBrandCollView:
@@ -196,6 +194,6 @@ extension TyreRequestedVC: UICollectionViewDelegate,UICollectionViewDataSource,U
     
 }
 
-extension TyreRequestedVC :UITextFieldDelegate{
+extension BatteryRequestedVC :UITextFieldDelegate{
     
 }

@@ -12,13 +12,12 @@ import Foundation
 
 struct TyreCountryModel: Codable ,Equatable{
     let createdAt, updatedAt, type: String
-    let flag: String
     var name: String
     let isDelete: Bool
     let categoryID, id, status: String
     
     enum CodingKeys: String, CodingKey {
-        case createdAt, updatedAt, type, flag, name, isDelete
+        case createdAt, updatedAt, type, name, isDelete
         case categoryID = "categoryId"
         case id = "_id"
         case status
@@ -35,7 +34,6 @@ struct TyreCountryModel: Codable ,Equatable{
         createdAt = ""
         isDelete = false
         categoryID = ""
-        flag = ""
         type = ""
         status = ""
     }

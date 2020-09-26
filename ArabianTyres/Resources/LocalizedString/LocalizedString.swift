@@ -251,8 +251,10 @@ enum LocalizedString : String {
     case productYear
     case skipAndSubmit
     case chooseQuantity
-    
-    
+    case vehicleDetails
+    case batteyRequest
+    case batteryBrand
+    case numberOfBattery
     // MARK: - Home  VC Values
     //==============================
     case tyre

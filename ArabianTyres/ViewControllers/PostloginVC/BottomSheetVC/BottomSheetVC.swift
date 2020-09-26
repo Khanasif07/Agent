@@ -19,7 +19,6 @@ class BottomSheetVC: BaseVC {
     //=========================
     @IBOutlet weak var searchTxtField: UITextField!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var saveBtn: AppButton!
     @IBOutlet weak var headingLbl: UILabel!
     @IBOutlet weak var transparentView: UIView!
     
@@ -101,7 +100,6 @@ class BottomSheetVC: BaseVC {
         tableView.emptyDataSetDelegate = self
         tableView.emptyDataSetSource = self
         tableView.registerCell(with: BottomSheetTableCell.self)
-        saveBtn.isEnabled = true
     }
     
     func addTapGesture() {
@@ -116,12 +114,6 @@ class BottomSheetVC: BaseVC {
     
     // MARK: - IBActions
     //===========================
-    
-    @IBAction func saveBtnAction(_ sender: UIButton) {
-        dismiss(animated: true, completion: {
-            self.onSaveBtnAction?(self.viewModel.selectedMakeArr,self.viewModel.selectedModelArr)
-        })
-    }
     
     @IBAction func txtFieldChanged(_ sender: UITextField) {
         viewModel.searchText = sender.text?.byRemovingLeadingTrailingWhiteSpaces ?? ""
@@ -148,27 +140,23 @@ extension BottomSheetVC :UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if vehicleDetailtype == .make{
-            if self.viewModel.selectedMakeArr.contains(self.viewModel.searchMakeListing[indexPath.row]) {
-                self.viewModel.selectedMakeArr.removeAll{( $0 == self.viewModel.searchMakeListing[indexPath.row])}
-            }
-            else {
-                 self.viewModel.selectedMakeArr.removeAll()
-                 self.viewModel.selectedMakeArr.append(self.viewModel.searchMakeListing[indexPath.row])
-                }
-            } else {
-            if self.viewModel.selectedModelArr.contains(self.viewModel.searchModelListing[indexPath.row]) {
-                self.viewModel.selectedModelArr.removeAll{( $0 == self.viewModel.searchModelListing[indexPath.row])}
-            }
-            else
-            {
-                self.viewModel.selectedModelArr.removeAll()
+            if self.viewModel.selectedMakeArr.contains(self.viewModel.searchMakeListing[indexPath.row]) {}else {
+                self.viewModel.selectedMakeArr.removeAll()
+                self.viewModel.selectedMakeArr.append(self.viewModel.searchMakeListing[indexPath.row])
+                dismiss(animated: true, completion: {
+                                   self.onSaveBtnAction?(self.viewModel.selectedMakeArr,self.viewModel.selectedModelArr)
+                               })
+            }}else {
+            if self.viewModel.selectedModelArr.contains(self.viewModel.searchModelListing[indexPath.row]) {}else
+            {  self.viewModel.selectedModelArr.removeAll()
                 self.viewModel.selectedModelArr.append(self.viewModel.searchModelListing[indexPath.row])
+                dismiss(animated: true, completion: {
+                    self.onSaveBtnAction?(self.viewModel.selectedMakeArr,self.viewModel.selectedModelArr)
+                })
             }
+            tableView.reloadData()
         }
-        
-        tableView.reloadData()
     }
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 44.0
     }
@@ -209,7 +197,7 @@ extension BottomSheetVC : DZNEmptyDataSetSource,DZNEmptyDataSetDelegate {
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         return NSAttributedString(string: "No Data Found", attributes: [NSAttributedString.Key.foregroundColor: AppColors.fontTertiaryColor,NSAttributedString.Key.font: AppFonts.NunitoSansBold.withSize(18)])
     }
-   
+    
     func emptyDataSetShouldDisplay(_ scrollView: UIScrollView!) -> Bool {
         return true
     }

@@ -146,6 +146,8 @@ enum ApiKey {
     static var garageProfile : String { return "garageProfile" }
     static var serviceName : String { return "serviceName" }
     
+    static var year : String { return "year" }
+    static var modelName : String { return "modelName" }
     static var makeId: String { return "makeId" }
 
 

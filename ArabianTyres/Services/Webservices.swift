@@ -534,9 +534,26 @@ extension WebServices{
                                 success: @escaping SuccessResponse,
                                 failure: @escaping FailureResponse) {
         self.commonGetAPI(parameters: parameters,endPoint: .servicesList, success: { (json) in
+            success(json)
+        }) { (error) -> (Void) in
+            failure(error)
+        }
+    }
+    
+    // MARK:- Tyre Size Listing Data
+    //=================
+    static func getTyreSizeListingData(parameters: JSONDictionary,
+                                       success: @escaping SuccessResponse,
+                                       failure: @escaping FailureResponse) {
+        self.commonGetAPI(parameters: parameters,endPoint: .userServiceTyreSize, success: { (json) in
             let code = json[ApiKey.statusCode].intValue
             let msg = json[ApiKey.message].stringValue
-            success(json)
+            switch code {
+            case ApiCode.success:
+                success(json)
+            default:
+                failure(NSError(code: code, localizedDescription: msg))
+            }
         }) { (error) -> (Void) in
             failure(error)
         }
