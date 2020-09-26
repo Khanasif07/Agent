@@ -109,7 +109,6 @@ extension VehicleDetailForBatteryVC {
         nextBtn.titleLabel?.font =  AppFonts.NunitoSansSemiBold.withSize(16.0)
         
     }
-    
 }
 
 extension VehicleDetailForBatteryVC :UITextFieldDelegate {

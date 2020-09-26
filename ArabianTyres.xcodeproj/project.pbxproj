@@ -192,6 +192,7 @@
 		A45566CD250B4EAC009E4324 /* RegistraionPendingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45566CC250B4EAC009E4324 /* RegistraionPendingVC.swift */; };
 		A45566D0250CA6C0009E4324 /* UploadDocumentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45566CF250CA6C0009E4324 /* UploadDocumentVC.swift */; };
 		A45707C32513B137003BE7DD /* TyreBrandVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45707C22513B137003BE7DD /* TyreBrandVC.swift */; };
+		A480DB0F251F1F9F0031B3E5 /* OilRequestedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A480DB0E251F1F9F0031B3E5 /* OilRequestedVC.swift */; };
 		A493133D2508D231007110E4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A493133C2508D231007110E4 /* GoogleService-Info.plist */; };
 		A49B7D4C251125AC0057239B /* FacilityCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49B7D4A251125AC0057239B /* FacilityCollectionViewCell.swift */; };
 		A49B7D4D251125AC0057239B /* FacilityCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A49B7D4B251125AC0057239B /* FacilityCollectionViewCell.xib */; };
@@ -403,6 +404,7 @@
 		A45566CC250B4EAC009E4324 /* RegistraionPendingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistraionPendingVC.swift; sourceTree = "<group>"; };
 		A45566CF250CA6C0009E4324 /* UploadDocumentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadDocumentVC.swift; sourceTree = "<group>"; };
 		A45707C22513B137003BE7DD /* TyreBrandVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TyreBrandVC.swift; sourceTree = "<group>"; };
+		A480DB0E251F1F9F0031B3E5 /* OilRequestedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OilRequestedVC.swift; sourceTree = "<group>"; };
 		A493133B2508BF68007110E4 /* ArabianTyres.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ArabianTyres.entitlements; sourceTree = "<group>"; };
 		A493133C2508D231007110E4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A49B7D4A251125AC0057239B /* FacilityCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacilityCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -1082,7 +1084,8 @@
 				A4F7BA4C251DC23E009FF659 /* BatteryBrandVC */,
 				A4F7BA4D251DC249009FF659 /* VehicleDetailForBatteryVC */,
 				A4F7BA4E251DC254009FF659 /* VehicleDetailForOilVC */,
-				A4C39FEB251E69A6001711F8 /* BatteryRequestedVC.swift */,
+				A47C149E251F31B7005C8EA2 /* BatteryRequestedVC */,
+				A47C149F251F31C2005C8EA2 /* OilRequestedVC */,
 			);
 			path = PostloginVC;
 			sourceTree = "<group>";
@@ -1278,6 +1281,22 @@
 				A45566CC250B4EAC009E4324 /* RegistraionPendingVC.swift */,
 			);
 			path = RegistraionPendingVC;
+			sourceTree = "<group>";
+		};
+		A47C149E251F31B7005C8EA2 /* BatteryRequestedVC */ = {
+			isa = PBXGroup;
+			children = (
+				A4C39FEB251E69A6001711F8 /* BatteryRequestedVC.swift */,
+			);
+			path = BatteryRequestedVC;
+			sourceTree = "<group>";
+		};
+		A47C149F251F31C2005C8EA2 /* OilRequestedVC */ = {
+			isa = PBXGroup;
+			children = (
+				A480DB0E251F1F9F0031B3E5 /* OilRequestedVC.swift */,
+			);
+			path = OilRequestedVC;
 			sourceTree = "<group>";
 		};
 		A49B7D49251125AC0057239B /* FacilityCollectionViewCell */ = {
@@ -1662,6 +1681,7 @@
 				A4B74CC425107C6800771974 /* LinkAccountTableViewCell.swift in Sources */,
 				A49B7D4C251125AC0057239B /* FacilityCollectionViewCell.swift in Sources */,
 				842B2FC52513354B00E3CF67 /* BankListingVC.swift in Sources */,
+				A480DB0F251F1F9F0031B3E5 /* OilRequestedVC.swift in Sources */,
 				8481FA372500BDD200AB6EFB /* UITableView+ UITableViewCellExtension.swift in Sources */,
 				A4FEF8EC2518744900D58C13 /* TyreRequestedVC.swift in Sources */,
 				A44E8D74251C817400ACBC4D /* OilBrandsVC.swift in Sources */,
