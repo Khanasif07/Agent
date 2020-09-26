@@ -17,6 +17,7 @@ class TyreBrandVC: BaseVC {
     @IBOutlet weak var thePreferredLbl: UILabel!
     @IBOutlet weak var setYourPrefernceLbl: UILabel!
     @IBOutlet weak var submitBtn: AppButton!
+    @IBOutlet weak var skipAndSubmitBtn: AppButton!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var tyreBrandCustomView: CustomTextView!
     @IBOutlet weak var countryOriginCustomView: CustomTextView!
@@ -85,6 +86,10 @@ class TyreBrandVC: BaseVC {
         AppRouter.presentLocationPopUpVC(vc: self)
     }
     
+    @IBAction func skipAndSubmitBtnAction(_ sender: UIButton) {
+          
+    }
+    
     @IBAction func tyreCheckBtnAction(_ sender: UIButton) {
         tyreBrandCheckBtn.isSelected.toggle()
     }
@@ -122,7 +127,9 @@ extension TyreBrandVC {
         setYourPrefernceLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
         submitBtn.titleLabel?.font =  AppFonts.NunitoSansSemiBold.withSize(16.0)
         submitBtn.isEnabled = false
-        
+        skipAndSubmitBtn.titleLabel?.font =  AppFonts.NunitoSansSemiBold.withSize(16.0)
+        skipAndSubmitBtn.setTitle(LocalizedString.skipAndSubmit.localized, for: .normal)
+
     }
     
     private func submitBtnStatus()-> Bool{
@@ -240,9 +247,9 @@ extension TyreBrandVC : CustomTextViewDelegate{
         switch tView {
        
         case tyreBrandCustomView.tView:
-            AppRouter.goToBrandsListingVC(vc: self, listingType: .brands, brandsData : brandListingArr, countryData: [])
+            AppRouter.goToBrandsListingVC(vc: self, listingType: .brands, brandsData : brandListingArr, countryData: [], category: .tyres)
         case countryOriginCustomView.tView:
-            AppRouter.goToBrandsListingVC(vc: self, listingType: .countries, brandsData: [], countryData: countryListingArr)
+            AppRouter.goToBrandsListingVC(vc: self, listingType: .countries, brandsData: [], countryData: countryListingArr, category: .tyres)
         default:
             break
         }
@@ -254,7 +261,7 @@ extension TyreBrandVC : CustomTextViewDelegate{
     
     private func openSheet(listingType: ListingType) {
         tyreBrandCustomView.collView.isHidden = false
-        AppRouter.goToBrandsListingVC(vc: self, listingType: listingType,brandsData :  brandListingArr , countryData: countryListingArr)
+        AppRouter.goToBrandsListingVC(vc: self, listingType: listingType,brandsData :  brandListingArr , countryData: countryListingArr,category: .tyres)
     }
 }
 

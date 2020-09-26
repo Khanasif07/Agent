@@ -83,6 +83,8 @@ struct UserModel{
             ApiKey.updatedAt : updatedAt,
             ApiKey.userType : userType
         ]
+        self.userType == "1" ? AppUserDefaults.save(value: "basic",forKey: .currentUserType) : AppUserDefaults.save(value: "garage",forKey: .currentUserType)
+        
         AppUserDefaults.save(value: dict, forKey: .fullUserProfile)
     }
 }

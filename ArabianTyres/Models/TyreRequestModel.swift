@@ -14,6 +14,7 @@ struct TyreRequestModel {
     
     static var shared = TyreRequestModel()
 
+
     var width                     : String = ""
     var profile                        : String = ""
     var rimSize           : String = ""

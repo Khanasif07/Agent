@@ -27,6 +27,8 @@ class GarageProfileHeaderCell: UITableViewCell {
     @IBOutlet weak var mainCollView: UICollectionView!
     @IBOutlet weak var locationLbl: UILabel!
     @IBOutlet weak var installationLbl: UILabel!
+    @IBOutlet weak var installationVauleLbl: UILabel!
+    @IBOutlet weak var addressLbl: UILabel!
     @IBOutlet weak var collViewHeightConst: NSLayoutConstraint!
     
     
@@ -57,7 +59,8 @@ class GarageProfileHeaderCell: UITableViewCell {
         phoneVerifyBtn.isHidden = model.phoneVerified || model.phoneNo.isEmpty
         emailVerifiedView.isHidden = !model.emailVerified
         emailVerifyBtn.isHidden = model.emailVerified || model.email.isEmpty
-       
+        installationVauleLbl.text = "\(GarageProfileModel.shared.minInstallationPrice) - " + "\(GarageProfileModel.shared.maxInstallationPrice) SAR"
+        addressLbl.text = GarageProfileModel.shared.address
     }
     
     @IBAction func phoneVerifyBtnAction(_ sender: UIButton) {

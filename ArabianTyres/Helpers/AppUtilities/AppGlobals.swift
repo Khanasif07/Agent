@@ -54,10 +54,15 @@ var isCurrentUserType : UserType {
     switch user{
     case "basic":
         return .user
+    case "garage":
+        return .garage
     default:
         return .guest
     }
 }
+
+
+var categoryType : Category = .battery
 
 var isPhoneNoVerified : Bool {
     return AppUserDefaults.value(forKey: .phoneNoVerified).boolValue

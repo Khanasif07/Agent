@@ -29,6 +29,7 @@ class URTyreSizeVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
+        setupTextAndFonts()
     }
     
     override func viewDidLayoutSubviews() {
@@ -39,8 +40,17 @@ class URTyreSizeVC: BaseVC {
     // MARK: - IBActions
     //===========================
     @IBAction func proccedBtnAction(_ sender: UIButton) {
-        NotificationCenter.default.post(name: Notification.Name.SelectedTyreSizeSuccess, object: nil)
-        self.navigationController?.popViewControllers(controllersToPop: 2, animated: true)
+        switch categoryType{
+        case .oil:
+             AppRouter.goToOilBrandsVC(vc: self)
+            
+        case .tyres:
+            NotificationCenter.default.post(name: Notification.Name.SelectedTyreSizeSuccess, object: nil)
+            self.navigationController?.popViewControllers(controllersToPop: 2, animated: true)
+        case .battery:
+            break
+        }
+        
     }
     @IBAction func backBtnAction(_ sender: UIButton) {
         self.pop()
@@ -67,6 +77,27 @@ extension URTyreSizeVC {
         mainTableView.emptyDataSetSource = self
         mainTableView.emptyDataSetDelegate = self
     }
+    
+    private func setupTextAndFonts() {
+        switch categoryType{
+            
+        case .oil:
+            proceedBtn.setTitle(LocalizedString.next.localized, for: .normal)
+            titleLbl.text = LocalizedString.selectViscosity.localized
+            topDescLbl.text = LocalizedString.weHaveFoundSutiableOilViscosity.localized
+            bottomDescLbl.text = LocalizedString.pleaseSelectAnyViscosityToProceed.localized
+        case .tyres:
+            proceedBtn.setTitle(LocalizedString.proceed.localized, for: .normal)
+            titleLbl.text = LocalizedString.selectTyreSize.localized
+            topDescLbl.text = LocalizedString.weHaveFoundSutiableTyreForYourVehicleAsPerTheProvidedDetails.localized
+            bottomDescLbl.text = LocalizedString.pleaseSelectAnyTyreToProceed.localized
+
+        case .battery:
+            titleLbl.text = LocalizedString.alert.localized
+            
+        }
+    }
+
 }
 
 // MARK: - Extension For TableView
@@ -82,8 +113,9 @@ extension URTyreSizeVC : UITableViewDelegate, UITableViewDataSource {
         let isPowerSelected = self.viewModel.selectedtyreSizeListings.contains(where: {$0.rimSize == self.viewModel.tyreSizeListings[indexPath.row].rimSize})
         if self.viewModel.tyreSizeListings.endIndex  > 0  {
             cell.populateData(isPowerSelected: isPowerSelected,model: self.viewModel.tyreSizeListings[indexPath.row])
+            cell.bindData(categoryType: categoryType)
+
         }
-        
         return cell
     }
     

@@ -222,6 +222,36 @@ enum LocalizedString : String {
     case allowCureentLocationWillHelpYouInGettingGreatOffers
     case allow
     case installationPriceRange
+    case chooseOilType
+    case theTypeOfOilAreYouLookingFor
+    case thePreferredBrandForMyOilWouldBe
+    case chooseOilBrand
+    case selectType
+    case oilType
+    case selectTyreSize
+    case weHaveFoundSutiableTyreForYourVehicleAsPerTheProvidedDetails
+    case pleaseSelectAnyTyreToProceed
+    case selectViscosity
+    case weHaveFoundSutiableOilViscosity
+    case pleaseSelectAnyViscosityToProceed
+    case next
+    case proceed
+    case thePreferredBrandForBatteryWouldBe
+    case chooseBatteryBrands
+    case enterNumber
+    case country
+    case chooseYourVehicleDetails
+    case wellGetYouOilAccordingToTheProvidedDetails
+    case numberOfTyre
+    case edit
+    case submitRequest
+    case youAreRequestingForTyreServiceWith
+    case sizeOfTyre
+    case originOfTyre
+    case productYear
+    case skipAndSubmit
+    case chooseQuantity
+    
     
     // MARK: - Home  VC Values
     //==============================
@@ -230,7 +260,7 @@ enum LocalizedString : String {
     case battery
     
     
-    // MARK: - Complete profile 1  VC Values
+    // MARK:c - Complete profile 1  VC Values
     //==============================
     case enterServiceCenterDist
     case enterServiceCenterAddress

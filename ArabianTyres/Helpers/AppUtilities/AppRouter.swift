@@ -142,6 +142,7 @@ enum AppRouter {
         let homeScene = GarageTabBarController.instantiate(fromAppStoryboard: .GarageHome)
         setAsWindowRoot(homeScene)
     }
+    
     static func goToVehicleDetailVC(vc: UIViewController){
         let scene = VechicleDetailVC.instantiate(fromAppStoryboard: .UserHomeScreen)
         vc.navigationController?.pushViewController(scene, animated: true)
@@ -209,6 +210,21 @@ enum AppRouter {
     }
     
     
+    static func goToBatteryBrandVC(vc: UIViewController){
+        let scene = BatteryBrandVC.instantiate(fromAppStoryboard: .UserHomeScreen)
+        vc.navigationController?.pushViewController(scene, animated: true)
+    }
+    
+    static func goToVehicleDetailForBatteryVC(vc: UIViewController){
+        let scene = VehicleDetailForBatteryVC.instantiate(fromAppStoryboard: .UserHomeScreen)
+        vc.navigationController?.pushViewController(scene, animated: true)
+    }
+    
+    static func goToVehicleDetailForOilVC(vc: UIViewController){
+           let scene = VehicleDetailForOilVC.instantiate(fromAppStoryboard: .UserHomeScreen)
+           vc.navigationController?.pushViewController(scene, animated: true)
+    }
+    
     static func goToURTyreSizeVC(vc: UIViewController){
         let scene = URTyreSizeVC.instantiate(fromAppStoryboard: .UserRequest)
         vc.navigationController?.pushViewController(scene, animated: true)
@@ -237,6 +253,16 @@ enum AppRouter {
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
+    
+    static func goToOilBrandsVC(vc: UIViewController){
+        let scene = OilBrandsVC.instantiate(fromAppStoryboard: .UserHomeScreen)
+        vc.navigationController?.pushViewController(scene, animated: true)
+    }
+    
+    static func goToOilTypeVC(vc: UIViewController){
+        let scene = OilTypeVC.instantiate(fromAppStoryboard: .UserHomeScreen)
+        vc.navigationController?.pushViewController(scene, animated: true)
+    }
 
     static func goToFacilityVC(vc: UIViewController){
         let scene = FacilityVC.instantiate(fromAppStoryboard: .Garage)
@@ -245,13 +271,14 @@ enum AppRouter {
         vc.present(scene, animated: true)
     }
     
-    static func goToBrandsListingVC(vc: UIViewController,listingType : ListingType,brandsData : [TyreBrandModel],countryData: [TyreCountryModel]){
+    static func goToBrandsListingVC(vc: UIViewController,listingType : ListingType,brandsData : [TyreBrandModel],countryData: [TyreCountryModel], category: Category){
         let scene = BrandsListingVC.instantiate(fromAppStoryboard: .UserHomeScreen)
         if listingType == .brands {
             scene.viewModel.selectedBrandsArr = brandsData
         }else {
             scene.viewModel.selectedCountryArr = countryData
         }
+//        scene.category = category
         scene.delegate = vc as? BrandsListnig
         scene.listingType = listingType
         vc.modalPresentationStyle = .fullScreen

@@ -77,6 +77,7 @@ extension VechicleDetailVC {
             txtField?.delegate = self
             txtField?.placeholder = placeHolderArr[index]
             txtField?.title = titleArr[index]
+            txtField?.setImageToRightView(img: #imageLiteral(resourceName: "group3714"), size: CGSize(width: 20, height: 20))
             txtField?.selectedTitleColor = AppColors.fontTertiaryColor
             txtField?.placeholderFont = AppFonts.NunitoSansRegular.withSize(15.0)
             txtField?.font = AppFonts.NunitoSansBold.withSize(14.0)

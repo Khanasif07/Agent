@@ -186,7 +186,7 @@
 "vehicleModel" = "Vehicle Model";
 "modelYear" = "Model Year";
 "thePreferredOriginForMytyreWouldBe" = "The preferred Origin for my\ntyre would be";
-"setYourPreferencesAmongTyreBrandOrCountryOrigin" = "Set your preferences among tyre\nbrand or country origin";
+"setYourPreferencesAmongTyreBrandOrCountryOrigin" = "Set your preferences among tyre brand or\ncountry origin";
 "tyreBrand" = "Tyre Brand";
 "countryOrigin" = "Country Origin";
 "selectTyreBrand" = "Select Tyre Brands";
@@ -215,14 +215,43 @@
 "serviceCenterName" = "meService Center’s Name";
 "serviceCenterDist" = "Service Center’s District";
 "serviceCenterAddress" = "Service Center Address";
-
-
+"chooseOilType" = "Choose Oil Type";
+"theTypeOfOilAreYouLookingFor" = "The type of oil are you\nlooking for?";
+"thePreferredBrandForMyOilWouldBe" = "The preferred brand for my oil\nwould be";
+"chooseOilBrand" = "Choose Oil Brands";
 "width" = "Width";
 "rimSize" = "Rim Size";
 "quantity" = "Quantity";
 "enter_number_of_tyre_you_want" = "Enter number of tyre you want";
+"oilType" = "Oil type";
+"selectType" = "Select type";
+"selectTyreSize" = "Select Tyre Size";
+"weHaveFoundSutiableTyreForYourVehicleAsPerTheProvidedDetails" = "We have found sutiable tyres for your vehicle as per the provided details.";
 
-// MARK: - Garage Profile Values
+"pleaseSelectAnyTyreToProceed" = "Please select any tyre to proceed";
+
+"selectViscosity" = "Select Viscosity";
+"weHaveFoundSutiableOilViscosity" = "We have found sutiable oil viscosity for your vehicle as per the provided details.";
+"pleaseSelectAnyViscosityToProceed" = "Please select any viscosity to proceed";
+"next" = "Next";
+"proceed" = "Proceed";
+"thePreferredBrandForBatteryWouldBe" = "The preferred brand for battery\nwould be";
+"chooseBatteryBrands" = "Choose BatteryBrands";
+"enterNumber" = "Enter number";
+"country" = "Country";
+"chooseYourVehicleDetails" = "Choose Your Vehicle Details";
+"wellGetYouOilAccordingToTheProvidedDetails" = "We’ll get you oil according to the provided details";
+"numberOfTyre" = "Number of Tyre";
+"edit" = "Edit";
+"submitRequest" = "Submit Request";
+"youAreRequestingForTyreServiceWith" = "You are requesting for tyre\nService With";
+"sizeOfTyre" = "Size of tyre";
+"originOfTyre" = "Origin of Tyre";
+"productYear" = "Product Year";
+"skipAndSubmit" = "Skip & Submit ";
+"chooseQuantity" = "Choose Quantity";
+
+ // MARK: - Garage Profile Values
 //==============================
 "service_Completed" = "Service Completed";
 "bank_Account" = "Bank Account";
