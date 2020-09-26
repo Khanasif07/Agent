@@ -15,16 +15,16 @@ class URTyreSizeTableCell: UITableViewCell {
     @IBOutlet weak var tyreVehicleLbl: UILabel!
     @IBOutlet weak var tyreSizeLbl: UILabel!
     @IBOutlet weak var mainImgView: UIImageView!
-    @IBOutlet weak var backImgView: UIImageView!
     @IBOutlet weak var radioBtn: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        backImgView.isHidden = true
     }
     
     public func  populateData(isPowerSelected: Bool,model: TyreSizeModel){
-        self.tyreSizeLbl.text = "B290 " + "\(model.width)" + "/" +  "\(model.profile)"  + " R" + "\(model.rimSize)"
+        self.tyreSizeLbl.text = "\(model.width)" + "/" +  "\(model.profile)"  + " R" + "\(model.rimSize)"
+        self.tyreVehicleLbl.text =  "Suitable For :" + TyreRequestModel.shared.makeName + "," + TyreRequestModel.shared.modelName
+        
         radioBtn.isSelected = isPowerSelected
     }
     
@@ -39,7 +39,6 @@ class URTyreSizeTableCell: UITableViewCell {
         switch categoryType {
         case .oil:
            mainImgView.image =  #imageLiteral(resourceName: "icOil")
-           backImgView.isHidden = false
             break
         case .tyres:
             mainImgView.image = #imageLiteral(resourceName: "radialCarTireI151")

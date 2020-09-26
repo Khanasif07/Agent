@@ -40,18 +40,18 @@ class TyreRequestedVC: BaseVC {
     @IBOutlet weak var sizeEditBtn: UIButton!
     @IBOutlet weak var numberOfTyreBtn: UIButton!
     @IBOutlet weak var tyreBrandBtn: UIButton!
-
-
+    
+    
     // MARK: - Variables
     //===========================
-    var viewModel = GarageRegistrationVM()
+    var viewModel = LocationPopUpVM()
     
     // MARK: - Lifecycle
     //===========================
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
-    
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -75,27 +75,27 @@ class TyreRequestedVC: BaseVC {
     //===========================
     
     @IBAction func cancelBtnAction(_ sender: UIButton) {
-        TyreRequestModel.shared = TyreRequestModel()
-        self.navigationController?.popToViewControllerOfType(classForCoder: HomeVC.self)
+        
     }
     
     
     @IBAction func requestBtnAction(_ sender: UIButton) {
-          printDebug("request btn tap")
+        printDebug("request btn tap")
+        self.viewModel.postTyreRequest(dict: TyreRequestModel.shared.getTyreRequestDict())
     }
-      
+    
     @IBAction func sizeEditBtnAction(_ sender: UIButton) {
         printDebug("size btn tap")
     }
     
     @IBAction func numberOfTyreAction(_ sender: UIButton) {
         printDebug("number of Tyre btn tap")
-
+        
     }
     
     @IBAction func tyreBrandAction(_ sender: UIButton) {
         printDebug("tyre btn tap")
-
+        
     }
 }
 
@@ -110,6 +110,7 @@ extension TyreRequestedVC {
     }
     
     private func setupTextAndFont(){
+        self.viewModel.delegate = self
         sizeEditBtn.titleLabel?.font = AppFonts.NunitoSansSemiBold.withSize(15.0)
         sizeEditBtn.setTitle(LocalizedString.edit.localized, for: .normal)
         sizeEditBtn.getUnderline()
@@ -121,7 +122,7 @@ extension TyreRequestedVC {
         numberOfTyreTextField.isUserInteractionEnabled = false
         requestBtn.titleLabel?.font =  AppFonts.NunitoSansSemiBold.withSize(16.0)
         requestBtn.setTitle(LocalizedString.submitRequest.localized, for: .normal)
-      
+        
         titleLbl.text = LocalizedString.youAreRequestingForTyreServiceWith.localized
         sizeOfTyreLbl.text = LocalizedString.sizeOfTyre.localized
         originOfTyreLbl.text = LocalizedString.originOfTyre.localized
@@ -129,20 +130,20 @@ extension TyreRequestedVC {
         tyreWidthLbl.text = LocalizedString.width.localized
         tyreProfileLbl.text = LocalizedString.profile.localized
         tyreRimSizeLbl.text = LocalizedString.rimSize.localized
-
+        
         tyreWidthLbl.font = AppFonts.NunitoSansSemiBold.withSize(12.0)
         tyreProfileLbl.font = AppFonts.NunitoSansSemiBold.withSize(12.0)
         tyreRimSizeLbl.font = AppFonts.NunitoSansSemiBold.withSize(12.0)
-
+        
         tyreWidthValueLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
         tyreProfileValueLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
         tyreRimSizeValueLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
-
+        
         titleLbl.font = AppFonts.NunitoSansBold.withSize(21.0)
         sizeOfTyreLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
         numberOfTyreLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
         originOfTyreLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
-
+        
     }
     
     private func setupCollectionView(){
@@ -200,4 +201,28 @@ extension TyreRequestedVC: UICollectionViewDelegate,UICollectionViewDataSource,U
 
 extension TyreRequestedVC :UITextFieldDelegate{
     
+}
+
+// MARK: - LocationPopUpVMDelegate
+//===========================
+
+extension TyreRequestedVC: LocationPopUpVMDelegate{
+    func postTyreRequestFailed(error: String) {
+        ToastView.shared.showLongToast(self.view, msg: error)
+    }
+    
+    func postTyreRequestSuccess(message: String) {
+        AppRouter.showSuccessPopUp(vc: self, title: "Successfully Requested", desc: "Your request for tyre service has been submited successfully.")
+    }
+}
+
+// MARK: - SuccessPopupVCDelegate
+//===============================
+extension TyreRequestedVC: SuccessPopupVCDelegate {
+    func okBtnAction() {
+        self.dismiss(animated: true) {
+            TyreRequestModel.shared = TyreRequestModel()
+            self.navigationController?.popToViewControllerOfType(classForCoder: HomeVC.self)
+        }
+    }
 }

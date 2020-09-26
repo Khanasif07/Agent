@@ -26,6 +26,7 @@ struct TyreRequestModel {
     var latitude : String = ""
     var longitude: String = ""
     var makeId: String  = ""
+    var makeName: String  = ""
     var modelName: String  = ""
     var year: String  = ""
     
