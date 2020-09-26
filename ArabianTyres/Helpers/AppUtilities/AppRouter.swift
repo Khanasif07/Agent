@@ -163,6 +163,12 @@ enum AppRouter {
         let scene = TyreRequestedVC.instantiate(fromAppStoryboard: .UserHomeScreen)
         vc.navigationController?.pushViewController(scene, animated: true)
     }
+    
+    static func goToOilRequestedVC(vc: UIViewController){
+        let scene = OilRequestedVC.instantiate(fromAppStoryboard: .UserHomeScreen)
+        vc.navigationController?.pushViewController(scene, animated: true)
+    }
+    
     static func goToUploadDocumentVC(vc: UIViewController){
         let scene = UploadDocumentVC.instantiate(fromAppStoryboard: .Garage)
         vc.navigationController?.pushViewController(scene, animated: true)

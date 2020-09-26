@@ -96,7 +96,7 @@ extension OilBrandsVC {
     private func setupTextFont() {
         thePreferredLbl.font = AppFonts.NunitoSansBold.withSize(21.0)
         chooseOilBrandLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
-       
+        skipBtn.setTitle(LocalizedString.skipAndSubmit.localized, for: .normal)
         thePreferredLbl.text = LocalizedString.thePreferredBrandForMyOilWouldBe.localized
         chooseOilBrandLbl.text = LocalizedString.chooseOilBrand.localized
         submitBtn.setTitle(LocalizedString.submit.localized, for: .normal)

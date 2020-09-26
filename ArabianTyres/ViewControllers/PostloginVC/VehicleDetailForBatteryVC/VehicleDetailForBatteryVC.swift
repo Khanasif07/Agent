@@ -51,6 +51,13 @@ class VehicleDetailForBatteryVC: BaseVC {
         initialSetup()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = true
+        self.tabBarController?.tabBar.isTranslucent = true
+        
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         containerView.createShadow(shadowColor: #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1))
@@ -64,13 +71,12 @@ class VehicleDetailForBatteryVC: BaseVC {
     }
     
     @IBAction func nextBtnAction(_ sender: UIButton) {
-        AppRouter.goToVehicleDetailForOilVC(vc: self)
+        AppRouter.goToOilBrandsVC(vc: self)
     }
    
     @IBAction func imgEditBtnAction(_ sender: UIButton) {
+        
      }
-    
-    
 }
 
 // MARK: - Extension For Functions
