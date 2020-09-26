@@ -27,6 +27,7 @@ class VehicleDetailForBatteryVC: BaseVC {
     @IBOutlet weak var vehicleDetailLbl: UILabel!
     @IBOutlet weak var batteryImgLbl: UILabel!
     @IBOutlet weak var numberOfBatteryLbl: UILabel!
+    @IBOutlet weak var imgEditBtn: UIButton!
 
     // MARK: - Variables
     //===========================
@@ -66,6 +67,10 @@ class VehicleDetailForBatteryVC: BaseVC {
         AppRouter.goToVehicleDetailForOilVC(vc: self)
     }
    
+    @IBAction func imgEditBtnAction(_ sender: UIButton) {
+     }
+    
+    
 }
 
 // MARK: - Extension For Functions
@@ -76,6 +81,7 @@ extension VehicleDetailForBatteryVC {
         setupTextField()
         setupTextFont()
         batteryImgView.isHidden = true
+        imgEditBtn.isHidden = true
     }
     
     private func setupTextField(){

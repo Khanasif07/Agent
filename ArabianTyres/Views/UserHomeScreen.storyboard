@@ -234,7 +234,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="diB-ne-4fC">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="917"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="958"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZDv-0L-9va">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="363"/>
@@ -244,7 +244,7 @@
                                                         <color key="backgroundColor" red="1" green="0.69411764710000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </view>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icfVTyre" translatesAutoresizingMaskIntoConstraints="NO" id="UqA-4q-rDK">
-                                                        <rect key="frame" x="0.0" y="-1" width="414" height="344"/>
+                                                        <rect key="frame" x="0.0" y="171" width="414" height="172"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </imageView>
                                                 </subviews>
@@ -276,7 +276,7 @@ brand or country origin</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KiL-Zd-HpC">
-                                                <rect key="frame" x="16" y="519" width="382" height="348"/>
+                                                <rect key="frame" x="16" y="519" width="382" height="389"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="vCx-ks-sWz">
                                                         <rect key="frame" x="8" y="12" width="358" height="30"/>
@@ -308,8 +308,15 @@ brand or country origin</string>
                                                             <constraint firstAttribute="height" constant="60" id="r4N-u9-5Mm"/>
                                                         </constraints>
                                                     </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QNP-th-VCb" customClass="CustomDashedView" customModule="ArabianTyres" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="140" width="382" height="25"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="25" id="OjX-sq-5fp"/>
+                                                        </constraints>
+                                                    </view>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="XiY-SO-HAj">
-                                                        <rect key="frame" x="10" y="144" width="354" height="30"/>
+                                                        <rect key="frame" x="10" y="185" width="354" height="30"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RMw-vn-ibp">
                                                                 <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
@@ -332,14 +339,14 @@ brand or country origin</string>
                                                         </subviews>
                                                     </stackView>
                                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VJ7-5D-Ehm" customClass="CustomTextView" customModule="ArabianTyres" customModuleProvider="target">
-                                                        <rect key="frame" x="10" y="186" width="354" height="60"/>
+                                                        <rect key="frame" x="10" y="227" width="354" height="60"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="SMr-dW-9DY"/>
                                                         </constraints>
                                                     </view>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="MZA-VQ-uBX">
-                                                        <rect key="frame" x="94" y="276" width="288" height="56"/>
+                                                        <rect key="frame" x="94" y="317" width="288" height="56"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uaa-Dy-N3d" customClass="AppButton" customModule="ArabianTyres" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="140" height="56"/>
@@ -385,17 +392,20 @@ brand or country origin</string>
                                                 <constraints>
                                                     <constraint firstItem="XiY-SO-HAj" firstAttribute="trailing" secondItem="3qy-xx-0lY" secondAttribute="trailing" id="0et-9o-R6n"/>
                                                     <constraint firstItem="3qy-xx-0lY" firstAttribute="leading" secondItem="vCx-ks-sWz" secondAttribute="leading" constant="2" id="2KX-nH-teh"/>
-                                                    <constraint firstItem="XiY-SO-HAj" firstAttribute="top" secondItem="3qy-xx-0lY" secondAttribute="bottom" constant="30" id="3bP-vn-Ks0"/>
                                                     <constraint firstItem="vCx-ks-sWz" firstAttribute="top" secondItem="KiL-Zd-HpC" secondAttribute="top" constant="12" id="5VA-x3-3q5"/>
                                                     <constraint firstItem="3qy-xx-0lY" firstAttribute="trailing" secondItem="vCx-ks-sWz" secondAttribute="trailing" constant="-2" id="7PI-fK-egB"/>
                                                     <constraint firstItem="VJ7-5D-Ehm" firstAttribute="top" secondItem="XiY-SO-HAj" secondAttribute="bottom" constant="12" id="Bmf-5K-vUS"/>
                                                     <constraint firstItem="XiY-SO-HAj" firstAttribute="leading" secondItem="3qy-xx-0lY" secondAttribute="leading" id="C2t-CY-S9W"/>
                                                     <constraint firstItem="VJ7-5D-Ehm" firstAttribute="leading" secondItem="XiY-SO-HAj" secondAttribute="leading" id="CbZ-0F-lGZ"/>
+                                                    <constraint firstItem="QNP-th-VCb" firstAttribute="top" secondItem="3qy-xx-0lY" secondAttribute="bottom" constant="26" id="Eci-gg-FH1"/>
+                                                    <constraint firstItem="XiY-SO-HAj" firstAttribute="top" secondItem="QNP-th-VCb" secondAttribute="bottom" constant="20" id="KEE-EQ-Kee"/>
                                                     <constraint firstAttribute="bottom" secondItem="MZA-VQ-uBX" secondAttribute="bottom" constant="16" id="NAt-LC-vdu"/>
                                                     <constraint firstAttribute="trailing" secondItem="vCx-ks-sWz" secondAttribute="trailing" constant="16" id="WFH-qJ-9Gg"/>
                                                     <constraint firstItem="VJ7-5D-Ehm" firstAttribute="trailing" secondItem="XiY-SO-HAj" secondAttribute="trailing" id="dwE-gI-Lqt"/>
                                                     <constraint firstItem="vCx-ks-sWz" firstAttribute="leading" secondItem="KiL-Zd-HpC" secondAttribute="leading" constant="8" id="lCm-mT-NSd"/>
                                                     <constraint firstItem="MZA-VQ-uBX" firstAttribute="top" secondItem="VJ7-5D-Ehm" secondAttribute="bottom" constant="30" id="mpC-Uk-kvd"/>
+                                                    <constraint firstItem="QNP-th-VCb" firstAttribute="leading" secondItem="KiL-Zd-HpC" secondAttribute="leading" id="nZk-EC-FhP"/>
+                                                    <constraint firstAttribute="trailing" secondItem="QNP-th-VCb" secondAttribute="trailing" id="qcv-ut-PlC"/>
                                                     <constraint firstItem="3qy-xx-0lY" firstAttribute="top" secondItem="vCx-ks-sWz" secondAttribute="bottom" constant="12" id="sYX-o0-EUb"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
@@ -1627,7 +1637,7 @@ would be</string>
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U5z-fm-r2l">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1105.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1140.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PQW-kl-epL">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="330"/>
@@ -1637,7 +1647,7 @@ would be</string>
                                                         <color key="backgroundColor" red="1" green="0.69411764710000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </view>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="genericHybridCarI051" translatesAutoresizingMaskIntoConstraints="NO" id="kNB-Re-5wc">
-                                                        <rect key="frame" x="-260" y="-128" width="674" height="816"/>
+                                                        <rect key="frame" x="77" y="76" width="337" height="408"/>
                                                     </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1663,7 +1673,7 @@ would be</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YVZ-o3-0Rl">
-                                                <rect key="frame" x="16" y="438" width="382" height="617.5"/>
+                                                <rect key="frame" x="16" y="438" width="382" height="652.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vehicle Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MH6-0g-kgm">
                                                         <rect key="frame" x="16" y="16" width="350" height="20.5"/>
@@ -1727,14 +1737,21 @@ would be</string>
                                                             </textField>
                                                         </subviews>
                                                     </stackView>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vRf-aU-fFI" customClass="CustomDashedView" customModule="ArabianTyres" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="282.5" width="382" height="25"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="25" id="qSX-bv-0gH"/>
+                                                        </constraints>
+                                                    </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Battery Image" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RLa-EA-Lcv">
-                                                        <rect key="frame" x="16" y="292.5" width="107" height="20.5"/>
+                                                        <rect key="frame" x="16" y="327.5" width="107" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" red="0.10980392156862745" green="0.11372549019607843" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JkQ-gw-lnQ">
-                                                        <rect key="frame" x="16" y="321" width="140" height="56"/>
+                                                        <rect key="frame" x="16" y="356" width="140" height="56"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icImg" translatesAutoresizingMaskIntoConstraints="NO" id="gS4-7B-WPK">
                                                                 <rect key="frame" x="20" y="16" width="24" height="24"/>
@@ -1773,7 +1790,7 @@ would be</string>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="battery" translatesAutoresizingMaskIntoConstraints="NO" id="iED-qH-o2t">
-                                                        <rect key="frame" x="16" y="321" width="56" height="56"/>
+                                                        <rect key="frame" x="16" y="356" width="56" height="56"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="56" id="G3T-iT-Srh"/>
                                                             <constraint firstAttribute="width" secondItem="iED-qH-o2t" secondAttribute="height" multiplier="1:1" id="tGn-Mq-X4L"/>
@@ -1784,14 +1801,31 @@ would be</string>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </imageView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sex-Jz-cd8">
+                                                        <rect key="frame" x="51" y="361" width="16" height="16"/>
+                                                        <color key="backgroundColor" red="0.10980392156862745" green="0.11372549019607843" blue="0.14117647058823529" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="16" id="0oG-KQ-YK6"/>
+                                                            <constraint firstAttribute="width" secondItem="sex-Jz-cd8" secondAttribute="height" multiplier="1:1" id="imT-hg-nfD"/>
+                                                        </constraints>
+                                                        <state key="normal" image="editProfile"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="4"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="imgEditBtnAction:" destination="T8M-b6-PfF" eventType="touchUpInside" id="nle-xP-mR3"/>
+                                                        </connections>
+                                                    </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Number of Battery" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RW2-7U-z2M">
-                                                        <rect key="frame" x="16" y="427" width="350" height="20.5"/>
+                                                        <rect key="frame" x="16" y="462" width="350" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hVa-ej-Avk" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                        <rect key="frame" x="16" y="461.5" width="350" height="50"/>
+                                                        <rect key="frame" x="16" y="496.5" width="350" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="W44-PQ-u3e"/>
                                                         </constraints>
@@ -1810,7 +1844,7 @@ would be</string>
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZNh-b5-vay" customClass="AppButton" customModule="ArabianTyres" customModuleProvider="target">
-                                                        <rect key="frame" x="216" y="545.5" width="150" height="56"/>
+                                                        <rect key="frame" x="216" y="580.5" width="150" height="56"/>
                                                         <color key="backgroundColor" red="0.090196078430000007" green="0.1450980392" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="56" id="w6g-pf-OWh"/>
@@ -1835,13 +1869,16 @@ would be</string>
                                                     <constraint firstItem="RLa-EA-Lcv" firstAttribute="leading" secondItem="iED-qH-o2t" secondAttribute="leading" id="45O-ha-cbB"/>
                                                     <constraint firstItem="ZNh-b5-vay" firstAttribute="trailing" secondItem="3KB-FT-OMB" secondAttribute="trailing" id="6mJ-qf-oZS"/>
                                                     <constraint firstAttribute="bottom" secondItem="ZNh-b5-vay" secondAttribute="bottom" constant="16" id="9Jy-aS-Hgg"/>
-                                                    <constraint firstItem="RLa-EA-Lcv" firstAttribute="top" secondItem="3KB-FT-OMB" secondAttribute="bottom" constant="50" id="AQE-8h-Qdk"/>
                                                     <constraint firstItem="hVa-ej-Avk" firstAttribute="trailing" secondItem="RW2-7U-z2M" secondAttribute="trailing" id="BL9-PT-XGk"/>
                                                     <constraint firstItem="hVa-ej-Avk" firstAttribute="leading" secondItem="RW2-7U-z2M" secondAttribute="leading" id="DHa-x1-OK3"/>
+                                                    <constraint firstItem="sex-Jz-cd8" firstAttribute="top" secondItem="iED-qH-o2t" secondAttribute="top" constant="5" id="EKt-VX-bna"/>
+                                                    <constraint firstItem="RLa-EA-Lcv" firstAttribute="top" secondItem="vRf-aU-fFI" secondAttribute="bottom" constant="20" id="EjQ-b1-Ot1"/>
+                                                    <constraint firstItem="vRf-aU-fFI" firstAttribute="top" secondItem="3KB-FT-OMB" secondAttribute="bottom" constant="40" id="Iof-be-LJa"/>
                                                     <constraint firstItem="RW2-7U-z2M" firstAttribute="leading" secondItem="iED-qH-o2t" secondAttribute="leading" id="Ofi-d4-7gW"/>
                                                     <constraint firstItem="ZNh-b5-vay" firstAttribute="top" secondItem="hVa-ej-Avk" secondAttribute="bottom" constant="34" id="TzY-sC-4Um"/>
                                                     <constraint firstItem="RLa-EA-Lcv" firstAttribute="leading" secondItem="3KB-FT-OMB" secondAttribute="leading" id="UwX-dQ-XCC"/>
                                                     <constraint firstItem="MH6-0g-kgm" firstAttribute="top" secondItem="YVZ-o3-0Rl" secondAttribute="top" constant="16" id="W6z-VI-WCW"/>
+                                                    <constraint firstItem="vRf-aU-fFI" firstAttribute="leading" secondItem="YVZ-o3-0Rl" secondAttribute="leading" id="Wle-m5-VAo"/>
                                                     <constraint firstItem="JkQ-gw-lnQ" firstAttribute="leading" secondItem="RLa-EA-Lcv" secondAttribute="leading" id="Y6P-lb-gWG"/>
                                                     <constraint firstItem="iED-qH-o2t" firstAttribute="top" secondItem="RLa-EA-Lcv" secondAttribute="bottom" constant="8" id="dh9-Vz-UFR"/>
                                                     <constraint firstAttribute="trailing" secondItem="MH6-0g-kgm" secondAttribute="trailing" constant="16" id="gwf-bt-iAh"/>
@@ -1849,6 +1886,8 @@ would be</string>
                                                     <constraint firstItem="3KB-FT-OMB" firstAttribute="trailing" secondItem="MH6-0g-kgm" secondAttribute="trailing" id="jeg-Ki-xCf"/>
                                                     <constraint firstItem="RW2-7U-z2M" firstAttribute="trailing" secondItem="3KB-FT-OMB" secondAttribute="trailing" id="lbl-xP-w2l"/>
                                                     <constraint firstItem="MH6-0g-kgm" firstAttribute="leading" secondItem="YVZ-o3-0Rl" secondAttribute="leading" constant="16" id="qa5-zd-CU5"/>
+                                                    <constraint firstItem="sex-Jz-cd8" firstAttribute="trailing" secondItem="iED-qH-o2t" secondAttribute="trailing" constant="-5" id="rnp-05-rVu"/>
+                                                    <constraint firstAttribute="trailing" secondItem="vRf-aU-fFI" secondAttribute="trailing" id="vQf-cb-JTO"/>
                                                     <constraint firstItem="3KB-FT-OMB" firstAttribute="top" secondItem="MH6-0g-kgm" secondAttribute="bottom" constant="16" id="vfH-cW-oDI"/>
                                                     <constraint firstItem="3KB-FT-OMB" firstAttribute="leading" secondItem="MH6-0g-kgm" secondAttribute="leading" id="zqz-4Z-394"/>
                                                 </constraints>
@@ -1917,6 +1956,7 @@ would be</string>
                         <outlet property="batteryNumberTextField" destination="hVa-ej-Avk" id="zbm-Uc-Lb2"/>
                         <outlet property="containerView" destination="YVZ-o3-0Rl" id="fEg-8h-xGH"/>
                         <outlet property="enterVehicleDetailLbl" destination="BJI-Cr-zTC" id="PT9-kA-0fE"/>
+                        <outlet property="imgEditBtn" destination="sex-Jz-cd8" id="izy-tJ-1o0"/>
                         <outlet property="nextBtn" destination="ZNh-b5-vay" id="gag-92-Sdl"/>
                         <outlet property="numberOfBatteryLbl" destination="RW2-7U-z2M" id="ZHb-Fu-HAs"/>
                         <outlet property="productYearTextField" destination="XNj-XS-7a8" id="Q9t-3l-wdf"/>
@@ -2698,6 +2738,7 @@ Service With</string>
     <resources>
         <image name="arrow" width="30" height="30"/>
         <image name="battery" width="135" height="135"/>
+        <image name="editProfile" width="12" height="14"/>
         <image name="genericHybridCarI051" width="337" height="408"/>
         <image name="group3913" width="36.5" height="36"/>
         <image name="grp" width="107" height="107"/>
