@@ -111,6 +111,7 @@ extension VechicleDetailVC {
                 _self.selectedMakeArr = makeData
                 _self.vehicleMakeTextField.text = makeData.first?.name ?? ""
                 TyreRequestModel.shared.makeId = makeData.first?.id ?? ""
+                TyreRequestModel.shared.makeName = makeData.first?.name ?? ""
                 _self.submitBtnStatus()
             } else {
                 _self.selectedModelArr = modelData

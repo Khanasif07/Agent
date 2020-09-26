@@ -13,20 +13,21 @@ struct TyreRequestModel {
     
     
     static var shared = TyreRequestModel()
-    
+
     var width                     : String = ""
-    var profile                   : String = ""
-    var rimSize                   : String = ""
-    var quantity                  : String = ""
-    var tyreBrandsListing         : [String] = []
-    var countriesListing          : [String] = []
-    var tyreBrands                : [String] = []
-    var countries                 : [String] = []
-    var latitude                  : String = ""
-    var longitude                 : String = ""
-    var makeId                    : String  = ""
-    var modelName                 : String  = ""
-    var year                      : String  = ""
+    var profile                        : String = ""
+    var rimSize           : String = ""
+    var quantity                    : String = ""
+    var tyreBrandsListing                  : [String] = []
+    var countriesListing                   : [String] = []
+    var tyreBrands                  : [String] = []
+    var countries                     : [String] = []
+    var latitude : String = ""
+    var longitude: String = ""
+    var makeId: String  = ""
+    var makeName: String  = ""
+    var modelName: String  = ""
+    var year: String  = ""
     
     func getTyreRequestDict()-> JSONDictionary {
         let dict: JSONDictionary = [
