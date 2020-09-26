@@ -78,22 +78,19 @@ class TyreRequestedVC: BaseVC {
     
     
     @IBAction func requestBtnAction(_ sender: UIButton) {
-        printDebug("request btn tap")
         self.viewModel.postTyreRequest(dict: TyreRequestModel.shared.getTyreRequestDict())
     }
     
     @IBAction func sizeEditBtnAction(_ sender: UIButton) {
-        printDebug("size btn tap")
+        self.navigationController?.popToViewControllerOfType(classForCoder: URTyreStep1VC.self)
     }
     
     @IBAction func numberOfTyreAction(_ sender: UIButton) {
-        printDebug("number of Tyre btn tap")
-        
+        self.navigationController?.popToViewControllerOfType(classForCoder: URTyreStep1VC.self)
     }
     
     @IBAction func tyreBrandAction(_ sender: UIButton) {
-        printDebug("tyre btn tap")
-        
+         self.navigationController?.popToViewControllerOfType(classForCoder: TyreBrandVC.self)
     }
 }
 
