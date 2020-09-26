@@ -104,7 +104,7 @@ extension LocationPopUpVC {
                 TyreRequestModel.shared.latitude = "\(locationValue.latitude)"
                 TyreRequestModel.shared.longitude = "\(locationValue.longitude)"
                 self.dismiss(animated: true) {
-                     AppRouter.goToTyreRequestedVC(vc: self)
+                    self.onAllowTap?()
                 }
             }
             else { self.locationPermissonPopUp() }
