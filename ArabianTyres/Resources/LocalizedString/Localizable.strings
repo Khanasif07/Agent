@@ -250,6 +250,11 @@
 "productYear" = "Product Year";
 "skipAndSubmit" = "Skip & Submit ";
 "chooseQuantity" = "Choose Quantity";
+"vehicleDetails" = "Vehicle Details";
+"batteyRequest" = "You are requesting for Battery\nService With";
+"batteryBrand" = "Battery Brands";
+"numberOfBattery" = "Number of Battery";
+
 
  // MARK: - Garage Profile Values
 //==============================

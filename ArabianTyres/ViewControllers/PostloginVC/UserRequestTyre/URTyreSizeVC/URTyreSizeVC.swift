@@ -110,6 +110,7 @@ extension URTyreSizeVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(with: URTyreSizeTableCell.self, indexPath: indexPath)
+
         let isPowerSelected = self.viewModel.selectedtyreSizeListings.contains(where: {$0.rimSize == self.viewModel.tyreSizeListings[indexPath.row].rimSize})
         if self.viewModel.tyreSizeListings.endIndex  > 0  {
             cell.populateData(isPowerSelected: isPowerSelected,model: self.viewModel.tyreSizeListings[indexPath.row])
@@ -124,6 +125,7 @@ extension URTyreSizeVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
         if self.viewModel.selectedtyreSizeListings.contains(self.viewModel.tyreSizeListings[indexPath.row]) {} else {
             self.viewModel.selectedtyreSizeListings.removeAll()
             self.viewModel.selectedtyreSizeListings.append(self.viewModel.tyreSizeListings[indexPath.row])

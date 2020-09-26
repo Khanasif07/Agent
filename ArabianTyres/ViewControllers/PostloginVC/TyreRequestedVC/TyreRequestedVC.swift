@@ -6,11 +6,9 @@
 //  Copyright © 2020 Admin. All rights reserved.
 //
 
-import Foundation
-
-
 import UIKit
 import SkyFloatingLabelTextField
+
 class TyreRequestedVC: BaseVC {
     
     // MARK: - IBOutlets

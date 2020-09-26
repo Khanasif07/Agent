@@ -210,6 +210,7 @@
 		A4B74CC92510C22700771974 /* GarageRegistrationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B74CC82510C22700771974 /* GarageRegistrationVM.swift */; };
 		A4B74CCB2510CF6C00771974 /* GarageProfileStep2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B74CCA2510CF6C00771974 /* GarageProfileStep2VC.swift */; };
 		A4B91C3625149BDA00E4811A /* LocationPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B91C3525149BDA00E4811A /* LocationPopUpVC.swift */; };
+		A4C39FEC251E69A6001711F8 /* BatteryRequestedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C39FEB251E69A6001711F8 /* BatteryRequestedVC.swift */; };
 		A4FEF8EC2518744900D58C13 /* TyreRequestedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FEF8EB2518744900D58C13 /* TyreRequestedVC.swift */; };
 /* End PBXBuildFile section */
 
@@ -421,6 +422,7 @@
 		A4B74CC82510C22700771974 /* GarageRegistrationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageRegistrationVM.swift; sourceTree = "<group>"; };
 		A4B74CCA2510CF6C00771974 /* GarageProfileStep2VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageProfileStep2VC.swift; sourceTree = "<group>"; };
 		A4B91C3525149BDA00E4811A /* LocationPopUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPopUpVC.swift; sourceTree = "<group>"; };
+		A4C39FEB251E69A6001711F8 /* BatteryRequestedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryRequestedVC.swift; sourceTree = "<group>"; };
 		A4FEF8EB2518744900D58C13 /* TyreRequestedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TyreRequestedVC.swift; sourceTree = "<group>"; };
 		B2C00CD38A98EBA313A070C9 /* Pods_ArabianTyres.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArabianTyres.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -1080,6 +1082,7 @@
 				A4F7BA4C251DC23E009FF659 /* BatteryBrandVC */,
 				A4F7BA4D251DC249009FF659 /* VehicleDetailForBatteryVC */,
 				A4F7BA4E251DC254009FF659 /* VehicleDetailForOilVC */,
+				A4C39FEB251E69A6001711F8 /* BatteryRequestedVC.swift */,
 			);
 			path = PostloginVC;
 			sourceTree = "<group>";
@@ -1596,6 +1599,7 @@
 				A4A6DEE7251A123800564020 /* GarageHomeVC.swift in Sources */,
 				A4098E78251228050015B0BD /* FacilityTableHeaderView.swift in Sources */,
 				8481FA592500BF2900AB6EFB /* UIViewExtension.swift in Sources */,
+				A4C39FEC251E69A6001711F8 /* BatteryRequestedVC.swift in Sources */,
 				843DFD1E2503F017000DE6EB /* OtpVerificationVC.swift in Sources */,
 				8481FA5B2500BF3B00AB6EFB /* CommonExtension.swift in Sources */,
 				8481FA3B2500BDFF00AB6EFB /* NotificationExtension.swift in Sources */,
