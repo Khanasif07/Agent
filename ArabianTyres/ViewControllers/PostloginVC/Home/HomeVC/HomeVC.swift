@@ -130,13 +130,17 @@ extension HomeVC : UICollectionViewDelegate, UICollectionViewDataSource,UICollec
         case LocalizedString.tyre.localized:
             categoryType = .tyres
             TyreRequestModel.shared = TyreRequestModel()
-             AppRouter.goToURTyreStep1VC(vc: self)
-//            AppRouter.goToBatteryRequestedVC(vc: self)
+            AppRouter.goToURTyreStep1VC(vc: self)
+//            AppRouter.goToVehicleDetailForOilVC(vc: self)
 
         case LocalizedString.oil.localized:
             categoryType = .oil
             AppRouter.goToVehicleDetailForOilVC(vc: self)
-            
+           
+        case LocalizedString.battery.localized:
+            categoryType = .battery
+            AppRouter.goToVehicleDetailForBatteryVC(vc: self)
+
         default:
             showAlert(msg: "Under Development")
         }

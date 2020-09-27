@@ -52,7 +52,16 @@ class LocationPopUpVC: BaseVC {
     
     @IBAction func allowBtnAction(_ sender: UIButton) {
         self.isHitApi =  true
-        self.setupLocations()
+        switch categoryType {
+            
+        case .oil:
+            AppRouter.goToOilRequestedVC(vc: self)
+        case .tyres:
+            self.setupLocations()
+        case .battery:
+            AppRouter.goToBatteryRequestedVC(vc: self)
+
+        }
     }
 }
 

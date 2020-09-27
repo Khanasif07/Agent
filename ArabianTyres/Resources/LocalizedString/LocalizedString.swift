@@ -255,6 +255,11 @@ enum LocalizedString : String {
     case batteyRequest
     case batteryBrand
     case numberOfBattery
+    case oilBrands
+    case numberOfUnit
+    case oilRequest
+    case oilImage
+    case selectNumberOfUnitYouWant
     // MARK: - Home  VC Values
     //==============================
     case tyre

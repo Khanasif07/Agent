@@ -240,7 +240,7 @@
 "enterNumber" = "Enter number";
 "country" = "Country";
 "chooseYourVehicleDetails" = "Choose Your Vehicle Details";
-"wellGetYouOilAccordingToTheProvidedDetails" = "We’ll get you oil according to the provided details";
+"wellGetYouOilAccordingToTheProvidedDetails" = "We’ll get you oil according to the\nprovided details";
 "numberOfTyre" = "Number of Tyre";
 "edit" = "Edit";
 "submitRequest" = "Submit Request";
@@ -252,10 +252,13 @@
 "chooseQuantity" = "Choose Quantity";
 "vehicleDetails" = "Vehicle Details";
 "batteyRequest" = "You are requesting for Battery\nService With";
+"oilRequest"  = "You are requesting for Oil\nService With";
 "batteryBrand" = "Battery Brands";
 "numberOfBattery" = "Number of Battery";
-
-
+"oilBrands" = "Oil Brands";
+"numberOfUnit" = "Number of Unit";
+"oilImage" = "Oil Image";
+"selectNumberOfUnitYouWant" = "Select number of unit you want";
  // MARK: - Garage Profile Values
 //==============================
 "service_Completed" = "Service Completed";
