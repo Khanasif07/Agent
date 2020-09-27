@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -37,7 +37,7 @@
                                                         <color key="backgroundColor" red="1" green="0.69411764705882351" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </view>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="genericHybridCarI051" translatesAutoresizingMaskIntoConstraints="NO" id="F49-eN-RgT">
-                                                        <rect key="frame" x="-260" y="-128" width="674" height="816"/>
+                                                        <rect key="frame" x="77" y="76" width="337" height="408"/>
                                                     </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.96470588235294119" green="0.96862745098039216" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -244,7 +244,7 @@
                                                         <color key="backgroundColor" red="1" green="0.69411764710000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </view>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icfVTyre" translatesAutoresizingMaskIntoConstraints="NO" id="UqA-4q-rDK">
-                                                        <rect key="frame" x="0.0" y="-1" width="414" height="344"/>
+                                                        <rect key="frame" x="0.0" y="171" width="414" height="172"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </imageView>
                                                 </subviews>
@@ -629,7 +629,7 @@ in getting great offers</string>
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vnX-hW-sOe">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="900"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="920.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dO1-4h-0z0">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="363"/>
@@ -639,7 +639,7 @@ in getting great offers</string>
                                                         <color key="backgroundColor" red="1" green="0.69411764710000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </view>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icfVTyre" translatesAutoresizingMaskIntoConstraints="NO" id="UL5-Xm-tjA">
-                                                        <rect key="frame" x="0.0" y="19" width="414" height="344"/>
+                                                        <rect key="frame" x="0.0" y="191" width="414" height="172"/>
                                                     </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -654,7 +654,7 @@ in getting great offers</string>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="1000" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.65000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="pAE-My-qPS">
-                                                <rect key="frame" x="16" y="363" width="382" height="49"/>
+                                                <rect key="frame" x="16" y="363" width="382" height="57.5"/>
                                                 <string key="text">You are requesting for tyre 
 Service With</string>
                                                 <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="21"/>
@@ -662,13 +662,13 @@ Service With</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Size of tyre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b7G-Ss-1Fj">
-                                                <rect key="frame" x="16" y="430" width="70" height="16.5"/>
+                                                <rect key="frame" x="16" y="438.5" width="73" height="19.5"/>
                                                 <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="14"/>
                                                 <color key="textColor" red="0.54117647058823526" green="0.58431372549019611" blue="0.61960784313725492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fsY-Ra-4Op">
-                                                <rect key="frame" x="370" y="429.5" width="28" height="18"/>
+                                                <rect key="frame" x="370" y="439.5" width="28" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="18" id="aEd-Gy-0Jm"/>
                                                     <constraint firstAttribute="width" constant="28" id="wt0-Yw-gap"/>
@@ -681,7 +681,7 @@ Service With</string>
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tKJ-la-Ihs">
-                                                <rect key="frame" x="16" y="454.5" width="382" height="72"/>
+                                                <rect key="frame" x="16" y="466" width="382" height="72"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="hlS-pY-mRW">
                                                         <rect key="frame" x="0.0" y="6" width="382" height="60"/>
@@ -689,23 +689,23 @@ Service With</string>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yx5-Gl-qXZ">
                                                                 <rect key="frame" x="0.0" y="0.0" width="125" height="60"/>
                                                                 <subviews>
-                                                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="LPM-vE-Q2s">
-                                                                        <rect key="frame" x="10" y="-6" width="104" height="72"/>
+                                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="LPM-vE-Q2s">
+                                                                        <rect key="frame" x="10" y="12" width="78.5" height="36"/>
                                                                         <subviews>
-                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="icFadeTyre" translatesAutoresizingMaskIntoConstraints="NO" id="AWy-Lh-DxR">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="72" height="72"/>
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icFadeTyre" translatesAutoresizingMaskIntoConstraints="NO" id="AWy-Lh-DxR">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
                                                                             </imageView>
-                                                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="ZDE-Bb-RHV">
-                                                                                <rect key="frame" x="80" y="0.0" width="24" height="72"/>
+                                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="ZDE-Bb-RHV">
+                                                                                <rect key="frame" x="44" y="0.0" width="34.5" height="36"/>
                                                                                 <subviews>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Width" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="eXe-Bd-X8j">
-                                                                                        <rect key="frame" x="0.0" y="0.0" width="24" height="35.5"/>
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="34.5" height="17.5"/>
                                                                                         <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="12"/>
                                                                                         <color key="textColor" red="0.54117647058823526" green="0.58431372549019611" blue="0.61960784313725492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="195" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="MBg-Yk-SRF">
-                                                                                        <rect key="frame" x="0.0" y="36.5" width="24" height="35.5"/>
+                                                                                        <rect key="frame" x="0.0" y="18.5" width="34.5" height="17.5"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                         <nil key="highlightedColor"/>
@@ -714,7 +714,7 @@ Service With</string>
                                                                             </stackView>
                                                                         </subviews>
                                                                     </stackView>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="line" translatesAutoresizingMaskIntoConstraints="NO" id="BfT-30-oBC">
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="line" translatesAutoresizingMaskIntoConstraints="NO" id="BfT-30-oBC">
                                                                         <rect key="frame" x="114" y="12" width="11" height="36"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="36" id="O8I-Lq-Ukr"/>
@@ -740,22 +740,22 @@ Service With</string>
                                                                 <rect key="frame" x="125" y="0.0" width="124.5" height="60"/>
                                                                 <subviews>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="9qE-CR-3Rx">
-                                                                        <rect key="frame" x="6" y="-6" width="115" height="72"/>
+                                                                        <rect key="frame" x="6" y="12" width="79.5" height="36"/>
                                                                         <subviews>
                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="group3913" translatesAutoresizingMaskIntoConstraints="NO" id="DEf-RJ-7rL">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="73" height="72"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="36.5" height="36"/>
                                                                             </imageView>
                                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="2vP-2o-FpP">
-                                                                                <rect key="frame" x="81" y="0.0" width="34" height="72"/>
+                                                                                <rect key="frame" x="44.5" y="0.0" width="35" height="36"/>
                                                                                 <subviews>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="69k-eQ-9QF">
-                                                                                        <rect key="frame" x="0.0" y="0.0" width="34" height="36"/>
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="35" height="18"/>
                                                                                         <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="12"/>
                                                                                         <color key="textColor" red="0.54117647059999996" green="0.58431372550000005" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="195" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="xSq-3z-i65">
-                                                                                        <rect key="frame" x="0.0" y="36" width="34" height="36"/>
+                                                                                        <rect key="frame" x="0.0" y="18" width="35" height="18"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                         <nil key="highlightedColor"/>
@@ -782,22 +782,22 @@ Service With</string>
                                                                 <rect key="frame" x="249.5" y="0.0" width="132.5" height="60"/>
                                                                 <subviews>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="RfK-C7-IjK">
-                                                                        <rect key="frame" x="0.0" y="-6" width="128.5" height="72"/>
+                                                                        <rect key="frame" x="0.0" y="11.5" width="92" height="37"/>
                                                                         <subviews>
                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icRim" translatesAutoresizingMaskIntoConstraints="NO" id="75I-II-83v">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="73" height="72"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="36.5" height="37"/>
                                                                             </imageView>
                                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="Lhe-K0-qC3">
-                                                                                <rect key="frame" x="81" y="0.0" width="47.5" height="72"/>
+                                                                                <rect key="frame" x="44.5" y="0.0" width="47.5" height="37"/>
                                                                                 <subviews>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rim Size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="HTX-On-XYy">
-                                                                                        <rect key="frame" x="0.0" y="0.0" width="47.5" height="34.5"/>
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="47.5" height="17"/>
                                                                                         <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="12"/>
                                                                                         <color key="textColor" red="0.54117647059999996" green="0.58431372550000005" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="195" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="3MG-wt-CvS">
-                                                                                        <rect key="frame" x="0.0" y="37.5" width="47.5" height="34.5"/>
+                                                                                        <rect key="frame" x="0.0" y="20" width="47.5" height="17"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                         <nil key="highlightedColor"/>
@@ -837,13 +837,13 @@ Service With</string>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of Tyre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7nl-P6-19A">
-                                                <rect key="frame" x="16" y="542.5" width="96" height="16.5"/>
+                                                <rect key="frame" x="16" y="554" width="100.5" height="19.5"/>
                                                 <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="14"/>
                                                 <color key="textColor" red="0.54117647059999996" green="0.58431372550000005" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Md-6e-9CN">
-                                                <rect key="frame" x="370" y="542" width="28" height="18"/>
+                                                <rect key="frame" x="370" y="555" width="28" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="28" id="A50-ln-Hxy"/>
                                                     <constraint firstAttribute="height" constant="18" id="oJe-g0-c25"/>
@@ -856,7 +856,7 @@ Service With</string>
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Kq-Ic-w4b">
-                                                <rect key="frame" x="16" y="567" width="382" height="55"/>
+                                                <rect key="frame" x="16" y="581.5" width="382" height="55"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Okv-Fr-GbP" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
                                                         <rect key="frame" x="16" y="2.5" width="346" height="50"/>
@@ -884,13 +884,13 @@ Service With</string>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Origin of Tyre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wQX-gk-BSE">
-                                                <rect key="frame" x="16" y="638" width="83" height="16.5"/>
+                                                <rect key="frame" x="16" y="652.5" width="88.5" height="19.5"/>
                                                 <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="14"/>
                                                 <color key="textColor" red="0.54117647058823526" green="0.58431372549019611" blue="0.61960784313725492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5H4-I0-ZIL">
-                                                <rect key="frame" x="370" y="637.5" width="28" height="18"/>
+                                                <rect key="frame" x="370" y="653.5" width="28" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="18" id="6cy-xX-603"/>
                                                     <constraint firstAttribute="width" constant="28" id="oOW-m2-1Sa"/>
@@ -903,16 +903,16 @@ Service With</string>
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uOp-Fj-S6r">
-                                                <rect key="frame" x="16" y="663.5" width="382" height="95.5"/>
+                                                <rect key="frame" x="16" y="681" width="382" height="98.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tyre Brands" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H2v-a3-rv8">
-                                                        <rect key="frame" x="15" y="16" width="74.5" height="16.5"/>
+                                                        <rect key="frame" x="15" y="16" width="77.5" height="19.5"/>
                                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="14"/>
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" contentInsetAdjustmentBehavior="never" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="iLw-gw-Yml">
-                                                        <rect key="frame" x="15" y="42.5" width="351" height="45"/>
+                                                        <rect key="frame" x="15" y="45.5" width="351" height="45"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="45" id="6Tq-dl-ns2"/>
@@ -942,7 +942,7 @@ Service With</string>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2uW-7o-gnV" customClass="AppButton" customModule="ArabianTyres">
-                                                <rect key="frame" x="16" y="794" width="382" height="56"/>
+                                                <rect key="frame" x="16" y="814.5" width="382" height="56"/>
                                                 <color key="backgroundColor" red="0.090196078430000007" green="0.1450980392" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="56" id="RB6-zq-6pt"/>
@@ -1085,7 +1085,7 @@ Service With</string>
                                                         <color key="backgroundColor" red="1" green="0.69411764710000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </view>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icOil" translatesAutoresizingMaskIntoConstraints="NO" id="gsZ-4T-w6B">
-                                                        <rect key="frame" x="0.0" y="-13" width="414" height="342"/>
+                                                        <rect key="frame" x="0.0" y="158" width="414" height="171"/>
                                                     </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1269,7 +1269,7 @@ would be</string>
                                                         <color key="backgroundColor" red="1" green="0.69411764710000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </view>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icOil" translatesAutoresizingMaskIntoConstraints="NO" id="k4B-Qj-bTf">
-                                                        <rect key="frame" x="0.0" y="-13" width="414" height="342"/>
+                                                        <rect key="frame" x="0.0" y="158" width="414" height="171"/>
                                                     </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1453,7 +1453,7 @@ looking for?</string>
                                                         <color key="backgroundColor" red="1" green="0.69411764710000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </view>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icBattery" translatesAutoresizingMaskIntoConstraints="NO" id="5Zz-aY-WM8">
-                                                        <rect key="frame" x="0.0" y="-45" width="414" height="396"/>
+                                                        <rect key="frame" x="0.0" y="153" width="414" height="198"/>
                                                     </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1637,7 +1637,7 @@ would be</string>
                                                         <color key="backgroundColor" red="1" green="0.69411764710000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </view>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="genericHybridCarI051" translatesAutoresizingMaskIntoConstraints="NO" id="kNB-Re-5wc">
-                                                        <rect key="frame" x="-260" y="-128" width="674" height="816"/>
+                                                        <rect key="frame" x="77" y="76" width="337" height="408"/>
                                                     </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1952,7 +1952,7 @@ would be</string>
                                                         <color key="backgroundColor" red="1" green="0.69411764710000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </view>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="genericHybridCarI051" translatesAutoresizingMaskIntoConstraints="NO" id="T1A-Va-BJc">
-                                                        <rect key="frame" x="-260" y="-128" width="674" height="816"/>
+                                                        <rect key="frame" x="77" y="76" width="337" height="408"/>
                                                     </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2149,7 +2149,7 @@ would be</string>
                                 <rect key="frame" x="0.0" y="44" width="414" height="56"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Brands" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aSX-dZ-Ey2">
-                                        <rect key="frame" x="153.5" y="21" width="107" height="20"/>
+                                        <rect key="frame" x="153" y="19" width="108.5" height="23.5"/>
                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -2164,7 +2164,7 @@ would be</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rx9-r7-W55">
-                                        <rect key="frame" x="330" y="17" width="69" height="28"/>
+                                        <rect key="frame" x="329" y="17" width="70" height="28"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="28" id="dqO-eJ-O3l"/>
                                         </constraints>
@@ -2289,7 +2289,7 @@ would be</string>
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Axo-Py-tzW">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="900"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="920.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="slk-Fk-rE2">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="363"/>
@@ -2314,7 +2314,7 @@ would be</string>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="1000" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.64999997615814209" translatesAutoresizingMaskIntoConstraints="NO" id="ItD-2E-1v7">
-                                                <rect key="frame" x="16" y="363" width="382" height="49"/>
+                                                <rect key="frame" x="16" y="363" width="382" height="57.5"/>
                                                 <string key="text">You are requesting for Battery 
 Service With</string>
                                                 <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="21"/>
@@ -2322,13 +2322,13 @@ Service With</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vehicle Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IOB-xa-AGE">
-                                                <rect key="frame" x="16" y="430" width="91" height="16.5"/>
+                                                <rect key="frame" x="16" y="438.5" width="94.5" height="19.5"/>
                                                 <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="14"/>
                                                 <color key="textColor" red="0.54117647059999996" green="0.58431372550000005" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IfZ-pf-6Nq">
-                                                <rect key="frame" x="370" y="429.5" width="28" height="18"/>
+                                                <rect key="frame" x="370" y="439.5" width="28" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="18" id="ciG-TE-Oc8"/>
                                                     <constraint firstAttribute="width" constant="28" id="yKD-aB-10z"/>
@@ -2341,7 +2341,7 @@ Service With</string>
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Was-q7-RQA">
-                                                <rect key="frame" x="16" y="454.5" width="382" height="72"/>
+                                                <rect key="frame" x="16" y="466" width="382" height="72"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="RJh-Fl-1cP">
                                                         <rect key="frame" x="0.0" y="0.0" width="382" height="72"/>
@@ -2474,13 +2474,13 @@ Service With</string>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of Battery" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M3Y-qi-xGs">
-                                                <rect key="frame" x="16" y="542.5" width="115.5" height="16.5"/>
+                                                <rect key="frame" x="16" y="554" width="121" height="19.5"/>
                                                 <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="14"/>
                                                 <color key="textColor" red="0.54117647059999996" green="0.58431372550000005" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fsg-fA-q9F">
-                                                <rect key="frame" x="370" y="542" width="28" height="18"/>
+                                                <rect key="frame" x="370" y="555" width="28" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="18" id="YgH-gi-En5"/>
                                                     <constraint firstAttribute="width" constant="28" id="naJ-T0-C5x"/>
@@ -2493,7 +2493,7 @@ Service With</string>
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Rw-kx-oAo">
-                                                <rect key="frame" x="16" y="567" width="382" height="55"/>
+                                                <rect key="frame" x="16" y="581.5" width="382" height="55"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xGK-83-KBB" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
                                                         <rect key="frame" x="16" y="2.5" width="346" height="50"/>
@@ -2521,13 +2521,13 @@ Service With</string>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Battery Brands" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M3e-zx-wP4">
-                                                <rect key="frame" x="16" y="638" width="94" height="16.5"/>
+                                                <rect key="frame" x="16" y="652.5" width="98" height="19.5"/>
                                                 <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="14"/>
                                                 <color key="textColor" red="0.54117647059999996" green="0.58431372550000005" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wkH-uV-dPa">
-                                                <rect key="frame" x="370" y="637.5" width="28" height="18"/>
+                                                <rect key="frame" x="370" y="653.5" width="28" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="18" id="9Zi-pL-izs"/>
                                                     <constraint firstAttribute="width" constant="28" id="beM-2a-oT0"/>
@@ -2540,16 +2540,16 @@ Service With</string>
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZFM-u8-izf">
-                                                <rect key="frame" x="16" y="663.5" width="382" height="95.5"/>
+                                                <rect key="frame" x="16" y="681" width="382" height="98.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tyre Brands" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RUg-Fg-ow6">
-                                                        <rect key="frame" x="15" y="16" width="74.5" height="16.5"/>
+                                                        <rect key="frame" x="15" y="16" width="77.5" height="19.5"/>
                                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="14"/>
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" contentInsetAdjustmentBehavior="never" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="LSh-1P-SmK">
-                                                        <rect key="frame" x="15" y="42.5" width="351" height="45"/>
+                                                        <rect key="frame" x="15" y="45.5" width="351" height="45"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="45" id="Hbj-lO-Z9C"/>
@@ -2579,7 +2579,7 @@ Service With</string>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4GJ-Bp-Shk" customClass="AppButton" customModule="ArabianTyres">
-                                                <rect key="frame" x="16" y="794" width="382" height="56"/>
+                                                <rect key="frame" x="16" y="814.5" width="382" height="56"/>
                                                 <color key="backgroundColor" red="0.090196078430000007" green="0.1450980392" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="56" id="Aba-fM-IdP"/>

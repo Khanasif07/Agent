@@ -612,22 +612,22 @@ with Country Code  </string>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k0a-nr-yif">
-                                                    <rect key="frame" x="28.5" y="241.5" width="357" height="413"/>
+                                                    <rect key="frame" x="28.5" y="250" width="357" height="396"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="group3710" translatesAutoresizingMaskIntoConstraints="NO" id="kzl-C3-NC6">
-                                                            <rect key="frame" x="11" y="8" width="335" height="145"/>
+                                                            <rect key="frame" x="11" y="8" width="335" height="145.00000000000003"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="145" id="Xmy-lU-Eab"/>
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Successful" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t5S-af-AOy">
-                                                            <rect key="frame" x="136.5" y="180" width="84" height="20"/>
+                                                            <rect key="frame" x="136.5" y="179.5" width="84" height="23.5"/>
                                                             <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XTn-nU-kAO">
-                                                            <rect key="frame" x="73" y="223" width="211" height="61"/>
+                                                            <rect key="frame" x="16" y="226" width="325" height="41"/>
                                                             <string key="text">You have successfully reset
 your old password.</string>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -635,7 +635,7 @@ your old password.</string>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hmx-Iv-jZA">
-                                                            <rect key="frame" x="136" y="333" width="85" height="48"/>
+                                                            <rect key="frame" x="136" y="316" width="85" height="48"/>
                                                             <color key="backgroundColor" red="0.12941176469999999" green="0.19215686269999999" blue="0.4823529412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="85" id="OyM-S7-7kI"/>
@@ -649,7 +649,7 @@ your old password.</string>
                                                             </connections>
                                                         </button>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FgQ-Ho-q0r">
-                                                            <rect key="frame" x="45" y="210" width="267" height="1"/>
+                                                            <rect key="frame" x="45" y="213" width="267" height="1"/>
                                                             <color key="backgroundColor" red="0.96470588235294119" green="0.96862745098039216" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="1" id="iyg-jN-JKe"/>
@@ -664,12 +664,12 @@ your old password.</string>
                                                         <constraint firstItem="kzl-C3-NC6" firstAttribute="top" secondItem="k0a-nr-yif" secondAttribute="top" constant="8" id="4n8-7U-T3a"/>
                                                         <constraint firstAttribute="trailing" secondItem="kzl-C3-NC6" secondAttribute="trailing" constant="11" id="9Is-ey-FWO"/>
                                                         <constraint firstItem="t5S-af-AOy" firstAttribute="top" secondItem="kzl-C3-NC6" secondAttribute="bottom" constant="26.800000000000001" id="BFP-Yl-aSU"/>
-                                                        <constraint firstItem="XTn-nU-kAO" firstAttribute="leading" secondItem="k0a-nr-yif" secondAttribute="leading" constant="73" id="Dai-Yj-yEA"/>
+                                                        <constraint firstItem="XTn-nU-kAO" firstAttribute="leading" secondItem="k0a-nr-yif" secondAttribute="leading" constant="16" id="Dai-Yj-yEA"/>
                                                         <constraint firstItem="XTn-nU-kAO" firstAttribute="top" secondItem="FgQ-Ho-q0r" secondAttribute="bottom" constant="12" id="KOo-gg-kcK"/>
                                                         <constraint firstAttribute="bottom" secondItem="Hmx-Iv-jZA" secondAttribute="bottom" constant="32" id="RZP-jy-l7d"/>
                                                         <constraint firstItem="t5S-af-AOy" firstAttribute="centerX" secondItem="k0a-nr-yif" secondAttribute="centerX" id="WFj-8A-gGJ"/>
                                                         <constraint firstAttribute="trailing" secondItem="FgQ-Ho-q0r" secondAttribute="trailing" constant="45" id="b4X-ZA-N6U"/>
-                                                        <constraint firstAttribute="trailing" secondItem="XTn-nU-kAO" secondAttribute="trailing" constant="73" id="g0n-C9-RcN"/>
+                                                        <constraint firstAttribute="trailing" secondItem="XTn-nU-kAO" secondAttribute="trailing" constant="16" id="g0n-C9-RcN"/>
                                                         <constraint firstItem="FgQ-Ho-q0r" firstAttribute="top" secondItem="t5S-af-AOy" secondAttribute="bottom" constant="10" id="hIW-in-f94"/>
                                                         <constraint firstItem="kzl-C3-NC6" firstAttribute="leading" secondItem="k0a-nr-yif" secondAttribute="leading" constant="11" id="jpL-kw-43T"/>
                                                     </constraints>
