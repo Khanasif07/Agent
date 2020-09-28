@@ -17,19 +17,20 @@ class ProfileSettingVC: BaseVC {
     
     // MARK: - Variables
     //===========================
+    let switchProfileString = isCurrentUserType == .user ? LocalizedString.switchProfileTogarage.localized : LocalizedString.switchProfileToUser.localized
     var selectItemArray = [LocalizedString.aboutUs.localized,LocalizedString.terms_Condition.localized,LocalizedString.privacy_policy.localized,LocalizedString.contactUs.localized,LocalizedString.changeLanguage.localized,LocalizedString.switchProfileTogarage.localized,LocalizedString.reportAnIssue.localized,LocalizedString.faq.localized,LocalizedString.referFriend.localized]
     var selectImageArray: [UIImage] = [#imageLiteral(resourceName: "aboutUs"),#imageLiteral(resourceName: "terms"),#imageLiteral(resourceName: "privacyPolicy"),#imageLiteral(resourceName: "contactUs"),#imageLiteral(resourceName: "changeLang"),#imageLiteral(resourceName: "switchProfile"),#imageLiteral(resourceName: "report"),#imageLiteral(resourceName: "faq"),#imageLiteral(resourceName: "refer")]
     var selectItemArray1 = [LocalizedString.logout.localized]
     var selectImageArray1: [UIImage] = [#imageLiteral(resourceName: "logout")]
     var viewModel = GarageRegistrationVM()
-
+    
     // MARK: - Lifecycle
     //===========================
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
     }
-
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.mainTableView.reloadData()
@@ -58,6 +59,7 @@ class ProfileSettingVC: BaseVC {
 extension ProfileSettingVC {
     
     private func initialSetup() {
+        self.selectItemArray = [LocalizedString.aboutUs.localized,LocalizedString.terms_Condition.localized,LocalizedString.privacy_policy.localized,LocalizedString.contactUs.localized,LocalizedString.changeLanguage.localized,switchProfileString,LocalizedString.reportAnIssue.localized,LocalizedString.faq.localized,LocalizedString.referFriend.localized]
         self.tableViewSetUp()
         viewModel.delegate = self
     }
@@ -96,14 +98,38 @@ extension ProfileSettingVC {
                         guard let `self` = self else { return }
                         self.showLogoutPopUp()
                     }
-                   
+                    
+                    return cell
+                }
+            case .garage:
+                switch indexPath.row {
+                case 0:
+                    let cell = tableView.dequeueCell(with: ProfileUserBottomCell.self, indexPath: indexPath)
+                    cell.selectItemArray = self.selectItemArray
+                    cell.selectImageArray = self.selectImageArray
+                    
+                    cell.switchProfileToGarage = {  [weak self]  in
+                        guard let `self` = self else { return }
+                        self.hitGarageSwitchApi()
+                    }
+                    return cell
+                default:
+                    let cell = tableView.dequeueCell(with: ProfileUserBottomCell.self, indexPath: indexPath)
+                    cell.isComeFromProfile = true
+                    cell.selectItemArray = self.selectItemArray1
+                    cell.selectImageArray = self.selectImageArray1
+                    cell.logoutBtnTapped = {  [weak self]  in
+                        guard let `self` = self else { return }
+                        self.showLogoutPopUp()
+                    }
+                    
                     return cell
                 }
             default:
                 return UITableViewCell()
             }
         } else {
-             return UITableViewCell()
+            return UITableViewCell()
         }
     }
     
@@ -111,6 +137,8 @@ extension ProfileSettingVC {
         if isUserLoggedin {
             switch isCurrentUserType {
             case .user:
+                return 2
+            case .garage:
                 return 2
             default:
                 return 1
@@ -170,7 +198,11 @@ extension ProfileSettingVC : GarageRegistrationVMDelegate {
         case 603:
             CommonFunctions.showToastWithMessage(msg)
         default:
-            AppRouter.goToGarageHome()
+            if isCurrentUserType == .user{
+                AppRouter.goToUserHome()
+            } else {
+                AppRouter.goToGarageHome()
+            }
         }
     }
     

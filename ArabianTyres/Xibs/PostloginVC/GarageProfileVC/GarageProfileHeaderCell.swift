@@ -12,7 +12,7 @@ class GarageProfileHeaderCell: UITableViewCell {
     
     var phoneVerifyBtnTapped :((UIButton)->())?
     var emailVerifyBtnTapped :((UIButton)->())?
-    var categoryNameArray = ["Car Wash","Car Wash","Car Wash","Car Wash","Car Wash"]
+    var categoryNameArray = [ServicesModel]()
     
     @IBOutlet weak var dataContainerView: UIView!
     @IBOutlet weak var editProfileView: UIImageView!
@@ -61,6 +61,7 @@ class GarageProfileHeaderCell: UITableViewCell {
         emailVerifyBtn.isHidden = model.emailVerified || model.email.isEmpty
         installationVauleLbl.text = "\(GarageProfileModel.shared.minInstallationPrice) - " + "\(GarageProfileModel.shared.maxInstallationPrice) SAR"
         addressLbl.text = GarageProfileModel.shared.address
+        mainCollView.reloadData()
     }
     
     @IBAction func phoneVerifyBtnAction(_ sender: UIButton) {
@@ -88,14 +89,14 @@ extension GarageProfileHeaderCell : UICollectionViewDelegate,UICollectionViewDat
         cell.cancelBtn.isHidden = true
         cell.cancelBtnHeightConstraint.constant = 0.0
         cell.skillLbl.contentMode = .center
-        cell.skillLbl.text = self.categoryNameArray[indexPath.item]
+        cell.skillLbl.text = self.categoryNameArray[indexPath.item].serviceName
         cell.layoutSubviews()
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let text = self.categoryNameArray[indexPath.row]
-        let textSize = text.sizeCount(withFont: AppFonts.NunitoSansSemiBold.withSize(13.0), boundingSize: CGSize(width: 10000.0, height: 32.0))
+        let text = self.categoryNameArray[indexPath.row].serviceName
+        let textSize = text.sizeCount(withFont: AppFonts.NunitoSansSemiBold.withSize(14.0), boundingSize: CGSize(width: 10000.0, height: 32.0))
         return CGSize(width: (textSize.width ) + 16.0, height: 34.0)
     }
     

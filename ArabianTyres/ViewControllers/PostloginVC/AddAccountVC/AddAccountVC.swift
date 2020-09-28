@@ -205,4 +205,11 @@ extension AddAccountVC: GarageRegistrationVMDelegate {
     private func fillDataStatus()-> Bool{
         return !GarageProfileModel.shared.bankName.isEmpty && !GarageProfileModel.shared.accountNumber.isEmpty && !GarageProfileModel.shared.confirmAccountNumber.isEmpty
     }
+    func completeProfileSuccess(msg: String){
+        AppRouter.goToGarageHome()
+    }
+    
+    func completeProfileFailure(msg: String){
+         CommonFunctions.showToastWithMessage(msg)
+    }
 }

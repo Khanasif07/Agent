@@ -46,8 +46,6 @@ class GarageAddLocationVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
-        logoImgView.image = GarageProfileModel.shared.logo
-        garageName.text = GarageProfileModel.shared.serviceCenterName
     }
     
     // MARK: - IBActions
@@ -83,6 +81,9 @@ extension GarageAddLocationVC {
     private func initialSetup() {
         self.prepareMap()
         setAddress()
+        setupLocations()
+        logoImgView.image = GarageProfileModel.shared.logo
+        garageName.text = GarageProfileModel.shared.serviceCenterName
         self.saveContinueBtn.isEnabled = false
     }
     

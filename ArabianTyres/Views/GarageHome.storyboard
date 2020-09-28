@@ -81,7 +81,7 @@
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jjp-Ve-QZH">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="358.5"/>
-                                        <color key="backgroundColor" red="0.1960784314" green="0.30980392159999998" blue="0.76470588240000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </imageView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vNV-c7-uFg">
                                         <rect key="frame" x="0.0" y="88" width="414" height="808"/>
@@ -139,6 +139,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="x64-wc-a7W"/>
                     <connections>
+                        <outlet property="mainImgView" destination="Jjp-Ve-QZH" id="uqB-bB-16n"/>
                         <outlet property="mainTableView" destination="vNV-c7-uFg" id="6qc-9O-8VT"/>
                         <outlet property="titleLbl" destination="mlb-lx-XYQ" id="9Xe-x0-Q6c"/>
                     </connections>

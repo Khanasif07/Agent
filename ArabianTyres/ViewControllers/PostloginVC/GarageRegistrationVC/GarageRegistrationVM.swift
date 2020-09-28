@@ -65,11 +65,11 @@ class GarageRegistrationVM {
     }
     
     func switchGarageProfile() {
-        
         WebServices.switchProfile(parameters: [:], success: { [weak self] (json) in
             guard let `self` = self else { return }
             let code = json[ApiKey.statusCode].intValue
             let msg = json[ApiKey.message].stringValue
+            AppUserDefaults.save(value: json[ApiKey.data][ApiKey.currentRole].stringValue, forKey: .currentUserType)
             self.delegate?.switchGarageRegistrationSuccess(code: code,msg : msg)
             
         }) { [weak self] (error) in

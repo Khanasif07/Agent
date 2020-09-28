@@ -86,24 +86,29 @@ class TyreBrandVC: BaseVC {
     }
     
     @IBAction func skipAndSubmitBtnAction(_ sender: UIButton) {
-        brandListingArr = []
-        countryListingArr = []
-        TyreRequestModel.shared.selectedTyreCountryListings = []
-        TyreRequestModel.shared.selectedTyreBrandsListings = []
+        deSelectBrands()
+        deSelectCountry()
         listing(listingType: listingType, BrandsListings: brandListingArr, countryListings: countryListingArr)
          AppRouter.presentLocationPopUpVC(vc: self)
     }
     
     @IBAction func tyreCheckBtnAction(_ sender: UIButton) {
-        tyreBrandCheckBtn.isSelected.toggle()
+        deSelectCountry()
+        listing(listingType: .brands, BrandsListings: brandListingArr, countryListings: countryListingArr)
+        listing(listingType: .countries, BrandsListings: brandListingArr, countryListings: countryListingArr)
+        tyreBrandCheckBtn.isSelected = true
+        countryOriginCheckBtn.isSelected = false
     }
     
     @IBAction func countryCheckBtnAction(_ sender: UIButton) {
-        countryListingArr = []
+        deSelectBrands()
+        listing(listingType: .countries, BrandsListings: brandListingArr, countryListings: countryListingArr)
+        listing(listingType: .brands, BrandsListings: brandListingArr, countryListings: countryListingArr)
         countryOriginCustomView.collView.isHidden = true
         countryOriginCustomView.floatLbl.isHidden = true
         countryOriginCustomView.collView.reloadData()
-        countryOriginCheckBtn.isSelected.toggle()
+        countryOriginCheckBtn.isSelected = true
+        tyreBrandCheckBtn.isSelected = false
         countryOriginViewHeightConstraint.constant = countryOriginCheckBtn.isSelected ? 60.0 : 0.0
     }
    
@@ -140,7 +145,7 @@ extension TyreBrandVC {
     }
     
     private func submitBtnStatus()-> Bool{
-        return !TyreRequestModel.shared.tyreBrands.isEmpty
+        return !TyreRequestModel.shared.tyreBrands.isEmpty || !TyreRequestModel.shared.countries.isEmpty
     }
     
     private func setupCustomView() {
@@ -165,6 +170,18 @@ extension TyreBrandVC {
         countryOriginCustomView.collView.delegate = self
         countryOriginCustomView.collView.dataSource = self
     }
+    
+    private func deSelectCountry(){
+        countryListingArr = []
+        TyreRequestModel.shared.countries  = []
+        TyreRequestModel.shared.selectedTyreCountryListings = []
+    }
+    
+    private func deSelectBrands(){
+           brandListingArr = []
+           TyreRequestModel.shared.selectedTyreBrandsListings = []
+           TyreRequestModel.shared.tyreBrands = []
+       }
     
 }
 
@@ -249,6 +266,7 @@ extension TyreBrandVC: UICollectionViewDelegate,UICollectionViewDataSource,UICol
                 countryOriginCustomView.collView.isHidden = true
                 countryOriginCustomView.floatLbl.isHidden = true
             }
+            self.submitBtn.isEnabled = submitBtnStatus()
             countryOriginCustomView.collView.reloadData()
             view.layoutIfNeeded()
             view.setNeedsLayout()
@@ -268,9 +286,11 @@ extension TyreBrandVC : CustomTextViewDelegate{
         switch tView {
        
         case tyreBrandCustomView.tView:
-            AppRouter.goToBrandsListingVC(vc: self, listingType: .brands, brandsData : brandListingArr, countryData: [], category: .tyres)
+            if tyreBrandCheckBtn.isSelected {
+                AppRouter.goToBrandsListingVC(vc: self, listingType: .brands, brandsData : brandListingArr, countryData: [], category: .tyres) }
         case countryOriginCustomView.tView:
-            AppRouter.goToBrandsListingVC(vc: self, listingType: .countries, brandsData: [], countryData: countryListingArr, category: .tyres)
+            if countryOriginCheckBtn.isSelected {
+                AppRouter.goToBrandsListingVC(vc: self, listingType: .countries, brandsData: [], countryData: countryListingArr, category: .tyres) }
         default:
             break
         }
@@ -313,6 +333,7 @@ extension TyreBrandVC: BrandsListnig {
             TyreRequestModel.shared.countriesListing = countryListings.map({ (tyreCountryModel) -> String in
                 return tyreCountryModel.name
             })
+            self.submitBtn.isEnabled = submitBtnStatus()
             countryOriginCheckBtn.isSelected = !countryListingArr.isEmpty
             countryOriginCustomView.collView.isHidden = countryListingArr.isEmpty
             countryOriginCustomView.floatLbl.isHidden = countryListingArr.isEmpty
