@@ -93,6 +93,7 @@ class BrandsListingVM{
                 if result[ApiKey.data][ApiKey.result].arrayValue.isEmpty {
                     self.hideLoader = true
                     self.brandsListings = []
+                    TyreRequestModel.shared.tyreBrandsListings = []
                     isRequestinApi = false
                     self.delegate?.brandListingSuccess(message: "")
                     return
@@ -109,6 +110,7 @@ class BrandsListingVM{
                 } else {
                     self.brandsListings.append(contentsOf: modelList)
                 }
+                TyreRequestModel.shared.tyreBrandsListings =  self.brandsListings
                 nextPageAvailable = result[ApiKey.data][ApiKey.next].boolValue
                 currentPage += 1
                 self.delegate?.brandListingSuccess(message: "")
@@ -126,6 +128,7 @@ class BrandsListingVM{
                 if result[ApiKey.data][ApiKey.result].arrayValue.isEmpty {
                     self.hideLoader = true
                     self.countryListings = []
+                    TyreRequestModel.shared.tyreCountryListings  = []
                     isRequestinApi = false
                     self.delegate?.countryListingSuccess(message: "")
                     return
@@ -142,6 +145,7 @@ class BrandsListingVM{
                 } else {
                     self.countryListings.append(contentsOf: modelList)
                 }
+                TyreRequestModel.shared.tyreCountryListings =  self.countryListings
                 nextPageAvailable = result[ApiKey.data][ApiKey.next].boolValue
                 currentPage += 1
                 self.delegate?.countryListingSuccess(message: "")

@@ -31,7 +31,7 @@
                                     <constraint firstAttribute="height" constant="30" id="GZd-4Y-1nf"/>
                                 </constraints>
                                 <state key="normal" image="roundUnSelected"/>
-                                <state key="selected" image="group1431"/>
+                                <state key="selected" image="icFillCircle"/>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="radialCarTireI151" translatesAutoresizingMaskIntoConstraints="NO" id="2uv-1P-9vy">
                                 <rect key="frame" x="50" y="11" width="200" height="178"/>
@@ -104,7 +104,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="group1431" width="24" height="24"/>
+        <image name="icFillCircle" width="30" height="30"/>
         <image name="radialCarTireI151" width="200" height="178"/>
         <image name="roundUnSelected" width="24" height="24"/>
     </resources>

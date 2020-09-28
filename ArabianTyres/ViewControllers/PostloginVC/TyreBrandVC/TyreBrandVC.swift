@@ -110,9 +110,12 @@ class TyreBrandVC: BaseVC {
 extension TyreBrandVC {
     
     private func initialSetup() {
+        brandListingArr = TyreRequestModel.shared.selectedTyreBrandsListings
+        countryListingArr = TyreRequestModel.shared.selectedTyreCountryListings
         setupTextFont()
         setupCustomView()
         countryOriginViewHeightConstraint.constant = 0.0
+        listing(listingType: listingType, BrandsListings: brandListingArr, countryListings: countryListingArr)
     }
     
     private func setupTextFont() {
@@ -210,6 +213,13 @@ extension TyreBrandVC: UICollectionViewDelegate,UICollectionViewDataSource,UICol
         if let indexPath = self.tyreBrandCustomView.collView.indexPath(forItem: sender) {
             printDebug(indexPath)
             brandListingArr.remove(at: indexPath.item)
+            TyreRequestModel.shared.selectedTyreBrandsListings = brandListingArr
+            TyreRequestModel.shared.tyreBrands = brandListingArr.map({ (tyreModel) -> String in
+                return tyreModel.id
+            })
+            TyreRequestModel.shared.tyreBrandsListing = brandListingArr.map({ (tyreModel) -> String in
+                return tyreModel.name
+            })
             if brandListingArr.isEmpty {
                 tyreBrandCustomView.collView.isHidden = true
                 tyreBrandCustomView.floatLbl.isHidden = true
@@ -224,6 +234,13 @@ extension TyreBrandVC: UICollectionViewDelegate,UICollectionViewDataSource,UICol
         if let indexPath = self.countryOriginCustomView.collView.indexPath(forItem: sender) {
             printDebug(indexPath)
             countryListingArr.remove(at: indexPath.item)
+            TyreRequestModel.shared.selectedTyreCountryListings = countryListingArr
+            TyreRequestModel.shared.countries = countryListingArr.map({ (tyreCountryModel) -> String in
+                return tyreCountryModel.id
+            })
+            TyreRequestModel.shared.countriesListing = countryListingArr.map({ (tyreCountryModel) -> String in
+                return tyreCountryModel.name
+            })
             if countryListingArr.isEmpty {
                 countryOriginCustomView.collView.isHidden = true
                 countryOriginCustomView.floatLbl.isHidden = true

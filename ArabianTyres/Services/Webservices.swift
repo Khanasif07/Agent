@@ -281,7 +281,7 @@ extension WebServices{
             if token.isEmpty {
                 let accessToken = json[ApiKey.data][ApiKey.authToken].stringValue
                 AppUserDefaults.save(value: accessToken, forKey: .accesstoken)}
-            AppUserDefaults.save(value: "basic", forKey: .currentUserType)
+            AppUserDefaults.save(value: json[ApiKey.data][ApiKey.currentRole].stringValue, forKey: .currentUserType)
             success(user)
         }) { (error) -> (Void) in
             failure(error)

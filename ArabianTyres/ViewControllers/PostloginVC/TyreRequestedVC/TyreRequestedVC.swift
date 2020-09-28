@@ -32,7 +32,7 @@ class TyreRequestedVC: BaseVC {
     @IBOutlet weak var sizeContainerView: UIView!
     @IBOutlet weak var numberOfTyreContainerView: UIView!
     @IBOutlet weak var tyreBrandContainerView: UIView!
-    @IBOutlet weak var numberOfTyreTextField: SkyFloatingLabelTextField!
+    @IBOutlet weak var numberOfTyreTextField: UILabel!
     
     @IBOutlet weak var requestBtn: AppButton!
     @IBOutlet weak var sizeEditBtn: UIButton!
@@ -112,7 +112,6 @@ extension TyreRequestedVC {
         numberOfTyreBtn.getUnderline()
         tyreBrandBtn.getUnderline()
         numberOfTyreLbl.text = LocalizedString.numberOfTyre.localized
-        numberOfTyreTextField.delegate = self
         numberOfTyreTextField.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
         numberOfTyreTextField.isUserInteractionEnabled = false
         requestBtn.titleLabel?.font =  AppFonts.NunitoSansSemiBold.withSize(16.0)
@@ -189,7 +188,7 @@ extension TyreRequestedVC: UICollectionViewDelegate,UICollectionViewDataSource,U
     
     private func cardSizeForItemAt(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, indexPath: IndexPath) -> CGSize {
         let dataArr = collectionView == tyreBrandCollView ? TyreRequestModel.shared.tyreBrandsListing : TyreRequestModel.shared.countriesListing
-        let textSize = dataArr[indexPath.row].sizeCount(withFont: AppFonts.NunitoSansSemiBold.withSize(13.0), boundingSize: CGSize(width: 10000.0, height: collectionView.frame.height))
+        let textSize = dataArr[indexPath.row].sizeCount(withFont: AppFonts.NunitoSansSemiBold.withSize(14.0), boundingSize: CGSize(width: 10000.0, height: collectionView.frame.height))
         return CGSize(width: textSize.width + 16, height: 34.0)
     }
     
