@@ -50,7 +50,7 @@ class UploadDocumentVC: BaseVC {
     //===========================
     @IBOutlet weak var mainTableView: UITableView!
     @IBOutlet weak var titleLbl: UILabel!
-    @IBOutlet weak var saveAndContinueBtn: UIButton!
+    @IBOutlet weak var saveAndContinueBtn: AppButton!
     @IBOutlet weak var headingLbl: UILabel!
     @IBOutlet weak var helpBtn: UIButton!
 
@@ -63,6 +63,7 @@ class UploadDocumentVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
+        saveAndContinueBtn.isEnabled = false
     }
 
     // MARK: - IBActions
@@ -73,7 +74,6 @@ class UploadDocumentVC: BaseVC {
     }
     
     @IBAction func saveAndContinueBtnAction(_ sender: UIButton) {
-
         AppRouter.goToAddAccountVC(vc: self, screenType: .garageRegistration)
     }
     
@@ -197,6 +197,18 @@ extension UploadDocumentVC: UIImagePickerControllerDelegate,UINavigationControll
         case .ownerId:
             GarageProfileModel.shared.ownerId.append(imgUrl)
         }
+        var status : Bool = false
+        for section in Section.allCases  {
+            if section.imgArr.count == 0 {
+                status = false
+                break
+            }else {
+                 status = true
+                
+            }
+            
+        }
+        saveAndContinueBtn.isEnabled = status
         mainTableView.reloadData()
     }
 }

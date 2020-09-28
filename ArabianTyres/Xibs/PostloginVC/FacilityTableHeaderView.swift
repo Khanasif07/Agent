@@ -36,6 +36,5 @@ class FacilityTableHeaderView: UITableViewHeaderFooterView {
     
     @IBAction func cellBtnTapped(_ sender: UIButton) {
         cellBtnTapped?()
-        arrowImg.isHighlighted.toggle()
     }
 }

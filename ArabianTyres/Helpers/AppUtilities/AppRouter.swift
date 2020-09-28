@@ -285,9 +285,10 @@ enum AppRouter {
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
-    static func goToFacilityVC(vc: UIViewController){
+    static func goToFacilityVC(vc: UIViewController,data: [FacilityModel]){
         let scene = FacilityVC.instantiate(fromAppStoryboard: .Garage)
         scene.delegate = vc as? FacilitiesDelegate
+        scene.selectedItemArr = data
         vc.modalPresentationStyle = .fullScreen
         vc.present(scene, animated: true)
     }
