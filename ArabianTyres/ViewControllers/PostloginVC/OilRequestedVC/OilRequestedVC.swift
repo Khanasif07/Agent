@@ -31,7 +31,7 @@ class OilRequestedVC: BaseVC {
     @IBOutlet weak var vechileDetailContainerView: UIView!
     @IBOutlet weak var numberOfBatteryContainerView: UIView!
     @IBOutlet weak var batteryBrandContainerView: UIView!
-    @IBOutlet weak var numberOfBatteyTextField: SkyFloatingLabelTextField!
+    @IBOutlet weak var numberOfBatteyTextField: UILabel!
     
     @IBOutlet weak var requestBtn: AppButton!
     @IBOutlet weak var vechileDetailEditBtn: UIButton!
@@ -91,7 +91,7 @@ class OilRequestedVC: BaseVC {
     }
     
     @IBAction func oilBrandAction(_ sender: UIButton) {
-        self.navigationController?.popToViewControllerOfType(classForCoder: VehicleDetailForOilVC.self)
+        self.navigationController?.popToViewControllerOfType(classForCoder: OilBrandsVC.self)
     }
 }
 
@@ -117,7 +117,6 @@ extension OilRequestedVC {
         numberOfUnitLbl.text = LocalizedString.numberOfUnit.localized
         titleLbl.text = LocalizedString.oilRequest.localized
 
-        numberOfBatteyTextField.delegate = self
         numberOfBatteyTextField.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
         numberOfBatteyTextField.isUserInteractionEnabled = false
         requestBtn.titleLabel?.font =  AppFonts.NunitoSansSemiBold.withSize(16.0)

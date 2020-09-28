@@ -54,7 +54,6 @@ class TyreBrandVC: BaseVC {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         containerView.createShadow(shadowColor: #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1))
-      
         if !self.brandListingArr.isEmpty {
             if let tyreBrandCustomView = self.tyreBrandCustomView {
                 self.tBCustomViewHeightConstraint.constant = tyreBrandCustomView.collView.contentSize.height + 38.0
@@ -87,7 +86,12 @@ class TyreBrandVC: BaseVC {
     }
     
     @IBAction func skipAndSubmitBtnAction(_ sender: UIButton) {
-          
+        brandListingArr = []
+        countryListingArr = []
+        TyreRequestModel.shared.selectedTyreCountryListings = []
+        TyreRequestModel.shared.selectedTyreBrandsListings = []
+        listing(listingType: listingType, BrandsListings: brandListingArr, countryListings: countryListingArr)
+         AppRouter.presentLocationPopUpVC(vc: self)
     }
     
     @IBAction func tyreCheckBtnAction(_ sender: UIButton) {
