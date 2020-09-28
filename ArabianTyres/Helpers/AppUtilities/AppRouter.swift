@@ -36,6 +36,8 @@ enum AppRouter {
             switch isCurrentUserType {
             case .user:
                 AppRouter.goToUserHome()
+            case .garage:
+                AppRouter.goToGarageHome()
             default:
                 let lang = AppUserDefaults.value(forKey: .currentLanguage).stringValue
                 AppUserDefaults.removeAllValues()

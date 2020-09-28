@@ -38,8 +38,8 @@ struct LoginViewModel {
             UserModel.main = user
             let accessToken = json[ApiKey.data][ApiKey.authToken].stringValue
             AppUserDefaults.save(value: accessToken, forKey: .accesstoken)
-            AppUserDefaults.save(value: "basic", forKey: .currentUserType)
             AppUserDefaults.save(value: json[ApiKey.data][ApiKey.phoneVerified].boolValue, forKey: .phoneNoVerified)
+            AppUserDefaults.save(value: json[ApiKey.data][ApiKey.currentRole].stringValue, forKey: .currentUserType)
             self.delegate?.signInSuccess(userModel: UserModel.main)
         }) { (error) -> (Void) in
             if (error as NSError).code == 401 {
