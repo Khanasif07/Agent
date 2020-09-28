@@ -299,7 +299,6 @@ enum AppRouter {
         }
         scene.delegate = vc as? BrandsListnig
         scene.listingType = listingType
-        vc.modalPresentationStyle = .fullScreen
         vc.present(scene, animated: true)
     }
     

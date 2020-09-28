@@ -32,7 +32,7 @@ struct TyreRequestModel {
     var modelName: String  = ""
     var year: String  = ""
     
-    func getTyreRequestDict()-> JSONDictionary {
+   mutating func getTyreRequestDict()-> JSONDictionary {
         let dict: JSONDictionary = [
             ApiKey.width : width,
             ApiKey.profile: profile,
@@ -44,7 +44,7 @@ struct TyreRequestModel {
         return dict
     }
     
-    func getBatteryRequestDict()-> JSONDictionary {
+    mutating func getBatteryRequestDict()-> JSONDictionary {
            let dict: JSONDictionary = [
                ApiKey.make : make,
                ApiKey.model: model,
