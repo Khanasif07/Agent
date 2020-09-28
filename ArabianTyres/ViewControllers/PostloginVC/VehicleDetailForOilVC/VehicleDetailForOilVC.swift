@@ -19,6 +19,7 @@ class VehicleDetailForOilVC: BaseVC {
     @IBOutlet weak var productYearTextField: SkyFloatingLabelTextField!
     @IBOutlet weak var numberOfUnitTextField: SkyFloatingLabelTextField!
     @IBOutlet weak var vehicleDetailLbl: UILabel!
+    @IBOutlet weak var uploadImgLbl: UILabel!
     @IBOutlet weak var heading: UILabel!
     @IBOutlet weak var subHeading: UILabel!
     @IBOutlet weak var nextBtn: AppButton!
@@ -28,11 +29,11 @@ class VehicleDetailForOilVC: BaseVC {
     @IBOutlet weak var numberOfUnitLbl: UILabel!
     @IBOutlet weak var imgEditBtn: UIButton!
     @IBOutlet weak var uploadView: UIView!
+    @IBOutlet weak var imgUploadBtn: UIButton!
 
     
     // MARK: - Variables
     //===========================
-
     var placeHolderArr : [String] = [LocalizedString.enterVehicleMake.localized,
      LocalizedString.enterVehicleModel.localized,
      LocalizedString.productYear.localized,
@@ -48,7 +49,16 @@ class VehicleDetailForOilVC: BaseVC {
     var selectedMakeArr: [MakeModel] = []
     var selectedModelArr: [ModelData] = []
     var vehicleDetailtype : VehicleDetailType = .make
-    
+    var yearPicker = WCCustomPickerView()
+    var quantityPicker = WCCustomPickerView()
+    var tempTextField: UITextField?
+    fileprivate var hasImageUploaded = true {
+        didSet {
+            if hasImageUploaded {
+                print("StringConstants.K_PROFILE_PIC_UPLOADED.localized")
+            }
+        }
+    }
     
     // MARK: - Lifecycle
     //===========================
@@ -76,13 +86,40 @@ class VehicleDetailForOilVC: BaseVC {
     }
     
     @IBAction func nextBtnAction(_ sender: UIButton) {
-        AppRouter.goToURTyreSizeVC(vc: self)
+        if !self.hasImageUploaded{
+            self.showAlert(msg: LocalizedString.wait_Img_Upload.localized)
+            return
+        }
+        AppRouter.goToOilBrandsVC(vc: self)
     }
   
     @IBAction func imgEditBtnAction(_ sender: UIButton) {
+        self.captureImage(delegate: self,removedImagePicture: !TyreRequestModel.shared.images.isEmpty)
+    }
+    
+    //MARK:- Custom Picker View Data Array
+    //===========================
+    private func setUpYearPickerView() -> [String]{
+        var arr: [String] = []
+        var j = 0
+        let year = Calendar.current.component(.year, from: Date())
+        for i in 1990...year {
+            arr.insert(String(i), at: j)
+            j += 1
+        }
+        return arr
+    }
+    
+    private func setUpNumberOfBatteryPickerView() -> [String]{
+           var arr: [String] = []
+           var j = 0
+           for i in 1...999 {
+               arr.insert(String(i), at: j)
+               j += 1
+           }
+           return arr
        }
-      
-      
+    
 }
 
 // MARK: - Extension For Functions
@@ -92,6 +129,8 @@ extension VehicleDetailForOilVC {
     private func initialSetup() {
         setupTextField()
         setupTextFont()
+        nextBtn.isEnabled = false
+        imgEditBtn.isHidden = true
     }
     
     private func setupTextField(){
@@ -105,6 +144,12 @@ extension VehicleDetailForOilVC {
             txtField?.font = AppFonts.NunitoSansBold.withSize(14.0)
             txtField?.textColor = AppColors.fontPrimaryColor
         }
+        self.productYearTextField.inputView = yearPicker
+        self.numberOfUnitTextField.inputView = quantityPicker
+        self.yearPicker.delegate = self
+        self.quantityPicker.delegate = self
+        self.yearPicker.dataArray = self.setUpYearPickerView()
+        self.quantityPicker.dataArray = self.setUpNumberOfBatteryPickerView()
     }
     
     private func setupTextFont() {
@@ -121,7 +166,8 @@ extension VehicleDetailForOilVC {
         vehicleDetailLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
         subHeading.font = AppFonts.NunitoSansBold.withSize(14.0)
         nextBtn.titleLabel?.font =  AppFonts.NunitoSansSemiBold.withSize(16.0)
-        
+        uploadView.backgroundColor =  !TyreRequestModel.shared.images.isEmpty ? .white : AppColors.fontTertiaryColor
+        uploadView.borderWidth = !TyreRequestModel.shared.images.isEmpty ? 0.0 : 1.0
     }
     
     private func openBottomSheet(type: VehicleDetailType = .make) {
@@ -134,10 +180,13 @@ extension VehicleDetailForOilVC {
             if  _self.vehicleDetailtype == .make {
                 _self.selectedMakeArr = makeData
                 _self.vehicleMakeTextField.text = makeData.first?.name ?? ""
+                TyreRequestModel.shared.makeId = makeData.first?.id ?? ""
+                TyreRequestModel.shared.make = makeData.first?.name ?? ""
                 _self.submitBtnStatus()
             } else {
                 _self.selectedModelArr = modelData
                 _self.vehicleModelTextField.text = modelData.first?.model ?? ""
+                TyreRequestModel.shared.model = modelData.first?.model ?? ""
                 _self.submitBtnStatus()
             }
         }
@@ -145,7 +194,7 @@ extension VehicleDetailForOilVC {
     }
     
     private func submitBtnStatus(){
-           self.nextBtn.isEnabled = !(numberOfUnitTextField.text ?? "").isEmpty && !self.selectedMakeArr.isEmpty && !self.selectedModelArr.isEmpty
+        self.nextBtn.isEnabled = !TyreRequestModel.shared.year.isEmpty && !TyreRequestModel.shared.make.isEmpty && !TyreRequestModel.shared.model.isEmpty && !TyreRequestModel.shared.quantity.isEmpty && !TyreRequestModel.shared.images.isEmpty
     }
 }
 
@@ -156,21 +205,99 @@ extension VehicleDetailForOilVC :UITextFieldDelegate {
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        switch textField {
-        case vehicleMakeTextField:
-            vehicleDetailtype = .make
-            openBottomSheet(type: VehicleDetailType.make)
-        return false
-    case vehicleModelTextField:
-        if self.selectedMakeArr.isEmpty {
-            showAlert(msg: "Please fill make")
-            return false
+           switch textField {
+           case vehicleMakeTextField:
+               tempTextField = vehicleMakeTextField
+               vehicleDetailtype = .make
+               openBottomSheet(type: VehicleDetailType.make)
+               return false
+           case vehicleModelTextField:
+               tempTextField = vehicleModelTextField
+               if self.selectedMakeArr.isEmpty {
+                   showAlert(msg: "Please fill make")
+                   return false
+               }
+               vehicleDetailtype = .model
+               openBottomSheet(type: VehicleDetailType.model)
+               return false
+           case numberOfUnitTextField:
+               tempTextField = numberOfUnitTextField
+               return true
+           default:
+               tempTextField = productYearTextField
+               return true
         }
-        vehicleDetailtype = .model
-        openBottomSheet(type: VehicleDetailType.model)
-        return false
-    default:
-         return true
     }
-  }
+}
+
+
+// MARK: - UIImagePickerControllerDelegate
+//===========================
+extension VehicleDetailForOilVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate , RemovePictureDelegate {
+    func removepicture() {
+        TyreRequestModel.shared.images = []
+//        oilImgView.setImage_kf(imageString: TyreRequestModel.shared.images.first?.url ?? "", placeHolderImage: #imageLiteral(resourceName: "icImg"), loader: false)
+        imgEditBtn.isHidden = true
+        imgUploadBtn.setImage(#imageLiteral(resourceName: "icImg"), for: .normal)
+        uploadView.backgroundColor =  !TyreRequestModel.shared.images.isEmpty ? .white : AppColors.primaryBlueLightShade
+        uploadView.borderWidth = !TyreRequestModel.shared.images.isEmpty ? 0.0 : 1.0
+        uploadImgLbl.isHidden = !TyreRequestModel.shared.images.isEmpty
+        self.submitBtnStatus()
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[.editedImage] as? UIImage
+        hasImageUploaded = false
+        oilImgView.image = image
+        imgEditBtn.isHidden = false
+        imgUploadBtn.setImage(nil, for: .normal)
+        uploadView.backgroundColor = .white
+        uploadImgLbl.isHidden = true
+        uploadView.borderWidth = 0.0
+        //        CommonFunctions.showActivityLoader()
+        TyreRequestModel.shared.images = []
+        TyreRequestModel.shared.images.append(ImageModel(url: "", mediaType: "image", image: image ?? UIImage()))
+        self.submitBtnStatus()
+        image?.upload(progress: { (progress) in
+            printDebug(progress)
+        }, completion: { (response,error) in
+            if let url = response {
+                //                CommonFunctions.hideActivityLoader()
+                self.hasImageUploaded = true
+                let lastIndex = TyreRequestModel.shared.images.endIndex
+                TyreRequestModel.shared.images[lastIndex-1].url = url
+                self.submitBtnStatus()
+            }
+            if let _ = error{
+                self.showAlert(msg: LocalizedString.imageUploadingFailed.localized)
+            }
+        })
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+}
+
+//MARK:- WCCustomPickerViewDelegate
+// ================================
+
+extension VehicleDetailForOilVC: WCCustomPickerViewDelegate {
+    func userDidSelectRow(_ text: String) {
+        switch tempTextField{
+        case productYearTextField:
+            productYearTextField.text = text
+            TyreRequestModel.shared.year = text
+            self.submitBtnStatus()
+        case numberOfUnitTextField:
+            numberOfUnitTextField.text = text
+            TyreRequestModel.shared.quantity = text
+            self.submitBtnStatus()
+        default:
+            printDebug("Do Nothing..")
+        }
+        
+    }
 }
