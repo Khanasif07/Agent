@@ -72,7 +72,7 @@ class GarageProfileStep2VC: BaseVC {
     }
 
     @IBAction func helpBtnAction(_ sender: UIButton) {
-        self.pop()
+//        self.pop()
     }
 
     @IBAction func saveAndContinueAction(_ sender: UIButton) {
@@ -106,7 +106,7 @@ extension GarageProfileStep2VC {
     private func initialSetup() {
         setupTextAndFont()
         setupCustomView()
-        saveAndContinueBtn.isEnabled = true
+        saveAndContinueBtn.isEnabled = false
         self.collViewSetUp()
         handleRangeSlider()
         setPreFilledData()

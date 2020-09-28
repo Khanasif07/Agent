@@ -14,14 +14,13 @@ class GarageAddLocationVC: BaseVC {
     // MARK: - IBOutlets
     //===========================
     @IBOutlet weak var descLbl: UILabel!
-    
     @IBOutlet weak var serviceAddresslbl: UILabel!
     @IBOutlet weak var logoImgView: UIImageView!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var garageName: UILabel!
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var saveContinueBtn: AppButton!
-    
+
     // MARK: - Variables
     //===========================
     var locationValue = LocationController.sharedLocationManager.locationManager.location?.coordinate ?? CLLocationCoordinate2D(latitude: 34.052238, longitude: -118.24334)
@@ -59,7 +58,11 @@ class GarageAddLocationVC: BaseVC {
         acController.delegate = self
         present(acController, animated: true, completion: nil)
     }
-    
+   
+    @IBAction func currentLocationBtnAction(_ sender: UIButton) {
+      
+     }
+     
     
     @IBAction func saveAndContinueBtnAction(_ sender: UIButton) {
         GarageProfileModel.shared.latitude = locationValue.latitude

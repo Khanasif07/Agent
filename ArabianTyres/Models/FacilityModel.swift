@@ -9,6 +9,8 @@
 import Foundation
 import SwiftyJSON
 
+var categoryArr : [String] = ["MRF","Nokian Tyre","Apollo Tyres","CEAT Ltd","Goodyear","Peerless Tyre"]
+
 class FacilityModel{
 
     var status : String = ""
@@ -17,7 +19,7 @@ class FacilityModel{
     var name : String = ""
     var updatedAt : String = ""
     var id : String = ""
-    var category : [String] = ["MRF","Nokian Tyre","Apollo Tyres","CEAT Ltd","Goodyear","Peerless Tyre"]
+    var category : [SubCategoryModel] = []
     var isSelected: Bool = false
     var isSubCategorySelected : Bool = false
     
@@ -28,11 +30,24 @@ class FacilityModel{
         self.name = json[ApiKey.name].stringValue
         self.updatedAt = json[ApiKey.updatedAt].stringValue
         self.isDelete = json[ApiKey.isDelete].stringValue
+       
+        for cat in categoryArr {
+            self.category.append(SubCategoryModel(cat))
+        }
     }
     
     func updateModel() {
         self.isSelected = false
         self.isSubCategorySelected = false
+    }
+}
+
+class SubCategoryModel{
+    var name: String = ""
+    var isSelected: Bool = false
+    
+    init(_ name: String) {
+        self.name = name
     }
 }
 

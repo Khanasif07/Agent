@@ -16,11 +16,11 @@ class SuccessPopupVC: BaseVC {
     
     // MARK: - IBOutlets
     //===========================
-    
     @IBOutlet weak var okBtn: UIButton!
     @IBOutlet weak var successDescLbl: UILabel!
     @IBOutlet weak var successTitleLbl: UILabel!
     @IBOutlet weak var dataContainerView: UIView!
+    
     // MARK: - Variables
     //===========================
     public var desc = ""

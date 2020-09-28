@@ -11,7 +11,6 @@ import SkyFloatingLabelTextField
 
 class VehicleDetailForOilVC: BaseVC {
    
-
     // MARK: - IBOutlets
     //===========================
     @IBOutlet weak var vehicleMakeTextField: SkyFloatingLabelTextField!

@@ -59,12 +59,12 @@ class CommonFunctions {
     /// Show Activity Loader
     class func showActivityLoader() {
         DispatchQueue.mainQueueAsync {
-            if let nav = AppDelegate.shared.window?.rootViewController as? UINavigationController {
-                if let topVC = nav.viewControllers.last?.presentedViewController{
-                    topVC.startNYLoader()
-                    return
-                }
-            }
+//            if let nav = AppDelegate.shared.window?.rootViewController as? UINavigationController {
+//                if let topVC = nav.viewControllers.last?.presentedViewController{
+//                    topVC.startNYLoader()
+//                    return
+//                }
+//            }
             if let vc = AppDelegate.shared.window?.rootViewController {
                 if let presentedVC = vc.presentingViewController{
                     presentedVC.startNYLoader()

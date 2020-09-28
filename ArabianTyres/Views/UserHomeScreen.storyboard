@@ -346,7 +346,7 @@ brand or country origin</string>
                                                         </constraints>
                                                     </view>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="MZA-VQ-uBX">
-                                                        <rect key="frame" x="94" y="317" width="288" height="56"/>
+                                                        <rect key="frame" x="78" y="317" width="288" height="56"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uaa-Dy-N3d" customClass="AppButton" customModule="ArabianTyres" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="140" height="56"/>
@@ -400,6 +400,7 @@ brand or country origin</string>
                                                     <constraint firstItem="QNP-th-VCb" firstAttribute="top" secondItem="3qy-xx-0lY" secondAttribute="bottom" constant="26" id="Eci-gg-FH1"/>
                                                     <constraint firstItem="XiY-SO-HAj" firstAttribute="top" secondItem="QNP-th-VCb" secondAttribute="bottom" constant="20" id="KEE-EQ-Kee"/>
                                                     <constraint firstAttribute="bottom" secondItem="MZA-VQ-uBX" secondAttribute="bottom" constant="16" id="NAt-LC-vdu"/>
+                                                    <constraint firstAttribute="trailing" secondItem="MZA-VQ-uBX" secondAttribute="trailing" constant="16" id="PFf-p7-jFg"/>
                                                     <constraint firstAttribute="trailing" secondItem="vCx-ks-sWz" secondAttribute="trailing" constant="16" id="WFH-qJ-9Gg"/>
                                                     <constraint firstItem="VJ7-5D-Ehm" firstAttribute="trailing" secondItem="XiY-SO-HAj" secondAttribute="trailing" id="dwE-gI-Lqt"/>
                                                     <constraint firstItem="vCx-ks-sWz" firstAttribute="leading" secondItem="KiL-Zd-HpC" secondAttribute="leading" constant="8" id="lCm-mT-NSd"/>
@@ -426,7 +427,6 @@ brand or country origin</string>
                                             <constraint firstItem="ZDv-0L-9va" firstAttribute="top" secondItem="diB-ne-4fC" secondAttribute="top" id="Xos-Mn-T2v"/>
                                             <constraint firstAttribute="trailing" secondItem="sbI-me-tj6" secondAttribute="trailing" constant="16" id="Zy6-gI-KgR"/>
                                             <constraint firstItem="O7F-cR-ZbX" firstAttribute="top" secondItem="sbI-me-tj6" secondAttribute="bottom" constant="47" id="apD-Va-YTd"/>
-                                            <constraint firstAttribute="trailing" secondItem="MZA-VQ-uBX" secondAttribute="trailing" constant="16" id="ayZ-gY-Ssl"/>
                                             <constraint firstItem="sbI-me-tj6" firstAttribute="top" secondItem="ZDv-0L-9va" secondAttribute="bottom" id="dIi-ia-pJh"/>
                                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="KiL-Zd-HpC" secondAttribute="bottom" priority="998" constant="50" id="gMg-aB-PZ3"/>
                                             <constraint firstItem="KiL-Zd-HpC" firstAttribute="top" secondItem="O7F-cR-ZbX" secondAttribute="bottom" constant="25" id="hkq-bU-7lr"/>
@@ -503,7 +503,7 @@ brand or country origin</string>
                                         <rect key="frame" x="30" y="260" width="354" height="376"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="grp" translatesAutoresizingMaskIntoConstraints="NO" id="YrE-7V-h17">
-                                                <rect key="frame" x="126.99999999999999" y="35" width="100.00000000000004" height="100.00000000000003"/>
+                                                <rect key="frame" x="127" y="35" width="100" height="100"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="YrE-7V-h17" secondAttribute="height" id="SfM-qY-zhp"/>
                                                     <constraint firstAttribute="height" constant="100" id="vci-dc-coh"/>
