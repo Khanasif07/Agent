@@ -70,7 +70,7 @@ class AddAccountVC: BaseVC {
 
      @IBAction func checkBtnAction(_ sender: UIButton) {
         checkBtn.isSelected.toggle()
-        registerBtn.isEnabled = bankDetailAdded
+        registerBtn.isEnabled = checkBtn.isSelected && bankDetailAdded
     }
     
     private func addTabGesture() {
