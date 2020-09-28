@@ -86,8 +86,12 @@ class BatteryBrandVC: BaseVC {
 extension BatteryBrandVC {
     
     private func initialSetup() {
+        brandListingArr = TyreRequestModel.shared.selectedTyreBrandsListings
+        countryListingArr = TyreRequestModel.shared.selectedTyreCountryListings
         setupTextFont()
         setupCustomView()
+        setupTextFont()
+        listing(listingType: listingType, BrandsListings: brandListingArr, countryListings: countryListingArr)
     }
     
     private func setupTextFont() {
@@ -153,6 +157,13 @@ extension BatteryBrandVC: UICollectionViewDelegate,UICollectionViewDataSource,UI
         if let indexPath = self.batteryBrandCustomView.collView.indexPath(forItem: sender) {
             printDebug(indexPath)
             brandListingArr.remove(at: indexPath.item)
+            TyreRequestModel.shared.selectedTyreBrandsListings = brandListingArr
+            TyreRequestModel.shared.tyreBrands = brandListingArr.map({ (tyreModel) -> String in
+                return tyreModel.id
+            })
+            TyreRequestModel.shared.tyreBrandsListing = brandListingArr.map({ (tyreModel) -> String in
+                return tyreModel.name
+            })
             self.submitBtn.isEnabled = submitBtnStatus()
             if brandListingArr.isEmpty {
                 batteryBrandCustomView.collView.isHidden = true

@@ -868,29 +868,19 @@ Service With</string>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Kq-Ic-w4b">
                                                 <rect key="frame" x="16" y="581.5" width="382" height="55"/>
                                                 <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Okv-Fr-GbP" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                        <rect key="frame" x="16" y="2.5" width="346" height="50"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="50" id="RMe-M6-wg0"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="lineHeight">
-                                                                <real key="value" value="0.0"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="selectedLineHeight">
-                                                                <real key="value" value="0.0"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </textField>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="195" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="SRi-98-ZxB">
+                                                        <rect key="frame" x="16" y="18" width="350" height="19.5"/>
+                                                        <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="14"/>
+                                                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="Okv-Fr-GbP" secondAttribute="trailing" constant="20" id="CUD-XI-MVX"/>
-                                                    <constraint firstItem="Okv-Fr-GbP" firstAttribute="centerY" secondItem="8Kq-Ic-w4b" secondAttribute="centerY" id="JHP-ep-NJR"/>
-                                                    <constraint firstItem="Okv-Fr-GbP" firstAttribute="leading" secondItem="8Kq-Ic-w4b" secondAttribute="leading" constant="16" id="N7m-CH-Lxq"/>
+                                                    <constraint firstItem="SRi-98-ZxB" firstAttribute="leading" secondItem="8Kq-Ic-w4b" secondAttribute="leading" constant="16" id="eHs-VE-SiZ"/>
+                                                    <constraint firstAttribute="trailing" secondItem="SRi-98-ZxB" secondAttribute="trailing" constant="16" id="lA9-fx-EuE"/>
                                                     <constraint firstAttribute="height" constant="55" id="mLh-l8-lwo"/>
+                                                    <constraint firstItem="SRi-98-ZxB" firstAttribute="centerY" secondItem="8Kq-Ic-w4b" secondAttribute="centerY" id="p6y-Z9-nI3"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Origin of Tyre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wQX-gk-BSE">
@@ -1049,7 +1039,7 @@ Service With</string>
                         <outlet property="numberOfTyreBtn" destination="6Md-6e-9CN" id="74K-V3-K9T"/>
                         <outlet property="numberOfTyreContainerView" destination="8Kq-Ic-w4b" id="khe-U7-6bb"/>
                         <outlet property="numberOfTyreLbl" destination="7nl-P6-19A" id="OOE-16-6Ix"/>
-                        <outlet property="numberOfTyreTextField" destination="Okv-Fr-GbP" id="Agl-Sj-yHu"/>
+                        <outlet property="numberOfTyreTextField" destination="SRi-98-ZxB" id="nur-xM-2Oz"/>
                         <outlet property="originOfTyreLbl" destination="wQX-gk-BSE" id="i4e-C2-QHp"/>
                         <outlet property="requestBtn" destination="2uW-7o-gnV" id="wxh-A2-Tzv"/>
                         <outlet property="sizeContainerView" destination="tKJ-la-Ihs" id="Tes-w3-olm"/>

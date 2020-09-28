@@ -23,6 +23,10 @@ struct TyreRequestModel {
     var tyreBrands                  : [String] = []
     var countries                     : [String] = []
     var images   : [ImageModel] = []
+    var tyreBrandsListings: [TyreBrandModel] = []
+    var selectedTyreBrandsListings: [TyreBrandModel] = []
+    var tyreCountryListings: [TyreCountryModel] = []
+    var selectedTyreCountryListings: [TyreCountryModel] = []
     var latitude : String = ""
     var longitude: String = ""
     var makeId: String  = ""

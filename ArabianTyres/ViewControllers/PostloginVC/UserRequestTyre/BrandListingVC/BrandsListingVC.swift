@@ -55,8 +55,10 @@ class BrandsListingVC: BaseVC {
     @IBAction func doneBtnAction(_ sender: UIButton) {
         var list :[Any] = []
         if listingType == .brands {
+            TyreRequestModel.shared.selectedTyreBrandsListings = self.viewModel.selectedBrandsArr
             list = self.viewModel.selectedBrandsArr
         }else {
+            TyreRequestModel.shared.selectedTyreCountryListings = self.viewModel.selectedCountryArr
             list = self.viewModel.selectedCountryArr
         }
         dismiss(animated: true) {
