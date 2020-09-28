@@ -45,7 +45,20 @@ class RegistraionPendingVC: BaseVC {
     //===========================
     
     @IBAction func backBtnAction(_ sender: UIButton) {
-        self.pop()
+        switch screenType {
+        case .pending:
+            for controller in self.navigationController!.viewControllers as Array {
+                if controller.isKind(of: ProfileSettingVC.self) {
+                    _ =  self.navigationController!.popToViewController(controller, animated: true)
+                    break
+                }
+            }
+        case .rejected:
+            self.pop()
+        case .accept:
+            self.pop()
+        }
+        
     }
     
     @IBAction func completeProfileBtnAction(_ sender: UIButton) {

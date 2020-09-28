@@ -72,7 +72,7 @@ class GarageProfileStep2VC: BaseVC {
     }
 
     @IBAction func helpBtnAction(_ sender: UIButton) {
-        self.pop()
+//        self.pop()
     }
 
     @IBAction func saveAndContinueAction(_ sender: UIButton) {
@@ -106,7 +106,7 @@ extension GarageProfileStep2VC {
     private func initialSetup() {
         setupTextAndFont()
         setupCustomView()
-        saveAndContinueBtn.isEnabled = true
+        saveAndContinueBtn.isEnabled = false
         self.collViewSetUp()
         handleRangeSlider()
         setPreFilledData()
@@ -182,7 +182,6 @@ extension GarageProfileStep2VC: CustomTextViewDelegate{
         AppRouter.goToFacilityVC(vc: self)
     }
 }
-
 
 extension GarageProfileStep2VC: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -275,7 +274,7 @@ extension GarageProfileStep2VC: UICollectionViewDelegate,UICollectionViewDataSou
         
         let textSize = selectedFacilitiesArr[indexPath.item].name.sizeCount(withFont: AppFonts.NunitoSansSemiBold.withSize(16.0), boundingSize: CGSize(width: 10000.0, height: collectionView.frame.height))
         
-        return CGSize(width: textSize.width + 20, height: 24.0)
+        return CGSize(width: textSize.width + 24, height: 24.0)
     }
 
     @objc func cancelBtnTapped(_ sender : UIButton) {

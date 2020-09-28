@@ -56,7 +56,7 @@ class AddDetailVC: BaseVC {
     }
     
     @IBAction func helpBtnAction(_ sender: UIButton) {
-        self.pop()
+//        self.pop()
     }
     
     @IBAction func saveAndContinueAction(_ sender: UIButton) {

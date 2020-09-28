@@ -22,7 +22,7 @@ class FacilityTableViewCell: UITableViewCell {
     }
     
     @IBAction func checkBtnAction(_ sender: UIButton) {
-        checkBtn.isSelected.toggle()
+//        checkBtn.isSelected.toggle()
         cellBtnTapped?()
     }
 }

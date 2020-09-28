@@ -57,7 +57,7 @@ class AddAccountVC: BaseVC {
     }
     
     @IBAction func helpBtnAction(_ sender: UIButton) {
-        self.pop()
+//        self.pop()
     }
     
     @IBAction func registerBtnAction(_ sender: UIButton) {
@@ -70,7 +70,7 @@ class AddAccountVC: BaseVC {
 
      @IBAction func checkBtnAction(_ sender: UIButton) {
         checkBtn.isSelected.toggle()
-        registerBtn.isEnabled = checkBtn.isSelected
+        registerBtn.isEnabled = checkBtn.isSelected && bankDetailAdded
     }
     
     private func addTabGesture() {
@@ -95,6 +95,7 @@ class AddAccountVC: BaseVC {
     func setPreFillData() {
         if screenType == .garageProfile {
             bankDetailAdded = true
+            registerBtn.isEnabled = true
             mainTableView.reloadData()
         }
     }
