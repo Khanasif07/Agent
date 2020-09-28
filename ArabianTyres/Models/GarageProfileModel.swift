@@ -30,8 +30,8 @@ struct GarageProfileModel {
     var accountNumber               : String = ""
     var confirmAccountNumber        : String = ""
     var serviceCenterDist           : String = ""
-    var minInstallationPrice        : Int = 0
-    var maxInstallationPrice        : Int = 0
+    var minInstallationPrice        : Int = 500
+    var maxInstallationPrice        : Int = 800
     var services                    : [JSONDictionary] = []
     
     

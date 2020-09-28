@@ -127,6 +127,7 @@ extension FacilityVC : UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(with: FacilityTableViewCell.self, indexPath: indexPath)
+        cell.subCategoryName.text = viewModel.facilityDataArr[indexPath.section].category[indexPath.count]
         cell.cellBtnTapped = {[weak self] in
             guard let `self` = self else {return}
 
