@@ -63,6 +63,10 @@ class GarageAddImageVC: BaseVC {
     }
     
     @IBAction func saveBtnAction(_ sender: UIButton) {
+        if !self.hasImageUploaded{
+            self.showAlert(msg: LocalizedString.wait_Img_Upload.localized)
+            return
+        }
         AppRouter.goToUploadDocumentVC(vc: self)
     }
 }
