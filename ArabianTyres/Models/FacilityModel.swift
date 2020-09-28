@@ -9,7 +9,7 @@
 import Foundation
 import SwiftyJSON
 
-var categoryArr : [String] = ["MRF","Nokian Tyre","Apollo Tyres","CEAT Ltd","Goodyear","Peerless Tyre"]
+var categoryArr : [String] = []//["MRF","Nokian Tyre","Apollo Tyres","CEAT Ltd","Goodyear","Peerless Tyre"]
 
 class FacilityModel{
 
@@ -39,6 +39,9 @@ class FacilityModel{
     func updateModel() {
         self.isSelected = false
         self.isSubCategorySelected = false
+        self.category.forEach { (model) in
+            model.isSelected = false
+        }
     }
 }
 

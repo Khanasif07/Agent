@@ -62,7 +62,7 @@ class AddAccountDetailVC: BaseVC {
     }
     
     @IBAction func helpBtnAction(_ sender: UIButton) {
-        self.pop()
+//        self.pop()
     }
     
     @IBAction func addBtnAction(_ sender: UIButton) {

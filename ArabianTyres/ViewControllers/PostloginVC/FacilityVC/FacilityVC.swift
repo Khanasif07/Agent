@@ -56,6 +56,7 @@ class FacilityVC: BaseVC {
 
     @IBAction func clearAllAction(_ sender: UIButton) {
         viewModel.facilityDataArr.map{($0.updateModel())}
+        selectedItemArr.removeAll()
         mainTableView.reloadData()
     }
 }
@@ -111,6 +112,7 @@ extension FacilityVC : UITableViewDelegate, UITableViewDataSource {
         let view = tableView.dequeueHeaderFooter(with: FacilityTableHeaderView.self)
         view.categoryName.text = viewModel.facilityDataArr[section].name
         view.checkBtn.isSelected = viewModel.facilityDataArr[section].isSubCategorySelected
+        view.arrowImg.isHighlighted = viewModel.facilityDataArr[section].isSelected
         view.cellBtnTapped = { [weak self] in
         guard let `self` = self else {return}
             self.viewModel.facilityDataArr[section].isSelected.toggle()
@@ -134,25 +136,20 @@ extension FacilityVC : UITableViewDelegate, UITableViewDataSource {
         cell.cellBtnTapped = {[weak self] in
             guard let `self` = self else {return}
 
-//            if self.viewModel.facilityDataArr[indexPath.section].isSubCategorySelected {
-//                self.selectedItemArr.append(self.viewModel.facilityDataArr[indexPath.section])
-//                self.viewModel.facilityDataArr[indexPath.section].category[indexPath.row].isSelected = false
-                
-
-            //}else {
-//                self.selectedItemArr.removeAll{($0.id == self.viewModel.facilityDataArr[indexPath.section].id)}
-//                self.viewModel.facilityDataArr[indexPath.section].isSubCategorySelected = true
-//                self.viewModel.facilityDataArr[indexPath.section].category[indexPath.row].isSelected = true
-//            }
-                
+         
             self.viewModel.facilityDataArr[indexPath.section].category[indexPath.row].isSelected.toggle()
             if let _ = self.viewModel.facilityDataArr[indexPath.section].category.firstIndex(where: { (model) -> Bool in
                 return model.isSelected
+                
             }) {
+                if !self.viewModel.facilityDataArr[indexPath.section].isSubCategorySelected {
+                    self.selectedItemArr.append(self.viewModel.facilityDataArr[indexPath.section])
+                }
                 self.viewModel.facilityDataArr[indexPath.section].isSubCategorySelected = true
-
+            
             }else {
                 self.viewModel.facilityDataArr[indexPath.section].isSubCategorySelected = false
+                self.selectedItemArr.removeAll{($0.id == self.viewModel.facilityDataArr[indexPath.section].id)}
             }
             self.mainTableView.reloadData()
         }
@@ -168,6 +165,17 @@ extension FacilityVC : UITableViewDelegate, UITableViewDataSource {
 extension FacilityVC :GarageRegistrationVMDelegate{
   
     func getfacilitySuccess(){
+        if !selectedItemArr.isEmpty {
+            for (index,item) in viewModel.facilityDataArr.enumerated() {
+                if let firstIndex = self.selectedItemArr.firstIndex(where: { (model) -> Bool in
+                    return model.id == item.id
+                }){
+                    viewModel.facilityDataArr[index].isSubCategorySelected = true
+                    viewModel.facilityDataArr[index].category = self.selectedItemArr[firstIndex].category
+                    }
+                }
+            }
+        
         mainTableView.reloadData()
     }
     

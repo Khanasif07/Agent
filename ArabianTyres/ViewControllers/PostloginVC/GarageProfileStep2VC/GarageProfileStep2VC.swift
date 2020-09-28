@@ -174,11 +174,11 @@ extension GarageProfileStep2VC {
 
 extension GarageProfileStep2VC: CustomTextViewDelegate{
     func shouldBegin(_ tView: UITextView) {
-        AppRouter.goToFacilityVC(vc: self)
+        AppRouter.goToFacilityVC(vc: self,data : [])
     }
     
     func collViewTapped(listingType: ListingType) {
-        AppRouter.goToFacilityVC(vc: self)
+        AppRouter.goToFacilityVC(vc: self,data : selectedFacilitiesArr)
     }
 }
 
