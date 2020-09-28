@@ -55,9 +55,21 @@ class BrandsListingVC: BaseVC {
     @IBAction func doneBtnAction(_ sender: UIButton) {
         var list :[Any] = []
         if listingType == .brands {
+            let emptyModelIndex = self.viewModel.selectedBrandsArr.firstIndex { (model) -> Bool in
+                return model.id.isEmpty
+            }
+            if let selectedIndex = emptyModelIndex {
+                self.viewModel.selectedBrandsArr.remove(at: selectedIndex)
+            }
             TyreRequestModel.shared.selectedTyreBrandsListings = self.viewModel.selectedBrandsArr
             list = self.viewModel.selectedBrandsArr
         }else {
+            let emptyModelIndex = self.viewModel.selectedCountryArr.firstIndex { (model) -> Bool in
+                return model.id.isEmpty
+            }
+            if let selectedIndex = emptyModelIndex {
+                self.viewModel.selectedCountryArr.remove(at: selectedIndex)
+            }
             TyreRequestModel.shared.selectedTyreCountryListings = self.viewModel.selectedCountryArr
             list = self.viewModel.selectedCountryArr
         }
@@ -76,6 +88,8 @@ class BrandsListingVC: BaseVC {
     @IBAction func clearAllAction(_ sender: UIButton) {
         self.viewModel.selectedCountryArr = []
         self.viewModel.selectedBrandsArr = []
+        TyreRequestModel.shared.selectedTyreCountryListings = []
+        TyreRequestModel.shared.selectedTyreBrandsListings = []
         mainTableView.reloadData()
     }
 }
@@ -122,56 +136,6 @@ extension BrandsListingVC {
     
     private func hitCountryListingApi(){
         self.viewModel.getCountryListingData(params: [ApiKey.page: "1",ApiKey.limit : "100",ApiKey.type: "Tyres"],loader: false)
-    }
-    
-    private func selectedDataSource(){
-        if (listingType == .brands) {
-            if !self.viewModel.selectedBrandsArr.isEmpty {
-                self.viewModel.selectedBrandsArr = self.viewModel.selectedBrandsArr.count == self.viewModel.searchBrandListing.count - 1 ? [self.viewModel.searchBrandListing[0]] : self.viewModel.selectedBrandsArr
-            }
-            
-            for (index, item) in self.viewModel.searchBrandListing.enumerated() {
-                if self.viewModel.selectedBrandsArr.contains(item) {
-                    self.selectedIndexPath.append(index)
-                }
-            }
-        }
-            
-        else {
-            if !self.viewModel.selectedCountryArr.isEmpty {
-                self.viewModel.selectedCountryArr = self.viewModel.selectedCountryArr.count == self.viewModel.searchCountryListing.endIndex - 1 ? [self.viewModel.searchCountryListing[0]] : self.viewModel.selectedCountryArr
-            }
-            
-            for (index, item) in self.viewModel.searchCountryListing.enumerated() {
-                if self.viewModel.selectedCountryArr.contains(item) {
-                    self.selectedIndexPath.append(index)
-                }
-            }
-        }
-    }
-    
-    private func getSelectedBrandList() -> [TyreBrandModel] {
-        
-        var arr : [TyreBrandModel] = []
-        if selectedIndexPath.contains(0){
-            selectedIndexPath = Array(1...self.viewModel.searchBrandListing.count - 1)
-        }
-        selectedIndexPath.forEach { (index) in
-            arr.append(self.viewModel.searchBrandListing[index]) //: //self.viewModel.countryListings[index])
-        }
-        return arr
-    }
-    
-    private func getSelectedCountryList() -> [TyreCountryModel] {
-        
-        var arr : [TyreCountryModel] = []
-        if selectedIndexPath.contains(0){
-            selectedIndexPath = Array(1...self.viewModel.searchCountryListing.count - 1)
-        }
-        selectedIndexPath.forEach { (index) in
-            arr.append(self.viewModel.searchCountryListing[index])
-        }
-        return arr
     }
     
     private func setupTextAndFont(){
@@ -226,12 +190,28 @@ extension BrandsListingVC : UITableViewDelegate, UITableViewDataSource {
         if   self.listingType == .brands {
             let isPowerSelected = self.viewModel.selectedBrandsArr.contains(where: {$0.id == (self.isSearchOn ? self.viewModel.searchBrandListing[section].id : self.viewModel.brandsListings[section].id)})
             if self.viewModel.brandsListings.endIndex  > 0  {
-                view.configureCell(isPowerSelected: isPowerSelected, model: (self.isSearchOn ? self.viewModel.searchBrandListing[section] : self.viewModel.brandsListings[section]))
+                if section == 0{
+                    if self.viewModel.selectedBrandsArr.endIndex ==  self.viewModel.brandsListings.endIndex - 1 {
+                        view.configureCell(isPowerSelected: true, model: (self.isSearchOn ? self.viewModel.searchBrandListing[section] : self.viewModel.brandsListings[section]))
+                    }else {
+                        view.configureCell(isPowerSelected: isPowerSelected, model: (self.isSearchOn ? self.viewModel.searchBrandListing[section] : self.viewModel.brandsListings[section]))
+                    }
+                } else {
+                    view.configureCell(isPowerSelected: isPowerSelected, model: (self.isSearchOn ? self.viewModel.searchBrandListing[section] : self.viewModel.brandsListings[section]))
+                }
             }
         }else{
             let isPowerSelected = self.viewModel.selectedCountryArr.contains(where: {$0.id == (self.isSearchOn ? self.viewModel.searchCountryListing[section].id : self.viewModel.countryListings[section].id)})
             if self.viewModel.countryListings.endIndex  > 0 {
-                view.configureCell(isPowerSelected: isPowerSelected, model: (self.isSearchOn ? self.viewModel.searchCountryListing[section] : self.viewModel.countryListings[section]))
+                if section == 0{
+                    if self.viewModel.selectedCountryArr.endIndex ==  self.viewModel.countryListings.endIndex - 1 {
+                        view.configureCell(isPowerSelected: true, model: (self.isSearchOn ? self.viewModel.searchCountryListing[section] : self.viewModel.countryListings[section]))
+                    }else {
+                        view.configureCell(isPowerSelected: isPowerSelected, model: (self.isSearchOn ? self.viewModel.searchCountryListing[section] : self.viewModel.countryListings[section]))
+                    }
+                } else {
+                    view.configureCell(isPowerSelected: isPowerSelected, model: (self.isSearchOn ? self.viewModel.searchCountryListing[section] : self.viewModel.countryListings[section]))
+                }
             }
         }
         view.cellBtnTapped = { [weak self] in
@@ -240,14 +220,20 @@ extension BrandsListingVC : UITableViewDelegate, UITableViewDataSource {
                 let searchId = self.viewModel.searchBrandListing[section].id
                 let brandId = self.viewModel.brandsListings[section].id
                 if (self.isSearchOn ? searchId.isEmpty : brandId.isEmpty) {
-                    if self.viewModel.selectedBrandsArr.endIndex == self.viewModel.brandsListings.endIndex {
+                    if self.viewModel.selectedBrandsArr.endIndex == self.viewModel.brandsListings.endIndex - 1{
                         self.viewModel.selectedBrandsArr = []
                         self.mainTableView.reloadData()
                     }  else {
                         self.viewModel.selectedBrandsArr = self.viewModel.brandsListings
+                        let emptyModelIndex = self.viewModel.selectedBrandsArr.firstIndex { (model) -> Bool in
+                            return model.id.isEmpty
+                        }
+                        if let selectedIndex = emptyModelIndex {
+                            self.viewModel.selectedBrandsArr.remove(at: selectedIndex)
+                        }
                         self.mainTableView.reloadData()
                     }
-                      return
+                    return
                 }
                 if self.viewModel.selectedBrandsArr.contains(where: {$0.id  == (self.isSearchOn ? searchId : brandId)}){
                     self.viewModel.removeSelectedBrands(model: self.isSearchOn ? self.viewModel.searchBrandListing[section] : self.viewModel.brandsListings[section])
@@ -258,14 +244,20 @@ extension BrandsListingVC : UITableViewDelegate, UITableViewDataSource {
                 let searchId = self.viewModel.searchCountryListing[section].id
                 let countryId = self.viewModel.countryListings[section].id
                 if (self.isSearchOn ? searchId.isEmpty : countryId.isEmpty) {
-                    if self.viewModel.selectedCountryArr.endIndex == self.viewModel.countryListings.endIndex {
+                    if self.viewModel.selectedCountryArr.endIndex == self.viewModel.countryListings.endIndex - 1 {
                         self.viewModel.selectedCountryArr = []
                         self.mainTableView.reloadData()
                     }  else {
                         self.viewModel.selectedCountryArr = self.viewModel.countryListings
+                        let emptyModelIndex = self.viewModel.selectedCountryArr.firstIndex { (model) -> Bool in
+                            return model.id.isEmpty
+                        }
+                        if let selectedIndex = emptyModelIndex {
+                            self.viewModel.selectedCountryArr.remove(at: selectedIndex)
+                        }
                         self.mainTableView.reloadData()
                     }
-                      return
+                    return
                 }
                 if self.viewModel.selectedCountryArr.contains(where: {$0.id  == (self.isSearchOn ? searchId : countryId)}) {
                     self.viewModel.removeSelectedCountry(model: self.isSearchOn ? self.viewModel.searchCountryListing[section] : self.viewModel.countryListings[section])
@@ -300,7 +292,6 @@ extension BrandsListingVC : UITableViewDelegate, UITableViewDataSource {
 //===========================
 extension BrandsListingVC: BrandsListingVMDelegate{
     func countryListingSuccess(message: String) {
-        selectedDataSource()
         self.mainTableView.reloadData()
     }
     
@@ -309,7 +300,6 @@ extension BrandsListingVC: BrandsListingVMDelegate{
     }
     
     func brandListingSuccess(message: String) {
-        selectedDataSource()
         self.mainTableView.reloadData()
     }
     
@@ -329,7 +319,7 @@ extension BrandsListingVC : DZNEmptyDataSetSource,DZNEmptyDataSetDelegate {
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         return NSAttributedString(string: "", attributes: [NSAttributedString.Key.foregroundColor: AppColors.fontTertiaryColor,NSAttributedString.Key.font: AppFonts.NunitoSansBold.withSize(18)])
     }
-   
+    
     func emptyDataSetShouldDisplay(_ scrollView: UIScrollView!) -> Bool {
         return true
     }
