@@ -428,12 +428,25 @@ extension WebServices{
             failure(error)
         }
     }
+    
     // MARK:- Post Tyre Request
     //=========================
     static func postTyreRequest(parameters: JSONDictionary,
                                 success: @escaping ResponseMessage,
                                 failure: @escaping FailureResponse) {
         self.commonPostAPI(parameters: parameters, endPoint: .userTyreRequest,loader: true, success: { (json) in
+            success(json[ApiKey.message].stringValue)
+        }) { (error) -> (Void) in
+            failure(error)
+        }
+    }
+    
+    // MARK:- Post Battery Request
+    //=========================
+    static func postBatteryRequest(parameters: JSONDictionary,
+                                success: @escaping ResponseMessage,
+                                failure: @escaping FailureResponse) {
+        self.commonPostAPI(parameters: parameters, endPoint: .userBatteryRequest,loader: true, success: { (json) in
             success(json[ApiKey.message].stringValue)
         }) { (error) -> (Void) in
             failure(error)

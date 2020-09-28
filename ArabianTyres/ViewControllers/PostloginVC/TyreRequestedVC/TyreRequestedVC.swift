@@ -73,7 +73,7 @@ class TyreRequestedVC: BaseVC {
     //===========================
     
     @IBAction func cancelBtnAction(_ sender: UIButton) {
-        
+        self.pop()
     }
     
     
@@ -153,6 +153,7 @@ extension TyreRequestedVC {
         tyreWidthValueLbl.text = TyreRequestModel.shared.width
         tyreProfileValueLbl.text = TyreRequestModel.shared.profile
         tyreRimSizeValueLbl.text = TyreRequestModel.shared.rimSize
+        numberOfTyreTextField.text = TyreRequestModel.shared.quantity
     }
     
 }

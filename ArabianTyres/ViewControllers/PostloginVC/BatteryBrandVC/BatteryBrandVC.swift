@@ -72,7 +72,7 @@ class BatteryBrandVC: BaseVC {
     }
     
     @IBAction func submitBtnAction(_ sender: UIButton) {
-        AppRouter.goToURTyreSizeVC(vc: self)
+       AppRouter.presentLocationPopUpVC(vc: self)
     }
     
     @IBAction func skipBtnAction(_ sender: UIButton) {
@@ -104,7 +104,7 @@ extension BatteryBrandVC {
     }
     
     private func submitBtnStatus()-> Bool{
-        return !TyreRequestModel.shared.countries.isEmpty
+        return !brandListingArr.isEmpty
     }
     
     private func setupCustomView() {
@@ -126,7 +126,7 @@ extension BatteryBrandVC {
 extension BatteryBrandVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return countryListingArr.count
+            return brandListingArr.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -153,6 +153,7 @@ extension BatteryBrandVC: UICollectionViewDelegate,UICollectionViewDataSource,UI
         if let indexPath = self.batteryBrandCustomView.collView.indexPath(forItem: sender) {
             printDebug(indexPath)
             brandListingArr.remove(at: indexPath.item)
+            self.submitBtn.isEnabled = submitBtnStatus()
             if brandListingArr.isEmpty {
                 batteryBrandCustomView.collView.isHidden = true
                 batteryBrandCustomView.floatLbl.isHidden = true
@@ -177,7 +178,7 @@ extension BatteryBrandVC : CustomTextViewDelegate{
         switch tView {
        
         case batteryBrandCustomView.tView:
-            AppRouter.goToBrandsListingVC(vc: self, listingType: .brands, brandsData : brandListingArr, countryData: [], category: .oil)
+            AppRouter.goToBrandsListingVC(vc: self, listingType: .brands, brandsData : brandListingArr, countryData: [], category: .battery)
         default:
             break
         }

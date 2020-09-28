@@ -114,7 +114,8 @@ extension BrandsListingVC {
     }
     
     private func hitBrandListingApi(){
-        self.viewModel.getBrandListingData(params: [ApiKey.page: "1",ApiKey.limit : "100",ApiKey.type: "Tyres"],loader: false)
+        let type = categoryType == .tyres ? "Tyres" : (categoryType == .battery ? "Battery" : "Oil")
+        self.viewModel.getBrandListingData(params: [ApiKey.page: "1",ApiKey.limit : "100",ApiKey.type: type],loader: false)
     }
     
     private func hitCountryListingApi(){

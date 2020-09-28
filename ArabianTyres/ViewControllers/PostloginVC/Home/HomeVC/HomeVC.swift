@@ -126,21 +126,17 @@ extension HomeVC : UICollectionViewDelegate, UICollectionViewDataSource,UICollec
             showAlert(msg: "Under Development")
             return
         }
+        TyreRequestModel.shared = TyreRequestModel()
         switch dataArray[indexPath.row].name {
         case LocalizedString.tyre.localized:
             categoryType = .tyres
-            TyreRequestModel.shared = TyreRequestModel()
             AppRouter.goToURTyreStep1VC(vc: self)
-//            AppRouter.goToVehicleDetailForOilVC(vc: self)
-
         case LocalizedString.oil.localized:
             categoryType = .oil
             AppRouter.goToVehicleDetailForOilVC(vc: self)
-           
         case LocalizedString.battery.localized:
             categoryType = .battery
             AppRouter.goToVehicleDetailForBatteryVC(vc: self)
-
         default:
             showAlert(msg: "Under Development")
         }

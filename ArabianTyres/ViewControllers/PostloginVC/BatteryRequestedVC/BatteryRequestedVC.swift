@@ -27,28 +27,26 @@ class BatteryRequestedVC: BaseVC {
     @IBOutlet weak var productYearValueLbl: UILabel!
     @IBOutlet weak var tyreBrandCollView: UICollectionView!
     @IBOutlet weak var tyreBrandCollViewHeightConstraint: NSLayoutConstraint!
-    
     @IBOutlet weak var vechileDetailContainerView: UIView!
     @IBOutlet weak var numberOfBatteryContainerView: UIView!
     @IBOutlet weak var batteryBrandContainerView: UIView!
-    @IBOutlet weak var numberOfBatteyTextField: SkyFloatingLabelTextField!
-    
+    @IBOutlet weak var numberOfBatteyTextField: UILabel!
     @IBOutlet weak var requestBtn: AppButton!
     @IBOutlet weak var vechileDetailEditBtn: UIButton!
     @IBOutlet weak var numberOfBatteryEditBtn: UIButton!
     @IBOutlet weak var batteryBrandEditBtn: UIButton!
-
-
+    
+    
     // MARK: - Variables
     //===========================
-    var viewModel = GarageRegistrationVM()
+    var viewModel = LocationPopUpVM()
     
     // MARK: - Lifecycle
     //===========================
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
-    
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -78,21 +76,19 @@ class BatteryRequestedVC: BaseVC {
     
     
     @IBAction func requestBtnAction(_ sender: UIButton) {
-          printDebug("request btn tap")
+        self.viewModel.postBatteryRequest(dict: TyreRequestModel.shared.getBatteryRequestDict())
     }
-      
+    
     @IBAction func sizeEditBtnAction(_ sender: UIButton) {
-        printDebug("size btn tap")
+        self.navigationController?.popToViewControllerOfType(classForCoder: VehicleDetailForBatteryVC.self)
     }
     
     @IBAction func numberOfTyreAction(_ sender: UIButton) {
-        printDebug("number of Tyre btn tap")
-
+        self.navigationController?.popToViewControllerOfType(classForCoder: VehicleDetailForBatteryVC.self)
     }
     
     @IBAction func tyreBrandAction(_ sender: UIButton) {
-        printDebug("tyre btn tap")
-
+        self.navigationController?.popToViewControllerOfType(classForCoder: BatteryBrandVC.self)
     }
 }
 
@@ -101,6 +97,7 @@ class BatteryRequestedVC: BaseVC {
 extension BatteryRequestedVC {
     
     private func initialSetup() {
+        self.viewModel.delegate = self
         setupTextAndFont()
         setupCollectionView()
         self.populateDataThroughModel()
@@ -112,33 +109,32 @@ extension BatteryRequestedVC {
             btn?.setTitle(LocalizedString.edit.localized, for: .normal)
             btn?.getUnderline()
         }
-    
+        
         vechileDetailLbl.text = LocalizedString.vehicleDetails.localized
         batteryBrandLbl.text = LocalizedString.batteryBrand.localized
         numberOfBatteryLbl.text = LocalizedString.numberOfBattery.localized
         titleLbl.text = LocalizedString.batteyRequest.localized
-
-        numberOfBatteyTextField.delegate = self
+        
         numberOfBatteyTextField.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
         numberOfBatteyTextField.isUserInteractionEnabled = false
         requestBtn.titleLabel?.font =  AppFonts.NunitoSansSemiBold.withSize(16.0)
         requestBtn.setTitle(LocalizedString.submitRequest.localized, for: .normal)
-      
+        
         vehicleMakeLbl.text = LocalizedString.vehicleMake.localized
         vehicleModelLbl.text = LocalizedString.vehicleModel.localized
         productYearLbl.text = LocalizedString.productYear.localized
-       
+        
         vehicleMakeLbl.font = AppFonts.NunitoSansSemiBold.withSize(12.0)
         vehicleModelLbl.font = AppFonts.NunitoSansSemiBold.withSize(12.0)
         productYearLbl.font = AppFonts.NunitoSansSemiBold.withSize(12.0)
-
-        vehicleMakeValueLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
-        vehicleModelValueLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
-        productYearValueLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
-
+        
+        vehicleMakeValueLbl.font = AppFonts.NunitoSansBold.withSize(17.0)
+        vehicleModelValueLbl.font = AppFonts.NunitoSansBold.withSize(17.0)
+        productYearValueLbl.font = AppFonts.NunitoSansBold.withSize(17.0)
+        
         titleLbl.font = AppFonts.NunitoSansBold.withSize(21.0)
-       
-
+        
+        
     }
     
     private func setupCollectionView(){
@@ -150,12 +146,17 @@ extension BatteryRequestedVC {
     }
     
     private func populateDataThroughModel(){
-//        tyreWidthValueLbl.text = TyreRequestModel.shared.width
-//        tyreProfileValueLbl.text = TyreRequestModel.shared.profile
-//        tyreRimSizeValueLbl.text = TyreRequestModel.shared.rimSize
+        vehicleMakeValueLbl.text = TyreRequestModel.shared.make
+        vehicleModelValueLbl.text = TyreRequestModel.shared.model
+        productYearValueLbl.text = TyreRequestModel.shared.year
+        numberOfBatteyTextField.text = TyreRequestModel.shared.quantity
     }
     
+    
 }
+
+// MARK: - Extension For UICollectionView
+//===========================
 
 extension BatteryRequestedVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -189,11 +190,36 @@ extension BatteryRequestedVC: UICollectionViewDelegate,UICollectionViewDataSourc
     private func cardSizeForItemAt(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, indexPath: IndexPath) -> CGSize {
         let dataArr = collectionView == tyreBrandCollView ? TyreRequestModel.shared.tyreBrandsListing : TyreRequestModel.shared.countriesListing
         let textSize = dataArr[indexPath.row].sizeCount(withFont: AppFonts.NunitoSansSemiBold.withSize(13.0), boundingSize: CGSize(width: 10000.0, height: collectionView.frame.height))
-        return CGSize(width: textSize.width + 16, height: 34.0)
+        return CGSize(width: textSize.width + 25.0, height: 34.0)
     }
     
 }
 
+// MARK: - Extension For UITextFieldDelegate
+//===========================
 extension BatteryRequestedVC :UITextFieldDelegate{
     
+}
+
+// MARK: - Extension For LocationPopUpVMDelegate
+//===========================
+extension BatteryRequestedVC : LocationPopUpVMDelegate {
+    func postBatteryRequestSuccess(message: String){
+         AppRouter.showSuccessPopUp(vc: self, title: "Successfully Requested", desc: "Your request for battery service has been submited successfully.")
+    }
+    
+    func postBatteryRequestFailed(error:String){
+        ToastView.shared.showLongToast(self.view, msg: error)
+    }
+}
+
+// MARK: - SuccessPopupVCDelegate
+//===============================
+extension BatteryRequestedVC: SuccessPopupVCDelegate {
+    func okBtnAction() {
+        self.dismiss(animated: true) {
+            TyreRequestModel.shared = TyreRequestModel()
+            self.navigationController?.popToViewControllerOfType(classForCoder: HomeVC.self)
+        }
+    }
 }

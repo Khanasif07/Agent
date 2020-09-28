@@ -149,6 +149,8 @@ enum ApiKey {
     static var year : String { return "year" }
     static var modelName : String { return "modelName" }
     static var makeId: String { return "makeId" }
+    static var model : String { return "model" }
+    static var make: String { return "make" }
 
 
 }
