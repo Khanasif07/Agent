@@ -39,6 +39,7 @@ extension WebServices {
         case switchProfile = "user/switchProfile"
         case userTyreRequest = "user/services/tyre-request"
         case userBatteryRequest = "user/services/battery-request"
+        case userOilRequest = "user/services/oil-request"
         case userServiceBrands = "user/services/brands"
         case completeGarageProfile = "user/completeGarrageProfile"
         case servicesList = "user/services/list"

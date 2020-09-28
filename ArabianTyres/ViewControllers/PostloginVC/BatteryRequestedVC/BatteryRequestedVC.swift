@@ -134,7 +134,6 @@ extension BatteryRequestedVC {
         
         titleLbl.font = AppFonts.NunitoSansBold.withSize(21.0)
         
-        
     }
     
     private func setupCollectionView(){
