@@ -233,8 +233,8 @@ enum AppRouter {
     }
     
     static func goToVehicleDetailForOilVC(vc: UIViewController){
-           let scene = VehicleDetailForOilVC.instantiate(fromAppStoryboard: .UserHomeScreen)
-           vc.navigationController?.pushViewController(scene, animated: true)
+        let scene = VehicleDetailForOilVC.instantiate(fromAppStoryboard: .UserHomeScreen)
+        vc.navigationController?.pushViewController(scene, animated: true)
     }
     
     static func goToURTyreSizeVC(vc: UIViewController){
@@ -245,7 +245,14 @@ enum AppRouter {
     static func presentLocationPopUpVC(vc: UIViewController){
         let scene = LocationPopUpVC.instantiate(fromAppStoryboard: .UserHomeScreen)
         scene.onAllowTap = {
+            switch categoryType {
+            case .tyres:
             AppRouter.goToTyreRequestedVC(vc: vc)
+            case .battery:
+               AppRouter.goToBatteryRequestedVC(vc: vc)
+            default:
+                  AppRouter.goToOilRequestedVC(vc: vc)
+            }
         }
         vc.modalPresentationStyle = .fullScreen
         vc.present(scene, animated: true, completion: nil)
@@ -275,7 +282,7 @@ enum AppRouter {
         let scene = OilTypeVC.instantiate(fromAppStoryboard: .UserHomeScreen)
         vc.navigationController?.pushViewController(scene, animated: true)
     }
-
+    
     static func goToFacilityVC(vc: UIViewController){
         let scene = FacilityVC.instantiate(fromAppStoryboard: .Garage)
         scene.delegate = vc as? FacilitiesDelegate
@@ -290,7 +297,6 @@ enum AppRouter {
         }else {
             scene.viewModel.selectedCountryArr = countryData
         }
-//        scene.category = category
         scene.delegate = vc as? BrandsListnig
         scene.listingType = listingType
         vc.modalPresentationStyle = .fullScreen

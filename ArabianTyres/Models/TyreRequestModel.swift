@@ -22,10 +22,13 @@ struct TyreRequestModel {
     var countriesListing                   : [String] = []
     var tyreBrands                  : [String] = []
     var countries                     : [String] = []
+    var images   : [ImageModel] = []
     var latitude : String = ""
     var longitude: String = ""
     var makeId: String  = ""
     var makeName: String  = ""
+    var model : String  = ""
+    var make  : String  = ""
     var modelName: String  = ""
     var year: String  = ""
     
@@ -40,4 +43,18 @@ struct TyreRequestModel {
 
         return dict
     }
+    
+    func getBatteryRequestDict()-> JSONDictionary {
+           let dict: JSONDictionary = [
+               ApiKey.make : make,
+               ApiKey.model: model,
+               ApiKey.year : year,
+               ApiKey.quantity: quantity,
+               ApiKey.brands : tyreBrands,
+               ApiKey.images : images.map({ (model) -> String in
+                return model.url
+               }) ,ApiKey.latitude:latitude,ApiKey.longitude: longitude]
+
+           return dict
+       }
 }
