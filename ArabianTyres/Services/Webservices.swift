@@ -453,6 +453,16 @@ extension WebServices{
         }
     }
     
+    static func postOilRequest(parameters: JSONDictionary,
+                                success: @escaping ResponseMessage,
+                                failure: @escaping FailureResponse) {
+        self.commonPostAPI(parameters: parameters, endPoint: .userOilRequest,loader: true, success: { (json) in
+            success(json[ApiKey.message].stringValue)
+        }) { (error) -> (Void) in
+            failure(error)
+        }
+    }
+    
     // MARK:- Brand Listing Data
     //=================
     static func getBrandListingData(parameters: JSONDictionary,

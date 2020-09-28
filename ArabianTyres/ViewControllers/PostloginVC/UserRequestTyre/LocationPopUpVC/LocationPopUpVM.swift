@@ -13,6 +13,9 @@ protocol LocationPopUpVMDelegate: class {
     func postTyreRequestFailed(error:String)
     func postBatteryRequestSuccess(message: String)
     func postBatteryRequestFailed(error:String)
+    func postOilRequestSuccess(message: String)
+    func postOilRequestFailed(error:String)
+    
 }
 
 extension LocationPopUpVMDelegate {
@@ -20,6 +23,8 @@ extension LocationPopUpVMDelegate {
     func postTyreRequestFailed(error:String){}
     func postBatteryRequestSuccess(message: String){}
     func postBatteryRequestFailed(error:String){}
+    func postOilRequestSuccess(message: String){}
+    func postOilRequestFailed(error:String){}
 }
 
 
@@ -39,8 +44,6 @@ class LocationPopUpVM{
         }
     }
     
-    //MARK:- Functions
-    //Function for verify OTP
     func postBatteryRequest(dict: JSONDictionary){
         WebServices.postBatteryRequest(parameters: dict, success: { (json) in
             self.delegate?.postBatteryRequestSuccess(message: "")
@@ -48,4 +51,13 @@ class LocationPopUpVM{
             self.delegate?.postBatteryRequestFailed(error: error.localizedDescription)
         }
     }
+    
+    func postOilRequest(dict: JSONDictionary){
+        WebServices.postOilRequest(parameters: dict, success: { (json) in
+            self.delegate?.postOilRequestSuccess(message: "")
+        }) { (error) -> (Void) in
+            self.delegate?.postOilRequestFailed(error: error.localizedDescription)
+        }
+    }
+
 }

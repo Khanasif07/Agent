@@ -251,9 +251,9 @@ enum AppRouter {
             case .tyres:
             AppRouter.goToTyreRequestedVC(vc: vc)
             case .battery:
-               AppRouter.goToBatteryRequestedVC(vc: vc)
-            default:
-                  AppRouter.goToOilRequestedVC(vc: vc)
+            AppRouter.goToBatteryRequestedVC(vc: vc)
+            case .oil:
+            AppRouter.goToOilRequestedVC(vc: vc)
             }
         }
         vc.modalPresentationStyle = .fullScreen

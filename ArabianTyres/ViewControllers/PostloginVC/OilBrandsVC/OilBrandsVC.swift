@@ -74,7 +74,7 @@ class OilBrandsVC: BaseVC {
     }
     
     @IBAction func submitBtnAction(_ sender: UIButton) {
-        AppRouter.goToOilTypeVC(vc: self)
+        AppRouter.presentLocationPopUpVC(vc: self)
 
     }
     
@@ -106,7 +106,7 @@ extension OilBrandsVC {
     }
     
     private func submitBtnStatus()-> Bool{
-        return !TyreRequestModel.shared.countries.isEmpty
+        return !TyreRequestModel.shared.tyreBrands.isEmpty
     }
     
     private func setupCustomView() {
@@ -134,7 +134,7 @@ extension OilBrandsVC :UITextFieldDelegate {
 extension OilBrandsVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return countryListingArr.count
+            return brandListingArr.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

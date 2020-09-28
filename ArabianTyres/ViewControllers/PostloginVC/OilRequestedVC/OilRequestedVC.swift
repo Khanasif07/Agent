@@ -41,7 +41,7 @@ class OilRequestedVC: BaseVC {
 
     // MARK: - Variables
     //===========================
-    var viewModel = GarageRegistrationVM()
+    var viewModel = LocationPopUpVM()
     
     // MARK: - Lifecycle
     //===========================
@@ -78,21 +78,20 @@ class OilRequestedVC: BaseVC {
     
     
     @IBAction func requestBtnAction(_ sender: UIButton) {
-          printDebug("request btn tap")
+        self.viewModel.postOilRequest(dict: TyreRequestModel.shared.getBatteryRequestDict())
     }
       
     @IBAction func vechileDetailEditAction(_ sender: UIButton) {
-        printDebug("size btn tap")
+        self.navigationController?.popToViewControllerOfType(classForCoder: VehicleDetailForOilVC.self)
     }
     
     @IBAction func numberOfUnitEditAction(_ sender: UIButton) {
-        printDebug("number of Tyre btn tap")
+        self.navigationController?.popToViewControllerOfType(classForCoder: VehicleDetailForOilVC.self)
 
     }
     
     @IBAction func oilBrandAction(_ sender: UIButton) {
-        printDebug("tyre btn tap")
-
+        self.navigationController?.popToViewControllerOfType(classForCoder: VehicleDetailForOilVC.self)
     }
 }
 
@@ -101,6 +100,7 @@ class OilRequestedVC: BaseVC {
 extension OilRequestedVC {
     
     private func initialSetup() {
+        self.viewModel.delegate = self
         setupTextAndFont()
         setupCollectionView()
         self.populateDataThroughModel()
@@ -149,14 +149,15 @@ extension OilRequestedVC {
     }
     
     private func populateDataThroughModel(){
-//        tyreWidthValueLbl.text = TyreRequestModel.shared.width
-//        tyreProfileValueLbl.text = TyreRequestModel.shared.profile
-//        tyreRimSizeValueLbl.text = TyreRequestModel.shared.rimSize
+          vehicleMakeValueLbl.text = TyreRequestModel.shared.make
+          vehicleModelValueLbl.text = TyreRequestModel.shared.model
+          productYearValueLbl.text = TyreRequestModel.shared.year
+          numberOfBatteyTextField.text = TyreRequestModel.shared.quantity
     }
-    
 }
 
 extension OilRequestedVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+  
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch collectionView {
         case tyreBrandCollView:
@@ -188,11 +189,34 @@ extension OilRequestedVC: UICollectionViewDelegate,UICollectionViewDataSource,UI
     private func cardSizeForItemAt(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, indexPath: IndexPath) -> CGSize {
         let dataArr = collectionView == tyreBrandCollView ? TyreRequestModel.shared.tyreBrandsListing : TyreRequestModel.shared.countriesListing
         let textSize = dataArr[indexPath.row].sizeCount(withFont: AppFonts.NunitoSansSemiBold.withSize(13.0), boundingSize: CGSize(width: 10000.0, height: collectionView.frame.height))
-        return CGSize(width: textSize.width + 16, height: 34.0)
+        return CGSize(width: textSize.width + 25.0, height: 34.0)
     }
     
 }
 
 extension OilRequestedVC :UITextFieldDelegate{
     
+}
+
+// MARK: - Extension For LocationPopUpVMDelegate
+//===========================
+extension OilRequestedVC : LocationPopUpVMDelegate {
+    func postOilRequestSuccess(message: String){
+         AppRouter.showSuccessPopUp(vc: self, title: "Successfully Requested", desc: "Your request for oil service has been submited successfully.")
+    }
+    
+    func postOilRequestFailed(error:String){
+        ToastView.shared.showLongToast(self.view, msg: error)
+    }
+}
+
+// MARK: - SuccessPopupVCDelegate
+//===============================
+extension OilRequestedVC: SuccessPopupVCDelegate {
+    func okBtnAction() {
+        self.dismiss(animated: true) {
+            TyreRequestModel.shared = TyreRequestModel()
+            self.navigationController?.popToViewControllerOfType(classForCoder: HomeVC.self)
+        }
+    }
 }
