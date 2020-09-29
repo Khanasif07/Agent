@@ -69,7 +69,10 @@ class GarageRegistrationVM {
             guard let `self` = self else { return }
             let code = json[ApiKey.statusCode].intValue
             let msg = json[ApiKey.message].stringValue
-            AppUserDefaults.save(value: json[ApiKey.data][ApiKey.currentRole].stringValue, forKey: .currentUserType)
+            let currentRole = json[ApiKey.data][ApiKey.currentRole].stringValue
+            if !currentRole.isEmpty {
+            AppUserDefaults.save(value: currentRole, forKey: .currentUserType)
+            }
             self.delegate?.switchGarageRegistrationSuccess(code: code,msg : msg)
             
         }) { [weak self] (error) in
