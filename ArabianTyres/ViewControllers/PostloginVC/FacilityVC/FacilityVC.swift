@@ -111,13 +111,14 @@ extension FacilityVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = tableView.dequeueHeaderFooter(with: FacilityTableHeaderView.self)
         view.categoryName.text = viewModel.facilityDataArr[section].name
+        view.arrowImg.isHidden = false
         view.checkBtn.isSelected = viewModel.facilityDataArr[section].isSubCategorySelected
         view.arrowImg.isHighlighted = viewModel.facilityDataArr[section].isSelected
         view.cellBtnTapped = { [weak self] in
         guard let `self` = self else {return}
            
             if self.viewModel.facilityDataArr[section].subCategory.count == 0 {
-                
+                view.arrowImg.isHidden = true
                 if !self.viewModel.facilityDataArr[section].isSelected {
                     self.selectedItemArr.append(self.viewModel.facilityDataArr[section])
                 }else {
