@@ -102,7 +102,7 @@ Service Center</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XOC-VN-ukl">
-                                                <rect key="frame" x="22" y="151.5" width="376" height="306"/>
+                                                <rect key="frame" x="22" y="151.5" width="376" height="302"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Logo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8sr-pk-ks3">
                                                         <rect key="frame" x="16" y="13" width="344" height="21"/>
@@ -111,11 +111,11 @@ Service Center</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6zl-OG-UOq" customClass="RectangularDashedView" customModule="ArabianTyres" customModuleProvider="target">
-                                                        <rect key="frame" x="16" y="42" width="80" height="80"/>
+                                                        <rect key="frame" x="16" y="42" width="76" height="76"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icImg" translatesAutoresizingMaskIntoConstraints="NO" id="8YI-0d-MGp">
-                                                                <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
-                                                                <color key="backgroundColor" red="0.96470588235294119" green="0.96862745098039216" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <rect key="frame" x="-2" y="-2" width="80" height="80"/>
+                                                                <color key="backgroundColor" red="0.96470588235294119" green="0.96862745098039216" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="8YI-0d-MGp" secondAttribute="height" multiplier="1:1" id="IQn-92-5A1"/>
                                                                     <constraint firstAttribute="height" constant="80" id="etb-TA-Lo9"/>
@@ -127,7 +127,7 @@ Service Center</string>
                                                                 </userDefinedRuntimeAttributes>
                                                             </imageView>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sbz-Zd-TAl">
-                                                                <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                                                <rect key="frame" x="-2" y="-2" width="80" height="80"/>
                                                                 <inset key="imageEdgeInsets" minX="0.0" minY="10" maxX="10" maxY="0.0"/>
                                                                 <state key="normal" image="editProfile"/>
                                                                 <connections>
@@ -137,25 +137,30 @@ Service Center</string>
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="bottom" secondItem="8YI-0d-MGp" secondAttribute="bottom" id="EPq-B6-3eN"/>
-                                                            <constraint firstAttribute="trailing" secondItem="8YI-0d-MGp" secondAttribute="trailing" id="HMc-0T-ki4"/>
+                                                            <constraint firstAttribute="bottom" secondItem="8YI-0d-MGp" secondAttribute="bottom" constant="-2" id="EPq-B6-3eN"/>
+                                                            <constraint firstAttribute="trailing" secondItem="8YI-0d-MGp" secondAttribute="trailing" constant="-2" id="HMc-0T-ki4"/>
                                                             <constraint firstItem="sbz-Zd-TAl" firstAttribute="leading" secondItem="8YI-0d-MGp" secondAttribute="leading" id="Ikg-P8-8hx"/>
                                                             <constraint firstItem="sbz-Zd-TAl" firstAttribute="bottom" secondItem="8YI-0d-MGp" secondAttribute="bottom" id="Rl1-LA-eHC"/>
-                                                            <constraint firstItem="8YI-0d-MGp" firstAttribute="leading" secondItem="6zl-OG-UOq" secondAttribute="leading" id="djE-BE-LMz"/>
+                                                            <constraint firstItem="8YI-0d-MGp" firstAttribute="leading" secondItem="6zl-OG-UOq" secondAttribute="leading" constant="-2" id="djE-BE-LMz"/>
                                                             <constraint firstItem="sbz-Zd-TAl" firstAttribute="trailing" secondItem="8YI-0d-MGp" secondAttribute="trailing" id="lad-mG-LPe"/>
-                                                            <constraint firstItem="8YI-0d-MGp" firstAttribute="top" secondItem="6zl-OG-UOq" secondAttribute="top" id="n52-vd-Gma"/>
+                                                            <constraint firstItem="8YI-0d-MGp" firstAttribute="top" secondItem="6zl-OG-UOq" secondAttribute="top" constant="-2" id="n52-vd-Gma"/>
                                                             <constraint firstItem="sbz-Zd-TAl" firstAttribute="top" secondItem="8YI-0d-MGp" secondAttribute="top" id="pJP-YH-fGJ"/>
                                                         </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="4"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8lt-g9-eBk" customClass="CustomTextView" customModule="ArabianTyres" customModuleProvider="target">
-                                                        <rect key="frame" x="16" y="142" width="344" height="60"/>
+                                                        <rect key="frame" x="16" y="138" width="344" height="60"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="WGu-OM-R58"/>
                                                         </constraints>
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zbe-FO-vzV" customClass="AppButton" customModule="ArabianTyres" customModuleProvider="target">
-                                                        <rect key="frame" x="143" y="234" width="217" height="56"/>
+                                                        <rect key="frame" x="143" y="230" width="217" height="56"/>
                                                         <color key="backgroundColor" red="0.090196078430000007" green="0.1450980392" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="56" id="Xha-fu-quO"/>
@@ -245,7 +250,7 @@ Service Center</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xQ0-gp-r3D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-178" y="-40"/>
+            <point key="canvasLocation" x="-178.2608695652174" y="-40.178571428571423"/>
         </scene>
         <!--Garage RegistrationVC-->
         <scene sceneID="o4z-bt-GXP">
@@ -1214,13 +1219,13 @@ Service Center</string>
                                 <rect key="frame" x="0.0" y="44" width="414" height="56"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Complete Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tnU-g3-sYD">
-                                        <rect key="frame" x="143.5" y="21" width="127" height="20"/>
+                                        <rect key="frame" x="142" y="19" width="130.5" height="23.5"/>
                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xz6-Xe-BwT">
-                                        <rect key="frame" x="6" y="-3" width="72" height="68"/>
+                                        <rect key="frame" x="6" y="14" width="36" height="34"/>
                                         <state key="normal" image="icBackward"/>
                                         <connections>
                                             <action selector="backBtnAction:" destination="scS-Gl-fMP" eventType="touchUpInside" id="qhe-P8-N5Y"/>

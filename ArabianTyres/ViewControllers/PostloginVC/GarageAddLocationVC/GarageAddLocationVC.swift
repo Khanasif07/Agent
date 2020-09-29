@@ -58,7 +58,9 @@ class GarageAddLocationVC: BaseVC {
     }
     
     @IBAction func currentLocationBtnAction(_ sender: UIButton) {
-        self.setupLocations()
+//        self.setupLocations()
+        self.locationManager.delegate = self
+        self.locationManager.startUpdatingLocation()
     }
     
     
@@ -175,6 +177,7 @@ extension GarageAddLocationVC :  GMSMapViewDelegate ,CLLocationManagerDelegate {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
         print("locations = \(locValue.latitude) \(locValue.longitude)")
         self.locationValue = locValue
+        isMarkerAnimation = false
         self.moveMarker(coordinate: locationValue)
         self.setAddress()
     }
