@@ -25,7 +25,7 @@ class CompleteProfileStep1: BaseVC {
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var saveContinueBtn: AppButton!
     @IBOutlet weak var editLogoBtn: UIButton!
-
+    
     // MARK: - Variables
     //===========================
     var viewModel = ProfileVM()
@@ -57,12 +57,6 @@ class CompleteProfileStep1: BaseVC {
     // MARK: - IBActions
     //===========================
     
-    @IBAction func locationBtnAction(_ sender: UIButton) {
-        let acController = GMSAutocompleteViewController()
-        acController.delegate = self
-        present(acController, animated: true, completion: nil)
-    }
-    
     @IBAction func saveContinueAction(_ sender: UIButton) {
         AppRouter.goToGarageProfileStep2VC(vc: self)
     }
@@ -72,8 +66,7 @@ class CompleteProfileStep1: BaseVC {
     }
     
     @IBAction func currentLocationBtnAction(_ sender: UIButton) {
-        self.locationManager.delegate = self
-        self.locationManager.startUpdatingLocation()
+        self.didTapMyLocationButton(for: mapView)
     }
 }
 
@@ -99,7 +92,7 @@ extension CompleteProfileStep1 {
         self.addressTxtField.placeholder = LocalizedString.enterServiceCenterAddress.localized
         self.distTxtField.placeholder = LocalizedString.enterServiceCenterDist.localized
         self.addressTxtField.title = LocalizedString.serviceCenterAddress.localized
-//        self.addressTxtField.selectedTitle = LocalizedString.mobileNo.localized
+        //        self.addressTxtField.selectedTitle = LocalizedString.mobileNo.localized
         [nameTxtField,distTxtField,addressTxtField].forEach({$0?.lineColor = AppColors.fontTertiaryColor})
         [nameTxtField,distTxtField,addressTxtField].forEach({$0?.selectedLineColor = AppColors.fontTertiaryColor})
         [nameTxtField,distTxtField,addressTxtField].forEach({$0?.selectedTitleColor = AppColors.fontTertiaryColor})
@@ -137,7 +130,7 @@ extension CompleteProfileStep1 {
     private func addMarkers() {
         mapView.clear()
     }
-
+    
     private func locationButtonTapped() {
         let acController = GMSAutocompleteViewController()
         acController.delegate = self
@@ -202,15 +195,14 @@ extension CompleteProfileStep1 :  GMSMapViewDelegate ,CLLocationManagerDelegate 
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
         if isMarkerAnimation {
             self.isMarkerAnimation = false
-            let currentCoordinate = mapView.projection.coordinate(for: mapView.center)
             self.locationValue = mapView.projection.coordinate(for: mapView.center)
-            self.moveMarker(coordinate: currentCoordinate)
+            self.moveMarker(coordinate: locationValue)
             self.setAddress()
         }
         currentZoomLevel = position.zoom
     }
     
-    func didTapMyLocationButton(for mapView: GMSMapView) -> Bool {
+    @discardableResult  func didTapMyLocationButton(for mapView: GMSMapView) -> Bool {
         guard let lat = mapView.myLocation?.coordinate.latitude,
             let lng = mapView.myLocation?.coordinate.longitude else { return false }
         self.isMarkerAnimation = false
@@ -235,6 +227,7 @@ extension CompleteProfileStep1: GMSAutocompleteViewControllerDelegate {
     
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
         if let address =  place.formattedAddress {
+            self.isMarkerAnimation =  false
             self.locationValue = CLLocationCoordinate2D(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
             self.addressTxtField.text = address
             liveAddress = address
@@ -249,14 +242,14 @@ extension CompleteProfileStep1: GMSAutocompleteViewControllerDelegate {
 }
 
 
- extension CompleteProfileStep1: UIImagePickerControllerDelegate,UINavigationControllerDelegate, RemovePictureDelegate {
- 
+extension CompleteProfileStep1: UIImagePickerControllerDelegate,UINavigationControllerDelegate, RemovePictureDelegate {
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[.editedImage] as? UIImage
         CommonFunctions.showActivityLoader()
-         editLogoBtn.setImage(#imageLiteral(resourceName: "vector"), for: .normal)
-         logoImgView.contentMode = .scaleToFill
-         logoImgView.image = image
+        editLogoBtn.setImage(#imageLiteral(resourceName: "vector"), for: .normal)
+        logoImgView.contentMode = .scaleToFill
+        logoImgView.image = image
         image?.upload(progress: { (progress) in
             printDebug(progress)
         }, completion: { (response,error) in
@@ -271,7 +264,7 @@ extension CompleteProfileStep1: GMSAutocompleteViewControllerDelegate {
         })
         picker.dismiss(animated: true, completion: nil)
     }
-
+    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
@@ -292,13 +285,24 @@ extension CompleteProfileStep1 : UITextFieldDelegate {
             GarageProfileModel.shared.address = text
         case distTxtField:
             GarageProfileModel.shared.serviceCenterDist = text
-        
         default:
             break
         }
         saveContinueBtn.isEnabled = addBtnStatus()
     }
-
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        switch textField {
+        case addressTxtField:
+            let acController = GMSAutocompleteViewController()
+            acController.delegate = self
+            present(acController, animated: true, completion: nil)
+            return false
+        default:
+            return true
+        }
+    }
+    
     
     private func addBtnStatus()-> Bool{
         return !GarageProfileModel.shared.serviceCenterName.isEmpty && !GarageProfileModel.shared.address.isEmpty && !GarageProfileModel.shared.serviceCenterDist.isEmpty
