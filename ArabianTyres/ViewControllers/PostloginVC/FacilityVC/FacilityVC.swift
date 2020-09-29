@@ -116,14 +116,19 @@ extension FacilityVC : UITableViewDelegate, UITableViewDataSource {
         view.cellBtnTapped = { [weak self] in
         guard let `self` = self else {return}
            
-            if self.viewModel.facilityDataArr[section].subCategory.count == 0 &&  !self.viewModel.facilityDataArr[section].isSubCategorySelected{
-                self.viewModel.facilityDataArr[section].isSubCategorySelected = true
-                self.selectedItemArr.append(self.viewModel.facilityDataArr[section])
-            } else {
-                self.viewModel.facilityDataArr[section].isSubCategorySelected = false
-                self.selectedItemArr.removeAll{($0.id == self.viewModel.facilityDataArr[section].id)}
+            if self.viewModel.facilityDataArr[section].subCategory.count == 0 {
+                
+                if !self.viewModel.facilityDataArr[section].isSelected {
+                    self.selectedItemArr.append(self.viewModel.facilityDataArr[section])
+                }else {
+                    self.selectedItemArr.removeAll{($0.id == self.viewModel.facilityDataArr[section].id)}
+                }
+                self.viewModel.facilityDataArr[section].isSelected.toggle()
+                self.viewModel.facilityDataArr[section].isSubCategorySelected.toggle()
+            }else {
+                self.viewModel.facilityDataArr[section].isSelected.toggle()
             }
-            self.viewModel.facilityDataArr[section].isSelected.toggle()
+            
             self.mainTableView.reloadData()
         }
         return view
@@ -183,6 +188,7 @@ extension FacilityVC :GarageRegistrationVMDelegate{
                         return model.id == item.id
                     }){
                         viewModel.facilityDataArr[indexx].isSubCategorySelected = true
+                        viewModel.facilityDataArr[indexx].isSelected = true
                         for (index,item) in viewModel.facilityDataArr[indexx].subCategory.enumerated(){
                             if let firstIndex = self.selectedItemArr[firstIndex].subCategory.firstIndex(where: { (model) -> Bool in
                                 return model.id == item.id
