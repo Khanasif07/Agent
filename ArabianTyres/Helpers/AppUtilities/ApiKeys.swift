@@ -154,6 +154,10 @@ enum ApiKey {
     static var countryId: String { return "countryId" }
     static var countryName: String { return "countryName" }
     static var iconImage: String { return "iconImage" }
+    static var brandName: String { return "brandName" }
+    static var brandId: String { return "brandId" }
+
+
 
 }
 

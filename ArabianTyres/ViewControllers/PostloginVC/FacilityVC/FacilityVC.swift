@@ -115,6 +115,14 @@ extension FacilityVC : UITableViewDelegate, UITableViewDataSource {
         view.arrowImg.isHighlighted = viewModel.facilityDataArr[section].isSelected
         view.cellBtnTapped = { [weak self] in
         guard let `self` = self else {return}
+           
+            if self.viewModel.facilityDataArr[section].subCategory.count == 0 &&  !self.viewModel.facilityDataArr[section].isSubCategorySelected{
+                self.viewModel.facilityDataArr[section].isSubCategorySelected = true
+                self.selectedItemArr.append(self.viewModel.facilityDataArr[section])
+            } else {
+                self.viewModel.facilityDataArr[section].isSubCategorySelected = false
+                self.selectedItemArr.removeAll{($0.id == self.viewModel.facilityDataArr[section].id)}
+            }
             self.viewModel.facilityDataArr[section].isSelected.toggle()
             self.mainTableView.reloadData()
         }
@@ -168,21 +176,27 @@ extension FacilityVC : UITableViewDelegate, UITableViewDataSource {
 
 extension FacilityVC :GarageRegistrationVMDelegate{
   
-    func getfacilitySuccess(){
-        if !selectedItemArr.isEmpty {
-            for (index,item) in viewModel.facilityDataArr.enumerated() {
-                if let firstIndex = self.selectedItemArr.firstIndex(where: { (model) -> Bool in
-                    return model.id == item.id
-                }){
-                    viewModel.facilityDataArr[index].isSubCategorySelected = true
-//                    viewModel.facilityDataArr[index].subCategory[index].isSelected = true
-                    viewModel.facilityDataArr[index].category = self.selectedItemArr[firstIndex].category
+  func getfacilitySuccess(){
+            if !selectedItemArr.isEmpty {
+                for (indexx,item) in viewModel.facilityDataArr.enumerated() {
+                    if let firstIndex = self.selectedItemArr.firstIndex(where: { (model) -> Bool in
+                        return model.id == item.id
+                    }){
+                        viewModel.facilityDataArr[indexx].isSubCategorySelected = true
+                        for (index,item) in viewModel.facilityDataArr[indexx].subCategory.enumerated(){
+                            if let firstIndex = self.selectedItemArr[firstIndex].subCategory.firstIndex(where: { (model) -> Bool in
+                                return model.id == item.id
+                            }){
+                                viewModel.facilityDataArr[indexx].subCategory[firstIndex].isSelected = true
+                            }
+                        }
+                        
+    //                    viewModel.facilityDataArr[index].category = self.selectedItemArr[firstIndex].category
+                        }
                     }
                 }
-            }
-        
-        mainTableView.reloadData()
-    }
+            mainTableView.reloadData()
+        }
     
     func getfacilityFailure(){
         

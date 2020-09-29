@@ -208,7 +208,7 @@ extension UploadDocumentVC: UIImagePickerControllerDelegate,UINavigationControll
             }
             
         }
-        saveAndContinueBtn.isEnabled = status
+        saveAndContinueBtn.isEnabled = true
         mainTableView.reloadData()
     }
 }
