@@ -71,6 +71,10 @@ class CompleteProfileStep1: BaseVC {
         self.captureImage(delegate: self)
     }
     
+    @IBAction func currentLocationBtnAction(_ sender: UIButton) {
+        self.locationManager.delegate = self
+        self.locationManager.startUpdatingLocation()
+    }
 }
 
 
