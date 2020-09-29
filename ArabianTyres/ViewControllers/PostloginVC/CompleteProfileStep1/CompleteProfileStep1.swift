@@ -31,7 +31,7 @@ class CompleteProfileStep1: BaseVC {
     var viewModel = ProfileVM()
     var locationValue = LocationController.sharedLocationManager.locationManager.location?.coordinate ?? CLLocationCoordinate2D(latitude: GarageProfileModel.shared.latitude, longitude: GarageProfileModel.shared.longitude)
     private var locationManager = CLLocationManager()
-    let markerView = UIImageView(frame:CGRect(x: 0, y: 0, width: 41, height: 56.0))
+    let markerView = UIImageView(frame:CGRect(x: 0, y: 0, width: 21, height: 21))
     var gmssMarker = GMSMarker()
     var getLocation: ((CLLocationCoordinate2D,String)->())?
     var currentZoomLevel: Float = 14.0
@@ -58,7 +58,9 @@ class CompleteProfileStep1: BaseVC {
     //===========================
     
     @IBAction func locationBtnAction(_ sender: UIButton) {
-        
+        let acController = GMSAutocompleteViewController()
+        acController.delegate = self
+        present(acController, animated: true, completion: nil)
     }
     
     @IBAction func saveContinueAction(_ sender: UIButton) {
@@ -105,6 +107,7 @@ extension CompleteProfileStep1 {
     
     private func prepareMap() {
         self.mapView.isMyLocationEnabled = true
+        self.mapView.settings.myLocationButton = true
         self.mapView.delegate = self
         self.locationManager.delegate = self
         markerView.image = #imageLiteral(resourceName: "markerIcon")
@@ -183,13 +186,13 @@ extension CompleteProfileStep1 :  GMSMapViewDelegate ,CLLocationManagerDelegate 
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-        print("locations = \(locValue.latitude) \(locValue.longitude)")
-        self.locationValue = locValue
-    }
-    
-    func mapView(_ mapView: GMSMapView, willMove gesture: Bool) {
-        printDebug(mapView.projection.coordinate(for: mapView.center))
+        if let location  = locations.last {
+            self.locationValue = location.coordinate
+            isMarkerAnimation = false
+            self.moveMarker(coordinate: locationValue)
+            self.setAddress()
+        }
+        locationManager.stopUpdatingLocation()
     }
     
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
@@ -201,6 +204,16 @@ extension CompleteProfileStep1 :  GMSMapViewDelegate ,CLLocationManagerDelegate 
             self.setAddress()
         }
         currentZoomLevel = position.zoom
+    }
+    
+    func didTapMyLocationButton(for mapView: GMSMapView) -> Bool {
+        guard let lat = mapView.myLocation?.coordinate.latitude,
+            let lng = mapView.myLocation?.coordinate.longitude else { return false }
+        self.isMarkerAnimation = false
+        self.locationValue = CLLocationCoordinate2D.init(latitude: lat, longitude: lng)
+        moveMarker(coordinate:  self.locationValue)
+        self.setAddress()
+        return true
     }
     
     func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
@@ -217,13 +230,13 @@ extension CompleteProfileStep1: GMSAutocompleteViewControllerDelegate {
     }
     
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-        locationValue = place.coordinate
-        setAddress()
-        moveMarker(coordinate: locationValue)
-        viewController.dismiss(animated: true) { [weak self] in
-            guard let `self` = self else { return }
-            printDebug(self)
+        if let address =  place.formattedAddress {
+            self.locationValue = CLLocationCoordinate2D(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
+            self.addressTxtField.text = address
+            liveAddress = address
+            moveMarker(coordinate: CLLocationCoordinate2D(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude))
         }
+        viewController.dismiss(animated: true)
     }
     
     func wasCancelled(_ viewController: GMSAutocompleteViewController) {
@@ -268,9 +281,7 @@ extension CompleteProfileStep1 : UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         guard let text = textField.text else {return}
-        
         switch textField {
-
         case nameTxtField:
             GarageProfileModel.shared.serviceCenterName = text
         case addressTxtField:
@@ -298,3 +309,4 @@ extension CompleteProfileStep1 :ProfileVMDelegate{
         
     }
 }
+
