@@ -42,7 +42,7 @@ class CustomTextView: UIView {
     var isCollViewHidden : Bool = true
     weak var delegate : CustomTextViewDelegate?
     var listingType : ListingType = .brands
-    
+    var charLimit : Int = 100
     var placeHolderTxt : String = ""{
         didSet {
             tView.text = placeHolderTxt
@@ -109,6 +109,15 @@ extension CustomTextView : UITextViewDelegate {
     
     func textViewDidEndEditing(_ textView: UITextView) {
         delegate?.endEditing(textView)
+    }
+    
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let currentText = textView.text ?? ""
+        guard let stringRange = Range(range, in: currentText) else { return false }
+        let updatedText = currentText.replacingCharacters(in: stringRange, with: text)
+        
+        return updatedText.count <= charLimit
     }
     
     func setupTabGestureOnCollView() {

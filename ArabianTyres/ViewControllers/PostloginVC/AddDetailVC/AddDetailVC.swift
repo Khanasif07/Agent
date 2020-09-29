@@ -82,6 +82,7 @@ extension AddDetailVC {
         editLogoBtn.setImage(nil, for: .normal)
         setupTextAndFont()
         customTView.delegate = self
+        customTView.charLimit = 40
         customTView.placeHolderTxt = LocalizedString.enterServiceCenterName.localized
         customTView.floatLbl.text = LocalizedString.serviceCenterNames.localized
         customTView.rightImgContainerView.isHidden = true

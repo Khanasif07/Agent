@@ -528,8 +528,8 @@ Service Center</string>
                                                             <action selector="saveAndContinueBtnAction:" destination="UOe-DA-mSq" eventType="touchUpInside" id="fu7-q6-7SA"/>
                                                         </connections>
                                                     </button>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Garaga" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FBk-Ky-n4Z">
-                                                        <rect key="frame" x="82.5" y="39" width="89" height="20"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Garaga" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="FBk-Ky-n4Z">
+                                                        <rect key="frame" x="82.5" y="39" width="271.5" height="20"/>
                                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -623,6 +623,7 @@ Service Center</string>
                                                     <constraint firstItem="uJe-vy-kQb" firstAttribute="leading" secondItem="MR0-9i-x9C" secondAttribute="leading" id="nru-UF-ldg"/>
                                                     <constraint firstItem="qzc-Zr-8CD" firstAttribute="top" secondItem="iIC-vp-HTe" secondAttribute="bottom" constant="14" id="qFd-i1-qBz"/>
                                                     <constraint firstItem="uJe-vy-kQb" firstAttribute="top" secondItem="MR0-9i-x9C" secondAttribute="bottom" constant="7" id="sRN-Qp-Sq6"/>
+                                                    <constraint firstAttribute="trailing" secondItem="FBk-Ky-n4Z" secondAttribute="trailing" constant="16" id="wLt-0Z-6j9"/>
                                                 </constraints>
                                             </view>
                                         </subviews>

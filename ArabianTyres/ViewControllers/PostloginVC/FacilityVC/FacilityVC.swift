@@ -118,7 +118,6 @@ extension FacilityVC : UITableViewDelegate, UITableViewDataSource {
         guard let `self` = self else {return}
            
             if self.viewModel.facilityDataArr[section].subCategory.count == 0 {
-                view.arrowImg.isHidden = true
                 if !self.viewModel.facilityDataArr[section].isSelected {
                     self.selectedItemArr.append(self.viewModel.facilityDataArr[section])
                 }else {
