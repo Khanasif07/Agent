@@ -152,19 +152,27 @@ extension VechicleDetailVC :UITextFieldDelegate {
         case vehicleMakeTextField:
             vehicleDetailtype = .make
             openBottomSheet(type: VehicleDetailType.make)
+            self.selectedMakeArr = []
+            self.vehicleModelTextField.text = ""
             return false
         case vehicleModelTextField:
             if self.selectedMakeArr.isEmpty {
-                showAlert(msg: "Please fill make")
+                ToastView.shared.showLongToast(self.view, msg: "Please select vehicle maker name")
                 return false
             }
             vehicleDetailtype = .model
             openBottomSheet(type: VehicleDetailType.model)
             return false
         default:
-             return true
+            if let text = textField.text {
+                if text.isEmpty{
+                    modelYearTextField.text = self.yearPicker.dataArray.first
+                    TyreRequestModel.shared.year = self.yearPicker.dataArray.first ?? ""
+                    submitBtnStatus()
+                }}
+            return true
         }
-       
+        
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

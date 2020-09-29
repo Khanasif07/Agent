@@ -26,10 +26,12 @@ class FacilityTableHeaderView: UITableViewHeaderFooterView {
     
     func configureCell(isPowerSelected: Bool, model: TyreBrandModel){
         checkBtn.isSelected = isPowerSelected
+        arrowImg.isHidden = true
     }
     
     func configureCell(isPowerSelected: Bool, model: TyreCountryModel){
         checkBtn.isSelected = isPowerSelected
+        arrowImg.isHidden = true
     }
     
     

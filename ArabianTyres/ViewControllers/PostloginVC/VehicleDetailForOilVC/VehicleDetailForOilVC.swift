@@ -213,7 +213,7 @@ extension VehicleDetailForOilVC :UITextFieldDelegate {
            case vehicleModelTextField:
                tempTextField = vehicleModelTextField
                if self.selectedMakeArr.isEmpty {
-                   showAlert(msg: "Please fill make")
+                   ToastView.shared.showLongToast(self.view, msg: "Please select vehicle maker name")
                    return false
                }
                vehicleDetailtype = .model

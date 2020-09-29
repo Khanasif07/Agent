@@ -155,7 +155,8 @@ extension URTyreStep1VC: UITextFieldDelegate{
             if let text = textField.text {
                 if text.isEmpty{
                     widthTxtField.text = self.widthPicker.dataArray.first
-                    TyreRequestModel.shared.width = text
+                    TyreRequestModel.shared.width = self.widthPicker.dataArray.first ?? ""
+                    self.nextBtn.isEnabled = nextBtnStatus()
                 }}
             tempTextField = widthTxtField
             return true
@@ -163,7 +164,8 @@ extension URTyreStep1VC: UITextFieldDelegate{
             if let text = textField.text {
                 if text.isEmpty{
                     profileTxtField.text = self.profilePicker.dataArray.first
-                    TyreRequestModel.shared.profile = text
+                    TyreRequestModel.shared.profile = self.profilePicker.dataArray.first ?? ""
+                    self.nextBtn.isEnabled = nextBtnStatus()
                 }}
             tempTextField = profileTxtField
             return true
@@ -171,7 +173,8 @@ extension URTyreStep1VC: UITextFieldDelegate{
             if let text = textField.text {
                 if text.isEmpty{
                     rimSizeTxtField.text = self.rimSizePicker.dataArray.first
-                    TyreRequestModel.shared.rimSize = text
+                    TyreRequestModel.shared.rimSize = self.rimSizePicker.dataArray.first ?? ""
+                    self.nextBtn.isEnabled = nextBtnStatus()
                 }}
             tempTextField = rimSizeTxtField
             return true
@@ -179,7 +182,8 @@ extension URTyreStep1VC: UITextFieldDelegate{
         else { if let text = textField.text {
                 if text.isEmpty{
                     numberTyreTxtField.text = self.tyreNumberPicker.dataArray.first
-                    TyreRequestModel.shared.quantity = text
+                    TyreRequestModel.shared.quantity = self.tyreNumberPicker.dataArray.first ?? ""
+                    self.nextBtn.isEnabled = nextBtnStatus()
                 }}
             tempTextField = numberTyreTxtField
             return true}

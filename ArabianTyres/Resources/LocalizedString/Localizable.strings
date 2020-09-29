@@ -199,7 +199,7 @@
 "selectCountry" = "Select Country";
 "countryName" = "Country’s Name";
 "arabianTyresWantToAccessYourCurrentLocation" = "Arabian Tyres want to access\nyour current location";
-"allowCureentLocationWillHelpYouInGettingGreatOffers" = "Allow cureent location will help you\nin getting great offers";
+"allowCureentLocationWillHelpYouInGettingGreatOffers" = "Allow current location will help you\nin getting great offers";
 "allow" = "Allow";
 "installationPriceRange" = "Installation Price Range";
  // MARK: - Home  VC Values

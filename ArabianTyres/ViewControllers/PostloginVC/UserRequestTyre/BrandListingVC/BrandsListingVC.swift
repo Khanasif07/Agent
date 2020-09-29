@@ -126,6 +126,7 @@ extension BrandsListingVC {
     private func textFieldSetUp(){
         buttonView.isHidden = true
         buttonView.addTarget(self, action: #selector(clear(_:)), for: .touchUpInside)
+        buttonView.imageEdgeInsets = UIEdgeInsets(top: 0, left: -5, bottom: 0, right: 5)
         searchTxtField.setButtonToRightView(btn: buttonView, selectedImage: #imageLiteral(resourceName: "cancel"), normalImage: #imageLiteral(resourceName: "cancel"), size: CGSize(width: 20, height: 20))
     }
     
@@ -171,9 +172,9 @@ extension BrandsListingVC : UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         if (listingType == .brands) {
-            return self.viewModel.searchBrandListing.endIndex +  (self.viewModel.showPaginationLoader ?  0 : 0)
+            return self.viewModel.searchBrandListing.endIndex
         }else {
-            return  self.viewModel.searchCountryListing.endIndex +  (self.viewModel.showPaginationLoader ?  0 : 0)
+            return  self.viewModel.searchCountryListing.endIndex
         }
     }
     
@@ -185,8 +186,8 @@ extension BrandsListingVC : UITableViewDelegate, UITableViewDataSource {
         let view = tableView.dequeueHeaderFooter(with: FacilityTableHeaderView.self)
         view.bottomView.backgroundColor = #colorLiteral(red: 0.9294117647, green: 0.9294117647, blue: 0.9294117647, alpha: 1)
         view.categoryName.text = listingType == .brands ? self.viewModel.searchBrandListing[section].name : self.viewModel.searchCountryListing[section].name
-        view.arrowImg.isHidden = (section == 0 && self.isSearchOn) ? true : false
-        view.arrowImg.setImage_kf(imageString: listingType == .brands ? self.viewModel.searchBrandListing[section].iconImage : "", placeHolderImage: #imageLiteral(resourceName: "icUnCheck"), loader: false)
+//        view.arrowImg.isHidden = (section == 0 && self.isSearchOn) ? true : false
+//        view.arrowImg.setImage_kf(imageString: listingType == .brands ? self.viewModel.searchBrandListing[section].iconImage : "", placeHolderImage: #imageLiteral(resourceName: "icUnCheck"), loader: false)
         if   self.listingType == .brands {
             let isPowerSelected = self.viewModel.selectedBrandsArr.contains(where: {$0.id == (self.isSearchOn ? self.viewModel.searchBrandListing[section].id : self.viewModel.brandsListings[section].id)})
             if self.viewModel.brandsListings.endIndex  > 0  {
@@ -317,7 +318,11 @@ extension BrandsListingVC : DZNEmptyDataSetSource,DZNEmptyDataSetDelegate {
     }
     
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        return NSAttributedString(string: "", attributes: [NSAttributedString.Key.foregroundColor: AppColors.fontTertiaryColor,NSAttributedString.Key.font: AppFonts.NunitoSansBold.withSize(18)])
+        var emptyData = ""
+        if self.viewModel.searchBrandListing.endIndex == 0 {
+           emptyData = "No data found"
+        }
+        return NSAttributedString(string:emptyData , attributes: [NSAttributedString.Key.foregroundColor: AppColors.fontTertiaryColor,NSAttributedString.Key.font: AppFonts.NunitoSansBold.withSize(18)])
     }
     
     func emptyDataSetShouldDisplay(_ scrollView: UIScrollView!) -> Bool {
@@ -332,4 +337,10 @@ extension BrandsListingVC : DZNEmptyDataSetSource,DZNEmptyDataSetDelegate {
         return true
     }
     
+    func emptyDataSetShouldBeForced(toDisplay scrollView: UIScrollView!) -> Bool {
+        if let tableView = scrollView as? UITableView, tableView.numberOfSections == 0 {
+            return true
+        }
+        return false
+    }
 }

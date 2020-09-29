@@ -140,22 +140,22 @@ extension BottomSheetVC :UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if vehicleDetailtype == .make{
-            if self.viewModel.selectedMakeArr.contains(self.viewModel.searchMakeListing[indexPath.row]) {}else {
-                self.viewModel.selectedMakeArr.removeAll()
+//            if self.viewModel.selectedMakeArr.contains(self.viewModel.searchMakeListing[indexPath.row]) {}else {
+                    self.viewModel.selectedMakeArr.removeAll()
                 self.viewModel.selectedMakeArr.append(self.viewModel.searchMakeListing[indexPath.row])
                 dismiss(animated: true, completion: {
                                    self.onSaveBtnAction?(self.viewModel.selectedMakeArr,self.viewModel.selectedModelArr)
                                })
-            }}else {
-            if self.viewModel.selectedModelArr.contains(self.viewModel.searchModelListing[indexPath.row]) {}else
-            {  self.viewModel.selectedModelArr.removeAll()
+            }else {
+//            if self.viewModel.selectedModelArr.contains(self.viewModel.searchModelListing[indexPath.row]) {}else
+              self.viewModel.selectedModelArr.removeAll()
                 self.viewModel.selectedModelArr.append(self.viewModel.searchModelListing[indexPath.row])
                 dismiss(animated: true, completion: {
                     self.onSaveBtnAction?(self.viewModel.selectedMakeArr,self.viewModel.selectedModelArr)
                 })
             }
             tableView.reloadData()
-        }
+//        }
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 44.0

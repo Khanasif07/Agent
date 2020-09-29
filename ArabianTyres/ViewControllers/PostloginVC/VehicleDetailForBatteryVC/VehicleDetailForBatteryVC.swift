@@ -210,8 +210,8 @@ extension VehicleDetailForBatteryVC :UITextFieldDelegate {
         case vehicleModelTextField:
             tempTextField = vehicleModelTextField
             if self.selectedMakeArr.isEmpty {
-                showAlert(msg: "Please fill make")
-                return false
+               ToastView.shared.showLongToast(self.view, msg: "Please select vehicle maker name")
+               return false
             }
             vehicleDetailtype = .model
             openBottomSheet(type: VehicleDetailType.model)
