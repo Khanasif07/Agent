@@ -183,9 +183,24 @@ extension GarageProfileStep2VC: CustomTextViewDelegate{
 }
 
 extension GarageProfileStep2VC: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+   
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         if collectionView == customView.collView {
             return selectedFacilitiesArr.count
+        }
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if collectionView == customView.collView {
+            if selectedFacilitiesArr.isEmpty {
+                return 0
+            }
+            if selectedFacilitiesArr[section].subCategory.isEmpty {
+                return selectedFacilitiesArr.count
+
+            }
+            return selectedFacilitiesArr[section].subCategory.count
 
         }else {
             if !self.imagesArray.isEmpty && self.imagesArray.count <= 4{
@@ -201,7 +216,12 @@ extension GarageProfileStep2VC: UICollectionViewDelegate,UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == customView.collView {
             let cell = collectionView.dequeueCell(with: FacilityCollectionViewCell.self, indexPath: indexPath)
-            cell.skillLbl.text = selectedFacilitiesArr[indexPath.item].name
+            if selectedFacilitiesArr[indexPath.section].subCategory.isEmpty {
+                cell.skillLbl.text = selectedFacilitiesArr[indexPath.item].name
+            }else {
+                cell.skillLbl.text = selectedFacilitiesArr[indexPath.section].subCategory[indexPath.item].name +
+                " (\(selectedFacilitiesArr[indexPath.section].name))"
+            }
             cell.cancelBtn.addTarget(self, action: #selector(cancelBtnTapped(_:)), for: .touchUpInside)
             cell.layoutSubviews()
             return cell
@@ -273,7 +293,7 @@ extension GarageProfileStep2VC: UICollectionViewDelegate,UICollectionViewDataSou
         
         let textSize = selectedFacilitiesArr[indexPath.item].name.sizeCount(withFont: AppFonts.NunitoSansSemiBold.withSize(16.0), boundingSize: CGSize(width: 10000.0, height: collectionView.frame.height))
         
-        return CGSize(width: textSize.width + 24, height: 24.0)
+        return CGSize(width: textSize.width + 30, height: 24.0)
     }
 
     @objc func cancelBtnTapped(_ sender : UIButton) {
@@ -343,7 +363,7 @@ extension GarageProfileStep2VC: UIImagePickerControllerDelegate, UINavigationCon
 
 
 extension GarageProfileStep2VC: FacilitiesDelegate {
-    func setData(dataArr: [FacilityModel]) {
+    func setData(dataArr: [FacilityModel], brandAndServiceArr: [String]) {
         selectedFacilitiesArr = dataArr
         customView.collView.isHidden = selectedFacilitiesArr.isEmpty
         customView.floatLbl.isHidden = selectedFacilitiesArr.isEmpty

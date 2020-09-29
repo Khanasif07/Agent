@@ -12,6 +12,7 @@ struct DataValue{
     var image:UIImage
     var name:String
     var productColor: UIColor
+    
     init(image:UIImage,name:String,productColor: UIColor) {
         self.image = image
         self.name = name
@@ -136,9 +137,7 @@ extension HomeVC : UICollectionViewDelegate, UICollectionViewDataSource,UICollec
             AppRouter.goToVehicleDetailForOilVC(vc: self)
         case LocalizedString.battery.localized:
             categoryType = .battery
-            showAlert(msg: "Under Development")
-
-//            AppRouter.goToVehicleDetailForBatteryVC(vc: self)
+            AppRouter.goToVehicleDetailForBatteryVC(vc: self)
         default:
             showAlert(msg: "Under Development")
         }

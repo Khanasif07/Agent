@@ -100,7 +100,11 @@ extension RegistraionPendingVC {
             subHeadingLbl.text = LocalizedString.yourRegistrationRequestIsStillUnder.localized
             imgView.image = #imageLiteral(resourceName: "group3874")
             let date = time.toDate(dateFormat: Date.DateFormat.givenDateFormat.rawValue) ?? Date()
-            headingLbl.text = "We’ve received your registration request \(date.timeAgoSince)."
+            if time == "Just now" {
+                headingLbl.text = "We’ve received your registration request Just now"
+            }else {
+                headingLbl.text = "We’ve received your registration request \(date.timeAgoSince)."
+            }
 
         case .rejected:
             viewTutorailBtn.isHidden = true

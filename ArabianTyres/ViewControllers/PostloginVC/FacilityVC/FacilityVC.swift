@@ -10,7 +10,7 @@
 import UIKit
 
 protocol FacilitiesDelegate: class {
-    func setData(dataArr : [FacilityModel])
+    func setData(dataArr : [FacilityModel], brandAndServiceArr : [String])
 }
 
 class FacilityVC: BaseVC {
@@ -29,6 +29,8 @@ class FacilityVC: BaseVC {
     var selectedItemArr : [FacilityModel] = []
     weak var delegate : FacilitiesDelegate?
     var selectedSubCatArr : [SubCategoryModel] = []
+    var brandAndServiceArr : [String] = []
+    
     
     // MARK: - Lifecycle
     //===========================
@@ -50,7 +52,7 @@ class FacilityVC: BaseVC {
     
     @IBAction func doneBtnAction(_ sender: UIButton) {
         dismiss(animated: true) {
-            self.delegate?.setData(dataArr: self.selectedItemArr)
+            self.delegate?.setData(dataArr: self.selectedItemArr, brandAndServiceArr: self.brandAndServiceArr)
         }
     }
 
@@ -120,8 +122,11 @@ extension FacilityVC : UITableViewDelegate, UITableViewDataSource {
             if self.viewModel.facilityDataArr[section].subCategory.count == 0 {
                 if !self.viewModel.facilityDataArr[section].isSelected {
                     self.selectedItemArr.append(self.viewModel.facilityDataArr[section])
+                    self.brandAndServiceArr.append(self.viewModel.facilityDataArr[section].name)
                 }else {
                     self.selectedItemArr.removeAll{($0.id == self.viewModel.facilityDataArr[section].id)}
+                    self.brandAndServiceArr.removeAll{($0 == self.viewModel.facilityDataArr[section].name)}
+
                 }
                 self.viewModel.facilityDataArr[section].isSelected.toggle()
                 self.viewModel.facilityDataArr[section].isSubCategorySelected.toggle()
@@ -161,6 +166,8 @@ extension FacilityVC : UITableViewDelegate, UITableViewDataSource {
             }) {
                 if !self.viewModel.facilityDataArr[indexPath.section].isSubCategorySelected {
                     self.selectedItemArr.append(self.viewModel.facilityDataArr[indexPath.section])
+                    self.brandAndServiceArr.append(self.viewModel.facilityDataArr[indexPath.section].name)
+
                 }
                 self.viewModel.facilityDataArr[indexPath.section].isSubCategorySelected = true
             
