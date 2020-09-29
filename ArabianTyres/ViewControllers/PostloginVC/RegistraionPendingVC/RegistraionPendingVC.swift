@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+
 class RegistraionPendingVC: BaseVC {
     
     enum ScreenType {
@@ -36,6 +38,7 @@ class RegistraionPendingVC: BaseVC {
     var message: String = ""
     var reason : String = ""
     var time :  String = ""
+    var registerBtnTapped:(()->())?
     
     // MARK: - Lifecycle
     //===========================
@@ -70,8 +73,8 @@ class RegistraionPendingVC: BaseVC {
         case .pending:
             break
         case .rejected:
-            
-            AppRouter.goToGarageRegistrationVC(vc: self)
+            self.pop(animated: false)
+            registerBtnTapped?()
         case .accept:
             AppRouter.goToCompleteProfileStep1VC(vc: self)
         }
@@ -96,8 +99,9 @@ extension RegistraionPendingVC {
             completeProfileBtn.isHidden = true
             subHeadingLbl.text = LocalizedString.yourRegistrationRequestIsStillUnder.localized
             imgView.image = #imageLiteral(resourceName: "group3874")
-            headingLbl.text = "We’ve received your registration request \(time)"
-       
+            let date = time.toDate(dateFormat: Date.DateFormat.givenDateFormat.rawValue) ?? Date()
+            headingLbl.text = "We’ve received your registration request \(date.timeAgoSince)."
+
         case .rejected:
             viewTutorailBtn.isHidden = true
             bottomStackView.isHidden = false

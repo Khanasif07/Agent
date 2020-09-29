@@ -157,6 +157,9 @@ enum AppRouter {
         scene.reason = reason
         scene.time = time
         scene.screenType = screenType
+        scene.registerBtnTapped = {
+            AppRouter.goToGarageRegistrationVC(vc: vc)
+        }
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
