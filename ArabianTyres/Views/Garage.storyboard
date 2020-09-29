@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -28,13 +28,13 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="56"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2wu-HP-hHX">
-                                        <rect key="frame" x="163" y="21" width="88" height="20"/>
+                                        <rect key="frame" x="161" y="19" width="92" height="23.5"/>
                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aoL-qe-Qst">
-                                        <rect key="frame" x="6" y="-3" width="72" height="68"/>
+                                        <rect key="frame" x="6" y="14" width="36" height="34"/>
                                         <state key="normal" image="icBackward"/>
                                         <connections>
                                             <action selector="backBtnAction:" destination="KzW-Im-RfD" eventType="touchUpInside" id="ves-IB-WFY"/>
@@ -102,7 +102,7 @@ Service Center</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XOC-VN-ukl">
-                                                <rect key="frame" x="22" y="151.5" width="376" height="306"/>
+                                                <rect key="frame" x="22" y="151.5" width="376" height="302"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Logo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8sr-pk-ks3">
                                                         <rect key="frame" x="16" y="13" width="344" height="21"/>
@@ -111,11 +111,11 @@ Service Center</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6zl-OG-UOq" customClass="RectangularDashedView" customModule="ArabianTyres" customModuleProvider="target">
-                                                        <rect key="frame" x="16" y="42" width="80" height="80"/>
+                                                        <rect key="frame" x="16" y="42" width="76" height="76"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icImg" translatesAutoresizingMaskIntoConstraints="NO" id="8YI-0d-MGp">
-                                                                <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
-                                                                <color key="backgroundColor" red="0.96470588235294119" green="0.96862745098039216" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <rect key="frame" x="-2" y="-2" width="80" height="80"/>
+                                                                <color key="backgroundColor" red="0.96470588235294119" green="0.96862745098039216" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="8YI-0d-MGp" secondAttribute="height" multiplier="1:1" id="IQn-92-5A1"/>
                                                                     <constraint firstAttribute="height" constant="80" id="etb-TA-Lo9"/>
@@ -127,14 +127,9 @@ Service Center</string>
                                                                 </userDefinedRuntimeAttributes>
                                                             </imageView>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sbz-Zd-TAl">
-                                                                <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                                                <rect key="frame" x="-2" y="-2" width="80" height="80"/>
                                                                 <inset key="imageEdgeInsets" minX="0.0" minY="10" maxX="10" maxY="0.0"/>
                                                                 <state key="normal" image="editProfile"/>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                        <real key="value" value="4"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                </userDefinedRuntimeAttributes>
                                                                 <connections>
                                                                     <action selector="editLogoBtnAction:" destination="KzW-Im-RfD" eventType="touchUpInside" id="6NV-bQ-yCS"/>
                                                                 </connections>
@@ -142,13 +137,13 @@ Service Center</string>
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="bottom" secondItem="8YI-0d-MGp" secondAttribute="bottom" id="EPq-B6-3eN"/>
-                                                            <constraint firstAttribute="trailing" secondItem="8YI-0d-MGp" secondAttribute="trailing" id="HMc-0T-ki4"/>
+                                                            <constraint firstAttribute="bottom" secondItem="8YI-0d-MGp" secondAttribute="bottom" constant="-2" id="EPq-B6-3eN"/>
+                                                            <constraint firstAttribute="trailing" secondItem="8YI-0d-MGp" secondAttribute="trailing" constant="-2" id="HMc-0T-ki4"/>
                                                             <constraint firstItem="sbz-Zd-TAl" firstAttribute="leading" secondItem="8YI-0d-MGp" secondAttribute="leading" id="Ikg-P8-8hx"/>
                                                             <constraint firstItem="sbz-Zd-TAl" firstAttribute="bottom" secondItem="8YI-0d-MGp" secondAttribute="bottom" id="Rl1-LA-eHC"/>
-                                                            <constraint firstItem="8YI-0d-MGp" firstAttribute="leading" secondItem="6zl-OG-UOq" secondAttribute="leading" id="djE-BE-LMz"/>
+                                                            <constraint firstItem="8YI-0d-MGp" firstAttribute="leading" secondItem="6zl-OG-UOq" secondAttribute="leading" constant="-2" id="djE-BE-LMz"/>
                                                             <constraint firstItem="sbz-Zd-TAl" firstAttribute="trailing" secondItem="8YI-0d-MGp" secondAttribute="trailing" id="lad-mG-LPe"/>
-                                                            <constraint firstItem="8YI-0d-MGp" firstAttribute="top" secondItem="6zl-OG-UOq" secondAttribute="top" id="n52-vd-Gma"/>
+                                                            <constraint firstItem="8YI-0d-MGp" firstAttribute="top" secondItem="6zl-OG-UOq" secondAttribute="top" constant="-2" id="n52-vd-Gma"/>
                                                             <constraint firstItem="sbz-Zd-TAl" firstAttribute="top" secondItem="8YI-0d-MGp" secondAttribute="top" id="pJP-YH-fGJ"/>
                                                         </constraints>
                                                         <userDefinedRuntimeAttributes>
@@ -158,14 +153,14 @@ Service Center</string>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8lt-g9-eBk" customClass="CustomTextView" customModule="ArabianTyres" customModuleProvider="target">
-                                                        <rect key="frame" x="16" y="142" width="344" height="60"/>
+                                                        <rect key="frame" x="16" y="138" width="344" height="60"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="WGu-OM-R58"/>
                                                         </constraints>
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zbe-FO-vzV" customClass="AppButton" customModule="ArabianTyres" customModuleProvider="target">
-                                                        <rect key="frame" x="143" y="234" width="217" height="56"/>
+                                                        <rect key="frame" x="143" y="230" width="217" height="56"/>
                                                         <color key="backgroundColor" red="0.090196078430000007" green="0.1450980392" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="56" id="Xha-fu-quO"/>
@@ -255,7 +250,7 @@ Service Center</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xQ0-gp-r3D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-178" y="-40"/>
+            <point key="canvasLocation" x="-178.2608695652174" y="-40.178571428571423"/>
         </scene>
         <!--Garage RegistrationVC-->
         <scene sceneID="o4z-bt-GXP">
@@ -269,13 +264,13 @@ Service Center</string>
                                 <rect key="frame" x="0.0" y="44" width="414" height="56"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jep-Pa-psq">
-                                        <rect key="frame" x="176" y="21" width="62.5" height="20"/>
+                                        <rect key="frame" x="174.5" y="19" width="65" height="23.5"/>
                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q61-dS-rD9">
-                                        <rect key="frame" x="6" y="-3" width="72" height="68"/>
+                                        <rect key="frame" x="6" y="14" width="36" height="34"/>
                                         <state key="normal" image="icBackward"/>
                                         <connections>
                                             <action selector="backBtnAction:" destination="09l-eL-0NZ" eventType="touchUpInside" id="ZBT-7N-ZLb"/>
@@ -450,7 +445,7 @@ Service Center</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4tI-oY-Y8Z">
-                                        <rect key="frame" x="6" y="-3" width="72" height="68"/>
+                                        <rect key="frame" x="6" y="14" width="36" height="34"/>
                                         <state key="normal" image="icBackward"/>
                                         <connections>
                                             <action selector="backBtnAction:" destination="jHb-qK-wSR" eventType="touchUpInside" id="44y-qN-4lJ"/>
@@ -604,13 +599,13 @@ Service Center</string>
                                 <rect key="frame" x="0.0" y="44" width="414" height="56"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Govt. Issued Doc" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0oM-mJ-lDg">
-                                        <rect key="frame" x="141" y="21" width="132" height="20"/>
+                                        <rect key="frame" x="140.5" y="19" width="133" height="23.5"/>
                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VR2-mA-OKd">
-                                        <rect key="frame" x="6" y="-3" width="72" height="68"/>
+                                        <rect key="frame" x="6" y="14" width="36" height="34"/>
                                         <state key="normal" image="icBackward"/>
                                         <connections>
                                             <action selector="backBtnAction:" destination="ned-sa-trC" eventType="touchUpInside" id="8nQ-6Z-zFX"/>
@@ -685,7 +680,7 @@ Service Center</string>
                                     <rect key="frame" x="0.0" y="258" width="414" height="138"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EyB-1b-yHL" customClass="AppButton" customModule="ArabianTyres" customModuleProvider="target">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EyB-1b-yHL">
                                             <rect key="frame" x="22" y="52" width="370" height="56"/>
                                             <color key="backgroundColor" red="0.090196078430000007" green="0.1450980392" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
@@ -832,13 +827,13 @@ Service Center</string>
                                 <rect key="frame" x="0.0" y="44" width="414" height="56"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Accounts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wUu-Yd-aIo">
-                                        <rect key="frame" x="153" y="21" width="108" height="20"/>
+                                        <rect key="frame" x="151.5" y="19" width="111" height="23.5"/>
                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fwA-Xg-fpL">
-                                        <rect key="frame" x="6" y="-3" width="72" height="68"/>
+                                        <rect key="frame" x="6" y="14" width="36" height="34"/>
                                         <state key="normal" image="icBackward"/>
                                         <connections>
                                             <action selector="backBtnAction:" destination="KzW-Im-RfD" eventType="touchUpInside" id="6fg-cM-fc7"/>
@@ -1031,13 +1026,13 @@ Service Center</string>
                                 <rect key="frame" x="0.0" y="44" width="414" height="56"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UYZ-Ao-hmS">
-                                        <rect key="frame" x="163" y="21" width="88" height="20"/>
+                                        <rect key="frame" x="161" y="19" width="92" height="23.5"/>
                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TEE-8I-aOG">
-                                        <rect key="frame" x="6" y="-3" width="72" height="68"/>
+                                        <rect key="frame" x="6" y="14" width="36" height="34"/>
                                         <state key="normal" image="icBackward"/>
                                         <connections>
                                             <action selector="backBtnAction:" destination="1bs-SP-OPu" eventType="touchUpInside" id="Kgs-tx-1II"/>
@@ -1224,13 +1219,13 @@ Service Center</string>
                                 <rect key="frame" x="0.0" y="44" width="414" height="56"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Complete Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tnU-g3-sYD">
-                                        <rect key="frame" x="143.5" y="21" width="127" height="20"/>
+                                        <rect key="frame" x="142" y="19" width="130.5" height="23.5"/>
                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xz6-Xe-BwT">
-                                        <rect key="frame" x="6" y="-3" width="72" height="68"/>
+                                        <rect key="frame" x="6" y="14" width="36" height="34"/>
                                         <state key="normal" image="icBackward"/>
                                         <connections>
                                             <action selector="backBtnAction:" destination="scS-Gl-fMP" eventType="touchUpInside" id="qhe-P8-N5Y"/>
@@ -1447,7 +1442,7 @@ Service Center</string>
         <!--FacilityVC-->
         <scene sceneID="yZP-nF-2Sc">
             <objects>
-                <viewController storyboardIdentifier="FacilityVC" modalPresentationStyle="currentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="MNi-yC-bfm" customClass="FacilityVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FacilityVC" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="MNi-yC-bfm" customClass="FacilityVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="npG-sK-8Bm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1456,7 +1451,7 @@ Service Center</string>
                                 <rect key="frame" x="0.0" y="44" width="414" height="56"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Facility" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bYw-TO-MdX">
-                                        <rect key="frame" x="154.5" y="21" width="105.5" height="20"/>
+                                        <rect key="frame" x="153" y="19" width="108" height="23.5"/>
                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>

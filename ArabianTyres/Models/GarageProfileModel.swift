@@ -106,10 +106,11 @@ struct GarageProfilePreFillModel {
        var serviceCenterDist           : String = ""
        var minInstallationPrice        : Int = 0
        var maxInstallationPrice        : Int = 0
-       var services                    : [JSONDictionary] = []
+       var services                    : [ServicesModel] = []
        var requestTime                 : String = ""
     
     init(_ json : JSON = JSON()) {
+        self.services = json[ApiKey.services].arrayValue.map{((ServicesModel($0)))}
         self.logoUrl = json[ApiKey.logo].stringValue
         self.serviceCenterName = json[ApiKey.name].stringValue
         self.bankName = json[ApiKey.bank].stringValue
@@ -148,5 +149,17 @@ struct GarageProfilePreFillModel {
         GarageProfileModel.shared.serviceCenterDist = model.serviceCenterDist
         GarageProfileModel.shared.serviceCenterImages = model.serviceCenterImages
 
+    }
+}
+
+struct ServicesModel {
+    var serviceName : String = ""
+    var serviceId : String = ""
+    var brands : [String] = []
+    
+    init(_ json : JSON = JSON()) {
+        self.serviceName = json[ApiKey.serviceName].stringValue
+        self.serviceId = json[ApiKey.serviceId].stringValue
+        self.brands = []
     }
 }

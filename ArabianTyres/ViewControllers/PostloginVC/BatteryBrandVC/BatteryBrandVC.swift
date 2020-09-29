@@ -76,9 +76,14 @@ class BatteryBrandVC: BaseVC {
     }
     
     @IBAction func skipBtnAction(_ sender: UIButton) {
-        print("skip btn tap")
+        brandListingArr = []
+        countryListingArr = []
+        TyreRequestModel.shared.selectedTyreCountryListings = []
+        TyreRequestModel.shared.selectedTyreBrandsListings = []
+        listing(listingType: listingType, BrandsListings: brandListingArr, countryListings: countryListingArr)
+        AppRouter.presentLocationPopUpVC(vc: self)
     }
-   
+    
 }
 
 // MARK: - Extension For Functions

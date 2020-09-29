@@ -20,7 +20,7 @@ class GarageAddLocationVC: BaseVC {
     @IBOutlet weak var garageName: UILabel!
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var saveContinueBtn: AppButton!
-
+    
     // MARK: - Variables
     //===========================
     var locationValue = LocationController.sharedLocationManager.locationManager.location?.coordinate ?? CLLocationCoordinate2D(latitude: 34.052238, longitude: -118.24334)
@@ -46,8 +46,6 @@ class GarageAddLocationVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
-        logoImgView.image = GarageProfileModel.shared.logo
-        garageName.text = GarageProfileModel.shared.serviceCenterName
     }
     
     // MARK: - IBActions
@@ -58,11 +56,13 @@ class GarageAddLocationVC: BaseVC {
         acController.delegate = self
         present(acController, animated: true, completion: nil)
     }
-   
+    
     @IBAction func currentLocationBtnAction(_ sender: UIButton) {
-      
-     }
-     
+//        self.setupLocations()
+        self.locationManager.delegate = self
+        self.locationManager.startUpdatingLocation()
+    }
+    
     
     @IBAction func saveAndContinueBtnAction(_ sender: UIButton) {
         GarageProfileModel.shared.latitude = locationValue.latitude
@@ -72,7 +72,7 @@ class GarageAddLocationVC: BaseVC {
     }
     
     @IBAction func backBtnAction(_ sender: UIButton) {
-     pop()
+        pop()
     }
 }
 
@@ -83,6 +83,9 @@ extension GarageAddLocationVC {
     private func initialSetup() {
         self.prepareMap()
         setAddress()
+        setupLocations()
+        logoImgView.image = GarageProfileModel.shared.logo
+        garageName.text = GarageProfileModel.shared.serviceCenterName
         self.saveContinueBtn.isEnabled = false
     }
     
@@ -124,6 +127,36 @@ extension GarageAddLocationVC {
             self.isMarkerAnimation = true
         }
     }
+    
+    ///SETUP LOCATIONS
+    private func setupLocations() {
+        let status = CLLocationManager.authorizationStatus()
+        if CLLocationManager.locationServicesEnabled() {
+            if  status == CLAuthorizationStatus.authorizedAlways
+                || status == CLAuthorizationStatus.authorizedWhenInUse {
+                self.moveMarker(coordinate: locationValue)
+                self.setAddress()
+            }
+            else { self.locationPermissonPopUp() }
+        }
+        else{ self.locationPermissonPopUp() }
+    }
+    
+    private func locationPermissonPopUp() {
+        openSettingApp(message: "We need permission to access this app")
+    }
+    
+    private func openSettingApp(message: String) {
+        
+        self.showAlertWithAction(title: "", msg: message, cancelTitle: LocalizedString.cancel.localized, actionTitle: "Ok", actioncompletion: {
+            guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+                return
+            }
+            if UIApplication.shared.canOpenURL(settingsUrl) {
+                UIApplication.shared.open(settingsUrl, options: [:], completionHandler: nil)
+            }
+        }) { }
+    }
 }
 
 
@@ -144,6 +177,9 @@ extension GarageAddLocationVC :  GMSMapViewDelegate ,CLLocationManagerDelegate {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
         print("locations = \(locValue.latitude) \(locValue.longitude)")
         self.locationValue = locValue
+        isMarkerAnimation = false
+        self.moveMarker(coordinate: locationValue)
+        self.setAddress()
     }
     
     func mapView(_ mapView: GMSMapView, willMove gesture: Bool) {

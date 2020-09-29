@@ -9,7 +9,7 @@ import UIKit
 import Foundation
 
 class LoginVC: BaseVC {
-        
+    
     // MARK: - IBOutlets
     //===========================
     @IBOutlet weak var mainTableView: UITableView!
@@ -83,9 +83,9 @@ extension LoginVC {
     private func getDictForSendOtp() -> JSONDictionary{
         let dict : JSONDictionary = [ApiKey.phoneNo : UserModel.main.phoneNo,
                                      ApiKey.countryCode : UserModel.main.countryCode,
-                                        ApiKey.device : [ApiKey.platform : "ios", ApiKey.token : DeviceDetail.deviceToken].toJSONString() ?? ""]
-           return dict
-       }
+                                     ApiKey.device : [ApiKey.platform : "ios", ApiKey.token : DeviceDetail.deviceToken].toJSONString() ?? ""]
+        return dict
+    }
     
     private func signIn(){
         self.view.endEditing(true)
@@ -100,8 +100,8 @@ extension LoginVC {
     
     private func showEmailVerificationPopUp(){
         self.showAlertWithAction(title: "Verify Email", msg: "A verification link will be send to your email address", cancelTitle: LocalizedString.cancel.localized, actionTitle: LocalizedString.send.localized, actioncompletion: {
-           }){self.dismiss(animated: true, completion: nil)}
-       }
+        }){self.dismiss(animated: true, completion: nil)}
+    }
 }
 
 // MARK: - Extension For TableView
@@ -141,7 +141,7 @@ extension LoginVC : UITableViewDelegate, UITableViewDataSource {
                 self.signIn()
             }
             cell.forgotPassBtnTapped = { [weak self]  (sender) in
-            guard let `self` = self else { return }
+                guard let `self` = self else { return }
                 AppRouter.goToSignWithPhoneVC(vc: self,loginOption: .forgotPassword)
             }
             return cell
@@ -177,15 +177,15 @@ extension LoginVC : UITableViewDelegate, UITableViewDataSource {
                 }, failure: { (error) in
                     printDebug(error?.localizedDescription.description)
             })
-
+            
         }
         return cell
     }
     
     private func signInBtnStatus()-> Bool{
-          return !self.viewModel.model.email.isEmpty && !self.viewModel.model.password.isEmpty
-      }
-
+        return !self.viewModel.model.email.isEmpty && !self.viewModel.model.password.isEmpty
+    }
+    
 }
 
 // MARK: - Extension For TextField Delegate
@@ -228,7 +228,7 @@ extension LoginVC: SignInVMDelegate {
     }
     
     func sendOtpForSocialLoginFailed(message: String) {
-         ToastView.shared.showLongToast(self.view, msg: message)
+        ToastView.shared.showLongToast(self.view, msg: message)
     }
     
     func socailLoginApiSuccessWithoutPhoneNo(message: String) {
@@ -240,7 +240,11 @@ extension LoginVC: SignInVMDelegate {
     }
     
     func socailLoginApiSuccess(message: String) {
-        AppRouter.goToUserHome()
+        if isCurrentUserType == .user {
+            AppRouter.goToUserHome()
+        } else {
+            AppRouter.goToGarageHome()
+        }
     }
     
     func socailLoginApiFailure(message: String) {
@@ -248,7 +252,12 @@ extension LoginVC: SignInVMDelegate {
     }
     
     func signInSuccess(userModel: UserModel) {
-         AppRouter.goToUserHome()
+        if isCurrentUserType == .user {
+            AppRouter.goToUserHome()
+        } else {
+            AppRouter.goToGarageHome()
+        }
+        
     }
     
     func signInFailed(message: String) {
@@ -258,7 +267,7 @@ extension LoginVC: SignInVMDelegate {
     func emailNotVerified(message: String){
         ToastView.shared.showLongToast(self.view, msg: message)
     }
-
+    
 }
 
 extension LoginVC: AppleSignInProtocal {
@@ -279,9 +288,9 @@ extension LoginVC: AppleSignInProtocal {
                                      ApiKey.device : [ApiKey.platform: "ios", ApiKey.token: DeviceDetail.deviceToken].toJSONString() ?? ""]
         return dict
     }
-
+    
     func hitSocialLoginAPI(name : String , email : String , socialId : String , socialType : String ,phoneNo: String, profilePicture : String){
-         viewModel.socailLoginApi(parameters: getSocialParams(name : name , email : email , socialId : socialId , socialType : socialType ,phoneNo: phoneNo ,profilePicture : profilePicture))
+        viewModel.socailLoginApi(parameters: getSocialParams(name : name , email : email , socialId : socialId , socialType : socialType ,phoneNo: phoneNo ,profilePicture : profilePicture))
         
-     }
+    }
 }

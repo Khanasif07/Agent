@@ -16,24 +16,33 @@
                 <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xKK-o6-PtJ">
+                        <rect key="frame" x="-2" y="3" width="89" height="89"/>
+                        <color key="backgroundColor" red="0.96470588235294119" green="0.96862745098039216" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="4"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="65F-xZ-hPb" customClass="RectangularDashedView" customModule="ArabianTyres">
                         <rect key="frame" x="0.0" y="5" width="85" height="85"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="441-dw-H7a">
-                                <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
+                                <rect key="frame" x="-2" y="-2" width="89" height="89"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="441-dw-H7a" firstAttribute="top" secondItem="65F-xZ-hPb" secondAttribute="top" id="3KT-vf-4i9"/>
-                            <constraint firstAttribute="bottom" secondItem="441-dw-H7a" secondAttribute="bottom" id="9G9-7w-Q7V"/>
-                            <constraint firstItem="441-dw-H7a" firstAttribute="leading" secondItem="65F-xZ-hPb" secondAttribute="leading" id="eSR-9M-M7A"/>
-                            <constraint firstAttribute="trailing" secondItem="441-dw-H7a" secondAttribute="trailing" id="mVZ-pa-ihj"/>
+                            <constraint firstItem="441-dw-H7a" firstAttribute="top" secondItem="65F-xZ-hPb" secondAttribute="top" constant="-2" id="3KT-vf-4i9"/>
+                            <constraint firstAttribute="bottom" secondItem="441-dw-H7a" secondAttribute="bottom" constant="-2" id="9G9-7w-Q7V"/>
+                            <constraint firstItem="441-dw-H7a" firstAttribute="leading" secondItem="65F-xZ-hPb" secondAttribute="leading" constant="-2" id="eSR-9M-M7A"/>
+                            <constraint firstAttribute="trailing" secondItem="441-dw-H7a" secondAttribute="trailing" constant="-2" id="mVZ-pa-ihj"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="dashColor">
-                                <color key="value" red="0.32941176470588235" green="0.33725490196078434" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="value" red="0.32941176470588235" green="0.33725490196078434" blue="0.36078431372549019" alpha="1" colorSpace="calibratedRGB"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="number" keyPath="dashWidth">
                                 <real key="value" value="1"/>
@@ -74,16 +83,20 @@
                 </subviews>
             </view>
             <constraints>
+                <constraint firstItem="xKK-o6-PtJ" firstAttribute="bottom" secondItem="441-dw-H7a" secondAttribute="bottom" id="2nn-ef-iE8"/>
                 <constraint firstItem="tx6-Vb-dJD" firstAttribute="centerX" secondItem="65F-xZ-hPb" secondAttribute="centerX" id="9Kd-uh-EQl"/>
                 <constraint firstItem="wZh-ov-EHn" firstAttribute="centerY" secondItem="65F-xZ-hPb" secondAttribute="centerY" id="Bxi-kb-YxX"/>
                 <constraint firstItem="wZh-ov-EHn" firstAttribute="centerX" secondItem="65F-xZ-hPb" secondAttribute="centerX" id="Dab-3t-QYq"/>
                 <constraint firstItem="65F-xZ-hPb" firstAttribute="bottom" secondItem="gTV-IL-0wX" secondAttribute="bottom" id="PIy-7H-mtA"/>
+                <constraint firstItem="xKK-o6-PtJ" firstAttribute="leading" secondItem="441-dw-H7a" secondAttribute="leading" id="Pr2-iA-dxo"/>
                 <constraint firstItem="FY7-yt-lMN" firstAttribute="trailing" secondItem="65F-xZ-hPb" secondAttribute="trailing" constant="5" id="WxE-fU-GBa"/>
                 <constraint firstItem="65F-xZ-hPb" firstAttribute="trailing" secondItem="ZTg-uK-7eu" secondAttribute="trailing" constant="-5" id="YQD-Rv-0UQ"/>
                 <constraint firstItem="tx6-Vb-dJD" firstAttribute="centerY" secondItem="65F-xZ-hPb" secondAttribute="centerY" id="ZrX-sW-2Dk"/>
+                <constraint firstItem="xKK-o6-PtJ" firstAttribute="top" secondItem="441-dw-H7a" secondAttribute="top" id="bYe-zM-78M"/>
                 <constraint firstAttribute="top" secondItem="65F-xZ-hPb" secondAttribute="top" constant="-5" id="bnP-lO-SJ1"/>
                 <constraint firstItem="ZTg-uK-7eu" firstAttribute="leading" secondItem="65F-xZ-hPb" secondAttribute="leading" id="hO3-Oi-qRC"/>
                 <constraint firstItem="FY7-yt-lMN" firstAttribute="top" secondItem="65F-xZ-hPb" secondAttribute="top" constant="-5" id="ml6-oz-Lso"/>
+                <constraint firstItem="xKK-o6-PtJ" firstAttribute="trailing" secondItem="441-dw-H7a" secondAttribute="trailing" id="tXz-ZH-75E"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="151" height="151"/>
@@ -94,7 +107,7 @@
                 <outlet property="dataContainerView" destination="65F-xZ-hPb" id="Srq-Ta-oZr"/>
                 <outlet property="mainImgView" destination="441-dw-H7a" id="HE9-qM-xwU"/>
             </connections>
-            <point key="canvasLocation" x="210.86956521739131" y="168.41517857142856"/>
+            <point key="canvasLocation" x="210.1449275362319" y="168.08035714285714"/>
         </collectionViewCell>
     </objects>
     <resources>

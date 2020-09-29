@@ -194,7 +194,6 @@ extension AddAccountVC: BankDetail{
 
 extension AddAccountVC: GarageRegistrationVMDelegate {
     func garageRegistrationSuccess(msg: String) {
-//        CommonFunctions.showToastWithMessage(msg)
         AppRouter.goToRegistraionPendingVC(vc: self, screenType: .pending)
     }
     
@@ -204,5 +203,13 @@ extension AddAccountVC: GarageRegistrationVMDelegate {
  
     private func fillDataStatus()-> Bool{
         return !GarageProfileModel.shared.bankName.isEmpty && !GarageProfileModel.shared.accountNumber.isEmpty && !GarageProfileModel.shared.confirmAccountNumber.isEmpty
+    }
+    func completeProfileSuccess(msg: String){
+        AppUserDefaults.save(value: "2", forKey: .currentUserType)
+        AppRouter.goToGarageHome()
+    }
+    
+    func completeProfileFailure(msg: String){
+         CommonFunctions.showToastWithMessage(msg)
     }
 }

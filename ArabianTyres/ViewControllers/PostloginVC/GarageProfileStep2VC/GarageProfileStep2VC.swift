@@ -110,7 +110,6 @@ extension GarageProfileStep2VC {
         self.collViewSetUp()
         handleRangeSlider()
         setPreFilledData()
-//        rangeSlider.resetSlider(value: 2500)
     }
     
     private func handleRangeSlider(){

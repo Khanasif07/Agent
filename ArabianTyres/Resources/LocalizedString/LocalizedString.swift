@@ -149,6 +149,7 @@ enum LocalizedString : String {
     case contactUs
     case changeLanguage
     case switchProfileTogarage
+    case switchProfileToUser
     case reportAnIssue
     case faq
     case referFriend

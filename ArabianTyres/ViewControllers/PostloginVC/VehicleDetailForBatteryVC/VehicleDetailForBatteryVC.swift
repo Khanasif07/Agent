@@ -275,7 +275,7 @@ extension VehicleDetailForBatteryVC: UIImagePickerControllerDelegate, UINavigati
         batteryImgContainerView.backgroundColor = .white
         uploadImgLbl.isHidden = true
         batteryImgContainerView.borderWidth = 0.0
-        //        CommonFunctions.showActivityLoader()
+        CommonFunctions.showActivityLoader()
         TyreRequestModel.shared.images = []
         TyreRequestModel.shared.images.append(ImageModel(url: "", mediaType: "image", image: image ?? UIImage()))
         self.submitBtnStatus()
@@ -283,7 +283,7 @@ extension VehicleDetailForBatteryVC: UIImagePickerControllerDelegate, UINavigati
             printDebug(progress)
         }, completion: { (response,error) in
             if let url = response {
-                //                CommonFunctions.hideActivityLoader()
+                CommonFunctions.hideActivityLoader()
                 self.hasImageUploaded = true
                 let lastIndex = TyreRequestModel.shared.images.endIndex
                 TyreRequestModel.shared.images[lastIndex-1].url = url
