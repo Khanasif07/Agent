@@ -57,11 +57,9 @@ class TyreBrandVC: BaseVC {
         if !self.brandListingArr.isEmpty {
             if let tyreBrandCustomView = self.tyreBrandCustomView {
                 self.tBCustomViewHeightConstraint.constant = tyreBrandCustomView.collView.contentSize.height + 38.0
-                printDebug(tBCustomViewHeightConstraint.constant)
-                printDebug(tyreBrandCustomView.collView.contentSize.height)
             }
         }else {
-                self.tBCustomViewHeightConstraint.constant = 60.0
+                self.tBCustomViewHeightConstraint.constant = tyreBrandCheckBtn.isSelected ? 60.0 : 0.0
         }
         
         if !self.countryListingArr.isEmpty {
@@ -94,22 +92,32 @@ class TyreBrandVC: BaseVC {
     
     @IBAction func tyreCheckBtnAction(_ sender: UIButton) {
         deSelectCountry()
-        listing(listingType: .brands, BrandsListings: brandListingArr, countryListings: countryListingArr)
         listing(listingType: .countries, BrandsListings: brandListingArr, countryListings: countryListingArr)
         tyreBrandCheckBtn.isSelected = true
         countryOriginCheckBtn.isSelected = false
+        tyreBrandCustomView.rightImgView.isHidden = false
+        if  !tyreBrandCheckBtn.isSelected {
+            self.view.setNeedsLayout()
+            UIView.animate(withDuration: 1.0) {
+                self.tBCustomViewHeightConstraint.constant = self.tyreBrandCheckBtn.isSelected ? 60.0 : 0.0
+                self.view.layoutIfNeeded()
+            }
+        }
     }
     
     @IBAction func countryCheckBtnAction(_ sender: UIButton) {
         deSelectBrands()
-        listing(listingType: .countries, BrandsListings: brandListingArr, countryListings: countryListingArr)
         listing(listingType: .brands, BrandsListings: brandListingArr, countryListings: countryListingArr)
-        countryOriginCustomView.collView.isHidden = true
-        countryOriginCustomView.floatLbl.isHidden = true
-        countryOriginCustomView.collView.reloadData()
         countryOriginCheckBtn.isSelected = true
         tyreBrandCheckBtn.isSelected = false
-        countryOriginViewHeightConstraint.constant = countryOriginCheckBtn.isSelected ? 60.0 : 0.0
+        countryOriginCustomView.rightImgView.isHidden = false
+        if  !countryOriginCheckBtn.isSelected {
+            self.view.setNeedsLayout()
+            UIView.animate(withDuration: 1.0) {
+                self.countryOriginViewHeightConstraint.constant = self.countryOriginCheckBtn.isSelected ? 60.0 : 0.0
+                self.view.layoutIfNeeded()
+            }
+        }
     }
    
 }
@@ -123,8 +131,10 @@ extension TyreBrandVC {
         countryListingArr = TyreRequestModel.shared.selectedTyreCountryListings
         setupTextFont()
         setupCustomView()
+        tBCustomViewHeightConstraint.constant = 0.0
         countryOriginViewHeightConstraint.constant = 0.0
-        listing(listingType: listingType, BrandsListings: brandListingArr, countryListings: countryListingArr)
+        listing(listingType: .brands, BrandsListings: brandListingArr, countryListings: countryListingArr)
+        listing(listingType: .countries, BrandsListings: brandListingArr, countryListings: countryListingArr)
     }
     
     private func setupTextFont() {
@@ -161,6 +171,7 @@ extension TyreBrandVC {
         countryOriginCustomView.leftImgContainerView.isHidden = true
         countryOriginCustomView.listingType = .countries
         tyreBrandCustomView.rightImgView.image = #imageLiteral(resourceName: "group3689")
+        countryOriginCustomView.rightImgView.image = #imageLiteral(resourceName: "group3689")
         tyreBrandCustomView.txtViewEditable = false
         countryOriginCustomView.txtViewEditable = false
         tyreBrandCustomView.collView.registerCell(with: FacilityCollectionViewCell.self)
@@ -321,6 +332,7 @@ extension TyreBrandVC: BrandsListnig {
             self.submitBtn.isEnabled = submitBtnStatus()
             tyreBrandCheckBtn.isSelected = !brandListingArr.isEmpty
             tyreBrandCustomView.collView.isHidden = brandListingArr.isEmpty
+            tyreBrandCustomView.rightImgView.isHidden = brandListingArr.isEmpty
             tyreBrandCustomView.floatLbl.isHidden = brandListingArr.isEmpty
             tyreBrandCustomView.collView.reloadData()
            
@@ -337,6 +349,7 @@ extension TyreBrandVC: BrandsListnig {
             countryOriginCheckBtn.isSelected = !countryListingArr.isEmpty
             countryOriginCustomView.collView.isHidden = countryListingArr.isEmpty
             countryOriginCustomView.floatLbl.isHidden = countryListingArr.isEmpty
+            countryOriginCustomView.rightImgView.isHidden = countryListingArr.isEmpty
             countryOriginCustomView.collView.reloadData()
         }
         view.layoutIfNeeded()

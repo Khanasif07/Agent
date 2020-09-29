@@ -182,8 +182,6 @@ extension FacilityVC :GarageRegistrationVMDelegate{
                             viewModel.facilityDataArr[indexx].subCategory[firstIndex].isSelected = true
                         }
                     }
-                    
-//                    viewModel.facilityDataArr[index].category = self.selectedItemArr[firstIndex].category
                     }
                 }
             }
