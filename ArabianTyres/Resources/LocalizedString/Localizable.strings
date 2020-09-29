@@ -202,6 +202,7 @@
 "allowCureentLocationWillHelpYouInGettingGreatOffers" = "Allow cureent location will help you\nin getting great offers";
 "allow" = "Allow";
 "installationPriceRange" = "Installation Price Range";
+"viewTutorial" = "View Tutorial";
  // MARK: - Home  VC Values
 //==============================
 "tyre" = "Tyre";

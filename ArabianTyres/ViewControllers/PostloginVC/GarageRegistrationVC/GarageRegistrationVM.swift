@@ -14,7 +14,7 @@ import SwiftyJSON
 protocol GarageRegistrationVMDelegate: class {
     func garageRegistrationSuccess(msg: String)
     func garageRegistrationFailed(msg: String)
-    func switchGarageRegistrationSuccess(code: Int, msg : String)
+    func switchGarageRegistrationSuccess(code: Int, msg : String, reason: String,time: String)
     func switchGarageRegistrationFailure(msg: String)
     func completeProfileSuccess(msg: String)
     func completeProfileFailure(msg: String)
@@ -26,7 +26,7 @@ protocol GarageRegistrationVMDelegate: class {
 extension GarageRegistrationVMDelegate {
     func garageRegistrationSuccess(msg: String){}
     func garageRegistrationFailed(msg: String){}
-    func switchGarageRegistrationSuccess(code: Int, msg : String){}
+    func switchGarageRegistrationSuccess(code: Int, msg : String,reason: String,time: String){}
     func switchGarageRegistrationFailure(msg: String){}
     func completeProfileSuccess(msg: String){}
     func completeProfileFailure(msg: String){}
@@ -69,11 +69,13 @@ class GarageRegistrationVM {
             guard let `self` = self else { return }
             let code = json[ApiKey.statusCode].intValue
             let msg = json[ApiKey.message].stringValue
+            let reason = json[ApiKey.data][ApiKey.reason].stringValue
+            let time = json[ApiKey.data][ApiKey.time].stringValue
             let currentRole = json[ApiKey.data][ApiKey.currentRole].stringValue
             if !currentRole.isEmpty {
             AppUserDefaults.save(value: currentRole, forKey: .currentUserType)
             }
-            self.delegate?.switchGarageRegistrationSuccess(code: code,msg : msg)
+            self.delegate?.switchGarageRegistrationSuccess(code: code,msg : msg, reason: reason,time: time)
             
         }) { [weak self] (error) in
             guard let `self` = self else { return }

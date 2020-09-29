@@ -194,7 +194,7 @@ extension AddAccountVC: BankDetail{
 
 extension AddAccountVC: GarageRegistrationVMDelegate {
     func garageRegistrationSuccess(msg: String) {
-        AppRouter.goToRegistraionPendingVC(vc: self, screenType: .pending)
+        AppRouter.goToRegistraionPendingVC(vc: self, screenType: .pending, msg: "", reason: "", time: "Just Now")
     }
     
     func garageRegistrationFailed(msg: String) {

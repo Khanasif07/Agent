@@ -261,6 +261,9 @@ enum LocalizedString : String {
     case oilRequest
     case oilImage
     case selectNumberOfUnitYouWant
+    case viewTutorial
+    
+    
     // MARK: - Home  VC Values
     //==============================
     case tyre

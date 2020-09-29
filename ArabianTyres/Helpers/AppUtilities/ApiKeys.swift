@@ -156,9 +156,8 @@ enum ApiKey {
     static var iconImage: String { return "iconImage" }
     static var brandName: String { return "brandName" }
     static var brandId: String { return "brandId" }
-
-
-
+    static var reason: String { return "reason" }
+    static var time: String { return "time" }
 }
 
 //MARK:- Api Code
