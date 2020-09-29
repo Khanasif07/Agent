@@ -27,15 +27,10 @@ class GarageAddImageVC: BaseVC {
     
     // MARK: - Variables
     //===========================
-    var locationValue = LocationController.sharedLocationManager.locationManager.location?.coordinate ?? CLLocationCoordinate2D(latitude: GarageProfileModel.shared.latitude, longitude: GarageProfileModel.shared.longitude)
-    private var locationManager = CLLocationManager()
+    var locationValue =  CLLocationCoordinate2D(latitude: GarageProfileModel.shared.latitude, longitude: GarageProfileModel.shared.longitude)
     let markerView = UIImageView(frame:CGRect(x: 0, y: 0, width: 21, height: 21))
     var gmssMarker = GMSMarker()
     var getLocation: ((CLLocationCoordinate2D,String)->())?
-    var currentZoomLevel: Float = 14.0
-    private var mapPermission: Bool = false
-    private var isMarkerAnimation : Bool = true
-    private var liveAddress : String = ""
     fileprivate var hasImageUploaded = true {
         didSet {
             if hasImageUploaded {
@@ -64,7 +59,11 @@ class GarageAddImageVC: BaseVC {
     
     @IBAction func saveBtnAction(_ sender: UIButton) {
         if !self.hasImageUploaded{
-            self.showAlert(msg: LocalizedString.wait_Img_Upload.localized)
+             ToastView.shared.showLongToast(self.view, msg: LocalizedString.wait_Img_Upload.localized)
+            return
+        }
+        if GarageProfileModel.shared.serviceCenterImages.isEmpty{
+            ToastView.shared.showLongToast(self.view, msg: "Please select atleast one image")
             return
         }
         AppRouter.goToUploadDocumentVC(vc: self)
@@ -88,7 +87,6 @@ extension GarageAddImageVC {
     private func prepareMap() {
         self.mapView.isMyLocationEnabled = true
         self.mapView.delegate = self
-        self.locationManager.delegate = self
         markerView.image = #imageLiteral(resourceName: "markerIcon")
         self.gmssMarker = GMSMarker(position: CLLocationCoordinate2D(latitude:  locationValue.latitude, longitude: locationValue.longitude))
         DispatchQueue.main.async {
@@ -104,7 +102,6 @@ extension GarageAddImageVC {
             guard let address = response?.firstResult(), let lines = address.lines else { return }
             _ = (address.locality?.isEmpty ?? true) ? ((address.subLocality?.isEmpty ?? true) ? ((address.administrativeArea?.isEmpty ?? true) ? address.country : address.administrativeArea)  : address.subLocality)   : address.locality
             self.locationTextLbl.text = "\(lines.joined(separator: ","))"
-            self.liveAddress = lines.joined(separator: ",")
         }
     }
     
@@ -118,35 +115,6 @@ extension GarageAddImageVC {
         mainCollView.collectionViewLayout = LeftAlignedCollectionViewFlowLayout()
         mainCollView.registerCell(with: AddImageCollCell.self)
         self.mainCollView.isScrollEnabled = false
-    }
-    
-    private func locationButtonTapped() {
-        let acController = GMSAutocompleteViewController()
-        acController.delegate = self
-        present(acController, animated: true, completion: nil)
-    }
-    
-    //OPEN SETTING
-    func openSettingApp(message: String) {
-        self.showAlert(title: "", msg: message) {
-            guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
-                return
-            }
-            if UIApplication.shared.canOpenURL(settingsUrl) {
-                UIApplication.shared.open(settingsUrl, options: [:], completionHandler: nil)
-            }
-        }
-    }
-    
-    func moveMarker(coordinate: CLLocationCoordinate2D){
-        CATransaction.begin()
-        CATransaction.setValue(0.0, forKey: kCATransactionAnimationDuration)
-        self.mapView.animate(to: GMSCameraPosition.camera(withLatitude:coordinate.latitude, longitude: coordinate.longitude, zoom: currentZoomLevel))
-        self.gmssMarker.position = CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude)
-        CATransaction.commit()
-        CommonFunctions.delay(delay: 1.0) {
-             self.isMarkerAnimation = true
-        }
     }
     
     @objc private func crossImageBtnTapped(_ sender: UIButton) {
@@ -184,66 +152,7 @@ extension GarageAddImageVC {
 // MARK: - Map and cluster Functions
 //==================================
 extension GarageAddImageVC :  GMSMapViewDelegate ,CLLocationManagerDelegate {
-    
-    //MARK: Permission for current Location=====
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if(status == .authorizedWhenInUse || status == .authorizedAlways){
-            self.mapPermission = true
-        } else {
-            self.mapPermission = false
-        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-        print("locations = \(locValue.latitude) \(locValue.longitude)")
-        self.locationValue = locValue
-    }
-    
-    func mapView(_ mapView: GMSMapView, willMove gesture: Bool) {
-        printDebug(mapView.projection.coordinate(for: mapView.center))
-    }
-    
-    func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
-        if isMarkerAnimation {
-            self.isMarkerAnimation = false
-            let currentCoordinate = mapView.projection.coordinate(for: mapView.center)
-            self.locationValue = mapView.projection.coordinate(for: mapView.center)
-            self.moveMarker(coordinate: currentCoordinate)
-            self.setAddress()
-        }
-        currentZoomLevel = position.zoom
-    }
-    
-    func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
-        currentZoomLevel = position.zoom
-    }
 }
-
-
-// MARK: - Google Auto complete
-//==============================
-extension GarageAddImageVC: GMSAutocompleteViewControllerDelegate {
-    
-    func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
-        self.showAlert(msg: error.localizedDescription)
-    }
-    
-    func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-        locationValue = place.coordinate
-        setAddress()
-        moveMarker(coordinate: locationValue)
-        viewController.dismiss(animated: true) { [weak self] in
-            guard let `self` = self else { return }
-            printDebug(self)
-        }
-    }
-    
-    func wasCancelled(_ viewController: GMSAutocompleteViewController) {
-        viewController.dismiss(animated: true, completion: nil)
-    }
-}
-
 
 //MARK:-
 //=====
@@ -347,8 +256,14 @@ extension GarageAddImageVC: UIImagePickerControllerDelegate, UINavigationControl
                 self.hasImageUploaded = true
                 let lastIndex = GarageProfileModel.shared.serviceCenterImages.endIndex
                 GarageProfileModel.shared.serviceCenterImages[lastIndex-1].url = url
+                DispatchQueue.main.async {
+                    self.mainCollView.reloadData()
+                }
             }
             if let _ = error{
+                DispatchQueue.main.async {
+                    self.mainCollView.reloadData()
+                }
                 self.showAlert(msg: LocalizedString.imageUploadingFailed.localized)
             }
         })

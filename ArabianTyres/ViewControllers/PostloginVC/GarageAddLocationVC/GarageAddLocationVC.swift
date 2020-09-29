@@ -58,9 +58,7 @@ class GarageAddLocationVC: BaseVC {
     }
     
     @IBAction func currentLocationBtnAction(_ sender: UIButton) {
-//        self.setupLocations()
-        self.locationManager.delegate = self
-        self.locationManager.startUpdatingLocation()
+        self.didTapMyLocationButton(for: mapView)
     }
     
     
@@ -81,9 +79,9 @@ class GarageAddLocationVC: BaseVC {
 extension GarageAddLocationVC {
     
     private func initialSetup() {
-        self.prepareMap()
-        setAddress()
         setupLocations()
+        self.prepareMap()
+        self.setAddress()
         logoImgView.image = GarageProfileModel.shared.logo
         garageName.text = GarageProfileModel.shared.serviceCenterName
         self.saveContinueBtn.isEnabled = false
@@ -91,6 +89,7 @@ extension GarageAddLocationVC {
     
     private func prepareMap() {
         self.mapView.isMyLocationEnabled = true
+        self.mapView.settings.myLocationButton = true
         self.mapView.delegate = self
         self.locationManager.delegate = self
         markerView.image = #imageLiteral(resourceName: "markerIcon")
@@ -174,12 +173,14 @@ extension GarageAddLocationVC :  GMSMapViewDelegate ,CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-        print("locations = \(locValue.latitude) \(locValue.longitude)")
-        self.locationValue = locValue
-        isMarkerAnimation = false
-        self.moveMarker(coordinate: locationValue)
-        self.setAddress()
+        if let location  = locations.last {
+            self.locationValue = location.coordinate
+            isMarkerAnimation = false
+            self.moveMarker(coordinate: locationValue)
+            self.setAddress()
+        }
+        locationManager.stopUpdatingLocation()
+       
     }
     
     func mapView(_ mapView: GMSMapView, willMove gesture: Bool) {
@@ -195,6 +196,16 @@ extension GarageAddLocationVC :  GMSMapViewDelegate ,CLLocationManagerDelegate {
             self.setAddress()
         }
         currentZoomLevel = position.zoom
+    }
+    
+   @discardableResult func didTapMyLocationButton(for mapView: GMSMapView) -> Bool {
+        guard let lat = mapView.myLocation?.coordinate.latitude,
+               let lng = mapView.myLocation?.coordinate.longitude else { return false }
+        self.isMarkerAnimation = false
+        self.locationValue = CLLocationCoordinate2D.init(latitude: lat, longitude: lng)
+        moveMarker(coordinate:  self.locationValue)
+        self.setAddress()
+        return true
     }
     
     func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
