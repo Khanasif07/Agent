@@ -20,6 +20,7 @@ class FacilityModel{
     var updatedAt : String = ""
     var id : String = ""
     var category : [SubCategoryModel] = []
+    var subCategory: [Brands] = []
     var isSelected: Bool = false
     var isSubCategorySelected : Bool = false
     
@@ -30,7 +31,8 @@ class FacilityModel{
         self.name = json[ApiKey.name].stringValue
         self.updatedAt = json[ApiKey.updatedAt].stringValue
         self.isDelete = json[ApiKey.isDelete].stringValue
-       
+        self.subCategory = json[ApiKey.brands].arrayValue.map({Brands($0)})
+      
         for cat in categoryArr {
             self.category.append(SubCategoryModel(cat))
         }
@@ -54,3 +56,35 @@ class SubCategoryModel{
     }
 }
 
+class Brands {
+    var id :String = ""
+    var categoryId: String = ""
+    var countryId : String = ""
+    var countryName : String = ""
+    var createdAt : String = ""
+    var iconImage : String = ""
+    var isDelete : String = ""
+    var name : String = ""
+    var serviceId : String = ""
+    var status: String = ""
+    var updatedAt: String = ""
+    var type: String = ""
+    var isSelected: Bool = false
+
+    init(_ json : JSON = JSON()) {
+        self.id = json[ApiKey._id].stringValue
+        self.categoryId = json[ApiKey.categoryId].stringValue
+        self.countryId = json[ApiKey.countryId].stringValue
+        self.countryName = json[ApiKey.countryName].stringValue
+        self.createdAt = json[ApiKey.createdAt].stringValue
+        self.iconImage = json[ApiKey.iconImage].stringValue
+        self.isDelete = json[ApiKey.name].stringValue
+        
+        self.name = json[ApiKey.name].stringValue
+        self.serviceId = json[ApiKey.serviceId].stringValue
+        self.status = json[ApiKey.status].stringValue
+        self.updatedAt = json[ApiKey.updatedAt].stringValue
+        self.type = json[ApiKey.type].stringValue
+
+    }
+}

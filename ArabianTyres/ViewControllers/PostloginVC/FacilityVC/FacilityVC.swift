@@ -102,7 +102,7 @@ extension FacilityVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if viewModel.facilityDataArr[section].isSelected {
-            return viewModel.facilityDataArr[section].category.count
+            return viewModel.facilityDataArr[section].subCategory.count
         }else {
             return 0
         }
@@ -130,15 +130,19 @@ extension FacilityVC : UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(with: FacilityTableViewCell.self, indexPath: indexPath)
-        cell.subCategoryName.text = viewModel.facilityDataArr[indexPath.section].category[indexPath.row].name
-        cell.checkBtn.isSelected = viewModel.facilityDataArr[indexPath.section].category[indexPath.row].isSelected
+//               cell.checkBtn.isSelected = viewModel.facilityDataArr[indexPath.section].category[indexPath.row].isSelected
+
+        cell.subCategoryName.text = viewModel.facilityDataArr[indexPath.section].subCategory[indexPath.row].name
+
+//        cell.subCategoryName.text = viewModel.facilityDataArr[indexPath.section].category[indexPath.row].name
+        cell.checkBtn.isSelected = viewModel.facilityDataArr[indexPath.section].subCategory[indexPath.row].isSelected
         
-        cell.cellBtnTapped = {[weak self] in
+        cell.cellBtnTapped = { [weak self] in
             guard let `self` = self else {return}
 
          
-            self.viewModel.facilityDataArr[indexPath.section].category[indexPath.row].isSelected.toggle()
-            if let _ = self.viewModel.facilityDataArr[indexPath.section].category.firstIndex(where: { (model) -> Bool in
+            self.viewModel.facilityDataArr[indexPath.section].subCategory[indexPath.row].isSelected.toggle()
+            if let _ = self.viewModel.facilityDataArr[indexPath.section].subCategory.firstIndex(where: { (model) -> Bool in
                 return model.isSelected
                 
             }) {
@@ -171,6 +175,7 @@ extension FacilityVC :GarageRegistrationVMDelegate{
                     return model.id == item.id
                 }){
                     viewModel.facilityDataArr[index].isSubCategorySelected = true
+//                    viewModel.facilityDataArr[index].subCategory[index].isSelected = true
                     viewModel.facilityDataArr[index].category = self.selectedItemArr[firstIndex].category
                     }
                 }
