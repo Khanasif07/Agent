@@ -170,13 +170,20 @@ extension FacilityVC :GarageRegistrationVMDelegate{
   
     func getfacilitySuccess(){
         if !selectedItemArr.isEmpty {
-            for (index,item) in viewModel.facilityDataArr.enumerated() {
+            for (indexx,item) in viewModel.facilityDataArr.enumerated() {
                 if let firstIndex = self.selectedItemArr.firstIndex(where: { (model) -> Bool in
                     return model.id == item.id
                 }){
-                    viewModel.facilityDataArr[index].isSubCategorySelected = true
-//                    viewModel.facilityDataArr[index].subCategory[index].isSelected = true
-                    viewModel.facilityDataArr[index].category = self.selectedItemArr[firstIndex].category
+                    viewModel.facilityDataArr[indexx].isSubCategorySelected = true
+                    for (index,item) in viewModel.facilityDataArr[indexx].subCategory.enumerated(){
+                        if let firstIndex = self.selectedItemArr[firstIndex].subCategory.firstIndex(where: { (model) -> Bool in
+                            return model.id == item.id
+                        }){
+                            viewModel.facilityDataArr[indexx].subCategory[firstIndex].isSelected = true
+                        }
+                    }
+                    
+//                    viewModel.facilityDataArr[index].category = self.selectedItemArr[firstIndex].category
                     }
                 }
             }
