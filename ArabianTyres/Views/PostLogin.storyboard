@@ -860,7 +860,7 @@ Service Center</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K6k-2P-bnE">
-                                                <rect key="frame" x="22" y="16" width="370" height="665"/>
+                                                <rect key="frame" x="22" y="16" width="370" height="661"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Logo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rdE-Yu-JNf">
                                                         <rect key="frame" x="16" y="13" width="75" height="20"/>
@@ -869,10 +869,10 @@ Service Center</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sfv-hM-apI" customClass="RectangularDashedView" customModule="ArabianTyres" customModuleProvider="target">
-                                                        <rect key="frame" x="16" y="41.5" width="80" height="80"/>
+                                                        <rect key="frame" x="18" y="41.5" width="76" height="76"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icImg" translatesAutoresizingMaskIntoConstraints="NO" id="oJc-BN-aA7">
-                                                                <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                                                <rect key="frame" x="-2" y="-2" width="80" height="80"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="80" id="IlJ-ZK-8iM"/>
@@ -885,7 +885,7 @@ Service Center</string>
                                                                 </userDefinedRuntimeAttributes>
                                                             </imageView>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T2B-MG-ztU">
-                                                                <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                                                <rect key="frame" x="-2" y="-2" width="80" height="80"/>
                                                                 <inset key="imageEdgeInsets" minX="0.0" minY="10" maxX="10" maxY="0.0"/>
                                                                 <state key="normal" image="editProfile"/>
                                                                 <connections>
@@ -893,20 +893,20 @@ Service Center</string>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstItem="T2B-MG-ztU" firstAttribute="bottom" secondItem="oJc-BN-aA7" secondAttribute="bottom" id="4qb-n6-mKK"/>
                                                             <constraint firstItem="T2B-MG-ztU" firstAttribute="trailing" secondItem="oJc-BN-aA7" secondAttribute="trailing" id="5aN-TZ-ybp"/>
-                                                            <constraint firstItem="oJc-BN-aA7" firstAttribute="top" secondItem="sfv-hM-apI" secondAttribute="top" id="AsL-wz-j4f"/>
+                                                            <constraint firstItem="oJc-BN-aA7" firstAttribute="top" secondItem="sfv-hM-apI" secondAttribute="top" constant="-2" id="AsL-wz-j4f"/>
                                                             <constraint firstItem="T2B-MG-ztU" firstAttribute="top" secondItem="oJc-BN-aA7" secondAttribute="top" id="axe-ra-ri0"/>
-                                                            <constraint firstAttribute="trailing" secondItem="oJc-BN-aA7" secondAttribute="trailing" id="b2f-91-bEa"/>
+                                                            <constraint firstAttribute="trailing" secondItem="oJc-BN-aA7" secondAttribute="trailing" constant="-2" id="b2f-91-bEa"/>
                                                             <constraint firstItem="T2B-MG-ztU" firstAttribute="leading" secondItem="oJc-BN-aA7" secondAttribute="leading" id="bxW-G7-cHc"/>
-                                                            <constraint firstItem="oJc-BN-aA7" firstAttribute="leading" secondItem="sfv-hM-apI" secondAttribute="leading" id="hJx-Ij-ywi"/>
-                                                            <constraint firstAttribute="bottom" secondItem="oJc-BN-aA7" secondAttribute="bottom" id="mcK-bt-Wwe"/>
+                                                            <constraint firstItem="oJc-BN-aA7" firstAttribute="leading" secondItem="sfv-hM-apI" secondAttribute="leading" constant="-2" id="hJx-Ij-ywi"/>
+                                                            <constraint firstAttribute="bottom" secondItem="oJc-BN-aA7" secondAttribute="bottom" constant="-2" id="mcK-bt-Wwe"/>
                                                         </constraints>
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eKk-Uq-VPF" customClass="AppButton" customModule="ArabianTyres">
-                                                        <rect key="frame" x="137" y="593" width="217" height="56"/>
+                                                        <rect key="frame" x="137" y="589" width="217" height="56"/>
                                                         <color key="backgroundColor" red="0.090196078430000007" green="0.1450980392" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="56" id="3zS-PR-bGl"/>
@@ -927,13 +927,13 @@ Service Center</string>
                                                         </connections>
                                                     </button>
                                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Garaga" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yae-qx-JWU">
-                                                        <rect key="frame" x="102.5" y="71.5" width="89" height="20"/>
+                                                        <rect key="frame" x="100.5" y="69.5" width="89" height="20"/>
                                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="3qk-s5-Hzv">
-                                                        <rect key="frame" x="14" y="153.5" width="340" height="180"/>
+                                                        <rect key="frame" x="14" y="149.5" width="340" height="180"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ELg-Rl-MOn" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
                                                                 <rect key="frame" x="0.0" y="0.0" width="340" height="50"/>
@@ -965,14 +965,14 @@ Service Center</string>
                                                         </subviews>
                                                     </stackView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vP4-Jb-GA6" customClass="GMSMapView">
-                                                        <rect key="frame" x="16" y="389.5" width="338" height="143"/>
+                                                        <rect key="frame" x="16" y="385.5" width="338" height="143"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="143" id="YXx-Sp-BYf"/>
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drag pointer to set exact location of your service center" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Tb-y2-Ngy">
-                                                        <rect key="frame" x="14" y="540.5" width="298" height="20.5"/>
+                                                        <rect key="frame" x="14" y="536.5" width="298" height="20.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="20.5" id="T2J-bR-29k"/>
                                                         </constraints>
@@ -981,7 +981,7 @@ Service Center</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="inQ-S5-Bdf">
-                                                        <rect key="frame" x="16" y="357.5" width="51" height="18"/>
+                                                        <rect key="frame" x="16" y="353.5" width="51" height="18"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="18" id="PtS-fz-G4L"/>
                                                         </constraints>
@@ -995,8 +995,11 @@ Service Center</string>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JKX-Pg-kye">
-                                                        <rect key="frame" x="334" y="355.5" width="20" height="22"/>
+                                                        <rect key="frame" x="334" y="351.5" width="20" height="22"/>
                                                         <state key="normal" image="icCurrentLoc"/>
+                                                        <connections>
+                                                            <action selector="currentLocationBtnAction:" destination="985-4V-OMz" eventType="touchUpInside" id="K3m-ZX-wBU"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -1008,9 +1011,9 @@ Service Center</string>
                                                     <constraint firstAttribute="trailing" secondItem="JKX-Pg-kye" secondAttribute="trailing" constant="16" id="8Qm-ec-5ro"/>
                                                     <constraint firstItem="JKX-Pg-kye" firstAttribute="centerY" secondItem="inQ-S5-Bdf" secondAttribute="centerY" id="Ese-jV-OCO"/>
                                                     <constraint firstItem="Yae-qx-JWU" firstAttribute="leading" secondItem="sfv-hM-apI" secondAttribute="trailing" constant="6.5" id="Iwh-2u-mzg"/>
+                                                    <constraint firstItem="oJc-BN-aA7" firstAttribute="leading" secondItem="K6k-2P-bnE" secondAttribute="leading" constant="16" id="KvE-Y2-Iwv"/>
                                                     <constraint firstItem="eKk-Uq-VPF" firstAttribute="top" secondItem="2Tb-y2-Ngy" secondAttribute="bottom" constant="32" id="LcR-Tn-nlv"/>
                                                     <constraint firstItem="2Tb-y2-Ngy" firstAttribute="top" secondItem="vP4-Jb-GA6" secondAttribute="bottom" constant="8" id="MPG-c2-lbp"/>
-                                                    <constraint firstItem="sfv-hM-apI" firstAttribute="leading" secondItem="rdE-Yu-JNf" secondAttribute="leading" id="NHv-n6-Y3X"/>
                                                     <constraint firstItem="Yae-qx-JWU" firstAttribute="centerY" secondItem="sfv-hM-apI" secondAttribute="centerY" id="Ps8-B9-Aoh"/>
                                                     <constraint firstItem="vP4-Jb-GA6" firstAttribute="top" secondItem="inQ-S5-Bdf" secondAttribute="bottom" constant="14" id="Qb0-am-gfE"/>
                                                     <constraint firstItem="3qk-s5-Hzv" firstAttribute="top" secondItem="sfv-hM-apI" secondAttribute="bottom" constant="32" id="ReS-um-BmX"/>

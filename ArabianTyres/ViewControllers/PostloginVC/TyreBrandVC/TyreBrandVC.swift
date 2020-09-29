@@ -95,7 +95,9 @@ class TyreBrandVC: BaseVC {
         listing(listingType: .countries, BrandsListings: brandListingArr, countryListings: countryListingArr)
         tyreBrandCheckBtn.isSelected = true
         countryOriginCheckBtn.isSelected = false
+        
         tyreBrandCustomView.rightImgView.isHidden = false
+        tyreBrandCustomView.layer.masksToBounds = true
         if  !tyreBrandCheckBtn.isSelected {
             self.view.setNeedsLayout()
             UIView.animate(withDuration: 1.0) {
@@ -110,6 +112,7 @@ class TyreBrandVC: BaseVC {
         listing(listingType: .brands, BrandsListings: brandListingArr, countryListings: countryListingArr)
         countryOriginCheckBtn.isSelected = true
         tyreBrandCheckBtn.isSelected = false
+        countryOriginCustomView.layer.masksToBounds = true
         countryOriginCustomView.rightImgView.isHidden = false
         if  !countryOriginCheckBtn.isSelected {
             self.view.setNeedsLayout()
