@@ -38,6 +38,18 @@ class FacilityModel{
         }
     }
     
+    func getSelectedService() -> JSONDictionary {
+        var brandArr : [JSONDictionary] = []
+        var dict : JSONDictionary = [ApiKey.serviceId: self.id,ApiKey.serviceName: self.name]
+        for cat in subCategory {
+            if cat.isSelected {
+                brandArr.append(cat.getSelectedBrands())
+            }
+        }
+        dict[ApiKey.brands] = brandArr
+        return dict
+    }
+    
     func updateModel() {
         self.isSelected = false
         self.isSubCategorySelected = false
@@ -57,6 +69,7 @@ class SubCategoryModel{
 }
 
 class Brands {
+ 
     var id :String = ""
     var categoryId: String = ""
     var countryId : String = ""
@@ -86,5 +99,10 @@ class Brands {
         self.updatedAt = json[ApiKey.updatedAt].stringValue
         self.type = json[ApiKey.type].stringValue
 
+    }
+    
+    func getSelectedBrands() -> JSONDictionary {
+        let dict : JSONDictionary = [ApiKey.brandName: self.name, ApiKey.brandId: self.id]
+        return dict
     }
 }

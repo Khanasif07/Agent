@@ -26,6 +26,7 @@ enum AppRouter {
     // MARK: - Show Landing Screen
     //===========================
     static func checkAppInitializationFlow() {
+//        goToTestingVC()
         if isUserLoggedin {
             if !isPhoneNoVerified{
                 AppUserDefaults.removeValue(forKey: .accesstoken)
@@ -50,7 +51,7 @@ enum AppRouter {
     }
     
     static func goToTestingVC(){
-        let scene = TyreBrandVC.instantiate(fromAppStoryboard: .UserHomeScreen)
+        let scene = GarageProfileStep2VC.instantiate(fromAppStoryboard: .Garage)
         setAsWindowRoot(scene)
     }
     

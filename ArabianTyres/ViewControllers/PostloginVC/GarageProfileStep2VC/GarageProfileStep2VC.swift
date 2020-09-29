@@ -350,9 +350,9 @@ extension GarageProfileStep2VC: FacilitiesDelegate {
         customView.collView.reloadData()
         view.layoutIfNeeded()
         view.setNeedsLayout()
+        GarageProfileModel.shared.services.removeAll()
         selectedFacilitiesArr.forEach { (model) in
-            let data : JSONDictionary = [ApiKey.serviceId: model.id,ApiKey.serviceName: model.name,ApiKey.brands: []]
-            GarageProfileModel.shared.services.append(data)
+            GarageProfileModel.shared.services.append(model.getSelectedService())
         }
     }
 }
