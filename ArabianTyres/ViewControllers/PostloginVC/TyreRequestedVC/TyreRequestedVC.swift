@@ -221,3 +221,35 @@ extension TyreRequestedVC: SuccessPopupVCDelegate {
         }
     }
 }
+//
+//extension TyreRequestedVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return TyreRequestModel.shared.tyreBrandsListing.isEmpty ? TyreRequestModel.shared.countriesListing.endIndex : TyreRequestModel.shared.tyreBrandsListing.endIndex
+//    }
+//    
+//    
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        let cell = collectionView.dequeueCell(with: FacilityCollectionViewCell.self, indexPath: indexPath)
+//        cell.cancelBtn.isHidden = true
+//        cell.cancelBtnHeightConstraint.constant = 0.0
+//        cell.skillLbl.contentMode = .center
+//        if TyreRequestModel.shared.tyreBrandsListing.isEmpty {
+//            cell.skillLbl.text = TyreRequestModel.shared.countriesListing[indexPath.item]
+//        }else {
+//            cell.skillLbl.text = TyreRequestModel.shared.tyreBrandsListing[indexPath.item]
+//        }
+//        cell.layoutSubviews()
+//        return cell
+//    }
+//    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        return cardSizeForItemAt(collectionView,layout: collectionViewLayout,indexPath: indexPath)
+//    }
+//    
+//    private func cardSizeForItemAt(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, indexPath: IndexPath) -> CGSize {
+//        let dataArr = TyreRequestModel.shared.tyreBrandsListing.isEmpty ? TyreRequestModel.shared.countriesListing : TyreRequestModel.shared.tyreBrandsListing
+//        let textSize = dataArr[indexPath.row].sizeCount(withFont: AppFonts.NunitoSansSemiBold.withSize(14.0), boundingSize: CGSize(width: 10000.0, height: collectionView.frame.height))
+//        return CGSize(width: textSize.width + 16, height: 34.0)
+//    }
+//    
+//}

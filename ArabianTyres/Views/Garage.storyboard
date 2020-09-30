@@ -101,7 +101,7 @@ Service Center</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XOC-VN-ukl">
-                                                <rect key="frame" x="22" y="151.5" width="376" height="302"/>
+                                                <rect key="frame" x="22" y="151.5" width="376" height="308"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Logo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8sr-pk-ks3">
                                                         <rect key="frame" x="16" y="13" width="344" height="21"/>
@@ -110,56 +110,44 @@ Service Center</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6zl-OG-UOq" customClass="RectangularDashedView" customModule="ArabianTyres" customModuleProvider="target">
-                                                        <rect key="frame" x="16" y="42" width="76" height="76"/>
-                                                        <subviews>
-                                                            <imageView clipsSubviews="YES" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icImg" translatesAutoresizingMaskIntoConstraints="NO" id="8YI-0d-MGp">
-                                                                <rect key="frame" x="-2" y="-2" width="80" height="80"/>
-                                                                <color key="backgroundColor" red="0.96470588235294119" green="0.96862745098039216" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" secondItem="8YI-0d-MGp" secondAttribute="height" multiplier="1:1" id="IQn-92-5A1"/>
-                                                                    <constraint firstAttribute="height" constant="80" id="etb-TA-Lo9"/>
-                                                                </constraints>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                        <real key="value" value="4"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                </userDefinedRuntimeAttributes>
-                                                            </imageView>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sbz-Zd-TAl">
-                                                                <rect key="frame" x="-2" y="-2" width="80" height="80"/>
-                                                                <inset key="imageEdgeInsets" minX="0.0" minY="10" maxX="10" maxY="0.0"/>
-                                                                <state key="normal" image="editProfile"/>
-                                                                <connections>
-                                                                    <action selector="editLogoBtnAction:" destination="KzW-Im-RfD" eventType="touchUpInside" id="6NV-bQ-yCS"/>
-                                                                </connections>
-                                                            </button>
-                                                        </subviews>
+                                                        <rect key="frame" x="16" y="42" width="82" height="82"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="bottom" secondItem="8YI-0d-MGp" secondAttribute="bottom" constant="-2" id="EPq-B6-3eN"/>
-                                                            <constraint firstAttribute="trailing" secondItem="8YI-0d-MGp" secondAttribute="trailing" constant="-2" id="HMc-0T-ki4"/>
-                                                            <constraint firstItem="sbz-Zd-TAl" firstAttribute="leading" secondItem="8YI-0d-MGp" secondAttribute="leading" id="Ikg-P8-8hx"/>
-                                                            <constraint firstItem="sbz-Zd-TAl" firstAttribute="bottom" secondItem="8YI-0d-MGp" secondAttribute="bottom" id="Rl1-LA-eHC"/>
-                                                            <constraint firstItem="8YI-0d-MGp" firstAttribute="leading" secondItem="6zl-OG-UOq" secondAttribute="leading" constant="-2" id="djE-BE-LMz"/>
-                                                            <constraint firstItem="sbz-Zd-TAl" firstAttribute="trailing" secondItem="8YI-0d-MGp" secondAttribute="trailing" id="lad-mG-LPe"/>
-                                                            <constraint firstItem="8YI-0d-MGp" firstAttribute="top" secondItem="6zl-OG-UOq" secondAttribute="top" constant="-2" id="n52-vd-Gma"/>
-                                                            <constraint firstItem="sbz-Zd-TAl" firstAttribute="top" secondItem="8YI-0d-MGp" secondAttribute="top" id="pJP-YH-fGJ"/>
-                                                        </constraints>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                                 <real key="value" value="4"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
+                                                    <imageView clipsSubviews="YES" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icImg" translatesAutoresizingMaskIntoConstraints="NO" id="8YI-0d-MGp">
+                                                        <rect key="frame" x="17" y="43" width="80" height="80"/>
+                                                        <color key="backgroundColor" red="0.96470588235294119" green="0.96862745098039216" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="8YI-0d-MGp" secondAttribute="height" multiplier="1:1" id="IQn-92-5A1"/>
+                                                            <constraint firstAttribute="height" constant="80" id="etb-TA-Lo9"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="4"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </imageView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sbz-Zd-TAl">
+                                                        <rect key="frame" x="17" y="43" width="80" height="80"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="10" maxX="10" maxY="0.0"/>
+                                                        <state key="normal" image="editProfile"/>
+                                                        <connections>
+                                                            <action selector="editLogoBtnAction:" destination="KzW-Im-RfD" eventType="touchUpInside" id="6NV-bQ-yCS"/>
+                                                        </connections>
+                                                    </button>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8lt-g9-eBk" customClass="CustomTextView" customModule="ArabianTyres" customModuleProvider="target">
-                                                        <rect key="frame" x="16" y="138" width="344" height="60"/>
+                                                        <rect key="frame" x="16" y="144" width="344" height="60"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="WGu-OM-R58"/>
                                                         </constraints>
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zbe-FO-vzV" customClass="AppButton" customModule="ArabianTyres" customModuleProvider="target">
-                                                        <rect key="frame" x="143" y="230" width="217" height="56"/>
+                                                        <rect key="frame" x="143" y="236" width="217" height="56"/>
                                                         <color key="backgroundColor" red="0.090196078430000007" green="0.1450980392" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="56" id="Xha-fu-quO"/>
@@ -183,15 +171,23 @@ Service Center</string>
                                                 <constraints>
                                                     <constraint firstItem="6zl-OG-UOq" firstAttribute="leading" secondItem="8sr-pk-ks3" secondAttribute="leading" id="7hH-2r-p66"/>
                                                     <constraint firstItem="8sr-pk-ks3" firstAttribute="top" secondItem="XOC-VN-ukl" secondAttribute="top" constant="13" id="Bhw-ER-fns"/>
+                                                    <constraint firstItem="sbz-Zd-TAl" firstAttribute="top" secondItem="8YI-0d-MGp" secondAttribute="top" id="CeH-S4-KVD"/>
                                                     <constraint firstItem="Zbe-FO-vzV" firstAttribute="trailing" secondItem="8sr-pk-ks3" secondAttribute="trailing" id="DSm-Zx-CFT"/>
+                                                    <constraint firstItem="8YI-0d-MGp" firstAttribute="leading" secondItem="6zl-OG-UOq" secondAttribute="leading" constant="1" id="F7H-jN-qM4"/>
                                                     <constraint firstItem="8lt-g9-eBk" firstAttribute="top" secondItem="6zl-OG-UOq" secondAttribute="bottom" constant="20" id="N3a-tU-C1J"/>
                                                     <constraint firstItem="8lt-g9-eBk" firstAttribute="leading" secondItem="8sr-pk-ks3" secondAttribute="leading" id="N60-EY-21C"/>
                                                     <constraint firstItem="6zl-OG-UOq" firstAttribute="top" secondItem="8sr-pk-ks3" secondAttribute="bottom" constant="8" id="RwS-Uf-3mC"/>
+                                                    <constraint firstItem="sbz-Zd-TAl" firstAttribute="trailing" secondItem="8YI-0d-MGp" secondAttribute="trailing" id="XGE-Z7-YXj"/>
                                                     <constraint firstItem="8lt-g9-eBk" firstAttribute="trailing" secondItem="8sr-pk-ks3" secondAttribute="trailing" id="XKS-BG-Hot"/>
                                                     <constraint firstItem="Zbe-FO-vzV" firstAttribute="top" secondItem="8lt-g9-eBk" secondAttribute="bottom" constant="32" id="ZSG-6Y-p6R"/>
                                                     <constraint firstAttribute="trailing" secondItem="8sr-pk-ks3" secondAttribute="trailing" constant="16" id="aSQ-GY-xS1"/>
                                                     <constraint firstItem="8sr-pk-ks3" firstAttribute="leading" secondItem="XOC-VN-ukl" secondAttribute="leading" constant="16" id="hgj-bm-gGO"/>
                                                     <constraint firstAttribute="bottom" secondItem="Zbe-FO-vzV" secondAttribute="bottom" constant="16" id="pu0-1F-7C5"/>
+                                                    <constraint firstItem="8YI-0d-MGp" firstAttribute="trailing" secondItem="6zl-OG-UOq" secondAttribute="trailing" constant="-1" id="tIy-um-msU"/>
+                                                    <constraint firstItem="8YI-0d-MGp" firstAttribute="bottom" secondItem="6zl-OG-UOq" secondAttribute="bottom" constant="-1" id="w11-HT-d2S"/>
+                                                    <constraint firstItem="sbz-Zd-TAl" firstAttribute="bottom" secondItem="8YI-0d-MGp" secondAttribute="bottom" id="x1N-5O-c9S"/>
+                                                    <constraint firstItem="8YI-0d-MGp" firstAttribute="top" secondItem="6zl-OG-UOq" secondAttribute="top" constant="1" id="xRC-g5-gRo"/>
+                                                    <constraint firstItem="sbz-Zd-TAl" firstAttribute="leading" secondItem="8YI-0d-MGp" secondAttribute="leading" id="zR9-RG-7Ke"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -237,6 +233,7 @@ Service Center</string>
                         <outlet property="addLogoLbl" destination="8sr-pk-ks3" id="AFd-9y-TD5"/>
                         <outlet property="containerView" destination="XOC-VN-ukl" id="Jg7-MC-hDy"/>
                         <outlet property="customTView" destination="8lt-g9-eBk" id="T36-bI-4me"/>
+                        <outlet property="dashedView" destination="6zl-OG-UOq" id="LIe-kV-E3l"/>
                         <outlet property="editLogoBtn" destination="sbz-Zd-TAl" id="zKY-th-VWe"/>
                         <outlet property="garageDetailLbl" destination="QX3-yK-RQ9" id="om2-Zf-tTb"/>
                         <outlet property="headingLbl" destination="ZWN-4w-b8x" id="g6h-fh-ipu"/>

@@ -25,7 +25,8 @@ class CompleteProfileStep1: BaseVC {
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var saveContinueBtn: AppButton!
     @IBOutlet weak var editLogoBtn: UIButton!
-    
+    @IBOutlet weak var dashedView: RectangularDashedView!
+
     // MARK: - Variables
     //===========================
     var viewModel = ProfileVM()
@@ -169,6 +170,7 @@ extension CompleteProfileStep1 {
     func setPreFillData() {
         logoImgView.contentMode = .scaleToFill
         logoImgView.setImage_kf(imageString: GarageProfileModel.shared.logoUrl, placeHolderImage: #imageLiteral(resourceName: "icImg"), loader: true)
+        dashedView.isHidden = true
         addressTxtField.text = GarageProfileModel.shared.address
         nameTxtField.text = GarageProfileModel.shared.serviceCenterName
         distTxtField.text = GarageProfileModel.shared.serviceCenterDist
@@ -256,6 +258,7 @@ extension CompleteProfileStep1: UIImagePickerControllerDelegate,UINavigationCont
         editLogoBtn.setImage(#imageLiteral(resourceName: "vector"), for: .normal)
         logoImgView.contentMode = .scaleToFill
         logoImgView.image = image
+        dashedView.isHidden = true
         image?.upload(progress: { (progress) in
             printDebug(progress)
         }, completion: { (response,error) in
