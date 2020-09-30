@@ -19,7 +19,6 @@ class FacilityModel{
     var name : String = ""
     var updatedAt : String = ""
     var id : String = ""
-    var category : [SubCategoryModel] = []
     var subCategory: [Brands] = []
     var isSelected: Bool = false
     var isSubCategorySelected : Bool = false
@@ -32,10 +31,7 @@ class FacilityModel{
         self.updatedAt = json[ApiKey.updatedAt].stringValue
         self.isDelete = json[ApiKey.isDelete].stringValue
         self.subCategory = json[ApiKey.brands].arrayValue.map({Brands($0)})
-      
-        for cat in categoryArr {
-            self.category.append(SubCategoryModel(cat))
-        }
+   
     }
     
     func getSelectedService() -> JSONDictionary {
@@ -53,20 +49,12 @@ class FacilityModel{
     func updateModel() {
         self.isSelected = false
         self.isSubCategorySelected = false
-        self.category.forEach { (model) in
-            model.isSelected = false
+        subCategory.forEach { (brand) in
+            brand.isSelected = false
         }
     }
 }
 
-class SubCategoryModel{
-    var name: String = ""
-    var isSelected: Bool = false
-    
-    init(_ name: String) {
-        self.name = name
-    }
-}
 
 class Brands {
  
@@ -78,6 +66,8 @@ class Brands {
     var iconImage : String = ""
     var isDelete : String = ""
     var name : String = ""
+    var brandName : String = ""
+
     var serviceId : String = ""
     var status: String = ""
     var updatedAt: String = ""
@@ -93,6 +83,8 @@ class Brands {
         self.iconImage = json[ApiKey.iconImage].stringValue
         self.isDelete = json[ApiKey.name].stringValue
         
+        self.brandName = json[ApiKey.brandName].stringValue
+
         self.name = json[ApiKey.name].stringValue
         self.serviceId = json[ApiKey.serviceId].stringValue
         self.status = json[ApiKey.status].stringValue

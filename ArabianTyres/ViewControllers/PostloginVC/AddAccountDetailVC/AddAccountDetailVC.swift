@@ -62,7 +62,7 @@ class AddAccountDetailVC: BaseVC {
     }
     
     @IBAction func helpBtnAction(_ sender: UIButton) {
-//        self.pop()
+        showAlert(msg: LocalizedString.underDevelopment.localized)
     }
     
     @IBAction func addBtnAction(_ sender: UIButton) {

@@ -78,8 +78,7 @@ class UploadDocumentVC: BaseVC {
     }
     
     @IBAction func helpBtnAction(_ sender: UIButton) {
-        print("help btn tapped")
-
+        showAlert(msg: LocalizedString.underDevelopment.localized)
     }
 }
 

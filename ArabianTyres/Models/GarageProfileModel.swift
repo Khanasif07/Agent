@@ -148,18 +148,36 @@ struct GarageProfilePreFillModel {
         GarageProfileModel.shared.accountNumber = model.accountNumber
         GarageProfileModel.shared.serviceCenterDist = model.serviceCenterDist
         GarageProfileModel.shared.serviceCenterImages = model.serviceCenterImages
-
+        
+    }
+    
+    func getBrandAndServiceName()-> [String] {
+        var arr : [String] = []
+        services.forEach { (model) in
+            if model.brands.isEmpty {
+                arr.append(model.serviceName)
+            }else {
+                model.brands.forEach { (brand) in
+                    let txt = brand.brandName + " (\(model.serviceName))"
+                    arr.append(txt)
+                }
+            }
+        }
+        return arr
     }
 }
 
 struct ServicesModel {
     var serviceName : String = ""
     var serviceId : String = ""
-    var brands : [String] = []
+    var brands : [Brands] = []
     
     init(_ json : JSON = JSON()) {
         self.serviceName = json[ApiKey.serviceName].stringValue
         self.serviceId = json[ApiKey.serviceId].stringValue
-        self.brands = []
+        self.brands = json[ApiKey.brands].arrayValue.map({Brands($0)})
     }
+
 }
+
+

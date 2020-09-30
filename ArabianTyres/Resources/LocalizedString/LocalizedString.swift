@@ -262,7 +262,7 @@ enum LocalizedString : String {
     case oilImage
     case selectNumberOfUnitYouWant
     case viewTutorial
-    
+    case underDevelopment
     
     // MARK: - Home  VC Values
     //==============================

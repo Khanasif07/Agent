@@ -113,4 +113,22 @@ class GarageRegistrationVM {
 
         }
     }
+    
+    func getBrandAndServiceName(data : [FacilityModel])-> [String] {
+        var arr : [String] = []
+        data.forEach { (model) in
+            if model.subCategory.isEmpty {
+                arr.append(model.name)
+            }else {
+                model.subCategory.forEach { (brand) in
+                    if brand.isSelected {
+                        let txt = brand.name + " (\(model.name))"
+                        arr.append(txt)
+
+                    }
+                }
+            }
+        }
+        return arr
+    }
 }

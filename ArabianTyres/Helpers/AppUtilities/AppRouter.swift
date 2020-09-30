@@ -292,7 +292,7 @@ enum AppRouter {
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
-    static func goToFacilityVC(vc: UIViewController,data: [FacilityModel]){
+    static func goToFacilityVC(vc: UIViewController,data: [FacilityModel], brandAndServiceArr: [String]){
         let scene = FacilityVC.instantiate(fromAppStoryboard: .Garage)
         scene.delegate = vc as? FacilitiesDelegate
         scene.selectedItemArr = data
