@@ -355,7 +355,7 @@ looking for?</string>
                                             <action selector="backBtnAction:" destination="uZL-xP-exo" eventType="touchUpInside" id="IOQ-Zv-hn2"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ue3-pc-dUQ">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ue3-pc-dUQ">
                                         <rect key="frame" x="378" y="7" width="30" height="30"/>
                                         <state key="normal" image="arrow"/>
                                         <connections>

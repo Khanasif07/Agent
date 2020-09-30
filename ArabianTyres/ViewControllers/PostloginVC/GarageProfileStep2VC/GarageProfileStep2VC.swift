@@ -32,7 +32,7 @@ class GarageProfileStep2VC: BaseVC {
     //===========================
     var selectedFacilitiesArr : [FacilityModel] = []
     var serviceImagesArray = [String]()
-    var imagesArray = [ImageModel]()
+//    var imagesArray = [ImageModel]()
     var selectBrandAndServiceArr : [String] = []
     fileprivate var hasImageUploaded = true {
         didSet {
@@ -75,13 +75,21 @@ class GarageProfileStep2VC: BaseVC {
     @IBAction func helpBtnAction(_ sender: UIButton) {
         showAlert(msg: LocalizedString.underDevelopment.localized)
     }
-
+    
     @IBAction func saveAndContinueAction(_ sender: UIButton) {
+        if selectBrandAndServiceArr.isEmpty {
+            CommonFunctions.showToastWithMessage(LocalizedString.pleaseSelectServices.localized)
+            return
+        }
+        if GarageProfileModel.shared.serviceCenterImages.isEmpty {
+            CommonFunctions.showToastWithMessage(LocalizedString.pleaseSelectServiceCenterImage.localized)
+            return
+        }
         AppRouter.goToAddAccountVC(vc: self, screenType: .garageProfile)
     }
     
-    func reloadCollectionViewWithUIUpdation(){
-        if imagesArray.count > 2 {
+       func reloadCollectionViewWithUIUpdation(){
+        if GarageProfileModel.shared.serviceCenterImages.endIndex > 2 {
             DispatchQueue.main.async {
                 self.collViewHeightConst.constant = 90 * 2
             }
@@ -90,15 +98,14 @@ class GarageProfileStep2VC: BaseVC {
             self.mainCollView.reloadData()
         }
     }
-    
-    @objc private func addImageBtnTapped(_ sender: UIButton) {
+    @objc func addImageBtnTapped(_ sender: UIButton) {
        if !self.hasImageUploaded{
            self.showAlert(msg: LocalizedString.wait_Img_Upload.localized)
            return
        }
        self.captureImage(delegate: self)
        }
-}
+    }
 
 // MARK: - Extension For Functions
 //===========================
@@ -168,9 +175,21 @@ extension GarageProfileStep2VC {
     
     private func setPreFilledData(){
         mainCollView.dataSource = self
-        imagesArray = GarageProfileModel.shared.serviceCenterImages
+//        imagesArray = GarageProfileModel.shared.serviceCenterImages
     }
 
+    @objc private func crossImageBtnTapped(_ sender: UIButton) {
+           if !self.hasImageUploaded{
+               self.showAlert(msg: LocalizedString.wait_Img_Upload.localized)
+               return
+           }
+           if let index = self.mainCollView.indexPath(forItem: sender){
+               if GarageProfileModel.shared.serviceCenterImages.endIndex > index.item {
+                   GarageProfileModel.shared.serviceCenterImages.remove(at: index.item)
+               }
+           }
+           self.reloadCollectionViewWithUIUpdation()
+       }
 }
 
 extension GarageProfileStep2VC: CustomTextViewDelegate{
@@ -190,10 +209,11 @@ extension GarageProfileStep2VC: UICollectionViewDelegate,UICollectionViewDataSou
             return selectBrandAndServiceArr.count
 
         }else {
-            if !self.imagesArray.isEmpty && self.imagesArray.count <= 4{
-                return self.imagesArray.count + 1
-            }else if self.imagesArray.count == 5{
-                return self.imagesArray.count
+            let imagesArray = GarageProfileModel.shared.serviceCenterImages
+            if !imagesArray.isEmpty && imagesArray.count <= 4{
+                return imagesArray.count + 1
+            }else if imagesArray.count == 5{
+                return imagesArray.count
             }else{
                 return 1
             }
@@ -203,15 +223,17 @@ extension GarageProfileStep2VC: UICollectionViewDelegate,UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == customView.collView {
             let cell = collectionView.dequeueCell(with: FacilityCollectionViewCell.self, indexPath: indexPath)
-            
             cell.skillLbl.text = selectBrandAndServiceArr[indexPath.item]
             cell.cancelBtn.addTarget(self, action: #selector(cancelBtnTapped(_:)), for: .touchUpInside)
             cell.layoutSubviews()
             return cell
                    
         }else {
+            let imagesArray = GarageProfileModel.shared.serviceCenterImages
             let imageCell = collectionView.dequeueCell(with: AddImageCollCell.self, indexPath: indexPath)
-                    if !self.hasImageUploaded && (indexPath.row == self.imagesArray.count - 1){
+                   imageCell.crossBtn.addTarget(self, action: #selector(crossImageBtnTapped(_:)), for: .touchUpInside)
+            
+                    if !self.hasImageUploaded && (indexPath.row == imagesArray.count - 1){
                         imageCell.activityIndictor.isHidden = false
                         imageCell.activityIndictor.startAnimating()
                     }else{
@@ -219,8 +241,8 @@ extension GarageProfileStep2VC: UICollectionViewDelegate,UICollectionViewDataSou
                         imageCell.activityIndictor.stopAnimating()
                     }
                     var data: ImageModel?
-                    if !self.imagesArray.isEmpty && self.imagesArray.count <= 4 && indexPath.item < self.imagesArray.count {
-                        data = self.imagesArray[indexPath.item]
+                    if !imagesArray.isEmpty && imagesArray.count <= 4 && indexPath.item < imagesArray.count {
+                        data = imagesArray[indexPath.item]
                         if let imageUrl = data?.url {
                             if imageUrl.isEmpty {
                                 imageCell.mainImgView.image = data?.image ?? nil
@@ -229,8 +251,8 @@ extension GarageProfileStep2VC: UICollectionViewDelegate,UICollectionViewDataSou
                             }
                         }
                         
-                    } else if !self.imagesArray.isEmpty && self.imagesArray.count == 5 && indexPath.item < self.imagesArray.count{
-                        data = self.imagesArray[indexPath.item]
+                    } else if !imagesArray.isEmpty && imagesArray.count == 5 && indexPath.item < imagesArray.count{
+                        data = imagesArray[indexPath.item]
                         if let imageUrl = data?.url {
                                 if imageUrl.isEmpty {
                                     imageCell.mainImgView.image = data?.image ?? nil
@@ -245,19 +267,21 @@ extension GarageProfileStep2VC: UICollectionViewDelegate,UICollectionViewDataSou
                     
                     imageCell.addImgBtn.addTarget(self, action: #selector(addImageBtnTapped(_:)), for: .touchUpInside)
 
-                    if !self.imagesArray.isEmpty{
+                    if !imagesArray.isEmpty{
                         
-                        if indexPath.item == self.imagesArray.count{
-            //                imageCell.addb.isHidden = true
+                        if indexPath.item == imagesArray.count{
+                            imageCell.crossBtn.isHidden = true
                             imageCell.addImgBtn.isHidden = false
+                            imageCell.dataContainerView.isHidden = false
                         }else{
-            //                imageCell.crossBtn.isHidden = false
+                            imageCell.crossBtn.isHidden = false
                             imageCell.addImgBtn.isHidden = true
+                            imageCell.dataContainerView.isHidden = true
                         }
                     }else{
-            //            imageCell.crossBtn.isHidden = true
+                           imageCell.crossBtn.isHidden = true
                            imageCell.addImgBtn.isHidden = false
-                        
+                           imageCell.dataContainerView.isHidden = false
                     }
                     return imageCell
         }
@@ -328,6 +352,9 @@ extension GarageProfileStep2VC: UIImagePickerControllerDelegate, UINavigationCon
                 self.hasImageUploaded = true
                 let lastIndex = GarageProfileModel.shared.serviceCenterImages.endIndex
                 GarageProfileModel.shared.serviceCenterImages[lastIndex-1].url = url
+                DispatchQueue.main.async {
+                                self.mainCollView.reloadData()
+                }
             }
             if let _ = error{
                 self.showAlert(msg: LocalizedString.imageUploadingFailed.localized)

@@ -215,13 +215,16 @@ extension GarageAddImageVC:UICollectionViewDelegate, UICollectionViewDataSource,
             if indexPath.item == imagesArray.count{
                 imageCell.crossBtn.isHidden = true
                 imageCell.addImgBtn.isHidden = false
+                imageCell.dataContainerView.isHidden = false
             }else{
                 imageCell.crossBtn.isHidden = false
                 imageCell.addImgBtn.isHidden = true
+                imageCell.dataContainerView.isHidden = true
             }
         }else{
             imageCell.crossBtn.isHidden = true
             imageCell.addImgBtn.isHidden = false
+            imageCell.dataContainerView.isHidden = false
             
         }
         return imageCell

@@ -204,6 +204,8 @@
 "installationPriceRange" = "Installation Price Range";
 "viewTutorial" = "View Tutorial";
 "underDevelopment" = "Under Development";
+"pleaseSelectServices" = "Please Select Services";
+"pleaseSelectServiceCenterImage" = "Please Select Service Center Image";
  // MARK: - Home  VC Values
 //==============================
 "tyre" = "Tyre";

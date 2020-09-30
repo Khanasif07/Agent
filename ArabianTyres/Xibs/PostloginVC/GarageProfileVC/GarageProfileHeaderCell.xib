@@ -138,36 +138,36 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="3O9-dG-yfM">
-                                <rect key="frame" x="8" y="115.5" width="283.5" height="44"/>
+                                <rect key="frame" x="8" y="115.5" width="285.5" height="44"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KKg-qU-GPf">
-                                        <rect key="frame" x="0.0" y="0.0" width="239.5" height="19"/>
+                                    <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KKg-qU-GPf">
+                                        <rect key="frame" x="0.0" y="0.0" width="239.5" height="0.0"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Installation Price Range: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8AJ-B8-3es">
-                                                <rect key="frame" x="0.0" y="0.0" width="155.5" height="19"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="155.5" height="0.0"/>
                                                 <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00 - 200 SAR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aLn-H2-d0J">
-                                                <rect key="frame" x="155.5" y="0.0" width="84" height="19"/>
+                                                <rect key="frame" x="155.5" y="0.0" width="84" height="0.0"/>
                                                 <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="14"/>
                                                 <color key="textColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PcK-2V-4Gp">
-                                        <rect key="frame" x="0.0" y="24" width="283.5" height="20"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="PcK-2V-4Gp">
+                                        <rect key="frame" x="0.0" y="0.0" width="285.5" height="44"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3EE-YE-a27">
-                                                <rect key="frame" x="0.0" y="0.0" width="58.5" height="20"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="58.5" height="44"/>
                                                 <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Canyon Road, Gharb Al Dhahran ..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zgI-DT-l2n">
-                                                <rect key="frame" x="58.5" y="0.0" width="225" height="20"/>
+                                                <rect key="frame" x="60.5" y="0.0" width="225" height="44"/>
                                                 <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="14"/>
                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -209,7 +209,7 @@
                             <constraint firstItem="i3S-V2-fWS" firstAttribute="leading" secondItem="KbM-BV-1jA" secondAttribute="leading" constant="8" id="Wu8-BW-Ovk"/>
                             <constraint firstAttribute="bottom" secondItem="XGg-mJ-hI5" secondAttribute="bottom" id="XYW-8h-rmd"/>
                             <constraint firstAttribute="trailing" secondItem="XGg-mJ-hI5" secondAttribute="trailing" id="cKP-95-bC9"/>
-                            <constraint firstItem="W1b-ft-Vr6" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="3O9-dG-yfM" secondAttribute="trailing" constant="6.5" id="e6K-wK-Ymx"/>
+                            <constraint firstItem="W1b-ft-Vr6" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="3O9-dG-yfM" secondAttribute="trailing" constant="4" id="e6K-wK-Ymx"/>
                             <constraint firstItem="3O9-dG-yfM" firstAttribute="top" secondItem="i3S-V2-fWS" secondAttribute="bottom" constant="16" id="fR0-eB-wCA"/>
                             <constraint firstItem="04b-ri-Btk" firstAttribute="top" secondItem="3O9-dG-yfM" secondAttribute="bottom" constant="8" id="jL1-Ax-YkU"/>
                             <constraint firstItem="XGg-mJ-hI5" firstAttribute="leading" secondItem="i3S-V2-fWS" secondAttribute="leading" id="l5o-kD-XES"/>

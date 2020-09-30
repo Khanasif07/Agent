@@ -155,6 +155,17 @@ extension UploadDocumentVC : UITableViewDelegate, UITableViewDataSource {
         case .ownerId:
             GarageProfileModel.shared.ownerId.remove(at: isFirstImg ? 0 : 1)
         }
+        var status : Bool = false
+        for section in Section.allCases  {
+            if section.imgArr.count == 0 {
+                status = false
+                break
+            }else {
+                 status = true
+                
+            }
+        }
+        saveAndContinueBtn.isEnabled = status
         mainTableView.reloadData()
     }
 }
@@ -207,7 +218,7 @@ extension UploadDocumentVC: UIImagePickerControllerDelegate,UINavigationControll
             }
             
         }
-        saveAndContinueBtn.isEnabled = true
+        saveAndContinueBtn.isEnabled = status
         mainTableView.reloadData()
     }
 }
