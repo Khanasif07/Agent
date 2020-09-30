@@ -106,25 +106,18 @@ extension LocationPopUpVC {
                     self.onAllowTap?()
                 }
             }
-            else { self.locationPermissonPopUp() }
+            else { self.openSettingApp() }
         }
-        else{ self.locationPermissonPopUp() }
+        else{ self.openSettingApp() }
     }
     
-    private func locationPermissonPopUp() {
-        openSettingApp(message: "We need permission to access this app")
-    }
-    
-    private func openSettingApp(message: String) {
-        
-        self.showAlertWithAction(title: "", msg: message, cancelTitle: LocalizedString.cancel.localized, actionTitle: "Ok", actioncompletion: {
+    private func openSettingApp() {
             guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
                 return
             }
             if UIApplication.shared.canOpenURL(settingsUrl) {
                 UIApplication.shared.open(settingsUrl, options: [:], completionHandler: nil)
             }
-        }) { }
     }
 }
 
