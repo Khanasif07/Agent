@@ -73,7 +73,7 @@ class GarageProfileStep2VC: BaseVC {
     }
 
     @IBAction func helpBtnAction(_ sender: UIButton) {
-//        self.pop()
+        showAlert(msg: LocalizedString.underDevelopment.localized)
     }
 
     @IBAction func saveAndContinueAction(_ sender: UIButton) {
