@@ -206,6 +206,8 @@ extension VehicleDetailForBatteryVC :UITextFieldDelegate {
             tempTextField = vehicleMakeTextField
             vehicleDetailtype = .make
             openBottomSheet(type: VehicleDetailType.make)
+            self.selectedMakeArr = []
+            self.vehicleModelTextField.text = ""
             return false
         case vehicleModelTextField:
             tempTextField = vehicleModelTextField
@@ -217,9 +219,21 @@ extension VehicleDetailForBatteryVC :UITextFieldDelegate {
             openBottomSheet(type: VehicleDetailType.model)
             return false
         case batteryNumberTextField:
+            if let text = textField.text {
+                if text.isEmpty{
+                    batteryNumberTextField.text = self.quantityPicker.dataArray.first
+                    TyreRequestModel.shared.quantity = self.quantityPicker.dataArray.first ?? ""
+                    submitBtnStatus()
+                }}
             tempTextField = batteryNumberTextField
             return true
         default:
+            if let text = textField.text {
+            if text.isEmpty{
+                productYearTextField.text = self.yearPicker.dataArray.first
+                TyreRequestModel.shared.year = self.yearPicker.dataArray.first ?? ""
+                submitBtnStatus()
+            }}
             tempTextField = productYearTextField
             return true
         }

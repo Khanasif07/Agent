@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import CoreLocation
+import GoogleMaps
+import GooglePlaces
 import SkyFloatingLabelTextField
 
 
 class TyreBrandVC: BaseVC {
-
+    
     // MARK: - IBOutlets
     //===========================
     @IBOutlet weak var thePreferredLbl: UILabel!
@@ -27,22 +30,28 @@ class TyreBrandVC: BaseVC {
     @IBOutlet weak var countryOriginLbl: UILabel!
     @IBOutlet weak var tyreBrandCheckBtn: UIButton!
     @IBOutlet weak var countryOriginCheckBtn: UIButton!
-
-
+    
+    
     // MARK: - Variables
     //===========================
     var placeHolderArr : [String] = [LocalizedString.enterVehicleMake.localized,
-     LocalizedString.enterVehicleModel.localized,
-     LocalizedString.enterModelYear.localized
+                                     LocalizedString.enterVehicleModel.localized,
+                                     LocalizedString.enterModelYear.localized
     ]
-   
+    
     var titleArr : [String] = [LocalizedString.vehicleMake.localized,
-                                 LocalizedString.vehicleModel.localized,
-                                 LocalizedString.modelYear.localized
-                                ]
+                               LocalizedString.vehicleModel.localized,
+                               LocalizedString.modelYear.localized
+    ]
     var brandListingArr :[TyreBrandModel] = []
     var countryListingArr :[TyreCountryModel] = []
     var listingType : ListingType = .brands
+    
+    //Location
+    private var locationValue = LocationController.sharedLocationManager.locationManager.location?.coordinate ?? CLLocationCoordinate2D(latitude: 34.052238, longitude: -118.24334)
+    private var locationManager = CLLocationManager()
+    private var isLocationEnable : Bool = true
+    private var isHitApi: Bool = false
     
     // MARK: - Lifecycle
     //===========================
@@ -50,7 +59,7 @@ class TyreBrandVC: BaseVC {
         super.viewDidLoad()
         initialSetup()
     }
-
+    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         containerView.createShadow(shadowColor: #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1))
@@ -59,7 +68,7 @@ class TyreBrandVC: BaseVC {
                 self.tBCustomViewHeightConstraint.constant = tyreBrandCustomView.collView.contentSize.height + 38.0
             }
         }else {
-                self.tBCustomViewHeightConstraint.constant = tyreBrandCheckBtn.isSelected ? 60.0 : 0.0
+            self.tBCustomViewHeightConstraint.constant = tyreBrandCheckBtn.isSelected ? 60.0 : 0.0
         }
         
         if !self.countryListingArr.isEmpty {
@@ -80,14 +89,16 @@ class TyreBrandVC: BaseVC {
     }
     
     @IBAction func submitBtnAction(_ sender: UIButton) {
-        AppRouter.presentLocationPopUpVC(vc: self)
+        isHitApi = true
+        setupLocations()
     }
     
     @IBAction func skipAndSubmitBtnAction(_ sender: UIButton) {
         deSelectBrands()
         deSelectCountry()
         listing(listingType: listingType, BrandsListings: brandListingArr, countryListings: countryListingArr)
-         AppRouter.presentLocationPopUpVC(vc: self)
+        isHitApi = true
+        setupLocations()
     }
     
     @IBAction func tyreCheckBtnAction(_ sender: UIButton) {
@@ -122,7 +133,7 @@ class TyreBrandVC: BaseVC {
             }
         }
     }
-   
+    
 }
 
 // MARK: - Extension For Functions
@@ -130,6 +141,8 @@ class TyreBrandVC: BaseVC {
 extension TyreBrandVC {
     
     private func initialSetup() {
+        self.isHitApi = false
+        self.locationManager.delegate = self
         brandListingArr = TyreRequestModel.shared.selectedTyreBrandsListings
         countryListingArr = TyreRequestModel.shared.selectedTyreCountryListings
         setupTextFont()
@@ -154,7 +167,7 @@ extension TyreBrandVC {
         submitBtn.isEnabled = false
         skipAndSubmitBtn.titleLabel?.font =  AppFonts.NunitoSansSemiBold.withSize(16.0)
         skipAndSubmitBtn.setTitle(LocalizedString.skipAndSubmit.localized, for: .normal)
-
+        
     }
     
     private func submitBtnStatus()-> Bool{
@@ -192,11 +205,25 @@ extension TyreBrandVC {
     }
     
     private func deSelectBrands(){
-           brandListingArr = []
-           TyreRequestModel.shared.selectedTyreBrandsListings = []
-           TyreRequestModel.shared.tyreBrands = []
-       }
+        brandListingArr = []
+        TyreRequestModel.shared.selectedTyreBrandsListings = []
+        TyreRequestModel.shared.tyreBrands = []
+    }
     
+    ///SETUP LOCATIONS
+    private func setupLocations() {
+        let status = CLLocationManager.authorizationStatus()
+        if CLLocationManager.locationServicesEnabled() {
+            if  status == CLAuthorizationStatus.authorizedAlways
+                || status == CLAuthorizationStatus.authorizedWhenInUse {
+                TyreRequestModel.shared.latitude = "\(locationValue.latitude)"
+                TyreRequestModel.shared.longitude = "\(locationValue.longitude)"
+                AppRouter.goToTyreRequestedVC(vc: self)
+            }
+            else { AppRouter.presentLocationPopUpVC(vc: self) }
+        }
+        else{ AppRouter.presentLocationPopUpVC(vc: self) }
+    }
 }
 
 extension TyreBrandVC :UITextFieldDelegate {
@@ -210,19 +237,19 @@ extension TyreBrandVC: UICollectionViewDelegate,UICollectionViewDataSource,UICol
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if tyreBrandCustomView.collView == collectionView {
             return brandListingArr.count
-
+            
         }else {
             return countryListingArr.count
         }
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(with: FacilityCollectionViewCell.self, indexPath: indexPath)
         if tyreBrandCustomView.collView == collectionView {
             cell.skillLbl.text = brandListingArr[indexPath.item].name
         }else {
             cell.skillLbl.text = countryListingArr[indexPath.item].name
-
+            
         }
         cell.cancelBtn.addTarget(self, action: #selector(cancelBtnTapped(_:)), for: .touchUpInside)
         cell.layoutSubviews()
@@ -243,7 +270,7 @@ extension TyreBrandVC: UICollectionViewDelegate,UICollectionViewDataSource,UICol
         }
         
     }
-
+    
     @objc func cancelBtnTapped(_ sender : UIButton) {
         if let indexPath = self.tyreBrandCustomView.collView.indexPath(forItem: sender) {
             printDebug(indexPath)
@@ -298,7 +325,7 @@ extension TyreBrandVC: UICollectionViewDelegate,UICollectionViewDataSource,UICol
 extension TyreBrandVC : CustomTextViewDelegate{
     func shouldBegin(_ tView: UITextView) {
         switch tView {
-       
+            
         case tyreBrandCustomView.tView:
             if tyreBrandCheckBtn.isSelected {
                 AppRouter.goToBrandsListingVC(vc: self, listingType: .brands, brandsData : brandListingArr, countryData: [], category: .tyres) }
@@ -321,7 +348,7 @@ extension TyreBrandVC : CustomTextViewDelegate{
 }
 
 extension TyreBrandVC: BrandsListnig {
-   
+    
     func listing(listingType : ListingType,BrandsListings: [TyreBrandModel],countryListings: [TyreCountryModel]) {
         if listingType == .brands {
             brandListingArr = BrandsListings
@@ -338,7 +365,7 @@ extension TyreBrandVC: BrandsListnig {
             tyreBrandCustomView.rightImgView.isHidden = brandListingArr.isEmpty
             tyreBrandCustomView.floatLbl.isHidden = brandListingArr.isEmpty
             tyreBrandCustomView.collView.reloadData()
-           
+            
         }else {
             self.listingType = listingType
             countryListingArr = countryListings
@@ -358,4 +385,28 @@ extension TyreBrandVC: BrandsListnig {
         view.layoutIfNeeded()
         view.setNeedsLayout()
     }
+}
+
+
+// MARK: - LocationPopUpVMDelegate
+//==============================
+extension TyreBrandVC: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        
+        switch status {
+        case .authorizedAlways, .authorizedWhenInUse:
+            self.locationManager.stopUpdatingLocation()
+            self.locationManager.startUpdatingLocation()
+            LocationController.sharedLocationManager.fetchCurrentLocation { [weak self] (location) in
+                guard let strongSelf = self else { return }
+                strongSelf.isLocationEnable = true
+                TyreRequestModel.shared.latitude = "\(location.coordinate.latitude)"
+                TyreRequestModel.shared.longitude = "\(location.coordinate.longitude)"
+            }
+        default:
+            self.isLocationEnable = false
+            self.locationManager.requestAlwaysAuthorization()
+        }
+    }
+    
 }

@@ -5,38 +5,46 @@
 //  Created by Arvind on 24/09/20.
 //  Copyright © 2020 Admin. All rights reserved.
 //
-
 import UIKit
+import CoreLocation
+import GoogleMaps
+import GooglePlaces
+import SkyFloatingLabelTextField
 
 class BatteryBrandVC: BaseVC {
-
+    
     // MARK: - IBOutlets
     //===========================
     @IBOutlet weak var thePreferredLbl: UILabel!
     @IBOutlet weak var chooseBatteryBrandLbl: UILabel!
     @IBOutlet weak var submitBtn: AppButton!
     @IBOutlet weak var skipBtn: AppButton!
-
+    
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var batteryBrandCustomView: CustomTextView!
     @IBOutlet weak var bBCustomViewHeightConstraint: NSLayoutConstraint!
-   
-
-
+    
+    
+    
     // MARK: - Variables
     //===========================
     var placeHolderArr : [String] = [LocalizedString.enterVehicleMake.localized,
-     LocalizedString.enterVehicleModel.localized,
-     LocalizedString.enterModelYear.localized
+                                     LocalizedString.enterVehicleModel.localized,
+                                     LocalizedString.enterModelYear.localized
     ]
-   
+    
     var titleArr : [String] = [LocalizedString.vehicleMake.localized,
-                                 LocalizedString.vehicleModel.localized,
-                                 LocalizedString.modelYear.localized
-                                ]
+                               LocalizedString.vehicleModel.localized,
+                               LocalizedString.modelYear.localized
+    ]
     var brandListingArr :[TyreBrandModel] = []
     var countryListingArr :[TyreCountryModel] = []
     var listingType : ListingType = .brands
+    //Location
+    private var locationValue = LocationController.sharedLocationManager.locationManager.location?.coordinate ?? CLLocationCoordinate2D(latitude: 34.052238, longitude: -118.24334)
+    private var locationManager = CLLocationManager()
+    private var isLocationEnable : Bool = true
+    private var isHitApi: Bool = false
     
     // MARK: - Lifecycle
     //===========================
@@ -44,7 +52,7 @@ class BatteryBrandVC: BaseVC {
         super.viewDidLoad()
         initialSetup()
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isTranslucent = true
         self.tabBarController?.tabBar.isHidden = true
@@ -53,13 +61,13 @@ class BatteryBrandVC: BaseVC {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         containerView.createShadow(shadowColor: #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1))
-      
+        
         if !self.brandListingArr.isEmpty {
             if let batteryBrandCustomView = self.batteryBrandCustomView {
                 self.bBCustomViewHeightConstraint.constant = batteryBrandCustomView.collView.contentSize.height + 38.0
             }
         }else {
-                self.bBCustomViewHeightConstraint.constant = 60.0
+            self.bBCustomViewHeightConstraint.constant = 60.0
         }
     }
     
@@ -72,7 +80,8 @@ class BatteryBrandVC: BaseVC {
     }
     
     @IBAction func submitBtnAction(_ sender: UIButton) {
-       AppRouter.presentLocationPopUpVC(vc: self)
+        isHitApi = true
+        setupLocations()
     }
     
     @IBAction func skipBtnAction(_ sender: UIButton) {
@@ -81,7 +90,8 @@ class BatteryBrandVC: BaseVC {
         TyreRequestModel.shared.selectedTyreCountryListings = []
         TyreRequestModel.shared.selectedTyreBrandsListings = []
         listing(listingType: listingType, BrandsListings: brandListingArr, countryListings: countryListingArr)
-        AppRouter.presentLocationPopUpVC(vc: self)
+        isHitApi = true
+        setupLocations()
     }
     
 }
@@ -91,6 +101,8 @@ class BatteryBrandVC: BaseVC {
 extension BatteryBrandVC {
     
     private func initialSetup() {
+        self.isHitApi = false
+        self.locationManager.delegate = self
         brandListingArr = TyreRequestModel.shared.selectedTyreBrandsListings
         countryListingArr = TyreRequestModel.shared.selectedTyreCountryListings
         setupTextFont()
@@ -103,7 +115,7 @@ extension BatteryBrandVC {
         
         thePreferredLbl.font = AppFonts.NunitoSansBold.withSize(21.0)
         chooseBatteryBrandLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
-       
+        
         thePreferredLbl.text = LocalizedString.thePreferredBrandForBatteryWouldBe.localized
         chooseBatteryBrandLbl.text = LocalizedString.chooseBatteryBrands.localized
         submitBtn.setTitle(LocalizedString.submit.localized, for: .normal)
@@ -117,7 +129,7 @@ extension BatteryBrandVC {
     }
     
     private func setupCustomView() {
-       
+        
         batteryBrandCustomView.placeHolderTxt = LocalizedString.selectBrand.localized
         batteryBrandCustomView.floatLbl.text = LocalizedString.brands.localized
         batteryBrandCustomView.delegate = self
@@ -127,7 +139,37 @@ extension BatteryBrandVC {
         batteryBrandCustomView.collView.registerCell(with: FacilityCollectionViewCell.self)
         batteryBrandCustomView.collView.delegate = self
         batteryBrandCustomView.collView.dataSource = self
-      
+        
+    }
+    
+    private func isMapLocationEnable() {
+        if CLLocationManager.locationServicesEnabled() {
+            switch CLLocationManager.authorizationStatus() {
+            case .notDetermined, .restricted, .denied:
+                self.isLocationEnable = false
+            case .authorizedAlways, .authorizedWhenInUse:
+                self.isLocationEnable = true
+            @unknown default:
+                break
+            }
+        } else {
+            print("Location services are not enabled")
+        }
+    }
+    
+    ///SETUP LOCATIONS
+    private func setupLocations() {
+        let status = CLLocationManager.authorizationStatus()
+        if CLLocationManager.locationServicesEnabled() {
+            if  status == CLAuthorizationStatus.authorizedAlways
+                || status == CLAuthorizationStatus.authorizedWhenInUse {
+                TyreRequestModel.shared.latitude = "\(locationValue.latitude)"
+                TyreRequestModel.shared.longitude = "\(locationValue.longitude)"
+                AppRouter.goToBatteryRequestedVC(vc: self)
+            }
+            else { AppRouter.presentLocationPopUpVC(vc: self) }
+        }
+        else{ AppRouter.presentLocationPopUpVC(vc: self) }
     }
 }
 
@@ -135,13 +177,13 @@ extension BatteryBrandVC {
 extension BatteryBrandVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return brandListingArr.count
+        return brandListingArr.count
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(with: FacilityCollectionViewCell.self, indexPath: indexPath)
-            cell.skillLbl.text = brandListingArr[indexPath.item].name
-  
+        cell.skillLbl.text = brandListingArr[indexPath.item].name
+        
         cell.cancelBtn.addTarget(self, action: #selector(cancelBtnTapped(_:)), for: .touchUpInside)
         cell.layoutSubviews()
         return cell
@@ -152,12 +194,12 @@ extension BatteryBrandVC: UICollectionViewDelegate,UICollectionViewDataSource,UI
     }
     
     private func cardSizeForItemAt(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, indexPath: IndexPath) -> CGSize {
-            let textSize = brandListingArr[indexPath.row].name.sizeCount(withFont: AppFonts.NunitoSansSemiBold.withSize(13.0), boundingSize: CGSize(width: 10000.0, height: collectionView.frame.height))
-            return CGSize(width: textSize.width + 40, height: 23.0)
-      
+        let textSize = brandListingArr[indexPath.row].name.sizeCount(withFont: AppFonts.NunitoSansSemiBold.withSize(13.0), boundingSize: CGSize(width: 10000.0, height: collectionView.frame.height))
+        return CGSize(width: textSize.width + 40, height: 23.0)
+        
         
     }
-
+    
     @objc func cancelBtnTapped(_ sender : UIButton) {
         if let indexPath = self.batteryBrandCustomView.collView.indexPath(forItem: sender) {
             printDebug(indexPath)
@@ -192,7 +234,7 @@ extension BatteryBrandVC: UICollectionViewDelegate,UICollectionViewDataSource,UI
 extension BatteryBrandVC : CustomTextViewDelegate{
     func shouldBegin(_ tView: UITextView) {
         switch tView {
-       
+            
         case batteryBrandCustomView.tView:
             AppRouter.goToBrandsListingVC(vc: self, listingType: .brands, brandsData : brandListingArr, countryData: [], category: .battery)
         default:
@@ -211,7 +253,7 @@ extension BatteryBrandVC : CustomTextViewDelegate{
 }
 
 extension BatteryBrandVC: BrandsListnig {
-   
+    
     func listing(listingType : ListingType,BrandsListings: [TyreBrandModel],countryListings: [TyreCountryModel]) {
         if listingType == .brands {
             brandListingArr = BrandsListings
@@ -227,9 +269,33 @@ extension BatteryBrandVC: BrandsListnig {
             batteryBrandCustomView.collView.isHidden = brandListingArr.isEmpty
             batteryBrandCustomView.floatLbl.isHidden = brandListingArr.isEmpty
             batteryBrandCustomView.collView.reloadData()
-           
+            
         }
         view.layoutIfNeeded()
         view.setNeedsLayout()
     }
+}
+
+
+// MARK: - LocationPopUpVMDelegate
+//==============================
+extension BatteryBrandVC: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        
+        switch status {
+        case .authorizedAlways, .authorizedWhenInUse:
+            self.locationManager.stopUpdatingLocation()
+            self.locationManager.startUpdatingLocation()
+            LocationController.sharedLocationManager.fetchCurrentLocation { [weak self] (location) in
+                guard let strongSelf = self else { return }
+                strongSelf.isLocationEnable = true
+                TyreRequestModel.shared.latitude = "\(location.coordinate.latitude)"
+                TyreRequestModel.shared.longitude = "\(location.coordinate.longitude)"
+            }
+        default:
+            self.isLocationEnable = false
+            self.locationManager.requestAlwaysAuthorization()
+        }
+    }
+    
 }

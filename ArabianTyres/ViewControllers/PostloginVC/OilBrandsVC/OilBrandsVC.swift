@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import CoreLocation
+import GoogleMaps
+import GooglePlaces
 import SkyFloatingLabelTextField
 
 
@@ -39,6 +42,12 @@ class OilBrandsVC: BaseVC {
     var brandListingArr :[TyreBrandModel] = []
     var countryListingArr :[TyreCountryModel] = []
     var listingType : ListingType = .brands
+    //Location
+    private var locationValue = LocationController.sharedLocationManager.locationManager.location?.coordinate ?? CLLocationCoordinate2D(latitude: 34.052238, longitude: -118.24334)
+    private var locationManager = CLLocationManager()
+    private var isLocationEnable : Bool = true
+    private var isHitApi: Bool = false
+    
     
     // MARK: - Lifecycle
     //===========================
@@ -74,7 +83,8 @@ class OilBrandsVC: BaseVC {
     }
     
     @IBAction func submitBtnAction(_ sender: UIButton) {
-        AppRouter.presentLocationPopUpVC(vc: self)
+        isHitApi = true
+        setupLocations()
         
     }
     
@@ -84,7 +94,8 @@ class OilBrandsVC: BaseVC {
         TyreRequestModel.shared.selectedTyreCountryListings = []
         TyreRequestModel.shared.selectedTyreBrandsListings = []
         listing(listingType: listingType, BrandsListings: brandListingArr, countryListings: countryListingArr)
-        AppRouter.presentLocationPopUpVC(vc: self)
+        isHitApi = true
+        setupLocations()
     }
     
 }
@@ -130,6 +141,21 @@ extension OilBrandsVC {
         oilBrandCustomView.collView.delegate = self
         oilBrandCustomView.collView.dataSource = self
         
+    }
+    
+    ///SETUP LOCATIONS
+    private func setupLocations() {
+        let status = CLLocationManager.authorizationStatus()
+        if CLLocationManager.locationServicesEnabled() {
+            if  status == CLAuthorizationStatus.authorizedAlways
+                || status == CLAuthorizationStatus.authorizedWhenInUse {
+                TyreRequestModel.shared.latitude = "\(locationValue.latitude)"
+                TyreRequestModel.shared.longitude = "\(locationValue.longitude)"
+                AppRouter.goToOilRequestedVC(vc: self)
+            }
+            else { AppRouter.presentLocationPopUpVC(vc: self) }
+        }
+        else{ AppRouter.presentLocationPopUpVC(vc: self) }
     }
     
 }
@@ -232,4 +258,27 @@ extension OilBrandsVC: BrandsListnig {
         view.layoutIfNeeded()
         view.setNeedsLayout()
     }
+}
+
+// MARK: - LocationPopUpVMDelegate
+//==============================
+extension OilBrandsVC: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        
+        switch status {
+        case .authorizedAlways, .authorizedWhenInUse:
+            self.locationManager.stopUpdatingLocation()
+            self.locationManager.startUpdatingLocation()
+            LocationController.sharedLocationManager.fetchCurrentLocation { [weak self] (location) in
+                guard let strongSelf = self else { return }
+                strongSelf.isLocationEnable = true
+                TyreRequestModel.shared.latitude = "\(location.coordinate.latitude)"
+                TyreRequestModel.shared.longitude = "\(location.coordinate.longitude)"
+            }
+        default:
+            self.isLocationEnable = false
+            self.locationManager.requestAlwaysAuthorization()
+        }
+    }
+    
 }

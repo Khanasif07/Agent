@@ -209,6 +209,8 @@ extension VehicleDetailForOilVC :UITextFieldDelegate {
                tempTextField = vehicleMakeTextField
                vehicleDetailtype = .make
                openBottomSheet(type: VehicleDetailType.make)
+               self.selectedMakeArr = []
+               self.vehicleModelTextField.text = ""
                return false
            case vehicleModelTextField:
                tempTextField = vehicleModelTextField
@@ -220,11 +222,23 @@ extension VehicleDetailForOilVC :UITextFieldDelegate {
                openBottomSheet(type: VehicleDetailType.model)
                return false
            case numberOfUnitTextField:
-               tempTextField = numberOfUnitTextField
-               return true
+            if let text = textField.text {
+                if text.isEmpty{
+                    numberOfUnitTextField.text = self.quantityPicker.dataArray.first
+                    TyreRequestModel.shared.quantity = self.quantityPicker.dataArray.first ?? ""
+                    submitBtnStatus()
+                }}
+            tempTextField = numberOfUnitTextField
+            return true
            default:
-               tempTextField = productYearTextField
-               return true
+            if let text = textField.text {
+                if text.isEmpty{
+                    productYearTextField.text = self.yearPicker.dataArray.first
+                    TyreRequestModel.shared.year = self.yearPicker.dataArray.first ?? ""
+                    submitBtnStatus()
+                }}
+            tempTextField = productYearTextField
+            return true
         }
     }
 }
@@ -253,7 +267,7 @@ extension VehicleDetailForOilVC: UIImagePickerControllerDelegate, UINavigationCo
         uploadView.backgroundColor = .white
         uploadImgLbl.isHidden = true
         uploadView.borderWidth = 0.0
-        //        CommonFunctions.showActivityLoader()
+        CommonFunctions.showActivityLoader()
         TyreRequestModel.shared.images = []
         TyreRequestModel.shared.images.append(ImageModel(url: "", mediaType: "image", image: image ?? UIImage()))
         self.submitBtnStatus()
@@ -261,7 +275,7 @@ extension VehicleDetailForOilVC: UIImagePickerControllerDelegate, UINavigationCo
             printDebug(progress)
         }, completion: { (response,error) in
             if let url = response {
-                //                CommonFunctions.hideActivityLoader()
+                CommonFunctions.hideActivityLoader()
                 self.hasImageUploaded = true
                 let lastIndex = TyreRequestModel.shared.images.endIndex
                 TyreRequestModel.shared.images[lastIndex-1].url = url

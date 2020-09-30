@@ -51,7 +51,6 @@ class LocationPopUpVC: BaseVC {
     }
     
     @IBAction func allowBtnAction(_ sender: UIButton) {
-        self.isHitApi =  true
         self.setupLocations()
     }
 }
