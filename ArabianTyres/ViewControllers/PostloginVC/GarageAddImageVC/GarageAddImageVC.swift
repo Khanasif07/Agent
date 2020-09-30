@@ -57,6 +57,7 @@ class GarageAddImageVC: BaseVC {
         pop()
     }
     
+    
     @IBAction func saveBtnAction(_ sender: UIButton) {
         if !self.hasImageUploaded{
              ToastView.shared.showLongToast(self.view, msg: LocalizedString.wait_Img_Upload.localized)
@@ -67,6 +68,10 @@ class GarageAddImageVC: BaseVC {
             return
         }
         AppRouter.goToUploadDocumentVC(vc: self)
+    }
+    
+    @IBAction func helpBtnAction(_ sender: UIButton) {
+        showAlert(msg: LocalizedString.underDevelopment.localized)
     }
 }
 

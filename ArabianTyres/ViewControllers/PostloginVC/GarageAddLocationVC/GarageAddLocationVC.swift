@@ -72,6 +72,11 @@ class GarageAddLocationVC: BaseVC {
     @IBAction func backBtnAction(_ sender: UIButton) {
         pop()
     }
+    
+    
+    @IBAction func helpBtnAction(_ sender: UIButton) {
+        showAlert(msg: LocalizedString.underDevelopment.localized)
+    }
 }
 
 // MARK: - Extension For Functions
