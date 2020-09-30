@@ -12,6 +12,7 @@ struct DataValue{
     var image:UIImage
     var name:String
     var productColor: UIColor
+    
     init(image:UIImage,name:String,productColor: UIColor) {
         self.image = image
         self.name = name

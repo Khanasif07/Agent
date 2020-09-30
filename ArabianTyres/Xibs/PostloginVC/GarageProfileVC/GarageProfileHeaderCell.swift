@@ -13,6 +13,8 @@ class GarageProfileHeaderCell: UITableViewCell {
     var phoneVerifyBtnTapped :((UIButton)->())?
     var emailVerifyBtnTapped :((UIButton)->())?
     var categoryNameArray = [ServicesModel]()
+    var catNameArr : [String] = []
+    
     
     @IBOutlet weak var dataContainerView: UIView!
     @IBOutlet weak var editProfileView: UIImageView!
@@ -81,7 +83,7 @@ class GarageProfileHeaderCell: UITableViewCell {
 
 extension GarageProfileHeaderCell : UICollectionViewDelegate,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return  categoryNameArray.count
+        return catNameArr.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -89,15 +91,15 @@ extension GarageProfileHeaderCell : UICollectionViewDelegate,UICollectionViewDat
         cell.cancelBtn.isHidden = true
         cell.cancelBtnHeightConstraint.constant = 0.0
         cell.skillLbl.contentMode = .center
-        cell.skillLbl.text = self.categoryNameArray[indexPath.item].serviceName
+        cell.skillLbl.text = self.catNameArr[indexPath.item]
         cell.layoutSubviews()
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let text = self.categoryNameArray[indexPath.row].serviceName
+        let text = self.catNameArr[indexPath.row]
         let textSize = text.sizeCount(withFont: AppFonts.NunitoSansSemiBold.withSize(14.0), boundingSize: CGSize(width: 10000.0, height: 32.0))
-        return CGSize(width: (textSize.width ) + 16.0, height: 34.0)
+        return CGSize(width: textSize.width + 10, height: 34.0)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

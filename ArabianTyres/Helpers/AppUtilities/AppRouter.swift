@@ -151,9 +151,15 @@ enum AppRouter {
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
-    static func goToRegistraionPendingVC(vc: UIViewController, screenType: RegistraionPendingVC.ScreenType){
+    static func goToRegistraionPendingVC(vc: UIViewController, screenType: RegistraionPendingVC.ScreenType,msg: String, reason: String, time: String){
         let scene = RegistraionPendingVC.instantiate(fromAppStoryboard: .Garage)
+        scene.message = msg
+        scene.reason = reason
+        scene.time = time
         scene.screenType = screenType
+        scene.registerBtnTapped = {
+            AppRouter.goToGarageRegistrationVC(vc: vc)
+        }
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
@@ -286,7 +292,7 @@ enum AppRouter {
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
-    static func goToFacilityVC(vc: UIViewController,data: [FacilityModel]){
+    static func goToFacilityVC(vc: UIViewController,data: [FacilityModel], brandAndServiceArr: [String]){
         let scene = FacilityVC.instantiate(fromAppStoryboard: .Garage)
         scene.delegate = vc as? FacilitiesDelegate
         scene.selectedItemArr = data

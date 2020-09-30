@@ -17,6 +17,8 @@ extension Date {
         case yyyy_MM_dd = "yyyy-MM-dd"
         case dd_MM_yyyy = "dd-MM-yyyy"
         case yyyyMMddHHmmss = "yyyy-MM-dd HH:mm:ss"
+        case givenDateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+//        yyyy-MM-dd'T'HH:mm:ss.SSSZ
         case yyyyMMddTHHmmssz = "yyyy-MM-dd'T'HH:mm:ssZ"
         case yyyyMMddTHHmmsssssz = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
         case yyyyMMddTHHmmssssZZZZZ = "yyyy-MM-dd'T'HH:mm:ss.ssZZZZZ"

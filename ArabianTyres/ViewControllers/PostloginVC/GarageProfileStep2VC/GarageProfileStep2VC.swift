@@ -33,6 +33,7 @@ class GarageProfileStep2VC: BaseVC {
     var selectedFacilitiesArr : [FacilityModel] = []
     var serviceImagesArray = [String]()
     var imagesArray = [ImageModel]()
+    var selectBrandAndServiceArr : [String] = []
     fileprivate var hasImageUploaded = true {
         didSet {
             if hasImageUploaded {
@@ -55,7 +56,7 @@ class GarageProfileStep2VC: BaseVC {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         containerView.createShadow(shadowColor: #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1))
-        if !selectedFacilitiesArr.isEmpty {
+        if !selectBrandAndServiceArr.isEmpty {
             if let customView = self.customView {
                 customCollViewHeightConstraint.constant = customView.collView.contentSize.height + 38.0
             }
@@ -174,18 +175,19 @@ extension GarageProfileStep2VC {
 
 extension GarageProfileStep2VC: CustomTextViewDelegate{
     func shouldBegin(_ tView: UITextView) {
-        AppRouter.goToFacilityVC(vc: self,data : [])
+        AppRouter.goToFacilityVC(vc: self,data : [], brandAndServiceArr: [])
     }
     
     func collViewTapped(listingType: ListingType) {
-        AppRouter.goToFacilityVC(vc: self,data : selectedFacilitiesArr)
+        AppRouter.goToFacilityVC(vc: self,data : selectedFacilitiesArr, brandAndServiceArr: selectBrandAndServiceArr)
     }
 }
 
 extension GarageProfileStep2VC: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == customView.collView {
-            return selectedFacilitiesArr.count
+            return selectBrandAndServiceArr.count
 
         }else {
             if !self.imagesArray.isEmpty && self.imagesArray.count <= 4{
@@ -201,7 +203,8 @@ extension GarageProfileStep2VC: UICollectionViewDelegate,UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == customView.collView {
             let cell = collectionView.dequeueCell(with: FacilityCollectionViewCell.self, indexPath: indexPath)
-            cell.skillLbl.text = selectedFacilitiesArr[indexPath.item].name
+            
+            cell.skillLbl.text = selectBrandAndServiceArr[indexPath.item]
             cell.cancelBtn.addTarget(self, action: #selector(cancelBtnTapped(_:)), for: .touchUpInside)
             cell.layoutSubviews()
             return cell
@@ -271,16 +274,17 @@ extension GarageProfileStep2VC: UICollectionViewDelegate,UICollectionViewDataSou
     
     private func cardSizeForItemAt(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, indexPath: IndexPath) -> CGSize {
         
-        let textSize = selectedFacilitiesArr[indexPath.item].name.sizeCount(withFont: AppFonts.NunitoSansSemiBold.withSize(16.0), boundingSize: CGSize(width: 10000.0, height: collectionView.frame.height))
+        let textSize = selectBrandAndServiceArr[indexPath.item].sizeCount(withFont: AppFonts.NunitoSansSemiBold.withSize(12.0), boundingSize: CGSize(width: 10000.0, height: collectionView.frame.height))
         
-        return CGSize(width: textSize.width + 24, height: 24.0)
+        return CGSize(width: textSize.width + 34, height: 24.0)
     }
 
     @objc func cancelBtnTapped(_ sender : UIButton) {
         if let indexPath = self.customView.collView.indexPath(forItem: sender) {
             printDebug(indexPath)
-            selectedFacilitiesArr.remove(at: indexPath.item)
-            if selectedFacilitiesArr.isEmpty {
+            updateSelectedModel(index: indexPath.item)
+            selectBrandAndServiceArr.remove(at: indexPath.item)
+            if selectBrandAndServiceArr.isEmpty {
                 customView.collView.isHidden = true
                 customView.floatLbl.isHidden = true
             }
@@ -343,8 +347,9 @@ extension GarageProfileStep2VC: UIImagePickerControllerDelegate, UINavigationCon
 
 
 extension GarageProfileStep2VC: FacilitiesDelegate {
-    func setData(dataArr: [FacilityModel]) {
+    func setData(dataArr: [FacilityModel], brandAndServiceArr: [String]) {
         selectedFacilitiesArr = dataArr
+        selectBrandAndServiceArr = brandAndServiceArr
         customView.collView.isHidden = selectedFacilitiesArr.isEmpty
         customView.floatLbl.isHidden = selectedFacilitiesArr.isEmpty
         customView.collView.reloadData()
@@ -353,6 +358,41 @@ extension GarageProfileStep2VC: FacilitiesDelegate {
         GarageProfileModel.shared.services.removeAll()
         selectedFacilitiesArr.forEach { (model) in
             GarageProfileModel.shared.services.append(model.getSelectedService())
+        }
+    }
+    
+    func updateSelectedModel(index: Int) {
+        let arr = selectBrandAndServiceArr[index].split(separator: "(")
+        if arr.count == 2 {
+            var serviceName = arr[1]
+            serviceName.removeLast()
+            var brandName = arr[0]
+            brandName.removeLast()
+
+            for (indexx,item) in selectedFacilitiesArr.enumerated() {
+                if item.name == serviceName {
+                    if let firstIndex = item.subCategory.firstIndex(where: { (model) -> Bool in
+                        return model.name == brandName
+                    }) {
+                        selectedFacilitiesArr[indexx].subCategory[firstIndex].isSelected = false
+                    }
+                    if let _ = item.subCategory.firstIndex(where: { (model) -> Bool in
+                        return model.isSelected
+                    }){
+                        
+                    }else {
+                        selectedFacilitiesArr.remove(at: indexx)
+                    }
+                    break
+                }
+            }
+        }else {
+            if let firstIndex = selectedFacilitiesArr.firstIndex(where: { (model) -> Bool in
+                return model.name == selectBrandAndServiceArr[index]
+            }){
+                selectedFacilitiesArr.remove(at: firstIndex)
+
+            }
         }
     }
 }

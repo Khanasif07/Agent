@@ -10,7 +10,7 @@
 import UIKit
 
 protocol FacilitiesDelegate: class {
-    func setData(dataArr : [FacilityModel])
+    func setData(dataArr : [FacilityModel], brandAndServiceArr : [String])
 }
 
 class FacilityVC: BaseVC {
@@ -28,7 +28,6 @@ class FacilityVC: BaseVC {
     var viewModel = GarageRegistrationVM()
     var selectedItemArr : [FacilityModel] = []
     weak var delegate : FacilitiesDelegate?
-    var selectedSubCatArr : [SubCategoryModel] = []
     
     // MARK: - Lifecycle
     //===========================
@@ -50,7 +49,7 @@ class FacilityVC: BaseVC {
     
     @IBAction func doneBtnAction(_ sender: UIButton) {
         dismiss(animated: true) {
-            self.delegate?.setData(dataArr: self.selectedItemArr)
+            self.delegate?.setData(dataArr: self.selectedItemArr, brandAndServiceArr: self.viewModel.getBrandAndServiceName(data: self.selectedItemArr))
         }
     }
 
@@ -122,6 +121,7 @@ extension FacilityVC : UITableViewDelegate, UITableViewDataSource {
                     self.selectedItemArr.append(self.viewModel.facilityDataArr[section])
                 }else {
                     self.selectedItemArr.removeAll{($0.id == self.viewModel.facilityDataArr[section].id)}
+
                 }
                 self.viewModel.facilityDataArr[section].isSelected.toggle()
                 self.viewModel.facilityDataArr[section].isSubCategorySelected.toggle()
@@ -152,7 +152,7 @@ extension FacilityVC : UITableViewDelegate, UITableViewDataSource {
         
         cell.cellBtnTapped = { [weak self] in
             guard let `self` = self else {return}
-
+            let txt = self.viewModel.facilityDataArr[indexPath.section].subCategory[indexPath.row].name +  " (\(self.viewModel.facilityDataArr[indexPath.section].name))"
          
             self.viewModel.facilityDataArr[indexPath.section].subCategory[indexPath.row].isSelected.toggle()
             if let _ = self.viewModel.facilityDataArr[indexPath.section].subCategory.firstIndex(where: { (model) -> Bool in
@@ -161,6 +161,7 @@ extension FacilityVC : UITableViewDelegate, UITableViewDataSource {
             }) {
                 if !self.viewModel.facilityDataArr[indexPath.section].isSubCategorySelected {
                     self.selectedItemArr.append(self.viewModel.facilityDataArr[indexPath.section])
+
                 }
                 self.viewModel.facilityDataArr[indexPath.section].isSubCategorySelected = true
             
@@ -189,15 +190,15 @@ extension FacilityVC :GarageRegistrationVMDelegate{
                     }){
                         viewModel.facilityDataArr[indexx].isSubCategorySelected = true
                         viewModel.facilityDataArr[indexx].isSelected = true
-                        for (index,item) in viewModel.facilityDataArr[indexx].subCategory.enumerated(){
-                            if let firstIndex = self.selectedItemArr[firstIndex].subCategory.firstIndex(where: { (model) -> Bool in
-                                return model.id == item.id
-                            }){
-                                viewModel.facilityDataArr[indexx].subCategory[firstIndex].isSelected = true
-                            }
-                        }
+//                        for (index, data) in viewModel.facilityDataArr[indexx].subCategory.enumerated(){
+//                            if let firstIndexx = self.selectedItemArr[firstIndex].subCategory.firstIndex(where: { (model) -> Bool in
+//                                return model.id == data.id
+//                            }){
+//                                viewModel.facilityDataArr[indexx].subCategory[firstIndex].isSelected = true
+//                            }
+//                        }
                         
-    //                    viewModel.facilityDataArr[index].category = self.selectedItemArr[firstIndex].category
+                        viewModel.facilityDataArr[indexx].subCategory = self.selectedItemArr[firstIndex].subCategory
                         }
                     }
                 }

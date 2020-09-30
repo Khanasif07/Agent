@@ -57,7 +57,7 @@ class AddAccountVC: BaseVC {
     }
     
     @IBAction func helpBtnAction(_ sender: UIButton) {
-//        self.pop()
+        showAlert(msg: LocalizedString.underDevelopment.localized)
     }
     
     @IBAction func registerBtnAction(_ sender: UIButton) {
@@ -193,8 +193,9 @@ extension AddAccountVC: BankDetail{
 }
 
 extension AddAccountVC: GarageRegistrationVMDelegate {
+  
     func garageRegistrationSuccess(msg: String) {
-        AppRouter.goToRegistraionPendingVC(vc: self, screenType: .pending)
+        AppRouter.goToRegistraionPendingVC(vc: self, screenType: .pending, msg: "", reason: "", time: "Just now")
     }
     
     func garageRegistrationFailed(msg: String) {
@@ -204,9 +205,12 @@ extension AddAccountVC: GarageRegistrationVMDelegate {
     private func fillDataStatus()-> Bool{
         return !GarageProfileModel.shared.bankName.isEmpty && !GarageProfileModel.shared.accountNumber.isEmpty && !GarageProfileModel.shared.confirmAccountNumber.isEmpty
     }
+  
     func completeProfileSuccess(msg: String){
-        AppUserDefaults.save(value: "2", forKey: .currentUserType)
-        AppRouter.goToGarageHome()
+//        AppUserDefaults.save(value: "2", forKey: .currentUserType)
+//        AppRouter.goToGarageHome()
+        self.navigationController?.popToViewControllerOfType(classForCoder: ProfileSettingVC.self)
+        AppRouter.goToProfileSettingVC(vc: self)
     }
     
     func completeProfileFailure(msg: String){

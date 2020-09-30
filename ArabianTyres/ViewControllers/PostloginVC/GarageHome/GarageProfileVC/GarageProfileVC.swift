@@ -83,6 +83,8 @@ extension GarageProfileVC {
             case 0:
                 let cell = tableView.dequeueCell(with: GarageProfileHeaderCell.self, indexPath: indexPath)
                 cell.categoryNameArray = self.viewModel.preFillModel.services
+                cell.catNameArr = self.viewModel.preFillModel.getBrandAndServiceName()
+
                 cell.populateData(model: self.viewModel.userModel)
                 cell.phoneVerifyBtnTapped = { [weak self] (sender) in
                     guard let `self` = self else { return }

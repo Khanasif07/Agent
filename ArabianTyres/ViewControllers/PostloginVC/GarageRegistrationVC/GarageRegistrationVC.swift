@@ -41,7 +41,6 @@ class GarageRegistrationVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {

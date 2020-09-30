@@ -183,16 +183,17 @@ extension ProfileSettingVC : UITableViewDelegate, UITableViewDataSource {
 }
 
 extension ProfileSettingVC : GarageRegistrationVMDelegate {
-    func switchGarageRegistrationSuccess(code: Int, msg : String){
+    func switchGarageRegistrationSuccess(code: Int, msg : String, reason: String,time: String){
         switch code {
         case 600:
             AppRouter.goToGarageRegistrationVC(vc: self)
         case 601:
-            AppRouter.goToRegistraionPendingVC(vc: self, screenType: .pending)
+            AppRouter.goToRegistraionPendingVC(vc: self, screenType: .pending, msg: msg, reason: reason,time: time)
         case 605:
-            AppRouter.goToRegistraionPendingVC(vc: self, screenType: .rejected)
+            GarageProfileModel.shared = GarageProfileModel()
+            AppRouter.goToRegistraionPendingVC(vc: self, screenType: .rejected, msg: msg, reason: reason,time: time)
         case 604:
-            AppRouter.goToRegistraionPendingVC(vc: self, screenType: .accept)
+            AppRouter.goToRegistraionPendingVC(vc: self, screenType: .accept, msg: msg, reason: reason,time: time)
         case 602:
             CommonFunctions.showToastWithMessage(msg)
         case 603:
