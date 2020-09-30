@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,17 +15,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="zom-XE-Chq">
-                                <rect key="frame" x="152" y="411" width="110" height="84"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icTara" translatesAutoresizingMaskIntoConstraints="NO" id="zom-XE-Chq">
+                                <rect key="frame" x="57" y="423" width="300" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="84" id="hnj-oh-Ysg"/>
+                                    <constraint firstAttribute="height" constant="60" id="hnj-oh-Ysg"/>
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.079948574515950915" green="0.14135164797607358" blue="0.33735437908343563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="zom-XE-Chq" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="7Sr-4x-Brp"/>
-                            <constraint firstItem="zom-XE-Chq" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="100/375" id="KGb-sO-tta"/>
+                            <constraint firstItem="zom-XE-Chq" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="300/414" id="KGb-sO-tta"/>
                             <constraint firstItem="zom-XE-Chq" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="xpe-qk-uX6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -37,6 +37,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="splash" width="104" height="89"/>
+        <image name="icTara" width="240" height="51"/>
     </resources>
 </document>
