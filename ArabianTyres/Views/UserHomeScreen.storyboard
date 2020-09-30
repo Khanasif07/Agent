@@ -364,7 +364,6 @@ brand or country origin</string>
                                                                 </userDefinedRuntimeAttributes>
                                                                 <connections>
                                                                     <action selector="skipAndSubmitBtnAction:" destination="GOT-y6-IhY" eventType="touchUpInside" id="Gnq-Q4-XTi"/>
-                                                                    <action selector="submitBtnAction:" destination="GOT-y6-IhY" eventType="touchUpInside" id="4S6-s7-MeJ"/>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z5m-Nh-zkS" customClass="AppButton" customModule="ArabianTyres" customModuleProvider="target">
@@ -503,7 +502,7 @@ brand or country origin</string>
                                         <rect key="frame" x="30" y="260" width="354" height="376"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="grp" translatesAutoresizingMaskIntoConstraints="NO" id="YrE-7V-h17">
-                                                <rect key="frame" x="127" y="35" width="100" height="100"/>
+                                                <rect key="frame" x="126.99999999999999" y="35" width="100.00000000000004" height="100.00000000000003"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="YrE-7V-h17" secondAttribute="height" id="SfM-qY-zhp"/>
                                                     <constraint firstAttribute="height" constant="100" id="vci-dc-coh"/>

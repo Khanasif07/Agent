@@ -265,6 +265,9 @@ enum LocalizedString : String {
     case underDevelopment
     case pleaseSelectServices
     case pleaseSelectServiceCenterImage
+    case ongoingServices
+    
+    
     // MARK: - Home  VC Values
     //==============================
     case tyre

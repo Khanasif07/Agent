@@ -144,7 +144,7 @@ extension UploadDocumentVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func removeImg(indexPath: Int,isFirstImg : Bool) {
-        switch sectionType {
+        switch  Section.allCases[indexPath] {
             
         case .commericalRegister:
             GarageProfileModel.shared.commercialRegister.remove(at: isFirstImg ? 0 : 1)
