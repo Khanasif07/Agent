@@ -8,7 +8,7 @@
 
 import UIKit
 import SkyFloatingLabelTextField
-import TTRangeSlider
+//import TTRangeSlider
 
 class GarageProfileStep2VC: BaseVC {
 
@@ -304,14 +304,14 @@ extension GarageProfileStep2VC: UICollectionViewDelegate,UICollectionViewDataSou
     }
 }
 
-extension GarageProfileStep2VC : TTRangeSliderDelegate{
-    func didEndTouches(in sender: TTRangeSlider!) {
-        GarageProfileModel.shared.maxInstallationPrice = Int(sender.selectedMaximum.rounded())
-        GarageProfileModel.shared.minInstallationPrice = Int(sender.selectedMinimum.rounded())
-        printDebug(sender.selectedMinimum.rounded())
-        printDebug(sender.selectedMaximum.rounded())
-    }
-}
+//extension GarageProfileStep2VC : TTRangeSliderDelegate{
+//    func didEndTouches(in sender: TTRangeSlider!) {
+//        GarageProfileModel.shared.maxInstallationPrice = Int(sender.selectedMaximum.rounded())
+//        GarageProfileModel.shared.minInstallationPrice = Int(sender.selectedMinimum.rounded())
+//        printDebug(sender.selectedMinimum.rounded())
+//        printDebug(sender.selectedMaximum.rounded())
+//    }
+//}
 
 // MARK: - UIImagePickerControllerDelegate
 //===========================

@@ -33,5 +33,4 @@ target 'ArabianTyres' do
   pod 'MessageKit'
   pod 'Firebase/Storage'
   pod 'Firebase/Crashlytics'
-  pod 'TTRangeSlider'
 end
