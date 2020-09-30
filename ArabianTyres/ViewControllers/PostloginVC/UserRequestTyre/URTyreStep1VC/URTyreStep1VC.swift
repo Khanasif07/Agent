@@ -100,8 +100,8 @@ extension URTyreStep1VC {
         self.numberTyreTxtField.selectedTitle = LocalizedString.enter_number_of_tyre_you_want.localized
         self.numberTyreTxtField.title = LocalizedString.enter_number_of_tyre_you_want.localized
         [widthTxtField,profileTxtField,rimSizeTxtField].forEach({$0?.text = ""})
-        [widthTxtField,profileTxtField,rimSizeTxtField].forEach({$0?.lineColor = UIColor.clear})
-        [widthTxtField,profileTxtField,rimSizeTxtField].forEach({$0?.selectedLineColor = UIColor.clear})
+        [widthTxtField,profileTxtField,rimSizeTxtField].forEach({$0?.lineColor = #colorLiteral(red: 0.7764705882, green: 0.7764705882, blue: 0.7843137255, alpha: 1)})
+        [widthTxtField,profileTxtField,rimSizeTxtField].forEach({$0?.selectedLineColor =  #colorLiteral(red: 0.7764705882, green: 0.7764705882, blue: 0.7843137255, alpha: 1)})
         [widthTxtField,profileTxtField,rimSizeTxtField,numberTyreTxtField].forEach({$0?.selectedTitleColor = AppColors.fontTertiaryColor})
         [widthTxtField,profileTxtField,rimSizeTxtField].forEach { (txtField) in
             let buttonView = UIButton()

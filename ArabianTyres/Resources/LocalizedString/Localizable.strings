@@ -206,6 +206,7 @@
 "underDevelopment" = "Under Development";
 "pleaseSelectServices" = "Please Select Services";
 "pleaseSelectServiceCenterImage" = "Please Select Service Center Image";
+"ongoingServices" = "Ongoing Services";
  // MARK: - Home  VC Values
 //==============================
 "tyre" = "Tyre";

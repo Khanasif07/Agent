@@ -23,6 +23,8 @@ class AddDetailVC: BaseVC {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var customTView: CustomTextView!
     @IBOutlet weak var tViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var dashedView: RectangularDashedView!
+
     
     // MARK: - Variables
     //===========================
@@ -144,6 +146,7 @@ extension AddDetailVC : CustomTextViewDelegate {
  
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[.editedImage] as? UIImage
+        dashedView.isHidden = true
         CommonFunctions.showActivityLoader()
          editLogoBtn.setImage(#imageLiteral(resourceName: "vector"), for: .normal)
          imgView.contentMode = .scaleToFill

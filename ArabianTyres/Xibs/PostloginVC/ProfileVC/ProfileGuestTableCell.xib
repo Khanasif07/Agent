@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,14 +24,21 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6o3-Tl-wg0">
                         <rect key="frame" x="16" y="70" width="379" height="340"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="group3708" translatesAutoresizingMaskIntoConstraints="NO" id="mo3-4q-T5S">
-                                <rect key="frame" x="31" y="28" width="317" height="100"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppIc" translatesAutoresizingMaskIntoConstraints="NO" id="mo3-4q-T5S">
+                                <rect key="frame" x="161.5" y="38" width="56" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="VeY-3y-cWa"/>
+                                    <constraint firstAttribute="height" constant="60" id="VeY-3y-cWa"/>
+                                    <constraint firstAttribute="width" constant="56" id="dfy-T6-6OY"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To Tara" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hg8-vy-xxb">
+                                <rect key="frame" x="124" y="112" width="131" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.68627450980000004" blue="0.26274509800000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ykE-fh-a46">
-                                <rect key="frame" x="120" y="163" width="139" height="56"/>
+                                <rect key="frame" x="120" y="167" width="139" height="56"/>
                                 <color key="backgroundColor" red="0.12941176469999999" green="0.19215686269999999" blue="0.4823529412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="139" id="KkF-68-xEz"/>
@@ -45,7 +52,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wbi-ZM-DGS">
-                                <rect key="frame" x="124.5" y="246" width="130" height="32"/>
+                                <rect key="frame" x="124.5" y="247" width="130" height="29"/>
                                 <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="14"/>
                                 <state key="normal" title="Create New Account"/>
                                 <connections>
@@ -55,12 +62,13 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="ykE-fh-a46" firstAttribute="top" secondItem="mo3-4q-T5S" secondAttribute="bottom" constant="35" id="1R3-3l-RaF"/>
-                            <constraint firstItem="mo3-4q-T5S" firstAttribute="top" secondItem="6o3-Tl-wg0" secondAttribute="top" constant="28" id="3jn-6R-A9B"/>
-                            <constraint firstAttribute="bottom" secondItem="wbi-ZM-DGS" secondAttribute="bottom" constant="62" id="Kz7-OT-tYm"/>
-                            <constraint firstItem="wbi-ZM-DGS" firstAttribute="top" secondItem="ykE-fh-a46" secondAttribute="bottom" constant="27" id="Xet-0L-0x0"/>
-                            <constraint firstItem="mo3-4q-T5S" firstAttribute="leading" secondItem="6o3-Tl-wg0" secondAttribute="leading" constant="31" id="iVi-v2-gmx"/>
-                            <constraint firstAttribute="trailing" secondItem="mo3-4q-T5S" secondAttribute="trailing" constant="31" id="su1-7Q-83g"/>
+                            <constraint firstAttribute="bottom" secondItem="wbi-ZM-DGS" secondAttribute="bottom" constant="64" id="EZ3-C2-r3g"/>
+                            <constraint firstItem="hg8-vy-xxb" firstAttribute="top" secondItem="mo3-4q-T5S" secondAttribute="bottom" constant="14" id="GGZ-vJ-jkb"/>
+                            <constraint firstItem="wbi-ZM-DGS" firstAttribute="top" secondItem="ykE-fh-a46" secondAttribute="bottom" constant="24" id="Xet-0L-0x0"/>
+                            <constraint firstItem="ykE-fh-a46" firstAttribute="top" secondItem="hg8-vy-xxb" secondAttribute="bottom" constant="34" id="cL1-LZ-dyQ"/>
+                            <constraint firstItem="mo3-4q-T5S" firstAttribute="centerX" secondItem="6o3-Tl-wg0" secondAttribute="centerX" id="nav-Ia-okF"/>
+                            <constraint firstItem="mo3-4q-T5S" firstAttribute="top" secondItem="6o3-Tl-wg0" secondAttribute="top" constant="38" id="rh1-Kc-8Sq"/>
+                            <constraint firstItem="hg8-vy-xxb" firstAttribute="centerX" secondItem="mo3-4q-T5S" secondAttribute="centerX" id="sbO-1O-Ho7"/>
                             <constraint firstItem="ykE-fh-a46" firstAttribute="centerX" secondItem="6o3-Tl-wg0" secondAttribute="centerX" id="wS8-o0-EuJ"/>
                             <constraint firstItem="wbi-ZM-DGS" firstAttribute="centerX" secondItem="6o3-Tl-wg0" secondAttribute="centerX" id="y1B-N4-Xdt"/>
                         </constraints>
@@ -80,11 +88,12 @@
                 <outlet property="createNewAccountBtn" destination="wbi-ZM-DGS" id="3Ac-1x-neP"/>
                 <outlet property="dataContainerView" destination="6o3-Tl-wg0" id="h3F-bU-5ec"/>
                 <outlet property="loginBtn" destination="ykE-fh-a46" id="kga-Rq-zrf"/>
+                <outlet property="welcomeToTaraLbl" destination="hg8-vy-xxb" id="Lry-o3-OBX"/>
             </connections>
             <point key="canvasLocation" x="142.75362318840581" y="123.88392857142857"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="group3708" width="196" height="92"/>
+        <image name="AppIc" width="32" height="32"/>
     </resources>
 </document>

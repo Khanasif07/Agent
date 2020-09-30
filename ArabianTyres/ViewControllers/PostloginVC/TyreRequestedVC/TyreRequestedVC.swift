@@ -61,8 +61,7 @@ class TyreRequestedVC: BaseVC {
         [sizeContainerView,numberOfTyreContainerView,tyreBrandContainerView].forEach { (containerView) in
             containerView.createShadow(shadowColor: #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1))
         }
-        
-        if !TyreRequestModel.shared.tyreBrands.isEmpty {
+        if !TyreRequestModel.shared.countriesListing.isEmpty || !TyreRequestModel.shared.tyreBrandsListing.isEmpty{
             self.tyreBrandCollViewHeightConstraint.constant = tyreBrandCollView.contentSize.height + 38.0
         }else {
             self.tyreBrandCollViewHeightConstraint.constant = 45.0
@@ -91,6 +90,10 @@ class TyreRequestedVC: BaseVC {
     
     @IBAction func tyreBrandAction(_ sender: UIButton) {
          self.navigationController?.popToViewControllerOfType(classForCoder: TyreBrandVC.self)
+    }
+    
+    private func isBrandCountryEmpty() -> Bool {
+        return TyreRequestModel.shared.countriesListing.isEmpty && TyreRequestModel.shared.tyreBrandsListing.isEmpty
     }
 }
 
@@ -153,43 +156,9 @@ extension TyreRequestedVC {
         tyreProfileValueLbl.text = TyreRequestModel.shared.profile
         tyreRimSizeValueLbl.text = TyreRequestModel.shared.rimSize
         numberOfTyreTextField.text = TyreRequestModel.shared.quantity
-    }
-    
-}
-
-extension TyreRequestedVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        switch collectionView {
-        case tyreBrandCollView:
-            return TyreRequestModel.shared.tyreBrandsListing.endIndex
-        default:
-            return TyreRequestModel.shared.countriesListing.endIndex
-        }
-    }
-    
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueCell(with: FacilityCollectionViewCell.self, indexPath: indexPath)
-        cell.cancelBtn.isHidden = true
-        cell.cancelBtnHeightConstraint.constant = 0.0
-        cell.skillLbl.contentMode = .center
-        if collectionView == tyreBrandCollView {
-            cell.skillLbl.text = TyreRequestModel.shared.tyreBrandsListing[indexPath.item]
-        } else {
-            cell.skillLbl.text = TyreRequestModel.shared.countriesListing[indexPath.item]
-        }
-        cell.layoutSubviews()
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return cardSizeForItemAt(collectionView,layout: collectionViewLayout,indexPath: indexPath)
-    }
-    
-    private func cardSizeForItemAt(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, indexPath: IndexPath) -> CGSize {
-        let dataArr = collectionView == tyreBrandCollView ? TyreRequestModel.shared.tyreBrandsListing : TyreRequestModel.shared.countriesListing
-        let textSize = dataArr[indexPath.row].sizeCount(withFont: AppFonts.NunitoSansSemiBold.withSize(14.0), boundingSize: CGSize(width: 10000.0, height: collectionView.frame.height))
-        return CGSize(width: textSize.width + 16, height: 34.0)
+        tyreBrandContainerView.isHidden = isBrandCountryEmpty()
+        originOfTyreLbl.isHidden = isBrandCountryEmpty()
+        tyreBrandLbl.text = TyreRequestModel.shared.tyreBrandsListing.isEmpty ? LocalizedString.countryOrigin.localized :  LocalizedString.tyreBrand.localized
     }
     
 }
@@ -220,4 +189,37 @@ extension TyreRequestedVC: SuccessPopupVCDelegate {
             self.navigationController?.popToViewControllerOfType(classForCoder: HomeVC.self)
         }
     }
+}
+
+extension TyreRequestedVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return TyreRequestModel.shared.tyreBrandsListing.isEmpty ? TyreRequestModel.shared.countriesListing.endIndex : TyreRequestModel.shared.tyreBrandsListing.endIndex
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueCell(with: FacilityCollectionViewCell.self, indexPath: indexPath)
+        cell.cancelBtn.isHidden = true
+        cell.cancelBtnHeightConstraint.constant = 0.0
+        cell.skillLbl.contentMode = .center
+        if TyreRequestModel.shared.tyreBrandsListing.isEmpty {
+            cell.skillLbl.text = TyreRequestModel.shared.countriesListing[indexPath.item]
+        }else {
+            cell.skillLbl.text = TyreRequestModel.shared.tyreBrandsListing[indexPath.item]
+        }
+        cell.layoutSubviews()
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return cardSizeForItemAt(collectionView,layout: collectionViewLayout,indexPath: indexPath)
+    }
+    
+    private func cardSizeForItemAt(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, indexPath: IndexPath) -> CGSize {
+        let dataArr = TyreRequestModel.shared.tyreBrandsListing.isEmpty ? TyreRequestModel.shared.countriesListing : TyreRequestModel.shared.tyreBrandsListing
+        let textSize = dataArr[indexPath.row].sizeCount(withFont: AppFonts.NunitoSansSemiBold.withSize(14.0), boundingSize: CGSize(width: 10000.0, height: collectionView.frame.height))
+        return CGSize(width: textSize.width + 16, height: 34.0)
+    }
+    
 }

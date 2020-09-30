@@ -64,7 +64,7 @@ class GarageAddImageVC: BaseVC {
             return
         }
         if GarageProfileModel.shared.serviceCenterImages.isEmpty{
-            ToastView.shared.showLongToast(self.view, msg: "Please select atleast one image")
+            ToastView.shared.showLongToast(self.view, msg: "please upload atlest one image")
             return
         }
         AppRouter.goToUploadDocumentVC(vc: self)
@@ -84,7 +84,7 @@ extension GarageAddImageVC {
         self.prepareMap()
         self.setAddress()
         self.reloadCollectionViewWithUIUpdation()
-        self.saveContinueBtn.isEnabled = true
+        self.saveContinueBtn.isEnabled = false
         logoImgView.image = GarageProfileModel.shared.logo
         garageName.text = GarageProfileModel.shared.serviceCenterName
     }
@@ -132,6 +132,7 @@ extension GarageAddImageVC {
                 GarageProfileModel.shared.serviceCenterImages.remove(at: index.item)
             }
         }
+        self.saveContinueBtn.isEnabled = !GarageProfileModel.shared.serviceCenterImages.isEmpty
         self.reloadCollectionViewWithUIUpdation()
     }
     
@@ -264,6 +265,7 @@ extension GarageAddImageVC: UIImagePickerControllerDelegate, UINavigationControl
                 self.hasImageUploaded = true
                 let lastIndex = GarageProfileModel.shared.serviceCenterImages.endIndex
                 GarageProfileModel.shared.serviceCenterImages[lastIndex-1].url = url
+                self.saveContinueBtn.isEnabled = !GarageProfileModel.shared.serviceCenterImages.isEmpty
                 DispatchQueue.main.async {
                     self.mainCollView.reloadData()
                 }

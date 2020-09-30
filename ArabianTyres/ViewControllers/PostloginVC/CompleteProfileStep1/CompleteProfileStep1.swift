@@ -25,7 +25,8 @@ class CompleteProfileStep1: BaseVC {
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var saveContinueBtn: AppButton!
     @IBOutlet weak var editLogoBtn: UIButton!
-    
+    @IBOutlet weak var dashedView: RectangularDashedView!
+
     // MARK: - Variables
     //===========================
     var viewModel = ProfileVM()
@@ -66,14 +67,28 @@ class CompleteProfileStep1: BaseVC {
     }
     
     @IBAction func currentLocationBtnAction(_ sender: UIButton) {
-        self.didTapMyLocationButton(for: mapView)
+        isMapLocationEnable()
     }
-    
     
     @IBAction func helpBtnAction(_ sender: UIButton) {
         showAlert(msg: LocalizedString.underDevelopment.localized)
     }
     
+    private func isMapLocationEnable() {
+        if CLLocationManager.locationServicesEnabled() {
+            switch CLLocationManager.authorizationStatus() {
+            case .notDetermined, .restricted, .denied:
+                openSettingApp(message: "")
+            case .authorizedAlways, .authorizedWhenInUse:
+                self.didTapMyLocationButton(for: mapView)
+            @unknown default:
+                break
+            }
+        } else {
+            print("Location services are not enabled")
+        }
+    }
+
 }
 
 
@@ -110,7 +125,7 @@ extension CompleteProfileStep1 {
     
     private func prepareMap() {
         self.mapView.isMyLocationEnabled = true
-        self.mapView.settings.myLocationButton = true
+//        self.mapView.settings.myLocationButton = true
         self.mapView.delegate = self
         self.locationManager.delegate = self
         markerView.image = #imageLiteral(resourceName: "markerIcon")
@@ -145,14 +160,14 @@ extension CompleteProfileStep1 {
     
     //OPEN SETTING
     func openSettingApp(message: String) {
-        self.showAlert(title: "", msg: message) {
+//        self.showAlert(title: "", msg: message) {
             guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
                 return
             }
             if UIApplication.shared.canOpenURL(settingsUrl) {
                 UIApplication.shared.open(settingsUrl, options: [:], completionHandler: nil)
             }
-        }
+//        }
     }
     
     func moveMarker(coordinate: CLLocationCoordinate2D){
@@ -169,6 +184,7 @@ extension CompleteProfileStep1 {
     func setPreFillData() {
         logoImgView.contentMode = .scaleToFill
         logoImgView.setImage_kf(imageString: GarageProfileModel.shared.logoUrl, placeHolderImage: #imageLiteral(resourceName: "icImg"), loader: true)
+        dashedView.isHidden = true
         addressTxtField.text = GarageProfileModel.shared.address
         nameTxtField.text = GarageProfileModel.shared.serviceCenterName
         distTxtField.text = GarageProfileModel.shared.serviceCenterDist
@@ -256,6 +272,7 @@ extension CompleteProfileStep1: UIImagePickerControllerDelegate,UINavigationCont
         editLogoBtn.setImage(#imageLiteral(resourceName: "vector"), for: .normal)
         logoImgView.contentMode = .scaleToFill
         logoImgView.image = image
+        dashedView.isHidden = true
         image?.upload(progress: { (progress) in
             printDebug(progress)
         }, completion: { (response,error) in
