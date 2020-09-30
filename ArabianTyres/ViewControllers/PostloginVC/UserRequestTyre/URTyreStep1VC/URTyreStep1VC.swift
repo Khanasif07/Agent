@@ -22,6 +22,8 @@ class URTyreStep1VC: BaseVC {
     @IBOutlet weak var profileTxtField: SkyFloatingLabelTextField!
     @IBOutlet weak var widthTxtField: SkyFloatingLabelTextField!
     @IBOutlet weak var numberTyreTxtField: SkyFloatingLabelTextField!
+    
+    
     // MARK: - Variables
     //===========================
     // custom Picker View
@@ -81,12 +83,13 @@ extension URTyreStep1VC {
     
     private func initialSetup() {
         NotificationCenter.default.addObserver(self, selector: #selector(selectedTyreSizeSuccess), name: Notification.Name.SelectedTyreSizeSuccess, object: nil)
-        self.setUpTextField()
         self.pickerViewSetUp()
+        self.setUpTextField()
         self.textFieldSetUp()
     }
     
     public func setUpTextField(){
+       
         self.widthTxtField.title = LocalizedString.width.localized
         self.profileTxtField.title = LocalizedString.profile.localized
         self.rimSizeTxtField.title = LocalizedString.rimSize.localized
@@ -100,6 +103,12 @@ extension URTyreStep1VC {
         [widthTxtField,profileTxtField,rimSizeTxtField].forEach({$0?.lineColor = UIColor.clear})
         [widthTxtField,profileTxtField,rimSizeTxtField].forEach({$0?.selectedLineColor = UIColor.clear})
         [widthTxtField,profileTxtField,rimSizeTxtField,numberTyreTxtField].forEach({$0?.selectedTitleColor = AppColors.fontTertiaryColor})
+        [widthTxtField,profileTxtField,rimSizeTxtField].forEach { (txtField) in
+            let buttonView = UIButton()
+            buttonView.imageEdgeInsets = UIEdgeInsets(top: 7, left: 0, bottom: -7, right: 0)
+            buttonView.isUserInteractionEnabled = false
+            txtField?.setButtonToRightView(btn: buttonView, selectedImage: #imageLiteral(resourceName: "group3714"), normalImage: #imageLiteral(resourceName: "group3714"), size: CGSize(width: 20, height: 20))
+        }
         self.nextBtn.isEnabled = false
     }
     
@@ -125,6 +134,7 @@ extension URTyreStep1VC {
     private func textFieldSetUp(){
         let buttonView = UIButton()
         buttonView.isUserInteractionEnabled = false
+        buttonView.imageEdgeInsets = UIEdgeInsets(top: 7, left: 0, bottom: -7, right: 0)
         numberTyreTxtField.setButtonToRightView(btn: buttonView, selectedImage: #imageLiteral(resourceName: "group3714"), normalImage: #imageLiteral(resourceName: "group3714"), size: CGSize(width: 20, height: 20))
     }
     

@@ -13,7 +13,7 @@ import GooglePlaces
 import SkyFloatingLabelTextField
 
 class CompleteProfileStep1: BaseVC {
-    
+
     // MARK: - IBOutlets
     //===========================
     @IBOutlet weak var titleLbl: UILabel!
@@ -68,6 +68,12 @@ class CompleteProfileStep1: BaseVC {
     @IBAction func currentLocationBtnAction(_ sender: UIButton) {
         self.didTapMyLocationButton(for: mapView)
     }
+    
+    
+    @IBAction func helpBtnAction(_ sender: UIButton) {
+        showAlert(msg: LocalizedString.underDevelopment.localized)
+    }
+    
 }
 
 
@@ -303,6 +309,12 @@ extension CompleteProfileStep1 : UITextFieldDelegate {
         }
     }
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+          let currentText = textField.text ?? ""
+         guard let stringRange = Range(range, in: currentText) else { return false }
+         let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+         return updatedText.count <= 50
+    }
     
     private func addBtnStatus()-> Bool{
         return !GarageProfileModel.shared.serviceCenterName.isEmpty && !GarageProfileModel.shared.address.isEmpty && !GarageProfileModel.shared.serviceCenterDist.isEmpty

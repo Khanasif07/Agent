@@ -19,14 +19,14 @@ class GarageProfileStep2VC: BaseVC {
     @IBOutlet weak var helpBtn: UIButton!
     @IBOutlet weak var saveAndContinueBtn: AppButton!
     @IBOutlet weak var headingLbl: UILabel!
-    @IBOutlet weak var serviceCenterNameLbl: UILabel!
+//    @IBOutlet weak var serviceCenterNameLbl: UILabel!
     @IBOutlet weak var mainCollView: UICollectionView!
     @IBOutlet weak var collViewHeightConst: NSLayoutConstraint!
 
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var customView : CustomTextView!
     @IBOutlet weak var customCollViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var rangeSlider: TTRangeSlider!
+//    @IBOutlet weak var rangeSlider: TTRangeSlider!
   
     // MARK: - Variables
     //===========================
@@ -73,7 +73,7 @@ class GarageProfileStep2VC: BaseVC {
     }
 
     @IBAction func helpBtnAction(_ sender: UIButton) {
-//        self.pop()
+        showAlert(msg: LocalizedString.underDevelopment.localized)
     }
 
     @IBAction func saveAndContinueAction(_ sender: UIButton) {
@@ -114,29 +114,29 @@ extension GarageProfileStep2VC {
     }
     
     private func handleRangeSlider(){
-        rangeSlider.minLabelFont = AppFonts.NunitoSansSemiBold.withSize(12.0)
-        rangeSlider.maxLabelFont = AppFonts.NunitoSansSemiBold.withSize(12.0)
-        rangeSlider.handleImage = #imageLiteral(resourceName: "slider")
-        rangeSlider.delegate = self
-        rangeSlider.minValue = 500
-        rangeSlider.maxValue = 2500
-        rangeSlider.selectedMinimum = 500
-        rangeSlider.selectedMaximum = 800
-        rangeSlider.selectedHandleDiameterMultiplier = 1
-        let formatter = NumberFormatter()
-        formatter.positiveSuffix = "SAR"
-        rangeSlider.numberFormatterOverride = formatter
+//        rangeSlider.minLabelFont = AppFonts.NunitoSansSemiBold.withSize(12.0)
+//        rangeSlider.maxLabelFont = AppFonts.NunitoSansSemiBold.withSize(12.0)
+//        rangeSlider.handleImage = #imageLiteral(resourceName: "slider")
+//        rangeSlider.delegate = self
+//        rangeSlider.minValue = 500
+//        rangeSlider.maxValue = 2500
+//        rangeSlider.selectedMinimum = 500
+//        rangeSlider.selectedMaximum = 800
+//        rangeSlider.selectedHandleDiameterMultiplier = 1
+//        let formatter = NumberFormatter()
+//        formatter.positiveSuffix = "SAR"
+//        rangeSlider.numberFormatterOverride = formatter
     }
     
     
     private func setupTextAndFont(){
-        serviceCenterNameLbl.font = AppFonts.NunitoSansSemiBold.withSize(13.0)
+//        serviceCenterNameLbl.font = AppFonts.NunitoSansSemiBold.withSize(13.0)
         titleLbl.font = AppFonts.NunitoSansBold.withSize(17.0)
         headingLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
         helpBtn.titleLabel?.font =  AppFonts.NunitoSansSemiBold.withSize(17.0)
         saveAndContinueBtn.titleLabel?.font =  AppFonts.NunitoSansSemiBold.withSize(16.0)
 
-        serviceCenterNameLbl.text = LocalizedString.installationPriceRange.localized
+//        serviceCenterNameLbl.text = LocalizedString.installationPriceRange.localized
         titleLbl.text = LocalizedString.completeProfile.localized
         headingLbl.text = LocalizedString.serviceCenterImage.localized
         helpBtn.setTitle(LocalizedString.help.localized, for: .normal)
