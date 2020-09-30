@@ -16,10 +16,13 @@ class ProfileGuestTableCell: UITableViewCell {
     @IBOutlet weak var dataContainerView: UIView!
     @IBOutlet weak var createNewAccountBtn: UIButton!
     @IBOutlet weak var loginBtn: UIButton!
-    
+    @IBOutlet weak var welcomeToTaraLbl: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         createNewAccountBtn.setTitleColor(AppColors.primaryBlueColor, for: .normal)
+        welcomeToTaraLbl.font = AppFonts.NunitoSansBold.withSize(15.0)
+
     }
     
     override func layoutSubviews() {

@@ -110,7 +110,7 @@ extension CompleteProfileStep1 {
     
     private func prepareMap() {
         self.mapView.isMyLocationEnabled = true
-        self.mapView.settings.myLocationButton = true
+//        self.mapView.settings.myLocationButton = true
         self.mapView.delegate = self
         self.locationManager.delegate = self
         markerView.image = #imageLiteral(resourceName: "markerIcon")

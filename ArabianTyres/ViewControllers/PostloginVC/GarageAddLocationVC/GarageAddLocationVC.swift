@@ -94,7 +94,7 @@ extension GarageAddLocationVC {
     
     private func prepareMap() {
         self.mapView.isMyLocationEnabled = true
-        self.mapView.settings.myLocationButton = true
+//        self.mapView.settings.myLocationButton = true
         self.mapView.delegate = self
         self.locationManager.delegate = self
         markerView.image = #imageLiteral(resourceName: "markerIcon")
@@ -231,6 +231,7 @@ extension GarageAddLocationVC: GMSAutocompleteViewControllerDelegate {
             self.locationValue = CLLocationCoordinate2D(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
             self.serviceAddresslbl.text = address
             liveAddress = address
+            isMarkerAnimation = false
             moveMarker(coordinate: CLLocationCoordinate2D(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude))
         }
         viewController.dismiss(animated: true)
