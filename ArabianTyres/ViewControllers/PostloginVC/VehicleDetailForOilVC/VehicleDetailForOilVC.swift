@@ -96,6 +96,17 @@ class VehicleDetailForOilVC: BaseVC {
         self.captureImage(delegate: self,removedImagePicture: !TyreRequestModel.shared.images.isEmpty)
     }
     
+    
+    func viewAction() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+        uploadView.isUserInteractionEnabled = true
+        uploadView.addGestureRecognizer(tap)
+    }
+    
+    @objc func handleTap(_ sender: UITapGestureRecognizer?) {
+        self.captureImage(delegate: self,removedImagePicture: !TyreRequestModel.shared.images.isEmpty)
+    }
+    
     //MARK:- Custom Picker View Data Array
     //===========================
     private func setUpYearPickerView() -> [String]{
@@ -128,6 +139,7 @@ extension VehicleDetailForOilVC {
     private func initialSetup() {
         setupTextField()
         setupTextFont()
+        viewAction()
         nextBtn.isEnabled = false
         imgEditBtn.isHidden = true
     }
@@ -165,7 +177,7 @@ extension VehicleDetailForOilVC {
         vehicleDetailLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
         subHeading.font = AppFonts.NunitoSansBold.withSize(14.0)
         nextBtn.titleLabel?.font =  AppFonts.NunitoSansSemiBold.withSize(16.0)
-        uploadView.backgroundColor =  !TyreRequestModel.shared.images.isEmpty ? .white : AppColors.fontTertiaryColor
+        uploadView.backgroundColor =  !TyreRequestModel.shared.images.isEmpty ? .white : AppColors.primaryBlueLightShade
         uploadView.borderWidth = !TyreRequestModel.shared.images.isEmpty ? 0.0 : 1.0
     }
     
@@ -251,7 +263,9 @@ extension VehicleDetailForOilVC: UIImagePickerControllerDelegate, UINavigationCo
         TyreRequestModel.shared.images = []
 //        oilImgView.setImage_kf(imageString: TyreRequestModel.shared.images.first?.url ?? "", placeHolderImage: #imageLiteral(resourceName: "icImg"), loader: false)
         imgEditBtn.isHidden = true
+        oilImgView.image = nil
         imgUploadBtn.setImage(#imageLiteral(resourceName: "icImg"), for: .normal)
+        uploadView.isUserInteractionEnabled = TyreRequestModel.shared.images.isEmpty
         uploadView.backgroundColor =  !TyreRequestModel.shared.images.isEmpty ? .white : AppColors.primaryBlueLightShade
         uploadView.borderWidth = !TyreRequestModel.shared.images.isEmpty ? 0.0 : 1.0
         uploadImgLbl.isHidden = !TyreRequestModel.shared.images.isEmpty
@@ -264,6 +278,7 @@ extension VehicleDetailForOilVC: UIImagePickerControllerDelegate, UINavigationCo
         oilImgView.image = image
         imgEditBtn.isHidden = false
         imgUploadBtn.setImage(nil, for: .normal)
+        uploadView.isUserInteractionEnabled = false
         uploadView.backgroundColor = .white
         uploadImgLbl.isHidden = true
         uploadView.borderWidth = 0.0

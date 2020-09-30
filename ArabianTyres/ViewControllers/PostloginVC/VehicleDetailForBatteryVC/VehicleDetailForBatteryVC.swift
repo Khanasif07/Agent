@@ -30,7 +30,8 @@ class VehicleDetailForBatteryVC: BaseVC {
     @IBOutlet weak var batteryImgLbl: UILabel!
     @IBOutlet weak var numberOfBatteryLbl: UILabel!
     @IBOutlet weak var imgEditBtn: UIButton!
-    
+    @IBOutlet weak var imgUploadBtn: UIButton!
+
     // MARK: - Variables
     //===========================
     var selectedMakeArr: [MakeModel] = []
@@ -98,6 +99,16 @@ class VehicleDetailForBatteryVC: BaseVC {
         }
         self.captureImage(delegate: self,removedImagePicture: !TyreRequestModel.shared.images.isEmpty)
     }
+    
+    func viewAction() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+        batteryImgContainerView.isUserInteractionEnabled = true
+        batteryImgContainerView.addGestureRecognizer(tap)
+    }
+    
+    @objc func handleTap(_ sender: UITapGestureRecognizer?) {
+        self.captureImage(delegate: self,removedImagePicture: !TyreRequestModel.shared.images.isEmpty)
+    }
 }
 
 // MARK: - Extension For Functions
@@ -107,6 +118,7 @@ extension VehicleDetailForBatteryVC {
     private func initialSetup() {
         setupTextField()
         setupTextFont()
+        viewAction()
         imgEditBtn.isHidden = true
     }
     
@@ -141,7 +153,7 @@ extension VehicleDetailForBatteryVC {
         nextBtn.titleLabel?.font =  AppFonts.NunitoSansSemiBold.withSize(16.0)
         nextBtn.isEnabled = false
         imgEditBtn.isHidden = !TyreRequestModel.shared.images.isEmpty
-        batteryImgContainerView.backgroundColor =  !TyreRequestModel.shared.images.isEmpty ? .white : AppColors.fontTertiaryColor
+        batteryImgContainerView.backgroundColor =  !TyreRequestModel.shared.images.isEmpty ? .white : AppColors.primaryBlueLightShade
         batteryImgContainerView.borderWidth = !TyreRequestModel.shared.images.isEmpty ? 0.0 : 1.0
         uploadImgLbl.isHidden = !TyreRequestModel.shared.images.isEmpty
         
@@ -273,8 +285,11 @@ extension VehicleDetailForBatteryVC: WCCustomPickerViewDelegate {
 extension VehicleDetailForBatteryVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate , RemovePictureDelegate {
     func removepicture() {
         TyreRequestModel.shared.images = []
-        batteryImgView.setImage_kf(imageString: TyreRequestModel.shared.images.first?.url ?? "", placeHolderImage: #imageLiteral(resourceName: "icImg"), loader: false)
+        imgUploadBtn.setImage(#imageLiteral(resourceName: "icImg"), for: .normal)
+    //    batteryImgView.setImage_kf(imageString: TyreRequestModel.shared.images.first?.url ?? "", placeHolderImage: #imageLiteral(resourceName: "icImg"), loader: false)
+        batteryImgView.image = nil
         imgEditBtn.isHidden = true
+        batteryImgContainerView.isUserInteractionEnabled = TyreRequestModel.shared.images.isEmpty
         batteryImgContainerView.backgroundColor =  !TyreRequestModel.shared.images.isEmpty ? .white : AppColors.primaryBlueLightShade
         batteryImgContainerView.borderWidth = !TyreRequestModel.shared.images.isEmpty ? 0.0 : 1.0
         uploadImgLbl.isHidden = !TyreRequestModel.shared.images.isEmpty
@@ -285,7 +300,9 @@ extension VehicleDetailForBatteryVC: UIImagePickerControllerDelegate, UINavigati
         let image = info[.editedImage] as? UIImage
         hasImageUploaded = false
         batteryImgView.image = image
+        batteryImgContainerView.isUserInteractionEnabled = false
         imgEditBtn.isHidden = false
+        imgUploadBtn.setImage(nil, for: .normal)
         batteryImgContainerView.backgroundColor = .white
         uploadImgLbl.isHidden = true
         batteryImgContainerView.borderWidth = 0.0
