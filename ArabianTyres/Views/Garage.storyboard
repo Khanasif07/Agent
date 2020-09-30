@@ -3,7 +3,6 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -1253,7 +1252,7 @@ Service Center</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xz6-Xe-BwT">
-                                        <rect key="frame" x="6" y="-3" width="72" height="68"/>
+                                        <rect key="frame" x="6" y="14" width="36" height="34"/>
                                         <state key="normal" image="icBackward"/>
                                         <connections>
                                             <action selector="backBtnAction:" destination="scS-Gl-fMP" eventType="touchUpInside" id="qhe-P8-N5Y"/>
@@ -1301,7 +1300,7 @@ Service Center</string>
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="796"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ere-Qe-KAg">
-                                                <rect key="frame" x="22" y="16" width="376" height="427"/>
+                                                <rect key="frame" x="22" y="16" width="376" height="306"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Service Center Image" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ha9-5f-5ZK">
                                                         <rect key="frame" x="16" y="13" width="344" height="21"/>
@@ -1330,51 +1329,8 @@ Service Center</string>
                                                             <constraint firstAttribute="height" constant="60" id="TkR-jz-b62"/>
                                                         </constraints>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Service Center Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rno-ni-gNR">
-                                                        <rect key="frame" x="16" y="234" width="344" height="21"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" red="0.54117647059999996" green="0.58431372550000005" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TKP-lo-rZl" customClass="TTRangeSlider">
-                                                        <rect key="frame" x="16" y="275" width="344" height="50"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                                        <color key="tintColor" red="0.89411764705882346" green="0.89803921568627454" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="50" id="fhk-K7-LrC"/>
-                                                        </constraints>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="tintColorBetweenHandles">
-                                                                <color key="value" red="0.16078431372549018" green="0.25882352941176467" blue="0.62352941176470589" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="lineBorderColor">
-                                                                <color key="value" name="collectionViewBackground"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="minLabelColour">
-                                                                <color key="value" red="0.2627450980392157" green="0.69411764705882351" blue="0.32941176470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="maxLabelColour">
-                                                                <color key="value" red="0.2627450980392157" green="0.69411764705882351" blue="0.32941176470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="lineHeight">
-                                                                <real key="value" value="7"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="minValue">
-                                                                <real key="value" value="500"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
-                                                                <real key="value" value="2500"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="selectedMinimum">
-                                                                <real key="value" value="500"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="selectedMaximum">
-                                                                <real key="value" value="1000"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </view>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EKp-hc-NiD" customClass="AppButton" customModule="ArabianTyres" customModuleProvider="target">
-                                                        <rect key="frame" x="143" y="355" width="217" height="56"/>
+                                                        <rect key="frame" x="143" y="234" width="217" height="56"/>
                                                         <color key="backgroundColor" red="0.090196078430000007" green="0.1450980392" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="56" id="A9D-BC-74J"/>
@@ -1397,22 +1353,16 @@ Service Center</string>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
                                                     <constraint firstItem="ha9-5f-5ZK" firstAttribute="leading" secondItem="ere-Qe-KAg" secondAttribute="leading" constant="16" id="9gC-Ui-qex"/>
-                                                    <constraint firstItem="EKp-hc-NiD" firstAttribute="top" secondItem="TKP-lo-rZl" secondAttribute="bottom" constant="30" id="F1l-Mb-RXi"/>
                                                     <constraint firstItem="yH4-3a-ZcD" firstAttribute="top" secondItem="LgW-Cw-ewW" secondAttribute="bottom" constant="10" id="Fnc-No-C55"/>
-                                                    <constraint firstItem="rno-ni-gNR" firstAttribute="trailing" secondItem="yH4-3a-ZcD" secondAttribute="trailing" id="IzL-Eu-2SX"/>
                                                     <constraint firstItem="yH4-3a-ZcD" firstAttribute="leading" secondItem="ha9-5f-5ZK" secondAttribute="leading" id="KFt-KN-rNa"/>
-                                                    <constraint firstItem="rno-ni-gNR" firstAttribute="leading" secondItem="yH4-3a-ZcD" secondAttribute="leading" id="KdM-Ox-dOT"/>
                                                     <constraint firstAttribute="trailing" secondItem="ha9-5f-5ZK" secondAttribute="trailing" constant="16" id="Nex-Xz-aLb"/>
                                                     <constraint firstItem="ha9-5f-5ZK" firstAttribute="top" secondItem="ere-Qe-KAg" secondAttribute="top" constant="13" id="VbZ-mz-0CZ"/>
                                                     <constraint firstAttribute="trailing" secondItem="LgW-Cw-ewW" secondAttribute="trailing" constant="16" id="b5H-jL-YUp"/>
                                                     <constraint firstItem="yH4-3a-ZcD" firstAttribute="trailing" secondItem="ha9-5f-5ZK" secondAttribute="trailing" id="cd8-WT-zQ2"/>
-                                                    <constraint firstItem="TKP-lo-rZl" firstAttribute="top" secondItem="rno-ni-gNR" secondAttribute="bottom" constant="20" id="eEY-9b-Axc"/>
                                                     <constraint firstAttribute="bottom" secondItem="EKp-hc-NiD" secondAttribute="bottom" constant="16" id="eek-cD-jeI"/>
-                                                    <constraint firstItem="rno-ni-gNR" firstAttribute="top" secondItem="yH4-3a-ZcD" secondAttribute="bottom" constant="32" id="fTS-Ba-wMd"/>
                                                     <constraint firstItem="LgW-Cw-ewW" firstAttribute="leading" secondItem="ha9-5f-5ZK" secondAttribute="leading" id="iAZ-dE-Eup"/>
-                                                    <constraint firstAttribute="trailing" secondItem="TKP-lo-rZl" secondAttribute="trailing" constant="16" id="m5I-XP-ryw"/>
+                                                    <constraint firstItem="EKp-hc-NiD" firstAttribute="top" secondItem="yH4-3a-ZcD" secondAttribute="bottom" constant="32" id="im9-Ui-PmP"/>
                                                     <constraint firstItem="LgW-Cw-ewW" firstAttribute="top" secondItem="ha9-5f-5ZK" secondAttribute="bottom" constant="8" id="nUK-s5-fjn"/>
-                                                    <constraint firstItem="rno-ni-gNR" firstAttribute="leading" secondItem="TKP-lo-rZl" secondAttribute="leading" id="r6G-1A-DpK"/>
                                                     <constraint firstItem="EKp-hc-NiD" firstAttribute="trailing" secondItem="ha9-5f-5ZK" secondAttribute="trailing" id="zOh-1g-YpX"/>
                                                 </constraints>
                                             </view>
@@ -1457,9 +1407,7 @@ Service Center</string>
                         <outlet property="headingLbl" destination="ha9-5f-5ZK" id="BOn-FZ-4Re"/>
                         <outlet property="helpBtn" destination="8DP-5d-1o7" id="R8K-gp-seV"/>
                         <outlet property="mainCollView" destination="LgW-Cw-ewW" id="4rl-Wh-RuQ"/>
-                        <outlet property="rangeSlider" destination="TKP-lo-rZl" id="ZM3-jk-ow1"/>
                         <outlet property="saveAndContinueBtn" destination="EKp-hc-NiD" id="Qkd-5P-I5u"/>
-                        <outlet property="serviceCenterNameLbl" destination="rno-ni-gNR" id="Aiv-qR-1b0"/>
                         <outlet property="titleLbl" destination="tnU-g3-sYD" id="8yE-oW-DNc"/>
                     </connections>
                 </viewController>
@@ -1598,8 +1546,5 @@ Service Center</string>
         <image name="icImg" width="32.5" height="32"/>
         <image name="icTopArrow" width="20.5" height="21"/>
         <image name="icUnCheck" width="30" height="30"/>
-        <namedColor name="collectionViewBackground">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </namedColor>
     </resources>
 </document>
