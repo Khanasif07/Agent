@@ -67,14 +67,28 @@ class CompleteProfileStep1: BaseVC {
     }
     
     @IBAction func currentLocationBtnAction(_ sender: UIButton) {
-        self.didTapMyLocationButton(for: mapView)
+        isMapLocationEnable()
     }
-    
     
     @IBAction func helpBtnAction(_ sender: UIButton) {
         showAlert(msg: LocalizedString.underDevelopment.localized)
     }
     
+    private func isMapLocationEnable() {
+        if CLLocationManager.locationServicesEnabled() {
+            switch CLLocationManager.authorizationStatus() {
+            case .notDetermined, .restricted, .denied:
+                openSettingApp(message: "")
+            case .authorizedAlways, .authorizedWhenInUse:
+                self.didTapMyLocationButton(for: mapView)
+            @unknown default:
+                break
+            }
+        } else {
+            print("Location services are not enabled")
+        }
+    }
+
 }
 
 
@@ -146,14 +160,14 @@ extension CompleteProfileStep1 {
     
     //OPEN SETTING
     func openSettingApp(message: String) {
-        self.showAlert(title: "", msg: message) {
+//        self.showAlert(title: "", msg: message) {
             guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
                 return
             }
             if UIApplication.shared.canOpenURL(settingsUrl) {
                 UIApplication.shared.open(settingsUrl, options: [:], completionHandler: nil)
             }
-        }
+//        }
     }
     
     func moveMarker(coordinate: CLLocationCoordinate2D){

@@ -58,7 +58,7 @@ class GarageAddLocationVC: BaseVC {
     }
     
     @IBAction func currentLocationBtnAction(_ sender: UIButton) {
-        self.didTapMyLocationButton(for: mapView)
+        isMapLocationEnable()
     }
     
     
@@ -76,6 +76,21 @@ class GarageAddLocationVC: BaseVC {
     
     @IBAction func helpBtnAction(_ sender: UIButton) {
         showAlert(msg: LocalizedString.underDevelopment.localized)
+    }
+    
+    private func isMapLocationEnable() {
+        if CLLocationManager.locationServicesEnabled() {
+            switch CLLocationManager.authorizationStatus() {
+            case .notDetermined, .restricted, .denied:
+                openSettingApp(message: "")
+            case .authorizedAlways, .authorizedWhenInUse:
+                self.didTapMyLocationButton(for: mapView)
+            @unknown default:
+                break
+            }
+        } else {
+            print("Location services are not enabled")
+        }
     }
 }
 
@@ -152,14 +167,14 @@ extension GarageAddLocationVC {
     
     private func openSettingApp(message: String) {
         
-        self.showAlertWithAction(title: "", msg: message, cancelTitle: LocalizedString.cancel.localized, actionTitle: "Ok", actioncompletion: {
+//        self.showAlertWithAction(title: "", msg: message, cancelTitle: LocalizedString.cancel.localized, actionTitle: "Ok", actioncompletion: {
             guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
                 return
             }
             if UIApplication.shared.canOpenURL(settingsUrl) {
                 UIApplication.shared.open(settingsUrl, options: [:], completionHandler: nil)
             }
-        }) { }
+//        }) { }
     }
 }
 
@@ -185,7 +200,6 @@ extension GarageAddLocationVC :  GMSMapViewDelegate ,CLLocationManagerDelegate {
             self.setAddress()
         }
         locationManager.stopUpdatingLocation()
-       
     }
     
     func mapView(_ mapView: GMSMapView, willMove gesture: Bool) {
@@ -216,6 +230,7 @@ extension GarageAddLocationVC :  GMSMapViewDelegate ,CLLocationManagerDelegate {
     func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
         currentZoomLevel = position.zoom
     }
+    
 }
 
 // MARK: - Google Auto complete
