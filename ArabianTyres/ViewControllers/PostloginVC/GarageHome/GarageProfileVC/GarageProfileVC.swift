@@ -20,7 +20,7 @@ class GarageProfileVC: BaseVC {
     //===========================
     var viewModel = ProfileVM()
     var selectItemArray = [LocalizedString.service_Completed.localized,LocalizedString.payments.localized,LocalizedString.bank_Account.localized,LocalizedString.my_Subscription.localized,LocalizedString.settings.localized]
-    var selectImageArray: [UIImage] = [#imageLiteral(resourceName: "payment"),#imageLiteral(resourceName: "savedCard"),#imageLiteral(resourceName: "addedLocation"),#imageLiteral(resourceName: "group"),#imageLiteral(resourceName: "profileSettting")]
+    var selectImageArray: [UIImage] = [#imageLiteral(resourceName: "serviceHistory"),#imageLiteral(resourceName: "payment"),#imageLiteral(resourceName: "savedCard"),#imageLiteral(resourceName: "group"),#imageLiteral(resourceName: "profileSettting")]
     
     // MARK: - Lifecycle
     //===========================
@@ -85,7 +85,7 @@ extension GarageProfileVC {
                 cell.categoryNameArray = self.viewModel.preFillModel.services
                 cell.catNameArr = self.viewModel.preFillModel.getBrandAndServiceName()
 
-                cell.populateData(model: self.viewModel.userModel)
+                cell.populateData(model: self.viewModel.preFillModel,userModel: self.viewModel.userModel )
                 cell.phoneVerifyBtnTapped = { [weak self] (sender) in
                     guard let `self` = self else { return }
                     self.showPhoneVerificationPopUp()

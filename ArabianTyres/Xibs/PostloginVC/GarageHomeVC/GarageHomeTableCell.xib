@@ -22,16 +22,16 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eRV-u0-cJd">
-                        <rect key="frame" x="23" y="8" width="314" height="150"/>
+                        <rect key="frame" x="23" y="11.5" width="314" height="146.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hFm-Yc-wXL">
-                                <rect key="frame" x="114" y="2" width="86.5" height="99"/>
-                                <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="72"/>
+                                <rect key="frame" x="115" y="2" width="84.5" height="95.5"/>
+                                <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="70"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Request Accepted" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sQC-tn-SDY">
-                                <rect key="frame" x="98" y="101" width="118" height="20"/>
+                                <rect key="frame" x="98" y="97.5" width="118" height="20"/>
                                 <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -40,9 +40,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="hFm-Yc-wXL" firstAttribute="centerX" secondItem="eRV-u0-cJd" secondAttribute="centerX" id="2Vl-O9-4Fv"/>
-                            <constraint firstItem="hFm-Yc-wXL" firstAttribute="top" secondItem="eRV-u0-cJd" secondAttribute="top" constant="2" id="Mp1-2h-VXI"/>
                             <constraint firstAttribute="bottom" secondItem="sQC-tn-SDY" secondAttribute="bottom" constant="29" id="dyf-VJ-teO"/>
                             <constraint firstItem="sQC-tn-SDY" firstAttribute="centerX" secondItem="eRV-u0-cJd" secondAttribute="centerX" id="qBk-Lh-O1U"/>
+                            <constraint firstItem="hFm-Yc-wXL" firstAttribute="top" secondItem="eRV-u0-cJd" secondAttribute="top" constant="2" id="sRP-t6-gwv"/>
                             <constraint firstItem="sQC-tn-SDY" firstAttribute="top" secondItem="hFm-Yc-wXL" secondAttribute="bottom" id="zBg-6v-stp"/>
                         </constraints>
                     </view>
@@ -51,7 +51,7 @@
                     <constraint firstItem="eRV-u0-cJd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="23" id="1Qh-UJ-lBD"/>
                     <constraint firstAttribute="trailing" secondItem="eRV-u0-cJd" secondAttribute="trailing" constant="23" id="2Ki-Hr-4nz"/>
                     <constraint firstAttribute="bottom" secondItem="eRV-u0-cJd" secondAttribute="bottom" constant="8" id="NlD-sr-4Fn"/>
-                    <constraint firstItem="eRV-u0-cJd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="wBB-dH-Dgu"/>
+                    <constraint firstItem="eRV-u0-cJd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11.5" id="xpT-Fl-Gy3"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

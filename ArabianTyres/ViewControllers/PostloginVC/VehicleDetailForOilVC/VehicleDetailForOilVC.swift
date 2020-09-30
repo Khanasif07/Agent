@@ -165,7 +165,7 @@ extension VehicleDetailForOilVC {
         vehicleDetailLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
         subHeading.font = AppFonts.NunitoSansBold.withSize(14.0)
         nextBtn.titleLabel?.font =  AppFonts.NunitoSansSemiBold.withSize(16.0)
-        uploadView.backgroundColor =  !TyreRequestModel.shared.images.isEmpty ? .white : AppColors.fontTertiaryColor
+        uploadView.backgroundColor =  !TyreRequestModel.shared.images.isEmpty ? .white : AppColors.lightBackgroundColor
         uploadView.borderWidth = !TyreRequestModel.shared.images.isEmpty ? 0.0 : 1.0
     }
     

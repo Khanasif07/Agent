@@ -61,6 +61,10 @@ class URTyreStep1VC: BaseVC {
           AppRouter.goToTyreBrandVC(vc: self)
     }
     
+    @IBAction func chatWithExpert(_ sender: UIButton) {
+        showAlert(msg: "Under Development")
+    }
+    
     @IBAction func findRightAction(_ sender: UIButton) {
         AppRouter.goToVehicleDetailVC(vc: self)
     }

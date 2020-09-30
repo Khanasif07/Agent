@@ -23,6 +23,8 @@ enum AppColors {
     
     @nonobjc static var fontTertiaryColor: UIColor {   return #colorLiteral(red: 0.5411764706, green: 0.5843137255, blue: 0.6196078431, alpha: 1)    }
     
+    @nonobjc static var lightBackgroundColor: UIColor {   return #colorLiteral(red: 0.9647058824, green: 0.968627451, blue: 0.9764705882, alpha: 1)    }
+    
     @nonobjc static var errorRedColor: UIColor { return #colorLiteral(red: 0.7882352941, green: 0.02352941176, blue: 0.01176470588, alpha: 0.8006973735)   }
     
     @nonobjc static var warningYellowColor: UIColor { return  #colorLiteral(red: 1, green: 0.6941176471, blue: 0.2, alpha: 1)}

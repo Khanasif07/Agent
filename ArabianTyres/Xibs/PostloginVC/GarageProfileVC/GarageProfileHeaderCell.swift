@@ -46,22 +46,22 @@ class GarageProfileHeaderCell: UITableViewCell {
         self.dataContainerView.addShadow(cornerRadius: 4, color: UIColor.black16, offset: CGSize(width: 0.5, height: 0.5), opacity: 1, shadowRadius: 4)
         self.emailVerifyBtn.round(radius: 4.0)
         self.phoneVerifyBtn.round(radius: 4.0)
-        self.profileImgView.round()
+        self.profileImgView.round(radius: 4.0)
         self.editProfileView.round(radius: 4.0)
         self.emailVerifiedView.round()
         self.phoneNoVerifiedView.round()
     }
     
-    func populateData(model: UserModel){
-        profileImgView.setImage_kf(imageString: model.image, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: true)
+    func populateData(model: GarageProfilePreFillModel,userModel: UserModel){
+        profileImgView.setImage_kf(imageString: model.logoUrl, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: true)
         userNameLbl.text = model.name.isEmpty ? "N/A" : "\(model.name)"
-        userPhoneNoLbl.text = model.phoneNo.isEmpty ? "N/A" : "\(model.countryCode)" + " \(model.phoneNo)"
-        userEmailLbl.text = model.email.isEmpty ? "N/A" : model.email
-        phoneNoVerifiedView.isHidden = !model.phoneVerified
-        phoneVerifyBtn.isHidden = model.phoneVerified || model.phoneNo.isEmpty
-        emailVerifiedView.isHidden = !model.emailVerified
-        emailVerifyBtn.isHidden = model.emailVerified || model.email.isEmpty
-        installationVauleLbl.text = "\(GarageProfileModel.shared.minInstallationPrice) - " + "\(GarageProfileModel.shared.maxInstallationPrice) SAR"
+        userPhoneNoLbl.text = userModel.phoneNo.isEmpty ? "N/A" : "\(userModel.countryCode)" + "  \(userModel.phoneNo)"
+        userEmailLbl.text = userModel.email.isEmpty ? "N/A" : userModel.email
+        phoneNoVerifiedView.isHidden = !userModel.phoneVerified
+        phoneVerifyBtn.isHidden = userModel.phoneVerified || model.phoneNo.isEmpty
+        emailVerifiedView.isHidden = !userModel.emailVerified
+        emailVerifyBtn.isHidden = userModel.emailVerified || userModel.email.isEmpty
+        installationVauleLbl.text = "\(model.minInstallationPrice) - " + "\(model.maxInstallationPrice) SAR"
         addressLbl.text = GarageProfileModel.shared.address
         mainCollView.reloadData()
     }

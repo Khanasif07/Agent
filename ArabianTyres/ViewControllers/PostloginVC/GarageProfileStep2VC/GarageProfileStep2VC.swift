@@ -330,7 +330,7 @@ extension GarageProfileStep2VC: UIImagePickerControllerDelegate, UINavigationCon
                 GarageProfileModel.shared.serviceCenterImages[lastIndex-1].url = url
             }
             if let _ = error{
-//                self.showAlert(msg: LocalizedString.imageUploadingFailed.localized)
+                self.showAlert(msg: LocalizedString.imageUploadingFailed.localized)
             }
         })
         picker.dismiss(animated: true, completion: nil)

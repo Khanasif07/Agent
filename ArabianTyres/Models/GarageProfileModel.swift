@@ -88,6 +88,8 @@ struct GarageProfileModel {
 }
 
 struct GarageProfilePreFillModel {
+    var phoneNo                        : String = ""
+    var name                           : String = ""
        var logoUrl                     : String = ""
        var logo                        : UIImage? = nil
        var serviceCenterName           : String = ""
@@ -110,6 +112,8 @@ struct GarageProfilePreFillModel {
        var requestTime                 : String = ""
     
     init(_ json : JSON = JSON()) {
+        self.phoneNo = json[ApiKey.phoneNo].stringValue
+        self.name = json[ApiKey.name].stringValue
         self.services = json[ApiKey.services].arrayValue.map{((ServicesModel($0)))}
         self.logoUrl = json[ApiKey.logo].stringValue
         self.serviceCenterName = json[ApiKey.name].stringValue
