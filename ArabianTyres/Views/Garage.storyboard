@@ -293,7 +293,7 @@ Service Center</string>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tCq-Jr-TpJ">
-                                <rect key="frame" x="0.0" y="100" width="414" height="796"/>
+                                <rect key="frame" x="0.0" y="100" width="414" height="676"/>
                                 <color key="backgroundColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="0bv-fd-liP">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
@@ -325,37 +325,6 @@ Service Center</string>
                                         <constraint firstItem="gtg-pv-E2N" firstAttribute="leading" secondItem="0bv-fd-liP" secondAttribute="leading" constant="22" id="2xv-ku-1yY"/>
                                         <constraint firstItem="gtg-pv-E2N" firstAttribute="top" secondItem="0bv-fd-liP" secondAttribute="top" constant="18" id="H32-zn-orx"/>
                                         <constraint firstAttribute="trailing" secondItem="gtg-pv-E2N" secondAttribute="trailing" constant="22" id="pp4-Nd-wSU"/>
-                                    </constraints>
-                                </view>
-                                <view key="tableFooterView" contentMode="scaleToFill" id="W0z-Zb-BtC">
-                                    <rect key="frame" x="0.0" y="252" width="414" height="138"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C5k-g5-H9j" customClass="AppButton" customModule="ArabianTyres" customModuleProvider="target">
-                                            <rect key="frame" x="22" y="52" width="370" height="56"/>
-                                            <color key="backgroundColor" red="0.090196078430000007" green="0.1450980392" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="56" id="gwL-Z8-dTS"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                            <state key="normal" title="Start Registration">
-                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </state>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                    <real key="value" value="4"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <action selector="startRegistraionAction:" destination="09l-eL-0NZ" eventType="touchUpInside" id="xLm-jR-cLf"/>
-                                            </connections>
-                                        </button>
-                                    </subviews>
-                                    <color key="backgroundColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <constraints>
-                                        <constraint firstItem="C5k-g5-H9j" firstAttribute="leading" secondItem="W0z-Zb-BtC" secondAttribute="leading" constant="22" id="4wQ-kY-0up"/>
-                                        <constraint firstAttribute="bottom" secondItem="C5k-g5-H9j" secondAttribute="bottom" constant="30" id="TU9-LI-iB1"/>
-                                        <constraint firstAttribute="trailing" secondItem="C5k-g5-H9j" secondAttribute="trailing" constant="22" id="xHq-F8-Ag9"/>
                                     </constraints>
                                 </view>
                                 <prototypes>
@@ -399,14 +368,36 @@ Service Center</string>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C5k-g5-H9j" customClass="AppButton" customModule="ArabianTyres" customModuleProvider="target">
+                                <rect key="frame" x="22" y="791" width="370" height="56"/>
+                                <color key="backgroundColor" red="0.090196078430000007" green="0.1450980392" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="gwL-Z8-dTS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <state key="normal" title="Start Registration">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="startRegistraionAction:" destination="09l-eL-0NZ" eventType="touchUpInside" id="xLm-jR-cLf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="4c9-sS-dJD" firstAttribute="top" secondItem="iAq-WY-lbO" secondAttribute="top" id="8eM-Io-dM5"/>
                             <constraint firstItem="tCq-Jr-TpJ" firstAttribute="leading" secondItem="iAq-WY-lbO" secondAttribute="leading" id="BaW-Ri-iBu"/>
-                            <constraint firstAttribute="bottom" secondItem="tCq-Jr-TpJ" secondAttribute="bottom" id="DD9-U5-9cG"/>
+                            <constraint firstItem="iAq-WY-lbO" firstAttribute="bottom" secondItem="C5k-g5-H9j" secondAttribute="bottom" constant="15" id="D1g-4F-5vq"/>
                             <constraint firstItem="tCq-Jr-TpJ" firstAttribute="top" secondItem="4c9-sS-dJD" secondAttribute="bottom" id="FdW-5x-iej"/>
+                            <constraint firstItem="C5k-g5-H9j" firstAttribute="top" secondItem="tCq-Jr-TpJ" secondAttribute="bottom" constant="15" id="K24-ij-F8P"/>
                             <constraint firstItem="4c9-sS-dJD" firstAttribute="trailing" secondItem="iAq-WY-lbO" secondAttribute="trailing" id="Seo-hj-5xw"/>
+                            <constraint firstItem="iAq-WY-lbO" firstAttribute="trailing" secondItem="C5k-g5-H9j" secondAttribute="trailing" constant="22" id="UYL-Pl-CFv"/>
+                            <constraint firstItem="C5k-g5-H9j" firstAttribute="leading" secondItem="iAq-WY-lbO" secondAttribute="leading" constant="22" id="Ycw-gn-uVC"/>
                             <constraint firstItem="iAq-WY-lbO" firstAttribute="trailing" secondItem="tCq-Jr-TpJ" secondAttribute="trailing" id="e0U-0k-UT1"/>
                             <constraint firstItem="4c9-sS-dJD" firstAttribute="leading" secondItem="iAq-WY-lbO" secondAttribute="leading" id="gD6-IH-PYH"/>
                         </constraints>
@@ -421,7 +412,7 @@ Service Center</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KOw-NR-yEA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-958" y="-39"/>
+            <point key="canvasLocation" x="-959.4202898550725" y="-39.508928571428569"/>
         </scene>
         <!--Registraion PendingVC-->
         <scene sceneID="iAS-0K-Gom">

@@ -174,7 +174,7 @@ extension BrandsListingVC : UITableViewDelegate, UITableViewDataSource {
         if (listingType == .brands) {
             return self.viewModel.searchBrandListing.endIndex
         }else {
-            return  self.viewModel.searchCountryListing.endIndex
+            return self.viewModel.searchCountryListing.endIndex
         }
     }
     
@@ -186,8 +186,15 @@ extension BrandsListingVC : UITableViewDelegate, UITableViewDataSource {
         let view = tableView.dequeueHeaderFooter(with: FacilityTableHeaderView.self)
         view.bottomView.backgroundColor = #colorLiteral(red: 0.9294117647, green: 0.9294117647, blue: 0.9294117647, alpha: 1)
         view.categoryName.text = listingType == .brands ? self.viewModel.searchBrandListing[section].name : self.viewModel.searchCountryListing[section].name
-//        view.arrowImg.isHidden = (section == 0 && self.isSearchOn) ? true : false
-//        view.arrowImg.setImage_kf(imageString: listingType == .brands ? self.viewModel.searchBrandListing[section].iconImage : "", placeHolderImage: #imageLiteral(resourceName: "icUnCheck"), loader: false)
+        if   (listingType == .brands) {
+            if self.viewModel.searchBrandListing[section].name == "All Brands" {
+                view.arrowImg.isHidden = true }else {
+                view.arrowImg.isHidden = false
+                view.arrowImg.setImage_kf(imageString: self.viewModel.searchBrandListing[section].iconImage, placeHolderImage: #imageLiteral(resourceName: "terms"), loader: false)
+            }
+        } else {
+               view.arrowImg.isHidden = true
+        }
         if   self.listingType == .brands {
             let isPowerSelected = self.viewModel.selectedBrandsArr.contains(where: {$0.id == (self.isSearchOn ? self.viewModel.searchBrandListing[section].id : self.viewModel.brandsListings[section].id)})
             if self.viewModel.brandsListings.endIndex  > 0  {
@@ -319,8 +326,10 @@ extension BrandsListingVC : DZNEmptyDataSetSource,DZNEmptyDataSetDelegate {
     
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         var emptyData = ""
-        if self.viewModel.searchBrandListing.endIndex == 0 {
-           emptyData = "No data found"
+        if (listingType == .brands) {
+            emptyData =  self.viewModel.searchBrandListing.endIndex == 0 ? "No data found" : ""
+        }else {
+             emptyData =  self.viewModel.searchCountryListing.endIndex  == 0 ? "No data found" : ""
         }
         return NSAttributedString(string:emptyData , attributes: [NSAttributedString.Key.foregroundColor: AppColors.fontTertiaryColor,NSAttributedString.Key.font: AppFonts.NunitoSansBold.withSize(18)])
     }

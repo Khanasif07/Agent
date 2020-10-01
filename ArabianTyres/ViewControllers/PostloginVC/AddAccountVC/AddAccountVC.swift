@@ -207,10 +207,8 @@ extension AddAccountVC: GarageRegistrationVMDelegate {
     }
   
     func completeProfileSuccess(msg: String){
-//        AppUserDefaults.save(value: "2", forKey: .currentUserType)
-//        AppRouter.goToGarageHome()
-        self.navigationController?.popToViewControllerOfType(classForCoder: ProfileSettingVC.self)
-        AppRouter.goToProfileSettingVC(vc: self)
+        AppUserDefaults.save(value: "2", forKey: .currentUserType)
+        AppRouter.goToGarageHome()
     }
     
     func completeProfileFailure(msg: String){

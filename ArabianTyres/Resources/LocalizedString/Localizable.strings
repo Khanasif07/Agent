@@ -117,8 +117,8 @@
 "privacy_policy" = "Privacy Policy";
 "contactUs" = "Conatct us";
 "changeLanguage" = "Change Language";
-"switchProfileTogarage" = "Switch Profile to Garage Owner";
-"switchProfileToUser" = "Switch Profile to User";
+"switchProfileTogarage" = "Switch to Garage Account";
+"switchProfileToUser" = "Switch to User Account";
 "reportAnIssue" = "Report an Issue";
 "faq" = "FAQ";
 "referFriend" = "Rafer a Friend";

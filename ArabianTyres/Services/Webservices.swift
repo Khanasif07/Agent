@@ -281,7 +281,10 @@ extension WebServices{
             if token.isEmpty {
                 let accessToken = json[ApiKey.data][ApiKey.authToken].stringValue
                 AppUserDefaults.save(value: accessToken, forKey: .accesstoken)}
-            AppUserDefaults.save(value: json[ApiKey.data][ApiKey.currentRole].stringValue, forKey: .currentUserType)
+            let currentRole =  json[ApiKey.data][ApiKey.currentRole].stringValue
+            if !currentRole.isEmpty{
+                 AppUserDefaults.save(value: currentRole, forKey: .currentUserType)
+            }
             success(user)
         }) { (error) -> (Void) in
             failure(error)
@@ -547,6 +550,10 @@ extension WebServices{
                                       failure: @escaping FailureResponse) {
         self.commonPutAPI(parameters: parameters, endPoint: .completeGarageProfile, success: { (json) in
             let msg = json[ApiKey.message].stringValue
+            let currentRole =  json[ApiKey.data][ApiKey.currentRole].stringValue
+            if !currentRole.isEmpty{
+                 AppUserDefaults.save(value: currentRole, forKey: .currentUserType)
+            }
             success(msg)
         }) { (error) -> (Void) in
             failure(error)

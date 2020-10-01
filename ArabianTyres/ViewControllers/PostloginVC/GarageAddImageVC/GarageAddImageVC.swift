@@ -87,6 +87,7 @@ extension GarageAddImageVC {
         self.saveContinueBtn.isEnabled = false
         logoImgView.image = GarageProfileModel.shared.logo
         garageName.text = GarageProfileModel.shared.serviceCenterName
+        self.mapView.isUserInteractionEnabled = false
     }
     
     private func prepareMap() {
