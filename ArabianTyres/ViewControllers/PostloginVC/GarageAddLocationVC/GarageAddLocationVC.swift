@@ -48,6 +48,11 @@ class GarageAddLocationVC: BaseVC {
         initialSetup()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.isMarkerAnimation = true
+    }
+    
     // MARK: - IBActions
     //===========================
     
@@ -108,6 +113,7 @@ extension GarageAddLocationVC {
     }
     
     private func prepareMap() {
+         self.isMarkerAnimation =  false
         self.mapView.isMyLocationEnabled = true
         self.mapView.delegate = self
         self.locationManager.delegate = self
@@ -166,14 +172,12 @@ extension GarageAddLocationVC {
     
     private func openSettingApp(message: String) {
         
-//        self.showAlertWithAction(title: "", msg: message, cancelTitle: LocalizedString.cancel.localized, actionTitle: "Ok", actioncompletion: {
-            guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
-                return
-            }
-            if UIApplication.shared.canOpenURL(settingsUrl) {
-                UIApplication.shared.open(settingsUrl, options: [:], completionHandler: nil)
-            }
-//        }) { }
+        guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+            return
+        }
+        if UIApplication.shared.canOpenURL(settingsUrl) {
+            UIApplication.shared.open(settingsUrl, options: [:], completionHandler: nil)
+        }
     }
 }
 
@@ -241,14 +245,14 @@ extension GarageAddLocationVC: GMSAutocompleteViewControllerDelegate {
     }
     
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-        if let address =  place.formattedAddress {
-            self.locationValue = CLLocationCoordinate2D(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
-            self.serviceAddresslbl.text = address
-            liveAddress = address
             isMarkerAnimation = false
-            moveMarker(coordinate: CLLocationCoordinate2D(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude))
-        }
-        viewController.dismiss(animated: true)
+            self.locationValue = place.coordinate
+            self.setAddress()
+            moveMarker(coordinate: self.locationValue)
+            viewController.dismiss(animated: true) { [weak self] in
+                guard let `self` = self else { return }
+                printDebug(self)
+            }
     }
     
     func wasCancelled(_ viewController: GMSAutocompleteViewController) {

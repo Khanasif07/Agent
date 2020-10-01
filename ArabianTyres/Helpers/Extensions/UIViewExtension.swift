@@ -954,7 +954,7 @@ class AppButton: UIButton {
     open override var isEnabled: Bool{
         didSet {
             alpha = isEnabled ? 1.0 : 0.5
-            backgroundColor = isEnabled ? AppColors.primaryBlueColor : AppColors.primaryBlueLightShade
+            backgroundColor = isEnabled ? AppColors.appRedColor : AppColors.primaryBlueLightShade
             setTitleColor(isEnabled ? .white : AppColors.fontTertiaryColor, for: .normal)
         }
     }

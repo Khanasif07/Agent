@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -37,8 +37,8 @@
                                 <color key="textColor" red="1" green="0.68627450980000004" blue="0.26274509800000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ykE-fh-a46">
-                                <rect key="frame" x="120" y="167" width="139" height="56"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ykE-fh-a46" customClass="AppButton" customModule="ArabianTyres" customModuleProvider="target">
+                                <rect key="frame" x="120" y="164" width="139" height="56"/>
                                 <color key="backgroundColor" red="0.12941176469999999" green="0.19215686269999999" blue="0.4823529412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="139" id="KkF-68-xEz"/>
@@ -48,11 +48,11 @@
                                     <color key="titleColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="loginBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="gyh-8L-Vvs"/>
+                                    <action selector="loginBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="L6a-KQ-jrw"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wbi-ZM-DGS">
-                                <rect key="frame" x="124.5" y="247" width="130" height="29"/>
+                                <rect key="frame" x="122.5" y="244" width="134" height="32"/>
                                 <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="14"/>
                                 <state key="normal" title="Create New Account"/>
                                 <connections>
@@ -64,8 +64,8 @@
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="wbi-ZM-DGS" secondAttribute="bottom" constant="64" id="EZ3-C2-r3g"/>
                             <constraint firstItem="hg8-vy-xxb" firstAttribute="top" secondItem="mo3-4q-T5S" secondAttribute="bottom" constant="14" id="GGZ-vJ-jkb"/>
+                            <constraint firstItem="ykE-fh-a46" firstAttribute="top" secondItem="hg8-vy-xxb" secondAttribute="bottom" constant="31" id="Wu1-0k-b11"/>
                             <constraint firstItem="wbi-ZM-DGS" firstAttribute="top" secondItem="ykE-fh-a46" secondAttribute="bottom" constant="24" id="Xet-0L-0x0"/>
-                            <constraint firstItem="ykE-fh-a46" firstAttribute="top" secondItem="hg8-vy-xxb" secondAttribute="bottom" constant="34" id="cL1-LZ-dyQ"/>
                             <constraint firstItem="mo3-4q-T5S" firstAttribute="centerX" secondItem="6o3-Tl-wg0" secondAttribute="centerX" id="nav-Ia-okF"/>
                             <constraint firstItem="mo3-4q-T5S" firstAttribute="top" secondItem="6o3-Tl-wg0" secondAttribute="top" constant="38" id="rh1-Kc-8Sq"/>
                             <constraint firstItem="hg8-vy-xxb" firstAttribute="centerX" secondItem="mo3-4q-T5S" secondAttribute="centerX" id="sbO-1O-Ho7"/>
@@ -87,7 +87,7 @@
             <connections>
                 <outlet property="createNewAccountBtn" destination="wbi-ZM-DGS" id="3Ac-1x-neP"/>
                 <outlet property="dataContainerView" destination="6o3-Tl-wg0" id="h3F-bU-5ec"/>
-                <outlet property="loginBtn" destination="ykE-fh-a46" id="kga-Rq-zrf"/>
+                <outlet property="loginBtn" destination="ykE-fh-a46" id="eLC-PW-seR"/>
                 <outlet property="welcomeToTaraLbl" destination="hg8-vy-xxb" id="Lry-o3-OBX"/>
             </connections>
             <point key="canvasLocation" x="142.75362318840581" y="123.88392857142857"/>

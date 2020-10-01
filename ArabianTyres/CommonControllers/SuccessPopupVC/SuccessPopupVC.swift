@@ -16,7 +16,7 @@ class SuccessPopupVC: BaseVC {
     
     // MARK: - IBOutlets
     //===========================
-    @IBOutlet weak var okBtn: UIButton!
+    @IBOutlet weak var okBtn: AppButton!
     @IBOutlet weak var successDescLbl: UILabel!
     @IBOutlet weak var successTitleLbl: UILabel!
     @IBOutlet weak var dataContainerView: UIView!
@@ -59,6 +59,7 @@ extension SuccessPopupVC {
     }
     
     public func textSetUp(){
+        okBtn.isEnabled = true
         self.successDescLbl.text = self.desc
         self.successTitleLbl.text = self.titleLbl
     }

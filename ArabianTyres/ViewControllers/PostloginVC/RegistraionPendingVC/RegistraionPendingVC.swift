@@ -24,7 +24,7 @@ class RegistraionPendingVC: BaseVC {
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var headingLbl: UILabel!
     @IBOutlet weak var subHeadingLbl: UILabel!
-    @IBOutlet weak var completeProfileBtn: UIButton!
+    @IBOutlet weak var completeProfileBtn: AppButton!
     @IBOutlet weak var viewTutorailBtn: UIButton!
 
     @IBOutlet weak var emailLbl: UILabel!
@@ -91,6 +91,7 @@ extension RegistraionPendingVC {
     
     private func initialSetup() {
         setupTextAndFont()
+        completeProfileBtn.isEnabled = true
         switch screenType {
             
         case .pending:
