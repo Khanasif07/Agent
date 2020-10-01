@@ -149,7 +149,14 @@ extension BatteryRequestedVC {
         vehicleModelValueLbl.text = TyreRequestModel.shared.model
         productYearValueLbl.text = TyreRequestModel.shared.year
         numberOfBatteyTextField.text = TyreRequestModel.shared.quantity
+        batteryBrandContainerView.isHidden = isBrandCountryEmpty()
+        batteryBrandLbl.isHidden = isBrandCountryEmpty()
     }
+   
+    private func isBrandCountryEmpty() -> Bool {
+        return  TyreRequestModel.shared.tyreBrandsListing.isEmpty
+    }
+    
     
     
 }

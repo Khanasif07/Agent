@@ -58,6 +58,7 @@ class GarageAddLocationVC: BaseVC {
     }
     
     @IBAction func currentLocationBtnAction(_ sender: UIButton) {
+        isMarkerAnimation = false
         isMapLocationEnable()
     }
     
@@ -99,7 +100,6 @@ class GarageAddLocationVC: BaseVC {
 extension GarageAddLocationVC {
     
     private func initialSetup() {
-        setupLocations()
         self.prepareMap()
         self.setAddress()
         logoImgView.image = GarageProfileModel.shared.logo
@@ -109,7 +109,6 @@ extension GarageAddLocationVC {
     
     private func prepareMap() {
         self.mapView.isMyLocationEnabled = true
-//        self.mapView.settings.myLocationButton = true
         self.mapView.delegate = self
         self.locationManager.delegate = self
         markerView.image = #imageLiteral(resourceName: "markerIcon")

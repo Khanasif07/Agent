@@ -92,9 +92,6 @@ class TyreRequestedVC: BaseVC {
          self.navigationController?.popToViewControllerOfType(classForCoder: TyreBrandVC.self)
     }
     
-    private func isBrandCountryEmpty() -> Bool {
-        return TyreRequestModel.shared.countriesListing.isEmpty && TyreRequestModel.shared.tyreBrandsListing.isEmpty
-    }
 }
 
 // MARK: - Extension For Functions
@@ -160,6 +157,10 @@ extension TyreRequestedVC {
         originOfTyreLbl.isHidden = isBrandCountryEmpty()
         tyreBrandLbl.text = TyreRequestModel.shared.tyreBrandsListing.isEmpty ? LocalizedString.countryOrigin.localized :  LocalizedString.tyreBrand.localized
     }
+    
+    private func isBrandCountryEmpty() -> Bool {
+           return TyreRequestModel.shared.countriesListing.isEmpty && TyreRequestModel.shared.tyreBrandsListing.isEmpty
+       }
     
 }
 
