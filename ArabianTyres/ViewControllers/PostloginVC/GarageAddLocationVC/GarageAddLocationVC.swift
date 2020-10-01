@@ -25,7 +25,7 @@ class GarageAddLocationVC: BaseVC {
     //===========================
     var locationValue = LocationController.sharedLocationManager.locationManager.location?.coordinate ?? CLLocationCoordinate2D(latitude: 34.052238, longitude: -118.24334)
     private var locationManager = CLLocationManager()
-    let markerView = UIImageView(frame:CGRect(x: 0, y: 0, width: 21, height: 21))
+    let markerView = UIImageView(frame:CGRect(x: 0, y: 0, width: 16.3, height: 20.9))
     var gmssMarker = GMSMarker()
     var getLocation: ((CLLocationCoordinate2D,String)->())?
     var currentZoomLevel: Float = 14.0

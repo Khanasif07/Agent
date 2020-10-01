@@ -14,6 +14,7 @@ class ProfileVC: BaseVC {
     //===========================
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var mainTableView: UITableView!
+    @IBOutlet weak var headerImgView: UIImageView!
     
     // MARK: - Variables
     //===========================
@@ -64,6 +65,7 @@ extension ProfileVC {
     }
     
     private func tableViewSetUp(){
+        self.headerImgView.backgroundColor = UIColor.init(r: 28, g: 29, b: 36, alpha: 1.0)
         self.mainTableView.delegate = self
         self.mainTableView.dataSource = self
         self.mainTableView.registerCell(with: ProfileGuestTableCell.self)

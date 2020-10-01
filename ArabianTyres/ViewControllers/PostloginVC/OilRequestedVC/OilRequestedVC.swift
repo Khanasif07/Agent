@@ -112,6 +112,7 @@ extension OilRequestedVC {
             btn?.setTitle(LocalizedString.edit.localized, for: .normal)
             btn?.getUnderline()
         }
+        vechileDetailEditBtn.setTitleColor(AppColors.appRedColor, for: .normal)
         vechileDetailLbl.text = LocalizedString.vehicleDetails.localized
         oilBrandLbl.text = LocalizedString.oilBrands.localized
         numberOfUnitLbl.text = LocalizedString.numberOfUnit.localized
@@ -121,7 +122,7 @@ extension OilRequestedVC {
         numberOfBatteyTextField.isUserInteractionEnabled = false
         requestBtn.titleLabel?.font =  AppFonts.NunitoSansSemiBold.withSize(16.0)
         requestBtn.setTitle(LocalizedString.submitRequest.localized, for: .normal)
-      
+        requestBtn.isEnabled = true
         vehicleMakeLbl.text = LocalizedString.vehicleMake.localized
         vehicleModelLbl.text = LocalizedString.vehicleModel.localized
         productYearLbl.text = LocalizedString.productYear.localized

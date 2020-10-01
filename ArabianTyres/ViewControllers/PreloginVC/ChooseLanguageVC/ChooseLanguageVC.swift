@@ -68,7 +68,7 @@ class ChooseLanguageVC: BaseVC {
     }
     
     @IBAction func englishBtnAction(_ sender: UIButton) {
-        self.englishBtnView.layer.borderColor = AppColors.primaryBlueColor.cgColor
+        self.englishBtnView.layer.borderColor = AppColors.appRedColor.cgColor
         self.arabicBtnView.layer.borderColor = AppColors.primaryBlueLightShade.cgColor
         self.englishBtn.setImage(#imageLiteral(resourceName: "group1431"), for: .normal)
         self.arabicBtn.setImage(#imageLiteral(resourceName: "roundUnSelected"), for: .normal)
@@ -83,7 +83,7 @@ class ChooseLanguageVC: BaseVC {
         self.arabicBtn.setImage(#imageLiteral(resourceName: "group1431"), for: .normal)
         self.englishBtnView.layer.borderWidth = 1.0
         self.arabicBtnView.layer.borderWidth = 1.5
-        self.arabicBtnView.layer.borderColor = AppColors.primaryBlueColor.cgColor
+        self.arabicBtnView.layer.borderColor = AppColors.appRedColor.cgColor
         self.englishBtnView.layer.borderColor = AppColors.primaryBlueLightShade.cgColor
         self.continueBtn.isEnabled = true
         AppUserDefaults.save(value: LocalizedString.arabic.localized, forKey: .currentLanguage)

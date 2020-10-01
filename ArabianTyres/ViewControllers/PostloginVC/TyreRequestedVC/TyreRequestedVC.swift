@@ -106,6 +106,7 @@ extension TyreRequestedVC {
     
     private func setupTextAndFont(){
         self.viewModel.delegate = self
+        sizeEditBtn.setTitleColor(AppColors.appRedColor, for: .normal)
         sizeEditBtn.titleLabel?.font = AppFonts.NunitoSansSemiBold.withSize(15.0)
         sizeEditBtn.setTitle(LocalizedString.edit.localized, for: .normal)
         sizeEditBtn.getUnderline()
@@ -116,7 +117,7 @@ extension TyreRequestedVC {
         numberOfTyreTextField.isUserInteractionEnabled = false
         requestBtn.titleLabel?.font =  AppFonts.NunitoSansSemiBold.withSize(16.0)
         requestBtn.setTitle(LocalizedString.submitRequest.localized, for: .normal)
-        
+        requestBtn.isEnabled = true
         titleLbl.text = LocalizedString.youAreRequestingForTyreServiceWith.localized
         sizeOfTyreLbl.text = LocalizedString.sizeOfTyre.localized
         originOfTyreLbl.text = LocalizedString.originOfTyre.localized

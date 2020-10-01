@@ -18,12 +18,14 @@ class LocationPopUpVC: BaseVC {
     @IBOutlet weak var headingLbl: UILabel!
     @IBOutlet weak var subHeadingLbl: UILabel!
     @IBOutlet weak var cancelBtn: UIButton!
-    @IBOutlet weak var allowBtn: UIButton!
+    @IBOutlet weak var allowBtn: AppButton!
     @IBOutlet weak var imgView: UIImageView!
     
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        allowBtn.round(radius: 4.0)
+        cancelBtn.round(radius: 4.0)
         self.dataContainerView.addShadow(cornerRadius: 5, color: UIColor.black16, offset: CGSize(width: 0.5, height: 0.5), opacity: 1, shadowRadius: 5)
     }
     
@@ -77,6 +79,10 @@ extension LocationPopUpVC {
         
         cancelBtn.setTitle(LocalizedString.cancel.localized, for: .normal)
         allowBtn.setTitle(LocalizedString.allow.localized, for: .normal)
+        allowBtn.isEnabled = true
+        cancelBtn.layer.borderWidth = 1.0
+        cancelBtn.layer.borderColor = AppColors.appRedColor.cgColor
+        cancelBtn.setTitleColor(AppColors.appRedColor, for: .normal)
     }
     
     private func isMapLocationEnable() {

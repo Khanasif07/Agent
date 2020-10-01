@@ -109,7 +109,7 @@ extension BatteryRequestedVC {
             btn?.setTitle(LocalizedString.edit.localized, for: .normal)
             btn?.getUnderline()
         }
-        
+        vechileDetailEditBtn.setTitleColor(AppColors.appRedColor, for: .normal)
         vechileDetailLbl.text = LocalizedString.vehicleDetails.localized
         batteryBrandLbl.text = LocalizedString.batteryBrand.localized
         numberOfBatteryLbl.text = LocalizedString.numberOfBattery.localized
@@ -119,7 +119,7 @@ extension BatteryRequestedVC {
         numberOfBatteyTextField.isUserInteractionEnabled = false
         requestBtn.titleLabel?.font =  AppFonts.NunitoSansSemiBold.withSize(16.0)
         requestBtn.setTitle(LocalizedString.submitRequest.localized, for: .normal)
-        
+        requestBtn.isEnabled = true
         vehicleMakeLbl.text = LocalizedString.vehicleMake.localized
         vehicleModelLbl.text = LocalizedString.vehicleModel.localized
         productYearLbl.text = LocalizedString.productYear.localized

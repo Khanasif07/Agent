@@ -38,16 +38,16 @@ class SignUpTopCell: UITableViewCell {
             .font: UIFont.systemFont(ofSize: 13.0),
             .foregroundColor: AppColors.fontTertiaryColor
         ])
-        attributedString.append(NSAttributedString(string: LocalizedString.tos.localized, attributes: [NSAttributedString.Key.foregroundColor: AppColors.primaryBlueColor,NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 13.0)]))
+        attributedString.append(NSAttributedString(string: LocalizedString.tos.localized, attributes: [NSAttributedString.Key.foregroundColor: AppColors.appRedColor,NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 13.0)]))
         attributedString.append(NSAttributedString(string: "&", attributes: [NSAttributedString.Key.foregroundColor: AppColors.fontTertiaryColor,NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13.0)]))
-        attributedString.append(NSAttributedString(string: LocalizedString.privacyPolicy.localized, attributes: [NSAttributedString.Key.foregroundColor: AppColors.primaryBlueColor,NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 13.0)]))
+        attributedString.append(NSAttributedString(string: LocalizedString.privacyPolicy.localized, attributes: [NSAttributedString.Key.foregroundColor: AppColors.appRedColor,NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 13.0)]))
         
         privacyLbl.attributedText = attributedString
         
     }
     
     public func addBottomViewToBottom(){
-        self.signInBtn.addBottomBorderWithColor(color: AppColors.primaryBlueColor, height: 1)
+        self.signInBtn.addBottomBorderWithColor(color: AppColors.appRedColor, height: 1)
     }
     
     public func setUpTextField(){
@@ -71,6 +71,7 @@ class SignUpTopCell: UITableViewCell {
         [nameTxtField,emailIdTxtField,mobNoTxtField,passTxtField,confirmPassTxtField].forEach({$0?.selectedTitleColor = AppColors.fontTertiaryColor})
         self.signUpBtn.setTitle(LocalizedString.signup.localized, for: .normal)
         self.signInBtn.setTitle(LocalizedString.sign_in_Cap.localized, for: .normal)
+        self.signInBtn.setTitleColor(AppColors.appRedColor, for: .normal)
         self.signUpBtn.backgroundColor = AppColors.primaryBlueColor
         self.signUpBtn.isEnabled = false
         self.passTxtField.isSecureTextEntry = true

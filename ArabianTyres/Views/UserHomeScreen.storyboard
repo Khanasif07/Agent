@@ -288,7 +288,7 @@ brand or country origin</string>
                                                                     <constraint firstAttribute="width" secondItem="xbm-Qc-X7M" secondAttribute="height" multiplier="1:1" id="lqW-r9-i8E"/>
                                                                 </constraints>
                                                                 <state key="normal" image="roundUnSelected"/>
-                                                                <state key="selected" image="icFillCircle"/>
+                                                                <state key="selected" image="group3815"/>
                                                                 <connections>
                                                                     <action selector="tyreCheckBtnAction:" destination="GOT-y6-IhY" eventType="touchUpInside" id="7Xg-tp-EaC"/>
                                                                 </connections>
@@ -325,7 +325,7 @@ brand or country origin</string>
                                                                     <constraint firstAttribute="width" secondItem="RMw-vn-ibp" secondAttribute="height" multiplier="1:1" id="P3K-Nn-OtX"/>
                                                                 </constraints>
                                                                 <state key="normal" image="roundUnSelected"/>
-                                                                <state key="selected" image="icFillCircle"/>
+                                                                <state key="selected" image="group3815"/>
                                                                 <connections>
                                                                     <action selector="countryCheckBtnAction:" destination="GOT-y6-IhY" eventType="touchUpInside" id="gR4-IW-cgd"/>
                                                                 </connections>
@@ -499,17 +499,17 @@ brand or country origin</string>
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D8I-Az-m9l">
-                                        <rect key="frame" x="30" y="254" width="354" height="388.5"/>
+                                        <rect key="frame" x="30" y="250" width="354" height="396.5"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="grp" translatesAutoresizingMaskIntoConstraints="NO" id="YrE-7V-h17">
-                                                <rect key="frame" x="126.99999999999999" y="35" width="100.00000000000004" height="100.00000000000003"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="group3712" translatesAutoresizingMaskIntoConstraints="NO" id="YrE-7V-h17">
+                                                <rect key="frame" x="123" y="35" width="108" height="108"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="YrE-7V-h17" secondAttribute="height" id="SfM-qY-zhp"/>
-                                                    <constraint firstAttribute="height" constant="100" id="vci-dc-coh"/>
+                                                    <constraint firstAttribute="height" constant="108" id="vci-dc-coh"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yuP-X2-SAc">
-                                                <rect key="frame" x="54" y="177" width="246" height="46.5"/>
+                                                <rect key="frame" x="54" y="185" width="246" height="46.5"/>
                                                 <string key="text">Arabian Tyres want to access
 your current location</string>
                                                 <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
@@ -517,14 +517,14 @@ your current location</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mXQ-p8-Ige">
-                                                <rect key="frame" x="54" y="230.5" width="246" height="1"/>
+                                                <rect key="frame" x="54" y="238.5" width="246" height="1"/>
                                                 <color key="backgroundColor" red="0.87450980392156863" green="0.89411764705882346" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="wUp-Gw-nOU"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YWJ-24-7va">
-                                                <rect key="frame" x="54" y="243.5" width="246" height="41"/>
+                                                <rect key="frame" x="54" y="251.5" width="246" height="41"/>
                                                 <string key="text">Allow cureent location will help you
 in getting great offers</string>
                                                 <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="15"/>
@@ -532,7 +532,7 @@ in getting great offers</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="8kL-fQ-FnG">
-                                                <rect key="frame" x="54" y="312.5" width="246" height="48"/>
+                                                <rect key="frame" x="54" y="320.5" width="246" height="48"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JBc-qy-9th">
                                                         <rect key="frame" x="0.0" y="0.0" width="115" height="48"/>
@@ -541,7 +541,7 @@ in getting great offers</string>
                                                             <constraint firstAttribute="height" constant="48" id="yN1-sc-acE"/>
                                                         </constraints>
                                                         <state key="normal" title="Cancel">
-                                                            <color key="titleColor" red="0.090196078430000007" green="0.1450980392" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -558,7 +558,7 @@ in getting great offers</string>
                                                             <action selector="cancelBtnAction:" destination="bLg-0Z-xpT" eventType="touchUpInside" id="LdF-0p-kuJ"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lsd-fy-pG3">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lsd-fy-pG3" customClass="AppButton" customModule="ArabianTyres" customModuleProvider="target">
                                                         <rect key="frame" x="131" y="0.0" width="115" height="48"/>
                                                         <color key="backgroundColor" red="0.090196078431372548" green="0.14509803921568626" blue="0.3529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Allow">
@@ -570,7 +570,7 @@ in getting great offers</string>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
-                                                            <action selector="allowBtnAction:" destination="bLg-0Z-xpT" eventType="touchUpInside" id="1Af-U7-SBA"/>
+                                                            <action selector="allowBtnAction:" destination="bLg-0Z-xpT" eventType="touchUpInside" id="uRm-sL-mZ2"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -614,7 +614,7 @@ in getting great offers</string>
                         <viewLayoutGuide key="safeArea" id="tFB-AA-OCh"/>
                     </view>
                     <connections>
-                        <outlet property="allowBtn" destination="Lsd-fy-pG3" id="sX2-Yj-x7D"/>
+                        <outlet property="allowBtn" destination="Lsd-fy-pG3" id="kPL-Os-j1w"/>
                         <outlet property="cancelBtn" destination="JBc-qy-9th" id="UZV-Ot-vEJ"/>
                         <outlet property="dataContainerView" destination="D8I-Az-m9l" id="gzf-jQ-zDb"/>
                         <outlet property="headingLbl" destination="yuP-X2-SAc" id="BDs-FZ-ygB"/>
@@ -960,9 +960,6 @@ Service With</string>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                         <real key="value" value="4"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                        <real key="value" value="1"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                         <color key="value" red="0.090196078430000007" green="0.1450980392" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2284,9 +2281,6 @@ Service With</string>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                         <real key="value" value="4"/>
                                                     </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                        <real key="value" value="1"/>
-                                                    </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                         <color key="value" red="0.090196078430000007" green="0.1450980392" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </userDefinedRuntimeAttribute>
@@ -2690,9 +2684,6 @@ Service With</string>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                         <real key="value" value="4"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                        <real key="value" value="1"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                         <color key="value" red="0.090196078430000007" green="0.1450980392" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3193,16 +3184,16 @@ provided details</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iaj-0a-xlq">
-                                                <rect key="frame" x="329" y="17" width="70" height="28"/>
+                                                <rect key="frame" x="357" y="17" width="42" height="28"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="28" id="wqE-IV-DTe"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="13"/>
-                                                <state key="normal" title="CLEAR ALL">
+                                                <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="17"/>
+                                                <state key="normal" title="Done">
                                                     <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="clearAllAction:" destination="soW-n5-dZ0" eventType="touchUpInside" id="0vf-CV-ctf"/>
+                                                    <action selector="doneBtnAction:" destination="soW-n5-dZ0" eventType="touchUpInside" id="1Fl-WC-Njb"/>
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uUV-Ws-Jcj">
@@ -3228,10 +3219,10 @@ provided details</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KHt-zL-4fu">
-                                        <rect key="frame" x="0.0" y="56" width="414" height="82"/>
+                                        <rect key="frame" x="0.0" y="56" width="414" height="75"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search Brand by name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oAm-3I-J5l" customClass="ATCTextField" customModule="ArabianTyres" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="14" width="382" height="52"/>
+                                                <rect key="frame" x="16" y="14" width="382" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="382" id="mFc-sT-0nd"/>
                                                 </constraints>
@@ -3247,49 +3238,27 @@ provided details</string>
                                             <constraint firstItem="oAm-3I-J5l" firstAttribute="top" secondItem="KHt-zL-4fu" secondAttribute="top" constant="14" id="0rw-63-t88"/>
                                             <constraint firstAttribute="trailing" secondItem="oAm-3I-J5l" secondAttribute="trailing" constant="16" id="9AS-QS-g3w"/>
                                             <constraint firstAttribute="bottom" secondItem="oAm-3I-J5l" secondAttribute="bottom" constant="16" id="oG0-0D-YTt"/>
-                                            <constraint firstAttribute="height" constant="82" id="phu-Oy-lTs"/>
+                                            <constraint firstAttribute="height" constant="75" id="phu-Oy-lTs"/>
                                             <constraint firstItem="oAm-3I-J5l" firstAttribute="leading" secondItem="KHt-zL-4fu" secondAttribute="leading" constant="16" id="ycL-Bq-HoC"/>
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="HsO-hH-jSJ">
-                                        <rect key="frame" x="0.0" y="138" width="414" height="328.5"/>
+                                        <rect key="frame" x="0.0" y="131" width="414" height="451.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     </tableView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wBk-jo-qX5" customClass="AppButton" customModule="ArabianTyres" customModuleProvider="target">
-                                        <rect key="frame" x="22" y="476.5" width="376" height="56"/>
-                                        <color key="backgroundColor" red="0.090196078430000007" green="0.1450980392" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="56" id="RGC-27-ui2"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="16"/>
-                                        <state key="normal" title="Done">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="4"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="doneBtnAction:" destination="soW-n5-dZ0" eventType="touchUpInside" id="QgP-LC-Psr"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="HsO-hH-jSJ" secondAttribute="trailing" id="2YU-Pq-HlQ"/>
                                     <constraint firstItem="HsO-hH-jSJ" firstAttribute="top" secondItem="KHt-zL-4fu" secondAttribute="bottom" id="8RS-T9-QZ2"/>
                                     <constraint firstAttribute="trailing" secondItem="KHt-zL-4fu" secondAttribute="trailing" id="8Wq-A4-ZZf"/>
-                                    <constraint firstItem="wBk-jo-qX5" firstAttribute="leading" secondItem="7Pd-Hb-stF" secondAttribute="leading" constant="22" id="D8f-Iu-aWH"/>
                                     <constraint firstItem="5dB-ML-0Ef" firstAttribute="top" secondItem="7Pd-Hb-stF" secondAttribute="top" id="HPa-Ek-fZb"/>
                                     <constraint firstAttribute="trailing" secondItem="5dB-ML-0Ef" secondAttribute="trailing" id="IHd-JC-gTw"/>
                                     <constraint firstItem="HsO-hH-jSJ" firstAttribute="leading" secondItem="7Pd-Hb-stF" secondAttribute="leading" id="ZI3-BB-bW5"/>
-                                    <constraint firstAttribute="bottom" secondItem="wBk-jo-qX5" secondAttribute="bottom" constant="50" id="aKy-4b-CMD"/>
-                                    <constraint firstAttribute="trailing" secondItem="wBk-jo-qX5" secondAttribute="trailing" constant="16" id="beh-a4-ctx"/>
-                                    <constraint firstItem="wBk-jo-qX5" firstAttribute="top" secondItem="HsO-hH-jSJ" secondAttribute="bottom" constant="10" id="cWN-Oe-bwG"/>
                                     <constraint firstItem="KHt-zL-4fu" firstAttribute="leading" secondItem="7Pd-Hb-stF" secondAttribute="leading" id="lXL-AO-VgQ"/>
                                     <constraint firstItem="KHt-zL-4fu" firstAttribute="top" secondItem="5dB-ML-0Ef" secondAttribute="bottom" id="ocm-NY-MY0"/>
                                     <constraint firstItem="5dB-ML-0Ef" firstAttribute="leading" secondItem="7Pd-Hb-stF" secondAttribute="leading" id="qv7-H5-Oi5"/>
+                                    <constraint firstAttribute="bottom" secondItem="HsO-hH-jSJ" secondAttribute="bottom" id="v9z-qr-0ph"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -3313,8 +3282,7 @@ provided details</string>
                     </view>
                     <connections>
                         <outlet property="cancelBtn" destination="sFY-Dc-kyv" id="mKL-KX-k67"/>
-                        <outlet property="clearAllBtn" destination="Iaj-0a-xlq" id="TKl-N3-MSa"/>
-                        <outlet property="doneBtn" destination="wBk-jo-qX5" id="wGX-4S-u1r"/>
+                        <outlet property="doneBtn" destination="Iaj-0a-xlq" id="zup-Uq-sok"/>
                         <outlet property="mainTableView" destination="HsO-hH-jSJ" id="PjR-sb-HHK"/>
                         <outlet property="searchTxtField" destination="oAm-3I-J5l" id="7Ho-D1-5RW"/>
                         <outlet property="titleLbl" destination="G3k-Zy-NFW" id="r7i-Nu-Q1I"/>
@@ -3329,11 +3297,11 @@ provided details</string>
         <image name="arrow" width="30" height="30"/>
         <image name="editProfile" width="12" height="14"/>
         <image name="genericHybridCarI051" width="337" height="408"/>
+        <image name="group3712" width="108" height="108"/>
+        <image name="group3815" width="30" height="30"/>
         <image name="group3913" width="36.5" height="36"/>
-        <image name="grp" width="107" height="107"/>
         <image name="icBattery" width="198" height="198"/>
         <image name="icFadeTyre" width="36" height="36"/>
-        <image name="icFillCircle" width="30" height="30"/>
         <image name="icImg" width="32.5" height="32"/>
         <image name="icOil" width="168" height="171"/>
         <image name="icRim" width="36.5" height="36"/>

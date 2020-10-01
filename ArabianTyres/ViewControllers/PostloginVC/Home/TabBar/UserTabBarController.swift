@@ -75,7 +75,7 @@ extension UserTabBarController {
         let numberOfItems = CGFloat(self.tabBar.items!.count)
         let tabBarItemSize = CGSize(width: self.tabBar.frame.width / numberOfItems, height: self.tabBar.frame.height)
         self.tabBar.selectedImageTintColor = .white
-        self.tabBar.selectionIndicatorImage = UIImage.imageWithColor(color: AppColors.primaryBlueColor, size: tabBarItemSize).resizableImage(withCapInsets: UIEdgeInsets.init(top: 0, left: 0, bottom: bottomSafeArea, right: 0))
+        self.tabBar.selectionIndicatorImage = UIImage.imageWithColor(color: AppColors.appRedColor, size: tabBarItemSize).resizableImage(withCapInsets: UIEdgeInsets.init(top: 0, left: 0, bottom: bottomSafeArea, right: 0))
     }
     
     func setupTabBar() {
@@ -124,7 +124,7 @@ extension UserTabBarController:UITabBarControllerDelegate{
         let numberOfItems = CGFloat(tabBar.items!.count)
         let tabBarItemSize = CGSize(width: tabBar.frame.width / numberOfItems, height: tabBar.frame.height)
         tabBar.selectedImageTintColor = .white
-        tabBar.selectionIndicatorImage = UIImage.imageWithColor(color: AppColors.primaryBlueColor, size: tabBarItemSize).resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: 0, bottom: bottomSafeArea, right: 10))
+        tabBar.selectionIndicatorImage = UIImage.imageWithColor(color: AppColors.appRedColor, size: tabBarItemSize).resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: 0, bottom: bottomSafeArea, right: 10))
         
     }
     

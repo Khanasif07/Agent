@@ -22,7 +22,6 @@ class BrandsListingVC: BaseVC {
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var cancelBtn: UIButton!
     @IBOutlet weak var doneBtn: UIButton!
-    @IBOutlet weak var clearAllBtn: UIButton!
     @IBOutlet weak var mainTableView: UITableView!
     
     // MARK: - Variables
@@ -84,14 +83,6 @@ class BrandsListingVC: BaseVC {
         buttonView.isHidden = viewModel.searchText.isEmpty
         mainTableView.reloadData()
     }
-    
-    @IBAction func clearAllAction(_ sender: UIButton) {
-        self.viewModel.selectedCountryArr = []
-        self.viewModel.selectedBrandsArr = []
-        TyreRequestModel.shared.selectedTyreCountryListings = []
-        TyreRequestModel.shared.selectedTyreBrandsListings = []
-        mainTableView.reloadData()
-    }
 }
 
 // MARK: - Extension For Functions
@@ -149,11 +140,8 @@ extension BrandsListingVC {
         titleLbl.font = AppFonts.NunitoSansBold.withSize(17.0)
         cancelBtn.titleLabel?.font =  AppFonts.NunitoSansSemiBold.withSize(17.0)
         doneBtn.titleLabel?.font =  AppFonts.NunitoSansSemiBold.withSize(17.0)
-        clearAllBtn.titleLabel?.font =  AppFonts.NunitoSansSemiBold.withSize(12.0)
         cancelBtn.setTitle(LocalizedString.cancel.localized, for: .normal)
         doneBtn.setTitle(LocalizedString.done.localized, for: .normal)
-        clearAllBtn.setTitle(LocalizedString.clearAll.localized, for: .normal)
-        
     }
     
     @objc private func clear(_ sender: UIButton) {

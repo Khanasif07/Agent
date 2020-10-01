@@ -115,7 +115,7 @@ extension BatteryBrandVC {
         
         thePreferredLbl.font = AppFonts.NunitoSansBold.withSize(21.0)
         chooseBatteryBrandLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
-        
+        skipBtn.setTitleColor(AppColors.appRedColor, for: .normal)
         thePreferredLbl.text = LocalizedString.thePreferredBrandForBatteryWouldBe.localized
         chooseBatteryBrandLbl.text = LocalizedString.chooseBatteryBrands.localized
         submitBtn.setTitle(LocalizedString.submit.localized, for: .normal)

@@ -67,7 +67,7 @@ class LoginEmailPhoneTableCell: UITableViewCell {
     }
     
     public func addBottomViewToBottom(){
-        self.signUpBtn.addBottomBorderWithColorDefault(color: AppColors.primaryBlueColor, height: 1)
+        self.signUpBtn.addBottomBorderWithColorDefault(color: AppColors.appRedColor, height: 1)
     }
     
     @objc func secureTextField(_ sender: UIButton){
@@ -76,11 +76,11 @@ class LoginEmailPhoneTableCell: UITableViewCell {
     }
     
     public func setUpColor(){
-        self.phoneNoBtn.setTitleColor(AppColors.primaryBlueColor, for: .normal)
+        self.phoneNoBtn.setTitleColor(AppColors.appRedColor, for: .normal)
         self.signInBtn.setTitleColor(UIColor.white, for: .normal)
         self.signInBtn.backgroundColor = AppColors.primaryBlueColor
         self.forgotPassBtn.setTitleColor(AppColors.fontTertiaryColor, for: .normal)
-        self.signUpBtn.setTitleColor(AppColors.primaryBlueColor, for: .normal)
+        self.signUpBtn.setTitleColor(AppColors.appRedColor, for: .normal)
         self.signInBtn.isEnabled = false
     }
 
