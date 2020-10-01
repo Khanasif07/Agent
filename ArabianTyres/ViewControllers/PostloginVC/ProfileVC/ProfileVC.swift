@@ -30,13 +30,12 @@ class ProfileVC: BaseVC {
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+        return .default
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.mainTableView.reloadData()
-        self.setNeedsStatusBarAppearanceUpdate()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -250,3 +249,9 @@ class LeftAlignedCollectionViewFlowLayout: UICollectionViewFlowLayout {
         return attributes
     }
 }
+//
+//extension UINavigationController {
+//       open override var preferredStatusBarStyle: UIStatusBarStyle {
+//           return .default
+//       }
+//   }

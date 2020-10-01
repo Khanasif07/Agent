@@ -152,6 +152,12 @@ extension OilRequestedVC {
           vehicleModelValueLbl.text = TyreRequestModel.shared.model
           productYearValueLbl.text = TyreRequestModel.shared.year
           numberOfBatteyTextField.text = TyreRequestModel.shared.quantity
+          batteryBrandContainerView.isHidden = isBrandCountryEmpty()
+          oilBrandLbl.isHidden = isBrandCountryEmpty()
+    }
+    
+    private func isBrandCountryEmpty() -> Bool {
+        return TyreRequestModel.shared.tyreBrandsListing.isEmpty
     }
 }
 
