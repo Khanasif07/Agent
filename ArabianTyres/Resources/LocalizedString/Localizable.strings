@@ -119,6 +119,7 @@
 "changeLanguage" = "Change Language";
 "switchProfileTogarage" = "Switch to Garage Account";
 "switchProfileToUser" = "Switch to User Account";
+"createGarageProfile" = "Create Garage Account";
 "reportAnIssue" = "Report an Issue";
 "faq" = "FAQ";
 "referFriend" = "Rafer a Friend";

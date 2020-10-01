@@ -277,6 +277,7 @@ extension WebServices{
             let user = UserModel(json[ApiKey.data])
             UserModel.main = user
             AppUserDefaults.save(value: json[ApiKey.data][ApiKey.phoneVerified].boolValue, forKey: .phoneNoVerified)
+            AppUserDefaults.save(value: json[ApiKey.data][ApiKey.isGarrage].boolValue, forKey: .isGarrage)
             let token = AppUserDefaults.value(forKey: .accesstoken)
             if token.isEmpty {
                 let accessToken = json[ApiKey.data][ApiKey.authToken].stringValue
@@ -414,6 +415,7 @@ extension WebServices{
                                    success: @escaping ResponseMessage,
                                    failure: @escaping FailureResponse) {
         self.commonPostAPI(parameters: parameters, endPoint: .garageProfile,loader: true, success: { (json) in
+           AppUserDefaults.save(value: json[ApiKey.data][ApiKey.isGarrage].boolValue, forKey: .isGarrage)
             success(json[ApiKey.message].stringValue)
         }) { (error) -> (Void) in
             failure(error)

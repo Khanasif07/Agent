@@ -119,6 +119,7 @@ extension BrandsListingVC {
         buttonView.addTarget(self, action: #selector(clear(_:)), for: .touchUpInside)
         buttonView.imageEdgeInsets = UIEdgeInsets(top: 0, left: -5, bottom: 0, right: 5)
         searchTxtField.setButtonToRightView(btn: buttonView, selectedImage: #imageLiteral(resourceName: "cancel"), normalImage: #imageLiteral(resourceName: "cancel"), size: CGSize(width: 20, height: 20))
+        searchTxtField.placeholder = (listingType == .brands) ? "Search Brand by name" : "Search Country by name"
     }
     
     private func hitBrandListingApi(){

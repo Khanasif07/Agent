@@ -460,20 +460,20 @@ Service Center</string>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi! Aditya" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r86-JJ-h8L">
-                                <rect key="frame" x="20" y="177.5" width="374" height="25.5"/>
+                                <rect key="frame" x="20" y="150.5" width="374" height="25.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <color key="textColor" red="0.090196078430000007" green="0.1450980392" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="group3873" translatesAutoresizingMaskIntoConstraints="NO" id="y7V-p4-SVu">
-                                <rect key="frame" x="137" y="270.5" width="140" height="140"/>
+                                <rect key="frame" x="137" y="243.5" width="140" height="140"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="y7V-p4-SVu" secondAttribute="height" multiplier="1:1" id="ZxP-Zp-WOV"/>
                                     <constraint firstAttribute="height" constant="140" id="fpt-sF-RzL"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="fzg-Np-Ifl">
-                                <rect key="frame" x="24" y="434.5" width="366" height="189"/>
+                                <rect key="frame" x="24" y="407.5" width="366" height="183"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="lxk-mS-W22">
                                         <rect key="frame" x="0.0" y="0.0" width="366" height="97"/>
@@ -494,8 +494,8 @@ Service Center</string>
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="76H-Gf-jGZ">
-                                        <rect key="frame" x="0.0" y="122" width="366" height="67"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="76H-Gf-jGZ">
+                                        <rect key="frame" x="0.0" y="122" width="366" height="61"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. Email Id not verified" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QUb-Pz-drO">
                                                 <rect key="frame" x="0.0" y="0.0" width="366" height="17"/>
@@ -504,13 +504,13 @@ Service Center</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2. Mobile Not Verified" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vl0-6q-Hi6">
-                                                <rect key="frame" x="0.0" y="25" width="366" height="17"/>
+                                                <rect key="frame" x="0.0" y="22" width="366" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" red="0.090196078430000007" green="0.1450980392" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3. Inappropriate Licence" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fC2-mF-JZc">
-                                                <rect key="frame" x="0.0" y="50" width="366" height="17"/>
+                                                <rect key="frame" x="0.0" y="44" width="366" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" red="0.090196078430000007" green="0.1450980392" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -567,7 +567,7 @@ Service Center</string>
                             <constraint firstItem="Vdc-mT-olG" firstAttribute="leading" secondItem="fBQ-uB-tm1" secondAttribute="leading" id="5gR-hW-UWx"/>
                             <constraint firstItem="Ntf-d9-pXU" firstAttribute="leading" secondItem="czC-Yq-aff" secondAttribute="leading" id="5pA-i9-IP5"/>
                             <constraint firstAttribute="bottom" secondItem="czC-Yq-aff" secondAttribute="bottom" constant="48" id="9JD-3x-vNg"/>
-                            <constraint firstItem="Ntf-d9-pXU" firstAttribute="top" relation="greaterThanOrEqual" secondItem="fzg-Np-Ifl" secondAttribute="bottom" constant="20" id="9q0-9k-LaP"/>
+                            <constraint firstItem="Ntf-d9-pXU" firstAttribute="top" relation="greaterThanOrEqual" secondItem="fzg-Np-Ifl" secondAttribute="bottom" id="9q0-9k-LaP"/>
                             <constraint firstItem="czC-Yq-aff" firstAttribute="leading" secondItem="fBQ-uB-tm1" secondAttribute="leading" constant="22" id="Dys-ky-qnI"/>
                             <constraint firstItem="fBQ-uB-tm1" firstAttribute="trailing" secondItem="r86-JJ-h8L" secondAttribute="trailing" constant="20" id="KU0-xE-TWZ"/>
                             <constraint firstItem="fBQ-uB-tm1" firstAttribute="trailing" secondItem="czC-Yq-aff" secondAttribute="trailing" constant="22" id="Kto-ZA-Zuo"/>
@@ -578,7 +578,7 @@ Service Center</string>
                             <constraint firstItem="Vdc-mT-olG" firstAttribute="top" secondItem="fBQ-uB-tm1" secondAttribute="top" id="icl-iB-zSD"/>
                             <constraint firstItem="r86-JJ-h8L" firstAttribute="leading" secondItem="fBQ-uB-tm1" secondAttribute="leading" constant="20" id="k0j-Z1-H3i"/>
                             <constraint firstItem="fBQ-uB-tm1" firstAttribute="trailing" secondItem="fzg-Np-Ifl" secondAttribute="trailing" constant="24" id="kj6-cE-Qa2"/>
-                            <constraint firstItem="y7V-p4-SVu" firstAttribute="centerY" secondItem="Sod-AR-QbR" secondAttribute="centerY" multiplier="0.76" id="nj3-FP-Czi"/>
+                            <constraint firstItem="y7V-p4-SVu" firstAttribute="centerY" secondItem="Sod-AR-QbR" secondAttribute="centerY" multiplier="0.7" id="nj3-FP-Czi"/>
                             <constraint firstItem="czC-Yq-aff" firstAttribute="top" secondItem="Ntf-d9-pXU" secondAttribute="bottom" constant="16" id="qqb-DG-aIH"/>
                             <constraint firstItem="y7V-p4-SVu" firstAttribute="centerX" secondItem="fBQ-uB-tm1" secondAttribute="centerX" id="xdM-Vo-zCA"/>
                             <constraint firstItem="fBQ-uB-tm1" firstAttribute="trailing" secondItem="Vdc-mT-olG" secondAttribute="trailing" id="y4k-jK-LlT"/>
