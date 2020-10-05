@@ -31,7 +31,7 @@ class ProfileVC: BaseVC {
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .default
+        return .lightContent
     }
     
     override func viewDidAppear(_ animated: Bool) {

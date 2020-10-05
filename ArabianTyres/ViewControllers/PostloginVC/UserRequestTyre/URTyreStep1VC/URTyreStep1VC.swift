@@ -61,7 +61,7 @@ class URTyreStep1VC: BaseVC {
         self.pop()
     }
     @IBAction func nextBtnAction(_ sender: UIButton) {
-          AppRouter.goToTyreBrandVC(vc: self)
+        AppRouter.goToTyreBrandVC(vc: self)
     }
     
     @IBAction func chatWithExpert(_ sender: UIButton) {
@@ -91,7 +91,7 @@ extension URTyreStep1VC {
     }
     
     public func setUpTextField(){
-       
+        
         self.widthTxtField.title = LocalizedString.width.localized
         self.profileTxtField.title = LocalizedString.profile.localized
         self.rimSizeTxtField.title = LocalizedString.rimSize.localized
@@ -162,7 +162,7 @@ extension URTyreStep1VC {
 
 
 extension URTyreStep1VC: UITextFieldDelegate{
-   
+    
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if textField == widthTxtField {
             if let text = textField.text {
@@ -172,9 +172,17 @@ extension URTyreStep1VC: UITextFieldDelegate{
                     TyreRequestModel.shared.width = self.widthPicker.dataArray.first ?? ""
                     self.nextBtn.isEnabled = nextBtnStatus()
                 }}
+            TyreRequestModel.shared.profile = ""
+            TyreRequestModel.shared.rimSize = ""
+            rimSizeTxtField.text  = ""
+            profileTxtField.text = ""
             tempTextField = widthTxtField
             return true
         } else if textField == profileTxtField {
+            if TyreRequestModel.shared.width.isEmpty{
+                ToastView.shared.showLongToast(self.view, msg: "Please select vehicle width")
+                return false
+            }
             if let text = textField.text {
                 if text.isEmpty{
                     self.viewModel.getProfileListingData(dict: [ApiKey.width: TyreRequestModel.shared.width])
@@ -182,9 +190,15 @@ extension URTyreStep1VC: UITextFieldDelegate{
                     TyreRequestModel.shared.profile = self.profilePicker.dataArray.first ?? ""
                     self.nextBtn.isEnabled = nextBtnStatus()
                 }}
+            TyreRequestModel.shared.rimSize = ""
+            rimSizeTxtField.text  = ""
             tempTextField = profileTxtField
             return true
         } else if textField == rimSizeTxtField {
+            if TyreRequestModel.shared.profile.isEmpty{
+                ToastView.shared.showLongToast(self.view, msg: "Please select vehicle profile")
+                return false
+            }
             if let text = textField.text {
                 if text.isEmpty{
                     self.viewModel.getRimSizeListingData(dict: [ApiKey.width: TyreRequestModel.shared.width,ApiKey.profile:TyreRequestModel.shared.profile ])
@@ -196,17 +210,44 @@ extension URTyreStep1VC: UITextFieldDelegate{
             return true
         }
         else { if let text = textField.text {
-                if text.isEmpty{
-                    numberTyreTxtField.text = self.tyreNumberPicker.dataArray.first
-                    TyreRequestModel.shared.quantity = self.tyreNumberPicker.dataArray.first ?? ""
-                    self.nextBtn.isEnabled = nextBtnStatus()
-                }}
+            if text.isEmpty{
+                numberTyreTxtField.text = self.tyreNumberPicker.dataArray.first
+                TyreRequestModel.shared.quantity = self.tyreNumberPicker.dataArray.first ?? ""
+                self.nextBtn.isEnabled = nextBtnStatus()
+            }}
             tempTextField = numberTyreTxtField
             return true}
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        printDebug(textField.text ?? "")
+        switch textField {
+        case widthTxtField:
+            if let text = textField.text {
+                if text.isEmpty{
+                    widthTxtField.text = self.widthPicker.dataArray.first
+                    TyreRequestModel.shared.width = self.widthPicker.dataArray.first ?? ""
+                    self.nextBtn.isEnabled = nextBtnStatus()
+                }}
+            tempTextField = widthTxtField
+        case profileTxtField:
+            if let text = textField.text {
+                if text.isEmpty{
+                    profileTxtField.text = self.profilePicker.dataArray.first
+                    TyreRequestModel.shared.profile = self.profilePicker.dataArray.first ?? ""
+                    self.nextBtn.isEnabled = nextBtnStatus()
+                }}
+            tempTextField = profileTxtField
+        case rimSizeTxtField:
+            if let text = textField.text {
+                if text.isEmpty{
+                    rimSizeTxtField.text = self.rimSizePicker.dataArray.first
+                    TyreRequestModel.shared.rimSize = self.rimSizePicker.dataArray.first ?? ""
+                    self.nextBtn.isEnabled = nextBtnStatus()
+                }}
+            tempTextField = rimSizeTxtField
+        default:
+            printDebug("Do Nothing")
+        }
     }
 }
 
@@ -244,7 +285,7 @@ extension URTyreStep1VC: URTyreStep1VMDelegate {
         self.widthPicker.dataArray = self.viewModel.tyreWidthListing.map({ (model) -> String in
             return "\(model.width)"
         })
-       self.widthPicker.picker.reloadAllComponents()
+        self.widthPicker.picker.reloadAllComponents()
     }
     
     func getWidthListingDataFailed(error: String) {
@@ -265,8 +306,8 @@ extension URTyreStep1VC: URTyreStep1VMDelegate {
     
     func getRimSizeListingDataSuccess(message: String) {
         self.rimSizePicker.dataArray = self.viewModel.tyreRimSizeListing.map({ (model) -> String in
-                   return "\(model.rimSize)"
-               })
+            return "\(model.rimSize)"
+        })
         self.rimSizePicker.picker.reloadAllComponents()
     }
     
