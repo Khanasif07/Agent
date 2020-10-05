@@ -12,34 +12,6 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Garage ExploreVC-->
-        <scene sceneID="4Cc-H8-cOr">
-            <objects>
-                <viewController storyboardIdentifier="GarageExploreVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="EvM-Lh-2ZM" customClass="GarageExploreVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="nKm-gu-222">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Under Development" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VLJ-7o-xPO">
-                                <rect key="frame" x="128.5" y="439" width="157" height="23.5"/>
-                                <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="VLJ-7o-xPO" firstAttribute="centerY" secondItem="Bid-Vf-mai" secondAttribute="centerY" id="UgM-tX-mUD"/>
-                            <constraint firstItem="VLJ-7o-xPO" firstAttribute="centerX" secondItem="Bid-Vf-mai" secondAttribute="centerX" id="f1A-JU-BT7"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="Bid-Vf-mai"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="m3D-K3-A2s"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Zx2-yl-r7S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="858" y="103"/>
-        </scene>
         <!--Garage SettingVC-->
         <scene sceneID="Lbg-1B-6gd">
             <objects>
@@ -267,12 +239,22 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="EvM-Lh-2ZM" kind="relationship" relationship="rootViewController" id="6uq-fE-eAY"/>
+                        <segue destination="h1x-8q-mqE" kind="relationship" relationship="rootViewController" id="SKm-me-ygr"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sPH-2h-aKa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="21.739130434782609" y="89.732142857142847"/>
+        </scene>
+        <!--GarageAllRequestVC-->
+        <scene sceneID="HhB-l7-JIr">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Garage" referencedIdentifier="GarageAllRequestVC" id="h1x-8q-mqE" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="mUa-xb-pJL"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Izy-fD-K1z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="862" y="2"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gnm-vE-Vdk">
