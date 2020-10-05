@@ -47,6 +47,11 @@ class GarageAddImageVC: BaseVC {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.saveContinueBtn.isEnabled = !GarageProfileModel.shared.serviceCenterImages.isEmpty
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         self.mapView.round(radius: 2.0)
