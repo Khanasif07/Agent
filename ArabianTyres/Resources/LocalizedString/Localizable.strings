@@ -223,6 +223,8 @@
 "to" = "to ";
 "verify" = "Verify";
 "pleaseVerifyTheSameInOrderToStartServicing" = "please verify the same in order to\nstart Servicing";
+"filter" = "Filter";
+"apply" = "Apply";
  // MARK: - Home  VC Values
 //==============================
 "tyre" = "Tyre";

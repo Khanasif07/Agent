@@ -281,6 +281,9 @@ enum LocalizedString : String {
     case pleaseVerifyTheSameInOrderToStartServicing
     case to
     case verify
+    case filter
+    case apply
+    
     // MARK: - Home  VC Values
     //==============================
     case tyre
