@@ -12,11 +12,8 @@ class OngoingServiceListingVC: BaseVC {
     
     // MARK: - IBOutlets
     //===========================
-    
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var listingTableView: UITableView!
-    
-    
     
     // MARK: - Variables
     //===========================
@@ -48,11 +45,33 @@ extension OngoingServiceListingVC {
     
     private func initialSetup() {
         setupTextAndFont()
+        setupTableView()
     }
-  
+    
+    private func setupTableView() {
+        listingTableView.delegate = self
+        listingTableView.dataSource = self
+        listingTableView.registerCell(with: ServiceListingTableViewCell.self)
+    }
+    
     private func setupTextAndFont(){
         titleLbl.font = AppFonts.NunitoSansBold.withSize(17.0)
         titleLbl.text = LocalizedString.ongoingServices.localized
     }
-    
 }
+
+extension OngoingServiceListingVC: UITableViewDelegate,UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 8
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueCell(with: ServiceListingTableViewCell.self)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+}
+

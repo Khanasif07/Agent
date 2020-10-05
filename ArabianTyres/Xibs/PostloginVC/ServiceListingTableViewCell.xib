@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -88,6 +88,7 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="n9U-d3-Bcf" secondAttribute="trailing" constant="10" id="Xa6-S2-DBl"/>
                             <constraint firstItem="n9U-d3-Bcf" firstAttribute="top" secondItem="ihD-pN-ueH" secondAttribute="top" constant="6" id="dNp-8z-ouc"/>
+                            <constraint firstAttribute="bottom" secondItem="euK-Ax-zrd" secondAttribute="bottom" constant="5.5" id="dTo-go-gEE"/>
                             <constraint firstAttribute="bottom" secondItem="YxZ-he-eNz" secondAttribute="bottom" constant="8" id="fxO-Gr-Chy"/>
                             <constraint firstItem="euK-Ax-zrd" firstAttribute="leading" secondItem="n9U-d3-Bcf" secondAttribute="leading" id="hsf-27-b1G"/>
                             <constraint firstItem="euK-Ax-zrd" firstAttribute="top" secondItem="n9U-d3-Bcf" secondAttribute="bottom" constant="10" id="oFG-To-RSz"/>
