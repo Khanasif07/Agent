@@ -199,7 +199,7 @@ enum LocalizedString : String {
     case done
     case clearAll
     case uploadGarageLogo
-    
+    case update
     case enterVehicleMake
     case enterVehicleModel
     case enterModelYear
@@ -267,8 +267,9 @@ enum LocalizedString : String {
     case pleaseSelectServices
     case pleaseSelectServiceCenterImage
     case ongoingServices
-    
-    
+    case tyreServiceRequest
+    case regNo
+    case serviceStatus
     // MARK: - Home  VC Values
     //==============================
     case tyre

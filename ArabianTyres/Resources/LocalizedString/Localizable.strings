@@ -208,6 +208,11 @@
 "pleaseSelectServices" = "Please Select Services";
 "pleaseSelectServiceCenterImage" = "Please Select Service Center Image";
 "ongoingServices" = "Ongoing Services";
+"update" = "Update";
+"tyreServiceRequest" = "Tyre Service Request";
+"regNo" = "Reg. No.";
+"serviceStatus" = "Service Status";
+
  // MARK: - Home  VC Values
 //==============================
 "tyre" = "Tyre";
