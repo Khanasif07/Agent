@@ -217,7 +217,11 @@ extension OtpVerificationVC: OTPTextFieldDelegate ,UITextFieldDelegate{
 extension OtpVerificationVC: SuccessPopupVCDelegate{
     func okBtnAction() {
         self.dismiss(animated: true, completion: nil)
-        AppRouter.goToUserHome()
+        if isCurrentUserType == .user {
+              AppRouter.goToUserHome()
+        } else {
+             AppRouter.goToGarageHome()
+        }
     }
 }
 
