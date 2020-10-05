@@ -212,7 +212,17 @@
 "tyreServiceRequest" = "Tyre Service Request";
 "regNo" = "Reg. No.";
 "serviceStatus" = "Service Status";
-
+"enterBiddingAmount" = "Enter Bidding Amount";
+"placeBid" = "Place Bid";
+"biddingAmountOnceSubmittedWillNeverBeChanged" = "bidding amount once submitted will\nnever be changed";
+"sar" = "SAR";
+"notNow" = "Not Now";
+"placeABid" = "Place a Bid";
+"weHaveSent" = "We’ve sent an ";
+"otp" = "Otp ";
+"to" = "to ";
+"verify" = "Verify";
+"pleaseVerifyTheSameInOrderToStartServicing" = "please verify the same in order to\nstart Servicing";
  // MARK: - Home  VC Values
 //==============================
 "tyre" = "Tyre";

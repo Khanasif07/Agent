@@ -270,6 +270,17 @@ enum LocalizedString : String {
     case tyreServiceRequest
     case regNo
     case serviceStatus
+    case enterBiddingAmount
+    case placeBid
+    case biddingAmountOnceSubmittedWillNeverBeChanged
+    case sar
+    case notNow
+    case placeABid
+    case weHaveSent
+    case otp
+    case pleaseVerifyTheSameInOrderToStartServicing
+    case to
+    case verify
     // MARK: - Home  VC Values
     //==============================
     case tyre

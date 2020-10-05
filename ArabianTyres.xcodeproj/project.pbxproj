@@ -178,6 +178,8 @@
 		A413B97D250A44410004C534 /* CustomTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A413B97B250A44400004C534 /* CustomTextView.xib */; };
 		A413B97E250A44410004C534 /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A413B97C250A44400004C534 /* CustomTextView.swift */; };
 		A4213DE0250CB02400BB21B6 /* DocumentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4213DDF250CB02400BB21B6 /* DocumentTableViewCell.swift */; };
+		A421DDD5252AFDF20044E5E0 /* PlaceBidPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A421DDD4252AFDF20044E5E0 /* PlaceBidPopUpVC.swift */; };
+		A421DDD7252B1A610044E5E0 /* OtpPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A421DDD6252B1A610044E5E0 /* OtpPopUpVC.swift */; };
 		A43B53A52524B21300447B24 /* GarageRequest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A43B53A42524B21300447B24 /* GarageRequest.storyboard */; };
 		A43B53A72524B47000447B24 /* OngoingServiceListingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43B53A62524B47000447B24 /* OngoingServiceListingVC.swift */; };
 		A43B53AC2524B65300447B24 /* ServiceListingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43B53AA2524B65300447B24 /* ServiceListingTableViewCell.swift */; };
@@ -395,6 +397,8 @@
 		A413B97B250A44400004C534 /* CustomTextView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomTextView.xib; sourceTree = "<group>"; };
 		A413B97C250A44400004C534 /* CustomTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 		A4213DDF250CB02400BB21B6 /* DocumentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentTableViewCell.swift; sourceTree = "<group>"; };
+		A421DDD4252AFDF20044E5E0 /* PlaceBidPopUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceBidPopUpVC.swift; sourceTree = "<group>"; };
+		A421DDD6252B1A610044E5E0 /* OtpPopUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpPopUpVC.swift; sourceTree = "<group>"; };
 		A43B53A42524B21300447B24 /* GarageRequest.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GarageRequest.storyboard; sourceTree = "<group>"; };
 		A43B53A62524B47000447B24 /* OngoingServiceListingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OngoingServiceListingVC.swift; sourceTree = "<group>"; };
 		A43B53AA2524B65300447B24 /* ServiceListingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceListingTableViewCell.swift; sourceTree = "<group>"; };
@@ -1230,6 +1234,8 @@
 			isa = PBXGroup;
 			children = (
 				A43B53A62524B47000447B24 /* OngoingServiceListingVC.swift */,
+				A421DDD4252AFDF20044E5E0 /* PlaceBidPopUpVC.swift */,
+				A421DDD6252B1A610044E5E0 /* OtpPopUpVC.swift */,
 			);
 			path = GarageDashBoardAndRequest;
 			sourceTree = "<group>";
@@ -1764,6 +1770,7 @@
 				A44E8D76251C973800ACBC4D /* OilTypeVC.swift in Sources */,
 				844EB71425187CD0003A6E3F /* URTyreSizeTableCell.swift in Sources */,
 				8481FA8A2501081000AB6EFB /* TutorialCollCell.swift in Sources */,
+				A421DDD7252B1A610044E5E0 /* OtpPopUpVC.swift in Sources */,
 				A4B91C3625149BDA00E4811A /* LocationPopUpVC.swift in Sources */,
 				8481FA472500BE9400AB6EFB /* UICollectionView+UICollectionViewCellExtension.swift in Sources */,
 				8495E9442509C824003CA43D /* ProfileVM.swift in Sources */,
@@ -1771,6 +1778,7 @@
 				84FF6E9C251D87070000E2AD /* BottomSheetVM.swift in Sources */,
 				8481FA4D2500BEC700AB6EFB /* UIScreen + Extension.swift in Sources */,
 				8481FA792500C64400AB6EFB /* UserModel.swift in Sources */,
+				A421DDD5252AFDF20044E5E0 /* PlaceBidPopUpVC.swift in Sources */,
 				8481FA432500BE4600AB6EFB /* UIApplicationExtension.swift in Sources */,
 				84FF6EA5251DA3530000E2AD /* ModelData.swift in Sources */,
 				8481FA7B2500CC2C00AB6EFB /* BaseVC.swift in Sources */,

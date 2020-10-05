@@ -51,7 +51,7 @@ enum AppRouter {
     }
     
     static func goToTestingVC(){
-        let scene = OngoingServiceListingVC.instantiate(fromAppStoryboard: .GarageRequest)
+        let scene = OtpPopUpVC.instantiate(fromAppStoryboard: .GarageRequest)
         setAsWindowRoot(scene)
     }
     
@@ -266,6 +266,20 @@ enum AppRouter {
         vc.modalPresentationStyle = .fullScreen
         vc.present(scene, animated: true, completion: nil)
         
+    }
+    
+    static func openPlaceBidPopUpVC(vc: UIViewController){
+        let scene = PlaceBidPopUpVC.instantiate(fromAppStoryboard: .GarageRequest)
+        vc.modalPresentationStyle = .fullScreen
+        vc.present(scene, animated: true, completion: nil)
+        
+    }
+    
+    static func openOtpPopUpVC(vc: UIViewController){
+           let scene = OtpPopUpVC.instantiate(fromAppStoryboard: .GarageRequest)
+           vc.modalPresentationStyle = .fullScreen
+           vc.present(scene, animated: true, completion: nil)
+           
     }
     
     static func presentBottomSheetVC(vc: UIViewController){
