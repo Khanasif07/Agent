@@ -22,7 +22,6 @@ class BrandsListingVC: BaseVC {
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var cancelBtn: UIButton!
     @IBOutlet weak var doneBtn: UIButton!
-    @IBOutlet weak var clearAllBtn: UIButton!
     @IBOutlet weak var mainTableView: UITableView!
     
     // MARK: - Variables
@@ -84,14 +83,6 @@ class BrandsListingVC: BaseVC {
         buttonView.isHidden = viewModel.searchText.isEmpty
         mainTableView.reloadData()
     }
-    
-    @IBAction func clearAllAction(_ sender: UIButton) {
-        self.viewModel.selectedCountryArr = []
-        self.viewModel.selectedBrandsArr = []
-        TyreRequestModel.shared.selectedTyreCountryListings = []
-        TyreRequestModel.shared.selectedTyreBrandsListings = []
-        mainTableView.reloadData()
-    }
 }
 
 // MARK: - Extension For Functions
@@ -128,6 +119,7 @@ extension BrandsListingVC {
         buttonView.addTarget(self, action: #selector(clear(_:)), for: .touchUpInside)
         buttonView.imageEdgeInsets = UIEdgeInsets(top: 0, left: -5, bottom: 0, right: 5)
         searchTxtField.setButtonToRightView(btn: buttonView, selectedImage: #imageLiteral(resourceName: "cancel"), normalImage: #imageLiteral(resourceName: "cancel"), size: CGSize(width: 20, height: 20))
+        searchTxtField.placeholder = (listingType == .brands) ? "Search Brand by name" : "Search Country by name"
     }
     
     private func hitBrandListingApi(){
@@ -149,11 +141,8 @@ extension BrandsListingVC {
         titleLbl.font = AppFonts.NunitoSansBold.withSize(17.0)
         cancelBtn.titleLabel?.font =  AppFonts.NunitoSansSemiBold.withSize(17.0)
         doneBtn.titleLabel?.font =  AppFonts.NunitoSansSemiBold.withSize(17.0)
-        clearAllBtn.titleLabel?.font =  AppFonts.NunitoSansSemiBold.withSize(12.0)
         cancelBtn.setTitle(LocalizedString.cancel.localized, for: .normal)
         doneBtn.setTitle(LocalizedString.done.localized, for: .normal)
-        clearAllBtn.setTitle(LocalizedString.clearAll.localized, for: .normal)
-        
     }
     
     @objc private func clear(_ sender: UIButton) {
@@ -174,7 +163,7 @@ extension BrandsListingVC : UITableViewDelegate, UITableViewDataSource {
         if (listingType == .brands) {
             return self.viewModel.searchBrandListing.endIndex
         }else {
-            return  self.viewModel.searchCountryListing.endIndex
+            return self.viewModel.searchCountryListing.endIndex
         }
     }
     
@@ -186,8 +175,15 @@ extension BrandsListingVC : UITableViewDelegate, UITableViewDataSource {
         let view = tableView.dequeueHeaderFooter(with: FacilityTableHeaderView.self)
         view.bottomView.backgroundColor = #colorLiteral(red: 0.9294117647, green: 0.9294117647, blue: 0.9294117647, alpha: 1)
         view.categoryName.text = listingType == .brands ? self.viewModel.searchBrandListing[section].name : self.viewModel.searchCountryListing[section].name
-//        view.arrowImg.isHidden = (section == 0 && self.isSearchOn) ? true : false
-//        view.arrowImg.setImage_kf(imageString: listingType == .brands ? self.viewModel.searchBrandListing[section].iconImage : "", placeHolderImage: #imageLiteral(resourceName: "icUnCheck"), loader: false)
+        if   (listingType == .brands) {
+            if self.viewModel.searchBrandListing[section].name == "All Brands" {
+                view.arrowImg.isHidden = true }else {
+                view.arrowImg.isHidden = false
+                view.arrowImg.setImage_kf(imageString: self.viewModel.searchBrandListing[section].iconImage, placeHolderImage: #imageLiteral(resourceName: "terms"), loader: false)
+            }
+        } else {
+               view.arrowImg.isHidden = true
+        }
         if   self.listingType == .brands {
             let isPowerSelected = self.viewModel.selectedBrandsArr.contains(where: {$0.id == (self.isSearchOn ? self.viewModel.searchBrandListing[section].id : self.viewModel.brandsListings[section].id)})
             if self.viewModel.brandsListings.endIndex  > 0  {
@@ -319,8 +315,10 @@ extension BrandsListingVC : DZNEmptyDataSetSource,DZNEmptyDataSetDelegate {
     
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         var emptyData = ""
-        if self.viewModel.searchBrandListing.endIndex == 0 {
-           emptyData = "No data found"
+        if (listingType == .brands) {
+            emptyData =  self.viewModel.searchBrandListing.endIndex == 0 ? "No data found" : ""
+        }else {
+             emptyData =  self.viewModel.searchCountryListing.endIndex  == 0 ? "No data found" : ""
         }
         return NSAttributedString(string:emptyData , attributes: [NSAttributedString.Key.foregroundColor: AppColors.fontTertiaryColor,NSAttributedString.Key.font: AppFonts.NunitoSansBold.withSize(18)])
     }

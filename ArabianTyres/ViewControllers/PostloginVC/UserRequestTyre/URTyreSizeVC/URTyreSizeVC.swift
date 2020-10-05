@@ -43,7 +43,6 @@ class URTyreSizeVC: BaseVC {
         switch categoryType{
         case .oil:
              AppRouter.goToOilBrandsVC(vc: self)
-            
         case .tyres:
             NotificationCenter.default.post(name: Notification.Name.SelectedTyreSizeSuccess, object: nil)
             self.navigationController?.popViewControllers(controllersToPop: 2, animated: true)

@@ -15,7 +15,7 @@ class GarageRegistrationVC: BaseVC {
     //===========================
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var mainTableView: UITableView!
-    @IBOutlet weak var startRegistraionBtn: UIButton!
+    @IBOutlet weak var startRegistraionBtn: AppButton!
     @IBOutlet weak var headingLbl: UILabel!
 
     
@@ -78,6 +78,7 @@ extension GarageRegistrationVC {
     }
     
     private func setupTextAndFont(){
+        startRegistraionBtn.isEnabled = true
         titleLbl.font = AppFonts.NunitoSansBold.withSize(17.0)
         startRegistraionBtn.titleLabel?.font =  AppFonts.NunitoSansBold.withSize(16.0)
         headingLbl.font =  AppFonts.NunitoSansBold.withSize(21.0)

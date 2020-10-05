@@ -194,7 +194,7 @@ extension OtpVerificationVC: OTPTextFieldDelegate ,UITextFieldDelegate{
     private func enterOTPText(index: Int, string: String, range: NSRange, isFirst: Bool = false, isLast: Bool = false) {
         otpTxtFields[index].text = string
         otpArray[index] = string
-        txtFieldViews[index].backgroundColor = AppColors.warningYellowColor
+        txtFieldViews[index].backgroundColor = AppColors.appRedColor
         if (range.length == 0) {
             if index == 3 {
                 self.otpTxtFields[index].resignFirstResponder()

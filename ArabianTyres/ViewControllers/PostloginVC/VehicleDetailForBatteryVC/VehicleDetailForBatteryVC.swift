@@ -219,6 +219,7 @@ extension VehicleDetailForBatteryVC :UITextFieldDelegate {
             vehicleDetailtype = .make
             openBottomSheet(type: VehicleDetailType.make)
             self.selectedMakeArr = []
+            TyreRequestModel.shared.model = ""
             self.vehicleModelTextField.text = ""
             return false
         case vehicleModelTextField:

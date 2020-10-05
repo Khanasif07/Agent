@@ -24,7 +24,7 @@ class RegistraionPendingVC: BaseVC {
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var headingLbl: UILabel!
     @IBOutlet weak var subHeadingLbl: UILabel!
-    @IBOutlet weak var completeProfileBtn: UIButton!
+    @IBOutlet weak var completeProfileBtn: AppButton!
     @IBOutlet weak var viewTutorailBtn: UIButton!
 
     @IBOutlet weak var emailLbl: UILabel!
@@ -36,7 +36,7 @@ class RegistraionPendingVC: BaseVC {
     //===========================
     var screenType : ScreenType = .pending
     var message: String = ""
-    var reason : String = ""
+    var reason : [String] = []
     var time :  String = ""
     var registerBtnTapped:(()->())?
     
@@ -91,6 +91,7 @@ extension RegistraionPendingVC {
     
     private func initialSetup() {
         setupTextAndFont()
+        completeProfileBtn.isEnabled = true
         switch screenType {
             
         case .pending:
@@ -105,13 +106,30 @@ extension RegistraionPendingVC {
             }else {
                 headingLbl.text = "We’ve received your registration request \(date.timeAgoSince)."
             }
+            mobileNotVerifyLbl.isHidden = true
+            inappropriateLbl.isHidden = true
 
         case .rejected:
             viewTutorailBtn.isHidden = true
             bottomStackView.isHidden = false
             let date = (time).breakCompletDate(outPutFormat: Date.DateFormat.profileFormat.rawValue, inputFormat: Date.DateFormat.yyyyMMddTHHmmsssssz.rawValue)
              headingLbl.text = "Your Registration Request\nmade on \(date) has been Rejected\ndue to following reasons: "
-            emailLbl.text = reason
+            if reason.endIndex == 0 {
+                [emailLbl,mobileNotVerifyLbl,inappropriateLbl].forEach({$0?.isHidden = true})
+            } else if reason.endIndex == 1{
+                emailLbl.isHidden = false
+                emailLbl.text = reason.first ?? ""
+            }else if reason.endIndex == 2{
+                emailLbl.isHidden = false
+                emailLbl.text = reason.first ?? ""
+                mobileNotVerifyLbl.isHidden = false
+                mobileNotVerifyLbl.text = reason.last ?? ""
+            } else {
+                [emailLbl,mobileNotVerifyLbl,inappropriateLbl].forEach({$0?.isHidden = false})
+                emailLbl.text = reason.first ?? ""
+                mobileNotVerifyLbl.text = reason[1]
+                inappropriateLbl.text = reason.last ?? ""
+            }
             subHeadingLbl.isHidden = true
             completeProfileBtn.isHidden = false
             completeProfileBtn.setTitle(LocalizedString.registerAgain.localized, for: .normal)
@@ -128,10 +146,11 @@ extension RegistraionPendingVC {
 //            headingLbl.text = LocalizedString.yourRegRequestHasBeenAccepted.localized
             completeProfileBtn.setTitle(LocalizedString.completeProfile.localized, for: .normal)
             imgView.image = #imageLiteral(resourceName: "group3875")
+            mobileNotVerifyLbl.isHidden = true
+            inappropriateLbl.isHidden = true
 
         }
-        mobileNotVerifyLbl.isHidden = true
-        inappropriateLbl.isHidden = true
+      
 
     
 //        headingLbl.text = message

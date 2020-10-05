@@ -151,7 +151,7 @@ enum AppRouter {
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
-    static func goToRegistraionPendingVC(vc: UIViewController, screenType: RegistraionPendingVC.ScreenType,msg: String, reason: String, time: String){
+    static func goToRegistraionPendingVC(vc: UIViewController, screenType: RegistraionPendingVC.ScreenType,msg: String, reason: [String], time: String){
         let scene = RegistraionPendingVC.instantiate(fromAppStoryboard: .Garage)
         scene.message = msg
         scene.reason = reason

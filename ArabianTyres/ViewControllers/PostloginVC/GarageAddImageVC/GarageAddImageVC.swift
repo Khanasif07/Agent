@@ -28,7 +28,7 @@ class GarageAddImageVC: BaseVC {
     // MARK: - Variables
     //===========================
     var locationValue =  CLLocationCoordinate2D(latitude: GarageProfileModel.shared.latitude, longitude: GarageProfileModel.shared.longitude)
-    let markerView = UIImageView(frame:CGRect(x: 0, y: 0, width: 21, height: 21))
+    let markerView = UIImageView(frame:CGRect(x: 0, y: 0, width: 16.3, height: 20.9))
     var gmssMarker = GMSMarker()
     var getLocation: ((CLLocationCoordinate2D,String)->())?
     fileprivate var hasImageUploaded = true {
@@ -87,6 +87,7 @@ extension GarageAddImageVC {
         self.saveContinueBtn.isEnabled = false
         logoImgView.image = GarageProfileModel.shared.logo
         garageName.text = GarageProfileModel.shared.serviceCenterName
+        self.mapView.isUserInteractionEnabled = false
     }
     
     private func prepareMap() {

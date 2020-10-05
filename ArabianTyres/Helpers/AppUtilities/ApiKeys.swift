@@ -47,6 +47,7 @@ enum ApiKey {
     static var language : String {return "language"}
     static var otpExpiry : String {return "otpExpiry"}
     static var phoneVerified : String {return "phoneVerified"}
+    static var isGarrage : String {return "isGarrage"}
     static var updatedAt : String {return "updatedAt"}
 
     static var next : String {return "next"}

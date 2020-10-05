@@ -81,7 +81,7 @@ extension ProfileUserBottomCell: UITableViewDelegate, UITableViewDataSource {
             if let handle = settingBtnTapped{
                 handle()
             }
-        case LocalizedString.switchProfileTogarage.localized,LocalizedString.switchProfileToUser.localized:
+        case LocalizedString.switchProfileTogarage.localized,LocalizedString.switchProfileToUser.localized ,LocalizedString.createGarageProfile.localized:
             if let handle = switchProfileToGarage{
                 handle()
             }

@@ -30,7 +30,7 @@ class CompleteProfileStep1: BaseVC {
     // MARK: - Variables
     //===========================
     var viewModel = ProfileVM()
-    var locationValue = LocationController.sharedLocationManager.locationManager.location?.coordinate ?? CLLocationCoordinate2D(latitude: GarageProfileModel.shared.latitude, longitude: GarageProfileModel.shared.longitude)
+    var locationValue =  CLLocationCoordinate2D(latitude: GarageProfileModel.shared.latitude, longitude: GarageProfileModel.shared.longitude)
     private var locationManager = CLLocationManager()
     let markerView = UIImageView(frame:CGRect(x: 0, y: 0, width: 21, height: 21))
     var gmssMarker = GMSMarker()

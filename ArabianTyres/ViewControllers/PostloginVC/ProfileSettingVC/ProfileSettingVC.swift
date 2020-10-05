@@ -17,9 +17,9 @@ class ProfileSettingVC: BaseVC {
     
     // MARK: - Variables
     //===========================
-    let switchProfileString = isCurrentUserType == .user ? LocalizedString.switchProfileTogarage.localized : LocalizedString.switchProfileToUser.localized
+    var switchProfileString = isCurrentUserType == .user ? LocalizedString.switchProfileTogarage.localized : LocalizedString.switchProfileToUser.localized
     var selectItemArray = [LocalizedString.aboutUs.localized,LocalizedString.terms_Condition.localized,LocalizedString.privacy_policy.localized,LocalizedString.contactUs.localized,LocalizedString.changeLanguage.localized,LocalizedString.switchProfileTogarage.localized,LocalizedString.reportAnIssue.localized,LocalizedString.faq.localized,LocalizedString.referFriend.localized]
-    var selectImageArray: [UIImage] = [#imageLiteral(resourceName: "aboutUs"),#imageLiteral(resourceName: "terms"),#imageLiteral(resourceName: "privacyPolicy"),#imageLiteral(resourceName: "contactUs"),#imageLiteral(resourceName: "changeLang"),#imageLiteral(resourceName: "switchProfile"),#imageLiteral(resourceName: "report"),#imageLiteral(resourceName: "faq"),#imageLiteral(resourceName: "refer")]
+    var selectImageArray: [UIImage] = [#imageLiteral(resourceName: "favicon2"),#imageLiteral(resourceName: "terms"),#imageLiteral(resourceName: "privacyPolicy"),#imageLiteral(resourceName: "contactUs"),#imageLiteral(resourceName: "changeLang"),#imageLiteral(resourceName: "switchProfile"),#imageLiteral(resourceName: "report"),#imageLiteral(resourceName: "faq"),#imageLiteral(resourceName: "refer")]
     var selectItemArray1 = [LocalizedString.logout.localized]
     var selectImageArray1: [UIImage] = [#imageLiteral(resourceName: "logout")]
     var viewModel = GarageRegistrationVM()
@@ -38,6 +38,7 @@ class ProfileSettingVC: BaseVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        switchProfileTitle()
         self.tabBarController?.tabBar.isHidden = true
         self.tabBarController?.tabBar.isTranslucent = true
     }
@@ -59,7 +60,7 @@ class ProfileSettingVC: BaseVC {
 extension ProfileSettingVC {
     
     private func initialSetup() {
-        self.selectItemArray = [LocalizedString.aboutUs.localized,LocalizedString.terms_Condition.localized,LocalizedString.privacy_policy.localized,LocalizedString.contactUs.localized,LocalizedString.changeLanguage.localized,switchProfileString,LocalizedString.reportAnIssue.localized,LocalizedString.faq.localized,LocalizedString.referFriend.localized]
+        switchProfileTitle()
         self.tableViewSetUp()
         viewModel.delegate = self
     }
@@ -163,6 +164,17 @@ extension ProfileSettingVC {
             }) {_ in printDebug("Dismiss")}
         })
     }
+    
+    private func switchProfileTitle(){
+        if AppUserDefaults.value(forKey: .isGarrage).boolValue && isCurrentUserType == .user {
+            self.switchProfileString = LocalizedString.switchProfileTogarage.localized
+        } else if !AppUserDefaults.value(forKey: .isGarrage).boolValue  && isCurrentUserType == .user {
+            self.switchProfileString = LocalizedString.createGarageProfile.localized
+        } else {
+            self.switchProfileString = LocalizedString.switchProfileToUser.localized
+        }
+        self.selectItemArray = [LocalizedString.aboutUs.localized,LocalizedString.terms_Condition.localized,LocalizedString.privacy_policy.localized,LocalizedString.contactUs.localized,LocalizedString.changeLanguage.localized,switchProfileString,LocalizedString.reportAnIssue.localized,LocalizedString.faq.localized,LocalizedString.referFriend.localized]
+    }
 }
 // MARK: - Extension For TableView
 //===========================
@@ -183,7 +195,7 @@ extension ProfileSettingVC : UITableViewDelegate, UITableViewDataSource {
 }
 
 extension ProfileSettingVC : GarageRegistrationVMDelegate {
-    func switchGarageRegistrationSuccess(code: Int, msg : String, reason: String,time: String){
+    func switchGarageRegistrationSuccess(code: Int, msg : String, reason: [String],time: String){
         switch code {
         case 600:
             AppRouter.goToGarageRegistrationVC(vc: self)

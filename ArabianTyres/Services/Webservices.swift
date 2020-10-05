@@ -277,11 +277,15 @@ extension WebServices{
             let user = UserModel(json[ApiKey.data])
             UserModel.main = user
             AppUserDefaults.save(value: json[ApiKey.data][ApiKey.phoneVerified].boolValue, forKey: .phoneNoVerified)
+            AppUserDefaults.save(value: json[ApiKey.data][ApiKey.isGarrage].boolValue, forKey: .isGarrage)
             let token = AppUserDefaults.value(forKey: .accesstoken)
             if token.isEmpty {
                 let accessToken = json[ApiKey.data][ApiKey.authToken].stringValue
                 AppUserDefaults.save(value: accessToken, forKey: .accesstoken)}
-            AppUserDefaults.save(value: json[ApiKey.data][ApiKey.currentRole].stringValue, forKey: .currentUserType)
+            let currentRole =  json[ApiKey.data][ApiKey.currentRole].stringValue
+            if !currentRole.isEmpty{
+                 AppUserDefaults.save(value: currentRole, forKey: .currentUserType)
+            }
             success(user)
         }) { (error) -> (Void) in
             failure(error)
@@ -411,6 +415,7 @@ extension WebServices{
                                    success: @escaping ResponseMessage,
                                    failure: @escaping FailureResponse) {
         self.commonPostAPI(parameters: parameters, endPoint: .garageProfile,loader: true, success: { (json) in
+           AppUserDefaults.save(value: json[ApiKey.data][ApiKey.isGarrage].boolValue, forKey: .isGarrage)
             success(json[ApiKey.message].stringValue)
         }) { (error) -> (Void) in
             failure(error)
@@ -469,6 +474,26 @@ extension WebServices{
                                     success: @escaping SuccessResponse,
                                     failure: @escaping FailureResponse) {
         self.commonGetAPI(parameters: parameters,endPoint: .userServiceBrands, success: { (json) in
+            let code = json[ApiKey.statusCode].intValue
+            let msg = json[ApiKey.message].stringValue
+            switch code {
+            case ApiCode.success:
+                success(json)
+            default:
+                failure(NSError(code: code, localizedDescription: msg))
+            }
+        }) { (error) -> (Void) in
+            failure(error)
+        }
+    }
+    
+    // MARK:- Brand Listing Data
+    //=================
+    static func getWidthListingData(parameters: JSONDictionary,
+                                    endPoint: EndPoint,
+                                    success: @escaping SuccessResponse,
+                                    failure: @escaping FailureResponse) {
+        self.commonGetAPI(parameters: parameters,endPoint: endPoint, success: { (json) in
             let code = json[ApiKey.statusCode].intValue
             let msg = json[ApiKey.message].stringValue
             switch code {
@@ -547,6 +572,10 @@ extension WebServices{
                                       failure: @escaping FailureResponse) {
         self.commonPutAPI(parameters: parameters, endPoint: .completeGarageProfile, success: { (json) in
             let msg = json[ApiKey.message].stringValue
+            let currentRole =  json[ApiKey.data][ApiKey.currentRole].stringValue
+            if !currentRole.isEmpty{
+                 AppUserDefaults.save(value: currentRole, forKey: .currentUserType)
+            }
             success(msg)
         }) { (error) -> (Void) in
             failure(error)

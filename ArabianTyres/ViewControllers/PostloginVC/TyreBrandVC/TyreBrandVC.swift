@@ -165,6 +165,7 @@ extension TyreBrandVC {
         setYourPrefernceLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
         submitBtn.titleLabel?.font =  AppFonts.NunitoSansSemiBold.withSize(16.0)
         submitBtn.isEnabled = false
+        skipAndSubmitBtn.setTitleColor(AppColors.appRedColor, for: .normal)
         skipAndSubmitBtn.titleLabel?.font =  AppFonts.NunitoSansSemiBold.withSize(16.0)
         skipAndSubmitBtn.setTitle(LocalizedString.skipAndSubmit.localized, for: .normal)
         

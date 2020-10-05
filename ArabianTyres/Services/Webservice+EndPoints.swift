@@ -9,8 +9,8 @@
 import Foundation
 
 //let baseUrl = "http://arabiantyersdevapi.appskeeper.com/api/v1/"//dev url
-//let baseUrl = "http://arabiantyersqaapi.appskeeper.com/api/v1/" //qa url
 let baseUrl = "http://arabiantyersstgapi.appskeeper.com/api/v1/"//stag url
+//let baseUrl = "http://arabiantyersqaapi.appskeeper.com/api/v1/" //qa url
 
 //API path: http://arabiantyersdevapi.appskeeper.com/api/v1/
 //Swagger Url: http://arabiantyersdevapi.appskeeper.com/api-docs/swagger
@@ -45,6 +45,9 @@ extension WebServices {
         case userServiceMake = "user/services/makeList"
         case userServiceModel = "user/services/modelList"
         case userServiceTyreSize = "user/services/tyreList"
+        case userServiceWidth = "user/services/width"
+        case userServiceProfile = "user/services/Profile"
+        case userServicerimSize = "user/services/rimSize"
         
         var path : String {
             let url = baseUrl

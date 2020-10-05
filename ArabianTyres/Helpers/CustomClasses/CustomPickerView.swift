@@ -17,6 +17,7 @@ protocol WCCustomPickerViewDelegate : class{
 class WCCustomPickerView: UIView {
     
     lazy var dataArray = [String]()
+    var picker = UIPickerView()
     var indexPath : IndexPath!
     weak var delegate : WCCustomPickerViewDelegate?
     
@@ -39,7 +40,7 @@ class WCCustomPickerView: UIView {
     
     func createPicker(){
         
-        let picker = UIPickerView(frame: CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height / 4))
+        self.picker = UIPickerView(frame: CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height / 4))
         
         self.addSubview(picker)
         
@@ -86,7 +87,6 @@ extension WCCustomPickerView : UIPickerViewDelegate, UIPickerViewDataSource{
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
         delegate?.userDidSelectRow(dataArray[row])
     }
 }

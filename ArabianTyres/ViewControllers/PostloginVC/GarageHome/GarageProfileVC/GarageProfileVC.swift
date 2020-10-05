@@ -108,19 +108,8 @@ extension GarageProfileVC {
     }
     
     private func returnCellCount()->  Int{
-        if isUserLoggedin {
-            switch isCurrentUserType {
-            case .user:
                 self.mainTableView.isScrollEnabled = true
                 return 2
-            default:
-                self.mainTableView.isScrollEnabled = true
-                return 2
-            }
-        } else {
-            self.mainTableView.isScrollEnabled = false
-            return 1
-        }
     }
     
     private func hitProfileApi(){

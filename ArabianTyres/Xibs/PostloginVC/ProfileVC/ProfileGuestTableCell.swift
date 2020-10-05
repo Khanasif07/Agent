@@ -13,14 +13,20 @@ class ProfileGuestTableCell: UITableViewCell {
     var loginBtnTapped: ((UIButton)->())?
     var createAccountBtnTapped: ((UIButton)->())?
     
+    @IBOutlet weak var backView: UIView!
+    @IBOutlet weak var frontView: UIView!
     @IBOutlet weak var dataContainerView: UIView!
     @IBOutlet weak var createNewAccountBtn: UIButton!
-    @IBOutlet weak var loginBtn: UIButton!
+    @IBOutlet weak var loginBtn: AppButton!
     @IBOutlet weak var welcomeToTaraLbl: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        createNewAccountBtn.setTitleColor(AppColors.primaryBlueColor, for: .normal)
+        loginBtn.isEnabled = true
+        frontView.backgroundColor = AppColors.fontTertiaryColor.withAlphaComponent(0.5)
+        backView.backgroundColor = AppColors.fontTertiaryColor.withAlphaComponent(0.5)
+        welcomeToTaraLbl.textColor = AppColors.fontTertiaryColor.withAlphaComponent(0.5)
+        createNewAccountBtn.setTitleColor(AppColors.fontSecondaryColor, for: .normal)
         welcomeToTaraLbl.font = AppFonts.NunitoSansBold.withSize(15.0)
 
     }
