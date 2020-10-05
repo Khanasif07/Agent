@@ -67,6 +67,7 @@ class BottomSheetVC: BaseVC {
     private func textFieldSetUp(){
         buttonView.isHidden = true
         buttonView.addTarget(self, action: #selector(clear(_:)), for: .touchUpInside)
+        buttonView.imageEdgeInsets = UIEdgeInsets(top: 0, left: -5, bottom: 0, right: 5)
         searchTxtField.setButtonToRightView(btn: buttonView, selectedImage: #imageLiteral(resourceName: "cancel"), normalImage: #imageLiteral(resourceName: "cancel"), size: CGSize(width: 20, height: 20))
     }
     
@@ -140,14 +141,12 @@ extension BottomSheetVC :UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if vehicleDetailtype == .make{
-//            if self.viewModel.selectedMakeArr.contains(self.viewModel.searchMakeListing[indexPath.row]) {}else {
                     self.viewModel.selectedMakeArr.removeAll()
                 self.viewModel.selectedMakeArr.append(self.viewModel.searchMakeListing[indexPath.row])
                 dismiss(animated: true, completion: {
                                    self.onSaveBtnAction?(self.viewModel.selectedMakeArr,self.viewModel.selectedModelArr)
                                })
             }else {
-//            if self.viewModel.selectedModelArr.contains(self.viewModel.searchModelListing[indexPath.row]) {}else
               self.viewModel.selectedModelArr.removeAll()
                 self.viewModel.selectedModelArr.append(self.viewModel.searchModelListing[indexPath.row])
                 dismiss(animated: true, completion: {
@@ -155,7 +154,6 @@ extension BottomSheetVC :UITableViewDelegate,UITableViewDataSource {
                 })
             }
             tableView.reloadData()
-//        }
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 44.0

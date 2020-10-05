@@ -154,6 +154,7 @@ extension VechicleDetailVC :UITextFieldDelegate {
             openBottomSheet(type: VehicleDetailType.make)
             self.selectedMakeArr = []
             self.vehicleModelTextField.text = ""
+            TyreRequestModel.shared.modelName = ""
             return false
         case vehicleModelTextField:
             if self.selectedMakeArr.isEmpty {

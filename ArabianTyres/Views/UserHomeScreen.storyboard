@@ -34,7 +34,7 @@
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tJL-f0-IWQ">
                                                         <rect key="frame" x="207" y="0.0" width="207" height="280"/>
-                                                        <color key="backgroundColor" red="1" green="0.69411764705882351" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" red="0.54117647058823526" green="0.58431372549019611" blue="0.61960784313725492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </view>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="genericHybridCarI051" translatesAutoresizingMaskIntoConstraints="NO" id="F49-eN-RgT">
                                                         <rect key="frame" x="77" y="76" width="337" height="408"/>
@@ -241,7 +241,7 @@
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AqH-Xv-OiM">
                                                         <rect key="frame" x="207" y="0.0" width="207" height="313"/>
-                                                        <color key="backgroundColor" red="1" green="0.69411764710000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" red="0.54117647058823526" green="0.58431372549019611" blue="0.61960784313725492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </view>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icfVTyre" translatesAutoresizingMaskIntoConstraints="NO" id="UqA-4q-rDK">
                                                         <rect key="frame" x="0.0" y="171" width="414" height="172"/>
@@ -645,7 +645,7 @@ in getting great offers</string>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ytH-Un-sz7">
                                                         <rect key="frame" x="207" y="0.0" width="207" height="335"/>
-                                                        <color key="backgroundColor" red="1" green="0.69411764710000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" red="0.54117647058823526" green="0.58431372549019611" blue="0.61960784313725492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </view>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icfVTyre" translatesAutoresizingMaskIntoConstraints="NO" id="UL5-Xm-tjA">
                                                         <rect key="frame" x="0.0" y="191" width="414" height="172"/>
@@ -1086,7 +1086,7 @@ Service With</string>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MYK-Lf-feg">
                                                         <rect key="frame" x="207" y="0.0" width="207" height="313"/>
-                                                        <color key="backgroundColor" red="1" green="0.69411764710000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" red="0.54117647058823526" green="0.58431372549019611" blue="0.61960784313725492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </view>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icOil" translatesAutoresizingMaskIntoConstraints="NO" id="gsZ-4T-w6B">
                                                         <rect key="frame" x="0.0" y="158" width="414" height="171"/>
@@ -1270,7 +1270,7 @@ would be</string>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7bH-Cy-ksE">
                                                         <rect key="frame" x="207" y="0.0" width="207" height="313"/>
-                                                        <color key="backgroundColor" red="1" green="0.69411764710000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" red="0.54117647058823526" green="0.58431372549019611" blue="0.61960784313725492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </view>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icOil" translatesAutoresizingMaskIntoConstraints="NO" id="k4B-Qj-bTf">
                                                         <rect key="frame" x="0.0" y="158" width="414" height="171"/>
@@ -1454,7 +1454,7 @@ looking for?</string>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yeI-Jz-E8v">
                                                         <rect key="frame" x="207" y="0.0" width="207" height="313"/>
-                                                        <color key="backgroundColor" red="1" green="0.69411764710000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" red="0.54117647058823526" green="0.58431372549019611" blue="0.61960784313725492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </view>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icBattery" translatesAutoresizingMaskIntoConstraints="NO" id="5Zz-aY-WM8">
                                                         <rect key="frame" x="0.0" y="153" width="414" height="198"/>
@@ -1638,7 +1638,7 @@ would be</string>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="niA-rL-rum">
                                                         <rect key="frame" x="207" y="0.0" width="207" height="280"/>
-                                                        <color key="backgroundColor" red="1" green="0.69411764710000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" red="0.54117647058823526" green="0.58431372549019611" blue="0.61960784313725492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </view>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="genericHybridCarI051" translatesAutoresizingMaskIntoConstraints="NO" id="kNB-Re-5wc">
                                                         <rect key="frame" x="77" y="76" width="337" height="408"/>
@@ -2001,7 +2001,7 @@ provided details</string>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Q8-94-9Hf">
                                                         <rect key="frame" x="207" y="0.0" width="207" height="335"/>
-                                                        <color key="backgroundColor" red="1" green="0.69411764710000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" red="0.54117647058823526" green="0.58431372549019611" blue="0.61960784313725492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </view>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icBattery" translatesAutoresizingMaskIntoConstraints="NO" id="uUE-sD-rMe">
                                                         <rect key="frame" x="0.0" y="175" width="414" height="198"/>
@@ -2405,7 +2405,7 @@ Service With</string>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QJr-B3-7mz">
                                                         <rect key="frame" x="207" y="0.0" width="207" height="335"/>
-                                                        <color key="backgroundColor" red="1" green="0.69411764710000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" red="0.54117647058823526" green="0.58431372549019611" blue="0.61960784313725492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </view>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icOil" translatesAutoresizingMaskIntoConstraints="NO" id="JBu-Aq-OH5">
                                                         <rect key="frame" x="0.0" y="182" width="414" height="171"/>
@@ -2809,7 +2809,7 @@ Service With</string>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZKT-dc-U6w">
                                                         <rect key="frame" x="207" y="0.0" width="207" height="280"/>
-                                                        <color key="backgroundColor" red="1" green="0.69411764710000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" red="0.54117647058823526" green="0.58431372549019611" blue="0.61960784313725492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </view>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="genericHybridCarI051" translatesAutoresizingMaskIntoConstraints="NO" id="R5h-Sw-Whb">
                                                         <rect key="frame" x="77" y="76" width="337" height="408"/>

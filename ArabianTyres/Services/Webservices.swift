@@ -487,6 +487,26 @@ extension WebServices{
         }
     }
     
+    // MARK:- Brand Listing Data
+    //=================
+    static func getWidthListingData(parameters: JSONDictionary,
+                                    endPoint: EndPoint,
+                                    success: @escaping SuccessResponse,
+                                    failure: @escaping FailureResponse) {
+        self.commonGetAPI(parameters: parameters,endPoint: endPoint, success: { (json) in
+            let code = json[ApiKey.statusCode].intValue
+            let msg = json[ApiKey.message].stringValue
+            switch code {
+            case ApiCode.success:
+                success(json)
+            default:
+                failure(NSError(code: code, localizedDescription: msg))
+            }
+        }) { (error) -> (Void) in
+            failure(error)
+        }
+    }
+    
     // MARK:- Country Listing Data
     //=================
     static func getCountryListingData(parameters: JSONDictionary,
