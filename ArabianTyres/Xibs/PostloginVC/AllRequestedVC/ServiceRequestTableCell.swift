@@ -31,6 +31,7 @@ class ServiceRequestTableCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        logoImgView.round(radius: 4.0)
         placeBidBtn.round(radius: 2.0)
         rejectRequestBtn.round(radius: 2.0)
         ratingImgView.round(radius: 4.0)
@@ -48,7 +49,13 @@ class ServiceRequestTableCell: UITableViewCell {
     public func initialSetUp(){
         self.logoImgView.backgroundColor = AppColors.fontTertiaryColor
         placeBidBtn.isEnabled = true
+        brandsLbl.textColor = AppColors.fontTertiaryColor
+        tyreSizeLbl.textColor = AppColors.fontTertiaryColor
+        statusLbl.textColor = AppColors.fontTertiaryColor
         rejectRequestBtn.isEnabled = true
+        brandsLbl.text = "Barnd:"
+        tyreSizeLbl.text = "Tyre Size:"
+        statusLbl.text = "Status"
     }
 
 }

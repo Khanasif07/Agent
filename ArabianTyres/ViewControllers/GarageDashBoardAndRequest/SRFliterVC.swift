@@ -28,7 +28,7 @@ class SRFliterVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
-        tableViewSetup()
+//        tableViewSetup()
     }
 
     override func viewWillAppear(_ animated: Bool) {
