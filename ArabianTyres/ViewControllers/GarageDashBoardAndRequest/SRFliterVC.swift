@@ -12,7 +12,7 @@ import SkyFloatingLabelTextField
 class SRFliterVC: BaseVC {
     
     // MARK: - IBOutlets
-    //===========================
+    //==================
     @IBOutlet weak var filterLbl: UILabel!
     @IBOutlet weak var canceBtn: UIButton!
     @IBOutlet weak var applyBtn: UIButton!
@@ -20,11 +20,11 @@ class SRFliterVC: BaseVC {
 
     
     // MARK: - Variables
-    //===========================
-    
-    
+    //===================
+    var catName = ["By Service Type", "By Status"]
+
     // MARK: - Lifecycle
-    //===========================
+    //===================
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
@@ -59,6 +59,11 @@ extension SRFliterVC {
         setupTextAndFont()
     }
     
+    private func tableViewSetup() {
+        mainTableView.delegate = self
+        mainTableView.dataSource = self
+    }
+    
     private func setupTextAndFont() {
         
         filterLbl.text = LocalizedString.filter.localized
@@ -70,4 +75,31 @@ extension SRFliterVC {
         applyBtn.titleLabel?.font = AppFonts.NunitoSansSemiBold.withSize(17.0)
 
     }
+}
+
+extension SRFliterVC :UITableViewDelegate,UITableViewDataSource{
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return catName.endIndex
+    }
+
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return CGFloat.leastNormalMagnitude
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueCell(with: FilterTableViewCell.self, indexPath: indexPath)
+        cell.categoryLbl.text = catName[indexPath.row]
+        
+        cell.cellBtnTapped = {[weak self] in
+            guard let `self` = self else {return}
+            self.mainTableView.reloadData()
+        }
+        return cell
+    }
+    
 }
