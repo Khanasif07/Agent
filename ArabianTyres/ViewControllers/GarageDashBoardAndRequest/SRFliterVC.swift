@@ -21,8 +21,8 @@ class SRFliterVC: BaseVC {
     
     // MARK: - Variables
     //===================
-    
-    
+    var catName = ["By Service Type", "By Status"]
+
     // MARK: - Lifecycle
     //===================
     override func viewDidLoad() {
@@ -62,8 +62,6 @@ extension SRFliterVC {
     private func tableViewSetup() {
         mainTableView.delegate = self
         mainTableView.dataSource = self
-        mainTableView.registerHeaderFooter(with: FacilityTableHeaderView.self)
-        mainTableView.registerCell(with: FacilityTableViewCell.self)
     }
     
     private func setupTextAndFont() {
@@ -80,35 +78,28 @@ extension SRFliterVC {
 }
 
 extension SRFliterVC :UITableViewDelegate,UITableViewDataSource{
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
-    }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return catName.endIndex
     }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 48.0
-    }
-    
+
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return CGFloat.leastNormalMagnitude
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = tableView.dequeueHeaderFooter(with: FacilityTableHeaderView.self)
-        view.checkBtn.isHidden = true
-        view.cellBtnTapped = { [weak self] in
-            guard let `self` = self else {return}
-            
-        }
-          return view
-      }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueCell(with: FacilityTableViewCell.self, indexPath: indexPath)
+        let cell = tableView.dequeueCell(with: FilterTableViewCell.self, indexPath: indexPath)
+        cell.categoryLbl.text = catName[indexPath.row]
+        
+        cell.cellBtnTapped = {[weak self] in
+            guard let `self` = self else {return}
+            self.mainTableView.reloadData()
+        }
         return cell
     }
+    
 }

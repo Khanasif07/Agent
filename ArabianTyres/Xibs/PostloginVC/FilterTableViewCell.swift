@@ -11,6 +11,8 @@ import UIKit
 
 class FilterTableViewCell: UITableViewCell {
     
+    //MARK:- IBOutlets
+
     @IBOutlet weak var addImgView : UIImageView!
     @IBOutlet weak var categoryLbl : UILabel!
     @IBOutlet weak var cellBtn : UIButton!
@@ -20,14 +22,47 @@ class FilterTableViewCell: UITableViewCell {
     @IBOutlet weak var collViewHeightConstraint : NSLayoutConstraint!
 
     var cellBtnTapped : (()->())?
+    var subCatName = ["Tyre Service","Oil Sevice", "Battery Service"]
 
+    //MARK:- Life Cycle
     override func awakeFromNib() {
         super.awakeFromNib()
+        setupCollView()
         categoryLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        containerView.createShadow(shadowColor: #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1))
+    }
+    
     @IBAction func cellBtnAction(_ sender: UIButton) {
-//        checkBtn.isSelected.toggle()
+        cellBtn.isSelected.toggle()
+        addImgView.isHighlighted.toggle()
+        collViewHeightConstraint.constant = cellBtn.isSelected ? collView.contentSize.height : 0.0
         cellBtnTapped?()
+    }
+    
+    private func setupCollView() {
+        collView.delegate = self
+        collView.dataSource = self
+        collView.registerCell(with: FilterCollectionViewCell.self)
+    }
+
+}
+//MARK:- Collection View Delegate and DataSource
+extension FilterTableViewCell: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return subCatName.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueCell(with: FilterCollectionViewCell.self, indexPath: indexPath)
+        cell.subCategoryName.text = subCatName[indexPath.item]
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: self.frame.width - 32, height: 54)
     }
 }

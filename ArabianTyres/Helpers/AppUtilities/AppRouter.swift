@@ -289,12 +289,15 @@ enum AppRouter {
         
     }
     
-    
     static func goToURTyreStep1VC(vc: UIViewController){
         let scene = URTyreStep1VC.instantiate(fromAppStoryboard: .UserRequest)
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
+    static func goToSRFliterVC(vc: UIViewController){
+        let scene = SRFliterVC.instantiate(fromAppStoryboard: .GarageRequest)
+        vc.navigationController?.pushViewController(scene, animated: true)
+    }
     
     static func goToOilBrandsVC(vc: UIViewController){
         let scene = OilBrandsVC.instantiate(fromAppStoryboard: .UserHomeScreen)
