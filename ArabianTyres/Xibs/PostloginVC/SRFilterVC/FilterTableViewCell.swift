@@ -21,7 +21,6 @@ class FilterTableViewCell: UITableViewCell {
     @IBOutlet weak var collView : UICollectionView!
 
     var cellBtnTapped : (()->())?
-    var subCatName = ["Tyre Service","Oil Sevice", "Battery Service"]
     var subCatArr :[SubCatModel] = []
     
     //MARK:- Life Cycle
@@ -58,7 +57,7 @@ extension FilterTableViewCell: UICollectionViewDelegate,UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(with: FilterCollectionViewCell.self, indexPath: indexPath)
         cell.subCategoryName.text = subCatArr[indexPath.item].name
-        cell.lineView.isHidden = subCatArr.endIndex - 1 == indexPath.item
+        cell.lineView.isHidden = subCatArr.count - 1 == indexPath.item
         return cell
     }
     

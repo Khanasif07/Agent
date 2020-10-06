@@ -32,7 +32,6 @@ class SRFilterVC: BaseVC {
     
     // MARK: - Variables
     //===================
-    var catName = ["By Service Type", "By Status"]
     let viewModel = SRFliterVM()
     
     // MARK: - Lifecycle
