@@ -15,6 +15,7 @@ class CustomDashedView: UIView {
     @IBOutlet weak var leftCircleView: UIView!
     @IBOutlet weak var outerView: UIView!
     @IBOutlet weak var rightCircleView: UIView!
+   
     var contentView:UIView?
     
     //MARK:- Variables
