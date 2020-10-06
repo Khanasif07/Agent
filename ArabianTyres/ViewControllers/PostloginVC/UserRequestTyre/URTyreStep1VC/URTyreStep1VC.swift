@@ -174,6 +174,8 @@ extension URTyreStep1VC: UITextFieldDelegate{
                 }}
             TyreRequestModel.shared.profile = ""
             TyreRequestModel.shared.rimSize = ""
+            self.profilePicker.dataArray = []
+            self.rimSizePicker.dataArray = []
             rimSizeTxtField.text  = ""
             profileTxtField.text = ""
             tempTextField = widthTxtField
@@ -192,6 +194,7 @@ extension URTyreStep1VC: UITextFieldDelegate{
                 }}
             TyreRequestModel.shared.rimSize = ""
             rimSizeTxtField.text  = ""
+            self.rimSizePicker.dataArray = []
             tempTextField = profileTxtField
             return true
         } else if textField == rimSizeTxtField {
