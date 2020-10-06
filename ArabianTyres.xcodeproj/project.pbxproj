@@ -184,6 +184,9 @@
 		A413B979250A2BEF0004C534 /* AddDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A413B978250A2BEF0004C534 /* AddDetailVC.swift */; };
 		A413B97D250A44410004C534 /* CustomTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A413B97B250A44400004C534 /* CustomTextView.xib */; };
 		A413B97E250A44410004C534 /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A413B97C250A44400004C534 /* CustomTextView.swift */; };
+		A4203EF6252C2FF300BD8802 /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4203EF5252C2FF300BD8802 /* FilterTableViewCell.swift */; };
+		A4203EF9252C31A100BD8802 /* FilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4203EF7252C31A100BD8802 /* FilterCollectionViewCell.swift */; };
+		A4203EFA252C31A100BD8802 /* FilterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4203EF8252C31A100BD8802 /* FilterCollectionViewCell.xib */; };
 		A4213DE0250CB02400BB21B6 /* DocumentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4213DDF250CB02400BB21B6 /* DocumentTableViewCell.swift */; };
 		A421DDD5252AFDF20044E5E0 /* PlaceBidPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A421DDD4252AFDF20044E5E0 /* PlaceBidPopUpVC.swift */; };
 		A421DDD7252B1A610044E5E0 /* OtpPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A421DDD6252B1A610044E5E0 /* OtpPopUpVC.swift */; };
@@ -411,6 +414,9 @@
 		A413B978250A2BEF0004C534 /* AddDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDetailVC.swift; sourceTree = "<group>"; };
 		A413B97B250A44400004C534 /* CustomTextView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomTextView.xib; sourceTree = "<group>"; };
 		A413B97C250A44400004C534 /* CustomTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
+		A4203EF5252C2FF300BD8802 /* FilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
+		A4203EF7252C31A100BD8802 /* FilterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCollectionViewCell.swift; sourceTree = "<group>"; };
+		A4203EF8252C31A100BD8802 /* FilterCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterCollectionViewCell.xib; sourceTree = "<group>"; };
 		A4213DDF250CB02400BB21B6 /* DocumentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentTableViewCell.swift; sourceTree = "<group>"; };
 		A421DDD4252AFDF20044E5E0 /* PlaceBidPopUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceBidPopUpVC.swift; sourceTree = "<group>"; };
 		A421DDD6252B1A610044E5E0 /* OtpPopUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpPopUpVC.swift; sourceTree = "<group>"; };
@@ -1204,6 +1210,9 @@
 				A4098E7C251231DD0015B0BD /* FacilityTableViewCell.xib */,
 				A43B53AA2524B65300447B24 /* ServiceListingTableViewCell.swift */,
 				A43B53AB2524B65300447B24 /* ServiceListingTableViewCell.xib */,
+				A4203EF5252C2FF300BD8802 /* FilterTableViewCell.swift */,
+				A4203EF7252C31A100BD8802 /* FilterCollectionViewCell.swift */,
+				A4203EF8252C31A100BD8802 /* FilterCollectionViewCell.xib */,
 			);
 			path = PostloginVC;
 			sourceTree = "<group>";
@@ -1598,6 +1607,7 @@
 				843C8EC22508AD4D00515F2E /* ProfileUserBottomCell.xib in Resources */,
 				8481FA972501438500AB6EFB /* NunitoSans-ExtraBoldItalic.ttf in Resources */,
 				8481FA9B2501439700AB6EFB /* NunitoSans-ExtraLightItalic.ttf in Resources */,
+				A4203EFA252C31A100BD8802 /* FilterCollectionViewCell.xib in Resources */,
 				A413B97D250A44410004C534 /* CustomTextView.xib in Resources */,
 				844CBD232501FFC0009BE668 /* LoginEmailPhoneTableCell.xib in Resources */,
 				8470D1FB251B36C700790768 /* GarageProfileHeaderCell.xib in Resources */,
@@ -1751,8 +1761,10 @@
 				843DFD202503F93A000DE6EB /* OtpVerificationVM.swift in Sources */,
 				A44E8D7C251CD24900ACBC4D /* VehicleDetailForOilVC.swift in Sources */,
 				8481FA652500BFAD00AB6EFB /* AppColors.swift in Sources */,
+				A4203EF9252C31A100BD8802 /* FilterCollectionViewCell.swift in Sources */,
 				A45566D0250CA6C0009E4324 /* UploadDocumentVC.swift in Sources */,
 				84D83D68252AAF5800F6C420 /* URTyreStep1VM.swift in Sources */,
+				A4203EF6252C2FF300BD8802 /* FilterTableViewCell.swift in Sources */,
 				844EB7262519C012003A6E3F /* TyreCountryModel.swift in Sources */,
 				8481FA3F2500BE2800AB6EFB /* UITextFieldExtension.swift in Sources */,
 				844CBD222501FFC0009BE668 /* LoginEmailPhoneTableCell.swift in Sources */,

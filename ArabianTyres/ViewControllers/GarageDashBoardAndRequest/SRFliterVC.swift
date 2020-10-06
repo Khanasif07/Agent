@@ -12,7 +12,7 @@ import SkyFloatingLabelTextField
 class SRFliterVC: BaseVC {
     
     // MARK: - IBOutlets
-    //===========================
+    //==================
     @IBOutlet weak var filterLbl: UILabel!
     @IBOutlet weak var canceBtn: UIButton!
     @IBOutlet weak var applyBtn: UIButton!
@@ -20,11 +20,11 @@ class SRFliterVC: BaseVC {
 
     
     // MARK: - Variables
-    //===========================
+    //===================
     
     
     // MARK: - Lifecycle
-    //===========================
+    //===================
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
@@ -59,6 +59,13 @@ extension SRFliterVC {
         setupTextAndFont()
     }
     
+    private func tableViewSetup() {
+        mainTableView.delegate = self
+        mainTableView.dataSource = self
+        mainTableView.registerHeaderFooter(with: FacilityTableHeaderView.self)
+        mainTableView.registerCell(with: FacilityTableViewCell.self)
+    }
+    
     private func setupTextAndFont() {
         
         filterLbl.text = LocalizedString.filter.localized
@@ -69,5 +76,39 @@ extension SRFliterVC {
         canceBtn.titleLabel?.font = AppFonts.NunitoSansSemiBold.withSize(17.0)
         applyBtn.titleLabel?.font = AppFonts.NunitoSansSemiBold.withSize(17.0)
 
+    }
+}
+
+extension SRFliterVC :UITableViewDelegate,UITableViewDataSource{
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 4
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 48.0
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return CGFloat.leastNormalMagnitude
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = tableView.dequeueHeaderFooter(with: FacilityTableHeaderView.self)
+        view.checkBtn.isHidden = true
+        view.cellBtnTapped = { [weak self] in
+            guard let `self` = self else {return}
+            
+        }
+          return view
+      }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueCell(with: FacilityTableViewCell.self, indexPath: indexPath)
+        return cell
     }
 }

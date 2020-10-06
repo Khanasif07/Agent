@@ -51,7 +51,7 @@ enum AppRouter {
     }
     
     static func goToTestingVC(){
-        let scene = OtpPopUpVC.instantiate(fromAppStoryboard: .GarageRequest)
+        let scene = SRFliterVC.instantiate(fromAppStoryboard: .GarageRequest)
         setAsWindowRoot(scene)
     }
     
