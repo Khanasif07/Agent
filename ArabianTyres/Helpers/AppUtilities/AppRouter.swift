@@ -51,7 +51,7 @@ enum AppRouter {
     }
     
     static func goToTestingVC(){
-        let scene = SRFliterVC.instantiate(fromAppStoryboard: .GarageRequest)
+        let scene = SRFilterVC.instantiate(fromAppStoryboard: .GarageRequest)
         setAsWindowRoot(scene)
     }
     
@@ -295,7 +295,7 @@ enum AppRouter {
     }
     
     static func goToSRFliterVC(vc: UIViewController){
-        let scene = SRFliterVC.instantiate(fromAppStoryboard: .GarageRequest)
+        let scene = SRFilterVC.instantiate(fromAppStoryboard: .GarageRequest)
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     

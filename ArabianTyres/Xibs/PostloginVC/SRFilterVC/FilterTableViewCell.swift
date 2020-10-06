@@ -19,11 +19,11 @@ class FilterTableViewCell: UITableViewCell {
     @IBOutlet weak var bottomView : UIView!
     @IBOutlet weak var containerView : UIView!
     @IBOutlet weak var collView : UICollectionView!
-    @IBOutlet weak var collViewHeightConstraint : NSLayoutConstraint!
 
     var cellBtnTapped : (()->())?
     var subCatName = ["Tyre Service","Oil Sevice", "Battery Service"]
-
+    var subCatArr :[SubCatModel] = []
+    
     //MARK:- Life Cycle
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -39,7 +39,6 @@ class FilterTableViewCell: UITableViewCell {
     @IBAction func cellBtnAction(_ sender: UIButton) {
         cellBtn.isSelected.toggle()
         addImgView.isHighlighted.toggle()
-        collViewHeightConstraint.constant = cellBtn.isSelected ? collView.contentSize.height : 0.0
         cellBtnTapped?()
     }
     
@@ -53,12 +52,13 @@ class FilterTableViewCell: UITableViewCell {
 //MARK:- Collection View Delegate and DataSource
 extension FilterTableViewCell: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return subCatName.count
+        return subCatArr.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(with: FilterCollectionViewCell.self, indexPath: indexPath)
-        cell.subCategoryName.text = subCatName[indexPath.item]
+        cell.subCategoryName.text = subCatArr[indexPath.item].name
+        cell.lineView.isHidden = subCatArr.endIndex - 1 == indexPath.item
         return cell
     }
     

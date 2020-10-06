@@ -37,7 +37,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fL7-yf-Ewb">
-                                        <rect key="frame" x="6" y="-3" width="72" height="68"/>
+                                        <rect key="frame" x="6" y="14" width="36" height="34"/>
                                         <state key="normal" image="icBackward"/>
                                     </button>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="axu-FF-BQ3">
@@ -156,7 +156,7 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </textField>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SAR" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zTV-9c-FLc">
-                                                                <rect key="frame" x="298" y="13.5" width="40" height="20"/>
+                                                                <rect key="frame" x="298" y="21" width="40" height="20"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="40" id="BfB-P2-ell"/>
                                                                 </constraints>
@@ -521,10 +521,10 @@ start Servicing</string>
             </objects>
             <point key="canvasLocation" x="958" y="-8"/>
         </scene>
-        <!--FliterVC-->
+        <!--FilterVC-->
         <scene sceneID="nAz-e1-kFt">
             <objects>
-                <viewController storyboardIdentifier="SRFliterVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4rK-6p-Ix2" customClass="SRFliterVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SRFilterVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4rK-6p-Ix2" customClass="SRFilterVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3e7-UV-bYc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -594,7 +594,7 @@ start Servicing</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P80-4q-rYF">
-                                                    <rect key="frame" x="16" y="8" width="382" height="178"/>
+                                                    <rect key="frame" x="16" y="8" width="382" height="186"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gVD-m4-HDk">
                                                             <rect key="frame" x="0.0" y="0.0" width="382" height="44"/>
@@ -612,7 +612,7 @@ start Servicing</string>
                                                                         <constraint firstAttribute="width" secondItem="YO4-GL-2wF" secondAttribute="height" multiplier="1:1" id="jSg-c9-OZy"/>
                                                                     </constraints>
                                                                 </imageView>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0E0-ki-OQt">
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0E0-ki-OQt">
                                                                     <rect key="frame" x="0.0" y="0.0" width="382" height="44"/>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <connections>
@@ -644,11 +644,8 @@ start Servicing</string>
                                                             </constraints>
                                                         </view>
                                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" contentInsetAdjustmentBehavior="never" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Lfm-TO-SEr">
-                                                            <rect key="frame" x="0.0" y="44" width="382" height="134"/>
+                                                            <rect key="frame" x="0.0" y="44" width="382" height="142"/>
                                                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="136" id="rBX-B0-8EC"/>
-                                                            </constraints>
                                                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ELG-nh-gC6">
                                                                 <size key="itemSize" width="50" height="50"/>
                                                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -680,7 +677,7 @@ start Servicing</string>
                                                 <constraint firstItem="P80-4q-rYF" firstAttribute="leading" secondItem="axQ-Fe-IP1" secondAttribute="leading" constant="16" id="85h-83-Jbw"/>
                                                 <constraint firstItem="P80-4q-rYF" firstAttribute="top" secondItem="axQ-Fe-IP1" secondAttribute="top" constant="8" id="Pvo-wp-2aN"/>
                                                 <constraint firstAttribute="trailing" secondItem="P80-4q-rYF" secondAttribute="trailing" constant="16" id="ehu-Aa-AZa"/>
-                                                <constraint firstAttribute="bottom" secondItem="P80-4q-rYF" secondAttribute="bottom" constant="8" id="uf8-kA-ea0"/>
+                                                <constraint firstAttribute="bottom" secondItem="P80-4q-rYF" secondAttribute="bottom" id="uf8-kA-ea0"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -689,7 +686,6 @@ start Servicing</string>
                                             <outlet property="categoryLbl" destination="xf6-SG-AG3" id="5uz-cq-Rrj"/>
                                             <outlet property="cellBtn" destination="0E0-ki-OQt" id="Jgf-pn-9F2"/>
                                             <outlet property="collView" destination="Lfm-TO-SEr" id="Nkx-Zs-shy"/>
-                                            <outlet property="collViewHeightConstraint" destination="rBX-B0-8EC" id="cP2-5X-p0A"/>
                                             <outlet property="containerView" destination="P80-4q-rYF" id="qOd-7F-e9H"/>
                                         </connections>
                                     </tableViewCell>
