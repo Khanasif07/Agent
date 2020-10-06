@@ -202,7 +202,8 @@
 		A43F44B42513BE66002B1014 /* BrandsListingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43F44B32513BE66002B1014 /* BrandsListingVC.swift */; };
 		A441A675252CD5F600B5420B /* DashedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A441A673252CD5F600B5420B /* DashedCollectionViewCell.swift */; };
 		A441A676252CD5F600B5420B /* DashedCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A441A674252CD5F600B5420B /* DashedCollectionViewCell.xib */; };
-		A441A679252CDEAA00B5420B /* TyreRequestLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A441A678252CDEAA00B5420B /* TyreRequestLocationTableViewCell.swift */; };
+		A441A67E252CDF7C00B5420B /* TyreRequestLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A441A67C252CDF7C00B5420B /* TyreRequestLocationTableViewCell.swift */; };
+		A441A67F252CDF7C00B5420B /* TyreRequestLocationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A441A67D252CDF7C00B5420B /* TyreRequestLocationTableViewCell.xib */; };
 		A4443864251381F700114A75 /* UserHomeScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4443863251381F700114A75 /* UserHomeScreen.storyboard */; };
 		A4443866251387E000114A75 /* VechicleDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4443865251387E000114A75 /* VechicleDetailVC.swift */; };
 		A44E8D74251C817400ACBC4D /* OilBrandsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44E8D73251C817400ACBC4D /* OilBrandsVC.swift */; };
@@ -447,7 +448,8 @@
 		A43F44B32513BE66002B1014 /* BrandsListingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandsListingVC.swift; sourceTree = "<group>"; };
 		A441A673252CD5F600B5420B /* DashedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashedCollectionViewCell.swift; sourceTree = "<group>"; };
 		A441A674252CD5F600B5420B /* DashedCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashedCollectionViewCell.xib; sourceTree = "<group>"; };
-		A441A678252CDEAA00B5420B /* TyreRequestLocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TyreRequestLocationTableViewCell.swift; sourceTree = "<group>"; };
+		A441A67C252CDF7C00B5420B /* TyreRequestLocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TyreRequestLocationTableViewCell.swift; sourceTree = "<group>"; };
+		A441A67D252CDF7C00B5420B /* TyreRequestLocationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TyreRequestLocationTableViewCell.xib; sourceTree = "<group>"; };
 		A4443863251381F700114A75 /* UserHomeScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserHomeScreen.storyboard; sourceTree = "<group>"; };
 		A4443865251387E000114A75 /* VechicleDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VechicleDetailVC.swift; sourceTree = "<group>"; };
 		A44E8D73251C817400ACBC4D /* OilBrandsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OilBrandsVC.swift; sourceTree = "<group>"; };
@@ -1425,7 +1427,8 @@
 				A4CC3254252CB3F400669F39 /* TyreRequestDetailTableViewCell.xib */,
 				A441A673252CD5F600B5420B /* DashedCollectionViewCell.swift */,
 				A441A674252CD5F600B5420B /* DashedCollectionViewCell.xib */,
-				A441A678252CDEAA00B5420B /* TyreRequestLocationTableViewCell.swift */,
+				A441A67C252CDF7C00B5420B /* TyreRequestLocationTableViewCell.swift */,
+				A441A67D252CDF7C00B5420B /* TyreRequestLocationTableViewCell.xib */,
 			);
 			path = BookedTyreRequestVC;
 			sourceTree = "<group>";
@@ -1714,6 +1717,7 @@
 				8459480E252B0C0600C0B249 /* ServiceRequestTableCell.xib in Resources */,
 				843F004E25060822001A78EC /* CountryCodeTableCell.xib in Resources */,
 				842B2FCA25133CD200E3CF67 /* BankListingTableCell.xib in Resources */,
+				A441A67F252CDF7C00B5420B /* TyreRequestLocationTableViewCell.xib in Resources */,
 				A43B53A52524B21300447B24 /* GarageRequest.storyboard in Resources */,
 				8481FA812500DC8800AB6EFB /* Main.storyboard in Resources */,
 				844CBD1B2501F7D5009BE668 /* LoginTopTableCell.xib in Resources */,
@@ -1965,7 +1969,7 @@
 				8481FA7B2500CC2C00AB6EFB /* BaseVC.swift in Sources */,
 				8481FA5F2500BF8400AB6EFB /* AppRouter.swift in Sources */,
 				A43B53AC2524B65300447B24 /* ServiceListingTableViewCell.swift in Sources */,
-				A441A679252CDEAA00B5420B /* TyreRequestLocationTableViewCell.swift in Sources */,
+				A441A67E252CDF7C00B5420B /* TyreRequestLocationTableViewCell.swift in Sources */,
 				843C8EC52508AE9500515F2E /* ProfileUserInternalCell.swift in Sources */,
 				84476D3725075F6800AB5E80 /* ExploreVC.swift in Sources */,
 				846352D02511E34E004216F1 /* AddImageCollCell.swift in Sources */,

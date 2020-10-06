@@ -57,6 +57,7 @@ extension BookedTyreRequestVC {
         mainTableView.delegate = self
         mainTableView.dataSource = self
         mainTableView.registerCell(with: TyreRequestDetailTableViewCell.self)
+        mainTableView.registerCell(with: TyreRequestLocationTableViewCell.self)
     }
     
     private func setupTextAndFont(){
@@ -75,12 +76,18 @@ extension BookedTyreRequestVC: UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueCell(with: TyreRequestDetailTableViewCell.self)
-        return cell
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueCell(with: TyreRequestDetailTableViewCell.self)
+            return cell
+        }else {
+            
+            let cell = tableView.dequeueCell(with: TyreRequestLocationTableViewCell.self)
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 375.0
+        return indexPath.section == 0 ? 375.0 : UITableView.automaticDimension
 //        return UITableView.automaticDimension
     }
     

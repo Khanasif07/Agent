@@ -231,6 +231,8 @@
 "serviceDetails" = "Service Details";
 "tyreSize" = "Tyre Size:";
 "preferredBrand" = "Preferred Brand:";
+"startService" = "Start Service";
+"chat" = "Chat";
  // MARK: - Home  VC Values
 //==============================
 "tyre" = "Tyre";
