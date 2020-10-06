@@ -1553,6 +1553,7 @@ Service Center</string>
                                                         </state>
                                                         <connections>
                                                             <action selector="doneBtnAction:" destination="MNi-yC-bfm" eventType="touchUpInside" id="GBn-OE-Yuo"/>
+                                                            <action selector="filterBtnAction:" destination="hx6-O5-oOB" eventType="touchUpInside" id="FIi-P8-UAX"/>
                                                             <action selector="helpBtnAction:" destination="scS-Gl-fMP" eventType="touchUpInside" id="klr-5o-kDK"/>
                                                         </connections>
                                                     </button>

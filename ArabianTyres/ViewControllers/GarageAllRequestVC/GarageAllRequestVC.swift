@@ -71,6 +71,9 @@ class GarageAllRequestVC: BaseVC {
           
       }
       
+    @IBAction func filterBtnAction(_ sender: UIButton) {
+        AppRouter.goToSRFliterVC(vc: self)
+    }
 }
 
 // MARK: - Extension For Functions
