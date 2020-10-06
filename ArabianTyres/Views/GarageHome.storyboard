@@ -12,34 +12,6 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Garage SettingVC-->
-        <scene sceneID="Lbg-1B-6gd">
-            <objects>
-                <viewController storyboardIdentifier="GarageSettingVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JO3-ss-3mH" customClass="GarageSettingVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ugd-SI-EqH">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Under Development" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cXX-c1-ruU">
-                                <rect key="frame" x="128.5" y="439" width="157" height="23.5"/>
-                                <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="cXX-c1-ruU" firstAttribute="centerX" secondItem="tyo-Lr-Feu" secondAttribute="centerX" id="6Mf-Se-B0X"/>
-                            <constraint firstItem="cXX-c1-ruU" firstAttribute="centerY" secondItem="tyo-Lr-Feu" secondAttribute="centerY" id="Yqj-9H-JmQ"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="tyo-Lr-Feu"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="6sj-lX-3zr"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JU9-qb-SSf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="962" y="790"/>
-        </scene>
         <!--Garage ProfileVC-->
         <scene sceneID="bXT-6p-dxh">
             <objects>
@@ -268,12 +240,22 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="JO3-ss-3mH" kind="relationship" relationship="rootViewController" id="MZO-oE-D3c"/>
+                        <segue destination="Fs0-oC-KLg" kind="relationship" relationship="rootViewController" id="6tw-s6-dGd"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xYN-Sx-Fqq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="22" y="790"/>
+        </scene>
+        <!--OngoingServiceListingVC-->
+        <scene sceneID="fsY-88-Z0A">
+            <objects>
+                <viewControllerPlaceholder storyboardName="GarageRequest" referencedIdentifier="OngoingServiceListingVC" id="Fs0-oC-KLg" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="iqB-MQ-Y2h"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PyH-ne-pf6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1180" y="729"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="YTq-sB-aO1">

@@ -68,34 +68,6 @@
             </objects>
             <point key="canvasLocation" x="1084.0579710144928" y="810.9375"/>
         </scene>
-        <!--ExploreVC-->
-        <scene sceneID="tey-bc-OdT">
-            <objects>
-                <viewController storyboardIdentifier="ExploreVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bca-O6-cha" customClass="ExploreVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="2Vf-5i-zjs">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Under Development" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aC1-14-JLZ">
-                                <rect key="frame" x="128.5" y="417" width="157" height="23.5"/>
-                                <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="aC1-14-JLZ" firstAttribute="centerX" secondItem="bEw-Cz-XdM" secondAttribute="centerX" id="MbD-dQ-QjJ"/>
-                            <constraint firstItem="aC1-14-JLZ" firstAttribute="centerY" secondItem="bEw-Cz-XdM" secondAttribute="centerY" id="f5w-7I-GpH"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="bEw-Cz-XdM"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="T1X-W1-IvZ"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zG1-sm-ZgF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1083" y="-520"/>
-        </scene>
         <!--HomeVC-->
         <scene sceneID="xTQ-vG-Aa1">
             <objects>
@@ -238,12 +210,22 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="bca-O6-cha" kind="relationship" relationship="rootViewController" id="hmr-2t-cPW"/>
+                        <segue destination="Caz-C1-Lmp" kind="relationship" relationship="rootViewController" id="SXv-UC-e4F"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8yd-Fs-0Ra" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="173.91304347826087" y="-520.3125"/>
+        </scene>
+        <!--UserAllRequestVC-->
+        <scene sceneID="gT7-KO-DNz">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Garage" referencedIdentifier="UserAllRequestVC" id="Caz-C1-Lmp" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="X2w-bV-jcP"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="woh-0R-lbP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1050" y="-567"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="QXI-ty-388">

@@ -10,6 +10,10 @@ import UIKit
 
 class BookedRequestTableCell: UITableViewCell {
 
+    @IBOutlet weak var payableAmtLbl: UILabel!
+    @IBOutlet weak var regNumberLbl: UILabel!
+    @IBOutlet weak var vehicleLbl: UILabel!
+    @IBOutlet weak var requestedLbl: UILabel!
     @IBOutlet weak var serviceTimeLbl: UILabel!
     @IBOutlet weak var serviceTyeLbl: UILabel!
     @IBOutlet weak var ratingLbl: UILabel!
@@ -27,6 +31,7 @@ class BookedRequestTableCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        logoImgView.round(radius: 4.0)
         chatBtn.round(radius: 2.0)
         startServiceBtn.round(radius: 2.0)
         ratingImgView.round(radius: 4.0)
@@ -40,9 +45,18 @@ class BookedRequestTableCell: UITableViewCell {
     
     @IBAction func chatBtnAction(_ sender: AppButton) {}
     
-    public func initialSetUp(){        self.logoImgView.backgroundColor = AppColors.fontTertiaryColor
-        chatBtn.isEnabled = true
+    public func initialSetUp(){
+        self.logoImgView.backgroundColor = AppColors.fontTertiaryColor
+        chatBtn.isBorderSelected = true
         startServiceBtn.isEnabled = true
+        vehicleLbl.textColor = AppColors.fontTertiaryColor
+        requestedLbl.textColor = AppColors.fontTertiaryColor
+        regNumberLbl.textColor = AppColors.fontTertiaryColor
+        payableAmtLbl.textColor = AppColors.fontTertiaryColor
+        requestedLbl.text = "Requested By: "
+        vehicleLbl.text = "Vehicle"
+        regNumberLbl.text = "Reg. Number"
+        payableAmtLbl.text = "Payable Amount"
     }
 
 }

@@ -47,6 +47,15 @@ class FilterTableViewCell: UITableViewCell {
         collView.registerCell(with: FilterCollectionViewCell.self)
     }
 
+    
+    func configCell(catgory: CatModel) {
+        self.subCatArr = catgory.subCat
+        self.categoryLbl.text = catgory.name
+        self.addImgView.isHighlighted = catgory.isSelected
+        self.collView.isHidden = !catgory.isSelected
+        collView.reloadData() 
+     }
+
 }
 //MARK:- Collection View Delegate and DataSource
 extension FilterTableViewCell: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {

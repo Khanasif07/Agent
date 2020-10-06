@@ -29,7 +29,6 @@ class SRFilterVC: BaseVC {
     @IBOutlet weak var applyBtn: UIButton!
     @IBOutlet weak var mainTableView: UITableView!
 
-    
     // MARK: - Variables
     //===================
     let viewModel = SRFliterVM()
@@ -105,27 +104,28 @@ extension SRFilterVC :UITableViewDelegate,UITableViewDataSource{
         return CGFloat.leastNonzeroMagnitude
     }
     
-    
+//    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 300.0
+//    }
+//
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return CGFloat.leastNonzeroMagnitude
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let model = viewModel.catgories[indexPath.section]
-        return model.isSelected ? CGFloat(52 + model.subCat.count * 62) : 52.0
+        return model.isSelected ? CGFloat(54 + model.subCat.count * 54) : 54.0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(with: FilterTableViewCell.self, indexPath: indexPath)
-        cell.subCatArr = viewModel.catgories[indexPath.section].subCat
-        cell.categoryLbl.text = viewModel.catgories[indexPath.section].name
-        cell.addImgView.isHighlighted = self.viewModel.catgories[indexPath.section].isSelected
-        cell.collView.isHidden = !self.viewModel.catgories[indexPath.section].isSelected
+        cell.configCell(catgory: self.viewModel.catgories[indexPath.section])
+       
         cell.cellBtnTapped = { [weak self] in
             guard let `self` = self else {return}
             self.viewModel.catgories[indexPath.section].isSelected.toggle()
-            cell.collView.reloadData()
             self.mainTableView.reloadRows(at: [indexPath], with: .automatic)
+//            cell.collView.reloadData()
         }
         return cell
     }

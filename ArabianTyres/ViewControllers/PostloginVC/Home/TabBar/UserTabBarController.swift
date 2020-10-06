@@ -80,7 +80,7 @@ extension UserTabBarController {
     
     func setupTabBar() {
         let firstScene = createTabVC(vc: HomeVC.self, storyBoard: .Home)
-        let secondScene = createTabVC(vc: ExploreVC.self, storyBoard: .Home)
+        let secondScene = createTabVC(vc: UserAllRequestVC.self, storyBoard: .Garage)
         let thirdScene = createTabVC(vc: NotificationVC.self, storyBoard: .Home)
         let fourthScene = createTabVC(vc: SettingVC.self, storyBoard: .Home)
         let fifthScene = createTabVC(vc: ProfileVC.self, storyBoard: .Home)

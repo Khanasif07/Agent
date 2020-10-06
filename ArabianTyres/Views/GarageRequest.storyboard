@@ -37,7 +37,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fL7-yf-Ewb">
-                                        <rect key="frame" x="6" y="14" width="36" height="34"/>
+                                        <rect key="frame" x="6" y="-3" width="72" height="68"/>
                                         <state key="normal" image="icBackward"/>
                                     </button>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="axu-FF-BQ3">
@@ -156,7 +156,7 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </textField>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SAR" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zTV-9c-FLc">
-                                                                <rect key="frame" x="298" y="21" width="40" height="20"/>
+                                                                <rect key="frame" x="298" y="13.5" width="40" height="20"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="40" id="BfB-P2-ell"/>
                                                                 </constraints>
@@ -582,7 +582,7 @@ start Servicing</string>
                                     <constraint firstItem="NzX-MB-zgl" firstAttribute="leading" secondItem="zIY-Dc-d4r" secondAttribute="leading" id="xsr-XR-EB8"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="never" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="eeo-FW-2O3">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="eeo-FW-2O3">
                                 <rect key="frame" x="0.0" y="100" width="414" height="796"/>
                                 <color key="backgroundColor" red="0.96470588235294119" green="0.96862745098039216" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
@@ -597,37 +597,37 @@ start Servicing</string>
                                                     <rect key="frame" x="16" y="8" width="382" height="186"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gVD-m4-HDk">
-                                                            <rect key="frame" x="0.0" y="0.0" width="382" height="44"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="382" height="46"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By Service Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xf6-SG-AG3">
-                                                                    <rect key="frame" x="16" y="13.5" width="104" height="17"/>
+                                                                    <rect key="frame" x="16" y="14.5" width="104" height="17"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <color key="textColor" red="0.090196078430000007" green="0.1450980392" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icAdd" highlightedImage="icMinus" translatesAutoresizingMaskIntoConstraints="NO" id="YO4-GL-2wF">
-                                                                    <rect key="frame" x="346" y="12" width="20" height="20"/>
+                                                                    <rect key="frame" x="346" y="13" width="20" height="20"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="20" id="gZG-Vs-TVa"/>
                                                                         <constraint firstAttribute="width" secondItem="YO4-GL-2wF" secondAttribute="height" multiplier="1:1" id="jSg-c9-OZy"/>
                                                                     </constraints>
                                                                 </imageView>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0E0-ki-OQt">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="382" height="44"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="382" height="46"/>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <connections>
                                                                         <action selector="cellBtnAction:" destination="hEO-RM-xHk" eventType="touchUpInside" id="Rx1-Fs-iQN"/>
                                                                     </connections>
                                                                 </button>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EwS-G4-kg3">
-                                                                    <rect key="frame" x="0.0" y="43" width="382" height="1"/>
+                                                                    <rect key="frame" x="0.0" y="45" width="382" height="1"/>
                                                                     <color key="backgroundColor" red="0.92941176470588238" green="0.92941176470588238" blue="0.92941176470588238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="1" id="JxZ-f7-SEU"/>
                                                                     </constraints>
                                                                 </view>
                                                             </subviews>
-                                                            <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="backgroundColor" red="0.95686274509803915" green="0.94901960784313721" blue="0.94901960784313721" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstItem="EwS-G4-kg3" firstAttribute="leading" secondItem="gVD-m4-HDk" secondAttribute="leading" id="4DF-2Y-8Fp"/>
                                                                 <constraint firstItem="0E0-ki-OQt" firstAttribute="top" secondItem="gVD-m4-HDk" secondAttribute="top" id="KXw-lj-GAw"/>
@@ -639,14 +639,14 @@ start Servicing</string>
                                                                 <constraint firstItem="YO4-GL-2wF" firstAttribute="centerY" secondItem="xf6-SG-AG3" secondAttribute="centerY" id="boe-ce-OKE"/>
                                                                 <constraint firstAttribute="bottom" secondItem="EwS-G4-kg3" secondAttribute="bottom" id="ffg-LG-NA0"/>
                                                                 <constraint firstItem="xf6-SG-AG3" firstAttribute="leading" secondItem="gVD-m4-HDk" secondAttribute="leading" constant="16" id="mwA-db-wfJ"/>
-                                                                <constraint firstAttribute="height" constant="44" id="vlh-x1-qfx"/>
+                                                                <constraint firstAttribute="height" constant="46" id="vlh-x1-qfx"/>
                                                                 <constraint firstItem="xf6-SG-AG3" firstAttribute="centerY" secondItem="gVD-m4-HDk" secondAttribute="centerY" id="xgx-sw-8Nk"/>
                                                             </constraints>
                                                         </view>
                                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" contentInsetAdjustmentBehavior="never" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Lfm-TO-SEr">
-                                                            <rect key="frame" x="0.0" y="44" width="382" height="142"/>
+                                                            <rect key="frame" x="0.0" y="46" width="382" height="140"/>
                                                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ELG-nh-gC6">
+                                                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="ELG-nh-gC6">
                                                                 <size key="itemSize" width="50" height="50"/>
                                                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                                 <size key="footerReferenceSize" width="0.0" height="0.0"/>
