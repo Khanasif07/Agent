@@ -28,7 +28,7 @@ class SRFliterVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
-//        tableViewSetup()
+        tableViewSetup()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -43,7 +43,7 @@ class SRFliterVC: BaseVC {
     // MARK: - IBActions
     //===========================
     @IBAction func cancelBtnAction(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
+        self.pop()
     }
     
     @IBAction func applyBtnAction(_ sender: UIButton) {
