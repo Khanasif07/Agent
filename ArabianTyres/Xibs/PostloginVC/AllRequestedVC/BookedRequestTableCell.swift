@@ -47,7 +47,7 @@ class BookedRequestTableCell: UITableViewCell {
     
     public func initialSetUp(){
         self.logoImgView.backgroundColor = AppColors.fontTertiaryColor
-        chatBtn.isEnabled = true
+        chatBtn.isBorderSelected = true
         startServiceBtn.isEnabled = true
         vehicleLbl.textColor = AppColors.fontTertiaryColor
         requestedLbl.textColor = AppColors.fontTertiaryColor

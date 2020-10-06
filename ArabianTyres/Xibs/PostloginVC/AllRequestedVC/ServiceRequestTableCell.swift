@@ -52,7 +52,7 @@ class ServiceRequestTableCell: UITableViewCell {
         brandsLbl.textColor = AppColors.fontTertiaryColor
         tyreSizeLbl.textColor = AppColors.fontTertiaryColor
         statusLbl.textColor = AppColors.fontTertiaryColor
-        rejectRequestBtn.isEnabled = true
+        rejectRequestBtn.isBorderSelected = true
         brandsLbl.text = "Barnd:"
         tyreSizeLbl.text = "Tyre Size:"
         statusLbl.text = "Status"

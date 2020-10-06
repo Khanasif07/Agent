@@ -958,4 +958,13 @@ class AppButton: UIButton {
             setTitleColor(isEnabled ? .white : AppColors.fontTertiaryColor, for: .normal)
         }
     }
+    
+    open  var isBorderSelected: Bool = false{
+           didSet {
+            backgroundColor = isBorderSelected ? .white : AppColors.appPinkColor
+            setTitleColor(isBorderSelected ? AppColors.appRedColor : AppColors.fontTertiaryColor, for: .normal)
+            borderColor = AppColors.appRedColor
+            borderWidth = 1.0
+           }
+       }
 }
