@@ -18,8 +18,6 @@ class FacilityCollectionViewCell : UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         skillLbl.font = AppFonts.NunitoSansSemiBold.withSize(12.0)
-//        self.containerView.translatesAutoresizingMaskIntoConstraints = false
-        // Initialization code
     }
     
     func popluateData(service: FacilityModel, brand: Brands) {
