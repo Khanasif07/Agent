@@ -12,10 +12,8 @@ import SwiftyJSON
 
 
 protocol UserAllRequestVMDelegate: class {
-    func makeListingSuccess(message: String)
-    func makeListingFailed(error:String)
-    func modelListingSuccess(message: String)
-    func modelListingFailed(error:String)
+    func getUserMyRequestDataSuccess(message: String)
+    func mgetUserMyRequestDataFailed(error:String)
 }
 
 
@@ -50,7 +48,7 @@ class UserAllRequestVM{
         WebServices.getUserMyRequestData(parameters: params, success: { (json) in
             self.parseToMakeListingData(result: json)
         }) { (error) -> (Void) in
-            self.delegate?.makeListingFailed(error: error.localizedDescription)
+            self.delegate?.mgetUserMyRequestDataFailed(error: error.localizedDescription)
         }
     }
     
@@ -61,7 +59,7 @@ class UserAllRequestVM{
                     self.hideLoader = true
                     self.userRequestListing = []
                     isRequestinApi = false
-                    self.delegate?.modelListingSuccess(message: "")
+                    self.delegate?.getUserMyRequestDataSuccess(message: "")
                     return
                 }
                 let modelList = try JSONDecoder().decode([UserServiceRequestModel].self, from: data)
@@ -75,10 +73,10 @@ class UserAllRequestVM{
                 }
                 nextPageAvailable = result[ApiKey.data][ApiKey.next].boolValue
                 currentPage += 1
-                self.delegate?.modelListingSuccess(message: "")
+                self.delegate?.getUserMyRequestDataSuccess(message: "")
             } catch {
                 isRequestinApi = false
-                self.delegate?.modelListingFailed(error: "error occured")
+                self.delegate?.mgetUserMyRequestDataFailed(error: "error occured")
                 printDebug("error occured")
             }
         }

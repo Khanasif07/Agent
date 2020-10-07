@@ -45,6 +45,7 @@ extension UserAllRequestVC {
     }
     
     private func tableViewSetUp(){
+        viewModel.delegate = self
         self.mainTableView.delegate = self
         self.mainTableView.dataSource = self
         self.mainTableView.registerCell(with: MyServiceTableCell.self)
@@ -65,6 +66,7 @@ extension UserAllRequestVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(with: MyServiceTableCell.self, indexPath: indexPath)
+        cell.populateData(model: self.viewModel.userRequestListing[indexPath.row])
         return cell
     }
     
@@ -74,5 +76,17 @@ extension UserAllRequestVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         AppRouter.goToUserServiceRequestVC(vc: self)
+    }
+}
+
+
+// MARK: - Extension For TableView
+//===========================
+extension UserAllRequestVC: UserAllRequestVMDelegate{
+    func getUserMyRequestDataSuccess(message: String){
+        self.mainTableView.reloadData()
+    }
+    func mgetUserMyRequestDataFailed(error:String){
+        ToastView.shared.showLongToast(self.view, msg: error)
     }
 }
