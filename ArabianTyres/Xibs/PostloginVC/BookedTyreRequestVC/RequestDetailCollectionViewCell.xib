@@ -63,6 +63,17 @@
                                         <color key="textColor" red="0.54117647059999996" green="0.58431372550000005" blue="0.61960784310000006" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lqe-zZ-KVk">
+                                        <rect key="frame" x="326" y="24" width="30" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="lQk-gx-UQl"/>
+                                            <constraint firstAttribute="height" constant="34" id="ss3-tt-3Qj"/>
+                                        </constraints>
+                                        <state key="normal" image="group3811"/>
+                                        <connections>
+                                            <action selector="helpBtnAction:" destination="gTV-IL-0wX" eventType="touchUpInside" id="JBD-72-3B7"/>
+                                        </connections>
+                                    </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="9Pc-ad-mGB">
                                         <rect key="frame" x="10" y="36" width="160" height="45"/>
                                         <subviews>
@@ -101,9 +112,11 @@
                                     <constraint firstAttribute="trailing" secondItem="zRI-9h-wHb" secondAttribute="trailing" constant="16" id="3hK-vi-K7Q"/>
                                     <constraint firstItem="9Pc-ad-mGB" firstAttribute="leading" secondItem="03p-2l-7lx" secondAttribute="leading" id="4Xo-kf-Mc9"/>
                                     <constraint firstItem="9Pc-ad-mGB" firstAttribute="top" secondItem="03p-2l-7lx" secondAttribute="bottom" constant="10" id="Dqe-4T-odm"/>
+                                    <constraint firstAttribute="trailing" secondItem="lqe-zZ-KVk" secondAttribute="trailing" constant="16" id="Pcc-sT-ZVx"/>
                                     <constraint firstItem="zRI-9h-wHb" firstAttribute="leading" secondItem="9Pc-ad-mGB" secondAttribute="leading" id="bVK-Lq-ZBb"/>
                                     <constraint firstItem="03p-2l-7lx" firstAttribute="leading" secondItem="oxj-JX-4Y0" secondAttribute="leading" constant="10" id="cOu-qr-PvV"/>
                                     <constraint firstAttribute="bottom" secondItem="zRI-9h-wHb" secondAttribute="bottom" id="dhE-Pc-KCS"/>
+                                    <constraint firstItem="lqe-zZ-KVk" firstAttribute="top" secondItem="oxj-JX-4Y0" secondAttribute="top" constant="24" id="fb1-wO-491"/>
                                     <constraint firstItem="03p-2l-7lx" firstAttribute="top" secondItem="oxj-JX-4Y0" secondAttribute="top" constant="8" id="l22-Se-1iq"/>
                                     <constraint firstItem="goe-BQ-arK" firstAttribute="centerY" secondItem="03p-2l-7lx" secondAttribute="centerY" id="mUQ-0C-pTi"/>
                                     <constraint firstAttribute="trailing" secondItem="goe-BQ-arK" secondAttribute="trailing" constant="10" id="rqF-fr-Z2m"/>
@@ -132,6 +145,7 @@
                 <outlet property="bidFinalisedBtn" destination="J9K-DO-LVd" id="MTx-YG-oFa"/>
                 <outlet property="bottomView" destination="zRI-9h-wHb" id="c0s-PX-grQ"/>
                 <outlet property="createdByLbl" destination="03p-2l-7lx" id="VFV-C7-Ox6"/>
+                <outlet property="helpBtn" destination="lqe-zZ-KVk" id="b7h-lP-3Sa"/>
                 <outlet property="mainImgView" destination="Jm4-gg-Qza" id="uIz-lj-aCx"/>
                 <outlet property="userNameLbl" destination="gQN-GD-YFy" id="aj0-dv-9J6"/>
             </connections>
@@ -139,6 +153,7 @@
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="group3811" width="41" height="48"/>
         <image name="icAtm" width="18.5" height="18"/>
     </resources>
 </document>

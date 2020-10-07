@@ -51,7 +51,7 @@ enum AppRouter {
     }
     
     static func goToTestingVC(){
-        let scene = BookedTyreRequestVC.instantiate(fromAppStoryboard: .GarageRequest)
+        let scene = ServiceStatusVC.instantiate(fromAppStoryboard: .GarageRequest)
         setAsWindowRoot(scene)
     }
     
@@ -298,6 +298,12 @@ enum AppRouter {
         let scene = SRFilterVC.instantiate(fromAppStoryboard: .GarageRequest)
         vc.navigationController?.pushViewController(scene, animated: true)
     }
+   
+    static func goToServiceStatusVC(vc: UIViewController){
+        let scene = ServiceStatusVC.instantiate(fromAppStoryboard: .GarageRequest)
+        vc.navigationController?.pushViewController(scene, animated: true)
+    }
+    
     
     static func goToOilBrandsVC(vc: UIViewController){
         let scene = OilBrandsVC.instantiate(fromAppStoryboard: .UserHomeScreen)

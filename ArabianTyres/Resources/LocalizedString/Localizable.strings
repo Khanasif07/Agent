@@ -233,6 +233,7 @@
 "preferredBrand" = "Preferred Brand:";
 "startService" = "Start Service";
 "chat" = "Chat";
+"userDetails" = "User Details";
  // MARK: - Home  VC Values
 //==============================
 "tyre" = "Tyre";

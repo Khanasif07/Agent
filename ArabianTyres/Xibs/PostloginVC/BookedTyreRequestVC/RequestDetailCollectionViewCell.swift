@@ -17,6 +17,7 @@ class RequestDetailCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var mainImgView: UIImageView!
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var bidFinalContainerView: UIView!
+    @IBOutlet weak var helpBtn: UIButton!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -39,5 +40,9 @@ class RequestDetailCollectionViewCell: UICollectionViewCell {
     
     @IBAction func bidFinalisedBtnAction(_ sender: UIButton) {
         
+    }
+    
+    @IBAction func helpBtnAction(_ sender: UIButton) {
+        showAlert(msg: LocalizedString.underDevelopment.localized)
     }
 }

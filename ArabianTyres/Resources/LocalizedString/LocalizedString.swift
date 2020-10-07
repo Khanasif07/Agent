@@ -291,6 +291,7 @@ enum LocalizedString : String {
     case preferredBrand
     case chat
     case startService
+    case userDetails
     // MARK: - Home  VC Values
     //==============================
     case tyre

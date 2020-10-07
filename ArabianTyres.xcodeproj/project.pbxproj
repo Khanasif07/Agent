@@ -222,6 +222,9 @@
 		A493133D2508D231007110E4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A493133C2508D231007110E4 /* GoogleService-Info.plist */; };
 		A49B7D4C251125AC0057239B /* FacilityCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49B7D4A251125AC0057239B /* FacilityCollectionViewCell.swift */; };
 		A49B7D4D251125AC0057239B /* FacilityCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A49B7D4B251125AC0057239B /* FacilityCollectionViewCell.xib */; };
+		A49DF563252D890400A6A5B1 /* ServiceStatusVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49DF562252D890400A6A5B1 /* ServiceStatusVC.swift */; };
+		A49DF566252D986D00A6A5B1 /* ServiceStatusTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49DF564252D986D00A6A5B1 /* ServiceStatusTableViewCell.swift */; };
+		A49DF567252D986D00A6A5B1 /* ServiceStatusTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A49DF565252D986D00A6A5B1 /* ServiceStatusTableViewCell.xib */; };
 		A4A6DED92519DCF100564020 /* FacilityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A6DED82519DCF100564020 /* FacilityModel.swift */; };
 		A4A6DEE5251A123800564020 /* GarageTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A6DEDC251A123800564020 /* GarageTabBarController.swift */; };
 		A4A6DEE6251A123800564020 /* GarageProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A6DEDE251A123800564020 /* GarageProfileVC.swift */; };
@@ -469,6 +472,9 @@
 		A493133C2508D231007110E4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A49B7D4A251125AC0057239B /* FacilityCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacilityCollectionViewCell.swift; sourceTree = "<group>"; };
 		A49B7D4B251125AC0057239B /* FacilityCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FacilityCollectionViewCell.xib; sourceTree = "<group>"; };
+		A49DF562252D890400A6A5B1 /* ServiceStatusVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceStatusVC.swift; sourceTree = "<group>"; };
+		A49DF564252D986D00A6A5B1 /* ServiceStatusTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceStatusTableViewCell.swift; sourceTree = "<group>"; };
+		A49DF565252D986D00A6A5B1 /* ServiceStatusTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServiceStatusTableViewCell.xib; sourceTree = "<group>"; };
 		A4A6DED82519DCF100564020 /* FacilityModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacilityModel.swift; sourceTree = "<group>"; };
 		A4A6DEDC251A123800564020 /* GarageTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GarageTabBarController.swift; sourceTree = "<group>"; };
 		A4A6DEDE251A123800564020 /* GarageProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GarageProfileVC.swift; sourceTree = "<group>"; };
@@ -1263,6 +1269,8 @@
 				A4098E7C251231DD0015B0BD /* FacilityTableViewCell.xib */,
 				A43B53AA2524B65300447B24 /* ServiceListingTableViewCell.swift */,
 				A43B53AB2524B65300447B24 /* ServiceListingTableViewCell.xib */,
+				A49DF564252D986D00A6A5B1 /* ServiceStatusTableViewCell.swift */,
+				A49DF565252D986D00A6A5B1 /* ServiceStatusTableViewCell.xib */,
 			);
 			path = PostloginVC;
 			sourceTree = "<group>";
@@ -1376,6 +1384,7 @@
 			isa = PBXGroup;
 			children = (
 				A4203F0B252C791A00BD8802 /* SRFilterVC */,
+				A49DF562252D890400A6A5B1 /* ServiceStatusVC.swift */,
 				A43B53A62524B47000447B24 /* OngoingServiceListingVC.swift */,
 				A421DDD4252AFDF20044E5E0 /* PlaceBidPopUpVC.swift */,
 				A421DDD6252B1A610044E5E0 /* OtpPopUpVC.swift */,
@@ -1695,6 +1704,7 @@
 				843C8EC22508AD4D00515F2E /* ProfileUserBottomCell.xib in Resources */,
 				8481FA972501438500AB6EFB /* NunitoSans-ExtraBoldItalic.ttf in Resources */,
 				8481FA9B2501439700AB6EFB /* NunitoSans-ExtraLightItalic.ttf in Resources */,
+				A49DF567252D986D00A6A5B1 /* ServiceStatusTableViewCell.xib in Resources */,
 				A4203EFA252C31A100BD8802 /* FilterCollectionViewCell.xib in Resources */,
 				A413B97D250A44410004C534 /* CustomTextView.xib in Resources */,
 				844CBD232501FFC0009BE668 /* LoginEmailPhoneTableCell.xib in Resources */,
@@ -1943,6 +1953,7 @@
 				84594811252B306A00C0B249 /* BookedRequestTableCell.swift in Sources */,
 				84B629AE251212FC0080A7C2 /* ImageModel.swift in Sources */,
 				A441A675252CD5F600B5420B /* DashedCollectionViewCell.swift in Sources */,
+				A49DF566252D986D00A6A5B1 /* ServiceStatusTableViewCell.swift in Sources */,
 				A45042D0250F3846001C8905 /* AddAccountTableViewCell.swift in Sources */,
 				843C8ECE2508E91700515F2E /* ProfileSettingVM.swift in Sources */,
 				A43F44B42513BE66002B1014 /* BrandsListingVC.swift in Sources */,
@@ -1968,6 +1979,7 @@
 				84FF6EA5251DA3530000E2AD /* ModelData.swift in Sources */,
 				8481FA7B2500CC2C00AB6EFB /* BaseVC.swift in Sources */,
 				8481FA5F2500BF8400AB6EFB /* AppRouter.swift in Sources */,
+				A49DF563252D890400A6A5B1 /* ServiceStatusVC.swift in Sources */,
 				A43B53AC2524B65300447B24 /* ServiceListingTableViewCell.swift in Sources */,
 				A441A67E252CDF7C00B5420B /* TyreRequestLocationTableViewCell.swift in Sources */,
 				843C8EC52508AE9500515F2E /* ProfileUserInternalCell.swift in Sources */,
