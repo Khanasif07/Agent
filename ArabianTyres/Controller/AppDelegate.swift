@@ -62,13 +62,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate , MessagingDelegate , UNUs
     }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-//        InstanceID.instanceID().instanceID(handler: { (result, error) in
-//            if let error = error {
-//                print("Error fetching remote instange ID: \(error)")
-//            } else if let result = result {
-//                print("Remote instance ID token: \(result.token)")
-//            }
-//        })
+        InstanceID.instanceID().instanceID(handler: { (result, error) in
+            if let error = error {
+                print("Error fetching remote instange ID: \(error)")
+            } else if let result = result {
+                print("Remote instance ID token: \(result.token)")
+            }
+        })
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {

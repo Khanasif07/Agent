@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6708BB6B77017B3BB26B7782 /* Pods_ArabianTyres.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2C00CD38A98EBA313A070C9 /* Pods_ArabianTyres.framework */; };
+		8411D358252DA79300E6FA6C /* UserServiceRequestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8411D357252DA79300E6FA6C /* UserServiceRequestVC.swift */; };
 		84144F23252C485B00D6572F /* UserAllRequestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84144F22252C485B00D6572F /* UserAllRequestVC.swift */; };
 		84144F27252C4AAD00D6572F /* MyServiceTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84144F25252C4AAD00D6572F /* MyServiceTableCell.swift */; };
 		84144F28252C4AAD00D6572F /* MyServiceTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84144F26252C4AAD00D6572F /* MyServiceTableCell.xib */; };
@@ -260,6 +261,7 @@
 
 /* Begin PBXFileReference section */
 		19AB33EFB3362961FDB4026A /* Pods-ArabianTyres.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArabianTyres.debug.xcconfig"; path = "Target Support Files/Pods-ArabianTyres/Pods-ArabianTyres.debug.xcconfig"; sourceTree = "<group>"; };
+		8411D357252DA79300E6FA6C /* UserServiceRequestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceRequestVC.swift; sourceTree = "<group>"; };
 		84144F22252C485B00D6572F /* UserAllRequestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAllRequestVC.swift; sourceTree = "<group>"; };
 		84144F25252C4AAD00D6572F /* MyServiceTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyServiceTableCell.swift; sourceTree = "<group>"; };
 		84144F26252C4AAD00D6572F /* MyServiceTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyServiceTableCell.xib; sourceTree = "<group>"; };
@@ -542,6 +544,14 @@
 				8A21614890BB1C8443A578F3 /* Pods-ArabianTyres.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		8411D356252DA6F600E6FA6C /* UserServiceRequestVC */ = {
+			isa = PBXGroup;
+			children = (
+				8411D357252DA79300E6FA6C /* UserServiceRequestVC.swift */,
+			);
+			path = UserServiceRequestVC;
 			sourceTree = "<group>";
 		};
 		84144F21252C481F00D6572F /* UserAllRequestVC */ = {
@@ -1030,6 +1040,7 @@
 		8481FA142500B9EC00AB6EFB /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				8411D356252DA6F600E6FA6C /* UserServiceRequestVC */,
 				84144F21252C481F00D6572F /* UserAllRequestVC */,
 				84303E6A25064AF2000BA5C3 /* UnderDevelopmentVC */,
 				8481FA832500EE1500AB6EFB /* PostloginVC */,
@@ -1982,6 +1993,7 @@
 				A413B9722509E7960004C534 /* GarageRegistrationVC.swift in Sources */,
 				A413B979250A2BEF0004C534 /* AddDetailVC.swift in Sources */,
 				8481FA1D2500BAC700AB6EFB /* FacebookController.swift in Sources */,
+				8411D358252DA79300E6FA6C /* UserServiceRequestVC.swift in Sources */,
 				843C8ECC2508C3A400515F2E /* ProfileSettingVC.swift in Sources */,
 				8481FA4F2500BED600AB6EFB /* UIImageExtension.swift in Sources */,
 				84FF6E97251C77EF0000E2AD /* LineDashedView.swift in Sources */,
