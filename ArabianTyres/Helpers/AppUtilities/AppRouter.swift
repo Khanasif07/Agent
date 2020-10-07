@@ -305,6 +305,11 @@ enum AppRouter {
     }
     
     
+    static func goToGarageServiceRequestVC(vc: UIViewController){
+        let scene = GarageServiceRequestVC.instantiate(fromAppStoryboard: .Garage)
+        vc.present(scene, animated: true, completion: nil)
+    }
+    
     static func goToOilBrandsVC(vc: UIViewController){
         let scene = OilBrandsVC.instantiate(fromAppStoryboard: .UserHomeScreen)
         vc.navigationController?.pushViewController(scene, animated: true)
