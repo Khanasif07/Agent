@@ -39,7 +39,7 @@ class BookedTyreRequestVC: BaseVC {
     // MARK: - IBActions
     //===========================
     @IBAction func crossBtnAction(_ sender: Any) {
-        
+        self.dismiss(animated: true, completion: nil)
     }
 }
 
@@ -89,7 +89,6 @@ extension BookedTyreRequestVC: UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return indexPath.section == 0 ? 375.0 : UITableView.automaticDimension
-//        return UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

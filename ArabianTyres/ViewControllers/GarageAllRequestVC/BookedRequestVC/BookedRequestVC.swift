@@ -59,6 +59,6 @@ extension BookedRequestVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        AppRouter.goToGarageServiceRequestVC(vc: self)
+        AppRouter.goToBookedTyreRequestVC(vc: self)
     }
 }

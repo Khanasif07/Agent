@@ -30,7 +30,7 @@ class GarageAllRequestVC: BaseVC {
     //===========================
     var selectedVC          : SelectedVC = .goingEventsVC
     var allRequestVC        : AllRequestVC!
-    var bookedRequestVC            : BookedRequestVC!
+    var bookedRequestVC     : BookedRequestVC!
         
     
     // MARK: - Lifecycle
@@ -51,6 +51,11 @@ class GarageAllRequestVC: BaseVC {
            allRequestBtn.clipsToBounds = true
            bookedRequestBtn.clipsToBounds = true
        }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+    }
        
        deinit {
          NotificationCenter.default.removeObserver(self)
