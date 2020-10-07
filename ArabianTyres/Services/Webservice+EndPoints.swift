@@ -48,6 +48,8 @@ extension WebServices {
         case userServiceWidth = "user/services/width"
         case userServiceProfile = "user/services/Profile"
         case userServicerimSize = "user/services/rimSize"
+        case garageRequest = "user/services/garageRequests"
+        
         
         var path : String {
             let url = baseUrl

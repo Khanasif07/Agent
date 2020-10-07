@@ -13,14 +13,17 @@ class AllRequestVC: BaseVC {
     //===========================
     
     @IBOutlet weak var mainTableView: UITableView!
+    
     // MARK: - Variables
     //===========================
+    var viewModel = AllRequestVM()
     
     // MARK: - Lifecycle
     //===========================
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
+        hitApi()
     }
     
     // MARK: - IBActions
@@ -37,6 +40,10 @@ extension AllRequestVC {
         self.mainTableView.delegate = self
         self.mainTableView.dataSource = self
         self.mainTableView.registerCell(with: ServiceRequestTableCell.self)
+    }
+    
+    private func hitApi(){
+        viewModel.getGarageRequestData(params: [ApiKey.page:"1", ApiKey.limit: "20"])
     }
 }
 

@@ -259,6 +259,7 @@
 		A4CC3255252CB3F400669F39 /* TyreRequestDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC3253252CB3F400669F39 /* TyreRequestDetailTableViewCell.swift */; };
 		A4CC3256252CB3F400669F39 /* TyreRequestDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4CC3254252CB3F400669F39 /* TyreRequestDetailTableViewCell.xib */; };
 		A4CC3258252CBCA200669F39 /* ASDynamicCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC3257252CBCA200669F39 /* ASDynamicCollectionView.swift */; };
+		A4DCEE09252DED9C002EB32F /* AllRequestVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DCEE08252DED9C002EB32F /* AllRequestVM.swift */; };
 		A4FEF8EC2518744900D58C13 /* TyreRequestedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FEF8EB2518744900D58C13 /* TyreRequestedVC.swift */; };
 /* End PBXBuildFile section */
 
@@ -519,6 +520,7 @@
 		A4CC3253252CB3F400669F39 /* TyreRequestDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TyreRequestDetailTableViewCell.swift; sourceTree = "<group>"; };
 		A4CC3254252CB3F400669F39 /* TyreRequestDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TyreRequestDetailTableViewCell.xib; sourceTree = "<group>"; };
 		A4CC3257252CBCA200669F39 /* ASDynamicCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASDynamicCollectionView.swift; sourceTree = "<group>"; };
+		A4DCEE08252DED9C002EB32F /* AllRequestVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRequestVM.swift; sourceTree = "<group>"; };
 		A4FEF8EB2518744900D58C13 /* TyreRequestedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TyreRequestedVC.swift; sourceTree = "<group>"; };
 		B2C00CD38A98EBA313A070C9 /* Pods_ArabianTyres.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArabianTyres.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -897,6 +899,7 @@
 			isa = PBXGroup;
 			children = (
 				84594805252B082500C0B249 /* AllRequestVC.swift */,
+				A4DCEE08252DED9C002EB32F /* AllRequestVM.swift */,
 			);
 			path = AllRequestVC;
 			sourceTree = "<group>";
@@ -2004,6 +2007,7 @@
 				A413B979250A2BEF0004C534 /* AddDetailVC.swift in Sources */,
 				8481FA1D2500BAC700AB6EFB /* FacebookController.swift in Sources */,
 				8411D358252DA79300E6FA6C /* UserServiceRequestVC.swift in Sources */,
+				A4DCEE09252DED9C002EB32F /* AllRequestVM.swift in Sources */,
 				843C8ECC2508C3A400515F2E /* ProfileSettingVC.swift in Sources */,
 				8481FA4F2500BED600AB6EFB /* UIImageExtension.swift in Sources */,
 				84FF6E97251C77EF0000E2AD /* LineDashedView.swift in Sources */,
