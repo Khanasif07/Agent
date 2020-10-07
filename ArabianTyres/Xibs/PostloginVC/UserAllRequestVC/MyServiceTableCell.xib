@@ -189,6 +189,7 @@
                 <outlet property="offerLbl" destination="l5Q-8h-TKi" id="XJd-n4-icq"/>
                 <outlet property="offerView" destination="k7s-Ry-uSz" id="hh1-IS-G4U"/>
                 <outlet property="requestNoLbl" destination="lFx-rx-enz" id="XQS-8H-SJw"/>
+                <outlet property="requestNoValueLbl" destination="YIB-8z-Tey" id="SFI-7S-JIR"/>
                 <outlet property="serviceTypeLbl" destination="460-gz-cpU" id="4KB-Da-7Xd"/>
                 <outlet property="timeLbl" destination="Xgw-6I-WN2" id="Vqr-Mx-c0o"/>
             </connections>

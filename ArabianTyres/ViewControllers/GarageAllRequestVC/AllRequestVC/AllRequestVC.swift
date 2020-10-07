@@ -37,6 +37,7 @@ class AllRequestVC: BaseVC {
 extension AllRequestVC {
     
     private func initialSetup() {
+        viewModel.delegate = self
         self.mainTableView.delegate = self
         self.mainTableView.dataSource = self
         self.mainTableView.registerCell(with: ServiceRequestTableCell.self)
@@ -66,5 +67,15 @@ extension AllRequestVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
           AppRouter.goToGarageServiceRequestVC(vc: self)
+    }
+}
+
+extension AllRequestVC : AllRequestVMDelegate {
+    func getGarageListingDataSuccess(message: String) {
+        
+    }
+    
+    func getGarageListingDataFailed(error: String) {
+        
     }
 }
