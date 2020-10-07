@@ -43,6 +43,6 @@ class RequestDetailCollectionViewCell: UICollectionViewCell {
     }
     
     @IBAction func helpBtnAction(_ sender: UIButton) {
-        showAlert(msg: LocalizedString.underDevelopment.localized)
+        CommonFunctions.showToastWithMessage(LocalizedString.underDevelopment.localized)
     }
 }

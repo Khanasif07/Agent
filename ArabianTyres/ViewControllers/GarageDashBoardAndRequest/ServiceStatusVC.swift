@@ -56,7 +56,7 @@ extension ServiceStatusVC {
         mainTableView.delegate = self
         mainTableView.dataSource = self
         mainTableView.registerCell(with: TyreRequestDetailTableViewCell.self)
-        mainTableView.registerCell(with: TyreRequestLocationTableViewCell.self)
+        mainTableView.registerCell(with: ServiceStatusTableViewCell.self)
     }
     
     private func setupTextAndFont(){
@@ -81,7 +81,7 @@ extension ServiceStatusVC: UITableViewDelegate,UITableViewDataSource{
             return cell
         }else {
             
-            let cell = tableView.dequeueCell(with: TyreRequestLocationTableViewCell.self)
+            let cell = tableView.dequeueCell(with: ServiceStatusTableViewCell.self)
             return cell
         }
     }

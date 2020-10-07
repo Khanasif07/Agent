@@ -234,6 +234,10 @@
 "startService" = "Start Service";
 "chat" = "Chat";
 "userDetails" = "User Details";
+"paymentStatus" = "Payment Status";
+"amountPaid" = "Amount Paid";
+
+
  // MARK: - Home  VC Values
 //==============================
 "tyre" = "Tyre";
