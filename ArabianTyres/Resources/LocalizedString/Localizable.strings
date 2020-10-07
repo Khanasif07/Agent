@@ -225,6 +225,14 @@
 "pleaseVerifyTheSameInOrderToStartServicing" = "please verify the same in order to\nstart Servicing";
 "filter" = "Filter";
 "apply" = "Apply";
+"requestCreatedBy" = "Request Created By";
+"requestAcceptedOn" = "Request Accepted On";
+"paybleAmount" = "Payble Amount";
+"serviceDetails" = "Service Details";
+"tyreSize" = "Tyre Size:";
+"preferredBrand" = "Preferred Brand:";
+"startService" = "Start Service";
+"chat" = "Chat";
  // MARK: - Home  VC Values
 //==============================
 "tyre" = "Tyre";

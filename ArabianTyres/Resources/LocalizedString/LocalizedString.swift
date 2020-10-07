@@ -283,7 +283,14 @@ enum LocalizedString : String {
     case verify
     case filter
     case apply
-    
+    case requestCreatedBy
+    case requestAcceptedOn
+    case paybleAmount
+    case serviceDetails
+    case tyreSize
+    case preferredBrand
+    case chat
+    case startService
     // MARK: - Home  VC Values
     //==============================
     case tyre

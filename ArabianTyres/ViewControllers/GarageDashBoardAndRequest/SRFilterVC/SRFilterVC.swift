@@ -9,7 +9,18 @@
 import UIKit
 import SkyFloatingLabelTextField
 
-class SRFliterVC: BaseVC {
+struct CatModel {
+    var subCat : [SubCatModel] = []
+    var isSelected: Bool = false
+    var name: String
+}
+
+struct SubCatModel {
+    var isSelected: Bool = false
+    let name: String
+}
+
+class SRFilterVC: BaseVC {
     
     // MARK: - IBOutlets
     //==================
@@ -18,21 +29,23 @@ class SRFliterVC: BaseVC {
     @IBOutlet weak var applyBtn: UIButton!
     @IBOutlet weak var mainTableView: UITableView!
 
-    
     // MARK: - Variables
     //===================
-    var catName = ["By Service Type", "By Status"]
-
+    let viewModel = SRFliterVM()
+    
     // MARK: - Lifecycle
     //===================
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
         tableViewSetup()
-    }
+        viewModel.initialData()
 
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = true
     }
     
     override func viewDidLayoutSubviews() {
@@ -53,7 +66,7 @@ class SRFliterVC: BaseVC {
 
 // MARK: - Extension For Functions
 //===========================
-extension SRFliterVC {
+extension SRFilterVC {
     
     private func initialSetup() {
         setupTextAndFont()
@@ -62,6 +75,7 @@ extension SRFliterVC {
     private func tableViewSetup() {
         mainTableView.delegate = self
         mainTableView.dataSource = self
+        mainTableView.contentInset = UIEdgeInsets(top: 8.0, left: 0, bottom: 0, right: 0)
     }
     
     private func setupTextAndFont() {
@@ -77,29 +91,43 @@ extension SRFliterVC {
     }
 }
 
-extension SRFliterVC :UITableViewDelegate,UITableViewDataSource{
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return catName.endIndex
+extension SRFilterVC :UITableViewDelegate,UITableViewDataSource{
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return viewModel.catgories.count
+        
     }
-
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return CGFloat.leastNonzeroMagnitude
+    }
+    
+//    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 300.0
+//    }
+//
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return CGFloat.leastNormalMagnitude
+        return CGFloat.leastNonzeroMagnitude
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+        let model = viewModel.catgories[indexPath.section]
+        return model.isSelected ? CGFloat(54 + model.subCat.count * 54) : 54.0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(with: FilterTableViewCell.self, indexPath: indexPath)
-        cell.categoryLbl.text = catName[indexPath.row]
-        
-        cell.cellBtnTapped = {[weak self] in
+        cell.configCell(catgory: self.viewModel.catgories[indexPath.section])
+       
+        cell.cellBtnTapped = { [weak self] in
             guard let `self` = self else {return}
-            self.mainTableView.reloadData()
+            self.viewModel.catgories[indexPath.section].isSelected.toggle()
+            self.mainTableView.reloadRows(at: [indexPath], with: .automatic)
+//            cell.collView.reloadData()
         }
         return cell
     }
-    
 }

@@ -199,6 +199,8 @@
 		A4203EF6252C2FF300BD8802 /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4203EF5252C2FF300BD8802 /* FilterTableViewCell.swift */; };
 		A4203EF9252C31A100BD8802 /* FilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4203EF7252C31A100BD8802 /* FilterCollectionViewCell.swift */; };
 		A4203EFA252C31A100BD8802 /* FilterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4203EF8252C31A100BD8802 /* FilterCollectionViewCell.xib */; };
+		A4203F0E252C791A00BD8802 /* SRFilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4203F0C252C791A00BD8802 /* SRFilterVC.swift */; };
+		A4203F0F252C791A00BD8802 /* SRFilterVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4203F0D252C791A00BD8802 /* SRFilterVM.swift */; };
 		A4213DE0250CB02400BB21B6 /* DocumentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4213DDF250CB02400BB21B6 /* DocumentTableViewCell.swift */; };
 		A421DDD5252AFDF20044E5E0 /* PlaceBidPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A421DDD4252AFDF20044E5E0 /* PlaceBidPopUpVC.swift */; };
 		A421DDD7252B1A610044E5E0 /* OtpPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A421DDD6252B1A610044E5E0 /* OtpPopUpVC.swift */; };
@@ -207,6 +209,10 @@
 		A43B53AC2524B65300447B24 /* ServiceListingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43B53AA2524B65300447B24 /* ServiceListingTableViewCell.swift */; };
 		A43B53AD2524B65300447B24 /* ServiceListingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A43B53AB2524B65300447B24 /* ServiceListingTableViewCell.xib */; };
 		A43F44B42513BE66002B1014 /* BrandsListingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43F44B32513BE66002B1014 /* BrandsListingVC.swift */; };
+		A441A675252CD5F600B5420B /* DashedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A441A673252CD5F600B5420B /* DashedCollectionViewCell.swift */; };
+		A441A676252CD5F600B5420B /* DashedCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A441A674252CD5F600B5420B /* DashedCollectionViewCell.xib */; };
+		A441A67E252CDF7C00B5420B /* TyreRequestLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A441A67C252CDF7C00B5420B /* TyreRequestLocationTableViewCell.swift */; };
+		A441A67F252CDF7C00B5420B /* TyreRequestLocationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A441A67D252CDF7C00B5420B /* TyreRequestLocationTableViewCell.xib */; };
 		A4443864251381F700114A75 /* UserHomeScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4443863251381F700114A75 /* UserHomeScreen.storyboard */; };
 		A4443866251387E000114A75 /* VechicleDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4443865251387E000114A75 /* VechicleDetailVC.swift */; };
 		A44E8D74251C817400ACBC4D /* OilBrandsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44E8D73251C817400ACBC4D /* OilBrandsVC.swift */; };
@@ -241,7 +247,14 @@
 		A4B74CCB2510CF6C00771974 /* GarageProfileStep2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B74CCA2510CF6C00771974 /* GarageProfileStep2VC.swift */; };
 		A4B91C3625149BDA00E4811A /* LocationPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B91C3525149BDA00E4811A /* LocationPopUpVC.swift */; };
 		A4C39FEC251E69A6001711F8 /* BatteryRequestedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C39FEB251E69A6001711F8 /* BatteryRequestedVC.swift */; };
-		A4E62ADE252B54FC000195F4 /* SRFliterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E62ADD252B54FC000195F4 /* SRFliterVC.swift */; };
+		A4CC324B252CAC3000669F39 /* ServiceDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC3249252CAC3000669F39 /* ServiceDetailCollectionViewCell.swift */; };
+		A4CC324C252CAC3000669F39 /* ServiceDetailCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4CC324A252CAC3000669F39 /* ServiceDetailCollectionViewCell.xib */; };
+		A4CC324F252CB10C00669F39 /* RequestDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC324D252CB10C00669F39 /* RequestDetailCollectionViewCell.swift */; };
+		A4CC3250252CB10C00669F39 /* RequestDetailCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4CC324E252CB10C00669F39 /* RequestDetailCollectionViewCell.xib */; };
+		A4CC3252252CB2A100669F39 /* BookedTyreRequestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC3251252CB2A100669F39 /* BookedTyreRequestVC.swift */; };
+		A4CC3255252CB3F400669F39 /* TyreRequestDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC3253252CB3F400669F39 /* TyreRequestDetailTableViewCell.swift */; };
+		A4CC3256252CB3F400669F39 /* TyreRequestDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4CC3254252CB3F400669F39 /* TyreRequestDetailTableViewCell.xib */; };
+		A4CC3258252CBCA200669F39 /* ASDynamicCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC3257252CBCA200669F39 /* ASDynamicCollectionView.swift */; };
 		A4FEF8EC2518744900D58C13 /* TyreRequestedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FEF8EB2518744900D58C13 /* TyreRequestedVC.swift */; };
 /* End PBXBuildFile section */
 
@@ -441,6 +454,8 @@
 		A4203EF5252C2FF300BD8802 /* FilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
 		A4203EF7252C31A100BD8802 /* FilterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCollectionViewCell.swift; sourceTree = "<group>"; };
 		A4203EF8252C31A100BD8802 /* FilterCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterCollectionViewCell.xib; sourceTree = "<group>"; };
+		A4203F0C252C791A00BD8802 /* SRFilterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SRFilterVC.swift; sourceTree = "<group>"; };
+		A4203F0D252C791A00BD8802 /* SRFilterVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SRFilterVM.swift; sourceTree = "<group>"; };
 		A4213DDF250CB02400BB21B6 /* DocumentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentTableViewCell.swift; sourceTree = "<group>"; };
 		A421DDD4252AFDF20044E5E0 /* PlaceBidPopUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceBidPopUpVC.swift; sourceTree = "<group>"; };
 		A421DDD6252B1A610044E5E0 /* OtpPopUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpPopUpVC.swift; sourceTree = "<group>"; };
@@ -449,6 +464,10 @@
 		A43B53AA2524B65300447B24 /* ServiceListingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceListingTableViewCell.swift; sourceTree = "<group>"; };
 		A43B53AB2524B65300447B24 /* ServiceListingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServiceListingTableViewCell.xib; sourceTree = "<group>"; };
 		A43F44B32513BE66002B1014 /* BrandsListingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandsListingVC.swift; sourceTree = "<group>"; };
+		A441A673252CD5F600B5420B /* DashedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashedCollectionViewCell.swift; sourceTree = "<group>"; };
+		A441A674252CD5F600B5420B /* DashedCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashedCollectionViewCell.xib; sourceTree = "<group>"; };
+		A441A67C252CDF7C00B5420B /* TyreRequestLocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TyreRequestLocationTableViewCell.swift; sourceTree = "<group>"; };
+		A441A67D252CDF7C00B5420B /* TyreRequestLocationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TyreRequestLocationTableViewCell.xib; sourceTree = "<group>"; };
 		A4443863251381F700114A75 /* UserHomeScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserHomeScreen.storyboard; sourceTree = "<group>"; };
 		A4443865251387E000114A75 /* VechicleDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VechicleDetailVC.swift; sourceTree = "<group>"; };
 		A44E8D73251C817400ACBC4D /* OilBrandsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OilBrandsVC.swift; sourceTree = "<group>"; };
@@ -484,7 +503,14 @@
 		A4B74CCA2510CF6C00771974 /* GarageProfileStep2VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageProfileStep2VC.swift; sourceTree = "<group>"; };
 		A4B91C3525149BDA00E4811A /* LocationPopUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPopUpVC.swift; sourceTree = "<group>"; };
 		A4C39FEB251E69A6001711F8 /* BatteryRequestedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryRequestedVC.swift; sourceTree = "<group>"; };
-		A4E62ADD252B54FC000195F4 /* SRFliterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRFliterVC.swift; sourceTree = "<group>"; };
+		A4CC3249252CAC3000669F39 /* ServiceDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceDetailCollectionViewCell.swift; sourceTree = "<group>"; };
+		A4CC324A252CAC3000669F39 /* ServiceDetailCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServiceDetailCollectionViewCell.xib; sourceTree = "<group>"; };
+		A4CC324D252CB10C00669F39 /* RequestDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestDetailCollectionViewCell.swift; sourceTree = "<group>"; };
+		A4CC324E252CB10C00669F39 /* RequestDetailCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RequestDetailCollectionViewCell.xib; sourceTree = "<group>"; };
+		A4CC3251252CB2A100669F39 /* BookedTyreRequestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookedTyreRequestVC.swift; sourceTree = "<group>"; };
+		A4CC3253252CB3F400669F39 /* TyreRequestDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TyreRequestDetailTableViewCell.swift; sourceTree = "<group>"; };
+		A4CC3254252CB3F400669F39 /* TyreRequestDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TyreRequestDetailTableViewCell.xib; sourceTree = "<group>"; };
+		A4CC3257252CBCA200669F39 /* ASDynamicCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASDynamicCollectionView.swift; sourceTree = "<group>"; };
 		A4FEF8EB2518744900D58C13 /* TyreRequestedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TyreRequestedVC.swift; sourceTree = "<group>"; };
 		B2C00CD38A98EBA313A070C9 /* Pods_ArabianTyres.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArabianTyres.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -1270,6 +1296,8 @@
 				A45042C4250F2A84001C8905 /* UploadDocumentVC */,
 				A49B7D49251125AC0057239B /* FacilityCollectionViewCell */,
 				A4B74CC125107C3500771974 /* AddAccountVC */,
+				A4203F10252C7B5600BD8802 /* SRFilterVC */,
+				A441A677252CDD9800B5420B /* BookedTyreRequestVC */,
 				A4B74CC225107C6800771974 /* LinkAccountTableViewCell.swift */,
 				A4B74CC325107C6800771974 /* LinkAccountTableViewCell.xib */,
 				A4098E77251228050015B0BD /* FacilityTableHeaderView.swift */,
@@ -1278,9 +1306,6 @@
 				A4098E7C251231DD0015B0BD /* FacilityTableViewCell.xib */,
 				A43B53AA2524B65300447B24 /* ServiceListingTableViewCell.swift */,
 				A43B53AB2524B65300447B24 /* ServiceListingTableViewCell.xib */,
-				A4203EF5252C2FF300BD8802 /* FilterTableViewCell.swift */,
-				A4203EF7252C31A100BD8802 /* FilterCollectionViewCell.swift */,
-				A4203EF8252C31A100BD8802 /* FilterCollectionViewCell.xib */,
 			);
 			path = PostloginVC;
 			sourceTree = "<group>";
@@ -1356,6 +1381,7 @@
 		A413B97A250A44400004C534 /* CustomTextView */ = {
 			isa = PBXGroup;
 			children = (
+				A4CC3257252CBCA200669F39 /* ASDynamicCollectionView.swift */,
 				A413B97B250A44400004C534 /* CustomTextView.xib */,
 				A413B97C250A44400004C534 /* CustomTextView.swift */,
 			);
@@ -1370,13 +1396,33 @@
 			path = AddDetailVC;
 			sourceTree = "<group>";
 		};
+		A4203F0B252C791A00BD8802 /* SRFilterVC */ = {
+			isa = PBXGroup;
+			children = (
+				A4203F0C252C791A00BD8802 /* SRFilterVC.swift */,
+				A4203F0D252C791A00BD8802 /* SRFilterVM.swift */,
+			);
+			path = SRFilterVC;
+			sourceTree = "<group>";
+		};
+		A4203F10252C7B5600BD8802 /* SRFilterVC */ = {
+			isa = PBXGroup;
+			children = (
+				A4203EF5252C2FF300BD8802 /* FilterTableViewCell.swift */,
+				A4203EF7252C31A100BD8802 /* FilterCollectionViewCell.swift */,
+				A4203EF8252C31A100BD8802 /* FilterCollectionViewCell.xib */,
+			);
+			path = SRFilterVC;
+			sourceTree = "<group>";
+		};
 		A43B53A82524B5AC00447B24 /* GarageDashBoardAndRequest */ = {
 			isa = PBXGroup;
 			children = (
+				A4203F0B252C791A00BD8802 /* SRFilterVC */,
 				A43B53A62524B47000447B24 /* OngoingServiceListingVC.swift */,
 				A421DDD4252AFDF20044E5E0 /* PlaceBidPopUpVC.swift */,
 				A421DDD6252B1A610044E5E0 /* OtpPopUpVC.swift */,
-				A4E62ADD252B54FC000195F4 /* SRFliterVC.swift */,
+				A4CC3251252CB2A100669F39 /* BookedTyreRequestVC.swift */,
 			);
 			path = GarageDashBoardAndRequest;
 			sourceTree = "<group>";
@@ -1411,6 +1457,23 @@
 				A4B74CCA2510CF6C00771974 /* GarageProfileStep2VC.swift */,
 			);
 			path = GarageProfileStep2VC;
+			sourceTree = "<group>";
+		};
+		A441A677252CDD9800B5420B /* BookedTyreRequestVC */ = {
+			isa = PBXGroup;
+			children = (
+				A4CC3249252CAC3000669F39 /* ServiceDetailCollectionViewCell.swift */,
+				A4CC324A252CAC3000669F39 /* ServiceDetailCollectionViewCell.xib */,
+				A4CC324D252CB10C00669F39 /* RequestDetailCollectionViewCell.swift */,
+				A4CC324E252CB10C00669F39 /* RequestDetailCollectionViewCell.xib */,
+				A4CC3253252CB3F400669F39 /* TyreRequestDetailTableViewCell.swift */,
+				A4CC3254252CB3F400669F39 /* TyreRequestDetailTableViewCell.xib */,
+				A441A673252CD5F600B5420B /* DashedCollectionViewCell.swift */,
+				A441A674252CD5F600B5420B /* DashedCollectionViewCell.xib */,
+				A441A67C252CDF7C00B5420B /* TyreRequestLocationTableViewCell.swift */,
+				A441A67D252CDF7C00B5420B /* TyreRequestLocationTableViewCell.xib */,
+			);
+			path = BookedTyreRequestVC;
 			sourceTree = "<group>";
 		};
 		A45042C3250F2A62001C8905 /* GarageRegistrationVC */ = {
@@ -1690,6 +1753,7 @@
 				846352D12511E34E004216F1 /* AddImageCollCell.xib in Resources */,
 				84303E6E25064CC8000BA5C3 /* Home.storyboard in Resources */,
 				8481FA992501438F00AB6EFB /* NunitoSans-ExtraLight.ttf in Resources */,
+				A4CC3256252CB3F400669F39 /* TyreRequestDetailTableViewCell.xib in Resources */,
 				8481FA932501437000AB6EFB /* NunitoSans-BoldItalic.ttf in Resources */,
 				A4443864251381F700114A75 /* UserHomeScreen.storyboard in Resources */,
 				84594812252B306A00C0B249 /* BookedRequestTableCell.xib in Resources */,
@@ -1697,6 +1761,7 @@
 				8459480E252B0C0600C0B249 /* ServiceRequestTableCell.xib in Resources */,
 				843F004E25060822001A78EC /* CountryCodeTableCell.xib in Resources */,
 				842B2FCA25133CD200E3CF67 /* BankListingTableCell.xib in Resources */,
+				A441A67F252CDF7C00B5420B /* TyreRequestLocationTableViewCell.xib in Resources */,
 				A43B53A52524B21300447B24 /* GarageRequest.storyboard in Resources */,
 				8481FA812500DC8800AB6EFB /* Main.storyboard in Resources */,
 				8446AB54252D598E005A1350 /* GarageServiceBottomCell.xib in Resources */,
@@ -1708,8 +1773,11 @@
 				84144F30252C8D9C00D6572F /* GarageServiceTopCell.xib in Resources */,
 				8481FAA7250143CD00AB6EFB /* NunitoSans-SemiBoldItalic.ttf in Resources */,
 				8446AB50252D53B3005A1350 /* GarageServiceCountryCell.xib in Resources */,
+				A4CC3250252CB10C00669F39 /* RequestDetailCollectionViewCell.xib in Resources */,
 				A4A6DEF0251A157C00564020 /* GarageHomeTableCell.xib in Resources */,
+				A441A676252CD5F600B5420B /* DashedCollectionViewCell.xib in Resources */,
 				844EB71525187CD0003A6E3F /* URTyreSizeTableCell.xib in Resources */,
+				A4CC324C252CAC3000669F39 /* ServiceDetailCollectionViewCell.xib in Resources */,
 				844EB7222518C9C3003A6E3F /* LoaderCell.xib in Resources */,
 				84FF6E93251C625F0000E2AD /* CustomDashedView.xib in Resources */,
 				8481FAA3250143BD00AB6EFB /* NunitoSans-Regular.ttf in Resources */,
@@ -1848,11 +1916,11 @@
 				84FF6E95251C6E8A0000E2AD /* CustomDashedView.swift in Sources */,
 				8481FA212500BB2100AB6EFB /* GoogleLoginController.swift in Sources */,
 				8446AB53252D598E005A1350 /* GarageServiceBottomCell.swift in Sources */,
+				A4CC324F252CB10C00669F39 /* RequestDetailCollectionViewCell.swift in Sources */,
 				84FF6EA9251E0F400000E2AD /* TyreSizeModel.swift in Sources */,
 				84476D3125075F3400AB5E80 /* ProfileVC.swift in Sources */,
 				844EB71025187607003A6E3F /* URTyreSizeVC.swift in Sources */,
 				843C8EB925087DD200515F2E /* ProfileGuestTableCell.swift in Sources */,
-				A4E62ADE252B54FC000195F4 /* SRFliterVC.swift in Sources */,
 				8481FAAB25015CBC00AB6EFB /* CustommTextField.swift in Sources */,
 				842B2FC2251325B900E3CF67 /* RectangularDashedView.swift in Sources */,
 				84FF6E9A251D85F70000E2AD /* BottomSheetVC.swift in Sources */,
@@ -1861,6 +1929,7 @@
 				8481FA1F2500BAFB00AB6EFB /* AppleLoginController.swift in Sources */,
 				84B629AC25120FF50080A7C2 /* InterConnectivity.swift in Sources */,
 				A45042D3250F76D5001C8905 /* AddAccountDetailVC.swift in Sources */,
+				A4CC3255252CB3F400669F39 /* TyreRequestDetailTableViewCell.swift in Sources */,
 				8481FA772500C5CD00AB6EFB /* CountryData.swift in Sources */,
 				847BC423250774E100EEEFDC /* ResetPasswordVC.swift in Sources */,
 				843C8ED22508FB9300515F2E /* HomeCollectionCell.swift in Sources */,
@@ -1878,9 +1947,11 @@
 				8481FA3D2500BE1C00AB6EFB /* UIColor+Additions.swift in Sources */,
 				844EB6F2251483D0003A6E3F /* URTyreStep1VC.swift in Sources */,
 				8481FA352500BD8C00AB6EFB /* CommonFunctions.swift in Sources */,
+				A4CC324B252CAC3000669F39 /* ServiceDetailCollectionViewCell.swift in Sources */,
 				8481FA6F2500BFEF00AB6EFB /* AppGlobals.swift in Sources */,
 				A45042C7250F2D12001C8905 /* AddAccountVC.swift in Sources */,
 				844CBD1E2501FA31009BE668 /* LoginSocialTableCell.swift in Sources */,
+				A4203F0F252C791A00BD8802 /* SRFilterVM.swift in Sources */,
 				84E166E4250362DE00C2F2EF /* SuccessPopupVC.swift in Sources */,
 				844EB7212518C9C3003A6E3F /* LoaderCell.swift in Sources */,
 				84303E6C25064B27000BA5C3 /* UnderDevelopmentVC.swift in Sources */,
@@ -1916,9 +1987,11 @@
 				84FF6E97251C77EF0000E2AD /* LineDashedView.swift in Sources */,
 				843F004625060725001A78EC /* CountryVC.swift in Sources */,
 				843F004925060798001A78EC /* CountryVM.swift in Sources */,
+				A4CC3258252CBCA200669F39 /* ASDynamicCollectionView.swift in Sources */,
 				84144F27252C4AAD00D6572F /* MyServiceTableCell.swift in Sources */,
 				84594811252B306A00C0B249 /* BookedRequestTableCell.swift in Sources */,
 				84B629AE251212FC0080A7C2 /* ImageModel.swift in Sources */,
+				A441A675252CD5F600B5420B /* DashedCollectionViewCell.swift in Sources */,
 				A45042D0250F3846001C8905 /* AddAccountTableViewCell.swift in Sources */,
 				843C8ECE2508E91700515F2E /* ProfileSettingVM.swift in Sources */,
 				A43F44B42513BE66002B1014 /* BrandsListingVC.swift in Sources */,
@@ -1942,10 +2015,12 @@
 				84144F2B252C8C0D00D6572F /* GarageServiceRequestVC.swift in Sources */,
 				A421DDD5252AFDF20044E5E0 /* PlaceBidPopUpVC.swift in Sources */,
 				8481FA432500BE4600AB6EFB /* UIApplicationExtension.swift in Sources */,
+				A4CC3252252CB2A100669F39 /* BookedTyreRequestVC.swift in Sources */,
 				84FF6EA5251DA3530000E2AD /* ModelData.swift in Sources */,
 				8481FA7B2500CC2C00AB6EFB /* BaseVC.swift in Sources */,
 				8481FA5F2500BF8400AB6EFB /* AppRouter.swift in Sources */,
 				A43B53AC2524B65300447B24 /* ServiceListingTableViewCell.swift in Sources */,
+				A441A67E252CDF7C00B5420B /* TyreRequestLocationTableViewCell.swift in Sources */,
 				843C8EC52508AE9500515F2E /* ProfileUserInternalCell.swift in Sources */,
 				84476D3725075F6800AB5E80 /* ExploreVC.swift in Sources */,
 				846352D02511E34E004216F1 /* AddImageCollCell.swift in Sources */,
@@ -1969,6 +2044,7 @@
 				A4B74CCB2510CF6C00771974 /* GarageProfileStep2VC.swift in Sources */,
 				A44E8D7A251CBF9500ACBC4D /* VehicleDetailForBatteryVC.swift in Sources */,
 				8481F9FF2500AA9A00AB6EFB /* SceneDelegate.swift in Sources */,
+				A4203F0E252C791A00BD8802 /* SRFilterVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

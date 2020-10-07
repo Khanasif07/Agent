@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="324" id="KGk-i7-Jjw" customClass="TyreRequestLocationTableViewCell" customModule="ArabianTyres" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="403" height="306"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="403" height="306"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nD4-RL-tc6">
+                        <rect key="frame" x="16" y="8" width="371" height="298"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="657-bF-YgM">
+                                <rect key="frame" x="10" y="10" width="65.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.54117649793624878" green="0.58431375026702881" blue="0.61960786581039429" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rO8-rx-B1y">
+                                <rect key="frame" x="10" y="40.5" width="33" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="0.10980392156862745" green="0.11372549019607843" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yvM-GJ-J6q" customClass="GMSMapView">
+                                <rect key="frame" x="10" y="69.5" width="352" height="143"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="143" id="e1Z-en-cNM"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oUP-QD-egh">
+                                <rect key="frame" x="0.0" y="228.5" width="371" height="1"/>
+                                <color key="backgroundColor" red="0.54117647058823526" green="0.58431372549019611" blue="0.61960784313725492" alpha="0.25" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="FqX-Gf-01x"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Jsf-XJ-cZJ">
+                                <rect key="frame" x="112.5" y="239.5" width="249.5" height="48"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JkD-0Q-bUq" customClass="AppButton" customModule="ArabianTyres" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="95.5" height="48"/>
+                                        <state key="normal" title="Chat">
+                                            <color key="titleColor" name="appRedColor"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" name="appRedColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="chatBtnTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="izB-bi-5IF"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5m3-H0-nKf" customClass="AppButton" customModule="ArabianTyres" customModuleProvider="target">
+                                        <rect key="frame" x="103.5" y="0.0" width="146" height="48"/>
+                                        <color key="backgroundColor" name="appRedColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="G81-5V-bF6"/>
+                                        </constraints>
+                                        <state key="normal" title="Start Servie">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="startServiceBtnTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="18t-0I-5jv"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="yvM-GJ-J6q" firstAttribute="leading" secondItem="rO8-rx-B1y" secondAttribute="leading" id="1IJ-yG-9eJ"/>
+                            <constraint firstItem="yvM-GJ-J6q" firstAttribute="top" secondItem="rO8-rx-B1y" secondAttribute="bottom" constant="13" id="6Nt-Oc-MmA"/>
+                            <constraint firstItem="Jsf-XJ-cZJ" firstAttribute="top" secondItem="oUP-QD-egh" secondAttribute="bottom" constant="10" id="8pu-Ur-OiJ"/>
+                            <constraint firstItem="657-bF-YgM" firstAttribute="top" secondItem="nD4-RL-tc6" secondAttribute="top" constant="10" id="9cL-dN-BLa"/>
+                            <constraint firstItem="rO8-rx-B1y" firstAttribute="leading" secondItem="657-bF-YgM" secondAttribute="leading" id="Hv4-zn-htJ"/>
+                            <constraint firstAttribute="trailing" secondItem="yvM-GJ-J6q" secondAttribute="trailing" constant="9" id="Wfr-Ig-Kye"/>
+                            <constraint firstAttribute="trailing" secondItem="oUP-QD-egh" secondAttribute="trailing" id="ZHW-yN-py6"/>
+                            <constraint firstAttribute="bottom" secondItem="Jsf-XJ-cZJ" secondAttribute="bottom" constant="10.5" id="cZj-aV-Z3D"/>
+                            <constraint firstItem="Jsf-XJ-cZJ" firstAttribute="trailing" secondItem="yvM-GJ-J6q" secondAttribute="trailing" id="cl5-QT-lJi"/>
+                            <constraint firstItem="657-bF-YgM" firstAttribute="leading" secondItem="nD4-RL-tc6" secondAttribute="leading" constant="10" id="dre-wo-nrO"/>
+                            <constraint firstItem="oUP-QD-egh" firstAttribute="leading" secondItem="nD4-RL-tc6" secondAttribute="leading" id="iJW-y9-MFg"/>
+                            <constraint firstItem="oUP-QD-egh" firstAttribute="top" secondItem="yvM-GJ-J6q" secondAttribute="bottom" constant="16" id="rfr-F2-PDb"/>
+                            <constraint firstItem="rO8-rx-B1y" firstAttribute="top" secondItem="657-bF-YgM" secondAttribute="bottom" constant="10" id="wTO-lA-bAF"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="4"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" red="0.96470588445663452" green="0.9686274528503418" blue="0.97647058963775635" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <constraints>
+                    <constraint firstItem="nD4-RL-tc6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="A1r-OG-hOM"/>
+                    <constraint firstItem="5m3-H0-nKf" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="150/414" id="LJq-gP-arc"/>
+                    <constraint firstItem="nD4-RL-tc6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="ZTW-xs-1b5"/>
+                    <constraint firstItem="JkD-0Q-bUq" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="98/414" id="oyT-fF-1fS"/>
+                    <constraint firstAttribute="trailing" secondItem="nD4-RL-tc6" secondAttribute="trailing" constant="16" id="pjV-jx-flx"/>
+                    <constraint firstAttribute="bottom" secondItem="nD4-RL-tc6" secondAttribute="bottom" id="zwh-gm-NHX"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="addressLbl" destination="rO8-rx-B1y" id="OSs-lC-jnD"/>
+                <outlet property="chatBtn" destination="JkD-0Q-bUq" id="mmU-cK-vTs"/>
+                <outlet property="containerView" destination="nD4-RL-tc6" id="4oa-9M-uBw"/>
+                <outlet property="locationLbl" destination="657-bF-YgM" id="WIW-bE-1TP"/>
+                <outlet property="mapView" destination="yvM-GJ-J6q" id="Mwp-61-wXM"/>
+                <outlet property="startServiceBtn" destination="5m3-H0-nKf" id="hI1-EH-QNV"/>
+            </connections>
+            <point key="canvasLocation" x="197.82608695652175" y="196.20535714285714"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="appRedColor">
+            <color red="0.87800002098083496" green="0.13699999451637268" blue="0.25900000333786011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
