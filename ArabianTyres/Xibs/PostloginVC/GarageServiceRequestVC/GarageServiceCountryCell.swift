@@ -12,7 +12,10 @@ class GarageServiceCountryCell: UITableViewCell {
     
     
     var countryNameArr : [PreferredBrand] = []
-
+    var countryBtnTapped : ((String)->())?
+    var indexPath: IndexPath?
+    
+    
     @IBOutlet weak var countryCollView: UICollectionView!
     @IBOutlet weak var titleLbl: UILabel!
     
@@ -36,7 +39,7 @@ extension GarageServiceCountryCell : UICollectionViewDelegate,UICollectionViewDa
         cell.cancelBtnHeightConstraint.constant = 0.0
         cell.skillLbl.contentMode = .center
         cell.skillLbl.text = self.countryNameArr[indexPath.item].name
-        cell.containerView.backgroundColor = .white
+        cell.containerView.backgroundColor = self.indexPath == indexPath ? AppColors.appRedColor : .white
         cell.layoutSubviews()
         return cell
     }
@@ -57,5 +60,11 @@ extension GarageServiceCountryCell : UICollectionViewDelegate,UICollectionViewDa
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 10.0, left: 0.0, bottom: 10.0, right: 0.0)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.indexPath = indexPath
+        collectionView.reloadData()
+        countryBtnTapped?(self.countryNameArr[indexPath.item].name)
     }
 }

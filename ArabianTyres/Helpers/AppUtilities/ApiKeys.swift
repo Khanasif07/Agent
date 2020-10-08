@@ -137,6 +137,7 @@ enum ApiKey {
     static var quantity: String { return "quantity"}
     static var countries: String { return "countries" }
     static var tyreBrands: String { return "tyreBrands" }
+    static var country: String { return "country" }
 
     static var maxInstallationPrice: String { return "maxInstallationPrice" }
     static var minInstallationPrice: String { return "minInstallationPrice" }

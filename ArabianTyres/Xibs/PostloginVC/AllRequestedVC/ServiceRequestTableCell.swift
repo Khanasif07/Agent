@@ -55,6 +55,8 @@ class ServiceRequestTableCell: UITableViewCell {
     }
     
     public func initialSetUp(){
+        brandsLbl.isHidden = false
+        brandDetailLbl.isHidden = false
         bidAmountStackView.isHidden = true
         self.logoImgView.backgroundColor = AppColors.fontTertiaryColor
         placeBidBtn.isEnabled = true
@@ -68,22 +70,47 @@ class ServiceRequestTableCell: UITableViewCell {
     }
     
     func bindData(_ model: GarageRequestModel) {
-        let date = (model.createdAt).toDate(dateFormat: Date.DateFormat.givenDateFormat.rawValue) ?? Date()
+        let date = (model.createdAt)?.toDate(dateFormat: Date.DateFormat.givenDateFormat.rawValue) ?? Date()
         serviceTimeLbl.text = date.timeAgoSince
         sizeDetailLbl.text = "\(model.width ?? 0)w/" + "\(model.rimSize ?? 0)r/" + "\(model.profile ?? 0)p"
      
-        if model.preferredBrands.count == 0 {
-            brandsLbl.text = "Countries: "
-            brandDetailLbl.text = model.preferredCountries.map{($0.name)}.joined(separator: ",")
-        }else {
+        if model.preferredBrands.count == 0 && model.preferredCountries.count == 0{
+            brandsLbl.isHidden = true
+            brandDetailLbl.isHidden = true
+        }else if model.preferredCountries.count == 0{
             brandsLbl.text = "Brand: "
-            brandDetailLbl.text = model.preferredBrands.map{($0.name)}.joined(separator: ",")
+            brandDetailLbl.attributedText = getAttributedString(data: model.preferredBrands)
+        }else {
+            brandsLbl.text = "Countries: "
+            brandDetailLbl.attributedText = getAttributedString(data :model.preferredCountries)
         }
         
-        logoImgView.setImage_kf(imageString: model.images.first ?? "", placeHolderImage: #imageLiteral(resourceName: "group3888"), loader: false)
+        logoImgView.setImage_kf(imageString: model.images.first ?? "", placeHolderImage: #imageLiteral(resourceName: "maskGroup"), loader: false)
         statusValueLbl.text = model.status.text
         statusValueLbl.textColor = model.status.textColor
-        serviceTyeLbl.text = model.requestType
+        let str = model.requestType == .tyres ? "Tyre" : model.requestType.rawValue
+        serviceTyeLbl.text = (str ?? "") + LocalizedString.serviceRequest.localized
         
+    }
+    
+    func getAttributedString(data : [PreferredBrand]) -> NSMutableAttributedString{
+        
+        var str: NSMutableAttributedString = NSMutableAttributedString()
+      
+        if data.count < 2 {
+            str = NSMutableAttributedString(string: data.map{($0.name)}.joined(separator: ","), attributes: [
+                .font: AppFonts.NunitoSansBold.withSize(12.0),
+                .foregroundColor: AppColors.fontPrimaryColor
+            ])
+        }else {
+            let count = "+\(data.count - 2) More"
+            str = NSMutableAttributedString(string: "\(data[0].name), \(data[1].name) ", attributes: [
+                .font: AppFonts.NunitoSansBold.withSize(12.0),
+                .foregroundColor: AppColors.fontPrimaryColor
+            ])
+            
+            str.append(NSAttributedString(string: count, attributes: [NSAttributedString.Key.foregroundColor: AppColors.linkTextColor,NSAttributedString.Key.font: AppFonts.NunitoSansBold.withSize(12.0),NSAttributedString.Key.underlineColor :AppColors.linkTextColor,NSAttributedString.Key.underlineStyle: 1]))
+        }
+        return str
     }
 }

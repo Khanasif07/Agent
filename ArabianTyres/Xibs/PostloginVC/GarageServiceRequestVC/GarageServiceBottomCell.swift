@@ -10,19 +10,23 @@ import UIKit
 
 class GarageServiceBottomCell: UITableViewCell {
     
-    var selectImageArray: [UIImage] = [#imageLiteral(resourceName: "vehicle"),#imageLiteral(resourceName: "serviceHistory"),#imageLiteral(resourceName: "payment"),#imageLiteral(resourceName: "savedCard")]
-    var brandDataArr : [PreferredBrand] = []
-    
+    //MARK:-IBOutlet
     @IBOutlet weak var dataContainerView: UIView!
     @IBOutlet weak var internalTableView: AGTableView!
-    @IBOutlet weak var unitPriceLbl: UIButton!
-    @IBOutlet weak var unitLbl: UIButton!
-    @IBOutlet weak var brandsTitleLbl: UIButton!
+    @IBOutlet weak var unitPriceLbl: UILabel!
+    @IBOutlet weak var unitLbl: UILabel!
+    @IBOutlet weak var brandsTitleLbl: UILabel!
     
+    //MARK:-Variables
+    var selectImageArray: [UIImage] = [#imageLiteral(resourceName: "vehicle"),#imageLiteral(resourceName: "serviceHistory"),#imageLiteral(resourceName: "payment"),#imageLiteral(resourceName: "savedCard")]
+    var brandDataArr : [PreferredBrand] = []
+    var quantity: Int = 0
+    
+    //MARK:-Life Cycle
     override func awakeFromNib() {
         super.awakeFromNib()
         tableViewSetUp()
-        textSetUp()
+//        textSetUp()
         // Initialization code
     }
     
@@ -41,11 +45,11 @@ class GarageServiceBottomCell: UITableViewCell {
         self.internalTableView.dataSource = self
     }
     
-    private func textSetUp(){
-        self.brandsTitleLbl.setTitleColor(AppColors.fontTertiaryColor, for: .normal)
-        self.unitLbl.setTitleColor(AppColors.fontTertiaryColor, for: .normal)
-        self.unitPriceLbl.setTitleColor(AppColors.fontTertiaryColor, for: .normal)
-    }
+//    private func textSetUp(){
+//        self.brandsTitleLbl.setTitleColor(AppColors.fontTertiaryColor, for: .normal)
+//        self.unitLbl.setTitleColor(AppColors.fontTertiaryColor, for: .normal)
+//        self.unitPriceLbl.setTitleColor(AppColors.fontTertiaryColor, for: .normal)
+//    }
     
    
 }
@@ -55,16 +59,15 @@ class GarageServiceBottomCell: UITableViewCell {
 //=========================================
 
 extension GarageServiceBottomCell: UITableViewDelegate, UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
+   
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.brandDataArr.endIndex
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(with: GarageServiceBrandsCell.self, indexPath: indexPath)
+        cell.bindData(brandDataArr[indexPath.row])
+        cell.unitLbl.text = quantity.description
         if indexPath.row == self.brandDataArr.endIndex - 1{
             cell.dashViewHeightConst.constant = 0
             cell.dashView.isHidden = true

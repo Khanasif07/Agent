@@ -7,13 +7,23 @@
 //
 
 import UIKit
+import SkyFloatingLabelTextField
 
 class GarageServiceBrandsCell: UITableViewCell {
 
     @IBOutlet weak var dashViewHeightConst: NSLayoutConstraint!
     @IBOutlet weak var dashView: CustomDashedView!
-    
+    @IBOutlet weak var brandNameLbl : UILabel!
+    @IBOutlet weak var unitLbl : UILabel!
+    @IBOutlet weak var unitPrizeTextFiled : SkyFloatingLabelTextField!
+
     override func awakeFromNib() {
         super.awakeFromNib()
+        unitPrizeTextFiled.textAlignment = .center
+    }
+    
+    func bindData(_ model: PreferredBrand) {
+        brandNameLbl.text = model.name
+//        unitLbl.text = model.
     }
 }

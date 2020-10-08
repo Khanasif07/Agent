@@ -236,7 +236,7 @@
 "userDetails" = "User Details";
 "paymentStatus" = "Payment Status";
 "amountPaid" = "Amount Paid";
-
+"serviceRequest" = " Service Request";
 
  // MARK: - Home  VC Values
 //==============================

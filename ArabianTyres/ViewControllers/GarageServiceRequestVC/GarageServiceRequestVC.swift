@@ -26,6 +26,7 @@ class GarageServiceRequestVC: BaseVC {
     
     // MARK: - Variables
     //===========================
+    var quantity : Int = 0
     var requestId : String = ""
     var sectionType : [Section] = [.userDetail]
     let viewModel = GarageServiceRequestVM()
@@ -106,15 +107,20 @@ extension GarageServiceRequestVC : UITableViewDelegate, UITableViewDataSource {
         switch sectionType[indexPath.row] {
         case .userDetail:
             let cell = tableView.dequeueCell(with: GarageServiceTopCell.self, indexPath: indexPath)
+            cell.popluateData(viewModel.garageRequestDetailArr ?? GarageRequestModel())
             return cell
         case .countryDetail:
             let cell = tableView.dequeueCell(with: GarageServiceCountryCell.self, indexPath: indexPath)
             cell.countryNameArr = viewModel.garageRequestDetailArr?.preferredCountries ?? []
+            cell.countryBtnTapped = {[weak self] (countryName) in
+                self?.hitBrandListingApi(country: countryName)
+            }
             cell.countryCollView.reloadData()
             return cell
         case .brandListing:
             let cell = tableView.dequeueCell(with: GarageServiceBottomCell.self, indexPath: indexPath)
             cell.brandDataArr = viewModel.garageRequestDetailArr?.preferredBrands ?? []
+            cell.quantity = self.quantity
             cell.internalTableView.reloadData()
             return cell
         }
@@ -128,6 +134,7 @@ extension GarageServiceRequestVC : UITableViewDelegate, UITableViewDataSource {
 extension GarageServiceRequestVC :GarageServiceRequestVMDelegate {
     func getGarageDetailSuccess(message: String) {
         updateDataSource()
+        self.quantity = viewModel.garageRequestDetailArr?.quantity ?? 0
         mainTableView.reloadData()
     }
     
@@ -136,6 +143,14 @@ extension GarageServiceRequestVC :GarageServiceRequestVMDelegate {
     }
     
     func brandListingSuccess(message: String) {
+        if !viewModel.brandsListings.isEmpty {
+            sectionType.contains(.brandListing) ? () : sectionType.append(.brandListing)
+            
+        }else {
+            sectionType.contains(.brandListing) ? sectionType.removeAll{($0 == .brandListing)} : ()
+        }
+        viewModel.garageRequestDetailArr?.preferredBrands = viewModel.brandsListings
+        mainTableView.reloadData()
         
     }
     
@@ -162,9 +177,9 @@ extension GarageServiceRequestVC :GarageServiceRequestVMDelegate {
     }
     
     func hitBrandListingApi(country: String = "") {
-        var params = [ApiKey.page: "1",ApiKey.limit : "100",ApiKey.type: viewModel.garageRequestDetailArr?.requestType ?? ""]
+        var params = [ApiKey.page: "1",ApiKey.limit : "100",ApiKey.type: viewModel.garageRequestDetailArr?.requestType.rawValue ?? ""]
         if !country.isEmpty {
-            params[ApiKey.countries] = country
+            params[ApiKey.country] = country
         }
         viewModel.getBrandListingData(params : params,loader: false)
     }

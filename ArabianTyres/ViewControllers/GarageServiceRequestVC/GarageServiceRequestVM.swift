@@ -38,7 +38,7 @@ class GarageServiceRequestVM {
     }
     
     var garageRequestDetailArr : GarageRequestModel? = nil
-    var brandsListings:[TyreBrandModel] = []
+    var brandsListings:[PreferredBrand] = []
     weak var delegate: GarageServiceRequestVMDelegate?
     
     // MARK: Functions
@@ -108,20 +108,17 @@ class GarageServiceRequestVM {
                     self.delegate?.brandListingSuccess(message: "")
                     return
                 }
-                let modelList = try JSONDecoder().decode([TyreBrandModel].self, from: data)
+                let modelList = try JSONDecoder().decode([PreferredBrand].self, from: data)
                 printDebug(modelList)
                 currentPage = result[ApiKey.data][ApiKey.page].intValue
                 isRequestinApi = false
                 if currentPage == 1 {
                     self.brandsListings = modelList
-                    var allModel = TyreBrandModel()
-                    allModel.name = "All Brands"
-                    self.brandsListings.insert(allModel, at: 0)
                 } else {
                     self.brandsListings.append(contentsOf: modelList)
                 }
                 nextPageAvailable = result[ApiKey.data][ApiKey.next].boolValue
-                currentPage += 1
+//                currentPage += 1
                 self.delegate?.brandListingSuccess(message: "")
             } catch {
                 isRequestinApi = false

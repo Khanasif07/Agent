@@ -35,7 +35,7 @@ enum ListingType {
     case countries
 }
 
-enum Category : String{
+enum Category : String,Codable{
     case oil = "Oil"
     case tyres = "Tyres"
     case battery = "Battery"

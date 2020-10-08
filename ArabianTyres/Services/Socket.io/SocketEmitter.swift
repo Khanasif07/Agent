@@ -35,19 +35,19 @@ extension SocketIOManager {
     }
     private func emitWithACK(withTimeoutAfter seconds: Double, event: String, params: JSONDictionary?, array: [Any]?, ackHandler: (([Any]) -> Void)? = nil) {
         
-        var ack: OnAckCallback?
-        
-        if let tempParams = params {
-            ack = self.socket?.emitWithAck(event, tempParams)
-        } else if let tempArray = array {
-            ack = self.socket?.emitWithAck(event, tempArray)
-        } else {
-            ack = self.socket?.emitWithAck(event)
-        }
-        
-        ack?.timingOut(after: seconds, callback: { (data) in
-            ackHandler?(data)
-        })
+//        var ack: OnAckCallback?
+//        
+//        if let tempParams = params {
+//            ack = self.socket?.emitWithAck(event, tempParams)
+//        } else if let tempArray = array {
+//            ack = self.socket?.emitWithAck(event, tempArray)
+//        } else {
+//            ack = self.socket?.emitWithAck(event)
+//        }
+//        
+//        ack?.timingOut(after: seconds, callback: { (data) in
+//            ackHandler?(data)
+//        })
     }
 }
 // new emit

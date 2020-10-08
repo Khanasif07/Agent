@@ -59,16 +59,16 @@ enum RequestStatus: String, Codable{
 //}
 
 struct GarageRequestModel: Codable {
-    let createdAt, id, requestType, requestID: String
-    let preferredBrands: [PreferredBrand]
+    let createdAt, id, requestID: String?
+    var preferredBrands: [PreferredBrand]
     let profile, rimSize, width: Int?
-    let quantity: Int
+    let quantity: Int?
     let images: [String]
-    let preferredCountries: [PreferredBrand]
+    var preferredCountries: [PreferredBrand]
     let status: RequestStatus
     let year: Int?
     let make, model,userName: String?
-
+    let requestType : Category
     enum CodingKeys: String, CodingKey {
         case createdAt
         case id = "_id"
@@ -80,7 +80,7 @@ struct GarageRequestModel: Codable {
     init() {
         createdAt = ""
         id = ""
-        requestType = ""
+        requestType = .battery
         requestID = ""
         make = ""
         model = ""
