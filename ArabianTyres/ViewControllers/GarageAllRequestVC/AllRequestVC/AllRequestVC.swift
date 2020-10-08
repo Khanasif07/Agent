@@ -25,6 +25,13 @@ class AllRequestVC: BaseVC {
         initialSetup()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+        self.tabBarController?.tabBar.isTranslucent = false
+        self.mainTableView.reloadData()
+    }
+    
     // MARK: - IBActions
     //===========================
     

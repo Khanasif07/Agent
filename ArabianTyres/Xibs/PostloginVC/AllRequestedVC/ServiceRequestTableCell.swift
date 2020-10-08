@@ -79,6 +79,7 @@ class ServiceRequestTableCell: UITableViewCell {
             brandsLbl.text = "Brand: "
             brandDetailLbl.text = model.preferredBrands.map{($0.name)}.joined(separator: ",")
         }
+        
         logoImgView.setImage_kf(imageString: model.images.first ?? "", placeHolderImage: #imageLiteral(resourceName: "group3888"), loader: false)
         statusValueLbl.text = model.status.text
         statusValueLbl.textColor = model.status.textColor

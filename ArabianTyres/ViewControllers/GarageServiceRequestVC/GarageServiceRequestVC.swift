@@ -9,6 +9,12 @@
 import UIKit
 
 class GarageServiceRequestVC: BaseVC {
+   
+    enum Section {
+        case userDetail
+        case countryDetail
+        case brandListing
+    }
     
     // MARK: - IBOutlets
     //===========================
@@ -21,8 +27,9 @@ class GarageServiceRequestVC: BaseVC {
     // MARK: - Variables
     //===========================
     var requestId : String = ""
+    var sectionType : [Section] = [.userDetail]
     let viewModel = GarageServiceRequestVM()
-
+    
     // MARK: - Lifecycle
     //===========================
     override func viewDidLoad() {
@@ -32,6 +39,8 @@ class GarageServiceRequestVC: BaseVC {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        self.tabBarController?.tabBar.isHidden = true
+        self.tabBarController?.tabBar.isTranslucent = true
         self.mainTableView.reloadData()
     }
     
@@ -60,6 +69,7 @@ class GarageServiceRequestVC: BaseVC {
 extension GarageServiceRequestVC {
     
     private func initialSetup() {
+        viewModel.delegate = self
         tableViewSetUp()
         textSetUp()
         hitApi()
@@ -89,26 +99,73 @@ extension GarageServiceRequestVC {
 extension GarageServiceRequestVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return sectionType.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.row {
-        case 0:
-             let cell = tableView.dequeueCell(with: GarageServiceTopCell.self, indexPath: indexPath)
-                   return cell
-        case 1:
+        switch sectionType[indexPath.row] {
+        case .userDetail:
+            let cell = tableView.dequeueCell(with: GarageServiceTopCell.self, indexPath: indexPath)
+            return cell
+        case .countryDetail:
             let cell = tableView.dequeueCell(with: GarageServiceCountryCell.self, indexPath: indexPath)
-                       cell.countryCollView.reloadData()
-                       return cell
-        default:
-           let cell = tableView.dequeueCell(with: GarageServiceBottomCell.self, indexPath: indexPath)
-           return cell
+            cell.countryNameArr = viewModel.garageRequestDetailArr?.preferredCountries ?? []
+            cell.countryCollView.reloadData()
+            return cell
+        case .brandListing:
+            let cell = tableView.dequeueCell(with: GarageServiceBottomCell.self, indexPath: indexPath)
+            cell.brandDataArr = viewModel.garageRequestDetailArr?.preferredBrands ?? []
+            cell.internalTableView.reloadData()
+            return cell
         }
-       
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
+    }
+}
+
+extension GarageServiceRequestVC :GarageServiceRequestVMDelegate {
+    func getGarageDetailSuccess(message: String) {
+        updateDataSource()
+        mainTableView.reloadData()
+    }
+    
+    func getGarageDetailFailed(error: String) {
+        
+    }
+    
+    func brandListingSuccess(message: String) {
+        
+    }
+    
+    func brandListingFailed(error:String) {
+        
+    }
+    
+    func updateDataSource() {
+        var apiHit : Bool = true
+  
+        if !(viewModel.garageRequestDetailArr?.preferredCountries.isEmpty ?? false) {
+            apiHit = false
+            sectionType.append(.countryDetail)
+        }
+        
+        if !(viewModel.garageRequestDetailArr?.preferredBrands.isEmpty ?? false) {
+            apiHit = false
+            sectionType.append(.brandListing)
+        }
+        if apiHit{
+            hitBrandListingApi()
+           
+        }
+    }
+    
+    func hitBrandListingApi(country: String = "") {
+        var params = [ApiKey.page: "1",ApiKey.limit : "100",ApiKey.type: viewModel.garageRequestDetailArr?.requestType ?? ""]
+        if !country.isEmpty {
+            params[ApiKey.countries] = country
+        }
+        viewModel.getBrandListingData(params : params,loader: false)
     }
 }

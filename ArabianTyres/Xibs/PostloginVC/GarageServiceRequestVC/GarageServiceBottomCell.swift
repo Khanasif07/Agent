@@ -11,6 +11,7 @@ import UIKit
 class GarageServiceBottomCell: UITableViewCell {
     
     var selectImageArray: [UIImage] = [#imageLiteral(resourceName: "vehicle"),#imageLiteral(resourceName: "serviceHistory"),#imageLiteral(resourceName: "payment"),#imageLiteral(resourceName: "savedCard")]
+    var brandDataArr : [PreferredBrand] = []
     
     @IBOutlet weak var dataContainerView: UIView!
     @IBOutlet weak var internalTableView: AGTableView!
@@ -59,12 +60,12 @@ extension GarageServiceBottomCell: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.selectImageArray.endIndex
+        return self.brandDataArr.endIndex
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(with: GarageServiceBrandsCell.self, indexPath: indexPath)
-        if indexPath.row == self.selectImageArray.endIndex - 1{
+        if indexPath.row == self.brandDataArr.endIndex - 1{
             cell.dashViewHeightConst.constant = 0
             cell.dashView.isHidden = true
         }

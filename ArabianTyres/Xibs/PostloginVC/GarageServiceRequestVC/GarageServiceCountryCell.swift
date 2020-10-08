@@ -11,7 +11,7 @@ import UIKit
 class GarageServiceCountryCell: UITableViewCell {
     
     
-    var catNameArr = ["India","Afg","UK", "Arab","Dubai"]
+    var countryNameArr : [PreferredBrand] = []
 
     @IBOutlet weak var countryCollView: UICollectionView!
     @IBOutlet weak var titleLbl: UILabel!
@@ -27,7 +27,7 @@ class GarageServiceCountryCell: UITableViewCell {
 
 extension GarageServiceCountryCell : UICollectionViewDelegate,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return catNameArr.count
+        return countryNameArr.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -35,14 +35,14 @@ extension GarageServiceCountryCell : UICollectionViewDelegate,UICollectionViewDa
         cell.cancelBtn.isHidden = true
         cell.cancelBtnHeightConstraint.constant = 0.0
         cell.skillLbl.contentMode = .center
-        cell.skillLbl.text = self.catNameArr[indexPath.item]
+        cell.skillLbl.text = self.countryNameArr[indexPath.item].name
         cell.containerView.backgroundColor = .white
         cell.layoutSubviews()
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let text = self.catNameArr[indexPath.row]
+        let text = self.countryNameArr[indexPath.item].name
         let textSize = text.sizeCount(withFont: AppFonts.NunitoSansSemiBold.withSize(14.0), boundingSize: CGSize(width: 10000.0, height: 32.0))
         return CGSize(width: textSize.width + 20, height: 34.0)
     }

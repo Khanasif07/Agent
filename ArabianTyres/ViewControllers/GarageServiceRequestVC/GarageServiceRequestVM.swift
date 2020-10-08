@@ -13,8 +13,14 @@ import SwiftyJSON
 protocol GarageServiceRequestVMDelegate: class {
     func getGarageDetailSuccess(message: String)
     func getGarageDetailFailed(error:String)
+    func brandListingSuccess(message: String)
+    func brandListingFailed(error:String)
 }
 
+extension GarageServiceRequestVMDelegate {
+    func brandListingSuccess(message: String){}
+    func brandListingFailed(error:String){}
+}
 
 class GarageServiceRequestVM {
 
@@ -31,7 +37,8 @@ class GarageServiceRequestVM {
         return  hideLoader ? false : nextPageAvailable
     }
     
-    var garageRequestListing = [GarageRequestModel]()
+    var garageRequestDetailArr : GarageRequestModel? = nil
+    var brandsListings:[TyreBrandModel] = []
     weak var delegate: GarageServiceRequestVMDelegate?
     
     // MARK: Functions
@@ -50,24 +57,21 @@ class GarageServiceRequestVM {
     
 
         func parseToMakeListingData(result: JSON) {
-            if let jsonString = result[ApiKey.data][ApiKey.result].rawString(), let data = jsonString.data(using: .utf8) {
+            if let jsonString = result[ApiKey.data].rawString(), let data = jsonString.data(using: .utf8) {
                 do {
-                    if result[ApiKey.data][ApiKey.result].arrayValue.isEmpty {
+                    if result[ApiKey.data].isEmpty {
                         self.hideLoader = true
-                        self.garageRequestListing = []
+                        self.garageRequestDetailArr = nil
                         isRequestinApi = false
                         self.delegate?.getGarageDetailSuccess(message: "")
                         return
                     }
-                    let modelList = try JSONDecoder().decode([GarageRequestModel].self, from: data)
+                    let modelList = try! JSONDecoder().decode(GarageRequestModel.self, from: data)
                     printDebug(modelList)
                     currentPage = result[ApiKey.data][ApiKey.page].intValue
                     isRequestinApi = false
-                    if currentPage == 1 {
-                        self.garageRequestListing = modelList
-                    } else {
-                        self.garageRequestListing.append(contentsOf: modelList)
-                    }
+                    self.garageRequestDetailArr = modelList
+                 
                     nextPageAvailable = result[ApiKey.data][ApiKey.next].boolValue
                     currentPage += 1
                     self.delegate?.getGarageDetailSuccess(message: "")
@@ -78,6 +82,54 @@ class GarageServiceRequestVM {
                 }
             }
         }
+    
+    
+    func getBrandListingData(params: JSONDictionary,loader: Bool = true,pagination: Bool = false){
+        if pagination {
+            guard nextPageAvailable, !isRequestinApi else { return }
+        } else {
+            guard !isRequestinApi else { return }
+        }
+        isRequestinApi = true
+        WebServices.getBrandListingData(parameters: params, success: { (json) in
+            self.parseToBankListingData(result: json)
+        }) { (error) -> (Void) in
+            self.delegate?.brandListingFailed(error: error.localizedDescription)
+        }
     }
+    
+    func parseToBankListingData(result: JSON) {
+        if let jsonString = result[ApiKey.data][ApiKey.result].rawString(), let data = jsonString.data(using: .utf8) {
+            do {
+                if result[ApiKey.data][ApiKey.result].arrayValue.isEmpty {
+                    self.hideLoader = true
+                    self.brandsListings = []
+                    isRequestinApi = false
+                    self.delegate?.brandListingSuccess(message: "")
+                    return
+                }
+                let modelList = try JSONDecoder().decode([TyreBrandModel].self, from: data)
+                printDebug(modelList)
+                currentPage = result[ApiKey.data][ApiKey.page].intValue
+                isRequestinApi = false
+                if currentPage == 1 {
+                    self.brandsListings = modelList
+                    var allModel = TyreBrandModel()
+                    allModel.name = "All Brands"
+                    self.brandsListings.insert(allModel, at: 0)
+                } else {
+                    self.brandsListings.append(contentsOf: modelList)
+                }
+                nextPageAvailable = result[ApiKey.data][ApiKey.next].boolValue
+                currentPage += 1
+                self.delegate?.brandListingSuccess(message: "")
+            } catch {
+                isRequestinApi = false
+                self.delegate?.brandListingFailed(error: "error occured")
+                printDebug("error occured")
+            }
+        }
+    }
+}
 
 

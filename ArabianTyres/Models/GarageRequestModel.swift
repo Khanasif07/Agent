@@ -12,7 +12,7 @@ import UIKit
 enum RequestStatus: String, Codable{
     
     case openForBidding = "pending"
-    case bidPlaced = "satafasdf"
+    case bidPlaced = "cancelled"
     case bidFinalsed = "sdfsdfs"
   
     var text : String {
@@ -67,13 +67,32 @@ struct GarageRequestModel: Codable {
     let preferredCountries: [PreferredBrand]
     let status: RequestStatus
     let year: Int?
-    let make, model: String?
+    let make, model,userName: String?
 
     enum CodingKeys: String, CodingKey {
         case createdAt
         case id = "_id"
         case requestType
         case requestID = "requestId"
-        case width, preferredBrands, profile, rimSize, quantity, images, preferredCountries, status, year, make, model
+        case width, preferredBrands, profile, rimSize, quantity, images, preferredCountries, status, year, make, model, userName
+    }
+    
+    init() {
+        createdAt = ""
+        id = ""
+        requestType = ""
+        requestID = ""
+        make = ""
+        model = ""
+        userName = ""
+        year = 0
+        status = .bidFinalsed
+        preferredCountries = []
+        preferredBrands = []
+        images = []
+        quantity = 0
+        profile = 0
+        rimSize = 0
+        width = 0
     }
 }

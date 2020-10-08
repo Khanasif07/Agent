@@ -48,13 +48,15 @@ struct UserServiceRequestModel: Codable {
 // MARK: - PreferredBrand
 struct PreferredBrand: Codable {
     let id, name: String
-
+    let countrySpecificBrands : [String]?
     enum CodingKeys: String, CodingKey {
         case id = "_id"
         case name
+        case countrySpecificBrands
     }
     init(){
         id  = ""
         name  = ""
+        countrySpecificBrands = []
     }
 }
