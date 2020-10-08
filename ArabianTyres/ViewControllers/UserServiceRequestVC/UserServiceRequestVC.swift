@@ -26,7 +26,7 @@ class UserServiceRequestVC: BaseVC {
     // MARK: - Variables
     //===========================
     var viewModel = UserServiceRequestVM()
-    var arr = ["MRF", "BridgeStone", "Apllo","max","apple","apple","apple","BridgeStone"]
+    var brandsArray = [String]()
 
     
     // MARK: - Lifecycle
@@ -36,11 +36,21 @@ class UserServiceRequestVC: BaseVC {
         initialSetup()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-      viewAllBtn.round(radius: 4.0)
+        viewAllBtn.round(radius: 4.0)
 
-        if !arr.isEmpty{
+        if !brandsArray.isEmpty{
             self.brandCollViewHeightConstraint.constant = brandCollView.contentSize.height + 38.0
         }else {
             self.brandCollViewHeightConstraint.constant = 60.0
@@ -76,7 +86,11 @@ extension UserServiceRequestVC {
 //===========================
 extension UserServiceRequestVC: UserAllRequestVMDelegate{
     func getUserMyRequestDataSuccess(message: String) {
-        ToastView.shared.showLongToast(self.view, msg: message)
+        requestNoValueLbl.text = self.viewModel.userRequestDetail.requestID
+        self.brandsArray = self.viewModel.userRequestDetail.preferredBrands.map({ (model) -> String in
+            model.name
+        })
+        self.brandCollView.reloadData()
     }
     
     func mgetUserMyRequestDataFailed(error: String) {
@@ -98,7 +112,7 @@ extension UserServiceRequestVC: UserAllRequestVMDelegate{
 extension UserServiceRequestVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return arr.count
+        return brandsArray.count
     }
     
     
@@ -107,7 +121,7 @@ extension UserServiceRequestVC: UICollectionViewDelegate,UICollectionViewDataSou
         cell.cancelBtn.isHidden = true
         cell.cancelBtnHeightConstraint.constant = 0.0
         cell.skillLbl.contentMode = .center
-        cell.skillLbl.text = arr[indexPath.item]
+        cell.skillLbl.text = brandsArray[indexPath.item]
   
         cell.layoutSubviews()
         return cell
@@ -119,7 +133,7 @@ extension UserServiceRequestVC: UICollectionViewDelegate,UICollectionViewDataSou
     
     private func cardSizeForItemAt(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, indexPath: IndexPath) -> CGSize {
     
-        let textSize = arr[indexPath.row].sizeCount(withFont: AppFonts.NunitoSansSemiBold.withSize(14.0), boundingSize: CGSize(width: 10000.0, height: collectionView.frame.height))
+        let textSize = brandsArray[indexPath.row].sizeCount(withFont: AppFonts.NunitoSansSemiBold.withSize(14.0), boundingSize: CGSize(width: 10000.0, height: collectionView.frame.height))
         return CGSize(width: textSize.width + 16, height: 44.0)
     }
     

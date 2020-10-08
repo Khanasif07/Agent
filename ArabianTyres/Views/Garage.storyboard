@@ -2024,7 +2024,7 @@ Service Center</string>
                                 <rect key="frame" x="0.0" y="100" width="414" height="796"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r3R-jv-6Sw">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="796"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="868"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qJ5-yA-DoH">
                                                 <rect key="frame" x="22" y="16" width="376" height="356.5"/>
@@ -2183,13 +2183,13 @@ Service Center</string>
                                                                                 <rect key="frame" x="13.5" y="0.0" width="79.5" height="31.5"/>
                                                                                 <subviews>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="250" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rg6-IC-VNX">
-                                                                                        <rect key="frame" x="0.0" y="0.0" width="45.5" height="31.5"/>
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="48.5" height="31.5"/>
                                                                                         <fontDescription key="fontDescription" name="NunitoSans-ExtraBold" family="Nunito Sans" pointSize="27"/>
                                                                                         <nil key="textColor"/>
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Miles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cGk-MU-sAY">
-                                                                                        <rect key="frame" x="45.5" y="16" width="34" height="15.5"/>
+                                                                                        <rect key="frame" x="48.5" y="16" width="31" height="15.5"/>
                                                                                         <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="13"/>
                                                                                         <nil key="textColor"/>
                                                                                         <nil key="highlightedColor"/>
@@ -2234,14 +2234,51 @@ Service Center</string>
                                                     <constraint firstAttribute="height" constant="25" id="BuF-55-zCP"/>
                                                 </constraints>
                                             </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qgX-G2-8Al">
+                                                <rect key="frame" x="16" y="647.5" width="382" height="120.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brand Preferences" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QOa-IJ-moR">
+                                                        <rect key="frame" x="32" y="8" width="108" height="15.5"/>
+                                                        <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="13"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jND-Pf-dRL">
+                                                        <rect key="frame" x="32" y="31.5" width="318" height="74"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="74" id="Rx5-Aj-MOw"/>
+                                                        </constraints>
+                                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fKE-WM-BWw">
+                                                            <size key="itemSize" width="50" height="50"/>
+                                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                        </collectionViewFlowLayout>
+                                                        <cells/>
+                                                    </collectionView>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="jND-Pf-dRL" secondAttribute="bottom" constant="15" id="6Al-ZS-KNw"/>
+                                                    <constraint firstItem="jND-Pf-dRL" firstAttribute="top" secondItem="QOa-IJ-moR" secondAttribute="bottom" constant="8" id="8eh-Kt-bgB"/>
+                                                    <constraint firstItem="QOa-IJ-moR" firstAttribute="top" secondItem="qgX-G2-8Al" secondAttribute="top" constant="8" id="CLJ-r3-bGm"/>
+                                                    <constraint firstItem="jND-Pf-dRL" firstAttribute="leading" secondItem="qgX-G2-8Al" secondAttribute="leading" constant="32" id="EhU-Pi-ldA"/>
+                                                    <constraint firstAttribute="trailing" secondItem="jND-Pf-dRL" secondAttribute="trailing" constant="32" id="p25-oF-zwJ"/>
+                                                    <constraint firstItem="QOa-IJ-moR" firstAttribute="leading" secondItem="qgX-G2-8Al" secondAttribute="leading" constant="32" id="qos-c8-bJi"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="hvd-00-fWd" secondAttribute="bottom" priority="750" constant="30" id="NkO-yG-Zth"/>
+                                            <constraint firstItem="qgX-G2-8Al" firstAttribute="leading" secondItem="r3R-jv-6Sw" secondAttribute="leading" constant="16" id="1HR-r7-Hep"/>
+                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="qgX-G2-8Al" secondAttribute="bottom" priority="750" constant="100" id="BfR-i0-vcb"/>
+                                            <constraint firstItem="qgX-G2-8Al" firstAttribute="top" secondItem="hvd-00-fWd" secondAttribute="bottom" id="IhS-a5-exg"/>
                                             <constraint firstItem="hDX-TD-rtm" firstAttribute="top" secondItem="qJ5-yA-DoH" secondAttribute="bottom" id="P7V-aF-BTT"/>
                                             <constraint firstAttribute="trailing" secondItem="hDX-TD-rtm" secondAttribute="trailing" constant="16" id="Pgq-qn-Vko"/>
                                             <constraint firstItem="qJ5-yA-DoH" firstAttribute="leading" secondItem="r3R-jv-6Sw" secondAttribute="leading" constant="22" id="WZe-S2-4ry"/>
                                             <constraint firstItem="hvd-00-fWd" firstAttribute="trailing" secondItem="hDX-TD-rtm" secondAttribute="trailing" id="Zij-9I-kyM"/>
+                                            <constraint firstAttribute="trailing" secondItem="qgX-G2-8Al" secondAttribute="trailing" constant="16" id="b5L-wz-zsX"/>
                                             <constraint firstItem="hvd-00-fWd" firstAttribute="top" secondItem="hDX-TD-rtm" secondAttribute="bottom" id="cZM-uH-eqj"/>
                                             <constraint firstItem="hDX-TD-rtm" firstAttribute="leading" secondItem="r3R-jv-6Sw" secondAttribute="leading" constant="16" id="dtM-gh-UJG"/>
                                             <constraint firstItem="qJ5-yA-DoH" firstAttribute="top" secondItem="r3R-jv-6Sw" secondAttribute="top" constant="16" id="i9Q-Ri-JEj"/>
@@ -2287,6 +2324,8 @@ Service Center</string>
                         <viewLayoutGuide key="safeArea" id="glr-CI-w7P"/>
                     </view>
                     <connections>
+                        <outlet property="brandCollView" destination="jND-Pf-dRL" id="lno-sF-Hwd"/>
+                        <outlet property="brandCollViewHeightConstraint" destination="Rx5-Aj-MOw" id="UMd-RL-xEY"/>
                         <outlet property="mainImgView" destination="1HE-RU-LpJ" id="tNE-Xi-48e"/>
                         <outlet property="requestNoLbl" destination="YRY-nQ-8lE" id="lPd-Zt-r5o"/>
                         <outlet property="requestNoValueLbl" destination="o7v-iC-6Gk" id="OHR-EW-tw9"/>
