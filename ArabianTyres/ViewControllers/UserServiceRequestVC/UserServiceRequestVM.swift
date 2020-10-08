@@ -1,27 +1,26 @@
 //
-//  UserAllRequestVM.swift
+//  UserServiceRequestVM.swift
 //  ArabianTyres
 //
-//  Created by Admin on 07/10/20.
+//  Created by Admin on 08/10/20.
 //  Copyright © 2020 Admin. All rights reserved.
 //
-
 
 import Foundation
 import SwiftyJSON
 
 
-protocol UserAllRequestVMDelegate: class {
-    func getUserMyRequestDataSuccess(message: String)
-    func mgetUserMyRequestDataFailed(error:String)
+protocol UserServiceRequestVMDelegate: class {
+    func getUserMyRequestDetailSuccess(message: String)
+    func mgetUserMyRequestDetailFailed(error:String)
 }
 
 
-class UserAllRequestVM{
+class UserServiceRequestVM{
     
     //MARK:- Variables
     //================
-    var searchText: String = ""
+    var requestId: String  = ""
     var hideLoader: Bool = false
     var currentPage = 1
     var totalPages = 1
@@ -37,14 +36,14 @@ class UserAllRequestVM{
     //MARK:- Functions
     
     
-    func getUserMyRequestData(params: JSONDictionary,loader: Bool = true,pagination: Bool = false){
+    func getUserMyRequestDetailData(params: JSONDictionary,loader: Bool = true,pagination: Bool = false){
         if pagination {
             guard nextPageAvailable, !isRequestinApi else { return }
         } else {
             guard !isRequestinApi else { return }
         }
         isRequestinApi = true
-        WebServices.getUserMyRequestData(parameters: params, success: { (json) in
+        WebServices.getUserMyRequestDetailData(parameters: params, success: { (json) in
             self.parseToMakeListingData(result: json)
         }) { (error) -> (Void) in
             self.delegate?.mgetUserMyRequestDataFailed(error: error.localizedDescription)

@@ -284,7 +284,7 @@ extension WebServices{
                 AppUserDefaults.save(value: accessToken, forKey: .accesstoken)}
             let currentRole =  json[ApiKey.data][ApiKey.currentRole].stringValue
             if !currentRole.isEmpty{
-                 AppUserDefaults.save(value: currentRole, forKey: .currentUserType)
+                AppUserDefaults.save(value: currentRole, forKey: .currentUserType)
             }
             success(user)
         }) { (error) -> (Void) in
@@ -415,7 +415,7 @@ extension WebServices{
                                    success: @escaping ResponseMessage,
                                    failure: @escaping FailureResponse) {
         self.commonPostAPI(parameters: parameters, endPoint: .garageProfile,loader: true, success: { (json) in
-           AppUserDefaults.save(value: json[ApiKey.data][ApiKey.isGarrage].boolValue, forKey: .isGarrage)
+            AppUserDefaults.save(value: json[ApiKey.data][ApiKey.isGarrage].boolValue, forKey: .isGarrage)
             success(json[ApiKey.message].stringValue)
         }) { (error) -> (Void) in
             failure(error)
@@ -449,8 +449,8 @@ extension WebServices{
     // MARK:- Post Battery Request
     //=========================
     static func postBatteryRequest(parameters: JSONDictionary,
-                                success: @escaping ResponseMessage,
-                                failure: @escaping FailureResponse) {
+                                   success: @escaping ResponseMessage,
+                                   failure: @escaping FailureResponse) {
         self.commonPostAPI(parameters: parameters, endPoint: .userBatteryRequest,loader: true, success: { (json) in
             success(json[ApiKey.message].stringValue)
         }) { (error) -> (Void) in
@@ -459,8 +459,8 @@ extension WebServices{
     }
     
     static func postOilRequest(parameters: JSONDictionary,
-                                success: @escaping ResponseMessage,
-                                failure: @escaping FailureResponse) {
+                               success: @escaping ResponseMessage,
+                               failure: @escaping FailureResponse) {
         self.commonPostAPI(parameters: parameters, endPoint: .userOilRequest,loader: true, success: { (json) in
             success(json[ApiKey.message].stringValue)
         }) { (error) -> (Void) in
@@ -546,24 +546,24 @@ extension WebServices{
     }
     
     // MARK:- Model Listing Data
-      //=================
-      static func getModelListingData(parameters: JSONDictionary,
-                                     success: @escaping SuccessResponse,
-                                     failure: @escaping FailureResponse) {
-          self.commonGetAPI(parameters: parameters,endPoint: .userServiceModel, success: { (json) in
-              let code = json[ApiKey.statusCode].intValue
-              let msg = json[ApiKey.message].stringValue
-              switch code {
-              case ApiCode.success:
-                  success(json)
-              default:
-                  failure(NSError(code: code, localizedDescription: msg))
-              }
-          }) { (error) -> (Void) in
-              failure(error)
-          }
-      }
-       
+    //=================
+    static func getModelListingData(parameters: JSONDictionary,
+                                    success: @escaping SuccessResponse,
+                                    failure: @escaping FailureResponse) {
+        self.commonGetAPI(parameters: parameters,endPoint: .userServiceModel, success: { (json) in
+            let code = json[ApiKey.statusCode].intValue
+            let msg = json[ApiKey.message].stringValue
+            switch code {
+            case ApiCode.success:
+                success(json)
+            default:
+                failure(NSError(code: code, localizedDescription: msg))
+            }
+        }) { (error) -> (Void) in
+            failure(error)
+        }
+    }
+    
     
     // MARK:- Complete Garage Profile
     //==============================
@@ -574,7 +574,7 @@ extension WebServices{
             let msg = json[ApiKey.message].stringValue
             let currentRole =  json[ApiKey.data][ApiKey.currentRole].stringValue
             if !currentRole.isEmpty{
-                 AppUserDefaults.save(value: currentRole, forKey: .currentUserType)
+                AppUserDefaults.save(value: currentRole, forKey: .currentUserType)
             }
             success(msg)
         }) { (error) -> (Void) in
@@ -611,50 +611,50 @@ extension WebServices{
         }
     }
     
-    // MARK:- Tyre Size Listing Data
-       //=================
-       static func getGarageRequestListing(parameters: JSONDictionary,
-                                          success: @escaping SuccessResponse,
-                                          failure: @escaping FailureResponse) {
-           self.commonGetAPI(parameters: parameters,endPoint: .garageRequest, success: { (json) in
-               let code = json[ApiKey.statusCode].intValue
-               let msg = json[ApiKey.message].stringValue
-               switch code {
-               case ApiCode.success:
-                   success(json)
-               default:
-                   failure(NSError(code: code, localizedDescription: msg))
-               }
-           }) { (error) -> (Void) in
-               failure(error)
-           }
+    // MARK:- UserMyRequest Listing Data
+    //=================
+    static func getGarageRequestListing(parameters: JSONDictionary,
+                                        success: @escaping SuccessResponse,
+                                        failure: @escaping FailureResponse) {
+        self.commonGetAPI(parameters: parameters,endPoint: .garageRequest, success: { (json) in
+            let code = json[ApiKey.statusCode].intValue
+            let msg = json[ApiKey.message].stringValue
+            switch code {
+            case ApiCode.success:
+                success(json)
+            default:
+                failure(NSError(code: code, localizedDescription: msg))
+            }
+        }) { (error) -> (Void) in
+            failure(error)
+        }
     }
     
     // MARK:- Tyre Size Listing Data
-       //=================
-       static func getGarageRequestDetail(parameters: JSONDictionary,
-                                          success: @escaping SuccessResponse,
-                                          failure: @escaping FailureResponse) {
-           self.commonGetAPI(parameters: parameters,endPoint: .garageRequestDetail, success: { (json) in
-               let code = json[ApiKey.statusCode].intValue
-               let msg = json[ApiKey.message].stringValue
-               switch code {
-               case ApiCode.success:
-                   success(json)
-               default:
-                   failure(NSError(code: code, localizedDescription: msg))
-               }
-           }) { (error) -> (Void) in
-               failure(error)
-           }
+    //=================
+    static func getGarageRequestDetail(parameters: JSONDictionary,
+                                       success: @escaping SuccessResponse,
+                                       failure: @escaping FailureResponse) {
+        self.commonGetAPI(parameters: parameters,endPoint: .garageRequestDetail, success: { (json) in
+            let code = json[ApiKey.statusCode].intValue
+            let msg = json[ApiKey.message].stringValue
+            switch code {
+            case ApiCode.success:
+                success(json)
+            default:
+                failure(NSError(code: code, localizedDescription: msg))
+            }
+        }) { (error) -> (Void) in
+            failure(error)
+        }
     }
     
     
     // MARK:- Make Listing Data
     //=================
     static func getUserMyRequestData(parameters: JSONDictionary,
-                                   success: @escaping SuccessResponse,
-                                   failure: @escaping FailureResponse) {
+                                     success: @escaping SuccessResponse,
+                                     failure: @escaping FailureResponse) {
         self.commonGetAPI(parameters: parameters,endPoint: .userMyServiceRequests, success: { (json) in
             let code = json[ApiKey.statusCode].intValue
             let msg = json[ApiKey.message].stringValue
@@ -669,5 +669,22 @@ extension WebServices{
         }
     }
     
+    // MARK:- UserMyRequestDetail Data
+    //=================
+    static func getUserMyRequestDetailData(parameters: JSONDictionary,
+                                           success: @escaping SuccessResponse,
+                                           failure: @escaping FailureResponse) {
+        self.commonGetAPI(parameters: parameters,endPoint: .userMyServiceRequestsDetail, success: { (json) in
+            let code = json[ApiKey.statusCode].intValue
+            let msg = json[ApiKey.message].stringValue
+            switch code {
+            case ApiCode.success:
+                success(json)
+            default:
+                failure(NSError(code: code, localizedDescription: msg))
+            }
+        }) { (error) -> (Void) in
+            failure(error)
+        }
+    }
 }
-

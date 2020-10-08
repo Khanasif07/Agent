@@ -11,6 +11,7 @@
 		8411D358252DA79300E6FA6C /* UserServiceRequestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8411D357252DA79300E6FA6C /* UserServiceRequestVC.swift */; };
 		8411D35A252DB78C00E6FA6C /* UserAllRequestVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8411D359252DB78C00E6FA6C /* UserAllRequestVM.swift */; };
 		8411D35C252DEDD100E6FA6C /* UserServiceRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8411D35B252DEDD100E6FA6C /* UserServiceRequestModel.swift */; };
+		8411D35E252EAC4B00E6FA6C /* UserServiceRequestVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8411D35D252EAC4B00E6FA6C /* UserServiceRequestVM.swift */; };
 		84144F23252C485B00D6572F /* UserAllRequestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84144F22252C485B00D6572F /* UserAllRequestVC.swift */; };
 		84144F27252C4AAD00D6572F /* MyServiceTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84144F25252C4AAD00D6572F /* MyServiceTableCell.swift */; };
 		84144F28252C4AAD00D6572F /* MyServiceTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84144F26252C4AAD00D6572F /* MyServiceTableCell.xib */; };
@@ -272,6 +273,7 @@
 		8411D357252DA79300E6FA6C /* UserServiceRequestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceRequestVC.swift; sourceTree = "<group>"; };
 		8411D359252DB78C00E6FA6C /* UserAllRequestVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAllRequestVM.swift; sourceTree = "<group>"; };
 		8411D35B252DEDD100E6FA6C /* UserServiceRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceRequestModel.swift; sourceTree = "<group>"; };
+		8411D35D252EAC4B00E6FA6C /* UserServiceRequestVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceRequestVM.swift; sourceTree = "<group>"; };
 		84144F22252C485B00D6572F /* UserAllRequestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAllRequestVC.swift; sourceTree = "<group>"; };
 		84144F25252C4AAD00D6572F /* MyServiceTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyServiceTableCell.swift; sourceTree = "<group>"; };
 		84144F26252C4AAD00D6572F /* MyServiceTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyServiceTableCell.xib; sourceTree = "<group>"; };
@@ -566,6 +568,7 @@
 			isa = PBXGroup;
 			children = (
 				8411D357252DA79300E6FA6C /* UserServiceRequestVC.swift */,
+				8411D35D252EAC4B00E6FA6C /* UserServiceRequestVM.swift */,
 			);
 			path = UserServiceRequestVC;
 			sourceTree = "<group>";
@@ -2071,6 +2074,7 @@
 				842B2FCC25133EC500E3CF67 /* BankListingVM.swift in Sources */,
 				8481F9FD2500AA9A00AB6EFB /* AppDelegate.swift in Sources */,
 				A45566CD250B4EAC009E4324 /* RegistraionPendingVC.swift in Sources */,
+				8411D35E252EAC4B00E6FA6C /* UserServiceRequestVM.swift in Sources */,
 				A4B74CC92510C22700771974 /* GarageRegistrationVM.swift in Sources */,
 				844D81DF250243B300550334 /* SignUpTopCell.swift in Sources */,
 				8481FA6B2500BFD500AB6EFB /* AWSS3Manager.swift in Sources */,

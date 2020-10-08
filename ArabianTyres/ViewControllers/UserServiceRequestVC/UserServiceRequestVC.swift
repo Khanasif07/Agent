@@ -25,7 +25,9 @@ class UserServiceRequestVC: BaseVC {
     
     // MARK: - Variables
     //===========================
+    var viewModel = UserServiceRequestVM()
     var arr = ["MRF", "BridgeStone", "Apllo","max","apple","apple","apple","BridgeStone"]
+
     
     // MARK: - Lifecycle
     //===========================
@@ -63,8 +65,22 @@ class UserServiceRequestVC: BaseVC {
 extension UserServiceRequestVC {
     
     private func initialSetup() {
+        self.setupCollectionView()
+        viewModel.delegate = self
         viewAllBtn.isEnabled = true
-        setupCollectionView()
+        viewModel.getUserMyRequestDetailData(params: [ApiKey.requestId: self.viewModel.requestId])
+    }
+}
+
+// MARK: - Extension For UserAllRequestVMDelegate
+//===========================
+extension UserServiceRequestVC: UserAllRequestVMDelegate{
+    func getUserMyRequestDataSuccess(message: String) {
+        ToastView.shared.showLongToast(self.view, msg: message)
+    }
+    
+    func mgetUserMyRequestDataFailed(error: String) {
+        ToastView.shared.showLongToast(self.view, msg: error)
     }
     
     private func setupCollectionView(){
@@ -76,7 +92,8 @@ extension UserServiceRequestVC {
     }
 }
 
-
+// MARK: - Extension For Collection View
+//===========================
 
 extension UserServiceRequestVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
 
