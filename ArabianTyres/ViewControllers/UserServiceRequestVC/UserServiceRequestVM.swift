@@ -12,7 +12,9 @@ import SwiftyJSON
 
 protocol UserServiceRequestVMDelegate: class {
     func getUserMyRequestDetailSuccess(message: String)
-    func mgetUserMyRequestDetailFailed(error:String)
+    func getUserMyRequestDetailFailed(error:String)
+    func cancelUserMyRequestDetailSuccess(message: String)
+    func cancelUserMyRequestDetailFailed(error:String)
 }
 
 
@@ -31,7 +33,7 @@ class UserServiceRequestVM{
     }
     
     var userRequestDetail = UserServiceRequestModel()
-    weak var delegate: UserAllRequestVMDelegate?
+    weak var delegate: UserServiceRequestVMDelegate?
     
     //MARK:- Functions
     
@@ -46,9 +48,19 @@ class UserServiceRequestVM{
         WebServices.getUserMyRequestDetailData(parameters: params, success: { (json) in
             self.parseToMakeListingData(result: json)
         }) { (error) -> (Void) in
-            self.delegate?.mgetUserMyRequestDataFailed(error: error.localizedDescription)
+            self.delegate?.getUserMyRequestDetailFailed(error: error.localizedDescription)
         }
     }
+    
+    func cancelUserMyRequestDetailData(params: JSONDictionary,loader: Bool = true){
+        WebServices.cancelUserMyRequestDetailData(parameters: params, success: { (json) in
+            let msg = json[ApiKey.message].stringValue
+            self.delegate?.cancelUserMyRequestDetailSuccess(message: msg)
+        }) { (error) -> (Void) in
+            self.delegate?.cancelUserMyRequestDetailFailed(error: error.localizedDescription)
+        }
+    }
+    
     
     func parseToMakeListingData(result: JSON) {
         if let jsonString = result[ApiKey.data].rawString(), let data = jsonString.data(using: .utf8) {
@@ -60,10 +72,10 @@ class UserServiceRequestVM{
                 self.userRequestDetail = modelList
                 nextPageAvailable = result[ApiKey.data][ApiKey.next].boolValue
                 currentPage += 1
-                self.delegate?.getUserMyRequestDataSuccess(message: "")
+                self.delegate?.getUserMyRequestDetailSuccess(message: "")
             } catch {
                 isRequestinApi = false
-                self.delegate?.mgetUserMyRequestDataFailed(error: "error occured")
+                self.delegate?.getUserMyRequestDetailFailed(error: "error occured")
                 printDebug("error occured")
             }
         }

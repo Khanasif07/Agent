@@ -52,6 +52,7 @@ extension WebServices {
         case userMyServiceRequests = "user/services/myServiceRequests"
         case garageRequestDetail = "user/services/garageRequestDetail"
         case userMyServiceRequestsDetail = "user/services/requestDetail"
+        case userMyServiceRequestsCancel = "user/services/userCancelRequest"
         
         var path : String {
             let url = baseUrl
