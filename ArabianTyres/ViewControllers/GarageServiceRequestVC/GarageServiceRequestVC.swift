@@ -20,7 +20,9 @@ class GarageServiceRequestVC: BaseVC {
     
     // MARK: - Variables
     //===========================
-    
+    var requestId : String = ""
+    let viewModel = GarageServiceRequestVM()
+
     // MARK: - Lifecycle
     //===========================
     override func viewDidLoad() {
@@ -60,6 +62,7 @@ extension GarageServiceRequestVC {
     private func initialSetup() {
         tableViewSetUp()
         textSetUp()
+        hitApi()
     }
     
     private func tableViewSetUp(){
@@ -74,6 +77,10 @@ extension GarageServiceRequestVC {
     private func textSetUp(){
         requestBtn.isBorderSelected = true
         placeBidBtn.isEnabled = true
+    }
+    
+    private func hitApi(){
+        viewModel.getGarageRequestDetailData(params: [ApiKey.requestId: requestId])
     }
 }
 

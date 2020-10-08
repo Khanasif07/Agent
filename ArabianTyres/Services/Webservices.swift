@@ -628,7 +628,28 @@ extension WebServices{
            }) { (error) -> (Void) in
                failure(error)
            }
-       }
+    }
+    
+    // MARK:- Tyre Size Listing Data
+       //=================
+       static func getGarageRequestDetail(parameters: JSONDictionary,
+                                          success: @escaping SuccessResponse,
+                                          failure: @escaping FailureResponse) {
+           self.commonGetAPI(parameters: parameters,endPoint: .garageRequestDetail, success: { (json) in
+               let code = json[ApiKey.statusCode].intValue
+               let msg = json[ApiKey.message].stringValue
+               switch code {
+               case ApiCode.success:
+                   success(json)
+               default:
+                   failure(NSError(code: code, localizedDescription: msg))
+               }
+           }) { (error) -> (Void) in
+               failure(error)
+           }
+    }
+    
+    
     // MARK:- Make Listing Data
     //=================
     static func getUserMyRequestData(parameters: JSONDictionary,
