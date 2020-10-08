@@ -35,6 +35,7 @@ class MyServiceTableCell: UITableViewCell {
     
     public func populateData(model: UserServiceRequestModel){
         self.serviceTypeLbl.text = model.requestType
+        self.logoImgView.image = #imageLiteral(resourceName: "maskGroup")
         self.requestNoValueLbl.text  = model.requestID
         let date = (model.createdAt).breakCompletDate(outPutFormat: Date.DateFormat.profileFormat.rawValue, inputFormat: Date.DateFormat.yyyyMMddTHHmmsssssz.rawValue)
         self.timeLbl.text = date

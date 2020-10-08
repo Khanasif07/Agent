@@ -21,6 +21,7 @@ class UserServiceRequestVC: BaseVC {
     @IBOutlet weak var mainImgView: UIImageView!
     // MARK: - Variables
     //===========================
+    var viewModel = UserServiceRequestVM()
     
     // MARK: - Lifecycle
     //===========================
@@ -52,6 +53,20 @@ class UserServiceRequestVC: BaseVC {
 extension UserServiceRequestVC {
     
     private func initialSetup() {
+        viewModel.delegate = self
         viewAllBtn.isEnabled = true
+        viewModel.getUserMyRequestDetailData(params: [ApiKey.requestId: self.viewModel.requestId])
+    }
+}
+
+// MARK: - Extension For UserAllRequestVMDelegate
+//===========================
+extension UserServiceRequestVC: UserAllRequestVMDelegate{
+    func getUserMyRequestDataSuccess(message: String) {
+        ToastView.shared.showLongToast(self.view, msg: message)
+    }
+    
+    func mgetUserMyRequestDataFailed(error: String) {
+        ToastView.shared.showLongToast(self.view, msg: error)
     }
 }

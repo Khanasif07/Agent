@@ -57,16 +57,16 @@
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k7s-Ry-uSz">
-                                <rect key="frame" x="278" y="8" width="91" height="24"/>
+                                <rect key="frame" x="308" y="8" width="61" height="24"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Offer Accepted" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l5Q-8h-TKi">
-                                        <rect key="frame" x="4" y="4" width="83" height="16.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Offers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l5Q-8h-TKi">
+                                        <rect key="frame" x="4" y="4" width="53" height="16.5"/>
                                         <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="12"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" red="0.92156862750000001" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.91372549020000005" green="0.92156862750000001" blue="0.93725490199999995" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="l5Q-8h-TKi" firstAttribute="leading" secondItem="k7s-Ry-uSz" secondAttribute="leading" constant="4" id="3AT-z0-VaD"/>
                                     <constraint firstItem="l5Q-8h-TKi" firstAttribute="centerY" secondItem="k7s-Ry-uSz" secondAttribute="centerY" id="8MC-71-dP6"/>
