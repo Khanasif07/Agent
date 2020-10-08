@@ -23,7 +23,6 @@ class AllRequestVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
-        hitApi()
     }
     
     // MARK: - IBActions
@@ -41,6 +40,7 @@ extension AllRequestVC {
         self.mainTableView.delegate = self
         self.mainTableView.dataSource = self
         self.mainTableView.registerCell(with: ServiceRequestTableCell.self)
+        hitApi()
     }
     
     private func hitApi(){
@@ -53,11 +53,12 @@ extension AllRequestVC {
 extension AllRequestVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return viewModel.garageRequestListing.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(with: ServiceRequestTableCell.self, indexPath: indexPath)
+        cell.bindData(viewModel.garageRequestListing[indexPath.row])
         return cell
     }
     
@@ -66,13 +67,13 @@ extension AllRequestVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-          AppRouter.goToGarageServiceRequestVC(vc: self)
+        AppRouter.goToGarageServiceRequestVC(vc: self,requestId : viewModel.garageRequestListing[indexPath.row].id)
     }
 }
 
 extension AllRequestVC : AllRequestVMDelegate {
     func getGarageListingDataSuccess(message: String) {
-        
+        mainTableView.reloadData()
     }
     
     func getGarageListingDataFailed(error: String) {

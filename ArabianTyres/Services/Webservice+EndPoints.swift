@@ -50,6 +50,7 @@ extension WebServices {
         case userServicerimSize = "user/services/rimSize"
         case garageRequest = "user/services/garageRequests"
         case userMyServiceRequests = "user/services/myServiceRequests"
+        case garageRequestDetail = "user/services/garageRequestDetail"
         case userMyServiceRequestsDetail = "user/services/requestDetail"
         
         var path : String {

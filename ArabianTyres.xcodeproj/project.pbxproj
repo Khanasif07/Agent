@@ -264,6 +264,7 @@
 		A4CC3258252CBCA200669F39 /* ASDynamicCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC3257252CBCA200669F39 /* ASDynamicCollectionView.swift */; };
 		A4DCEE09252DED9C002EB32F /* AllRequestVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DCEE08252DED9C002EB32F /* AllRequestVM.swift */; };
 		A4DCEE0B252DF405002EB32F /* GarageRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DCEE0A252DF405002EB32F /* GarageRequestModel.swift */; };
+		A4DCEE0D252E0D34002EB32F /* GarageServiceRequestVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DCEE0C252E0D34002EB32F /* GarageServiceRequestVM.swift */; };
 		A4FEF8EC2518744900D58C13 /* TyreRequestedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FEF8EB2518744900D58C13 /* TyreRequestedVC.swift */; };
 /* End PBXBuildFile section */
 
@@ -529,6 +530,7 @@
 		A4CC3257252CBCA200669F39 /* ASDynamicCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASDynamicCollectionView.swift; sourceTree = "<group>"; };
 		A4DCEE08252DED9C002EB32F /* AllRequestVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRequestVM.swift; sourceTree = "<group>"; };
 		A4DCEE0A252DF405002EB32F /* GarageRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageRequestModel.swift; sourceTree = "<group>"; };
+		A4DCEE0C252E0D34002EB32F /* GarageServiceRequestVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageServiceRequestVM.swift; sourceTree = "<group>"; };
 		A4FEF8EB2518744900D58C13 /* TyreRequestedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TyreRequestedVC.swift; sourceTree = "<group>"; };
 		B2C00CD38A98EBA313A070C9 /* Pods_ArabianTyres.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArabianTyres.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -593,6 +595,7 @@
 			isa = PBXGroup;
 			children = (
 				84144F2A252C8C0D00D6572F /* GarageServiceRequestVC.swift */,
+				A4DCEE0C252E0D34002EB32F /* GarageServiceRequestVM.swift */,
 			);
 			path = GarageServiceRequestVC;
 			sourceTree = "<group>";
@@ -1966,6 +1969,7 @@
 				847BC425250796CB00EEEFDC /* ResetPasswordVM.swift in Sources */,
 				8481FA1F2500BAFB00AB6EFB /* AppleLoginController.swift in Sources */,
 				84B629AC25120FF50080A7C2 /* InterConnectivity.swift in Sources */,
+				A4DCEE0D252E0D34002EB32F /* GarageServiceRequestVM.swift in Sources */,
 				A45042D3250F76D5001C8905 /* AddAccountDetailVC.swift in Sources */,
 				A4CC3255252CB3F400669F39 /* TyreRequestDetailTableViewCell.swift in Sources */,
 				8481FA772500C5CD00AB6EFB /* CountryData.swift in Sources */,
