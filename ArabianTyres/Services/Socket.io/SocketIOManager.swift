@@ -11,9 +11,7 @@ import UIKit
 import Foundation
 import SocketIO
 import SwiftyJSON
-import SwiftKeychainWrapper
-import RealmSwift
-import Realm
+
 
 enum EventListnerKeys : String {
     case didConnect = "connected"
@@ -35,15 +33,11 @@ class SocketIOManager: NSObject {
     var socket: SocketIOClient?
     private var manager: SocketManager?
     static let shared: SocketIOManager = SocketIOManager()
-    public var activeChatId: String = ""
+    public var baseSocketUrl: String  = "http://demo.yourdomain.com:3000"
     var messageQueue = [[String: Any]]()
     static var isSocketConnected: Bool {
         return SocketIOManager.shared.socket?.status == SocketIOStatus.connected ? true: false
     }
-    public var isChatScreen: Bool = false
-    public var isGroupChatScreen: Bool = false
-    public var isChatsScreen: Bool = false
-    
     ///SOCKET INIT
     ///============
     private override init() {
@@ -54,7 +48,7 @@ class SocketIOManager: NSObject {
     // Configure socket
     private func initializeSocket() {
         let socketSerialQueue = DispatchQueue(label: "socketSerialQueue", qos: .userInteractive)
-        if let accessToken = KeychainWrapper.standard.string(forKey: Keys.accessToken) {
+        let accessToken = AppUserDefaults.value(forKey: .accesstoken).stringValue
             let strUrl = baseSocketUrl
             let baseUrl = URL(string: strUrl)!
             printDebug(baseUrl)
@@ -69,14 +63,10 @@ class SocketIOManager: NSObject {
                                                   .forceNew(true),
                                                   .handleQueue(socketSerialQueue)])
             self.socket = manager?.defaultSocket
-        }
     }
     
     /// Method to estabish socket connection
     func establishConnection() {
-        if InboxDBDetail.getInboxDBCount() < 1 {
-            AppDelegate.shared.getChatThread()
-        }
         if self.socket?.status == .connected || self.socket?.status == .connecting {
             printDebug(self.socket?.status)
         } else if self.socket?.status != .connecting {
@@ -98,7 +88,6 @@ class SocketIOManager: NSObject {
             self.socket?.on(SocketKeys.didConnect) { (data, ack) in
                 if self.socket?.status == .connected {
                     if isUserLoggedin {
-                        AppDelegate.shared.syncOfflineDataIfAny()
                     }
                 }
             }
@@ -148,19 +137,6 @@ extension SocketIOManager {
     func getSyncContactResponse() {
         SocketIOManager.shared.socket?.on(EventListnerKeys.syncResponse.rawValue, callback: { (data, ack) in
             guard let first = data.first as? JSONDictionary else{ return }
-            guard let code = first["code"] as? Int , code == SocketCodes.SocketSuccess.rawValue else { return }
-            guard let lastIndex = first["lastIndex"] as? Int else { return }
-            guard let cont = first["data"] as? JSONDictionaryArray else { return }
-            let contacts = cont.map({ (cont : JSONDictionary) -> ContactModel in
-                return ContactModel(cont: cont)
-            })
-            DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async {
-                RccContactController.shared.updateDbForAppUsers(contactModels: contacts)
-            }
-            DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async {
-                RccContactController.shared.updateSyncStatus(lastCount : lastIndex)
-            }
-            ContactDataStore.shared.updateContacts(withAppUsers: contacts)
         })
     }
 }
