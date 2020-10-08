@@ -62,7 +62,7 @@ class ServiceRequestTableCell: UITableViewCell {
         tyreSizeLbl.textColor = AppColors.fontTertiaryColor
         statusLbl.textColor = AppColors.fontTertiaryColor
         rejectRequestBtn.isBorderSelected = true
-        brandsLbl.text = "Barnd: "
+        brandsLbl.text = "Brand: "
         tyreSizeLbl.text = "Tyre Size: "
         statusLbl.text = "Status"
     }
@@ -70,13 +70,19 @@ class ServiceRequestTableCell: UITableViewCell {
     func bindData(_ model: GarageRequestModel) {
         let date = (model.createdAt).toDate(dateFormat: Date.DateFormat.givenDateFormat.rawValue) ?? Date()
         serviceTimeLbl.text = date.timeAgoSince
-        sizeDetailLbl.text = "\(model.width)w/" + "\(model.rimSize)r/" + "\(model.profile)p"
-        brandDetailLbl.text = model.preferredBrands.map{($0.name)}.joined(separator: ",")
-        logoImgView.setImage_kf(imageString: model.images.first ?? "", placeHolderImage: nil, loader: false)
+        sizeDetailLbl.text = "\(model.width ?? 0)w/" + "\(model.rimSize ?? 0)r/" + "\(model.profile ?? 0)p"
+     
+        if model.preferredBrands.count == 0 {
+            brandsLbl.text = "Countries: "
+            brandDetailLbl.text = model.preferredCountries.map{($0.name)}.joined(separator: ",")
+        }else {
+            brandsLbl.text = "Brand: "
+            brandDetailLbl.text = model.preferredBrands.map{($0.name)}.joined(separator: ",")
+        }
+        logoImgView.setImage_kf(imageString: model.images.first ?? "", placeHolderImage: #imageLiteral(resourceName: "group3888"), loader: false)
         statusValueLbl.text = model.status.text
         statusValueLbl.textColor = model.status.textColor
         serviceTyeLbl.text = model.requestType
         
     }
-
 }
