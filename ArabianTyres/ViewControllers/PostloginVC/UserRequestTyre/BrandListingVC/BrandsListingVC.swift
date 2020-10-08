@@ -130,7 +130,7 @@ extension BrandsListingVC {
     private func hitCountryListingApi(){
         self.viewModel.getCountryListingData(params: [ApiKey.page: "1",ApiKey.limit : "100",ApiKey.type: "Tyres"],loader: false)
     }
-    
+
     private func setupTextAndFont(){
         
         if listingType == .brands {

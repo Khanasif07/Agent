@@ -8,7 +8,7 @@
 
 import Foundation
 import SwiftyJSON
-import SocketIO
+//import SocketIO
 
 // MARK: - Emitter for Live Stream
 extension SocketIOManager {
