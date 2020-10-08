@@ -38,6 +38,7 @@ class UserServiceRequestVC: BaseVC {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isTranslucent = true
         self.tabBarController?.tabBar.isHidden = true
     }
     
@@ -86,10 +87,13 @@ extension UserServiceRequestVC {
 //===========================
 extension UserServiceRequestVC: UserAllRequestVMDelegate{
     func getUserMyRequestDataSuccess(message: String) {
-        requestNoValueLbl.text = self.viewModel.userRequestDetail.requestID
+        requestNoValueLbl.text = "#" + "\(self.viewModel.userRequestDetail.requestID)"
         self.brandsArray = self.viewModel.userRequestDetail.preferredBrands.map({ (model) -> String in
             model.name
         })
+        let model = self.viewModel.userRequestDetail
+        let logoImg =  model.requestType == "Tyres" ? #imageLiteral(resourceName: "radialCarTireI151") : model.requestType == "Battery" ? #imageLiteral(resourceName: "icBattery") : #imageLiteral(resourceName: "icOil")
+        self.mainImgView.image = logoImg
         self.brandCollView.reloadData()
     }
     

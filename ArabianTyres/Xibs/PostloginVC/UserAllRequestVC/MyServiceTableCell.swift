@@ -23,6 +23,8 @@ class MyServiceTableCell: UITableViewCell {
         super.awakeFromNib()
         offerView.backgroundColor = AppColors.fontTertiaryColor
         logoImgView.backgroundColor = AppColors.fontTertiaryColor
+        timeLbl.textColor = AppColors.fontTertiaryColor
+        requestNoValueLbl.textColor = AppColors.linkTextColor
     }
     
     override func layoutSubviews() {
@@ -35,10 +37,14 @@ class MyServiceTableCell: UITableViewCell {
     
     public func populateData(model: UserServiceRequestModel){
         self.serviceTypeLbl.text = model.requestType
-        self.logoImgView.image = #imageLiteral(resourceName: "maskGroup")
-        self.requestNoValueLbl.text  = model.requestID
+        let logoImg =  model.requestType == "Tyres" ? #imageLiteral(resourceName: "maskGroup") : model.requestType == "Battery" ? #imageLiteral(resourceName: "icBattery") : #imageLiteral(resourceName: "icOil")
+        let logoBackGroundColor =  model.requestType == "Tyres" ? AppColors.blueLightColor : model.requestType == "Battery" ? AppColors.redLightColor : AppColors.grayLightColor
+        self.logoImgView.backgroundColor = logoBackGroundColor
+        self.logoImgView.image = logoImg
+        self.requestNoValueLbl.text  = "#" + "\(model.requestID)"
         let date = (model.createdAt).breakCompletDate(outPutFormat: Date.DateFormat.profileFormat.rawValue, inputFormat: Date.DateFormat.yyyyMMddTHHmmsssssz.rawValue)
-        self.timeLbl.text = date
+        let dateTime = (model.createdAt).toDate(dateFormat: Date.DateFormat.givenDateFormat.rawValue) ?? Date()
+        self.timeLbl.text = dateTime.timeAgoSince + " on " + date
     }
     
 }

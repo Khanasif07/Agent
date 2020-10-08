@@ -26,8 +26,10 @@ enum AppRouter {
     // MARK: - Show Landing Screen
     //===========================
     static func checkAppInitializationFlow() {
-//        goToTestingVC()
         if isUserLoggedin {
+            if isUserLoggedin {
+                SocketIOManager.shared.establishConnection()
+            }
             if !isPhoneNoVerified{
                 AppUserDefaults.removeValue(forKey: .accesstoken)
                 UserModel.main = UserModel()

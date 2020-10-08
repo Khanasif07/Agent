@@ -33,4 +33,5 @@ target 'ArabianTyres' do
   pod 'MessageKit'
   pod 'Firebase/Storage'
   pod 'Firebase/Crashlytics'
+  pod 'Socket.IO-Client-Swift', '~> 15.2.0'
 end

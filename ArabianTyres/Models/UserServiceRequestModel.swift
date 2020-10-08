@@ -12,19 +12,21 @@ import Foundation
 // MARK: - Result
 struct UserServiceRequestModel: Codable {
     let requestID, createdAt: String
-    let profile: Int
+    let profile: Int?
     let requestType: String
-    let rimSize: Int
+    let rimSize: Int?
     let status: String
     let preferredBrands: [PreferredBrand]
     let preferredCountries: [String]
-    let quantity, width: Int
+    let quantity, width: Int?
     let id: String
+    let make: String?
+    let model: String?
     let images: [String]
 
     enum CodingKeys: String, CodingKey {
         case requestID = "requestId"
-        case createdAt, profile, requestType, rimSize, status, preferredBrands, preferredCountries, quantity, width
+        case createdAt, profile, requestType, rimSize, status, preferredBrands, preferredCountries, quantity, width , make ,model
         case id = "_id"
         case images
     }
@@ -41,6 +43,8 @@ struct UserServiceRequestModel: Codable {
         quantity = 0
         width = 0
         id = ""
+        make  = ""
+        model = ""
         images = []
     }
 }
