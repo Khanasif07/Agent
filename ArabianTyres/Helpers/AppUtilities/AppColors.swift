@@ -41,4 +41,10 @@ enum AppColors {
 
     @nonobjc static var backgrougnColor1: UIColor { return #colorLiteral(red: 0.9647058824, green: 0.968627451, blue: 0.9764705882, alpha: 1)  }
     
+    @nonobjc static var redLightColor: UIColor { return #colorLiteral(red: 0.9921568627, green: 0.8745098039, blue: 0.9294117647, alpha: 1)  }
+    
+    @nonobjc static var blueLightColor: UIColor { return #colorLiteral(red: 0.9019607843, green: 0.9411764706, blue: 0.9607843137, alpha: 1)  }
+    
+    @nonobjc static var grayLightColor: UIColor { return #colorLiteral(red: 0.9137254902, green: 0.9215686275, blue: 0.937254902, alpha: 1)  }
+    
 }

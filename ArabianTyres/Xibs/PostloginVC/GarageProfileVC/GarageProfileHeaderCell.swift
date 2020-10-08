@@ -53,7 +53,7 @@ class GarageProfileHeaderCell: UITableViewCell {
     }
     
     func populateData(model: GarageProfilePreFillModel,userModel: UserModel){
-        profileImgView.setImage_kf(imageString: model.logoUrl, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: true)
+        profileImgView.setImage_kf(imageString: model.logoUrl, placeHolderImage: #imageLiteral(resourceName: "icImg"), loader: true)
         userNameLbl.text = model.name.isEmpty ? "N/A" : "\(model.name)"
         userPhoneNoLbl.text = userModel.phoneNo.isEmpty ? "N/A" : "\(userModel.countryCode)" + "  \(userModel.phoneNo)"
         userEmailLbl.text = userModel.email.isEmpty ? "N/A" : userModel.email
