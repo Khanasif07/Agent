@@ -40,19 +40,40 @@ enum RequestStatus: String, Codable{
     }
 }
 
-struct GarageRequestModel : Codable {
-    let id, createdAt: String
+//struct GarageRequestModel : Codable {
+//    let id, createdAt: String
+//    let preferredBrands: [PreferredBrand]
+//    let preferredCountries: [PreferredBrand] = []
+//    let status: RequestStatus
+//    let year : Int
+//    let make,model: String
+//    let images: [String] = []
+//    let width, profile, rimSize, quantity: Int
+//    let requestType, requestID: String
+//
+//    enum CodingKeys: String, CodingKey {
+//        case id = "_id"
+//        case createdAt, preferredBrands, preferredCountries, status, images, width, profile, rimSize, quantity, requestType, make, model, year
+//        case requestID = "requestId"
+//    }
+//}
+
+struct GarageRequestModel: Codable {
+    let createdAt, id, requestType, requestID: String
     let preferredBrands: [PreferredBrand]
-    let preferredCountries: [String] = []
+    let profile, rimSize, width: Int?
+    let quantity: Int
+    let images: [String]
+    let preferredCountries: [PreferredBrand]
     let status: RequestStatus
-    let images: [String] = []
-    let width, profile, rimSize, quantity: Int
-    let requestType, requestID: String
+    let year: Int?
+    let make, model: String?
 
     enum CodingKeys: String, CodingKey {
+        case createdAt
         case id = "_id"
-        case createdAt, preferredBrands, preferredCountries, status, images, width, profile, rimSize, quantity, requestType
+        case requestType
         case requestID = "requestId"
+        case width, preferredBrands, profile, rimSize, quantity, images, preferredCountries, status, year, make, model
     }
 }
-
