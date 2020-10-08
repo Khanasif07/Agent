@@ -30,7 +30,7 @@ class UserServiceRequestVM{
         return  hideLoader ? false : nextPageAvailable
     }
     
-    var userRequestListing = [UserServiceRequestModel]()
+    var userRequestDetail = UserServiceRequestModel()
     weak var delegate: UserAllRequestVMDelegate?
     
     //MARK:- Functions
@@ -51,24 +51,13 @@ class UserServiceRequestVM{
     }
     
     func parseToMakeListingData(result: JSON) {
-        if let jsonString = result[ApiKey.data][ApiKey.result].rawString(), let data = jsonString.data(using: .utf8) {
+        if let jsonString = result[ApiKey.data].rawString(), let data = jsonString.data(using: .utf8) {
             do {
-                if result[ApiKey.data][ApiKey.result].arrayValue.isEmpty {
-                    self.hideLoader = true
-                    self.userRequestListing = []
-                    isRequestinApi = false
-                    self.delegate?.getUserMyRequestDataSuccess(message: "")
-                    return
-                }
-                let modelList = try JSONDecoder().decode([UserServiceRequestModel].self, from: data)
+                let modelList = try JSONDecoder().decode(UserServiceRequestModel.self, from: data)
                 printDebug(modelList)
                 currentPage = result[ApiKey.data][ApiKey.page].intValue
                 isRequestinApi = false
-                if currentPage == 1 {
-                    self.userRequestListing = modelList
-                } else {
-                    self.userRequestListing.append(contentsOf: modelList)
-                }
+                self.userRequestDetail = modelList
                 nextPageAvailable = result[ApiKey.data][ApiKey.next].boolValue
                 currentPage += 1
                 self.delegate?.getUserMyRequestDataSuccess(message: "")

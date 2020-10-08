@@ -27,6 +27,11 @@ class UserAllRequestVC: BaseVC {
         initialSetup()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
     // MARK: - IBActions
     //===========================
     @IBAction func searchBtnAction(_ sender: UIButton) {
