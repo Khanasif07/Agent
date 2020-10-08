@@ -1,15 +1,14 @@
 //
-//  BookedTyreRequestVC.swift
+//  ServiceStatusVC.swift
 //  ArabianTyres
 //
-//  Created by Arvind on 06/10/20.
+//  Created by Arvind on 07/10/20.
 //  Copyright © 2020 Admin. All rights reserved.
 //
 
-
 import UIKit
 
-class BookedTyreRequestVC: BaseVC {
+class ServiceStatusVC: BaseVC {
     
     // MARK: - IBOutlets
     //===========================
@@ -18,7 +17,7 @@ class BookedTyreRequestVC: BaseVC {
 
     // MARK: - Variables
     //===========================
-    var sectionArr : [CellType] = [.created, .accepted,.payAmount,.none,.serviceDetail]
+    var sectionArr : [CellType] = [.userDetail, .none, .serviceDetail]
     
     // MARK: - Lifecycle
     //===========================
@@ -38,14 +37,14 @@ class BookedTyreRequestVC: BaseVC {
     
     // MARK: - IBActions
     //===========================
-    @IBAction func crossBtnAction(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+    @IBAction func backBtnAction(_ sender: Any) {
+        pop()
     }
 }
 
 // MARK: - Extension For Functions
 //===========================
-extension BookedTyreRequestVC {
+extension ServiceStatusVC {
     
     private func initialSetup() {
         setupTextAndFont()
@@ -57,7 +56,7 @@ extension BookedTyreRequestVC {
         mainTableView.delegate = self
         mainTableView.dataSource = self
         mainTableView.registerCell(with: TyreRequestDetailTableViewCell.self)
-        mainTableView.registerCell(with: TyreRequestLocationTableViewCell.self)
+        mainTableView.registerCell(with: ServiceStatusTableViewCell.self)
     }
     
     private func setupTextAndFont(){
@@ -66,7 +65,7 @@ extension BookedTyreRequestVC {
     }
 }
 
-extension BookedTyreRequestVC: UITableViewDelegate,UITableViewDataSource{
+extension ServiceStatusVC: UITableViewDelegate,UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
@@ -82,13 +81,14 @@ extension BookedTyreRequestVC: UITableViewDelegate,UITableViewDataSource{
             return cell
         }else {
             
-            let cell = tableView.dequeueCell(with: TyreRequestLocationTableViewCell.self)
+            let cell = tableView.dequeueCell(with: ServiceStatusTableViewCell.self)
             return cell
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.section == 0 ? 375.0 : UITableView.automaticDimension
+        return indexPath.section == 0 ? 210.0 : UITableView.automaticDimension
+//        return UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

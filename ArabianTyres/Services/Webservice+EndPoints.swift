@@ -48,6 +48,7 @@ extension WebServices {
         case userServiceWidth = "user/services/width"
         case userServiceProfile = "user/services/Profile"
         case userServicerimSize = "user/services/rimSize"
+        case garageRequest = "user/services/garageRequests"
         case userMyServiceRequests = "user/services/myServiceRequests"
         case userMyServiceRequestsDetail = "user/services/requestDetail"
         
