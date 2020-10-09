@@ -88,6 +88,7 @@ class SocketIOManager: NSObject {
             self.socket?.on(SocketKeys.didConnect) { (data, ack) in
                 if self.socket?.status == .connected {
                     if isUserLoggedin {
+                         print("socket connected")
                     }
                 }
             }

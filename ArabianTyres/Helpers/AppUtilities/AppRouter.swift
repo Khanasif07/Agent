@@ -67,9 +67,10 @@ enum AppRouter {
         vc.present(scene, animated: true, completion: nil)
     }
     
-    static func goToUserServiceRequestVC(vc: UIViewController,requestId:String = ""){
+    static func goToUserServiceRequestVC(vc: UIViewController & UserServiceRequestVCDelegate,requestId:String = ""){
         let scene = UserServiceRequestVC.instantiate(fromAppStoryboard: .Garage)
         scene.viewModel.requestId = requestId
+        scene.delegate = vc
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     

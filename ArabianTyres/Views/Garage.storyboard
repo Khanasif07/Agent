@@ -2297,6 +2297,50 @@ Service Center</string>
                                     <constraint firstItem="r3R-jv-6Sw" firstAttribute="top" secondItem="BDP-VP-2tn" secondAttribute="top" id="npo-PR-P7v"/>
                                 </constraints>
                             </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AHR-yV-V5q">
+                                <rect key="frame" x="0.0" y="100" width="414" height="762"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="layerX00201" translatesAutoresizingMaskIntoConstraints="NO" id="gx0-kB-8Z3">
+                                        <rect key="frame" x="97" y="198" width="220" height="176"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="220" id="t4c-Lx-8xo"/>
+                                            <constraint firstAttribute="width" secondItem="gx0-kB-8Z3" secondAttribute="height" multiplier="1.25" id="xxK-Mv-EVr"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No any offers yet for this request" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZBg-QH-SKL">
+                                        <rect key="frame" x="83" y="412" width="248" height="20"/>
+                                        <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="gOA-1t-grX">
+                                        <rect key="frame" x="153.5" y="438.5" width="107.5" height="16.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Request No:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o9K-Rp-bau">
+                                                <rect key="frame" x="0.0" y="0.0" width="78.5" height="16.5"/>
+                                                <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="14"/>
+                                                <color key="textColor" red="0.54117647059999996" green="0.58431372550000005" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oVE-Lb-mjQ">
+                                                <rect key="frame" x="83.5" y="0.0" width="24" height="16.5"/>
+                                                <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="14"/>
+                                                <color key="textColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="ZBg-QH-SKL" firstAttribute="centerX" secondItem="gx0-kB-8Z3" secondAttribute="centerX" id="Eif-EK-YNB"/>
+                                    <constraint firstItem="gOA-1t-grX" firstAttribute="centerX" secondItem="ZBg-QH-SKL" secondAttribute="centerX" id="d8S-fB-v6t"/>
+                                    <constraint firstItem="gOA-1t-grX" firstAttribute="top" secondItem="ZBg-QH-SKL" secondAttribute="bottom" constant="6.5" id="iD6-2t-XfX"/>
+                                    <constraint firstItem="ZBg-QH-SKL" firstAttribute="top" secondItem="gx0-kB-8Z3" secondAttribute="bottom" constant="38" id="isu-xO-hzD"/>
+                                    <constraint firstItem="gx0-kB-8Z3" firstAttribute="centerX" secondItem="AHR-yV-V5q" secondAttribute="centerX" id="jGH-97-NED"/>
+                                    <constraint firstItem="gx0-kB-8Z3" firstAttribute="centerY" secondItem="AHR-yV-V5q" secondAttribute="centerY" multiplier="0.75" id="ufQ-2t-AYF"/>
+                                </constraints>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h1o-s4-PBe" customClass="AppButton" customModule="ArabianTyres" customModuleProvider="target">
                                 <rect key="frame" x="16" y="791" width="382" height="56"/>
                                 <constraints>
@@ -2313,22 +2357,28 @@ Service Center</string>
                             <constraint firstItem="glr-CI-w7P" firstAttribute="trailing" secondItem="ivX-gW-0RT" secondAttribute="trailing" id="448-0J-J2h"/>
                             <constraint firstItem="glr-CI-w7P" firstAttribute="trailing" secondItem="BDP-VP-2tn" secondAttribute="trailing" id="Fya-GN-qJZ"/>
                             <constraint firstItem="BDP-VP-2tn" firstAttribute="bottom" secondItem="Gls-Lz-n4n" secondAttribute="bottom" id="Hln-dF-5sz"/>
+                            <constraint firstItem="AHR-yV-V5q" firstAttribute="top" secondItem="ivX-gW-0RT" secondAttribute="bottom" id="JAr-38-usU"/>
                             <constraint firstItem="glr-CI-w7P" firstAttribute="top" secondItem="ivX-gW-0RT" secondAttribute="top" id="Maa-5z-Kc3"/>
                             <constraint firstItem="BDP-VP-2tn" firstAttribute="leading" secondItem="glr-CI-w7P" secondAttribute="leading" id="NEl-tj-HYe"/>
                             <constraint firstItem="glr-CI-w7P" firstAttribute="trailing" secondItem="h1o-s4-PBe" secondAttribute="trailing" constant="16" id="Pba-zs-rCB"/>
                             <constraint firstItem="BDP-VP-2tn" firstAttribute="top" secondItem="ivX-gW-0RT" secondAttribute="bottom" id="XAQ-t3-JcY"/>
                             <constraint firstItem="glr-CI-w7P" firstAttribute="bottom" secondItem="h1o-s4-PBe" secondAttribute="bottom" constant="15" id="ccn-Rx-8lx"/>
+                            <constraint firstItem="glr-CI-w7P" firstAttribute="bottom" secondItem="AHR-yV-V5q" secondAttribute="bottom" id="jcE-kE-1GJ"/>
                             <constraint firstItem="h1o-s4-PBe" firstAttribute="leading" secondItem="glr-CI-w7P" secondAttribute="leading" constant="16" id="kDc-Yc-AJd"/>
+                            <constraint firstItem="AHR-yV-V5q" firstAttribute="leading" secondItem="glr-CI-w7P" secondAttribute="leading" id="oZ6-O7-KkQ"/>
                             <constraint firstItem="ivX-gW-0RT" firstAttribute="leading" secondItem="glr-CI-w7P" secondAttribute="leading" id="rtX-XB-a7O"/>
+                            <constraint firstItem="glr-CI-w7P" firstAttribute="trailing" secondItem="AHR-yV-V5q" secondAttribute="trailing" id="wSL-6b-diT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="glr-CI-w7P"/>
                     </view>
                     <connections>
                         <outlet property="brandCollView" destination="jND-Pf-dRL" id="lno-sF-Hwd"/>
                         <outlet property="brandCollViewHeightConstraint" destination="Rx5-Aj-MOw" id="UMd-RL-xEY"/>
+                        <outlet property="emptyContainerView" destination="AHR-yV-V5q" id="r2T-1Z-T86"/>
                         <outlet property="mainImgView" destination="1HE-RU-LpJ" id="tNE-Xi-48e"/>
                         <outlet property="requestNoLbl" destination="YRY-nQ-8lE" id="lPd-Zt-r5o"/>
                         <outlet property="requestNoValueLbl" destination="o7v-iC-6Gk" id="OHR-EW-tw9"/>
+                        <outlet property="requestNoValueLbl1" destination="oVE-Lb-mjQ" id="Gbf-D0-Vl4"/>
                         <outlet property="viewAllBtn" destination="h1o-s4-PBe" id="xLJ-p2-OVB"/>
                     </connections>
                 </viewController>
@@ -2350,6 +2400,7 @@ Service Center</string>
         <image name="icTopArrow" width="20.5" height="21"/>
         <image name="icUnCheck" width="30" height="30"/>
         <image name="icon" width="30" height="30"/>
+        <image name="layerX00201" width="220" height="195"/>
         <namedColor name="outgoingMessageBackground">
             <color red="0.20399999618530273" green="0.77999997138977051" blue="0.34900000691413879" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

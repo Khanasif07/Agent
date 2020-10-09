@@ -9,12 +9,17 @@
 
 import UIKit
 
+protocol UserServiceRequestVCDelegate: class {
+    func cancelUserMyRequestDetailSuccess(requestId: String)
+}
+
 class UserServiceRequestVC: BaseVC {
     
     // MARK: - IBOutlets
     //===========================
     
-    
+    @IBOutlet weak var requestNoValueLbl1: UILabel!
+    @IBOutlet weak var emptyContainerView: UIView!
     @IBOutlet weak var viewAllBtn: AppButton!
     @IBOutlet weak var requestNoValueLbl: UILabel!
     @IBOutlet weak var requestNoLbl: UILabel!
@@ -27,6 +32,7 @@ class UserServiceRequestVC: BaseVC {
     //===========================
     var viewModel = UserServiceRequestVM()
     var brandsArray = [String]()
+    weak var delegate: UserServiceRequestVCDelegate?
 
     
     // MARK: - Lifecycle
@@ -61,6 +67,8 @@ class UserServiceRequestVC: BaseVC {
     // MARK: - IBActions
     //===========================
     @IBAction func viewAllBtnAction(_ sender: AppButton) {
+        self.viewModel.cancelUserMyRequestDetailData(params: [ApiKey.requestId:
+            self.viewModel.requestId])
     }
     
     
@@ -77,6 +85,7 @@ extension UserServiceRequestVC {
     
     private func initialSetup() {
         self.setupCollectionView()
+        emptyContainerView.isHidden = true
         viewModel.delegate = self
         viewAllBtn.isEnabled = true
         viewModel.getUserMyRequestDetailData(params: [ApiKey.requestId: self.viewModel.requestId])
@@ -85,8 +94,21 @@ extension UserServiceRequestVC {
 
 // MARK: - Extension For UserAllRequestVMDelegate
 //===========================
-extension UserServiceRequestVC: UserAllRequestVMDelegate{
-    func getUserMyRequestDataSuccess(message: String) {
+extension UserServiceRequestVC: UserServiceRequestVMDelegate{
+    func cancelUserMyRequestDetailSuccess(message: String) {
+        self.delegate?.cancelUserMyRequestDetailSuccess(requestId: self.viewModel.requestId)
+        self.pop()
+    }
+    
+    func cancelUserMyRequestDetailFailed(error: String) {
+        ToastView.shared.showLongToast(self.view, msg: error)
+    }
+    
+    func getUserMyRequestDetailSuccess(message: String) {
+        emptyContainerView.isHidden = false
+        viewAllBtn.isBorderSelected = true
+        viewAllBtn.setTitle("Cancel Request", for: .normal)
+        requestNoValueLbl1.text = "#" + "\(self.viewModel.userRequestDetail.requestID)"
         requestNoValueLbl.text = "#" + "\(self.viewModel.userRequestDetail.requestID)"
         self.brandsArray = self.viewModel.userRequestDetail.preferredBrands.map({ (model) -> String in
             model.name
@@ -97,7 +119,7 @@ extension UserServiceRequestVC: UserAllRequestVMDelegate{
         self.brandCollView.reloadData()
     }
     
-    func mgetUserMyRequestDataFailed(error: String) {
+    func getUserMyRequestDetailFailed(error: String) {
         ToastView.shared.showLongToast(self.view, msg: error)
     }
     
@@ -111,8 +133,7 @@ extension UserServiceRequestVC: UserAllRequestVMDelegate{
 }
 
 // MARK: - Extension For Collection View
-//===========================
-
+//======================================
 extension UserServiceRequestVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -142,3 +163,4 @@ extension UserServiceRequestVC: UICollectionViewDelegate,UICollectionViewDataSou
     }
     
 }
+

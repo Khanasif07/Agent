@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DZNEmptyDataSet
 
 class UserAllRequestVC: BaseVC {
     
@@ -53,6 +54,8 @@ extension UserAllRequestVC {
         viewModel.delegate = self
         self.mainTableView.delegate = self
         self.mainTableView.dataSource = self
+        self.mainTableView.emptyDataSetSource = self
+        self.mainTableView.emptyDataSetDelegate = self
         self.mainTableView.enablePullToRefresh(tintColor: AppColors.appRedColor ,target: self, selector: #selector(refreshWhenPull(_:)))
         self.mainTableView.registerCell(with: LoaderCell.self)
         self.mainTableView.registerCell(with: MyServiceTableCell.self)
@@ -111,5 +114,52 @@ extension UserAllRequestVC: UserAllRequestVMDelegate{
     }
     func mgetUserMyRequestDataFailed(error:String){
         ToastView.shared.showLongToast(self.view, msg: error)
+    }
+}
+
+// MARK: - Extension For TableView
+//===========================
+extension UserAllRequestVC : UserServiceRequestVCDelegate{
+   
+    func cancelUserMyRequestDetailSuccess(requestId: String){
+        let index =  self.viewModel.userRequestListing.firstIndex(where: { (model) -> Bool in
+            return model.id == requestId
+        })
+        guard let selectedIndex = index else {return}
+        self.viewModel.userRequestListing.remove(at: selectedIndex)
+        self.mainTableView.reloadData()
+    }
+}
+
+
+//MARK: DZNEmptyDataSetSource and DZNEmptyDataSetDelegate
+//================================
+extension UserAllRequestVC : DZNEmptyDataSetSource,DZNEmptyDataSetDelegate {
+    
+    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
+        return  nil
+    }
+    
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        return NSAttributedString(string: "No data found" , attributes: [NSAttributedString.Key.foregroundColor: AppColors.fontTertiaryColor,NSAttributedString.Key.font: AppFonts.NunitoSansBold.withSize(18)])
+    }
+    
+    func emptyDataSetShouldDisplay(_ scrollView: UIScrollView!) -> Bool {
+        return true
+    }
+    
+    func emptyDataSetShouldAllowScroll(_ scrollView: UIScrollView!) -> Bool {
+        return true
+    }
+    
+    func emptyDataSetShouldAllowTouch(_ scrollView: UIScrollView!) -> Bool {
+        return true
+    }
+    
+    func emptyDataSetShouldBeForced(toDisplay scrollView: UIScrollView!) -> Bool {
+        if let tableView = scrollView as? UITableView, tableView.numberOfSections == 0 {
+            return true
+        }
+        return false
     }
 }
