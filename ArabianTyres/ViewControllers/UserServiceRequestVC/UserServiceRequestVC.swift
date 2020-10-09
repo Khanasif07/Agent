@@ -105,7 +105,6 @@ extension UserServiceRequestVC: UserServiceRequestVMDelegate{
     }
     
     func getUserMyRequestDetailSuccess(message: String) {
-        emptyContainerView.isHidden = false
         viewAllBtn.isBorderSelected = true
         viewAllBtn.setTitle("Cancel Request", for: .normal)
         requestNoValueLbl1.text = "#" + "\(self.viewModel.userRequestDetail.requestID)"
