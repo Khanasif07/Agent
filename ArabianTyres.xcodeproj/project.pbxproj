@@ -41,6 +41,9 @@
 		843C8ED22508FB9300515F2E /* HomeCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843C8ED02508FB9300515F2E /* HomeCollectionCell.swift */; };
 		843C8ED32508FB9300515F2E /* HomeCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 843C8ED12508FB9300515F2E /* HomeCollectionCell.xib */; };
 		843CD3A32505409C00945937 /* LoginWithPhoneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843CD3A22505409C00945937 /* LoginWithPhoneViewModel.swift */; };
+		843D4B9E25305C5A00D72D2F /* UserAllOffersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843D4B9D25305C5A00D72D2F /* UserAllOffersVC.swift */; };
+		843D4BA625305EEE00D72D2F /* UserOffersTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843D4BA425305EEE00D72D2F /* UserOffersTableCell.swift */; };
+		843D4BA725305EEE00D72D2F /* UserOffersTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 843D4BA525305EEE00D72D2F /* UserOffersTableCell.xib */; };
 		843DFD1E2503F017000DE6EB /* OtpVerificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DFD1D2503F017000DE6EB /* OtpVerificationVC.swift */; };
 		843DFD202503F93A000DE6EB /* OtpVerificationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DFD1F2503F93A000DE6EB /* OtpVerificationVM.swift */; };
 		843F004625060725001A78EC /* CountryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F004425060725001A78EC /* CountryVC.swift */; };
@@ -312,6 +315,9 @@
 		843C8ED02508FB9300515F2E /* HomeCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionCell.swift; sourceTree = "<group>"; };
 		843C8ED12508FB9300515F2E /* HomeCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCollectionCell.xib; sourceTree = "<group>"; };
 		843CD3A22505409C00945937 /* LoginWithPhoneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWithPhoneViewModel.swift; sourceTree = "<group>"; };
+		843D4B9D25305C5A00D72D2F /* UserAllOffersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAllOffersVC.swift; sourceTree = "<group>"; };
+		843D4BA425305EEE00D72D2F /* UserOffersTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserOffersTableCell.swift; sourceTree = "<group>"; };
+		843D4BA525305EEE00D72D2F /* UserOffersTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserOffersTableCell.xib; sourceTree = "<group>"; };
 		843DFD1D2503F017000DE6EB /* OtpVerificationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpVerificationVC.swift; sourceTree = "<group>"; };
 		843DFD1F2503F93A000DE6EB /* OtpVerificationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpVerificationVM.swift; sourceTree = "<group>"; };
 		843F004425060725001A78EC /* CountryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryVC.swift; sourceTree = "<group>"; };
@@ -717,6 +723,23 @@
 			path = HomeVC;
 			sourceTree = "<group>";
 		};
+		843D4B9C25305C3300D72D2F /* UserAllOffersVC */ = {
+			isa = PBXGroup;
+			children = (
+				843D4B9D25305C5A00D72D2F /* UserAllOffersVC.swift */,
+			);
+			path = UserAllOffersVC;
+			sourceTree = "<group>";
+		};
+		843D4B9F25305E9900D72D2F /* UserAllOfffersVC */ = {
+			isa = PBXGroup;
+			children = (
+				843D4BA425305EEE00D72D2F /* UserOffersTableCell.swift */,
+				843D4BA525305EEE00D72D2F /* UserOffersTableCell.xib */,
+			);
+			path = UserAllOfffersVC;
+			sourceTree = "<group>";
+		};
 		843DFD1C2503EFF5000DE6EB /* OtpVerificationVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -1097,13 +1120,14 @@
 		8481FA142500B9EC00AB6EFB /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				8411D356252DA6F600E6FA6C /* UserServiceRequestVC */,
-				84144F21252C481F00D6572F /* UserAllRequestVC */,
+				843D4B9C25305C3300D72D2F /* UserAllOffersVC */,
 				84303E6A25064AF2000BA5C3 /* UnderDevelopmentVC */,
 				8481FA832500EE1500AB6EFB /* PostloginVC */,
 				8481FA822500EE0600AB6EFB /* PreloginVC */,
 				8481FA7A2500CC2C00AB6EFB /* BaseVC.swift */,
+				84144F21252C481F00D6572F /* UserAllRequestVC */,
 				84594800252AFDDC00C0B249 /* GarageAllRequestVC */,
+				8411D356252DA6F600E6FA6C /* UserServiceRequestVC */,
 				84144F29252C8BA800D6572F /* GarageServiceRequestVC */,
 				A43B53A82524B5AC00447B24 /* GarageDashBoardAndRequest */,
 				A41AAB3F2530451B0061887F /* OfferFilterVC.swift */,
@@ -1350,6 +1374,7 @@
 		8481FA87250107C000AB6EFB /* PostloginVC */ = {
 			isa = PBXGroup;
 			children = (
+				843D4B9F25305E9900D72D2F /* UserAllOfffersVC */,
 				84144F2C252C8D7A00D6572F /* GarageServiceRequestVC */,
 				84144F24252C4A6C00D6572F /* UserAllRequestVC */,
 				8459480A252B0BD200C0B249 /* AllRequestedVC */,
@@ -1825,6 +1850,7 @@
 				A41AAB44253047A50061887F /* OfferFilterTableViewCell.xib in Resources */,
 				84FF6EA3251D8E990000E2AD /* BottomSheetTableCell.xib in Resources */,
 				844D81E0250243B300550334 /* SignUpTopCell.xib in Resources */,
+				843D4BA725305EEE00D72D2F /* UserOffersTableCell.xib in Resources */,
 				8481FA952501437C00AB6EFB /* NunitoSans-ExtraBold.ttf in Resources */,
 				846352D12511E34E004216F1 /* AddImageCollCell.xib in Resources */,
 				84303E6E25064CC8000BA5C3 /* Home.storyboard in Resources */,
@@ -1978,6 +2004,7 @@
 				844D81E5250271B400550334 /* LoginViewModel.swift in Sources */,
 				843DFD202503F93A000DE6EB /* OtpVerificationVM.swift in Sources */,
 				A44E8D7C251CD24900ACBC4D /* VehicleDetailForOilVC.swift in Sources */,
+				843D4B9E25305C5A00D72D2F /* UserAllOffersVC.swift in Sources */,
 				8481FA652500BFAD00AB6EFB /* AppColors.swift in Sources */,
 				A41AAB43253047A50061887F /* OfferFilterTableViewCell.swift in Sources */,
 				A4203EF9252C31A100BD8802 /* FilterCollectionViewCell.swift in Sources */,
@@ -2074,6 +2101,7 @@
 				84144F27252C4AAD00D6572F /* MyServiceTableCell.swift in Sources */,
 				84594811252B306A00C0B249 /* BookedRequestTableCell.swift in Sources */,
 				84B629AE251212FC0080A7C2 /* ImageModel.swift in Sources */,
+				843D4BA625305EEE00D72D2F /* UserOffersTableCell.swift in Sources */,
 				8411D35C252DEDD100E6FA6C /* UserServiceRequestModel.swift in Sources */,
 				A441A675252CD5F600B5420B /* DashedCollectionViewCell.swift in Sources */,
 				A49DF566252D986D00A6A5B1 /* ServiceStatusTableViewCell.swift in Sources */,

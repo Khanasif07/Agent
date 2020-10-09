@@ -13,6 +13,7 @@ class UserAllRequestVC: BaseVC {
     
     // MARK: - IBOutlets
     //===========================
+    @IBOutlet weak var filterBtn: UIButton!
     @IBOutlet weak var searchBtn: UIButton!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var mainTableView: UITableView!
@@ -38,6 +39,9 @@ class UserAllRequestVC: BaseVC {
     @IBAction func searchBtnAction(_ sender: UIButton) {
     }
     
+    @IBAction func filterBtnAction(_ sender: UIButton) {
+    }
+    
     
 }
 
@@ -46,6 +50,7 @@ class UserAllRequestVC: BaseVC {
 extension UserAllRequestVC {
     
     private func initialSetup() {
+        self.filterBtn.tintColor = .black
         self.tableViewSetUp()
         hitListingApi()
     }
