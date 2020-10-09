@@ -30,7 +30,8 @@ class GarageServiceRequestVC: BaseVC {
     var requestId : String = ""
     var sectionType : [Section] = [.userDetail]
     let viewModel = GarageServiceRequestVM()
-    
+    weak var delegate: UserServiceRequestVCDelegate?
+
     // MARK: - Lifecycle
     //===========================
     override func viewDidLoad() {
@@ -38,13 +39,14 @@ class GarageServiceRequestVC: BaseVC {
         initialSetup()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    
         self.tabBarController?.tabBar.isHidden = true
         self.tabBarController?.tabBar.isTranslucent = true
         self.mainTableView.reloadData()
     }
-    
+  
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         placeBidBtn.round(radius: 4.0)
@@ -57,6 +59,7 @@ class GarageServiceRequestVC: BaseVC {
     }
     
     @IBAction func rejectRequestAction(_ sender: AppButton) {
+        viewModel.rejectGarageRequest(params: [ApiKey.requestId : viewModel.garageRequestDetailArr?.id ?? ""] )
     }
     
     @IBAction func crossBtnAction(_ sender: UIButton) {
@@ -105,10 +108,12 @@ extension GarageServiceRequestVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch sectionType[indexPath.row] {
+     
         case .userDetail:
             let cell = tableView.dequeueCell(with: GarageServiceTopCell.self, indexPath: indexPath)
             cell.popluateData(viewModel.garageRequestDetailArr ?? GarageRequestModel())
             return cell
+       
         case .countryDetail:
             let cell = tableView.dequeueCell(with: GarageServiceCountryCell.self, indexPath: indexPath)
             cell.countryNameArr = viewModel.garageRequestDetailArr?.preferredCountries ?? []
@@ -117,6 +122,7 @@ extension GarageServiceRequestVC : UITableViewDelegate, UITableViewDataSource {
             }
             cell.countryCollView.reloadData()
             return cell
+     
         case .brandListing:
             let cell = tableView.dequeueCell(with: GarageServiceBottomCell.self, indexPath: indexPath)
             cell.brandDataArr = viewModel.garageRequestDetailArr?.preferredBrands ?? []
@@ -139,7 +145,8 @@ extension GarageServiceRequestVC :GarageServiceRequestVMDelegate {
     }
     
     func getGarageDetailFailed(error: String) {
-        
+        ToastView.shared.showLongToast(self.view, msg: error)
+
     }
     
     func brandListingSuccess(message: String) {
@@ -155,7 +162,18 @@ extension GarageServiceRequestVC :GarageServiceRequestVMDelegate {
     }
     
     func brandListingFailed(error:String) {
-        
+        ToastView.shared.showLongToast(self.view, msg: error)
+
+    }
+    
+    
+    func cancelGarageRequestSuccess(message: String){
+        self.delegate?.cancelUserMyRequestDetailSuccess(requestId: self.requestId)
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func cancelGarageRequestFailure(error:String) {
+        ToastView.shared.showLongToast(self.view, msg: error)
     }
     
     func updateDataSource() {
