@@ -297,6 +297,12 @@ enum LocalizedString : String {
     case serviceRequest
     case distance
     case bidReceived
+    case howWasOverAllExp
+    case rateOutOfFive
+    case describeWhy
+    case uploadAnyPictureOfYourExperience
+    case rateService
+    case typeHere
     // MARK: - Home  VC Values
     //==============================
     case tyre

@@ -212,6 +212,7 @@
 		A41AAB44253047A50061887F /* OfferFilterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A41AAB42253047A50061887F /* OfferFilterTableViewCell.xib */; };
 		A41AAB4725304C790061887F /* DistanceSliderCollViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41AAB4525304C790061887F /* DistanceSliderCollViewCell.swift */; };
 		A41AAB4825304C790061887F /* DistanceSliderCollViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A41AAB4625304C790061887F /* DistanceSliderCollViewCell.xib */; };
+		A41AAB4A2530742D0061887F /* RatingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41AAB492530742D0061887F /* RatingVC.swift */; };
 		A4203EF6252C2FF300BD8802 /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4203EF5252C2FF300BD8802 /* FilterTableViewCell.swift */; };
 		A4203EF9252C31A100BD8802 /* FilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4203EF7252C31A100BD8802 /* FilterCollectionViewCell.swift */; };
 		A4203EFA252C31A100BD8802 /* FilterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4203EF8252C31A100BD8802 /* FilterCollectionViewCell.xib */; };
@@ -489,6 +490,7 @@
 		A41AAB42253047A50061887F /* OfferFilterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OfferFilterTableViewCell.xib; sourceTree = "<group>"; };
 		A41AAB4525304C790061887F /* DistanceSliderCollViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceSliderCollViewCell.swift; sourceTree = "<group>"; };
 		A41AAB4625304C790061887F /* DistanceSliderCollViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DistanceSliderCollViewCell.xib; sourceTree = "<group>"; };
+		A41AAB492530742D0061887F /* RatingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingVC.swift; sourceTree = "<group>"; };
 		A4203EF5252C2FF300BD8802 /* FilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
 		A4203EF7252C31A100BD8802 /* FilterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCollectionViewCell.swift; sourceTree = "<group>"; };
 		A4203EF8252C31A100BD8802 /* FilterCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -1131,6 +1133,7 @@
 				84144F29252C8BA800D6572F /* GarageServiceRequestVC */,
 				A43B53A82524B5AC00447B24 /* GarageDashBoardAndRequest */,
 				A41AAB3F2530451B0061887F /* OfferFilterVC.swift */,
+				A41AAB492530742D0061887F /* RatingVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -2131,6 +2134,7 @@
 				8481FA432500BE4600AB6EFB /* UIApplicationExtension.swift in Sources */,
 				A4CC3252252CB2A100669F39 /* BookedTyreRequestVC.swift in Sources */,
 				84FF6EA5251DA3530000E2AD /* ModelData.swift in Sources */,
+				A41AAB4A2530742D0061887F /* RatingVC.swift in Sources */,
 				8481FA7B2500CC2C00AB6EFB /* BaseVC.swift in Sources */,
 				8481FA5F2500BF8400AB6EFB /* AppRouter.swift in Sources */,
 				A41AAB4725304C790061887F /* DistanceSliderCollViewCell.swift in Sources */,

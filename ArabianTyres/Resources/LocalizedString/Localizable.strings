@@ -239,6 +239,15 @@
 "serviceRequest" = " Service Request";
 "distance" = "Distance";
 "bidReceived" = "Bid Received";
+"howWasOverAllExp" = "How was your overall experience at";
+"rateOutOfFive" = "Rate out of five";
+"describeWhy" = "Describe Why";
+"uploadAnyPictureOfYourExperience" = "Upload any picture of your experience";
+"rateService" = "Rate Service";
+"typeHere" = "type here......";
+
+
+
  // MARK: - Home  VC Values
 //==============================
 "tyre" = "Tyre";
