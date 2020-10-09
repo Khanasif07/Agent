@@ -34,4 +34,5 @@ target 'ArabianTyres' do
   pod 'Firebase/Storage'
   pod 'Firebase/Crashlytics'
   pod 'Socket.IO-Client-Swift', '~> 15.2.0'
+  pod 'TTRangeSlider'
 end

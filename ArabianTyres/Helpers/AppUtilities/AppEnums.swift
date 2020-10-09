@@ -49,7 +49,9 @@ enum CellType : CaseIterable{
     case none
     case serviceDetail
     case userDetail
-   
+    case distance
+    case bidReceived
+    
     var text: String {
         switch self {
             
@@ -63,6 +65,10 @@ enum CellType : CaseIterable{
             return LocalizedString.serviceDetails.localized
         case .userDetail:
             return LocalizedString.userDetails.localized
+        case .distance:
+            return LocalizedString.distance.localized
+        case .bidReceived:
+            return LocalizedString.bidReceived.localized
         default:
             return ""
         }
