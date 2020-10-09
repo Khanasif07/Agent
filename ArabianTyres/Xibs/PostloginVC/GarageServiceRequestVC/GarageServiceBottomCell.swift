@@ -18,7 +18,6 @@ class GarageServiceBottomCell: UITableViewCell {
     @IBOutlet weak var brandsTitleLbl: UILabel!
     
     //MARK:-Variables
-    var selectImageArray: [UIImage] = [#imageLiteral(resourceName: "vehicle"),#imageLiteral(resourceName: "serviceHistory"),#imageLiteral(resourceName: "payment"),#imageLiteral(resourceName: "savedCard")]
     var brandDataArr : [PreferredBrand] = []
     var quantity: Int = 0
     

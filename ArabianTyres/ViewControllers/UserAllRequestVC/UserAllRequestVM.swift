@@ -61,7 +61,7 @@ class UserAllRequestVM{
                     self.delegate?.getUserMyRequestDataSuccess(message: "")
                     return
                 }
-                let modelList = try JSONDecoder().decode([UserServiceRequestModel].self, from: data)
+                let modelList = try! JSONDecoder().decode([UserServiceRequestModel].self, from: data)
                 printDebug(modelList)
                 currentPage = result[ApiKey.data][ApiKey.page].intValue
                 isRequestinApi = false

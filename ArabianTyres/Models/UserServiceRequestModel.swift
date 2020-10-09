@@ -17,7 +17,7 @@ struct UserServiceRequestModel: Codable {
     let rimSize: Int?
     let status: String
     let preferredBrands: [PreferredBrand]
-    let preferredCountries: [String]
+    let preferredCountries: [PreferredBrand]
     let quantity, width: Int?
     let id: String
     let make: String?
