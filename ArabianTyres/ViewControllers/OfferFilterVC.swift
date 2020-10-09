@@ -20,6 +20,7 @@ class OfferFilterVC: BaseVC {
     //===========================
     var sectionArr : [CellType] = [.distance, .bidReceived]
     let viewModel = SRFliterVM()
+    var sliderHide: Bool = false
 
     // MARK: - Lifecycle
     //===========================
@@ -68,7 +69,7 @@ extension OfferFilterVC {
     
     private func setupTextAndFont(){
         titleLbl.font = AppFonts.NunitoSansBold.withSize(17.0)
-        titleLbl.text = LocalizedString.tyreServiceRequest.localized
+        titleLbl.text = LocalizedString.filter.localized
     }
 }
 
@@ -80,20 +81,37 @@ extension OfferFilterVC: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
-    
+  
+        func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+            return CGFloat.leastNonzeroMagnitude
+        }
+        
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(with: OfferFilterTableViewCell.self, indexPath: indexPath)
         cell.sectionType = sectionArr[indexPath.section]
         
         if sectionArr[indexPath.section] == .bidReceived {
             cell.configCell(catgory: self.viewModel.catgories[indexPath.section])
+            cell.cellBtnTapped = { [weak self] in
+                guard let `self` = self else {return}
+                self.viewModel.catgories[indexPath.section].isSelected.toggle()
+                self.mainTableView.reloadRows(at: [indexPath], with: .automatic)
+            }
+        }
+        
+        else {
+            cell.cellBtnTapped = { [weak self] in
+                guard let `self` = self else {return}
+                self.sliderHide.toggle()
+                self.mainTableView.reloadData()
+            }
         }
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if sectionArr[indexPath.section] == .distance  {
-            return 140.0
+            return self.sliderHide ? 54.0 : 154.0
         }else {
             let model = viewModel.catgories[indexPath.section]
             return model.isSelected ? CGFloat(54 + model.subCat.count * 54) : 54.0
