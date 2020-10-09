@@ -15,11 +15,16 @@ protocol GarageServiceRequestVMDelegate: class {
     func getGarageDetailFailed(error:String)
     func brandListingSuccess(message: String)
     func brandListingFailed(error:String)
+    func cancelGarageRequestSuccess(message: String)
+    func cancelGarageRequestFailure(error:String)
+
 }
 
 extension GarageServiceRequestVMDelegate {
     func brandListingSuccess(message: String){}
     func brandListingFailed(error:String){}
+    func cancelGarageRequestSuccess(message: String){}
+    func cancelGarageRequestFailure(error:String){}
 }
 
 class GarageServiceRequestVM {
@@ -127,6 +132,15 @@ class GarageServiceRequestVM {
             }
         }
     }
+  
+    func rejectGarageRequest(params: JSONDictionary,loader: Bool = true,pagination: Bool = false){
+        
+           WebServices.cancelGarageRequest(parameters: params, success: { (json) in
+            self.delegate?.cancelGarageRequestSuccess(message: "")
+           }) { (error) -> (Void) in
+               self.delegate?.cancelGarageRequestFailure(error: error.localizedDescription)
+           }
+       }
 }
 
 

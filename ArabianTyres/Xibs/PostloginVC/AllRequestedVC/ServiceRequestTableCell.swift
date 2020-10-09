@@ -32,6 +32,7 @@ class ServiceRequestTableCell: UITableViewCell {
     @IBOutlet weak var bidAmountValueLbl: UILabel!
 
     
+    var rejectRequestBtnTapped: (()->())?
     override func awakeFromNib() {
         super.awakeFromNib()
         initialSetUp()
@@ -52,6 +53,7 @@ class ServiceRequestTableCell: UITableViewCell {
     }
     
     @IBAction func placeRequestBtnAction(_ sender: AppButton) {
+        rejectRequestBtnTapped?()
     }
     
     public func initialSetUp(){
@@ -89,7 +91,7 @@ class ServiceRequestTableCell: UITableViewCell {
         statusValueLbl.text = model.status.text
         statusValueLbl.textColor = model.status.textColor
         let str = model.requestType == .tyres ? "Tyre" : model.requestType.rawValue
-        serviceTyeLbl.text = (str ?? "") + LocalizedString.serviceRequest.localized
+        serviceTyeLbl.text = (str) + LocalizedString.serviceRequest.localized
         
     }
     
