@@ -237,7 +237,8 @@
 "paymentStatus" = "Payment Status";
 "amountPaid" = "Amount Paid";
 "serviceRequest" = " Service Request";
-
+"distance" = "Distance";
+"bidReceived" = "Bid Received";
  // MARK: - Home  VC Values
 //==============================
 "tyre" = "Tyre";

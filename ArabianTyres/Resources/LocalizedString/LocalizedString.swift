@@ -295,6 +295,8 @@ enum LocalizedString : String {
     case paymentStatus
     case amountPaid
     case serviceRequest
+    case distance
+    case bidReceived
     // MARK: - Home  VC Values
     //==============================
     case tyre

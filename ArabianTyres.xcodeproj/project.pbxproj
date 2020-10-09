@@ -204,6 +204,11 @@
 		A413B979250A2BEF0004C534 /* AddDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A413B978250A2BEF0004C534 /* AddDetailVC.swift */; };
 		A413B97D250A44410004C534 /* CustomTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A413B97B250A44400004C534 /* CustomTextView.xib */; };
 		A413B97E250A44410004C534 /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A413B97C250A44400004C534 /* CustomTextView.swift */; };
+		A41AAB402530451B0061887F /* OfferFilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41AAB3F2530451B0061887F /* OfferFilterVC.swift */; };
+		A41AAB43253047A50061887F /* OfferFilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41AAB41253047A50061887F /* OfferFilterTableViewCell.swift */; };
+		A41AAB44253047A50061887F /* OfferFilterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A41AAB42253047A50061887F /* OfferFilterTableViewCell.xib */; };
+		A41AAB4725304C790061887F /* DistanceSliderCollViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41AAB4525304C790061887F /* DistanceSliderCollViewCell.swift */; };
+		A41AAB4825304C790061887F /* DistanceSliderCollViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A41AAB4625304C790061887F /* DistanceSliderCollViewCell.xib */; };
 		A4203EF6252C2FF300BD8802 /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4203EF5252C2FF300BD8802 /* FilterTableViewCell.swift */; };
 		A4203EF9252C31A100BD8802 /* FilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4203EF7252C31A100BD8802 /* FilterCollectionViewCell.swift */; };
 		A4203EFA252C31A100BD8802 /* FilterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4203EF8252C31A100BD8802 /* FilterCollectionViewCell.xib */; };
@@ -473,6 +478,11 @@
 		A413B978250A2BEF0004C534 /* AddDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDetailVC.swift; sourceTree = "<group>"; };
 		A413B97B250A44400004C534 /* CustomTextView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomTextView.xib; sourceTree = "<group>"; };
 		A413B97C250A44400004C534 /* CustomTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
+		A41AAB3F2530451B0061887F /* OfferFilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferFilterVC.swift; sourceTree = "<group>"; };
+		A41AAB41253047A50061887F /* OfferFilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferFilterTableViewCell.swift; sourceTree = "<group>"; };
+		A41AAB42253047A50061887F /* OfferFilterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OfferFilterTableViewCell.xib; sourceTree = "<group>"; };
+		A41AAB4525304C790061887F /* DistanceSliderCollViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceSliderCollViewCell.swift; sourceTree = "<group>"; };
+		A41AAB4625304C790061887F /* DistanceSliderCollViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DistanceSliderCollViewCell.xib; sourceTree = "<group>"; };
 		A4203EF5252C2FF300BD8802 /* FilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
 		A4203EF7252C31A100BD8802 /* FilterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCollectionViewCell.swift; sourceTree = "<group>"; };
 		A4203EF8252C31A100BD8802 /* FilterCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -1031,6 +1041,10 @@
 				A413B97A250A44400004C534 /* CustomTextView */,
 				8481FA87250107C000AB6EFB /* PostloginVC */,
 				8481FA86250107B600AB6EFB /* PreloginVC */,
+				A41AAB41253047A50061887F /* OfferFilterTableViewCell.swift */,
+				A41AAB42253047A50061887F /* OfferFilterTableViewCell.xib */,
+				A41AAB4525304C790061887F /* DistanceSliderCollViewCell.swift */,
+				A41AAB4625304C790061887F /* DistanceSliderCollViewCell.xib */,
 			);
 			path = Xibs;
 			sourceTree = "<group>";
@@ -1092,6 +1106,7 @@
 				84594800252AFDDC00C0B249 /* GarageAllRequestVC */,
 				84144F29252C8BA800D6572F /* GarageServiceRequestVC */,
 				A43B53A82524B5AC00447B24 /* GarageDashBoardAndRequest */,
+				A41AAB3F2530451B0061887F /* OfferFilterVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1802,10 +1817,12 @@
 				A413B97D250A44410004C534 /* CustomTextView.xib in Resources */,
 				844CBD232501FFC0009BE668 /* LoginEmailPhoneTableCell.xib in Resources */,
 				8470D1FB251B36C700790768 /* GarageProfileHeaderCell.xib in Resources */,
+				A41AAB4825304C790061887F /* DistanceSliderCollViewCell.xib in Resources */,
 				844CBD1F2501FA31009BE668 /* LoginSocialTableCell.xib in Resources */,
 				8481FAA5250143C500AB6EFB /* NunitoSans-SemiBold.ttf in Resources */,
 				8481FA912501436600AB6EFB /* NunitoSans-Bold.ttf in Resources */,
 				8481FA9D250143A200AB6EFB /* NunitoSans-Italic.ttf in Resources */,
+				A41AAB44253047A50061887F /* OfferFilterTableViewCell.xib in Resources */,
 				84FF6EA3251D8E990000E2AD /* BottomSheetTableCell.xib in Resources */,
 				844D81E0250243B300550334 /* SignUpTopCell.xib in Resources */,
 				8481FA952501437C00AB6EFB /* NunitoSans-ExtraBold.ttf in Resources */,
@@ -1962,6 +1979,7 @@
 				843DFD202503F93A000DE6EB /* OtpVerificationVM.swift in Sources */,
 				A44E8D7C251CD24900ACBC4D /* VehicleDetailForOilVC.swift in Sources */,
 				8481FA652500BFAD00AB6EFB /* AppColors.swift in Sources */,
+				A41AAB43253047A50061887F /* OfferFilterTableViewCell.swift in Sources */,
 				A4203EF9252C31A100BD8802 /* FilterCollectionViewCell.swift in Sources */,
 				A45566D0250CA6C0009E4324 /* UploadDocumentVC.swift in Sources */,
 				84D83D68252AAF5800F6C420 /* URTyreStep1VM.swift in Sources */,
@@ -2087,12 +2105,14 @@
 				84FF6EA5251DA3530000E2AD /* ModelData.swift in Sources */,
 				8481FA7B2500CC2C00AB6EFB /* BaseVC.swift in Sources */,
 				8481FA5F2500BF8400AB6EFB /* AppRouter.swift in Sources */,
+				A41AAB4725304C790061887F /* DistanceSliderCollViewCell.swift in Sources */,
 				A49DF563252D890400A6A5B1 /* ServiceStatusVC.swift in Sources */,
 				A43B53AC2524B65300447B24 /* ServiceListingTableViewCell.swift in Sources */,
 				A441A67E252CDF7C00B5420B /* TyreRequestLocationTableViewCell.swift in Sources */,
 				843C8EC52508AE9500515F2E /* ProfileUserInternalCell.swift in Sources */,
 				84476D3725075F6800AB5E80 /* ExploreVC.swift in Sources */,
 				846352D02511E34E004216F1 /* AddImageCollCell.swift in Sources */,
+				A41AAB402530451B0061887F /* OfferFilterVC.swift in Sources */,
 				84558EEE252F0A0000BFF8C6 /* SocketListener.swift in Sources */,
 				842B2FCC25133EC500E3CF67 /* BankListingVM.swift in Sources */,
 				8481F9FD2500AA9A00AB6EFB /* AppDelegate.swift in Sources */,
