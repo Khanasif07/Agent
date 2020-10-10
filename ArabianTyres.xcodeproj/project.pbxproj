@@ -213,6 +213,7 @@
 		A41AAB4725304C790061887F /* DistanceSliderCollViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41AAB4525304C790061887F /* DistanceSliderCollViewCell.swift */; };
 		A41AAB4825304C790061887F /* DistanceSliderCollViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A41AAB4625304C790061887F /* DistanceSliderCollViewCell.xib */; };
 		A41AAB4A2530742D0061887F /* RatingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41AAB492530742D0061887F /* RatingVC.swift */; };
+		A41AAB4E2530A0390061887F /* MyServiceFilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41AAB4D2530A0390061887F /* MyServiceFilterVC.swift */; };
 		A4203EF6252C2FF300BD8802 /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4203EF5252C2FF300BD8802 /* FilterTableViewCell.swift */; };
 		A4203EF9252C31A100BD8802 /* FilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4203EF7252C31A100BD8802 /* FilterCollectionViewCell.swift */; };
 		A4203EFA252C31A100BD8802 /* FilterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4203EF8252C31A100BD8802 /* FilterCollectionViewCell.xib */; };
@@ -491,6 +492,7 @@
 		A41AAB4525304C790061887F /* DistanceSliderCollViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceSliderCollViewCell.swift; sourceTree = "<group>"; };
 		A41AAB4625304C790061887F /* DistanceSliderCollViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DistanceSliderCollViewCell.xib; sourceTree = "<group>"; };
 		A41AAB492530742D0061887F /* RatingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingVC.swift; sourceTree = "<group>"; };
+		A41AAB4D2530A0390061887F /* MyServiceFilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyServiceFilterVC.swift; sourceTree = "<group>"; };
 		A4203EF5252C2FF300BD8802 /* FilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
 		A4203EF7252C31A100BD8802 /* FilterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCollectionViewCell.swift; sourceTree = "<group>"; };
 		A4203EF8252C31A100BD8802 /* FilterCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -1066,10 +1068,7 @@
 				A413B97A250A44400004C534 /* CustomTextView */,
 				8481FA87250107C000AB6EFB /* PostloginVC */,
 				8481FA86250107B600AB6EFB /* PreloginVC */,
-				A41AAB41253047A50061887F /* OfferFilterTableViewCell.swift */,
-				A41AAB42253047A50061887F /* OfferFilterTableViewCell.xib */,
-				A41AAB4525304C790061887F /* DistanceSliderCollViewCell.swift */,
-				A41AAB4625304C790061887F /* DistanceSliderCollViewCell.xib */,
+				A41AAB4C2530A0160061887F /* OfferFilterVC */,
 			);
 			path = Xibs;
 			sourceTree = "<group>";
@@ -1134,6 +1133,7 @@
 				A43B53A82524B5AC00447B24 /* GarageDashBoardAndRequest */,
 				A41AAB3F2530451B0061887F /* OfferFilterVC.swift */,
 				A41AAB492530742D0061887F /* RatingVC.swift */,
+				A41AAB4D2530A0390061887F /* MyServiceFilterVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1494,6 +1494,17 @@
 				A413B978250A2BEF0004C534 /* AddDetailVC.swift */,
 			);
 			path = AddDetailVC;
+			sourceTree = "<group>";
+		};
+		A41AAB4C2530A0160061887F /* OfferFilterVC */ = {
+			isa = PBXGroup;
+			children = (
+				A41AAB41253047A50061887F /* OfferFilterTableViewCell.swift */,
+				A41AAB42253047A50061887F /* OfferFilterTableViewCell.xib */,
+				A41AAB4525304C790061887F /* DistanceSliderCollViewCell.swift */,
+				A41AAB4625304C790061887F /* DistanceSliderCollViewCell.xib */,
+			);
+			path = OfferFilterVC;
 			sourceTree = "<group>";
 		};
 		A4203F0B252C791A00BD8802 /* SRFilterVC */ = {
@@ -1978,6 +1989,7 @@
 				8481FA5B2500BF3B00AB6EFB /* CommonExtension.swift in Sources */,
 				8481FA3B2500BDFF00AB6EFB /* NotificationExtension.swift in Sources */,
 				84FF6EA7251DCB460000E2AD /* URTyreSizeVM.swift in Sources */,
+				A41AAB4E2530A0390061887F /* MyServiceFilterVC.swift in Sources */,
 				8481FA672500BFB900AB6EFB /* AppStoryboards.swift in Sources */,
 				84B629AA25120E250080A7C2 /* Cropper.swift in Sources */,
 				84476D2F25075F1E00AB5E80 /* HomeVC.swift in Sources */,
@@ -2308,7 +2320,7 @@
 				CODE_SIGN_ENTITLEMENTS = ArabianTyres/ArabianTyres.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 23FC5W285E;
 				INFOPLIST_FILE = ArabianTyres/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -2334,7 +2346,7 @@
 				CODE_SIGN_ENTITLEMENTS = ArabianTyres/ArabianTyres.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 23FC5W285E;
 				INFOPLIST_FILE = ArabianTyres/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;

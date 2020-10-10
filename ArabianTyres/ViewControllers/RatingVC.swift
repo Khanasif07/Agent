@@ -26,6 +26,7 @@ class RatingVC: BaseVC {
     @IBOutlet weak var editLogoBtn: UIButton!
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var dashedView: RectangularDashedView!
+    @IBOutlet weak var containerView: UIView!
 
     @IBOutlet var starBtns: [UIButton]!
     
@@ -47,7 +48,7 @@ class RatingVC: BaseVC {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-
+        containerView.createShadow(shadowColor: #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1))
     }
     
     // MARK: - IBActions
@@ -62,6 +63,18 @@ class RatingVC: BaseVC {
     
     @IBAction func editLogoBtnAction(_ sender: UIButton) {
         self.captureImage(delegate: self)
+    }
+    
+    @IBAction func starBtnsTapped(_ sender: UIButton) {
+        for i in 0...starBtns.count - 1{
+            if i <= sender.tag {
+                starBtns[i].isSelected = true
+
+            }else {
+                starBtns[i].isSelected = false
+            }
+        }
+        printDebug(sender.tag)
     }
 }
 

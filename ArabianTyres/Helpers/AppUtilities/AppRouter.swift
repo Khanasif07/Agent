@@ -26,34 +26,34 @@ enum AppRouter {
     // MARK: - Show Landing Screen
     //===========================
     static func checkAppInitializationFlow() {
-        AppRouter.goToTestingVC()
+//        AppRouter.goToTestingVC()
 //        return
-//        if isUserLoggedin {
-//            SocketIOManager.shared.establishConnection()
-//            if !isPhoneNoVerified{
-//                AppUserDefaults.removeValue(forKey: .accesstoken)
-//                UserModel.main = UserModel()
-//                AppRouter.makeLoginVCRoot()
-//                return
-//            }
-//            switch isCurrentUserType {
-//            case .user:
-//                AppRouter.goToUserHome()
-//            case .garage:
-//                AppRouter.goToGarageHome()
-//            default:
-//                let lang = AppUserDefaults.value(forKey: .currentLanguage).stringValue
-//                AppUserDefaults.removeAllValues()
-//                AppUserDefaults.save(value: lang, forKey: .currentLanguage)
-//                AppUserDefaults.save(value: true, forKey: .isLanguageSelect)
-//            }
-//        } else {
-//            self.makeChooseLanguageVCRoot()
-//        }
+        if isUserLoggedin {
+            SocketIOManager.shared.establishConnection()
+            if !isPhoneNoVerified{
+                AppUserDefaults.removeValue(forKey: .accesstoken)
+                UserModel.main = UserModel()
+                AppRouter.makeLoginVCRoot()
+                return
+            }
+            switch isCurrentUserType {
+            case .user:
+                AppRouter.goToUserHome()
+            case .garage:
+                AppRouter.goToGarageHome()
+            default:
+                let lang = AppUserDefaults.value(forKey: .currentLanguage).stringValue
+                AppUserDefaults.removeAllValues()
+                AppUserDefaults.save(value: lang, forKey: .currentLanguage)
+                AppUserDefaults.save(value: true, forKey: .isLanguageSelect)
+            }
+        } else {
+            self.makeChooseLanguageVCRoot()
+        }
     }
     
     static func goToTestingVC(){
-        let scene = RatingVC.instantiate(fromAppStoryboard: .GarageRequest)
+        let scene = MyServiceFilterVC.instantiate(fromAppStoryboard: .GarageRequest)
         setAsWindowRoot(scene)
     }
     
@@ -333,6 +333,11 @@ enum AppRouter {
     
     static func goToOilTypeVC(vc: UIViewController){
         let scene = OilTypeVC.instantiate(fromAppStoryboard: .UserHomeScreen)
+        vc.navigationController?.pushViewController(scene, animated: true)
+    }
+    
+    static func goToOfferFilterVC(vc: UIViewController){
+        let scene = OfferFilterVC.instantiate(fromAppStoryboard: .GarageRequest)
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     

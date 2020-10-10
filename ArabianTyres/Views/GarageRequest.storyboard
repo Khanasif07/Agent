@@ -1081,26 +1081,41 @@ start Servicing</string>
                                                                         </constraints>
                                                                         <state key="normal" image="icUnCheckStar"/>
                                                                         <state key="selected" image="icCheckStar"/>
+                                                                        <connections>
+                                                                            <action selector="starBtnsTapped:" destination="K8Q-hi-fID" eventType="touchUpInside" id="r72-C7-nPV"/>
+                                                                        </connections>
                                                                     </button>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qbp-iS-bNm">
+                                                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qbp-iS-bNm">
                                                                         <rect key="frame" x="56" y="0.0" width="48" height="48"/>
                                                                         <state key="normal" image="icUnCheckStar"/>
                                                                         <state key="selected" image="icCheckStar"/>
+                                                                        <connections>
+                                                                            <action selector="starBtnsTapped:" destination="K8Q-hi-fID" eventType="touchUpInside" id="5IL-tZ-Ybc"/>
+                                                                        </connections>
                                                                     </button>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7M1-wT-wBy">
+                                                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7M1-wT-wBy">
                                                                         <rect key="frame" x="112" y="0.0" width="48" height="48"/>
                                                                         <state key="normal" image="icUnCheckStar"/>
                                                                         <state key="selected" image="icCheckStar"/>
+                                                                        <connections>
+                                                                            <action selector="starBtnsTapped:" destination="K8Q-hi-fID" eventType="touchUpInside" id="5kf-Rd-D9S"/>
+                                                                        </connections>
                                                                     </button>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eW3-jE-W5Q">
+                                                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eW3-jE-W5Q">
                                                                         <rect key="frame" x="168" y="0.0" width="48" height="48"/>
                                                                         <state key="normal" image="icUnCheckStar"/>
                                                                         <state key="selected" image="icCheckStar"/>
+                                                                        <connections>
+                                                                            <action selector="starBtnsTapped:" destination="K8Q-hi-fID" eventType="touchUpInside" id="GTf-cL-6rm"/>
+                                                                        </connections>
                                                                     </button>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D7q-9D-cvr">
+                                                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D7q-9D-cvr">
                                                                         <rect key="frame" x="224" y="0.0" width="48" height="48"/>
                                                                         <state key="normal" image="icUnCheckStar"/>
                                                                         <state key="selected" image="icCheckStar"/>
+                                                                        <connections>
+                                                                            <action selector="starBtnsTapped:" destination="K8Q-hi-fID" eventType="touchUpInside" id="04Z-sK-EJ7"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                             </stackView>
@@ -1270,6 +1285,7 @@ start Servicing</string>
                         <viewLayoutGuide key="safeArea" id="Mny-XU-W3D"/>
                     </view>
                     <connections>
+                        <outlet property="containerView" destination="I4r-yx-7uf" id="92t-XY-V98"/>
                         <outlet property="dashedView" destination="RQU-3Y-RJT" id="Q0S-Ka-SFa"/>
                         <outlet property="descWhyLbl" destination="Pqs-zZ-qEE" id="qIW-JP-CuM"/>
                         <outlet property="editLogoBtn" destination="c9c-VS-PBc" id="K1w-mW-XbA"/>
@@ -1290,7 +1306,92 @@ start Servicing</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zAK-Ju-KBe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1267" y="733"/>
+            <point key="canvasLocation" x="1022" y="733"/>
+        </scene>
+        <!--My Service FilterVC-->
+        <scene sceneID="ms0-uA-g4B">
+            <objects>
+                <viewController storyboardIdentifier="MyServiceFilterVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gX5-Kd-C6r" customClass="MyServiceFilterVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hBm-Z4-ZCW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0C1-jS-KZm">
+                                <rect key="frame" x="0.0" y="44" width="414" height="56"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZoO-1N-HAy">
+                                        <rect key="frame" x="188.5" y="21" width="37.5" height="20"/>
+                                        <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aJC-ji-Sgo">
+                                        <rect key="frame" x="14" y="14" width="56" height="34"/>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleColor" red="0.54117647059999996" green="0.58431372550000005" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="cancelBtnAction:" destination="Rvf-KP-WP7" eventType="touchUpInside" id="Hj8-EL-s4Q"/>
+                                            <action selector="cancelBtnAction:" destination="4rK-6p-Ix2" eventType="touchUpInside" id="ZPc-Zh-36A"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jTa-tp-Wzi">
+                                        <rect key="frame" x="353" y="17" width="46" height="28"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="46" id="0AP-aa-acz"/>
+                                            <constraint firstAttribute="height" constant="28" id="gmT-Qc-alT"/>
+                                        </constraints>
+                                        <state key="normal" title="Apply">
+                                            <color key="titleColor" name="appRedColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="applyBtnAction:" destination="4rK-6p-Ix2" eventType="touchUpInside" id="2fp-bb-RfG"/>
+                                            <action selector="applyBtnAction:" destination="Rvf-KP-WP7" eventType="touchUpInside" id="Zqa-0r-gZy"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wdT-M0-v3J">
+                                        <rect key="frame" x="0.0" y="55.5" width="414" height="0.5"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="0.5" id="47R-cy-1CU"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="wdT-M0-v3J" secondAttribute="trailing" id="3nx-c8-HP5"/>
+                                    <constraint firstItem="aJC-ji-Sgo" firstAttribute="centerY" secondItem="ZoO-1N-HAy" secondAttribute="centerY" id="Jq0-3j-vmW"/>
+                                    <constraint firstAttribute="trailing" secondItem="jTa-tp-Wzi" secondAttribute="trailing" constant="15" id="aBd-mm-K5H"/>
+                                    <constraint firstItem="aJC-ji-Sgo" firstAttribute="leading" secondItem="0C1-jS-KZm" secondAttribute="leading" constant="14" id="ayo-rg-Fqa"/>
+                                    <constraint firstItem="ZoO-1N-HAy" firstAttribute="centerX" secondItem="0C1-jS-KZm" secondAttribute="centerX" id="dO7-lk-eZp"/>
+                                    <constraint firstAttribute="bottom" secondItem="wdT-M0-v3J" secondAttribute="bottom" id="jLO-7D-qdz"/>
+                                    <constraint firstItem="ZoO-1N-HAy" firstAttribute="centerY" secondItem="0C1-jS-KZm" secondAttribute="centerY" multiplier="1.1" id="nDH-m3-V4H"/>
+                                    <constraint firstItem="jTa-tp-Wzi" firstAttribute="centerY" secondItem="ZoO-1N-HAy" secondAttribute="centerY" id="vvA-el-Gmq"/>
+                                    <constraint firstItem="wdT-M0-v3J" firstAttribute="leading" secondItem="0C1-jS-KZm" secondAttribute="leading" id="wNB-9P-b9l"/>
+                                    <constraint firstAttribute="height" constant="56" id="z0L-om-i5X"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="hpr-Li-VpX">
+                                <rect key="frame" x="0.0" y="100" width="414" height="796"/>
+                                <color key="backgroundColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="0C1-jS-KZm" firstAttribute="trailing" secondItem="Khe-ge-KOq" secondAttribute="trailing" id="AtB-0N-msv"/>
+                            <constraint firstItem="0C1-jS-KZm" firstAttribute="leading" secondItem="Khe-ge-KOq" secondAttribute="leading" id="DrW-wM-VdE"/>
+                            <constraint firstItem="hpr-Li-VpX" firstAttribute="trailing" secondItem="Khe-ge-KOq" secondAttribute="trailing" id="LT4-zg-irx"/>
+                            <constraint firstItem="hpr-Li-VpX" firstAttribute="top" secondItem="0C1-jS-KZm" secondAttribute="bottom" id="LfO-qd-cV9"/>
+                            <constraint firstAttribute="bottom" secondItem="hpr-Li-VpX" secondAttribute="bottom" id="RKB-SK-0t2"/>
+                            <constraint firstItem="hpr-Li-VpX" firstAttribute="leading" secondItem="Khe-ge-KOq" secondAttribute="leading" id="Tfe-ef-M0R"/>
+                            <constraint firstItem="0C1-jS-KZm" firstAttribute="top" secondItem="Khe-ge-KOq" secondAttribute="top" id="xRC-Cg-9zT"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Khe-ge-KOq"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="86g-nA-d4E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1890" y="731"/>
         </scene>
     </scenes>
     <resources>

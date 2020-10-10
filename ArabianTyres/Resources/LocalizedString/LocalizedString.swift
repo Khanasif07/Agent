@@ -116,6 +116,7 @@ enum LocalizedString : String {
     case idOfTheOwner
     case register
     case yourRegRequestHasBeenAccepted
+    case byDate
     
     // MARK: - Sign Up VC Values
     //==============================

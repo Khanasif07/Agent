@@ -51,7 +51,7 @@ enum CellType : CaseIterable{
     case userDetail
     case distance
     case bidReceived
-    
+    case date
     var text: String {
         switch self {
             
@@ -69,6 +69,9 @@ enum CellType : CaseIterable{
             return LocalizedString.distance.localized
         case .bidReceived:
             return LocalizedString.bidReceived.localized
+        case .date:
+            return LocalizedString.byDate.localized
+
         default:
             return ""
         }
