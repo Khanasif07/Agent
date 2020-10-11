@@ -40,7 +40,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fL7-yf-Ewb">
-                                        <rect key="frame" x="6" y="14" width="36" height="34"/>
+                                        <rect key="frame" x="6" y="-3" width="72" height="68"/>
                                         <state key="normal" image="icBackward"/>
                                     </button>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="axu-FF-BQ3">
@@ -823,7 +823,7 @@ start Servicing</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tRZ-cY-wTy">
-                                        <rect key="frame" x="14" y="14" width="36" height="34"/>
+                                        <rect key="frame" x="14" y="-3" width="72" height="68"/>
                                         <state key="normal" image="icBackward">
                                             <color key="titleColor" red="0.54117647059999996" green="0.58431372550000005" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -1332,6 +1332,7 @@ start Servicing</string>
                                         </state>
                                         <connections>
                                             <action selector="cancelBtnAction:" destination="Rvf-KP-WP7" eventType="touchUpInside" id="Hj8-EL-s4Q"/>
+                                            <action selector="cancelBtnAction:" destination="gX5-Kd-C6r" eventType="touchUpInside" id="NMu-tx-NAn"/>
                                             <action selector="cancelBtnAction:" destination="4rK-6p-Ix2" eventType="touchUpInside" id="ZPc-Zh-36A"/>
                                         </connections>
                                     </button>
@@ -1346,6 +1347,7 @@ start Servicing</string>
                                         </state>
                                         <connections>
                                             <action selector="applyBtnAction:" destination="4rK-6p-Ix2" eventType="touchUpInside" id="2fp-bb-RfG"/>
+                                            <action selector="applyBtnAction:" destination="gX5-Kd-C6r" eventType="touchUpInside" id="HBh-eZ-ZFd"/>
                                             <action selector="applyBtnAction:" destination="Rvf-KP-WP7" eventType="touchUpInside" id="Zqa-0r-gZy"/>
                                         </connections>
                                     </button>
@@ -1388,6 +1390,12 @@ start Servicing</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Khe-ge-KOq"/>
                     </view>
+                    <connections>
+                        <outlet property="applyBtn" destination="jTa-tp-Wzi" id="7qQ-6L-7JK"/>
+                        <outlet property="canceBtn" destination="aJC-ji-Sgo" id="idp-cL-PyD"/>
+                        <outlet property="filterLbl" destination="ZoO-1N-HAy" id="cL1-7I-4l5"/>
+                        <outlet property="mainTableView" destination="hpr-Li-VpX" id="hq3-9D-LBt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="86g-nA-d4E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

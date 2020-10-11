@@ -225,6 +225,14 @@ enum AppRouter {
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
+    static func goToMyServiceFilterVC(vc: UIViewController,filterArr: [FilterScreen], completion : @escaping (([FilterScreen]) -> ())){
+        let scene = MyServiceFilterVC.instantiate(fromAppStoryboard: .GarageRequest)
+        scene.sectionArr = filterArr
+        scene.onTapApply = { (filterData) in
+            completion(filterData)
+        }
+        vc.navigationController?.pushViewController(scene, animated: true)
+    }
     
     
     static func goToGarageAddImageVC(vc: UIViewController){

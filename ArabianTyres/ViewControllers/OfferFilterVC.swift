@@ -18,7 +18,7 @@ class OfferFilterVC: BaseVC {
 
     // MARK: - Variables
     //===========================
-    var sectionArr : [CellType] = [.distance, .bidReceived]
+    var sectionArr : [FilterScreen] = [.distance("", false), .bidReceived("",false)]
     let viewModel = SRFliterVM()
     var sliderHide: Bool = false
 
@@ -90,11 +90,9 @@ extension OfferFilterVC: UITableViewDelegate,UITableViewDataSource{
         let cell = tableView.dequeueCell(with: OfferFilterTableViewCell.self, indexPath: indexPath)
         cell.sectionType = sectionArr[indexPath.section]
         
-        if sectionArr[indexPath.section] == .bidReceived {
-            cell.configCell(catgory: self.viewModel.catgories[indexPath.section])
+        if case .bidReceived = sectionArr[indexPath.section] {
             cell.cellBtnTapped = { [weak self] in
                 guard let `self` = self else {return}
-                self.viewModel.catgories[indexPath.section].isSelected.toggle()
                 self.mainTableView.reloadRows(at: [indexPath], with: .automatic)
             }
         }
@@ -110,7 +108,7 @@ extension OfferFilterVC: UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if sectionArr[indexPath.section] == .distance  {
+        if case .distance = sectionArr[indexPath.section]   {
             return self.sliderHide ? 54.0 : 154.0
         }else {
             let model = viewModel.catgories[indexPath.section]

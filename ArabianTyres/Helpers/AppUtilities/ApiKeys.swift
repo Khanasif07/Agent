@@ -161,6 +161,11 @@ enum ApiKey {
     static var reason: String { return "reason" }
     static var time: String { return "time" }
     static var requestId : String { return "requestId" }
+    static var requestType : String { return "requestType" }
+    static var startdate : String { return "startDate" }
+    static var endDate : String { return "endDate" }
+
+    
 }
 
 //MARK:- Api Code

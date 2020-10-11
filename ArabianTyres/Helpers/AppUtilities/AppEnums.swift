@@ -49,9 +49,7 @@ enum CellType : CaseIterable{
     case none
     case serviceDetail
     case userDetail
-    case distance
-    case bidReceived
-    case date
+ 
     var text: String {
         switch self {
             
@@ -65,13 +63,7 @@ enum CellType : CaseIterable{
             return LocalizedString.serviceDetails.localized
         case .userDetail:
             return LocalizedString.userDetails.localized
-        case .distance:
-            return LocalizedString.distance.localized
-        case .bidReceived:
-            return LocalizedString.bidReceived.localized
-        case .date:
-            return LocalizedString.byDate.localized
-
+     
         default:
             return ""
         }
@@ -88,6 +80,96 @@ enum CellType : CaseIterable{
             return  #imageLiteral(resourceName: "icAtm")
         default :
             return nil
+        }
+    }
+}
+
+
+enum FilterScreen {
+  
+    case byServiceType(String,Bool)
+    case byStatus(String,Bool)
+    case date(Date,Date,Bool)
+    case bidReceived(String,Bool)
+    case distance(String,Bool)
+    
+    var text: String {
+        switch self {
+            
+        case .byServiceType:
+            return LocalizedString.byServiceType.localized
+        case .byStatus:
+            return LocalizedString.byStatus.localized
+        case .date:
+            return LocalizedString.byDate.localized
+        case .bidReceived:
+            return LocalizedString.bidReceived.localized
+        case .distance:
+            return LocalizedString.distance.localized
+        }
+    }
+    
+    var fliterTypeArr : [String] {
+        switch self {
+         
+        case .byServiceType:
+            return [LocalizedString.tyreService.localized,
+                    LocalizedString.oilSevice.localized,
+                    LocalizedString.batteryService.localized]
+            
+        case .byStatus:
+            return [LocalizedString.offerAccepted.localized,
+                    LocalizedString.offerReceived.localized,
+                    LocalizedString.noOffers.localized]
+    
+        default:
+            return [""]
+        
+        }
+    }
+    
+    var isSelected : FilterScreen {
+        switch self {
+        
+        case .byServiceType(let str,let hide):
+            return .byServiceType(str, !hide)
+        case .byStatus(let str,let hide):
+            return .byStatus(str, !hide)
+        case .date(let date1, let date2, let hide):
+            return .date(date1, date2, !hide)
+        case .bidReceived(let str,let hide):
+            return .bidReceived(str, !hide)
+        case .distance(let str,let hide):
+            return .distance(str, !hide)
+        
+        }
+    }
+    
+    var isHide : Bool {
+        switch self {
+        
+        case .byServiceType(_ ,let hide), .byStatus(_ ,let hide), .date(_ ,_ ,let hide), .bidReceived(_ ,let hide),.distance(_ ,let hide):
+            return hide
+
+        }
+    }
+    
+     var apiValue : [String] {
+           switch self {
+            
+           case .byServiceType:
+               return ["Tyres",
+                       "Oil",
+                       "Battery"]
+               
+           case .byStatus:
+               return ["accepted",
+                       "received",
+                       "noOffer"]
+       
+           default:
+               return [""]
+           
         }
     }
 }

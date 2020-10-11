@@ -21,6 +21,7 @@ class UserAllRequestVC: BaseVC {
     // MARK: - Variables
     //===========================
     var viewModel = UserAllRequestVM()
+    var filterArr : [FilterScreen] = [.byServiceType("",false), .byStatus("",false), .date(Date(),Date(),false)]
     
     // MARK: - Lifecycle
     //===========================
@@ -40,8 +41,11 @@ class UserAllRequestVC: BaseVC {
     }
     
     @IBAction func filterBtnAction(_ sender: UIButton) {
+        AppRouter.goToMyServiceFilterVC(vc: self, filterArr: filterArr) {[weak self] (filterData) in
+            self?.getFilterData(data: filterData)
+            self?.filterArr = filterData
+        }
     }
-    
     
 }
 
@@ -53,6 +57,30 @@ extension UserAllRequestVC {
         self.filterBtn.tintColor = .black
         self.tableViewSetUp()
         hitListingApi()
+    }
+    
+    private func getFilterData(data: [FilterScreen]) {
+        var dict : JSONDictionary = [ApiKey.page: "1",ApiKey.limit : "20"]
+        data.forEach { (type) in
+            switch type {
+                
+            case .byServiceType(let str, _):
+                dict[ApiKey.type] = str
+           
+            case .byStatus(let str, _):
+                dict[ApiKey.status] = str
+                
+            case .date(let fromDate, let toDate, _):
+                let fDate = fromDate.iso8601.replacingOccurrences(of: ":", with: "%3A")
+                let d = fDate.replacingOccurrences(of: "+", with: "%2B")
+                dict[ApiKey.startdate] = fromDate.iso8601//.replacingOccurrences(of: ":", with: "%3A")
+                dict[ApiKey.endDate] =  toDate.iso8601
+
+            default:
+                break
+            }
+        }
+        self.viewModel.getUserMyRequestData(params: dict,loader: true)
     }
     
     private func tableViewSetUp(){

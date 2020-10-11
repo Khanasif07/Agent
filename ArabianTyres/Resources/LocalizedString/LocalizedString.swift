@@ -117,6 +117,14 @@ enum LocalizedString : String {
     case register
     case yourRegRequestHasBeenAccepted
     case byDate
+    case byServiceType
+    case byStatus
+    case tyreService
+    case oilSevice
+    case batteryService
+    case offerAccepted
+    case offerReceived
+    case noOffers
     
     // MARK: - Sign Up VC Values
     //==============================
@@ -304,6 +312,8 @@ enum LocalizedString : String {
     case uploadAnyPictureOfYourExperience
     case rateService
     case typeHere
+    case fromDate
+    case endDate
     // MARK: - Home  VC Values
     //==============================
     case tyre

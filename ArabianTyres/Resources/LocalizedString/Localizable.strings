@@ -246,8 +246,19 @@
 "rateService" = "Rate Service";
 "typeHere" = "type here......";
 "byDate" = "By Date";
+"byServiceType" = "By Service Type";
+"byStatus" = "By Status";
 
+"tyreService" = "Tyre Service";
+"oilSevice" = "Oil Sevice";
+"batteryService" = "Battery Service";
 
+"offerAccepted" = "Offer Accepted";
+"offerReceived" = "Offer Received";
+"noOffers" = "No Offers";
+
+"fromDate" = "From Date";
+"endDate" = "End Date";
  // MARK: - Home  VC Values
 //==============================
 "tyre" = "Tyre";

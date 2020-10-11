@@ -18,9 +18,18 @@ class OfferFilterTableViewCell: UITableViewCell {
     @IBOutlet weak var containerView : UIView!
     @IBOutlet weak var collView : UICollectionView!
     
+    //MARK:-Variables
     var cellBtnTapped : (()->())?
-    var subCatArr :[SubCatModel] = []
-    var sectionType: CellType = .distance
+    var selectedDateData : ((Date,Date) -> ())?
+    var selectedByStatusData : ((String) -> ())?
+
+    var sectionType: FilterScreen = .distance("" , false) {
+        didSet {
+            categoryLbl.text = sectionType.text
+            addImgView.isHighlighted = sectionType.isHide
+            collView.reloadData()
+        }
+    }
     
     //MARK:- Life Cycle
     override func awakeFromNib() {
@@ -35,8 +44,6 @@ class OfferFilterTableViewCell: UITableViewCell {
     }
     
     @IBAction func cellBtnAction(_ sender: UIButton) {
-        cellBtn.isSelected.toggle()
-        addImgView.isHighlighted.toggle()
         cellBtnTapped?()
     }
     
@@ -45,50 +52,67 @@ class OfferFilterTableViewCell: UITableViewCell {
         collView.dataSource = self
         collView.registerCell(with: DistanceSliderCollViewCell.self)
         collView.registerCell(with: FilterCollectionViewCell.self)
+        collView.registerCell(with: ByDateCollectionViewCell.self)
+
     }
-    
-    
-    func configCell(catgory: CatModel) {
-        self.subCatArr = catgory.subCat
-        self.categoryLbl.text = catgory.name
-        self.addImgView.isHighlighted = catgory.isSelected
-        self.collView.isHidden = !catgory.isSelected
-        collView.reloadData()
-    }
-    
 }
+
 //MARK:- Collection View Delegate and DataSource
 extension OfferFilterTableViewCell: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+   
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if sectionType == .distance {
-            return 1
-        }else {
-            return subCatArr.count
-        }
+        return sectionType.fliterTypeArr.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if sectionType == .distance {
+        switch sectionType {
+            
+        case .date(let fromDate,let toDate,_):
+            let cell = collectionView.dequeueCell(with: ByDateCollectionViewCell.self, indexPath: indexPath)
+//            if let fDate = fromDate, let tDate = toDate {
+//                cell.fromDate = fDate
+//                cell.toDate = tDate
+//            }
+            
+            cell.txtFieldData = {[weak self] (fromDate, toDate) in
+                self?.selectedDateData?(fromDate, toDate)
+            }
+            return cell
+            
+        case .distance(_,_):
             let cell = collectionView.dequeueCell(with: DistanceSliderCollViewCell.self, indexPath: indexPath)
             return cell
             
-        }else {
+        case .byServiceType(let str, _), .byStatus(let str, _) :
             let cell = collectionView.dequeueCell(with: FilterCollectionViewCell.self, indexPath: indexPath)
-            cell.subCategoryName.text = subCatArr[indexPath.item].name
-            cell.setupForOfferFilter()
-            cell.lineView.isHidden = subCatArr.count - 1 == indexPath.item
+            cell.subCategoryName.text = sectionType.fliterTypeArr[indexPath.item]
+            cell.checkImgView.isHighlighted = sectionType.apiValue[indexPath.item] == str
+            cell.lineView.isHidden = sectionType.fliterTypeArr.count - 1 == indexPath.item
             return cell
-            
+       
+        default:
+            let cell = collectionView.dequeueCell(with: FilterCollectionViewCell.self, indexPath: indexPath)
+            cell.subCategoryName.text = sectionType.fliterTypeArr[indexPath.item]
+            //            cell.setupForOfferFilter()
+            cell.lineView.isHidden = sectionType.fliterTypeArr.count - 1 == indexPath.item
+            return cell
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if sectionType == .distance {
+        switch sectionType {
+            
+        case .date(_,_,_), .distance(_,_):
             return CGSize(width: self.frame.width - 32, height: 100.0)
-
-        }else {
+        default:
             return CGSize(width: self.frame.width - 32, height: 54)
+            
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let type = sectionType.apiValue[indexPath.item]
+        selectedByStatusData?(type)
     }
 }
 

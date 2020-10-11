@@ -20,16 +20,15 @@ class MyServiceFilterVC: BaseVC {
     // MARK: - Variables
     //===================
     let viewModel = SRFliterVM()
-    var sectionArr : [CellType] = [.distance, .bidReceived]
-
+    var sectionArr : [FilterScreen] = [.byServiceType("",false), .byStatus("",false), .date(Date(),Date(),false)]
+    var onTapApply : (([FilterScreen])->())?
+    
     // MARK: - Lifecycle
     //===================
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
         tableViewSetup()
-        viewModel.initialData()
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,7 +49,8 @@ class MyServiceFilterVC: BaseVC {
     }
     
     @IBAction func applyBtnAction(_ sender: UIButton) {
-        
+        onTapApply?(sectionArr)
+        self.pop()
     }
 }
 
@@ -85,7 +85,7 @@ extension MyServiceFilterVC {
 
 extension MyServiceFilterVC :UITableViewDelegate,UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
-        return viewModel.catgories.count + 1
+        return sectionArr.endIndex
         
     }
     
@@ -96,29 +96,50 @@ extension MyServiceFilterVC :UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return CGFloat.leastNonzeroMagnitude
     }
-    
-//    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 300.0
-//    }
-//
+
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return CGFloat.leastNonzeroMagnitude
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let model = viewModel.catgories[indexPath.section]
-        return model.isSelected ? CGFloat(54 + model.subCat.count * 54) : 54.0
+        let type = self.sectionArr[indexPath.section]
+        if case .date = type {
+            return type.isHide ? 154.0 : 54.0
+
+        }else {
+            return type.isHide ? CGFloat(54 + type.fliterTypeArr.count * 54) : 54.0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(with: OfferFilterTableViewCell.self, indexPath: indexPath)
-        cell.configCell(catgory: self.viewModel.catgories[indexPath.section])
-       
+        cell.sectionType = sectionArr[indexPath.section]
+        
         cell.cellBtnTapped = { [weak self] in
             guard let `self` = self else {return}
-            self.viewModel.catgories[indexPath.section].isSelected.toggle()
+            self.sectionArr[indexPath.section] = self.sectionArr[indexPath.section].isSelected
             self.mainTableView.reloadRows(at: [indexPath], with: .automatic)
-//            cell.collView.reloadData()
+        }
+        
+        cell.selectedByStatusData = { [weak self] (requestAndStatusType) in
+            guard let `self` = self else {return}
+            switch self.sectionArr[indexPath.section] {
+            case .byServiceType(_, let hide) :
+                self.sectionArr[indexPath.section] = .byServiceType(requestAndStatusType, hide)
+                
+            case .byStatus(_, let hide) :
+                self.sectionArr[indexPath.section] = .byStatus(requestAndStatusType, hide)
+                
+            default:
+                return
+            }
+            self.mainTableView.reloadData()
+
+        }
+        
+        cell.selectedDateData = { [weak self] (fromDate,toDate) in
+            guard let `self` = self else {return}
+            self.sectionArr[indexPath.section] = .date(fromDate, toDate, self.sectionArr[indexPath.section].isHide)
         }
         return cell
     }
