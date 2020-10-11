@@ -21,7 +21,7 @@ class UserAllRequestVC: BaseVC {
     // MARK: - Variables
     //===========================
     var viewModel = UserAllRequestVM()
-    var filterArr : [FilterScreen] = [.byServiceType("",false), .byStatus("",false), .date(Date(),Date(),false)]
+    var filterArr : [FilterScreen] = [.byServiceType("",false), .byStatus("",false), .date(nil,nil,false)]
     
     // MARK: - Lifecycle
     //===========================
@@ -41,10 +41,10 @@ class UserAllRequestVC: BaseVC {
     }
     
     @IBAction func filterBtnAction(_ sender: UIButton) {
-        AppRouter.goToMyServiceFilterVC(vc: self, filterArr: filterArr) {[weak self] (filterData) in
-            self?.getFilterData(data: filterData)
-            self?.filterArr = filterData
-        }
+//        AppRouter.goToMyServiceFilterVC(vc: self, filterArr: filterArr) {[weak self] (filterData) in
+//            self?.getFilterData(data: filterData)
+//            self?.filterArr = filterData
+//        }
     }
     
 }
@@ -66,16 +66,18 @@ extension UserAllRequestVC {
                 
             case .byServiceType(let str, _):
                 dict[ApiKey.type] = str
-           
+                
             case .byStatus(let str, _):
                 dict[ApiKey.status] = str
                 
             case .date(let fromDate, let toDate, _):
-                let fDate = fromDate.iso8601.replacingOccurrences(of: ":", with: "%3A")
-                let d = fDate.replacingOccurrences(of: "+", with: "%2B")
-                dict[ApiKey.startdate] = fromDate.iso8601//.replacingOccurrences(of: ":", with: "%3A")
-                dict[ApiKey.endDate] =  toDate.iso8601
-
+                
+                if let fDate = fromDate ,let tDate = toDate {
+                    dict[ApiKey.startdate] = fDate.toString(dateFormat: Date.DateFormat.givenDateFormat.rawValue)
+                    dict[ApiKey.endDate] =  tDate.toString(dateFormat: Date.DateFormat.givenDateFormat.rawValue)
+                    
+                }
+                
             default:
                 break
             }

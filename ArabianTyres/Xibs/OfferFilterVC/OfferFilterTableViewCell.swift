@@ -69,10 +69,10 @@ extension OfferFilterTableViewCell: UICollectionViewDelegate,UICollectionViewDat
             
         case .date(let fromDate,let toDate,_):
             let cell = collectionView.dequeueCell(with: ByDateCollectionViewCell.self, indexPath: indexPath)
-//            if let fDate = fromDate, let tDate = toDate {
-//                cell.fromDate = fDate
-//                cell.toDate = tDate
-//            }
+            if let fDate = fromDate, let tDate = toDate {
+                cell.fromDate = fDate
+                cell.toDate = tDate
+            }
             
             cell.txtFieldData = {[weak self] (fromDate, toDate) in
                 self?.selectedDateData?(fromDate, toDate)

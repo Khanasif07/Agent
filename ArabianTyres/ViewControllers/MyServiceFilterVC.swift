@@ -16,7 +16,7 @@ class MyServiceFilterVC: BaseVC {
     @IBOutlet weak var canceBtn: UIButton!
     @IBOutlet weak var applyBtn: UIButton!
     @IBOutlet weak var mainTableView: UITableView!
-
+    
     // MARK: - Variables
     //===================
     let viewModel = SRFliterVM()
@@ -39,7 +39,7 @@ class MyServiceFilterVC: BaseVC {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-
+        
     }
     
     // MARK: - IBActions
@@ -49,8 +49,14 @@ class MyServiceFilterVC: BaseVC {
     }
     
     @IBAction func applyBtnAction(_ sender: UIButton) {
-        onTapApply?(sectionArr)
-        self.pop()
+        let result = checkFilterStatus()
+        
+        if result.status {
+            onTapApply?(sectionArr)
+            self.pop()
+        }else {
+            CommonFunctions.showToastWithMessage(result.msg)
+        }
     }
 }
 
@@ -75,11 +81,46 @@ extension MyServiceFilterVC {
         filterLbl.text = LocalizedString.filter.localized
         canceBtn.setTitle(LocalizedString.cancel.localized, for: .normal)
         applyBtn.setTitle(LocalizedString.apply.localized, for: .normal)
-  
+        
         filterLbl.font = AppFonts.NunitoSansBold.withSize(17.0)
         canceBtn.titleLabel?.font = AppFonts.NunitoSansSemiBold.withSize(17.0)
         applyBtn.titleLabel?.font = AppFonts.NunitoSansSemiBold.withSize(17.0)
-
+        
+    }
+    
+    private func checkFilterStatus() -> (status: Bool, msg: String) {
+        var flag = true
+        var msg = ""
+        for data in sectionArr{
+            switch data {
+                
+            case .byServiceType(let str, _):
+                if str.isEmpty {
+                    flag = false
+                    msg = "Please select Service Type"
+                }
+            case .byStatus(let str, _):
+                if str.isEmpty {
+                    flag = false
+                    msg = "Please select Status Type"
+                }
+                
+            case .date(let fromDate, let toDate, _):
+                if fromDate == nil {
+                    flag = false
+                    msg = "Please select from date"
+                }
+                if toDate == nil {
+                    flag = false
+                    msg = "Please select to date"
+                }
+                
+            default:
+                break
+            }
+            if !flag {break}
+        }
+        return (flag,msg)
     }
 }
 
@@ -96,7 +137,7 @@ extension MyServiceFilterVC :UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return CGFloat.leastNonzeroMagnitude
     }
-
+    
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return CGFloat.leastNonzeroMagnitude
     }
@@ -105,7 +146,7 @@ extension MyServiceFilterVC :UITableViewDelegate,UITableViewDataSource{
         let type = self.sectionArr[indexPath.section]
         if case .date = type {
             return type.isHide ? 154.0 : 54.0
-
+            
         }else {
             return type.isHide ? CGFloat(54 + type.fliterTypeArr.count * 54) : 54.0
         }
@@ -134,7 +175,7 @@ extension MyServiceFilterVC :UITableViewDelegate,UITableViewDataSource{
                 return
             }
             self.mainTableView.reloadData()
-
+            
         }
         
         cell.selectedDateData = { [weak self] (fromDate,toDate) in

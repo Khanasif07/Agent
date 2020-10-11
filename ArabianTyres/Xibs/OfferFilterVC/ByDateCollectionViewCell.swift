@@ -20,8 +20,21 @@ class ByDateCollectionViewCell: UICollectionViewCell {
     var placeHolderArr : [String] = [LocalizedString.fromDate.localized, LocalizedString.endDate.localized]
     var tempTextField: UITextField?
     var txtFieldData : ((Date, Date)->())?
-    var fromDate : Date = Date()
-    var toDate : Date = Date()
+  
+    var fromDate : Date? = nil {
+        didSet {
+            if let fDate = fromDate {
+                fromDateTextField.text = getDateString(selectDate: fDate)
+            }
+        }
+    }
+    var toDate : Date? = nil {
+        didSet {
+            if let tDate = toDate {
+                endDateTextField.text = getDateString(selectDate: tDate)
+            }
+        }
+    }
     private let datePicker : UIDatePicker = {
         let picker = UIDatePicker()
         picker.datePickerMode = .date
@@ -51,10 +64,6 @@ class ByDateCollectionViewCell: UICollectionViewCell {
             txtField?.textColor = AppColors.fontPrimaryColor
             txtField?.inputView = datePicker
         }
-//        if let fDate = fromDate , let tDate = toDate {
-//            fromDateTextField.text = getDateString(selectDate: fDate)
-//            endDateTextField.text = getDateString(selectDate: tDate)
-//        }
     }
     
     private func getDateString(selectDate : Date)-> String {
@@ -78,28 +87,31 @@ extension ByDateCollectionViewCell :UITextFieldDelegate{
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         switch textField {
         case fromDateTextField:
-            datePicker.date = fromDate
+            datePicker.date = fromDate ?? Date()
+            fromDate = datePicker.date
             tempTextField = fromDateTextField
         case endDateTextField:
-            datePicker.date = toDate
+            datePicker.date = toDate ?? Date()
+            datePicker.minimumDate = fromDate?.plus(days: 1)
+            toDate = datePicker.date
             tempTextField = endDateTextField
         default:
             break
         }
         
-        if let text = textField.text {
-            if text.isEmpty{
-                tempTextField?.text = getDateString(selectDate: datePicker.date)
-            }
-        }
+//        if let text = textField.text {
+//            if text.isEmpty{
+//                tempTextField?.text = getDateString(selectDate: datePicker.date)
+//            }
+//        }
         return true
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-//        if let fDate = fromDate , let tDate = toDate {
-//            txtFieldData?(fDate,tDate)
-//        }
-        txtFieldData?(fromDate,toDate)
+        if let fDate = fromDate , let tDate = toDate {
+            txtFieldData?(fDate,tDate)
+        }
+//        txtFieldData?(fromDate,toDate)
 
     }
 }

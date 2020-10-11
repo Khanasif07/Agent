@@ -89,7 +89,7 @@ enum FilterScreen {
   
     case byServiceType(String,Bool)
     case byStatus(String,Bool)
-    case date(Date,Date,Bool)
+    case date(Date?,Date?,Bool)
     case bidReceived(String,Bool)
     case distance(String,Bool)
     
