@@ -16,6 +16,11 @@ class GarageServiceRequestVC: BaseVC {
         case brandListing
     }
     
+    enum BrandsType{
+        case countryBrands
+        case onlyBrands
+    }
+    
     // MARK: - IBOutlets
     //===========================
     @IBOutlet weak var placeBidBtn: AppButton!
@@ -30,6 +35,7 @@ class GarageServiceRequestVC: BaseVC {
     var requestId : String = ""
     var selectedCountry: String  = "India"
     var sectionType : [Section] = [.userDetail]
+    var brandsType : BrandsType = .onlyBrands
     let viewModel = GarageServiceRequestVM()
     weak var delegate: UserServiceRequestVCDelegate?
 
@@ -46,11 +52,6 @@ class GarageServiceRequestVC: BaseVC {
         self.tabBarController?.tabBar.isTranslucent = true
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.mainTableView.reloadData()
-    }
-  
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         placeBidBtn.round(radius: 4.0)
@@ -73,8 +74,8 @@ class GarageServiceRequestVC: BaseVC {
             var dict  = JSONDictionary()
             dict[ApiKey.brandName] = model.name
             dict[ApiKey.brandId] = model.id
-            dict[ApiKey.amount] = model.amount ?? 500
-            dict[ApiKey.quantity] = model.quantity ?? 1
+            dict[ApiKey.amount] = model.amount ?? 0
+            dict[ApiKey.quantity] = quantity
             selectedDict.append(dict)
         }
         self.viewModel.postPlaceBidData(params: [ApiKey.requestId:requestId,ApiKey.bidData: selectedDict])
@@ -186,7 +187,16 @@ extension GarageServiceRequestVC : UITableViewDelegate, UITableViewDataSource {
             //
             cell.unitPriceUpdated = { [weak self] (unitPrice,SelectedIndexPath)  in
                 guard let `self` = self else { return }
+                if self.brandsType == .onlyBrands {
                 self.viewModel.countryBrandsDict[0][self.selectedCountry]?[SelectedIndexPath.row].amount = Int(unitPrice) ?? 0
+                }
+                if self.brandsType == .countryBrands {
+                    let indexx = self.viewModel.countryBrandsDict.firstIndex { (model) -> Bool in
+                        Array(model.keys)[0] == self.selectedCountry
+                    }
+                    guard let selectedIndexx  = indexx else { return}
+                    self.viewModel.countryBrandsDict[selectedIndexx][self.selectedCountry]?[SelectedIndexPath.row].amount = Int(unitPrice) ?? 0
+                }
             }
             //
             let indexx = self.viewModel.countryBrandsDict.firstIndex { (model) -> Bool in
@@ -195,7 +205,6 @@ extension GarageServiceRequestVC : UITableViewDelegate, UITableViewDataSource {
             guard let selectedIndexx  = indexx else { return UITableViewCell()}
             cell.brandDataArr = self.viewModel.countryBrandsDict[selectedIndexx][self.selectedCountry] ?? [PreferredBrand]()
             cell.quantity = self.quantity
-            cell.internalTableView.reloadData()
             return cell
         }
     }
@@ -232,7 +241,6 @@ extension GarageServiceRequestVC :GarageServiceRequestVMDelegate {
             sectionType.contains(.brandListing) ? sectionType.removeAll{($0 == .brandListing)} : ()
         }
         self.viewModel.countryBrandsDict.append([self.selectedCountry : viewModel.brandsListings])
-//        viewModel.garageRequestDetailArr?.preferredBrands = viewModel.brandsListings
         DispatchQueue.main.async {
             self.mainTableView.reloadData()
         }
@@ -257,11 +265,13 @@ extension GarageServiceRequestVC :GarageServiceRequestVMDelegate {
   
         if !(viewModel.garageRequestDetailArr?.preferredCountries.isEmpty ?? false) {
             apiHit = false
+            brandsType = .countryBrands
             sectionType.append(.countryDetail)
         }
         
         if !(viewModel.garageRequestDetailArr?.preferredBrands.isEmpty ?? false) {
             apiHit = false
+            brandsType = .onlyBrands
             self.viewModel.countryBrandsDict.append([self.selectedCountry : viewModel.garageRequestDetailArr?.preferredBrands ?? [PreferredBrand]()])
             sectionType.append(.brandListing)
         }
