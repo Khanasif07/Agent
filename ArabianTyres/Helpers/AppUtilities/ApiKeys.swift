@@ -165,6 +165,7 @@ enum ApiKey {
     static var requestType : String { return "requestType" }
     static var startdate : String { return "startDate" }
     static var endDate : String { return "endDate" }
+    static var amount: String { return "amount" }
 
 }
 
