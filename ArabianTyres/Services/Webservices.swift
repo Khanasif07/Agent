@@ -724,5 +724,14 @@ extension WebServices{
         }
     }
     
+    static func postPlaceBidData(parameters: JSONDictionary,
+                                 success: @escaping ResponseMessage,
+                                 failure: @escaping FailureResponse) {
+          self.commonPostAPI(parameters: parameters, endPoint: .userOilRequest,loader: true, success: { (json) in
+              success(json[ApiKey.message].stringValue)
+          }) { (error) -> (Void) in
+              failure(error)
+          }
+      }
 }
 

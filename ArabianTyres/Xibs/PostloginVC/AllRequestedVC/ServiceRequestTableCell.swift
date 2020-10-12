@@ -33,6 +33,7 @@ class ServiceRequestTableCell: UITableViewCell {
 
     
     var rejectRequestBtnTapped: (()->())?
+    var placeBidBtnTapped: ((_ sender: UIButton)->())?
     override func awakeFromNib() {
         super.awakeFromNib()
         initialSetUp()
@@ -50,6 +51,9 @@ class ServiceRequestTableCell: UITableViewCell {
     
     
     @IBAction func placeBidAction(_ sender: AppButton) {
+        if let handle = placeBidBtnTapped{
+            handle(sender)
+        }
     }
     
     @IBAction func placeRequestBtnAction(_ sender: AppButton) {

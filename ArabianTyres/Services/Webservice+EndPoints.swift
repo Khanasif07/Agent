@@ -54,6 +54,7 @@ extension WebServices {
         case userMyServiceRequestsDetail = "user/services/requestDetail"
         case userMyServiceRequestsCancel = "user/services/userCancelRequest"
         case garageRejectRequest = "user/services/garageRejectRequest"
+        case userPlaceBid = "user/bids/placeBid"
        
         
         var path : String {

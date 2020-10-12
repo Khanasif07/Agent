@@ -161,6 +161,7 @@ enum ApiKey {
     static var reason: String { return "reason" }
     static var time: String { return "time" }
     static var requestId : String { return "requestId" }
+    static var bidData : String { return "bidData" }
 }
 
 //MARK:- Api Code

@@ -42,7 +42,6 @@ class GarageServiceRequestVC: BaseVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-    
         self.tabBarController?.tabBar.isHidden = true
         self.tabBarController?.tabBar.isTranslucent = true
         self.mainTableView.reloadData()
@@ -67,6 +66,7 @@ class GarageServiceRequestVC: BaseVC {
         }
         let selectedCountryBrandsArray = selectedCountryBrands.flatMap { $0 }
         printDebug(selectedCountryBrandsArray)
+        self.viewModel.postPlaceBidData(params: [ApiKey.requestId:requestId,ApiKey.bidData:[]])
     }
     
     @IBAction func rejectRequestAction(_ sender: AppButton) {
@@ -190,6 +190,14 @@ extension GarageServiceRequestVC : UITableViewDelegate, UITableViewDataSource {
 }
 
 extension GarageServiceRequestVC :GarageServiceRequestVMDelegate {
+    func placeBidSuccess(message: String) {
+        
+    }
+    
+    func placeBidFailure(error: String) {
+         ToastView.shared.showLongToast(self.view, msg: error)
+    }
+    
     func getGarageDetailSuccess(message: String) {
         updateDataSource()
         self.quantity = viewModel.garageRequestDetailArr?.quantity ?? 0
@@ -198,21 +206,19 @@ extension GarageServiceRequestVC :GarageServiceRequestVMDelegate {
     
     func getGarageDetailFailed(error: String) {
         ToastView.shared.showLongToast(self.view, msg: error)
-
     }
     
     func brandListingSuccess(message: String) {
-//        if !viewModel.brandsListings.isEmpty {
+        if !viewModel.brandsListings.isEmpty {
             sectionType.contains(.brandListing) ? () : sectionType.append(.brandListing)
-//
-//        }else {
-//            sectionType.contains(.brandListing) ? sectionType.removeAll{($0 == .brandListing)} : ()
-//        }
-        let dictArray = [PreferredBrand(id:"5f74789de4621e651af7b38e",name:"Brand new 3",countrySpecificBrands: []),PreferredBrand(id:"5f74789de4621e651af7b38c",name:"Brand new 2",countrySpecificBrands: []),PreferredBrand(id:"5f74789de4621e651af7b38d",name:"Brand new 1",countrySpecificBrands: [])]
-//        self.viewModel.countryBrandsDict.append([self.selectedCountry : viewModel.brandsListings])
-        self.viewModel.countryBrandsDict.append([self.selectedCountry : dictArray])
-//        viewModel.garageRequestDetailArr?.preferredBrands = viewModel.brandsListings
-        viewModel.garageRequestDetailArr?.preferredBrands = dictArray
+        }else {
+            sectionType.contains(.brandListing) ? sectionType.removeAll{($0 == .brandListing)} : ()
+        }
+//        let dictArray = [PreferredBrand(id:"5f74789de4621e651af7b38e",name:"Brand new 3",countrySpecificBrands: []),PreferredBrand(id:"5f74789de4621e651af7b38c",name:"Brand new 2",countrySpecificBrands: []),PreferredBrand(id:"5f74789de4621e651af7b38d",name:"Brand new 1",countrySpecificBrands: [])]
+        self.viewModel.countryBrandsDict.append([self.selectedCountry : viewModel.brandsListings])
+//        self.viewModel.countryBrandsDict.append([self.selectedCountry : dictArray])
+        viewModel.garageRequestDetailArr?.preferredBrands = viewModel.brandsListings
+//        viewModel.garageRequestDetailArr?.preferredBrands = dictArray
         mainTableView.reloadData()
         
     }

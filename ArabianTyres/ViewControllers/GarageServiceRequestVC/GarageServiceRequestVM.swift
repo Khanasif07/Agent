@@ -17,6 +17,8 @@ protocol GarageServiceRequestVMDelegate: class {
     func brandListingFailed(error:String)
     func cancelGarageRequestSuccess(message: String)
     func cancelGarageRequestFailure(error:String)
+    func placeBidSuccess(message: String)
+    func placeBidFailure(error:String)
 
 }
 
@@ -49,10 +51,22 @@ class GarageServiceRequestVM {
     
     // MARK: Functions
       //=================================
-      func getGarageRequestDetailData(params: JSONDictionary,loader: Bool = false) {
+    
+    func postPlaceBidData(params: JSONDictionary,loader: Bool = false) {
+        WebServices.postPlaceBidData(parameters: params, success: { [weak self] (msg) in
+            guard let `self` = self else { return }
+            self.delegate?.placeBidSuccess(message: msg)
+            printDebug(msg)
+        }) { [weak self] (error) in
+            guard let `self` = self else { return }
+            self.delegate?.placeBidFailure(error: error.localizedDescription)
+        }
+    }
+    
+    func getGarageRequestDetailData(params: JSONDictionary,loader: Bool = false) {
           WebServices.getGarageRequestDetail(parameters: params, success: { [weak self] (json) in
               guard let `self` = self else { return }
-              self.parseToMakeListingData(result: json)
+              self.parseToGarageRequestDetailData(result: json)
              
               printDebug(json)
           }) { [weak self] (error) in
@@ -62,7 +76,7 @@ class GarageServiceRequestVM {
       }
     
 
-        func parseToMakeListingData(result: JSON) {
+        func parseToGarageRequestDetailData(result: JSON) {
             if let jsonString = result[ApiKey.data].rawString(), let data = jsonString.data(using: .utf8) {
                 do {
                     if result[ApiKey.data].isEmpty {

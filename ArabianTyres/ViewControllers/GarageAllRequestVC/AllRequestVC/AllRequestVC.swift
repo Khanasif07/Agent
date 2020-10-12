@@ -74,8 +74,15 @@ extension AllRequestVC : UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueCell(with: ServiceRequestTableCell.self, indexPath: indexPath)
         cell.bindData(viewModel.garageRequestListing[indexPath.row])
         cell.rejectRequestBtnTapped = {[weak self] in
-            self?.requestId = self?.viewModel.garageRequestListing[indexPath.row].id ?? ""
-            self?.viewModel.rejectGarageRequest(params:[ApiKey.requestId : self?.requestId ?? ""])
+            guard let `self` = self else {return}
+            self.requestId = self.viewModel.garageRequestListing[indexPath.row].id ?? ""
+            self.viewModel.rejectGarageRequest(params:[ApiKey.requestId : self.requestId])
+        }
+        cell.placeBidBtnTapped = {[weak self] (sender) in
+            guard let `self` = self else {return}
+            if let selectedIndex = tableView.indexPath(for: cell) {
+            AppRouter.goToGarageServiceRequestVC(vc: self,requestId : self.viewModel.garageRequestListing[selectedIndex.row].id ?? "")
+            }
         }
         return cell
     }
