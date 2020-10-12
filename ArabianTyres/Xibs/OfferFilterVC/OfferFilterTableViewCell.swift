@@ -22,8 +22,8 @@ class OfferFilterTableViewCell: UITableViewCell {
     var cellBtnTapped : (()->())?
     var selectedDateData : ((Date,Date) -> ())?
     var selectedByStatusData : ((String) -> ())?
-
-    var sectionType: FilterScreen = .distance("" , false) {
+    var selectedDistance: ((String,String) -> ())?
+    var sectionType: FilterScreen = .distance("","", false) {
         didSet {
             categoryLbl.text = sectionType.text
             addImgView.isHighlighted = sectionType.isHide
@@ -79,37 +79,47 @@ extension OfferFilterTableViewCell: UICollectionViewDelegate,UICollectionViewDat
             }
             return cell
             
-        case .distance(_,_):
+        case .distance(let minValue,let maxValue,_):
             let cell = collectionView.dequeueCell(with: DistanceSliderCollViewCell.self, indexPath: indexPath)
+           
+            cell.rangeSlider.selectedMinimum = minValue.isEmpty ? 10 : (minValue as NSString).floatValue
+            cell.rangeSlider.selectedMaximum = maxValue.isEmpty ? 50 : (maxValue as NSString).floatValue
+
+            cell.sliderValueChanged = {[weak self] (sliderMinValue,sliderMaxValue )in
+                self?.selectedDistance?(sliderMinValue, sliderMaxValue)
+            }
+           
             return cell
             
-        case .byServiceType(let str, _), .byStatus(let str, _) :
+        case .byServiceType(let arr, _), .byStatus(let arr, _) :
             let cell = collectionView.dequeueCell(with: FilterCollectionViewCell.self, indexPath: indexPath)
             cell.subCategoryName.text = sectionType.fliterTypeArr[indexPath.item]
-            cell.checkImgView.isHighlighted = sectionType.apiValue[indexPath.item] == str
+            cell.checkImgView.isHighlighted = arr.contains(sectionType.apiValue[indexPath.item])
             cell.lineView.isHidden = sectionType.fliterTypeArr.count - 1 == indexPath.item
             return cell
-       
-        case .allRequestByStatus(let str, _), .allRequestServiceType(let str, _) :
-                 let cell = collectionView.dequeueCell(with: FilterCollectionViewCell.self, indexPath: indexPath)
-                 cell.subCategoryName.text = sectionType.fliterTypeArr[indexPath.item]
-                 cell.checkImgView.isHighlighted = sectionType.apiValue[indexPath.item] == str
-                 cell.lineView.isHidden = sectionType.fliterTypeArr.count - 1 == indexPath.item
-                 return cell
             
-        default:
+        case .allRequestByStatus(let arr, _), .allRequestServiceType(let arr, _) :
             let cell = collectionView.dequeueCell(with: FilterCollectionViewCell.self, indexPath: indexPath)
             cell.subCategoryName.text = sectionType.fliterTypeArr[indexPath.item]
-            //            cell.setupForOfferFilter()
+            cell.checkImgView.isHighlighted = arr.contains(sectionType.apiValue[indexPath.item])
             cell.lineView.isHidden = sectionType.fliterTypeArr.count - 1 == indexPath.item
             return cell
+            
+        case .bidReceived(let arr, _):
+            let cell = collectionView.dequeueCell(with: FilterCollectionViewCell.self, indexPath: indexPath)
+            cell.setupForOfferFilter()
+            cell.subCategoryName.text = sectionType.fliterTypeArr[indexPath.item]
+            cell.checkImgView.isHighlighted = arr.contains(sectionType.apiValue[indexPath.item])
+            cell.lineView.isHidden = sectionType.fliterTypeArr.count - 1 == indexPath.item
+            return cell
+     
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch sectionType {
             
-        case .date(_,_,_), .distance(_,_):
+        case .date(_,_,_), .distance(_,_,_):
             return CGSize(width: self.frame.width - 32, height: 100.0)
         default:
             return CGSize(width: self.frame.width - 32, height: 54)

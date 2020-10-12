@@ -21,7 +21,7 @@ class SRFilterVC: BaseVC {
     // MARK: - Variables
     //===================
     let viewModel = SRFliterVM()
-    var sectionArr : [FilterScreen] = [.allRequestServiceType("",false), .allRequestByStatus("",false)]
+    var sectionArr : [FilterScreen] = [.allRequestServiceType([],false), .allRequestByStatus([],false)]
     var onTapApply : (([FilterScreen])->())?
     
     // MARK: - Lifecycle
@@ -87,6 +87,37 @@ extension SRFilterVC {
         canceBtn.titleLabel?.font = AppFonts.NunitoSansSemiBold.withSize(17.0)
         applyBtn.titleLabel?.font = AppFonts.NunitoSansSemiBold.withSize(17.0)
 
+    }
+    
+    func updateDataSouce(_ filterValue:String , indexPath : IndexPath) {
+        var data: [String] = []
+        switch self.sectionArr[indexPath.section] {
+        case .allRequestServiceType(let arr, let hide) :
+            if arr.contains(filterValue) {
+                guard let firstIndex = arr.firstIndex(of: filterValue) else {return}
+                data = arr
+                data.remove(at: firstIndex)
+                self.sectionArr[indexPath.section] = .allRequestServiceType(data, hide)
+            }else {
+                data = arr
+                data.append(filterValue)
+                self.sectionArr[indexPath.section] = .allRequestServiceType(data, hide)
+            }
+        case .allRequestByStatus(let arr, let hide) :
+            if arr.contains(filterValue) {
+                guard let firstIndex = arr.firstIndex(of: filterValue) else {return}
+                data = arr
+                data.remove(at: firstIndex)
+                self.sectionArr[indexPath.section] = .allRequestByStatus(data, hide)
+            }else {
+                data = arr
+                data.append(filterValue)
+                self.sectionArr[indexPath.section] = .allRequestByStatus(data, hide)
+            }
+        default:
+            return
+        }
+        self.mainTableView.reloadData()
     }
     
     private func checkFilterStatus() -> (status: Bool, msg: String) {
@@ -169,19 +200,9 @@ extension SRFilterVC :UITableViewDelegate,UITableViewDataSource{
      
         cell.selectedByStatusData = { [weak self] (requestAndStatusType) in
             guard let `self` = self else {return}
-            switch self.sectionArr[indexPath.section] {
-            case .byServiceType(_, let hide) :
-                self.sectionArr[indexPath.section] = .byServiceType(requestAndStatusType, hide)
-                
-            case .byStatus(_, let hide) :
-                self.sectionArr[indexPath.section] = .byStatus(requestAndStatusType, hide)
-                
-            default:
-                return
-            }
-            self.mainTableView.reloadData()
-            
+            self.updateDataSouce(requestAndStatusType,indexPath : indexPath)
         }
+        
         return cell
     }
 }

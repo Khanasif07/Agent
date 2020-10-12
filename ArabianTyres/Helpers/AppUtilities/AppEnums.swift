@@ -87,15 +87,14 @@ enum CellType : CaseIterable{
 
 enum FilterScreen {
   
-    case byServiceType(String,Bool)
-    case byStatus(String,Bool)
+    case byServiceType([String],Bool)
+    case byStatus([String],Bool)
     case date(Date?,Date?,Bool)
-    case bidReceived(String,Bool)
-    case distance(String,Bool)
-    case allRequestServiceType(String,Bool)
-    case allRequestByStatus(String,Bool)
+    case bidReceived([String],Bool)
+    case distance(String,String,Bool)
+    case allRequestServiceType([String],Bool)
+    case allRequestByStatus([String],Bool)
 
-    
     var text: String {
         switch self {
             
@@ -133,35 +132,45 @@ enum FilterScreen {
             return [LocalizedString.tyreService.localized,
                     LocalizedString.oilSevice.localized,
                     LocalizedString.batteryService.localized]
-           
+            
         case .allRequestByStatus:
             return [LocalizedString.bidFinalized.localized,
                     LocalizedString.openForBid.localized,
                     LocalizedString.bidPlaced.localized,
                     LocalizedString.bidRejected.localized]
+        case .bidReceived:
+            return [LocalizedString.lowToHigh.localized,
+                    LocalizedString.highToLow.localized,
+                    LocalizedString.ratingHighToLow.localized]
         default:
             return [""]
-        
+            
         }
     }
     
     var isSelected : FilterScreen {
         switch self {
             
-        case .byServiceType(let str,let hide):
-            return .byServiceType(str, !hide)
-        case .byStatus(let str,let hide):
-            return .byStatus(str, !hide)
+        case .byServiceType(let arr,let hide):
+            return .byServiceType(arr, !hide)
+       
+        case .byStatus(let arr,let hide):
+            return .byStatus(arr, !hide)
+        
         case .date(let date1, let date2, let hide):
             return .date(date1, date2, !hide)
-        case .bidReceived(let str,let hide):
-            return .bidReceived(str, !hide)
-        case .distance(let str,let hide):
-            return .distance(str, !hide)
-        case .allRequestServiceType(let str,let hide):
-            return .allRequestServiceType(str, !hide)
-        case .allRequestByStatus(let str,let hide):
-            return .allRequestByStatus(str, !hide)
+        
+        case .bidReceived(let arr,let hide):
+            return .bidReceived(arr, !hide)
+        
+        case .distance(let minValue,let maxValue,let hide):
+            return .distance(minValue,maxValue, !hide)
+        
+        case .allRequestServiceType(let arr,let hide):
+            return .allRequestServiceType(arr, !hide)
+        
+        case .allRequestByStatus(let arr,let hide):
+            return .allRequestByStatus(arr, !hide)
             
         }
     }
@@ -169,7 +178,7 @@ enum FilterScreen {
     var isHide : Bool {
         switch self {
         
-        case .byServiceType(_ ,let hide), .byStatus(_ ,let hide), .date(_ ,_ ,let hide), .bidReceived(_ ,let hide),.distance(_ ,let hide), .allRequestServiceType(_ ,let hide), .allRequestByStatus(_ ,let hide) :
+        case .byServiceType(_ ,let hide), .byStatus(_ ,let hide), .date(_ ,_ ,let hide), .bidReceived(_ ,let hide),.distance(_,_,let hide), .allRequestServiceType(_ ,let hide), .allRequestByStatus(_ ,let hide) :
             return hide
 
         }
@@ -196,9 +205,13 @@ enum FilterScreen {
                     "Oil",
                     "Battery",
                     "Battery"]
+           case .bidReceived:
+            return ["Tyres",
+            "Oil",
+            "Battery"]
+            
            default:
             return [""]
-            
         }
     }
 }

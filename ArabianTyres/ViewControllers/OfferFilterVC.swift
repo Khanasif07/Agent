@@ -18,7 +18,8 @@ class OfferFilterVC: BaseVC {
 
     // MARK: - Variables
     //===========================
-    var sectionArr : [FilterScreen] = [.distance("", false), .bidReceived("",false)]
+    var sectionArr : [FilterScreen] = [.distance("","", false), .bidReceived([],false)]
+    var onTapApply : (([FilterScreen])->())?
     let viewModel = SRFliterVM()
     var sliderHide: Bool = false
 
@@ -45,8 +46,15 @@ class OfferFilterVC: BaseVC {
     }
     
     @IBAction func applyBtnAction(_ sender: Any) {
-           pop()
-       }
+        let result = checkFilterStatus()
+        
+        if result.status {
+            onTapApply?(sectionArr)
+            self.pop()
+        }else {
+            CommonFunctions.showToastWithMessage(result.msg)
+        }
+    }
 }
 
 // MARK: - Extension For Functions
@@ -63,12 +71,51 @@ extension OfferFilterVC {
         mainTableView.delegate = self
         mainTableView.dataSource = self
         mainTableView.registerCell(with: OfferFilterTableViewCell.self)
-        mainTableView.registerCell(with: ServiceStatusTableViewCell.self)
     }
     
     private func setupTextAndFont(){
         titleLbl.font = AppFonts.NunitoSansBold.withSize(17.0)
         titleLbl.text = LocalizedString.filter.localized
+    }
+    
+    func updateDataSouce(_ filterValue:String , indexPath : IndexPath) {
+        var data: [String] = []
+        switch self.sectionArr[indexPath.section] {
+        case .bidReceived(let arr, let hide) :
+            if arr.contains(filterValue) {
+                guard let firstIndex = arr.firstIndex(of: filterValue) else {return}
+                data = arr
+                data.remove(at: firstIndex)
+                self.sectionArr[indexPath.section] = .bidReceived(data, hide)
+            }else {
+                data = arr
+                data.append(filterValue)
+                self.sectionArr[indexPath.section] = .bidReceived(data, hide)
+            }
+            
+        default:
+            return
+        }
+        self.mainTableView.reloadData()
+    }
+    
+    private func checkFilterStatus() -> (status: Bool, msg: String) {
+        var flag = true
+        var msg = ""
+        for data in sectionArr{
+            switch data {
+                
+            case .bidReceived(let arr, _):
+                if arr.isEmpty {
+                    flag = false
+                    msg = "Please select Service Type"
+                }
+            default:
+                break
+            }
+            if !flag {break}
+        }
+        return (flag,msg)
     }
 }
 
@@ -80,34 +127,41 @@ extension OfferFilterVC: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
-  
-        func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-            return CGFloat.leastNonzeroMagnitude
-        }
-        
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return CGFloat.leastNonzeroMagnitude
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(with: OfferFilterTableViewCell.self, indexPath: indexPath)
         cell.sectionType = sectionArr[indexPath.section]
-        
-        if case .bidReceived = sectionArr[indexPath.section] {
-            cell.cellBtnTapped = { [weak self] in
-                guard let `self` = self else {return}
-                self.mainTableView.reloadRows(at: [indexPath], with: .automatic)
-            }
+        cell.cellBtnTapped = { [weak self] in
+            guard let `self` = self else {return}
+            self.sectionArr[indexPath.section] = self.sectionArr[indexPath.section].isSelected
+            self.mainTableView.reloadRows(at: [indexPath], with: .automatic)
         }
         
-        else {
-            cell.cellBtnTapped = { [weak self] in
-                guard let `self` = self else {return}
-                self.sliderHide.toggle()
-                self.mainTableView.reloadData()
-            }
+        cell.selectedByStatusData = { [weak self] (requestAndStatusType) in
+            guard let `self` = self else {return}
+            self.updateDataSouce(requestAndStatusType,indexPath : indexPath)
+        }
+        
+        cell.selectedDistance = { [weak self] (minValue, maxValue) in
+            guard let `self` = self else {return}
+            self.sectionArr[indexPath.section] = .distance(minValue, maxValue, self.sectionArr[indexPath.section].isHide)
         }
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 0.0
+        let type = self.sectionArr[indexPath.section]
+        if case .distance = type {
+            return type.isHide ? 154.0 : 54.0
+            
+        }else {
+            return type.isHide ? CGFloat(54 + type.fliterTypeArr.count * 54) : 54.0
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

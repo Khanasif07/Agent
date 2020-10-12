@@ -21,7 +21,7 @@ class UserAllRequestVC: BaseVC {
     // MARK: - Variables
     //===========================
     var viewModel = UserAllRequestVM()
-    var filterArr : [FilterScreen] = [.byServiceType("",false), .byStatus("",false), .date(nil,nil,false)]
+    var filterArr : [FilterScreen] = [.byServiceType([],false), .byStatus([],false), .date(nil,nil,false)]
     
     // MARK: - Lifecycle
     //===========================
@@ -65,11 +65,11 @@ extension UserAllRequestVC {
         data.forEach { (type) in
             switch type {
                 
-            case .byServiceType(let str, _):
-                dict[ApiKey.type] = str
+            case .byServiceType(let arr, _):
+                dict[ApiKey.type] = arr.joined(separator: ",")
                 
-            case .byStatus(let str, _):
-                dict[ApiKey.status] = str
+            case .byStatus(let arr, _):
+                dict[ApiKey.status] = arr.joined(separator: ",")
                 
             case .date(let fromDate, let toDate, _):
                 

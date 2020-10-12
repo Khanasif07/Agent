@@ -265,6 +265,9 @@
 "bidPlaced" = "Bid Placed";
 "bidRejected" = "Bid Rejected";
 
+"lowToHigh" = "Cost: Low to High";
+"highToLow" = "Cost: High to Low";
+"ratingHighToLow" = "Rating: High to Low";
 
  // MARK: - Home  VC Values
 //==============================

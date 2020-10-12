@@ -13,7 +13,8 @@ class DistanceSliderCollViewCell: UICollectionViewCell {
     
     //MARK:- IBOutlets
     @IBOutlet weak var rangeSlider: TTRangeSlider!
-    
+    var sliderValueChanged: ((String, String)->())?
+  
     //MARK:- Life Cycle
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -42,9 +43,6 @@ class DistanceSliderCollViewCell: UICollectionViewCell {
 
 extension DistanceSliderCollViewCell : TTRangeSliderDelegate{
     func didEndTouches(in sender: TTRangeSlider!) {
-        GarageProfileModel.shared.maxInstallationPrice = Int(sender.selectedMaximum.rounded())
-        GarageProfileModel.shared.minInstallationPrice = Int(sender.selectedMinimum.rounded())
-        printDebug(sender.selectedMinimum.rounded())
-        printDebug(sender.selectedMaximum.rounded())
+        sliderValueChanged?("\(sender.selectedMinimum.rounded())", "\(sender.selectedMaximum.rounded())")
     }
 }

@@ -20,7 +20,7 @@ class MyServiceFilterVC: BaseVC {
     // MARK: - Variables
     //===================
     let viewModel = SRFliterVM()
-    var sectionArr : [FilterScreen] = [.byServiceType("",false), .byStatus("",false), .date(Date(),Date(),false)]
+    var sectionArr : [FilterScreen] = [.byServiceType([],false), .byStatus([],false), .date(Date(),Date(),false)]
     var onTapApply : (([FilterScreen])->())?
     
     // MARK: - Lifecycle
@@ -93,13 +93,13 @@ extension MyServiceFilterVC {
         for data in sectionArr{
             switch data {
                 
-            case .byServiceType(let str, _):
-                if str.isEmpty {
+            case .byServiceType(let arr, _):
+                if arr.isEmpty {
                     flag = false
                     msg = "Please select Service Type"
                 }
-            case .byStatus(let str, _):
-                if str.isEmpty {
+            case .byStatus(let arr, _):
+                if arr.isEmpty {
                     flag = false
                     msg = "Please select Status Type"
                 }
@@ -163,13 +163,31 @@ extension MyServiceFilterVC :UITableViewDelegate,UITableViewDataSource{
         
         cell.selectedByStatusData = { [weak self] (requestAndStatusType) in
             guard let `self` = self else {return}
+            var data: [String] = []
             switch self.sectionArr[indexPath.section] {
-            case .byServiceType(_, let hide) :
-                self.sectionArr[indexPath.section] = .byServiceType(requestAndStatusType, hide)
+            case .byServiceType(let arr, let hide) :
+                if arr.contains(requestAndStatusType) {
+                    guard let firstIndex = arr.firstIndex(of: requestAndStatusType) else {return}
+                    data = arr
+                    data.remove(at: firstIndex)
+                    self.sectionArr[indexPath.section] = .byServiceType(data, hide)
+                }else {
+                    data = arr
+                    data.append(requestAndStatusType)
+                    self.sectionArr[indexPath.section] = .byServiceType(data, hide)
+                }
                 
-            case .byStatus(_, let hide) :
-                self.sectionArr[indexPath.section] = .byStatus(requestAndStatusType, hide)
-                
+            case .byStatus(let arr, let hide) :
+                if arr.contains(requestAndStatusType) {
+                    guard let firstIndex = arr.firstIndex(of: requestAndStatusType) else {return}
+                    data = arr
+                    data.remove(at: firstIndex)
+                    self.sectionArr[indexPath.section] = .byStatus(data, hide)
+                }else {
+                    data = arr
+                    data.append(requestAndStatusType)
+                    self.sectionArr[indexPath.section] = .byStatus(data, hide)
+                }
             default:
                 return
             }

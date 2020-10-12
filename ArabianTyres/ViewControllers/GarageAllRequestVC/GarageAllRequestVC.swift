@@ -31,7 +31,7 @@ class GarageAllRequestVC: BaseVC {
     var selectedVC          : SelectedVC = .goingEventsVC
     var allRequestVC        : AllRequestVC!
     var bookedRequestVC     : BookedRequestVC!
-    var filterArr : [FilterScreen] = [.allRequestServiceType("",false), .allRequestByStatus("",false)]
+    var filterArr : [FilterScreen] = [.allRequestServiceType([],false), .allRequestByStatus([],false)]
     
     // MARK: - Lifecycle
     //===========================
@@ -120,21 +120,21 @@ extension GarageAllRequestVC {
 //        var dict : JSONDictionary = [ApiKey.page: "1",ApiKey.limit : "20"]
 //        data.forEach { (type) in
 //            switch type {
-//                
+//
 //            case .byServiceType(let str, _):
 //                dict[ApiKey.type] = str
-//                
+//
 //            case .byStatus(let str, _):
 //                dict[ApiKey.status] = str
-//                
+//
 //            case .date(let fromDate, let toDate, _):
-//                
+//
 //                if let fDate = fromDate ,let tDate = toDate {
 //                    dict[ApiKey.startdate] = fDate.toString(dateFormat: Date.DateFormat.yyyyMMddTHHmmsssssz.rawValue)
 //                    dict[ApiKey.endDate] =  tDate.toString(dateFormat: Date.DateFormat.yyyyMMddTHHmmsssssz.rawValue)
-//                    
+//
 //                }
-//                
+//
 //            default:
 //                break
 //            }

@@ -234,6 +234,14 @@ enum AppRouter {
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
+    static func goOfferFilterVC(vc: UIViewController,filterArr: [FilterScreen], completion : @escaping (([FilterScreen]) -> ())){
+        let scene = OfferFilterVC.instantiate(fromAppStoryboard: .GarageRequest)
+        scene.sectionArr = filterArr
+        scene.onTapApply = { (filterData) in
+            completion(filterData)
+        }
+        vc.navigationController?.pushViewController(scene, animated: true)
+    }
     
     static func goToGarageAddImageVC(vc: UIViewController){
         let scene = GarageAddImageVC.instantiate(fromAppStoryboard: .PostLogin)
@@ -338,6 +346,7 @@ enum AppRouter {
         vc.navigationController?.pushViewController(scene, animated: true)
     }
    
+    
     static func goToServiceStatusVC(vc: UIViewController){
         let scene = ServiceStatusVC.instantiate(fromAppStoryboard: .GarageRequest)
         vc.navigationController?.pushViewController(scene, animated: true)

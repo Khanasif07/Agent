@@ -125,7 +125,11 @@ enum LocalizedString : String {
     case offerAccepted
     case offerReceived
     case noOffers
+    case costLowToHigh
     
+    case lowToHigh
+    case highToLow
+    case ratingHighToLow
     // MARK: - Sign Up VC Values
     //==============================
     case bySigningDec = "bySigningDec"
