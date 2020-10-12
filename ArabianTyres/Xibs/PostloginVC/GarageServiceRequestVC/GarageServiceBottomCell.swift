@@ -19,7 +19,11 @@ class GarageServiceBottomCell: UITableViewCell {
     
     //MARK:-Variables
     var countryBrandsSelected: ((_ SelectedIndexPath : IndexPath)->())?
-    var brandDataArr : [PreferredBrand] = []
+    var brandDataArr : [PreferredBrand] = []{
+        didSet{
+            internalTableView.reloadData()
+        }
+    }
     var quantity: Int = 0
     
     //MARK:-Life Cycle
@@ -42,13 +46,6 @@ class GarageServiceBottomCell: UITableViewCell {
         self.internalTableView.delegate = self
         self.internalTableView.dataSource = self
     }
-    
-//    private func textSetUp(){
-//        self.brandsTitleLbl.setTitleColor(AppColors.fontTertiaryColor, for: .normal)
-//        self.unitLbl.setTitleColor(AppColors.fontTertiaryColor, for: .normal)
-//        self.unitPriceLbl.setTitleColor(AppColors.fontTertiaryColor, for: .normal)
-//    }
-    
    
 }
 

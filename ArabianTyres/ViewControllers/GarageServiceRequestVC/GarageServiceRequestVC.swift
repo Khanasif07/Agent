@@ -44,6 +44,10 @@ class GarageServiceRequestVC: BaseVC {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = true
         self.tabBarController?.tabBar.isTranslucent = true
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         self.mainTableView.reloadData()
     }
   
@@ -56,15 +60,13 @@ class GarageServiceRequestVC: BaseVC {
     // MARK: - IBActions
     //===========================
     @IBAction func placeBidAction(_ sender: AppButton) {
-       let countryBrands =  self.viewModel.countryBrandsDict.map { (dict) -> [PreferredBrand] in
+       let selectedCountryBrandsArray =  self.viewModel.countryBrandsDict.map { (dict) -> [PreferredBrand] in
             return   Array(dict.values)[0]
-        }
-       let selectedCountryBrands =  countryBrands.map { (modelArray) -> [PreferredBrand] in
+        }.map { (modelArray) -> [PreferredBrand] in
             return modelArray.filter { (model) -> Bool in
                 return model.isSelected == true
             }
-        }
-        let selectedCountryBrandsArray = selectedCountryBrands.flatMap { $0 }
+        }.flatMap { $0 }
         printDebug(selectedCountryBrandsArray)
         self.viewModel.postPlaceBidData(params: [ApiKey.requestId:requestId,ApiKey.bidData:[]])
     }
@@ -214,13 +216,11 @@ extension GarageServiceRequestVC :GarageServiceRequestVMDelegate {
         }else {
             sectionType.contains(.brandListing) ? sectionType.removeAll{($0 == .brandListing)} : ()
         }
-//        let dictArray = [PreferredBrand(id:"5f74789de4621e651af7b38e",name:"Brand new 3",countrySpecificBrands: []),PreferredBrand(id:"5f74789de4621e651af7b38c",name:"Brand new 2",countrySpecificBrands: []),PreferredBrand(id:"5f74789de4621e651af7b38d",name:"Brand new 1",countrySpecificBrands: [])]
         self.viewModel.countryBrandsDict.append([self.selectedCountry : viewModel.brandsListings])
-//        self.viewModel.countryBrandsDict.append([self.selectedCountry : dictArray])
         viewModel.garageRequestDetailArr?.preferredBrands = viewModel.brandsListings
-//        viewModel.garageRequestDetailArr?.preferredBrands = dictArray
-        mainTableView.reloadData()
-        
+        DispatchQueue.main.async {
+            self.mainTableView.reloadData()
+        }
     }
     
     func brandListingFailed(error:String) {
