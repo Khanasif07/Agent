@@ -316,6 +316,13 @@ enum AppRouter {
         
     }
     
+    static func presentOfferDetailVC(vc: UIViewController){
+        let scene = OffersDetailVC.instantiate(fromAppStoryboard: .Garage)
+        vc.modalPresentationStyle = .fullScreen
+        vc.present(scene, animated: true, completion: nil)
+        
+    }
+    
     static func goToURTyreStep1VC(vc: UIViewController){
         let scene = URTyreStep1VC.instantiate(fromAppStoryboard: .UserRequest)
         vc.navigationController?.pushViewController(scene, animated: true)
