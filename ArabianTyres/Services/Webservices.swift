@@ -733,5 +733,23 @@ extension WebServices{
               failure(error)
           }
       }
+    
+    //MARK:- User Bids
+    static func getUserBids(parameters: JSONDictionary,
+                                           success: @escaping SuccessResponse,
+                                           failure: @escaping FailureResponse) {
+        self.commonGetAPI(parameters: parameters,endPoint: .userBids, success: { (json) in
+            let code = json[ApiKey.statusCode].intValue
+            let msg = json[ApiKey.message].stringValue
+            switch code {
+            case ApiCode.success:
+                success(json)
+            default:
+                failure(NSError(code: code, localizedDescription: msg))
+            }
+        }) { (error) -> (Void) in
+            failure(error)
+        }
+    }
 }
 

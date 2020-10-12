@@ -222,6 +222,8 @@
 		A4213DE0250CB02400BB21B6 /* DocumentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4213DDF250CB02400BB21B6 /* DocumentTableViewCell.swift */; };
 		A421DDD5252AFDF20044E5E0 /* PlaceBidPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A421DDD4252AFDF20044E5E0 /* PlaceBidPopUpVC.swift */; };
 		A421DDD7252B1A610044E5E0 /* OtpPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A421DDD6252B1A610044E5E0 /* OtpPopUpVC.swift */; };
+		A43137DB2534752C00C20082 /* UserAllOfferVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43137DA2534752C00C20082 /* UserAllOfferVM.swift */; };
+		A43137DD253475B200C20082 /* UserBidModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43137DC253475B200C20082 /* UserBidModel.swift */; };
 		A43B53A52524B21300447B24 /* GarageRequest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A43B53A42524B21300447B24 /* GarageRequest.storyboard */; };
 		A43B53A72524B47000447B24 /* OngoingServiceListingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43B53A62524B47000447B24 /* OngoingServiceListingVC.swift */; };
 		A43B53AC2524B65300447B24 /* ServiceListingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43B53AA2524B65300447B24 /* ServiceListingTableViewCell.swift */; };
@@ -503,6 +505,8 @@
 		A4213DDF250CB02400BB21B6 /* DocumentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentTableViewCell.swift; sourceTree = "<group>"; };
 		A421DDD4252AFDF20044E5E0 /* PlaceBidPopUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceBidPopUpVC.swift; sourceTree = "<group>"; };
 		A421DDD6252B1A610044E5E0 /* OtpPopUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpPopUpVC.swift; sourceTree = "<group>"; };
+		A43137DA2534752C00C20082 /* UserAllOfferVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAllOfferVM.swift; sourceTree = "<group>"; };
+		A43137DC253475B200C20082 /* UserBidModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBidModel.swift; sourceTree = "<group>"; };
 		A43B53A42524B21300447B24 /* GarageRequest.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GarageRequest.storyboard; sourceTree = "<group>"; };
 		A43B53A62524B47000447B24 /* OngoingServiceListingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OngoingServiceListingVC.swift; sourceTree = "<group>"; };
 		A43B53AA2524B65300447B24 /* ServiceListingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceListingTableViewCell.swift; sourceTree = "<group>"; };
@@ -735,6 +739,7 @@
 			isa = PBXGroup;
 			children = (
 				843D4B9D25305C5A00D72D2F /* UserAllOffersVC.swift */,
+				A43137DA2534752C00C20082 /* UserAllOfferVM.swift */,
 			);
 			path = UserAllOffersVC;
 			sourceTree = "<group>";
@@ -1107,6 +1112,7 @@
 				84FF6EA8251E0F400000E2AD /* TyreSizeModel.swift */,
 				8411D35B252DEDD100E6FA6C /* UserServiceRequestModel.swift */,
 				A4DCEE0A252DF405002EB32F /* GarageRequestModel.swift */,
+				A43137DC253475B200C20082 /* UserBidModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2010,6 +2016,7 @@
 				8481FA332500BD4A00AB6EFB /* CustomDatePicker.swift in Sources */,
 				8411D35A252DB78C00E6FA6C /* UserAllRequestVM.swift in Sources */,
 				8459480D252B0C0600C0B249 /* ServiceRequestTableCell.swift in Sources */,
+				A43137DB2534752C00C20082 /* UserAllOfferVM.swift in Sources */,
 				844CBD1A2501F7D5009BE668 /* LoginTopTableCell.swift in Sources */,
 				8481FA852500EEC400AB6EFB /* ChooseLanguageVC.swift in Sources */,
 				843F004D25060822001A78EC /* CountryCodeTableCell.swift in Sources */,
@@ -2080,6 +2087,7 @@
 				8481FA6F2500BFEF00AB6EFB /* AppGlobals.swift in Sources */,
 				A45042C7250F2D12001C8905 /* AddAccountVC.swift in Sources */,
 				844CBD1E2501FA31009BE668 /* LoginSocialTableCell.swift in Sources */,
+				A43137DD253475B200C20082 /* UserBidModel.swift in Sources */,
 				A4203F0F252C791A00BD8802 /* SRFilterVM.swift in Sources */,
 				84E166E4250362DE00C2F2EF /* SuccessPopupVC.swift in Sources */,
 				844EB7212518C9C3003A6E3F /* LoaderCell.swift in Sources */,

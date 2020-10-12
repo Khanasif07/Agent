@@ -39,7 +39,7 @@ class UserServiceRequestVC: BaseVC {
     var viewModel = UserServiceRequestVM()
     var brandsArray = [String]()
     weak var delegate: UserServiceRequestVCDelegate?
-
+    var requestId : String = ""
     
     // MARK: - Lifecycle
     //===========================
@@ -78,7 +78,7 @@ class UserServiceRequestVC: BaseVC {
     }
     
     @IBAction func viewAllBtnAction(_ sender: AppButton) {
-        AppRouter.goToUserAllOffersVC(vc: self)
+        AppRouter.goToUserAllOffersVC(vc: self, requestId: requestId)
     }
 
     @IBAction func cancelBtnAction(_ sender: UIButton) {
@@ -115,6 +115,7 @@ extension UserServiceRequestVC: UserServiceRequestVMDelegate{
     
     func getUserMyRequestDetailSuccess(message: String) {
         cancelBtn.isBorderSelected = true
+        requestId = self.viewModel.userRequestDetail.id
         requestNoValueLbl1.text = "#" + "\(self.viewModel.userRequestDetail.requestID)"
         requestNoValueLbl.text = "#" + "\(self.viewModel.userRequestDetail.requestID)"
         self.brandsArray = self.viewModel.userRequestDetail.preferredBrands.map({ (model) -> String in
@@ -124,7 +125,7 @@ extension UserServiceRequestVC: UserServiceRequestVMDelegate{
         let logoImg =  model.requestType == "Tyres" ? #imageLiteral(resourceName: "radialCarTireI151") : model.requestType == "Battery" ? #imageLiteral(resourceName: "icBattery") : #imageLiteral(resourceName: "icOil")
         self.mainImgView.image = logoImg
         viewAllBtn.isHidden = viewModel.userRequestDetail.totalBids == 0
-        requestSeenValueLbl.text = ""
+        requestSeenValueLbl.text = "120"
         bidRecivedValueLbl.text = viewModel.userRequestDetail.totalBids?.description
         lowestBidValueLbl.text = viewModel.userRequestDetail.lowestBid?.description
         nearestBidderValueLbl.text = viewModel.userRequestDetail.nearestBidder?.description
