@@ -53,14 +53,23 @@ struct UserServiceRequestModel: Codable {
 struct PreferredBrand: Codable {
     let id, name: String
     let countrySpecificBrands : [String]?
+    var isSelected: Bool?
     enum CodingKeys: String, CodingKey {
         case id = "_id"
         case name
+        case isSelected
         case countrySpecificBrands
     }
     init(){
         id  = ""
         name  = ""
+        isSelected = false
         countrySpecificBrands = []
+    }
+    
+    init(id:String,name:String,countrySpecificBrands: [String]){
+        self.id = id
+        self.name = name
+        self.countrySpecificBrands = countrySpecificBrands
     }
 }

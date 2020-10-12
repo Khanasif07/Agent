@@ -40,6 +40,7 @@ extension GarageServiceCountryCell : UICollectionViewDelegate,UICollectionViewDa
         cell.skillLbl.contentMode = .center
         cell.skillLbl.text = self.countryNameArr[indexPath.item].name
         cell.containerView.backgroundColor = self.indexPath == indexPath ? AppColors.appRedColor : .white
+        cell.skillLbl.textColor = self.indexPath == indexPath ? .white : AppColors.fontTertiaryColor
         cell.layoutSubviews()
         return cell
     }

@@ -41,6 +41,7 @@ class GarageServiceRequestVM {
     var showPaginationLoader: Bool {
         return  hideLoader ? false : nextPageAvailable
     }
+    public var countryBrandsDict: [[String:[PreferredBrand]]] = []
     
     var garageRequestDetailArr : GarageRequestModel? = nil
     var brandsListings:[PreferredBrand] = []

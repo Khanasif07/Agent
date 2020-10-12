@@ -18,6 +18,7 @@ class GarageServiceBottomCell: UITableViewCell {
     @IBOutlet weak var brandsTitleLbl: UILabel!
     
     //MARK:-Variables
+    var countryBrandsSelected: ((_ SelectedIndexPath : IndexPath)->())?
     var brandDataArr : [PreferredBrand] = []
     var quantity: Int = 0
     
@@ -25,8 +26,6 @@ class GarageServiceBottomCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         tableViewSetUp()
-//        textSetUp()
-        // Initialization code
     }
     
     override func layoutSubviews() {
@@ -76,5 +75,11 @@ extension GarageServiceBottomCell: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let handle = countryBrandsSelected{
+            handle(indexPath)
+        }
     }
 }

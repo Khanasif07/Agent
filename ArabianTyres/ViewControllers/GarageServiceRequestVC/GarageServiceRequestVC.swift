@@ -28,6 +28,7 @@ class GarageServiceRequestVC: BaseVC {
     //===========================
     var quantity : Int = 0
     var requestId : String = ""
+    var selectedCountry: String  = ""
     var sectionType : [Section] = [.userDetail]
     let viewModel = GarageServiceRequestVM()
     weak var delegate: UserServiceRequestVCDelegate?
@@ -56,6 +57,16 @@ class GarageServiceRequestVC: BaseVC {
     // MARK: - IBActions
     //===========================
     @IBAction func placeBidAction(_ sender: AppButton) {
+       let countryBrands =  self.viewModel.countryBrandsDict.map { (dict) -> [PreferredBrand] in
+            return   Array(dict.values)[0]
+        }
+       let selectedCountryBrands =  countryBrands.map { (modelArray) -> [PreferredBrand] in
+            return modelArray.filter { (model) -> Bool in
+                return model.isSelected == true
+            }
+        }
+        let selectedCountryBrandsArray = selectedCountryBrands.flatMap { $0 }
+        printDebug(selectedCountryBrandsArray)
     }
     
     @IBAction func rejectRequestAction(_ sender: AppButton) {
@@ -118,14 +129,54 @@ extension GarageServiceRequestVC : UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueCell(with: GarageServiceCountryCell.self, indexPath: indexPath)
             cell.countryNameArr = viewModel.garageRequestDetailArr?.preferredCountries ?? []
             cell.countryBtnTapped = {[weak self] (countryName) in
-                self?.hitBrandListingApi(country: countryName)
+                guard let `self` = self else {return}
+                self.selectedCountry = countryName
+                if self.viewModel.countryBrandsDict.contains(where: { (model) -> Bool in
+                     Array(model.keys)[0] == self.selectedCountry
+                }){
+                    let indexx = self.viewModel.countryBrandsDict.firstIndex { (model) -> Bool in
+                        Array(model.keys)[0] == self.selectedCountry
+                    }
+                    guard let selectedIndexx  = indexx else { return }
+                    if let  countryBrandListing = self.viewModel.countryBrandsDict[selectedIndexx][self.selectedCountry] {
+                        if !countryBrandListing.isEmpty {
+                            self.sectionType.contains(.brandListing) ? () : self.sectionType.append(.brandListing)
+                        }else {
+                            self.sectionType.contains(.brandListing) ? self.sectionType.removeAll{($0 == .brandListing)} : ()
+                        }
+                    }
+                    self.mainTableView.reloadData()
+                } else {
+                    self.hitBrandListingApi(country: countryName)
+                }
             }
             cell.countryCollView.reloadData()
             return cell
      
         case .brandListing:
             let cell = tableView.dequeueCell(with: GarageServiceBottomCell.self, indexPath: indexPath)
-            cell.brandDataArr = viewModel.garageRequestDetailArr?.preferredBrands ?? []
+            //
+            cell.countryBrandsSelected = {  [weak self] (SelectedIndexPath)  in
+                guard let `self` = self else { return }
+                let index = self.viewModel.countryBrandsDict.firstIndex { (model) -> Bool in
+                    Array(model.keys)[0] == self.selectedCountry
+                }
+                guard let selectedIndex  = index else { return }
+                if let listing =  self.viewModel.countryBrandsDict[selectedIndex][self.selectedCountry] {
+                    let indexx =  listing.firstIndex { (model) -> Bool in
+                        model.id == listing[SelectedIndexPath.row].id
+                    }
+                    guard let selectedIndexx  = indexx else { return }
+                    self.viewModel.countryBrandsDict[selectedIndex][self.selectedCountry]?[selectedIndexx].isSelected = !(listing[selectedIndexx].isSelected ?? false)
+                }
+                self.mainTableView.reloadData()
+            }
+            //
+            let indexx = self.viewModel.countryBrandsDict.firstIndex { (model) -> Bool in
+                Array(model.keys)[0] == self.selectedCountry
+            }
+            guard let selectedIndexx  = indexx else { return UITableViewCell()}
+            cell.brandDataArr = self.viewModel.countryBrandsDict[selectedIndexx][self.selectedCountry] ?? [PreferredBrand]()
             cell.quantity = self.quantity
             cell.internalTableView.reloadData()
             return cell
@@ -135,6 +186,7 @@ extension GarageServiceRequestVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
+    
 }
 
 extension GarageServiceRequestVC :GarageServiceRequestVMDelegate {
@@ -150,13 +202,17 @@ extension GarageServiceRequestVC :GarageServiceRequestVMDelegate {
     }
     
     func brandListingSuccess(message: String) {
-        if !viewModel.brandsListings.isEmpty {
+//        if !viewModel.brandsListings.isEmpty {
             sectionType.contains(.brandListing) ? () : sectionType.append(.brandListing)
-            
-        }else {
-            sectionType.contains(.brandListing) ? sectionType.removeAll{($0 == .brandListing)} : ()
-        }
-        viewModel.garageRequestDetailArr?.preferredBrands = viewModel.brandsListings
+//
+//        }else {
+//            sectionType.contains(.brandListing) ? sectionType.removeAll{($0 == .brandListing)} : ()
+//        }
+        let dictArray = [PreferredBrand(id:"5f74789de4621e651af7b38e",name:"Brand new 3",countrySpecificBrands: []),PreferredBrand(id:"5f74789de4621e651af7b38c",name:"Brand new 2",countrySpecificBrands: []),PreferredBrand(id:"5f74789de4621e651af7b38d",name:"Brand new 1",countrySpecificBrands: [])]
+//        self.viewModel.countryBrandsDict.append([self.selectedCountry : viewModel.brandsListings])
+        self.viewModel.countryBrandsDict.append([self.selectedCountry : dictArray])
+//        viewModel.garageRequestDetailArr?.preferredBrands = viewModel.brandsListings
+        viewModel.garageRequestDetailArr?.preferredBrands = dictArray
         mainTableView.reloadData()
         
     }
@@ -165,7 +221,6 @@ extension GarageServiceRequestVC :GarageServiceRequestVMDelegate {
         ToastView.shared.showLongToast(self.view, msg: error)
 
     }
-    
     
     func cancelGarageRequestSuccess(message: String){
         self.delegate?.cancelUserMyRequestDetailSuccess(requestId: self.requestId)
