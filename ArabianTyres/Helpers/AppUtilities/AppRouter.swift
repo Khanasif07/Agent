@@ -300,8 +300,13 @@ enum AppRouter {
     static func openOtpPopUpVC(vc: UIViewController){
            let scene = OtpPopUpVC.instantiate(fromAppStoryboard: .GarageRequest)
            vc.modalPresentationStyle = .fullScreen
-           vc.present(scene, animated: true, completion: nil)
-           
+        vc.present(scene, animated: true, completion: nil)
+        
+    }
+    
+    static func goToUserAllOffersVC(vc: UIViewController){
+        let scene = UserAllOffersVC.instantiate(fromAppStoryboard: .Garage)
+        vc.navigationController?.pushViewController(scene, animated: true)
     }
     
     static func presentBottomSheetVC(vc: UIViewController){

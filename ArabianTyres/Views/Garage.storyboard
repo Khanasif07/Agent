@@ -2194,8 +2194,8 @@ Service Center</string>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="wto-wJ-TdD">
                                                                         <rect key="frame" x="212" y="0.0" width="106" height="68"/>
                                                                         <subviews>
-                                                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="JW2-Di-Tdl">
-                                                                                <rect key="frame" x="30" y="0.0" width="46.5" height="31.5"/>
+                                                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="JW2-Di-Tdl">
+                                                                                <rect key="frame" x="27.5" y="0.0" width="51.5" height="31.5"/>
                                                                                 <subviews>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rg6-IC-VNX">
                                                                                         <rect key="frame" x="0.0" y="0.0" width="15.5" height="31.5"/>
@@ -2204,7 +2204,7 @@ Service Center</string>
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Miles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cGk-MU-sAY">
-                                                                                        <rect key="frame" x="15.5" y="8" width="31" height="15.5"/>
+                                                                                        <rect key="frame" x="20.5" y="8" width="31" height="15.5"/>
                                                                                         <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="13"/>
                                                                                         <nil key="textColor"/>
                                                                                         <nil key="highlightedColor"/>
@@ -2262,7 +2262,7 @@ Service Center</string>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="74" id="Rx5-Aj-MOw"/>
                                                         </constraints>
-                                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fKE-WM-BWw">
+                                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fKE-WM-BWw">
                                                             <size key="itemSize" width="50" height="50"/>
                                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -2354,16 +2354,41 @@ Service Center</string>
                                     <constraint firstItem="gx0-kB-8Z3" firstAttribute="centerY" secondItem="AHR-yV-V5q" secondAttribute="centerY" multiplier="0.75" id="ufQ-2t-AYF"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h1o-s4-PBe" customClass="AppButton" customModule="ArabianTyres" customModuleProvider="target">
-                                <rect key="frame" x="16" y="791" width="382" height="56"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="56" id="B3L-8w-ZVo"/>
-                                </constraints>
-                                <state key="normal" title="View All Offers"/>
-                                <connections>
-                                    <action selector="viewAllBtnAction:" destination="Yme-aY-fPF" eventType="touchUpInside" id="HgV-ll-6BE"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="3hu-wG-Jki">
+                                <rect key="frame" x="16" y="790" width="382" height="56"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h1o-s4-PBe" customClass="AppButton" customModule="ArabianTyres" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="185" height="56"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="56" id="B3L-8w-ZVo"/>
+                                        </constraints>
+                                        <state key="normal" title="Cancel"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="cancelRequestBtnAction:" destination="Yme-aY-fPF" eventType="touchUpInside" id="ovY-Rm-JC6"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sck-9u-ea1" customClass="AppButton" customModule="ArabianTyres" customModuleProvider="target">
+                                        <rect key="frame" x="197" y="0.0" width="185" height="56"/>
+                                        <color key="backgroundColor" name="appRedColor"/>
+                                        <state key="normal" title="View All Offers">
+                                            <color key="titleColor" red="0.95686274510000002" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="viewAllBtnAction:" destination="Yme-aY-fPF" eventType="touchUpInside" id="Ju9-N5-Q55"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -2373,26 +2398,31 @@ Service Center</string>
                             <constraint firstItem="AHR-yV-V5q" firstAttribute="top" secondItem="ivX-gW-0RT" secondAttribute="bottom" id="JAr-38-usU"/>
                             <constraint firstItem="glr-CI-w7P" firstAttribute="top" secondItem="ivX-gW-0RT" secondAttribute="top" id="Maa-5z-Kc3"/>
                             <constraint firstItem="BDP-VP-2tn" firstAttribute="leading" secondItem="glr-CI-w7P" secondAttribute="leading" id="NEl-tj-HYe"/>
-                            <constraint firstItem="glr-CI-w7P" firstAttribute="trailing" secondItem="h1o-s4-PBe" secondAttribute="trailing" constant="16" id="Pba-zs-rCB"/>
                             <constraint firstItem="BDP-VP-2tn" firstAttribute="top" secondItem="ivX-gW-0RT" secondAttribute="bottom" id="XAQ-t3-JcY"/>
-                            <constraint firstItem="glr-CI-w7P" firstAttribute="bottom" secondItem="h1o-s4-PBe" secondAttribute="bottom" constant="15" id="ccn-Rx-8lx"/>
+                            <constraint firstItem="glr-CI-w7P" firstAttribute="bottom" secondItem="3hu-wG-Jki" secondAttribute="bottom" constant="16" id="j11-rq-UaZ"/>
                             <constraint firstItem="glr-CI-w7P" firstAttribute="bottom" secondItem="AHR-yV-V5q" secondAttribute="bottom" id="jcE-kE-1GJ"/>
-                            <constraint firstItem="h1o-s4-PBe" firstAttribute="leading" secondItem="glr-CI-w7P" secondAttribute="leading" constant="16" id="kDc-Yc-AJd"/>
+                            <constraint firstItem="glr-CI-w7P" firstAttribute="trailing" secondItem="3hu-wG-Jki" secondAttribute="trailing" constant="16" id="lf0-TP-3EB"/>
                             <constraint firstItem="AHR-yV-V5q" firstAttribute="leading" secondItem="glr-CI-w7P" secondAttribute="leading" id="oZ6-O7-KkQ"/>
+                            <constraint firstItem="3hu-wG-Jki" firstAttribute="leading" secondItem="glr-CI-w7P" secondAttribute="leading" constant="16" id="qL0-Wh-ssL"/>
                             <constraint firstItem="ivX-gW-0RT" firstAttribute="leading" secondItem="glr-CI-w7P" secondAttribute="leading" id="rtX-XB-a7O"/>
                             <constraint firstItem="glr-CI-w7P" firstAttribute="trailing" secondItem="AHR-yV-V5q" secondAttribute="trailing" id="wSL-6b-diT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="glr-CI-w7P"/>
                     </view>
                     <connections>
+                        <outlet property="bidRecivedValueLbl" destination="ITW-eh-1rO" id="oqe-lr-Nw3"/>
                         <outlet property="brandCollView" destination="jND-Pf-dRL" id="lno-sF-Hwd"/>
                         <outlet property="brandCollViewHeightConstraint" destination="Rx5-Aj-MOw" id="UMd-RL-xEY"/>
+                        <outlet property="cancelBtn" destination="h1o-s4-PBe" id="IBh-cD-K8L"/>
                         <outlet property="emptyContainerView" destination="AHR-yV-V5q" id="r2T-1Z-T86"/>
+                        <outlet property="lowestBidValueLbl" destination="ZoU-x0-HqE" id="TIU-4h-mB8"/>
                         <outlet property="mainImgView" destination="1HE-RU-LpJ" id="tNE-Xi-48e"/>
+                        <outlet property="nearestBidderValueLbl" destination="Rg6-IC-VNX" id="mhb-qz-H23"/>
                         <outlet property="requestNoLbl" destination="YRY-nQ-8lE" id="lPd-Zt-r5o"/>
                         <outlet property="requestNoValueLbl" destination="o7v-iC-6Gk" id="OHR-EW-tw9"/>
                         <outlet property="requestNoValueLbl1" destination="oVE-Lb-mjQ" id="Gbf-D0-Vl4"/>
-                        <outlet property="viewAllBtn" destination="h1o-s4-PBe" id="xLJ-p2-OVB"/>
+                        <outlet property="requestSeenValueLbl" destination="ZPq-wf-eOR" id="goR-Ph-qNR"/>
+                        <outlet property="viewAllBtn" destination="Sck-9u-ea1" id="wXL-Cv-KFP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2cb-pF-bZs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2520,6 +2550,9 @@ Service Center</string>
         <image name="icUnCheck" width="30" height="30"/>
         <image name="icon" width="30" height="30"/>
         <image name="layerX00201" width="220" height="195"/>
+        <namedColor name="appRedColor">
+            <color red="0.87800002098083496" green="0.13699999451637268" blue="0.25900000333786011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="outgoingMessageBackground">
             <color red="0.20399999618530273" green="0.77999997138977051" blue="0.34900000691413879" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
