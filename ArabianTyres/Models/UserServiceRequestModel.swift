@@ -54,17 +54,27 @@ struct PreferredBrand: Codable {
     let id, name: String
     let countrySpecificBrands : [String]?
     var isSelected: Bool?
+    var amount: Int?
+    var quantity: Int?
+    var countryId: String?
+    var countryName: String?
     enum CodingKeys: String, CodingKey {
         case id = "_id"
         case name
         case isSelected
-        case countrySpecificBrands
+        case countrySpecificBrands ,countryName,countryId
+        case amount
+        case quantity
     }
     init(){
         id  = ""
         name  = ""
         isSelected = false
         countrySpecificBrands = []
+        countryName = ""
+        countryId = ""
+        amount = 0
+        quantity = 0
     }
     
     init(id:String,name:String,countrySpecificBrands: [String]){
