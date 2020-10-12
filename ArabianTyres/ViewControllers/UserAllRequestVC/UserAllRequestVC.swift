@@ -33,6 +33,7 @@ class UserAllRequestVC: BaseVC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
+        self.tabBarController?.tabBar.isTranslucent = false
     }
     
     // MARK: - IBActions
@@ -41,10 +42,10 @@ class UserAllRequestVC: BaseVC {
     }
     
     @IBAction func filterBtnAction(_ sender: UIButton) {
-//        AppRouter.goToMyServiceFilterVC(vc: self, filterArr: filterArr) {[weak self] (filterData) in
-//            self?.getFilterData(data: filterData)
-//            self?.filterArr = filterData
-//        }
+        AppRouter.goToMyServiceFilterVC(vc: self, filterArr: filterArr) {[weak self] (filterData) in
+            self?.getFilterData(data: filterData)
+            self?.filterArr = filterData
+        }
     }
     
 }
@@ -73,8 +74,8 @@ extension UserAllRequestVC {
             case .date(let fromDate, let toDate, _):
                 
                 if let fDate = fromDate ,let tDate = toDate {
-                    dict[ApiKey.startdate] = fDate.toString(dateFormat: Date.DateFormat.givenDateFormat.rawValue)
-                    dict[ApiKey.endDate] =  tDate.toString(dateFormat: Date.DateFormat.givenDateFormat.rawValue)
+                    dict[ApiKey.startdate] = fDate.toString(dateFormat: Date.DateFormat.yyyyMMddTHHmmsssssz.rawValue)
+                    dict[ApiKey.endDate] =  tDate.toString(dateFormat: Date.DateFormat.yyyyMMddTHHmmsssssz.rawValue)
                     
                 }
                 
