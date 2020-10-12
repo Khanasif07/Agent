@@ -118,21 +118,28 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5aF-ej-CWb">
-                                        <rect key="frame" x="0.0" y="94" width="102" height="34"/>
+                                        <rect key="frame" x="0.0" y="94" width="129.5" height="34"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ongoing" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VAS-ot-GMk">
-                                                <rect key="frame" x="16" y="7.5" width="70" height="19.5"/>
-                                                <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="14"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VAS-ot-GMk">
+                                                <rect key="frame" x="0.0" y="8" width="41" height="18"/>
+                                                <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="13"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ongoing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IcI-iB-tew">
+                                                <rect key="frame" x="43" y="8" width="70.5" height="18"/>
+                                                <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="13"/>
+                                                <color key="textColor" red="1" green="0.69411764710000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="IcI-iB-tew" secondAttribute="trailing" constant="16" id="87H-Rq-0p4"/>
                                             <constraint firstItem="VAS-ot-GMk" firstAttribute="centerY" secondItem="5aF-ej-CWb" secondAttribute="centerY" id="AgR-tM-b7D"/>
-                                            <constraint firstAttribute="trailing" secondItem="VAS-ot-GMk" secondAttribute="trailing" constant="16" id="Cp9-Et-z4H"/>
-                                            <constraint firstAttribute="width" constant="102" id="Pky-Pt-BMV"/>
-                                            <constraint firstItem="VAS-ot-GMk" firstAttribute="leading" secondItem="5aF-ej-CWb" secondAttribute="leading" constant="16" id="foV-br-uDU"/>
+                                            <constraint firstItem="IcI-iB-tew" firstAttribute="centerY" secondItem="5aF-ej-CWb" secondAttribute="centerY" id="KdF-Do-z1A"/>
+                                            <constraint firstItem="IcI-iB-tew" firstAttribute="leading" secondItem="VAS-ot-GMk" secondAttribute="trailing" constant="2" id="MMK-ez-z6d"/>
+                                            <constraint firstItem="VAS-ot-GMk" firstAttribute="leading" secondItem="5aF-ej-CWb" secondAttribute="leading" id="foV-br-uDU"/>
                                             <constraint firstAttribute="height" constant="34" id="pKx-13-ZE1"/>
                                         </constraints>
                                     </view>
