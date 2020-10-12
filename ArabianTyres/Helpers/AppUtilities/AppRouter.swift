@@ -53,7 +53,7 @@ enum AppRouter {
     }
     
     static func goToTestingVC(){
-        let scene = UserAllOffersVC.instantiate(fromAppStoryboard: .Garage)
+        let scene = MyServiceFilterVC.instantiate(fromAppStoryboard: .GarageRequest)
         setAsWindowRoot(scene)
     }
     
@@ -225,6 +225,14 @@ enum AppRouter {
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
+    static func goToMyServiceFilterVC(vc: UIViewController,filterArr: [FilterScreen], completion : @escaping (([FilterScreen]) -> ())){
+        let scene = MyServiceFilterVC.instantiate(fromAppStoryboard: .GarageRequest)
+        scene.sectionArr = filterArr
+        scene.onTapApply = { (filterData) in
+            completion(filterData)
+        }
+        vc.navigationController?.pushViewController(scene, animated: true)
+    }
     
     
     static func goToGarageAddImageVC(vc: UIViewController){
@@ -333,6 +341,11 @@ enum AppRouter {
     
     static func goToOilTypeVC(vc: UIViewController){
         let scene = OilTypeVC.instantiate(fromAppStoryboard: .UserHomeScreen)
+        vc.navigationController?.pushViewController(scene, animated: true)
+    }
+    
+    static func goToOfferFilterVC(vc: UIViewController){
+        let scene = OfferFilterVC.instantiate(fromAppStoryboard: .GarageRequest)
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     

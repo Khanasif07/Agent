@@ -56,7 +56,7 @@ extension WebServices {
         case garageRejectRequest = "user/services/garageRejectRequest"
         case userPlaceBid = "user/bids/placeBid"
        
-        
+      
         var path : String {
             let url = baseUrl
             return url + self.rawValue
