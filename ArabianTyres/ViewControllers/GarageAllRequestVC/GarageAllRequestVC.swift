@@ -31,7 +31,7 @@ class GarageAllRequestVC: BaseVC {
     var selectedVC          : SelectedVC = .goingEventsVC
     var allRequestVC        : AllRequestVC!
     var bookedRequestVC     : BookedRequestVC!
-        
+    var filterArr : [FilterScreen] = [.allRequestServiceType("",false), .allRequestByStatus("",false)]
     
     // MARK: - Lifecycle
     //===========================
@@ -77,7 +77,10 @@ class GarageAllRequestVC: BaseVC {
       }
       
     @IBAction func filterBtnAction(_ sender: UIButton) {
-        AppRouter.goToSRFliterVC(vc: self)
+        AppRouter.goToSRFliterVC(vc: self, filterArr: filterArr) {[weak self] (filterData) in
+            self?.getFilterData(data: filterData)
+            self?.filterArr = filterData
+        }
     }
 }
 
@@ -112,6 +115,32 @@ extension GarageAllRequestVC {
            self.mainScrollView.addSubview(self.bookedRequestVC.view)
            self.addChild(self.bookedRequestVC)
        }
+    
+    private func getFilterData(data: [FilterScreen]) {
+//        var dict : JSONDictionary = [ApiKey.page: "1",ApiKey.limit : "20"]
+//        data.forEach { (type) in
+//            switch type {
+//                
+//            case .byServiceType(let str, _):
+//                dict[ApiKey.type] = str
+//                
+//            case .byStatus(let str, _):
+//                dict[ApiKey.status] = str
+//                
+//            case .date(let fromDate, let toDate, _):
+//                
+//                if let fDate = fromDate ,let tDate = toDate {
+//                    dict[ApiKey.startdate] = fDate.toString(dateFormat: Date.DateFormat.yyyyMMddTHHmmsssssz.rawValue)
+//                    dict[ApiKey.endDate] =  tDate.toString(dateFormat: Date.DateFormat.yyyyMMddTHHmmsssssz.rawValue)
+//                    
+//                }
+//                
+//            default:
+//                break
+//            }
+//        }
+//        self.viewModel.getUserMyRequestData(params: dict,loader: true)
+    }
 }
 
 

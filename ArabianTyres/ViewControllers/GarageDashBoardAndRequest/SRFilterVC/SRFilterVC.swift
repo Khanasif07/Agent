@@ -9,17 +9,6 @@
 import UIKit
 import SkyFloatingLabelTextField
 
-struct CatModel {
-    var subCat : [SubCatModel] = []
-    var isSelected: Bool = false
-    var name: String
-}
-
-struct SubCatModel {
-    var isSelected: Bool = false
-    let name: String
-}
-
 class SRFilterVC: BaseVC {
     
     // MARK: - IBOutlets
@@ -32,6 +21,8 @@ class SRFilterVC: BaseVC {
     // MARK: - Variables
     //===================
     let viewModel = SRFliterVM()
+    var sectionArr : [FilterScreen] = [.allRequestServiceType("",false), .allRequestByStatus("",false)]
+    var onTapApply : (([FilterScreen])->())?
     
     // MARK: - Lifecycle
     //===================
@@ -39,7 +30,6 @@ class SRFilterVC: BaseVC {
         super.viewDidLoad()
         initialSetup()
         tableViewSetup()
-        viewModel.initialData()
 
     }
     
@@ -61,7 +51,14 @@ class SRFilterVC: BaseVC {
     }
     
     @IBAction func applyBtnAction(_ sender: UIButton) {
+        let result = checkFilterStatus()
         
+        if result.status {
+            onTapApply?(sectionArr)
+            self.pop()
+        }else {
+            CommonFunctions.showToastWithMessage(result.msg)
+        }
     }
 }
 
@@ -77,6 +74,7 @@ extension SRFilterVC {
         mainTableView.delegate = self
         mainTableView.dataSource = self
         mainTableView.contentInset = UIEdgeInsets(top: 8.0, left: 0, bottom: 0, right: 0)
+        mainTableView.registerCell(with: OfferFilterTableViewCell.self)
     }
     
     private func setupTextAndFont() {
@@ -90,12 +88,47 @@ extension SRFilterVC {
         applyBtn.titleLabel?.font = AppFonts.NunitoSansSemiBold.withSize(17.0)
 
     }
+    
+    private func checkFilterStatus() -> (status: Bool, msg: String) {
+        var flag = true
+        var msg = ""
+        for data in sectionArr{
+            switch data {
+                
+            case .byServiceType(let str, _):
+                if str.isEmpty {
+                    flag = false
+                    msg = "Please select Service Type"
+                }
+            case .byStatus(let str, _):
+                if str.isEmpty {
+                    flag = false
+                    msg = "Please select Status Type"
+                }
+                
+            case .date(let fromDate, let toDate, _):
+                if fromDate == nil {
+                    flag = false
+                    msg = "Please select from date"
+                }
+                if toDate == nil {
+                    flag = false
+                    msg = "Please select to date"
+                }
+                
+            default:
+                break
+            }
+            if !flag {break}
+        }
+        return (flag,msg)
+    }
 }
 
 extension SRFilterVC :UITableViewDelegate,UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
-        return viewModel.catgories.count
-        
+        return sectionArr.endIndex
+
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -115,19 +148,39 @@ extension SRFilterVC :UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let model = viewModel.catgories[indexPath.section]
-        return model.isSelected ? CGFloat(54 + model.subCat.count * 54) : 54.0
+        let type = self.sectionArr[indexPath.section]
+        if case .date = type {
+            return type.isHide ? 154.0 : 54.0
+            
+        }else {
+            return type.isHide ? CGFloat(54 + type.fliterTypeArr.count * 54) : 54.0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueCell(with: FilterTableViewCell.self, indexPath: indexPath)
-        cell.configCell(catgory: self.viewModel.catgories[indexPath.section])
-       
+        let cell = tableView.dequeueCell(with: OfferFilterTableViewCell.self, indexPath: indexPath)
+        cell.sectionType = sectionArr[indexPath.section]
+        
         cell.cellBtnTapped = { [weak self] in
             guard let `self` = self else {return}
-            self.viewModel.catgories[indexPath.section].isSelected.toggle()
+            self.sectionArr[indexPath.section] = self.sectionArr[indexPath.section].isSelected
             self.mainTableView.reloadRows(at: [indexPath], with: .automatic)
-//            cell.collView.reloadData()
+        }
+     
+        cell.selectedByStatusData = { [weak self] (requestAndStatusType) in
+            guard let `self` = self else {return}
+            switch self.sectionArr[indexPath.section] {
+            case .byServiceType(_, let hide) :
+                self.sectionArr[indexPath.section] = .byServiceType(requestAndStatusType, hide)
+                
+            case .byStatus(_, let hide) :
+                self.sectionArr[indexPath.section] = .byStatus(requestAndStatusType, hide)
+                
+            default:
+                return
+            }
+            self.mainTableView.reloadData()
+            
         }
         return cell
     }

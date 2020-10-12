@@ -259,6 +259,13 @@
 
 "fromDate" = "From Date";
 "endDate" = "End Date";
+
+"bidFinalized" = "Bid Finalized";
+"openForBid" = "Open for Bid";
+"bidPlaced" = "Bid Placed";
+"bidRejected" = "Bid Rejected";
+
+
  // MARK: - Home  VC Values
 //==============================
 "tyre" = "Tyre";

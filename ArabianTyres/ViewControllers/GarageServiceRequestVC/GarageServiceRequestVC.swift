@@ -177,9 +177,11 @@ extension GarageServiceRequestVC : UITableViewDelegate, UITableViewDataSource {
             let indexx = self.viewModel.countryBrandsDict.firstIndex { (model) -> Bool in
                 Array(model.keys)[0] == self.selectedCountry
             }
-            guard let selectedIndexx  = indexx else { return UITableViewCell()}
-            cell.brandDataArr = self.viewModel.countryBrandsDict[selectedIndexx][self.selectedCountry] ?? [PreferredBrand]()
-            cell.quantity = self.quantity
+            if let selectedIndexx = indexx {
+                cell.brandDataArr = self.viewModel.countryBrandsDict[selectedIndexx][self.selectedCountry] ?? [PreferredBrand]()
+                cell.quantity = self.quantity
+            }
+         
             cell.internalTableView.reloadData()
             return cell
         }
@@ -213,14 +215,13 @@ extension GarageServiceRequestVC :GarageServiceRequestVMDelegate {
     func brandListingSuccess(message: String) {
         if !viewModel.brandsListings.isEmpty {
             sectionType.contains(.brandListing) ? () : sectionType.append(.brandListing)
+      
         }else {
             sectionType.contains(.brandListing) ? sectionType.removeAll{($0 == .brandListing)} : ()
         }
-        self.viewModel.countryBrandsDict.append([self.selectedCountry : viewModel.brandsListings])
-        viewModel.garageRequestDetailArr?.preferredBrands = viewModel.brandsListings
-        DispatchQueue.main.async {
-            self.mainTableView.reloadData()
-        }
+       self.viewModel.countryBrandsDict.append([self.selectedCountry : viewModel.brandsListings])
+       viewModel.garageRequestDetailArr?.preferredBrands = viewModel.brandsListings
+        self.mainTableView.reloadData()
     }
     
     func brandListingFailed(error:String) {
