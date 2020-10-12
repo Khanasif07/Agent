@@ -66,7 +66,6 @@ extension MyServiceFilterVC {
     
     private func initialSetup() {
         setupTextAndFont()
-        viewModel.initialData()
     }
     
     private func tableViewSetup() {

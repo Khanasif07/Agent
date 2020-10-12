@@ -314,6 +314,11 @@ enum LocalizedString : String {
     case typeHere
     case fromDate
     case endDate
+    case bidFinalized
+    case openForBid
+    case bidPlaced
+    case bidRejected
+    
     // MARK: - Home  VC Values
     //==============================
     case tyre

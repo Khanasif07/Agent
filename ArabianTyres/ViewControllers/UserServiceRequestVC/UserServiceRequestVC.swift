@@ -19,7 +19,13 @@ class UserServiceRequestVC: BaseVC {
     //===========================
     
     @IBOutlet weak var requestNoValueLbl1: UILabel!
+    @IBOutlet weak var requestSeenValueLbl: UILabel!
+    @IBOutlet weak var bidRecivedValueLbl: UILabel!
+    @IBOutlet weak var lowestBidValueLbl: UILabel!
+    @IBOutlet weak var nearestBidderValueLbl: UILabel!
+
     @IBOutlet weak var emptyContainerView: UIView!
+    @IBOutlet weak var cancelBtn: AppButton!
     @IBOutlet weak var viewAllBtn: AppButton!
     @IBOutlet weak var requestNoValueLbl: UILabel!
     @IBOutlet weak var requestNoLbl: UILabel!
@@ -66,12 +72,15 @@ class UserServiceRequestVC: BaseVC {
        
     // MARK: - IBActions
     //===========================
-    @IBAction func viewAllBtnAction(_ sender: AppButton) {
+    @IBAction func cancelRequestBtnAction(_ sender: AppButton) {
         self.viewModel.cancelUserMyRequestDetailData(params: [ApiKey.requestId:
             self.viewModel.requestId])
     }
     
-    
+    @IBAction func viewAllBtnAction(_ sender: AppButton) {
+        AppRouter.goToUserAllOffersVC(vc: self)
+    }
+
     @IBAction func cancelBtnAction(_ sender: UIButton) {
         self.pop()
     }
@@ -105,8 +114,7 @@ extension UserServiceRequestVC: UserServiceRequestVMDelegate{
     }
     
     func getUserMyRequestDetailSuccess(message: String) {
-        viewAllBtn.isBorderSelected = true
-        viewAllBtn.setTitle("Cancel Request", for: .normal)
+        cancelBtn.isBorderSelected = true
         requestNoValueLbl1.text = "#" + "\(self.viewModel.userRequestDetail.requestID)"
         requestNoValueLbl.text = "#" + "\(self.viewModel.userRequestDetail.requestID)"
         self.brandsArray = self.viewModel.userRequestDetail.preferredBrands.map({ (model) -> String in
@@ -115,6 +123,11 @@ extension UserServiceRequestVC: UserServiceRequestVMDelegate{
         let model = self.viewModel.userRequestDetail
         let logoImg =  model.requestType == "Tyres" ? #imageLiteral(resourceName: "radialCarTireI151") : model.requestType == "Battery" ? #imageLiteral(resourceName: "icBattery") : #imageLiteral(resourceName: "icOil")
         self.mainImgView.image = logoImg
+        viewAllBtn.isHidden = viewModel.userRequestDetail.totalBids == 0
+        requestSeenValueLbl.text = ""
+        bidRecivedValueLbl.text = viewModel.userRequestDetail.totalBids?.description
+        lowestBidValueLbl.text = viewModel.userRequestDetail.lowestBid?.description
+        nearestBidderValueLbl.text = viewModel.userRequestDetail.nearestBidder?.description
         self.brandCollView.reloadData()
     }
     

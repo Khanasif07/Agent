@@ -21,7 +21,6 @@ class FilterTableViewCell: UITableViewCell {
     @IBOutlet weak var collView : UICollectionView!
 
     var cellBtnTapped : (()->())?
-    var subCatArr :[SubCatModel] = []
     
     //MARK:- Life Cycle
     override func awakeFromNib() {
@@ -47,26 +46,17 @@ class FilterTableViewCell: UITableViewCell {
         collView.registerCell(with: FilterCollectionViewCell.self)
     }
 
-    
-    func configCell(catgory: CatModel) {
-        self.subCatArr = catgory.subCat
-        self.categoryLbl.text = catgory.name
-        self.addImgView.isHighlighted = catgory.isSelected
-        self.collView.isHidden = !catgory.isSelected
-        collView.reloadData() 
-     }
+   
 
 }
 //MARK:- Collection View Delegate and DataSource
 extension FilterTableViewCell: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return subCatArr.count
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(with: FilterCollectionViewCell.self, indexPath: indexPath)
-        cell.subCategoryName.text = subCatArr[indexPath.item].name
-        cell.lineView.isHidden = subCatArr.count - 1 == indexPath.item
         return cell
     }
     

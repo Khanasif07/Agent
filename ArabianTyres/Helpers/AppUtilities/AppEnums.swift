@@ -92,6 +92,9 @@ enum FilterScreen {
     case date(Date?,Date?,Bool)
     case bidReceived(String,Bool)
     case distance(String,Bool)
+    case allRequestServiceType(String,Bool)
+    case allRequestByStatus(String,Bool)
+
     
     var text: String {
         switch self {
@@ -106,6 +109,11 @@ enum FilterScreen {
             return LocalizedString.bidReceived.localized
         case .distance:
             return LocalizedString.distance.localized
+        case .allRequestServiceType(_, _):
+            return LocalizedString.byServiceType.localized
+        case .allRequestByStatus(_, _):
+            return LocalizedString.byStatus.localized
+            
         }
     }
     
@@ -121,7 +129,16 @@ enum FilterScreen {
             return [LocalizedString.offerAccepted.localized,
                     LocalizedString.offerReceived.localized,
                     LocalizedString.noOffers.localized]
-    
+        case .allRequestServiceType:
+            return [LocalizedString.tyreService.localized,
+                    LocalizedString.oilSevice.localized,
+                    LocalizedString.batteryService.localized]
+           
+        case .allRequestByStatus:
+            return [LocalizedString.bidFinalized.localized,
+                    LocalizedString.openForBid.localized,
+                    LocalizedString.bidPlaced.localized,
+                    LocalizedString.bidRejected.localized]
         default:
             return [""]
         
@@ -130,7 +147,7 @@ enum FilterScreen {
     
     var isSelected : FilterScreen {
         switch self {
-        
+            
         case .byServiceType(let str,let hide):
             return .byServiceType(str, !hide)
         case .byStatus(let str,let hide):
@@ -141,14 +158,18 @@ enum FilterScreen {
             return .bidReceived(str, !hide)
         case .distance(let str,let hide):
             return .distance(str, !hide)
-        
+        case .allRequestServiceType(let str,let hide):
+            return .allRequestServiceType(str, !hide)
+        case .allRequestByStatus(let str,let hide):
+            return .allRequestByStatus(str, !hide)
+            
         }
     }
     
     var isHide : Bool {
         switch self {
         
-        case .byServiceType(_ ,let hide), .byStatus(_ ,let hide), .date(_ ,_ ,let hide), .bidReceived(_ ,let hide),.distance(_ ,let hide):
+        case .byServiceType(_ ,let hide), .byStatus(_ ,let hide), .date(_ ,_ ,let hide), .bidReceived(_ ,let hide),.distance(_ ,let hide), .allRequestServiceType(_ ,let hide), .allRequestByStatus(_ ,let hide) :
             return hide
 
         }
@@ -158,18 +179,26 @@ enum FilterScreen {
            switch self {
             
            case .byServiceType:
-               return ["Tyres",
-                       "Oil",
-                       "Battery"]
-               
+            return ["Tyres",
+                    "Oil",
+                    "Battery"]
+            
            case .byStatus:
-               return ["accepted",
-                       "received",
-                       "noOffer"]
-       
+            return ["accepted",
+                    "received",
+                    "noOffer"]
+           case .allRequestServiceType:
+            return ["Tyres",
+                    "Oil",
+                    "Battery"]
+           case .allRequestByStatus:
+            return ["Tyres",
+                    "Oil",
+                    "Battery",
+                    "Battery"]
            default:
-               return [""]
-           
+            return [""]
+            
         }
     }
 }

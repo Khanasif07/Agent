@@ -56,7 +56,6 @@ extension OfferFilterVC {
     private func initialSetup() {
         setupTextAndFont()
         setupTableView()
-        viewModel.initialData()
     }
     
     private func setupTableView() {
@@ -108,12 +107,7 @@ extension OfferFilterVC: UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if case .distance = sectionArr[indexPath.section]   {
-            return self.sliderHide ? 54.0 : 154.0
-        }else {
-            let model = viewModel.catgories[indexPath.section]
-            return model.isSelected ? CGFloat(54 + model.subCat.count * 54) : 54.0
-       }
+        return 0.0
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

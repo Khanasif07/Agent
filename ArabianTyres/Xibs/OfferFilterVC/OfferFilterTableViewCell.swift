@@ -90,6 +90,13 @@ extension OfferFilterTableViewCell: UICollectionViewDelegate,UICollectionViewDat
             cell.lineView.isHidden = sectionType.fliterTypeArr.count - 1 == indexPath.item
             return cell
        
+        case .allRequestByStatus(let str, _), .allRequestServiceType(let str, _) :
+                 let cell = collectionView.dequeueCell(with: FilterCollectionViewCell.self, indexPath: indexPath)
+                 cell.subCategoryName.text = sectionType.fliterTypeArr[indexPath.item]
+                 cell.checkImgView.isHighlighted = sectionType.apiValue[indexPath.item] == str
+                 cell.lineView.isHidden = sectionType.fliterTypeArr.count - 1 == indexPath.item
+                 return cell
+            
         default:
             let cell = collectionView.dequeueCell(with: FilterCollectionViewCell.self, indexPath: indexPath)
             cell.subCategoryName.text = sectionType.fliterTypeArr[indexPath.item]
