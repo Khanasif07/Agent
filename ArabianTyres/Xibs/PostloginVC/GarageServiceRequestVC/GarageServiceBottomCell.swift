@@ -18,6 +18,7 @@ class GarageServiceBottomCell: UITableViewCell {
     @IBOutlet weak var brandsTitleLbl: UILabel!
     
     //MARK:-Variables
+    var unitPriceUpdated: ((_ unitPrice: String,_ SelectedIndexPath: IndexPath)->())?
     var countryBrandsSelected: ((_ SelectedIndexPath : IndexPath)->())?
     var brandDataArr : [PreferredBrand] = []{
         didSet{
@@ -62,6 +63,14 @@ extension GarageServiceBottomCell: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(with: GarageServiceBrandsCell.self, indexPath: indexPath)
         cell.bindData(brandDataArr[indexPath.row])
+        cell.unitPriceChanged = { [weak self] (unitPrice,sender) in
+            guard let `self` = self else { return }
+            if  let selectedIndexx = tableView.indexPath(for: cell) {
+                if let handle = self.unitPriceUpdated {
+                    handle(unitPrice,selectedIndexx)
+                }
+            }
+        }
         cell.unitLbl.text = quantity.description
         if indexPath.row == self.brandDataArr.endIndex - 1{
             cell.dashViewHeightConst.constant = 0

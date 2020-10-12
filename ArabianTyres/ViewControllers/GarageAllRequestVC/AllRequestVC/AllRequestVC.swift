@@ -49,6 +49,8 @@ extension AllRequestVC {
         viewModel.delegate = self
         self.mainTableView.delegate = self
         self.mainTableView.dataSource = self
+        mainTableView.emptyDataSetSource = self
+        mainTableView.emptyDataSetDelegate = self
         self.mainTableView.enablePullToRefresh(tintColor: AppColors.appRedColor ,target: self, selector: #selector(refreshWhenPull(_:)))
         self.mainTableView.registerCell(with: ServiceRequestTableCell.self)
         hitApi()
@@ -135,7 +137,10 @@ extension AllRequestVC : DZNEmptyDataSetSource,DZNEmptyDataSetDelegate {
     }
     
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        return NSAttributedString(string: "No data found" , attributes: [NSAttributedString.Key.foregroundColor: AppColors.fontTertiaryColor,NSAttributedString.Key.font: AppFonts.NunitoSansBold.withSize(18)])
+        var emptyData = ""
+        emptyData = viewModel.garageRequestListing.endIndex == 0 ? "No data found" : ""
+    
+        return NSAttributedString(string: emptyData, attributes: [NSAttributedString.Key.foregroundColor: AppColors.fontTertiaryColor,NSAttributedString.Key.font: AppFonts.NunitoSansBold.withSize(18)])
     }
     
     func emptyDataSetShouldDisplay(_ scrollView: UIScrollView!) -> Bool {

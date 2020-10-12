@@ -9,7 +9,9 @@
 import UIKit
 import SkyFloatingLabelTextField
 
-class GarageServiceBrandsCell: UITableViewCell {
+class GarageServiceBrandsCell: UITableViewCell,UITextFieldDelegate {
+    
+    var unitPriceChanged: ((_ unitPrice: String,_ sender: UITextField)->())?
 
     @IBOutlet weak var checkBtn: UIButton!
     @IBOutlet weak var dashViewHeightConst: NSLayoutConstraint!
@@ -20,12 +22,23 @@ class GarageServiceBrandsCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        unitPrizeTextFiled.selectedLineColor = .clear
+        unitPrizeTextFiled.lineColor = .clear
+        unitPrizeTextFiled.lineHeight = 0.0
+        unitPrizeTextFiled.delegate = self
+        unitPrizeTextFiled.keyboardType = .numberPad
         unitPrizeTextFiled.textAlignment = .center
     }
     
     func bindData(_ model: PreferredBrand) {
         brandNameLbl.text = model.name
         checkBtn.isSelected = model.isSelected ?? false
-//        unitLbl.text = model.
+    }
+    
+    @IBAction func textFieldChanged(_ sender: UITextField) {
+        let text = sender.text?.byRemovingLeadingTrailingWhiteSpaces ?? ""
+        if let handle = unitPriceChanged {
+            handle(text,sender)
+        }
     }
 }
