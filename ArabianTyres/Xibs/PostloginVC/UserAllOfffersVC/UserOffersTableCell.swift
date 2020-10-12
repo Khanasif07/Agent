@@ -49,4 +49,9 @@ class UserOffersTableCell: UITableViewCell {
     
     @IBAction func viewProposalBtnAction(_ sender: AppButton) {
     }
+    
+    func bindData(_ model: UserBidModel) {
+        distanceValueLbl.text = model.distance.description
+        offerTitleLbl.text = model.garageName
+    }
 }

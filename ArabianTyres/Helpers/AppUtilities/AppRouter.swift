@@ -304,8 +304,9 @@ enum AppRouter {
         
     }
     
-    static func goToUserAllOffersVC(vc: UIViewController){
+    static func goToUserAllOffersVC(vc: UIViewController, requestId : String){
         let scene = UserAllOffersVC.instantiate(fromAppStoryboard: .Garage)
+        scene.requestId = requestId
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
