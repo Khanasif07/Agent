@@ -33,7 +33,7 @@ class SocketIOManager: NSObject {
     var socket: SocketIOClient?
     private var manager: SocketManager?
     static let shared: SocketIOManager = SocketIOManager()
-    public var baseSocketUrl: String  = "http://demo.yourdomain.com:3000"
+    public var baseSocketUrl: String  = "http://arabiantyersdevapi.appskeeper.com/api/v1/"
     var messageQueue = [[String: Any]]()
     static var isSocketConnected: Bool {
         return SocketIOManager.shared.socket?.status == SocketIOStatus.connected ? true: false
@@ -88,7 +88,7 @@ class SocketIOManager: NSObject {
             self.socket?.on(SocketKeys.didConnect) { (data, ack) in
                 if self.socket?.status == .connected {
                     if isUserLoggedin {
-                         print("socket connected")
+                         print("//////////+++socket connected+++//////////")
                     }
                 }
             }
