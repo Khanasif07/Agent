@@ -121,7 +121,7 @@ extension UserAllOffersVC : UITableViewDelegate, UITableViewDataSource {
         cell.bindData(viewModel.userBidListingArr[indexPath.section], viewModel.userBidListingArr[indexPath.section].bidData[indexPath.row])
         cell.viewProposalAction = { [weak self] (sender) in
             guard let `self` = self else { return }
-            AppRouter.presentOfferDetailVC(vc: self)
+            AppRouter.presentOfferDetailVC(vc: self,bidId: self.viewModel.userBidListingArr[indexPath.row].id )
         }
         return cell
     }

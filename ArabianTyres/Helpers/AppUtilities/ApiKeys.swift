@@ -162,6 +162,7 @@ enum ApiKey {
     static var time: String { return "time" }
     static var requestId : String { return "requestId" }
     static var bidData : String { return "bidData" }
+    static var bidId : String { return "bidId" }
     static var requestType : String { return "requestType" }
     static var startdate : String { return "startDate" }
     static var endDate : String { return "endDate" }

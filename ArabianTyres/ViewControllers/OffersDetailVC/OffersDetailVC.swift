@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DZNEmptyDataSet
 
 class OffersDetailVC: BaseVC {
     
@@ -25,6 +26,7 @@ class OffersDetailVC: BaseVC {
     
     // MARK: - Variables
     //===========================
+    var viewModel = OffersDetailVM()
     
     // MARK: - Lifecycle
     //===========================
@@ -59,11 +61,19 @@ extension OffersDetailVC {
     }
     
     private func setupTableView() {
+        self.viewModel.delegate = self
         mainTableView.contentInset = UIEdgeInsets(top: 0.0, left: 0, bottom: 0, right: 0)
         mainTableView.delegate = self
         mainTableView.dataSource = self
+        mainTableView.emptyDataSetSource = self
+        mainTableView.emptyDataSetDelegate = self
         mainTableView.registerCell(with: OffersDetailTableCell.self)
         mainTableView.tableHeaderView = headerView
+        hitApi()
+    }
+    
+    private func hitApi(){
+        self.viewModel.getOfferDetailData(params: [ApiKey.bidId:self.viewModel.bidId ])
     }
     
     private func setupTextAndFont(){
@@ -78,15 +88,71 @@ extension OffersDetailVC {
 extension OffersDetailVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return self.viewModel.userBidDetail.bidData.endIndex
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(with: OffersDetailTableCell.self, indexPath: indexPath)
+        cell.populateData(isBrandSelected: self.viewModel.userBidDetail.bidData[indexPath.row].isSelected ?? false,model:  self.viewModel.userBidDetail.bidData[indexPath.row])
+        cell.dashBackgroundView.isHidden = !(self.viewModel.userBidDetail.bidData.endIndex - 1 == indexPath.row)
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       let index =  self.viewModel.userBidDetail.bidData.firstIndex { (model) -> Bool in
+            return model.isSelected == true
+        }
+        guard let selectedIndex = index else {
+            self.viewModel.userBidDetail.bidData[indexPath.row].isSelected = true
+            self.mainTableView.reloadData()
+            return }
+        self.viewModel.userBidDetail.bidData[selectedIndex].isSelected = false
+        self.viewModel.userBidDetail.bidData[indexPath.row].isSelected = true
+        self.mainTableView.reloadData()
+    }
+}
+
+// MARK: - Extension For getOfferDetailData
+//========================================
+extension OffersDetailVC : OffersDetailVMDelegate {
+    func getOfferDetailSuccess(message: String) {
+         self.mainTableView.reloadData()
+    }
+    
+    func getOfferDetailFailed(error: String) {
+        ToastView.shared.showLongToast(self.view, msg: error)
+    }
+}
+
+// MARK: - Extension For DZNEmptyDataSetSource
+//========================================
+extension OffersDetailVC: DZNEmptyDataSetSource,DZNEmptyDataSetDelegate{
+    
+       func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
+           return  nil
+       }
+       
+       func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+           return NSAttributedString(string:"No data found" , attributes: [NSAttributedString.Key.foregroundColor: AppColors.fontTertiaryColor,NSAttributedString.Key.font: AppFonts.NunitoSansBold.withSize(18)])
+       }
+       
+       func emptyDataSetShouldDisplay(_ scrollView: UIScrollView!) -> Bool {
+           return true
+       }
+       
+       func emptyDataSetShouldAllowScroll(_ scrollView: UIScrollView!) -> Bool {
+           return true
+       }
+       
+       func emptyDataSetShouldAllowTouch(_ scrollView: UIScrollView!) -> Bool {
+           return true
+       }
+       
+       func emptyDataSetShouldBeForced(toDisplay scrollView: UIScrollView!) -> Bool {
+           return false
+       }
 }

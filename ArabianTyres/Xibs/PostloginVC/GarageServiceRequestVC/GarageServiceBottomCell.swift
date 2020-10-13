@@ -72,10 +72,7 @@ extension GarageServiceBottomCell: UITableViewDelegate, UITableViewDataSource {
             }
         }
         cell.unitLbl.text = quantity.description
-        if indexPath.row == self.brandDataArr.endIndex - 1{
-            cell.dashViewHeightConst.constant = 0
-            cell.dashView.isHidden = true
-        }
+        cell.dashBackgroundView.isHidden = !(indexPath.row == self.brandDataArr.endIndex - 1)
         return cell
     }
     

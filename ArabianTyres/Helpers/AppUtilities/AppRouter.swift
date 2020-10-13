@@ -325,8 +325,9 @@ enum AppRouter {
         
     }
     
-    static func presentOfferDetailVC(vc: UIViewController){
+    static func presentOfferDetailVC(vc: UIViewController,bidId: String){
         let scene = OffersDetailVC.instantiate(fromAppStoryboard: .Garage)
+        scene.viewModel.bidId = bidId
         vc.modalPresentationStyle = .fullScreen
         vc.present(scene, animated: true, completion: nil)
         

@@ -120,13 +120,21 @@
                                     </view>
                                 </subviews>
                             </stackView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Hf-oX-jey">
+                                <rect key="frame" x="0.0" y="53" width="343" height="25"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="dUx-ft-qdZ" secondAttribute="bottom" id="FQL-gW-wPM"/>
                             <constraint firstAttribute="trailing" secondItem="dUx-ft-qdZ" secondAttribute="trailing" id="Xbi-fl-dPo"/>
                             <constraint firstItem="dUx-ft-qdZ" firstAttribute="leading" secondItem="afK-5R-pIM" secondAttribute="leading" id="ceM-IJ-CJ1"/>
+                            <constraint firstItem="6Hf-oX-jey" firstAttribute="top" secondItem="54e-uI-Wre" secondAttribute="top" id="ev6-eH-Hzf"/>
+                            <constraint firstItem="6Hf-oX-jey" firstAttribute="bottom" secondItem="54e-uI-Wre" secondAttribute="bottom" id="hky-lQ-GWD"/>
                             <constraint firstItem="dUx-ft-qdZ" firstAttribute="top" secondItem="afK-5R-pIM" secondAttribute="top" id="iNT-4z-4qt"/>
+                            <constraint firstItem="6Hf-oX-jey" firstAttribute="trailing" secondItem="54e-uI-Wre" secondAttribute="trailing" id="kGG-SN-Ec9"/>
+                            <constraint firstItem="6Hf-oX-jey" firstAttribute="leading" secondItem="54e-uI-Wre" secondAttribute="leading" id="sK0-p7-lOO"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -141,6 +149,7 @@
             <connections>
                 <outlet property="brandNameLbl" destination="TRq-qW-Sc5" id="heL-eR-xh5"/>
                 <outlet property="checkBtn" destination="YXW-KB-kY6" id="2dG-PJ-TS8"/>
+                <outlet property="dashBackgroundView" destination="6Hf-oX-jey" id="nA9-jy-gtQ"/>
                 <outlet property="dashView" destination="54e-uI-Wre" id="GIg-sp-N6b"/>
                 <outlet property="dashViewHeightConst" destination="90F-J0-Pcj" id="dP4-dh-XxN"/>
                 <outlet property="unitLbl" destination="lrq-MH-n47" id="lUU-Iw-vZY"/>
