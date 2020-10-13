@@ -78,7 +78,7 @@ class UserOffersTableCell: UITableViewCell {
         case BAValueLbl:
             str = NSMutableAttributedString(string: value, attributes: [
                 .font: AppFonts.NunitoSansBold.withSize(17.0),
-                .foregroundColor: AppColors.fontPrimaryColor
+                .foregroundColor: AppColors.successGreenColor
             ])
             str.append(NSAttributedString(string: "SAR", attributes: [NSAttributedString.Key.foregroundColor: AppColors.successGreenColor,NSAttributedString.Key.font: AppFonts.NunitoSansSemiBold.withSize(12.0)]))
            
