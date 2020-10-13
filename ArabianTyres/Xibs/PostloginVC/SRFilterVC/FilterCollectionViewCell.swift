@@ -26,7 +26,6 @@ class FilterCollectionViewCell: UICollectionViewCell {
 
     func setupForOfferFilter() {
         checkImgView.image =   #imageLiteral(resourceName: "frame3854")
-//        checkImgView.highlightedImage = #imageLiteral(resourceName: "group3815")
-        
+        checkImgView.highlightedImage = #imageLiteral(resourceName: "group3815")
     }
 }

@@ -20,7 +20,8 @@ class UserAllOffersVC: BaseVC {
     //===========================
     var requestId: String = ""
     let viewModel = UserAllOfferVM()
-    
+    var filterArr : [FilterScreen] = [.distance("","", false), .bidReceived([],false)]
+
     // MARK: - Lifecycle
     //===========================
     override func viewDidLoad() {
@@ -41,10 +42,12 @@ class UserAllOffersVC: BaseVC {
     }
     
     @IBAction func filterBtnAction(_ sender: UIButton) {
-         let scene = OfferFilterVC.instantiate(fromAppStoryboard: .GarageRequest)
-         self.navigationController?.pushViewController(scene, animated: true)
+        AppRouter.goOfferFilterVC(vc: self, filterArr: filterArr) {[weak self] (filterData) in
+            self?.getFilterData(data: filterData)
+            self?.filterArr = filterData
+        }
+
     }
-    
 }
 
 // MARK: - Extension For Functions
@@ -73,6 +76,32 @@ extension UserAllOffersVC {
     private func hitApi() {
         let dict : JSONDictionary = [ApiKey.page: "1",ApiKey.limit : "20", ApiKey.requestId : self.requestId]
         viewModel.getUserBidData(params: dict)
+    }
+    
+    private func getFilterData(data: [FilterScreen]) {
+        var dict : JSONDictionary = [ApiKey.page: "1",ApiKey.limit : "20"]
+        data.forEach { (type) in
+            switch type {
+                
+            case .byServiceType(let arr, _):
+                dict[ApiKey.type] = arr.joined(separator: ",")
+                
+            case .byStatus(let arr, _):
+                dict[ApiKey.status] = arr.joined(separator: ",")
+                
+            case .date(let fromDate, let toDate, _):
+                
+                if let fDate = fromDate ,let tDate = toDate {
+                    dict[ApiKey.startdate] = fDate.toString(dateFormat: Date.DateFormat.yyyyMMddTHHmmsssssz.rawValue)
+                    dict[ApiKey.endDate] =  tDate.toString(dateFormat: Date.DateFormat.yyyyMMddTHHmmsssssz.rawValue)
+                    
+                }
+                
+            default:
+                break
+            }
+        }
+//        self.viewModel.getUserMyRequestData(params: dict,loader: true)
     }
 }
 
