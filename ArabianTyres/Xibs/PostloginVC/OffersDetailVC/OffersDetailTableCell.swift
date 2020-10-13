@@ -18,7 +18,8 @@ class OffersDetailTableCell: UITableViewCell {
     @IBOutlet weak var brandNameLbl : UILabel!
     @IBOutlet weak var unitLbl : UILabel!
     @IBOutlet weak var unitPrizeTextFiled : SkyFloatingLabelTextField!
-
+    @IBOutlet weak var dashBackgroundView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         unitPrizeTextFiled.selectedLineColor = .clear
@@ -28,8 +29,11 @@ class OffersDetailTableCell: UITableViewCell {
         unitPrizeTextFiled.textAlignment = .center
     }
     
-    func populateData(isBrandSelected: Bool){
+    func populateData(isBrandSelected: Bool,model: BidDatum){
         checkBtn.isSelected = isBrandSelected
+        unitLbl.text = "\(model.quantity)"
+        unitPriceLbl.text = "\(model.amount)" + "SAR"
+        brandNameLbl.text = "\(model.brandName)"
     }
     
 }

@@ -109,6 +109,7 @@
 		8470D1FB251B36C700790768 /* GarageProfileHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8470D1F9251B36C700790768 /* GarageProfileHeaderCell.xib */; };
 		847BC423250774E100EEEFDC /* ResetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847BC422250774E100EEEFDC /* ResetPasswordVC.swift */; };
 		847BC425250796CB00EEEFDC /* ResetPasswordVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847BC424250796CB00EEEFDC /* ResetPasswordVM.swift */; };
+		847C35A82535689B009F1ACF /* OffersDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847C35A72535689B009F1ACF /* OffersDetailVM.swift */; };
 		8481F9FD2500AA9A00AB6EFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481F9FC2500AA9A00AB6EFB /* AppDelegate.swift */; };
 		8481F9FF2500AA9A00AB6EFB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481F9FE2500AA9A00AB6EFB /* SceneDelegate.swift */; };
 		8481FA062500AA9B00AB6EFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8481FA052500AA9B00AB6EFB /* Assets.xcassets */; };
@@ -392,6 +393,7 @@
 		8470D1F9251B36C700790768 /* GarageProfileHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GarageProfileHeaderCell.xib; sourceTree = "<group>"; };
 		847BC422250774E100EEEFDC /* ResetPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordVC.swift; sourceTree = "<group>"; };
 		847BC424250796CB00EEEFDC /* ResetPasswordVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordVM.swift; sourceTree = "<group>"; };
+		847C35A72535689B009F1ACF /* OffersDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffersDetailVM.swift; sourceTree = "<group>"; };
 		8481F9F92500AA9A00AB6EFB /* ArabianTyres.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArabianTyres.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8481F9FC2500AA9A00AB6EFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8481F9FE2500AA9A00AB6EFB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -1466,6 +1468,7 @@
 			isa = PBXGroup;
 			children = (
 				84C82F6325347A4C0014CD4A /* OffersDetailVC.swift */,
+				847C35A72535689B009F1ACF /* OffersDetailVM.swift */,
 			);
 			path = OffersDetailVC;
 			sourceTree = "<group>";
@@ -2028,6 +2031,7 @@
 				8481FA5B2500BF3B00AB6EFB /* CommonExtension.swift in Sources */,
 				8481FA3B2500BDFF00AB6EFB /* NotificationExtension.swift in Sources */,
 				84FF6EA7251DCB460000E2AD /* URTyreSizeVM.swift in Sources */,
+				847C35A82535689B009F1ACF /* OffersDetailVM.swift in Sources */,
 				A41AAB4E2530A0390061887F /* MyServiceFilterVC.swift in Sources */,
 				8481FA672500BFB900AB6EFB /* AppStoryboards.swift in Sources */,
 				84B629AA25120E250080A7C2 /* Cropper.swift in Sources */,

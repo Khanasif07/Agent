@@ -13,6 +13,8 @@ class GarageServiceBrandsCell: UITableViewCell,UITextFieldDelegate {
     
     var unitPriceChanged: ((_ unitPrice: String,_ sender: UITextField)->())?
 
+    
+    @IBOutlet weak var dashBackgroundView: UIView!
     @IBOutlet weak var checkBtn: UIButton!
     @IBOutlet weak var dashViewHeightConst: NSLayoutConstraint!
     @IBOutlet weak var dashView: CustomDashedView!
