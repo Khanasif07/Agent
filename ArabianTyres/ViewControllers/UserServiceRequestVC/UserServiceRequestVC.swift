@@ -126,10 +126,17 @@ extension UserServiceRequestVC: UserServiceRequestVMDelegate{
         self.mainImgView.image = logoImg
         viewAllBtn.isHidden = viewModel.userRequestDetail.totalBids == 0
         requestSeenValueLbl.text = "120"
+        if viewModel.userRequestDetail.lowestBid == 0 {
+            lowestBidValueLbl.textColor = AppColors.fontPrimaryColor
+            lowestBidValueLbl.text = "No"
+            
+        }else {
+            lowestBidValueLbl.textColor = #colorLiteral(red: 0.1725490196, green: 0.7137254902, blue: 0.4549019608, alpha: 1)
+            lowestBidValueLbl.text = viewModel.userRequestDetail.lowestBid?.description
+        }
         bidRecivedValueLbl.text = viewModel.userRequestDetail.totalBids?.description
-        lowestBidValueLbl.text = viewModel.userRequestDetail.lowestBid?.description
         nearestBidderValueLbl.text = viewModel.userRequestDetail.nearestBidder?.description
-        self.brandCollView.reloadData()
+        brandCollView.reloadData()
     }
     
     func getUserMyRequestDetailFailed(error: String) {

@@ -56,8 +56,45 @@ class UserOffersTableCell: UITableViewCell {
         }
     }
     
-    func bindData(_ model: UserBidModel) {
-        distanceValueLbl.text = model.distance.description
+    func bindData(_ model: UserBidModel, _ bidData: BidDatum) {
+        distanceValueLbl.attributedText =  getAttributedString(value: "\(model.distance)",attributedLabel: distanceValueLbl)
         offerTitleLbl.text = model.garageName
+        quantityValueLbl.text = bidData.quantity.description
+        BAValueLbl.attributedText = getAttributedString(value: bidData.amount.description,attributedLabel: BAValueLbl)
+        tAValueLbl.attributedText = getAttributedString(value: "1250",attributedLabel: tAValueLbl)
     }
+    
+    func getAttributedString(value : String,attributedLabel: UILabel) -> NSMutableAttributedString{
+        
+        var str: NSMutableAttributedString = NSMutableAttributedString()
+        switch attributedLabel {
+            case distanceValueLbl:
+            str = NSMutableAttributedString(string: value, attributes: [
+                .font: AppFonts.NunitoSansBold.withSize(17.0),
+                .foregroundColor: AppColors.fontPrimaryColor
+            ])
+            str.append(NSAttributedString(string: "Miles", attributes: [NSAttributedString.Key.foregroundColor: AppColors.fontSecondaryColor,NSAttributedString.Key.font: AppFonts.NunitoSansSemiBold.withSize(12.0)]))
+            
+        case BAValueLbl:
+            str = NSMutableAttributedString(string: value, attributes: [
+                .font: AppFonts.NunitoSansBold.withSize(17.0),
+                .foregroundColor: AppColors.fontPrimaryColor
+            ])
+            str.append(NSAttributedString(string: "SAR", attributes: [NSAttributedString.Key.foregroundColor: AppColors.successGreenColor,NSAttributedString.Key.font: AppFonts.NunitoSansSemiBold.withSize(12.0)]))
+           
+            str.append(NSAttributedString(string: "/Piece", attributes: [NSAttributedString.Key.foregroundColor: AppColors.fontSecondaryColor,NSAttributedString.Key.font: AppFonts.NunitoSansSemiBold.withSize(12.0)]))
+            
+        case tAValueLbl:
+            str = NSMutableAttributedString(string: value, attributes: [
+                 .font: AppFonts.NunitoSansBold.withSize(17.0),
+                 .foregroundColor: AppColors.fontPrimaryColor
+             ])
+             str.append(NSAttributedString(string: "SAR", attributes: [NSAttributedString.Key.foregroundColor: AppColors.fontPrimaryColor,NSAttributedString.Key.font: AppFonts.NunitoSansSemiBold.withSize(12.0)]))
+            
+        default:
+            break
+        }
+        return str
+    }
+
 }

@@ -26,7 +26,7 @@ struct UserBidModel: Codable {
 
 // MARK: - BidDatum
 struct BidDatum: Codable {
-    let isAccepted: Bool
+    let isAccepted: Bool?
     let id: String
     let amount: Int
     let brandID, brandName: String
