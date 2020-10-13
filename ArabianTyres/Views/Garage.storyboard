@@ -2422,6 +2422,7 @@ Service Center</string>
                         <outlet property="requestNoValueLbl" destination="o7v-iC-6Gk" id="OHR-EW-tw9"/>
                         <outlet property="requestNoValueLbl1" destination="oVE-Lb-mjQ" id="Gbf-D0-Vl4"/>
                         <outlet property="requestSeenValueLbl" destination="ZPq-wf-eOR" id="goR-Ph-qNR"/>
+                        <outlet property="titleLbl" destination="DR0-v8-Zal" id="9F7-yK-QD9"/>
                         <outlet property="viewAllBtn" destination="Sck-9u-ea1" id="wXL-Cv-KFP"/>
                     </connections>
                 </viewController>

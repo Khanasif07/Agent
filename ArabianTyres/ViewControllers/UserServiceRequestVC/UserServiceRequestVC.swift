@@ -18,6 +18,7 @@ class UserServiceRequestVC: BaseVC {
     // MARK: - IBOutlets
     //===========================
     
+    @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var requestNoValueLbl1: UILabel!
     @IBOutlet weak var requestSeenValueLbl: UILabel!
     @IBOutlet weak var bidRecivedValueLbl: UILabel!
@@ -99,6 +100,7 @@ extension UserServiceRequestVC {
         emptyContainerView.isHidden = true
         viewModel.delegate = self
         viewAllBtn.isEnabled = true
+        titleLbl.text =  self.viewModel.serviceType == "Tyres" ? "Tyre Service Request" : self.viewModel.serviceType == "Battery" ? "Battery Service Request" : "Oil Service Request"
         viewModel.getUserMyRequestDetailData(params: [ApiKey.requestId: self.viewModel.requestId])
     }
 }

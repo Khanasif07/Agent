@@ -20,11 +20,23 @@ extension SocketIOManager {
 // MARK: - IM Sockets
 // listen message data to socket server
 extension SocketIOManager {
-    func receiveNewDirectMessages() {
-        self.socket?.on(SocketKeys.message, callback: { (arrAckData, ack) in
-            printDebug("New Message")
-            guard let dictMsg = arrAckData.first as? JSONDictionary else { return }
-            ack.with(true)
-        })
-    }
+     /// Method to listen online users when any one goes in and out from Room
+       func listenOnlineUsers() {
+           self.socket?.on(SocketKeys.onlineUsers, callback: { data, _ in
+               printDebug(data)
+               let json = JSON(data)
+               if let jsonString = json.arrayValue.first![ApiKey.data].rawString(), let data = jsonString.data(using: .utf8) {
+                   do {
+//                       let modelOnlineUserUpdate = try JSONDecoder().decode(LiveUserData.self, from: data)
+//                       printDebug(modelOnlineUserUpdate)
+                       
+//                       let nc = NotificationCenter.default
+//                       nc.post(name: Notification.Name.liveUserUpdate, object: modelOnlineUserUpdate)
+                   } catch {
+                       printDebug("Error Occured due to Live User Model not parsed correctly.")
+                   }
+                   
+               }
+           })
+       }
 }

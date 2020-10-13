@@ -652,10 +652,10 @@ extension WebServices{
     
     // MARK:- Make Listing Data
     //=================
-    static func getUserMyRequestData(parameters: JSONDictionary,
+    static func getUserMyRequestData(parameters: JSONDictionary, loader: Bool,
                                      success: @escaping SuccessResponse,
                                      failure: @escaping FailureResponse) {
-        self.commonGetAPI(parameters: parameters,endPoint: .userMyServiceRequests, success: { (json) in
+        self.commonGetAPI(parameters: parameters,endPoint: .userMyServiceRequests, loader:loader, success: { (json) in
             let code = json[ApiKey.statusCode].intValue
             let msg = json[ApiKey.message].stringValue
             switch code {

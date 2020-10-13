@@ -51,7 +51,6 @@ class SocketIOManager: NSObject {
         let accessToken = AppUserDefaults.value(forKey: .accesstoken).stringValue
             let strUrl = baseSocketUrl
             let baseUrl = URL(string: strUrl)!
-            printDebug(baseUrl)
             self.manager = SocketManager(socketURL: baseUrl,
                                          config: [.log(true),
                                                   .connectParams(["accessToken": accessToken]),
@@ -100,7 +99,6 @@ class SocketIOManager: NSObject {
      
     /// Method to close socket connection at the time of logout
     func closeConnection() {
-        self.stopListenChatSocket()
         socket?.disconnect()
         socket = nil
     }
@@ -111,33 +109,5 @@ class SocketIOManager: NSObject {
 // MARK: - IM Sockets
 // remove observer to socket server
 extension SocketIOManager {
-    /// Method to stop listen Comments in joined room
-    func stopListenChatSocket() {
-        self.socket?.off(SocketKeys.message)
-        self.socket?.off(SocketKeys.messageStatus)
-        self.socket?.off(SocketKeys.chatThread)
-        self.socket?.off(SocketKeys.chatStatus)
-    }
-    
-    /// Method to stop listen Comments in joined room
-    func stopListenComments() {
-        self.socket?.off(SocketKeys.commentResponse)
-    }
-    
-    /// Method to stop listen Pinned Comments in joined room
-    func stopListenPinnedComments() {
-        self.socket?.off(SocketKeys.pinnedCommentInfo)
-    }
-    
-    /// Method to stop listen time over for live streaming  in joined room
-    func stopListenTimeLimitOver() {
-        self.socket?.off(SocketKeys.terminateLiveStream)
-    }
-    
-    //MARK:- Socket emit and listeners
-    func getSyncContactResponse() {
-        SocketIOManager.shared.socket?.on(EventListnerKeys.syncResponse.rawValue, callback: { (data, ack) in
-            guard let first = data.first as? JSONDictionary else{ return }
-        })
-    }
+  
 }
