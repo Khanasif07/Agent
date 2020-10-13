@@ -80,11 +80,14 @@ class UserServiceRequestVC: BaseVC {
     @IBAction func viewAllBtnAction(_ sender: AppButton) {
         AppRouter.goToUserAllOffersVC(vc: self, requestId: requestId)
     }
-
+    
     @IBAction func cancelBtnAction(_ sender: UIButton) {
         self.pop()
     }
     
+    @IBAction func helpBtnAction(_ sender: UIButton) {
+        showAlert(msg: LocalizedString.underDevelopment.localized)
+    }
     
 }
 
