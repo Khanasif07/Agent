@@ -56,12 +56,14 @@ class UserOffersTableCell: UITableViewCell {
         }
     }
     
-    func bindData(_ model: UserBidModel, _ bidData: BidDatum) {
+    func bindData(_ model: UserBidModel) {
         distanceValueLbl.attributedText =  getAttributedString(value: "\(model.distance)",attributedLabel: distanceValueLbl)
         offerTitleLbl.text = model.garageName
-        quantityValueLbl.text = bidData.quantity.description
-        BAValueLbl.attributedText = getAttributedString(value: bidData.amount.description,attributedLabel: BAValueLbl)
-        tAValueLbl.attributedText = getAttributedString(value: "1250",attributedLabel: tAValueLbl)
+        quantityValueLbl.text = model.bidData.first?.quantity.description
+        BAValueLbl.attributedText = getAttributedString(value: model.bidData.first?.amount.description ?? "",attributedLabel: BAValueLbl)
+       
+        let totalAmount = String((model.bidData.first?.quantity ?? 0) * (model.bidData.first?.amount ?? 0))
+        tAValueLbl.attributedText = getAttributedString(value: totalAmount,attributedLabel: tAValueLbl)
     }
     
     func getAttributedString(value : String,attributedLabel: UILabel) -> NSMutableAttributedString{

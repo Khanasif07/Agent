@@ -117,20 +117,17 @@ extension UserAllOffersVC {
 // MARK: - Extension For TableView
 //===========================
 extension UserAllOffersVC : UITableViewDelegate, UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return viewModel.userBidListingArr.count
-
-    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.userBidListingArr[section].bidData.count
+        return viewModel.userBidListingArr.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(with: UserOffersTableCell.self, indexPath: indexPath)
-        cell.bindData(viewModel.userBidListingArr[indexPath.section], viewModel.userBidListingArr[indexPath.section].bidData[indexPath.row])
+        cell.bindData(viewModel.userBidListingArr[indexPath.row])
         cell.viewProposalAction = { [weak self] (sender) in
             guard let `self` = self else { return }
-            AppRouter.presentOfferDetailVC(vc: self,bidId: self.viewModel.userBidListingArr[indexPath.section].id)
+            AppRouter.presentOfferDetailVC(vc: self,bidId: self.viewModel.userBidListingArr[indexPath.row].id)
         }
         return cell
     }
