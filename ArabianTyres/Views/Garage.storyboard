@@ -34,7 +34,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="56"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2wu-HP-hHX">
-                                        <rect key="frame" x="161" y="19" width="92" height="23.5"/>
+                                        <rect key="frame" x="163" y="21" width="88" height="20"/>
                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -267,7 +267,7 @@ Service Center</string>
                                 <rect key="frame" x="0.0" y="44" width="414" height="56"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jep-Pa-psq">
-                                        <rect key="frame" x="174.5" y="19" width="65" height="23.5"/>
+                                        <rect key="frame" x="176" y="21" width="62.5" height="20"/>
                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -621,7 +621,7 @@ Service Center</string>
                                 <rect key="frame" x="0.0" y="44" width="414" height="56"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Govt. Issued Doc" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0oM-mJ-lDg">
-                                        <rect key="frame" x="140.5" y="19" width="133" height="23.5"/>
+                                        <rect key="frame" x="141" y="21" width="132" height="20"/>
                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -849,7 +849,7 @@ Service Center</string>
                                 <rect key="frame" x="0.0" y="44" width="414" height="56"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Accounts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wUu-Yd-aIo">
-                                        <rect key="frame" x="151.5" y="19" width="111" height="23.5"/>
+                                        <rect key="frame" x="153" y="21" width="108" height="20"/>
                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1048,7 +1048,7 @@ Service Center</string>
                                 <rect key="frame" x="0.0" y="44" width="414" height="56"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UYZ-Ao-hmS">
-                                        <rect key="frame" x="161" y="19" width="92" height="23.5"/>
+                                        <rect key="frame" x="163" y="21" width="88" height="20"/>
                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1241,7 +1241,7 @@ Service Center</string>
                                 <rect key="frame" x="0.0" y="44" width="414" height="56"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Complete Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tnU-g3-sYD">
-                                        <rect key="frame" x="142" y="19" width="130.5" height="23.5"/>
+                                        <rect key="frame" x="143.5" y="21" width="127" height="20"/>
                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1422,7 +1422,7 @@ Service Center</string>
                                 <rect key="frame" x="0.0" y="44" width="414" height="56"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Facility" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bYw-TO-MdX">
-                                        <rect key="frame" x="153" y="19" width="108" height="23.5"/>
+                                        <rect key="frame" x="154.5" y="21" width="105.5" height="20"/>
                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1548,7 +1548,7 @@ Service Center</string>
                                                 <rect key="frame" x="0.0" y="44" width="414" height="56"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Request" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QIf-9P-nXf">
-                                                        <rect key="frame" x="175" y="19" width="64.5" height="23.5"/>
+                                                        <rect key="frame" x="175.5" y="21" width="63.5" height="20"/>
                                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
                                                         <color key="textColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -1754,7 +1754,7 @@ Service Center</string>
                                         <rect key="frame" x="0.0" y="44" width="414" height="56"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Services" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ox2-Li-Oye">
-                                                <rect key="frame" x="160" y="19" width="94" height="23.5"/>
+                                                <rect key="frame" x="160.5" y="21" width="93" height="20"/>
                                                 <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -1847,7 +1847,7 @@ Service Center</string>
                                 <rect key="frame" x="0.0" y="44" width="414" height="56"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tyre Service Request" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M67-xp-rTE">
-                                        <rect key="frame" x="125" y="19" width="164.5" height="23.5"/>
+                                        <rect key="frame" x="127" y="21" width="160" height="20"/>
                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -2441,7 +2441,7 @@ Service Center</string>
                                 <rect key="frame" x="0.0" y="44" width="414" height="56"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All Offers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KKt-1a-z30">
-                                        <rect key="frame" x="169.5" y="19" width="75" height="23.5"/>
+                                        <rect key="frame" x="172.5" y="21" width="69.5" height="20"/>
                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -2583,7 +2583,7 @@ Service Center</string>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yN8-vd-Vdk">
                                         <rect key="frame" x="0.0" y="52.5" width="414" height="410"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" red="0.96470588235294119" green="0.96862745098039216" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -2662,13 +2662,114 @@ Service Center</string>
                     </view>
                     <connections>
                         <outlet property="acceptBtn" destination="qjY-kl-H73" id="tLo-eD-7cf"/>
+                        <outlet property="brandsLbl" destination="Ae5-gn-PgF" id="Q5w-LX-DJ8"/>
+                        <outlet property="headerView" destination="Tff-gj-iEz" id="DuL-dh-lYN"/>
                         <outlet property="mainTableView" destination="yN8-vd-Vdk" id="6ll-Wa-WEF"/>
                         <outlet property="rejectBtn" destination="Y35-QV-lz9" id="gtU-Et-Ozn"/>
                         <outlet property="titleLbl" destination="4pA-3j-Gm3" id="ya9-bj-Pwa"/>
+                        <outlet property="totalPriceLbl" destination="Ggk-Ny-7ja" id="kfk-oq-vOZ"/>
                         <outlet property="transparentView" destination="9I4-Qy-o16" id="E0M-hK-elP"/>
+                        <outlet property="unitLbl" destination="Aea-0X-gVf" id="Vlu-gi-pdv"/>
+                        <outlet property="unitPriceLbl" destination="tdT-2W-zYY" id="WZB-r2-mWH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="azK-FL-dBF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="Tff-gj-iEz">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="161"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Um5-Sh-g9u">
+                            <rect key="frame" x="16" y="16" width="343" height="68.5"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This bid is proposed by The Car Doctor as per your tyre service request." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vJt-0Y-G3W">
+                                    <rect key="frame" x="0.0" y="0.0" width="328" height="35.5"/>
+                                    <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="13"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please select any one option to proceed." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AvC-W5-6NC">
+                                    <rect key="frame" x="0.0" y="50.5" width="240.5" height="18"/>
+                                    <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="13"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lUm-kw-db8">
+                            <rect key="frame" x="16" y="110.5" width="343" height="35.5"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brands" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ae5-gn-PgF">
+                                    <rect key="frame" x="16" y="9" width="42" height="18"/>
+                                    <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="13"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="XWr-Vn-uGi">
+                                    <rect key="frame" x="83" y="9" width="200" height="18"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unit Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tdT-2W-zYY">
+                                            <rect key="frame" x="0.0" y="0.0" width="58" height="18"/>
+                                            <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="13"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aea-0X-gVf">
+                                            <rect key="frame" x="85.5" y="0.0" width="25" height="18"/>
+                                            <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="13"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ggk-Ny-7ja">
+                                            <rect key="frame" x="138" y="0.0" width="62" height="18"/>
+                                            <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="13"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </stackView>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oNG-iO-Hxv">
+                                    <rect key="frame" x="0.0" y="34.5" width="343" height="1"/>
+                                    <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="1" id="irr-tZ-3f9"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="XWr-Vn-uGi" secondAttribute="trailing" constant="60" id="6NR-YU-hBh"/>
+                                <constraint firstAttribute="trailing" secondItem="oNG-iO-Hxv" secondAttribute="trailing" id="L7P-de-CmH"/>
+                                <constraint firstItem="XWr-Vn-uGi" firstAttribute="centerY" secondItem="lUm-kw-db8" secondAttribute="centerY" id="Mrf-8r-fOd"/>
+                                <constraint firstItem="oNG-iO-Hxv" firstAttribute="leading" secondItem="lUm-kw-db8" secondAttribute="leading" id="amM-px-9Nf"/>
+                                <constraint firstAttribute="bottom" secondItem="oNG-iO-Hxv" secondAttribute="bottom" id="gBk-NQ-5Mg"/>
+                                <constraint firstItem="XWr-Vn-uGi" firstAttribute="leading" secondItem="Ae5-gn-PgF" secondAttribute="trailing" constant="25" id="m1U-jJ-ynw"/>
+                                <constraint firstItem="Ae5-gn-PgF" firstAttribute="centerY" secondItem="lUm-kw-db8" secondAttribute="centerY" id="vsY-No-rAJ"/>
+                                <constraint firstItem="Ae5-gn-PgF" firstAttribute="leading" secondItem="lUm-kw-db8" secondAttribute="leading" constant="16" id="zQ0-YA-66f"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y07-cf-XEa">
+                            <rect key="frame" x="16" y="146" width="343" height="15"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="15" id="jRz-Nf-uSZ"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" red="0.96470588235294119" green="0.96862745098039216" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="top" secondItem="Um5-Sh-g9u" secondAttribute="top" constant="-16" id="1MR-Bt-r20"/>
+                        <constraint firstItem="Um5-Sh-g9u" firstAttribute="leading" secondItem="2a5-OR-8rs" secondAttribute="leading" constant="16" id="2Yd-A4-vMj"/>
+                        <constraint firstItem="Y07-cf-XEa" firstAttribute="trailing" secondItem="lUm-kw-db8" secondAttribute="trailing" id="7hh-5v-ZLe"/>
+                        <constraint firstItem="lUm-kw-db8" firstAttribute="top" secondItem="Um5-Sh-g9u" secondAttribute="bottom" constant="26" id="BZc-Eu-zdY"/>
+                        <constraint firstItem="lUm-kw-db8" firstAttribute="leading" secondItem="2a5-OR-8rs" secondAttribute="leading" constant="16" id="CqS-mA-her"/>
+                        <constraint firstItem="2a5-OR-8rs" firstAttribute="trailing" secondItem="lUm-kw-db8" secondAttribute="trailing" constant="16" id="Flo-oa-8Az"/>
+                        <constraint firstItem="Um5-Sh-g9u" firstAttribute="trailing" secondItem="2a5-OR-8rs" secondAttribute="trailing" constant="-16" id="Nxc-yx-rvv"/>
+                        <constraint firstItem="Y07-cf-XEa" firstAttribute="top" secondItem="lUm-kw-db8" secondAttribute="bottom" id="ZQH-1i-UtR"/>
+                        <constraint firstItem="Y07-cf-XEa" firstAttribute="leading" secondItem="lUm-kw-db8" secondAttribute="leading" id="u73-ti-gx8"/>
+                        <constraint firstItem="Y07-cf-XEa" firstAttribute="bottom" secondItem="2a5-OR-8rs" secondAttribute="bottom" id="w0V-F1-mfV"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="2a5-OR-8rs"/>
+                </view>
             </objects>
             <point key="canvasLocation" x="10332" y="-22"/>
         </scene>

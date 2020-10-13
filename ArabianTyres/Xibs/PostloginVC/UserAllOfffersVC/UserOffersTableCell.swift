@@ -9,6 +9,9 @@
 import UIKit
 
 class UserOffersTableCell: UITableViewCell {
+    
+    
+    var viewProposalAction: ((UIButton)->())?
 
     @IBOutlet weak var tALbl: UILabel!
     @IBOutlet weak var distanceLbl: UILabel!
@@ -48,6 +51,9 @@ class UserOffersTableCell: UITableViewCell {
     }
     
     @IBAction func viewProposalBtnAction(_ sender: AppButton) {
+        if let handle = viewProposalAction{
+            handle(sender)
+        }
     }
     
     func bindData(_ model: UserBidModel) {

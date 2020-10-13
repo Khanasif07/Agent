@@ -28,4 +28,8 @@ class OffersDetailTableCell: UITableViewCell {
         unitPrizeTextFiled.textAlignment = .center
     }
     
+    func populateData(isBrandSelected: Bool){
+        checkBtn.isSelected = isBrandSelected
+    }
+    
 }

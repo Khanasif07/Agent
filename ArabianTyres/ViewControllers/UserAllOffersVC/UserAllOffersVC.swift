@@ -87,6 +87,10 @@ extension UserAllOffersVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(with: UserOffersTableCell.self, indexPath: indexPath)
         cell.bindData(viewModel.userBidListingArr[indexPath.row])
+        cell.viewProposalAction = { [weak self] (sender) in
+            guard let `self` = self else { return }
+            AppRouter.presentOfferDetailVC(vc: self)
+        }
         return cell
     }
     
@@ -95,7 +99,7 @@ extension UserAllOffersVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        AppRouter.presentOfferDetailVC(vc: self)
+        
     }
 }
 

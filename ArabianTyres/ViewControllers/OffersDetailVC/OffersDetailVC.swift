@@ -12,6 +12,11 @@ class OffersDetailVC: BaseVC {
     
     // MARK: - IBOutlets
     //===========================
+    @IBOutlet weak var totalPriceLbl: UILabel!
+    @IBOutlet weak var unitLbl: UILabel!
+    @IBOutlet weak var unitPriceLbl: UILabel!
+    @IBOutlet weak var brandsLbl: UILabel!
+    @IBOutlet var headerView: UIView!
     @IBOutlet weak var acceptBtn: AppButton!
     @IBOutlet weak var rejectBtn: AppButton!
     @IBOutlet weak var transparentView: UIView!
@@ -58,10 +63,12 @@ extension OffersDetailVC {
         mainTableView.delegate = self
         mainTableView.dataSource = self
         mainTableView.registerCell(with: OffersDetailTableCell.self)
+        mainTableView.tableHeaderView = headerView
     }
     
     private func setupTextAndFont(){
         titleLbl.font = AppFonts.NunitoSansBold.withSize(17.0)
+        [totalPriceLbl,unitLbl,unitPriceLbl,brandsLbl].forEach({$0?.textColor = AppColors.fontTertiaryColor})
         //           titleLbl.text = LocalizedString.tyreServiceRequest.localized
     }
 }
