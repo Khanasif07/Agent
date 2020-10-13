@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DZNEmptyDataSet
 
 class UserAllOffersVC: BaseVC {
     
@@ -65,13 +66,21 @@ extension UserAllOffersVC {
         mainTableView.contentInset = UIEdgeInsets(top: 0.0, left: 0, bottom: 0, right: 0)
         mainTableView.delegate = self
         mainTableView.dataSource = self
+        self.mainTableView.emptyDataSetSource = self
+        self.mainTableView.emptyDataSetDelegate = self
+        self.mainTableView.enablePullToRefresh(tintColor: AppColors.appRedColor ,target: self, selector: #selector(refreshWhenPull(_:)))
         mainTableView.registerCell(with: UserOffersTableCell.self)
+    }
+    
+    @objc func refreshWhenPull(_ sender: UIRefreshControl) {
+        sender.endRefreshing()
+        hitApi()
     }
     
     private func setupTextAndFont(){
         titleLbl.font = AppFonts.NunitoSansBold.withSize(17.0)
         //           titleLbl.text = LocalizedString.tyreServiceRequest.localized
-       }
+    }
     
     private func hitApi() {
         let dict : JSONDictionary = [ApiKey.page: "1",ApiKey.limit : "20", ApiKey.requestId : self.requestId]
@@ -143,5 +152,39 @@ extension UserAllOffersVC : UserAllOfferVMDelegate {
     
     func getUserBidDataFailed(error:String){
         
+    }
+}
+
+//MARK: DZNEmptyDataSetSource and DZNEmptyDataSetDelegate
+//================================
+extension UserAllOffersVC : DZNEmptyDataSetSource,DZNEmptyDataSetDelegate {
+    
+    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
+        return  nil
+    }
+    
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        var emptyData = ""
+        emptyData =  self.viewModel.userBidListingArr.endIndex  == 0 ? "No data found" : ""
+        return NSAttributedString(string: emptyData , attributes: [NSAttributedString.Key.foregroundColor: AppColors.fontTertiaryColor,NSAttributedString.Key.font: AppFonts.NunitoSansBold.withSize(18)])
+    }
+    
+    func emptyDataSetShouldDisplay(_ scrollView: UIScrollView!) -> Bool {
+        return true
+    }
+    
+    func emptyDataSetShouldAllowScroll(_ scrollView: UIScrollView!) -> Bool {
+        return true
+    }
+    
+    func emptyDataSetShouldAllowTouch(_ scrollView: UIScrollView!) -> Bool {
+        return true
+    }
+    
+    func emptyDataSetShouldBeForced(toDisplay scrollView: UIScrollView!) -> Bool {
+        if let tableView = scrollView as? UITableView, tableView.numberOfSections == 0 {
+            return true
+        }
+        return false
     }
 }
