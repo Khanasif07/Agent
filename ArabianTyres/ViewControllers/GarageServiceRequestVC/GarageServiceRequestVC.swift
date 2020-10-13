@@ -155,8 +155,8 @@ extension GarageServiceRequestVC : UITableViewDelegate, UITableViewDataSource {
             
         case .countryDetail:
             let cell = tableView.dequeueCell(with: GarageServiceCountryCell.self, indexPath: indexPath)
-            cell.countryNameArr = viewModel.garageRequestDetailArr?.preferredCountries ?? []
             cell.countryCollView.isHidden =   brandsType == .onlyBrands
+            cell.countryNameArr = viewModel.garageRequestDetailArr?.preferredCountries ?? []
             cell.countryBtnTapped = {[weak self] (countryName) in
                 guard let `self` = self else {return}
                 self.selectedCountry = countryName
