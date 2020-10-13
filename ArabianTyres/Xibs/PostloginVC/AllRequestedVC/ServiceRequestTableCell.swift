@@ -103,7 +103,7 @@ class ServiceRequestTableCell: UITableViewCell {
         
         var str: NSMutableAttributedString = NSMutableAttributedString()
       
-        if data.count < 2 {
+        if data.count <= 2 {
             str = NSMutableAttributedString(string: data.map{($0.name)}.joined(separator: ","), attributes: [
                 .font: AppFonts.NunitoSansBold.withSize(12.0),
                 .foregroundColor: AppColors.fontPrimaryColor

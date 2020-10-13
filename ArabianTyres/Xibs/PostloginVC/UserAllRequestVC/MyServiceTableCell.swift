@@ -55,6 +55,7 @@ class MyServiceTableCell: UITableViewCell {
             statusView.isHidden = true
             bottomView.isHidden = true
         }
+
     }
     
 }
