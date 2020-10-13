@@ -34,6 +34,7 @@ enum ApiKey {
     static var confirmPasssword : String { return "confirmPasssword"}
 
     static var _id : String {return "_id"}
+    static var id : String {return "id"}
     static var otp : String {return "otp"}
     static var platform : String {return "platform"}
     static var device : String {return "device"}

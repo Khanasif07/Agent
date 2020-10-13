@@ -38,6 +38,11 @@ class OffersDetailVC: BaseVC {
     // MARK: - IBActions
     //===========================
     @IBAction func acceptBtnAction(_ sender: UIButton) {
+        let index =  self.viewModel.userBidDetail.bidData.firstIndex { (model) -> Bool in
+            return model.isSelected == true
+        }
+        guard let selectedIndex = index else { return }
+        self.viewModel.acceptUserBidData(params: [ApiKey.bidId:self.viewModel.bidId,ApiKey.id: self.viewModel.userBidDetail.bidData[selectedIndex].id] )
     }
     
     @IBAction func rejectBtnAction(_ sender: UIButton) {
@@ -54,7 +59,7 @@ class OffersDetailVC: BaseVC {
 extension OffersDetailVC {
     
     private func initialSetup() {
-        acceptBtn.isEnabled = true
+        acceptBtn.isEnabled = false
         rejectBtn.isBorderSelected = true
         setupTextAndFont()
         setupTableView()
@@ -103,6 +108,7 @@ extension OffersDetailVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       acceptBtn.isEnabled = true
        let index =  self.viewModel.userBidDetail.bidData.firstIndex { (model) -> Bool in
             return model.isSelected == true
         }
@@ -119,12 +125,20 @@ extension OffersDetailVC : UITableViewDelegate, UITableViewDataSource {
 // MARK: - Extension For getOfferDetailData
 //========================================
 extension OffersDetailVC : OffersDetailVMDelegate {
+    func acceptUserBidDataFailed(error: String) {
+        ToastView.shared.showLongToast(self.view, msg: error)
+    }
+    
     func getOfferDetailSuccess(message: String) {
          self.mainTableView.reloadData()
     }
     
     func getOfferDetailFailed(error: String) {
         ToastView.shared.showLongToast(self.view, msg: error)
+    }
+    
+    func acceptUserBidDataSuccess(message: String) {
+         self.mainTableView.reloadData()
     }
 }
 

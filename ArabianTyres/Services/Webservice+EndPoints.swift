@@ -57,6 +57,7 @@ extension WebServices {
         case userPlaceBid = "user/bids/placeBid"
         case userBids = "user/bids"
         case userBidDetail = "user/bids/details"
+        case userBidAccept = "user/bids/accept"
       
         var path : String {
             let url = baseUrl

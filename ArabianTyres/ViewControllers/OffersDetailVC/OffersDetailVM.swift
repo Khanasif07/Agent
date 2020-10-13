@@ -21,6 +21,8 @@ import SwiftyJSON
 protocol OffersDetailVMDelegate: class {
     func getOfferDetailSuccess(message: String)
     func getOfferDetailFailed(error:String)
+    func acceptUserBidDataSuccess(message: String)
+    func acceptUserBidDataFailed(error:String)
 }
 
 
@@ -34,8 +36,15 @@ class OffersDetailVM{
     
     //MARK:- Functions
     
+    func acceptUserBidData(params: JSONDictionary){
+        WebServices.acceptUserBidData(parameters: params, success: { (json) in
+            self.delegate?.acceptUserBidDataSuccess(message: json[ApiKey.message].stringValue)
+        }) { (error) -> (Void) in
+            self.delegate?.acceptUserBidDataFailed(error: error.localizedDescription)
+        }
+    }
     
-    func getOfferDetailData(params: JSONDictionary,loader: Bool = true,pagination: Bool = false){
+    func getOfferDetailData(params: JSONDictionary){
         WebServices.getOfferDetailData(parameters: params, success: { (json) in
             self.parseToOfferDetailData(result: json)
         }) { (error) -> (Void) in
