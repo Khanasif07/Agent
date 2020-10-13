@@ -11,7 +11,11 @@ import UIKit
 class GarageServiceCountryCell: UITableViewCell {
     
     
-    var countryNameArr : [PreferredBrand] = []
+    var countryNameArr : [PreferredBrand] = []{
+        didSet{
+            countryCollView.reloadData()
+        }
+    }
     var countryBtnTapped : ((String)->())?
     var indexPath: IndexPath?
     
@@ -47,8 +51,8 @@ extension GarageServiceCountryCell : UICollectionViewDelegate,UICollectionViewDa
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let text = self.countryNameArr[indexPath.item].name
-        let textSize = text.sizeCount(withFont: AppFonts.NunitoSansSemiBold.withSize(14.0), boundingSize: CGSize(width: 10000.0, height: 32.0))
-        return CGSize(width: textSize.width + 20, height: 34.0)
+        let textSize = text.sizeCount(withFont: AppFonts.NunitoSansSemiBold.withSize(14.0), boundingSize: CGSize(width: 10000.0, height: 25.0))
+        return CGSize(width: textSize.width + 20, height: 20.0)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

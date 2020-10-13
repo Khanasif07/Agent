@@ -50,10 +50,15 @@ class MyServiceTableCell: UITableViewCell {
         self.timeLbl.text = dateTime.timeAgoSince + " on " + date
         if model.requestType == "Tyres" {
               bottomView.isHidden = true
+        }else {
+              bottomView.isHidden = false
         }
         if model.requestType == "Battery" {
             statusView.isHidden = true
             bottomView.isHidden = true
+        } else {
+            statusView.isHidden = false
+            bottomView.isHidden = false
         }
     }
     
