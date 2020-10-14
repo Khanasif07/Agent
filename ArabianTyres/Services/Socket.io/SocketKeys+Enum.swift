@@ -8,7 +8,6 @@
 import Foundation
 // Events to handle Livestreming and Chat
 struct SocketKeys {
-    static let newRequest = "NEW_REQUEST"
     static let didConnect = "connect"
     static let didDisconnect = "disconnect"
     static let subscribe = "subscribe"

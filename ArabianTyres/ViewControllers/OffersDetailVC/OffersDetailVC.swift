@@ -46,6 +46,7 @@ class OffersDetailVC: BaseVC {
     }
     
     @IBAction func rejectBtnAction(_ sender: UIButton) {
+        self.viewModel.rejectUserBidData(params: [ApiKey.bidId:self.viewModel.bidId] )
     }
     
     @IBAction func crossBtnAction(_ sender: UIButton) {
@@ -125,6 +126,14 @@ extension OffersDetailVC : UITableViewDelegate, UITableViewDataSource {
 // MARK: - Extension For getOfferDetailData
 //========================================
 extension OffersDetailVC : OffersDetailVMDelegate {
+    func rejectUserBidDataSuccess(message: String) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func rejectUserBidDataFailed(error: String) {
+        ToastView.shared.showLongToast(self.view, msg: error)
+    }
+    
     func acceptUserBidDataFailed(error: String) {
         ToastView.shared.showLongToast(self.view, msg: error)
     }

@@ -17,7 +17,7 @@ import SocketIO
 extension SocketIOManager {
      /// Method to listen online users when any one goes in and out from Room
        func listenOnlineUsers() {
-        self.socket?.on(SocketKeys.newRequest, callback: { data, _ in
+        self.socket?.on(EventListnerKeys.newRequest.rawValue, callback: { data, _ in
                printDebug(data)
                let json = JSON(data)
                if let jsonString = json.arrayValue.first![ApiKey.data].rawString(), let data = jsonString.data(using: .utf8) {

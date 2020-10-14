@@ -23,6 +23,8 @@ protocol OffersDetailVMDelegate: class {
     func getOfferDetailFailed(error:String)
     func acceptUserBidDataSuccess(message: String)
     func acceptUserBidDataFailed(error:String)
+    func rejectUserBidDataSuccess(message: String)
+    func rejectUserBidDataFailed(error:String)
 }
 
 
@@ -41,6 +43,14 @@ class OffersDetailVM{
             self.delegate?.acceptUserBidDataSuccess(message: json[ApiKey.message].stringValue)
         }) { (error) -> (Void) in
             self.delegate?.acceptUserBidDataFailed(error: error.localizedDescription)
+        }
+    }
+    
+    func rejectUserBidData(params: JSONDictionary){
+        WebServices.rejectUserBidData(parameters: params, success: { (json) in
+            self.delegate?.rejectUserBidDataSuccess(message: json[ApiKey.message].stringValue)
+        }) { (error) -> (Void) in
+            self.delegate?.rejectUserBidDataFailed(error: error.localizedDescription)
         }
     }
     

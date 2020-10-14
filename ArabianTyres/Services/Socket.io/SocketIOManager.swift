@@ -14,6 +14,7 @@ import SwiftyJSON
 
 
 enum EventListnerKeys : String {
+    case newRequest = "NEW_REQUEST"
     case didConnect = "connected"
     case didDisConnect = "disconnected"
     case syncContact = "contact-sync"
