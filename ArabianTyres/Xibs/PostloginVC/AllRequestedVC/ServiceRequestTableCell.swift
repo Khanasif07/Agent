@@ -78,7 +78,16 @@ class ServiceRequestTableCell: UITableViewCell {
     func bindData(_ model: GarageRequestModel) {
         let date = (model.createdAt)?.toDate(dateFormat: Date.DateFormat.givenDateFormat.rawValue) ?? Date()
         serviceTimeLbl.text = date.timeAgoSince
-        sizeDetailLbl.text = "\(model.width ?? 0)w/" + "\(model.rimSize ?? 0)r/" + "\(model.profile ?? 0)p"
+        if model.requestType == .tyres {
+            tyreSizeLbl.text = "Tyre Size: "
+            sizeDetailLbl.text = "\(model.width ?? 0)w/" + "\(model.rimSize ?? 0)r/" + "\(model.profile ?? 0)p"
+        }else if model.requestType == .battery {
+            tyreSizeLbl.text = "Battery: "
+            sizeDetailLbl.text = "\(model.make ?? "") M/ " + "\(model.model ?? "") M/ " + "\(model.year ?? 0) Y"
+        }else {
+            tyreSizeLbl.text = "Oil:"
+            sizeDetailLbl.text = "\(model.make ?? "") M/ " + "\(model.model ?? "") M/ " + "\(model.year ?? 0) Y"
+        }
      
         if model.preferredBrands.count == 0 && model.preferredCountries.count == 0{
             brandsLbl.isHidden = true
@@ -92,11 +101,18 @@ class ServiceRequestTableCell: UITableViewCell {
         }
         
         logoImgView.setImage_kf(imageString: model.images.first ?? "", placeHolderImage: #imageLiteral(resourceName: "maskGroup"), loader: false)
-        statusValueLbl.text = model.status?.text
-        statusValueLbl.textColor = model.status?.textColor
+        statusValueLbl.text = model.bidStatus?.rawValue
+        statusValueLbl.textColor = model.bidStatus?.textColor
         let str = model.requestType == .tyres ? "Tyre" : model.requestType.rawValue
         serviceTyeLbl.text = (str) + LocalizedString.serviceRequest.localized
         
+        
+        if model.bidStatus == .bidFinalsed || model.bidStatus == .bidPlaced {
+            bidAmountStackView.isHidden = false
+            bidAmountValueLbl.text = String((model.bidData?.first?.amount ?? 0) * (model.bidData?.first?.quantity ?? 0))
+        }else {
+            bidAmountStackView.isHidden = true
+        }
     }
     
     func getAttributedString(data : [PreferredBrand]) -> NSMutableAttributedString{

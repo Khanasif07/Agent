@@ -40,6 +40,24 @@ enum RequestStatus: String, Codable{
     }
 }
 
+
+enum BidStatus: String, Codable{
+    
+    case openForBidding = "Open For Biding"
+    case bidPlaced = "Bid Placed"
+    case bidFinalsed = "Bid Finalised"
+    
+    var textColor : UIColor {
+        switch self {
+        case .openForBidding:
+            return AppColors.linkTextColor
+        case .bidPlaced:
+            return AppColors.warningYellowColor
+        case .bidFinalsed:
+            return AppColors.successGreenColor
+        }
+    }
+}
 struct GarageRequestModel: Codable {
     let createdAt, id, requestID: String?
     var preferredBrands: [PreferredBrand]
@@ -48,15 +66,21 @@ struct GarageRequestModel: Codable {
     let images: [String]
     var preferredCountries: [PreferredBrand]
     let status: RequestStatus?
+    let bidStatus: BidStatus?
+    var bidData: [BidDatum]?
     let year: Int?
     let make, model,userName: String?
     let requestType : Category
+    let userLongitude: Double?
+    let userLatitude: Double?
+    let userImage: String?
+    
     enum CodingKeys: String, CodingKey {
         case createdAt
         case id = "_id"
         case requestType
         case requestID = "requestId"
-        case width, preferredBrands, profile, rimSize, quantity, images, preferredCountries, status, year, make, model, userName
+        case width, preferredBrands, profile, rimSize, quantity, images, preferredCountries, status, year, make, model, userName, bidStatus, bidData, userLongitude, userLatitude, userImage
     }
     
     init() {
@@ -76,5 +100,11 @@ struct GarageRequestModel: Codable {
         profile = 0
         rimSize = 0
         width = 0
+        bidStatus = .bidPlaced
+        bidData = []
+        userImage = ""
+        userLatitude = 0.0
+        userLongitude = 0.0
+
     }
 }

@@ -30,7 +30,7 @@ class GarageServiceRequestVC: BaseVC {
     @IBOutlet weak var titleLbl: UILabel!
     
     // MARK: - Variables
-    //===========================
+    //=====================
     var quantity : Int = 0
     var requestId : String = ""
     var selectedCountry: String  = ""
@@ -48,8 +48,8 @@ class GarageServiceRequestVC: BaseVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tabBarController?.tabBar.isHidden = true
-        self.tabBarController?.tabBar.isTranslucent = true
+//        self.tabBarController?.tabBar.isHidden = true
+//        self.tabBarController?.tabBar.isTranslucent = true
     }
     
     override func viewDidLayoutSubviews() {

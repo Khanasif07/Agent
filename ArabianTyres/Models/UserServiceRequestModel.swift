@@ -26,14 +26,15 @@ struct UserServiceRequestModel: Codable {
     let totalBids: Int?
     let lowestBid: Int?
     let nearestBidder: Int?
-
+    let totalOffers : Int?
+    let isOfferAccepted : Int?
     
     enum CodingKeys: String, CodingKey {
         case requestID = "requestId"
         case createdAt, profile, requestType, rimSize, status, preferredBrands, preferredCountries, quantity, width , make ,model
         case id = "_id"
         case images
-        case totalBids,lowestBid,nearestBidder
+        case totalBids,lowestBid,nearestBidder,isOfferAccepted, totalOffers
     }
     
     init(){
@@ -54,7 +55,8 @@ struct UserServiceRequestModel: Codable {
         nearestBidder = 0
         totalBids = 0
         lowestBid = 0
-
+        isOfferAccepted = 0
+        totalOffers = 0
     }
 }
 

@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import GoogleMaps
+import GooglePlaces
 
 class GarageServiceTopCell: UITableViewCell {
 
     @IBOutlet weak var requestedImgView: UIImageView!
     @IBOutlet weak var addressLbl: UILabel!
+    @IBOutlet weak var locationLbl: UILabel!
     @IBOutlet weak var serviceDetailLbl: UILabel!
     @IBOutlet weak var requestedOnLbl: UILabel!
     @IBOutlet weak var userImgView: UIImageView!
@@ -20,6 +23,9 @@ class GarageServiceTopCell: UITableViewCell {
     @IBOutlet weak var createAtLbl: UILabel!
     @IBOutlet weak var tyreSizeValueLbl: UILabel!
     @IBOutlet weak var tyreSizeLbl: UILabel!
+
+    
+    var locationValue : CLLocationCoordinate2D = CLLocationCoordinate2D()
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -39,21 +45,34 @@ class GarageServiceTopCell: UITableViewCell {
         requestCreatedLbl.textColor = AppColors.fontTertiaryColor
     }
 
+    private func setAddress() {
+           GMSGeocoder().reverseGeocodeCoordinate(locationValue) { (response, error) in
+               
+               guard let address = response?.firstResult(), let lines = address.lines else { return }
+               _ = (address.locality?.isEmpty ?? true) ? ((address.subLocality?.isEmpty ?? true) ? ((address.administrativeArea?.isEmpty ?? true) ? address.country : address.administrativeArea)  : address.subLocality)   : address.locality
+            self.locationLbl.text = lines.joined(separator: ",")
+           }
+    }
+    
     func popluateData(_ model: GarageRequestModel) {
         let date = (model.createdAt)?.breakCompletDate(outPutFormat: Date.DateFormat.profileFormat.rawValue, inputFormat: Date.DateFormat.yyyyMMddTHHmmsssssz.rawValue) 
         createAtLbl.text = date
         userNameLbl.text = model.userName
+        let cords = CLLocationCoordinate2D(latitude: model.userLatitude ?? 0.0, longitude: model.userLongitude ?? 0.0)
+        self.locationValue = cords
+        setAddress()
+        
         switch model.requestType {
         case .tyres:
             tyreSizeValueLbl.text = "Width \(model.width ?? 0), " + "Rim \(model.rimSize ?? 0), " + "Profile \(model.profile ?? 0)"
             tyreSizeLbl.text = "Tyre Size:"
         
         case .oil:
-            tyreSizeValueLbl.text = "Vechicle \(model.make ?? ""), " + "Vechicle \(model.model ?? ""), " + "Vechicle \(model.year ?? 0)"
+            tyreSizeValueLbl.text = "Vechicle Make \(model.make ?? ""), " + "Vechicle Model \(model.model ?? ""), " + "Product Year \(model.year ?? 0)"
             tyreSizeLbl.text = "Oil:"
             
         case .battery:
-            tyreSizeValueLbl.text = "Vechicle \(model.make ?? ""), " + "Vechicle \(model.model ?? ""), " + "Vechicle \(model.year ?? 0)"
+            tyreSizeValueLbl.text = "Vechicle Make \(model.make ?? ""), " + "Vechicle Model \(model.model ?? ""), " + "Vechicle Year \(model.year ?? 0)"
             tyreSizeLbl.text = "Battery:"
         }
     }
