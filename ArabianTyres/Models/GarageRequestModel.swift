@@ -47,8 +47,7 @@ struct GarageRequestModel: Codable {
     let quantity: Int?
     let images: [String]
     var preferredCountries: [PreferredBrand]
-//    let status: RequestStatus?
-    let status: String
+    let status: RequestStatus?
     let year: Int?
     let make, model,userName: String?
     let requestType : Category
@@ -69,8 +68,7 @@ struct GarageRequestModel: Codable {
         model = ""
         userName = ""
         year = 0
-        status = ""
-//        status = .bidFinalsed
+        status = .bidFinalsed
         preferredCountries = []
         preferredBrands = []
         images = []

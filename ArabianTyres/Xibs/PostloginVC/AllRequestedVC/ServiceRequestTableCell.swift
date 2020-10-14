@@ -92,8 +92,8 @@ class ServiceRequestTableCell: UITableViewCell {
         }
         
         logoImgView.setImage_kf(imageString: model.images.first ?? "", placeHolderImage: #imageLiteral(resourceName: "maskGroup"), loader: false)
-        statusValueLbl.text = model.status
-        statusValueLbl.textColor = .red
+        statusValueLbl.text = model.status?.text
+        statusValueLbl.textColor = model.status?.textColor
         let str = model.requestType == .tyres ? "Tyre" : model.requestType.rawValue
         serviceTyeLbl.text = (str) + LocalizedString.serviceRequest.localized
         
