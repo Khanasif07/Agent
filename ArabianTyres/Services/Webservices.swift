@@ -614,9 +614,10 @@ extension WebServices{
     // MARK:- UserMyRequest Listing Data
     //=================
     static func getGarageRequestListing(parameters: JSONDictionary,
+                                        loader: Bool,
                                         success: @escaping SuccessResponse,
                                         failure: @escaping FailureResponse) {
-        self.commonGetAPI(parameters: parameters,endPoint: .garageRequest, success: { (json) in
+        self.commonGetAPI(parameters: parameters,endPoint: .garageRequest, loader: loader, success: { (json) in
             let code = json[ApiKey.statusCode].intValue
             let msg = json[ApiKey.message].stringValue
             switch code {

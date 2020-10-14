@@ -98,7 +98,7 @@ extension UserAllRequestVC {
     }
     
     private func hitListingApi(){
-        self.viewModel.getUserMyRequestData(params: [ApiKey.page: "1",ApiKey.limit : "10"],loader: true)
+        self.viewModel.getUserMyRequestData(params: [ApiKey.page: "1",ApiKey.limit : "10"],loader: false,pagination: false)
     }
     
     @objc func refreshWhenPull(_ sender: UIRefreshControl) {
@@ -136,7 +136,7 @@ extension UserAllRequestVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if cell as? LoaderCell != nil {
-            self.viewModel.getUserMyRequestData(params: [ApiKey.page: self.viewModel.currentPage,ApiKey.limit : "10"],loader: false)
+            self.viewModel.getUserMyRequestData(params: [ApiKey.page: self.viewModel.currentPage,ApiKey.limit : "10"],loader: false,pagination: true)
         }
     }
 }

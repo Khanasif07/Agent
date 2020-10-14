@@ -9,20 +9,15 @@
 
 import Foundation
 import SwiftyJSON
-//import SocketIO
+import SocketIO
 
-// MARK: - Listener for Live Stream
-extension SocketIOManager {
 
-}
-// MARK: - Backend listener
-// ==============================
 // MARK: - IM Sockets
 // listen message data to socket server
 extension SocketIOManager {
      /// Method to listen online users when any one goes in and out from Room
        func listenOnlineUsers() {
-           self.socket?.on(SocketKeys.onlineUsers, callback: { data, _ in
+        self.socket?.on(SocketKeys.newRequest, callback: { data, _ in
                printDebug(data)
                let json = JSON(data)
                if let jsonString = json.arrayValue.first![ApiKey.data].rawString(), let data = jsonString.data(using: .utf8) {

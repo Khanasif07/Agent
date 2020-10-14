@@ -52,12 +52,13 @@ extension AllRequestVC {
         mainTableView.emptyDataSetSource = self
         mainTableView.emptyDataSetDelegate = self
         self.mainTableView.enablePullToRefresh(tintColor: AppColors.appRedColor ,target: self, selector: #selector(refreshWhenPull(_:)))
+        self.mainTableView.registerCell(with: LoaderCell.self)
         self.mainTableView.registerCell(with: ServiceRequestTableCell.self)
         hitApi()
     }
     
     private func hitApi(){
-        viewModel.getGarageRequestData(params: [ApiKey.page:"1", ApiKey.limit: "20"])
+        viewModel.getGarageRequestData(params: [ApiKey.page:"1", ApiKey.limit: "10"], pagination: false)
     }
     
     @objc func refreshWhenPull(_ sender: UIRefreshControl) {
@@ -71,28 +72,39 @@ extension AllRequestVC {
 extension AllRequestVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.garageRequestListing.count
+        return viewModel.garageRequestListing.endIndex + (self.viewModel.showPaginationLoader ?  1: 0)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueCell(with: ServiceRequestTableCell.self, indexPath: indexPath)
-        cell.bindData(viewModel.garageRequestListing[indexPath.row])
-        cell.rejectRequestBtnTapped = {[weak self] in
-            guard let `self` = self else {return}
-            self.requestId = self.viewModel.garageRequestListing[indexPath.row].id ?? ""
-            self.viewModel.rejectGarageRequest(params:[ApiKey.requestId : self.requestId])
-        }
-        cell.placeBidBtnTapped = {[weak self] (sender) in
-            guard let `self` = self else {return}
-            if let selectedIndex = tableView.indexPath(for: cell) {
-            AppRouter.goToGarageServiceRequestVC(vc: self,requestId : self.viewModel.garageRequestListing[selectedIndex.row].id ?? "")
+        if indexPath.row == (viewModel.garageRequestListing.endIndex) {
+            let cell = tableView.dequeueCell(with: LoaderCell.self)
+            return cell
+        } else {
+            let cell = tableView.dequeueCell(with: ServiceRequestTableCell.self, indexPath: indexPath)
+            cell.bindData(viewModel.garageRequestListing[indexPath.row])
+            cell.rejectRequestBtnTapped = {[weak self] in
+                guard let `self` = self else {return}
+                self.requestId = self.viewModel.garageRequestListing[indexPath.row].id ?? ""
+                self.viewModel.rejectGarageRequest(params:[ApiKey.requestId : self.requestId])
             }
+            cell.placeBidBtnTapped = {[weak self] (sender) in
+                guard let `self` = self else {return}
+                if let selectedIndex = tableView.indexPath(for: cell) {
+                    AppRouter.goToGarageServiceRequestVC(vc: self,requestId : self.viewModel.garageRequestListing[selectedIndex.row].id ?? "")
+                }
+            }
+            return cell
         }
-        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if cell as? LoaderCell != nil {
+            self.viewModel.getGarageRequestData(params: [ApiKey.page: self.viewModel.currentPage,ApiKey.limit : "10"],loader: false,pagination: true)
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -156,9 +168,6 @@ extension AllRequestVC : DZNEmptyDataSetSource,DZNEmptyDataSetDelegate {
     }
     
     func emptyDataSetShouldBeForced(toDisplay scrollView: UIScrollView!) -> Bool {
-        if let tableView = scrollView as? UITableView, tableView.numberOfSections == 0 {
-            return true
-        }
         return false
     }
 }
