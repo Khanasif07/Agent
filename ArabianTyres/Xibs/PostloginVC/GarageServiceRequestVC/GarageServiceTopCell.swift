@@ -49,11 +49,11 @@ class GarageServiceTopCell: UITableViewCell {
             tyreSizeLbl.text = "Tyre Size:"
         
         case .oil:
-            tyreSizeValueLbl.text = "Vechicle \(model.make ?? ""), " + "Vechicle \(model.model ?? ""), " + "Vechicle \(model.year ?? 0)"
+            tyreSizeValueLbl.text = "Vechicle Make \(model.make ?? ""), " + "Vechicle Model \(model.model ?? ""), " + "Product Year \(model.year ?? 0)"
             tyreSizeLbl.text = "Oil:"
             
         case .battery:
-            tyreSizeValueLbl.text = "Vechicle \(model.make ?? ""), " + "Vechicle \(model.model ?? ""), " + "Vechicle \(model.year ?? 0)"
+            tyreSizeValueLbl.text = "Vechicle Make \(model.make ?? ""), " + "Vechicle Model \(model.model ?? ""), " + "Vechicle Year \(model.year ?? 0)"
             tyreSizeLbl.text = "Battery:"
         }
     }

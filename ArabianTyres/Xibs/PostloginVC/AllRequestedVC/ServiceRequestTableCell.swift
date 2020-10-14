@@ -78,7 +78,16 @@ class ServiceRequestTableCell: UITableViewCell {
     func bindData(_ model: GarageRequestModel) {
         let date = (model.createdAt)?.toDate(dateFormat: Date.DateFormat.givenDateFormat.rawValue) ?? Date()
         serviceTimeLbl.text = date.timeAgoSince
-        sizeDetailLbl.text = "\(model.width ?? 0)w/" + "\(model.rimSize ?? 0)r/" + "\(model.profile ?? 0)p"
+        if model.requestType == .tyres {
+            tyreSizeLbl.text = "Tyre Size: "
+            sizeDetailLbl.text = "\(model.width ?? 0)w/" + "\(model.rimSize ?? 0)r/" + "\(model.profile ?? 0)p"
+        }else if model.requestType == .battery {
+            tyreSizeLbl.text = "Battery: "
+            sizeDetailLbl.text = "\(model.make ?? "") M/ " + "\(model.model ?? "") M/ " + "\(model.year ?? 0) Y"
+        }else {
+            tyreSizeLbl.text = "Oil:"
+            sizeDetailLbl.text = "\(model.make ?? "") M/ " + "\(model.model ?? "") M/ " + "\(model.year ?? 0) Y"
+        }
      
         if model.preferredBrands.count == 0 && model.preferredCountries.count == 0{
             brandsLbl.isHidden = true
