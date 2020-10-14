@@ -124,7 +124,7 @@ extension HomeVC : UICollectionViewDelegate, UICollectionViewDataSource,UICollec
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if !isUserLoggedin{
-            showAlert(msg: "Under Development")
+            showAlert(msg: "Please login first to use this service")
             return
         }
         TyreRequestModel.shared = TyreRequestModel()
