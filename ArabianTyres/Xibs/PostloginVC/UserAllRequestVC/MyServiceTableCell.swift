@@ -21,12 +21,20 @@ class MyServiceTableCell: UITableViewCell {
     @IBOutlet weak var statusView: UIView!
     @IBOutlet weak var bottomView: UIView!
     
+    @IBOutlet weak var otpContainerStackView: UIStackView!
+    @IBOutlet weak var lineView: UIView!
+    @IBOutlet weak var otpLbl: UILabel!
+    @IBOutlet weak var otpValueLbl: UILabel!
+
+
     override func awakeFromNib() {
         super.awakeFromNib()
         offerView.backgroundColor = AppColors.fontTertiaryColor
         logoImgView.backgroundColor = AppColors.fontTertiaryColor
         timeLbl.textColor = AppColors.fontTertiaryColor
         requestNoValueLbl.textColor = AppColors.linkTextColor
+        lineView.isHidden = true
+        otpContainerStackView.isHidden = true
     }
     
     override func layoutSubviews() {
@@ -60,7 +68,5 @@ class MyServiceTableCell: UITableViewCell {
             statusView.isHidden = false
             bottomView.isHidden = false
         }
-
     }
-    
 }
