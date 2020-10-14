@@ -278,6 +278,7 @@ extension WebServices{
             UserModel.main = user
             AppUserDefaults.save(value: json[ApiKey.data][ApiKey.phoneVerified].boolValue, forKey: .phoneNoVerified)
             AppUserDefaults.save(value: json[ApiKey.data][ApiKey.isGarrage].boolValue, forKey: .isGarrage)
+            AppUserDefaults.save(value: json[ApiKey.data][ApiKey._id].stringValue, forKey: .userId)
             let token = AppUserDefaults.value(forKey: .accesstoken)
             if token.isEmpty {
                 let accessToken = json[ApiKey.data][ApiKey.authToken].stringValue

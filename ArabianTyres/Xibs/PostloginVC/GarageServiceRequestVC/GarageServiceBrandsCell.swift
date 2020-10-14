@@ -34,6 +34,7 @@ class GarageServiceBrandsCell: UITableViewCell,UITextFieldDelegate {
     
     func bindData(_ model: PreferredBrand) {
         brandNameLbl.text = model.name
+        unitPrizeTextFiled.text = "\(model.amount ?? 0)"
         checkBtn.isSelected = model.isSelected ?? false
     }
     

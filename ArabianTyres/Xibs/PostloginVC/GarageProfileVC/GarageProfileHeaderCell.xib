@@ -27,9 +27,9 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KbM-BV-1jA">
                         <rect key="frame" x="16" y="76" width="343" height="218.5"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="i3S-V2-fWS">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icImg" translatesAutoresizingMaskIntoConstraints="NO" id="i3S-V2-fWS">
                                 <rect key="frame" x="8" y="19.5" width="80" height="80"/>
-                                <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="8un-8O-JNs"/>
                                     <constraint firstAttribute="width" secondItem="i3S-V2-fWS" secondAttribute="height" id="Y17-ZA-tWd"/>
@@ -252,6 +252,7 @@
     </objects>
     <resources>
         <image name="editProfile" width="12" height="14"/>
+        <image name="icImg" width="32.5" height="32"/>
         <image name="tickIcon" width="8" height="6"/>
     </resources>
 </document>

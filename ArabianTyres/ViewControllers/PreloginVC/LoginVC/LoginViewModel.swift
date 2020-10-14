@@ -41,6 +41,7 @@ struct LoginViewModel {
             AppUserDefaults.save(value: json[ApiKey.data][ApiKey.phoneVerified].boolValue, forKey: .phoneNoVerified)
             AppUserDefaults.save(value: json[ApiKey.data][ApiKey.isGarrage].boolValue, forKey: .isGarrage)
             AppUserDefaults.save(value: json[ApiKey.data][ApiKey.currentRole].stringValue, forKey: .currentUserType)
+            AppUserDefaults.save(value: json[ApiKey.data][ApiKey._id].stringValue, forKey: .userId)
             self.delegate?.signInSuccess(userModel: UserModel.main)
         }) { (error) -> (Void) in
             if (error as NSError).code == 401 {
@@ -86,7 +87,8 @@ struct LoginViewModel {
             UserModel.main = user
             let accessToken = json[ApiKey.data][ApiKey.authToken].stringValue
             AppUserDefaults.save(value: accessToken, forKey: .accesstoken)
-           AppUserDefaults.save(value: json[ApiKey.data][ApiKey.currentRole].stringValue, forKey: .currentUserType)
+            AppUserDefaults.save(value: json[ApiKey.data][ApiKey.currentRole].stringValue, forKey: .currentUserType)
+            AppUserDefaults.save(value: json[ApiKey.data][ApiKey._id].stringValue, forKey: .userId)
             AppUserDefaults.save(value: json[ApiKey.data][ApiKey.phoneVerified].boolValue, forKey: .phoneNoVerified)
             if UserModel.main.phoneNoAdded && UserModel.main.phoneVerified {
                 self.delegate?.socailLoginApiSuccess(message: "")
