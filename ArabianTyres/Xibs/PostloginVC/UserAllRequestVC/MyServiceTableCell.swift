@@ -20,7 +20,11 @@ class MyServiceTableCell: UITableViewCell {
     @IBOutlet weak var requestNoValueLbl: UILabel!
     @IBOutlet weak var statusView: UIView!
     @IBOutlet weak var bottomView: UIView!
-    
+   
+    @IBOutlet weak var statusValueLbl: UILabel!
+    @IBOutlet weak var statusLbl: UILabel!
+    @IBOutlet weak var statusValueLineView: UIView!
+
     @IBOutlet weak var otpContainerStackView: UIStackView!
     @IBOutlet weak var lineView: UIView!
     @IBOutlet weak var otpLbl: UILabel!
@@ -47,15 +51,18 @@ class MyServiceTableCell: UITableViewCell {
     }
     
     public func populateData(model: UserServiceRequestModel){
+        statusValueLbl.text = model.status
         self.serviceTypeLbl.text = model.requestType + " Service Request"
         let logoImg =  model.requestType == "Tyres" ? #imageLiteral(resourceName: "maskGroup") : model.requestType == "Battery" ? #imageLiteral(resourceName: "icBattery") : #imageLiteral(resourceName: "icOil")
         let logoBackGroundColor =  model.requestType == "Tyres" ? AppColors.blueLightColor : model.requestType == "Battery" ? AppColors.redLightColor : AppColors.grayLightColor
         self.logoImgView.backgroundColor = logoBackGroundColor
         self.logoImgView.image = logoImg
         self.requestNoValueLbl.text  = "#" + "\(model.requestID)"
+       
         let date = (model.createdAt).breakCompletDate(outPutFormat: Date.DateFormat.profileFormat.rawValue, inputFormat: Date.DateFormat.yyyyMMddTHHmmsssssz.rawValue)
-        let dateTime = (model.createdAt).toDate(dateFormat: Date.DateFormat.givenDateFormat.rawValue) ?? Date()
-        self.timeLbl.text = dateTime.timeAgoSince + " on " + date
+    
+        let time = getTimeFromDate(date: model.createdAt)
+        self.timeLbl.text = time + " on " + date
         if model.requestType == "Tyres" {
               bottomView.isHidden = true
         }else {
@@ -68,5 +75,13 @@ class MyServiceTableCell: UITableViewCell {
             statusView.isHidden = false
             bottomView.isHidden = false
         }
+    }
+    
+    func getTimeFromDate(date: String) -> String {
+        let formatter = DateFormatter()
+        let d = date.toDate(dateFormat: Date.DateFormat.givenDateFormat.rawValue) ?? Date()
+        formatter.dateFormat = Date.DateFormat.hour12.rawValue
+        let dateStr = formatter.string(from: d)
+        return dateStr
     }
 }

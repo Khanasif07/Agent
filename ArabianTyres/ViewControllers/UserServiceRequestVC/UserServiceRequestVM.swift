@@ -66,7 +66,7 @@ class UserServiceRequestVM{
     func parseToMakeListingData(result: JSON) {
         if let jsonString = result[ApiKey.data].rawString(), let data = jsonString.data(using: .utf8) {
             do {
-                let modelList = try JSONDecoder().decode(UserServiceRequestModel.self, from: data)
+                let modelList = try! JSONDecoder().decode(UserServiceRequestModel.self, from: data)
                 printDebug(modelList)
                 currentPage = result[ApiKey.data][ApiKey.page].intValue
                 isRequestinApi = false

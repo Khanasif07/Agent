@@ -101,11 +101,18 @@ class ServiceRequestTableCell: UITableViewCell {
         }
         
         logoImgView.setImage_kf(imageString: model.images.first ?? "", placeHolderImage: #imageLiteral(resourceName: "maskGroup"), loader: false)
-        statusValueLbl.text = model.status?.text
-        statusValueLbl.textColor = model.status?.textColor
+        statusValueLbl.text = model.bidStatus?.rawValue
+        statusValueLbl.textColor = model.bidStatus?.textColor
         let str = model.requestType == .tyres ? "Tyre" : model.requestType.rawValue
         serviceTyeLbl.text = (str) + LocalizedString.serviceRequest.localized
         
+        
+        if model.bidStatus == .bidFinalsed || model.bidStatus == .bidPlaced {
+            bidAmountStackView.isHidden = false
+            bidAmountValueLbl.text = String((model.bidData?.first?.amount ?? 0) * (model.bidData?.first?.quantity ?? 0))
+        }else {
+            bidAmountStackView.isHidden = true
+        }
     }
     
     func getAttributedString(data : [PreferredBrand]) -> NSMutableAttributedString{

@@ -156,20 +156,30 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Ongoing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IcI-iB-tew">
-                                                <rect key="frame" x="44" y="9.5" width="341" height="15.5"/>
+                                                <rect key="frame" x="44" y="9.5" width="50" height="15.5"/>
                                                 <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="13"/>
                                                 <color key="textColor" red="1" green="0.69411764710000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eo9-yW-R7I">
+                                                <rect key="frame" x="43" y="25" width="52" height="1"/>
+                                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1" id="LN0-30-arJ"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="IcI-iB-tew" secondAttribute="trailing" constant="6" id="87H-Rq-0p4"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="IcI-iB-tew" secondAttribute="trailing" constant="20" id="1WL-Hn-Zgm"/>
                                             <constraint firstItem="VAS-ot-GMk" firstAttribute="centerY" secondItem="5aF-ej-CWb" secondAttribute="centerY" id="AgR-tM-b7D"/>
+                                            <constraint firstItem="Eo9-yW-R7I" firstAttribute="trailing" secondItem="IcI-iB-tew" secondAttribute="trailing" constant="1" id="Bhr-Zs-j8e"/>
                                             <constraint firstItem="IcI-iB-tew" firstAttribute="centerY" secondItem="5aF-ej-CWb" secondAttribute="centerY" id="KdF-Do-z1A"/>
+                                            <constraint firstItem="Eo9-yW-R7I" firstAttribute="leading" secondItem="IcI-iB-tew" secondAttribute="leading" constant="-1" id="Lw7-pT-YSa"/>
                                             <constraint firstItem="IcI-iB-tew" firstAttribute="leading" secondItem="VAS-ot-GMk" secondAttribute="trailing" constant="3" id="MMK-ez-z6d"/>
                                             <constraint firstItem="VAS-ot-GMk" firstAttribute="leading" secondItem="5aF-ej-CWb" secondAttribute="leading" id="foV-br-uDU"/>
                                             <constraint firstAttribute="height" constant="34" id="pKx-13-ZE1"/>
+                                            <constraint firstItem="Eo9-yW-R7I" firstAttribute="bottom" secondItem="IcI-iB-tew" secondAttribute="bottom" constant="1" id="uEU-I8-5Ub"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NZg-1Z-DeH">
@@ -279,6 +289,9 @@
                 <outlet property="requestNoLbl" destination="lFx-rx-enz" id="XQS-8H-SJw"/>
                 <outlet property="requestNoValueLbl" destination="YIB-8z-Tey" id="SFI-7S-JIR"/>
                 <outlet property="serviceTypeLbl" destination="460-gz-cpU" id="4KB-Da-7Xd"/>
+                <outlet property="statusLbl" destination="VAS-ot-GMk" id="PgY-mw-Tfn"/>
+                <outlet property="statusValueLbl" destination="IcI-iB-tew" id="cST-m0-Kz7"/>
+                <outlet property="statusValueLineView" destination="Eo9-yW-R7I" id="ySr-eR-TF7"/>
                 <outlet property="statusView" destination="5aF-ej-CWb" id="LcN-lY-Cxl"/>
                 <outlet property="timeLbl" destination="Xgw-6I-WN2" id="Vqr-Mx-c0o"/>
             </connections>

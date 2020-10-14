@@ -33,6 +33,8 @@ extension Date {
         case profileFormat = "dd MMM, yyyy"
         case mmmmyy = "MMMM'' yy"
         case mmmmyyy = "MMMM yyy"
+        case hour12 = "h:mm a"
+        case hour24 = "HH:mm"
     }
 
     var daySuffix : String {
