@@ -33,7 +33,7 @@ class GarageServiceRequestVC: BaseVC {
     //===========================
     var quantity : Int = 0
     var requestId : String = ""
-    var selectedCountry: String  = "India"
+    var selectedCountry: String  = ""
     var sectionType : [Section] = [.userDetail]
     var brandsType : BrandsType = .onlyBrands
     let viewModel = GarageServiceRequestVM()
@@ -142,7 +142,6 @@ extension GarageServiceRequestVC : UITableViewDelegate, UITableViewDataSource {
             guard let selectedIndexx  = indexx else { return 0}
             return self.viewModel.countryBrandsDict[selectedIndexx][self.selectedCountry]?.endIndex ?? 0
         }
-        //        return sectionType.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -155,6 +154,8 @@ extension GarageServiceRequestVC : UITableViewDelegate, UITableViewDataSource {
             
         case .countryDetail:
             let cell = tableView.dequeueCell(with: GarageServiceCountryCell.self, indexPath: indexPath)
+            cell.brandsStackView.isHidden =   !(brandsType == .onlyBrands)
+            cell.brandsStackView.isHidden = self.selectedCountry.isEmpty && (brandsType == .countryBrands)
             cell.countryCollView.isHidden =   brandsType == .onlyBrands
             cell.countryNameArr = viewModel.garageRequestDetailArr?.preferredCountries ?? []
             cell.countryBtnTapped = {[weak self] (countryName) in
@@ -184,45 +185,6 @@ extension GarageServiceRequestVC : UITableViewDelegate, UITableViewDataSource {
             
         case .brandListing:
             let cell = tableView.dequeueCell(with: GarageServiceBrandsCell.self, indexPath: indexPath)
-            //
-            //            cell.countryBrandsSelected = {  [weak self] (SelectedIndexPath)  in
-            //            guard let `self` = self else { return }
-            //                let index = self.viewModel.countryBrandsDict.firstIndex { (model) -> Bool in
-            //                    Array(model.keys)[0] == self.selectedCountry
-            //                }
-            //                guard let selectedIndex  = index else { return }
-            //                if let listing =  self.viewModel.countryBrandsDict[selectedIndex][self.selectedCountry] {
-            //                    let indexx =  listing.firstIndex { (model) -> Bool in
-            //                        model.id == listing[SelectedIndexPath.row].id
-            //                    }
-            //                    guard let selectedIndexx  = indexx else { return }
-            //                    self.viewModel.countryBrandsDict[selectedIndex][self.selectedCountry]?[selectedIndexx].isSelected = !(listing[selectedIndexx].isSelected ?? false)
-            //                }
-            //                self.mainTableView.reloadData()
-            //            }
-            //
-            //
-            //            cell.unitPriceUpdated = { [weak self] (unitPrice,SelectedIndexPath)  in
-            //                guard let `self` = self else { return }
-            //                if self.brandsType == .onlyBrands {
-            //                self.viewModel.countryBrandsDict[0][self.selectedCountry]?[SelectedIndexPath.row].amount = Int(unitPrice) ?? 0
-            //                }
-            //                if self.brandsType == .countryBrands {
-            //                    let indexx = self.viewModel.countryBrandsDict.firstIndex { (model) -> Bool in
-            //                        Array(model.keys)[0] == self.selectedCountry
-            //                    }
-            //                    guard let selectedIndexx  = indexx else { return}
-            //                    self.viewModel.countryBrandsDict[selectedIndexx][self.selectedCountry]?[SelectedIndexPath.row].amount = Int(unitPrice) ?? 0
-            //                }
-            //            }
-            //
-            //            let indexx = self.viewModel.countryBrandsDict.firstIndex { (model) -> Bool in
-            //                Array(model.keys)[0] == self.selectedCountry
-            //            }
-            //            guard let selectedIndexx  = indexx else { return UITableViewCell()}
-            //            cell.brandDataArr = self.viewModel.countryBrandsDict[selectedIndexx][self.selectedCountry] ?? [PreferredBrand]()
-            //            cell.quantity = self.quantity
-            //            return cell
             let indexx = self.viewModel.countryBrandsDict.firstIndex { (model) -> Bool in
                 Array(model.keys)[0] == self.selectedCountry
             }
