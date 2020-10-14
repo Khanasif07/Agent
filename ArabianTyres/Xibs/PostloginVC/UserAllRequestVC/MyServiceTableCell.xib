@@ -79,6 +79,11 @@
                                                     <constraint firstAttribute="height" constant="24" id="vnT-6s-ygN"/>
                                                     <constraint firstAttribute="trailing" secondItem="l5Q-8h-TKi" secondAttribute="trailing" constant="4" id="y8r-ok-Aac"/>
                                                 </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>

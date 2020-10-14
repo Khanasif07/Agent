@@ -12,7 +12,7 @@ struct UserBidModel: Codable {
     let id, status: String
     var bidData: [BidDatum]
     let requestID, garageID: String
-    let distance: Int
+    let distance: Double?
     let garage : String?
     let createdAt: String
     let garageName: String?
@@ -32,7 +32,7 @@ struct UserBidModel: Codable {
         requestID = ""
         garageID = ""
         garage = ""
-        distance = 0
+        distance = 0.0
         createdAt = ""
         garageName = ""
     }

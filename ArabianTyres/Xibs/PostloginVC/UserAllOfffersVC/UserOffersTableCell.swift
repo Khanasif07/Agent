@@ -57,7 +57,7 @@ class UserOffersTableCell: UITableViewCell {
     }
     
     func bindData(_ model: UserBidModel) {
-        distanceValueLbl.attributedText =  getAttributedString(value: "\(model.distance)",attributedLabel: distanceValueLbl)
+        distanceValueLbl.attributedText =  getAttributedString(value: "\(model.distance?.rounded() ?? 0.0)",attributedLabel: distanceValueLbl)
         offerTitleLbl.text = model.garageName
         quantityValueLbl.text = model.bidData.first?.quantity.description
         BAValueLbl.attributedText = getAttributedString(value: model.bidData.first?.amount.description ?? "",attributedLabel: BAValueLbl)
