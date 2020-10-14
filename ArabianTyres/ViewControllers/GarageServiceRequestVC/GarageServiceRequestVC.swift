@@ -293,6 +293,7 @@ extension GarageServiceRequestVC :GarageServiceRequestVMDelegate {
     func getGarageDetailSuccess(message: String) {
         updateDataSource()
         self.quantity = viewModel.garageRequestDetailArr?.quantity ?? 0
+        
         mainTableView.reloadData()
     }
     
@@ -327,6 +328,8 @@ extension GarageServiceRequestVC :GarageServiceRequestVMDelegate {
     func updateDataSource() {
         var apiHit : Bool = true
         sectionType.append(.countryDetail)
+        let serviceType = viewModel.garageRequestDetailArr?.requestType
+        titleLbl.text = serviceType == .tyres ? "Tyre Service Request" : serviceType == .battery ? "Battery Service Request" :  "Oil Service Request"
         if !(viewModel.garageRequestDetailArr?.preferredCountries.isEmpty ?? false) {
             apiHit = false
             brandsType = .countryBrands

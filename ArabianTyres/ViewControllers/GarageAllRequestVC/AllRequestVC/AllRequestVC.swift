@@ -12,7 +12,6 @@ class AllRequestVC: BaseVC {
     
     // MARK: - IBOutlets
     //===========================
-    
     @IBOutlet weak var mainTableView: UITableView!
     
     // MARK: - Variables

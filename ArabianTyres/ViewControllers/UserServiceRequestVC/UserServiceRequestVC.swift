@@ -17,7 +17,8 @@ class UserServiceRequestVC: BaseVC {
     
     // MARK: - IBOutlets
     //===========================
-    
+    @IBOutlet weak var titleLbl: UILabel!
+
     @IBOutlet weak var requestNoValueLbl1: UILabel!
     @IBOutlet weak var requestSeenValueLbl: UILabel!
     @IBOutlet weak var bidRecivedValueLbl: UILabel!
@@ -124,6 +125,16 @@ extension UserServiceRequestVC: UserServiceRequestVMDelegate{
             model.name
         })
         let model = self.viewModel.userRequestDetail
+        if model.requestType == "Tyres" {
+             titleLbl.text = "Tyre Service Request"
+        }else if model.requestType == "Battery"{
+            titleLbl.text = "Battery Service Request"
+
+        }else {
+            titleLbl.text = "Oil Service Request"
+
+        }
+
         let logoImg =  model.requestType == "Tyres" ? #imageLiteral(resourceName: "radialCarTireI151") : model.requestType == "Battery" ? #imageLiteral(resourceName: "icBattery") : #imageLiteral(resourceName: "icOil")
         self.mainImgView.image = logoImg
         viewAllBtn.isHidden = viewModel.userRequestDetail.totalBids == 0

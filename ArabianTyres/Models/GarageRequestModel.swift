@@ -13,7 +13,7 @@ enum RequestStatus: String, Codable{
     
     case openForBidding = "pending"
     case bidPlaced = "cancelled"
-    case bidFinalsed = "sdfsdfs"
+    case bidFinalsed = "allocated"
   
     var text : String {
         switch self {
@@ -39,24 +39,6 @@ enum RequestStatus: String, Codable{
         }
     }
 }
-
-//struct GarageRequestModel : Codable {
-//    let id, createdAt: String
-//    let preferredBrands: [PreferredBrand]
-//    let preferredCountries: [PreferredBrand] = []
-//    let status: RequestStatus
-//    let year : Int
-//    let make,model: String
-//    let images: [String] = []
-//    let width, profile, rimSize, quantity: Int
-//    let requestType, requestID: String
-//
-//    enum CodingKeys: String, CodingKey {
-//        case id = "_id"
-//        case createdAt, preferredBrands, preferredCountries, status, images, width, profile, rimSize, quantity, requestType, make, model, year
-//        case requestID = "requestId"
-//    }
-//}
 
 struct GarageRequestModel: Codable {
     let createdAt, id, requestID: String?
