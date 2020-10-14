@@ -38,6 +38,7 @@ class GarageServiceRequestVM {
     var hideLoader: Bool = false
     var currentPage = 1
     var totalPages = 1
+    var requestType: String = ""
     var nextPageAvailable = true
     var isRequestinApi = false
     var showPaginationLoader: Bool {

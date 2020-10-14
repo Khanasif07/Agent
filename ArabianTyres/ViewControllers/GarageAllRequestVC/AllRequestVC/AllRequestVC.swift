@@ -89,7 +89,7 @@ extension AllRequestVC : UITableViewDelegate, UITableViewDataSource {
             cell.placeBidBtnTapped = {[weak self] (sender) in
                 guard let `self` = self else {return}
                 if let selectedIndex = tableView.indexPath(for: cell) {
-                    AppRouter.goToGarageServiceRequestVC(vc: self,requestId : self.viewModel.garageRequestListing[selectedIndex.row].id ?? "")
+                    AppRouter.goToGarageServiceRequestVC(vc: self,requestId : self.viewModel.garageRequestListing[selectedIndex.row].id ?? "", requestType: self.viewModel.garageRequestListing[selectedIndex.row].requestType.rawValue ?? "")
                 }
             }
             return cell
@@ -107,7 +107,7 @@ extension AllRequestVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        AppRouter.goToGarageServiceRequestVC(vc: self,requestId : viewModel.garageRequestListing[indexPath.row].id ?? "")
+//        AppRouter.goToGarageServiceRequestVC(vc: self,requestId : viewModel.garageRequestListing[indexPath.row].id ?? "")
     }
 }
 

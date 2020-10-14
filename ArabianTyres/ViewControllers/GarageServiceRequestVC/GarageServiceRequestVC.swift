@@ -100,6 +100,7 @@ extension GarageServiceRequestVC {
         tableViewSetUp()
         textSetUp()
         hitApi()
+        titleLbl.text =  self.viewModel.requestType == "Tyres" ? "Tyre Service Request" : self.viewModel.requestType == "Battery" ? "Battery Service Request" : "Oil Service Request"
     }
     
     private func tableViewSetUp(){
