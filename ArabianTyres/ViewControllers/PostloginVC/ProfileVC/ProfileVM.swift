@@ -46,6 +46,7 @@ class ProfileVM {
             AppUserDefaults.save(value: json[ApiKey.data][ApiKey.phoneVerified].boolValue, forKey: .phoneNoVerified)
             AppUserDefaults.save(value: json[ApiKey.data][ApiKey.emailVerified].boolValue, forKey: .emailVerified)
             AppUserDefaults.save(value: json[ApiKey.data][ApiKey.isGarrage].boolValue, forKey: .isGarrage)
+            AppUserDefaults.save(value: json[ApiKey.data][ApiKey._id].stringValue, forKey: .userId)
             let currentRole = json[ApiKey.data][ApiKey.currentRole].stringValue
             if !currentRole.isEmpty {
                 AppUserDefaults.save(value: currentRole, forKey: .currentUserType)

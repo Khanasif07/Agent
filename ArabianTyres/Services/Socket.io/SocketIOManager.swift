@@ -14,6 +14,8 @@ import SwiftyJSON
 
 
 enum EventListnerKeys : String {
+    case newBid =  "NEW_BID"
+    case bidAccepted = "BID_ACCEPTED"
     case newRequest = "NEW_REQUEST"
     case didConnect = "connected"
     case didDisConnect = "disconnected"
@@ -34,7 +36,8 @@ class SocketIOManager: NSObject {
     var socket: SocketIOClient?
     private var manager: SocketManager?
     static let shared: SocketIOManager = SocketIOManager()
-    public var baseSocketUrl: String  = "http://arabiantyersdevapi.appskeeper.com/api/v1/"
+    public var baseSocketUrl: String  = "https://arabiantyersdevapi.appskeeper.com"
+//    public var baseSocketUrl: String  = "https://684af3030247.ngrok.io"
     var messageQueue = [[String: Any]]()
     static var isSocketConnected: Bool {
         return SocketIOManager.shared.socket?.status == SocketIOStatus.connected ? true: false
@@ -49,12 +52,13 @@ class SocketIOManager: NSObject {
     // Configure socket
     private func initializeSocket() {
         let socketSerialQueue = DispatchQueue(label: "socketSerialQueue", qos: .userInteractive)
-        let accessToken = AppUserDefaults.value(forKey: .accesstoken).stringValue
+//        let accessToken = AppUserDefaults.value(forKey: .accesstoken).stringValue
+        let userId = AppUserDefaults.value(forKey: .userId).stringValue
             let strUrl = baseSocketUrl
             let baseUrl = URL(string: strUrl)!
             self.manager = SocketManager(socketURL: baseUrl,
                                          config: [.log(true),
-                                                  .connectParams(["accessToken": accessToken]),
+                                                  .connectParams(["userId": userId]),
                                                   .forcePolling(false),
                                                   .reconnects(true),
                                                   .reconnectAttempts(10),
@@ -63,6 +67,7 @@ class SocketIOManager: NSObject {
                                                   .forceNew(true),
                                                   .handleQueue(socketSerialQueue)])
             self.socket = manager?.defaultSocket
+            self.listenOnlineUsers()
     }
     
     /// Method to estabish socket connection
@@ -93,7 +98,7 @@ class SocketIOManager: NSObject {
                 }
             }
             self.socket?.on(SocketKeys.didDisconnect) { (data, ack) in
-                print("socket disconnect")
+                print("//////////+++socket disconnect+++//////////")
             }
         }
     }
