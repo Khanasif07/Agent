@@ -36,6 +36,7 @@ class GarageProfileHeaderCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        profileImgView.backgroundColor = AppColors.fontTertiaryColor
         mainCollView.registerCell(with: FacilityCollectionViewCell.self)
         mainCollView.delegate = self
         mainCollView.dataSource = self
