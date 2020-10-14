@@ -44,7 +44,7 @@ class UserAllRequestVM{
             guard !isRequestinApi else { return }
         }
         isRequestinApi = true
-        WebServices.getUserMyRequestData(parameters: params, success: { (json) in
+        WebServices.getUserMyRequestData(parameters: params,loader: loader,success: { (json) in
             self.parseToMakeListingData(result: json)
         }) { (error) -> (Void) in
             self.delegate?.mgetUserMyRequestDataFailed(error: error.localizedDescription)

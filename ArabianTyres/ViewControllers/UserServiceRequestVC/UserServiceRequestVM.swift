@@ -22,6 +22,7 @@ class UserServiceRequestVM{
     
     //MARK:- Variables
     //================
+    var serviceType: String  = ""
     var requestId: String  = ""
     var hideLoader: Bool = false
     var currentPage = 1

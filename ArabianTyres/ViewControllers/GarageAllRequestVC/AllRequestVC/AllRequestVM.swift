@@ -42,12 +42,16 @@ class AllRequestVM {
     
     // MARK: Functions
     //=================================
-    func getGarageRequestData(params: JSONDictionary,loader: Bool = false) {
-        WebServices.getGarageRequestListing(parameters: params, success: { [weak self] (json) in
+    func getGarageRequestData(params: JSONDictionary,loader: Bool = false,pagination: Bool = false) {
+        if pagination {
+            guard nextPageAvailable, !isRequestinApi else { return }
+        } else {
+            guard !isRequestinApi else { return }
+        }
+        isRequestinApi = true
+        WebServices.getGarageRequestListing(parameters: params,loader: loader, success: { [weak self] (json) in
             guard let `self` = self else { return }
             self.parseToMakeListingData(result: json)
-            
-            printDebug(json)
         }) { [weak self] (error) in
             guard let `self` = self else { return }
             self.delegate?.getGarageListingDataFailed(error: error.localizedDescription)

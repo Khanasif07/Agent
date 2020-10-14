@@ -61,7 +61,7 @@ extension UserAllRequestVC {
     }
     
     private func getFilterData(data: [FilterScreen]) {
-        var dict : JSONDictionary = [ApiKey.page: "1",ApiKey.limit : "20"]
+        var dict : JSONDictionary = [ApiKey.page: "1",ApiKey.limit : "10"]
         data.forEach { (type) in
             switch type {
                 
@@ -98,7 +98,7 @@ extension UserAllRequestVC {
     }
     
     private func hitListingApi(){
-        self.viewModel.getUserMyRequestData(params: [ApiKey.page: "1",ApiKey.limit : "20"],loader: true)
+        self.viewModel.getUserMyRequestData(params: [ApiKey.page: "1",ApiKey.limit : "10"],loader: false,pagination: false)
     }
     
     @objc func refreshWhenPull(_ sender: UIRefreshControl) {
@@ -131,12 +131,12 @@ extension UserAllRequestVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        AppRouter.goToUserServiceRequestVC(vc: self,requestId:self.viewModel.userRequestListing[indexPath.row].id )
+        AppRouter.goToUserServiceRequestVC(vc: self,requestId:self.viewModel.userRequestListing[indexPath.row].id,serviceType:self.viewModel.userRequestListing[indexPath.row].requestType )
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if cell as? LoaderCell != nil {
-            self.viewModel.getUserMyRequestData(params: [ApiKey.page: "1",ApiKey.limit : "20"],loader: false)
+            self.viewModel.getUserMyRequestData(params: [ApiKey.page: self.viewModel.currentPage,ApiKey.limit : "10"],loader: false,pagination: true)
         }
     }
 }
@@ -193,9 +193,6 @@ extension UserAllRequestVC : DZNEmptyDataSetSource,DZNEmptyDataSetDelegate {
     }
     
     func emptyDataSetShouldBeForced(toDisplay scrollView: UIScrollView!) -> Bool {
-        if let tableView = scrollView as? UITableView, tableView.numberOfSections == 0 {
-            return true
-        }
         return false
     }
 }
