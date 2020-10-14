@@ -147,8 +147,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Canyon Road, Gharb Al Dhahran, Dhahran 34472, Saudi Arabia" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfI-g9-4Gy">
-                                <rect key="frame" x="8" y="288.5" width="368" height="15.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NA" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfI-g9-4Gy">
+                                <rect key="frame" x="8" y="288.5" width="388" height="15.5"/>
                                 <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -173,7 +173,7 @@
                             <constraint firstItem="8PI-T3-plN" firstAttribute="leading" secondItem="KZm-hq-gde" secondAttribute="leading" constant="8" id="HZc-YZ-Cy6"/>
                             <constraint firstItem="pfI-g9-4Gy" firstAttribute="leading" secondItem="KZm-hq-gde" secondAttribute="leading" constant="8" id="J3P-YK-Hqg"/>
                             <constraint firstAttribute="trailing" secondItem="c2x-M1-BWJ" secondAttribute="trailing" constant="14" id="JZa-h5-E6I"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="pfI-g9-4Gy" secondAttribute="trailing" constant="8" id="LH5-6M-3rp"/>
+                            <constraint firstAttribute="trailing" secondItem="pfI-g9-4Gy" secondAttribute="trailing" constant="8" id="LH5-6M-3rp"/>
                             <constraint firstAttribute="trailing" secondItem="ta1-ne-Njn" secondAttribute="trailing" id="NFb-Rc-OAO"/>
                             <constraint firstItem="On2-o8-SpP" firstAttribute="leading" secondItem="KZm-hq-gde" secondAttribute="leading" constant="8" id="NsM-yz-qFu"/>
                             <constraint firstItem="4jN-vi-auG" firstAttribute="top" secondItem="8PI-T3-plN" secondAttribute="bottom" constant="8" id="OBy-Ec-jYH"/>

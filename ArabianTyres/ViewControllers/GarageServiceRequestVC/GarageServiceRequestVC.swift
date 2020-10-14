@@ -38,6 +38,7 @@ class GarageServiceRequestVC: BaseVC {
     var brandsType : BrandsType = .onlyBrands
     let viewModel = GarageServiceRequestVM()
     weak var delegate: UserServiceRequestVCDelegate?
+    var isLocationUpdate: Bool = false
     
     // MARK: - Lifecycle
     //===========================
@@ -48,8 +49,8 @@ class GarageServiceRequestVC: BaseVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        self.tabBarController?.tabBar.isHidden = true
-//        self.tabBarController?.tabBar.isTranslucent = true
+        self.tabBarController?.tabBar.isHidden = true
+        self.tabBarController?.tabBar.isTranslucent = true
     }
     
     override func viewDidLayoutSubviews() {
@@ -61,6 +62,7 @@ class GarageServiceRequestVC: BaseVC {
     // MARK: - IBActions
     //===========================
     @IBAction func placeBidAction(_ sender: AppButton) {
+        
         let selectedCountryBrandsArray =  self.viewModel.countryBrandsDict.map { (dict) -> [PreferredBrand] in
             return   Array(dict.values)[0]
         }.map { (modelArray) -> [PreferredBrand] in
@@ -69,16 +71,31 @@ class GarageServiceRequestVC: BaseVC {
             }
         }.flatMap { $0 }
         printDebug(selectedCountryBrandsArray)
+        var bidAmountValid : Bool = true
         var selectedDict  = JSONDictionaryArray()
         selectedCountryBrandsArray.forEach { (model) in
             var dict  = JSONDictionary()
             dict[ApiKey.brandName] = model.name
             dict[ApiKey.brandId] = model.id
+            guard let amt = model.amount, amt != 0  else {
+                bidAmountValid = false
+                return
+                
+            }
+       
             dict[ApiKey.amount] = model.amount ?? 0
             dict[ApiKey.quantity] = quantity
             selectedDict.append(dict)
         }
-        self.viewModel.postPlaceBidData(params: [ApiKey.requestId:requestId,ApiKey.bidData: selectedDict])
+        if selectedCountryBrandsArray.isEmpty {
+            CommonFunctions.showToastWithMessage("Please select one bid")
+            return
+        }
+        if bidAmountValid {
+            self.viewModel.postPlaceBidData(params: [ApiKey.requestId:requestId,ApiKey.bidData: selectedDict])
+        }else {
+            CommonFunctions.showToastWithMessage("Unit Price should not be 0 or empty")
+        }
     }
     
     @IBAction func rejectRequestAction(_ sender: AppButton) {
@@ -86,7 +103,8 @@ class GarageServiceRequestVC: BaseVC {
     }
     
     @IBAction func crossBtnAction(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
+        pop()
+        //self.dismiss(animated: true, completion: nil)
     }
     
 }
@@ -151,6 +169,13 @@ extension GarageServiceRequestVC : UITableViewDelegate, UITableViewDataSource {
         case .userDetail:
             let cell = tableView.dequeueCell(with: GarageServiceTopCell.self, indexPath: indexPath)
             cell.popluateData(viewModel.garageRequestDetailArr ?? GarageRequestModel())
+            cell.locationUpdated = {[weak self] in
+                guard let `self` = self else {return}
+                if !(self.isLocationUpdate) {
+                    self.mainTableView.reloadData()
+                    self.isLocationUpdate = true
+                }
+            }
             return cell
             
         case .countryDetail:
@@ -213,10 +238,12 @@ extension GarageServiceRequestVC : UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+ 
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
-    
+
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return CGFloat.leastNonzeroMagnitude
     }
@@ -256,8 +283,7 @@ extension GarageServiceRequestVC :GarageServiceRequestVMDelegate {
     func getGarageDetailSuccess(message: String) {
         updateDataSource()
         self.quantity = viewModel.garageRequestDetailArr?.quantity ?? 0
-        
-        mainTableView.reloadData()
+        self.mainTableView.reloadData()
     }
     
     func getGarageDetailFailed(error: String) {
@@ -281,7 +307,8 @@ extension GarageServiceRequestVC :GarageServiceRequestVMDelegate {
     
     func cancelGarageRequestSuccess(message: String){
         self.delegate?.cancelUserMyRequestDetailSuccess(requestId: self.requestId)
-        dismiss(animated: true, completion: nil)
+        pop()
+//        dismiss(animated: true, completion: nil)
     }
     
     func cancelGarageRequestFailure(error:String) {
@@ -307,6 +334,7 @@ extension GarageServiceRequestVC :GarageServiceRequestVMDelegate {
         if apiHit{
             hitBrandListingApi()
         }
+        self.mainTableView.reloadData()
     }
     
     func hitBrandListingApi(country: String = "") {

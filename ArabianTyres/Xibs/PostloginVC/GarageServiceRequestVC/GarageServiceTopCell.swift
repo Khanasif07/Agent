@@ -11,7 +11,7 @@ import GoogleMaps
 import GooglePlaces
 
 class GarageServiceTopCell: UITableViewCell {
-
+    
     @IBOutlet weak var requestedImgView: UIImageView!
     @IBOutlet weak var addressLbl: UILabel!
     @IBOutlet weak var locationLbl: UILabel!
@@ -23,10 +23,10 @@ class GarageServiceTopCell: UITableViewCell {
     @IBOutlet weak var createAtLbl: UILabel!
     @IBOutlet weak var tyreSizeValueLbl: UILabel!
     @IBOutlet weak var tyreSizeLbl: UILabel!
-
+    
     
     var locationValue : CLLocationCoordinate2D = CLLocationCoordinate2D()
-
+    var locationUpdated : (()->())?
     override func awakeFromNib() {
         super.awakeFromNib()
         textSetUp()
@@ -44,14 +44,16 @@ class GarageServiceTopCell: UITableViewCell {
         requestedOnLbl.textColor = AppColors.fontTertiaryColor
         requestCreatedLbl.textColor = AppColors.fontTertiaryColor
     }
-
+    
     private func setAddress() {
-           GMSGeocoder().reverseGeocodeCoordinate(locationValue) { (response, error) in
-               
-               guard let address = response?.firstResult(), let lines = address.lines else { return }
-               _ = (address.locality?.isEmpty ?? true) ? ((address.subLocality?.isEmpty ?? true) ? ((address.administrativeArea?.isEmpty ?? true) ? address.country : address.administrativeArea)  : address.subLocality)   : address.locality
+        GMSGeocoder().reverseGeocodeCoordinate(locationValue) { (response, error) in
+            
+            guard let address = response?.firstResult(), let lines = address.lines else { return }
+            _ = (address.locality?.isEmpty ?? true) ? ((address.subLocality?.isEmpty ?? true) ? ((address.administrativeArea?.isEmpty ?? true) ? address.country : address.administrativeArea)  : address.subLocality)   : address.locality
             self.locationLbl.text = lines.joined(separator: ",")
-           }
+            self.locationUpdated?()
+        }
+        
     }
     
     func popluateData(_ model: GarageRequestModel) {
@@ -61,12 +63,11 @@ class GarageServiceTopCell: UITableViewCell {
         let cords = CLLocationCoordinate2D(latitude: model.userLatitude ?? 0.0, longitude: model.userLongitude ?? 0.0)
         self.locationValue = cords
         setAddress()
-        
         switch model.requestType {
         case .tyres:
             tyreSizeValueLbl.text = "Width \(model.width ?? 0), " + "Rim \(model.rimSize ?? 0), " + "Profile \(model.profile ?? 0)"
             tyreSizeLbl.text = "Tyre Size:"
-        
+            
         case .oil:
             tyreSizeValueLbl.text = "Vechicle Make \(model.make ?? ""), " + "Vechicle Model \(model.model ?? ""), " + "Product Year \(model.year ?? 0)"
             tyreSizeLbl.text = "Oil:"

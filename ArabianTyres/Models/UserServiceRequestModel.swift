@@ -69,6 +69,7 @@ struct PreferredBrand: Codable {
     var quantity: Int?
     var countryId: String?
     var countryName: String?
+ 
     enum CodingKeys: String, CodingKey {
         case id = "_id"
         case name

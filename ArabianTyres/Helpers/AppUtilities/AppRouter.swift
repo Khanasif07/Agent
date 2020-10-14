@@ -360,7 +360,8 @@ enum AppRouter {
         scene.requestId = requestId
         scene.viewModel.requestType = requestType
         scene.delegate = vc as? UserServiceRequestVCDelegate
-        vc.present(scene, animated: true, completion: nil)
+        vc.navigationController?.pushViewController(scene, animated: true)
+//        vc.present(scene, animated: true, completion: nil)
     }
     
     static func goToOilBrandsVC(vc: UIViewController){
