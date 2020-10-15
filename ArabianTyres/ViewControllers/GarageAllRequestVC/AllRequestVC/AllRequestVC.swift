@@ -56,10 +56,14 @@ extension AllRequestVC {
         hitApi()
     }
     
-    private func hitApi(){
-        viewModel.getGarageRequestData(params: [ApiKey.page:"1", ApiKey.limit: "10"], pagination: false)
+    public func hitApi(params: JSONDictionary = [:]){
+        if params.isEmpty {
+            viewModel.getGarageRequestData(params: [ApiKey.page:"1", ApiKey.limit: "10"], pagination: false)
+        }else {
+            viewModel.getGarageRequestData(params: params,loader: true)
+        }
     }
-    
+   
     @objc func refreshWhenPull(_ sender: UIRefreshControl) {
         sender.endRefreshing()
         hitApi()

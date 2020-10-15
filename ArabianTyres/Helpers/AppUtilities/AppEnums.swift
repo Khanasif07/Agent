@@ -201,10 +201,10 @@ enum FilterScreen {
                     "Oil",
                     "Battery"]
            case .allRequestByStatus:
-            return ["Tyres",
-                    "Oil",
-                    "Battery",
-                    "Battery"]
+            return ["finalised",
+                    "open",
+                    "placed",
+                    "rejected"]
            case .bidReceived:
             return ["Tyres",
             "Oil",

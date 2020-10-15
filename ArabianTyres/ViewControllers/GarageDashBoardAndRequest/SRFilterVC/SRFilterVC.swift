@@ -126,27 +126,17 @@ extension SRFilterVC {
         for data in sectionArr{
             switch data {
                 
-            case .byServiceType(let str, _):
+            case .allRequestServiceType(let str, _):
                 if str.isEmpty {
                     flag = false
                     msg = "Please select Service Type"
                 }
-            case .byStatus(let str, _):
+            case .allRequestByStatus(let str, _):
                 if str.isEmpty {
                     flag = false
                     msg = "Please select Status Type"
                 }
-                
-            case .date(let fromDate, let toDate, _):
-                if fromDate == nil {
-                    flag = false
-                    msg = "Please select from date"
-                }
-                if toDate == nil {
-                    flag = false
-                    msg = "Please select to date"
-                }
-                
+       
             default:
                 break
             }

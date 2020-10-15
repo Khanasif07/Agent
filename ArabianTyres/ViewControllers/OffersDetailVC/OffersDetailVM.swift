@@ -25,8 +25,12 @@ protocol OffersDetailVMDelegate: class {
     func acceptUserBidDataFailed(error:String)
     func rejectUserBidDataSuccess(message: String)
     func rejectUserBidDataFailed(error:String)
+    func countryDataFilter()
 }
 
+extension OffersDetailVMDelegate {
+    func countryDataFilter(){}
+}
 
 class OffersDetailVM{
     
@@ -35,6 +39,7 @@ class OffersDetailVM{
     var bidId: String  = ""
     var userBidDetail = UserBidModel()
     weak var delegate: OffersDetailVMDelegate?
+    var bidData : [BidDatum] = []
     
     //MARK:- Functions
     
@@ -74,5 +79,12 @@ class OffersDetailVM{
                 printDebug("error occured")
             }
         }
+    }
+    
+    func getBidData(country: String = "") {
+        bidData = userBidDetail.bidData.filter({ (data) -> Bool in
+            return data.countryName == country
+        })
+        delegate?.countryDataFilter()
     }
 }

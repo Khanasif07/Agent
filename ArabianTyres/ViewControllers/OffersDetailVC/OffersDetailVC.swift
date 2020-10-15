@@ -29,11 +29,7 @@ class OffersDetailVC: BaseVC {
     //===========================
     var viewModel = OffersDetailVM()
     var indexPath: IndexPath?
-    var countryNameArr : [PreferredBrand] = []{
-           didSet{
-               countryCollView.reloadData()
-           }
-       }
+
     
     // MARK: - Lifecycle
     //===========================
@@ -154,7 +150,8 @@ extension OffersDetailVC : OffersDetailVMDelegate {
     }
     
     func getOfferDetailSuccess(message: String) {
-         self.mainTableView.reloadData()
+        self.mainTableView.reloadData()
+        self.countryCollView.reloadData()
     }
     
     func getOfferDetailFailed(error: String) {
@@ -164,42 +161,47 @@ extension OffersDetailVC : OffersDetailVMDelegate {
     func acceptUserBidDataSuccess(message: String) {
          self.mainTableView.reloadData()
     }
+    
+    func countryDataFilter(){
+        self.mainTableView.reloadData()
+
+    }
 }
 
 // MARK: - Extension For DZNEmptyDataSetSource
 //========================================
 extension OffersDetailVC: DZNEmptyDataSetSource,DZNEmptyDataSetDelegate{
     
-       func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
-           return  nil
-       }
-       
-       func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-           return NSAttributedString(string:"No data found" , attributes: [NSAttributedString.Key.foregroundColor: AppColors.fontTertiaryColor,NSAttributedString.Key.font: AppFonts.NunitoSansBold.withSize(18)])
-       }
-       
-       func emptyDataSetShouldDisplay(_ scrollView: UIScrollView!) -> Bool {
-           return true
-       }
-       
-       func emptyDataSetShouldAllowScroll(_ scrollView: UIScrollView!) -> Bool {
-           return true
-       }
-       
-       func emptyDataSetShouldAllowTouch(_ scrollView: UIScrollView!) -> Bool {
-           return true
-       }
-       
-       func emptyDataSetShouldBeForced(toDisplay scrollView: UIScrollView!) -> Bool {
-           return false
-       }
+    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
+        return  nil
+    }
+    
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        return NSAttributedString(string:"No data found" , attributes: [NSAttributedString.Key.foregroundColor: AppColors.fontTertiaryColor,NSAttributedString.Key.font: AppFonts.NunitoSansBold.withSize(18)])
+    }
+    
+    func emptyDataSetShouldDisplay(_ scrollView: UIScrollView!) -> Bool {
+        return true
+    }
+    
+    func emptyDataSetShouldAllowScroll(_ scrollView: UIScrollView!) -> Bool {
+        return true
+    }
+    
+    func emptyDataSetShouldAllowTouch(_ scrollView: UIScrollView!) -> Bool {
+        return true
+    }
+    
+    func emptyDataSetShouldBeForced(toDisplay scrollView: UIScrollView!) -> Bool {
+        return false
+    }
 }
 
 
 
 extension OffersDetailVC : UICollectionViewDelegate,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return countryNameArr.count
+        return viewModel.userBidDetail.countries?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -207,7 +209,7 @@ extension OffersDetailVC : UICollectionViewDelegate,UICollectionViewDataSource, 
         cell.cancelBtn.isHidden = true
         cell.cancelBtnHeightConstraint.constant = 0.0
         cell.skillLbl.contentMode = .center
-        cell.skillLbl.text = self.countryNameArr[indexPath.item].name
+        cell.skillLbl.text = viewModel.userBidDetail.countries?[indexPath.item]
         cell.containerView.backgroundColor = self.indexPath == indexPath ? AppColors.appRedColor : .white
         cell.skillLbl.textColor = self.indexPath == indexPath ? .white : AppColors.fontTertiaryColor
         cell.layoutSubviews()
@@ -215,17 +217,17 @@ extension OffersDetailVC : UICollectionViewDelegate,UICollectionViewDataSource, 
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let text = self.countryNameArr[indexPath.item].name
+        guard let text = viewModel.userBidDetail.countries?[indexPath.item] else {return CGSize.zero}
         let textSize = text.sizeCount(withFont: AppFonts.NunitoSansSemiBold.withSize(14.0), boundingSize: CGSize(width: 10000.0, height: 34.0))
-        return CGSize(width: textSize.width + 20, height: 34.0)
+        return CGSize(width: (textSize.width) + 20, height: 36.0)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 8.0
+        return 0.0
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 8.0
+        return 0.0
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -234,6 +236,7 @@ extension OffersDetailVC : UICollectionViewDelegate,UICollectionViewDataSource, 
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.indexPath = indexPath
+        let countryName = viewModel.userBidDetail.countries?[indexPath.item]
         collectionView.reloadData()
     }
 }

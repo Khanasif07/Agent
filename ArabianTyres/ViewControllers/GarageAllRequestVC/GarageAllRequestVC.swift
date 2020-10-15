@@ -117,29 +117,22 @@ extension GarageAllRequestVC {
        }
     
     private func getFilterData(data: [FilterScreen]) {
-//        var dict : JSONDictionary = [ApiKey.page: "1",ApiKey.limit : "20"]
-//        data.forEach { (type) in
-//            switch type {
-//
-//            case .byServiceType(let str, _):
-//                dict[ApiKey.type] = str
-//
-//            case .byStatus(let str, _):
-//                dict[ApiKey.status] = str
-//
-//            case .date(let fromDate, let toDate, _):
-//
-//                if let fDate = fromDate ,let tDate = toDate {
-//                    dict[ApiKey.startdate] = fDate.toString(dateFormat: Date.DateFormat.yyyyMMddTHHmmsssssz.rawValue)
-//                    dict[ApiKey.endDate] =  tDate.toString(dateFormat: Date.DateFormat.yyyyMMddTHHmmsssssz.rawValue)
-//
-//                }
-//
-//            default:
-//                break
-//            }
-//        }
-//        self.viewModel.getUserMyRequestData(params: dict,loader: true)
+        var dict : JSONDictionary = [ApiKey.page: "1",ApiKey.limit : "20"]
+        data.forEach { (type) in
+            switch type {
+
+            case .allRequestServiceType(let str, _):
+                dict[ApiKey.requestType] = str.joined(separator: ",")
+
+            case .allRequestByStatus(let str, _):
+                dict[ApiKey.status] = str.joined(separator: ",")
+            default:
+                break
+            }
+        }
+        guard let allRequestVC = allRequestVC else {return}
+        
+        allRequestVC.hitApi(params: dict)
     }
 }
 
