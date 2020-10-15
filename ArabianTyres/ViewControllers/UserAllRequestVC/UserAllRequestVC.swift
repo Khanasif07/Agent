@@ -47,7 +47,6 @@ class UserAllRequestVC: BaseVC {
             self?.filterArr = filterData
         }
     }
-    
 }
 
 // MARK: - Extension For Functions
@@ -122,6 +121,14 @@ extension UserAllRequestVC : UITableViewDelegate, UITableViewDataSource {
         } else {
             let cell = tableView.dequeueCell(with: MyServiceTableCell.self, indexPath: indexPath)
             cell.populateData(model: self.viewModel.userRequestListing[indexPath.row])
+            cell.downloadInvoiceBtnTapped = {[weak self] in
+                self?.showAlert(msg: LocalizedString.underDevelopment.localized)
+
+            }
+            cell.needHelpBtnTapped = {[weak self] in
+                self?.showAlert(msg: LocalizedString.underDevelopment.localized)
+
+            }
             return cell
         }
     }

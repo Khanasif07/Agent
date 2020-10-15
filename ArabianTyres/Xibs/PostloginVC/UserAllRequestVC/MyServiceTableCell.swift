@@ -31,6 +31,9 @@ class MyServiceTableCell: UITableViewCell {
     @IBOutlet weak var otpValueLbl: UILabel!
 
 
+    var needHelpBtnTapped: (()->())?
+    var downloadInvoiceBtnTapped: (()->())?
+
     override func awakeFromNib() {
         super.awakeFromNib()
         offerView.backgroundColor = AppColors.fontTertiaryColor
@@ -50,8 +53,19 @@ class MyServiceTableCell: UITableViewCell {
         dataContainerView.addShadow(cornerRadius: 5, color: UIColor.black16, offset: CGSize(width: 0.5, height: 0.5), opacity: 1, shadowRadius: 5)
     }
     
+    @IBAction func needHelpBtnAction(_sender: UIButton) {
+        needHelpBtnTapped?()
+    }
+    
+    @IBAction func downloadInVoiceBtnAction(_sender: UIButton) {
+        downloadInvoiceBtnTapped?()
+    }
+    
     public func populateData(model: UserServiceRequestModel){
-        statusValueLbl.text = model.status
+        statusValueLbl.text = model.status.text
+        statusValueLineView.backgroundColor = model.status.textColor
+        statusView.isHidden = model.status == .pending
+        
         self.serviceTypeLbl.text = model.requestType + " Service Request"
         let logoImg =  model.requestType == "Tyres" ? #imageLiteral(resourceName: "maskGroup") : model.requestType == "Battery" ? #imageLiteral(resourceName: "icBattery") : #imageLiteral(resourceName: "icOil")
         let logoBackGroundColor =  model.requestType == "Tyres" ? AppColors.blueLightColor : model.requestType == "Battery" ? AppColors.redLightColor : AppColors.grayLightColor
@@ -63,18 +77,18 @@ class MyServiceTableCell: UITableViewCell {
     
         let time = getTimeFromDate(date: model.createdAt)
         self.timeLbl.text = time + " on " + date
-        if model.requestType == "Tyres" {
-              bottomView.isHidden = true
-        }else {
-              bottomView.isHidden = false
-        }
-        if model.requestType == "Battery" {
-            statusView.isHidden = true
-            bottomView.isHidden = true
-        } else {
-            statusView.isHidden = false
-            bottomView.isHidden = false
-        }
+//        if model.requestType == "Tyres" {
+//              bottomView.isHidden = true
+//        }else {
+//              bottomView.isHidden = false
+//        }
+//        if model.requestType == "Battery" {
+//            statusView.isHidden = true
+//            bottomView.isHidden = true
+//        } else {
+//            statusView.isHidden = false
+//            bottomView.isHidden = false
+//        }
         
         if model.isOfferAccepted ?? false {
             offerLbl.textColor = #colorLiteral(red: 0.1725490196, green: 0.7137254902, blue: 0.4549019608, alpha: 1)

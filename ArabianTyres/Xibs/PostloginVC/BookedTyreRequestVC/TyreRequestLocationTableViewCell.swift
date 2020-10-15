@@ -20,6 +20,9 @@ class TyreRequestLocationTableViewCell: UITableViewCell {
     @IBOutlet weak var chatBtn: AppButton!
     @IBOutlet weak var startServiceBtn: AppButton!
   
+    var chatBtnTapped: (()->())?
+    var startServiceBtnTapped: (()->())?
+    
     //MARK:- Life Cycle
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -46,9 +49,9 @@ class TyreRequestLocationTableViewCell: UITableViewCell {
     //MARK:-IBActions
     
     @IBAction func chatBtnTapped(_ sender: UIButton) {
-        
+        chatBtnTapped?()
     }
     @IBAction func startServiceBtnTapped(_ sender: UIButton) {
-        
+        startServiceBtnTapped?()
     }
 }

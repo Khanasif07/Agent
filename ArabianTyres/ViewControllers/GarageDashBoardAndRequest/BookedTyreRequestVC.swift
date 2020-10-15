@@ -29,6 +29,8 @@ class BookedTyreRequestVC: BaseVC {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = true
+        self.tabBarController?.tabBar.isTranslucent = true
     }
     
     override func viewDidLayoutSubviews() {
@@ -39,7 +41,8 @@ class BookedTyreRequestVC: BaseVC {
     // MARK: - IBActions
     //===========================
     @IBAction func crossBtnAction(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        pop()
+//        self.dismiss(animated: true, completion: nil)
     }
 }
 
@@ -83,6 +86,12 @@ extension BookedTyreRequestVC: UITableViewDelegate,UITableViewDataSource{
         }else {
             
             let cell = tableView.dequeueCell(with: TyreRequestLocationTableViewCell.self)
+            cell.startServiceBtnTapped = {[weak self] in
+                self?.showAlert(msg: LocalizedString.underDevelopment.localized)
+            }
+            cell.chatBtnTapped = {[weak self] in
+                self?.showAlert(msg: LocalizedString.underDevelopment.localized)
+            }
             return cell
         }
     }

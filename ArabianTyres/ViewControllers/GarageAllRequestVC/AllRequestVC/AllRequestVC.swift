@@ -81,15 +81,24 @@ extension AllRequestVC : UITableViewDelegate, UITableViewDataSource {
         } else {
             let cell = tableView.dequeueCell(with: ServiceRequestTableCell.self, indexPath: indexPath)
             cell.bindData(viewModel.garageRequestListing[indexPath.row])
+      
             cell.rejectRequestBtnTapped = {[weak self] in
                 guard let `self` = self else {return}
                 self.requestId = self.viewModel.garageRequestListing[indexPath.row].id ?? ""
                 self.viewModel.rejectGarageRequest(params:[ApiKey.requestId : self.requestId])
             }
+       
             cell.placeBidBtnTapped = {[weak self] (sender) in
                 guard let `self` = self else {return}
-                if let selectedIndex = tableView.indexPath(for: cell) {
+                if sender.titleLabel?.text == "Cancel Bid" {
+                self.requestId = self.viewModel.garageRequestListing[indexPath.row].id ?? ""
+                self.viewModel.cancelBid(params:[ApiKey.garageRequestId : self.requestId])
+
+                }else {
+                    if let selectedIndex = tableView.indexPath(for: cell) {
                         AppRouter.goToGarageServiceRequestVC(vc: self,requestId : self.viewModel.garageRequestListing[selectedIndex.row].id ?? "", requestType: self.viewModel.garageRequestListing[selectedIndex.row].requestType.rawValue)
+                    }
+                    
                 }
             }
             return cell
@@ -136,6 +145,14 @@ extension AllRequestVC : AllRequestVMDelegate ,UserServiceRequestVCDelegate{
            guard let selectedIndex = index else {return}
            self.viewModel.garageRequestListing.remove(at: selectedIndex)
            self.mainTableView.reloadData()
+    }
+    
+    func cancelBidSuccess(message: String){
+        cancelUserMyRequestDetailSuccess(requestId: self.requestId)
+    }
+    
+    func cancelBidFailure(error:String){
+        ToastView.shared.showLongToast(self.view, msg: error)
     }
 }
 

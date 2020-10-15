@@ -15,11 +15,15 @@ protocol AllRequestVMDelegate: class {
     func getGarageListingDataFailed(error:String)
     func cancelGarageRequestSuccess(message: String)
     func cancelGarageRequestFailure(error:String)
+    func cancelBidSuccess(message: String)
+    func cancelBidFailure(error:String)
 }
 
 extension AllRequestVMDelegate {
     func cancelGarageRequestSuccess(message: String) {}
     func cancelGarageRequestFailure(error:String) {}
+    func cancelBidSuccess(message: String){}
+    func cancelBidFailure(error:String){}
 }
 
 class AllRequestVM {
@@ -58,6 +62,16 @@ class AllRequestVM {
         }
     }
     
+    func cancelBid(params: JSONDictionary,loader: Bool = true,pagination: Bool = false) {
+      
+        WebServices.bidCancelByUser(parameters: params, success: { [weak self] (json) in
+            guard let `self` = self else { return }
+            self.delegate?.cancelBidSuccess(message: "")
+        }) { [weak self] (error) in
+            guard let `self` = self else { return }
+            self.delegate?.cancelBidFailure(error: error.localizedDescription)
+        }
+    }
     
     func parseToMakeListingData(result: JSON) {
         if let jsonString = result[ApiKey.data][ApiKey.result].rawString(), let data = jsonString.data(using: .utf8) {

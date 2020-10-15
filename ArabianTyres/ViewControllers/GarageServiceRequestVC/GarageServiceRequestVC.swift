@@ -77,6 +77,10 @@ class GarageServiceRequestVC: BaseVC {
             var dict  = JSONDictionary()
             dict[ApiKey.brandName] = model.name
             dict[ApiKey.brandId] = model.id
+            if brandsType == .countryBrands {
+                dict[ApiKey.countryId] = model.countryId
+                dict[ApiKey.countryName] = model.countryName
+            }
             guard let amt = model.amount, amt != 0  else {
                 bidAmountValid = false
                 return

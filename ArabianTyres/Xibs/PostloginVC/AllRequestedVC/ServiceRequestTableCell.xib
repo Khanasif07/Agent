@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -171,27 +172,36 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="uaJ-Wy-PiP">
-                                <rect key="frame" x="112" y="158" width="240" height="34"/>
+                                <rect key="frame" x="182.5" y="158" width="169.5" height="34"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TND-fK-5Il" customClass="AppButton" customModule="ArabianTyres" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="129" height="34"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="129" id="xO1-ic-PLK"/>
-                                        </constraints>
+                                        <rect key="frame" x="0.0" y="0.0" width="64.5" height="34"/>
                                         <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="14"/>
-                                        <state key="normal" title="Reject Request"/>
+                                        <state key="normal" title="Reject">
+                                            <color key="titleColor" name="appRedColor"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" name="appRedColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="placeRequestBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="izX-pi-wx7"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HCU-Sa-4jQ" customClass="AppButton" customModule="ArabianTyres" customModuleProvider="target">
-                                        <rect key="frame" x="137" y="0.0" width="103" height="34"/>
+                                        <rect key="frame" x="72.5" y="0.0" width="97" height="34"/>
+                                        <color key="backgroundColor" name="appRedColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="103" id="LgR-dZ-ctj"/>
                                             <constraint firstAttribute="height" constant="34" id="VcH-pG-CzV"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="14"/>
-                                        <state key="normal" title="Place a Bid"/>
+                                        <state key="normal" title="Place a Bid">
+                                            <color key="titleColor" name="collectionViewBackground"/>
+                                        </state>
                                         <connections>
                                             <action selector="placeBidAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="w3y-XY-SnO"/>
                                         </connections>
@@ -214,6 +224,7 @@
                             <constraint firstItem="5iu-C2-3ch" firstAttribute="leading" secondItem="X2k-1f-60t" secondAttribute="leading" constant="8" id="jhU-Nr-R3c"/>
                             <constraint firstItem="5iu-C2-3ch" firstAttribute="top" secondItem="X5A-rR-BKL" secondAttribute="bottom" constant="11" id="l9X-iK-j0t"/>
                             <constraint firstItem="3T5-hz-J4m" firstAttribute="leading" secondItem="X2k-1f-60t" secondAttribute="leading" constant="8" id="mhO-IO-NwG"/>
+                            <constraint firstItem="TND-fK-5Il" firstAttribute="width" secondItem="X2k-1f-60t" secondAttribute="width" multiplier="74/414" id="peB-kW-xY5"/>
                             <constraint firstItem="3T5-hz-J4m" firstAttribute="top" secondItem="X2k-1f-60t" secondAttribute="top" constant="8" id="qdP-q6-B5Z"/>
                             <constraint firstAttribute="trailing" secondItem="5iu-C2-3ch" secondAttribute="trailing" constant="8" id="qxa-Hm-YHW"/>
                             <constraint firstItem="X5A-rR-BKL" firstAttribute="leading" secondItem="M6u-hZ-TmO" secondAttribute="leading" id="rye-j0-7ku"/>
@@ -222,6 +233,7 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
+                    <constraint firstItem="HCU-Sa-4jQ" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="103/414" id="QJX-O3-kKk"/>
                     <constraint firstAttribute="bottom" secondItem="X2k-1f-60t" secondAttribute="bottom" constant="8" id="fKf-HU-T1O"/>
                     <constraint firstItem="X2k-1f-60t" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="mIE-nD-b55"/>
                     <constraint firstAttribute="trailing" secondItem="X2k-1f-60t" secondAttribute="trailing" constant="15" id="wwY-2H-LOG"/>
@@ -255,5 +267,11 @@
     </objects>
     <resources>
         <image name="battery" width="135" height="135"/>
+        <namedColor name="appRedColor">
+            <color red="0.87800002098083496" green="0.13699999451637268" blue="0.25900000333786011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="collectionViewBackground">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
     </resources>
 </document>

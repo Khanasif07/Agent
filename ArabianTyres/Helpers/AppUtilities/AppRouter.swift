@@ -64,7 +64,8 @@ enum AppRouter {
     
     static func goToBookedTyreRequestVC(vc: UIViewController){
         let scene = BookedTyreRequestVC.instantiate(fromAppStoryboard: .GarageRequest)
-        vc.present(scene, animated: true, completion: nil)
+        vc.navigationController?.pushViewController(scene, animated: true)
+//        vc.present(scene, animated: true, completion: nil)
     }
     
     static func goToUserServiceRequestVC(vc: UIViewController & UserServiceRequestVCDelegate,requestId:String = "",serviceType:String = ""){

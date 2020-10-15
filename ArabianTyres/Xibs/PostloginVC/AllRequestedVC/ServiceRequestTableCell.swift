@@ -73,6 +73,7 @@ class ServiceRequestTableCell: UITableViewCell {
         brandsLbl.text = "Brand: "
         tyreSizeLbl.text = "Tyre Size: "
         statusLbl.text = "Status"
+        
     }
     
     func bindData(_ model: GarageRequestModel) {
@@ -101,8 +102,10 @@ class ServiceRequestTableCell: UITableViewCell {
         }
         
         logoImgView.setImage_kf(imageString: model.images.first ?? "", placeHolderImage: #imageLiteral(resourceName: "maskGroup"), loader: false)
+        
         statusValueLbl.text = model.bidStatus?.rawValue
         statusValueLbl.textColor = model.bidStatus?.textColor
+    
         let str = model.requestType == .tyres ? "Tyre" : model.requestType.rawValue
         serviceTyeLbl.text = (str) + LocalizedString.serviceRequest.localized
         
@@ -112,6 +115,20 @@ class ServiceRequestTableCell: UITableViewCell {
             bidAmountValueLbl.text = String((model.bidData?.first?.amount ?? 0) * (model.bidData?.first?.quantity ?? 0))
         }else {
             bidAmountStackView.isHidden = true
+        }
+        
+        if model.bidStatus == .bidPlaced {
+            rejectRequestBtn.isHidden = true
+            placeBidBtn.setTitle("Cancel Bid", for: .normal)
+            placeBidBtn.setTitleColor(AppColors.appRedColor, for: .normal)
+            placeBidBtn.backgroundColor = .clear
+            placeBidBtn.borderColor = AppColors.fontTertiaryColor
+            placeBidBtn.borderWidth = 1.0
+
+        }else {
+            rejectRequestBtn.isHidden = false
+            placeBidBtn.isEnabled = true
+            placeBidBtn.setTitle("Place a Bid", for: .normal)
         }
     }
     

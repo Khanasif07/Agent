@@ -19,7 +19,6 @@ class GarageServiceCountryCell: UITableViewCell {
     var countryBtnTapped : ((String)->())?
     var indexPath: IndexPath?
     
-    
     @IBOutlet weak var countryCollView: UICollectionView!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var brandsStackView: UIView!

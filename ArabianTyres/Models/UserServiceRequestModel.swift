@@ -7,7 +7,47 @@
 //
 
 import Foundation
+import UIKit
 
+enum ServiceStatus : String,Codable {
+    case pending
+    case ongoing
+    case cancelled
+    case completed
+    case allocated
+    
+    var text :String{
+        switch self {
+            
+        case .pending:
+            return "Pending"
+        case .ongoing:
+            return "Ongoing"
+        case .cancelled:
+            return "Cancelled"
+        case .completed:
+            return "Completed"
+        default:
+            return ""
+        }
+    }
+    
+    var textColor : UIColor {
+        switch self {
+            
+        case .pending:
+            return #colorLiteral(red: 0.937254902, green: 0.6509803922, blue: 0.1803921569, alpha: 1)
+        case .ongoing:
+            return #colorLiteral(red: 0.937254902, green: 0.6509803922, blue: 0.1803921569, alpha: 1)
+        case .cancelled:
+            return #colorLiteral(red: 0.8784313725, green: 0.137254902, blue: 0.2588235294, alpha: 1)
+        case .completed:
+            return #colorLiteral(red: 0.1725490196, green: 0.7137254902, blue: 0.4549019608, alpha: 1)
+        default:
+            return #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        }
+    }
+}
 
 // MARK: - Result
 struct UserServiceRequestModel: Codable {
@@ -15,7 +55,7 @@ struct UserServiceRequestModel: Codable {
     let profile: Int?
     let requestType: String
     let rimSize: Int?
-    let status: String
+    let status: ServiceStatus
     let preferredBrands: [PreferredBrand]
     let preferredCountries: [PreferredBrand]
     let quantity, width: Int?
@@ -25,7 +65,7 @@ struct UserServiceRequestModel: Codable {
     let images: [String]
     let totalBids: Int?
     let lowestBid: Int?
-    let nearestBidder: Int?
+    let nearestBidder: Double?
     let totalOffers : Int?
     let isOfferAccepted : Bool?
     
@@ -43,7 +83,7 @@ struct UserServiceRequestModel: Codable {
         profile = 0
         requestType = ""
         rimSize = 0
-        status = ""
+        status = .pending
         preferredBrands = []
         preferredCountries = []
         quantity = 0
@@ -52,7 +92,7 @@ struct UserServiceRequestModel: Codable {
         make  = ""
         model = ""
         images = []
-        nearestBidder = 0
+        nearestBidder = 0.0
         totalBids = 0
         lowestBid = 0
         isOfferAccepted = false

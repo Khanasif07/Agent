@@ -51,6 +51,12 @@ extension BookedRequestVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(with: BookedRequestTableCell.self, indexPath: indexPath)
+        cell.startServiceBtnTapped = {[weak self] in
+            self?.showAlert(msg: LocalizedString.underDevelopment.localized)
+        }
+        cell.chatBtnTapped = {[weak self] in
+            self?.showAlert(msg: LocalizedString.underDevelopment.localized)
+        }
         return cell
     }
     

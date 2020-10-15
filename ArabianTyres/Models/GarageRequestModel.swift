@@ -14,7 +14,8 @@ enum RequestStatus: String, Codable{
     case openForBidding = "pending"
     case bidPlaced = "cancelled"
     case bidFinalsed = "allocated"
-  
+    case ongoing = "ongoing"
+    
     var text : String {
         switch self {
             
@@ -25,6 +26,8 @@ enum RequestStatus: String, Codable{
             
         case .bidFinalsed:
             return "Bid Finalsed"
+        case .ongoing:
+            return ""
         }
     }
     
@@ -36,6 +39,8 @@ enum RequestStatus: String, Codable{
             return AppColors.warningYellowColor
         case .bidFinalsed:
             return AppColors.successGreenColor
+        case .ongoing:
+        return AppColors.successGreenColor
         }
     }
 }
@@ -100,7 +105,7 @@ struct GarageRequestModel: Codable {
         profile = 0
         rimSize = 0
         width = 0
-        bidStatus = .bidPlaced
+        bidStatus = .bidFinalsed
         bidData = []
         userImage = ""
         userLatitude = 0.0

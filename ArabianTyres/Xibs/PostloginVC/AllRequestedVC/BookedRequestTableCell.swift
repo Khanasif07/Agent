@@ -24,6 +24,9 @@ class BookedRequestTableCell: UITableViewCell {
     @IBOutlet weak var ratingView: UIView!
     @IBOutlet weak var dataContainerView: UIView!
     
+    var chatBtnTapped: (()->())?
+    var startServiceBtnTapped: (()->())?
+
     override func awakeFromNib() {
         super.awakeFromNib()
         initialSetUp()
@@ -41,9 +44,12 @@ class BookedRequestTableCell: UITableViewCell {
     
     
     @IBAction func startServiceAction(_ sender: AppButton) {
+        startServiceBtnTapped?()
     }
     
-    @IBAction func chatBtnAction(_ sender: AppButton) {}
+    @IBAction func chatBtnAction(_ sender: AppButton) {
+        chatBtnTapped?()
+    }
     
     public func initialSetUp(){
         self.logoImgView.backgroundColor = AppColors.fontTertiaryColor

@@ -24,6 +24,7 @@ class UserServiceRequestVC: BaseVC {
     @IBOutlet weak var bidRecivedValueLbl: UILabel!
     @IBOutlet weak var lowestBidValueLbl: UILabel!
     @IBOutlet weak var nearestBidderValueLbl: UILabel!
+    @IBOutlet weak var sarLbl: UILabel!
 
     @IBOutlet weak var emptyContainerView: UIView!
     @IBOutlet weak var cancelBtn: AppButton!
@@ -134,7 +135,7 @@ extension UserServiceRequestVC: UserServiceRequestVMDelegate{
         if viewModel.userRequestDetail.lowestBid == 0 {
             lowestBidValueLbl.textColor = AppColors.fontPrimaryColor
             lowestBidValueLbl.text = "No"
-            
+            sarLbl.isHidden = true
         }else {
             lowestBidValueLbl.textColor = #colorLiteral(red: 0.1725490196, green: 0.7137254902, blue: 0.4549019608, alpha: 1)
             lowestBidValueLbl.text = viewModel.userRequestDetail.lowestBid?.description
@@ -186,6 +187,5 @@ extension UserServiceRequestVC: UICollectionViewDelegate,UICollectionViewDataSou
         let textSize = brandsArray[indexPath.row].sizeCount(withFont: AppFonts.NunitoSansSemiBold.withSize(14.0), boundingSize: CGSize(width: 10000.0, height: collectionView.frame.height))
         return CGSize(width: textSize.width + 16, height: 44.0)
     }
-    
 }
 
