@@ -17,13 +17,14 @@ struct UserBidModel: Codable {
     let createdAt: String
     let garageName: String?
     var countries: [String]?
+    let logo: String?
     
     enum CodingKeys: String, CodingKey {
         case id = "_id"
         case status, bidData
         case requestID = "requestId"
         case garageID = "garageId"
-        case distance, createdAt, garageName,garage, countries
+        case distance, createdAt, garageName,garage, countries, logo
     }
     
     init(){
@@ -37,6 +38,7 @@ struct UserBidModel: Codable {
         createdAt = ""
         garageName = ""
         countries = []
+        logo = ""
     }
 }
 

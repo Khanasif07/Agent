@@ -170,6 +170,11 @@ enum ApiKey {
     static var amount: String { return "amount" }
     static var garageRequestId: String { return "garageRequestId" }
 
+    static var maxDistance: String { return "maxDistance" }
+    static var bidSort: String { return "bidSort" }
+    static var minDistance: String { return "minDistance" }
+
+    
 }
 
 //MARK:- Api Code

@@ -37,6 +37,7 @@ class OffersDetailVM{
     //MARK:- Variables
     //================
     var bidId: String  = ""
+    var garageName : String = ""
     var userBidDetail = UserBidModel()
     weak var delegate: OffersDetailVMDelegate?
     var bidData : [BidDatum] = []
@@ -73,7 +74,7 @@ class OffersDetailVM{
                 let modelList = try JSONDecoder().decode(UserBidModel.self, from: data)
                 printDebug(modelList)
                 self.userBidDetail = modelList
-                self.delegate?.getOfferDetailSuccess(message: "")
+                getBidData()
             } catch {
                 self.delegate?.getOfferDetailFailed(error: "error occured")
                 printDebug("error occured")
@@ -82,9 +83,14 @@ class OffersDetailVM{
     }
     
     func getBidData(country: String = "") {
-        bidData = userBidDetail.bidData.filter({ (data) -> Bool in
-            return data.countryName == country
-        })
-        delegate?.countryDataFilter()
+        if country.isEmpty {
+            bidData = userBidDetail.countries?.isEmpty ?? false ? userBidDetail.bidData : []
+            self.delegate?.getOfferDetailSuccess(message: "")
+        }else {
+            bidData = userBidDetail.bidData.filter({ (data) -> Bool in
+                return data.countryName == country
+            })
+            delegate?.countryDataFilter()
+        }
     }
 }

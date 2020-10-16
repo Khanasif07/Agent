@@ -18,7 +18,7 @@ class OfferFilterVC: BaseVC {
 
     // MARK: - Variables
     //===========================
-    var sectionArr : [FilterScreen] = [.distance("","", false), .bidReceived([],false)]
+    var sectionArr : [FilterScreen] = [.distance("","", false), .bidReceived("",false)]
     var onTapApply : (([FilterScreen])->())?
     let viewModel = SRFliterVM()
     var sliderHide: Bool = false
@@ -79,20 +79,10 @@ extension OfferFilterVC {
     }
     
     func updateDataSouce(_ filterValue:String , indexPath : IndexPath) {
-        var data: [String] = []
         switch self.sectionArr[indexPath.section] {
-        case .bidReceived(let arr, let hide) :
-            if arr.contains(filterValue) {
-                guard let firstIndex = arr.firstIndex(of: filterValue) else {return}
-                data = arr
-                data.remove(at: firstIndex)
-                self.sectionArr[indexPath.section] = .bidReceived(data, hide)
-            }else {
-                data = arr
-                data.append(filterValue)
-                self.sectionArr[indexPath.section] = .bidReceived(data, hide)
-            }
-            
+        case .bidReceived(let txt, let hide) :
+         self.sectionArr[indexPath.section] = .bidReceived(filterValue, hide)
+
         default:
             return
         }

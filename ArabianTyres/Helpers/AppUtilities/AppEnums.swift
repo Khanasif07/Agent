@@ -90,7 +90,7 @@ enum FilterScreen {
     case byServiceType([String],Bool)
     case byStatus([String],Bool)
     case date(Date?,Date?,Bool)
-    case bidReceived([String],Bool)
+    case bidReceived(String,Bool)
     case distance(String,String,Bool)
     case allRequestServiceType([String],Bool)
     case allRequestByStatus([String],Bool)
@@ -160,8 +160,8 @@ enum FilterScreen {
         case .date(let date1, let date2, let hide):
             return .date(date1, date2, !hide)
         
-        case .bidReceived(let arr,let hide):
-            return .bidReceived(arr, !hide)
+        case .bidReceived(let txt,let hide):
+            return .bidReceived(txt, !hide)
         
         case .distance(let minValue,let maxValue,let hide):
             return .distance(minValue,maxValue, !hide)
@@ -206,9 +206,9 @@ enum FilterScreen {
                     "placed",
                     "rejected"]
            case .bidReceived:
-            return ["Tyres",
-            "Oil",
-            "Battery"]
+            return ["1",
+            "-1",
+            ""]
             
            default:
             return [""]

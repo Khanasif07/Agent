@@ -105,11 +105,11 @@ extension OfferFilterTableViewCell: UICollectionViewDelegate,UICollectionViewDat
             cell.lineView.isHidden = sectionType.fliterTypeArr.count - 1 == indexPath.item
             return cell
             
-        case .bidReceived(let arr, _):
+        case .bidReceived(let txt, _):
             let cell = collectionView.dequeueCell(with: FilterCollectionViewCell.self, indexPath: indexPath)
             cell.setupForOfferFilter()
             cell.subCategoryName.text = sectionType.fliterTypeArr[indexPath.item]
-            cell.checkImgView.isHighlighted = arr.contains(sectionType.apiValue[indexPath.item])
+            cell.checkImgView.isHighlighted = txt == sectionType.apiValue[indexPath.item]
             cell.lineView.isHidden = sectionType.fliterTypeArr.count - 1 == indexPath.item
             return cell
      

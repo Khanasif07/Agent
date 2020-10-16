@@ -327,9 +327,13 @@ enum AppRouter {
         
     }
     
-    static func presentOfferDetailVC(vc: UIViewController,bidId: String){
+    static func presentOfferDetailVC(vc: UIViewController,bidId: String, garageName: String, completion : @escaping (()-> ())){
         let scene = OffersDetailVC.instantiate(fromAppStoryboard: .Garage)
         scene.viewModel.bidId = bidId
+        scene.viewModel.garageName = garageName
+        scene.proposalBtnTapped = {
+            completion()
+        }
         vc.modalPresentationStyle = .fullScreen
         vc.present(scene, animated: true, completion: nil)
         

@@ -131,6 +131,10 @@ extension UserServiceRequestVC: UserServiceRequestVMDelegate{
         let logoImg =  model.requestType == "Tyres" ? #imageLiteral(resourceName: "radialCarTireI151") : model.requestType == "Battery" ? #imageLiteral(resourceName: "icBattery") : #imageLiteral(resourceName: "icOil")
         self.mainImgView.image = logoImg
         viewAllBtn.isHidden = viewModel.userRequestDetail.totalBids == 0
+        if viewModel.userRequestDetail.status == .cancelled {
+            cancelBtn.isHidden = true
+            viewAllBtn.isHidden = true
+        }
         requestSeenValueLbl.text = "120"
         if viewModel.userRequestDetail.lowestBid == 0 {
             lowestBidValueLbl.textColor = AppColors.fontPrimaryColor

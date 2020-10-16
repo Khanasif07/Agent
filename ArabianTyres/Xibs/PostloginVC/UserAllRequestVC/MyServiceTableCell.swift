@@ -95,7 +95,7 @@ class MyServiceTableCell: UITableViewCell {
             offerView.backgroundColor =  #colorLiteral(red: 0.9098039216, green: 0.9843137255, blue: 0.9490196078, alpha: 1)
             offerLbl.text = "Offer Accepted"
         }else {
-            if model.totalOffers == 0 {
+            if model.totalOffers == 0 || model.status == .cancelled {
                 offerLbl.textColor = AppColors.fontTertiaryColor
                 offerView.backgroundColor =  #colorLiteral(red: 0.9098039216, green: 0.9333333333, blue: 0.9490196078, alpha: 1)
                 offerLbl.text = "No Offer"

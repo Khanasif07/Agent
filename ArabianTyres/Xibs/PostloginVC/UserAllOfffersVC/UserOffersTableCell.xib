@@ -67,7 +67,7 @@
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kRb-SE-eKO">
                                                         <rect key="frame" x="5" y="4" width="16" height="16"/>
-                                                        <color key="backgroundColor" red="1" green="0.69411764710000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="16" id="mtj-Lx-nRE"/>
                                                             <constraint firstAttribute="width" secondItem="kRb-SE-eKO" secondAttribute="height" id="xii-Ia-2jn"/>
@@ -91,7 +91,7 @@
                                                 </constraints>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="fgo-bg-pO6" firstAttribute="top" secondItem="UJ8-Cq-5NU" secondAttribute="top" id="CZZ-oo-bCX"/>
                                             <constraint firstAttribute="bottom" secondItem="fgo-bg-pO6" secondAttribute="bottom" id="GM6-73-MRJ"/>
@@ -105,7 +105,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uLS-zz-yxm">
                                         <rect key="frame" x="0.0" y="67" width="399" height="53"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="UQs-zm-9fv">
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="UQs-zm-9fv">
                                                 <rect key="frame" x="0.0" y="7" width="383" height="39"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="cnu-d0-Unl">
@@ -179,7 +179,7 @@
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="53" id="Kpk-Gp-VUT"/>
                                             <constraint firstItem="UQs-zm-9fv" firstAttribute="centerY" secondItem="uLS-zz-yxm" secondAttribute="centerY" id="YoQ-6D-0jb"/>
@@ -225,7 +225,7 @@
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="Nkc-Dc-Wr8" firstAttribute="leading" secondItem="pBt-CE-KY2" secondAttribute="leading" constant="-16" id="MHh-Zc-S1K"/>
                                             <constraint firstAttribute="height" constant="42" id="Rkx-8J-wgD"/>
@@ -246,12 +246,20 @@
                             <constraint firstAttribute="trailing" secondItem="L3L-mj-Idr" secondAttribute="trailing" id="bQi-w1-61L"/>
                         </constraints>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CqA-fx-aLB">
+                        <rect key="frame" x="17" y="8.5" width="415" height="189"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="4bi-7l-EZJ" secondAttribute="bottom" constant="8.5" id="1z2-xP-oaB"/>
                     <constraint firstAttribute="trailing" secondItem="4bi-7l-EZJ" secondAttribute="trailing" constant="17" id="DGM-9K-Bmi"/>
+                    <constraint firstItem="CqA-fx-aLB" firstAttribute="leading" secondItem="4bi-7l-EZJ" secondAttribute="leading" id="PD9-F7-6fX"/>
+                    <constraint firstItem="CqA-fx-aLB" firstAttribute="bottom" secondItem="4bi-7l-EZJ" secondAttribute="bottom" id="VoV-ch-gxF"/>
+                    <constraint firstItem="CqA-fx-aLB" firstAttribute="trailing" secondItem="4bi-7l-EZJ" secondAttribute="trailing" id="WaR-6p-ZHi"/>
                     <constraint firstItem="4bi-7l-EZJ" firstAttribute="leading" secondItem="0hT-yX-UDp" secondAttribute="leading" constant="17" id="YvE-Zi-xEZ"/>
                     <constraint firstItem="4bi-7l-EZJ" firstAttribute="top" secondItem="0hT-yX-UDp" secondAttribute="top" constant="8.5" id="i3y-pW-cFm"/>
+                    <constraint firstItem="CqA-fx-aLB" firstAttribute="top" secondItem="4bi-7l-EZJ" secondAttribute="top" id="wEP-0E-Nhz"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -259,6 +267,7 @@
             <connections>
                 <outlet property="BAValueLbl" destination="3SM-bM-EtC" id="nPN-z2-Opd"/>
                 <outlet property="bALbl" destination="SoI-Cm-oVJ" id="EbI-xe-3ju"/>
+                <outlet property="blurView" destination="CqA-fx-aLB" id="7xL-WZ-J52"/>
                 <outlet property="dataContainerView" destination="4bi-7l-EZJ" id="Eg6-cc-pY4"/>
                 <outlet property="distanceLbl" destination="rwF-Fd-rQT" id="wRe-Gy-FLB"/>
                 <outlet property="distanceValueLbl" destination="Gm1-Ha-RET" id="MOx-VC-3BH"/>
@@ -267,6 +276,8 @@
                 <outlet property="offerTitleLbl" destination="YUv-Kt-RYd" id="g2y-79-UV7"/>
                 <outlet property="quantityLbl" destination="sa5-gc-zVS" id="igT-WW-Xoe"/>
                 <outlet property="quantityValueLbl" destination="WfN-hf-hwf" id="PWv-RN-cmX"/>
+                <outlet property="ratingImgView" destination="kRb-SE-eKO" id="cp8-u4-JKT"/>
+                <outlet property="ratingLbl" destination="C9g-1n-mTX" id="wuT-We-gN6"/>
                 <outlet property="ratingView" destination="hr9-lA-SgP" id="bxv-TO-TAC"/>
                 <outlet property="rejectBtn" destination="4WK-R1-sbF" id="e4N-3N-FF4"/>
                 <outlet property="tALbl" destination="Ock-Oo-1Zj" id="6ZC-34-rr5"/>
