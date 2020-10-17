@@ -35,4 +35,5 @@ target 'ArabianTyres' do
   pod 'Firebase/Crashlytics'
   pod 'Socket.IO-Client-Swift', '~> 15.2.0'
   pod 'TTRangeSlider'
+  pod 'KDCircularProgress'
 end

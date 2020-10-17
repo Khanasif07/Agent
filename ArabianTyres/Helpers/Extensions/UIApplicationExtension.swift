@@ -47,5 +47,36 @@ extension UIApplication {
         }
     }
     
+    var visibleViewController: UIViewController? {
+        guard let rootViewController = UIWindow.key?.rootViewController else {
+            return nil
+        }
+        return getVisibleViewController(rootViewController)
+    }
     
+    private func getVisibleViewController(_ rootViewController: UIViewController) -> UIViewController? {
+        
+        if let presentedViewController = rootViewController.presentedViewController {
+            return getVisibleViewController(presentedViewController)
+        }
+        
+        if let navigationController = rootViewController as? UINavigationController {
+            if let tabBarController = navigationController.visibleViewController as? UITabBarController {
+                if let selectedTab = tabBarController.selectedViewController {
+                    return getVisibleViewController(selectedTab)
+                }
+                return tabBarController.selectedViewController
+            }
+            return navigationController.visibleViewController
+        }
+        
+        if let tabBarController = rootViewController as? UITabBarController {
+            if let selectedTab = tabBarController.selectedViewController {
+                return getVisibleViewController(selectedTab)
+            }
+            return tabBarController.selectedViewController
+        }
+        
+        return rootViewController
+    }
 }

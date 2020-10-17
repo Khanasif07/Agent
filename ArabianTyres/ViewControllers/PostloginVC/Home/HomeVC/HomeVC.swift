@@ -123,10 +123,10 @@ extension HomeVC : UICollectionViewDelegate, UICollectionViewDataSource,UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if !isUserLoggedin{
-            showAlert(msg: "Please login first to use this service")
-            return
-        }
+//        if !isUserLoggedin{
+//            showAlert(msg: "Please login first to use this service")
+//            return
+//        }
         TyreRequestModel.shared = TyreRequestModel()
         switch dataArray[indexPath.row].name {
         case LocalizedString.tyre.localized:

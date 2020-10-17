@@ -77,7 +77,11 @@ class TyreRequestedVC: BaseVC {
     
     
     @IBAction func requestBtnAction(_ sender: UIButton) {
-        self.viewModel.postTyreRequest(dict: TyreRequestModel.shared.getTyreRequestDict())
+        if !isUserLoggedin{
+            AppRouter.goToLoginVC(vc: self)
+        }else {
+            self.viewModel.postTyreRequest(dict: TyreRequestModel.shared.getTyreRequestDict())
+        }
     }
     
     @IBAction func sizeEditBtnAction(_ sender: UIButton) {

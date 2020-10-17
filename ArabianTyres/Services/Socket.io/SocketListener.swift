@@ -8,25 +8,21 @@
 
 
 import Foundation
-import SwiftyJSON
 import SocketIO
-
+import SwiftyJSON
 
 // MARK: - IM Sockets
 // listen message data to socket server
 extension SocketIOManager {
+
+    
      /// Method to listen online users when any one goes in and out from Room
        func listenOnlineUsers() {
         
         self.socket?.on(EventListnerKeys.newRequest.rawValue, callback: { data, _ in
                let json = JSON(data)
                printDebug(json)
-            if let jsonString = json.arrayValue.first{
-                let message = jsonString[ApiKey.message].stringValue
-                let requestId = jsonString[ApiKey.requestId].stringValue
-                printDebug(message)
-                printDebug(requestId)
-               }
+            self.parseToMakeListingData(result: json)
            })
         
         //
@@ -41,18 +37,10 @@ extension SocketIOManager {
         })
         //
         self.socket?.on(EventListnerKeys.newBid.rawValue, callback: { data, _ in
-                   printDebug(data)
-                   let json = JSON(data)
-                   if let jsonString = json.arrayValue.first![ApiKey.data].rawString(), let data = jsonString.data(using: .utf8) {
-                       do {
-                       } catch {
-                           printDebug("Error Occured due to Live User Model not parsed correctly.")
-                       }
-                       
-                   }
-               })
-        //
-        
+            printDebug(data)
+            let json = JSON(data)
+            self.parseToMakeListingData(result: json)
+        })
         
         self.socket?.on(EventListnerKeys.bidAccepted.rawValue, callback: { data, _ in
                    printDebug(data)
@@ -65,6 +53,5 @@ extension SocketIOManager {
                        
                    }
                })
-        //
        }
 }

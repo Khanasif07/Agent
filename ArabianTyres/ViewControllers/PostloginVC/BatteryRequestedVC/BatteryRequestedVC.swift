@@ -76,7 +76,11 @@ class BatteryRequestedVC: BaseVC {
     
     
     @IBAction func requestBtnAction(_ sender: UIButton) {
-        self.viewModel.postBatteryRequest(dict: TyreRequestModel.shared.getBatteryRequestDict())
+        if !isUserLoggedin{
+            AppRouter.goToLoginVC(vc: self)
+        }else {
+            self.viewModel.postBatteryRequest(dict: TyreRequestModel.shared.getBatteryRequestDict())
+        }
     }
     
     @IBAction func sizeEditBtnAction(_ sender: UIButton) {

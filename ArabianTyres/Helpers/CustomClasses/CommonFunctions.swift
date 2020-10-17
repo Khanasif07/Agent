@@ -148,7 +148,21 @@ class CommonFunctions {
         let attributedString = NSMutableAttributedString(string: text)
               let attributes:[NSAttributedString.Key:Any]=[
                   .foregroundColor: color,.underlineStyle: 1,NSAttributedString.Key.underlineColor:color]
-              attributedString.addAttributes(attributes, range: NSRange(location: 0, length: attributedString.length))
+        attributedString.addAttributes(attributes, range: NSRange(location: 0, length: attributedString.length))
         return attributedString
+    }
+    
+    class func presentOnTabBar() -> Bool{
+        if let visibleVC = UIApplication.shared.visibleViewController {
+            if visibleVC is GarageHomeVC || visibleVC is GarageAllRequestVC || visibleVC is OngoingServiceListingVC ||
+                visibleVC is GarageProfileVC || visibleVC is HomeVC || visibleVC is UserAllRequestVC || visibleVC is SettingVC ||  visibleVC is ProfileVC {
+                return true
+            }else {
+                return false
+            }
+        }else{
+            return false
+            
+        }
     }
 }

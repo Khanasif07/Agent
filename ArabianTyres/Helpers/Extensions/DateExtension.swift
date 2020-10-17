@@ -554,5 +554,17 @@ extension Date {
         let seconds = TimeInterval(timezone.secondsFromGMT(for: self))
         return Date(timeInterval: seconds, since: self)
     }
-
+    
+    var millisecondsSince1970:Int {
+        return Int((self.timeIntervalSince1970 * 1000.0).rounded())
+    }
+    
+    func getSecondFromTwoDate(fromDate: Date,toDate: Date) -> Int{
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.second]
+        formatter.unitsStyle = .full
+        let difference = formatter.string(from: fromDate, to: toDate)
+        let splitSecond = difference?.split(separator: " ")
+        return Int((splitSecond?.first as! NSString).intValue)
+    }
 }

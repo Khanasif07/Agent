@@ -251,6 +251,10 @@
 		A45566CD250B4EAC009E4324 /* RegistraionPendingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45566CC250B4EAC009E4324 /* RegistraionPendingVC.swift */; };
 		A45566D0250CA6C0009E4324 /* UploadDocumentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45566CF250CA6C0009E4324 /* UploadDocumentVC.swift */; };
 		A45707C32513B137003BE7DD /* TyreBrandVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45707C22513B137003BE7DD /* TyreBrandVC.swift */; };
+		A46808E82539CFBD00C2D404 /* SRPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46808E72539CFBD00C2D404 /* SRPopupVC.swift */; };
+		A468DCA02539D74100416CF9 /* GarageRequestPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A468DC9F2539D74100416CF9 /* GarageRequestPopupVC.swift */; };
+		A468DCA22539D80200416CF9 /* SocketIOManager+ApiData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A468DCA12539D80200416CF9 /* SocketIOManager+ApiData.swift */; };
+		A468DCA6253A020300416CF9 /* HandleRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A468DCA5253A020300416CF9 /* HandleRequest.swift */; };
 		A480DB0F251F1F9F0031B3E5 /* OilRequestedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A480DB0E251F1F9F0031B3E5 /* OilRequestedVC.swift */; };
 		A493133D2508D231007110E4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A493133C2508D231007110E4 /* GoogleService-Info.plist */; };
 		A49B7D4C251125AC0057239B /* FacilityCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49B7D4A251125AC0057239B /* FacilityCollectionViewCell.swift */; };
@@ -538,6 +542,10 @@
 		A45566CC250B4EAC009E4324 /* RegistraionPendingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistraionPendingVC.swift; sourceTree = "<group>"; };
 		A45566CF250CA6C0009E4324 /* UploadDocumentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadDocumentVC.swift; sourceTree = "<group>"; };
 		A45707C22513B137003BE7DD /* TyreBrandVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TyreBrandVC.swift; sourceTree = "<group>"; };
+		A46808E72539CFBD00C2D404 /* SRPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRPopupVC.swift; sourceTree = "<group>"; };
+		A468DC9F2539D74100416CF9 /* GarageRequestPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageRequestPopupVC.swift; sourceTree = "<group>"; };
+		A468DCA12539D80200416CF9 /* SocketIOManager+ApiData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SocketIOManager+ApiData.swift"; sourceTree = "<group>"; };
+		A468DCA5253A020300416CF9 /* HandleRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandleRequest.swift; sourceTree = "<group>"; };
 		A480DB0E251F1F9F0031B3E5 /* OilRequestedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OilRequestedVC.swift; sourceTree = "<group>"; };
 		A493133B2508BF68007110E4 /* ArabianTyres.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ArabianTyres.entitlements; sourceTree = "<group>"; };
 		A493133C2508D231007110E4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -967,6 +975,7 @@
 				84558EEB252F09D800BFF8C6 /* SocketEmitter.swift */,
 				84558EED252F0A0000BFF8C6 /* SocketListener.swift */,
 				84558EEF252F0A3600BFF8C6 /* SocketKeys+Enum.swift */,
+				A468DCA12539D80200416CF9 /* SocketIOManager+ApiData.swift */,
 			);
 			path = Socket.io;
 			sourceTree = "<group>";
@@ -1162,6 +1171,8 @@
 				A41AAB3F2530451B0061887F /* OfferFilterVC.swift */,
 				A41AAB492530742D0061887F /* RatingVC.swift */,
 				A41AAB4D2530A0390061887F /* MyServiceFilterVC.swift */,
+				A46808E72539CFBD00C2D404 /* SRPopupVC.swift */,
+				A468DC9F2539D74100416CF9 /* GarageRequestPopupVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1212,6 +1223,7 @@
 				8481FA222500BB5400AB6EFB /* AppNetworking.swift */,
 				8481FA242500BB6400AB6EFB /* Webservice+EndPoints.swift */,
 				8481FA262500BB7300AB6EFB /* Webservices.swift */,
+				A468DCA5253A020300416CF9 /* HandleRequest.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -2028,6 +2040,7 @@
 				A4C39FEC251E69A6001711F8 /* BatteryRequestedVC.swift in Sources */,
 				843DFD1E2503F017000DE6EB /* OtpVerificationVC.swift in Sources */,
 				84594808252B083300C0B249 /* BookedRequestVC.swift in Sources */,
+				A468DCA22539D80200416CF9 /* SocketIOManager+ApiData.swift in Sources */,
 				8481FA5B2500BF3B00AB6EFB /* CommonExtension.swift in Sources */,
 				8481FA3B2500BDFF00AB6EFB /* NotificationExtension.swift in Sources */,
 				84FF6EA7251DCB460000E2AD /* URTyreSizeVM.swift in Sources */,
@@ -2047,6 +2060,7 @@
 				8411D35A252DB78C00E6FA6C /* UserAllRequestVM.swift in Sources */,
 				8459480D252B0C0600C0B249 /* ServiceRequestTableCell.swift in Sources */,
 				A43137DB2534752C00C20082 /* UserAllOfferVM.swift in Sources */,
+				A46808E82539CFBD00C2D404 /* SRPopupVC.swift in Sources */,
 				844CBD1A2501F7D5009BE668 /* LoginTopTableCell.swift in Sources */,
 				8481FA852500EEC400AB6EFB /* ChooseLanguageVC.swift in Sources */,
 				843F004D25060822001A78EC /* CountryCodeTableCell.swift in Sources */,
@@ -2064,6 +2078,7 @@
 				843DFD202503F93A000DE6EB /* OtpVerificationVM.swift in Sources */,
 				A44E8D7C251CD24900ACBC4D /* VehicleDetailForOilVC.swift in Sources */,
 				843D4B9E25305C5A00D72D2F /* UserAllOffersVC.swift in Sources */,
+				A468DCA02539D74100416CF9 /* GarageRequestPopupVC.swift in Sources */,
 				8481FA652500BFAD00AB6EFB /* AppColors.swift in Sources */,
 				A41AAB43253047A50061887F /* OfferFilterTableViewCell.swift in Sources */,
 				A4203EF9252C31A100BD8802 /* FilterCollectionViewCell.swift in Sources */,
@@ -2209,6 +2224,7 @@
 				842B2FCC25133EC500E3CF67 /* BankListingVM.swift in Sources */,
 				8481F9FD2500AA9A00AB6EFB /* AppDelegate.swift in Sources */,
 				A45566CD250B4EAC009E4324 /* RegistraionPendingVC.swift in Sources */,
+				A468DCA6253A020300416CF9 /* HandleRequest.swift in Sources */,
 				84558EEA252F098B00BFF8C6 /* SocketIOManager.swift in Sources */,
 				8411D35E252EAC4B00E6FA6C /* UserServiceRequestVM.swift in Sources */,
 				A4B74CC92510C22700771974 /* GarageRegistrationVM.swift in Sources */,

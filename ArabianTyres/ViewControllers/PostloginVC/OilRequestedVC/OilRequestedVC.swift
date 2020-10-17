@@ -78,7 +78,11 @@ class OilRequestedVC: BaseVC {
     
     
     @IBAction func requestBtnAction(_ sender: UIButton) {
-        self.viewModel.postOilRequest(dict: TyreRequestModel.shared.getBatteryRequestDict())
+        if !isUserLoggedin{
+            AppRouter.goToLoginVC(vc: self)
+        }else {
+            self.viewModel.postOilRequest(dict: TyreRequestModel.shared.getBatteryRequestDict())
+        }
     }
       
     @IBAction func vechileDetailEditAction(_ sender: UIButton) {
