@@ -106,7 +106,12 @@ extension GarageRequestPopupVC {
     private func setupRequestData() {
         userImgView.setImage_kf(imageString: requestData?.userImage ?? "", placeHolderImage: #imageLiteral(resourceName: "placeHolder"))
         serviceTypeLbl.text = (requestData?.garageName ?? "") + " bid on your service request"
-        distanceLbl.text = (requestData?.distance.description ?? "") + " miles"
+        switch requestData?.distance {
+        case .double(let distance):
+            distanceLbl.text = "\(distance)" + " miles"
+        default:
+            break
+        }
         bidAmountLbl.text = (requestData?.amount?.description ?? "") + " SAR"
     }
     

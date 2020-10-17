@@ -106,7 +106,12 @@ extension SRPopupVC {
     private func setupRequestData() {
         userImgView.setImage_kf(imageString: requestData?.userImage ?? "", placeHolderImage: #imageLiteral(resourceName: "placeHolder"))
         serviceTypeLbl.text = requestData?.message
-        distanceLbl.text = (requestData?.distance.description ?? "") + " miles away"
+        switch requestData?.distance {
+        case .string(let txt):
+            distanceLbl.text =  txt + " miles away"
+        default:
+            break
+        }
     }
     
     private func startTimer() {

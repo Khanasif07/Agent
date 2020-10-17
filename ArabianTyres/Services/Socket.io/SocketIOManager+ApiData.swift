@@ -9,9 +9,34 @@
 import Foundation
 import SwiftyJSON
 
+enum QuantumValue: Decodable,Encodable {
+    func encode(to encoder: Encoder) throws {
+        
+    }
+    case double(Double), string(String)
+    
+    init(from decoder: Decoder) throws {
+        if let double = try? decoder.singleValueContainer().decode(Double.self) {
+            self = .double(double)
+            return
+        }
+        
+        if let string = try? decoder.singleValueContainer().decode(String.self) {
+            self = .string(string)
+            return
+        }
+        throw QuantumError.missingValue
+    }
+    
+    enum QuantumError:Error {
+        case missingValue
+    }
+}
+
+
 struct RequestModel: Codable {
     let eventName: String
-    let distance: Double
+    let distance: QuantumValue
     let userImage: String
     let requestId: String
     let time: String
