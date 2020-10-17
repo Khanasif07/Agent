@@ -47,13 +47,13 @@
                                                         <rect key="frame" x="56" y="0.0" width="184" height="48"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Battery Service Request" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YUv-Kt-RYd">
-                                                                <rect key="frame" x="0.0" y="0.0" width="184" height="20"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="184" height="48"/>
                                                                 <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dkl-WM-26H">
-                                                                <rect key="frame" x="0.0" y="32.5" width="184" height="15.5"/>
+                                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dkl-WM-26H">
+                                                                <rect key="frame" x="0.0" y="48" width="184" height="0.0"/>
                                                                 <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="13"/>
                                                                 <color key="textColor" red="0.32941177487373352" green="0.33725491166114807" blue="0.36078432202339172" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -62,6 +62,10 @@
                                                     </stackView>
                                                 </subviews>
                                             </stackView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fiX-hH-XbD">
+                                                <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                                                <color key="backgroundColor" red="0.76470588235294112" green="0.75686274509803919" blue="0.75686274509803919" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hr9-lA-SgP">
                                                 <rect key="frame" x="338.5" y="0.0" width="52.5" height="24"/>
                                                 <subviews>
@@ -97,8 +101,12 @@
                                             <constraint firstAttribute="bottom" secondItem="fgo-bg-pO6" secondAttribute="bottom" id="GM6-73-MRJ"/>
                                             <constraint firstItem="fgo-bg-pO6" firstAttribute="centerY" secondItem="UJ8-Cq-5NU" secondAttribute="centerY" id="Kr6-Ym-AhN"/>
                                             <constraint firstItem="fgo-bg-pO6" firstAttribute="leading" secondItem="UJ8-Cq-5NU" secondAttribute="leading" id="MSl-m2-yZO"/>
+                                            <constraint firstItem="fiX-hH-XbD" firstAttribute="trailing" secondItem="IiV-9V-e1T" secondAttribute="trailing" id="O2Y-MN-KyD"/>
                                             <constraint firstItem="hr9-lA-SgP" firstAttribute="top" secondItem="fgo-bg-pO6" secondAttribute="top" id="Q2e-Sh-Wv5"/>
                                             <constraint firstItem="hr9-lA-SgP" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fgo-bg-pO6" secondAttribute="trailing" constant="16" id="UGV-Uf-5Gq"/>
+                                            <constraint firstItem="fiX-hH-XbD" firstAttribute="leading" secondItem="IiV-9V-e1T" secondAttribute="leading" id="VZc-nn-qHt"/>
+                                            <constraint firstItem="fiX-hH-XbD" firstAttribute="bottom" secondItem="IiV-9V-e1T" secondAttribute="bottom" id="q82-GX-lxG"/>
+                                            <constraint firstItem="fiX-hH-XbD" firstAttribute="top" secondItem="IiV-9V-e1T" secondAttribute="top" id="vGr-0S-vlp"/>
                                             <constraint firstAttribute="trailing" secondItem="hr9-lA-SgP" secondAttribute="trailing" constant="8" id="wV4-6D-t4I"/>
                                         </constraints>
                                     </view>
@@ -271,6 +279,7 @@
                 <outlet property="dataContainerView" destination="4bi-7l-EZJ" id="Eg6-cc-pY4"/>
                 <outlet property="distanceLbl" destination="rwF-Fd-rQT" id="wRe-Gy-FLB"/>
                 <outlet property="distanceValueLbl" destination="Gm1-Ha-RET" id="MOx-VC-3BH"/>
+                <outlet property="imgBlurView" destination="fiX-hH-XbD" id="8V3-Om-bO1"/>
                 <outlet property="logoImgView" destination="IiV-9V-e1T" id="SeL-Ng-VTQ"/>
                 <outlet property="offerSubTitleLbl" destination="dkl-WM-26H" id="sfq-UR-dgR"/>
                 <outlet property="offerTitleLbl" destination="YUv-Kt-RYd" id="g2y-79-UV7"/>

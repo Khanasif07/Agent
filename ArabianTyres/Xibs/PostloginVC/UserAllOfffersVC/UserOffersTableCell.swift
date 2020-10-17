@@ -31,7 +31,8 @@ class UserOffersTableCell: UITableViewCell {
     @IBOutlet weak var blurView: UIView!
     @IBOutlet weak var ratingLbl: UILabel!
     @IBOutlet weak var ratingImgView: UIImageView!
-
+    @IBOutlet weak var imgBlurView :UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         ratingView.backgroundColor = AppColors.fontTertiaryColor
@@ -39,6 +40,7 @@ class UserOffersTableCell: UITableViewCell {
         rejectBtn.isBorderSelected = true
         viewProposalBtn.isEnabled = true
         blurView.isHidden = true
+        imgBlurView.isHidden = true
     }
     
     override func layoutSubviews() {
@@ -108,12 +110,13 @@ class UserOffersTableCell: UITableViewCell {
     }
 
     func changeWithBlurView() {
+        imgBlurView.isHidden = false
         blurView.isHidden = false
         ratingImgView.backgroundColor =  #colorLiteral(red: 0.7642653584, green: 0.7569509149, blue: 0.7566949725, alpha: 1)
         ratingView.backgroundColor = #colorLiteral(red: 0.9171934724, green: 0.9099001288, blue: 0.9096190333, alpha: 1)
         offerTitleLbl.textColor =   #colorLiteral(red: 0.1098039216, green: 0.1137254902, blue: 0.1411764706, alpha: 0.5)
         offerSubTitleLbl.textColor =  #colorLiteral(red: 0.3294117647, green: 0.337254902, blue: 0.3607843137, alpha: 0.5)
-        quantityLbl.textColor =   #colorLiteral(red: 0.7642653584, green: 0.7569509149, blue: 0.7566949725, alpha: 1)
+        quantityLbl.textColor =   #colorLiteral(red: 0.7647058824, green: 0.7568627451, blue: 0.7568627451, alpha: 1)
         bALbl.textColor =   #colorLiteral(red: 0.7642653584, green: 0.7569509149, blue: 0.7566949725, alpha: 1)
         distanceLbl.textColor =   #colorLiteral(red: 0.7642653584, green: 0.7569509149, blue: 0.7566949725, alpha: 1)
         tALbl.textColor =   #colorLiteral(red: 0.7642653584, green: 0.7569509149, blue: 0.7566949725, alpha: 1)
@@ -126,7 +129,7 @@ class UserOffersTableCell: UITableViewCell {
         dataContainerView.backgroundColor = #colorLiteral(red: 0.9647058824, green: 0.968627451, blue: 0.9764705882, alpha: 1)
         viewProposalBtn.backgroundColor = #colorLiteral(red: 0.6348647475, green: 0.6275323629, blue: 0.6272975802, alpha: 1)
         viewProposalBtn.setTitleColor( #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
-        rejectBtn.backgroundColor =  #colorLiteral(red: 0.7642653584, green: 0.7569509149, blue: 0.7566949725, alpha: 1)
+        rejectBtn.backgroundColor =  #colorLiteral(red: 0.9803921569, green: 0.9803921569, blue: 0.9803921569, alpha: 1)
         rejectBtn.setTitleColor( #colorLiteral(red: 0.6348647475, green: 0.6275323629, blue: 0.6272975802, alpha: 1), for: .normal)
         rejectBtn.borderColor =  #colorLiteral(red: 0.6348647475, green: 0.6275323629, blue: 0.6272975802, alpha: 1)
         
