@@ -34,13 +34,13 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="56"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ongoing Services" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VQx-mA-1Tn">
-                                        <rect key="frame" x="140" y="21" width="134.5" height="20"/>
+                                        <rect key="frame" x="138" y="19" width="138.5" height="23.5"/>
                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fL7-yf-Ewb">
-                                        <rect key="frame" x="6" y="-3" width="72" height="68"/>
+                                        <rect key="frame" x="6" y="14" width="36" height="34"/>
                                         <state key="normal" image="icBackward"/>
                                     </button>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="axu-FF-BQ3">
@@ -159,7 +159,7 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </textField>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SAR" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zTV-9c-FLc">
-                                                                <rect key="frame" x="298" y="13.5" width="40" height="20"/>
+                                                                <rect key="frame" x="298" y="21" width="40" height="20"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="40" id="BfB-P2-ell"/>
                                                                 </constraints>
@@ -544,9 +544,6 @@ start Servicing</string>
                                         <state key="normal" title="Cancel">
                                             <color key="titleColor" red="0.54117647058823526" green="0.58431372549019611" blue="0.61960784313725492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
-                                        <connections>
-                                            <action selector="cancelBtnAction:" destination="4rK-6p-Ix2" eventType="touchUpInside" id="mkS-zf-2yj"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UG1-Hv-3dW">
                                         <rect key="frame" x="353" y="17" width="46" height="28"/>
@@ -554,11 +551,11 @@ start Servicing</string>
                                             <constraint firstAttribute="width" constant="46" id="SWi-Id-u6y"/>
                                             <constraint firstAttribute="height" constant="28" id="e3Q-ps-OTb"/>
                                         </constraints>
-                                        <state key="normal" title="Apply">
+                                        <state key="normal" title="Reset">
                                             <color key="titleColor" name="appRedColor"/>
                                         </state>
                                         <connections>
-                                            <action selector="applyBtnAction:" destination="4rK-6p-Ix2" eventType="touchUpInside" id="Loe-jq-Nao"/>
+                                            <action selector="resetBtnAction:" destination="4rK-6p-Ix2" eventType="touchUpInside" id="Bpz-3Y-LzR"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NzX-MB-zgl">
@@ -584,7 +581,7 @@ start Servicing</string>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="eeo-FW-2O3">
-                                <rect key="frame" x="0.0" y="100" width="414" height="796"/>
+                                <rect key="frame" x="0.0" y="100" width="414" height="677"/>
                                 <color key="backgroundColor" red="0.96470588235294119" green="0.96862745098039216" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FilterTableViewCell" rowHeight="194" id="hEO-RM-xHk" customClass="FilterTableViewCell" customModule="ArabianTyres" customModuleProvider="target">
@@ -692,21 +689,44 @@ start Servicing</string>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bDQ-Op-Ldq" customClass="AppButton" customModule="ArabianTyres" customModuleProvider="target">
+                                <rect key="frame" x="16" y="792" width="382" height="55"/>
+                                <color key="backgroundColor" name="appRedColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="NYw-Dr-OdY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="15"/>
+                                <state key="normal" title="Apply filters">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="applyBtnAction:" destination="4rK-6p-Ix2" eventType="touchUpInside" id="WCT-fO-rrn"/>
+                                    <action selector="placeBidBtnAction:" destination="VNh-Mn-3hW" eventType="touchUpInside" id="DwW-6l-568"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="95K-vu-uDC" firstAttribute="bottom" secondItem="bDQ-Op-Ldq" secondAttribute="bottom" constant="15" id="0Ia-th-iey"/>
                             <constraint firstItem="zIY-Dc-d4r" firstAttribute="trailing" secondItem="95K-vu-uDC" secondAttribute="trailing" id="5jT-xv-Mjb"/>
+                            <constraint firstItem="95K-vu-uDC" firstAttribute="trailing" secondItem="bDQ-Op-Ldq" secondAttribute="trailing" constant="16" id="72S-j6-2J3"/>
+                            <constraint firstItem="bDQ-Op-Ldq" firstAttribute="leading" secondItem="95K-vu-uDC" secondAttribute="leading" constant="16" id="CBY-UM-8EZ"/>
                             <constraint firstItem="eeo-FW-2O3" firstAttribute="top" secondItem="zIY-Dc-d4r" secondAttribute="bottom" id="UsZ-oo-pJa"/>
+                            <constraint firstItem="bDQ-Op-Ldq" firstAttribute="top" secondItem="eeo-FW-2O3" secondAttribute="bottom" constant="15" id="Vvt-Ye-Prf"/>
                             <constraint firstItem="zIY-Dc-d4r" firstAttribute="top" secondItem="95K-vu-uDC" secondAttribute="top" id="dY7-ZC-EXG"/>
                             <constraint firstItem="eeo-FW-2O3" firstAttribute="leading" secondItem="95K-vu-uDC" secondAttribute="leading" id="f8Y-9X-3PN"/>
                             <constraint firstItem="95K-vu-uDC" firstAttribute="trailing" secondItem="eeo-FW-2O3" secondAttribute="trailing" id="fw5-Oc-84o"/>
                             <constraint firstItem="zIY-Dc-d4r" firstAttribute="leading" secondItem="95K-vu-uDC" secondAttribute="leading" id="tjv-rX-hZw"/>
-                            <constraint firstAttribute="bottom" secondItem="eeo-FW-2O3" secondAttribute="bottom" id="wPR-Q2-1rY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="95K-vu-uDC"/>
                     </view>
                     <connections>
-                        <outlet property="applyBtn" destination="UG1-Hv-3dW" id="ulS-l1-MwX"/>
+                        <outlet property="applyBtn" destination="bDQ-Op-Ldq" id="ey9-q5-2YX"/>
                         <outlet property="canceBtn" destination="IRt-Dr-vYe" id="3Yx-Dw-fcQ"/>
                         <outlet property="filterLbl" destination="wyd-cL-Z1G" id="Mum-kB-mWe"/>
                         <outlet property="mainTableView" destination="eeo-FW-2O3" id="FDg-uc-tyl"/>
@@ -738,9 +758,6 @@ start Servicing</string>
                                         <state key="normal" title="Cancel">
                                             <color key="titleColor" red="0.54117647059999996" green="0.58431372550000005" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
-                                        <connections>
-                                            <action selector="cancelBtnAction:" destination="4rK-6p-Ix2" eventType="touchUpInside" id="g75-uz-e2G"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W40-va-Cpm">
                                         <rect key="frame" x="353" y="17" width="46" height="28"/>
@@ -911,7 +928,6 @@ start Servicing</string>
                                         </state>
                                         <connections>
                                             <action selector="cancelBtnAction:" destination="Rvf-KP-WP7" eventType="touchUpInside" id="5fu-4v-rtL"/>
-                                            <action selector="cancelBtnAction:" destination="4rK-6p-Ix2" eventType="touchUpInside" id="5ks-0F-QTl"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OdN-KF-wBC">
@@ -924,7 +940,6 @@ start Servicing</string>
                                             <color key="titleColor" name="appRedColor"/>
                                         </state>
                                         <connections>
-                                            <action selector="applyBtnAction:" destination="4rK-6p-Ix2" eventType="touchUpInside" id="Twi-rd-9XN"/>
                                             <action selector="resetFilterAction:" destination="Rvf-KP-WP7" eventType="touchUpInside" id="WEa-OA-Lh7"/>
                                         </connections>
                                     </button>
@@ -1354,7 +1369,6 @@ start Servicing</string>
                                         </state>
                                         <connections>
                                             <action selector="cancelBtnAction:" destination="gX5-Kd-C6r" eventType="touchUpInside" id="NMu-tx-NAn"/>
-                                            <action selector="cancelBtnAction:" destination="4rK-6p-Ix2" eventType="touchUpInside" id="ZPc-Zh-36A"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jTa-tp-Wzi">
