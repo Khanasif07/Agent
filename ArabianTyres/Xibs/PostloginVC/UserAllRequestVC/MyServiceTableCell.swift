@@ -77,19 +77,6 @@ class MyServiceTableCell: UITableViewCell {
     
         let time = getTimeFromDate(date: model.createdAt)
         self.timeLbl.text = time + " on " + date
-//        if model.requestType == "Tyres" {
-//              bottomView.isHidden = true
-//        }else {
-//              bottomView.isHidden = false
-//        }
-//        if model.requestType == "Battery" {
-//            statusView.isHidden = true
-//            bottomView.isHidden = true
-//        } else {
-//            statusView.isHidden = false
-//            bottomView.isHidden = false
-//        }
-        
         if model.isOfferAccepted ?? false {
             offerLbl.textColor = #colorLiteral(red: 0.1725490196, green: 0.7137254902, blue: 0.4549019608, alpha: 1)
             offerView.backgroundColor =  #colorLiteral(red: 0.9098039216, green: 0.9843137255, blue: 0.9490196078, alpha: 1)

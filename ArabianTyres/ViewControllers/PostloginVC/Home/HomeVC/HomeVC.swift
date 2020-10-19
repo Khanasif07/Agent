@@ -30,6 +30,7 @@ class HomeVC: BaseVC {
     
     // MARK: - Variables
     //===========================
+    var viewModel = LocationPopUpVM()
     var dataArray:[DataValue] = []
     
     // MARK: - Lifecycle
@@ -65,8 +66,10 @@ class HomeVC: BaseVC {
 extension HomeVC {
     
     private func initialSetup() {
+        viewModel.delegate = self
         self.dataSetUp()
         self.collectionViewSetUp()
+        self.isComeFromGuestUser()
     }
     
     private func dataSetUp(){
@@ -86,10 +89,23 @@ extension HomeVC {
         mainCollView.registerCell(with: HomeCollectionCell.self)
     }
     
+    private func isComeFromGuestUser(){
+        if !TyreRequestModel.shared.latitude.isEmpty {
+            switch categoryType {
+            case .tyres:
+                self.viewModel.postTyreRequest(dict: TyreRequestModel.shared.getTyreRequestDict())
+            case .battery:
+                self.viewModel.postBatteryRequest(dict: TyreRequestModel.shared.getBatteryRequestDict())
+            default:
+                self.viewModel.postOilRequest(dict: TyreRequestModel.shared.getBatteryRequestDict())
+            }
+        }
+    }
+    
 }
 
-// MARK: - Extension For TableView
-//===========================
+// MARK: - Extension For Collection View
+//=======================================
 extension HomeVC : UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -123,10 +139,6 @@ extension HomeVC : UICollectionViewDelegate, UICollectionViewDataSource,UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        if !isUserLoggedin{
-//            showAlert(msg: "Please login first to use this service")
-//            return
-//        }
         TyreRequestModel.shared = TyreRequestModel()
         switch dataArray[indexPath.row].name {
         case LocalizedString.tyre.localized:
@@ -143,4 +155,38 @@ extension HomeVC : UICollectionViewDelegate, UICollectionViewDataSource,UICollec
         }
     }
     
+}
+
+// MARK: - Extension For LocationPopUpVMDelegate
+//===========================
+extension HomeVC:LocationPopUpVMDelegate {
+    func postTyreRequestSuccess(message: String){
+          AppRouter.showSuccessPopUp(vc: self, title: "Successfully Requested", desc: "Your request for tyre service has been submitted successfully.")
+    }
+    func postTyreRequestFailed(error:String){
+        ToastView.shared.showLongToast(self.view, msg: error)
+    }
+    func postBatteryRequestSuccess(message: String){
+          AppRouter.showSuccessPopUp(vc: self, title: "Successfully Requested", desc: "Your request for battery service has been submitted successfully.")
+    }
+    func postBatteryRequestFailed(error:String){
+        ToastView.shared.showLongToast(self.view, msg: error)
+    }
+    func postOilRequestSuccess(message: String){
+          AppRouter.showSuccessPopUp(vc: self, title: "Successfully Requested", desc: "Your request for oil service has been submitted successfully.")
+    }
+    func postOilRequestFailed(error:String){
+        ToastView.shared.showLongToast(self.view, msg: error)
+    }
+}
+
+// MARK: - SuccessPopupVCDelegate
+//===============================
+extension HomeVC: SuccessPopupVCDelegate {
+    func okBtnAction() {
+        self.dismiss(animated: true) {
+            TyreRequestModel.shared = TyreRequestModel()
+            self.navigationController?.popToViewControllerOfType(classForCoder: HomeVC.self)
+        }
+    }
 }

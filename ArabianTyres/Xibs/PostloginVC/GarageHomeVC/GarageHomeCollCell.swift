@@ -24,8 +24,9 @@ class GarageHomeCollCell: UICollectionViewCell {
     }
     
     public func populateData(model: GarageDataValue){
-        self.requestTypeLbl.textColor = .red
+        self.requestTypeLbl.textColor = .black
         self.requestTypeLbl.text = model.name
+        self.requestCountLbl.textColor = model.requestColor
         self.requestCountLbl.text = "\(model.requestCount)"
         self.dataContainerView.backgroundColor = model.backgroundColor
     }

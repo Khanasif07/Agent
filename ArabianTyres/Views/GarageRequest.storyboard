@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -34,7 +34,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="56"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ongoing Services" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VQx-mA-1Tn">
-                                        <rect key="frame" x="140" y="21" width="134.5" height="20"/>
+                                        <rect key="frame" x="138" y="19" width="138.5" height="23.5"/>
                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -823,7 +823,7 @@ start Servicing</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tRZ-cY-wTy">
-                                        <rect key="frame" x="14" y="14" width="36" height="34"/>
+                                        <rect key="frame" x="14" y="-3" width="72" height="68"/>
                                         <state key="normal" image="icBackward">
                                             <color key="titleColor" red="0.54117647059999996" green="0.58431372550000005" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -912,8 +912,8 @@ start Servicing</string>
                                             <color key="titleColor" red="0.54117647059999996" green="0.58431372550000005" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
+                                            <action selector="cancelBtnAction:" destination="Rvf-KP-WP7" eventType="touchUpInside" id="5fu-4v-rtL"/>
                                             <action selector="cancelBtnAction:" destination="4rK-6p-Ix2" eventType="touchUpInside" id="5ks-0F-QTl"/>
-                                            <action selector="cancelBtnAction:" destination="Rvf-KP-WP7" eventType="touchUpInside" id="yyP-xZ-J9u"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OdN-KF-wBC">
@@ -922,12 +922,12 @@ start Servicing</string>
                                             <constraint firstAttribute="height" constant="28" id="KFo-SV-j9Z"/>
                                             <constraint firstAttribute="width" constant="46" id="ecO-aS-9Cv"/>
                                         </constraints>
-                                        <state key="normal" title="Apply">
+                                        <state key="normal" title="Reset">
                                             <color key="titleColor" name="appRedColor"/>
                                         </state>
                                         <connections>
-                                            <action selector="applyBtnAction:" destination="Rvf-KP-WP7" eventType="touchUpInside" id="H5N-uj-NqH"/>
                                             <action selector="applyBtnAction:" destination="4rK-6p-Ix2" eventType="touchUpInside" id="Twi-rd-9XN"/>
+                                            <action selector="resetFilterAction:" destination="Rvf-KP-WP7" eventType="touchUpInside" id="WEa-OA-Lh7"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wGw-Bw-PiB">
@@ -953,30 +953,54 @@ start Servicing</string>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="k2h-TK-8e1">
-                                <rect key="frame" x="0.0" y="100" width="414" height="796"/>
+                                <rect key="frame" x="0.0" y="100" width="414" height="676"/>
                                 <color key="backgroundColor" red="0.96470588235294119" green="0.96862745098039216" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U0M-3J-9ag" customClass="AppButton" customModule="ArabianTyres">
+                                <rect key="frame" x="16" y="791" width="382" height="56"/>
+                                <color key="backgroundColor" name="appRedColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="qKk-vH-GTA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="15"/>
+                                <state key="normal" title="Apply Filters">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="applyBtnAction:" destination="Rvf-KP-WP7" eventType="touchUpInside" id="ZAp-r8-blS"/>
+                                    <action selector="saveBtnBtnAction:" destination="K8Q-hi-fID" eventType="touchUpInside" id="4TO-r4-utv"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="k2h-TK-8e1" secondAttribute="bottom" id="7xH-Ct-Nis"/>
+                            <constraint firstItem="Mja-Uq-xGU" firstAttribute="bottom" secondItem="U0M-3J-9ag" secondAttribute="bottom" constant="15" id="6if-ui-ir1"/>
                             <constraint firstItem="Mja-Uq-xGU" firstAttribute="trailing" secondItem="k2h-TK-8e1" secondAttribute="trailing" id="8Wy-PT-vhP"/>
                             <constraint firstItem="7Wm-KU-TFq" firstAttribute="trailing" secondItem="Mja-Uq-xGU" secondAttribute="trailing" id="F2C-Mw-JAW"/>
+                            <constraint firstItem="U0M-3J-9ag" firstAttribute="top" secondItem="k2h-TK-8e1" secondAttribute="bottom" constant="15" id="MpA-3n-FmE"/>
                             <constraint firstItem="7Wm-KU-TFq" firstAttribute="top" secondItem="Mja-Uq-xGU" secondAttribute="top" id="e4H-lC-aUY"/>
                             <constraint firstItem="k2h-TK-8e1" firstAttribute="leading" secondItem="Mja-Uq-xGU" secondAttribute="leading" id="fQV-ib-USG"/>
                             <constraint firstItem="k2h-TK-8e1" firstAttribute="top" secondItem="7Wm-KU-TFq" secondAttribute="bottom" id="j68-gp-N0Y"/>
+                            <constraint firstItem="Mja-Uq-xGU" firstAttribute="trailing" secondItem="U0M-3J-9ag" secondAttribute="trailing" constant="16" id="lB9-zI-FbR"/>
                             <constraint firstItem="7Wm-KU-TFq" firstAttribute="leading" secondItem="Mja-Uq-xGU" secondAttribute="leading" id="rxr-EV-Agh"/>
+                            <constraint firstItem="U0M-3J-9ag" firstAttribute="leading" secondItem="Mja-Uq-xGU" secondAttribute="leading" constant="16" id="yuZ-ql-3w3"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Mja-Uq-xGU"/>
                     </view>
                     <connections>
+                        <outlet property="applyFilterBtn" destination="U0M-3J-9ag" id="Ppr-JF-LRV"/>
                         <outlet property="mainTableView" destination="k2h-TK-8e1" id="deb-nx-rlw"/>
                         <outlet property="titleLbl" destination="7e4-c6-Rrn" id="g3S-0z-ivr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R17-BC-hdG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="316" y="733"/>
+            <point key="canvasLocation" x="315.94202898550725" y="732.58928571428567"/>
         </scene>
         <!--RatingVC-->
         <scene sceneID="sjf-pN-A86">
@@ -1331,7 +1355,6 @@ start Servicing</string>
                                             <color key="titleColor" red="0.54117647059999996" green="0.58431372550000005" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="cancelBtnAction:" destination="Rvf-KP-WP7" eventType="touchUpInside" id="Hj8-EL-s4Q"/>
                                             <action selector="cancelBtnAction:" destination="gX5-Kd-C6r" eventType="touchUpInside" id="NMu-tx-NAn"/>
                                             <action selector="cancelBtnAction:" destination="4rK-6p-Ix2" eventType="touchUpInside" id="ZPc-Zh-36A"/>
                                         </connections>
@@ -1342,13 +1365,11 @@ start Servicing</string>
                                             <constraint firstAttribute="width" constant="46" id="0AP-aa-acz"/>
                                             <constraint firstAttribute="height" constant="28" id="gmT-Qc-alT"/>
                                         </constraints>
-                                        <state key="normal" title="Apply">
+                                        <state key="normal" title="Reset">
                                             <color key="titleColor" name="appRedColor"/>
                                         </state>
                                         <connections>
-                                            <action selector="applyBtnAction:" destination="4rK-6p-Ix2" eventType="touchUpInside" id="2fp-bb-RfG"/>
-                                            <action selector="applyBtnAction:" destination="gX5-Kd-C6r" eventType="touchUpInside" id="HBh-eZ-ZFd"/>
-                                            <action selector="applyBtnAction:" destination="Rvf-KP-WP7" eventType="touchUpInside" id="Zqa-0r-gZy"/>
+                                            <action selector="resetFilterAction:" destination="gX5-Kd-C6r" eventType="touchUpInside" id="fba-FR-kjb"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wdT-M0-v3J">
@@ -1374,32 +1395,56 @@ start Servicing</string>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="hpr-Li-VpX">
-                                <rect key="frame" x="0.0" y="100" width="414" height="796"/>
+                                <rect key="frame" x="0.0" y="100" width="414" height="676"/>
                                 <color key="backgroundColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q34-qb-MtB" customClass="AppButton" customModule="ArabianTyres">
+                                <rect key="frame" x="16" y="791" width="382" height="56"/>
+                                <color key="backgroundColor" name="appRedColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="Wwt-GT-4FH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="15"/>
+                                <state key="normal" title="Apply Filters">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="applyBtnAction:" destination="Rvf-KP-WP7" eventType="touchUpInside" id="2dG-07-YoW"/>
+                                    <action selector="applyBtnAction:" destination="gX5-Kd-C6r" eventType="touchUpInside" id="zeL-zY-RXf"/>
+                                    <action selector="saveBtnBtnAction:" destination="K8Q-hi-fID" eventType="touchUpInside" id="A2F-99-8bD"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="Q34-qb-MtB" firstAttribute="top" secondItem="hpr-Li-VpX" secondAttribute="bottom" constant="15" id="3ZL-h3-HZB"/>
                             <constraint firstItem="0C1-jS-KZm" firstAttribute="trailing" secondItem="Khe-ge-KOq" secondAttribute="trailing" id="AtB-0N-msv"/>
                             <constraint firstItem="0C1-jS-KZm" firstAttribute="leading" secondItem="Khe-ge-KOq" secondAttribute="leading" id="DrW-wM-VdE"/>
                             <constraint firstItem="hpr-Li-VpX" firstAttribute="trailing" secondItem="Khe-ge-KOq" secondAttribute="trailing" id="LT4-zg-irx"/>
                             <constraint firstItem="hpr-Li-VpX" firstAttribute="top" secondItem="0C1-jS-KZm" secondAttribute="bottom" id="LfO-qd-cV9"/>
-                            <constraint firstAttribute="bottom" secondItem="hpr-Li-VpX" secondAttribute="bottom" id="RKB-SK-0t2"/>
+                            <constraint firstItem="Khe-ge-KOq" firstAttribute="bottom" secondItem="Q34-qb-MtB" secondAttribute="bottom" constant="15" id="Tch-oH-xnN"/>
                             <constraint firstItem="hpr-Li-VpX" firstAttribute="leading" secondItem="Khe-ge-KOq" secondAttribute="leading" id="Tfe-ef-M0R"/>
+                            <constraint firstItem="Khe-ge-KOq" firstAttribute="trailing" secondItem="Q34-qb-MtB" secondAttribute="trailing" constant="16" id="lGM-Cn-bYa"/>
+                            <constraint firstItem="Q34-qb-MtB" firstAttribute="leading" secondItem="Khe-ge-KOq" secondAttribute="leading" constant="16" id="nLA-da-QzJ"/>
                             <constraint firstItem="0C1-jS-KZm" firstAttribute="top" secondItem="Khe-ge-KOq" secondAttribute="top" id="xRC-Cg-9zT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Khe-ge-KOq"/>
                     </view>
                     <connections>
-                        <outlet property="applyBtn" destination="jTa-tp-Wzi" id="7qQ-6L-7JK"/>
-                        <outlet property="canceBtn" destination="aJC-ji-Sgo" id="idp-cL-PyD"/>
+                        <outlet property="applyBtn" destination="Q34-qb-MtB" id="NoA-b2-p2U"/>
+                        <outlet property="canceBtn" destination="aJC-ji-Sgo" id="UdO-Ce-eML"/>
                         <outlet property="filterLbl" destination="ZoO-1N-HAy" id="cL1-7I-4l5"/>
                         <outlet property="mainTableView" destination="hpr-Li-VpX" id="hq3-9D-LBt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="86g-nA-d4E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1890" y="731"/>
+            <point key="canvasLocation" x="1889.8550724637682" y="730.58035714285711"/>
         </scene>
     </scenes>
     <resources>
