@@ -104,10 +104,10 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9fU-T0-Tcz">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="98"/>
+                                        <rect key="frame" x="0.0" y="24" width="414" height="52"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="hLN-OY-EcT">
-                                                <rect key="frame" x="26" y="34.5" width="77.5" height="29"/>
+                                                <rect key="frame" x="26" y="2.5" width="165.5" height="47"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi, User" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OY4-gC-MIS">
                                                         <rect key="frame" x="0.0" y="0.0" width="77.5" height="29"/>
@@ -115,30 +115,52 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11:30 AM, 23 January 2020" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UH5-U6-1KO">
+                                                        <rect key="frame" x="0.0" y="29" width="165.5" height="18"/>
+                                                        <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="13"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                 </subviews>
                                             </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sLo-3k-oiT">
+                                                <rect key="frame" x="352" y="2" width="41" height="48"/>
+                                                <state key="normal" image="group3811"/>
+                                                <connections>
+                                                    <action selector="chatBtnAction:" destination="kGq-nU-rZv" eventType="touchUpInside" id="OlD-F6-Ge8"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="98" id="ccH-bU-FLd"/>
+                                            <constraint firstAttribute="trailing" secondItem="sLo-3k-oiT" secondAttribute="trailing" constant="21" id="IH8-KG-6l9"/>
+                                            <constraint firstItem="sLo-3k-oiT" firstAttribute="centerY" secondItem="hLN-OY-EcT" secondAttribute="centerY" id="YgU-4O-1rH"/>
+                                            <constraint firstAttribute="height" constant="52" id="ccH-bU-FLd"/>
                                             <constraint firstItem="hLN-OY-EcT" firstAttribute="centerY" secondItem="9fU-T0-Tcz" secondAttribute="centerY" id="hEW-n5-Daf"/>
                                             <constraint firstItem="hLN-OY-EcT" firstAttribute="leading" secondItem="9fU-T0-Tcz" secondAttribute="leading" constant="26" id="tSs-oR-C5r"/>
                                         </constraints>
                                     </view>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LVt-2a-yeF">
-                                        <rect key="frame" x="0.0" y="98" width="414" height="671"/>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="PsR-QJ-u51">
+                                        <rect key="frame" x="16" y="96" width="382" height="673"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                    </tableView>
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pYO-K8-KyR">
+                                            <size key="itemSize" width="50" height="50"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells/>
+                                    </collectionView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstItem="LVt-2a-yeF" firstAttribute="top" secondItem="9fU-T0-Tcz" secondAttribute="bottom" id="6un-K8-SCB"/>
-                                    <constraint firstAttribute="trailing" secondItem="LVt-2a-yeF" secondAttribute="trailing" id="7zr-S7-JQs"/>
-                                    <constraint firstAttribute="bottom" secondItem="LVt-2a-yeF" secondAttribute="bottom" id="Eae-OX-iiT"/>
                                     <constraint firstAttribute="trailing" secondItem="9fU-T0-Tcz" secondAttribute="trailing" id="MAD-bN-EUq"/>
-                                    <constraint firstItem="LVt-2a-yeF" firstAttribute="leading" secondItem="01G-PB-BH1" secondAttribute="leading" id="XLf-z1-mIn"/>
+                                    <constraint firstItem="PsR-QJ-u51" firstAttribute="leading" secondItem="01G-PB-BH1" secondAttribute="leading" constant="16" id="S0l-Sg-tYb"/>
+                                    <constraint firstAttribute="trailing" secondItem="PsR-QJ-u51" secondAttribute="trailing" constant="16" id="XKw-Ir-ipb"/>
                                     <constraint firstItem="9fU-T0-Tcz" firstAttribute="leading" secondItem="01G-PB-BH1" secondAttribute="leading" id="fGx-7J-cP1"/>
-                                    <constraint firstItem="9fU-T0-Tcz" firstAttribute="top" secondItem="01G-PB-BH1" secondAttribute="top" id="lOn-eT-7Gp"/>
+                                    <constraint firstItem="9fU-T0-Tcz" firstAttribute="top" secondItem="01G-PB-BH1" secondAttribute="top" constant="24" id="lOn-eT-7Gp"/>
+                                    <constraint firstItem="PsR-QJ-u51" firstAttribute="top" secondItem="9fU-T0-Tcz" secondAttribute="bottom" constant="20" id="xuf-Q1-62o"/>
+                                    <constraint firstAttribute="bottom" secondItem="PsR-QJ-u51" secondAttribute="bottom" id="y5M-dK-xlY"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -153,7 +175,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="jew-RZ-I0L"/>
                     <connections>
-                        <outlet property="mainTableView" destination="LVt-2a-yeF" id="8SK-41-syS"/>
+                        <outlet property="currentDateLbl" destination="UH5-U6-1KO" id="q2R-Dj-fND"/>
+                        <outlet property="mainCollView" destination="PsR-QJ-u51" id="Ani-Rc-Jpj"/>
                         <outlet property="titleLbl" destination="OY4-gC-MIS" id="20A-nq-5MG"/>
                     </connections>
                 </viewController>
@@ -277,6 +300,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="group3811" width="41" height="48"/>
         <image name="group3835" width="28" height="28"/>
         <image name="home" width="60" height="60"/>
         <image name="homeSelected" width="34" height="34"/>
