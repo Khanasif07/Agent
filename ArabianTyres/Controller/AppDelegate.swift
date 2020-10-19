@@ -100,7 +100,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , MessagingDelegate , UNUs
         UISearchBar.appearance().tintColor = AppColors.fontPrimaryColor
         UIToolbar.appearance().tintColor = AppColors.fontPrimaryColor
         UIButton.appearance().tintColor = AppColors.fontPrimaryColor
-        UIBarButtonItem.appearance().tintColor = AppColors.fontPrimaryColor
+//        UIBarButtonItem.appearance().tintColor = AppColors.fontPrimaryColor
     }
     
     func setUpKeyboard(){

@@ -10,6 +10,7 @@ import UIKit
 
 class GarageHomeCollCell: UICollectionViewCell {
     
+    @IBOutlet weak var sarLbl: UILabel!
     @IBOutlet weak var requestTypeLbl: UILabel!
     @IBOutlet weak var requestCountLbl: UILabel!
     @IBOutlet weak var dataContainerView: UIView!
@@ -29,5 +30,6 @@ class GarageHomeCollCell: UICollectionViewCell {
         self.requestCountLbl.textColor = model.requestColor
         self.requestCountLbl.text = "\(model.requestCount)"
         self.dataContainerView.backgroundColor = model.backgroundColor
+        self.sarLbl.isHidden = !(LocalizedString.today_Revenue.localized == "\(model.name)")
     }
 }

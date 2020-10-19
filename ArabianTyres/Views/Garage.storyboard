@@ -2417,6 +2417,7 @@ Service Center</string>
                         <outlet property="bidRecivedValueLbl" destination="ITW-eh-1rO" id="oqe-lr-Nw3"/>
                         <outlet property="brandCollView" destination="jND-Pf-dRL" id="lno-sF-Hwd"/>
                         <outlet property="brandCollViewHeightConstraint" destination="Rx5-Aj-MOw" id="UMd-RL-xEY"/>
+                        <outlet property="brandCountryLbl" destination="QOa-IJ-moR" id="IYG-ok-0zN"/>
                         <outlet property="cancelBtn" destination="h1o-s4-PBe" id="IBh-cD-K8L"/>
                         <outlet property="emptyContainerView" destination="AHR-yV-V5q" id="r2T-1Z-T86"/>
                         <outlet property="lowestBidValueLbl" destination="ZoU-x0-HqE" id="TIU-4h-mB8"/>

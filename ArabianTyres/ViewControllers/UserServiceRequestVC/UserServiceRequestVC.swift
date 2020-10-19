@@ -25,7 +25,7 @@ class UserServiceRequestVC: BaseVC {
     @IBOutlet weak var lowestBidValueLbl: UILabel!
     @IBOutlet weak var nearestBidderValueLbl: UILabel!
     @IBOutlet weak var sarLbl: UILabel!
-
+    @IBOutlet weak var brandCountryLbl: UILabel!
     @IBOutlet weak var emptyContainerView: UIView!
     @IBOutlet weak var cancelBtn: AppButton!
     @IBOutlet weak var viewAllBtn: AppButton!
@@ -40,6 +40,7 @@ class UserServiceRequestVC: BaseVC {
     //===========================
     var viewModel = UserServiceRequestVM()
     var brandsArray = [String]()
+    var countryArray = [String]()
     weak var delegate: UserServiceRequestVCDelegate?
     var requestId : String = ""
     
@@ -64,8 +65,9 @@ class UserServiceRequestVC: BaseVC {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         viewAllBtn.round(radius: 4.0)
-
         if !brandsArray.isEmpty{
+            self.brandCollViewHeightConstraint.constant = brandCollView.contentSize.height + 38.0
+        }else if !countryArray.isEmpty{
             self.brandCollViewHeightConstraint.constant = brandCollView.contentSize.height + 38.0
         }else {
             self.brandCollViewHeightConstraint.constant = 60.0
@@ -126,8 +128,11 @@ extension UserServiceRequestVC: UserServiceRequestVMDelegate{
         self.brandsArray = self.viewModel.userRequestDetail.preferredBrands.map({ (model) -> String in
             model.name
         })
+        self.countryArray = self.viewModel.userRequestDetail.preferredCountries.map({ (model) -> String in
+            model.name
+        })
+        self.brandCountryLbl.text =  self.brandsArray.endIndex > 0 ? "Brand Preferences" : "Country Preferences"
         let model = self.viewModel.userRequestDetail
-
         let logoImg =  model.requestType == "Tyres" ? #imageLiteral(resourceName: "radialCarTireI151") : model.requestType == "Battery" ? #imageLiteral(resourceName: "icBattery") : #imageLiteral(resourceName: "icOil")
         self.mainImgView.image = logoImg
         viewAllBtn.isHidden = viewModel.userRequestDetail.totalBids == 0
@@ -167,7 +172,7 @@ extension UserServiceRequestVC: UserServiceRequestVMDelegate{
 extension UserServiceRequestVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return brandsArray.count
+        return brandsArray.endIndex > 0 ? brandsArray.endIndex : countryArray.endIndex
     }
     
     
@@ -176,8 +181,7 @@ extension UserServiceRequestVC: UICollectionViewDelegate,UICollectionViewDataSou
         cell.cancelBtn.isHidden = true
         cell.cancelBtnHeightConstraint.constant = 0.0
         cell.skillLbl.contentMode = .center
-        cell.skillLbl.text = brandsArray[indexPath.item]
-  
+        cell.skillLbl.text = brandsArray.endIndex > 0 ? brandsArray[indexPath.item] : countryArray[indexPath.item]
         cell.layoutSubviews()
         return cell
     }
@@ -187,8 +191,8 @@ extension UserServiceRequestVC: UICollectionViewDelegate,UICollectionViewDataSou
     }
     
     private func cardSizeForItemAt(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, indexPath: IndexPath) -> CGSize {
-    
-        let textSize = brandsArray[indexPath.row].sizeCount(withFont: AppFonts.NunitoSansSemiBold.withSize(14.0), boundingSize: CGSize(width: 10000.0, height: collectionView.frame.height))
+        let selectedText = brandsArray.endIndex > 0 ? brandsArray[indexPath.item] : countryArray[indexPath.item]
+        let textSize = selectedText.sizeCount(withFont: AppFonts.NunitoSansSemiBold.withSize(14.0), boundingSize: CGSize(width: 10000.0, height: collectionView.frame.height))
         return CGSize(width: textSize.width + 16, height: 44.0)
     }
 }

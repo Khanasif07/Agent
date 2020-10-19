@@ -252,8 +252,8 @@ class LeftAlignedCollectionViewFlowLayout: UICollectionViewFlowLayout {
     }
 }
 //
-//extension UINavigationController {
-//       open override var preferredStatusBarStyle: UIStatusBarStyle {
-//           return .default
-//       }
-//   }
+extension UINavigationController {
+       open override var preferredStatusBarStyle: UIStatusBarStyle {
+           return .default
+       }
+   }

@@ -216,11 +216,16 @@ extension OtpVerificationVC: OTPTextFieldDelegate ,UITextFieldDelegate{
 //=======================================
 extension OtpVerificationVC: SuccessPopupVCDelegate{
     func okBtnAction() {
+        if isUserLoggedin{
+            if !(SocketIOManager.isSocketConnected) {
+                SocketIOManager.shared.establishConnection()
+            }
+        }
         self.dismiss(animated: true, completion: nil)
         if isCurrentUserType == .user {
-              AppRouter.goToUserHome()
+            AppRouter.goToUserHome()
         } else {
-             AppRouter.goToGarageHome()
+            AppRouter.goToGarageHome()
         }
     }
 }
