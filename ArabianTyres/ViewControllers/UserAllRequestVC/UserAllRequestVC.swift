@@ -22,6 +22,7 @@ class UserAllRequestVC: BaseVC {
     //===========================
     var viewModel = UserAllRequestVM()
     var filterArr : [FilterScreen] = [.byServiceType([],false), .byStatus([],false), .date(nil,nil,false)]
+    var filterApplied: Bool = false
     
     // MARK: - Lifecycle
     //===========================
@@ -45,8 +46,11 @@ class UserAllRequestVC: BaseVC {
     @IBAction func filterBtnAction(_ sender: UIButton) {
         AppRouter.goToMyServiceFilterVC(vc: self, filterArr: filterArr) {[weak self] (filterData, isReset) in
             if isReset {
+                self?.viewModel.currentPage = 1
+                self?.filterApplied = true
                 self?.getFilterData(data: filterData)
             }else {
+                self?.filterApplied = false
                 self?.viewModel.getUserMyRequestData(params: [ApiKey.page: "1",ApiKey.limit : "10"],loader: true)
             }
             self?.filterArr = filterData
@@ -64,8 +68,8 @@ extension UserAllRequestVC {
         hitListingApi()
     }
     
-    private func getFilterData(data: [FilterScreen]) {
-        var dict : JSONDictionary = [ApiKey.page: "1",ApiKey.limit : "10"]
+    private func getFilterData(data: [FilterScreen],loader: Bool = true,pagination: Bool = false) {
+        var dict : JSONDictionary = [ApiKey.page: self.viewModel.currentPage, ApiKey.limit : "10"]
         data.forEach { (type) in
             switch type {
                 
@@ -80,14 +84,13 @@ extension UserAllRequestVC {
                 if let fDate = fromDate ,let tDate = toDate {
                     dict[ApiKey.startdate] = fDate.toString(dateFormat: Date.DateFormat.yyyyMMddTHHmmsssssz.rawValue)
                     dict[ApiKey.endDate] =  tDate.toString(dateFormat: Date.DateFormat.yyyyMMddTHHmmsssssz.rawValue)
-                    
                 }
                 
             default:
                 break
             }
         }
-        self.viewModel.getUserMyRequestData(params: dict,loader: true)
+        self.viewModel.getUserMyRequestData(params: dict,loader: loader, pagination: pagination)
     }
     
     private func tableViewSetUp(){
@@ -148,7 +151,11 @@ extension UserAllRequestVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if cell as? LoaderCell != nil {
-            self.viewModel.getUserMyRequestData(params: [ApiKey.page: self.viewModel.currentPage,ApiKey.limit : "10"],loader: false,pagination: true)
+            if filterApplied {
+                getFilterData(data: filterArr,loader: false, pagination: true)
+            }else {
+                self.viewModel.getUserMyRequestData(params: [ApiKey.page: self.viewModel.currentPage, ApiKey.limit : "10"],loader: false,pagination: true)
+            }
         }
     }
 }

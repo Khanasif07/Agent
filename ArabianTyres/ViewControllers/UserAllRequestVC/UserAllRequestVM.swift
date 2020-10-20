@@ -47,7 +47,6 @@ class UserAllRequestVM{
         WebServices.getUserMyRequestData(parameters: params,loader: loader,success: { (json) in
             self.parseToMakeListingData(result: json)
         }) { (error) -> (Void) in
-            self.isRequestinApi = false
             self.delegate?.mgetUserMyRequestDataFailed(error: error.localizedDescription)
         }
     }

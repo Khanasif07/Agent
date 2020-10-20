@@ -22,6 +22,7 @@ class UserAllOffersVC: BaseVC {
     var requestId: String = ""
     let viewModel = UserAllOfferVM()
     var filterArr : [FilterScreen] = [.distance("","", false), .bidReceived("",false)]
+    var filterApplied: Bool = false
 
     // MARK: - Lifecycle
     //===========================
@@ -45,8 +46,11 @@ class UserAllOffersVC: BaseVC {
     @IBAction func filterBtnAction(_ sender: UIButton) {
         AppRouter.goOfferFilterVC(vc: self, filterArr: filterArr) {[weak self] (filterData, isReset) in
             if isReset {
+                self?.viewModel.currentPage = 1
+                self?.filterApplied = true
                 self?.getFilterData(data: filterData)
             }else {
+                self?.filterApplied = false
                 self?.hitApi()
             }
             self?.filterArr = filterData
@@ -72,6 +76,7 @@ extension UserAllOffersVC {
         self.mainTableView.emptyDataSetSource = self
         self.mainTableView.emptyDataSetDelegate = self
         self.mainTableView.enablePullToRefresh(tintColor: AppColors.appRedColor ,target: self, selector: #selector(refreshWhenPull(_:)))
+        self.mainTableView.registerCell(with: LoaderCell.self)
         mainTableView.registerCell(with: UserOffersTableCell.self)
     }
     
@@ -84,17 +89,17 @@ extension UserAllOffersVC {
         titleLbl.font = AppFonts.NunitoSansBold.withSize(17.0)
     }
     
-    private func hitApi(params: JSONDictionary = [:]) {
+    private func hitApi(params: JSONDictionary = [:],loader: Bool = true,pagination: Bool = false) {
         if params.isEmpty {
             let dict : JSONDictionary = [ApiKey.page: "1",ApiKey.limit : "20", ApiKey.requestId : self.requestId]
             viewModel.getUserBidData(params: dict)
         }else {
-            viewModel.getUserBidData(params: params)
+            viewModel.getUserBidData(params: params,loader: loader,pagination: pagination)
 
         }
     }
     
-    private func getFilterData(data: [FilterScreen]) {
+    private func getFilterData(data: [FilterScreen],loader: Bool = true,pagination: Bool = false) {
         var dict : JSONDictionary = [ApiKey.page: "1",ApiKey.limit : "20",ApiKey.requestId : self.requestId]
         data.forEach { (type) in
             switch type {
@@ -110,7 +115,7 @@ extension UserAllOffersVC {
                 break
             }
         }
-        hitApi(params: dict)
+        hitApi(params: dict,loader: loader, pagination: pagination)
     }
 }
 
@@ -144,6 +149,16 @@ extension UserAllOffersVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if cell as? LoaderCell != nil {
+            if filterApplied {
+                getFilterData(data: filterArr,loader: false, pagination: true)
+            }else {
+                hitApi(params: [ApiKey.page: "1",ApiKey.limit : "20",ApiKey.requestId : self.requestId],loader: false, pagination: true)
+            }
+        }
     }
 }
 

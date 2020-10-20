@@ -140,8 +140,7 @@ enum FilterScreen {
                     LocalizedString.bidRejected.localized]
         case .bidReceived:
             return [LocalizedString.lowToHigh.localized,
-                    LocalizedString.highToLow.localized,
-                    LocalizedString.ratingHighToLow.localized]
+                    LocalizedString.highToLow.localized]
         default:
             return [""]
             
@@ -207,8 +206,7 @@ enum FilterScreen {
                     "rejected"]
            case .bidReceived:
             return ["1",
-            "-1",
-            "0"]//dummy data for rating high to low
+            "-1"]//dummy data for rating high to low
             
            default:
             return [""]
