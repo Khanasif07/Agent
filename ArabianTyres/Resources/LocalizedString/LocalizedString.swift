@@ -322,6 +322,8 @@ enum LocalizedString : String {
     case openForBid
     case bidPlaced
     case bidRejected
+    case applyFilters
+    
     
     // MARK: - Home  VC Values
     //==============================

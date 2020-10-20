@@ -43,11 +43,14 @@ class UserAllOffersVC: BaseVC {
     }
     
     @IBAction func filterBtnAction(_ sender: UIButton) {
-        AppRouter.goOfferFilterVC(vc: self, filterArr: filterArr) {[weak self] (filterData) in
-            self?.getFilterData(data: filterData)
+        AppRouter.goOfferFilterVC(vc: self, filterArr: filterArr) {[weak self] (filterData, isReset) in
+            if isReset {
+                self?.getFilterData(data: filterData)
+            }else {
+                self?.hitApi()
+            }
             self?.filterArr = filterData
         }
-
     }
 }
 

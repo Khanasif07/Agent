@@ -20,9 +20,10 @@ class OfferFilterVC: BaseVC {
     // MARK: - Variables
     //===========================
     var sectionArr : [FilterScreen] = [.distance("","", false), .bidReceived("",false)]
-    var onTapApply : (([FilterScreen])->())?
+    var onTapApply : (([FilterScreen], Bool)->())?
     let viewModel = SRFliterVM()
     var sliderHide: Bool = false
+    var isResetSelected: Bool = false
 
     // MARK: - Lifecycle
     //===========================
@@ -48,14 +49,20 @@ class OfferFilterVC: BaseVC {
     }
     
     @IBAction func resetFilterAction(_ sender: UIButton) {
-        
+        isResetSelected = true
+        sectionArr = [.distance("","", true), .bidReceived("",true)]
+        mainTableView.reloadData()
     }
     
     @IBAction func applyBtnAction(_ sender: Any) {
+        if isResetSelected {
+            onTapApply?(sectionArr, false)
+            self.pop()
+            return
+        }
         let result = checkFilterStatus()
-        
         if result.status {
-            onTapApply?(sectionArr)
+            onTapApply?(sectionArr, true)
             self.pop()
         }else {
             CommonFunctions.showToastWithMessage(result.msg)

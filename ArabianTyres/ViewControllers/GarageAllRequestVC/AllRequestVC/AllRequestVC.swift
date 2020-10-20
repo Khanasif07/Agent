@@ -56,7 +56,7 @@ extension AllRequestVC {
         hitApi()
     }
     
-    public func hitApi(params: JSONDictionary = [:]){
+    public func hitApi(params: JSONDictionary = [:],loader: Bool = false){
         if params.isEmpty {
             viewModel.getGarageRequestData(params: [ApiKey.page:"1", ApiKey.limit: "10"], pagination: false)
         }else {

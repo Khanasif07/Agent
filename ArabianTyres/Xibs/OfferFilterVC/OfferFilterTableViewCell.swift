@@ -72,6 +72,9 @@ extension OfferFilterTableViewCell: UICollectionViewDelegate,UICollectionViewDat
             if let fDate = fromDate, let tDate = toDate {
                 cell.fromDate = fDate
                 cell.toDate = tDate
+            }else {
+                cell.fromDate = nil
+                cell.toDate = nil
             }
             
             cell.txtFieldData = {[weak self] (fromDate, toDate) in

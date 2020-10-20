@@ -25,6 +25,8 @@ class ByDateCollectionViewCell: UICollectionViewCell {
         didSet {
             if let fDate = fromDate {
                 fromDateTextField.text = getDateString(selectDate: fDate)
+            }else {
+                fromDateTextField.text = ""
             }
         }
     }
@@ -32,6 +34,8 @@ class ByDateCollectionViewCell: UICollectionViewCell {
         didSet {
             if let tDate = toDate {
                 endDateTextField.text = getDateString(selectDate: tDate)
+            }else {
+                endDateTextField.text = ""
             }
         }
     }

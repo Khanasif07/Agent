@@ -77,8 +77,12 @@ class GarageAllRequestVC: BaseVC {
       }
       
     @IBAction func filterBtnAction(_ sender: UIButton) {
-        AppRouter.goToSRFliterVC(vc: self, filterArr: filterArr) {[weak self] (filterData) in
-            self?.getFilterData(data: filterData)
+        AppRouter.goToSRFliterVC(vc: self, filterArr: filterArr) {[weak self] (filterData, isReset) in
+            if isReset {
+                self?.getFilterData(data: filterData)
+            }else {
+                self?.allRequestVC.hitApi(loader: true)
+            }
             self?.filterArr = filterData
         }
     }

@@ -269,6 +269,8 @@
 "highToLow" = "Cost: High to Low";
 "ratingHighToLow" = "Rating: High to Low";
 
+"applyFilters" = "Apply Filters";
+
  // MARK: - Home  VC Values
 //==============================
 "tyre" = "Tyre";
