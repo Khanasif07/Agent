@@ -17,9 +17,14 @@ class ExploreVC: BaseVC {
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
-          .darkContent
-      }
-      
+        if #available(iOS 13.0, *) {
+          return .darkContent
+        } else {
+            // Fallback on earlier versions
+            return .lightContent
+        }
+    }
+
       override func viewWillAppear(_ animated: Bool) {
           super.viewWillAppear(animated)
           setNeedsStatusBarAppearanceUpdate()

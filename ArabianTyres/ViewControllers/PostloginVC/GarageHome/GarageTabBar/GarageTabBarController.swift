@@ -104,7 +104,11 @@ extension GarageTabBarController {
             default:
                 if let item = self.tabBar.items?[index] {
                     item.image = #imageLiteral(resourceName: "profile")
-                    item.image?.withTintColor(AppColors.primaryBlueColor)
+                    if #available(iOS 13.0, *) {
+                        item.image?.withTintColor(AppColors.primaryBlueColor)
+                    } else {
+                        // Fallback on earlier versions
+                    }
                     item.selectedImage = #imageLiteral(resourceName: "profile")
                 }
             }
