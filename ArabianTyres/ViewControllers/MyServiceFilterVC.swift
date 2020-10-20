@@ -52,8 +52,21 @@ class MyServiceFilterVC: BaseVC {
     }
     
     @IBAction func resetFilterAction(_ sender: UIButton) {
+        var hideStatus: [FilterScreen] = []
+        for type in sectionArr  {
+            switch type {
+            case .byServiceType(_,let hide):
+                hideStatus.append(.byServiceType([], hide))
+            case .byStatus(_,let hide):
+                hideStatus.append(.byStatus([], hide))
+            case .date(_,_,let hide):
+                hideStatus.append(.date(nil,nil, hide))
+            default:
+                break
+            }
+        }
         isResetSelected = true
-        sectionArr = [.byServiceType([],true), .byStatus([],true), .date(nil,nil,true)]
+        sectionArr = hideStatus
         mainTableView.reloadData()
     }
     
@@ -211,6 +224,7 @@ extension MyServiceFilterVC :UITableViewDelegate,UITableViewDataSource{
         
         cell.selectedDateData = { [weak self] (fromDate,toDate) in
             guard let `self` = self else {return}
+            self.isResetSelected = false
             self.sectionArr[indexPath.section] = .date(fromDate, toDate, self.sectionArr[indexPath.section].isHide)
         }
         return cell

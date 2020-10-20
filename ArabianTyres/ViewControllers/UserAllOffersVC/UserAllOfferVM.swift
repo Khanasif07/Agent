@@ -54,6 +54,7 @@ class UserAllOfferVM{
         WebServices.getUserBids(parameters: params, success: { (json) in
             self.parseToMakeListingData(result: json)
         }) { (error) -> (Void) in
+            self.isRequestinApi = false
             self.delegate?.getUserBidDataFailed(error: error.localizedDescription)
         }
     }

@@ -50,7 +50,18 @@ class OfferFilterVC: BaseVC {
     
     @IBAction func resetFilterAction(_ sender: UIButton) {
         isResetSelected = true
-        sectionArr = [.distance("","", true), .bidReceived("",true)]
+        var hideStatus: [FilterScreen] = []
+        for type in sectionArr  {
+            switch type {
+            case .distance(_,_,let hide):
+                hideStatus.append(.distance("","", hide))
+            case .bidReceived(_,let hide):
+                hideStatus.append(.bidReceived("", hide))
+            default:
+                break
+            }
+        }
+        sectionArr = hideStatus
         mainTableView.reloadData()
     }
     
@@ -92,6 +103,7 @@ extension OfferFilterVC {
     }
     
     func updateDataSouce(_ filterValue:String , indexPath : IndexPath) {
+        isResetSelected = false
         switch self.sectionArr[indexPath.section] {
         case .bidReceived(let txt, let hide) :
          self.sectionArr[indexPath.section] = .bidReceived(filterValue, hide)
@@ -103,26 +115,38 @@ extension OfferFilterVC {
     }
     
     private func checkFilterStatus() -> (status: Bool, msg: String) {
-        var flag = true
+        var flag : [Bool] = [true,true,true]
         var msg = ""
         for data in sectionArr{
             switch data {
                 
             case .bidReceived(let arr, _):
                 if arr.isEmpty {
-                    flag = false
-                    msg = "Please select Service Type"
+                    flag[0] = false
+                    msg = "Please select Any Filter"
                 }
+                break
+            case .distance(let min, let max, _):
+                if min.isEmpty {
+                    flag[1] = false
+                    msg = "Please select Any Filter"
+                    
+                }
+                if max.isEmpty {
+                    flag[2] = false
+                    msg = "Please select Any Filter"
+                }
+                break
             default:
                 break
             }
-            if !flag {break}
         }
-        return (flag,msg)
+        return (flag.contains(true),msg)
     }
 }
 
 extension OfferFilterVC: UITableViewDelegate,UITableViewDataSource{
+  
     func numberOfSections(in tableView: UITableView) -> Int {
         return sectionArr.count
     }
@@ -164,7 +188,6 @@ extension OfferFilterVC: UITableViewDelegate,UITableViewDataSource{
         }else {
             return type.isHide ? CGFloat(54 + type.fliterTypeArr.count * 54) : 54.0
         }
-        
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

@@ -208,7 +208,7 @@ enum FilterScreen {
            case .bidReceived:
             return ["1",
             "-1",
-            "2"]//dummy data for rating high to low
+            "0"]//dummy data for rating high to low
             
            default:
             return [""]
