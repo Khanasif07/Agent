@@ -11,7 +11,9 @@ import SwiftyJSON
 
 protocol UserAllOfferVMDelegate: class {
     func getUserBidDataSuccess(message: String)
+    func rejectUserBidDataSuccess(message: String)
     func getUserBidDataFailed(error:String)
+    func rejectUserBidDataFailed(error:String)
 }
 
 
@@ -34,6 +36,13 @@ class UserAllOfferVM{
     
     //MARK:- Functions
     
+    func rejectUserBidData(params: JSONDictionary){
+        WebServices.rejectUserBidData(parameters: params, success: { (json) in
+            self.delegate?.rejectUserBidDataSuccess(message: json[ApiKey.message].stringValue)
+        }) { (error) -> (Void) in
+            self.delegate?.rejectUserBidDataFailed(error: error.localizedDescription)
+        }
+    }
     
     func getUserBidData(params: JSONDictionary,loader: Bool = true,pagination: Bool = false){
         if pagination {

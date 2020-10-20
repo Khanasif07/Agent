@@ -178,7 +178,7 @@ extension OffersDetailVC : OffersDetailVMDelegate {
         countryCollView.isHidden = viewModel.userBidDetail.countries?.isEmpty ?? true
         mainTableView.tableHeaderView?.height = viewModel.userBidDetail.countries?.isEmpty ?? true ? 180.0 : 226.0
         self.mainTableView.reloadData()
-        self.countryCollView.reloadData()
+        collectionView(countryCollView, didSelectItemAt: IndexPath(item: 0, section: 0))
     }
     
     func getOfferDetailFailed(error: String) {
@@ -268,8 +268,10 @@ extension OffersDetailVC : UICollectionViewDelegate,UICollectionViewDataSource, 
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.indexPath = indexPath
-        if let countryName = viewModel.userBidDetail.countries?[indexPath.item] {
-            viewModel.getBidData(country: countryName)
+        if let countryArrays = viewModel.userBidDetail.countries {
+            if countryArrays.endIndex > 0 {
+             viewModel.getBidData(country: countryArrays[indexPath.item])
+            }
         }
         collectionView.reloadData()
     }

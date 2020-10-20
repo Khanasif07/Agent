@@ -131,6 +131,10 @@ extension UserAllOffersVC : UITableViewDelegate, UITableViewDataSource {
                 self.hitApi()
             })
         }
+        cell.rejectAction = { [weak self] (sender) in
+            guard let `self` = self else { return }
+            self.viewModel.rejectUserBidData(params: [ApiKey.bidId: self.viewModel.userBidListingArr[indexPath.row].id])
+        }
         return cell
     }
     
@@ -143,14 +147,24 @@ extension UserAllOffersVC : UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-
+//MARK: UserAllOfferVMDelegate
+//================================
 extension UserAllOffersVC : UserAllOfferVMDelegate {
+    func rejectUserBidDataSuccess(message: String) {
+         hitApi()
+         mainTableView.reloadData()
+    }
+    
+    func rejectUserBidDataFailed(error: String) {
+         ToastView.shared.showLongToast(self.view, msg: error)
+    }
+    
     func getUserBidDataSuccess(message: String){
         mainTableView.reloadData()
     }
     
     func getUserBidDataFailed(error:String){
-        
+        ToastView.shared.showLongToast(self.view, msg: error)
     }
 }
 

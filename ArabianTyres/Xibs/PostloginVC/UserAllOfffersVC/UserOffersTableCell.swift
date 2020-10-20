@@ -10,7 +10,7 @@ import UIKit
 
 class UserOffersTableCell: UITableViewCell {
     
-    
+    var rejectAction: ((UIButton)->())?
     var viewProposalAction: ((UIButton)->())?
 
     @IBOutlet weak var tALbl: UILabel!
@@ -54,6 +54,9 @@ class UserOffersTableCell: UITableViewCell {
     
     
     @IBAction func rejectBtnAction(_ sender: AppButton) {
+        if let handle = rejectAction{
+                  handle(sender)
+              }
     }
     
     @IBAction func viewProposalBtnAction(_ sender: AppButton) {
