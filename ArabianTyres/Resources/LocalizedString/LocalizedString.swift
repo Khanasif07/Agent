@@ -330,6 +330,14 @@ enum LocalizedString : String {
     case battery
     
     
+    // MARK: - Garage Home Values
+    //==============================
+    case requestAccepted
+    case newRequest
+    case service_sheduled_for_today
+    case today_Revenue
+
+    
     // MARK:c - Complete profile 1  VC Values
     //==============================
     case enterServiceCenterDist

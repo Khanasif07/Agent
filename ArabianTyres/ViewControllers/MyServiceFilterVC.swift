@@ -39,6 +39,7 @@ class MyServiceFilterVC: BaseVC {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        applyBtn.round(radius: 4.0)
         
     }
     
@@ -48,9 +49,18 @@ class MyServiceFilterVC: BaseVC {
         self.pop()
     }
     
+    @IBAction func resetFilterAction(_ sender: UIButton) {
+        let result = checkFilterStatus()
+        if result.status {
+            onTapApply?(sectionArr)
+            self.pop()
+        }else {
+            CommonFunctions.showToastWithMessage(result.msg)
+        }
+    }
+    
     @IBAction func applyBtnAction(_ sender: UIButton) {
         let result = checkFilterStatus()
-        
         if result.status {
             onTapApply?(sectionArr)
             self.pop()

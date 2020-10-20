@@ -52,7 +52,6 @@ class SocketIOManager: NSObject {
     // Configure socket
     private func initializeSocket() {
         let socketSerialQueue = DispatchQueue(label: "socketSerialQueue", qos: .userInteractive)
-//        let accessToken = AppUserDefaults.value(forKey: .accesstoken).stringValue
         let userId = AppUserDefaults.value(forKey: .userId).stringValue
             let strUrl = baseSocketUrl
             let baseUrl = URL(string: strUrl)!

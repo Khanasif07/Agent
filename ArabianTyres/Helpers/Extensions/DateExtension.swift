@@ -183,13 +183,13 @@ extension Date {
         return dateComp.date!
     }
     
-//    func convertToString() -> String {
-//        // First, get a Date from the String
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = DateFormat.yyyy_MM_dd.rawValue
-//        let local = dateFormatter.string(from: self)
-//        return local
-//    }
+    func convertToDefaultString() -> String {
+        // First, get a Date from the String
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = DateFormat.ddMMMyyyy.rawValue
+        let local = dateFormatter.string(from: self)
+        return local
+    }
     
      func convertToString(inputFormat: DateFormat, outputFormat: DateFormat) -> String {
             // First, get a Date from the String

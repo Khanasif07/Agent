@@ -150,6 +150,7 @@ extension ProfileSettingVC {
     }
     
     private func performCleanUp() {
+        SocketIOManager.shared.closeConnection()
         AppUserDefaults.removeValue(forKey: .accesstoken)
         UserModel.main = UserModel()
         UNUserNotificationCenter.current().removeAllDeliveredNotifications()

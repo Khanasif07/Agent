@@ -240,6 +240,11 @@ extension LoginVC: SignInVMDelegate {
     }
     
     func socailLoginApiSuccess(message: String) {
+        if isUserLoggedin{
+            if !(SocketIOManager.isSocketConnected) {
+                SocketIOManager.shared.establishConnection()
+            }
+        }
         if isCurrentUserType == .user {
             AppRouter.goToUserHome()
         } else {
@@ -252,6 +257,11 @@ extension LoginVC: SignInVMDelegate {
     }
     
     func signInSuccess(userModel: UserModel) {
+        if isUserLoggedin{
+            if !(SocketIOManager.isSocketConnected) {
+                SocketIOManager.shared.establishConnection()
+            }
+        }
         if isCurrentUserType == .user {
             AppRouter.goToUserHome()
         } else {

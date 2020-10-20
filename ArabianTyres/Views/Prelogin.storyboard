@@ -505,7 +505,7 @@ with Country Code  </string>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="gsv-2H-ZOk"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Enter Phone Number"/>

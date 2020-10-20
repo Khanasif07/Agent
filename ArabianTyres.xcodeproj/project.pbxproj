@@ -188,6 +188,8 @@
 		84D83D68252AAF5800F6C420 /* URTyreStep1VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D83D67252AAF5800F6C420 /* URTyreStep1VM.swift */; };
 		84E166E4250362DE00C2F2EF /* SuccessPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E166E3250362DE00C2F2EF /* SuccessPopupVC.swift */; };
 		84E4B4702513759600A3E11C /* CompleteProfileStep1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E4B46F2513759600A3E11C /* CompleteProfileStep1.swift */; };
+		84F65BC4253D4D8D00AF7443 /* GarageHomeCollCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F65BC2253D4D8D00AF7443 /* GarageHomeCollCell.swift */; };
+		84F65BC5253D4D8D00AF7443 /* GarageHomeCollCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84F65BC3253D4D8D00AF7443 /* GarageHomeCollCell.xib */; };
 		84FF6E93251C625F0000E2AD /* CustomDashedView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84FF6E92251C625F0000E2AD /* CustomDashedView.xib */; };
 		84FF6E95251C6E8A0000E2AD /* CustomDashedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF6E94251C6E8A0000E2AD /* CustomDashedView.swift */; };
 		84FF6E97251C77EF0000E2AD /* LineDashedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF6E96251C77EF0000E2AD /* LineDashedView.swift */; };
@@ -478,6 +480,8 @@
 		84D83D67252AAF5800F6C420 /* URTyreStep1VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URTyreStep1VM.swift; sourceTree = "<group>"; };
 		84E166E3250362DE00C2F2EF /* SuccessPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessPopupVC.swift; sourceTree = "<group>"; };
 		84E4B46F2513759600A3E11C /* CompleteProfileStep1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteProfileStep1.swift; sourceTree = "<group>"; };
+		84F65BC2253D4D8D00AF7443 /* GarageHomeCollCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageHomeCollCell.swift; sourceTree = "<group>"; };
+		84F65BC3253D4D8D00AF7443 /* GarageHomeCollCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GarageHomeCollCell.xib; sourceTree = "<group>"; };
 		84FF6E92251C625F0000E2AD /* CustomDashedView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomDashedView.xib; sourceTree = "<group>"; };
 		84FF6E94251C6E8A0000E2AD /* CustomDashedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDashedView.swift; sourceTree = "<group>"; };
 		84FF6E96251C77EF0000E2AD /* LineDashedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineDashedView.swift; sourceTree = "<group>"; };
@@ -1762,6 +1766,8 @@
 			children = (
 				A4A6DEED251A157C00564020 /* GarageHomeTableCell.swift */,
 				A4A6DEEE251A157C00564020 /* GarageHomeTableCell.xib */,
+				84F65BC2253D4D8D00AF7443 /* GarageHomeCollCell.swift */,
+				84F65BC3253D4D8D00AF7443 /* GarageHomeCollCell.xib */,
 			);
 			path = GarageHomeVC;
 			sourceTree = "<group>";
@@ -1941,6 +1947,7 @@
 				A4098E7E251231DD0015B0BD /* FacilityTableViewCell.xib in Resources */,
 				8481FA062500AA9B00AB6EFB /* Assets.xcassets in Resources */,
 				84144F30252C8D9C00D6572F /* GarageServiceTopCell.xib in Resources */,
+				84F65BC5253D4D8D00AF7443 /* GarageHomeCollCell.xib in Resources */,
 				8481FAA7250143CD00AB6EFB /* NunitoSans-SemiBoldItalic.ttf in Resources */,
 				8446AB50252D53B3005A1350 /* GarageServiceCountryCell.xib in Resources */,
 				A4CC3250252CB10C00669F39 /* RequestDetailCollectionViewCell.xib in Resources */,
@@ -2152,6 +2159,7 @@
 				A4A6DEE5251A123800564020 /* GarageTabBarController.swift in Sources */,
 				8481FA612500BF9300AB6EFB /* AppUserDefaults.swift in Sources */,
 				84303E69250649D4000BA5C3 /* UserTabBarController.swift in Sources */,
+				84F65BC4253D4D8D00AF7443 /* GarageHomeCollCell.swift in Sources */,
 				8481FA572500BF1A00AB6EFB /* URLExtension.swift in Sources */,
 				84594806252B082500C0B249 /* AllRequestVC.swift in Sources */,
 				A4B74CC7251094E000771974 /* GarageProfileModel.swift in Sources */,

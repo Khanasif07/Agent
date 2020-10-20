@@ -334,3 +334,10 @@
 "my_Subscription" = "My Subscription";
 "installation_price_range" = "Installation Price Range:";
 "location" = "Location";
+
+// MARK: - Garage Home Values
+//==============================
+"requestAccepted" = "Request Accepted";
+"newRequest" = "New Request";
+"service_sheduled_for_today" = "Services Scheduled for Today";
+"today_Revenue" = "Today’s Revenue";

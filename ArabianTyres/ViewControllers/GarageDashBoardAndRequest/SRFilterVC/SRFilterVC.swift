@@ -50,9 +50,18 @@ class SRFilterVC: BaseVC {
         self.pop()
     }
     
+    @IBAction func resetBtnAction(_ sender: UIButton) {
+        let result = checkFilterStatus()
+        if result.status {
+            onTapApply?(sectionArr)
+            self.pop()
+        }else {
+            CommonFunctions.showToastWithMessage(result.msg)
+        }
+    }
+    
     @IBAction func applyBtnAction(_ sender: UIButton) {
         let result = checkFilterStatus()
-        
         if result.status {
             onTapApply?(sectionArr)
             self.pop()

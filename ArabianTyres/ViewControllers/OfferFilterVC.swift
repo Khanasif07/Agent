@@ -13,6 +13,7 @@ class OfferFilterVC: BaseVC {
  
     // MARK: - IBOutlets
     //===========================
+    @IBOutlet weak var applyFilterBtn: AppButton!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var mainTableView: UITableView!
 
@@ -36,6 +37,7 @@ class OfferFilterVC: BaseVC {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        applyFilterBtn.round(radius: 4.0)
 
     }
     
@@ -43,6 +45,10 @@ class OfferFilterVC: BaseVC {
     //===========================
     @IBAction func cancelBtnAction(_ sender: Any) {
         pop()
+    }
+    
+    @IBAction func resetFilterAction(_ sender: UIButton) {
+        
     }
     
     @IBAction func applyBtnAction(_ sender: Any) {

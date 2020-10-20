@@ -25,11 +25,13 @@ class GarageHomeVC: BaseVC {
     
     // MARK: - IBOutlets
     //===========================
-    @IBOutlet weak var mainTableView: UITableView!
+    @IBOutlet weak var mainCollView: UICollectionView!
     @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet weak var currentDateLbl: UILabel!
     
     // MARK: - Variables
     //===========================
+    var timer = Timer()
     var dataArray:[GarageDataValue] = []
     
     // MARK: - Lifecycle
@@ -41,6 +43,9 @@ class GarageHomeVC: BaseVC {
     
     // MARK: - IBActions
     //===========================
+    @IBAction func chatBtnAction(_ sender: UIButton) {
+        showAlert(msg: "Under Development")
+    }
     
     
 }
@@ -52,6 +57,7 @@ extension GarageHomeVC {
     private func initialSetup() {
         self.dataSetUp()
         self.tableViewSetUp()
+        self.getCurrentTime()
     }
     
     private func dataSetUp(){
@@ -60,38 +66,66 @@ extension GarageHomeVC {
         } else {
             self.titleLbl.text = "Hi, User"
         }
-        self.dataArray = [GarageDataValue(requestCount: 25, name: "Request Accepted",requestColor: UIColor(r: 230, g: 240, b: 245, alpha: 1.0),backgroundColor: UIColor(r: 253, g: 237, b: 223, alpha: 1.0) ),
-                          GarageDataValue(requestCount: 70, name: "New Service Request",requestColor: UIColor(r: 233 , g: 235, b: 239, alpha: 1.0),backgroundColor: UIColor(r: 230, g: 240, b: 245, alpha: 1.0)),
-                          GarageDataValue(requestCount: 10, name: "Services Scheduled for Today  ",requestColor: UIColor(r: 253, g: 237, b: 223, alpha: 1.0),backgroundColor: UIColor(r: 233 , g: 235, b: 239, alpha: 1.0))]
+        self.currentDateLbl.textColor = AppColors.fontTertiaryColor
+        self.dataArray = [GarageDataValue(requestCount: 25, name: LocalizedString.requestAccepted.localized,requestColor: UIColor(r: 6, g: 130, b: 191, alpha: 1.0),backgroundColor: UIColor(r: 230, g: 240, b: 245, alpha: 1.0) ),
+                          GarageDataValue(requestCount: 70, name: LocalizedString.newRequest.localized,requestColor: UIColor(r: 52 , g: 88, b: 158, alpha: 1.0),backgroundColor: UIColor(r: 230, g: 240, b: 245, alpha: 1.0)),
+                          GarageDataValue(requestCount: 10, name: LocalizedString.service_sheduled_for_today.localized,requestColor: UIColor(r: 210, g: 103, b: 9, alpha: 1.0),backgroundColor: UIColor(r: 253 , g: 237, b: 223, alpha: 1.0)),GarageDataValue(requestCount: 200, name:LocalizedString.today_Revenue.localized,requestColor: UIColor(r: 44, g: 182, b: 16, alpha: 1.0),backgroundColor: UIColor(r: 239 , g: 246, b: 231, alpha: 1.0))]
     }
     
     private func tableViewSetUp(){
-        mainTableView.delegate = self
-        mainTableView.dataSource = self
-        mainTableView.registerCell(with: GarageHomeTableCell.self)
+        mainCollView.delegate = self
+        mainCollView.dataSource = self
+        mainCollView.registerCell(with: GarageHomeCollCell.self)
+    }
+    
+    private func getCurrentTime() {
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector:#selector(self.currentTime) , userInfo: nil, repeats: true)
+    }
+    
+    @objc func currentTime() {
+        let formatter = DateFormatter()
+        formatter.dateFormat = Date.DateFormat.hhmma.rawValue
+        let currentDate = Date().convertToDefaultString()
+        self.currentDateLbl.text = formatter.string(from: Date()) + ", " + currentDate
     }
     
 }
 
+
 // MARK: - Extension For TableView
 //===========================
-extension GarageHomeVC : UITableViewDelegate, UITableViewDataSource {
+extension GarageHomeVC : UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return  self.dataArray.endIndex
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueCell(with: GarageHomeTableCell.self, indexPath: indexPath)
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = mainCollView.dequeueCell(with: GarageHomeCollCell.self, indexPath: indexPath)
         cell.populateData(model: self.dataArray[indexPath.row])
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: (collectionView.frame.width - 15.0) / 2, height: 210)
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0 )
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        //bw two lines spacing
+        return 16.0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 10.0
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         showAlert(msg: "Under Development")
     }
+    
 }
