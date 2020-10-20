@@ -33,6 +33,7 @@ class OffersDetailTableCell: UITableViewCell {
         checkBtn.isSelected = isBrandSelected
         unitLbl.text = "\(model.quantity)"
         unitPriceLbl.text = "\(model.amount)" + "SAR"
+        unitPrizeTextFiled.text = "\(model.quantity * model.amount)" + " SAR"
         brandNameLbl.text = "\(model.brandName)"
     }
     

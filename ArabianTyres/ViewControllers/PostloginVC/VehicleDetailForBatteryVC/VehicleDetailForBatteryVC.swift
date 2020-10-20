@@ -183,7 +183,7 @@ extension VehicleDetailForBatteryVC {
        }
     
     private func submitBtnStatus(){
-        self.nextBtn.isEnabled = !TyreRequestModel.shared.year.isEmpty && !TyreRequestModel.shared.make.isEmpty && !TyreRequestModel.shared.model.isEmpty && !TyreRequestModel.shared.quantity.isEmpty && !TyreRequestModel.shared.images.isEmpty
+        self.nextBtn.isEnabled = !TyreRequestModel.shared.year.isEmpty && !TyreRequestModel.shared.make.isEmpty && !TyreRequestModel.shared.model.isEmpty && !TyreRequestModel.shared.quantity.isEmpty
     }
     
     private func openBottomSheet(type: VehicleDetailType = .make) {
