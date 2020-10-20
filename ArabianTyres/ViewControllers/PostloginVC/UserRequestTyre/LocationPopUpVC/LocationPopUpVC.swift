@@ -106,6 +106,7 @@ extension LocationPopUpVC {
         if CLLocationManager.locationServicesEnabled() {
             if  status == CLAuthorizationStatus.authorizedAlways
                 || status == CLAuthorizationStatus.authorizedWhenInUse {
+                self.setAddress()
                 TyreRequestModel.shared.latitude = "\(locationValue.latitude)"
                 TyreRequestModel.shared.longitude = "\(locationValue.longitude)"
                 self.dismiss(animated: true) {
@@ -125,6 +126,15 @@ extension LocationPopUpVC {
                 UIApplication.shared.open(settingsUrl, options: [:], completionHandler: nil)
             }
     }
+    
+    private func setAddress() {
+        GMSGeocoder().reverseGeocodeCoordinate(locationValue) { (response, error) in
+            
+            guard let address = response?.firstResult(), let lines = address.lines else { return }
+            _ = (address.locality?.isEmpty ?? true) ? ((address.subLocality?.isEmpty ?? true) ? ((address.administrativeArea?.isEmpty ?? true) ? address.country : address.administrativeArea)  : address.subLocality)   : address.locality
+            TyreRequestModel.shared.address = lines.joined(separator: ",")
+        }
+    }
 }
 
 // MARK: - LocationPopUpVMDelegate
@@ -140,6 +150,8 @@ extension LocationPopUpVC: CLLocationManagerDelegate {
             LocationController.sharedLocationManager.fetchCurrentLocation { [weak self] (location) in
                 guard let strongSelf = self else { return }
                 strongSelf.isLocationEnable = true
+                strongSelf.locationValue = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+                strongSelf.setAddress()
                 TyreRequestModel.shared.latitude = "\(location.coordinate.latitude)"
                 TyreRequestModel.shared.longitude = "\(location.coordinate.longitude)"
             }

@@ -35,6 +35,7 @@ struct TyreRequestModel {
     var make  : String  = ""
     var modelName: String  = ""
     var year: String  = ""
+    var address : String  = ""
     
    mutating func getTyreRequestDict()-> JSONDictionary {
         let dict: JSONDictionary = [
@@ -43,7 +44,7 @@ struct TyreRequestModel {
             ApiKey.rimSize : rimSize,
             ApiKey.quantity: quantity,
             ApiKey.brands : tyreBrands,
-            ApiKey.countries : countries,ApiKey.latitude:latitude,ApiKey.longitude: longitude]
+            ApiKey.countries : countries,ApiKey.latitude:latitude,ApiKey.longitude: longitude,ApiKey.address: address]
 
         return dict
     }
@@ -57,7 +58,7 @@ struct TyreRequestModel {
                ApiKey.brands : tyreBrands,
                ApiKey.images : images.map({ (model) -> String in
                 return model.url
-               }) ,ApiKey.latitude:latitude,ApiKey.longitude: longitude]
+               }) ,ApiKey.latitude:latitude,ApiKey.longitude: longitude,ApiKey.address: address]
 
            return dict
        }

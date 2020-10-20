@@ -163,6 +163,7 @@ extension BatteryBrandVC {
         if CLLocationManager.locationServicesEnabled() {
             if  status == CLAuthorizationStatus.authorizedAlways
                 || status == CLAuthorizationStatus.authorizedWhenInUse {
+                self.setAddress()
                 TyreRequestModel.shared.latitude = "\(locationValue.latitude)"
                 TyreRequestModel.shared.longitude = "\(locationValue.longitude)"
                 AppRouter.goToBatteryRequestedVC(vc: self)
@@ -171,6 +172,15 @@ extension BatteryBrandVC {
         }
         else{ AppRouter.presentLocationPopUpVC(vc: self) }
     }
+    
+    private func setAddress() {
+           GMSGeocoder().reverseGeocodeCoordinate(locationValue) { (response, error) in
+               
+               guard let address = response?.firstResult(), let lines = address.lines else { return }
+               _ = (address.locality?.isEmpty ?? true) ? ((address.subLocality?.isEmpty ?? true) ? ((address.administrativeArea?.isEmpty ?? true) ? address.country : address.administrativeArea)  : address.subLocality)   : address.locality
+                TyreRequestModel.shared.address = lines.joined(separator: ",")
+           }
+       }
 }
 
 //MARK:-CollectionView Delegate and DataSource
