@@ -19,7 +19,7 @@ class OfferFilterVC: BaseVC {
 
     // MARK: - Variables
     //===========================
-    var sectionArr : [FilterScreen] = [.distance("","", false), .bidReceived("",false)]
+    var sectionArr : [FilterScreen] = [.distance("0","10", false), .bidReceived("",false)]
     var onTapApply : (([FilterScreen], Bool)->())?
     let viewModel = SRFliterVM()
     var sliderHide: Bool = false
@@ -54,7 +54,7 @@ class OfferFilterVC: BaseVC {
         for type in sectionArr  {
             switch type {
             case .distance(_,_,let hide):
-                hideStatus.append(.distance("","", hide))
+                hideStatus.append(.distance("0","10", hide))
             case .bidReceived(_,let hide):
                 hideStatus.append(.bidReceived("", hide))
             default:

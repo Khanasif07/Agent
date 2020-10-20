@@ -21,7 +21,7 @@ class UserAllOffersVC: BaseVC {
     //===========================
     var requestId: String = ""
     let viewModel = UserAllOfferVM()
-    var filterArr : [FilterScreen] = [.distance("","", false), .bidReceived("",false)]
+    var filterArr : [FilterScreen] = [.distance("0","10", false), .bidReceived("",false)]
     var filterApplied: Bool = false
 
     // MARK: - Lifecycle
@@ -48,11 +48,10 @@ class UserAllOffersVC: BaseVC {
             if isReset {
                 self?.viewModel.currentPage = 1
                 self?.filterApplied = true
-                self?.getFilterData(data: filterData)
             }else {
                 self?.filterApplied = false
-                self?.hitApi()
             }
+            self?.getFilterData(data: filterData)
             self?.filterArr = filterData
         }
     }
@@ -105,11 +104,13 @@ extension UserAllOffersVC {
             switch type {
                 
             case .bidReceived(let txt, _):
-                dict[ApiKey.bidSort] = txt
+                if !txt.isEmpty {
+                    dict[ApiKey.bidSort] = (txt as NSString).intValue
+                }
                 
             case .distance(let min, let max, _):
-                dict[ApiKey.maxDistance] = max
-                dict[ApiKey.minDistance] = min
+                dict[ApiKey.maxDistance] = (max as NSString).intValue
+                dict[ApiKey.minDistance] = (min as NSString).intValue
 
             default:
                 break

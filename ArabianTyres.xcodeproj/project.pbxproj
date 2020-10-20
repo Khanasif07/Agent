@@ -2393,7 +2393,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 7;
-				DEVELOPMENT_TEAM = 23FC5W285E;
+				DEVELOPMENT_TEAM = C4X83X2P52;
 				INFOPLIST_FILE = ArabianTyres/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2402,9 +2402,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.tara.beta;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tara.betaapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Tara App Dist Beta";
+				PROVISIONING_PROFILE_SPECIFIER = TaraAppstoreProfile;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -2419,7 +2419,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 7;
-				DEVELOPMENT_TEAM = 23FC5W285E;
+				DEVELOPMENT_TEAM = C4X83X2P52;
 				INFOPLIST_FILE = ArabianTyres/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2428,9 +2428,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.tara.beta;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tara.betaapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Tara App Dist Beta";
+				PROVISIONING_PROFILE_SPECIFIER = TaraAdhocProfile;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

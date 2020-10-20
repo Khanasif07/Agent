@@ -96,7 +96,7 @@ extension GarageAddImageVC {
     }
     
     private func prepareMap() {
-        self.mapView.isMyLocationEnabled = true
+//        self.mapView.isMyLocationEnabled = true
         self.mapView.delegate = self
         markerView.image = #imageLiteral(resourceName: "markerIcon")
         self.gmssMarker = GMSMarker(position: CLLocationCoordinate2D(latitude:  locationValue.latitude, longitude: locationValue.longitude))

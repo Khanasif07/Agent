@@ -31,8 +31,8 @@ class DistanceSliderCollViewCell: UICollectionViewCell {
         rangeSlider.delegate = self
         rangeSlider.minValue = 0
         rangeSlider.maxValue = 100
-        rangeSlider.selectedMinimum = 10
-        rangeSlider.selectedMaximum = 50
+        rangeSlider.selectedMinimum = 0
+        rangeSlider.selectedMaximum = 10
         rangeSlider.selectedHandleDiameterMultiplier = 1
         let formatter = NumberFormatter()
         formatter.positiveSuffix = "KM"
