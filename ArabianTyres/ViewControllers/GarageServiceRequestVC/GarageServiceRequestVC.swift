@@ -277,7 +277,7 @@ extension GarageServiceRequestVC : UITableViewDelegate, UITableViewDataSource {
 
 extension GarageServiceRequestVC :GarageServiceRequestVMDelegate {
     func placeBidSuccess(message: String) {
-        
+         pop()
     }
     
     func placeBidFailure(error: String) {
@@ -288,6 +288,21 @@ extension GarageServiceRequestVC :GarageServiceRequestVMDelegate {
         updateDataSource()
         self.quantity = viewModel.garageRequestDetailArr?.quantity ?? 0
         self.mainTableView.reloadData()
+        //
+        if let countries = viewModel.garageRequestDetailArr?.preferredCountries{
+            if countries.endIndex > 0 {
+                self.selectedCountry = countries.first?.name ?? ""
+                let section = sectionType.firstIndex { (sectionArray) -> Bool in
+                    return sectionArray == .countryDetail
+                }
+                let cell = mainTableView.cellForRow(at: IndexPath(item: 0, section: section ?? 1)) as? GarageServiceCountryCell
+                cell?.indexPath = IndexPath(item: 0, section: 0)
+                cell?.countryCollView.reloadData()
+                self.hitBrandListingApi(country: self.selectedCountry)
+                return
+            }
+        }
+        //
     }
     
     func getGarageDetailFailed(error: String) {

@@ -84,7 +84,7 @@ class OffersDetailVM{
     
     func getBidData(country: String = "") {
         if country.isEmpty {
-            bidData = userBidDetail.countries?.isEmpty ?? false ? userBidDetail.bidData : []
+            bidData = (userBidDetail.countries?.isEmpty ?? false) ? userBidDetail.bidData : []
             self.delegate?.getOfferDetailSuccess(message: "")
         }else {
             bidData = userBidDetail.bidData.filter({ (data) -> Bool in

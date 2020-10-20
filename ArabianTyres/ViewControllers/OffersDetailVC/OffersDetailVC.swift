@@ -151,8 +151,11 @@ extension OffersDetailVC : UITableViewDelegate, UITableViewDataSource {
         }
         guard let selectedIndex = index else {
             self.viewModel.bidData[indexPath.row].isSelected = true
+            self.viewModel.userBidDetail.bidData[indexPath.row].isSelected = true
             self.mainTableView.reloadData()
             return }
+        self.viewModel.userBidDetail.bidData[selectedIndex].isSelected = false
+        self.viewModel.userBidDetail.bidData[indexPath.row].isSelected = true
         self.viewModel.bidData[selectedIndex].isSelected = false
         self.viewModel.bidData[indexPath.row].isSelected = true
         self.mainTableView.reloadData()
