@@ -58,10 +58,9 @@ extension SocketIOManager {
                 if result.arrayValue.isEmpty {
                     return
                 }
-                let modelList = try! JSONDecoder().decode(RequestModel.self, from: data)
+                let modelList = try JSONDecoder().decode(RequestModel.self, from: data)
                 printDebug(modelList)
                 HandleRequest.shared.dataArr.append(modelList)
-                
             } catch {
                 printDebug("error occured")
             }
