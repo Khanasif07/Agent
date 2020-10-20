@@ -43,8 +43,12 @@ class UserAllRequestVC: BaseVC {
     }
     
     @IBAction func filterBtnAction(_ sender: UIButton) {
-        AppRouter.goToMyServiceFilterVC(vc: self, filterArr: filterArr) {[weak self] (filterData) in
-            self?.getFilterData(data: filterData)
+        AppRouter.goToMyServiceFilterVC(vc: self, filterArr: filterArr) {[weak self] (filterData, isReset) in
+            if isReset {
+                self?.getFilterData(data: filterData)
+            }else {
+                self?.viewModel.getUserMyRequestData(params: [ApiKey.page: "1",ApiKey.limit : "10"],loader: true)
+            }
             self?.filterArr = filterData
         }
     }

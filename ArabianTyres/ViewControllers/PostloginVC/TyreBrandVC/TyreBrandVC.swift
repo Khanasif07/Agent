@@ -176,7 +176,8 @@ extension TyreBrandVC {
     }
     
     private func setupCustomView() {
-        
+        tyreBrandCustomView.collView.collectionViewLayout = LeftAlignedCollectionViewFlowLayout()
+        countryOriginCustomView.collView.collectionViewLayout = LeftAlignedCollectionViewFlowLayout()
         tyreBrandCustomView.placeHolderTxt = LocalizedString.selectTyreBrand.localized
         countryOriginCustomView.placeHolderTxt = LocalizedString.selectCountryOrigin.localized
         tyreBrandCustomView.floatLbl.text = LocalizedString.brands.localized

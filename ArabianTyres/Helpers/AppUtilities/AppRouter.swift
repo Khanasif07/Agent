@@ -227,20 +227,20 @@ enum AppRouter {
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
-    static func goToMyServiceFilterVC(vc: UIViewController,filterArr: [FilterScreen], completion : @escaping (([FilterScreen]) -> ())){
+    static func goToMyServiceFilterVC(vc: UIViewController,filterArr: [FilterScreen], completion : @escaping (([FilterScreen], Bool) -> ())){
         let scene = MyServiceFilterVC.instantiate(fromAppStoryboard: .GarageRequest)
         scene.sectionArr = filterArr
-        scene.onTapApply = { (filterData) in
-            completion(filterData)
+        scene.onTapApply = { (filterData,isReset) in
+            completion(filterData, isReset)
         }
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
-    static func goOfferFilterVC(vc: UIViewController,filterArr: [FilterScreen], completion : @escaping (([FilterScreen]) -> ())){
+    static func goOfferFilterVC(vc: UIViewController,filterArr: [FilterScreen], completion : @escaping (([FilterScreen], Bool) -> ())){
         let scene = OfferFilterVC.instantiate(fromAppStoryboard: .GarageRequest)
         scene.sectionArr = filterArr
-        scene.onTapApply = { (filterData) in
-            completion(filterData)
+        scene.onTapApply = { (filterData,isReset) in
+            completion(filterData, isReset)
         }
         vc.navigationController?.pushViewController(scene, animated: true)
     }
@@ -344,11 +344,11 @@ enum AppRouter {
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
-    static func goToSRFliterVC(vc: UIViewController,filterArr: [FilterScreen], completion : @escaping (([FilterScreen]) -> ())){
+    static func goToSRFliterVC(vc: UIViewController,filterArr: [FilterScreen], completion : @escaping (([FilterScreen],Bool) -> ())){
         let scene = SRFilterVC.instantiate(fromAppStoryboard: .GarageRequest)
         scene.sectionArr = filterArr
-        scene.onTapApply = { (filterData) in
-            completion(filterData)
+        scene.onTapApply = { (filterData, isReset) in
+            completion(filterData, isReset)
         }
         vc.navigationController?.pushViewController(scene, animated: true)
     }

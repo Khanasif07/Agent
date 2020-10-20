@@ -58,6 +58,7 @@ class AllRequestVM {
             self.parseToMakeListingData(result: json)
         }) { [weak self] (error) in
             guard let `self` = self else { return }
+            self.isRequestinApi = false
             self.delegate?.getGarageListingDataFailed(error: error.localizedDescription)
         }
     }

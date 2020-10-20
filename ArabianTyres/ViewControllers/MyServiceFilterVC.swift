@@ -21,7 +21,9 @@ class MyServiceFilterVC: BaseVC {
     //===================
     let viewModel = SRFliterVM()
     var sectionArr : [FilterScreen] = [.byServiceType([],false), .byStatus([],false), .date(Date(),Date(),false)]
-    var onTapApply : (([FilterScreen])->())?
+    var onTapApply : (([FilterScreen], Bool)->())?
+    var isResetSelected: Bool = false
+    
     
     // MARK: - Lifecycle
     //===================
@@ -50,19 +52,34 @@ class MyServiceFilterVC: BaseVC {
     }
     
     @IBAction func resetFilterAction(_ sender: UIButton) {
-        let result = checkFilterStatus()
-        if result.status {
-            onTapApply?(sectionArr)
-            self.pop()
-        }else {
-            CommonFunctions.showToastWithMessage(result.msg)
+        var hideStatus: [FilterScreen] = []
+        for type in sectionArr  {
+            switch type {
+            case .byServiceType(_,let hide):
+                hideStatus.append(.byServiceType([], hide))
+            case .byStatus(_,let hide):
+                hideStatus.append(.byStatus([], hide))
+            case .date(_,_,let hide):
+                hideStatus.append(.date(nil,nil, hide))
+            default:
+                break
+            }
         }
+        isResetSelected = true
+        sectionArr = hideStatus
+        mainTableView.reloadData()
     }
     
     @IBAction func applyBtnAction(_ sender: UIButton) {
+        if isResetSelected {
+            onTapApply?(sectionArr, false)
+            self.pop()
+            return
+        }
+        
         let result = checkFilterStatus()
         if result.status {
-            onTapApply?(sectionArr)
+            onTapApply?(sectionArr, true)
             self.pop()
         }else {
             CommonFunctions.showToastWithMessage(result.msg)
@@ -89,7 +106,7 @@ extension MyServiceFilterVC {
         
         filterLbl.text = LocalizedString.filter.localized
         canceBtn.setTitle(LocalizedString.cancel.localized, for: .normal)
-        applyBtn.setTitle(LocalizedString.apply.localized, for: .normal)
+        applyBtn.setTitle(LocalizedString.applyFilters.localized, for: .normal)
         
         filterLbl.font = AppFonts.NunitoSansBold.withSize(17.0)
         canceBtn.titleLabel?.font = AppFonts.NunitoSansSemiBold.withSize(17.0)
@@ -98,38 +115,38 @@ extension MyServiceFilterVC {
     }
     
     private func checkFilterStatus() -> (status: Bool, msg: String) {
-        var flag = true
+        var flag : [Bool] = [true,true,true]
         var msg = ""
         for data in sectionArr{
             switch data {
                 
-//            case .byServiceType(let arr, _):
-//                if arr.isEmpty {
-//                    flag = false
-//                    msg = "Please select Service Type"
-//                }
-//            case .byStatus(let arr, _):
-//                if arr.isEmpty {
-//                    flag = false
-//                    msg = "Please select Status Type"
-//                }
+            case .byServiceType(let arr, _):
+                if arr.isEmpty {
+                    flag[0] = false
+                    msg = "Please select Any Filter"
+                }
+                break
+            case .byStatus(let arr, _):
+                if arr.isEmpty {
+                    flag[1] = false
+                    msg = "Please select Any Filter"
+                }
                 
-//            case .date(let fromDate, let toDate, _):
-//                if fromDate == nil {
-//                    flag = false
-//                    msg = "Please select from date"
-//                }
-//                if toDate == nil {
-//                    flag = false
-//                    msg = "Please select to date"
-//                }
+            case .date(let fromDate, let toDate, _):
+                if fromDate == nil {
+                    flag[2] = false
+                    msg = "Please select Any Filter"
+                }
+                if toDate == nil {
+                    flag[2] = false
+                    msg = "Please select Any Filter"
+                }
                 
             default:
                 break
             }
-            if !flag {break}
         }
-        return (flag,msg)
+        return (flag.contains(true),msg)
     }
 }
 
@@ -207,6 +224,7 @@ extension MyServiceFilterVC :UITableViewDelegate,UITableViewDataSource{
         
         cell.selectedDateData = { [weak self] (fromDate,toDate) in
             guard let `self` = self else {return}
+            self.isResetSelected = false
             self.sectionArr[indexPath.section] = .date(fromDate, toDate, self.sectionArr[indexPath.section].isHide)
         }
         return cell

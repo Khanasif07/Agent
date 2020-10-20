@@ -22,7 +22,8 @@ class SRFilterVC: BaseVC {
     //===================
     let viewModel = SRFliterVM()
     var sectionArr : [FilterScreen] = [.allRequestServiceType([],false), .allRequestByStatus([],false)]
-    var onTapApply : (([FilterScreen])->())?
+    var onTapApply : (([FilterScreen], Bool)->())?
+    var isResetSelected: Bool = false
     
     // MARK: - Lifecycle
     //===================
@@ -51,19 +52,31 @@ class SRFilterVC: BaseVC {
     }
     
     @IBAction func resetBtnAction(_ sender: UIButton) {
-        let result = checkFilterStatus()
-        if result.status {
-            onTapApply?(sectionArr)
-            self.pop()
-        }else {
-            CommonFunctions.showToastWithMessage(result.msg)
+        isResetSelected = true
+        var hideStatus: [FilterScreen] = []
+        for type in sectionArr  {
+            switch type {
+            case .allRequestServiceType(_,let hide):
+                hideStatus.append(.allRequestServiceType([], hide))
+            case .allRequestByStatus(_,let hide):
+                hideStatus.append(.allRequestByStatus([], hide))
+            default:
+                break
+            }
         }
+        sectionArr = hideStatus
+        mainTableView.reloadData()
     }
     
     @IBAction func applyBtnAction(_ sender: UIButton) {
+        if isResetSelected {
+            onTapApply?(sectionArr, false)
+            self.pop()
+            return
+        }
         let result = checkFilterStatus()
         if result.status {
-            onTapApply?(sectionArr)
+            onTapApply?(sectionArr, true)
             self.pop()
         }else {
             CommonFunctions.showToastWithMessage(result.msg)
@@ -90,7 +103,7 @@ extension SRFilterVC {
         
         filterLbl.text = LocalizedString.filter.localized
         canceBtn.setTitle(LocalizedString.cancel.localized, for: .normal)
-        applyBtn.setTitle(LocalizedString.apply.localized, for: .normal)
+        applyBtn.setTitle(LocalizedString.applyFilters.localized, for: .normal)
   
         filterLbl.font = AppFonts.NunitoSansBold.withSize(17.0)
         canceBtn.titleLabel?.font = AppFonts.NunitoSansSemiBold.withSize(17.0)
@@ -100,6 +113,7 @@ extension SRFilterVC {
     
     func updateDataSouce(_ filterValue:String , indexPath : IndexPath) {
         var data: [String] = []
+        isResetSelected = false
         switch self.sectionArr[indexPath.section] {
         case .allRequestServiceType(let arr, let hide) :
             if arr.contains(filterValue) {
@@ -130,28 +144,29 @@ extension SRFilterVC {
     }
     
     private func checkFilterStatus() -> (status: Bool, msg: String) {
-        var flag = true
+        var flag : [Bool] = [true,true]
         var msg = ""
         for data in sectionArr{
             switch data {
                 
             case .allRequestServiceType(let str, _):
                 if str.isEmpty {
-                    flag = false
-                    msg = "Please select Service Type"
+                    flag[0] = false
+                    msg = "Please select Any Filter"
                 }
+                break
+                
             case .allRequestByStatus(let str, _):
                 if str.isEmpty {
-                    flag = false
-                    msg = "Please select Status Type"
+                    flag[1] = false
+                    msg = "Please select Any Filter"
                 }
-       
+                break
             default:
                 break
             }
-            if !flag {break}
         }
-        return (flag,msg)
+        return (flag.contains(true),msg)
     }
 }
 

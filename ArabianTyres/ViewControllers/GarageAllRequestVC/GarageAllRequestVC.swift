@@ -77,8 +77,12 @@ class GarageAllRequestVC: BaseVC {
       }
       
     @IBAction func filterBtnAction(_ sender: UIButton) {
-        AppRouter.goToSRFliterVC(vc: self, filterArr: filterArr) {[weak self] (filterData) in
-            self?.getFilterData(data: filterData)
+        AppRouter.goToSRFliterVC(vc: self, filterArr: filterArr) {[weak self] (filterData, isReset) in
+            if isReset {
+                self?.getFilterData(data: filterData)
+            }else {
+                self?.allRequestVC.hitApi(loader: true)
+            }
             self?.filterArr = filterData
         }
     }
@@ -90,31 +94,31 @@ extension GarageAllRequestVC {
     
     private func initialSetup() {
         self.configureScrollView()
-              self.instantiateViewController()
+        self.instantiateViewController()
         self.backgroundView.backgroundColor = AppColors.fontPrimaryColor
         self.mainScrollView.delegate = self
     }
     
     private func configureScrollView(){
         self.mainScrollView.contentSize = CGSize(width: 2 * UIScreen.width, height: 1)
-           self.mainScrollView.isPagingEnabled = true
-       }
-       
-       private func instantiateViewController() {
-           //instantiate the AllRequestVC
-           self.allRequestVC = AllRequestVC.instantiate(fromAppStoryboard: .Garage)
-           self.allRequestVC.view.frame.origin = CGPoint(x: 0, y: 0)
-           self.mainScrollView.frame = self.allRequestVC.view.frame
-           self.mainScrollView.addSubview(self.allRequestVC.view)
-           self.addChild(self.allRequestVC)
-           
-           //instantiate the AppliedJobVC
-           self.bookedRequestVC = BookedRequestVC.instantiate(fromAppStoryboard: .Garage)
-           self.bookedRequestVC.view.frame.origin =   CGPoint(x: UIScreen.width, y: 0)
-           self.mainScrollView.frame = self.bookedRequestVC.view.frame
-           self.mainScrollView.addSubview(self.bookedRequestVC.view)
-           self.addChild(self.bookedRequestVC)
-       }
+        self.mainScrollView.isPagingEnabled = true
+    }
+    
+    private func instantiateViewController() {
+        //instantiate the AllRequestVC
+        self.allRequestVC = AllRequestVC.instantiate(fromAppStoryboard: .Garage)
+        self.allRequestVC.view.frame.origin = CGPoint(x: 0, y: 0)
+        self.mainScrollView.frame = self.allRequestVC.view.frame
+        self.mainScrollView.addSubview(self.allRequestVC.view)
+        self.addChild(self.allRequestVC)
+        
+        //instantiate the AppliedJobVC
+        self.bookedRequestVC = BookedRequestVC.instantiate(fromAppStoryboard: .Garage)
+        self.bookedRequestVC.view.frame.origin =   CGPoint(x: UIScreen.width, y: 0)
+        self.mainScrollView.frame = self.bookedRequestVC.view.frame
+        self.mainScrollView.addSubview(self.bookedRequestVC.view)
+        self.addChild(self.bookedRequestVC)
+    }
     
     private func getFilterData(data: [FilterScreen]) {
         var dict : JSONDictionary = [ApiKey.page: "1",ApiKey.limit : "20"]
