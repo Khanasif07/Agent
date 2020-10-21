@@ -72,13 +72,14 @@ struct GarageProfileModel {
                ApiKey.latitude : latitude,
                ApiKey.longitude : longitude,
                ApiKey.address : address,
-               ApiKey.images : images,
+               ApiKey.images : getGarageImgUrl(),
                ApiKey.bank : bankName,
                ApiKey.accountNumber : accountNumber,
                ApiKey.minInstallationPrice : minInstallationPrice,
                ApiKey.maxInstallationPrice : maxInstallationPrice,
                ApiKey.services : services,
                ApiKey.district: serviceCenterDist
+               
            ]
 
            return dict

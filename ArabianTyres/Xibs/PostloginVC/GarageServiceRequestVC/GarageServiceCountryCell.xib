@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -53,13 +54,13 @@
                                                 <rect key="frame" x="80" y="13" width="207" height="18"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brands" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="wi2-cM-dvU">
-                                                        <rect key="frame" x="0.0" y="0.0" width="75" height="18"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="90" height="18"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                         <color key="textColor" red="0.5411764979" green="0.58431375029999999" blue="0.61960786580000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unit" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="uwM-IN-cXl">
-                                                        <rect key="frame" x="87" y="0.0" width="30" height="18"/>
+                                                        <rect key="frame" x="94.5" y="0.0" width="30" height="18"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="30" id="Ve0-f6-HjA"/>
                                                         </constraints>
@@ -89,7 +90,7 @@
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstItem="R5e-4l-bHv" firstAttribute="width" secondItem="uwM-IN-cXl" secondAttribute="width" multiplier="2" id="gbp-CU-Q2G"/>
-                                                    <constraint firstItem="wi2-cM-dvU" firstAttribute="width" secondItem="uwM-IN-cXl" secondAttribute="width" multiplier="2.5" id="jOt-VI-Bpn"/>
+                                                    <constraint firstItem="wi2-cM-dvU" firstAttribute="width" secondItem="uwM-IN-cXl" secondAttribute="width" multiplier="3" id="jOt-VI-Bpn"/>
                                                 </constraints>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qpF-A5-Tgo">
