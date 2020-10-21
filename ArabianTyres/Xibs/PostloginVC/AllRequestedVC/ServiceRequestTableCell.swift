@@ -100,9 +100,11 @@ class ServiceRequestTableCell: UITableViewCell {
             brandsLbl.text = "Countries: "
             brandDetailLbl.attributedText = getAttributedString(data :model.preferredCountries)
         }
-        
-        logoImgView.setImage_kf(imageString: model.images.first ?? "", placeHolderImage: #imageLiteral(resourceName: "maskGroup"), loader: false)
-        
+        let logoImg =  model.requestType == .tyres ? #imageLiteral(resourceName: "maskGroup") : model.requestType == .battery ? #imageLiteral(resourceName: "icBattery") : #imageLiteral(resourceName: "icOil")
+        let logoBackGroundColor =  model.requestType == .tyres ? AppColors.blueLightColor : model.requestType == .battery ? AppColors.redLightColor : AppColors.grayLightColor
+        self.logoImgView.backgroundColor = logoBackGroundColor
+        self.logoImgView.image = logoImg
+
         statusValueLbl.text = model.bidStatus?.rawValue
         statusValueLbl.textColor = model.bidStatus?.textColor
     
