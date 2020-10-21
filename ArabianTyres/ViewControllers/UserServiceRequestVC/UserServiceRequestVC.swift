@@ -140,7 +140,7 @@ extension UserServiceRequestVC: UserServiceRequestVMDelegate{
             cancelBtn.isHidden = true
             viewAllBtn.isHidden = true
         }
-        requestSeenValueLbl.text = "120"
+        requestSeenValueLbl.text = viewModel.userRequestDetail.seenBy?.description
         if viewModel.userRequestDetail.lowestBid == 0 {
             lowestBidValueLbl.textColor = AppColors.fontPrimaryColor
             lowestBidValueLbl.text = "No"

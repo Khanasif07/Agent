@@ -30,7 +30,7 @@ class GarageRequestPopupVC: BaseVC {
     // MARK: - Variables
     //===========================
     var requestData: RequestModel? = nil
-    var counter : Int = 100
+    var counter : Int = 20
     var timer : Timer? = nil
     var onDismiss : (()->())?
     var viewBtnTapped : ((String,String)->())?

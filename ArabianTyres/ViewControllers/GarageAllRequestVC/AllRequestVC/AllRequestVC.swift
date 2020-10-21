@@ -45,6 +45,7 @@ class AllRequestVC: BaseVC {
 extension AllRequestVC {
     
     private func initialSetup() {
+        NotificationCenter.default.addObserver(self, selector: #selector(serviceRequestReceived), name: Notification.Name.ServiceRequestReceived, object: nil)
         viewModel.delegate = self
         self.mainTableView.delegate = self
         self.mainTableView.dataSource = self
@@ -54,6 +55,7 @@ extension AllRequestVC {
         self.mainTableView.registerCell(with: LoaderCell.self)
         self.mainTableView.registerCell(with: ServiceRequestTableCell.self)
         hitApi()
+        
     }
     
     public func hitApi(params: JSONDictionary = [:],loader: Bool = false){
@@ -63,11 +65,16 @@ extension AllRequestVC {
             viewModel.getGarageRequestData(params: params,loader: true)
         }
     }
-   
+    
     @objc func refreshWhenPull(_ sender: UIRefreshControl) {
         sender.endRefreshing()
         hitApi()
     }
+    
+    @objc func serviceRequestReceived() {
+        hitApi()
+    }
+    
 }
 
 // MARK: - Extension For TableView
@@ -99,10 +106,7 @@ extension AllRequestVC : UITableViewDelegate, UITableViewDataSource {
                 self.viewModel.cancelBid(params:[ApiKey.garageRequestId : self.requestId])
 
                 }else {
-                    if let selectedIndex = tableView.indexPath(for: cell) {
-                        AppRouter.goToGarageServiceRequestVC(vc: self,requestId : self.viewModel.garageRequestListing[selectedIndex.row].id ?? "", requestType: self.viewModel.garageRequestListing[selectedIndex.row].requestType.rawValue)
-                    }
-                    
+                        AppRouter.goToGarageServiceRequestVC(vc: self,requestId : self.viewModel.garageRequestListing[indexPath.row].id ?? "", requestType: self.viewModel.garageRequestListing[indexPath.row].requestType.rawValue)
                 }
             }
             return cell

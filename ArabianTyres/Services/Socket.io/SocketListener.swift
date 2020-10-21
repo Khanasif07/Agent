@@ -22,6 +22,7 @@ extension SocketIOManager {
         self.socket?.on(EventListnerKeys.newRequest.rawValue, callback: { data, _ in
                let json = JSON(data)
                printDebug(json)
+            NotificationCenter.default.post(name: Notification.Name.ServiceRequestReceived, object: nil)
             self.parseToMakeListingData(result: json)
            })
         
