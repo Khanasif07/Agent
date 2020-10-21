@@ -105,7 +105,6 @@ extension GarageRequestPopupVC {
     
     private func setupRequestData() {
         userImgView.setImage_kf(imageString: requestData?.userImage ?? "", placeHolderImage: #imageLiteral(resourceName: "placeHolder"))
-        serviceTypeLbl.text = (requestData?.garageName ?? "") + " bid on your service request"
         switch requestData?.distance {
         case .double(let distance):
             distanceLbl.text = "\(distance)" + " miles"
@@ -113,7 +112,19 @@ extension GarageRequestPopupVC {
             break
         }
         bidAmountLbl.text = (requestData?.amount?.description ?? "") + " SAR"
+        
+        var str: NSMutableAttributedString = NSMutableAttributedString()
+            str = NSMutableAttributedString(string: requestData?.garageName ?? "", attributes: [
+                           .font: AppFonts.NunitoSansBold.withSize(14.0),
+                           .foregroundColor: AppColors.fontPrimaryColor
+                       ])
+            
+            str.append(NSAttributedString(string: " placed a bid on your service request", attributes: [NSAttributedString.Key.foregroundColor: AppColors.fontSecondaryColor,NSAttributedString.Key.font: AppFonts.NunitoSansSemiBold.withSize(13.0)]))
+        serviceTypeLbl.attributedText = str
     }
+    
+    
+  
     
     private func startTimer() {
         guard let createdDate = requestData?.time.toDate(dateFormat: Date.DateFormat.givenDateFormat.rawValue) else {return}
