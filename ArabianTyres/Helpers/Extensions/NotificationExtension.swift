@@ -13,4 +13,5 @@ extension Notification.Name {
     static let NotConnectedToInternet = Notification.Name("NotConnectedToInternet")
     static let SelectedTyreSizeSuccess = Notification.Name("SelectedTyreSizeSuccess")
     static let ServiceRequestSuccess = Notification.Name("ServiceRequestSuccess")
+    static let ServiceRequestReceived = Notification.Name("ServiceRequestReceived")
 }
