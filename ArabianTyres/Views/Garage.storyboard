@@ -2031,7 +2031,7 @@ Service Center</string>
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" red="0.96470588235294119" green="0.96862745098039216" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="ZU3-oZ-RY0" firstAttribute="centerY" secondItem="DR0-v8-Zal" secondAttribute="centerY" id="6Fm-JK-JDi"/>
                                     <constraint firstItem="DR0-v8-Zal" firstAttribute="centerY" secondItem="ivX-gW-0RT" secondAttribute="centerY" multiplier="1.1" id="BPt-xq-JTp"/>
@@ -2442,7 +2442,7 @@ Service Center</string>
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.96470588235294119" green="0.96862745098039216" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="glr-CI-w7P" firstAttribute="trailing" secondItem="ivX-gW-0RT" secondAttribute="trailing" id="448-0J-J2h"/>
                             <constraint firstItem="glr-CI-w7P" firstAttribute="trailing" secondItem="BDP-VP-2tn" secondAttribute="trailing" id="Fya-GN-qJZ"/>
@@ -2460,6 +2460,7 @@ Service Center</string>
                     <connections>
                         <outlet property="bidRecivedValueLbl" destination="ITW-eh-1rO" id="oqe-lr-Nw3"/>
                         <outlet property="bottomContainerView" destination="qgX-G2-8Al" id="hkO-eR-ugg"/>
+                        <outlet property="bottomLineView" destination="R4Y-cN-07A" id="ai8-BB-jQX"/>
                         <outlet property="brandsLbl" destination="2Gn-L4-1CK" id="Aqy-8N-c0N"/>
                         <outlet property="brandsValueLbl" destination="Si3-59-xPR" id="Jcw-sh-EM3"/>
                         <outlet property="cancelBtn" destination="h1o-s4-PBe" id="IBh-cD-K8L"/>

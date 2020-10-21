@@ -38,6 +38,7 @@ class UserServiceRequestVC: BaseVC {
     @IBOutlet weak var bottomContainerView: UIView!
     @IBOutlet weak var productImgView: UIImageView!
     @IBOutlet weak var topContainerView: UIView!
+    @IBOutlet weak var bottomLineView: UIView!
     
     // MARK: - Variables
     //===========================
@@ -98,8 +99,6 @@ class UserServiceRequestVC: BaseVC {
 extension UserServiceRequestVC {
     
     private func initialSetup() {
-//        self.setupCollectionView()
-//        emptyContainerView.isHidden = true
         viewModel.delegate = self
         viewAllBtn.isEnabled = true
         [tyreSizeValueLbl,unitValueLblb,brandsValueLbl].forEach({$0?.textColor = AppColors.fontTertiaryColor})
@@ -110,6 +109,7 @@ extension UserServiceRequestVC {
         tyreSizeLbl.text = self.viewModel.serviceType == "Tyres" ? "Tyre Size:" : "Vehicle Details:"
         productImgView.isHidden = self.viewModel.serviceType == "Tyres"
         let logoBackGroundColor =  self.viewModel.serviceType == "Tyres" ? AppColors.blueLightColor : self.viewModel.serviceType == "Battery" ? AppColors.redLightColor : AppColors.grayLightColor
+        bottomLineView.isHidden = self.viewModel.serviceType == "Tyres"
         self.productImgView.backgroundColor = logoBackGroundColor
         viewModel.getUserMyRequestDetailData(params: [ApiKey.requestId: self.viewModel.requestId])
     }
