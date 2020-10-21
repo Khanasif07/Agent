@@ -19,22 +19,25 @@ class UserServiceRequestVC: BaseVC {
     //===========================
  
     @IBOutlet weak var titleLbl: UILabel!
-    @IBOutlet weak var requestNoValueLbl1: UILabel!
     @IBOutlet weak var requestSeenValueLbl: UILabel!
     @IBOutlet weak var bidRecivedValueLbl: UILabel!
     @IBOutlet weak var lowestBidValueLbl: UILabel!
     @IBOutlet weak var nearestBidderValueLbl: UILabel!
     @IBOutlet weak var sarLbl: UILabel!
-    @IBOutlet weak var brandCountryLbl: UILabel!
-    @IBOutlet weak var emptyContainerView: UIView!
     @IBOutlet weak var cancelBtn: AppButton!
     @IBOutlet weak var viewAllBtn: AppButton!
     @IBOutlet weak var requestNoValueLbl: UILabel!
     @IBOutlet weak var requestNoLbl: UILabel!
     @IBOutlet weak var mainImgView: UIImageView!
-    @IBOutlet weak var brandCollView: UICollectionView!
-    @IBOutlet weak var brandCollViewHeightConstraint: NSLayoutConstraint!
-
+    @IBOutlet weak var brandsValueLbl: UILabel!
+    @IBOutlet weak var brandsLbl: UILabel!
+    @IBOutlet weak var unitValueLblb: UILabel!
+    @IBOutlet weak var unitLbl: UILabel!
+    @IBOutlet weak var tyreSizeValueLbl: UILabel!
+    @IBOutlet weak var tyreSizeLbl: UILabel!
+    @IBOutlet weak var bottomContainerView: UIView!
+    @IBOutlet weak var productImgView: UIImageView!
+    @IBOutlet weak var topContainerView: UIView!
     
     // MARK: - Variables
     //===========================
@@ -65,13 +68,9 @@ class UserServiceRequestVC: BaseVC {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         viewAllBtn.round(radius: 4.0)
-        if !brandsArray.isEmpty{
-            self.brandCollViewHeightConstraint.constant = brandCollView.contentSize.height + 38.0
-        }else if !countryArray.isEmpty{
-            self.brandCollViewHeightConstraint.constant = brandCollView.contentSize.height + 38.0
-        }else {
-            self.brandCollViewHeightConstraint.constant = 60.0
-        }
+        productImgView.round(radius: 4.0)
+        self.bottomContainerView.addShadow(cornerRadius: 5, color: UIColor.black16, offset: CGSize(width: 0.5, height: 0.5), opacity: 1, shadowRadius: 5)
+         self.topContainerView.addShadow(cornerRadius: 5, color: UIColor.black16, offset: CGSize(width: 0.5, height: 0.5), opacity: 1, shadowRadius: 5)
     }
        
     // MARK: - IBActions
@@ -99,11 +98,19 @@ class UserServiceRequestVC: BaseVC {
 extension UserServiceRequestVC {
     
     private func initialSetup() {
-        self.setupCollectionView()
-        emptyContainerView.isHidden = true
+//        self.setupCollectionView()
+//        emptyContainerView.isHidden = true
         viewModel.delegate = self
         viewAllBtn.isEnabled = true
+        [tyreSizeValueLbl,unitValueLblb,brandsValueLbl].forEach({$0?.textColor = AppColors.fontTertiaryColor})
+        tyreSizeLbl.text = LocalizedString.tyreSize.localized + ":"
+        unitValueLblb.text = "Unit:"
+        brandsLbl.text = LocalizedString.brands.localized
         titleLbl.text =  self.viewModel.serviceType == "Tyres" ? "Tyre Service Request" : self.viewModel.serviceType == "Battery" ? "Battery Service Request" : "Oil Service Request"
+        tyreSizeLbl.text = self.viewModel.serviceType == "Tyres" ? "Tyre Size:" : "Vehicle Details:"
+        productImgView.isHidden = self.viewModel.serviceType == "Tyres"
+        let logoBackGroundColor =  self.viewModel.serviceType == "Tyres" ? AppColors.blueLightColor : self.viewModel.serviceType == "Battery" ? AppColors.redLightColor : AppColors.grayLightColor
+        self.productImgView.backgroundColor = logoBackGroundColor
         viewModel.getUserMyRequestDetailData(params: [ApiKey.requestId: self.viewModel.requestId])
     }
 }
@@ -123,7 +130,6 @@ extension UserServiceRequestVC: UserServiceRequestVMDelegate{
     func getUserMyRequestDetailSuccess(message: String) {
         cancelBtn.isBorderSelected = true
         requestId = self.viewModel.userRequestDetail.id
-        requestNoValueLbl1.text = "#" + "\(self.viewModel.userRequestDetail.requestID)"
         requestNoValueLbl.text = "#" + "\(self.viewModel.userRequestDetail.requestID)"
         self.brandsArray = self.viewModel.userRequestDetail.preferredBrands.map({ (model) -> String in
             model.name
@@ -131,7 +137,6 @@ extension UserServiceRequestVC: UserServiceRequestVMDelegate{
         self.countryArray = self.viewModel.userRequestDetail.preferredCountries.map({ (model) -> String in
             model.name
         })
-        self.brandCountryLbl.text =  self.brandsArray.endIndex > 0 ? "Brand Preferences" : "Country Preferences"
         let model = self.viewModel.userRequestDetail
         let logoImg =  model.requestType == "Tyres" ? #imageLiteral(resourceName: "radialCarTireI151") : model.requestType == "Battery" ? #imageLiteral(resourceName: "icBattery") : #imageLiteral(resourceName: "icOil")
         self.mainImgView.image = logoImg
@@ -151,53 +156,20 @@ extension UserServiceRequestVC: UserServiceRequestVMDelegate{
         }
         bidRecivedValueLbl.text = viewModel.userRequestDetail.totalBids?.description
         nearestBidderValueLbl.text = viewModel.userRequestDetail.nearestBidder?.description
-        brandCollView.reloadData()
+        //
+        if self.viewModel.serviceType == "Tyres"{
+            tyreSizeValueLbl.text = "\(model.width ?? 0)W " + "\(model.rimSize ?? 0)R " + "\(model.profile ?? 0)P"
+        } else{
+            tyreSizeValueLbl.text  =  "\(model.make ?? "") " + "\(model.model ?? "") " + "\(model.year ?? 0)"
+        }
+        unitValueLblb.text = "\(model.quantity ?? 0)"
+        brandsLbl.text = brandsArray.endIndex > 0 ? "Brands:" : "Countries:"
+        brandsValueLbl.text = brandsArray.endIndex > 0 ? brandsArray.joined(separator: ",") : countryArray.joined(separator: ",")
+        productImgView.setImage_kf(imageString: model.images.first ?? "", placeHolderImage: logoImg, loader: false)
+        //
     }
     
     func getUserMyRequestDetailFailed(error: String) {
         ToastView.shared.showLongToast(self.view, msg: error)
     }
-    
-    private func setupCollectionView(){
-        let layout = AlignmentFlowLayout()
-        layout.horizontalAlignment = .left
-        layout.verticalAlignment = .bottom
-        brandCollView.collectionViewLayout = layout
-        brandCollView.delegate = self
-        brandCollView.dataSource = self
-        brandCollView.isScrollEnabled = false
-        brandCollView.registerCell(with: FacilityCollectionViewCell.self)
-        
-    }
 }
-
-// MARK: - Extension For Collection View
-//======================================
-extension UserServiceRequestVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
-
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return brandsArray.endIndex > 0 ? brandsArray.endIndex : countryArray.endIndex
-    }
-    
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueCell(with: FacilityCollectionViewCell.self, indexPath: indexPath)
-        cell.cancelBtn.isHidden = true
-        cell.cancelBtnHeightConstraint.constant = 0.0
-        cell.skillLbl.contentMode = .center
-        cell.skillLbl.text = brandsArray.endIndex > 0 ? brandsArray[indexPath.item] : countryArray[indexPath.item]
-        cell.layoutSubviews()
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return cardSizeForItemAt(collectionView,layout: collectionViewLayout,indexPath: indexPath)
-    }
-    
-    private func cardSizeForItemAt(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, indexPath: IndexPath) -> CGSize {
-        let selectedText = brandsArray.endIndex > 0 ? brandsArray[indexPath.item] : countryArray[indexPath.item]
-        let textSize = selectedText.sizeCount(withFont: AppFonts.NunitoSansSemiBold.withSize(14.0), boundingSize: CGSize(width: 10000.0, height: collectionView.frame.height))
-        return CGSize(width: textSize.width + 16, height: 44.0)
-    }
-}
-
