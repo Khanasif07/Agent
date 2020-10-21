@@ -44,7 +44,7 @@ class OffersDetailVC: BaseVC {
     //===========================
     @IBAction func acceptBtnAction(_ sender: UIButton) {
         let index =  self.viewModel.bidData.firstIndex { (model) -> Bool in
-            return model.isSelected == true
+            return model.isAccepted == true
         }
         guard let selectedIndex = index else { return }
         self.viewModel.acceptUserBidData(params: [ApiKey.bidId:self.viewModel.bidId,ApiKey.id: self.viewModel.bidData[selectedIndex].id] )
@@ -127,7 +127,8 @@ extension OffersDetailVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(with: OffersDetailTableCell.self, indexPath: indexPath)
-        cell.populateData(isBrandSelected: self.viewModel.bidData[indexPath.row].isSelected ?? false,model:  self.viewModel.bidData[indexPath.row])
+//        cell.populateData(isBrandSelected: self.viewModel.bidData[indexPath.row].isSelected ?? false,model:  self.viewModel.bidData[indexPath.row])
+        cell.populateData(isBrandSelected: self.viewModel.bidData[indexPath.row].isAccepted ?? false,model:  self.viewModel.bidData[indexPath.row])
         cell.dashBackgroundView.isHidden = !(self.viewModel.bidData.endIndex - 1 == indexPath.row)
         return cell
     }
@@ -147,17 +148,17 @@ extension OffersDetailVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        acceptBtn.isEnabled = true
        let index =  self.viewModel.bidData.firstIndex { (model) -> Bool in
-            return model.isSelected == true
+            return model.isAccepted == true
         }
         guard let selectedIndex = index else {
-            self.viewModel.bidData[indexPath.row].isSelected = true
-            self.viewModel.userBidDetail.bidData[indexPath.row].isSelected = true
+            self.viewModel.bidData[indexPath.row].isAccepted = true
+            self.viewModel.userBidDetail.bidData[indexPath.row].isAccepted = true
             self.mainTableView.reloadData()
             return }
-        self.viewModel.userBidDetail.bidData[selectedIndex].isSelected = false
-        self.viewModel.userBidDetail.bidData[indexPath.row].isSelected = true
-        self.viewModel.bidData[selectedIndex].isSelected = false
-        self.viewModel.bidData[indexPath.row].isSelected = true
+        self.viewModel.userBidDetail.bidData[selectedIndex].isAccepted = false
+        self.viewModel.userBidDetail.bidData[indexPath.row].isAccepted = true
+        self.viewModel.bidData[selectedIndex].isAccepted = false
+        self.viewModel.bidData[indexPath.row].isAccepted = true
         self.mainTableView.reloadData()
     }
 }
@@ -181,6 +182,9 @@ extension OffersDetailVC : OffersDetailVMDelegate {
         countryCollView.isHidden = viewModel.userBidDetail.countries?.isEmpty ?? true
         mainTableView.tableHeaderView?.height = viewModel.userBidDetail.countries?.isEmpty ?? true ? 180.0 : 226.0
         self.mainTableView.reloadData()
+        self.acceptBtn.isEnabled = (viewModel.userBidDetail.status == "accepted")
+        self.acceptBtn.isUserInteractionEnabled = !(viewModel.userBidDetail.status == "accepted")
+        self.acceptBtn.setTitle( self.acceptBtn.isUserInteractionEnabled ? "Accept" : "Accepted", for: .normal)
         collectionView(countryCollView, didSelectItemAt: IndexPath(item: 0, section: 0))
     }
     

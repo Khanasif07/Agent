@@ -110,6 +110,7 @@ extension GarageAddLocationVC {
         logoImgView.image = GarageProfileModel.shared.logo
         garageName.text = GarageProfileModel.shared.serviceCenterName
         self.saveContinueBtn.isEnabled = false
+        self.mapView.isUserInteractionEnabled = false
     }
     
     private func prepareMap() {
@@ -218,11 +219,13 @@ extension GarageAddLocationVC :  GMSMapViewDelegate ,CLLocationManagerDelegate {
             self.setAddress()
         }
         currentZoomLevel = position.zoom
+        self.mapView.isUserInteractionEnabled = false
     }
     
    @discardableResult func didTapMyLocationButton(for mapView: GMSMapView) -> Bool {
         guard let lat = mapView.myLocation?.coordinate.latitude,
                let lng = mapView.myLocation?.coordinate.longitude else { return false }
+        self.mapView.isUserInteractionEnabled = true
         self.isMarkerAnimation = false
         self.locationValue = CLLocationCoordinate2D.init(latitude: lat, longitude: lng)
         moveMarker(coordinate:  self.locationValue)
@@ -245,6 +248,7 @@ extension GarageAddLocationVC: GMSAutocompleteViewControllerDelegate {
     }
     
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
+            self.mapView.isUserInteractionEnabled = true
             isMarkerAnimation = false
             self.locationValue = place.coordinate
             self.setAddress()

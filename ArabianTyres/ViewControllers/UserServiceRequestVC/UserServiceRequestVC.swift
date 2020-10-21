@@ -159,6 +159,10 @@ extension UserServiceRequestVC: UserServiceRequestVMDelegate{
     }
     
     private func setupCollectionView(){
+        let layout = AlignmentFlowLayout()
+        layout.horizontalAlignment = .left
+        layout.verticalAlignment = .bottom
+        brandCollView.collectionViewLayout = layout
         brandCollView.delegate = self
         brandCollView.dataSource = self
         brandCollView.isScrollEnabled = false
