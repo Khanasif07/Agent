@@ -63,6 +63,7 @@ class UserAllRequestVC: BaseVC {
 extension UserAllRequestVC {
     
     private func initialSetup() {
+        NotificationCenter.default.addObserver(self, selector: #selector(ServiceRequestSuccess), name: Notification.Name.ServiceRequestSuccess, object: nil)
         self.filterBtn.tintColor = .black
         self.tableViewSetUp()
         hitListingApi()
@@ -111,6 +112,10 @@ extension UserAllRequestVC {
     @objc func refreshWhenPull(_ sender: UIRefreshControl) {
         sender.endRefreshing()
         hitListingApi()
+    }
+    
+    @objc func ServiceRequestSuccess(){
+        self.hitListingApi()
     }
 }
 

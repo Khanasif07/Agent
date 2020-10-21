@@ -228,12 +228,16 @@ extension OffersDetailVC: DZNEmptyDataSetSource,DZNEmptyDataSetDelegate{
     }
     
     func emptyDataSetShouldBeForced(toDisplay scrollView: UIScrollView!) -> Bool {
+//        if let tableView = scrollView as? UITableView, tableView.numberOfSections == 0 {
+//            return true
+//        }
         return false
     }
 }
 
 
-
+// MARK: - Extension For UICollectionViewDelegate
+//========================================
 extension OffersDetailVC : UICollectionViewDelegate,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.userBidDetail.countries?.count ?? 0
