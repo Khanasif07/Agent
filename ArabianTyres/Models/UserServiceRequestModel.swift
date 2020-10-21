@@ -62,6 +62,7 @@ struct UserServiceRequestModel: Codable {
     let id: String
     let make: String?
     let model: String?
+    let year: Int?
     let images: [String]
     let totalBids: Int?
     let lowestBid: Int?
@@ -75,7 +76,7 @@ struct UserServiceRequestModel: Codable {
         case createdAt, profile, requestType, rimSize, status, preferredBrands, preferredCountries, quantity, width , make ,model
         case id = "_id"
         case images
-        case totalBids,lowestBid,nearestBidder,isOfferAccepted, totalOffers, seenBy
+        case totalBids,lowestBid,nearestBidder,isOfferAccepted, totalOffers, seenBy,year
     }
     
     init(){
@@ -92,6 +93,7 @@ struct UserServiceRequestModel: Codable {
         id = ""
         make  = ""
         model = ""
+        year = 0
         images = []
         nearestBidder = 0.0
         totalBids = 0
