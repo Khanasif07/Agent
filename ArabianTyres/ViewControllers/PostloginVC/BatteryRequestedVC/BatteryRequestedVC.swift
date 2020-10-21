@@ -215,6 +215,7 @@ extension BatteryRequestedVC :UITextFieldDelegate{
 //===========================
 extension BatteryRequestedVC : LocationPopUpVMDelegate {
     func postBatteryRequestSuccess(message: String){
+         NotificationCenter.default.post(name: Notification.Name.ServiceRequestSuccess, object: nil)
          AppRouter.showSuccessPopUp(vc: self, title: "Successfully Requested", desc: "Your request for battery service has been submited successfully.")
     }
     

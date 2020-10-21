@@ -113,8 +113,8 @@ extension GarageAddLocationVC {
     }
     
     private func prepareMap() {
-         self.isMarkerAnimation =  false
-//        self.mapView.isMyLocationEnabled = true
+        self.isMarkerAnimation =  false
+        self.mapView.isMyLocationEnabled = true
         self.mapView.delegate = self
         self.locationManager.delegate = self
         markerView.image = #imageLiteral(resourceName: "markerIcon")

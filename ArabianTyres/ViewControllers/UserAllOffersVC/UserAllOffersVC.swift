@@ -88,7 +88,7 @@ extension UserAllOffersVC {
         titleLbl.font = AppFonts.NunitoSansBold.withSize(17.0)
     }
     
-    private func hitApi(params: JSONDictionary = [:],loader: Bool = true,pagination: Bool = false) {
+    private func hitApi(params: JSONDictionary = [:],loader: Bool = false,pagination: Bool = false) {
         if params.isEmpty {
             let dict : JSONDictionary = [ApiKey.page: "1",ApiKey.limit : "20", ApiKey.requestId : self.requestId]
             viewModel.getUserBidData(params: dict)
@@ -125,23 +125,28 @@ extension UserAllOffersVC {
 extension UserAllOffersVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.userBidListingArr.count
+        return viewModel.userBidListingArr.endIndex + (self.viewModel.showPaginationLoader ?  1: 0)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueCell(with: UserOffersTableCell.self, indexPath: indexPath)
-        cell.bindData(viewModel.userBidListingArr[indexPath.row])
-        cell.viewProposalAction = { [weak self] (sender) in
-            guard let `self` = self else { return }
-            AppRouter.presentOfferDetailVC(vc: self,bidId: self.viewModel.userBidListingArr[indexPath.row].id, garageName: self.viewModel.userBidListingArr[indexPath.row].garageName ?? "", completion: {
-                self.hitApi()
-            })
+        if indexPath.row == (viewModel.userBidListingArr.endIndex) {
+            let cell = tableView.dequeueCell(with: LoaderCell.self)
+            return cell
+        } else {
+            let cell = tableView.dequeueCell(with: UserOffersTableCell.self, indexPath: indexPath)
+            cell.bindData(viewModel.userBidListingArr[indexPath.row])
+            cell.viewProposalAction = { [weak self] (sender) in
+                guard let `self` = self else { return }
+                AppRouter.presentOfferDetailVC(vc: self,bidId: self.viewModel.userBidListingArr[indexPath.row].id, garageName: self.viewModel.userBidListingArr[indexPath.row].garageName ?? "", completion: {
+                    self.hitApi()
+                })
+            }
+            cell.rejectAction = { [weak self] (sender) in
+                guard let `self` = self else { return }
+                self.viewModel.rejectUserBidData(params: [ApiKey.bidId: self.viewModel.userBidListingArr[indexPath.row].id])
+            }
+            return cell
         }
-        cell.rejectAction = { [weak self] (sender) in
-            guard let `self` = self else { return }
-            self.viewModel.rejectUserBidData(params: [ApiKey.bidId: self.viewModel.userBidListingArr[indexPath.row].id])
-        }
-        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -738,9 +738,10 @@ extension WebServices{
     
     //MARK:- User Bids
     static func getUserBids(parameters: JSONDictionary,
+                              loader: Bool = false,
                                            success: @escaping SuccessResponse,
                                            failure: @escaping FailureResponse) {
-        self.commonGetAPI(parameters: parameters,endPoint: .userBids, success: { (json) in
+        self.commonGetAPI(parameters: parameters,endPoint: .userBids, loader: loader, success: { (json) in
             let code = json[ApiKey.statusCode].intValue
             let msg = json[ApiKey.message].stringValue
             switch code {

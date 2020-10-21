@@ -212,6 +212,7 @@ extension OilRequestedVC :UITextFieldDelegate{
 //===========================
 extension OilRequestedVC : LocationPopUpVMDelegate {
     func postOilRequestSuccess(message: String){
+         NotificationCenter.default.post(name: Notification.Name.ServiceRequestSuccess, object: nil)
          AppRouter.showSuccessPopUp(vc: self, title: "Successfully Requested", desc: "Your request for oil service has been submited successfully.")
     }
     

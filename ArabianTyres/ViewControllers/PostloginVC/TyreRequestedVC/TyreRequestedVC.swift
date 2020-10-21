@@ -185,6 +185,7 @@ extension TyreRequestedVC: LocationPopUpVMDelegate{
     }
     
     func postTyreRequestSuccess(message: String) {
+        NotificationCenter.default.post(name: Notification.Name.ServiceRequestSuccess, object: nil)
         AppRouter.showSuccessPopUp(vc: self, title: "Successfully Requested", desc: "Your request for tyre service has been submitted successfully.")
     }
 }
