@@ -19,6 +19,7 @@ class LoaderCell: UITableViewCell {
     //=====================================================================
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         // Initialization code
         self.loader.startAnimating()
         self.loader.color = .red

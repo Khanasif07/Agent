@@ -44,14 +44,14 @@ class UserAllOfferVM{
         }
     }
     
-    func getUserBidData(params: JSONDictionary,loader: Bool = true,pagination: Bool = false){
+    func getUserBidData(params: JSONDictionary,loader: Bool = false,pagination: Bool = false){
         if pagination {
             guard nextPageAvailable, !isRequestinApi else { return }
         } else {
             guard !isRequestinApi else { return }
         }
         isRequestinApi = true
-        WebServices.getUserBids(parameters: params, success: { (json) in
+        WebServices.getUserBids(parameters: params,loader: loader, success: { (json) in
             self.parseToMakeListingData(result: json)
         }) { (error) -> (Void) in
             self.isRequestinApi = false
