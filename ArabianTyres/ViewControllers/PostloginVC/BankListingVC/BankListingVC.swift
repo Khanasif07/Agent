@@ -37,7 +37,6 @@ class BankListingVC: BaseVC {
         viewModel.searchBank = sender.text?.byRemovingLeadingTrailingWhiteSpaces ?? ""
         mainTableView.reloadData()
     }
-    
 }
 
 // MARK: - Extension for functions

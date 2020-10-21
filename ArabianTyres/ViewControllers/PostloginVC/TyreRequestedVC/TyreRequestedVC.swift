@@ -146,6 +146,9 @@ extension TyreRequestedVC {
     }
     
     private func setupCollectionView(){
+        let layout = AlignmentFlowLayout()
+        layout.horizontalAlignment = .left
+        tyreBrandCollView.collectionViewLayout = layout
         tyreBrandCollView.delegate = self
         tyreBrandCollView.dataSource = self
         tyreBrandCollView.isScrollEnabled = false
