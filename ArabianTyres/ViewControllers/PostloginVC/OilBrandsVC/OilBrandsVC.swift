@@ -131,7 +131,10 @@ extension OilBrandsVC {
     }
     
     private func setupCustomView() {
-        
+        let layout = AlignmentFlowLayout()
+        layout.horizontalAlignment = .left
+        layout.verticalAlignment = .bottom
+        oilBrandCustomView.collView.collectionViewLayout = layout
         oilBrandCustomView.placeHolderTxt = LocalizedString.selectBrand.localized
         oilBrandCustomView.floatLbl.text = LocalizedString.brands.localized
         oilBrandCustomView.delegate = self

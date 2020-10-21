@@ -129,7 +129,10 @@ extension BatteryBrandVC {
     }
     
     private func setupCustomView() {
-        
+        let layout = AlignmentFlowLayout()
+        layout.horizontalAlignment = .left
+        layout.verticalAlignment = .bottom
+        batteryBrandCustomView.collView.collectionViewLayout = layout
         batteryBrandCustomView.placeHolderTxt = LocalizedString.selectBrand.localized
         batteryBrandCustomView.floatLbl.text = LocalizedString.brands.localized
         batteryBrandCustomView.delegate = self
