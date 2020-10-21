@@ -57,9 +57,13 @@ class GarageServiceTopCell: UITableViewCell {
     }
     
     func popluateData(_ model: GarageRequestModel) {
-        locationLbl.text = model.userAddress?.isEmpty ?? false ? "NA" : model.userAddress
+        if let address = model.userAddress {
+            locationLbl.text = address.isEmpty ? "NA" : address
+        }else {
+            locationLbl.text = "NA"
+        }
         userImgView.setImage_kf(imageString: model.userImage ?? "",placeHolderImage: #imageLiteral(resourceName: "placeHolder"))
-        let date = (model.createdAt)?.breakCompletDate(outPutFormat: Date.DateFormat.profileFormat.rawValue, inputFormat: Date.DateFormat.yyyyMMddTHHmmsssssz.rawValue) 
+        let date = (model.createdAt)?.breakCompletDate(outPutFormat: Date.DateFormat.profileFormat.rawValue, inputFormat: Date.DateFormat.yyyyMMddTHHmmsssssz.rawValue)
         createAtLbl.text = date
         userNameLbl.text = model.userName
 //        let cords = CLLocationCoordinate2D(latitude: model.userLatitude ?? 0.0, longitude: model.userLongitude ?? 0.0)
