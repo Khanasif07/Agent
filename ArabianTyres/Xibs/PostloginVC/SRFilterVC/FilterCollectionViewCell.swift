@@ -21,7 +21,7 @@ class FilterCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         subCategoryName.font = AppFonts.NunitoSansSemiBold.withSize(13.0)
         numberOfSubCategoryName.font = AppFonts.NunitoSansSemiBold.withSize(13.0)
-
+        numberOfSubCategoryName.isHidden = true
     }
 
     func setupForOfferFilter() {
