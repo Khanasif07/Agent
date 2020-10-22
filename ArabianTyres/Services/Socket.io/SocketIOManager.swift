@@ -36,8 +36,9 @@ class SocketIOManager: NSObject {
     var socket: SocketIOClient?
     private var manager: SocketManager?
     static let shared: SocketIOManager = SocketIOManager()
-    public var baseSocketUrl: String  = "https://arabiantyersdevapi.appskeeper.com"
-//    public var baseSocketUrl: String  = "https://684af3030247.ngrok.io"
+//    public var baseSocketUrl: String  = "https://arabiantyersdevapi.appskeeper.com" // dev socket url
+    public var baseSocketUrl: String  = "http://arabiantyersqaapi.appskeeper.com" // qa socket url
+
     var messageQueue = [[String: Any]]()
     static var isSocketConnected: Bool {
         return SocketIOManager.shared.socket?.status == SocketIOStatus.connected ? true: false

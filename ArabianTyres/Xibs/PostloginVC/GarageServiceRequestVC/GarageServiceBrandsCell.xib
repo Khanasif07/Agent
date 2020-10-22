@@ -40,17 +40,19 @@
                                                 <state key="normal" image="icUnCheck"/>
                                                 <state key="selected" image="icCheck"/>
                                             </button>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="1An-6S-U7i">
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="1An-6S-U7i">
                                                 <rect key="frame" x="80" y="11.5" width="209" height="30"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MRF" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="TRq-qW-Sc5">
-                                                        <rect key="frame" x="0.0" y="0.0" width="75" height="30"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TRq-qW-Sc5">
+                                                        <rect key="frame" x="0.0" y="0.0" width="90" height="30"/>
+                                                        <string key="text">MRF
+ceat</string>
                                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="13"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wLA-Be-cjk">
-                                                        <rect key="frame" x="92.5" y="0.0" width="30" height="30"/>
+                                                        <rect key="frame" x="100" y="0.0" width="30" height="30"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="lrq-MH-n47">
                                                                 <rect key="frame" x="0.0" y="7.5" width="30" height="15.5"/>
@@ -67,6 +69,7 @@
                                                             <constraint firstItem="lrq-MH-n47" firstAttribute="centerY" secondItem="wLA-Be-cjk" secondAttribute="centerY" id="ZaH-g2-c9M"/>
                                                             <constraint firstAttribute="width" secondItem="wLA-Be-cjk" secondAttribute="height" multiplier="1:1" id="jjR-Wf-27M"/>
                                                             <constraint firstAttribute="width" constant="30" id="njL-H9-fYi"/>
+                                                            <constraint firstAttribute="height" constant="30" id="rJb-co-79j"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dq7-P6-MkX">
@@ -97,18 +100,20 @@
                                                     </view>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstItem="TRq-qW-Sc5" firstAttribute="width" secondItem="wLA-Be-cjk" secondAttribute="width" multiplier="2.5" id="8Mk-tk-FG1"/>
+                                                    <constraint firstItem="TRq-qW-Sc5" firstAttribute="width" secondItem="wLA-Be-cjk" secondAttribute="width" multiplier="3" id="8Mk-tk-FG1"/>
+                                                    <constraint firstItem="dq7-P6-MkX" firstAttribute="height" secondItem="wLA-Be-cjk" secondAttribute="height" id="IlO-bJ-9H6"/>
                                                     <constraint firstItem="dq7-P6-MkX" firstAttribute="width" secondItem="wLA-Be-cjk" secondAttribute="width" multiplier="2.3" id="dkh-3y-gc7"/>
                                                 </constraints>
                                             </stackView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
+                                            <constraint firstItem="1An-6S-U7i" firstAttribute="top" secondItem="0b2-2h-NCn" secondAttribute="top" constant="11.5" id="O8n-Y0-PJy"/>
                                             <constraint firstItem="1An-6S-U7i" firstAttribute="leading" secondItem="YXW-KB-kY6" secondAttribute="trailing" constant="30" id="TMa-Yn-dpL"/>
-                                            <constraint firstAttribute="height" constant="53" id="VAd-WE-YEm"/>
                                             <constraint firstItem="YXW-KB-kY6" firstAttribute="centerY" secondItem="0b2-2h-NCn" secondAttribute="centerY" id="VRP-jq-7he"/>
                                             <constraint firstItem="YXW-KB-kY6" firstAttribute="leading" secondItem="0b2-2h-NCn" secondAttribute="leading" constant="20" id="ccu-Nv-PtG"/>
                                             <constraint firstItem="1An-6S-U7i" firstAttribute="centerY" secondItem="0b2-2h-NCn" secondAttribute="centerY" id="dHi-Gx-S1M"/>
+                                            <constraint firstAttribute="bottom" secondItem="1An-6S-U7i" secondAttribute="bottom" constant="11.5" id="rym-zp-L3l"/>
                                             <constraint firstAttribute="trailing" secondItem="1An-6S-U7i" secondAttribute="trailing" constant="22" id="tbU-tM-eni"/>
                                         </constraints>
                                     </view>
