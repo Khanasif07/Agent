@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -41,7 +41,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aoL-qe-Qst">
-                                        <rect key="frame" x="6" y="-3" width="72" height="68"/>
+                                        <rect key="frame" x="6" y="14" width="36" height="34"/>
                                         <state key="normal" image="icBackward"/>
                                         <connections>
                                             <action selector="backBtnAction:" destination="KzW-Im-RfD" eventType="touchUpInside" id="ves-IB-WFY"/>
@@ -274,7 +274,7 @@ Service Center</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q61-dS-rD9">
-                                        <rect key="frame" x="6" y="-3" width="72" height="68"/>
+                                        <rect key="frame" x="6" y="14" width="36" height="34"/>
                                         <state key="normal" image="icBackward"/>
                                         <connections>
                                             <action selector="backBtnAction:" destination="09l-eL-0NZ" eventType="touchUpInside" id="ZBT-7N-ZLb"/>
@@ -440,7 +440,7 @@ Service Center</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4tI-oY-Y8Z">
-                                        <rect key="frame" x="6" y="-3" width="72" height="68"/>
+                                        <rect key="frame" x="6" y="14" width="36" height="34"/>
                                         <state key="normal" image="icBackward"/>
                                         <connections>
                                             <action selector="backBtnAction:" destination="jHb-qK-wSR" eventType="touchUpInside" id="44y-qN-4lJ"/>
@@ -628,7 +628,7 @@ Service Center</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VR2-mA-OKd">
-                                        <rect key="frame" x="6" y="-3" width="72" height="68"/>
+                                        <rect key="frame" x="6" y="14" width="36" height="34"/>
                                         <state key="normal" image="icBackward"/>
                                         <connections>
                                             <action selector="backBtnAction:" destination="ned-sa-trC" eventType="touchUpInside" id="8nQ-6Z-zFX"/>
@@ -856,7 +856,7 @@ Service Center</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fwA-Xg-fpL">
-                                        <rect key="frame" x="6" y="-3" width="72" height="68"/>
+                                        <rect key="frame" x="6" y="14" width="36" height="34"/>
                                         <state key="normal" image="icBackward"/>
                                         <connections>
                                             <action selector="backBtnAction:" destination="KzW-Im-RfD" eventType="touchUpInside" id="6fg-cM-fc7"/>
@@ -1055,7 +1055,7 @@ Service Center</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TEE-8I-aOG">
-                                        <rect key="frame" x="6" y="-3" width="72" height="68"/>
+                                        <rect key="frame" x="6" y="14" width="36" height="34"/>
                                         <state key="normal" image="icBackward"/>
                                         <connections>
                                             <action selector="backBtnAction:" destination="1bs-SP-OPu" eventType="touchUpInside" id="Kgs-tx-1II"/>
@@ -1248,7 +1248,7 @@ Service Center</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xz6-Xe-BwT">
-                                        <rect key="frame" x="6" y="-3" width="72" height="68"/>
+                                        <rect key="frame" x="6" y="14" width="36" height="34"/>
                                         <state key="normal" image="icBackward"/>
                                         <connections>
                                             <action selector="backBtnAction:" destination="scS-Gl-fMP" eventType="touchUpInside" id="qhe-P8-N5Y"/>
@@ -1555,7 +1555,7 @@ Service Center</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dEE-5b-0Oo">
-                                                        <rect key="frame" x="339" y="1" width="60" height="60"/>
+                                                        <rect key="frame" x="369" y="16" width="30" height="30"/>
                                                         <state key="normal" image="arrow">
                                                             <color key="titleColor" red="0.090196078430000007" green="0.1450980392" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
@@ -1761,10 +1761,10 @@ Service Center</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BTW-QB-zMe">
-                                                <rect key="frame" x="278" y="-2" width="120" height="60"/>
+                                                <rect key="frame" x="338" y="13" width="60" height="30"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SfT-KV-5ah">
-                                                        <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                                         <state key="normal" image="icon">
                                                             <color key="titleColor" red="0.090196078430000007" green="0.1450980392" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
@@ -1773,7 +1773,7 @@ Service Center</string>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KXs-I9-zXJ">
-                                                        <rect key="frame" x="60" y="0.0" width="60" height="60"/>
+                                                        <rect key="frame" x="30" y="0.0" width="30" height="30"/>
                                                         <state key="normal" image="arrowBlack">
                                                             <color key="titleColor" red="0.090196078430000007" green="0.1450980392" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
@@ -1854,7 +1854,7 @@ Service Center</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jvt-2C-DBW">
-                                        <rect key="frame" x="339" y="1" width="60" height="60"/>
+                                        <rect key="frame" x="369" y="16" width="30" height="30"/>
                                         <state key="normal" image="icArrow">
                                             <color key="titleColor" red="0.090196078430000007" green="0.1450980392" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -2006,7 +2006,7 @@ Service Center</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZU3-oZ-RY0">
-                                        <rect key="frame" x="6" y="-3" width="72" height="68"/>
+                                        <rect key="frame" x="6" y="14" width="36" height="34"/>
                                         <state key="normal" image="icBackward"/>
                                         <connections>
                                             <action selector="cancelBtnAction:" destination="Yme-aY-fPF" eventType="touchUpInside" id="ozc-yg-UIH"/>
@@ -2049,23 +2049,23 @@ Service Center</string>
                                 <rect key="frame" x="0.0" y="100" width="414" height="675"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r3R-jv-6Sw">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="760"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="728"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qJ5-yA-DoH">
-                                                <rect key="frame" x="22" y="16" width="376" height="117.5"/>
+                                                <rect key="frame" x="22" y="16" width="376" height="85.5"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icImg" translatesAutoresizingMaskIntoConstraints="NO" id="1HE-RU-LpJ">
-                                                        <rect key="frame" x="25" y="0.0" width="326" height="64"/>
+                                                        <rect key="frame" x="25" y="0.0" width="326" height="32"/>
                                                     </imageView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RF1-rW-VcO">
-                                                        <rect key="frame" x="40" y="96.5" width="296" height="1"/>
+                                                        <rect key="frame" x="40" y="64.5" width="296" height="1"/>
                                                         <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="abu-85-MKX"/>
                                                         </constraints>
                                                     </view>
                                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="K82-HA-5CL">
-                                                        <rect key="frame" x="134.5" y="72" width="107.5" height="16.5"/>
+                                                        <rect key="frame" x="134.5" y="40" width="107.5" height="16.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Request No:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YRY-nQ-8lE">
                                                                 <rect key="frame" x="0.0" y="0.0" width="78.5" height="16.5"/>
@@ -2096,7 +2096,7 @@ Service Center</string>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hDX-TD-rtm">
-                                                <rect key="frame" x="16" y="133.5" width="382" height="250"/>
+                                                <rect key="frame" x="16" y="101.5" width="382" height="250"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="NtM-yX-Nkv">
                                                         <rect key="frame" x="32" y="32" width="318" height="186"/>
@@ -2245,7 +2245,7 @@ Service Center</string>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hvd-00-fWd">
-                                                <rect key="frame" x="16" y="383.5" width="382" height="46"/>
+                                                <rect key="frame" x="16" y="351.5" width="382" height="46"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Request Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PMW-Rc-J3u">
                                                         <rect key="frame" x="0.0" y="15" width="99" height="16.5"/>
@@ -2262,7 +2262,7 @@ Service Center</string>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qgX-G2-8Al">
-                                                <rect key="frame" x="16" y="429.5" width="382" height="230.5"/>
+                                                <rect key="frame" x="16" y="397.5" width="382" height="230.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="5MO-XC-2cH">
                                                         <rect key="frame" x="16" y="16" width="350" height="198.5"/>
@@ -2503,7 +2503,7 @@ Service Center</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ak-Yl-SqR">
-                                        <rect key="frame" x="6" y="-3" width="72" height="68"/>
+                                        <rect key="frame" x="6" y="14" width="36" height="34"/>
                                         <state key="normal" image="icBackward"/>
                                         <connections>
                                             <action selector="backBtnAction:" destination="scS-Gl-fMP" eventType="touchUpInside" id="H9E-0C-arQ"/>
@@ -2661,7 +2661,7 @@ Service Center</string>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="YBK-Vi-Vgf">
+                            <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="YBK-Vi-Vgf">
                                 <rect key="frame" x="16" y="791" width="382" height="56"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y35-QV-lz9" customClass="AppButton" customModule="ArabianTyres" customModuleProvider="target">
@@ -2676,7 +2676,7 @@ Service Center</string>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="rejectBtnAction:" destination="rdR-by-uSg" eventType="touchUpInside" id="UGd-jd-kKH"/>
+                                            <action selector="rejectBtnAction:" destination="rdR-by-uSg" eventType="touchUpInside" id="cWH-9b-epf"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qjY-kl-H73" customClass="AppButton" customModule="ArabianTyres" customModuleProvider="target">
@@ -2691,7 +2691,7 @@ Service Center</string>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="acceptBtnAction:" destination="rdR-by-uSg" eventType="touchUpInside" id="oaO-1A-nm3"/>
+                                            <action selector="acceptBtnAction:" destination="rdR-by-uSg" eventType="touchUpInside" id="C4B-RX-njH"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -2714,13 +2714,14 @@ Service Center</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5cd-yD-UGi"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <connections>
-                        <outlet property="acceptBtn" destination="qjY-kl-H73" id="tLo-eD-7cf"/>
+                        <outlet property="acceptBtn" destination="qjY-kl-H73" id="q7z-DY-dqs"/>
                         <outlet property="brandsLbl" destination="Ae5-gn-PgF" id="Q5w-LX-DJ8"/>
                         <outlet property="countryCollView" destination="UUp-vZ-UA7" id="azW-eg-aUB"/>
                         <outlet property="headerView" destination="Tff-gj-iEz" id="DuL-dh-lYN"/>
                         <outlet property="mainTableView" destination="yN8-vd-Vdk" id="6ll-Wa-WEF"/>
-                        <outlet property="rejectBtn" destination="Y35-QV-lz9" id="gtU-Et-Ozn"/>
+                        <outlet property="rejectBtn" destination="Y35-QV-lz9" id="XjA-BR-4Ju"/>
                         <outlet property="thisBidProposedLbl" destination="vJt-0Y-G3W" id="z3x-x8-cav"/>
                         <outlet property="titleLbl" destination="4pA-3j-Gm3" id="ya9-bj-Pwa"/>
                         <outlet property="totalPriceLbl" destination="Ggk-Ny-7ja" id="kfk-oq-vOZ"/>
