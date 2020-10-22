@@ -15,11 +15,14 @@ protocol GarageServiceRequestVMDelegate: class {
     func getGarageDetailFailed(error:String)
     func brandListingSuccess(message: String)
     func brandListingFailed(error:String)
-    func cancelGarageRequestSuccess(message: String)
-    func cancelGarageRequestFailure(error:String)
+    func rejectGarageRequestSuccess(message: String)
+    func rejectGarageRequestFailure(error:String)
     func placeBidSuccess(message: String)
     func placeBidFailure(error:String)
-
+    func cancelBidSuccess(message: String)
+    func cancelBidFailure(error:String)
+    
+    
 }
 
 extension GarageServiceRequestVMDelegate {
@@ -30,7 +33,7 @@ extension GarageServiceRequestVMDelegate {
 }
 
 class GarageServiceRequestVM {
-
+    
     //MARK:- Variables
     //================
     var makeId: String  = ""
@@ -51,7 +54,7 @@ class GarageServiceRequestVM {
     weak var delegate: GarageServiceRequestVMDelegate?
     
     // MARK: Functions
-      //=================================
+    //=================================
     
     func postPlaceBidData(params: JSONDictionary,loader: Bool = false) {
         WebServices.postPlaceBidData(parameters: params, success: { [weak self] (msg) in
@@ -64,43 +67,60 @@ class GarageServiceRequestVM {
         }
     }
     
-    func getGarageRequestDetailData(params: JSONDictionary,loader: Bool = false) {
-          WebServices.getGarageRequestDetail(parameters: params, success: { [weak self] (json) in
-              guard let `self` = self else { return }
-              self.parseToGarageRequestDetailData(result: json)
-              printDebug(json)
-          }) { [weak self] (error) in
-              guard let `self` = self else { return }
-            self.delegate?.getGarageDetailFailed(error: error.localizedDescription)
-          }
-      }
+    func cancelBid(params: JSONDictionary,loader: Bool = true,pagination: Bool = false) {
+        WebServices.bidCancelByUser(parameters: params, success: { [weak self] (json) in
+            guard let `self` = self else { return }
+            self.delegate?.cancelBidSuccess(message: "")
+        }) { [weak self] (error) in
+            guard let `self` = self else { return }
+            self.delegate?.cancelBidFailure(error: error.localizedDescription)
+        }
+    }
     
-
-        func parseToGarageRequestDetailData(result: JSON) {
-            if let jsonString = result[ApiKey.data].rawString(), let data = jsonString.data(using: .utf8) {
-                do {
-                    if result[ApiKey.data].isEmpty {
-                        self.hideLoader = true
-                        self.garageRequestDetailArr = nil
-                        isRequestinApi = false
-                        self.delegate?.getGarageDetailSuccess(message: "")
-                        return
-                    }
-                    let modelList = try! JSONDecoder().decode(GarageRequestModel.self, from: data)
-                    printDebug(modelList)
-                    currentPage = result[ApiKey.data][ApiKey.page].intValue
+    func rejectGarageRequest(params: JSONDictionary,loader: Bool = true,pagination: Bool = false){
+        WebServices.cancelGarageRequest(parameters: params, success: { (json) in
+            self.delegate?.rejectGarageRequestSuccess(message: "")
+        }) { (error) -> (Void) in
+            self.delegate?.rejectGarageRequestFailure(error: error.localizedDescription)
+        }
+    }
+    
+    func getGarageRequestDetailData(params: JSONDictionary,loader: Bool = false) {
+        WebServices.getGarageRequestDetail(parameters: params, success: { [weak self] (json) in
+            guard let `self` = self else { return }
+            self.parseToGarageRequestDetailData(result: json)
+            printDebug(json)
+        }) { [weak self] (error) in
+            guard let `self` = self else { return }
+            self.delegate?.getGarageDetailFailed(error: error.localizedDescription)
+        }
+    }
+    
+    
+    func parseToGarageRequestDetailData(result: JSON) {
+        if let jsonString = result[ApiKey.data].rawString(), let data = jsonString.data(using: .utf8) {
+            do {
+                if result[ApiKey.data].isEmpty {
+                    self.hideLoader = true
+                    self.garageRequestDetailArr = nil
                     isRequestinApi = false
-                    self.garageRequestDetailArr = modelList
-                    nextPageAvailable = result[ApiKey.data][ApiKey.next].boolValue
-                    currentPage += 1
                     self.delegate?.getGarageDetailSuccess(message: "")
-                } catch {
-                    isRequestinApi = false
-                    self.delegate?.getGarageDetailFailed(error: "error occured")
-                    printDebug("error occured")
+                    return
                 }
+                let modelList = try JSONDecoder().decode(GarageRequestModel.self, from: data)
+                currentPage = result[ApiKey.data][ApiKey.page].intValue
+                isRequestinApi = false
+                self.garageRequestDetailArr = modelList
+                nextPageAvailable = result[ApiKey.data][ApiKey.next].boolValue
+                currentPage += 1
+                self.delegate?.getGarageDetailSuccess(message: "")
+            } catch {
+                isRequestinApi = false
+                self.delegate?.getGarageDetailFailed(error: "error occured")
+                printDebug("error occured")
             }
         }
+    }
     
     
     func getBrandListingData(params: JSONDictionary,loader: Bool = true,pagination: Bool = false){
@@ -137,7 +157,7 @@ class GarageServiceRequestVM {
                     self.brandsListings.append(contentsOf: modelList)
                 }
                 nextPageAvailable = result[ApiKey.data][ApiKey.next].boolValue
-//                currentPage += 1
+                //                currentPage += 1
                 self.delegate?.brandListingSuccess(message: "")
             } catch {
                 isRequestinApi = false
@@ -146,15 +166,6 @@ class GarageServiceRequestVM {
             }
         }
     }
-  
-    func rejectGarageRequest(params: JSONDictionary,loader: Bool = true,pagination: Bool = false){
-        
-           WebServices.cancelGarageRequest(parameters: params, success: { (json) in
-            self.delegate?.cancelGarageRequestSuccess(message: "")
-           }) { (error) -> (Void) in
-               self.delegate?.cancelGarageRequestFailure(error: error.localizedDescription)
-           }
-       }
 }
 
 

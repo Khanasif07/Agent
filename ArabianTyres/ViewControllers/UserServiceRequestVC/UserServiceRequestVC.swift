@@ -11,6 +11,7 @@ import UIKit
 
 protocol UserServiceRequestVCDelegate: class {
     func cancelUserMyRequestDetailSuccess(requestId: String)
+    func rejectUserMyRequestDetailSuccess(requestId: String)
 }
 
 class UserServiceRequestVC: BaseVC {

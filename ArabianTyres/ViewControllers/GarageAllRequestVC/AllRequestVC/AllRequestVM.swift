@@ -13,8 +13,8 @@ import SwiftyJSON
 protocol AllRequestVMDelegate: class {
     func getGarageListingDataSuccess(message: String)
     func getGarageListingDataFailed(error:String)
-    func cancelGarageRequestSuccess(message: String)
-    func cancelGarageRequestFailure(error:String)
+    func rejectGarageRequestSuccess(message: String)
+    func rejectGarageRequestFailure(error:String)
     func cancelBidSuccess(message: String)
     func cancelBidFailure(error:String)
 }
@@ -107,9 +107,9 @@ class AllRequestVM {
     func rejectGarageRequest(params: JSONDictionary,loader: Bool = true,pagination: Bool = false){
         
         WebServices.cancelGarageRequest(parameters: params, success: { (json) in
-            self.delegate?.cancelGarageRequestSuccess(message: "")
+            self.delegate?.rejectGarageRequestSuccess(message: "")
         }) { (error) -> (Void) in
-            self.delegate?.cancelGarageRequestFailure(error: error.localizedDescription)
+            self.delegate?.rejectGarageRequestFailure(error: error.localizedDescription)
         }
     }
 }

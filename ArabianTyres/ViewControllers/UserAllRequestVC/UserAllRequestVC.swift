@@ -111,7 +111,11 @@ extension UserAllRequestVC {
     
     @objc func refreshWhenPull(_ sender: UIRefreshControl) {
         sender.endRefreshing()
-        hitListingApi()
+        if filterApplied {
+            getFilterData(data: filterArr,loader: false, pagination: true)
+        }else {
+            self.hitListingApi()
+        }
     }
     
     @objc func ServiceRequestSuccess(){
@@ -180,7 +184,16 @@ extension UserAllRequestVC: UserAllRequestVMDelegate{
 // MARK: - Extension For TableView
 //===========================
 extension UserAllRequestVC : UserServiceRequestVCDelegate{
-   
+    
+    func rejectUserMyRequestDetailSuccess(requestId: String) {
+        let index =  self.viewModel.userRequestListing.firstIndex(where: { (model) -> Bool in
+            return model.id == requestId
+        })
+        guard let selectedIndex = index else {return}
+        self.viewModel.userRequestListing.remove(at: selectedIndex)
+        self.mainTableView.reloadData()
+    }
+    
     func cancelUserMyRequestDetailSuccess(requestId: String){
         let index =  self.viewModel.userRequestListing.firstIndex(where: { (model) -> Bool in
             return model.id == requestId
