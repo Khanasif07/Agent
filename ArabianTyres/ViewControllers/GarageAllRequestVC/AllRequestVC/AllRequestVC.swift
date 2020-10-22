@@ -45,6 +45,7 @@ class AllRequestVC: BaseVC {
 extension AllRequestVC {
     
     private func initialSetup() {
+        NotificationCenter.default.addObserver(self, selector: #selector(placeBidRejectBidSuccess), name: Notification.Name.PlaceBidRejectBidSuccess, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(serviceRequestReceived), name: Notification.Name.ServiceRequestReceived, object: nil)
         viewModel.delegate = self
         self.mainTableView.delegate = self
@@ -72,6 +73,10 @@ extension AllRequestVC {
     }
     
     @objc func serviceRequestReceived() {
+        hitApi()
+    }
+    
+    @objc func placeBidRejectBidSuccess(){
         hitApi()
     }
     
@@ -129,6 +134,28 @@ extension AllRequestVC : UITableViewDelegate, UITableViewDataSource {
 }
 
 extension AllRequestVC : AllRequestVMDelegate ,UserServiceRequestVCDelegate{
+    func rejectUserMyRequestDetailSuccess(requestId: String) {
+        let index =  self.viewModel.garageRequestListing.firstIndex(where: { (model) -> Bool in
+            return model.id == requestId
+        })
+        guard let selectedIndex = index else {return}
+        self.viewModel.garageRequestListing.remove(at: selectedIndex)
+        self.mainTableView.reloadData()
+    }
+    
+    func rejectGarageRequestSuccess(message: String) {
+        let index =  self.viewModel.garageRequestListing.firstIndex(where: { (model) -> Bool in
+            return model.id == requestId
+        })
+        guard let selectedIndex = index else {return}
+        self.viewModel.garageRequestListing.remove(at: selectedIndex)
+        self.mainTableView.reloadData()
+    }
+    
+    func rejectGarageRequestFailure(error: String) {
+        ToastView.shared.showLongToast(self.view, msg: error)
+    }
+    
     func getGarageListingDataSuccess(message: String) {
         mainTableView.reloadData()
     }
@@ -137,21 +164,12 @@ extension AllRequestVC : AllRequestVMDelegate ,UserServiceRequestVCDelegate{
         ToastView.shared.showLongToast(self.view, msg: error)
     }
     
-    func cancelGarageRequestSuccess(message: String) {
-        cancelUserMyRequestDetailSuccess(requestId: self.requestId)
-        
-    }
-    func cancelGarageRequestFailure(error:String) {
-        ToastView.shared.showLongToast(self.view, msg: error)
-
-    }
-   
     func cancelUserMyRequestDetailSuccess(requestId: String){
            let index =  self.viewModel.garageRequestListing.firstIndex(where: { (model) -> Bool in
                return model.id == requestId
            })
            guard let selectedIndex = index else {return}
-           self.viewModel.garageRequestListing.remove(at: selectedIndex)
+           self.viewModel.garageRequestListing[selectedIndex].bidStatus = BidStatus(rawValue: "Open For Biding")
            self.mainTableView.reloadData()
     }
     

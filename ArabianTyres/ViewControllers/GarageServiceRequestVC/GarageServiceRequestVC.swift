@@ -104,12 +104,15 @@ class GarageServiceRequestVC: BaseVC {
     }
     
     @IBAction func rejectRequestAction(_ sender: AppButton) {
-        viewModel.rejectGarageRequest(params: [ApiKey.requestId : viewModel.garageRequestDetailArr?.id ?? ""] )
+        if requestBtn.titleLabel?.text == "Cancel Bid"{
+            viewModel.cancelBid(params:[ApiKey.garageRequestId : self.requestId])
+        } else {
+            viewModel.rejectGarageRequest(params: [ApiKey.requestId : viewModel.garageRequestDetailArr?.id ?? ""] )
+        }
     }
     
     @IBAction func crossBtnAction(_ sender: UIButton) {
         pop()
-        //self.dismiss(animated: true, completion: nil)
     }
     
 }
@@ -123,7 +126,8 @@ extension GarageServiceRequestVC {
         tableViewSetUp()
         textSetUp()
         hitApi()
-        placeBidBtn.isHidden = bidStatus == .bidFinalsed
+        placeBidBtn.isHidden = bidStatus == .bidFinalsed ||  bidStatus == .bidPlaced
+        requestBtn.setTitle((bidStatus == .bidPlaced) ? "Cancel Bid" : "Reject Request", for: .normal)
         titleLbl.text =  self.viewModel.requestType == "Tyres" ? "Tyre Service Request" : self.viewModel.requestType == "Battery" ? "Battery Service Request" : "Oil Service Request"
     }
     
@@ -244,8 +248,6 @@ extension GarageServiceRequestVC : UITableViewDelegate, UITableViewDataSource {
         }
     }
     
- 
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
@@ -276,9 +278,29 @@ extension GarageServiceRequestVC : UITableViewDelegate, UITableViewDataSource {
     }
 
 }
-
+// MARK: - Extension For GarageServiceRequestVMDelegate
+//===========================
 extension GarageServiceRequestVC :GarageServiceRequestVMDelegate {
+    func cancelBidSuccess(message: String) {
+        self.delegate?.cancelUserMyRequestDetailSuccess(requestId: self.requestId)
+        pop()
+    }
+    
+    func cancelBidFailure(error: String) {
+        ToastView.shared.showLongToast(self.view, msg: error)
+    }
+    
+    func rejectGarageRequestSuccess(message: String) {
+        self.delegate?.rejectUserMyRequestDetailSuccess(requestId: self.requestId)
+        pop()
+    }
+    
+    func rejectGarageRequestFailure(error: String) {
+        ToastView.shared.showLongToast(self.view, msg: error)
+    }
+    
     func placeBidSuccess(message: String) {
+         NotificationCenter.default.post(name: Notification.Name.PlaceBidRejectBidSuccess, object: nil)
          pop()
     }
     
@@ -324,16 +346,6 @@ extension GarageServiceRequestVC :GarageServiceRequestVMDelegate {
     func brandListingFailed(error:String) {
         ToastView.shared.showLongToast(self.view, msg: error)
         
-    }
-    
-    func cancelGarageRequestSuccess(message: String){
-        self.delegate?.cancelUserMyRequestDetailSuccess(requestId: self.requestId)
-        pop()
-//        dismiss(animated: true, completion: nil)
-    }
-    
-    func cancelGarageRequestFailure(error:String) {
-        ToastView.shared.showLongToast(self.view, msg: error)
     }
     
     func updateDataSource() {

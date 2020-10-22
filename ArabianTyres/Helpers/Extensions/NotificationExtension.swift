@@ -14,4 +14,5 @@ extension Notification.Name {
     static let SelectedTyreSizeSuccess = Notification.Name("SelectedTyreSizeSuccess")
     static let ServiceRequestSuccess = Notification.Name("ServiceRequestSuccess")
     static let ServiceRequestReceived = Notification.Name("ServiceRequestReceived")
+    static let PlaceBidRejectBidSuccess = Notification.Name("PlaceBidRejectBidSuccess")
 }
