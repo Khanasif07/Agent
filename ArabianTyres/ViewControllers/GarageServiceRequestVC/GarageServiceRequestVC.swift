@@ -352,7 +352,7 @@ extension GarageServiceRequestVC :GarageServiceRequestVMDelegate {
         var apiHit : Bool = true
         sectionType.append(.countryDetail)
         let serviceType = viewModel.garageRequestDetailArr?.requestType
-        titleLbl.text = serviceType == .tyres ? "Tyre Service Request" : serviceType == .battery ? "Battery Service Request" :  "Oil Service Request"
+        titleLbl.text = serviceType == .tyres ? LocalizedString.tyreServiceRequest.localized : serviceType == .battery ? LocalizedString.batteryServiceRequest.localized :  LocalizedString.oilServiceRequest.localized
         if !(viewModel.garageRequestDetailArr?.preferredCountries.isEmpty ?? false) {
             apiHit = false
             brandsType = .countryBrands
