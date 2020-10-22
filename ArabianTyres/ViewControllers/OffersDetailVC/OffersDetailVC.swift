@@ -127,7 +127,6 @@ extension OffersDetailVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(with: OffersDetailTableCell.self, indexPath: indexPath)
-//        cell.populateData(isBrandSelected: self.viewModel.bidData[indexPath.row].isSelected ?? false,model:  self.viewModel.bidData[indexPath.row])
         cell.populateData(isBrandSelected: self.viewModel.bidData[indexPath.row].isAccepted ?? false,model:  self.viewModel.bidData[indexPath.row])
         cell.dashBackgroundView.isHidden = !(self.viewModel.bidData.endIndex - 1 == indexPath.row)
         return cell
@@ -147,19 +146,21 @@ extension OffersDetailVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        acceptBtn.isEnabled = true
-       let index =  self.viewModel.bidData.firstIndex { (model) -> Bool in
-            return model.isAccepted == true
-        }
-        guard let selectedIndex = index else {
-            self.viewModel.bidData[indexPath.row].isAccepted = true
+        if self.viewModel.bidData.endIndex > 0 {
+            let index =  self.viewModel.bidData.firstIndex { (model) -> Bool in
+                return model.isAccepted == true
+            }
+            guard let selectedIndex = index else {
+                self.viewModel.bidData[indexPath.row].isAccepted = true
+                self.viewModel.userBidDetail.bidData[indexPath.row].isAccepted = true
+                self.mainTableView.reloadData()
+                return }
+            self.viewModel.userBidDetail.bidData[selectedIndex].isAccepted = false
             self.viewModel.userBidDetail.bidData[indexPath.row].isAccepted = true
+            self.viewModel.bidData[selectedIndex].isAccepted = false
+            self.viewModel.bidData[indexPath.row].isAccepted = true
             self.mainTableView.reloadData()
-            return }
-        self.viewModel.userBidDetail.bidData[selectedIndex].isAccepted = false
-        self.viewModel.userBidDetail.bidData[indexPath.row].isAccepted = true
-        self.viewModel.bidData[selectedIndex].isAccepted = false
-        self.viewModel.bidData[indexPath.row].isAccepted = true
-        self.mainTableView.reloadData()
+        }
     }
 }
 
