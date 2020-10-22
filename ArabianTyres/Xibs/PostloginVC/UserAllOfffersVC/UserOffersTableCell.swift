@@ -71,7 +71,7 @@ class UserOffersTableCell: UITableViewCell {
         quantityValueLbl.text = model.bidData.first?.quantity.description
         BAValueLbl.attributedText = getAttributedString(value: model.bidData.first?.amount.description ?? "",attributedLabel: BAValueLbl)
        
-        let totalAmount = String((model.bidData.first?.quantity ?? 0) * (model.bidData.first?.amount ?? 0))
+        let totalAmount = String((model.bidData.first?.quantity ?? 0) * Int(model.bidData.first?.amount ?? 0))
         tAValueLbl.attributedText = getAttributedString(value: totalAmount,attributedLabel: tAValueLbl)
         logoImgView.setImage_kf(imageString: model.logo ?? "")
         if model.status == "cancelled" || model.status == "rejected" {

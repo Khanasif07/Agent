@@ -114,7 +114,7 @@ class ServiceRequestTableCell: UITableViewCell {
         
         if model.bidStatus == .bidFinalsed || model.bidStatus == .bidPlaced {
             bidAmountStackView.isHidden = false
-            bidAmountValueLbl.text = String((model.bidData?.first?.amount ?? 0) * (model.bidData?.first?.quantity ?? 0))
+            bidAmountValueLbl.text = String(Int(model.bidData?.first?.amount ?? 0.0) * (model.bidData?.first?.quantity ?? 0))
         }else {
             bidAmountStackView.isHidden = true
         }

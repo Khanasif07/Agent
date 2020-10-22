@@ -28,7 +28,7 @@ class GarageServiceBrandsCell: UITableViewCell,UITextFieldDelegate {
         unitPrizeTextFiled.lineColor = .clear
         unitPrizeTextFiled.lineHeight = 0.0
         unitPrizeTextFiled.delegate = self
-        unitPrizeTextFiled.keyboardType = .numberPad
+        unitPrizeTextFiled.keyboardType = .decimalPad
         unitPrizeTextFiled.textAlignment = .center
     }
     
@@ -49,6 +49,6 @@ class GarageServiceBrandsCell: UITableViewCell,UITextFieldDelegate {
         let currentText = textField.text ?? ""
         guard let stringRange = Range(range, in: currentText) else { return false }
         let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
-        return updatedText.count <= 5
+        return updatedText.count <= 6
     }
 }

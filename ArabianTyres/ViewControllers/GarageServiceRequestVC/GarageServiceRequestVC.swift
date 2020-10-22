@@ -39,6 +39,7 @@ class GarageServiceRequestVC: BaseVC {
     let viewModel = GarageServiceRequestVM()
     weak var delegate: UserServiceRequestVCDelegate?
     var isLocationUpdate: Bool = false
+    var bidStatus : BidStatus = .bidFinalsed
     
     // MARK: - Lifecycle
     //===========================
@@ -122,6 +123,7 @@ extension GarageServiceRequestVC {
         tableViewSetUp()
         textSetUp()
         hitApi()
+        placeBidBtn.isHidden = bidStatus == .bidFinalsed
         titleLbl.text =  self.viewModel.requestType == "Tyres" ? "Tyre Service Request" : self.viewModel.requestType == "Battery" ? "Battery Service Request" : "Oil Service Request"
     }
     
@@ -225,14 +227,14 @@ extension GarageServiceRequestVC : UITableViewDelegate, UITableViewDataSource {
                 guard let `self` = self else { return }
                 if  let SelectedIndexPath = tableView.indexPath(for: cell) {
                     if self.brandsType == .onlyBrands {
-                        self.viewModel.countryBrandsDict[0][self.selectedCountry]?[SelectedIndexPath.row].amount = Int(unitPrice) ?? 0
+                        self.viewModel.countryBrandsDict[0][self.selectedCountry]?[SelectedIndexPath.row].amount = Double(unitPrice) ?? 0.0
                     }
                     if self.brandsType == .countryBrands {
                         let indexx = self.viewModel.countryBrandsDict.firstIndex { (model) -> Bool in
                             Array(model.keys)[0] == self.selectedCountry
                         }
                         guard let selectedIndexx  = indexx else { return}
-                        self.viewModel.countryBrandsDict[selectedIndexx][self.selectedCountry]?[SelectedIndexPath.row].amount = Int(unitPrice) ?? 0
+                        self.viewModel.countryBrandsDict[selectedIndexx][self.selectedCountry]?[SelectedIndexPath.row].amount = Double(unitPrice) ?? 0.0
                     }
                 }
             }

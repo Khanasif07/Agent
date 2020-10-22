@@ -360,8 +360,9 @@ enum AppRouter {
     }
     
     
-    static func goToGarageServiceRequestVC(vc: UIViewController,requestId : String,requestType : String){
+    static func goToGarageServiceRequestVC(vc: UIViewController,requestId : String,requestType : String, bidStatus: BidStatus){
         let scene = GarageServiceRequestVC.instantiate(fromAppStoryboard: .Garage)
+        scene.bidStatus = bidStatus
         scene.requestId = requestId
         scene.viewModel.requestType = requestType
         scene.delegate = vc as? UserServiceRequestVCDelegate

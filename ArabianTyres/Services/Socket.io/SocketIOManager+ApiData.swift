@@ -106,7 +106,7 @@ extension SocketIOManager {
                                 HandleRequest.shared.dataArr.remove(at: 0)
                             }
                             vc.viewBtnTapped = { (requestId, requestType) in
-                                AppRouter.goToGarageServiceRequestVC(vc: navC.visibleViewController ?? navC,requestId : requestId, requestType: requestType)
+                                AppRouter.goToGarageServiceRequestVC(vc: navC.visibleViewController ?? navC,requestId : requestId, requestType: requestType, bidStatus: .openForBidding)
                             }
                             if CommonFunctions.presentOnTabBar() {
                                 navC.present(vc, animated: true, completion: nil)

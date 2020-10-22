@@ -46,7 +46,7 @@ struct UserBidModel: Codable {
 struct BidDatum: Codable {
     var isAccepted: Bool? = false
     let id: String
-    let amount: Int
+    let amount: Double
     let brandID, brandName: String
     let quantity: Int
     var isSelected: Bool? = false

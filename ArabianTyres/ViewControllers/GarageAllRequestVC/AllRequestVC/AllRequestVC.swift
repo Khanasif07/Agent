@@ -106,7 +106,7 @@ extension AllRequestVC : UITableViewDelegate, UITableViewDataSource {
                 self.viewModel.cancelBid(params:[ApiKey.garageRequestId : self.requestId])
 
                 }else {
-                        AppRouter.goToGarageServiceRequestVC(vc: self,requestId : self.viewModel.garageRequestListing[indexPath.row].id ?? "", requestType: self.viewModel.garageRequestListing[indexPath.row].requestType.rawValue)
+                    AppRouter.goToGarageServiceRequestVC(vc: self,requestId : self.viewModel.garageRequestListing[indexPath.row].id ?? "", requestType: self.viewModel.garageRequestListing[indexPath.row].requestType.rawValue,bidStatus: self.viewModel.garageRequestListing[indexPath.row].bidStatus ?? .bidFinalsed)
                 }
             }
             return cell
@@ -124,7 +124,7 @@ extension AllRequestVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        AppRouter.goToGarageServiceRequestVC(vc: self,requestId : self.viewModel.garageRequestListing[indexPath.row].id ?? "", requestType: self.viewModel.garageRequestListing[indexPath.row].requestType.rawValue)
+        AppRouter.goToGarageServiceRequestVC(vc: self,requestId : self.viewModel.garageRequestListing[indexPath.row].id ?? "", requestType: self.viewModel.garageRequestListing[indexPath.row].requestType.rawValue, bidStatus: self.viewModel.garageRequestListing[indexPath.row].bidStatus ?? .bidFinalsed)
     }
 }
 

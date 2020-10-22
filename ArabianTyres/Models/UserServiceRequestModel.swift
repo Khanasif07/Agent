@@ -65,7 +65,7 @@ struct UserServiceRequestModel: Codable {
     let year: Int?
     let images: [String]
     let totalBids: Int?
-    let lowestBid: Int?
+    let lowestBid: Double?
     let nearestBidder: Double?
     let totalOffers : Int?
     let isOfferAccepted : Bool?
@@ -109,7 +109,7 @@ struct PreferredBrand: Codable {
     let id, name: String
     let countrySpecificBrands : [String]?
     var isSelected: Bool?
-    var amount: Int?
+    var amount: Double?
     var quantity: Int?
     var countryId: String?
     var countryName: String?
