@@ -334,7 +334,7 @@ enum AppRouter {
         scene.proposalBtnTapped = {
             completion()
         }
-        vc.modalPresentationStyle = .fullScreen
+        vc.modalPresentationStyle = .overCurrentContext
         vc.present(scene, animated: true, completion: nil)
         
     }

@@ -157,7 +157,7 @@ extension UserServiceRequestVC: UserServiceRequestVMDelegate{
             lowestBidValueLbl.text = viewModel.userRequestDetail.lowestBid?.description
         }
         bidRecivedValueLbl.text = viewModel.userRequestDetail.totalBids?.description
-        nearestBidderValueLbl.text = viewModel.userRequestDetail.nearestBidder?.description
+        nearestBidderValueLbl.text = viewModel.userRequestDetail.nearestBidder?.rounded().description
         if self.viewModel.serviceType == "Tyres"{
             tyreSizeValueLbl.text = "\(model.width ?? 0)W " + "\(model.rimSize ?? 0)R " + "\(model.profile ?? 0)P"
         } else{

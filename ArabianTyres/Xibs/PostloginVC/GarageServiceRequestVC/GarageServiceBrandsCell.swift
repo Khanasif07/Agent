@@ -49,6 +49,11 @@ class GarageServiceBrandsCell: UITableViewCell,UITextFieldDelegate {
         let currentText = textField.text ?? ""
         guard let stringRange = Range(range, in: currentText) else { return false }
         let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
-        return updatedText.count <= 6
+        if updatedText.contains(s: ".") {
+            return updatedText.count <= 6
+
+        }else {
+            return updatedText.count <= 5
+        }
     }
 }

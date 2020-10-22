@@ -79,7 +79,7 @@ extension SocketIOManager {
                         //for bid
                         if data.eventName == "NEW_BID" {
                             let vc = GarageRequestPopupVC.instantiate(fromAppStoryboard: .UserHomeScreen)
-                            vc.modalPresentationStyle = .overFullScreen
+                            vc.modalPresentationStyle = .overCurrentContext
                             vc.requestData = data
                             vc.onDismiss = {
                                 HandleRequest.shared.dataProcess = false
@@ -99,7 +99,7 @@ extension SocketIOManager {
                         }else {
                             //for request
                             let vc = SRPopupVC.instantiate(fromAppStoryboard: .UserHomeScreen)
-                            vc.modalPresentationStyle = .overFullScreen
+                            vc.modalPresentationStyle = .overCurrentContext
                             vc.requestData = data
                             vc.onDismiss = {
                                 HandleRequest.shared.dataProcess = false
