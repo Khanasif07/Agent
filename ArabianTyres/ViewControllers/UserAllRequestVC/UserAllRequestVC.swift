@@ -63,6 +63,7 @@ class UserAllRequestVC: BaseVC {
 extension UserAllRequestVC {
     
     private func initialSetup() {
+        NotificationCenter.default.addObserver(self, selector: #selector(userServiceAcceptRejectSuccess), name: Notification.Name.UserServiceAcceptRejectSuccess, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ServiceRequestSuccess), name: Notification.Name.ServiceRequestSuccess, object: nil)
         self.filterBtn.tintColor = .black
         self.tableViewSetUp()
@@ -106,7 +107,9 @@ extension UserAllRequestVC {
     }
     
     private func hitListingApi(){
+        if isUserLoggedin {
         self.viewModel.getUserMyRequestData(params: [ApiKey.page: "1",ApiKey.limit : "10"],loader: false,pagination: false)
+        }
     }
     
     @objc func refreshWhenPull(_ sender: UIRefreshControl) {
@@ -120,6 +123,10 @@ extension UserAllRequestVC {
     
     @objc func ServiceRequestSuccess(){
         self.hitListingApi()
+    }
+    
+    @objc func userServiceAcceptRejectSuccess(){
+         self.hitListingApi()
     }
 }
 
