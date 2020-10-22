@@ -80,9 +80,10 @@ extension GarageTabBarController {
     func setupTabBar() {
         let firstScene = createTabVC(vc: GarageHomeVC.self, storyBoard: .GarageHome)
         let secondScene = createTabVC(vc: GarageAllRequestVC.self, storyBoard: .Garage)
+        let thirdScene = createTabVC(vc: NotificationVC.self, storyBoard: .Home)
         let fourthScene = createTabVC(vc: OngoingServiceListingVC.self, storyBoard: .GarageRequest)
         let fifthScene = createTabVC(vc: GarageProfileVC.self, storyBoard: .GarageHome)
-        self.viewControllers = [firstScene, secondScene, fourthScene,fifthScene]
+        self.viewControllers = [firstScene, secondScene,thirdScene, fourthScene,fifthScene]
         guard let tabBarItems = self.tabBar.items else {return}
         for index in 0...tabBarItems.endIndex - 1 {
             switch index {
@@ -98,17 +99,17 @@ extension GarageTabBarController {
                 }
             case 2:
                 if let item = self.tabBar.items?[index] {
+                    item.image = #imageLiteral(resourceName: "notification")
+                    item.selectedImage = #imageLiteral(resourceName: "notification")
+                }
+            case 3:
+                if let item = self.tabBar.items?[index] {
                     item.image = #imageLiteral(resourceName: "setting")
                     item.selectedImage = #imageLiteral(resourceName: "setting")
                 }
             default:
                 if let item = self.tabBar.items?[index] {
                     item.image = #imageLiteral(resourceName: "profile")
-                    if #available(iOS 13.0, *) {
-                        item.image?.withTintColor(AppColors.primaryBlueColor)
-                    } else {
-                        // Fallback on earlier versions
-                    }
                     item.selectedImage = #imageLiteral(resourceName: "profile")
                 }
             }
