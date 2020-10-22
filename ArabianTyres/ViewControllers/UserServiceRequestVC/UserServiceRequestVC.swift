@@ -100,18 +100,23 @@ extension UserServiceRequestVC {
     
     private func initialSetup() {
         viewModel.delegate = self
+        textSetUp()
+        viewModel.getUserMyRequestDetailData(params: [ApiKey.requestId: self.viewModel.requestId])
+    }
+    
+    private func textSetUp(){
         viewAllBtn.isEnabled = true
         [tyreSizeValueLbl,unitValueLblb,brandsValueLbl].forEach({$0?.textColor = AppColors.fontTertiaryColor})
-        tyreSizeLbl.text = LocalizedString.tyreSize.localized + ":"
         unitValueLblb.text = "Unit:"
         brandsLbl.text = LocalizedString.brands.localized
-        titleLbl.text =  self.viewModel.serviceType == "Tyres" ? "Tyre Service Request" : self.viewModel.serviceType == "Battery" ? "Battery Service Request" : "Oil Service Request"
-        tyreSizeLbl.text = self.viewModel.serviceType == "Tyres" ? "Tyre Size:" : "Vehicle Details:"
+        titleLbl.text =  self.viewModel.serviceType == "Tyres" ? LocalizedString.tyreServiceRequest.localized: self.viewModel.serviceType == "Battery" ? LocalizedString.batteryServiceRequest.localized : LocalizedString.oilServiceRequest.localized
+        tyreSizeLbl.text = self.viewModel.serviceType == "Tyres" ? (LocalizedString.tyreSize.localized) : (LocalizedString.vehicleDetails.localized + ":")
         productImgView.isHidden = self.viewModel.serviceType == "Tyres"
         let logoBackGroundColor =  self.viewModel.serviceType == "Tyres" ? AppColors.blueLightColor : self.viewModel.serviceType == "Battery" ? AppColors.redLightColor : AppColors.grayLightColor
         bottomLineView.isHidden = self.viewModel.serviceType == "Tyres"
         self.productImgView.backgroundColor = logoBackGroundColor
-        viewModel.getUserMyRequestDetailData(params: [ApiKey.requestId: self.viewModel.requestId])
+        let logoImg =  self.viewModel.serviceType == "Tyres" ? #imageLiteral(resourceName: "radialCarTireI151") : self.viewModel.serviceType == "Battery" ? #imageLiteral(resourceName: "icBattery") : #imageLiteral(resourceName: "icOil")
+        self.mainImgView.image = logoImg
     }
 }
 
@@ -130,7 +135,6 @@ extension UserServiceRequestVC: UserServiceRequestVMDelegate{
     func getUserMyRequestDetailSuccess(message: String) {
         cancelBtn.isBorderSelected = true
         requestId = self.viewModel.userRequestDetail.id
-        requestNoValueLbl.text = "#" + "\(self.viewModel.userRequestDetail.requestID)"
         self.brandsArray = self.viewModel.userRequestDetail.preferredBrands.map({ (model) -> String in
             model.name
         })
@@ -138,8 +142,6 @@ extension UserServiceRequestVC: UserServiceRequestVMDelegate{
             model.name
         })
         let model = self.viewModel.userRequestDetail
-        let logoImg =  model.requestType == "Tyres" ? #imageLiteral(resourceName: "radialCarTireI151") : model.requestType == "Battery" ? #imageLiteral(resourceName: "icBattery") : #imageLiteral(resourceName: "icOil")
-        self.mainImgView.image = logoImg
         viewAllBtn.isHidden = viewModel.userRequestDetail.totalBids == 0
         if viewModel.userRequestDetail.status == .cancelled {
             cancelBtn.isHidden = true
@@ -156,17 +158,17 @@ extension UserServiceRequestVC: UserServiceRequestVMDelegate{
         }
         bidRecivedValueLbl.text = viewModel.userRequestDetail.totalBids?.description
         nearestBidderValueLbl.text = viewModel.userRequestDetail.nearestBidder?.description
-        //
         if self.viewModel.serviceType == "Tyres"{
             tyreSizeValueLbl.text = "\(model.width ?? 0)W " + "\(model.rimSize ?? 0)R " + "\(model.profile ?? 0)P"
         } else{
             tyreSizeValueLbl.text  =  "\(model.make ?? "") " + "\(model.model ?? "") " + "\(model.year ?? 0)"
         }
+        requestNoValueLbl.text = "#" + "\(self.viewModel.userRequestDetail.requestID)"
         unitValueLblb.text = "\(model.quantity ?? 0)"
-        brandsLbl.text = brandsArray.endIndex > 0 ? "Brands:" : "Countries:"
+        brandsLbl.text = brandsArray.endIndex > 0 ? (LocalizedString.brands.localized + ":") : (LocalizedString.countries.localized + ":")
         brandsValueLbl.text = brandsArray.endIndex > 0 ? brandsArray.joined(separator: ",") : countryArray.joined(separator: ",")
-        productImgView.setImage_kf(imageString: model.images.first ?? "", placeHolderImage: logoImg, loader: false)
-        //
+        let logoImg =  self.viewModel.serviceType == "Tyres" ? #imageLiteral(resourceName: "radialCarTireI151") : self.viewModel.serviceType == "Battery" ? #imageLiteral(resourceName: "icBattery") : #imageLiteral(resourceName: "icOil")
+        self.productImgView.setImage_kf(imageString: model.images.first ?? "", placeHolderImage: logoImg, loader: false)
     }
     
     func getUserMyRequestDetailFailed(error: String) {

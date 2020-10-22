@@ -210,6 +210,8 @@
 "ongoingServices" = "Ongoing Services";
 "update" = "Update";
 "tyreServiceRequest" = "Tyre Service Request";
+"battteryServiceRequest" = "Battery Service Request";
+"oilServiceRequest" = "Oil Service Request";
 "regNo" = "Reg. No.";
 "serviceStatus" = "Service Status";
 "enterBiddingAmount" = "Enter Bidding Amount";
@@ -309,6 +311,7 @@
 "chooseBatteryBrands" = "Choose BatteryBrands";
 "enterNumber" = "Enter number";
 "country" = "Country";
+"countries" = "Countries";
 "chooseYourVehicleDetails" = "Choose Your Vehicle Details";
 "wellGetYouOilAccordingToTheProvidedDetails" = "We’ll get you oil according to the\nprovided details";
 "numberOfTyre" = "Number of Tyre";
@@ -343,3 +346,4 @@
 "newRequest" = "New Request";
 "service_sheduled_for_today" = "Services Scheduled for Today";
 "today_Revenue" = "Today’s Revenue";
+

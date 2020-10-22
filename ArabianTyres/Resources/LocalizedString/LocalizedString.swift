@@ -255,6 +255,7 @@ enum LocalizedString : String {
     case chooseBatteryBrands
     case enterNumber
     case country
+    case countries
     case chooseYourVehicleDetails
     case wellGetYouOilAccordingToTheProvidedDetails
     case numberOfTyre
@@ -281,6 +282,8 @@ enum LocalizedString : String {
     case pleaseSelectServiceCenterImage
     case ongoingServices
     case tyreServiceRequest
+    case batteryServiceRequest
+    case oilServiceRequest
     case regNo
     case serviceStatus
     case enterBiddingAmount
@@ -351,6 +354,7 @@ enum LocalizedString : String {
     case rimSize
     case quantity
     case enter_number_of_tyre_you_want
+    
    
 }
 
