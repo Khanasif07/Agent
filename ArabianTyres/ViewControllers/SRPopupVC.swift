@@ -50,7 +50,7 @@ class SRPopupVC: BaseVC {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        containerView.createShadow(shadowColor: #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1),shadowOpacity: 1.0)
+        self.containerView.addShadow(cornerRadius: 5, color: UIColor.black.withAlphaComponent(0.08), offset: CGSize(width: 0.5, height: 0.5), opacity: 1, shadowRadius: 5)
         casCadFirstView.createShadow(shadowColor: #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1))
         casCadSecondView.createShadow(shadowColor: #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1))
         
