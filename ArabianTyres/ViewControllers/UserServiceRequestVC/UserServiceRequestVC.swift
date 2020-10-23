@@ -99,6 +99,7 @@ class UserServiceRequestVC: BaseVC {
 extension UserServiceRequestVC {
     
     private func initialSetup() {
+        NotificationCenter.default.addObserver(self, selector: #selector(newBidSocketSuccess), name: Notification.Name.NewBidSocketSuccess, object: nil)
         viewModel.delegate = self
         textSetUp()
         viewModel.getUserMyRequestDetailData(params: [ApiKey.requestId: self.viewModel.requestId])
@@ -117,6 +118,14 @@ extension UserServiceRequestVC {
         self.productImgView.backgroundColor = logoBackGroundColor
         let logoImg =  self.viewModel.serviceType == "Tyres" ? #imageLiteral(resourceName: "radialCarTireI151") : self.viewModel.serviceType == "Battery" ? #imageLiteral(resourceName: "icBattery") : #imageLiteral(resourceName: "icOil")
         self.mainImgView.image = logoImg
+    }
+    
+    @objc func newBidSocketSuccess(){
+        viewModel.getUserMyRequestDetailData(params: [ApiKey.requestId: self.viewModel.requestId])
+    }
+    
+    func getMiles(meters: Double) -> Double {
+         return meters * 0.000621371192
     }
 }
 
@@ -157,7 +166,8 @@ extension UserServiceRequestVC: UserServiceRequestVMDelegate{
             lowestBidValueLbl.text = viewModel.userRequestDetail.lowestBid?.description
         }
         bidRecivedValueLbl.text = viewModel.userRequestDetail.totalBids?.description
-        nearestBidderValueLbl.text = viewModel.userRequestDetail.nearestBidder?.rounded().description
+        let distanceMiles = getMiles(meters: viewModel.userRequestDetail.nearestBidder ?? 0.0)
+        nearestBidderValueLbl.text = "\(distanceMiles.truncate(places: 3))"
         if self.viewModel.serviceType == "Tyres"{
             tyreSizeValueLbl.text = "\(model.width ?? 0)W " + "\(model.rimSize ?? 0)R " + "\(model.profile ?? 0)P"
         } else{

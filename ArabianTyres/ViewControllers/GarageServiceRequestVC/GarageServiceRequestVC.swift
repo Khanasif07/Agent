@@ -126,9 +126,9 @@ extension GarageServiceRequestVC {
         tableViewSetUp()
         textSetUp()
         hitApi()
-        placeBidBtn.isHidden = bidStatus == .bidFinalsed ||  bidStatus == .bidPlaced
-        requestBtn.setTitle((bidStatus == .bidPlaced) ? "Cancel Bid" : "Reject Request", for: .normal)
-        titleLbl.text =  self.viewModel.requestType == "Tyres" ? "Tyre Service Request" : self.viewModel.requestType == "Battery" ? "Battery Service Request" : "Oil Service Request"
+        placeBidBtn.isHidden = bidStatus == .bidFinalsed
+        placeBidBtn.setTitle((bidStatus == .bidPlaced) ? "Edit" : "Place Bid", for: .normal)
+        titleLbl.text =  self.viewModel.requestType == "Tyres" ? LocalizedString.tyreServiceRequest.localized : self.viewModel.requestType == "Battery" ? LocalizedString.batteryServiceRequest.localized : LocalizedString.oilServiceRequest.localized
     }
     
     private func tableViewSetUp(){
@@ -147,6 +147,34 @@ extension GarageServiceRequestVC {
     
     private func hitApi(){
         viewModel.getGarageRequestDetailData(params: [ApiKey.requestId: requestId])
+    }
+    
+    private func getPlacedBidData(){
+        if let  bidPlacedByGarage = self.viewModel.garageRequestDetailArr?.bidPlacedByGarage{
+            bidPlacedByGarage.forEach { (placedBid) in
+                if brandsType == .onlyBrands  {
+                let indexx = self.viewModel.countryBrandsDict[0][self.selectedCountry]?.firstIndex(where: { (preferredBrand) -> Bool in
+                    preferredBrand.id == placedBid.brandID
+                })
+                guard let selectedIndexx  = indexx else { return }
+                self.viewModel.countryBrandsDict[0][self.selectedCountry]?[selectedIndexx].isSelected = true
+                self.viewModel.countryBrandsDict[0][self.selectedCountry]?[selectedIndexx].amount = placedBid.amount
+                } else {
+                    for (off,dict) in self.viewModel.countryBrandsDict.enumerated(){
+                        self.viewModel.garageRequestDetailArr?.preferredCountries.forEach({ (preferredBrand) in
+                            //
+                            let indexx = dict[preferredBrand.name]?.firstIndex(where: { (preferredBrand) -> Bool in
+                                               preferredBrand.countryId == placedBid.countryId
+                                           })
+                             guard let selectedCountryIndexx  = indexx else { return }
+                            self.viewModel.countryBrandsDict[off][self.selectedCountry]?[selectedCountryIndexx].isSelected = true
+                            self.viewModel.countryBrandsDict[off][self.selectedCountry]?[selectedCountryIndexx].amount = placedBid.amount
+                            //
+                        })
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -272,7 +300,7 @@ extension GarageServiceRequestVC : UITableViewDelegate, UITableViewDataSource {
                 }
                 guard let selectedIndexx  = indexx else { return }
                 self.viewModel.countryBrandsDict[selectedIndex][self.selectedCountry]?[selectedIndexx].isSelected = !(listing[selectedIndexx].isSelected ?? false)
-                //make text field responder
+                //make Unit price text field responder first after seldction
                 if self.viewModel.countryBrandsDict[selectedIndex][self.selectedCountry]?[selectedIndexx].isSelected ?? false {
                     let section = sectionType.firstIndex { (sectionArray) -> Bool in
                         return sectionArray == .brandListing
@@ -322,8 +350,9 @@ extension GarageServiceRequestVC :GarageServiceRequestVMDelegate {
     func getGarageDetailSuccess(message: String) {
         updateDataSource()
         self.quantity = viewModel.garageRequestDetailArr?.quantity ?? 0
+        self.getPlacedBidData()
         self.mainTableView.reloadData()
-        //
+        // make first country selected
         if let countries = viewModel.garageRequestDetailArr?.preferredCountries{
             if countries.endIndex > 0 {
                 self.selectedCountry = countries.first?.name ?? ""
@@ -351,6 +380,7 @@ extension GarageServiceRequestVC :GarageServiceRequestVMDelegate {
             sectionType.contains(.brandListing) ? sectionType.removeAll{($0 == .brandListing)} : ()
         }
         self.viewModel.countryBrandsDict.append([self.selectedCountry : viewModel.brandsListings])
+        self.getPlacedBidData()
         self.mainTableView.reloadData()
     }
     

@@ -95,7 +95,7 @@ extension HomeVC {
     }
     
     private func isComeFromGuestUser(){
-        if !TyreRequestModel.shared.latitude.isEmpty {
+        if !TyreRequestModel.shared.quantity.isEmpty {
             switch categoryType {
             case .tyres:
                 self.viewModel.postTyreRequest(dict: TyreRequestModel.shared.getTyreRequestDict())

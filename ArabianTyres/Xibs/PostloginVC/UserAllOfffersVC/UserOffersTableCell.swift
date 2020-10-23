@@ -66,7 +66,8 @@ class UserOffersTableCell: UITableViewCell {
     }
     
     func bindData(_ model: UserBidModel) {
-        distanceValueLbl.attributedText =  getAttributedString(value: "\(model.distance?.rounded() ?? 0.0)",attributedLabel: distanceValueLbl)
+        let distanceInMiles = self.getMiles(meters: model.distance ?? 0.0)
+        distanceValueLbl.attributedText =  getAttributedString(value: "\(distanceInMiles.truncate(places: 3))",attributedLabel: distanceValueLbl)
         offerTitleLbl.text = model.garageName
         quantityValueLbl.text = model.bidData.first?.quantity.description
         BAValueLbl.attributedText = getAttributedString(value: model.bidData.first?.amount.description ?? "",attributedLabel: BAValueLbl)
@@ -136,5 +137,9 @@ class UserOffersTableCell: UITableViewCell {
         rejectBtn.setTitleColor( #colorLiteral(red: 0.6348647475, green: 0.6275323629, blue: 0.6272975802, alpha: 1), for: .normal)
         rejectBtn.borderColor =  #colorLiteral(red: 0.6348647475, green: 0.6275323629, blue: 0.6272975802, alpha: 1)
         
+    }
+    
+    func getMiles(meters: Double) -> Double {
+         return meters * 0.000621371192
     }
 }

@@ -64,4 +64,12 @@ class GarageServiceBrandsCell: UITableViewCell,UITextFieldDelegate {
         }
         return true
     }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        let text = textField.text?.byRemovingLeadingTrailingWhiteSpaces ?? ""
+        if text == "" {
+            self.unitPrizeTextFiled.text = "0.0"
+        }
+    }
+    
 }

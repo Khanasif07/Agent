@@ -79,6 +79,7 @@ struct GarageRequestModel: Codable {
     let status: RequestStatus?
     var bidStatus: BidStatus?
     var bidData: [BidDatum]?
+    var bidPlacedByGarage: [BidDatum]?
     let year: Int?
     let make, model,userName: String?
     let requestType : Category
@@ -92,6 +93,7 @@ struct GarageRequestModel: Codable {
         case id = "_id"
         case requestType
         case requestID = "requestId"
+        case bidPlacedByGarage
         case width, preferredBrands, profile, rimSize, quantity, images, preferredCountries, status, year, make, model, userName, bidStatus, bidData, userLongitude, userLatitude, userImage, userAddress
     }
     
@@ -105,6 +107,7 @@ struct GarageRequestModel: Codable {
         userName = ""
         year = 0
         status = .bidFinalsed
+        bidPlacedByGarage = []
         preferredCountries = []
         preferredBrands = []
         images = []

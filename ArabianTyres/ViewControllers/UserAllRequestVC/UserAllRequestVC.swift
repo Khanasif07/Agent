@@ -63,10 +63,11 @@ class UserAllRequestVC: BaseVC {
 extension UserAllRequestVC {
     
     private func initialSetup() {
+        NotificationCenter.default.addObserver(self, selector: #selector(newBidSocketSuccess), name: Notification.Name.NewBidSocketSuccess, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(userServiceAcceptRejectSuccess), name: Notification.Name.UserServiceAcceptRejectSuccess, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ServiceRequestSuccess), name: Notification.Name.ServiceRequestSuccess, object: nil)
         self.filterBtn.tintColor = .black
-        self.titleLbl.text = LocalizedString.my_vehicle.localized
+        self.titleLbl.text = LocalizedString.my_Services.localized
         self.tableViewSetUp()
         hitListingApi()
     }
@@ -138,6 +139,10 @@ extension UserAllRequestVC {
     
     @objc func userServiceAcceptRejectSuccess(){
          self.hitListingApi()
+    }
+    
+    @objc func newBidSocketSuccess(){
+        self.hitListingApi()
     }
 }
 
@@ -219,7 +224,7 @@ extension UserAllRequestVC : UserServiceRequestVCDelegate{
             return model.id == requestId
         })
         guard let selectedIndex = index else {return}
-        self.viewModel.userRequestListing.remove(at: selectedIndex)
+        self.viewModel.userRequestListing[selectedIndex].status = .cancelled
         self.mainTableView.reloadData()
     }
 }
