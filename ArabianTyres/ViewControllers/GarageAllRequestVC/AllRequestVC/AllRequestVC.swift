@@ -97,11 +97,11 @@ extension AllRequestVC {
     }
     
     @objc func serviceRequestReceived() {
-        hitApi()
+        hitApi(params: [ApiKey.page:"1", ApiKey.limit: "10"])
     }
     
     @objc func placeBidRejectBidSuccess(){
-        hitApi()
+        hitApi(params: [ApiKey.page:"1", ApiKey.limit: "10"])
     }
     
 }
