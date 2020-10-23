@@ -15,4 +15,5 @@ extension Notification.Name {
     static let ServiceRequestSuccess = Notification.Name("ServiceRequestSuccess")
     static let ServiceRequestReceived = Notification.Name("ServiceRequestReceived")
     static let PlaceBidRejectBidSuccess = Notification.Name("PlaceBidRejectBidSuccess")
+    static let UserServiceAcceptRejectSuccess = Notification.Name("UserServiceAcceptRejectSuccess")
 }

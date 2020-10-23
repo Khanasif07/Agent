@@ -139,6 +139,7 @@ enum LocalizedString : String {
     // MARK: - Profile VC Values
     //==============================
     case my_vehicle
+    case my_Services
     case service_history
     case payments
     case saved_cards
@@ -286,6 +287,7 @@ enum LocalizedString : String {
     case oilServiceRequest
     case regNo
     case serviceStatus
+    case requests
     case enterBiddingAmount
     case placeBid
     case biddingAmountOnceSubmittedWillNeverBeChanged
@@ -297,7 +299,7 @@ enum LocalizedString : String {
     case pleaseVerifyTheSameInOrderToStartServicing
     case to
     case verify
-    case filter
+    case filters
     case apply
     case requestCreatedBy
     case requestAcceptedOn
@@ -341,6 +343,8 @@ enum LocalizedString : String {
     case newRequest
     case service_sheduled_for_today
     case today_Revenue
+    case allRequests
+    case bookedRequests
 
     
     // MARK:c - Complete profile 1  VC Values

@@ -104,6 +104,7 @@
 // MARK: - Profile VC Values
 //==============================
 "my_vehicle" = "My Vehicle";
+"my_Services" = "My Services";
 "service_history" = "Service History";
 "payments" = "Payments";
 "saved_cards" = "Saved Cards";
@@ -225,7 +226,7 @@
 "to" = "to ";
 "verify" = "Verify";
 "pleaseVerifyTheSameInOrderToStartServicing" = "please verify the same in order to\nstart Servicing";
-"filter" = "Filter";
+"filters" = "Filters";
 "apply" = "Apply";
 "requestCreatedBy" = "Request Created By";
 "requestAcceptedOn" = "Request Accepted On";
@@ -346,4 +347,7 @@
 "newRequest" = "New Request";
 "service_sheduled_for_today" = "Services Scheduled for Today";
 "today_Revenue" = "Today’s Revenue";
+"requests" = "Requests";
+"allRequests" = "All Requests";
+"bookedRequests" = "Booked Requests";
 

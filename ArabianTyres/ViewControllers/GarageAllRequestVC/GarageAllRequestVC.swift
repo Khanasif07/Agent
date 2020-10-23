@@ -98,6 +98,9 @@ extension GarageAllRequestVC {
         self.configureScrollView()
         self.instantiateViewController()
         self.backgroundView.backgroundColor = AppColors.fontPrimaryColor
+        self.titleLbl.text = LocalizedString.requests.localized
+        self.allRequestBtn.setTitle(LocalizedString.allRequests.localized, for: .normal)
+        self.bookedRequestBtn.setTitle(LocalizedString.bookedRequests.localized, for: .normal)
         self.mainScrollView.delegate = self
     }
     

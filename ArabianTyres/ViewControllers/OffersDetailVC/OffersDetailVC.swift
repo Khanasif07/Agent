@@ -102,7 +102,6 @@ extension OffersDetailVC {
         countryCollView.registerCell(with: FacilityCollectionViewCell.self)
         countryCollView.delegate = self
         countryCollView.dataSource = self
-
     }
     
     private func hitApi(){
@@ -112,7 +111,6 @@ extension OffersDetailVC {
     private func setupTextAndFont(){
         titleLbl.font = AppFonts.NunitoSansBold.withSize(17.0)
         [totalPriceLbl,unitLbl,unitPriceLbl,brandsLbl].forEach({$0?.textColor = AppColors.fontTertiaryColor})
-        //           titleLbl.text = LocalizedString.tyreServiceRequest.localized
     }
 }
 
@@ -168,6 +166,7 @@ extension OffersDetailVC : UITableViewDelegate, UITableViewDataSource {
 //========================================
 extension OffersDetailVC : OffersDetailVMDelegate {
     func rejectUserBidDataSuccess(message: String) {
+        NotificationCenter.default.post(name: Notification.Name.UserServiceAcceptRejectSuccess, object: nil)
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -176,6 +175,7 @@ extension OffersDetailVC : OffersDetailVMDelegate {
     }
     
     func acceptUserBidDataFailed(error: String) {
+        NotificationCenter.default.post(name: Notification.Name.UserServiceAcceptRejectSuccess, object: nil)
         ToastView.shared.showLongToast(self.view, msg: error)
     }
     
@@ -200,7 +200,6 @@ extension OffersDetailVC : OffersDetailVMDelegate {
     }
     
     func countryDataFilter(){
-//        unitPrizeView.isHidden = viewModel.bidData.isEmpty
         self.mainTableView.reloadData()
 
     }

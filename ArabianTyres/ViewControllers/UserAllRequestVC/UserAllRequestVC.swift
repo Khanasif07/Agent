@@ -63,8 +63,10 @@ class UserAllRequestVC: BaseVC {
 extension UserAllRequestVC {
     
     private func initialSetup() {
+        NotificationCenter.default.addObserver(self, selector: #selector(userServiceAcceptRejectSuccess), name: Notification.Name.UserServiceAcceptRejectSuccess, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ServiceRequestSuccess), name: Notification.Name.ServiceRequestSuccess, object: nil)
         self.filterBtn.tintColor = .black
+        self.titleLbl.text = LocalizedString.my_vehicle.localized
         self.tableViewSetUp()
         hitListingApi()
     }
@@ -106,7 +108,9 @@ extension UserAllRequestVC {
     }
     
     private func hitListingApi(){
+        if isUserLoggedin {
         self.viewModel.getUserMyRequestData(params: [ApiKey.page: "1",ApiKey.limit : "10"],loader: false,pagination: false)
+        }
     }
     
     @objc func refreshWhenPull(_ sender: UIRefreshControl) {
@@ -124,6 +128,10 @@ extension UserAllRequestVC {
         }else {
             self.hitListingApi()
         }
+    }
+    
+    @objc func userServiceAcceptRejectSuccess(){
+         self.hitListingApi()
     }
 }
 
@@ -164,10 +172,12 @@ extension UserAllRequestVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if cell as? LoaderCell != nil {
-            if filterApplied {
-                getFilterData(data: filterArr,loader: false, pagination: true)
-            }else {
-                self.viewModel.getUserMyRequestData(params: [ApiKey.page: self.viewModel.currentPage, ApiKey.limit : "10"],loader: false,pagination: true)
+            if isUserLoggedin {
+                if filterApplied {
+                    getFilterData(data: filterArr,loader: false, pagination: true)
+                }else {
+                    self.viewModel.getUserMyRequestData(params: [ApiKey.page: self.viewModel.currentPage, ApiKey.limit : "10"],loader: false,pagination: true)
+                }
             }
         }
     }
