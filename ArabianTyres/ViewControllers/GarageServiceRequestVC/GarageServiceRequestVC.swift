@@ -72,7 +72,7 @@ class GarageServiceRequestVC: BaseVC {
         }.flatMap { $0 }
         printDebug(selectedCountryBrandsArray)
         var bidAmountValid : Bool = true
-        let selectedDict  = JSONDictionaryArray()
+        var selectedDict  = JSONDictionaryArray()
         selectedCountryBrandsArray.forEach { (model) in
             var dict  = JSONDictionary()
             dict[ApiKey.brandName] = model.name
@@ -85,20 +85,23 @@ class GarageServiceRequestVC: BaseVC {
                 bidAmountValid = false
                 return
             }
-            if bidAmountValid {
-                switch sender.titleLabel?.text {
-                case "Edit":
-                    self.placeBidBtn.setTitle("Place Bid", for: .normal)
-                default:
-                    if bidStatus == .bidPlaced{
-                        self.viewModel.editPlacedBidData(params: [ApiKey.requestId:requestId,ApiKey.bidData: selectedDict])
-                    } else {
-                        self.viewModel.postPlaceBidData(params: [ApiKey.requestId:requestId,ApiKey.bidData: selectedDict])
-                    }
+            dict[ApiKey.amount] = model.amount ?? 0
+            dict[ApiKey.quantity] = quantity
+            selectedDict.append(dict)
+        }
+        if bidAmountValid {
+            switch sender.titleLabel?.text {
+            case "Edit":
+                self.placeBidBtn.setTitle("Place Bid", for: .normal)
+            default:
+                if bidStatus == .bidPlaced{
+                    self.viewModel.editPlacedBidData(params: [ApiKey.requestId:requestId,ApiKey.bidData: selectedDict])
+                } else {
+                    self.viewModel.postPlaceBidData(params: [ApiKey.requestId:requestId,ApiKey.bidData: selectedDict])
                 }
-            }else {
-                CommonFunctions.showToastWithMessage("Unit Price should not be 0 or empty")
             }
+        }else {
+            CommonFunctions.showToastWithMessage("Unit Price should not be 0 or empty")
         }
     }
     
@@ -152,20 +155,22 @@ extension GarageServiceRequestVC {
         if let  bidPlacedByGarage = self.viewModel.garageRequestDetailArr?.bidPlacedByGarage{
             bidPlacedByGarage.forEach { (placedBid) in
                 if brandsType == .onlyBrands  {
-                let indexx = self.viewModel.countryBrandsDict[0][self.selectedCountry]?.firstIndex(where: { (preferredBrand) -> Bool in
-                    preferredBrand.id == placedBid.brandID
-                })
-                guard let selectedIndexx  = indexx else { return }
-                self.viewModel.countryBrandsDict[0][self.selectedCountry]?[selectedIndexx].isSelected = true
-                self.viewModel.countryBrandsDict[0][self.selectedCountry]?[selectedIndexx].amount = placedBid.amount
+                    if self.viewModel.countryBrandsDict.endIndex > 0 {
+                        let indexx = self.viewModel.countryBrandsDict[0][self.selectedCountry]?.firstIndex(where: { (preferredBrand) -> Bool in
+                            preferredBrand.id == placedBid.brandID
+                        })
+                        guard let selectedIndexx  = indexx else { return }
+                        self.viewModel.countryBrandsDict[0][self.selectedCountry]?[selectedIndexx].isSelected = true
+                        self.viewModel.countryBrandsDict[0][self.selectedCountry]?[selectedIndexx].amount = placedBid.amount
+                    }
                 } else {
                     for (off,dict) in self.viewModel.countryBrandsDict.enumerated(){
                         self.viewModel.garageRequestDetailArr?.preferredCountries.forEach({ (preferredBrand) in
                             //
                             let indexx = dict[preferredBrand.name]?.firstIndex(where: { (preferredBrand) -> Bool in
-                                               preferredBrand.countryId == placedBid.countryId
-                                           })
-                             guard let selectedCountryIndexx  = indexx else { return }
+                                preferredBrand.countryId == placedBid.countryId
+                            })
+                            guard let selectedCountryIndexx  = indexx else { return }
                             self.viewModel.countryBrandsDict[off][self.selectedCountry]?[selectedCountryIndexx].isSelected = true
                             self.viewModel.countryBrandsDict[off][self.selectedCountry]?[selectedCountryIndexx].amount = placedBid.amount
                             //
@@ -254,6 +259,7 @@ extension GarageServiceRequestVC : UITableViewDelegate, UITableViewDataSource {
             guard let selectedIndexx  = indexx else { return UITableViewCell()}
             let brandDataArr = self.viewModel.countryBrandsDict[selectedIndexx][self.selectedCountry] ?? [PreferredBrand]()
             cell.bindData(brandDataArr[indexPath.row])
+            cell.unitPrizeTextFiled.isUserInteractionEnabled = placeBidBtn.titleLabel?.text != "Edit"
             cell.unitPriceChanged = { [weak self] (unitPrice,sender) in
                 guard let `self` = self else { return }
                 if  let SelectedIndexPath = tableView.indexPath(for: cell) {
@@ -321,6 +327,7 @@ extension GarageServiceRequestVC : UITableViewDelegate, UITableViewDataSource {
 extension GarageServiceRequestVC :GarageServiceRequestVMDelegate {
     func editPlacedBidDataSuccess(message: String) {
         NotificationCenter.default.post(name: Notification.Name.PlaceBidRejectBidSuccess, object: nil)
+        pop()
     }
     
     func editPlacedBidDataFailure(error: String) {

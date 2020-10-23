@@ -104,8 +104,8 @@ extension GarageTabBarController {
                 }
             case 3:
                 if let item = self.tabBar.items?[index] {
-                    item.image = #imageLiteral(resourceName: "setting")
-                    item.selectedImage = #imageLiteral(resourceName: "setting")
+                    item.image = #imageLiteral(resourceName: "group3697")
+                    item.selectedImage = #imageLiteral(resourceName: "group3697")
                 }
             default:
                 if let item = self.tabBar.items?[index] {
