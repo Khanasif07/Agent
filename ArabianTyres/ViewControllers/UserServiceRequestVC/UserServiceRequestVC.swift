@@ -99,6 +99,7 @@ class UserServiceRequestVC: BaseVC {
 extension UserServiceRequestVC {
     
     private func initialSetup() {
+        NotificationCenter.default.addObserver(self, selector: #selector(newBidSocketSuccess), name: Notification.Name.NewBidSocketSuccess, object: nil)
         viewModel.delegate = self
         textSetUp()
         viewModel.getUserMyRequestDetailData(params: [ApiKey.requestId: self.viewModel.requestId])
@@ -117,6 +118,10 @@ extension UserServiceRequestVC {
         self.productImgView.backgroundColor = logoBackGroundColor
         let logoImg =  self.viewModel.serviceType == "Tyres" ? #imageLiteral(resourceName: "radialCarTireI151") : self.viewModel.serviceType == "Battery" ? #imageLiteral(resourceName: "icBattery") : #imageLiteral(resourceName: "icOil")
         self.mainImgView.image = logoImg
+    }
+    
+    @objc func newBidSocketSuccess(){
+        viewModel.getUserMyRequestDetailData(params: [ApiKey.requestId: self.viewModel.requestId])
     }
 }
 

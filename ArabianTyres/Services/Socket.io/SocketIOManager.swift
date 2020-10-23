@@ -101,6 +101,7 @@ class SocketIOManager: NSObject {
             }
             self.socket?.on(SocketKeys.didDisconnect) { (data, ack) in
                 print("//////////+++socket disconnect+++//////////")
+                self.establishConnection()
             }
         }
     }

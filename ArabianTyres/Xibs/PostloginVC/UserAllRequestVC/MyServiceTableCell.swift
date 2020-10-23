@@ -63,6 +63,7 @@ class MyServiceTableCell: UITableViewCell {
     
     public func populateData(model: UserServiceRequestModel){
         statusValueLbl.text = model.status.text
+        statusValueLbl.textColor = model.status.textColor
         statusValueLineView.backgroundColor = model.status.textColor
         statusView.isHidden = model.status == .pending
         

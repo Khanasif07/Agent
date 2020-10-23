@@ -126,9 +126,10 @@ extension GarageServiceRequestVC {
         tableViewSetUp()
         textSetUp()
         hitApi()
-        placeBidBtn.isHidden = bidStatus == .bidFinalsed ||  bidStatus == .bidPlaced
-        requestBtn.setTitle((bidStatus == .bidPlaced) ? "Cancel Bid" : "Reject Request", for: .normal)
-        titleLbl.text =  self.viewModel.requestType == "Tyres" ? "Tyre Service Request" : self.viewModel.requestType == "Battery" ? "Battery Service Request" : "Oil Service Request"
+        placeBidBtn.isHidden = bidStatus == .bidFinalsed
+        placeBidBtn.setTitle((bidStatus == .bidPlaced) ? "Edit" : "Place Bid", for: .normal)
+//        requestBtn.setTitle((bidStatus == .bidPlaced) ? "Edit" : "Reject Request", for: .normal)
+        titleLbl.text =  self.viewModel.requestType == "Tyres" ? LocalizedString.tyreServiceRequest.localized : self.viewModel.requestType == "Battery" ? LocalizedString.batteryServiceRequest.localized : LocalizedString.oilServiceRequest.localized
     }
     
     private func tableViewSetUp(){
