@@ -86,7 +86,7 @@ extension SocketIOManager {
                                 HandleRequest.shared.dataArr.remove(at: 0)
                             }
                             vc.viewBtnTapped = { (requestId, requestType) in
-                                AppRouter.goToUserAllOffersVC(vc: navC.visibleViewController ?? navC, requestId: requestId)
+                                AppRouter.goToUserAllOffersVC(vc: UIApplication.shared.visibleViewController ?? navC, requestId: requestId)
                             }
                             if CommonFunctions.presentOnTabBar() {
                                 navC.present(vc, animated: true, completion: nil)
@@ -106,7 +106,7 @@ extension SocketIOManager {
                                 HandleRequest.shared.dataArr.remove(at: 0)
                             }
                             vc.viewBtnTapped = { (requestId, requestType) in
-                                AppRouter.goToGarageServiceRequestVC(vc: navC.visibleViewController ?? navC,requestId : requestId, requestType: requestType, bidStatus: .openForBidding)
+                                AppRouter.goToGarageServiceRequestVC(vc: UIApplication.shared.visibleViewController ?? navC,requestId : requestId, requestType: requestType, bidStatus: .openForBidding)
                             }
                             if CommonFunctions.presentOnTabBar() {
                                 navC.present(vc, animated: true, completion: nil)

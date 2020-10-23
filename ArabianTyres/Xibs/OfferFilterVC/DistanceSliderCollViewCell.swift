@@ -29,13 +29,13 @@ class DistanceSliderCollViewCell: UICollectionViewCell {
         rangeSlider.maxLabelFont = AppFonts.NunitoSansSemiBold.withSize(12.0)
         rangeSlider.handleImage = #imageLiteral(resourceName: "slider")
         rangeSlider.delegate = self
-        rangeSlider.minValue = 0
-        rangeSlider.maxValue = 100
-        rangeSlider.selectedMinimum = 0
-        rangeSlider.selectedMaximum = 10
+        rangeSlider.minValue = 1
+        rangeSlider.maxValue = 10
+        rangeSlider.selectedMinimum = 1
+        rangeSlider.selectedMaximum = 5
         rangeSlider.selectedHandleDiameterMultiplier = 1
         let formatter = NumberFormatter()
-        formatter.positiveSuffix = "KM"
+        formatter.positiveSuffix = "Miles"
         rangeSlider.numberFormatterOverride = formatter
     }
     

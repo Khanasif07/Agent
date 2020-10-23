@@ -75,9 +75,8 @@ class UserOffersTableCell: UITableViewCell {
         let totalAmount = String((model.bidData.first?.quantity ?? 0) * Int(model.bidData.first?.amount ?? 0))
         tAValueLbl.attributedText = getAttributedString(value: totalAmount,attributedLabel: tAValueLbl)
         logoImgView.setImage_kf(imageString: model.logo ?? "")
-        if model.status == "cancelled" || model.status == "rejected" {
-            changeWithBlurView()
-        }
+//        model.status != "accepted" ? changeWithBlurView() : ()
+
     }
     
     func getAttributedString(value : String,attributedLabel: UILabel) -> NSMutableAttributedString{
