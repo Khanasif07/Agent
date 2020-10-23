@@ -143,7 +143,7 @@ extension OffersDetailVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//       acceptBtn.isEnabled = true
+        acceptBtn.isEnabled = true
         if self.viewModel.bidData.endIndex > 0 {
             let index =  self.viewModel.bidData.firstIndex { (model) -> Bool in
                 return model.isAccepted == true

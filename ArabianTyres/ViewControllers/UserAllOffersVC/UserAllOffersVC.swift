@@ -21,7 +21,7 @@ class UserAllOffersVC: BaseVC {
     //==================
     var requestId: String = ""
     let viewModel = UserAllOfferVM()
-    var filterArr : [FilterScreen] = [.distance("0","10", false), .bidReceived("",false)]
+    var filterArr : [FilterScreen] = [.distance("1","5", false), .bidReceived("",false)]
     var filterApplied: Bool = false
 
     // MARK: - Lifecycle
