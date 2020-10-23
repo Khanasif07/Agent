@@ -66,6 +66,7 @@ class UserOffersTableCell: UITableViewCell {
     }
     
     func bindData(_ model: UserBidModel) {
+        offerSubTitleLbl.text = model.garageAddress
         let distanceInMiles = self.getMiles(meters: model.distance ?? 0.0)
         distanceValueLbl.attributedText =  getAttributedString(value: "\(distanceInMiles.truncate(places: 2))",attributedLabel: distanceValueLbl)
         offerTitleLbl.text = model.garageName
@@ -88,7 +89,7 @@ class UserOffersTableCell: UITableViewCell {
                 .font: AppFonts.NunitoSansBold.withSize(17.0),
                 .foregroundColor: AppColors.fontPrimaryColor
             ])
-            str.append(NSAttributedString(string: "Miles", attributes: [NSAttributedString.Key.foregroundColor: AppColors.fontSecondaryColor,NSAttributedString.Key.font: AppFonts.NunitoSansSemiBold.withSize(12.0)]))
+            str.append(NSAttributedString(string: "Mi", attributes: [NSAttributedString.Key.foregroundColor: AppColors.fontSecondaryColor,NSAttributedString.Key.font: AppFonts.NunitoSansSemiBold.withSize(12.0)]))
             
         case BAValueLbl:
             str = NSMutableAttributedString(string: value, attributes: [
