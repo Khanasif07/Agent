@@ -18,14 +18,14 @@ class UserAllOffersVC: BaseVC {
     @IBOutlet weak var mainTableView: UITableView!
  
     // MARK: - Variables
-    //===========================
+    //==================
     var requestId: String = ""
     let viewModel = UserAllOfferVM()
     var filterArr : [FilterScreen] = [.distance("0","10", false), .bidReceived("",false)]
     var filterApplied: Bool = false
 
     // MARK: - Lifecycle
-    //===========================
+    //==================
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
@@ -81,7 +81,7 @@ extension UserAllOffersVC {
     
     @objc func refreshWhenPull(_ sender: UIRefreshControl) {
         sender.endRefreshing()
-        hitApi()
+        getFilterData(data: filterArr,loader: false, pagination: true)
     }
     
     private func setupTextAndFont(){
@@ -89,12 +89,12 @@ extension UserAllOffersVC {
     }
     
     private func hitApi(params: JSONDictionary = [:],loader: Bool = false,pagination: Bool = false) {
-        if params.isEmpty {
+        if filterApplied {
+            viewModel.getUserBidData(params: params,loader: loader)
+            
+        }else {
             let dict : JSONDictionary = [ApiKey.page: "1",ApiKey.limit : "20", ApiKey.requestId : self.requestId]
             viewModel.getUserBidData(params: dict)
-        }else {
-            viewModel.getUserBidData(params: params,loader: loader,pagination: pagination)
-
         }
     }
     

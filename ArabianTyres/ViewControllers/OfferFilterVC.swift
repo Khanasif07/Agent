@@ -71,13 +71,13 @@ class OfferFilterVC: BaseVC {
             self.pop()
             return
         }
-        let result = checkFilterStatus()
-        if result.status {
+//        let result = checkFilterStatus()
+//        if result.status {
             onTapApply?(sectionArr, true)
             self.pop()
-        }else {
-            CommonFunctions.showToastWithMessage(result.msg)
-        }
+//        }else {
+//            CommonFunctions.showToastWithMessage(result.msg)
+//        }
     }
 }
 

@@ -72,8 +72,9 @@ extension UserAllRequestVC {
         hitListingApi()
     }
     
-    private func getFilterData(data: [FilterScreen],loader: Bool = true,pagination: Bool = false) {
-        var dict : JSONDictionary = [ApiKey.page: self.viewModel.currentPage, ApiKey.limit : "10"]
+    private func getFilterData(data: [FilterScreen],loader: Bool = true,isPullToRefersh :Bool = false) {
+        
+        var dict : JSONDictionary = [ApiKey.page: isPullToRefersh ? "1" : viewModel.currentPage, ApiKey.limit : "10"]
         data.forEach { (type) in
             switch type {
                 
@@ -94,7 +95,8 @@ extension UserAllRequestVC {
                 break
             }
         }
-        self.viewModel.getUserMyRequestData(params: dict,loader: loader, pagination: pagination)
+        
+        self.viewModel.getUserMyRequestData(params: dict,loader: loader)
     }
     
     private func tableViewSetUp(){
@@ -110,14 +112,18 @@ extension UserAllRequestVC {
     
     private func hitListingApi(){
         if isUserLoggedin {
-        self.viewModel.getUserMyRequestData(params: [ApiKey.page: "1",ApiKey.limit : "10"],loader: false,pagination: false)
+            if filterApplied {
+                getFilterData(data: filterArr,loader: false)
+            }else {
+                self.viewModel.getUserMyRequestData(params: [ApiKey.page: "1",ApiKey.limit : "10"],loader: false,pagination: false)
+            }
         }
     }
     
     @objc func refreshWhenPull(_ sender: UIRefreshControl) {
         sender.endRefreshing()
         if filterApplied {
-            getFilterData(data: filterArr,loader: false, pagination: true)
+            getFilterData(data: filterArr,loader: false,isPullToRefersh: true)
         }else {
             self.hitListingApi()
         }
@@ -125,7 +131,7 @@ extension UserAllRequestVC {
     
     @objc func ServiceRequestSuccess(){
         if filterApplied {
-            getFilterData(data: filterArr,loader: false, pagination: true)
+            getFilterData(data: filterArr,loader: false)
         }else {
             self.hitListingApi()
         }
@@ -179,7 +185,7 @@ extension UserAllRequestVC : UITableViewDelegate, UITableViewDataSource {
         if cell as? LoaderCell != nil {
             if isUserLoggedin {
                 if filterApplied {
-                    getFilterData(data: filterArr,loader: false, pagination: true)
+                    getFilterData(data: filterArr,loader: false)
                 }else {
                     self.viewModel.getUserMyRequestData(params: [ApiKey.page: self.viewModel.currentPage, ApiKey.limit : "10"],loader: false,pagination: true)
                 }
@@ -233,6 +239,7 @@ extension UserAllRequestVC : DZNEmptyDataSetSource,DZNEmptyDataSetDelegate {
     }
     
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        
         return NSAttributedString(string: "No data found" , attributes: [NSAttributedString.Key.foregroundColor: AppColors.fontTertiaryColor,NSAttributedString.Key.font: AppFonts.NunitoSansBold.withSize(18)])
     }
     

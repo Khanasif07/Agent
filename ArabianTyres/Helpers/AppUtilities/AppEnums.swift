@@ -120,18 +120,19 @@ enum FilterScreen {
         switch self {
          
         case .byServiceType:
-            return [LocalizedString.tyreService.localized,
-                    LocalizedString.oilSevice.localized,
-                    LocalizedString.batteryService.localized]
+            return [LocalizedString.tyreServices.localized,
+                    LocalizedString.oilSevices.localized,
+                    LocalizedString.batteryServices.localized]
             
         case .byStatus:
             return [LocalizedString.offerAccepted.localized,
                     LocalizedString.offerReceived.localized,
                     LocalizedString.noOffers.localized]
+        
         case .allRequestServiceType:
-            return [LocalizedString.tyreService.localized,
-                    LocalizedString.oilSevice.localized,
-                    LocalizedString.batteryService.localized]
+            return [LocalizedString.tyreServices.localized,
+                    LocalizedString.oilSevices.localized,
+                    LocalizedString.batteryServices.localized]
             
         case .allRequestByStatus:
             return [LocalizedString.bidFinalized.localized,
@@ -206,7 +207,7 @@ enum FilterScreen {
                     "rejected"]
            case .bidReceived:
             return ["1",
-            "-1"]//dummy data for rating high to low
+            "-1"]
             
            default:
             return [""]

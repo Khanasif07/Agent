@@ -34,7 +34,7 @@ class GarageAllRequestVC: BaseVC {
     var allRequestVC        : AllRequestVC!
     var bookedRequestVC     : BookedRequestVC!
     var filterArr : [FilterScreen] = [.allRequestServiceType([],false), .allRequestByStatus([],false)]
-    
+
     // MARK: - Lifecycle
     //===========================
     override func viewDidLoad() {
@@ -79,13 +79,17 @@ class GarageAllRequestVC: BaseVC {
       }
       
     @IBAction func filterBtnAction(_ sender: UIButton) {
-        AppRouter.goToSRFliterVC(vc: self, filterArr: filterArr) {[weak self] (filterData, isReset) in
+        AppRouter.goToSRFliterVC(vc: self, filterArr: filterArr) { [weak self] (filterData, isReset) in
             if isReset {
-                self?.getFilterData(data: filterData)
+                self?.allRequestVC.viewModel.currentPage = 1
+                self?.allRequestVC.filterApplied = true
+                self?.allRequestVC.getFilterData(data: filterData,loader: true)
             }else {
+                self?.allRequestVC.filterApplied = false
                 self?.allRequestVC.hitApi(loader: true)
             }
             self?.filterArr = filterData
+            self?.allRequestVC.filterArr = filterData
         }
     }
 }
@@ -125,24 +129,6 @@ extension GarageAllRequestVC {
         self.addChild(self.bookedRequestVC)
     }
     
-    private func getFilterData(data: [FilterScreen]) {
-        var dict : JSONDictionary = [ApiKey.page: "1",ApiKey.limit : "20"]
-        data.forEach { (type) in
-            switch type {
-
-            case .allRequestServiceType(let str, _):
-                dict[ApiKey.requestType] = str.joined(separator: ",")
-
-            case .allRequestByStatus(let str, _):
-                dict[ApiKey.status] = str.joined(separator: ",")
-            default:
-                break
-            }
-        }
-        guard let allRequestVC = allRequestVC else {return}
-        
-        allRequestVC.hitApi(params: dict)
-    }
 }
 
 
