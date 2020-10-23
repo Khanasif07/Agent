@@ -107,7 +107,7 @@ extension GarageRequestPopupVC {
         userImgView.setImage_kf(imageString: requestData?.userImage ?? "", placeHolderImage: #imageLiteral(resourceName: "placeHolder"))
         switch requestData?.distance {
         case .double(let distance):
-            distanceLbl.text = "\(distance)" + " miles"
+            distanceLbl.text =  "\(distance.truncate(places: 2))" + " miles"
         default:
             break
         }

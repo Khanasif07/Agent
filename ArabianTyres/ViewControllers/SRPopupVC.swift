@@ -108,10 +108,15 @@ extension SRPopupVC {
         serviceTypeLbl.text = requestData?.message
         switch requestData?.distance {
         case .string(let txt):
-            distanceLbl.text =  txt + " miles away"
+            let distanceMiles = getMiles(meters: (txt as NSString).doubleValue)
+            distanceLbl.text =  "\(distanceMiles.truncate(places: 2))" + " miles away"
         default:
             break
         }
+    }
+    
+    func getMiles(meters: Double) -> Double {
+        return meters * 0.000621371192
     }
     
     private func startTimer() {
