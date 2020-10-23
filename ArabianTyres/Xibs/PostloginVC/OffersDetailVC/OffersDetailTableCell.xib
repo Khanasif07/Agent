@@ -31,28 +31,28 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zyn-YB-cjy">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="53"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MRF" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C6n-de-kWI">
-                                                <rect key="frame" x="16" y="19" width="57" height="15.5"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="57" id="ghY-cn-1WB"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="13"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="tX5-O9-EuF">
-                                                <rect key="frame" x="83" y="11.5" width="194" height="30"/>
+                                                <rect key="frame" x="16" y="11.5" width="261" height="30"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="250 SAR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="p52-Xu-mt1">
-                                                        <rect key="frame" x="0.0" y="0.0" width="75" height="30"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MRF" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C6n-de-kWI">
+                                                        <rect key="frame" x="0.0" y="0.0" width="57" height="30"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="57" id="ghY-cn-1WB"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="13"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="250 SAR" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p52-Xu-mt1">
+                                                        <rect key="frame" x="67" y="0.0" width="75" height="30"/>
                                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="13"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Zu-Df-KCe">
-                                                        <rect key="frame" x="85" y="0.0" width="30" height="30"/>
+                                                        <rect key="frame" x="152" y="0.0" width="30" height="30"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="1ig-Pr-hUb">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ig-Pr-hUb">
                                                                 <rect key="frame" x="0.0" y="7.5" width="30" height="15.5"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="13"/>
@@ -64,13 +64,12 @@
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="30" id="6RI-p9-SpJ"/>
                                                             <constraint firstAttribute="trailing" secondItem="1ig-Pr-hUb" secondAttribute="trailing" id="7vx-xQ-fzX"/>
-                                                            <constraint firstAttribute="width" secondItem="0Zu-Df-KCe" secondAttribute="height" multiplier="1:1" id="BCe-Oy-ohy"/>
                                                             <constraint firstItem="1ig-Pr-hUb" firstAttribute="centerY" secondItem="0Zu-Df-KCe" secondAttribute="centerY" id="Gyv-Lh-zGl"/>
                                                             <constraint firstItem="1ig-Pr-hUb" firstAttribute="leading" secondItem="0Zu-Df-KCe" secondAttribute="leading" id="Uln-y2-ifj"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qcw-XG-4Ge">
-                                                        <rect key="frame" x="125" y="0.0" width="69" height="30"/>
+                                                        <rect key="frame" x="192" y="0.0" width="69" height="30"/>
                                                         <subviews>
                                                             <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1000 SAR" borderStyle="roundedRect" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="l4c-15-WVJ" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
                                                                 <rect key="frame" x="2" y="-10.5" width="65" height="36"/>
@@ -83,11 +82,22 @@
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                             </textField>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WAW-fU-gy4">
+                                                                <rect key="frame" x="0.0" y="4" width="69" height="22"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="13"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <color key="tintColor" red="0.17254901959999999" green="0.71372549019999998" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
+                                                            <constraint firstAttribute="bottom" secondItem="WAW-fU-gy4" secondAttribute="bottom" constant="4" id="6JE-BZ-Lto"/>
+                                                            <constraint firstAttribute="trailing" secondItem="WAW-fU-gy4" secondAttribute="trailing" id="M5n-6J-Oez"/>
                                                             <constraint firstAttribute="trailing" secondItem="l4c-15-WVJ" secondAttribute="trailing" constant="2" id="kyS-ev-kbR"/>
+                                                            <constraint firstItem="WAW-fU-gy4" firstAttribute="leading" secondItem="Qcw-XG-4Ge" secondAttribute="leading" id="mLs-fW-9tL"/>
+                                                            <constraint firstItem="WAW-fU-gy4" firstAttribute="top" secondItem="Qcw-XG-4Ge" secondAttribute="top" constant="4" id="o5h-Vb-dQv"/>
                                                             <constraint firstItem="l4c-15-WVJ" firstAttribute="leading" secondItem="Qcw-XG-4Ge" secondAttribute="leading" constant="2" id="qMA-o4-RoG"/>
                                                             <constraint firstItem="l4c-15-WVJ" firstAttribute="centerY" secondItem="Qcw-XG-4Ge" secondAttribute="centerY" multiplier="0.5" id="qip-Bt-Urs"/>
                                                         </constraints>
@@ -111,14 +121,13 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstItem="Ngs-4x-Xla" firstAttribute="centerY" secondItem="tX5-O9-EuF" secondAttribute="centerY" id="2Cw-0b-7lb"/>
+                                            <constraint firstAttribute="bottom" secondItem="tX5-O9-EuF" secondAttribute="bottom" constant="11.5" id="4GX-JG-Rya"/>
                                             <constraint firstAttribute="trailing" secondItem="Ngs-4x-Xla" secondAttribute="trailing" constant="16" id="5qH-Yk-qbh"/>
-                                            <constraint firstItem="tX5-O9-EuF" firstAttribute="leading" secondItem="C6n-de-kWI" secondAttribute="trailing" constant="10" id="KVe-te-3KG"/>
+                                            <constraint firstItem="tX5-O9-EuF" firstAttribute="top" secondItem="zyn-YB-cjy" secondAttribute="top" constant="11.5" id="7N2-a0-n8T"/>
                                             <constraint firstItem="Ngs-4x-Xla" firstAttribute="centerY" secondItem="zyn-YB-cjy" secondAttribute="centerY" id="N4c-KT-b6i"/>
-                                            <constraint firstAttribute="height" constant="53" id="OHK-gU-7nf"/>
                                             <constraint firstItem="tX5-O9-EuF" firstAttribute="centerY" secondItem="zyn-YB-cjy" secondAttribute="centerY" id="RfO-6G-oyc"/>
-                                            <constraint firstItem="C6n-de-kWI" firstAttribute="leading" secondItem="zyn-YB-cjy" secondAttribute="leading" constant="16" id="WQc-eq-GFn"/>
+                                            <constraint firstItem="tX5-O9-EuF" firstAttribute="leading" secondItem="zyn-YB-cjy" secondAttribute="leading" constant="16" id="SAG-6J-yHw"/>
                                             <constraint firstItem="Ngs-4x-Xla" firstAttribute="leading" secondItem="tX5-O9-EuF" secondAttribute="trailing" constant="20" id="j7n-D5-k4o"/>
-                                            <constraint firstItem="C6n-de-kWI" firstAttribute="centerY" secondItem="tX5-O9-EuF" secondAttribute="centerY" id="y0k-bB-d7r"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P8X-ZH-zNq" customClass="CustomDashedView" customModule="ArabianTyres" customModuleProvider="target">
@@ -165,6 +174,7 @@
                 <outlet property="dashBackgroundView" destination="OvJ-fm-Msx" id="Lvt-O0-ab8"/>
                 <outlet property="dashView" destination="P8X-ZH-zNq" id="cPV-DM-rWx"/>
                 <outlet property="dashViewHeightConst" destination="fCJ-5x-DFj" id="6Lm-Fw-xZC"/>
+                <outlet property="totalPrizeLbl" destination="WAW-fU-gy4" id="6dX-M4-KtL"/>
                 <outlet property="unitLbl" destination="1ig-Pr-hUb" id="tnq-xW-yCG"/>
                 <outlet property="unitPriceLbl" destination="p52-Xu-mt1" id="yFL-cm-d17"/>
                 <outlet property="unitPrizeTextFiled" destination="l4c-15-WVJ" id="iIe-CV-NWX"/>
