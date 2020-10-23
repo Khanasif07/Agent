@@ -111,7 +111,6 @@ class ServiceRequestTableCell: UITableViewCell {
         let str = model.requestType == .tyres ? "Tyre" : model.requestType.rawValue
         serviceTyeLbl.text = (str) + LocalizedString.serviceRequest.localized
         
-        
         if model.bidStatus == .bidFinalsed || model.bidStatus == .bidPlaced {
             bidAmountStackView.isHidden = false
             bidAmountValueLbl.text = String(Int(model.bidData?.first?.amount ?? 0.0) * (model.bidData?.first?.quantity ?? 0))
@@ -119,8 +118,8 @@ class ServiceRequestTableCell: UITableViewCell {
             bidAmountStackView.isHidden = true
         }
         if model.bidStatus == .bidFinalsed  {
-            placeBidBtn.isHidden = true
-
+             placeBidBtn.setTitle("Chat", for: .normal)
+             rejectRequestBtn.setTitle("Reject", for: .normal)
         }else {
             placeBidBtn.isHidden = false
         }

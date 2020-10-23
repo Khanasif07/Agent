@@ -108,11 +108,13 @@ extension AllRequestVC : UITableViewDelegate, UITableViewDataSource {
        
             cell.placeBidBtnTapped = {[weak self] (sender) in
                 guard let `self` = self else {return}
-                if sender.titleLabel?.text == "Cancel Bid" {
-                self.requestId = self.viewModel.garageRequestListing[indexPath.row].id ?? ""
-                self.viewModel.cancelBid(params:[ApiKey.garageRequestId : self.requestId])
-
-                }else {
+                switch sender.titleLabel?.text {
+                case "Cancel Bid":
+                    self.requestId = self.viewModel.garageRequestListing[indexPath.row].id ?? ""
+                    self.viewModel.cancelBid(params:[ApiKey.garageRequestId : self.requestId])
+                case "Chat":
+                    self.showAlert(msg: "Under Development")
+                default:
                     AppRouter.goToGarageServiceRequestVC(vc: self,requestId : self.viewModel.garageRequestListing[indexPath.row].id ?? "", requestType: self.viewModel.garageRequestListing[indexPath.row].requestType.rawValue,bidStatus: self.viewModel.garageRequestListing[indexPath.row].bidStatus ?? .bidFinalsed)
                 }
             }
