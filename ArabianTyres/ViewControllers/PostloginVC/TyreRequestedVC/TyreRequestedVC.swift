@@ -72,7 +72,8 @@ class TyreRequestedVC: BaseVC {
     //===========================
     
     @IBAction func cancelBtnAction(_ sender: UIButton) {
-        self.pop()
+        TyreRequestModel.shared = TyreRequestModel()
+        self.navigationController?.popToViewControllerOfType(classForCoder: HomeVC.self)
     }
     
     

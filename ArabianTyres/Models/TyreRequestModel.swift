@@ -11,7 +11,6 @@ import UIKit
 
 struct TyreRequestModel {
     
-    
     static var shared = TyreRequestModel()
 
     var width                     : String = ""
