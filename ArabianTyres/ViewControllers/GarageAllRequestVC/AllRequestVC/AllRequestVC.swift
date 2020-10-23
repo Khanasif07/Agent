@@ -18,7 +18,8 @@ class AllRequestVC: BaseVC {
     //===========================
     var viewModel = AllRequestVM()
     var requestId : String = ""
-    
+    var filterApplied : Bool = false
+    var filterArr : [FilterScreen] = []
     
     // MARK: - Lifecycle
     //===========================
@@ -61,17 +62,38 @@ extension AllRequestVC {
     
     public func hitApi(params: JSONDictionary = [:],loader: Bool = false){
         if isUserLoggedin {
-            if params.isEmpty {
-                viewModel.getGarageRequestData(params: [ApiKey.page:"1", ApiKey.limit: "100"], pagination: false)
+            if filterApplied {
+                viewModel.getGarageRequestData(params: params,loader: loader)
             }else {
-                viewModel.getGarageRequestData(params: params,loader: true)
+                viewModel.getGarageRequestData(params: [ApiKey.page:"1", ApiKey.limit: "10"])
             }
         }
     }
     
+    public func getFilterData(data: [FilterScreen],isPullToRefersh :Bool = false, loader: Bool = true) {
+        var dict : JSONDictionary = [ApiKey.page: isPullToRefersh ? "1" : viewModel.currentPage ,ApiKey.limit : "10"]
+        data.forEach { (type) in
+            switch type {
+
+            case .allRequestServiceType(let str, _):
+                dict[ApiKey.requestType] = str.joined(separator: ",")
+
+            case .allRequestByStatus(let str, _):
+                dict[ApiKey.status] = str.joined(separator: ",")
+            default:
+                break
+            }
+        }
+        hitApi(params: dict,loader: loader)
+    }
+    
     @objc func refreshWhenPull(_ sender: UIRefreshControl) {
         sender.endRefreshing()
-        hitApi()
+        if filterApplied {
+            getFilterData(data: filterArr,isPullToRefersh: true)
+        }else {
+            hitApi()
+        }
     }
     
     @objc func serviceRequestReceived() {
@@ -126,7 +148,12 @@ extension AllRequestVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if cell as? LoaderCell != nil {
-            self.viewModel.getGarageRequestData(params: [ApiKey.page: self.viewModel.currentPage,ApiKey.limit : "10"],loader: false,pagination: true)
+            if filterApplied {
+                getFilterData(data: filterArr,loader: false)
+
+            }else {
+             self.viewModel.getGarageRequestData(params: [ApiKey.page: self.viewModel.currentPage,ApiKey.limit : "10"],loader: false,pagination: true)
+            }
         }
     }
     

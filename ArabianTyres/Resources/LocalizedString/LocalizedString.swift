@@ -119,9 +119,9 @@ enum LocalizedString : String {
     case byDate
     case byServiceType
     case byStatus
-    case tyreService
-    case oilSevice
-    case batteryService
+    case tyreServices
+    case oilSevices
+    case batteryServices
     case offerAccepted
     case offerReceived
     case noOffers

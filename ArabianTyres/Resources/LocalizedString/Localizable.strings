@@ -252,9 +252,9 @@
 "byServiceType" = "By Service Type";
 "byStatus" = "By Status";
 
-"tyreService" = "Tyre Service";
-"oilSevice" = "Oil Sevice";
-"batteryService" = "Battery Service";
+"tyreServices" = "Tyre Services";
+"oilSevices" = "Oil Sevices";
+"batteryServices" = "Battery Services";
 
 "offerAccepted" = "Offer Accepted";
 "offerReceived" = "Offer Received";
