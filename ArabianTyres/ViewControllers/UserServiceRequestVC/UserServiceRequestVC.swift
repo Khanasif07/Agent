@@ -78,8 +78,7 @@ class UserServiceRequestVC: BaseVC {
     // MARK: - IBActions
     //===========================
     @IBAction func cancelRequestBtnAction(_ sender: AppButton) {
-        self.viewModel.cancelUserMyRequestDetailData(params: [ApiKey.requestId:
-            self.viewModel.requestId])
+        self.viewModel.cancelUserMyRequestDetailData(params: [ApiKey.requestId: self.viewModel.requestId])
     }
     
     @IBAction func viewAllBtnAction(_ sender: AppButton) {

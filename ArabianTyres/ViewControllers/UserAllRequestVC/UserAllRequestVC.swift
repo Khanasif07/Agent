@@ -122,7 +122,11 @@ extension UserAllRequestVC {
     }
     
     @objc func ServiceRequestSuccess(){
-        self.hitListingApi()
+        if filterApplied {
+            getFilterData(data: filterArr,loader: false, pagination: true)
+        }else {
+            self.hitListingApi()
+        }
     }
     
     @objc func userServiceAcceptRejectSuccess(){
