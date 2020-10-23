@@ -118,13 +118,13 @@ class ServiceRequestTableCell: UITableViewCell {
         }else {
             bidAmountStackView.isHidden = true
         }
-        if model.bidStatus == .bidFinalsed {
+        if model.bidStatus == .bidFinalsed  {
             placeBidBtn.isHidden = true
 
         }else {
             placeBidBtn.isHidden = false
         }
-        if model.bidStatus == .bidPlaced {
+        if model.bidStatus == .bidPlaced || model.bidStatus == .bidClosed{
             rejectRequestBtn.isHidden = true
             placeBidBtn.setTitle("Cancel Bid", for: .normal)
             placeBidBtn.setTitleColor(AppColors.appRedColor, for: .normal)

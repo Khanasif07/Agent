@@ -89,7 +89,6 @@ class GarageServiceRequestVM {
         WebServices.getGarageRequestDetail(parameters: params, success: { [weak self] (json) in
             guard let `self` = self else { return }
             self.parseToGarageRequestDetailData(result: json)
-            printDebug(json)
         }) { [weak self] (error) in
             guard let `self` = self else { return }
             self.delegate?.getGarageDetailFailed(error: error.localizedDescription)
@@ -111,6 +110,7 @@ class GarageServiceRequestVM {
                 currentPage = result[ApiKey.data][ApiKey.page].intValue
                 isRequestinApi = false
                 self.garageRequestDetailArr = modelList
+                printDebug(self.garageRequestDetailArr)
                 nextPageAvailable = result[ApiKey.data][ApiKey.next].boolValue
                 currentPage += 1
                 self.delegate?.getGarageDetailSuccess(message: "")

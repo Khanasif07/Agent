@@ -123,6 +123,10 @@ extension UserServiceRequestVC {
     @objc func newBidSocketSuccess(){
         viewModel.getUserMyRequestDetailData(params: [ApiKey.requestId: self.viewModel.requestId])
     }
+    
+    func getMiles(meters: Double) -> Double {
+         return meters * 0.000621371192
+    }
 }
 
 // MARK: - Extension For UserAllRequestVMDelegate
@@ -162,7 +166,8 @@ extension UserServiceRequestVC: UserServiceRequestVMDelegate{
             lowestBidValueLbl.text = viewModel.userRequestDetail.lowestBid?.description
         }
         bidRecivedValueLbl.text = viewModel.userRequestDetail.totalBids?.description
-        nearestBidderValueLbl.text = viewModel.userRequestDetail.nearestBidder?.rounded().description
+        let distanceMiles = getMiles(meters: viewModel.userRequestDetail.nearestBidder ?? 0.0)
+        nearestBidderValueLbl.text = "\(distanceMiles.truncate(places: 3))"
         if self.viewModel.serviceType == "Tyres"{
             tyreSizeValueLbl.text = "\(model.width ?? 0)W " + "\(model.rimSize ?? 0)R " + "\(model.profile ?? 0)P"
         } else{
