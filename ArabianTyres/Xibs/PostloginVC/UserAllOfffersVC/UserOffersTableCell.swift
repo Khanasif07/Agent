@@ -75,7 +75,7 @@ class UserOffersTableCell: UITableViewCell {
         let totalAmount = String((model.bidData.first?.quantity ?? 0) * Int(model.bidData.first?.amount ?? 0))
         tAValueLbl.attributedText = getAttributedString(value: totalAmount,attributedLabel: tAValueLbl)
         logoImgView.setImage_kf(imageString: model.logo ?? "")
-//        model.status != "accepted" ? changeWithBlurView() : ()
+        model.status != "accepted" ? changeWithBlurView() : ()
 
     }
     
