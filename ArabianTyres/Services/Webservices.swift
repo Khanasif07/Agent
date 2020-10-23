@@ -828,6 +828,17 @@ extension WebServices{
                failure(error)
            }
        }
+
+    // MARK:- Edit Placed Bid Data
+    //=================
+    static func editPlacedBidData(parameters: JSONDictionary,
+                                        success: @escaping SuccessResponse,
+                                        failure: @escaping FailureResponse) {
+        self.commonPutAPI(parameters: parameters, endPoint: .garageEditPlacedBid, success: { (json) in
+            success(json)
+        }) { (error) -> (Void) in
+            failure(error)
+        }
+    }
+
 }
-
-

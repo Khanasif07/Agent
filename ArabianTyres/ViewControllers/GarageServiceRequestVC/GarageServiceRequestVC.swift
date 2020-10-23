@@ -63,7 +63,6 @@ class GarageServiceRequestVC: BaseVC {
     // MARK: - IBActions
     //===========================
     @IBAction func placeBidAction(_ sender: AppButton) {
-        
         let selectedCountryBrandsArray =  self.viewModel.countryBrandsDict.map { (dict) -> [PreferredBrand] in
             return   Array(dict.values)[0]
         }.map { (modelArray) -> [PreferredBrand] in
@@ -73,7 +72,7 @@ class GarageServiceRequestVC: BaseVC {
         }.flatMap { $0 }
         printDebug(selectedCountryBrandsArray)
         var bidAmountValid : Bool = true
-        var selectedDict  = JSONDictionaryArray()
+        let selectedDict  = JSONDictionaryArray()
         selectedCountryBrandsArray.forEach { (model) in
             var dict  = JSONDictionary()
             dict[ApiKey.brandName] = model.name
@@ -85,21 +84,21 @@ class GarageServiceRequestVC: BaseVC {
             guard let amt = model.amount, amt != 0  else {
                 bidAmountValid = false
                 return
-                
             }
-       
-            dict[ApiKey.amount] = model.amount ?? 0
-            dict[ApiKey.quantity] = quantity
-            selectedDict.append(dict)
-        }
-        if selectedCountryBrandsArray.isEmpty {
-            CommonFunctions.showToastWithMessage("Please select one bid")
-            return
-        }
-        if bidAmountValid {
-            self.viewModel.postPlaceBidData(params: [ApiKey.requestId:requestId,ApiKey.bidData: selectedDict])
-        }else {
-            CommonFunctions.showToastWithMessage("Unit Price should not be 0 or empty")
+            if bidAmountValid {
+                switch sender.titleLabel?.text {
+                case "Edit":
+                    self.placeBidBtn.setTitle("Place Bid", for: .normal)
+                default:
+                    if bidStatus == .bidPlaced{
+                        self.viewModel.editPlacedBidData(params: [ApiKey.requestId:requestId,ApiKey.bidData: selectedDict])
+                    } else {
+                        self.viewModel.postPlaceBidData(params: [ApiKey.requestId:requestId,ApiKey.bidData: selectedDict])
+                    }
+                }
+            }else {
+                CommonFunctions.showToastWithMessage("Unit Price should not be 0 or empty")
+            }
         }
     }
     
@@ -289,7 +288,7 @@ extension GarageServiceRequestVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if sectionType[indexPath.section] == .brandListing {
+        if sectionType[indexPath.section] == .brandListing && placeBidBtn.titleLabel?.text != "Edit" {
             let index = self.viewModel.countryBrandsDict.firstIndex { (model) -> Bool in
                 Array(model.keys)[0] == self.selectedCountry
             }
@@ -320,6 +319,14 @@ extension GarageServiceRequestVC : UITableViewDelegate, UITableViewDataSource {
 // MARK: - Extension For GarageServiceRequestVMDelegate
 //===========================
 extension GarageServiceRequestVC :GarageServiceRequestVMDelegate {
+    func editPlacedBidDataSuccess(message: String) {
+        NotificationCenter.default.post(name: Notification.Name.PlaceBidRejectBidSuccess, object: nil)
+    }
+    
+    func editPlacedBidDataFailure(error: String) {
+        ToastView.shared.showLongToast(self.view, msg: error)
+    }
+    
     func cancelBidSuccess(message: String) {
         self.delegate?.cancelUserMyRequestDetailSuccess(requestId: self.requestId)
         pop()

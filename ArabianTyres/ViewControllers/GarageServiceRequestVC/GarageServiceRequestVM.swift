@@ -21,8 +21,8 @@ protocol GarageServiceRequestVMDelegate: class {
     func placeBidFailure(error:String)
     func cancelBidSuccess(message: String)
     func cancelBidFailure(error:String)
-    
-    
+    func editPlacedBidDataSuccess(message: String)
+    func editPlacedBidDataFailure(error:String)
 }
 
 extension GarageServiceRequestVMDelegate {
@@ -66,6 +66,18 @@ class GarageServiceRequestVM {
             self.delegate?.placeBidFailure(error: error.localizedDescription)
         }
     }
+    
+    func editPlacedBidData(params: JSONDictionary,loader: Bool = false) {
+           WebServices.editPlacedBidData(parameters: params, success: { [weak self] (json) in
+               guard let `self` = self else { return }
+               let msg = json[ApiKey.message].stringValue
+               self.delegate?.editPlacedBidDataSuccess(message: msg)
+               printDebug(msg)
+           }) { [weak self] (error) in
+               guard let `self` = self else { return }
+               self.delegate?.editPlacedBidDataFailure(error: error.localizedDescription)
+           }
+       }
     
     func cancelBid(params: JSONDictionary,loader: Bool = true,pagination: Bool = false) {
         WebServices.bidCancelByUser(parameters: params, success: { [weak self] (json) in

@@ -117,12 +117,6 @@ class ServiceRequestTableCell: UITableViewCell {
         }else {
             bidAmountStackView.isHidden = true
         }
-        if model.bidStatus == .bidFinalsed  {
-             placeBidBtn.setTitle("Chat", for: .normal)
-             rejectRequestBtn.setTitle("Reject", for: .normal)
-        }else {
-            placeBidBtn.isHidden = false
-        }
         if model.bidStatus == .bidPlaced || model.bidStatus == .bidClosed{
             rejectRequestBtn.isHidden = true
             placeBidBtn.setTitle("Cancel Bid", for: .normal)
@@ -132,9 +126,19 @@ class ServiceRequestTableCell: UITableViewCell {
             placeBidBtn.borderWidth = 1.0
 
         }else {
-            rejectRequestBtn.isHidden = false
-            placeBidBtn.isEnabled = true
-            placeBidBtn.setTitle("Place a Bid", for: .normal)
+            if model.bidStatus == .bidFinalsed  {
+                placeBidBtn.isEnabled = true
+                rejectRequestBtn.isHidden = false
+                placeBidBtn.isHidden = false
+                rejectRequestBtn.isBorderSelected = true
+                placeBidBtn.setTitle("Chat", for: .normal)
+                rejectRequestBtn.setTitle("Reject", for: .normal)
+            }else {
+                rejectRequestBtn.isHidden = false
+                placeBidBtn.isEnabled = true
+                placeBidBtn.setTitle("Place a Bid", for: .normal)
+                placeBidBtn.isHidden = false
+            }
         }
     }
     
