@@ -56,4 +56,12 @@ class GarageServiceBrandsCell: UITableViewCell,UITextFieldDelegate {
             return updatedText.count <= 5
         }
     }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        let text = textField.text?.byRemovingLeadingTrailingWhiteSpaces ?? ""
+        if text == "0.0" {
+            self.unitPrizeTextFiled.text = ""
+        }
+        return true
+    }
 }

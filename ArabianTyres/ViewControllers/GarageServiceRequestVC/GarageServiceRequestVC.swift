@@ -231,14 +231,14 @@ extension GarageServiceRequestVC : UITableViewDelegate, UITableViewDataSource {
                 guard let `self` = self else { return }
                 if  let SelectedIndexPath = tableView.indexPath(for: cell) {
                     if self.brandsType == .onlyBrands {
-                        self.viewModel.countryBrandsDict[0][self.selectedCountry]?[SelectedIndexPath.row].amount = Double(unitPrice) ?? 0.0
+                        self.viewModel.countryBrandsDict[0][self.selectedCountry]?[SelectedIndexPath.row].amount = Double(unitPrice) ?? 0
                     }
                     if self.brandsType == .countryBrands {
                         let indexx = self.viewModel.countryBrandsDict.firstIndex { (model) -> Bool in
                             Array(model.keys)[0] == self.selectedCountry
                         }
                         guard let selectedIndexx  = indexx else { return}
-                        self.viewModel.countryBrandsDict[selectedIndexx][self.selectedCountry]?[SelectedIndexPath.row].amount = Double(unitPrice) ?? 0.0
+                        self.viewModel.countryBrandsDict[selectedIndexx][self.selectedCountry]?[SelectedIndexPath.row].amount = Double(unitPrice) ?? 0
                     }
                 }
             }
@@ -272,6 +272,17 @@ extension GarageServiceRequestVC : UITableViewDelegate, UITableViewDataSource {
                 }
                 guard let selectedIndexx  = indexx else { return }
                 self.viewModel.countryBrandsDict[selectedIndex][self.selectedCountry]?[selectedIndexx].isSelected = !(listing[selectedIndexx].isSelected ?? false)
+                //make text field responder
+                if self.viewModel.countryBrandsDict[selectedIndex][self.selectedCountry]?[selectedIndexx].isSelected ?? false {
+                    let section = sectionType.firstIndex { (sectionArray) -> Bool in
+                        return sectionArray == .brandListing
+                    }
+                    let cell = mainTableView.cellForRow(at: IndexPath(item: indexPath.row, section: section ?? 2)) as? GarageServiceBrandsCell
+                    DispatchQueue.main.async {
+                        cell?.unitPrizeTextFiled.becomeFirstResponder()
+                    }
+                }
+                //
             }
             self.mainTableView.reloadData()
         }

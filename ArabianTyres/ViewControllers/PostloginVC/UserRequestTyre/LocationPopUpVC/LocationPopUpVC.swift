@@ -62,6 +62,9 @@ class LocationPopUpVC: BaseVC {
 extension LocationPopUpVC {
     
     private func initialSetup() {
+        LocationController.sharedLocationManager.fetchCurrentLocation { (location) in
+            LocationController.sharedLocationManager.currentLocation = location
+        }
         setupTextAndFont()
         isMapLocationEnable()
     }

@@ -101,7 +101,7 @@ extension SRFilterVC {
     
     private func setupTextAndFont() {
         
-        filterLbl.text = LocalizedString.filter.localized
+        filterLbl.text = LocalizedString.filters.localized
         canceBtn.setTitle(LocalizedString.cancel.localized, for: .normal)
         applyBtn.setTitle(LocalizedString.applyFilters.localized, for: .normal)
   

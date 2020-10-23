@@ -72,9 +72,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate , MessagingDelegate , UNUs
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
-        LocationController.sharedLocationManager.fetchCurrentLocation { (location) in
-            LocationController.sharedLocationManager.currentLocation = location
-        }
         if isUserLoggedin{
             if !(SocketIOManager.isSocketConnected) {
                 SocketIOManager.shared.establishConnection()

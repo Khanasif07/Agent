@@ -99,7 +99,7 @@ extension OfferFilterVC {
     
     private func setupTextAndFont(){
         titleLbl.font = AppFonts.NunitoSansBold.withSize(17.0)
-        titleLbl.text = LocalizedString.filter.localized
+        titleLbl.text = LocalizedString.filters.localized
     }
     
     func updateDataSouce(_ filterValue:String , indexPath : IndexPath) {
