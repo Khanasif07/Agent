@@ -116,7 +116,6 @@ extension SocketIOManager {
                                 HandleRequest.shared.dataArr.remove(at: 0)
                             }
                         }
-                        
                     }
                 }
             }

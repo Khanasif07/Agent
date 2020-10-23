@@ -15,6 +15,7 @@ enum ServiceStatus : String,Codable {
     case cancelled
     case completed
     case allocated
+    case expired
     
     var text :String{
         switch self {

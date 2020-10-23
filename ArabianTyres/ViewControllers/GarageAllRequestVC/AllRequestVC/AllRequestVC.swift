@@ -90,7 +90,7 @@ extension AllRequestVC {
     @objc func refreshWhenPull(_ sender: UIRefreshControl) {
         sender.endRefreshing()
         if filterApplied {
-            getFilterData(data: filterArr,isPullToRefersh: true)
+            getFilterData(data: filterArr,isPullToRefersh: true,loader: false)
         }else {
             hitApi()
         }

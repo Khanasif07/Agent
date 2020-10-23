@@ -65,7 +65,7 @@ class UserOffersTableCell: UITableViewCell {
         }
     }
     
-    func bindData(_ model: UserBidModel) {
+    func bindData(_ model: UserBidModel,isBidAccepted : Bool) {
         let distanceInMiles = self.getMiles(meters: model.distance ?? 0.0)
         distanceValueLbl.attributedText =  getAttributedString(value: "\(distanceInMiles.truncate(places: 3))",attributedLabel: distanceValueLbl)
         offerTitleLbl.text = model.garageName
@@ -75,8 +75,11 @@ class UserOffersTableCell: UITableViewCell {
         let totalAmount = String((model.bidData.first?.quantity ?? 0) * Int(model.bidData.first?.amount ?? 0))
         tAValueLbl.attributedText = getAttributedString(value: totalAmount,attributedLabel: tAValueLbl)
         logoImgView.setImage_kf(imageString: model.logo ?? "")
-        model.status != "accepted" ? changeWithBlurView() : ()
-
+//        model.status != "accepted" ?  : ()
+        if isBidAccepted {
+            model.status == "accepted" ? () : changeWithBlurView()
+            viewProposalBtn.setTitle(model.status == "accepted" ? "Chat" : "View Proposal", for: .normal)
+        }
     }
     
     func getAttributedString(value : String,attributedLabel: UILabel) -> NSMutableAttributedString{
