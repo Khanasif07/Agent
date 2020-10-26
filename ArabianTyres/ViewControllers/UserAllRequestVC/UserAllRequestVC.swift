@@ -216,6 +216,9 @@ extension UserAllRequestVC: UserAllRequestVMDelegate{
 // MARK: - Extension For TableView
 //===========================
 extension UserAllRequestVC : UserServiceRequestVCDelegate{
+    func resendUserMyRequestDetailSuccess(requestId: String) {
+        self.hitListingApi()
+    }
     
     func rejectUserMyRequestDetailSuccess(requestId: String) {
         let index =  self.viewModel.userRequestListing.firstIndex(where: { (model) -> Bool in

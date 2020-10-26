@@ -165,6 +165,10 @@ extension AllRequestVC : UITableViewDelegate, UITableViewDataSource {
 }
 
 extension AllRequestVC : AllRequestVMDelegate ,UserServiceRequestVCDelegate{
+    func resendUserMyRequestDetailSuccess(requestId: String) {
+        self.hitApi()
+    }
+    
     func rejectUserMyRequestDetailSuccess(requestId: String) {
         let index =  self.viewModel.garageRequestListing.firstIndex(where: { (model) -> Bool in
             return model.id == requestId

@@ -15,6 +15,8 @@ protocol UserServiceRequestVMDelegate: class {
     func getUserMyRequestDetailFailed(error:String)
     func cancelUserMyRequestDetailSuccess(message: String)
     func cancelUserMyRequestDetailFailed(error:String)
+    func resendRequsetSuccess(message: String)
+    func resendRequsetFailure(error: String)
 }
 
 
@@ -62,11 +64,20 @@ class UserServiceRequestVM{
         }
     }
     
+    //MARK:- Functions
+    func resendRequest(params: JSONDictionary,loader: Bool = true) {
+        WebServices.userRequestResend(parameters: params,loader: loader,success: { (json) in
+            self.delegate?.resendRequsetSuccess(message: "")
+        }) { (error) -> (Void) in
+            self.delegate?.resendRequsetFailure(error: error.localizedDescription)
+        }
+    }
+       
     
     func parseToMakeListingData(result: JSON) {
         if let jsonString = result[ApiKey.data].rawString(), let data = jsonString.data(using: .utf8) {
             do {
-                let modelList = try! JSONDecoder().decode(UserServiceRequestModel.self, from: data)
+                let modelList = try JSONDecoder().decode(UserServiceRequestModel.self, from: data)
                 printDebug(modelList)
                 currentPage = result[ApiKey.data][ApiKey.page].intValue
                 isRequestinApi = false
