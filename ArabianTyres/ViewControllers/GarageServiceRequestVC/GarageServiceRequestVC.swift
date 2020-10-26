@@ -92,7 +92,10 @@ class GarageServiceRequestVC: BaseVC {
         if bidAmountValid {
             switch sender.titleLabel?.text {
             case "Edit":
-                self.placeBidBtn.setTitle("Place Bid", for: .normal)
+                DispatchQueue.main.async {
+                    self.placeBidBtn.setTitle("Place Bid", for: .normal)
+                }
+                self.mainTableView.reloadData()
             default:
                 if bidStatus == .bidPlaced{
                     self.viewModel.editPlacedBidData(params: [ApiKey.requestId:requestId,ApiKey.bidData: selectedDict])
@@ -260,7 +263,6 @@ extension GarageServiceRequestVC : UITableViewDelegate, UITableViewDataSource {
             
         case .brandListing:
             let cell = tableView.dequeueCell(with: GarageServiceBrandsCell.self, indexPath: indexPath)
-//            cell.setBlurView(isBlur: true)
             cell.rightIcon.isHidden = true
             let indexx = self.viewModel.countryBrandsDict.firstIndex { (model) -> Bool in
                 Array(model.keys)[0] == self.selectedCountry
@@ -268,6 +270,9 @@ extension GarageServiceRequestVC : UITableViewDelegate, UITableViewDataSource {
             guard let selectedIndexx  = indexx else { return UITableViewCell()}
             let brandDataArr = self.viewModel.countryBrandsDict[selectedIndexx][self.selectedCountry] ?? [PreferredBrand]()
             cell.bindData(brandDataArr[indexPath.row], bidStatus: self.bidStatus)
+            if placeBidBtn.titleLabel?.text == "Place Bid" && !placeBidBtn.isHidden{
+                 cell.rightIcon.isHidden = true
+            }
             cell.unitPrizeTextFiled.isUserInteractionEnabled = placeBidBtn.titleLabel?.text != "Edit"
 //            cell.unitPrizeTextFiled.isUserInteractionEnabled = bidStatus != .bidFinalsed
             cell.unitPriceChanged = { [weak self] (unitPrice,sender) in

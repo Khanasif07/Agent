@@ -49,7 +49,7 @@ class GarageRequestPopupVC: BaseVC {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        self.containerView.addShadow(cornerRadius: 5, color: UIColor.black.withAlphaComponent(0.08), offset: CGSize(width: 0.5, height: 0.5), opacity: 1, shadowRadius: 5)
+        self.containerView.addShadow(cornerRadius: 5, color: UIColor.black.withAlphaComponent(0.25), offset: CGSize(width: 0.5, height: 0.5), opacity: 1, shadowRadius: 5)
 
     }
     

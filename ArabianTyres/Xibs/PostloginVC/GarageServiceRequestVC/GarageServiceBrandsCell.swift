@@ -38,6 +38,7 @@ class GarageServiceBrandsCell: UITableViewCell,UITextFieldDelegate {
         unitPrizeTextFiled.text = "\(model.amount ?? 0)"
         checkBtn.isSelected = model.isSelected ?? false
         if bidStatus == .bidFinalsed || bidStatus == .bidPlaced {
+            rightIcon.isHidden = !(model.isSelected ?? false)
             setBlurView(isBlur: !(model.isSelected ?? false))
         }
     }

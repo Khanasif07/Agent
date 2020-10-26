@@ -177,7 +177,6 @@ extension OffersDetailVC : OffersDetailVMDelegate {
     }
     
     func acceptUserBidDataFailed(error: String) {
-        NotificationCenter.default.post(name: Notification.Name.UserServiceAcceptRejectSuccess, object: nil)
         ToastView.shared.showLongToast(self.view, msg: error)
     }
     
@@ -196,6 +195,7 @@ extension OffersDetailVC : OffersDetailVMDelegate {
     }
     
     func acceptUserBidDataSuccess(message: String) {
+        NotificationCenter.default.post(name: Notification.Name.UserServiceAcceptRejectSuccess, object: nil)
         self.dismiss(animated: true,completion: {
             self.proposalBtnTapped?()
         })
