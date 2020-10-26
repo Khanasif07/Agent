@@ -166,7 +166,9 @@ extension UserAllOffersVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        AppRouter.presentOfferDetailVC(vc: self,bidId: self.viewModel.userBidListingArr[indexPath.row].id, garageName: self.viewModel.userBidListingArr[indexPath.row].garageName ?? "", completion: {
+            self.hitApi(loader: true)
+        })
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

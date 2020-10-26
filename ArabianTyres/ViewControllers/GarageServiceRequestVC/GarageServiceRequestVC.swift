@@ -154,6 +154,11 @@ extension GarageServiceRequestVC {
     private func getPlacedBidData(){
         if let  bidPlacedByGarage = self.viewModel.garageRequestDetailArr?.bidPlacedByGarage{
             bidPlacedByGarage.forEach { (placedBid) in
+                if bidStatus == .bidFinalsed {
+                    if placedBid.isAccepted == false{
+                        return
+                    }
+                }
                 if brandsType == .onlyBrands  {
                     if self.viewModel.countryBrandsDict.endIndex > 0 {
                         let indexx = self.viewModel.countryBrandsDict[0][self.selectedCountry]?.firstIndex(where: { (preferredBrand) -> Bool in
@@ -263,6 +268,7 @@ extension GarageServiceRequestVC : UITableViewDelegate, UITableViewDataSource {
             cell.bindData(brandDataArr[indexPath.row], bidStatus: self.bidStatus)
             cell.rightIcon.isHidden = true
             cell.unitPrizeTextFiled.isUserInteractionEnabled = placeBidBtn.titleLabel?.text != "Edit"
+//            cell.unitPrizeTextFiled.isUserInteractionEnabled = bidStatus != .bidFinalsed
             cell.unitPriceChanged = { [weak self] (unitPrice,sender) in
                 guard let `self` = self else { return }
                 if  let SelectedIndexPath = tableView.indexPath(for: cell) {
@@ -297,7 +303,7 @@ extension GarageServiceRequestVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if sectionType[indexPath.section] == .brandListing && placeBidBtn.titleLabel?.text != "Edit" {
+        if sectionType[indexPath.section] == .brandListing && placeBidBtn.titleLabel?.text != "Edit" && bidStatus != .bidFinalsed {
             let index = self.viewModel.countryBrandsDict.firstIndex { (model) -> Bool in
                 Array(model.keys)[0] == self.selectedCountry
             }

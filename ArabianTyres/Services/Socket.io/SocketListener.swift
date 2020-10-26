@@ -29,5 +29,12 @@ extension SocketIOManager {
             NotificationCenter.default.post(name: Notification.Name.NewBidSocketSuccess, object: nil)
             self.parseToMakeListingData(result: json)
         })
+        
+        self.socket?.on(EventListnerKeys.bidEdit.rawValue, callback: { data, _ in
+            printDebug(data)
+            let json = JSON(data)
+            NotificationCenter.default.post(name: Notification.Name.NewBidSocketSuccess, object: nil)
+            self.parseToMakeListingData(result: json)
+        })
     }
 }

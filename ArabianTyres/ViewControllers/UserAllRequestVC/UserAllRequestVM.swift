@@ -37,15 +37,7 @@ class UserAllRequestVM{
     var userRequestListing = [UserServiceRequestModel]()
     weak var delegate: UserAllRequestVMDelegate?
     
-    //MARK:- Functions
-    func resendRequest(params: JSONDictionary,loader: Bool = true) {
-        WebServices.userRequestResend(parameters: params,loader: loader,success: { (json) in
-            self.delegate?.resendRequsetSuccess(message: "")
-        }) { (error) -> (Void) in
-            self.delegate?.resendRequsetFailure(error: error.localizedDescription)
-        }
-    }
-    
+   
     func getUserMyRequestData(params: JSONDictionary,loader: Bool = true,pagination: Bool = false){
         if pagination {
             guard nextPageAvailable, !isRequestinApi else { return }

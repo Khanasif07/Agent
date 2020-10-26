@@ -12,6 +12,7 @@ import UIKit
 protocol UserServiceRequestVCDelegate: class {
     func cancelUserMyRequestDetailSuccess(requestId: String)
     func rejectUserMyRequestDetailSuccess(requestId: String)
+    func resendUserMyRequestDetailSuccess(requestId: String)
 }
 
 class UserServiceRequestVC: BaseVC {
@@ -80,7 +81,9 @@ class UserServiceRequestVC: BaseVC {
     @IBAction func cancelRequestBtnAction(_ sender: AppButton) {
         switch cancelBtn.titleLabel?.text {
         case "Cancel":
-             self.viewModel.cancelUserMyRequestDetailData(params: [ApiKey.requestId: self.viewModel.requestId])
+            self.viewModel.cancelUserMyRequestDetailData(params: [ApiKey.requestId: self.viewModel.requestId])
+        case "Resend":
+            self.viewModel.resendRequest(params: [ApiKey.requestId: self.viewModel.requestId])
         default:
             showAlert(msg: "Under Development")
         }
@@ -138,6 +141,15 @@ extension UserServiceRequestVC {
 // MARK: - Extension For UserAllRequestVMDelegate
 //===========================
 extension UserServiceRequestVC: UserServiceRequestVMDelegate{
+    func resendRequsetSuccess(message: String) {
+        self.delegate?.resendUserMyRequestDetailSuccess(requestId: self.viewModel.requestId)
+        self.pop()
+    }
+    
+    func resendRequsetFailure(error: String) {
+        ToastView.shared.showLongToast(self.view, msg: error)
+    }
+    
     func cancelUserMyRequestDetailSuccess(message: String) {
         self.delegate?.cancelUserMyRequestDetailSuccess(requestId: self.viewModel.requestId)
         self.pop()

@@ -143,21 +143,23 @@ extension OffersDetailVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        acceptBtn.isEnabled = true
-        if self.viewModel.bidData.endIndex > 0 {
-            let index =  self.viewModel.bidData.firstIndex { (model) -> Bool in
-                return model.isAccepted == true
-            }
-            guard let selectedIndex = index else {
-                self.viewModel.bidData[indexPath.row].isAccepted = true
+        if (viewModel.userBidDetail.status != "accepted") {
+            acceptBtn.isEnabled = true
+            if self.viewModel.bidData.endIndex > 0 {
+                let index =  self.viewModel.bidData.firstIndex { (model) -> Bool in
+                    return model.isAccepted == true
+                }
+                guard let selectedIndex = index else {
+                    self.viewModel.bidData[indexPath.row].isAccepted = true
+                    self.viewModel.userBidDetail.bidData[indexPath.row].isAccepted = true
+                    self.mainTableView.reloadData()
+                    return }
+                self.viewModel.userBidDetail.bidData[selectedIndex].isAccepted = false
                 self.viewModel.userBidDetail.bidData[indexPath.row].isAccepted = true
+                self.viewModel.bidData[selectedIndex].isAccepted = false
+                self.viewModel.bidData[indexPath.row].isAccepted = true
                 self.mainTableView.reloadData()
-                return }
-            self.viewModel.userBidDetail.bidData[selectedIndex].isAccepted = false
-            self.viewModel.userBidDetail.bidData[indexPath.row].isAccepted = true
-            self.viewModel.bidData[selectedIndex].isAccepted = false
-            self.viewModel.bidData[indexPath.row].isAccepted = true
-            self.mainTableView.reloadData()
+            }
         }
     }
 }
