@@ -19,13 +19,9 @@ enum EventListnerKeys : String {
     case newRequest = "NEW_REQUEST"
     case didConnect = "connected"
     case didDisConnect = "disconnected"
-    case syncContact = "contact-sync"
-    case sync_error = "socket-error"
-    case contactDelete = "contact-delete"
-    case contactEdit = "contact-update"
+    case bidEdit = "Bid_Edit"
     case handshakeWithServer = "handshakeWithServer"
     case eventAck = "eventAck"
-    case contactFetch = "contact-fetch"
     case syncResponse = "contact_sync_response"
 }
 
