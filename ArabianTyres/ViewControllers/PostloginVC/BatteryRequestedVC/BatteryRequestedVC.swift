@@ -77,7 +77,9 @@ class BatteryRequestedVC: BaseVC {
     
     @IBAction func requestBtnAction(_ sender: UIButton) {
         if !isUserLoggedin{
-            AppRouter.goToLoginVC(vc: self)
+            showAlertWithAction(title: "", msg:  "To continue performing this action, please login", cancelTitle: LocalizedString.cancel.localized, actionTitle: LocalizedString.ok.localized, actioncompletion: {
+                AppRouter.goToLoginVC(vc: self)
+            }) {}
         }else {
             self.viewModel.postBatteryRequest(dict: TyreRequestModel.shared.getBatteryRequestDict())
         }

@@ -107,11 +107,8 @@ extension UserAllOffersVC {
                 if !txt.isEmpty {
                     dict[ApiKey.bidSort] = (txt as NSString).intValue
                 }
-                
             case .distance(let min, let max, _):
                 dict[ApiKey.maxDistance] = (max as NSString).intValue
-                dict[ApiKey.minDistance] = (min as NSString).intValue
-
             default:
                 break
             }
