@@ -38,7 +38,6 @@ class DistanceSliderCollViewCell: UICollectionViewCell {
         formatter.positiveSuffix = "Miles"
         rangeSlider.numberFormatterOverride = formatter
     }
-    
 }
 
 extension DistanceSliderCollViewCell : TTRangeSliderDelegate{
