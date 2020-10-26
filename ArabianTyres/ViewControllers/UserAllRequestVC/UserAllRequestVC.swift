@@ -204,6 +204,13 @@ extension UserAllRequestVC: UserAllRequestVMDelegate{
     func mgetUserMyRequestDataFailed(error:String){
         ToastView.shared.showLongToast(self.view, msg: error)
     }
+    
+    func resendRequsetSuccess(message: String) {
+        
+    }
+    func resendRequsetFailure(error: String) {
+        
+    }
 }
 
 // MARK: - Extension For TableView

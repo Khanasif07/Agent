@@ -62,7 +62,9 @@ extension WebServices {
         case userBidReject = "user/bids/reject"
         case userCancelBid = "user/bids/cancel"
         case garageEditPlacedBid = "user/bids/edit"
-      
+        case resendRequest = "user/services/resendRequest"
+        
+        
         var path : String {
             let url = baseUrl
             return url + self.rawValue

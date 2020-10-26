@@ -14,6 +14,9 @@ import SwiftyJSON
 protocol UserAllRequestVMDelegate: class {
     func getUserMyRequestDataSuccess(message: String)
     func mgetUserMyRequestDataFailed(error:String)
+    func resendRequsetSuccess(message: String)
+    func resendRequsetFailure(error: String)
+
 }
 
 
@@ -35,7 +38,13 @@ class UserAllRequestVM{
     weak var delegate: UserAllRequestVMDelegate?
     
     //MARK:- Functions
-    
+    func resendRequest(params: JSONDictionary,loader: Bool = true) {
+        WebServices.userRequestResend(parameters: params,loader: loader,success: { (json) in
+            self.delegate?.resendRequsetSuccess(message: "")
+        }) { (error) -> (Void) in
+            self.delegate?.resendRequsetFailure(error: error.localizedDescription)
+        }
+    }
     
     func getUserMyRequestData(params: JSONDictionary,loader: Bool = true,pagination: Bool = false){
         if pagination {
