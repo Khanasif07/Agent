@@ -21,6 +21,7 @@ class GarageServiceBrandsCell: UITableViewCell,UITextFieldDelegate {
     @IBOutlet weak var brandNameLbl : UILabel!
     @IBOutlet weak var unitLbl : UILabel!
     @IBOutlet weak var unitPrizeTextFiled : SkyFloatingLabelTextField!
+    @IBOutlet weak var rightIcon : UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -36,6 +37,7 @@ class GarageServiceBrandsCell: UITableViewCell,UITextFieldDelegate {
         brandNameLbl.text = model.name
         unitPrizeTextFiled.text = "\(model.amount ?? 0)"
         checkBtn.isSelected = model.isSelected ?? false
+        setBlurView(isBlur: !(model.isSelected ?? true))
     }
     
     @IBAction func textFieldChanged(_ sender: UITextField) {

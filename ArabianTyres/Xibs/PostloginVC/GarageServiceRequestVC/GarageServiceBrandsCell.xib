@@ -46,7 +46,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Azw-G8-Kmi">
                                                         <rect key="frame" x="0.0" y="0.0" width="90" height="30"/>
                                                         <subviews>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="firstBaseline" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="vS3-AE-X8F">
+                                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="vS3-AE-X8F">
                                                                 <rect key="frame" x="0.0" y="8" width="90" height="14"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icRgt" translatesAutoresizingMaskIntoConstraints="NO" id="REI-Dh-1sb">
@@ -57,7 +57,7 @@
                                                                         </constraints>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MRF" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TRq-qW-Sc5">
-                                                                        <rect key="frame" x="18" y="0.0" width="72" height="14"/>
+                                                                        <rect key="frame" x="16" y="0.0" width="74" height="14"/>
                                                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="13"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -67,7 +67,7 @@
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="vS3-AE-X8F" secondAttribute="trailing" id="4hS-B0-Zra"/>
+                                                            <constraint firstAttribute="trailing" secondItem="vS3-AE-X8F" secondAttribute="trailing" id="4hS-B0-Zra"/>
                                                             <constraint firstAttribute="bottom" secondItem="vS3-AE-X8F" secondAttribute="bottom" constant="8" id="6df-a8-B6D"/>
                                                             <constraint firstItem="vS3-AE-X8F" firstAttribute="top" secondItem="Azw-G8-Kmi" secondAttribute="top" constant="8" id="n0h-Jw-XXg"/>
                                                             <constraint firstItem="vS3-AE-X8F" firstAttribute="leading" secondItem="Azw-G8-Kmi" secondAttribute="leading" id="xjY-1h-jPF"/>
@@ -181,6 +181,7 @@
                 <outlet property="dashBackgroundView" destination="6Hf-oX-jey" id="nA9-jy-gtQ"/>
                 <outlet property="dashView" destination="54e-uI-Wre" id="GIg-sp-N6b"/>
                 <outlet property="dashViewHeightConst" destination="90F-J0-Pcj" id="dP4-dh-XxN"/>
+                <outlet property="rightIcon" destination="REI-Dh-1sb" id="gr7-Rr-CgW"/>
                 <outlet property="unitLbl" destination="lrq-MH-n47" id="lUU-Iw-vZY"/>
                 <outlet property="unitPrizeTextFiled" destination="Jnl-qt-8ny" id="AHD-rK-lcb"/>
             </connections>
