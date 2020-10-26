@@ -267,7 +267,7 @@ extension GarageServiceRequestVC : UITableViewDelegate, UITableViewDataSource {
             }
             guard let selectedIndexx  = indexx else { return UITableViewCell()}
             let brandDataArr = self.viewModel.countryBrandsDict[selectedIndexx][self.selectedCountry] ?? [PreferredBrand]()
-            cell.bindData(brandDataArr[indexPath.row])
+            cell.bindData(brandDataArr[indexPath.row], bidStatus: self.bidStatus)
             cell.unitPrizeTextFiled.isUserInteractionEnabled = placeBidBtn.titleLabel?.text != "Edit"
 //            cell.unitPrizeTextFiled.isUserInteractionEnabled = bidStatus != .bidFinalsed
             cell.unitPriceChanged = { [weak self] (unitPrice,sender) in

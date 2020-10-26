@@ -33,11 +33,13 @@ class GarageServiceBrandsCell: UITableViewCell,UITextFieldDelegate {
         unitPrizeTextFiled.textAlignment = .center
     }
     
-    func bindData(_ model: PreferredBrand) {
+    func bindData(_ model: PreferredBrand,bidStatus :BidStatus = .openForBidding) {
         brandNameLbl.text = model.name
         unitPrizeTextFiled.text = "\(model.amount ?? 0)"
         checkBtn.isSelected = model.isSelected ?? false
-        setBlurView(isBlur: !(model.isSelected ?? true))
+        if bidStatus == .bidFinalsed || bidStatus == .bidPlaced {
+            setBlurView(isBlur: !(model.isSelected ?? false))
+        }
     }
     
     @IBAction func textFieldChanged(_ sender: UITextField) {
