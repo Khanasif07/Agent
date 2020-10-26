@@ -134,12 +134,21 @@ extension UserAllOffersVC : UITableViewDelegate, UITableViewDataSource {
             return cell
         } else {
             let cell = tableView.dequeueCell(with: UserOffersTableCell.self, indexPath: indexPath)
-            cell.bindData(viewModel.userBidListingArr[indexPath.row])
+            let isAccepted = viewModel.userBidListingArr.contains { (model) -> Bool in
+                return model.status == "accepted"
+            }
+            cell.bindData(viewModel.userBidListingArr[indexPath.row], isBidAccepted : isAccepted)
+            
             cell.viewProposalAction = { [weak self] (sender) in
                 guard let `self` = self else { return }
-                AppRouter.presentOfferDetailVC(vc: self,bidId: self.viewModel.userBidListingArr[indexPath.row].id, garageName: self.viewModel.userBidListingArr[indexPath.row].garageName ?? "", completion: {
-                    self.hitApi()
-                })
+                switch sender.titleLabel?.text {
+                case "Chat":
+                    self.showAlert(msg: LocalizedString.underDevelopment.localized)
+                default :
+                    AppRouter.presentOfferDetailVC(vc: self,bidId: self.viewModel.userBidListingArr[indexPath.row].id, garageName: self.viewModel.userBidListingArr[indexPath.row].garageName ?? "", completion: {
+                        self.hitApi(loader: true)
+                    })
+                }
             }
             cell.rejectAction = { [weak self] (sender) in
                 guard let `self` = self else { return }

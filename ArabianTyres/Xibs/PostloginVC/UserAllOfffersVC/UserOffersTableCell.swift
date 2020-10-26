@@ -65,10 +65,9 @@ class UserOffersTableCell: UITableViewCell {
         }
     }
     
-    func bindData(_ model: UserBidModel) {
-        offerSubTitleLbl.text = model.garageAddress
+    func bindData(_ model: UserBidModel,isBidAccepted : Bool) {
         let distanceInMiles = self.getMiles(meters: model.distance ?? 0.0)
-        distanceValueLbl.attributedText =  getAttributedString(value: "\(distanceInMiles.truncate(places: 2))",attributedLabel: distanceValueLbl)
+        distanceValueLbl.attributedText =  getAttributedString(value: "\(distanceInMiles.truncate(places: 3))",attributedLabel: distanceValueLbl)
         offerTitleLbl.text = model.garageName
         quantityValueLbl.text = model.bidData.first?.quantity.description
         BAValueLbl.attributedText = getAttributedString(value: model.bidData.first?.amount.description ?? "",attributedLabel: BAValueLbl)
@@ -76,8 +75,11 @@ class UserOffersTableCell: UITableViewCell {
         let totalAmount = String((model.bidData.first?.quantity ?? 0) * Int(model.bidData.first?.amount ?? 0))
         tAValueLbl.attributedText = getAttributedString(value: totalAmount,attributedLabel: tAValueLbl)
         logoImgView.setImage_kf(imageString: model.logo ?? "")
-        model.status != "accepted" ? changeWithBlurView() : ()
-
+//        model.status != "accepted" ?  : ()
+        if isBidAccepted {
+            model.status == "accepted" ? () : changeWithBlurView()
+            viewProposalBtn.setTitle(model.status == "accepted" ? "Chat" : "View Proposal", for: .normal)
+        }
     }
     
     func getAttributedString(value : String,attributedLabel: UILabel) -> NSMutableAttributedString{
@@ -89,7 +91,7 @@ class UserOffersTableCell: UITableViewCell {
                 .font: AppFonts.NunitoSansBold.withSize(17.0),
                 .foregroundColor: AppColors.fontPrimaryColor
             ])
-            str.append(NSAttributedString(string: "Mi", attributes: [NSAttributedString.Key.foregroundColor: AppColors.fontSecondaryColor,NSAttributedString.Key.font: AppFonts.NunitoSansSemiBold.withSize(12.0)]))
+            str.append(NSAttributedString(string: "Miles", attributes: [NSAttributedString.Key.foregroundColor: AppColors.fontSecondaryColor,NSAttributedString.Key.font: AppFonts.NunitoSansSemiBold.withSize(12.0)]))
             
         case BAValueLbl:
             str = NSMutableAttributedString(string: value, attributes: [
