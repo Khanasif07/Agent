@@ -80,9 +80,12 @@ extension LoginVC {
     }
     
     private func getDict() -> JSONDictionary{
-        let dict : JSONDictionary = [ApiKey.email : self.viewModel.model.email,
+        var dict : JSONDictionary = [ApiKey.email : self.viewModel.model.email,
                                      ApiKey.password : self.viewModel.model.password,
                                      ApiKey.device : [ApiKey.platform : "ios", ApiKey.token : DeviceDetail.deviceToken].toJSONString() ?? ""]
+        if !TyreRequestModel.shared.quantity.isEmpty {
+        dict[ApiKey.makeUser] = true
+        }
         return dict
     }
     

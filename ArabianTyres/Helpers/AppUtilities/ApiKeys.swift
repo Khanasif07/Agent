@@ -154,6 +154,7 @@ enum ApiKey {
     static var makeId: String { return "makeId" }
     static var model : String { return "model" }
     static var make: String { return "make" }
+    static var makeUser: String {return "makeUser" }
     static var countryId: String { return "countryId" }
     static var countryName: String { return "countryName" }
     static var iconImage: String { return "iconImage" }

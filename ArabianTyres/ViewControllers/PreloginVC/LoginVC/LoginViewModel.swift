@@ -82,7 +82,11 @@ struct LoginViewModel {
     }
     
     func socailLoginApi(parameters : JSONDictionary) {
-        WebServices.socialLoginAPI(parameters: parameters, success: { (json) in
+        var socialParams = parameters
+        if !TyreRequestModel.shared.quantity.isEmpty{
+            socialParams[ApiKey.makeUser] = true
+        }
+        WebServices.socialLoginAPI(parameters: socialParams, success: { (json) in
             let user = UserModel(json[ApiKey.data])
             UserModel.main = user
             let accessToken = json[ApiKey.data][ApiKey.authToken].stringValue
