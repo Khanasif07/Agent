@@ -21,6 +21,7 @@ class GarageServiceBrandsCell: UITableViewCell,UITextFieldDelegate {
     @IBOutlet weak var brandNameLbl : UILabel!
     @IBOutlet weak var unitLbl : UILabel!
     @IBOutlet weak var unitPrizeTextFiled : SkyFloatingLabelTextField!
+    @IBOutlet weak var rightIcon : UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -842,7 +842,7 @@ extension WebServices{
     }
 
     
-    static func userRequestResend(parameters: JSONDictionary,loader: Bool = false,,
+    static func userRequestResend(parameters: JSONDictionary,loader: Bool = false,
                                   success: @escaping SuccessResponse,
                                   failure: @escaping FailureResponse) {
         self.commonGetAPI(parameters: parameters,endPoint: .resendRequest, success: { (json) in
