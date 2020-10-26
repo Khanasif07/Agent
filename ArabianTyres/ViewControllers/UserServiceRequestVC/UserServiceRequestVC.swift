@@ -78,7 +78,13 @@ class UserServiceRequestVC: BaseVC {
     // MARK: - IBActions
     //===========================
     @IBAction func cancelRequestBtnAction(_ sender: AppButton) {
-        self.viewModel.cancelUserMyRequestDetailData(params: [ApiKey.requestId: self.viewModel.requestId])
+        switch cancelBtn.titleLabel?.text {
+        case "Cancel":
+             self.viewModel.cancelUserMyRequestDetailData(params: [ApiKey.requestId: self.viewModel.requestId])
+        default:
+            showAlert(msg: "Under Development")
+        }
+       
     }
     
     @IBAction func viewAllBtnAction(_ sender: AppButton) {
@@ -154,6 +160,11 @@ extension UserServiceRequestVC: UserServiceRequestVMDelegate{
         viewAllBtn.isHidden = viewModel.userRequestDetail.totalBids == 0
         if viewModel.userRequestDetail.status == .cancelled {
             cancelBtn.isHidden = true
+            viewAllBtn.isHidden = true
+        }
+        if viewModel.userRequestDetail.status == .expired {
+            cancelBtn.isHidden = false
+            cancelBtn.setTitle("Resend", for: .normal)
             viewAllBtn.isHidden = true
         }
         requestSeenValueLbl.text = viewModel.userRequestDetail.seenBy?.description

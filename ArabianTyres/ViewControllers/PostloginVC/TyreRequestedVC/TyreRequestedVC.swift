@@ -79,7 +79,9 @@ class TyreRequestedVC: BaseVC {
     
     @IBAction func requestBtnAction(_ sender: UIButton) {
         if !isUserLoggedin{
-            AppRouter.goToLoginVC(vc: self)
+            showAlertWithAction(title: "", msg:  "To continue performing this action, please login", cancelTitle: LocalizedString.cancel.localized, actionTitle: LocalizedString.ok.localized, actioncompletion: {
+                AppRouter.goToLoginVC(vc: self)
+            }) {}
         }else {
             self.viewModel.postTyreRequest(dict: TyreRequestModel.shared.getTyreRequestDict())
         }
@@ -196,8 +198,12 @@ extension TyreRequestedVC: LocationPopUpVMDelegate{
 extension TyreRequestedVC: SuccessPopupVCDelegate {
     func okBtnAction() {
         self.dismiss(animated: true) {
-            TyreRequestModel.shared = TyreRequestModel()
-            self.navigationController?.popToViewControllerOfType(classForCoder: HomeVC.self)
+            if isUserLoggedin {
+                TyreRequestModel.shared = TyreRequestModel()
+                self.navigationController?.popToViewControllerOfType(classForCoder: HomeVC.self)
+            }else{
+                AppRouter.goToLoginVC(vc: self)
+            }
         }
     }
 }

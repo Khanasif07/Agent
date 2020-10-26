@@ -45,7 +45,7 @@ enum ServiceStatus : String,Codable {
         case .completed:
             return #colorLiteral(red: 0.1725490196, green: 0.7137254902, blue: 0.4549019608, alpha: 1)
         default:
-            return #colorLiteral(red: 0.1725490196, green: 0.7137254902, blue: 0.4549019608, alpha: 1)
+            return #colorLiteral(red: 0.8784313725, green: 0.137254902, blue: 0.2588235294, alpha: 1)
         }
     }
 }

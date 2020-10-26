@@ -145,7 +145,10 @@ extension OtpVerificationVC {
             let dict : JSONDictionary = [ApiKey.phoneNo : self.viewModel.phoneNo , ApiKey.countryCode : self.viewModel.countryCode,ApiKey.otp: self.otpArray.joined()]
             return dict
         }else{
-            let dict : JSONDictionary = [ApiKey.phoneNo : self.viewModel.phoneNo , ApiKey.countryCode : self.viewModel.countryCode,ApiKey.otp: self.otpArray.joined(), ApiKey.device : [ApiKey.platform : "ios",ApiKey.token : DeviceDetail.deviceToken].toJSONString() ?? [:]]
+            var dict : JSONDictionary = [ApiKey.phoneNo : self.viewModel.phoneNo , ApiKey.countryCode : self.viewModel.countryCode,ApiKey.otp: self.otpArray.joined(), ApiKey.device : [ApiKey.platform : "ios",ApiKey.token : DeviceDetail.deviceToken].toJSONString() ?? [:]]
+            if !TyreRequestModel.shared.quantity.isEmpty{
+                dict[ApiKey.makeUser] = true
+            }
             return dict
         }
     }

@@ -92,7 +92,10 @@ extension SignUpVC {
     }
     
     private func getDict() -> JSONDictionary{
-        let dict : JSONDictionary = self.viewModel.model.getSignUpModelDict()
+        var dict : JSONDictionary = self.viewModel.model.getSignUpModelDict()
+        if !TyreRequestModel.shared.quantity.isEmpty{
+            dict[ApiKey.makeUser] = true
+        }
         return dict
     }
     
