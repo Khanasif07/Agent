@@ -57,11 +57,18 @@ class GarageAllRequestVC: BaseVC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
+        if !allRequestVC.clearFilterOnTabChange {
+            allRequestVC.clearFilterOnTabChange = !allRequestVC.clearFilterOnTabChange
+        } else {
+            allRequestVC.filterApplied = false
+            filterArr = [.allRequestServiceType([],false), .allRequestByStatus([],false)]
+            allRequestVC.hitApi()
+        }
     }
-       
-       deinit {
-         NotificationCenter.default.removeObserver(self)
-       }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
     // MARK: - IBActions
     //===========================
     @IBAction func allRequestButtonTapped(_ sender: UIButton) {
