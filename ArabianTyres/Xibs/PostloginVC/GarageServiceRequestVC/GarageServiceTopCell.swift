@@ -12,6 +12,7 @@ import GooglePlaces
 
 class GarageServiceTopCell: UITableViewCell {
     
+    @IBOutlet weak var bidStatusLbl: UILabel!
     @IBOutlet weak var requestedImgView: UIImageView!
     @IBOutlet weak var addressLbl: UILabel!
     @IBOutlet weak var locationLbl: UILabel!
@@ -66,9 +67,6 @@ class GarageServiceTopCell: UITableViewCell {
         let date = (model.createdAt)?.breakCompletDate(outPutFormat: Date.DateFormat.profileFormat.rawValue, inputFormat: Date.DateFormat.yyyyMMddTHHmmsssssz.rawValue)
         createAtLbl.text = date
         userNameLbl.text = model.userName
-//        let cords = CLLocationCoordinate2D(latitude: model.userLatitude ?? 0.0, longitude: model.userLongitude ?? 0.0)
-//        self.locationValue = cords
-//        setAddress()
         switch model.requestType {
         case .tyres:
             tyreSizeValueLbl.text = "Width \(model.width ?? 0), " + "Rim \(model.rimSize ?? 0), " + "Profile \(model.profile ?? 0)"
