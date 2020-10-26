@@ -255,6 +255,7 @@ extension GarageServiceRequestVC : UITableViewDelegate, UITableViewDataSource {
             
         case .brandListing:
             let cell = tableView.dequeueCell(with: GarageServiceBrandsCell.self, indexPath: indexPath)
+            cell.setBlurView(isBlur: true)
             let indexx = self.viewModel.countryBrandsDict.firstIndex { (model) -> Bool in
                 Array(model.keys)[0] == self.selectedCountry
             }

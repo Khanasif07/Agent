@@ -72,4 +72,18 @@ class GarageServiceBrandsCell: UITableViewCell,UITextFieldDelegate {
         }
     }
     
+    func setBlurView(isBlur: Bool) {
+        if isBlur {
+            brandNameLbl.textColor = #colorLiteral(red: 0.1098039216, green: 0.1137254902, blue: 0.1411764706, alpha: 0.3)
+            unitLbl.textColor = #colorLiteral(red: 0.1098039216, green: 0.1137254902, blue: 0.1411764706, alpha: 0.3)
+            unitPrizeTextFiled.textColor = #colorLiteral(red: 0.1098039216, green: 0.1137254902, blue: 0.1411764706, alpha: 0.3)
+            checkBtn.tintColor = #colorLiteral(red: 0.1098039216, green: 0.1137254902, blue: 0.1411764706, alpha: 0.3)
+            
+        }else {
+            brandNameLbl.textColor = AppColors.fontPrimaryColor
+            unitLbl.textColor = AppColors.fontPrimaryColor
+            unitPrizeTextFiled.textColor = AppColors.fontPrimaryColor
+            checkBtn.tintColor = AppColors.fontPrimaryColor
+        }
+    }
 }

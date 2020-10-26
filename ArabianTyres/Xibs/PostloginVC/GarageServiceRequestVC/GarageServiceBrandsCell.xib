@@ -43,14 +43,36 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="1An-6S-U7i">
                                                 <rect key="frame" x="80" y="11.5" width="209" height="30"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TRq-qW-Sc5">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Azw-G8-Kmi">
                                                         <rect key="frame" x="0.0" y="0.0" width="90" height="30"/>
-                                                        <string key="text">MRF
-ceat</string>
-                                                        <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="13"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
+                                                        <subviews>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="firstBaseline" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="vS3-AE-X8F">
+                                                                <rect key="frame" x="0.0" y="8" width="90" height="14"/>
+                                                                <subviews>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icRgt" translatesAutoresizingMaskIntoConstraints="NO" id="REI-Dh-1sb">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="14" height="14"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="14" id="E17-Ay-LHd"/>
+                                                                            <constraint firstAttribute="width" secondItem="REI-Dh-1sb" secondAttribute="height" multiplier="1:1" id="ktR-2X-thN"/>
+                                                                        </constraints>
+                                                                    </imageView>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MRF" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TRq-qW-Sc5">
+                                                                        <rect key="frame" x="18" y="0.0" width="72" height="14"/>
+                                                                        <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="13"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                            </stackView>
+                                                        </subviews>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="vS3-AE-X8F" secondAttribute="trailing" id="4hS-B0-Zra"/>
+                                                            <constraint firstAttribute="bottom" secondItem="vS3-AE-X8F" secondAttribute="bottom" constant="8" id="6df-a8-B6D"/>
+                                                            <constraint firstItem="vS3-AE-X8F" firstAttribute="top" secondItem="Azw-G8-Kmi" secondAttribute="top" constant="8" id="n0h-Jw-XXg"/>
+                                                            <constraint firstItem="vS3-AE-X8F" firstAttribute="leading" secondItem="Azw-G8-Kmi" secondAttribute="leading" id="xjY-1h-jPF"/>
+                                                        </constraints>
+                                                    </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wLA-Be-cjk">
                                                         <rect key="frame" x="100" y="0.0" width="30" height="30"/>
                                                         <subviews>
@@ -100,7 +122,7 @@ ceat</string>
                                                     </view>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstItem="TRq-qW-Sc5" firstAttribute="width" secondItem="wLA-Be-cjk" secondAttribute="width" multiplier="3" id="8Mk-tk-FG1"/>
+                                                    <constraint firstItem="Azw-G8-Kmi" firstAttribute="width" secondItem="wLA-Be-cjk" secondAttribute="width" multiplier="3" id="Cbt-A4-upe"/>
                                                     <constraint firstItem="dq7-P6-MkX" firstAttribute="height" secondItem="wLA-Be-cjk" secondAttribute="height" id="IlO-bJ-9H6"/>
                                                     <constraint firstItem="dq7-P6-MkX" firstAttribute="width" secondItem="wLA-Be-cjk" secondAttribute="width" multiplier="2.3" id="dkh-3y-gc7"/>
                                                 </constraints>
@@ -167,6 +189,7 @@ ceat</string>
     </objects>
     <resources>
         <image name="icCheck" width="30" height="30"/>
+        <image name="icRgt" width="14" height="14"/>
         <image name="icUnCheck" width="30" height="30"/>
     </resources>
 </document>
