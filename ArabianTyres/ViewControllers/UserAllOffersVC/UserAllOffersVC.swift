@@ -108,8 +108,9 @@ extension UserAllOffersVC {
                     dict[ApiKey.bidSort] = (txt as NSString).intValue
                 }
             case .distance( _, let max, _):
-                let distanceInMeters = getMeters(miles: Int((max as NSString).intValue) )
-                dict[ApiKey.maxDistance] = distanceInMeters
+                let maxDistance = Int((max as NSString).intValue)
+//                let distanceInMeters = getMeters(miles: Int((max as NSString).intValue) )
+                dict[ApiKey.maxDistance] = maxDistance//distanceInMeters
             default:
                 break
             }

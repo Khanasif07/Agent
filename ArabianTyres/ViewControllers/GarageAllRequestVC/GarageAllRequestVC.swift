@@ -79,6 +79,7 @@ class GarageAllRequestVC: BaseVC {
       }
       
     @IBAction func filterBtnAction(_ sender: UIButton) {
+        allRequestVC.clearFilterOnTabChange = false
         AppRouter.goToSRFliterVC(vc: self, filterArr: filterArr) { [weak self] (filterData, isReset) in
             if isReset {
                 self?.allRequestVC.viewModel.currentPage = 1

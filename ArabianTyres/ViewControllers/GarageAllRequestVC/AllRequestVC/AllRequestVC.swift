@@ -20,12 +20,26 @@ class AllRequestVC: BaseVC {
     var requestId : String = ""
     var filterApplied : Bool = false
     var filterArr : [FilterScreen] = []
+    var clearFilterOnTabChange: Bool = false
     
     // MARK: - Lifecycle
     //===========================
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+        self.tabBarController?.tabBar.isTranslucent = false
+        if !clearFilterOnTabChange {
+        clearFilterOnTabChange = !clearFilterOnTabChange
+        } else {
+            filterApplied = false
+            filterArr = []
+            hitApi()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -137,6 +151,7 @@ extension AllRequestVC : UITableViewDelegate, UITableViewDataSource {
                 case "Chat":
                     self.showAlert(msg: "Under Development")
                 default:
+                    self.clearFilterOnTabChange = false
                     AppRouter.goToGarageServiceRequestVC(vc: self,requestId : self.viewModel.garageRequestListing[indexPath.row].id ?? "", requestType: self.viewModel.garageRequestListing[indexPath.row].requestType.rawValue,bidStatus: self.viewModel.garageRequestListing[indexPath.row].bidStatus ?? .bidFinalsed)
                 }
             }
@@ -160,6 +175,7 @@ extension AllRequestVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.clearFilterOnTabChange = false
         AppRouter.goToGarageServiceRequestVC(vc: self,requestId : self.viewModel.garageRequestListing[indexPath.row].id ?? "", requestType: self.viewModel.garageRequestListing[indexPath.row].requestType.rawValue, bidStatus: self.viewModel.garageRequestListing[indexPath.row].bidStatus ?? .bidFinalsed)
     }
 }

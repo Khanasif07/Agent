@@ -255,14 +255,13 @@ extension GarageServiceRequestVC : UITableViewDelegate, UITableViewDataSource {
             
         case .brandListing:
             let cell = tableView.dequeueCell(with: GarageServiceBrandsCell.self, indexPath: indexPath)
-//            cell.setBlurView(isBlur: true)
-            cell.rightIcon.isHidden = true
             let indexx = self.viewModel.countryBrandsDict.firstIndex { (model) -> Bool in
                 Array(model.keys)[0] == self.selectedCountry
             }
             guard let selectedIndexx  = indexx else { return UITableViewCell()}
             let brandDataArr = self.viewModel.countryBrandsDict[selectedIndexx][self.selectedCountry] ?? [PreferredBrand]()
             cell.bindData(brandDataArr[indexPath.row], bidStatus: self.bidStatus)
+            cell.rightIcon.isHidden = true
             cell.unitPrizeTextFiled.isUserInteractionEnabled = placeBidBtn.titleLabel?.text != "Edit"
             cell.unitPriceChanged = { [weak self] (unitPrice,sender) in
                 guard let `self` = self else { return }

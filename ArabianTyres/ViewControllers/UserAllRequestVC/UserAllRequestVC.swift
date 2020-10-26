@@ -23,6 +23,7 @@ class UserAllRequestVC: BaseVC {
     var viewModel = UserAllRequestVM()
     var filterArr : [FilterScreen] = [.byServiceType([],false), .byStatus([],false), .date(nil,nil,false)]
     var filterApplied: Bool = false
+    var clearFilterOnTabChange: Bool = false
     
     // MARK: - Lifecycle
     //===========================
@@ -35,6 +36,13 @@ class UserAllRequestVC: BaseVC {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
         self.tabBarController?.tabBar.isTranslucent = false
+        if !clearFilterOnTabChange {
+        clearFilterOnTabChange = !clearFilterOnTabChange
+        } else {
+            filterApplied = false
+            filterArr = [.byServiceType([],false), .byStatus([],false), .date(nil,nil,false)]
+            hitListingApi()
+        }
     }
     
     // MARK: - IBActions
@@ -44,6 +52,7 @@ class UserAllRequestVC: BaseVC {
     }
     
     @IBAction func filterBtnAction(_ sender: UIButton) {
+        clearFilterOnTabChange = false
         AppRouter.goToMyServiceFilterVC(vc: self, filterArr: filterArr) {[weak self] (filterData, isReset) in
             if isReset {
                 self?.viewModel.currentPage = 1
@@ -178,6 +187,7 @@ extension UserAllRequestVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        clearFilterOnTabChange = false
         AppRouter.goToUserServiceRequestVC(vc: self,requestId:self.viewModel.userRequestListing[indexPath.row].id,serviceType:self.viewModel.userRequestListing[indexPath.row].requestType )
     }
     
