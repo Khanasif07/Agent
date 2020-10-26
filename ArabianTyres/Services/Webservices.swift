@@ -841,4 +841,21 @@ extension WebServices{
         }
     }
 
+    
+    static func userRequestResend(parameters: JSONDictionary,loader: Bool = false,,
+                                  success: @escaping SuccessResponse,
+                                  failure: @escaping FailureResponse) {
+        self.commonGetAPI(parameters: parameters,endPoint: .resendRequest, success: { (json) in
+            let code = json[ApiKey.statusCode].intValue
+            let msg = json[ApiKey.message].stringValue
+            switch code {
+            case ApiCode.success:
+                success(json)
+            default:
+                failure(NSError(code: code, localizedDescription: msg))
+            }
+        }) { (error) -> (Void) in
+            failure(error)
+        }
+    }
 }
