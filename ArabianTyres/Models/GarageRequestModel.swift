@@ -16,6 +16,7 @@ enum RequestStatus: String, Codable{
     case bidFinalsed = "allocated"
     case ongoing = "ongoing"
     case bidClosed = "closed"
+    case expired = "expired"
     
     var text : String {
         switch self {
@@ -29,6 +30,8 @@ enum RequestStatus: String, Codable{
             return ""
         case .bidClosed:
             return "Bid Closed"
+        case .expired:
+            return "Expired"
         }
     }
     
@@ -44,6 +47,8 @@ enum RequestStatus: String, Codable{
         return AppColors.successGreenColor
         case .bidClosed:
              return AppColors.successGreenColor
+        case .expired:
+            return AppColors.appRedColor
         }
     }
 }

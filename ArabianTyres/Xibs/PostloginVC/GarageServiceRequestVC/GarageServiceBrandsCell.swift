@@ -37,6 +37,7 @@ class GarageServiceBrandsCell: UITableViewCell,UITextFieldDelegate {
         brandNameLbl.text = model.name
         unitPrizeTextFiled.text = "\(model.amount ?? 0)"
         checkBtn.isSelected = model.isSelected ?? false
+        setBlurView(isBlur: !(model.isSelected ?? true))
     }
     
     @IBAction func textFieldChanged(_ sender: UITextField) {
