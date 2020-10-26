@@ -81,6 +81,7 @@ class VehicleDetailForOilVC: BaseVC {
     //===========================
     
     @IBAction func cancelBtnAction(_ sender: UIButton) {
+        TyreRequestModel.shared = TyreRequestModel()
         self.pop()
     }
     

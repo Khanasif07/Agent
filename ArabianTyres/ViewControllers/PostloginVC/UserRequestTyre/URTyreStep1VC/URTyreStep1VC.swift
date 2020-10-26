@@ -58,6 +58,7 @@ class URTyreStep1VC: BaseVC {
         self.dismiss(animated: true, completion: nil)
     }
     @IBAction func backBtnAction(_ sender: UIButton) {
+        TyreRequestModel.shared = TyreRequestModel()
         self.pop()
     }
     @IBAction func nextBtnAction(_ sender: UIButton) {
