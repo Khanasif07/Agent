@@ -12,7 +12,6 @@ import Foundation
 import SocketIO
 import SwiftyJSON
 
-
 enum EventListnerKeys : String {
     case newBid =  "NEW_BID"
     case bidAccepted = "BID_ACCEPTED"

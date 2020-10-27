@@ -108,8 +108,10 @@ extension SRPopupVC {
         serviceTypeLbl.text = requestData?.message
         switch requestData?.distance {
         case .string(let txt):
-            let distanceMiles = getMiles(meters: (txt as NSString).doubleValue)
-            distanceLbl.text =  "\(distanceMiles.truncate(places: 2))" + " miles away"
+//            let distanceMiles = getMiles(meters: (txt as NSString).doubleValue)
+//            distanceLbl.text =  "\(distanceMiles.truncate(places: 2))" + " miles away"
+            distanceLbl.text =  "\((txt as NSString).doubleValue.truncate(places: 2))" + " miles away"
+
         default:
             break
         }
