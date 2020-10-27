@@ -63,6 +63,7 @@ extension WebServices {
         case userCancelBid = "user/bids/cancel"
         case garageEditPlacedBid = "user/bids/edit"
         case resendRequest = "user/services/resendRequest"
+        case garageHomeServices  = "user/services/dashboard"
         
         
         var path : String {
