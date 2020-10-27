@@ -407,6 +407,14 @@ enum AppRouter {
         vc.present(scene, animated: true)
     }
     
+    static func presentImageViewerVC(_ vc: UIViewController, image: UIImage?, imageURL: String = "") {
+        let imgView = ImageViewerVC.instantiate(fromAppStoryboard: .Garage)
+        imgView.mainImage = image
+        imgView.mainImageURL = imageURL
+        guard let nvc = vc.navigationController else { return }
+        nvc.present(imgView, animated: true, completion: nil)
+    }
+    
     
     static func showAlert(alertTitle: String = "Alert!", alertMessage: String, preferredStyle: UIAlertController.Style = .alert, actionBtnTitle: String = "OK", isHitLogOutApi : Bool = false) {
         if isHitLogOutApi {

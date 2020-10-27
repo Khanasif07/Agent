@@ -228,6 +228,10 @@ extension GarageServiceRequestVC : UITableViewDelegate, UITableViewDataSource {
                     self.isLocationUpdate = true
                 }
             }
+            cell.productImgTapped = {[weak self] in
+                guard let `self` = self else {return}
+                AppRouter.presentImageViewerVC(self, image: nil, imageURL: self.viewModel.garageRequestDetailArr?.images.first ?? "")
+            }
             return cell
             
         case .countryDetail:
