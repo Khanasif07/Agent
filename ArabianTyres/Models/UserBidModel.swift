@@ -45,10 +45,14 @@ struct UserBidModel: Codable {
     
     func getMinAmount() -> (Double, Int){
         var bidSortedArr: [BidDatum] = []
+        if let firstIndex = bidData.firstIndex(where: { (data) -> Bool in
+            return (data.isAccepted ?? false)
+        }) {
+            return (bidData[firstIndex].amount,bidData[firstIndex].quantity)
+        }
         bidSortedArr = bidData.sorted { (first, second) -> Bool in
             return first.amount < second.amount
         }
-        
         return (bidSortedArr.first?.amount ?? 0.0,bidSortedArr.first?.quantity ?? 0)
     }
 }
