@@ -111,6 +111,7 @@ extension UserServiceRequestVC {
         NotificationCenter.default.addObserver(self, selector: #selector(newBidSocketSuccess), name: Notification.Name.NewBidSocketSuccess, object: nil)
         viewModel.delegate = self
         textSetUp()
+        addTapGesture()
         viewModel.getUserMyRequestDetailData(params: [ApiKey.requestId: self.viewModel.requestId])
     }
     
@@ -212,6 +213,8 @@ extension UserServiceRequestVC: UserServiceRequestVMDelegate{
         brandsLbl.text = brandsArray.endIndex > 0 ? (LocalizedString.brands.localized + ":") : (LocalizedString.countries.localized + ":")
         brandsValueLbl.text = brandsArray.endIndex > 0 ? brandsArray.joined(separator: ",") : countryArray.joined(separator: ",")
         let logoImg =  self.viewModel.serviceType == "Tyres" ? #imageLiteral(resourceName: "radialCarTireI151") : self.viewModel.serviceType == "Battery" ? #imageLiteral(resourceName: "icBattery") : #imageLiteral(resourceName: "icOil")
+        productImgView.isHidden = model.images.isEmpty
+        bottomLineView.isHidden = model.images.isEmpty
         self.productImgView.setImage_kf(imageString: model.images.first ?? "", placeHolderImage: logoImg, loader: false)
     }
     
