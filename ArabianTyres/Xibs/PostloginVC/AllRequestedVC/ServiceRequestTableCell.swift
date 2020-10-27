@@ -16,15 +16,13 @@ class ServiceRequestTableCell: UITableViewCell {
     @IBOutlet weak var tyreSizeLbl: UILabel!
     @IBOutlet weak var sizeDetailLbl: UILabel!
     @IBOutlet weak var brandDetailLbl: UILabel!
-
+    @IBOutlet weak var bottomStackView: UIStackView!
+    
     @IBOutlet weak var serviceTimeLbl: UILabel!
     @IBOutlet weak var serviceTyeLbl: UILabel!
-    @IBOutlet weak var ratingLbl: UILabel!
-    @IBOutlet weak var ratingImgView: UIImageView!
     @IBOutlet weak var logoImgView: UIImageView!
     @IBOutlet weak var placeBidBtn: AppButton!
     @IBOutlet weak var rejectRequestBtn: AppButton!
-    @IBOutlet weak var ratingView: UIView!
     @IBOutlet weak var dataContainerView: UIView!
     
     @IBOutlet weak var bidAmountStackView: UIStackView!
@@ -45,8 +43,6 @@ class ServiceRequestTableCell: UITableViewCell {
         logoImgView.round(radius: 4.0)
         placeBidBtn.round(radius: 2.0)
         rejectRequestBtn.round(radius: 2.0)
-        ratingImgView.round(radius: 4.0)
-        ratingView.round(radius: 2.0)
         dataContainerView.addShadow(cornerRadius: 5, color: UIColor.black16, offset: CGSize(width: 0.5, height: 0.5), opacity: 1, shadowRadius: 5)
     }
     
@@ -143,9 +139,9 @@ class ServiceRequestTableCell: UITableViewCell {
         }
         
         if model.bidStatus == .bidClosed {
-            btnStackView.isHidden = true
+            bottomStackView.isHidden = true
         }else {
-            btnStackView.isHidden = false
+            bottomStackView.isHidden = false
         }
     }
     
