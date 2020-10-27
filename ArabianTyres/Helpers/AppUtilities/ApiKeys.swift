@@ -174,6 +174,9 @@ enum ApiKey {
     static var maxDistance: String { return "maxDistance" }
     static var bidSort: String { return "bidSort" }
     static var minDistance: String { return "minDistance" }
+    static var newRequests: String {return "newRequests"}
+    static var acceptedRequets: String {return "acceptedRequets"}
+
 
     
 }
@@ -200,5 +203,5 @@ enum ApiCode {
     static var rejectedGarageReg: Int {return 605} //rejected Garage Registration
     static var garageBlocked: Int {return 602}// garage blocked by admin
     static var userBlocked: Int {return 603}//user profile blocked by admin
-
+    
 }
