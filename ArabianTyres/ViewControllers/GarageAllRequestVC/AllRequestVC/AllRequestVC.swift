@@ -238,7 +238,7 @@ extension AllRequestVC : AllRequestVMDelegate ,UserServiceRequestVCDelegate{
 extension AllRequestVC : DZNEmptyDataSetSource,DZNEmptyDataSetDelegate {
     
     func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
-        return  nil
+        return  #imageLiteral(resourceName: "layerX00201")
     }
     
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {

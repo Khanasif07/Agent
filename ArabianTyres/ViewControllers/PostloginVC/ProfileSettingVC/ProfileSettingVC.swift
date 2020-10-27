@@ -151,7 +151,10 @@ extension ProfileSettingVC {
     
     private func performCleanUp() {
         SocketIOManager.shared.closeConnection()
-        AppUserDefaults.removeValue(forKey: .accesstoken)
+        let lang  = AppUserDefaults.value(forKey: .currentLanguage).stringValue
+        AppUserDefaults.removeAllValues()
+        AppUserDefaults.save(value: lang, forKey: .currentLanguage)
+        AppUserDefaults.save(value: true, forKey: .isLanguageSelect)
         UserModel.main = UserModel()
         UNUserNotificationCenter.current().removeAllDeliveredNotifications()
     }

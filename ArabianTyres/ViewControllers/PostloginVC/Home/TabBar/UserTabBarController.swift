@@ -112,11 +112,6 @@ extension UserTabBarController {
             default:
                 if let item = self.tabBar.items?[index] {
                     item.image = #imageLiteral(resourceName: "profile")
-                    if #available(iOS 13.0, *) {
-                        item.image?.withTintColor(AppColors.primaryBlueColor)
-                    } else {
-                        // Fallback on earlier versions
-                    }
                     item.selectedImage = #imageLiteral(resourceName: "profile")
                 }
             }
@@ -133,7 +128,14 @@ extension UserTabBarController:UITabBarControllerDelegate{
     }
     
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-       return true
+        guard let vc = (viewController as? UINavigationController)?.viewControllers.first else {return true}
+        if vc is UserAllRequestVC || vc is NotificationVC || vc is SettingVC{
+            if !isUserLoggedin {
+                ToastView.shared.showLongToast(self.view, msg: "To continue performing this action, please login")
+                return false
+            }
+        }
+        return true
     }
 }
 

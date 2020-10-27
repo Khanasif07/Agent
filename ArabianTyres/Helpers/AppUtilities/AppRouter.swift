@@ -26,8 +26,6 @@ enum AppRouter {
     // MARK: - Show Landing Screen
     //===========================
     static func checkAppInitializationFlow() {
-//        AppRouter.goToTestingVC()
-//        return
         if isUserLoggedin {
             SocketIOManager.shared.establishConnection()
             if !isPhoneNoVerified{
@@ -48,7 +46,11 @@ enum AppRouter {
                 AppUserDefaults.save(value: true, forKey: .isLanguageSelect)
             }
         } else {
-            self.makeChooseLanguageVCRoot()
+            if AppUserDefaults.value(forKey: .isLanguageSelect).boolValue {
+                AppRouter.goToUserHome()
+            }else{
+                self.makeChooseLanguageVCRoot()
+            }
         }
     }
     

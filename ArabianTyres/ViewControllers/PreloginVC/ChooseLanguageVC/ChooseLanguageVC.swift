@@ -76,6 +76,7 @@ class ChooseLanguageVC: BaseVC {
         self.arabicBtnView.layer.borderWidth = 1.0
         self.continueBtn.isEnabled = true
         AppUserDefaults.save(value: LocalizedString.english.localized, forKey: .currentLanguage)
+        AppUserDefaults.save(value: true, forKey: .isLanguageSelect)
     }
     
     @IBAction func arabicBtnAction(_ sender: UIButton) {
@@ -87,6 +88,7 @@ class ChooseLanguageVC: BaseVC {
         self.englishBtnView.layer.borderColor = AppColors.primaryBlueLightShade.cgColor
         self.continueBtn.isEnabled = true
         AppUserDefaults.save(value: LocalizedString.arabic.localized, forKey: .currentLanguage)
+        AppUserDefaults.save(value: true, forKey: .isLanguageSelect)
     }
     
     @IBAction func scrollToNextPage(_ sender: UIButton) {
