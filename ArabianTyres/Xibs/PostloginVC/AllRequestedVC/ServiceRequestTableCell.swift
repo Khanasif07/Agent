@@ -105,7 +105,7 @@ class ServiceRequestTableCell: UITableViewCell {
         self.logoImgView.backgroundColor = logoBackGroundColor
         self.logoImgView.image = logoImg
 
-        statusValueLbl.text = model.bidStatus?.rawValue
+        statusValueLbl.text = model.bidStatus?.text
         statusValueLbl.textColor = model.bidStatus?.textColor
     
         let str = model.requestType == .tyres ? "Tyre" : model.requestType.rawValue

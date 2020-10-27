@@ -219,7 +219,7 @@ extension GarageServiceRequestVC : UITableViewDelegate, UITableViewDataSource {
         case .userDetail:
             let cell = tableView.dequeueCell(with: GarageServiceTopCell.self, indexPath: indexPath)
             cell.popluateData(viewModel.garageRequestDetailArr ?? GarageRequestModel())
-            cell.bidStatusLbl.text = bidStatus.self.rawValue
+            cell.bidStatusLbl.text = bidStatus.text
             cell.bidStatusLbl.textColor = bidStatus.textColor
             cell.locationUpdated = {[weak self] in
                 guard let `self` = self else {return}

@@ -3748,7 +3748,7 @@ provided details</string>
                         <outlet property="casCadFirstView" destination="Zgv-5o-m4q" id="Rnl-Xm-BSP"/>
                         <outlet property="casCadSecondView" destination="VBM-Fb-9Ov" id="cmX-cZ-4bb"/>
                         <outlet property="circularView" destination="4jN-mb-WUP" id="mQM-zl-0Ao"/>
-                        <outlet property="containerView" destination="KAn-6I-q9m" id="Xyu-Oc-otq"/>
+                        <outlet property="containerView" destination="KAn-6I-q9m" id="qpf-ao-buz"/>
                         <outlet property="distanceLbl" destination="JdH-bt-MgT" id="bND-zh-pzk"/>
                         <outlet property="ignoreBtn" destination="leJ-NC-6g5" id="lcy-UC-kM6"/>
                         <outlet property="secLbl" destination="KJm-tt-Eoh" id="DKZ-TZ-7vk"/>
