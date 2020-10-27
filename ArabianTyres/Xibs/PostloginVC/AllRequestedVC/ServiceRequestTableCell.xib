@@ -58,7 +58,7 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aVK-rA-ETO">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aVK-rA-ETO">
                                 <rect key="frame" x="295" y="8" width="57" height="24"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="group3922" translatesAutoresizingMaskIntoConstraints="NO" id="dHi-QN-JzJ">

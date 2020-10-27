@@ -12,6 +12,7 @@ import GooglePlaces
 
 class GarageServiceTopCell: UITableViewCell {
     
+    @IBOutlet weak var productImgLbl: UILabel!
     @IBOutlet weak var bidStatusLbl: UILabel!
     @IBOutlet weak var requestedImgView: UIImageView!
     @IBOutlet weak var addressLbl: UILabel!
@@ -24,10 +25,15 @@ class GarageServiceTopCell: UITableViewCell {
     @IBOutlet weak var createAtLbl: UILabel!
     @IBOutlet weak var tyreSizeValueLbl: UILabel!
     @IBOutlet weak var tyreSizeLbl: UILabel!
+    @IBOutlet weak var productImgView: UIImageView!
+    @IBOutlet weak var imgStackView: UIStackView!
     
     
     var locationValue : CLLocationCoordinate2D = CLLocationCoordinate2D()
     var locationUpdated : (()->())?
+    var productImgTapped : (()->())?
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         textSetUp()
@@ -36,6 +42,7 @@ class GarageServiceTopCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         userImgView.round()
+        productImgView.round(radius: 4.0)
         requestedImgView.round(radius: 4.0)
     }
     
@@ -44,6 +51,9 @@ class GarageServiceTopCell: UITableViewCell {
         serviceDetailLbl.textColor = AppColors.fontTertiaryColor
         requestedOnLbl.textColor = AppColors.fontTertiaryColor
         requestCreatedLbl.textColor = AppColors.fontTertiaryColor
+        productImgView.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(singleTap))
+        self.productImgView.addGestureRecognizer(tapGesture)
     }
     
     private func setAddress() {
@@ -57,12 +67,20 @@ class GarageServiceTopCell: UITableViewCell {
         
     }
     
+    @objc func singleTap(){
+        if let handle = productImgTapped{
+            handle()
+        }
+    }
+    
     func popluateData(_ model: GarageRequestModel) {
         if let address = model.userAddress {
             locationLbl.text = address.isEmpty ? "NA" : address
         }else {
             locationLbl.text = "NA"
         }
+        self.imgStackView.isHidden  = model.images.isEmpty
+        productImgView.setImage_kf(imageString: model.images.first ?? "",placeHolderImage: #imageLiteral(resourceName: "placeHolder"))
         userImgView.setImage_kf(imageString: model.userImage ?? "",placeHolderImage: #imageLiteral(resourceName: "placeHolder"))
         let date = (model.createdAt)?.breakCompletDate(outPutFormat: Date.DateFormat.profileFormat.rawValue, inputFormat: Date.DateFormat.yyyyMMddTHHmmsssssz.rawValue)
         createAtLbl.text = date

@@ -136,6 +136,16 @@ extension UserServiceRequestVC {
     func getMiles(meters: Double) -> Double {
          return meters * 0.000621371192
     }
+    
+    private func addTapGesture(){
+        productImgView.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(singleTap))
+        self.productImgView.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func singleTap(){
+        AppRouter.presentImageViewerVC(self, image: nil, imageURL: self.viewModel.userRequestDetail.images.first ?? "")
+    }
 }
 
 // MARK: - Extension For UserAllRequestVMDelegate

@@ -111,6 +111,7 @@
 		847BC425250796CB00EEEFDC /* ResetPasswordVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847BC424250796CB00EEEFDC /* ResetPasswordVM.swift */; };
 		847C35A82535689B009F1ACF /* OffersDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847C35A72535689B009F1ACF /* OffersDetailVM.swift */; };
 		84801CDB2548052100F360FC /* GarageHomeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84801CDA2548052100F360FC /* GarageHomeVM.swift */; };
+		84801CDE2548273400F360FC /* ImageViewerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84801CDD2548273400F360FC /* ImageViewerVC.swift */; };
 		8481F9FD2500AA9A00AB6EFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481F9FC2500AA9A00AB6EFB /* AppDelegate.swift */; };
 		8481F9FF2500AA9A00AB6EFB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481F9FE2500AA9A00AB6EFB /* SceneDelegate.swift */; };
 		8481FA062500AA9B00AB6EFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8481FA052500AA9B00AB6EFB /* Assets.xcassets */; };
@@ -406,6 +407,7 @@
 		847BC424250796CB00EEEFDC /* ResetPasswordVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordVM.swift; sourceTree = "<group>"; };
 		847C35A72535689B009F1ACF /* OffersDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffersDetailVM.swift; sourceTree = "<group>"; };
 		84801CDA2548052100F360FC /* GarageHomeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageHomeVM.swift; sourceTree = "<group>"; };
+		84801CDD2548273400F360FC /* ImageViewerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewerVC.swift; sourceTree = "<group>"; };
 		8481F9F92500AA9A00AB6EFB /* ArabianTyres.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArabianTyres.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8481F9FC2500AA9A00AB6EFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8481F9FE2500AA9A00AB6EFB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -1075,6 +1077,14 @@
 			path = ResetPasswordVC;
 			sourceTree = "<group>";
 		};
+		84801CDC2548271900F360FC /* ImageViewerVC */ = {
+			isa = PBXGroup;
+			children = (
+				84801CDD2548273400F360FC /* ImageViewerVC.swift */,
+			);
+			path = ImageViewerVC;
+			sourceTree = "<group>";
+		};
 		8481F9F02500AA9A00AB6EFB = {
 			isa = PBXGroup;
 			children = (
@@ -1196,6 +1206,7 @@
 		8481FA152500B9F600AB6EFB /* CommonControllers */ = {
 			isa = PBXGroup;
 			children = (
+				84801CDC2548271900F360FC /* ImageViewerVC */,
 				84E166E2250362BF00C2F2EF /* SuccessPopupVC */,
 				8481FA1B2500BA9400AB6EFB /* FacebookManager */,
 				8481FA1A2500BA8A00AB6EFB /* AppleManager */,
@@ -2294,6 +2305,7 @@
 				843C8EC52508AE9500515F2E /* ProfileUserInternalCell.swift in Sources */,
 				84476D3725075F6800AB5E80 /* ExploreVC.swift in Sources */,
 				846352D02511E34E004216F1 /* AddImageCollCell.swift in Sources */,
+				84801CDE2548273400F360FC /* ImageViewerVC.swift in Sources */,
 				A41AAB402530451B0061887F /* OfferFilterVC.swift in Sources */,
 				84558EEE252F0A0000BFF8C6 /* SocketListener.swift in Sources */,
 				84801CDB2548052100F360FC /* GarageHomeVM.swift in Sources */,
