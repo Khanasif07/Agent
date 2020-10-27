@@ -110,6 +110,7 @@
 		847BC423250774E100EEEFDC /* ResetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847BC422250774E100EEEFDC /* ResetPasswordVC.swift */; };
 		847BC425250796CB00EEEFDC /* ResetPasswordVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847BC424250796CB00EEEFDC /* ResetPasswordVM.swift */; };
 		847C35A82535689B009F1ACF /* OffersDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847C35A72535689B009F1ACF /* OffersDetailVM.swift */; };
+		84801CD22547F5D100F360FC /* FirestoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84801CD12547F5D100F360FC /* FirestoreController.swift */; };
 		8481F9FD2500AA9A00AB6EFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481F9FC2500AA9A00AB6EFB /* AppDelegate.swift */; };
 		8481F9FF2500AA9A00AB6EFB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481F9FE2500AA9A00AB6EFB /* SceneDelegate.swift */; };
 		8481FA062500AA9B00AB6EFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8481FA052500AA9B00AB6EFB /* Assets.xcassets */; };
@@ -180,7 +181,6 @@
 		8481FAAB25015CBC00AB6EFB /* CustommTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481FAAA25015CBC00AB6EFB /* CustommTextField.swift */; };
 		8481FAAF25015D9000AB6EFB /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481FAAE25015D9000AB6EFB /* LoginVC.swift */; };
 		8495E9442509C824003CA43D /* ProfileVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8495E9432509C824003CA43D /* ProfileVM.swift */; };
-		84B629AA25120E250080A7C2 /* Cropper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B629A925120E250080A7C2 /* Cropper.swift */; };
 		84B629AC25120FF50080A7C2 /* InterConnectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B629AB25120FF50080A7C2 /* InterConnectivity.swift */; };
 		84B629AE251212FC0080A7C2 /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B629AD251212FC0080A7C2 /* ImageModel.swift */; };
 		84B629B12512262C0080A7C2 /* GarageAddLocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B629B02512262C0080A7C2 /* GarageAddLocationVC.swift */; };
@@ -401,6 +401,7 @@
 		847BC422250774E100EEEFDC /* ResetPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordVC.swift; sourceTree = "<group>"; };
 		847BC424250796CB00EEEFDC /* ResetPasswordVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordVM.swift; sourceTree = "<group>"; };
 		847C35A72535689B009F1ACF /* OffersDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffersDetailVM.swift; sourceTree = "<group>"; };
+		84801CD12547F5D100F360FC /* FirestoreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreController.swift; sourceTree = "<group>"; };
 		8481F9F92500AA9A00AB6EFB /* ArabianTyres.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArabianTyres.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8481F9FC2500AA9A00AB6EFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8481F9FE2500AA9A00AB6EFB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -473,7 +474,6 @@
 		8481FAAA25015CBC00AB6EFB /* CustommTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustommTextField.swift; sourceTree = "<group>"; };
 		8481FAAE25015D9000AB6EFB /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		8495E9432509C824003CA43D /* ProfileVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVM.swift; sourceTree = "<group>"; };
-		84B629A925120E250080A7C2 /* Cropper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cropper.swift; sourceTree = "<group>"; };
 		84B629AB25120FF50080A7C2 /* InterConnectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterConnectivity.swift; sourceTree = "<group>"; };
 		84B629AD251212FC0080A7C2 /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
 		84B629B02512262C0080A7C2 /* GarageAddLocationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageAddLocationVC.swift; sourceTree = "<group>"; };
@@ -1067,6 +1067,14 @@
 			path = ResetPasswordVC;
 			sourceTree = "<group>";
 		};
+		84801CD02547F59D00F360FC /* FirestoreController */ = {
+			isa = PBXGroup;
+			children = (
+				84801CD12547F5D100F360FC /* FirestoreController.swift */,
+			);
+			path = FirestoreController;
+			sourceTree = "<group>";
+		};
 		8481F9F02500AA9A00AB6EFB = {
 			isa = PBXGroup;
 			children = (
@@ -1152,10 +1160,10 @@
 		8481FA132500B9E200AB6EFB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				84801CD02547F59D00F360FC /* FirestoreController */,
 				8481F9FE2500AA9A00AB6EFB /* SceneDelegate.swift */,
 				8481F9FC2500AA9A00AB6EFB /* AppDelegate.swift */,
 				844956342510A60900846ED9 /* LocationController.swift */,
-				84B629A925120E250080A7C2 /* Cropper.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2058,7 +2066,6 @@
 				A41AAB4E2530A0390061887F /* MyServiceFilterVC.swift in Sources */,
 				A479345E253FFEE8001CDA4A /* SylyfeBuyer_SylyfeBuyer_Helpers_AlignmentFlowLayout.swift in Sources */,
 				8481FA672500BFB900AB6EFB /* AppStoryboards.swift in Sources */,
-				84B629AA25120E250080A7C2 /* Cropper.swift in Sources */,
 				84476D2F25075F1E00AB5E80 /* HomeVC.swift in Sources */,
 				8481FA2F2500BCBF00AB6EFB /* LocalizedString.swift in Sources */,
 				844D81E325025D9600550334 /* LoginWithPhoneVC.swift in Sources */,
@@ -2171,6 +2178,7 @@
 				844D81DB2502408900550334 /* SignUpVC.swift in Sources */,
 				84144F2F252C8D9C00D6572F /* GarageServiceTopCell.swift in Sources */,
 				A43B53A72524B47000447B24 /* OngoingServiceListingVC.swift in Sources */,
+				84801CD22547F5D100F360FC /* FirestoreController.swift in Sources */,
 				8481FA712500BFFD00AB6EFB /* AppFonts.swift in Sources */,
 				843CD3A32505409C00945937 /* LoginWithPhoneViewModel.swift in Sources */,
 				84B629B12512262C0080A7C2 /* GarageAddLocationVC.swift in Sources */,
