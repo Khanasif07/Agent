@@ -60,6 +60,22 @@ enum BidStatus: String, Codable{
     case bidPlaced = "Bid Placed"
     case bidFinalsed = "Bid Finalised"
     case bidClosed = "Biding Closed"
+    case bidRejected = "Bid Rejected"
+    
+    var text : String {
+        switch self {
+        case .openForBidding:
+            return "In a Bid"
+        case .bidPlaced:
+            return "Bid Placed"
+        case .bidFinalsed:
+            return "Bid Finalised"
+        case .bidClosed:
+            return "Biding Closed"
+        case .bidRejected:
+            return "Bid Rejected"
+        }
+    }
     
     var textColor : UIColor {
         switch self {
@@ -70,7 +86,9 @@ enum BidStatus: String, Codable{
         case .bidFinalsed:
             return AppColors.successGreenColor
         case .bidClosed:
-            return AppColors.successGreenColor
+            return AppColors.appRedColor
+        case .bidRejected:
+            return AppColors.appRedColor
         }
     }
 }

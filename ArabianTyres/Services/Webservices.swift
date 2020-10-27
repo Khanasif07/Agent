@@ -393,10 +393,10 @@ extension WebServices{
     
     // MARK:- My Garage Home Api
     //=================
-    static func getGarageHomeData(parameters: JSONDictionary,
+    static func getGarageHomeData(parameters: JSONDictionary,loader: Bool = false,
                                   success: @escaping SuccessResponse,
                                   failure: @escaping FailureResponse) {
-        self.commonGetAPI(parameters: parameters,endPoint: .garageHomeServices, success: { (json) in
+        self.commonGetAPI(parameters: parameters,endPoint: .garageHomeServices,loader: loader,success: { (json) in
             let code = json[ApiKey.statusCode].intValue
             let msg = json[ApiKey.message].stringValue
             switch code {
