@@ -44,8 +44,4 @@ internal extension UIImage {
     static func messageKitImageWith(type: ImageType) -> UIImage? {
         UIImage(named: type.rawValue, in: Bundle.messageKitAssetBundle, compatibleWith: nil)
     }
-    
-    static func jpeg(_ jpegQuality: JPEGQuality) -> Data? {
-//        return jpegData(compressionQuality: jpegQuality.rawValue)
-    }
 }

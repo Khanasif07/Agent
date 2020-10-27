@@ -111,6 +111,8 @@
 		847BC425250796CB00EEEFDC /* ResetPasswordVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847BC424250796CB00EEEFDC /* ResetPasswordVM.swift */; };
 		847C35A82535689B009F1ACF /* OffersDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847C35A72535689B009F1ACF /* OffersDetailVM.swift */; };
 		84801CD22547F5D100F360FC /* FirestoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84801CD12547F5D100F360FC /* FirestoreController.swift */; };
+		84801CD52547FBB100F360FC /* UserChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84801CD42547FBB100F360FC /* UserChatVC.swift */; };
+		84801CD72547FBDC00F360FC /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84801CD62547FBDC00F360FC /* Chat.storyboard */; };
 		8481F9FD2500AA9A00AB6EFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481F9FC2500AA9A00AB6EFB /* AppDelegate.swift */; };
 		8481F9FF2500AA9A00AB6EFB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481F9FE2500AA9A00AB6EFB /* SceneDelegate.swift */; };
 		8481FA062500AA9B00AB6EFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8481FA052500AA9B00AB6EFB /* Assets.xcassets */; };
@@ -402,6 +404,8 @@
 		847BC424250796CB00EEEFDC /* ResetPasswordVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordVM.swift; sourceTree = "<group>"; };
 		847C35A72535689B009F1ACF /* OffersDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffersDetailVM.swift; sourceTree = "<group>"; };
 		84801CD12547F5D100F360FC /* FirestoreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreController.swift; sourceTree = "<group>"; };
+		84801CD42547FBB100F360FC /* UserChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserChatVC.swift; sourceTree = "<group>"; };
+		84801CD62547FBDC00F360FC /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
 		8481F9F92500AA9A00AB6EFB /* ArabianTyres.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArabianTyres.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8481F9FC2500AA9A00AB6EFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8481F9FE2500AA9A00AB6EFB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -1075,6 +1079,14 @@
 			path = FirestoreController;
 			sourceTree = "<group>";
 		};
+		84801CD32547FB7900F360FC /* ChatVC */ = {
+			isa = PBXGroup;
+			children = (
+				84801CD42547FBB100F360FC /* UserChatVC.swift */,
+			);
+			path = ChatVC;
+			sourceTree = "<group>";
+		};
 		8481F9F02500AA9A00AB6EFB = {
 			isa = PBXGroup;
 			children = (
@@ -1171,10 +1183,11 @@
 		8481FA142500B9EC00AB6EFB /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				8481FA7A2500CC2C00AB6EFB /* BaseVC.swift */,
+				84801CD32547FB7900F360FC /* ChatVC */,
 				84303E6A25064AF2000BA5C3 /* UnderDevelopmentVC */,
 				8481FA832500EE1500AB6EFB /* PostloginVC */,
 				8481FA822500EE0600AB6EFB /* PreloginVC */,
-				8481FA7A2500CC2C00AB6EFB /* BaseVC.swift */,
 				84C82F6225347A190014CD4A /* OffersDetailVC */,
 				843D4B9C25305C3300D72D2F /* UserAllOffersVC */,
 				84144F21252C481F00D6572F /* UserAllRequestVC */,
@@ -1215,6 +1228,7 @@
 				A4443863251381F700114A75 /* UserHomeScreen.storyboard */,
 				844EB6ED25148319003A6E3F /* UserRequest.storyboard */,
 				A43B53A42524B21300447B24 /* GarageRequest.storyboard */,
+				84801CD62547FBDC00F360FC /* Chat.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1973,6 +1987,7 @@
 				8481FAA1250143B500AB6EFB /* NunitoSans-LightItalic.ttf in Resources */,
 				8481FA8B2501081000AB6EFB /* TutorialCollCell.xib in Resources */,
 				84144F28252C4AAD00D6572F /* MyServiceTableCell.xib in Resources */,
+				84801CD72547FBDC00F360FC /* Chat.storyboard in Resources */,
 				8481FA9F250143AB00AB6EFB /* NunitoSans-Light.ttf in Resources */,
 				A49B7D4D251125AC0057239B /* FacilityCollectionViewCell.xib in Resources */,
 				844EB6EE25148319003A6E3F /* UserRequest.storyboard in Resources */,
@@ -2162,6 +2177,7 @@
 				8481FA5D2500BF7100AB6EFB /* AppEnums.swift in Sources */,
 				84558EEC252F09D800BFF8C6 /* SocketEmitter.swift in Sources */,
 				84C82F6425347A4C0014CD4A /* OffersDetailVC.swift in Sources */,
+				84801CD52547FBB100F360FC /* UserChatVC.swift in Sources */,
 				A413B9762509F0950004C534 /* GarageRegistrationDetailCell.swift in Sources */,
 				8481FA252500BB6400AB6EFB /* Webservice+EndPoints.swift in Sources */,
 				A4A6DEE9251A123800564020 /* GarageExploreVC.swift in Sources */,

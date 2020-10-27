@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CMp-XE-JrL">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -39,34 +40,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WyH-1x-1ck" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1084.0579710144928" y="128.57142857142856"/>
-        </scene>
-        <!--SettingVC-->
-        <scene sceneID="792-0r-2sL">
-            <objects>
-                <viewController storyboardIdentifier="SettingVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="N8h-8O-u5V" customClass="SettingVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="j1D-oH-KJK">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Under Development" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wbY-O5-qE5">
-                                <rect key="frame" x="128.5" y="417" width="157" height="23.5"/>
-                                <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="wbY-O5-qE5" firstAttribute="centerY" secondItem="AcS-9e-heE" secondAttribute="centerY" id="qeD-RX-h2h"/>
-                            <constraint firstItem="wbY-O5-qE5" firstAttribute="centerX" secondItem="AcS-9e-heE" secondAttribute="centerX" id="rgE-hd-UVx"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="AcS-9e-heE"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="KP5-7U-RmF"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VRw-XV-cqt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1084.0579710144928" y="810.9375"/>
         </scene>
         <!--HomeVC-->
         <scene sceneID="xTQ-vG-Aa1">
@@ -256,12 +229,22 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="N8h-8O-u5V" kind="relationship" relationship="rootViewController" id="W4R-5C-Eci"/>
+                        <segue destination="0Gr-Id-rde" kind="relationship" relationship="rootViewController" id="Gpc-VY-No7"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7YU-sS-4Ya" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="173.91304347826087" y="810.9375"/>
+        </scene>
+        <!--UserChatVC-->
+        <scene sceneID="SoC-Gh-zQG">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Chat" referencedIdentifier="UserChatVC" id="0Gr-Id-rde" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="gv1-ic-Fpa"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6cg-fK-COA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1176" y="707"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Diz-Wd-P6p">
