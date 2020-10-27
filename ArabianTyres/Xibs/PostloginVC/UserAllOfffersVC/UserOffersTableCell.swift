@@ -69,19 +69,25 @@ class UserOffersTableCell: UITableViewCell {
 //        let distanceInMiles = self.getMiles(meters: model.distance ?? 0.0)
 //        distanceValueLbl.attributedText =  getAttributedString(value: "\(distanceInMiles.truncate(places: 3))",attributedLabel: distanceValueLbl)
 //
+      
         let distance = model.distance ?? 0.0
         distanceValueLbl.attributedText =  getAttributedString(value: "\(distance.truncate(places: 3))",attributedLabel: distanceValueLbl)
         offerTitleLbl.text = model.garageName
         quantityValueLbl.text = model.getMinAmount().1.description
         BAValueLbl.attributedText = getAttributedString(value: model.getMinAmount().0.description,attributedLabel: BAValueLbl)
-       
+        
         let totalAmount = String((model.getMinAmount().1) * Int(model.getMinAmount().0))
         tAValueLbl.attributedText = getAttributedString(value: totalAmount,attributedLabel: tAValueLbl)
         logoImgView.setImage_kf(imageString: model.logo ?? "")
-//        model.status != "accepted" ?  : ()
+        //        model.status != "accepted" ?  : ()
         if isBidAccepted {
-            model.status == "accepted" ? () : changeWithBlurView()
+            model.status == "accepted" ? changeWithBlurView(isAdded: true) : changeWithBlurView(isAdded: false)
             viewProposalBtn.setTitle(model.status == "accepted" ? "Chat" : "View Proposal", for: .normal)
+        }
+        else {
+            changeWithBlurView(isAdded: true)
+            viewProposalBtn.setTitle("View Proposal", for: .normal)
+            
         }
     }
     
@@ -118,28 +124,30 @@ class UserOffersTableCell: UITableViewCell {
         return str
     }
 
-    func changeWithBlurView() {
-        imgBlurView.isHidden = false
-        blurView.isHidden = false
-        ratingImgView.backgroundColor =  #colorLiteral(red: 0.7642653584, green: 0.7569509149, blue: 0.7566949725, alpha: 1)
-        ratingView.backgroundColor = #colorLiteral(red: 0.9171934724, green: 0.9099001288, blue: 0.9096190333, alpha: 1)
-        offerTitleLbl.textColor =   #colorLiteral(red: 0.1098039216, green: 0.1137254902, blue: 0.1411764706, alpha: 0.5)
-        offerSubTitleLbl.textColor =  #colorLiteral(red: 0.3294117647, green: 0.337254902, blue: 0.3607843137, alpha: 0.5)
-        quantityLbl.textColor =   #colorLiteral(red: 0.7647058824, green: 0.7568627451, blue: 0.7568627451, alpha: 1)
-        bALbl.textColor =   #colorLiteral(red: 0.7642653584, green: 0.7569509149, blue: 0.7566949725, alpha: 1)
-        distanceLbl.textColor =   #colorLiteral(red: 0.7642653584, green: 0.7569509149, blue: 0.7566949725, alpha: 1)
-        tALbl.textColor =   #colorLiteral(red: 0.7642653584, green: 0.7569509149, blue: 0.7566949725, alpha: 1)
-        quantityValueLbl.textColor =   #colorLiteral(red: 0.1098039216, green: 0.1137254902, blue: 0.1411764706, alpha: 0.5)
-        BAValueLbl.textColor =   #colorLiteral(red: 0.1098039216, green: 0.1137254902, blue: 0.1411764706, alpha: 0.5)
-        distanceValueLbl.textColor =   #colorLiteral(red: 0.1098039216, green: 0.1137254902, blue: 0.1411764706, alpha: 0.5)
-        tAValueLbl.textColor =   #colorLiteral(red: 0.1098039216, green: 0.1137254902, blue: 0.1411764706, alpha: 0.5)
-        ratingLbl.textColor =  #colorLiteral(red: 0.1490196078, green: 0.1490196078, blue: 0.1490196078, alpha: 0.5)
+    func changeWithBlurView(isAdded: Bool) {
+        imgBlurView.isHidden = isAdded
+        blurView.isUserInteractionEnabled = isAdded
+        ratingImgView.backgroundColor =  isAdded ? #colorLiteral(red: 0.5411764706, green: 0.5843137255, blue: 0.6196078431, alpha: 0.8) : #colorLiteral(red: 0.7642653584, green: 0.7569509149, blue: 0.7566949725, alpha: 1)
+        ratingView.backgroundColor =  isAdded ? #colorLiteral(red: 0.5411764706, green: 0.5843137255, blue: 0.6196078431, alpha: 0.15) : #colorLiteral(red: 0.9171934724, green: 0.9099001288, blue: 0.9096190333, alpha: 1)
+        offerTitleLbl.textColor =  isAdded ? AppColors.fontPrimaryColor : #colorLiteral(red: 0.1098039216, green: 0.1137254902, blue: 0.1411764706, alpha: 0.5)
+        offerSubTitleLbl.textColor = isAdded ? AppColors.fontSecondaryColor : #colorLiteral(red: 0.3294117647, green: 0.337254902, blue: 0.3607843137, alpha: 0.5)
+        quantityLbl.textColor =   isAdded ? AppColors.fontTertiaryColor :#colorLiteral(red: 0.7647058824, green: 0.7568627451, blue: 0.7568627451, alpha: 1)
+        bALbl.textColor =   isAdded ? AppColors.fontTertiaryColor : #colorLiteral(red: 0.7642653584, green: 0.7569509149, blue: 0.7566949725, alpha: 1)
+        distanceLbl.textColor =  isAdded ? AppColors.fontTertiaryColor : #colorLiteral(red: 0.7642653584, green: 0.7569509149, blue: 0.7566949725, alpha: 1)
+        tALbl.textColor =   isAdded ? AppColors.fontTertiaryColor : #colorLiteral(red: 0.7642653584, green: 0.7569509149, blue: 0.7566949725, alpha: 1)
+        quantityValueLbl.textColor = isAdded ? AppColors.fontPrimaryColor :  #colorLiteral(red: 0.1098039216, green: 0.1137254902, blue: 0.1411764706, alpha: 0.5)
+        if !isAdded {
+            BAValueLbl.textColor =  #colorLiteral(red: 0.1098039216, green: 0.1137254902, blue: 0.1411764706, alpha: 0.5)
+            distanceValueLbl.textColor =  #colorLiteral(red: 0.1098039216, green: 0.1137254902, blue: 0.1411764706, alpha: 0.5)
+            tAValueLbl.textColor =  #colorLiteral(red: 0.1098039216, green: 0.1137254902, blue: 0.1411764706, alpha: 0.5)
+        }
+        ratingLbl.textColor = isAdded ? #colorLiteral(red: 0.5411764706, green: 0.5843137255, blue: 0.6196078431, alpha: 0.8) : #colorLiteral(red: 0.1490196078, green: 0.1490196078, blue: 0.1490196078, alpha: 0.5)
         
-        dataContainerView.backgroundColor = #colorLiteral(red: 0.9647058824, green: 0.968627451, blue: 0.9764705882, alpha: 1)
-        viewProposalBtn.backgroundColor = #colorLiteral(red: 0.6348647475, green: 0.6275323629, blue: 0.6272975802, alpha: 1)
+        dataContainerView.backgroundColor = isAdded ? #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1) : #colorLiteral(red: 0.9647058824, green: 0.968627451, blue: 0.9764705882, alpha: 1)
+        viewProposalBtn.backgroundColor = isAdded ? AppColors.appRedColor : #colorLiteral(red: 0.6348647475, green: 0.6275323629, blue: 0.6272975802, alpha: 1)
         viewProposalBtn.setTitleColor( #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
         rejectBtn.backgroundColor =  #colorLiteral(red: 0.9803921569, green: 0.9803921569, blue: 0.9803921569, alpha: 1)
-        rejectBtn.setTitleColor( #colorLiteral(red: 0.6348647475, green: 0.6275323629, blue: 0.6272975802, alpha: 1), for: .normal)
+        rejectBtn.setTitleColor(isAdded ? AppColors.appRedColor : #colorLiteral(red: 0.6348647475, green: 0.6275323629, blue: 0.6272975802, alpha: 1), for: .normal)
         rejectBtn.borderColor =  #colorLiteral(red: 0.6348647475, green: 0.6275323629, blue: 0.6272975802, alpha: 1)
         
     }

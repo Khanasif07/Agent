@@ -171,9 +171,23 @@ extension UserAllOffersVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        AppRouter.presentOfferDetailVC(vc: self,bidId: self.viewModel.userBidListingArr[indexPath.row].id, garageName: self.viewModel.userBidListingArr[indexPath.row].garageName ?? "", completion: {
-            self.hitApi(loader: true)
-        })
+        let isAccepted = viewModel.userBidListingArr.contains { (model) -> Bool in
+            return model.status == "accepted"
+        }
+        if isAccepted {
+            if viewModel.userBidListingArr[indexPath.row].status == "accepted" {
+                AppRouter.presentOfferDetailVC(vc: self,bidId: self.viewModel.userBidListingArr[indexPath.row].id, garageName: self.viewModel.userBidListingArr[indexPath.row].garageName ?? "", completion: {
+                    self.hitApi(loader: true)
+                })
+            }
+            else {
+                return
+            }
+        }else {
+            AppRouter.presentOfferDetailVC(vc: self,bidId: self.viewModel.userBidListingArr[indexPath.row].id, garageName: self.viewModel.userBidListingArr[indexPath.row].garageName ?? "", completion: {
+                self.hitApi(loader: true)
+            })
+        }
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
