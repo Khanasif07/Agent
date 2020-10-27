@@ -29,19 +29,6 @@ class AllRequestVC: BaseVC {
         initialSetup()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.tabBarController?.tabBar.isHidden = false
-        self.tabBarController?.tabBar.isTranslucent = false
-        if !clearFilterOnTabChange {
-        clearFilterOnTabChange = !clearFilterOnTabChange
-        } else {
-            filterApplied = false
-            filterArr = []
-            hitApi()
-        }
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
