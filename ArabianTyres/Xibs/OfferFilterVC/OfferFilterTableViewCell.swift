@@ -86,7 +86,7 @@ extension OfferFilterTableViewCell: UICollectionViewDelegate,UICollectionViewDat
             let cell = collectionView.dequeueCell(with: DistanceSliderCollViewCell.self, indexPath: indexPath)
            
             cell.rangeSlider.selectedMinimum = minValue.isEmpty ? 1 : (minValue as NSString).floatValue
-            cell.rangeSlider.selectedMaximum = maxValue.isEmpty ? 5 : (maxValue as NSString).floatValue
+            cell.rangeSlider.selectedMaximum = maxValue.isEmpty ? 10 : (maxValue as NSString).floatValue
 
             cell.sliderValueChanged = {[weak self] (sliderMinValue,sliderMaxValue )in
                 self?.selectedDistance?(sliderMinValue, sliderMaxValue)
