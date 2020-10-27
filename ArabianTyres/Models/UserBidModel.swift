@@ -42,6 +42,15 @@ struct UserBidModel: Codable {
         logo = ""
         garageAddress = ""
     }
+    
+    func getMinAmount() -> (Double, Int){
+        var bidSortedArr: [BidDatum] = []
+        bidSortedArr = bidData.sorted { (first, second) -> Bool in
+            return first.amount < second.amount
+        }
+        
+        return (bidSortedArr.first?.amount ?? 0.0,bidSortedArr.first?.quantity ?? 0)
+    }
 }
 
 // MARK: - BidDatum

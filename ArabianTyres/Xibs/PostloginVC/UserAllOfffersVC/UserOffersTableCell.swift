@@ -72,10 +72,10 @@ class UserOffersTableCell: UITableViewCell {
         let distance = model.distance ?? 0.0
         distanceValueLbl.attributedText =  getAttributedString(value: "\(distance.truncate(places: 3))",attributedLabel: distanceValueLbl)
         offerTitleLbl.text = model.garageName
-        quantityValueLbl.text = model.bidData.first?.quantity.description
-        BAValueLbl.attributedText = getAttributedString(value: model.bidData.first?.amount.description ?? "",attributedLabel: BAValueLbl)
+        quantityValueLbl.text = model.getMinAmount().1.description
+        BAValueLbl.attributedText = getAttributedString(value: model.getMinAmount().0.description,attributedLabel: BAValueLbl)
        
-        let totalAmount = String((model.bidData.first?.quantity ?? 0) * Int(model.bidData.first?.amount ?? 0))
+        let totalAmount = String((model.getMinAmount().1) * Int(model.getMinAmount().0))
         tAValueLbl.attributedText = getAttributedString(value: totalAmount,attributedLabel: tAValueLbl)
         logoImgView.setImage_kf(imageString: model.logo ?? "")
 //        model.status != "accepted" ?  : ()
