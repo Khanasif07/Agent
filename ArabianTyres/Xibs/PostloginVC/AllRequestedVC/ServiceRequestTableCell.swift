@@ -110,7 +110,13 @@ class ServiceRequestTableCell: UITableViewCell {
         
         if model.bidStatus == .bidFinalsed || model.bidStatus == .bidPlaced {
             bidAmountStackView.isHidden = false
-            bidAmountValueLbl.text = String(Int(model.bidData?.first?.amount ?? 0.0) * (model.bidData?.first?.quantity ?? 0))
+            var str: NSMutableAttributedString = NSMutableAttributedString()
+            str = NSMutableAttributedString(string: "\(Int(model.bidData?.first?.amount ?? 0.0) * (model.bidData?.first?.quantity ?? 0))", attributes: [
+                .font: AppFonts.NunitoSansBold.withSize(17.0),
+                .foregroundColor: AppColors.successGreenColor
+            ])
+            str.append(NSAttributedString(string: "SAR", attributes: [NSAttributedString.Key.foregroundColor: AppColors.successGreenColor,NSAttributedString.Key.font: AppFonts.NunitoSansSemiBold.withSize(12.0)]))
+            bidAmountValueLbl.attributedText = str
         }else {
             bidAmountStackView.isHidden = true
         }

@@ -58,9 +58,11 @@ class GarageAllRequestVC: BaseVC {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
         if !allRequestVC.clearFilterOnTabChange {
+            filterBtn.isSelected = allRequestVC.filterApplied
             allRequestVC.clearFilterOnTabChange = !allRequestVC.clearFilterOnTabChange
         } else {
             allRequestVC.filterApplied = false
+            filterBtn.isSelected = allRequestVC.filterApplied
             filterArr = [.allRequestServiceType([],false), .allRequestByStatus([],false)]
             allRequestVC.hitApi()
         }
