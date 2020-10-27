@@ -30,6 +30,7 @@ class ServiceRequestTableCell: UITableViewCell {
     @IBOutlet weak var bidAmountStackView: UIStackView!
     @IBOutlet weak var bidAmountLbl: UILabel!
     @IBOutlet weak var bidAmountValueLbl: UILabel!
+    @IBOutlet weak var btnStackView: UIStackView!
 
     
     var rejectRequestBtnTapped: (()->())?

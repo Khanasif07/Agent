@@ -49,7 +49,7 @@ class GarageHomeVM {
     // MARK: Functions
     //=================================
     func getGarageHomeData(params: JSONDictionary,loader: Bool = false) {
-        WebServices.getGarageHomeData(parameters: params, success: { [weak self] (json) in
+        WebServices.getGarageHomeData(parameters: params,loader: loader, success: { [weak self] (json) in
             guard let `self` = self else { return }
             let msg = json[ApiKey.message].stringValue
             self.garageHomeModel = GarageHomeModel.init(json[ApiKey.data])

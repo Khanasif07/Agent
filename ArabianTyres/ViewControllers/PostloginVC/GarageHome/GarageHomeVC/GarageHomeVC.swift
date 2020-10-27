@@ -65,7 +65,7 @@ extension GarageHomeVC {
     private func initialSetup() {
         NotificationCenter.default.addObserver(self, selector: #selector(serviceRequestReceived), name: Notification.Name.ServiceRequestReceived, object: nil)
         self.viewModel.delegate = self
-        self.viewModel.getGarageHomeData(params: [:])
+        self.viewModel.getGarageHomeData(params: [:],loader: true)
         self.dataSetUp()
         self.tableViewSetUp()
         self.getCurrentTime()
