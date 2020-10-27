@@ -254,10 +254,13 @@ extension LoginVC: SignInVMDelegate {
                 SocketIOManager.shared.establishConnection()
             }
         }
-        if isCurrentUserType == .user {
-            AppRouter.goToUserHome()
-        } else {
-            AppRouter.goToGarageHome()
+        switch isCurrentUserType {
+        case .user:
+             AppRouter.goToUserHome()
+        case .garage:
+             AppRouter.goToGarageHome()
+        default:
+             AppRouter.goToUserHome()
         }
     }
     
