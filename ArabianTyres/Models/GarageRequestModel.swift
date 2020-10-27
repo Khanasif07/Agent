@@ -71,7 +71,7 @@ enum BidStatus: String, Codable{
         case .bidFinalsed:
             return "Bid Finalised"
         case .bidClosed:
-            return "Biding Closed"
+            return "Closed for Bid"
         case .bidRejected:
             return "Bid Rejected"
         }
