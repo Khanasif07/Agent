@@ -47,8 +47,11 @@ class AllRequestVC: BaseVC {
 extension AllRequestVC {
     
     private func initialSetup() {
+        NotificationCenter.default.addObserver(self, selector: #selector(bidAcceptedRejected), name: Notification.Name.BidAcceptedRejected, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(placeBidRejectBidSuccess), name: Notification.Name.PlaceBidRejectBidSuccess, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(serviceRequestReceived), name: Notification.Name.ServiceRequestReceived, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(requestAccepted), name: Notification.Name.RequestAccepted, object: nil)
+        
         viewModel.delegate = self
         self.mainTableView.delegate = self
         self.mainTableView.dataSource = self
@@ -105,6 +108,13 @@ extension AllRequestVC {
         hitApi(params: [ApiKey.page:"1", ApiKey.limit: "10"])
     }
     
+    @objc func bidAcceptedRejected(){
+        hitApi(params: [ApiKey.page:"1", ApiKey.limit: "10"])
+    }
+    
+    @objc func requestAccepted(){
+        hitApi(params: [ApiKey.page:"1", ApiKey.limit: "10"])
+    }
 }
 
 // MARK: - Extension For TableView

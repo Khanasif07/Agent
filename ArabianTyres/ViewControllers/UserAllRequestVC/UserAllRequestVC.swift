@@ -75,6 +75,8 @@ extension UserAllRequestVC {
         NotificationCenter.default.addObserver(self, selector: #selector(newBidSocketSuccess), name: Notification.Name.NewBidSocketSuccess, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(userServiceAcceptRejectSuccess), name: Notification.Name.UserServiceAcceptRejectSuccess, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ServiceRequestSuccess), name: Notification.Name.ServiceRequestSuccess, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(requestRejected), name: Notification.Name.RequestRejected, object: nil)
+        
         self.filterBtn.tintColor = .black
         self.titleLbl.text = LocalizedString.my_Services.localized
         self.tableViewSetUp()
@@ -147,11 +149,27 @@ extension UserAllRequestVC {
     }
     
     @objc func userServiceAcceptRejectSuccess(){
-         self.hitListingApi()
+        if filterApplied {
+            getFilterData(data: filterArr,loader: false)
+        }else {
+            self.hitListingApi()
+        }
     }
     
     @objc func newBidSocketSuccess(){
-        self.hitListingApi()
+        if filterApplied {
+            getFilterData(data: filterArr,loader: false)
+        }else {
+            self.hitListingApi()
+        }
+    }
+    
+    @objc func requestRejected(){
+        if filterApplied {
+            getFilterData(data: filterArr,loader: false)
+        }else {
+            self.hitListingApi()
+        }
     }
 }
 

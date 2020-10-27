@@ -62,6 +62,7 @@ class UserAllOffersVC: BaseVC {
 extension UserAllOffersVC {
     
     private func initialSetup() {
+        NotificationCenter.default.addObserver(self, selector: #selector(newBidSocketSuccess), name: Notification.Name.NewBidSocketSuccess, object: nil)
         setupTextAndFont()
         setupTableView()
         viewModel.delegate = self
@@ -120,6 +121,10 @@ extension UserAllOffersVC {
     
     func getMeters(miles: Int) -> Double {
         return Double(miles) * 1609.344
+    }
+    
+    @objc func newBidSocketSuccess(){
+        self.hitApi()
     }
 }
 

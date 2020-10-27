@@ -17,4 +17,8 @@ extension Notification.Name {
     static let PlaceBidRejectBidSuccess = Notification.Name("PlaceBidRejectBidSuccess")
     static let UserServiceAcceptRejectSuccess = Notification.Name("UserServiceAcceptRejectSuccess")
     static let NewBidSocketSuccess = Notification.Name("NewBidSocketSuccess")
+    static let BidAcceptedRejected = Notification.Name("bidAcceptedRejected")
+    static let RequestRejected = Notification.Name("RequestRejected")
+    static let RequestAccepted = Notification.Name("RequestAccepted")
+    
 }

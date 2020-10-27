@@ -127,13 +127,13 @@ class GarageServiceRequestVC: BaseVC {
 extension GarageServiceRequestVC {
     
     private func initialSetup() {
+        NotificationCenter.default.addObserver(self, selector: #selector(bidAcceptedRejected), name: Notification.Name.BidAcceptedRejected, object: nil)
+         NotificationCenter.default.addObserver(self, selector: #selector(requestAccepted), name: Notification.Name.RequestAccepted, object: nil)
         viewModel.delegate = self
         tableViewSetUp()
         textSetUp()
+        bidStatusSetUp()
         hitApi()
-        placeBidBtn.isHidden = bidStatus == .bidFinalsed
-        placeBidBtn.setTitle((bidStatus == .bidPlaced) ? "Edit" : "Place Bid", for: .normal)
-        titleLbl.text =  self.viewModel.requestType == "Tyres" ? LocalizedString.tyreServiceRequest.localized : self.viewModel.requestType == "Battery" ? LocalizedString.batteryServiceRequest.localized : LocalizedString.oilServiceRequest.localized
     }
     
     private func tableViewSetUp(){
@@ -148,6 +148,23 @@ extension GarageServiceRequestVC {
     private func textSetUp(){
         requestBtn.isBorderSelected = true
         placeBidBtn.isEnabled = true
+    }
+    
+    private func bidStatusSetUp(){
+        switch bidStatus {
+        case .bidFinalsed:
+            placeBidBtn.isHidden  = true
+        case .bidClosed:
+            placeBidBtn.isHidden  = true
+            requestBtn.isHidden = true
+            self.mainTableView.tableFooterView?.height = 0
+        case .bidPlaced:
+            placeBidBtn.setTitle("Edit", for: .normal)
+        default:
+            printDebug("Do nothing")
+        }
+        placeBidBtn.setTitle((bidStatus == .bidPlaced) ? "Edit" : "Place Bid", for: .normal)
+        titleLbl.text =  self.viewModel.requestType == "Tyres" ? LocalizedString.tyreServiceRequest.localized : self.viewModel.requestType == "Battery" ? LocalizedString.batteryServiceRequest.localized : LocalizedString.oilServiceRequest.localized
     }
     
     private func hitApi(){
@@ -188,6 +205,15 @@ extension GarageServiceRequestVC {
             }
         }
     }
+    
+    @objc func bidAcceptedRejected(){
+        self.hitApi()
+    }
+    
+    @objc func requestAccepted(){
+        self.hitApi()
+    }
+    
 }
 
 // MARK: - Extension For TableView
@@ -313,7 +339,7 @@ extension GarageServiceRequestVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if sectionType[indexPath.section] == .brandListing && placeBidBtn.titleLabel?.text != "Edit" && bidStatus != .bidFinalsed {
+        if sectionType[indexPath.section] == .brandListing && placeBidBtn.titleLabel?.text != "Edit" && bidStatus != .bidFinalsed && bidStatus != .bidClosed{
             let index = self.viewModel.countryBrandsDict.firstIndex { (model) -> Bool in
                 Array(model.keys)[0] == self.selectedCountry
             }

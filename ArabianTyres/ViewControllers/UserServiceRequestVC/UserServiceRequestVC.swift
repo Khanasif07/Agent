@@ -108,6 +108,7 @@ class UserServiceRequestVC: BaseVC {
 extension UserServiceRequestVC {
     
     private func initialSetup() {
+        NotificationCenter.default.addObserver(self, selector: #selector(requestRejected), name: Notification.Name.RequestRejected, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(newBidSocketSuccess), name: Notification.Name.NewBidSocketSuccess, object: nil)
         viewModel.delegate = self
         textSetUp()
@@ -131,6 +132,10 @@ extension UserServiceRequestVC {
     }
     
     @objc func newBidSocketSuccess(){
+        viewModel.getUserMyRequestDetailData(params: [ApiKey.requestId: self.viewModel.requestId])
+    }
+    
+    @objc func requestRejected(){
         viewModel.getUserMyRequestDetailData(params: [ApiKey.requestId: self.viewModel.requestId])
     }
     

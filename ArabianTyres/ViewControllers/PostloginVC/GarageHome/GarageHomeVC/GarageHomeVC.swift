@@ -63,6 +63,7 @@ class GarageHomeVC: BaseVC {
 extension GarageHomeVC {
     
     private func initialSetup() {
+        NotificationCenter.default.addObserver(self, selector: #selector(bidAcceptedRejected), name: Notification.Name.BidAcceptedRejected, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(serviceRequestReceived), name: Notification.Name.ServiceRequestReceived, object: nil)
         self.viewModel.delegate = self
         self.viewModel.getGarageHomeData(params: [:],loader: true)
@@ -80,7 +81,7 @@ extension GarageHomeVC {
         self.currentDateLbl.textColor = AppColors.fontTertiaryColor
         self.dataArray = [GarageDataValue(requestCount: self.viewModel.garageHomeModel.acceptedRequets, name: LocalizedString.requestAccepted.localized,requestColor: UIColor(r: 6, g: 130, b: 191, alpha: 1.0),backgroundColor: UIColor(r: 230, g: 240, b: 245, alpha: 1.0) ),
                           GarageDataValue(requestCount: self.viewModel.garageHomeModel.newRequests, name: LocalizedString.newRequest.localized,requestColor: UIColor(r: 52 , g: 88, b: 158, alpha: 1.0),backgroundColor: UIColor(r: 230, g: 240, b: 245, alpha: 1.0)),
-                          GarageDataValue(requestCount: 10, name: LocalizedString.service_sheduled_for_today.localized,requestColor: UIColor(r: 210, g: 103, b: 9, alpha: 1.0),backgroundColor: UIColor(r: 253 , g: 237, b: 223, alpha: 1.0)),GarageDataValue(requestCount: 200, name:LocalizedString.today_Revenue.localized,requestColor: UIColor(r: 44, g: 182, b: 16, alpha: 1.0),backgroundColor: UIColor(r: 239 , g: 246, b: 231, alpha: 1.0))]
+                          GarageDataValue(requestCount: 0, name: LocalizedString.service_sheduled_for_today.localized,requestColor: UIColor(r: 210, g: 103, b: 9, alpha: 1.0),backgroundColor: UIColor(r: 253 , g: 237, b: 223, alpha: 1.0)),GarageDataValue(requestCount: 0, name:LocalizedString.today_Revenue.localized,requestColor: UIColor(r: 44, g: 182, b: 16, alpha: 1.0),backgroundColor: UIColor(r: 239 , g: 246, b: 231, alpha: 1.0))]
     }
     
     private func tableViewSetUp(){
@@ -101,6 +102,10 @@ extension GarageHomeVC {
     }
     
     @objc func serviceRequestReceived() {
+        self.viewModel.getGarageHomeData(params: [:])
+    }
+    
+    @objc func  bidAcceptedRejected() {
         self.viewModel.getGarageHomeData(params: [:])
     }
 }
@@ -151,7 +156,7 @@ extension GarageHomeVC:  GarageHomeVMDelegate{
     func getGarageHomeDataSuccess(msg: String) {
         self.dataArray = [GarageDataValue(requestCount: self.viewModel.garageHomeModel.acceptedRequets, name: LocalizedString.requestAccepted.localized,requestColor: UIColor(r: 6, g: 130, b: 191, alpha: 1.0),backgroundColor: UIColor(r: 230, g: 240, b: 245, alpha: 1.0) ),
                           GarageDataValue(requestCount: self.viewModel.garageHomeModel.newRequests, name: LocalizedString.newRequest.localized,requestColor: UIColor(r: 52 , g: 88, b: 158, alpha: 1.0),backgroundColor: UIColor(r: 230, g: 240, b: 245, alpha: 1.0)),
-                          GarageDataValue(requestCount: 10, name: LocalizedString.service_sheduled_for_today.localized,requestColor: UIColor(r: 210, g: 103, b: 9, alpha: 1.0),backgroundColor: UIColor(r: 253 , g: 237, b: 223, alpha: 1.0)),GarageDataValue(requestCount: 200, name:LocalizedString.today_Revenue.localized,requestColor: UIColor(r: 44, g: 182, b: 16, alpha: 1.0),backgroundColor: UIColor(r: 239 , g: 246, b: 231, alpha: 1.0))]
+                          GarageDataValue(requestCount: 0, name: LocalizedString.service_sheduled_for_today.localized,requestColor: UIColor(r: 210, g: 103, b: 9, alpha: 1.0),backgroundColor: UIColor(r: 253 , g: 237, b: 223, alpha: 1.0)),GarageDataValue(requestCount: 0, name:LocalizedString.today_Revenue.localized,requestColor: UIColor(r: 44, g: 182, b: 16, alpha: 1.0),backgroundColor: UIColor(r: 239 , g: 246, b: 231, alpha: 1.0))]
         self.mainCollView.reloadData()
     }
     
