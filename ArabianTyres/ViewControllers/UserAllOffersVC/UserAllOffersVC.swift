@@ -63,6 +63,7 @@ extension UserAllOffersVC {
     
     private func initialSetup() {
         NotificationCenter.default.addObserver(self, selector: #selector(newBidSocketSuccess), name: Notification.Name.NewBidSocketSuccess, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(userServiceAcceptRejectSuccess), name: Notification.Name.UserServiceAcceptRejectSuccess, object: nil)
         setupTextAndFont()
         setupTableView()
         viewModel.delegate = self
@@ -126,6 +127,11 @@ extension UserAllOffersVC {
     @objc func newBidSocketSuccess(){
         self.hitApi()
     }
+    
+    @objc func userServiceAcceptRejectSuccess(){
+        self.hitApi()
+    }
+    
 }
 
 // MARK: - Extension For TableView
@@ -205,7 +211,6 @@ extension UserAllOffersVC : UITableViewDelegate, UITableViewDataSource {
 //================================
 extension UserAllOffersVC : UserAllOfferVMDelegate {
     func rejectUserBidDataSuccess(message: String) {
-         NotificationCenter.default.post(name: Notification.Name.UserServiceAcceptRejectSuccess, object: nil)
          hitApi()
          mainTableView.reloadData()
     }
