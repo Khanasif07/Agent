@@ -211,6 +211,7 @@ extension UserAllOffersVC : UITableViewDelegate, UITableViewDataSource {
 //================================
 extension UserAllOffersVC : UserAllOfferVMDelegate {
     func rejectUserBidDataSuccess(message: String) {
+         NotificationCenter.default.post(name: Notification.Name.UserServiceAcceptRejectSuccess, object: nil)
          hitApi()
          mainTableView.reloadData()
     }
