@@ -249,6 +249,7 @@
                 <outlet property="bidAmountValueLbl" destination="eZQ-3N-dP2" id="TT2-ts-cMF"/>
                 <outlet property="brandDetailLbl" destination="ZBf-tR-WCI" id="SEQ-EV-hTG"/>
                 <outlet property="brandsLbl" destination="FA6-x9-vOI" id="BcZ-BO-e9J"/>
+                <outlet property="btnStackView" destination="uaJ-Wy-PiP" id="0Ck-Sr-xTa"/>
                 <outlet property="dataContainerView" destination="X2k-1f-60t" id="WRs-qe-bB9"/>
                 <outlet property="logoImgView" destination="4uA-wS-qSS" id="ChR-vf-390"/>
                 <outlet property="placeBidBtn" destination="HCU-Sa-4jQ" id="TIo-LG-vbS"/>
