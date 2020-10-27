@@ -141,6 +141,12 @@ class ServiceRequestTableCell: UITableViewCell {
                 placeBidBtn.isHidden = false
             }
         }
+        
+        if model.bidStatus == .bidClosed {
+            btnStackView.isHidden = true
+        }else {
+            btnStackView.isHidden = false
+        }
     }
     
     func getAttributedString(data : [PreferredBrand]) -> NSMutableAttributedString{
