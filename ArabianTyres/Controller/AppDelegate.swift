@@ -72,7 +72,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate , MessagingDelegate , UNUs
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
-        TyreRequestModel.shared = TyreRequestModel()
         if isUserLoggedin{
             if !(SocketIOManager.isSocketConnected) {
                 SocketIOManager.shared.establishConnection()

@@ -62,7 +62,7 @@ extension GarageServiceBottomCell: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(with: GarageServiceBrandsCell.self, indexPath: indexPath)
-        cell.bindData(brandDataArr[indexPath.row])
+        cell.bindData(brandDataArr[indexPath.row], placeBidBtnStatus: "")
         cell.unitPriceChanged = { [weak self] (unitPrice,sender) in
             guard let `self` = self else { return }
             if  let selectedIndexx = tableView.indexPath(for: cell) {

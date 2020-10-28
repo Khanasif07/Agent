@@ -69,13 +69,13 @@ extension AllRequestVC {
             if filterApplied {
                 viewModel.getGarageRequestData(params: params,loader: loader)
             }else {
-                viewModel.getGarageRequestData(params: [ApiKey.page:"1", ApiKey.limit: "10"])
+                viewModel.getGarageRequestData(params: [ApiKey.page:"1", ApiKey.limit: "20"])
             }
         }
     }
     
     public func getFilterData(data: [FilterScreen],isPullToRefersh :Bool = false, loader: Bool = true) {
-        var dict : JSONDictionary = [ApiKey.page: isPullToRefersh ? "1" : viewModel.currentPage ,ApiKey.limit : "10"]
+        var dict : JSONDictionary = [ApiKey.page: isPullToRefersh ? "1" : viewModel.currentPage ,ApiKey.limit : "20"]
         data.forEach { (type) in
             switch type {
 
@@ -101,19 +101,19 @@ extension AllRequestVC {
     }
     
     @objc func serviceRequestReceived() {
-        hitApi(params: [ApiKey.page:"1", ApiKey.limit: "10"])
+        hitApi(params: [ApiKey.page:"1", ApiKey.limit: "20"])
     }
     
     @objc func placeBidRejectBidSuccess(){
-        hitApi(params: [ApiKey.page:"1", ApiKey.limit: "10"])
+        hitApi(params: [ApiKey.page:"1", ApiKey.limit: "20"])
     }
     
     @objc func bidAcceptedRejected(){
-        hitApi(params: [ApiKey.page:"1", ApiKey.limit: "10"])
+        hitApi(params: [ApiKey.page:"1", ApiKey.limit: "20"])
     }
     
     @objc func requestAccepted(){
-        hitApi(params: [ApiKey.page:"1", ApiKey.limit: "10"])
+        hitApi(params: [ApiKey.page:"1", ApiKey.limit: "20"])
     }
 }
 
@@ -166,7 +166,7 @@ extension AllRequestVC : UITableViewDelegate, UITableViewDataSource {
                 getFilterData(data: filterArr,loader: false)
 
             }else {
-             self.viewModel.getGarageRequestData(params: [ApiKey.page: self.viewModel.currentPage,ApiKey.limit : "10"],loader: false,pagination: true)
+             self.viewModel.getGarageRequestData(params: [ApiKey.page: self.viewModel.currentPage,ApiKey.limit : "20"],loader: false,pagination: true)
             }
         }
     }

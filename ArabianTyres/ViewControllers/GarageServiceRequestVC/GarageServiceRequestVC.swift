@@ -92,9 +92,7 @@ class GarageServiceRequestVC: BaseVC {
         if bidAmountValid {
             switch sender.titleLabel?.text {
             case "Edit":
-                DispatchQueue.main.async {
-                    self.placeBidBtn.setTitle("Place Bid", for: .normal)
-                }
+                self.placeBidBtn.setTitle("Place Bid", for: .normal)
                 self.mainTableView.reloadData()
             default:
                 if bidStatus == .bidPlaced{
@@ -151,6 +149,8 @@ extension GarageServiceRequestVC {
     }
     
     private func bidStatusSetUp(){
+        placeBidBtn.setTitle((bidStatus == .bidPlaced) ? "Edit" : "Place Bid", for: .normal)
+        titleLbl.text =  self.viewModel.requestType == "Tyres" ? LocalizedString.tyreServiceRequest.localized : self.viewModel.requestType == "Battery" ? LocalizedString.batteryServiceRequest.localized : LocalizedString.oilServiceRequest.localized
         switch bidStatus {
         case .bidFinalsed:
             placeBidBtn.isHidden  = true
@@ -159,12 +159,15 @@ extension GarageServiceRequestVC {
             requestBtn.isHidden = true
             self.mainTableView.tableFooterView?.height = 0
         case .bidPlaced:
+            requestBtn.isHidden = false
             placeBidBtn.setTitle("Edit", for: .normal)
+        case .bidRejected:
+            placeBidBtn.isHidden  = false
+            requestBtn.isHidden = false
+            placeBidBtn.setTitle("Place Bid", for: .normal)
         default:
             printDebug("Do nothing")
         }
-        placeBidBtn.setTitle((bidStatus == .bidPlaced) ? "Edit" : "Place Bid", for: .normal)
-        titleLbl.text =  self.viewModel.requestType == "Tyres" ? LocalizedString.tyreServiceRequest.localized : self.viewModel.requestType == "Battery" ? LocalizedString.batteryServiceRequest.localized : LocalizedString.oilServiceRequest.localized
     }
     
     private func hitApi(){
@@ -299,12 +302,7 @@ extension GarageServiceRequestVC : UITableViewDelegate, UITableViewDataSource {
             }
             guard let selectedIndexx  = indexx else { return UITableViewCell()}
             let brandDataArr = self.viewModel.countryBrandsDict[selectedIndexx][self.selectedCountry] ?? [PreferredBrand]()
-            cell.bindData(brandDataArr[indexPath.row], bidStatus: self.bidStatus)
-            if placeBidBtn.titleLabel?.text == "Place Bid" && !placeBidBtn.isHidden{
-                 cell.rightIcon.isHidden = true
-            }
-            cell.unitPrizeTextFiled.isUserInteractionEnabled = placeBidBtn.titleLabel?.text != "Edit"
-//            cell.unitPrizeTextFiled.isUserInteractionEnabled = bidStatus != .bidFinalsed
+            cell.bindData(brandDataArr[indexPath.row], bidStatus: self.bidStatus,placeBidBtnStatus: placeBidBtn.titleLabel?.text ?? "")
             cell.unitPriceChanged = { [weak self] (unitPrice,sender) in
                 guard let `self` = self else { return }
                 if  let SelectedIndexPath = tableView.indexPath(for: cell) {
@@ -407,8 +405,10 @@ extension GarageServiceRequestVC :GarageServiceRequestVMDelegate {
     }
     
     func getGarageDetailSuccess(message: String) {
-        updateDataSource()
+        self.bidStatus = viewModel.garageRequestDetailArr?.bidStatus ?? BidStatus.openForBidding
         self.quantity = viewModel.garageRequestDetailArr?.quantity ?? 0
+        updateDataSource()
+        self.bidStatusSetUp()
         self.getPlacedBidData()
         self.mainTableView.reloadData()
         // make first country selected
@@ -450,7 +450,9 @@ extension GarageServiceRequestVC :GarageServiceRequestVMDelegate {
     
     func updateDataSource() {
         var apiHit : Bool = true
-        sectionType.append(.countryDetail)
+        if !sectionType.contains(.countryDetail){
+            sectionType.append(.countryDetail)
+        }
         let serviceType = viewModel.garageRequestDetailArr?.requestType
         titleLbl.text = serviceType == .tyres ? LocalizedString.tyreServiceRequest.localized : serviceType == .battery ? LocalizedString.batteryServiceRequest.localized :  LocalizedString.oilServiceRequest.localized
         if !(viewModel.garageRequestDetailArr?.preferredCountries.isEmpty ?? false) {
@@ -462,7 +464,9 @@ extension GarageServiceRequestVC :GarageServiceRequestVMDelegate {
             apiHit = false
             brandsType = .onlyBrands
             self.viewModel.countryBrandsDict.append([self.selectedCountry : viewModel.garageRequestDetailArr?.preferredBrands ?? [PreferredBrand]()])
-            sectionType.append(.brandListing)
+            if !sectionType.contains(.brandListing){
+               sectionType.append(.brandListing)
+            }
         }
         if apiHit{
             hitBrandListingApi()

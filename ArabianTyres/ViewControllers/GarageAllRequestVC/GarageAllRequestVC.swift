@@ -57,14 +57,16 @@ class GarageAllRequestVC: BaseVC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
-        if !allRequestVC.clearFilterOnTabChange {
-            filterBtn.isSelected = allRequestVC.filterApplied
-            allRequestVC.clearFilterOnTabChange = !allRequestVC.clearFilterOnTabChange
-        } else {
-            allRequestVC.filterApplied = false
-            filterBtn.isSelected = allRequestVC.filterApplied
-            filterArr = [.allRequestServiceType([],false), .allRequestByStatus([],false)]
-            allRequestVC.hitApi()
+        if allRequestVC.filterApplied {
+            if !allRequestVC.clearFilterOnTabChange {
+                filterBtn.isSelected = allRequestVC.filterApplied
+                allRequestVC.clearFilterOnTabChange = !allRequestVC.clearFilterOnTabChange
+            } else {
+                allRequestVC.filterApplied = false
+                filterBtn.isSelected = allRequestVC.filterApplied
+                filterArr = [.allRequestServiceType([],false), .allRequestByStatus([],false)]
+                allRequestVC.hitApi()
+            }
         }
     }
     
