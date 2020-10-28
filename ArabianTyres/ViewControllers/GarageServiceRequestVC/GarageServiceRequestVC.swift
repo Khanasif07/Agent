@@ -176,6 +176,30 @@ extension GarageServiceRequestVC {
     
     private func getPlacedBidData(){
         if let  bidPlacedByGarage = self.viewModel.garageRequestDetailArr?.bidPlacedByGarage{
+            //used for bid finalised case
+            if self.viewModel.countryBrandsDict.endIndex > 0 {
+                if  brandsType == .onlyBrands && bidStatus == .bidFinalsed   {
+                    if let brandsListing = self.viewModel.countryBrandsDict[0][self.selectedCountry] {
+                        for (off,_) in brandsListing.enumerated(){
+                            self.viewModel.countryBrandsDict[0][self.selectedCountry]?[off].isSelected = false
+                            self.viewModel.countryBrandsDict[0][self.selectedCountry]?[off].amount = 0.0
+                        }
+                    }
+                }
+//                if  brandsType == .countryBrands && bidStatus == .bidFinalsed{
+//                    for (off,_) in self.viewModel.countryBrandsDict.enumerated(){
+//                        self.viewModel.garageRequestDetailArr?.preferredCountries.forEach({ (preferredBrand) in
+//                            if let countryBrandsListing = self.viewModel.countryBrandsDict[off][preferredBrand.name]{
+//                                for (offf,_) in countryBrandsListing.enumerated(){
+//                                    self.viewModel.countryBrandsDict[off][preferredBrand.name]?[offf].isSelected = false
+//                                    self.viewModel.countryBrandsDict[off][preferredBrand.name]?[offf].amount = 0.0
+//                                }
+//                            }
+//                        })
+//                    }
+//                }
+            }
+                //
             bidPlacedByGarage.forEach { (placedBid) in
                 if bidStatus == .bidFinalsed {
                     if placedBid.isAccepted == false{
@@ -192,6 +216,7 @@ extension GarageServiceRequestVC {
                         self.viewModel.countryBrandsDict[0][self.selectedCountry]?[selectedIndexx].amount = placedBid.amount
                     }
                 } else {
+                    printDebug(self.viewModel.countryBrandsDict)
                     for (off,dict) in self.viewModel.countryBrandsDict.enumerated(){
                         self.viewModel.garageRequestDetailArr?.preferredCountries.forEach({ (preferredBrand) in
                             //
@@ -471,7 +496,6 @@ extension GarageServiceRequestVC :GarageServiceRequestVMDelegate {
         if apiHit{
             hitBrandListingApi()
         }
-        self.mainTableView.reloadData()
     }
     
     func hitBrandListingApi(country: String = "") {

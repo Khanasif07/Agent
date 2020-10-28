@@ -36,7 +36,7 @@ class SocketIOManager: NSObject {
     static let shared: SocketIOManager = SocketIOManager()
     public var baseSocketUrl: String  = "https://arabiantyersdevapi.appskeeper.com" // dev socket url
 //    public var baseSocketUrl: String  = "http://arabiantyersqaapi.appskeeper.com" // qa socket url
-//    public var baseSocketUrl: String  = "https://arabiantyersstgapi.appskeeper.com" // qa socket url
+//    public var baseSocketUrl: String  = "https://arabiantyersstgapi.appskeeper.com" // stg socket url
 
 
     var messageQueue = [[String: Any]]()

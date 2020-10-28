@@ -66,10 +66,7 @@ class UserOffersTableCell: UITableViewCell {
     }
     
     func bindData(_ model: UserBidModel,isBidAccepted : Bool) {
-//        let distanceInMiles = self.getMiles(meters: model.distance ?? 0.0)
-//        distanceValueLbl.attributedText =  getAttributedString(value: "\(distanceInMiles.truncate(places: 3))",attributedLabel: distanceValueLbl)
-//
-      
+        offerSubTitleLbl.text = model.garageAddress ?? "N/A"
         let distance = model.distance ?? 0.0
         distanceValueLbl.attributedText =  getAttributedString(value: "\(distance.truncate(places: 3))",attributedLabel: distanceValueLbl)
         offerTitleLbl.text = model.garageName

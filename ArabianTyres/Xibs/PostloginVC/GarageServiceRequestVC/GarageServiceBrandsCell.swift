@@ -45,7 +45,7 @@ class GarageServiceBrandsCell: UITableViewCell,UITextFieldDelegate {
         if  bidStatus == .bidPlaced {
             rightIcon.isHidden = true
             if placeBidBtnStatus != "Place Bid" {
-                unitPrizeTextFiled.isUserInteractionEnabled = true
+                unitPrizeTextFiled.isUserInteractionEnabled = false
                 setBlurView(isBlur: !(model.isSelected ?? false))
             } else{
                 unitPrizeTextFiled.isUserInteractionEnabled = true
