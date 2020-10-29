@@ -95,8 +95,10 @@ extension UserAllOffersVC {
             viewModel.getUserBidData(params: params,loader: loader)
             
         }else {
+            if !self.requestId.isEmpty {
             let dict : JSONDictionary = [ApiKey.page: "1",ApiKey.limit : "20", ApiKey.requestId : self.requestId]
             viewModel.getUserBidData(params: dict)
+            }
         }
     }
     
@@ -117,7 +119,9 @@ extension UserAllOffersVC {
                 break
             }
         }
+        if !self.requestId.isEmpty {
         hitApi(params: dict,loader: loader, pagination: pagination)
+        }
     }
     
     func getMeters(miles: Int) -> Double {
@@ -125,11 +129,15 @@ extension UserAllOffersVC {
     }
     
     @objc func newBidSocketSuccess(){
-        self.hitApi()
+        if !self.requestId.isEmpty {
+            self.hitApi()
+        }
     }
     
     @objc func userServiceAcceptRejectSuccess(){
-        self.hitApi()
+        if !self.requestId.isEmpty {
+            self.hitApi()
+        }
     }
     
 }
@@ -160,7 +168,9 @@ extension UserAllOffersVC : UITableViewDelegate, UITableViewDataSource {
                     self.showAlert(msg: LocalizedString.underDevelopment.localized)
                 default :
                     AppRouter.presentOfferDetailVC(vc: self,bidId: self.viewModel.userBidListingArr[indexPath.row].id, garageName: self.viewModel.userBidListingArr[indexPath.row].garageName ?? "", completion: {
+                        if !self.requestId.isEmpty {
                         self.hitApi(loader: true)
+                        }
                     })
                 }
             }
@@ -183,7 +193,9 @@ extension UserAllOffersVC : UITableViewDelegate, UITableViewDataSource {
         if isAccepted {
             if viewModel.userBidListingArr[indexPath.row].status == "accepted" {
                 AppRouter.presentOfferDetailVC(vc: self,bidId: self.viewModel.userBidListingArr[indexPath.row].id, garageName: self.viewModel.userBidListingArr[indexPath.row].garageName ?? "", completion: {
+                    if !self.requestId.isEmpty {
                     self.hitApi(loader: true)
+                    }
                 })
             }
             else {
@@ -191,7 +203,9 @@ extension UserAllOffersVC : UITableViewDelegate, UITableViewDataSource {
             }
         }else {
             AppRouter.presentOfferDetailVC(vc: self,bidId: self.viewModel.userBidListingArr[indexPath.row].id, garageName: self.viewModel.userBidListingArr[indexPath.row].garageName ?? "", completion: {
+                if   !self.requestId.isEmpty {
                 self.hitApi(loader: true)
+                }
             })
         }
     }
@@ -201,7 +215,9 @@ extension UserAllOffersVC : UITableViewDelegate, UITableViewDataSource {
             if filterApplied {
                 getFilterData(data: filterArr,loader: false, pagination: true)
             }else {
-                hitApi(params: [ApiKey.page: "1",ApiKey.limit : "20",ApiKey.requestId : self.requestId],loader: false, pagination: true)
+                if   !self.requestId.isEmpty {
+                    hitApi(params: [ApiKey.page: "1",ApiKey.limit : "20",ApiKey.requestId : self.requestId],loader: false, pagination: true)
+                }
             }
         }
     }
@@ -211,9 +227,10 @@ extension UserAllOffersVC : UITableViewDelegate, UITableViewDataSource {
 //================================
 extension UserAllOffersVC : UserAllOfferVMDelegate {
     func rejectUserBidDataSuccess(message: String) {
-         NotificationCenter.default.post(name: Notification.Name.UserServiceAcceptRejectSuccess, object: nil)
-         hitApi()
-         mainTableView.reloadData()
+        NotificationCenter.default.post(name: Notification.Name.UserServiceAcceptRejectSuccess, object: nil)
+        if   !self.requestId.isEmpty {
+            hitApi()
+        }
     }
     
     func rejectUserBidDataFailed(error: String) {

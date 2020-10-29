@@ -81,7 +81,7 @@ extension GarageTabBarController {
         let firstScene = createTabVC(vc: GarageHomeVC.self, storyBoard: .GarageHome)
         let secondScene = createTabVC(vc: GarageAllRequestVC.self, storyBoard: .Garage)
         let thirdScene = createTabVC(vc: NotificationVC.self, storyBoard: .Home)
-        let fourthScene = createTabVC(vc: OngoingServiceListingVC.self, storyBoard: .GarageRequest)
+        let fourthScene = createTabVC(vc: SettingVC.self, storyBoard: .Home)
         let fifthScene = createTabVC(vc: GarageProfileVC.self, storyBoard: .GarageHome)
         self.viewControllers = [firstScene, secondScene,thirdScene, fourthScene,fifthScene]
         guard let tabBarItems = self.tabBar.items else {return}
