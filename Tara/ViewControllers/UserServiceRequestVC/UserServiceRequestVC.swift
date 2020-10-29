@@ -41,6 +41,7 @@ class UserServiceRequestVC: BaseVC {
     @IBOutlet weak var productImgView: UIImageView!
     @IBOutlet weak var topContainerView: UIView!
     @IBOutlet weak var bottomLineView: UIView!
+    @IBOutlet weak var countryAndBrandStackView: UIStackView!
     
     // MARK: - Variables
     //===========================
@@ -217,6 +218,11 @@ extension UserServiceRequestVC: UserServiceRequestVMDelegate{
         unitValueLblb.text = "\(model.quantity ?? 0)"
         brandsLbl.text = brandsArray.endIndex > 0 ? (LocalizedString.brands.localized + ":") : (LocalizedString.countries.localized + ":")
         brandsValueLbl.text = brandsArray.endIndex > 0 ? brandsArray.joined(separator: ",") : countryArray.joined(separator: ",")
+        if brandsArray.isEmpty && countryArray.isEmpty {
+            countryAndBrandStackView.isHidden = true
+        }else {
+            countryAndBrandStackView.isHidden = false
+        }
         let logoImg =  self.viewModel.serviceType == "Tyres" ? #imageLiteral(resourceName: "radialCarTireI151") : self.viewModel.serviceType == "Battery" ? #imageLiteral(resourceName: "icBattery") : #imageLiteral(resourceName: "icOil")
         productImgView.isHidden = model.images.isEmpty
         bottomLineView.isHidden = model.images.isEmpty
