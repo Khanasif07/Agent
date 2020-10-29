@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -26,7 +26,7 @@
         <!--Ongoing Service ListingVC-->
         <scene sceneID="BnH-s3-Nlw">
             <objects>
-                <viewController storyboardIdentifier="OngoingServiceListingVC" id="h8L-Em-cj7" customClass="OngoingServiceListingVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OngoingServiceListingVC" id="h8L-Em-cj7" customClass="OngoingServiceListingVC" customModule="Tara" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jBR-9S-fw3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -105,7 +105,7 @@
         <!--Place Bid Pop UpVC-->
         <scene sceneID="dyn-HI-lQK">
             <objects>
-                <viewController storyboardIdentifier="PlaceBidPopUpVC" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VNh-Mn-3hW" customClass="PlaceBidPopUpVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PlaceBidPopUpVC" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VNh-Mn-3hW" customClass="PlaceBidPopUpVC" customModule="Tara" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0a0-oK-cgP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -195,7 +195,7 @@ never be changed</string>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="SA4-zA-ZZV">
                                                 <rect key="frame" x="74" y="180" width="288" height="48"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zix-TA-MU4" customClass="AppButton" customModule="ArabianTyres" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zix-TA-MU4" customClass="AppButton" customModule="Tara" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="140" height="48"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
@@ -219,7 +219,7 @@ never be changed</string>
                                                             <action selector="notNowBtnAction:" destination="VNh-Mn-3hW" eventType="touchUpInside" id="FJO-A9-SLo"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DTM-QI-RDe" customClass="AppButton" customModule="ArabianTyres" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DTM-QI-RDe" customClass="AppButton" customModule="Tara" customModuleProvider="target">
                                                         <rect key="frame" x="148" y="0.0" width="140" height="48"/>
                                                         <color key="backgroundColor" name="appRedColor"/>
                                                         <state key="normal" title="Place a Bid">
@@ -290,7 +290,7 @@ never be changed</string>
         <!--Otp Pop UpVC-->
         <scene sceneID="Skb-8N-YAP">
             <objects>
-                <viewController storyboardIdentifier="OtpPopUpVC" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9Sx-XT-7CB" customClass="OtpPopUpVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OtpPopUpVC" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9Sx-XT-7CB" customClass="OtpPopUpVC" customModule="Tara" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ysu-0y-cRn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -406,7 +406,7 @@ start Servicing</string>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="a3C-9r-kUZ">
                                                 <rect key="frame" x="150" y="175" width="222" height="48"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N61-nb-wpr" customClass="AppButton" customModule="ArabianTyres" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N61-nb-wpr" customClass="AppButton" customModule="Tara" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="107" height="48"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
@@ -430,7 +430,7 @@ start Servicing</string>
                                                             <action selector="cancelBtnAction:" destination="9Sx-XT-7CB" eventType="touchUpInside" id="mOp-Rf-ONn"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jZ7-Nn-wMZ" customClass="AppButton" customModule="ArabianTyres" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jZ7-Nn-wMZ" customClass="AppButton" customModule="Tara" customModuleProvider="target">
                                                         <rect key="frame" x="115" y="0.0" width="107" height="48"/>
                                                         <color key="backgroundColor" name="appRedColor"/>
                                                         <state key="normal" title="Verify">
@@ -526,7 +526,7 @@ start Servicing</string>
         <!--FilterVC-->
         <scene sceneID="nAz-e1-kFt">
             <objects>
-                <viewController storyboardIdentifier="SRFilterVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4rK-6p-Ix2" customClass="SRFilterVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SRFilterVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4rK-6p-Ix2" customClass="SRFilterVC" customModule="Tara" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3e7-UV-bYc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -588,7 +588,7 @@ start Servicing</string>
                                 <rect key="frame" x="0.0" y="100" width="414" height="677"/>
                                 <color key="backgroundColor" red="0.96470588235294119" green="0.96862745098039216" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FilterTableViewCell" rowHeight="194" id="hEO-RM-xHk" customClass="FilterTableViewCell" customModule="ArabianTyres" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FilterTableViewCell" rowHeight="194" id="hEO-RM-xHk" customClass="FilterTableViewCell" customModule="Tara" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.5" width="414" height="194"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hEO-RM-xHk" id="axQ-Fe-IP1">
@@ -693,7 +693,7 @@ start Servicing</string>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bDQ-Op-Ldq" customClass="AppButton" customModule="ArabianTyres" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bDQ-Op-Ldq" customClass="AppButton" customModule="Tara" customModuleProvider="target">
                                 <rect key="frame" x="16" y="792" width="382" height="55"/>
                                 <color key="backgroundColor" name="appRedColor"/>
                                 <constraints>
@@ -742,7 +742,7 @@ start Servicing</string>
         <!--Booked Tyre RequestVC-->
         <scene sceneID="TFr-oN-jN6">
             <objects>
-                <viewController storyboardIdentifier="BookedTyreRequestVC" modalPresentationStyle="currentContext" id="oPw-ty-Cdx" customClass="BookedTyreRequestVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BookedTyreRequestVC" modalPresentationStyle="currentContext" id="oPw-ty-Cdx" customClass="BookedTyreRequestVC" customModule="Tara" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AP9-T8-gvn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -826,7 +826,7 @@ start Servicing</string>
         <!--Service StatusVC-->
         <scene sceneID="p6j-OP-Jh6">
             <objects>
-                <viewController storyboardIdentifier="ServiceStatusVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Mwk-as-yPj" customClass="ServiceStatusVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ServiceStatusVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Mwk-as-yPj" customClass="ServiceStatusVC" customModule="Tara" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="A6Q-SU-uFq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -841,7 +841,7 @@ start Servicing</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tRZ-cY-wTy">
-                                        <rect key="frame" x="14" y="14" width="36" height="34"/>
+                                        <rect key="frame" x="14" y="-3" width="72" height="68"/>
                                         <state key="normal" image="icBackward">
                                             <color key="titleColor" red="0.54117647059999996" green="0.58431372550000005" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -910,7 +910,7 @@ start Servicing</string>
         <!--Offer FilterVC-->
         <scene sceneID="oCM-Xw-3XA">
             <objects>
-                <viewController storyboardIdentifier="OfferFilterVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Rvf-KP-WP7" customClass="OfferFilterVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OfferFilterVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Rvf-KP-WP7" customClass="OfferFilterVC" customModule="Tara" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vKB-XX-KEx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1021,7 +1021,7 @@ start Servicing</string>
         <!--RatingVC-->
         <scene sceneID="sjf-pN-A86">
             <objects>
-                <viewController storyboardIdentifier="RatingVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="K8Q-hi-fID" customClass="RatingVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RatingVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="K8Q-hi-fID" customClass="RatingVC" customModule="Tara" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qeK-Rv-pSd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1211,7 +1211,7 @@ start Servicing</string>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </imageView>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RQU-3Y-RJT" customClass="RectangularDashedView" customModule="ArabianTyres" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RQU-3Y-RJT" customClass="RectangularDashedView" customModule="Tara" customModuleProvider="target">
                                                         <rect key="frame" x="19" y="408.5" width="50" height="50"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <userDefinedRuntimeAttributes>
@@ -1348,7 +1348,7 @@ start Servicing</string>
         <!--My Service FilterVC-->
         <scene sceneID="ms0-uA-g4B">
             <objects>
-                <viewController storyboardIdentifier="MyServiceFilterVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gX5-Kd-C6r" customClass="MyServiceFilterVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MyServiceFilterVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gX5-Kd-C6r" customClass="MyServiceFilterVC" customModule="Tara" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hBm-Z4-ZCW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
