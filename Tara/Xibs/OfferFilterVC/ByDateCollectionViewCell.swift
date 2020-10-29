@@ -19,7 +19,7 @@ class ByDateCollectionViewCell: UICollectionViewCell {
     //MARK:- Variables
     var placeHolderArr : [String] = [LocalizedString.fromDate.localized, LocalizedString.endDate.localized]
     var tempTextField: UITextField?
-    var txtFieldData : ((Date, Date)->())?
+    var txtFieldData : ((Date?, Date?)->())?
   
     var fromDate : Date? = nil {
         didSet {
@@ -95,10 +95,17 @@ extension ByDateCollectionViewCell :UITextFieldDelegate{
             fromDate = datePicker.date
             tempTextField = fromDateTextField
         case endDateTextField:
-            datePicker.date = toDate ?? Date()
-            datePicker.minimumDate = fromDate?.plus(days: 1)
-            toDate = datePicker.date
-            tempTextField = endDateTextField
+            if let _ = fromDate {
+                datePicker.date = toDate ?? Date()
+                datePicker.minimumDate = fromDate?.plus(days: 1)
+                toDate = datePicker.date
+                tempTextField = endDateTextField
+            }else {
+                endDateTextField.resignFirstResponder()
+                CommonFunctions.showToastWithMessage("Please Select From Date")
+                return false
+            }
+            
         default:
             break
         }
@@ -112,11 +119,7 @@ extension ByDateCollectionViewCell :UITextFieldDelegate{
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if let fDate = fromDate , let tDate = toDate {
-            txtFieldData?(fDate,tDate)
-        }
-//        txtFieldData?(fromDate,toDate)
-
+        txtFieldData?(fromDate,toDate)
     }
 }
 

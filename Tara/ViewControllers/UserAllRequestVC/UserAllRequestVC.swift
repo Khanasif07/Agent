@@ -99,11 +99,14 @@ extension UserAllRequestVC {
                 
             case .date(let fromDate, let toDate, _):
                 
-                if let fDate = fromDate ,let tDate = toDate {
+                if let fDate = fromDate {
                     dict[ApiKey.startdate] = fDate.toString(dateFormat: Date.DateFormat.yyyyMMddTHHmmsssssz.rawValue)
-                    dict[ApiKey.endDate] =  tDate.toString(dateFormat: Date.DateFormat.yyyyMMddTHHmmsssssz.rawValue)
                 }
                 
+                if let tDate = toDate {
+                    dict[ApiKey.endDate] =  tDate.toString(dateFormat: Date.DateFormat.yyyyMMddTHHmmsssssz.rawValue)
+                }
+    
             default:
                 break
             }

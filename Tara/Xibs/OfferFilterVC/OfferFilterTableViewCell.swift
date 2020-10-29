@@ -20,7 +20,7 @@ class OfferFilterTableViewCell: UITableViewCell {
     
     //MARK:-Variables
     var cellBtnTapped : (()->())?
-    var selectedDateData : ((Date,Date) -> ())?
+    var selectedDateData : ((Date?,Date?) -> ())?
     var selectedByStatusData : ((String) -> ())?
     var selectedDistance: ((String,String) -> ())?
     var sectionType: FilterScreen = .distance("","", false) {
@@ -69,13 +69,8 @@ extension OfferFilterTableViewCell: UICollectionViewDelegate,UICollectionViewDat
             
         case .date(let fromDate,let toDate,_):
             let cell = collectionView.dequeueCell(with: ByDateCollectionViewCell.self, indexPath: indexPath)
-            if let fDate = fromDate, let tDate = toDate {
-                cell.fromDate = fDate
-                cell.toDate = tDate
-            }else {
-                cell.fromDate = nil
-                cell.toDate = nil
-            }
+            cell.fromDate = fromDate
+            cell.toDate = toDate
             
             cell.txtFieldData = {[weak self] (fromDate, toDate) in
                 self?.selectedDateData?(fromDate, toDate)

@@ -3,4 +3,54 @@
    uuid = "5AA2385E-BE89-448C-BCA9-40899F11A89B"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B87966E9-6C2C-4DF3-8849-B093DB833BC7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tara/ViewControllers/UserAllRequestVC/UserAllRequestVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "filterBtnAction(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B87966E9-6C2C-4DF3-8849-B093DB833BC7 - 6ac7a716e1e0c62c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Tara.UserAllRequestVC.filterBtnAction(__C.UIButton) -&gt; ()"
+                  moduleName = "Tara"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/arvind/Desktop/GitCode/ArabianTyres/Tara/ViewControllers/UserAllRequestVC/UserAllRequestVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "58"
+                  endingLineNumber = "58"
+                  offsetFromSymbolStart = "74">
+               </Location>
+               <Location
+                  uuid = "B87966E9-6C2C-4DF3-8849-B093DB833BC7 - e121d2ef6b84c922"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Array&lt;Tara.FilterScreen&gt;, Swift.Bool) -&gt; () in Tara.UserAllRequestVC.filterBtnAction(__C.UIButton) -&gt; ()"
+                  moduleName = "Tara"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/arvind/Desktop/GitCode/ArabianTyres/Tara/ViewControllers/UserAllRequestVC/UserAllRequestVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "58"
+                  endingLineNumber = "58"
+                  offsetFromSymbolStart = "152">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
