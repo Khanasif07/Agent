@@ -133,12 +133,19 @@ extension GarageAllRequestVC {
         self.mainScrollView.addSubview(self.allRequestVC.view)
         self.addChild(self.allRequestVC)
         
+        allRequestVC.clearFilter = {
+            self.filterBtn.isSelected = false
+            self.filterArr = [.allRequestServiceType([],false), .allRequestByStatus([],false)]
+            
+        }
+        
         //instantiate the AppliedJobVC
         self.bookedRequestVC = BookedRequestVC.instantiate(fromAppStoryboard: .Garage)
         self.bookedRequestVC.view.frame.origin =   CGPoint(x: UIScreen.width, y: 0)
         self.mainScrollView.frame = self.bookedRequestVC.view.frame
         self.mainScrollView.addSubview(self.bookedRequestVC.view)
         self.addChild(self.bookedRequestVC)
+        
     }
     
 }

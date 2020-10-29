@@ -21,6 +21,7 @@ class AllRequestVC: BaseVC {
     var filterApplied : Bool = false
     var filterArr : [FilterScreen] = []
     var clearFilterOnTabChange: Bool = false
+    var clearFilter: (()->())?
     
     // MARK: - Lifecycle
     //===========================
@@ -105,6 +106,8 @@ extension AllRequestVC {
     }
     
     @objc func placeBidRejectBidSuccess(){
+        filterApplied = false
+        clearFilter?()
         hitApi(params: [ApiKey.page:"1", ApiKey.limit: "20"])
     }
     
