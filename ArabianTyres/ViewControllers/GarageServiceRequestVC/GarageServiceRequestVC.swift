@@ -186,20 +186,21 @@ extension GarageServiceRequestVC {
                         }
                     }
                 }
-//                if  brandsType == .countryBrands && bidStatus == .bidFinalsed{
-//                    for (off,_) in self.viewModel.countryBrandsDict.enumerated(){
-//                        self.viewModel.garageRequestDetailArr?.preferredCountries.forEach({ (preferredBrand) in
-//                            if let countryBrandsListing = self.viewModel.countryBrandsDict[off][preferredBrand.name]{
-//                                for (offf,_) in countryBrandsListing.enumerated(){
-//                                    self.viewModel.countryBrandsDict[off][preferredBrand.name]?[offf].isSelected = false
-//                                    self.viewModel.countryBrandsDict[off][preferredBrand.name]?[offf].amount = 0.0
-//                                }
-//                            }
-//                        })
-//                    }
-//                }
+                if   brandsType == .countryBrands && bidStatus == .bidFinalsed {
+                    for (off,_) in self.viewModel.countryBrandsDict.enumerated(){
+                        self.viewModel.garageRequestDetailArr?.preferredCountries.forEach({ (preferredBrand) in
+                            if let listingss = self.viewModel.countryBrandsDict[off][preferredBrand.name]{
+                                for (offf,_) in listingss.enumerated(){
+                                    self.viewModel.countryBrandsDict[off][self.selectedCountry]?[offf].isSelected = false
+                                    self.viewModel.countryBrandsDict[off][self.selectedCountry]?[offf].amount = 0.0
+                                }
+                            }
+                        })
+                    }
+                }
+                
             }
-                //
+            //
             bidPlacedByGarage.forEach { (placedBid) in
                 if bidStatus == .bidFinalsed {
                     if placedBid.isAccepted == false{
@@ -431,7 +432,7 @@ extension GarageServiceRequestVC :GarageServiceRequestVMDelegate {
     }
     
     func getGarageDetailSuccess(message: String) {
-        self.bidStatus = viewModel.garageRequestDetailArr?.bidStatus ?? BidStatus.openForBidding
+        self.bidStatus = viewModel.garageRequestDetailArr?.bidStatus ?? bidStatus
         self.quantity = viewModel.garageRequestDetailArr?.quantity ?? 0
         updateDataSource()
         self.bidStatusSetUp()

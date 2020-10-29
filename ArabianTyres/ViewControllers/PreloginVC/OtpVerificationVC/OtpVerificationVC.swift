@@ -255,7 +255,11 @@ extension OtpVerificationVC: OtpVerificationVMDelegate{
     }
     
     func otpVerifiedSuccessfully(message: String) {
+        if self.viewModel.isComeFromSignupScreen {
         AppRouter.showSuccessPopUp(vc: self,title: "OTP Verified",desc: "You have successfully verified your mobile no.")
+        } else {
+            self.okBtnAction()
+        }
     }
     
     func verifyForgotPasswordOTPSuccess(message: String) {
