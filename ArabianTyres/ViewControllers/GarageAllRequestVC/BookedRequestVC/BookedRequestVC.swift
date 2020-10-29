@@ -8,6 +8,7 @@
 
 
 import UIKit
+import DZNEmptyDataSet
 
 class BookedRequestVC: BaseVC {
     
@@ -37,6 +38,8 @@ extension BookedRequestVC {
     private func initialSetup() {
         self.mainTableView.delegate = self
         self.mainTableView.dataSource = self
+        self.mainTableView.emptyDataSetSource = self
+        self.mainTableView.emptyDataSetDelegate = self
         self.mainTableView.registerCell(with: BookedRequestTableCell.self)
     }
 }
@@ -45,7 +48,7 @@ extension BookedRequestVC {
 //===========================
 extension BookedRequestVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 0
     }
     
     
@@ -66,5 +69,37 @@ extension BookedRequestVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         AppRouter.goToBookedTyreRequestVC(vc: self)
+    }
+}
+
+//MARK: DZNEmptyDataSetSource and DZNEmptyDataSetDelegate
+//================================
+extension BookedRequestVC : DZNEmptyDataSetSource,DZNEmptyDataSetDelegate {
+    
+    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
+        return  #imageLiteral(resourceName: "layerX00201")
+    }
+    
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        var emptyData = "No data found"
+//        emptyData = viewModel.garageRequestListing.endIndex == 0 ? "No data found" : ""
+    
+        return NSAttributedString(string: emptyData, attributes: [NSAttributedString.Key.foregroundColor: AppColors.fontTertiaryColor,NSAttributedString.Key.font: AppFonts.NunitoSansBold.withSize(18)])
+    }
+    
+    func emptyDataSetShouldDisplay(_ scrollView: UIScrollView!) -> Bool {
+        return true
+    }
+    
+    func emptyDataSetShouldAllowScroll(_ scrollView: UIScrollView!) -> Bool {
+        return true
+    }
+    
+    func emptyDataSetShouldAllowTouch(_ scrollView: UIScrollView!) -> Bool {
+        return true
+    }
+    
+    func emptyDataSetShouldBeForced(toDisplay scrollView: UIScrollView!) -> Bool {
+        return false
     }
 }

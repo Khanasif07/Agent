@@ -178,6 +178,7 @@ enum ApiKey {
     static var maxDistance: String { return "maxDistance" }
     static var bidSort: String { return "bidSort" }
     static var minDistance: String { return "minDistance" }
+
     
     //     MARK: Firestore Keys
     //     ====================
@@ -230,6 +231,10 @@ enum ApiKey {
     static var video : String { return "video" }
     static var text : String { return "text" }
     
+
+    static var newRequests: String {return "newRequests"}
+    static var acceptedRequets: String {return "acceptedRequets"}
+
     
 }
 

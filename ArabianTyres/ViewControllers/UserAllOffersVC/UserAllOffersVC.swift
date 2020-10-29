@@ -21,7 +21,7 @@ class UserAllOffersVC: BaseVC {
     //==================
     var requestId: String = ""
     let viewModel = UserAllOfferVM()
-    var filterArr : [FilterScreen] = [.distance("1","5", false), .bidReceived("",false)]
+    var filterArr : [FilterScreen] = [.distance("1","10", false), .bidReceived("",false)]
     var filterApplied: Bool = false
 
     // MARK: - Lifecycle
@@ -62,6 +62,8 @@ class UserAllOffersVC: BaseVC {
 extension UserAllOffersVC {
     
     private func initialSetup() {
+        NotificationCenter.default.addObserver(self, selector: #selector(newBidSocketSuccess), name: Notification.Name.NewBidSocketSuccess, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(userServiceAcceptRejectSuccess), name: Notification.Name.UserServiceAcceptRejectSuccess, object: nil)
         setupTextAndFont()
         setupTableView()
         viewModel.delegate = self
@@ -121,6 +123,15 @@ extension UserAllOffersVC {
     func getMeters(miles: Int) -> Double {
         return Double(miles) * 1609.344
     }
+    
+    @objc func newBidSocketSuccess(){
+        self.hitApi()
+    }
+    
+    @objc func userServiceAcceptRejectSuccess(){
+        self.hitApi()
+    }
+    
 }
 
 // MARK: - Extension For TableView
@@ -166,9 +177,23 @@ extension UserAllOffersVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        AppRouter.presentOfferDetailVC(vc: self,bidId: self.viewModel.userBidListingArr[indexPath.row].id, garageName: self.viewModel.userBidListingArr[indexPath.row].garageName ?? "", completion: {
-            self.hitApi(loader: true)
-        })
+        let isAccepted = viewModel.userBidListingArr.contains { (model) -> Bool in
+            return model.status == "accepted"
+        }
+        if isAccepted {
+            if viewModel.userBidListingArr[indexPath.row].status == "accepted" {
+                AppRouter.presentOfferDetailVC(vc: self,bidId: self.viewModel.userBidListingArr[indexPath.row].id, garageName: self.viewModel.userBidListingArr[indexPath.row].garageName ?? "", completion: {
+                    self.hitApi(loader: true)
+                })
+            }
+            else {
+                return
+            }
+        }else {
+            AppRouter.presentOfferDetailVC(vc: self,bidId: self.viewModel.userBidListingArr[indexPath.row].id, garageName: self.viewModel.userBidListingArr[indexPath.row].garageName ?? "", completion: {
+                self.hitApi(loader: true)
+            })
+        }
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

@@ -57,7 +57,6 @@ class LocationController : NSObject, CLLocationManagerDelegate {
     }
     
     func fetchCurrentLocation(_ completion : @escaping (CLLocation)->Void){
-        
         self.locationUpdateCompletion = completion
         getCurrentLocation()
         

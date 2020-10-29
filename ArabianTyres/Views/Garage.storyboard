@@ -1559,6 +1559,7 @@ Service Center</string>
                                                         <state key="normal" image="arrow">
                                                             <color key="titleColor" red="0.090196078430000007" green="0.1450980392" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
+                                                        <state key="selected" image="selectFilter"/>
                                                         <connections>
                                                             <action selector="doneBtnAction:" destination="MNi-yC-bfm" eventType="touchUpInside" id="GBn-OE-Yuo"/>
                                                             <action selector="filterBtnAction:" destination="hx6-O5-oOB" eventType="touchUpInside" id="FIi-P8-UAX"/>
@@ -1939,7 +1940,7 @@ Service Center</string>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="001-WG-Fwe">
                                     <rect key="frame" x="10" y="15" width="323" height="48"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W2O-FO-eWc" customClass="AppButton" customModule="ArabianTyres" customModuleProvider="target">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W2O-FO-eWc" customClass="AppButton" customModule="ArabianTyres" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="171" height="48"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="48" id="WH3-jC-tnk"/>
@@ -1950,7 +1951,7 @@ Service Center</string>
                                                 <action selector="rejectRequestAction:" destination="Mcn-DD-kFJ" eventType="touchUpInside" id="7RH-Ka-5tA"/>
                                             </connections>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oOA-cD-GZB" customClass="AppButton" customModule="ArabianTyres" customModuleProvider="target">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oOA-cD-GZB" customClass="AppButton" customModule="ArabianTyres" customModuleProvider="target">
                                             <rect key="frame" x="186" y="0.0" width="137" height="48"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="137" id="V5T-0X-bVG"/>
@@ -2861,6 +2862,71 @@ Service Center</string>
             </objects>
             <point key="canvasLocation" x="10332" y="-22"/>
         </scene>
+        <!--Image ViewerVC-->
+        <scene sceneID="yA2-ck-jVr">
+            <objects>
+                <viewController storyboardIdentifier="ImageViewerVC" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9ku-od-pkM" customClass="ImageViewerVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wMB-8M-qWy">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u9Y-S8-aP0">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9C3-Oe-3hG">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="9C3-Oe-3hG" secondAttribute="trailing" id="HyW-YR-57e"/>
+                                    <constraint firstAttribute="bottom" secondItem="9C3-Oe-3hG" secondAttribute="bottom" id="KMW-JR-nm7"/>
+                                    <constraint firstItem="9C3-Oe-3hG" firstAttribute="leading" secondItem="u9Y-S8-aP0" secondAttribute="leading" id="e7r-1d-G4Z"/>
+                                    <constraint firstItem="9C3-Oe-3hG" firstAttribute="top" secondItem="u9Y-S8-aP0" secondAttribute="top" id="xCW-jX-q2b"/>
+                                </constraints>
+                            </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O19-7n-Mgk">
+                                <rect key="frame" x="370" y="54" width="24" height="24"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="8To-Lb-jDw"/>
+                                    <constraint firstAttribute="height" constant="24" id="tbx-du-WIz"/>
+                                </constraints>
+                                <state key="normal" image="cancel"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="closeBtnAction:" destination="9ku-od-pkM" eventType="touchUpInside" id="3rM-PX-cP9"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="4hh-Cq-rh3" firstAttribute="bottom" secondItem="u9Y-S8-aP0" secondAttribute="bottom" id="6hS-Td-kEZ"/>
+                            <constraint firstItem="u9Y-S8-aP0" firstAttribute="top" secondItem="4hh-Cq-rh3" secondAttribute="top" id="9vN-6h-5Ne"/>
+                            <constraint firstItem="4hh-Cq-rh3" firstAttribute="trailing" secondItem="u9Y-S8-aP0" secondAttribute="trailing" id="JoD-zl-uk7"/>
+                            <constraint firstItem="4hh-Cq-rh3" firstAttribute="trailing" secondItem="O19-7n-Mgk" secondAttribute="trailing" constant="20" id="QRk-eR-GFH"/>
+                            <constraint firstItem="u9Y-S8-aP0" firstAttribute="leading" secondItem="4hh-Cq-rh3" secondAttribute="leading" id="Qeq-dx-Ifg"/>
+                            <constraint firstItem="9C3-Oe-3hG" firstAttribute="height" secondItem="4hh-Cq-rh3" secondAttribute="height" priority="750" id="i57-cp-NWH"/>
+                            <constraint firstItem="O19-7n-Mgk" firstAttribute="top" secondItem="4hh-Cq-rh3" secondAttribute="top" constant="10" id="kdQ-TE-KFz"/>
+                            <constraint firstItem="9C3-Oe-3hG" firstAttribute="width" secondItem="4hh-Cq-rh3" secondAttribute="width" id="uyN-Ik-Bwz"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="4hh-Cq-rh3"/>
+                    </view>
+                    <connections>
+                        <outlet property="closeBtn" destination="O19-7n-Mgk" id="OmQ-3R-6Jd"/>
+                        <outlet property="fullImageView" destination="9C3-Oe-3hG" id="JYg-YN-6gx"/>
+                        <outlet property="scrollView" destination="u9Y-S8-aP0" id="4zd-kl-yaD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rE4-7e-ben" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="11116" y="-19"/>
+        </scene>
     </scenes>
     <resources>
         <image name="arrow" width="30" height="30"/>
@@ -2876,6 +2942,7 @@ Service Center</string>
         <image name="icTopArrow" width="20.5" height="21"/>
         <image name="icUnCheck" width="30" height="30"/>
         <image name="icon" width="30" height="30"/>
+        <image name="selectFilter" width="30" height="30"/>
         <namedColor name="appRedColor">
             <color red="0.87800002098083496" green="0.13699999451637268" blue="0.25900000333786011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

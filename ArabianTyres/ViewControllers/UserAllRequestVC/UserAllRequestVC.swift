@@ -36,12 +36,14 @@ class UserAllRequestVC: BaseVC {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
         self.tabBarController?.tabBar.isTranslucent = false
-        if !clearFilterOnTabChange {
-        clearFilterOnTabChange = !clearFilterOnTabChange
-        } else {
-            filterApplied = false
-            filterArr = [.byServiceType([],false), .byStatus([],false), .date(nil,nil,false)]
-            hitListingApi()
+        if filterApplied {
+            if !clearFilterOnTabChange {
+                clearFilterOnTabChange = !clearFilterOnTabChange
+            } else {
+                filterApplied = false
+                filterArr = [.byServiceType([],false), .byStatus([],false), .date(nil,nil,false)]
+                hitListingApi()
+            }
         }
     }
     
@@ -75,6 +77,8 @@ extension UserAllRequestVC {
         NotificationCenter.default.addObserver(self, selector: #selector(newBidSocketSuccess), name: Notification.Name.NewBidSocketSuccess, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(userServiceAcceptRejectSuccess), name: Notification.Name.UserServiceAcceptRejectSuccess, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ServiceRequestSuccess), name: Notification.Name.ServiceRequestSuccess, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(requestRejected), name: Notification.Name.RequestRejected, object: nil)
+        
         self.filterBtn.tintColor = .black
         self.titleLbl.text = LocalizedString.my_Services.localized
         self.tableViewSetUp()
@@ -83,7 +87,7 @@ extension UserAllRequestVC {
     
     private func getFilterData(data: [FilterScreen],loader: Bool = true,isPullToRefersh :Bool = false) {
         
-        var dict : JSONDictionary = [ApiKey.page: isPullToRefersh ? "1" : viewModel.currentPage, ApiKey.limit : "10"]
+        var dict : JSONDictionary = [ApiKey.page: isPullToRefersh ? "1" : viewModel.currentPage, ApiKey.limit : "20"]
         data.forEach { (type) in
             switch type {
                 
@@ -124,7 +128,7 @@ extension UserAllRequestVC {
             if filterApplied {
                 getFilterData(data: filterArr,loader: false)
             }else {
-                self.viewModel.getUserMyRequestData(params: [ApiKey.page: "1",ApiKey.limit : "10"],loader: false,pagination: false)
+                self.viewModel.getUserMyRequestData(params: [ApiKey.page: "1",ApiKey.limit : "20"],loader: false,pagination: false)
             }
         }
     }
@@ -147,11 +151,27 @@ extension UserAllRequestVC {
     }
     
     @objc func userServiceAcceptRejectSuccess(){
-         self.hitListingApi()
+        if filterApplied {
+            getFilterData(data: filterArr,loader: false)
+        }else {
+            self.hitListingApi()
+        }
     }
     
     @objc func newBidSocketSuccess(){
-        self.hitListingApi()
+        if filterApplied {
+            getFilterData(data: filterArr,loader: false)
+        }else {
+            self.hitListingApi()
+        }
+    }
+    
+    @objc func requestRejected(){
+        if filterApplied {
+            getFilterData(data: filterArr,loader: false)
+        }else {
+            self.hitListingApi()
+        }
     }
 }
 
@@ -197,7 +217,7 @@ extension UserAllRequestVC : UITableViewDelegate, UITableViewDataSource {
                 if filterApplied {
                     getFilterData(data: filterArr,loader: false)
                 }else {
-                    self.viewModel.getUserMyRequestData(params: [ApiKey.page: self.viewModel.currentPage, ApiKey.limit : "10"],loader: false,pagination: true)
+                    self.viewModel.getUserMyRequestData(params: [ApiKey.page: self.viewModel.currentPage, ApiKey.limit : "20"],loader: false,pagination: true)
                 }
             }
         }

@@ -121,6 +121,7 @@ class GarageServiceRequestVM {
                 let modelList = try JSONDecoder().decode(GarageRequestModel.self, from: data)
                 currentPage = result[ApiKey.data][ApiKey.page].intValue
                 isRequestinApi = false
+                self.garageRequestDetailArr = nil
                 self.garageRequestDetailArr = modelList
                 printDebug(self.garageRequestDetailArr)
                 nextPageAvailable = result[ApiKey.data][ApiKey.next].boolValue

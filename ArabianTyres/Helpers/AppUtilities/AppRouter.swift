@@ -26,6 +26,8 @@ enum AppRouter {
     // MARK: - Show Landing Screen
     //===========================
     static func checkAppInitializationFlow() {
+//        goToTestingVC()
+//        return
         if isUserLoggedin {
             SocketIOManager.shared.establishConnection()
             if !isPhoneNoVerified{
@@ -55,7 +57,7 @@ enum AppRouter {
     }
     
     static func goToTestingVC(){
-        let scene = MyServiceFilterVC.instantiate(fromAppStoryboard: .GarageRequest)
+        let scene = UserNotificationVC.instantiate(fromAppStoryboard: .UserHomeScreen)
         setAsWindowRoot(scene)
     }
     
@@ -131,9 +133,10 @@ enum AppRouter {
         vc.present(scene, animated: true, completion: nil)
     }
     
-    static func goToOtpVerificationVC(vc: UIViewController,phoneNo: String, countryCode: String,isComeForVerifyPassword: Bool = false){
+    static func goToOtpVerificationVC(vc: UIViewController,phoneNo: String, countryCode: String,isComeForVerifyPassword: Bool = false,isComeFromSignUpScreen: Bool = false){
         let scene = OtpVerificationVC.instantiate(fromAppStoryboard: .Prelogin)
         scene.viewModel.isComeForVerifyPassword = isComeForVerifyPassword
+        scene.viewModel.isComeFromSignupScreen = isComeFromSignUpScreen
         scene.viewModel.countryCode = countryCode
         scene.viewModel.phoneNo = phoneNo
         vc.navigationController?.pushViewController(scene, animated: true)
@@ -405,6 +408,14 @@ enum AppRouter {
         scene.delegate = vc as? BrandsListnig
         scene.listingType = listingType
         vc.present(scene, animated: true)
+    }
+    
+    static func presentImageViewerVC(_ vc: UIViewController, image: UIImage?, imageURL: String = "") {
+        let imgView = ImageViewerVC.instantiate(fromAppStoryboard: .Garage)
+        imgView.mainImage = image
+        imgView.mainImageURL = imageURL
+        guard let nvc = vc.navigationController else { return }
+        nvc.present(imgView, animated: true, completion: nil)
     }
     
     

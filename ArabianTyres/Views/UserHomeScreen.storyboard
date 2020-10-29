@@ -3748,7 +3748,7 @@ provided details</string>
                         <outlet property="casCadFirstView" destination="Zgv-5o-m4q" id="Rnl-Xm-BSP"/>
                         <outlet property="casCadSecondView" destination="VBM-Fb-9Ov" id="cmX-cZ-4bb"/>
                         <outlet property="circularView" destination="4jN-mb-WUP" id="mQM-zl-0Ao"/>
-                        <outlet property="containerView" destination="KAn-6I-q9m" id="Xyu-Oc-otq"/>
+                        <outlet property="containerView" destination="KAn-6I-q9m" id="qpf-ao-buz"/>
                         <outlet property="distanceLbl" destination="JdH-bt-MgT" id="bND-zh-pzk"/>
                         <outlet property="ignoreBtn" destination="leJ-NC-6g5" id="lcy-UC-kM6"/>
                         <outlet property="secLbl" destination="KJm-tt-Eoh" id="DKZ-TZ-7vk"/>
@@ -3761,6 +3761,67 @@ provided details</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Zq-Zg-nQX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="10891" y="86"/>
+        </scene>
+        <!--User NotificationVC-->
+        <scene sceneID="DL2-VU-r3l">
+            <objects>
+                <viewController storyboardIdentifier="UserNotificationVC" modalPresentationStyle="currentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="oiL-UQ-aJH" customClass="UserNotificationVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iuF-rq-hZ2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ECP-G3-yL6">
+                                <rect key="frame" x="0.0" y="44" width="414" height="56"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dd3-0N-PQB">
+                                        <rect key="frame" x="159.5" y="21" width="95.5" height="20"/>
+                                        <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nbe-aK-RYx">
+                                        <rect key="frame" x="0.0" y="55.5" width="414" height="0.5"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="0.5" id="l3J-nI-QBf"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="dd3-0N-PQB" firstAttribute="centerX" secondItem="ECP-G3-yL6" secondAttribute="centerX" id="CDc-Gg-2Jl"/>
+                                    <constraint firstItem="dd3-0N-PQB" firstAttribute="centerY" secondItem="ECP-G3-yL6" secondAttribute="centerY" multiplier="1.1" id="XrK-Hh-rAC"/>
+                                    <constraint firstItem="nbe-aK-RYx" firstAttribute="leading" secondItem="ECP-G3-yL6" secondAttribute="leading" id="aRW-HZ-ySd"/>
+                                    <constraint firstAttribute="bottom" secondItem="nbe-aK-RYx" secondAttribute="bottom" id="kfu-c2-7gk"/>
+                                    <constraint firstAttribute="trailing" secondItem="nbe-aK-RYx" secondAttribute="trailing" id="kzs-Fq-ePr"/>
+                                    <constraint firstAttribute="height" constant="56" id="yzd-kV-UKb"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EPE-bb-dgy">
+                                <rect key="frame" x="0.0" y="100" width="414" height="796"/>
+                                <color key="backgroundColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="JFT-72-twy" firstAttribute="trailing" secondItem="EPE-bb-dgy" secondAttribute="trailing" id="9lp-Ks-JVF"/>
+                            <constraint firstItem="EPE-bb-dgy" firstAttribute="top" secondItem="ECP-G3-yL6" secondAttribute="bottom" id="PQ1-Mr-Yie"/>
+                            <constraint firstAttribute="bottom" secondItem="EPE-bb-dgy" secondAttribute="bottom" id="RuM-jY-7k7"/>
+                            <constraint firstItem="ECP-G3-yL6" firstAttribute="trailing" secondItem="JFT-72-twy" secondAttribute="trailing" id="XYo-H6-R0g"/>
+                            <constraint firstItem="ECP-G3-yL6" firstAttribute="leading" secondItem="JFT-72-twy" secondAttribute="leading" id="ttZ-lf-cOr"/>
+                            <constraint firstItem="EPE-bb-dgy" firstAttribute="leading" secondItem="JFT-72-twy" secondAttribute="leading" id="wZ0-th-pBF"/>
+                            <constraint firstItem="ECP-G3-yL6" firstAttribute="top" secondItem="JFT-72-twy" secondAttribute="top" id="yCa-ie-aZN"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="JFT-72-twy"/>
+                    </view>
+                    <connections>
+                        <outlet property="mainTableView" destination="EPE-bb-dgy" id="XJa-9o-7OX"/>
+                        <outlet property="titleLbl" destination="dd3-0N-PQB" id="r77-BA-Rje"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="voH-zE-W9B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7106" y="74"/>
         </scene>
     </scenes>
     <resources>

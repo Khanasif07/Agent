@@ -16,9 +16,12 @@ enum EventListnerKeys : String {
     case newBid =  "NEW_BID"
     case bidAccepted = "BID_ACCEPTED"
     case newRequest = "NEW_REQUEST"
+    case bidRejected = "BID_REJECTED"
+    case requestRejected = "REQUEST_REJECTED"
+    case requestCancelled = "REQUEST_CANCELLED"
     case didConnect = "connected"
     case didDisConnect = "disconnected"
-    case bidEdit = "Bid_Edit"
+    case bidEdit = "BID_EDIT"
     case handshakeWithServer = "handshakeWithServer"
     case eventAck = "eventAck"
     case syncResponse = "contact_sync_response"
@@ -33,7 +36,7 @@ class SocketIOManager: NSObject {
     static let shared: SocketIOManager = SocketIOManager()
     public var baseSocketUrl: String  = "https://arabiantyersdevapi.appskeeper.com" // dev socket url
 //    public var baseSocketUrl: String  = "http://arabiantyersqaapi.appskeeper.com" // qa socket url
-//    public var baseSocketUrl: String  = "https://arabiantyersstgapi.appskeeper.com" // qa socket url
+//    public var baseSocketUrl: String  = "https://arabiantyersstgapi.appskeeper.com" // stg socket url
 
 
     var messageQueue = [[String: Any]]()

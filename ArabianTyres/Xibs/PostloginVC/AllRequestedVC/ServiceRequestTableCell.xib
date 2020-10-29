@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -29,212 +29,189 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X2k-1f-60t">
                         <rect key="frame" x="15" y="8" width="360" height="200"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="3T5-hz-J4m">
-                                <rect key="frame" x="8" y="8" width="179" height="48"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="tyP-oU-RD9">
+                                <rect key="frame" x="8" y="8" width="344" height="184"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="battery" translatesAutoresizingMaskIntoConstraints="NO" id="4uA-wS-qSS">
-                                        <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="4uA-wS-qSS" secondAttribute="height" id="Avh-IF-sPr"/>
-                                            <constraint firstAttribute="height" constant="48" id="s8l-6b-1hG"/>
-                                        </constraints>
-                                    </imageView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="PuB-9U-avH">
-                                        <rect key="frame" x="56" y="0.0" width="123" height="48"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="V4y-7s-cIx">
+                                        <rect key="frame" x="0.0" y="0.0" width="344" height="141"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tyre Requested " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J64-ub-Sk9">
-                                                <rect key="frame" x="0.0" y="0.0" width="123" height="20"/>
-                                                <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QWa-9n-sJL">
-                                                <rect key="frame" x="0.0" y="32.5" width="123" height="15.5"/>
-                                                <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="13"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="3T5-hz-J4m">
+                                                <rect key="frame" x="0.0" y="0.0" width="179" height="48"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="battery" translatesAutoresizingMaskIntoConstraints="NO" id="4uA-wS-qSS">
+                                                        <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="4uA-wS-qSS" secondAttribute="height" id="Avh-IF-sPr"/>
+                                                            <constraint firstAttribute="height" constant="48" id="s8l-6b-1hG"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="PuB-9U-avH">
+                                                        <rect key="frame" x="56" y="0.0" width="123" height="48"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tyre Requested " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J64-ub-Sk9">
+                                                                <rect key="frame" x="0.0" y="0.0" width="123" height="20"/>
+                                                                <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QWa-9n-sJL">
+                                                                <rect key="frame" x="0.0" y="32.5" width="123" height="15.5"/>
+                                                                <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="13"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="M6u-hZ-TmO">
+                                                <rect key="frame" x="0.0" y="56" width="62.5" height="31"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="RfM-aY-ksD">
+                                                        <rect key="frame" x="0.0" y="0.0" width="61.5" height="15.5"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oN6-S8-I22">
+                                                                <rect key="frame" x="0.0" y="0.0" width="29.5" height="15.5"/>
+                                                                <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="12"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nwx-AU-f24">
+                                                                <rect key="frame" x="29.5" y="0.0" width="32" height="15.5"/>
+                                                                <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="13"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="7Yq-B0-0SX">
+                                                        <rect key="frame" x="0.0" y="15.5" width="62.5" height="15.5"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FA6-x9-vOI">
+                                                                <rect key="frame" x="0.0" y="0.0" width="29.5" height="15.5"/>
+                                                                <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="12"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZBf-tR-WCI">
+                                                                <rect key="frame" x="30.5" y="0.0" width="32" height="15.5"/>
+                                                                <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="13"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="X5A-rR-BKL">
+                                                <rect key="frame" x="0.0" y="95" width="137" height="46"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="uqa-aO-x5M">
+                                                        <rect key="frame" x="0.0" y="0.0" width="63.5" height="35"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vps-ZZ-Skz">
+                                                                <rect key="frame" x="0.0" y="0.0" width="63.5" height="14"/>
+                                                                <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="12"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Coo-Iw-kSr">
+                                                                <rect key="frame" x="0.0" y="15" width="63.5" height="20"/>
+                                                                <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="vdF-7g-kLR">
+                                                        <rect key="frame" x="73.5" y="0.0" width="63.5" height="35"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bid Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k7a-1Z-Loj">
+                                                                <rect key="frame" x="0.0" y="0.0" width="63.5" height="14"/>
+                                                                <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="12"/>
+                                                                <color key="textColor" red="0.54117649793624878" green="0.58431375026702881" blue="0.61960786581039429" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eZQ-3N-dP2">
+                                                                <rect key="frame" x="0.0" y="15" width="63.5" height="20"/>
+                                                                <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
+                                                                <color key="textColor" red="0.17254901959999999" green="0.71372549019999998" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="DkE-AY-SEv">
+                                        <rect key="frame" x="0.0" y="141" width="344" height="43"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5iu-C2-3ch">
+                                                <rect key="frame" x="0.0" y="0.0" width="344" height="1"/>
+                                                <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1" id="8NI-Cg-3PB"/>
+                                                </constraints>
+                                            </view>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="uaJ-Wy-PiP">
+                                                <rect key="frame" x="182" y="9" width="162" height="34"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TND-fK-5Il" customClass="AppButton" customModule="ArabianTyres" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="64.5" height="34"/>
+                                                        <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="14"/>
+                                                        <state key="normal" title="Reject">
+                                                            <color key="titleColor" name="appRedColor"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                <real key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" name="appRedColor"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="placeRequestBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="izX-pi-wx7"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HCU-Sa-4jQ" customClass="AppButton" customModule="ArabianTyres" customModuleProvider="target">
+                                                        <rect key="frame" x="72.5" y="0.0" width="89.5" height="34"/>
+                                                        <color key="backgroundColor" name="appRedColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="34" id="VcH-pG-CzV"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="14"/>
+                                                        <state key="normal" title="Place a Bid">
+                                                            <color key="titleColor" name="collectionViewBackground"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="placeBidAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="w3y-XY-SnO"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                            </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aVK-rA-ETO">
-                                <rect key="frame" x="295" y="8" width="57" height="24"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="group3922" translatesAutoresizingMaskIntoConstraints="NO" id="dHi-QN-JzJ">
-                                        <rect key="frame" x="4" y="4" width="16" height="16"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="dHi-QN-JzJ" secondAttribute="height" id="Qyb-WT-Ud4"/>
-                                            <constraint firstAttribute="height" constant="16" id="snX-7L-hjj"/>
-                                        </constraints>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3.5/5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AFh-BY-JF3">
-                                        <rect key="frame" x="24" y="5" width="29" height="14"/>
-                                        <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="12"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" red="0.9137254901960784" green="0.92156862745098034" blue="0.93725490196078431" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="24" id="8Za-S5-0Xv"/>
-                                    <constraint firstItem="AFh-BY-JF3" firstAttribute="centerY" secondItem="aVK-rA-ETO" secondAttribute="centerY" id="Jfz-oX-UOR"/>
-                                    <constraint firstAttribute="trailing" secondItem="AFh-BY-JF3" secondAttribute="trailing" constant="4" id="KJQ-cb-BQP"/>
-                                    <constraint firstItem="AFh-BY-JF3" firstAttribute="leading" secondItem="dHi-QN-JzJ" secondAttribute="trailing" constant="4" id="Uym-fs-Kat"/>
-                                    <constraint firstAttribute="width" constant="57" id="d0b-Qu-AIw"/>
-                                    <constraint firstItem="dHi-QN-JzJ" firstAttribute="leading" secondItem="aVK-rA-ETO" secondAttribute="leading" constant="4" id="tkt-21-vNi"/>
-                                    <constraint firstItem="dHi-QN-JzJ" firstAttribute="centerY" secondItem="aVK-rA-ETO" secondAttribute="centerY" id="vUz-Sg-SgP"/>
+                                    <constraint firstItem="5iu-C2-3ch" firstAttribute="width" secondItem="tyP-oU-RD9" secondAttribute="width" id="iW1-YW-MfV"/>
                                 </constraints>
-                            </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="M6u-hZ-TmO">
-                                <rect key="frame" x="8" y="64" width="344" height="31"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="RfM-aY-ksD">
-                                        <rect key="frame" x="0.0" y="0.0" width="61.5" height="15.5"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oN6-S8-I22">
-                                                <rect key="frame" x="0.0" y="0.0" width="29.5" height="15.5"/>
-                                                <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="12"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nwx-AU-f24">
-                                                <rect key="frame" x="29.5" y="0.0" width="32" height="15.5"/>
-                                                <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="13"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="7Yq-B0-0SX">
-                                        <rect key="frame" x="0.0" y="15.5" width="62.5" height="15.5"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FA6-x9-vOI">
-                                                <rect key="frame" x="0.0" y="0.0" width="29.5" height="15.5"/>
-                                                <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="12"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZBf-tR-WCI">
-                                                <rect key="frame" x="30.5" y="0.0" width="32" height="15.5"/>
-                                                <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="13"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="X5A-rR-BKL">
-                                <rect key="frame" x="8" y="103" width="344" height="35"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="uqa-aO-x5M">
-                                        <rect key="frame" x="0.0" y="0.0" width="172" height="35"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vps-ZZ-Skz">
-                                                <rect key="frame" x="0.0" y="0.0" width="172" height="14"/>
-                                                <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="12"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Coo-Iw-kSr">
-                                                <rect key="frame" x="0.0" y="15" width="172" height="20"/>
-                                                <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="vdF-7g-kLR">
-                                        <rect key="frame" x="172" y="0.0" width="172" height="35"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bid Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k7a-1Z-Loj">
-                                                <rect key="frame" x="0.0" y="0.0" width="172" height="14"/>
-                                                <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="12"/>
-                                                <color key="textColor" red="0.54117649793624878" green="0.58431375026702881" blue="0.61960786581039429" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eZQ-3N-dP2">
-                                                <rect key="frame" x="0.0" y="15" width="172" height="20"/>
-                                                <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
-                                                <color key="textColor" red="0.17254901959999999" green="0.71372549019999998" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                            </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5iu-C2-3ch">
-                                <rect key="frame" x="8" y="149" width="344" height="1"/>
-                                <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="8NI-Cg-3PB"/>
-                                </constraints>
-                            </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="uaJ-Wy-PiP">
-                                <rect key="frame" x="182.5" y="158" width="169.5" height="34"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TND-fK-5Il" customClass="AppButton" customModule="ArabianTyres" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="64.5" height="34"/>
-                                        <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="14"/>
-                                        <state key="normal" title="Reject">
-                                            <color key="titleColor" name="appRedColor"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                <real key="value" value="1"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                <color key="value" name="appRedColor"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="placeRequestBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="izX-pi-wx7"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HCU-Sa-4jQ" customClass="AppButton" customModule="ArabianTyres" customModuleProvider="target">
-                                        <rect key="frame" x="72.5" y="0.0" width="97" height="34"/>
-                                        <color key="backgroundColor" name="appRedColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="34" id="VcH-pG-CzV"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="14"/>
-                                        <state key="normal" title="Place a Bid">
-                                            <color key="titleColor" name="collectionViewBackground"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="placeBidAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="w3y-XY-SnO"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="aVK-rA-ETO" firstAttribute="top" secondItem="X2k-1f-60t" secondAttribute="top" constant="8" id="5Vd-9U-Za8"/>
-                            <constraint firstAttribute="trailing" secondItem="uaJ-Wy-PiP" secondAttribute="trailing" constant="8" id="6hy-pV-cmH"/>
-                            <constraint firstAttribute="trailing" secondItem="aVK-rA-ETO" secondAttribute="trailing" constant="8" id="9SL-BZ-rXm"/>
-                            <constraint firstItem="M6u-hZ-TmO" firstAttribute="top" secondItem="3T5-hz-J4m" secondAttribute="bottom" constant="8" id="P3r-fh-X9K"/>
-                            <constraint firstItem="X5A-rR-BKL" firstAttribute="top" secondItem="M6u-hZ-TmO" secondAttribute="bottom" constant="8" id="TfV-ZX-Shl"/>
-                            <constraint firstItem="uaJ-Wy-PiP" firstAttribute="top" secondItem="5iu-C2-3ch" secondAttribute="bottom" constant="8" id="Y3e-5r-kbR"/>
-                            <constraint firstItem="M6u-hZ-TmO" firstAttribute="leading" secondItem="X2k-1f-60t" secondAttribute="leading" constant="8" id="aL4-li-Fcq"/>
-                            <constraint firstAttribute="bottom" secondItem="uaJ-Wy-PiP" secondAttribute="bottom" constant="8" id="bEA-Yh-kKg"/>
-                            <constraint firstItem="X5A-rR-BKL" firstAttribute="trailing" secondItem="M6u-hZ-TmO" secondAttribute="trailing" id="hB1-H8-L11"/>
-                            <constraint firstAttribute="trailing" secondItem="M6u-hZ-TmO" secondAttribute="trailing" constant="8" id="i8S-x8-JWA"/>
-                            <constraint firstItem="5iu-C2-3ch" firstAttribute="leading" secondItem="X2k-1f-60t" secondAttribute="leading" constant="8" id="jhU-Nr-R3c"/>
-                            <constraint firstItem="5iu-C2-3ch" firstAttribute="top" secondItem="X5A-rR-BKL" secondAttribute="bottom" constant="11" id="l9X-iK-j0t"/>
-                            <constraint firstItem="3T5-hz-J4m" firstAttribute="leading" secondItem="X2k-1f-60t" secondAttribute="leading" constant="8" id="mhO-IO-NwG"/>
-                            <constraint firstItem="TND-fK-5Il" firstAttribute="width" secondItem="X2k-1f-60t" secondAttribute="width" multiplier="74/414" id="peB-kW-xY5"/>
-                            <constraint firstItem="3T5-hz-J4m" firstAttribute="top" secondItem="X2k-1f-60t" secondAttribute="top" constant="8" id="qdP-q6-B5Z"/>
-                            <constraint firstAttribute="trailing" secondItem="5iu-C2-3ch" secondAttribute="trailing" constant="8" id="qxa-Hm-YHW"/>
-                            <constraint firstItem="X5A-rR-BKL" firstAttribute="leading" secondItem="M6u-hZ-TmO" secondAttribute="leading" id="rye-j0-7ku"/>
+                            <constraint firstItem="tyP-oU-RD9" firstAttribute="top" secondItem="X2k-1f-60t" secondAttribute="top" constant="8" id="WH8-OV-YOU"/>
+                            <constraint firstItem="tyP-oU-RD9" firstAttribute="leading" secondItem="X2k-1f-60t" secondAttribute="leading" constant="8" id="YIa-8u-O8a"/>
+                            <constraint firstItem="TND-fK-5Il" firstAttribute="width" secondItem="X2k-1f-60t" secondAttribute="width" multiplier="74/414" id="b54-T8-nWF"/>
+                            <constraint firstItem="HCU-Sa-4jQ" firstAttribute="width" secondItem="X2k-1f-60t" secondAttribute="width" multiplier="103/414" id="hOT-7r-gca"/>
+                            <constraint firstAttribute="trailing" secondItem="tyP-oU-RD9" secondAttribute="trailing" constant="8" id="okD-ov-BRu"/>
+                            <constraint firstAttribute="bottom" secondItem="tyP-oU-RD9" secondAttribute="bottom" constant="8" id="sAM-22-ZzO"/>
                         </constraints>
                     </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="HCU-Sa-4jQ" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="103/414" id="QJX-O3-kKk"/>
                     <constraint firstAttribute="bottom" secondItem="X2k-1f-60t" secondAttribute="bottom" constant="8" id="fKf-HU-T1O"/>
                     <constraint firstItem="X2k-1f-60t" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="mIE-nD-b55"/>
                     <constraint firstAttribute="trailing" secondItem="X2k-1f-60t" secondAttribute="trailing" constant="15" id="wwY-2H-LOG"/>
@@ -247,14 +224,13 @@
                 <outlet property="bidAmountLbl" destination="k7a-1Z-Loj" id="R31-jw-sGP"/>
                 <outlet property="bidAmountStackView" destination="vdF-7g-kLR" id="8mx-W2-HIL"/>
                 <outlet property="bidAmountValueLbl" destination="eZQ-3N-dP2" id="TT2-ts-cMF"/>
+                <outlet property="bottomStackView" destination="DkE-AY-SEv" id="NY6-Uk-107"/>
                 <outlet property="brandDetailLbl" destination="ZBf-tR-WCI" id="SEQ-EV-hTG"/>
                 <outlet property="brandsLbl" destination="FA6-x9-vOI" id="BcZ-BO-e9J"/>
+                <outlet property="btnStackView" destination="uaJ-Wy-PiP" id="0Ck-Sr-xTa"/>
                 <outlet property="dataContainerView" destination="X2k-1f-60t" id="WRs-qe-bB9"/>
                 <outlet property="logoImgView" destination="4uA-wS-qSS" id="ChR-vf-390"/>
                 <outlet property="placeBidBtn" destination="HCU-Sa-4jQ" id="TIo-LG-vbS"/>
-                <outlet property="ratingImgView" destination="dHi-QN-JzJ" id="cVY-fl-Iz1"/>
-                <outlet property="ratingLbl" destination="AFh-BY-JF3" id="xV6-Ip-nxw"/>
-                <outlet property="ratingView" destination="aVK-rA-ETO" id="iVs-Mq-bXR"/>
                 <outlet property="rejectRequestBtn" destination="TND-fK-5Il" id="j1Z-NS-aVZ"/>
                 <outlet property="serviceTimeLbl" destination="QWa-9n-sJL" id="E2Y-uI-RYO"/>
                 <outlet property="serviceTyeLbl" destination="J64-ub-Sk9" id="Bu7-6R-8fH"/>
@@ -268,7 +244,6 @@
     </objects>
     <resources>
         <image name="battery" width="135" height="135"/>
-        <image name="group3922" width="48" height="48"/>
         <namedColor name="appRedColor">
             <color red="0.87800002098083496" green="0.13699999451637268" blue="0.25900000333786011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

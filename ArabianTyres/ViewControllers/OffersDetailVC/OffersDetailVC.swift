@@ -65,6 +65,7 @@ class OffersDetailVC: BaseVC {
 extension OffersDetailVC {
     
     private func initialSetup() {
+        NotificationCenter.default.addObserver(self, selector: #selector(newBidSocketSuccess), name: Notification.Name.NewBidSocketSuccess, object: nil)
         acceptBtn.isEnabled = true
         rejectBtn.isBorderSelected = true
         setupTextAndFont()
@@ -111,6 +112,10 @@ extension OffersDetailVC {
     private func setupTextAndFont(){
         titleLbl.font = AppFonts.NunitoSansBold.withSize(17.0)
         [totalPriceLbl,unitLbl,unitPriceLbl,brandsLbl].forEach({$0?.textColor = AppColors.fontTertiaryColor})
+    }
+    
+    @objc func newBidSocketSuccess(){
+        self.hitApi()
     }
 }
 

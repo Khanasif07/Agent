@@ -108,9 +108,11 @@ class UserServiceRequestVC: BaseVC {
 extension UserServiceRequestVC {
     
     private func initialSetup() {
+        NotificationCenter.default.addObserver(self, selector: #selector(requestRejected), name: Notification.Name.RequestRejected, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(newBidSocketSuccess), name: Notification.Name.NewBidSocketSuccess, object: nil)
         viewModel.delegate = self
         textSetUp()
+        addTapGesture()
         viewModel.getUserMyRequestDetailData(params: [ApiKey.requestId: self.viewModel.requestId])
     }
     
@@ -133,8 +135,22 @@ extension UserServiceRequestVC {
         viewModel.getUserMyRequestDetailData(params: [ApiKey.requestId: self.viewModel.requestId])
     }
     
+    @objc func requestRejected(){
+        viewModel.getUserMyRequestDetailData(params: [ApiKey.requestId: self.viewModel.requestId])
+    }
+    
     func getMiles(meters: Double) -> Double {
          return meters * 0.000621371192
+    }
+    
+    private func addTapGesture(){
+        productImgView.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(singleTap))
+        self.productImgView.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func singleTap(){
+        AppRouter.presentImageViewerVC(self, image: nil, imageURL: self.viewModel.userRequestDetail.images.first ?? "")
     }
 }
 
@@ -202,6 +218,8 @@ extension UserServiceRequestVC: UserServiceRequestVMDelegate{
         brandsLbl.text = brandsArray.endIndex > 0 ? (LocalizedString.brands.localized + ":") : (LocalizedString.countries.localized + ":")
         brandsValueLbl.text = brandsArray.endIndex > 0 ? brandsArray.joined(separator: ",") : countryArray.joined(separator: ",")
         let logoImg =  self.viewModel.serviceType == "Tyres" ? #imageLiteral(resourceName: "radialCarTireI151") : self.viewModel.serviceType == "Battery" ? #imageLiteral(resourceName: "icBattery") : #imageLiteral(resourceName: "icOil")
+        productImgView.isHidden = model.images.isEmpty
+        bottomLineView.isHidden = model.images.isEmpty
         self.productImgView.setImage_kf(imageString: model.images.first ?? "", placeHolderImage: logoImg, loader: false)
     }
     

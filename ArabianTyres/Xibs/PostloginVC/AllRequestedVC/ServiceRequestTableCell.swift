@@ -16,20 +16,19 @@ class ServiceRequestTableCell: UITableViewCell {
     @IBOutlet weak var tyreSizeLbl: UILabel!
     @IBOutlet weak var sizeDetailLbl: UILabel!
     @IBOutlet weak var brandDetailLbl: UILabel!
-
+    @IBOutlet weak var bottomStackView: UIStackView!
+    
     @IBOutlet weak var serviceTimeLbl: UILabel!
     @IBOutlet weak var serviceTyeLbl: UILabel!
-    @IBOutlet weak var ratingLbl: UILabel!
-    @IBOutlet weak var ratingImgView: UIImageView!
     @IBOutlet weak var logoImgView: UIImageView!
     @IBOutlet weak var placeBidBtn: AppButton!
     @IBOutlet weak var rejectRequestBtn: AppButton!
-    @IBOutlet weak var ratingView: UIView!
     @IBOutlet weak var dataContainerView: UIView!
     
     @IBOutlet weak var bidAmountStackView: UIStackView!
     @IBOutlet weak var bidAmountLbl: UILabel!
     @IBOutlet weak var bidAmountValueLbl: UILabel!
+    @IBOutlet weak var btnStackView: UIStackView!
 
     
     var rejectRequestBtnTapped: (()->())?
@@ -44,8 +43,6 @@ class ServiceRequestTableCell: UITableViewCell {
         logoImgView.round(radius: 4.0)
         placeBidBtn.round(radius: 2.0)
         rejectRequestBtn.round(radius: 2.0)
-        ratingImgView.round(radius: 4.0)
-        ratingView.round(radius: 2.0)
         dataContainerView.addShadow(cornerRadius: 5, color: UIColor.black16, offset: CGSize(width: 0.5, height: 0.5), opacity: 1, shadowRadius: 5)
     }
     
@@ -105,7 +102,7 @@ class ServiceRequestTableCell: UITableViewCell {
         self.logoImgView.backgroundColor = logoBackGroundColor
         self.logoImgView.image = logoImg
 
-        statusValueLbl.text = model.bidStatus?.rawValue
+        statusValueLbl.text = model.bidStatus?.text
         statusValueLbl.textColor = model.bidStatus?.textColor
     
         let str = model.requestType == .tyres ? "Tyre" : model.requestType.rawValue
@@ -113,7 +110,13 @@ class ServiceRequestTableCell: UITableViewCell {
         
         if model.bidStatus == .bidFinalsed || model.bidStatus == .bidPlaced {
             bidAmountStackView.isHidden = false
-            bidAmountValueLbl.text = String(Int(model.bidData?.first?.amount ?? 0.0) * (model.bidData?.first?.quantity ?? 0))
+            var str: NSMutableAttributedString = NSMutableAttributedString()
+            str = NSMutableAttributedString(string: "\(Int(model.bidData?.first?.amount ?? 0.0) * (model.bidData?.first?.quantity ?? 0))", attributes: [
+                .font: AppFonts.NunitoSansBold.withSize(17.0),
+                .foregroundColor: AppColors.successGreenColor
+            ])
+            str.append(NSAttributedString(string: "SAR", attributes: [NSAttributedString.Key.foregroundColor: AppColors.successGreenColor,NSAttributedString.Key.font: AppFonts.NunitoSansSemiBold.withSize(12.0)]))
+            bidAmountValueLbl.attributedText = str
         }else {
             bidAmountStackView.isHidden = true
         }
@@ -139,6 +142,12 @@ class ServiceRequestTableCell: UITableViewCell {
                 placeBidBtn.setTitle("Place a Bid", for: .normal)
                 placeBidBtn.isHidden = false
             }
+        }
+        
+        if model.bidStatus == .bidClosed {
+            bottomStackView.isHidden = true
+        }else {
+            bottomStackView.isHidden = false
         }
     }
     

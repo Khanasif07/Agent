@@ -113,6 +113,8 @@
 		84801CD22547F5D100F360FC /* FirestoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84801CD12547F5D100F360FC /* FirestoreController.swift */; };
 		84801CD52547FBB100F360FC /* UserChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84801CD42547FBB100F360FC /* UserChatVC.swift */; };
 		84801CD72547FBDC00F360FC /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84801CD62547FBDC00F360FC /* Chat.storyboard */; };
+		84801CDB2548052100F360FC /* GarageHomeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84801CDA2548052100F360FC /* GarageHomeVM.swift */; };
+		84801CDE2548273400F360FC /* ImageViewerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84801CDD2548273400F360FC /* ImageViewerVC.swift */; };
 		8481F9FD2500AA9A00AB6EFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481F9FC2500AA9A00AB6EFB /* AppDelegate.swift */; };
 		8481F9FF2500AA9A00AB6EFB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481F9FE2500AA9A00AB6EFB /* SceneDelegate.swift */; };
 		8481FA062500AA9B00AB6EFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8481FA052500AA9B00AB6EFB /* Assets.xcassets */; };
@@ -232,6 +234,9 @@
 		A421DDD7252B1A610044E5E0 /* OtpPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A421DDD6252B1A610044E5E0 /* OtpPopUpVC.swift */; };
 		A43137DB2534752C00C20082 /* UserAllOfferVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43137DA2534752C00C20082 /* UserAllOfferVM.swift */; };
 		A43137DD253475B200C20082 /* UserBidModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43137DC253475B200C20082 /* UserBidModel.swift */; };
+		A439263A2547FF9D0089E0EB /* UserNotificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43926392547FF9D0089E0EB /* UserNotificationVC.swift */; };
+		A439263D254801810089E0EB /* UserNotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A439263B254801810089E0EB /* UserNotificationTableViewCell.swift */; };
+		A439263E254801810089E0EB /* UserNotificationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A439263C254801810089E0EB /* UserNotificationTableViewCell.xib */; };
 		A43B53A52524B21300447B24 /* GarageRequest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A43B53A42524B21300447B24 /* GarageRequest.storyboard */; };
 		A43B53A72524B47000447B24 /* OngoingServiceListingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43B53A62524B47000447B24 /* OngoingServiceListingVC.swift */; };
 		A43B53AC2524B65300447B24 /* ServiceListingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43B53AA2524B65300447B24 /* ServiceListingTableViewCell.swift */; };
@@ -406,6 +411,8 @@
 		84801CD12547F5D100F360FC /* FirestoreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreController.swift; sourceTree = "<group>"; };
 		84801CD42547FBB100F360FC /* UserChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserChatVC.swift; sourceTree = "<group>"; };
 		84801CD62547FBDC00F360FC /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
+		84801CDA2548052100F360FC /* GarageHomeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageHomeVM.swift; sourceTree = "<group>"; };
+		84801CDD2548273400F360FC /* ImageViewerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewerVC.swift; sourceTree = "<group>"; };
 		8481F9F92500AA9A00AB6EFB /* ArabianTyres.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArabianTyres.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8481F9FC2500AA9A00AB6EFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8481F9FE2500AA9A00AB6EFB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -528,6 +535,9 @@
 		A421DDD6252B1A610044E5E0 /* OtpPopUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpPopUpVC.swift; sourceTree = "<group>"; };
 		A43137DA2534752C00C20082 /* UserAllOfferVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAllOfferVM.swift; sourceTree = "<group>"; };
 		A43137DC253475B200C20082 /* UserBidModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBidModel.swift; sourceTree = "<group>"; };
+		A43926392547FF9D0089E0EB /* UserNotificationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationVC.swift; sourceTree = "<group>"; };
+		A439263B254801810089E0EB /* UserNotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationTableViewCell.swift; sourceTree = "<group>"; };
+		A439263C254801810089E0EB /* UserNotificationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserNotificationTableViewCell.xib; sourceTree = "<group>"; };
 		A43B53A42524B21300447B24 /* GarageRequest.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GarageRequest.storyboard; sourceTree = "<group>"; };
 		A43B53A62524B47000447B24 /* OngoingServiceListingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OngoingServiceListingVC.swift; sourceTree = "<group>"; };
 		A43B53AA2524B65300447B24 /* ServiceListingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceListingTableViewCell.swift; sourceTree = "<group>"; };
@@ -1085,6 +1095,14 @@
 				84801CD42547FBB100F360FC /* UserChatVC.swift */,
 			);
 			path = ChatVC;
+            sourceTree = "<group>";
+                };
+		84801CDC2548271900F360FC /* ImageViewerVC */ = {
+			isa = PBXGroup;
+			children = (
+				84801CDD2548273400F360FC /* ImageViewerVC.swift */,
+			);
+			path = ImageViewerVC;
 			sourceTree = "<group>";
 		};
 		8481F9F02500AA9A00AB6EFB = {
@@ -1130,6 +1148,7 @@
 				8481FA87250107C000AB6EFB /* PostloginVC */,
 				8481FA86250107B600AB6EFB /* PreloginVC */,
 				A41AAB4C2530A0160061887F /* OfferFilterVC */,
+				A439263F2548019E0089E0EB /* UserNotificationVC */,
 			);
 			path = Xibs;
 			sourceTree = "<group>";
@@ -1195,11 +1214,12 @@
 				8411D356252DA6F600E6FA6C /* UserServiceRequestVC */,
 				84144F29252C8BA800D6572F /* GarageServiceRequestVC */,
 				A43B53A82524B5AC00447B24 /* GarageDashBoardAndRequest */,
-				A41AAB3F2530451B0061887F /* OfferFilterVC.swift */,
-				A41AAB492530742D0061887F /* RatingVC.swift */,
-				A41AAB4D2530A0390061887F /* MyServiceFilterVC.swift */,
-				A46808E72539CFBD00C2D404 /* SRPopupVC.swift */,
-				A468DC9F2539D74100416CF9 /* GarageRequestPopupVC.swift */,
+				A43926342547FC400089E0EB /* OfferFilterVC */,
+				A43926352547FC4D0089E0EB /* RatingVC */,
+				A43926362547FC590089E0EB /* MyServiceFilterVC */,
+				A43926372547FC620089E0EB /* SRPopupVC */,
+				A43926382547FC6C0089E0EB /* GarageRequestPopupVC */,
+				A43926392547FF9D0089E0EB /* UserNotificationVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1207,6 +1227,7 @@
 		8481FA152500B9F600AB6EFB /* CommonControllers */ = {
 			isa = PBXGroup;
 			children = (
+				84801CDC2548271900F360FC /* ImageViewerVC */,
 				84E166E2250362BF00C2F2EF /* SuccessPopupVC */,
 				8481FA1B2500BA9400AB6EFB /* FacebookManager */,
 				8481FA1A2500BA8A00AB6EFB /* AppleManager */,
@@ -1607,6 +1628,55 @@
 			path = SRFilterVC;
 			sourceTree = "<group>";
 		};
+		A43926342547FC400089E0EB /* OfferFilterVC */ = {
+			isa = PBXGroup;
+			children = (
+				A41AAB3F2530451B0061887F /* OfferFilterVC.swift */,
+			);
+			path = OfferFilterVC;
+			sourceTree = "<group>";
+		};
+		A43926352547FC4D0089E0EB /* RatingVC */ = {
+			isa = PBXGroup;
+			children = (
+				A41AAB492530742D0061887F /* RatingVC.swift */,
+			);
+			path = RatingVC;
+			sourceTree = "<group>";
+		};
+		A43926362547FC590089E0EB /* MyServiceFilterVC */ = {
+			isa = PBXGroup;
+			children = (
+				A41AAB4D2530A0390061887F /* MyServiceFilterVC.swift */,
+			);
+			path = MyServiceFilterVC;
+			sourceTree = "<group>";
+		};
+		A43926372547FC620089E0EB /* SRPopupVC */ = {
+			isa = PBXGroup;
+			children = (
+				A46808E72539CFBD00C2D404 /* SRPopupVC.swift */,
+			);
+			path = SRPopupVC;
+			sourceTree = "<group>";
+		};
+		A43926382547FC6C0089E0EB /* GarageRequestPopupVC */ = {
+			isa = PBXGroup;
+			children = (
+				A468DC9F2539D74100416CF9 /* GarageRequestPopupVC.swift */,
+			);
+			path = GarageRequestPopupVC;
+			sourceTree = "<group>";
+		};
+		A439263F2548019E0089E0EB /* UserNotificationVC */ = {
+			isa = PBXGroup;
+			children = (
+				A439263B254801810089E0EB /* UserNotificationTableViewCell.swift */,
+				A439263C254801810089E0EB /* UserNotificationTableViewCell.xib */,
+			);
+			path = UserNotificationVC;
+			sourceTree = "<group>";
+		};
 		A43B53A82524B5AC00447B24 /* GarageDashBoardAndRequest */ = {
 			isa = PBXGroup;
 			children = (
@@ -1766,6 +1836,7 @@
 			isa = PBXGroup;
 			children = (
 				A4A6DEE0251A123800564020 /* GarageHomeVC.swift */,
+				84801CDA2548052100F360FC /* GarageHomeVM.swift */,
 			);
 			path = GarageHomeVC;
 			sourceTree = "<group>";
@@ -1948,6 +2019,7 @@
 				A41AAB44253047A50061887F /* OfferFilterTableViewCell.xib in Resources */,
 				84FF6EA3251D8E990000E2AD /* BottomSheetTableCell.xib in Resources */,
 				844D81E0250243B300550334 /* SignUpTopCell.xib in Resources */,
+				A439263E254801810089E0EB /* UserNotificationTableViewCell.xib in Resources */,
 				843D4BA725305EEE00D72D2F /* UserOffersTableCell.xib in Resources */,
 				8481FA952501437C00AB6EFB /* NunitoSans-ExtraBold.ttf in Resources */,
 				846352D12511E34E004216F1 /* AddImageCollCell.xib in Resources */,
@@ -2112,6 +2184,7 @@
 				A44E8D7C251CD24900ACBC4D /* VehicleDetailForOilVC.swift in Sources */,
 				843D4B9E25305C5A00D72D2F /* UserAllOffersVC.swift in Sources */,
 				A468DCA02539D74100416CF9 /* GarageRequestPopupVC.swift in Sources */,
+				A439263D254801810089E0EB /* UserNotificationTableViewCell.swift in Sources */,
 				8481FA652500BFAD00AB6EFB /* AppColors.swift in Sources */,
 				A41AAB43253047A50061887F /* OfferFilterTableViewCell.swift in Sources */,
 				A4203EF9252C31A100BD8802 /* FilterCollectionViewCell.swift in Sources */,
@@ -2206,6 +2279,7 @@
 				A4DCEE09252DED9C002EB32F /* AllRequestVM.swift in Sources */,
 				843C8ECC2508C3A400515F2E /* ProfileSettingVC.swift in Sources */,
 				8481FA4F2500BED600AB6EFB /* UIImageExtension.swift in Sources */,
+				A439263A2547FF9D0089E0EB /* UserNotificationVC.swift in Sources */,
 				84FF6E97251C77EF0000E2AD /* LineDashedView.swift in Sources */,
 				843F004625060725001A78EC /* CountryVC.swift in Sources */,
 				843F004925060798001A78EC /* CountryVM.swift in Sources */,
@@ -2255,8 +2329,10 @@
 				843C8EC52508AE9500515F2E /* ProfileUserInternalCell.swift in Sources */,
 				84476D3725075F6800AB5E80 /* ExploreVC.swift in Sources */,
 				846352D02511E34E004216F1 /* AddImageCollCell.swift in Sources */,
+				84801CDE2548273400F360FC /* ImageViewerVC.swift in Sources */,
 				A41AAB402530451B0061887F /* OfferFilterVC.swift in Sources */,
 				84558EEE252F0A0000BFF8C6 /* SocketListener.swift in Sources */,
+				84801CDB2548052100F360FC /* GarageHomeVM.swift in Sources */,
 				842B2FCC25133EC500E3CF67 /* BankListingVM.swift in Sources */,
 				8481F9FD2500AA9A00AB6EFB /* AppDelegate.swift in Sources */,
 				A45566CD250B4EAC009E4324 /* RegistraionPendingVC.swift in Sources */,

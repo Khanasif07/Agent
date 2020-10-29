@@ -43,7 +43,7 @@ class OilBrandsVC: BaseVC {
     var countryListingArr :[TyreCountryModel] = []
     var listingType : ListingType = .brands
     //Location
-    private var locationValue = LocationController.sharedLocationManager.locationManager.location?.coordinate ?? CLLocationCoordinate2D(latitude: 34.052238, longitude: -118.24334)
+    private var locationValue = LocationController.sharedLocationManager.locationManager.location?.coordinate ?? CLLocationCoordinate2D(latitude: 18.052238, longitude: 77.24334)
     private var locationManager = CLLocationManager()
     private var isLocationEnable : Bool = true
     private var isHitApi: Bool = false
@@ -105,6 +105,10 @@ class OilBrandsVC: BaseVC {
 extension OilBrandsVC {
     
     private func initialSetup() {
+        locationManager.delegate = self
+        LocationController.sharedLocationManager.fetchCurrentLocation { (location) in
+            LocationController.sharedLocationManager.currentLocation = location
+        }
         brandListingArr = TyreRequestModel.shared.selectedTyreBrandsListings
         countryListingArr = TyreRequestModel.shared.selectedTyreCountryListings
         setupTextFont()
@@ -277,6 +281,17 @@ extension OilBrandsVC: BrandsListnig {
 // MARK: - LocationPopUpVMDelegate
 //==============================
 extension OilBrandsVC: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location  = locations.last {
+            self.locationValue = location.coordinate
+            TyreRequestModel.shared.latitude = "\(location.coordinate.latitude)"
+            TyreRequestModel.shared.longitude = "\(location.coordinate.longitude)"
+            self.setAddress()
+        }
+        locationManager.stopUpdatingLocation()
+    }
+    
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         
         switch status {
@@ -286,6 +301,8 @@ extension OilBrandsVC: CLLocationManagerDelegate {
             LocationController.sharedLocationManager.fetchCurrentLocation { [weak self] (location) in
                 guard let strongSelf = self else { return }
                 strongSelf.isLocationEnable = true
+                strongSelf.locationValue = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+                strongSelf.setAddress()
                 TyreRequestModel.shared.latitude = "\(location.coordinate.latitude)"
                 TyreRequestModel.shared.longitude = "\(location.coordinate.longitude)"
             }
