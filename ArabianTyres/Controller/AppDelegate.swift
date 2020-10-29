@@ -62,13 +62,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate , MessagingDelegate , UNUs
     }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-//        InstanceID.instanceID().instanceID(handler: { (result, error) in
-//            if let error = error {
-//                print("Error fetching remote instange ID: \(error)")
-//            } else if let result = result {
-//                print("Remote instance ID token: \(result.token)")
-//            }
-//        })
+        let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
+        AppUserDefaults.save(value: deviceTokenString, forKey: .token)
+        print("APNs device token: \(deviceTokenString)")
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -125,3 +121,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate , MessagingDelegate , UNUs
     }
 }
 
+
+extension AppDelegate {
+    // To fetch different google infoplist according to different servers
+    func getGoogleInfoPlist() {
+        var filePath = ""
+        #if ENV_DEV
+        filePath = Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist")!
+        #elseif ENV_QA
+        filePath = Bundle.main.path(forResource: "GoogleService-Info-QA", ofType: "plist")!
+        #elseif ENV_PROD
+        filePath = Bundle.main.path(forResource: "GoogleService-Info-Prod", ofType: "plist")!
+        #else
+        filePath = Bundle.main.path(forResource: "GoogleService-Info-Stg", ofType: "plist")!
+        #endif
+        
+        if let options = FirebaseOptions(contentsOfFile: filePath) {
+            FirebaseApp.configure(options: options)
+        } else {
+            FirebaseApp.configure()
+        }
+    }
+    
+    func getGoogleClientID() {
+        let filePath = Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist")!
+        if let options = FirebaseOptions(contentsOfFile: filePath) {
+            GoogleLoginController.shared.configure(withClientId: options.clientID ?? "")
+            GIDSignIn.sharedInstance().clientID = options.clientID
+        }
+    }
+}

@@ -188,6 +188,7 @@
 		84B629AC25120FF50080A7C2 /* InterConnectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B629AB25120FF50080A7C2 /* InterConnectivity.swift */; };
 		84B629AE251212FC0080A7C2 /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B629AD251212FC0080A7C2 /* ImageModel.swift */; };
 		84B629B12512262C0080A7C2 /* GarageAddLocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B629B02512262C0080A7C2 /* GarageAddLocationVC.swift */; };
+		84C3F5C8254AD27C00F374CC /* FirestoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C3F5C7254AD27C00F374CC /* FirestoreModel.swift */; };
 		84C82F6425347A4C0014CD4A /* OffersDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C82F6325347A4C0014CD4A /* OffersDetailVC.swift */; };
 		84D83D68252AAF5800F6C420 /* URTyreStep1VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D83D67252AAF5800F6C420 /* URTyreStep1VM.swift */; };
 		84E166E4250362DE00C2F2EF /* SuccessPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E166E3250362DE00C2F2EF /* SuccessPopupVC.swift */; };
@@ -488,6 +489,7 @@
 		84B629AB25120FF50080A7C2 /* InterConnectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterConnectivity.swift; sourceTree = "<group>"; };
 		84B629AD251212FC0080A7C2 /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
 		84B629B02512262C0080A7C2 /* GarageAddLocationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageAddLocationVC.swift; sourceTree = "<group>"; };
+		84C3F5C7254AD27C00F374CC /* FirestoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreModel.swift; sourceTree = "<group>"; };
 		84C82F6325347A4C0014CD4A /* OffersDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffersDetailVC.swift; sourceTree = "<group>"; };
 		84D83D67252AAF5800F6C420 /* URTyreStep1VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URTyreStep1VM.swift; sourceTree = "<group>"; };
 		84E166E3250362DE00C2F2EF /* SuccessPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessPopupVC.swift; sourceTree = "<group>"; };
@@ -1095,8 +1097,8 @@
 				84801CD42547FBB100F360FC /* UserChatVC.swift */,
 			);
 			path = ChatVC;
-            sourceTree = "<group>";
-                };
+			sourceTree = "<group>";
+		};
 		84801CDC2548271900F360FC /* ImageViewerVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -1168,6 +1170,7 @@
 		8481FA122500B9D600AB6EFB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				84C3F5C6254AD25C00F374CC /* ChatModels */,
 				A4A6DED82519DCF100564020 /* FacilityModel.swift */,
 				8481FA762500C5CD00AB6EFB /* CountryData.swift */,
 				8481FA782500C64400AB6EFB /* UserModel.swift */,
@@ -1524,6 +1527,14 @@
 				84B629B02512262C0080A7C2 /* GarageAddLocationVC.swift */,
 			);
 			path = GarageAddLocationVC;
+			sourceTree = "<group>";
+		};
+		84C3F5C6254AD25C00F374CC /* ChatModels */ = {
+			isa = PBXGroup;
+			children = (
+				84C3F5C7254AD27C00F374CC /* FirestoreModel.swift */,
+			);
+			path = ChatModels;
 			sourceTree = "<group>";
 		};
 		84C82F6225347A190014CD4A /* OffersDetailVC */ = {
@@ -2285,6 +2296,7 @@
 				843F004925060798001A78EC /* CountryVM.swift in Sources */,
 				A4CC3258252CBCA200669F39 /* ASDynamicCollectionView.swift in Sources */,
 				84144F27252C4AAD00D6572F /* MyServiceTableCell.swift in Sources */,
+				84C3F5C8254AD27C00F374CC /* FirestoreModel.swift in Sources */,
 				84594811252B306A00C0B249 /* BookedRequestTableCell.swift in Sources */,
 				84B629AE251212FC0080A7C2 /* ImageModel.swift in Sources */,
 				843D4BA625305EEE00D72D2F /* UserOffersTableCell.swift in Sources */,
