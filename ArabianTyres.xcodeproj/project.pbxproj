@@ -107,6 +107,8 @@
 		846352D12511E34E004216F1 /* AddImageCollCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 846352CF2511E34E004216F1 /* AddImageCollCell.xib */; };
 		8470D1FA251B36C700790768 /* GarageProfileHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8470D1F8251B36C700790768 /* GarageProfileHeaderCell.swift */; };
 		8470D1FB251B36C700790768 /* GarageProfileHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8470D1F9251B36C700790768 /* GarageProfileHeaderCell.xib */; };
+		8473414F254ADD470083E8D1 /* InboxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473414D254ADD470083E8D1 /* InboxTableViewCell.swift */; };
+		84734150254ADD470083E8D1 /* InboxTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8473414E254ADD470083E8D1 /* InboxTableViewCell.xib */; };
 		847BC423250774E100EEEFDC /* ResetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847BC422250774E100EEEFDC /* ResetPasswordVC.swift */; };
 		847BC425250796CB00EEEFDC /* ResetPasswordVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847BC424250796CB00EEEFDC /* ResetPasswordVM.swift */; };
 		847C35A82535689B009F1ACF /* OffersDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847C35A72535689B009F1ACF /* OffersDetailVM.swift */; };
@@ -406,6 +408,8 @@
 		846352CF2511E34E004216F1 /* AddImageCollCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddImageCollCell.xib; sourceTree = "<group>"; };
 		8470D1F8251B36C700790768 /* GarageProfileHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageProfileHeaderCell.swift; sourceTree = "<group>"; };
 		8470D1F9251B36C700790768 /* GarageProfileHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GarageProfileHeaderCell.xib; sourceTree = "<group>"; };
+		8473414D254ADD470083E8D1 /* InboxTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxTableViewCell.swift; sourceTree = "<group>"; };
+		8473414E254ADD470083E8D1 /* InboxTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InboxTableViewCell.xib; sourceTree = "<group>"; };
 		847BC422250774E100EEEFDC /* ResetPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordVC.swift; sourceTree = "<group>"; };
 		847BC424250796CB00EEEFDC /* ResetPasswordVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordVM.swift; sourceTree = "<group>"; };
 		847C35A72535689B009F1ACF /* OffersDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffersDetailVM.swift; sourceTree = "<group>"; };
@@ -1074,6 +1078,15 @@
 			path = GarageProfileVC;
 			sourceTree = "<group>";
 		};
+		8473414C254ADD1C0083E8D1 /* ChatVC */ = {
+			isa = PBXGroup;
+			children = (
+				8473414D254ADD470083E8D1 /* InboxTableViewCell.swift */,
+				8473414E254ADD470083E8D1 /* InboxTableViewCell.xib */,
+			);
+			path = ChatVC;
+			sourceTree = "<group>";
+		};
 		847BC421250774D000EEEFDC /* ResetPasswordVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -1145,6 +1158,7 @@
 		8481FA102500B9B500AB6EFB /* Xibs */ = {
 			isa = PBXGroup;
 			children = (
+				8473414C254ADD1C0083E8D1 /* ChatVC */,
 				844EB71E2518C9A3003A6E3F /* CustomLoaderCell */,
 				A413B97A250A44400004C534 /* CustomTextView */,
 				8481FA87250107C000AB6EFB /* PostloginVC */,
@@ -2075,6 +2089,7 @@
 				A49B7D4D251125AC0057239B /* FacilityCollectionViewCell.xib in Resources */,
 				844EB6EE25148319003A6E3F /* UserRequest.storyboard in Resources */,
 				843C8ED32508FB9300515F2E /* HomeCollectionCell.xib in Resources */,
+				84734150254ADD470083E8D1 /* InboxTableViewCell.xib in Resources */,
 				8481FA8F2501435D00AB6EFB /* NunitoSans-BlackItalic.ttf in Resources */,
 				843C8EC62508AE9500515F2E /* ProfileUserInternalCell.xib in Resources */,
 				A45042D1250F3846001C8905 /* AddAccountTableViewCell.xib in Resources */,
@@ -2341,6 +2356,7 @@
 				843C8EC52508AE9500515F2E /* ProfileUserInternalCell.swift in Sources */,
 				84476D3725075F6800AB5E80 /* ExploreVC.swift in Sources */,
 				846352D02511E34E004216F1 /* AddImageCollCell.swift in Sources */,
+				8473414F254ADD470083E8D1 /* InboxTableViewCell.swift in Sources */,
 				84801CDE2548273400F360FC /* ImageViewerVC.swift in Sources */,
 				A41AAB402530451B0061887F /* OfferFilterVC.swift in Sources */,
 				84558EEE252F0A0000BFF8C6 /* SocketListener.swift in Sources */,

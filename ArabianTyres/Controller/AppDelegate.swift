@@ -37,6 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , MessagingDelegate , UNUs
         GMSPlacesClient.provideAPIKey(AppConstants.googlePlaceApiKey)
         AWSS3Manager.shared.setupAmazonS3(withPoolID: AppConstants.awss3PoolId)
         GoogleLoginController.shared.configure(withClientId: AppConstants.googleId)
+//        getGoogleInfoPlist()
         AppRouter.checkAppInitializationFlow()
         
         return true
@@ -125,22 +126,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate , MessagingDelegate , UNUs
 extension AppDelegate {
     // To fetch different google infoplist according to different servers
     func getGoogleInfoPlist() {
-        var filePath = ""
-        #if ENV_DEV
-        filePath = Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist")!
-        #elseif ENV_QA
-        filePath = Bundle.main.path(forResource: "GoogleService-Info-QA", ofType: "plist")!
-        #elseif ENV_PROD
-        filePath = Bundle.main.path(forResource: "GoogleService-Info-Prod", ofType: "plist")!
-        #else
-        filePath = Bundle.main.path(forResource: "GoogleService-Info-Stg", ofType: "plist")!
-        #endif
+//        var filePath = ""
+//        #if ENV_DEV
+//        filePath = Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist")!
+//        #elseif ENV_QA
+//        filePath = Bundle.main.path(forResource: "GoogleService-Info-QA", ofType: "plist")!
+//        #elseif ENV_PROD
+//        filePath = Bundle.main.path(forResource: "GoogleService-Info-Prod", ofType: "plist")!
+//        #else
+//        filePath = Bundle.main.path(forResource: "GoogleService-Info-Stg", ofType: "plist")!
+//        #endif
         
-        if let options = FirebaseOptions(contentsOfFile: filePath) {
-            FirebaseApp.configure(options: options)
-        } else {
+//        if let options = FirebaseOptions(contentsOfFile: filePath) {
+//            FirebaseApp.configure(options: options)
+//        } else {
             FirebaseApp.configure()
-        }
+//        }
     }
     
     func getGoogleClientID() {
