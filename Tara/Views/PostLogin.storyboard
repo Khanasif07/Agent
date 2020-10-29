@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1F6-Pe-8cE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1F6-Pe-8cE">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,7 +22,7 @@
         <!--Profile SettingVC-->
         <scene sceneID="pHO-C3-NFa">
             <objects>
-                <viewController storyboardIdentifier="ProfileSettingVC" extendedLayoutIncludesOpaqueBars="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mbE-d1-7X0" customClass="ProfileSettingVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileSettingVC" extendedLayoutIncludesOpaqueBars="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mbE-d1-7X0" customClass="ProfileSettingVC" customModule="Tara" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BbT-QC-DGC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -93,7 +94,7 @@
         <!--ProfileVC-->
         <scene sceneID="vva-uI-IN0">
             <objects>
-                <viewController storyboardIdentifier="ProfileVC" useStoryboardIdentifierAsRestorationIdentifier="YES" interfaceStyle="light" id="1F6-Pe-8cE" customClass="ProfileVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileVC" useStoryboardIdentifierAsRestorationIdentifier="YES" interfaceStyle="light" id="1F6-Pe-8cE" customClass="ProfileVC" customModule="Tara" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4ze-V0-54e">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -165,7 +166,7 @@
         <!--Garage Add ImageVC-->
         <scene sceneID="v7v-qJ-Bhp">
             <objects>
-                <viewController storyboardIdentifier="GarageAddImageVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="84T-NG-NBE" customClass="GarageAddImageVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GarageAddImageVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="84T-NG-NBE" customClass="GarageAddImageVC" customModule="Tara" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SX2-Un-GtA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -261,7 +262,7 @@ Service Center</string>
                                                         <rect key="frame" x="14" y="19" width="60" height="60"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="10" maxX="10" maxY="0.0"/>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qoH-9f-Vtz" customClass="AppButton" customModule="ArabianTyres">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qoH-9f-Vtz" customClass="AppButton" customModule="Tara" customModuleProvider="target">
                                                         <rect key="frame" x="137" y="473" width="217" height="56"/>
                                                         <color key="backgroundColor" red="0.090196078430000007" green="0.1450980392" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
@@ -419,7 +420,7 @@ Service Center</string>
         <!--Garage Add LocationVC-->
         <scene sceneID="Bho-rG-Hkl">
             <objects>
-                <viewController storyboardIdentifier="GarageAddLocationVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="UOe-DA-mSq" customClass="GarageAddLocationVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GarageAddLocationVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="UOe-DA-mSq" customClass="GarageAddLocationVC" customModule="Tara" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="I1f-7r-ZlZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -515,7 +516,7 @@ Service Center</string>
                                                         <rect key="frame" x="14" y="19" width="60" height="60"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="10" maxX="10" maxY="0.0"/>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KSH-R0-zEV" customClass="AppButton" customModule="ArabianTyres">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KSH-R0-zEV" customClass="AppButton" customModule="Tara" customModuleProvider="target">
                                                         <rect key="frame" x="137" y="447" width="217" height="56"/>
                                                         <color key="backgroundColor" red="0.090196078430000007" green="0.1450980392" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
@@ -696,7 +697,7 @@ Service Center</string>
         <!--Bank ListingVC-->
         <scene sceneID="QAo-ZZ-3Jc">
             <objects>
-                <viewController storyboardIdentifier="BankListingVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="e3g-wN-fjc" customClass="BankListingVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BankListingVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="e3g-wN-fjc" customClass="BankListingVC" customModule="Tara" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sdB-1e-p34">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -745,7 +746,7 @@ Service Center</string>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rzl-1h-Wkl">
                                         <rect key="frame" x="0.0" y="45" width="414" height="82"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search bank by name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h1s-lD-PlJ" customClass="ATCTextField" customModule="ArabianTyres" customModuleProvider="target">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search bank by name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h1s-lD-PlJ" customClass="ATCTextField" customModule="Tara" customModuleProvider="target">
                                                 <rect key="frame" x="16" y="14" width="382" height="52"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="382" id="Rcd-ae-Vgl"/>
@@ -811,7 +812,7 @@ Service Center</string>
         <!--Complete Profile Step1-->
         <scene sceneID="vTL-6S-yo8">
             <objects>
-                <viewController storyboardIdentifier="CompleteProfileStep1" useStoryboardIdentifierAsRestorationIdentifier="YES" id="985-4V-OMz" customClass="CompleteProfileStep1" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CompleteProfileStep1" useStoryboardIdentifierAsRestorationIdentifier="YES" id="985-4V-OMz" customClass="CompleteProfileStep1" customModule="Tara" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LBv-8O-rRo">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -885,7 +886,7 @@ Service Center</string>
                                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sfv-hM-apI" customClass="RectangularDashedView" customModule="ArabianTyres" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sfv-hM-apI" customClass="RectangularDashedView" customModule="Tara" customModuleProvider="target">
                                                         <rect key="frame" x="16" y="41.5" width="82" height="82"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </view>
@@ -910,7 +911,7 @@ Service Center</string>
                                                             <action selector="editLogoBtnAction:" destination="985-4V-OMz" eventType="touchUpInside" id="FLe-Rv-1c9"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eKk-Uq-VPF" customClass="AppButton" customModule="ArabianTyres">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eKk-Uq-VPF" customClass="AppButton" customModule="Tara" customModuleProvider="target">
                                                         <rect key="frame" x="137" y="595" width="217" height="56"/>
                                                         <color key="backgroundColor" red="0.090196078430000007" green="0.1450980392" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
@@ -1098,7 +1099,7 @@ Service Center</string>
         <!--Bottom SheetVC-->
         <scene sceneID="Rtx-3j-5eP">
             <objects>
-                <viewController storyboardIdentifier="BottomSheetVC" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="g2a-dC-xkI" customClass="BottomSheetVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BottomSheetVC" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="g2a-dC-xkI" customClass="BottomSheetVC" customModule="Tara" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gPU-W7-pRc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1122,7 +1123,7 @@ Service Center</string>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FIa-gm-6A1">
                                         <rect key="frame" x="0.0" y="40.5" width="414" height="56"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search bank by name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nhd-eQ-pKH" customClass="ATCTextField" customModule="ArabianTyres" customModuleProvider="target">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search bank by name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nhd-eQ-pKH" customClass="ATCTextField" customModule="Tara" customModuleProvider="target">
                                                 <rect key="frame" x="16" y="3" width="382" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="9ds-Mp-9uj"/>
