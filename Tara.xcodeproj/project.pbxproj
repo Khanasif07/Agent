@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		169C9456EF7A280A90794360 /* Pods_Tara.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6FB9454D462F03132E6528B /* Pods_Tara.framework */; };
 		8411D358252DA79300E6FA6C /* UserServiceRequestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8411D357252DA79300E6FA6C /* UserServiceRequestVC.swift */; };
 		8411D35A252DB78C00E6FA6C /* UserAllRequestVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8411D359252DB78C00E6FA6C /* UserAllRequestVM.swift */; };
 		8411D35C252DEDD100E6FA6C /* UserServiceRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8411D35B252DEDD100E6FA6C /* UserServiceRequestModel.swift */; };
@@ -300,10 +299,11 @@
 		A4E7E904253197F6007E2D6D /* ByDateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E7E902253197F6007E2D6D /* ByDateCollectionViewCell.swift */; };
 		A4E7E905253197F6007E2D6D /* ByDateCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4E7E903253197F6007E2D6D /* ByDateCollectionViewCell.xib */; };
 		A4FEF8EC2518744900D58C13 /* TyreRequestedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FEF8EB2518744900D58C13 /* TyreRequestedVC.swift */; };
+		BC7E2C0AD49BF4E3D1F426B5 /* Pods_Tara.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87C28A2FABCB3D22226632AC /* Pods_Tara.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		740ED3942100308271F0E8A6 /* Pods-Tara.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tara.debug.xcconfig"; path = "Target Support Files/Pods-Tara/Pods-Tara.debug.xcconfig"; sourceTree = "<group>"; };
+		0DB69EB761B7BF21E1CD2115 /* Pods-Tara.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tara.debug.xcconfig"; path = "Target Support Files/Pods-Tara/Pods-Tara.debug.xcconfig"; sourceTree = "<group>"; };
 		8411D357252DA79300E6FA6C /* UserServiceRequestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceRequestVC.swift; sourceTree = "<group>"; };
 		8411D359252DB78C00E6FA6C /* UserAllRequestVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAllRequestVM.swift; sourceTree = "<group>"; };
 		8411D35B252DEDD100E6FA6C /* UserServiceRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceRequestModel.swift; sourceTree = "<group>"; };
@@ -500,7 +500,7 @@
 		84FF6EA4251DA3530000E2AD /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 		84FF6EA6251DCB460000E2AD /* URTyreSizeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URTyreSizeVM.swift; sourceTree = "<group>"; };
 		84FF6EA8251E0F400000E2AD /* TyreSizeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TyreSizeModel.swift; sourceTree = "<group>"; };
-		8883E751B17B0666A228CF67 /* Pods-Tara.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tara.release.xcconfig"; path = "Target Support Files/Pods-Tara/Pods-Tara.release.xcconfig"; sourceTree = "<group>"; };
+		87C28A2FABCB3D22226632AC /* Pods_Tara.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tara.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4098E732511FF7F0015B0BD /* RangeSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeSlider.swift; sourceTree = "<group>"; };
 		A4098E752512274C0015B0BD /* FacilityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityVC.swift; sourceTree = "<group>"; };
 		A4098E77251228050015B0BD /* FacilityTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityTableHeaderView.swift; sourceTree = "<group>"; };
@@ -600,7 +600,7 @@
 		A4E7E902253197F6007E2D6D /* ByDateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ByDateCollectionViewCell.swift; sourceTree = "<group>"; };
 		A4E7E903253197F6007E2D6D /* ByDateCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ByDateCollectionViewCell.xib; sourceTree = "<group>"; };
 		A4FEF8EB2518744900D58C13 /* TyreRequestedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TyreRequestedVC.swift; sourceTree = "<group>"; };
-		A6FB9454D462F03132E6528B /* Pods_Tara.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tara.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7E08BC58C8F29ACF642F2D5 /* Pods-Tara.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tara.release.xcconfig"; path = "Target Support Files/Pods-Tara/Pods-Tara.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -608,18 +608,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				169C9456EF7A280A90794360 /* Pods_Tara.framework in Frameworks */,
+				BC7E2C0AD49BF4E3D1F426B5 /* Pods_Tara.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		32D66392341C96B2BA0DF553 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				87C28A2FABCB3D22226632AC /* Pods_Tara.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		73B26F1832ADD457C1B2EEF9 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				740ED3942100308271F0E8A6 /* Pods-Tara.debug.xcconfig */,
-				8883E751B17B0666A228CF67 /* Pods-Tara.release.xcconfig */,
+				0DB69EB761B7BF21E1CD2115 /* Pods-Tara.debug.xcconfig */,
+				E7E08BC58C8F29ACF642F2D5 /* Pods-Tara.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -1083,7 +1091,7 @@
 				8481F9FB2500AA9A00AB6EFB /* Tara */,
 				8481F9FA2500AA9A00AB6EFB /* Products */,
 				73B26F1832ADD457C1B2EEF9 /* Pods */,
-				9A60E8AC8B20CBCEFFE221EC /* Frameworks */,
+				32D66392341C96B2BA0DF553 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1539,14 +1547,6 @@
 			path = BottomSheetVC;
 			sourceTree = "<group>";
 		};
-		9A60E8AC8B20CBCEFFE221EC /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				A6FB9454D462F03132E6528B /* Pods_Tara.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		A413B9732509E7A00004C534 /* GarageRegistrationVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -1918,12 +1918,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8481FA0D2500AA9B00AB6EFB /* Build configuration list for PBXNativeTarget "Tara" */;
 			buildPhases = (
-				89F769CBC322F02EA9F85F63 /* [CP] Check Pods Manifest.lock */,
+				595BA88F9CB905A8E199B2FD /* [CP] Check Pods Manifest.lock */,
 				8481F9F52500AA9A00AB6EFB /* Sources */,
 				8481F9F62500AA9A00AB6EFB /* Frameworks */,
 				8481F9F72500AA9A00AB6EFB /* Resources */,
-				6B6EBDF3CC51B7775693456C /* [CP] Embed Pods Frameworks */,
-				93BF920FAE6EE355959BB1E2 /* [CP] Copy Pods Resources */,
+				A66388142DF211E967B3E450 /* [CP] Embed Pods Frameworks */,
+				A091B7F167016AFC6CDC455C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2052,24 +2052,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		6B6EBDF3CC51B7775693456C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Tara/Pods-Tara-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Tara/Pods-Tara-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Tara/Pods-Tara-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		89F769CBC322F02EA9F85F63 /* [CP] Check Pods Manifest.lock */ = {
+		595BA88F9CB905A8E199B2FD /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2091,7 +2074,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		93BF920FAE6EE355959BB1E2 /* [CP] Copy Pods Resources */ = {
+		A091B7F167016AFC6CDC455C /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2106,6 +2089,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Tara/Pods-Tara-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A66388142DF211E967B3E450 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Tara/Pods-Tara-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Tara/Pods-Tara-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Tara/Pods-Tara-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -2466,7 +2466,7 @@
 		};
 		8481FA0E2500AA9B00AB6EFB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 740ED3942100308271F0E8A6 /* Pods-Tara.debug.xcconfig */;
+			baseConfigurationReference = 0DB69EB761B7BF21E1CD2115 /* Pods-Tara.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Tara/ArabianTyres.entitlements;
@@ -2492,7 +2492,7 @@
 		};
 		8481FA0F2500AA9B00AB6EFB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8883E751B17B0666A228CF67 /* Pods-Tara.release.xcconfig */;
+			baseConfigurationReference = E7E08BC58C8F29ACF642F2D5 /* Pods-Tara.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Tara/ArabianTyres.entitlements;
