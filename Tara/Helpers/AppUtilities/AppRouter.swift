@@ -133,9 +133,10 @@ enum AppRouter {
         vc.present(scene, animated: true, completion: nil)
     }
     
-    static func goToOtpVerificationVC(vc: UIViewController,phoneNo: String, countryCode: String,isComeForVerifyPassword: Bool = false){
+    static func goToOtpVerificationVC(vc: UIViewController,phoneNo: String, countryCode: String,isComeForVerifyPassword: Bool = false,isComeFromSignUpScreen: Bool = false){
         let scene = OtpVerificationVC.instantiate(fromAppStoryboard: .Prelogin)
         scene.viewModel.isComeForVerifyPassword = isComeForVerifyPassword
+        scene.viewModel.isComeFromSignupScreen = isComeFromSignUpScreen
         scene.viewModel.countryCode = countryCode
         scene.viewModel.phoneNo = phoneNo
         vc.navigationController?.pushViewController(scene, animated: true)

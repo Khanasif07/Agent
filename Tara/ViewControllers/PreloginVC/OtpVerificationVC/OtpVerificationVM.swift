@@ -32,6 +32,7 @@ class OtpVerificationVM{
     //MARK:- Variables
     //================
     var isComeForVerifyPassword: Bool = false
+    var isComeFromSignupScreen: Bool = false
     var countryCode: String = "+91"
     var resetToken: String = ""
     var phoneNo: String = ""

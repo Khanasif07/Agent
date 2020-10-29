@@ -253,7 +253,7 @@ extension SignUpVC : CountryDelegate{
 //=========================
 extension SignUpVC: SignUpVMDelegate{
     func sendOtpForSocialLoginSuccess(message: String) {
-        AppRouter.goToOtpVerificationVC(vc: self, phoneNo: UserModel.main.phoneNo, countryCode: UserModel.main.countryCode)
+        AppRouter.goToOtpVerificationVC(vc: self, phoneNo: UserModel.main.phoneNo, countryCode: UserModel.main.countryCode,isComeFromSignUpScreen: true)
     }
     
     func sendOtpForSocialLoginFailed(message: String) {

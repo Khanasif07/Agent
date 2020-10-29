@@ -23,7 +23,7 @@ class GarageAddLocationVC: BaseVC {
     
     // MARK: - Variables
     //===========================
-    var locationValue = LocationController.sharedLocationManager.locationManager.location?.coordinate ?? CLLocationCoordinate2D(latitude: 34.052238, longitude: -118.24334)
+    var locationValue = LocationController.sharedLocationManager.locationManager.location?.coordinate ?? CLLocationCoordinate2D(latitude: 18.052238, longitude: 77.24334)
     private var locationManager = CLLocationManager()
     let markerView = UIImageView(frame:CGRect(x: 0, y: 0, width: 16.3, height: 20.9))
     var gmssMarker = GMSMarker()
@@ -105,6 +105,7 @@ class GarageAddLocationVC: BaseVC {
 extension GarageAddLocationVC {
     
     private func initialSetup() {
+        locationManager.delegate = self
         self.prepareMap()
         self.setAddress()
         logoImgView.image = GarageProfileModel.shared.logo
