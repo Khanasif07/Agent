@@ -112,6 +112,4 @@ class SocketIOManager: NSObject {
         socket?.disconnect()
         socket = nil
     }
-    
-    
 }
