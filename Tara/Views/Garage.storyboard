@@ -2007,7 +2007,7 @@ Service Center</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZU3-oZ-RY0">
-                                        <rect key="frame" x="6" y="-3" width="72" height="68"/>
+                                        <rect key="frame" x="6" y="14" width="36" height="34"/>
                                         <state key="normal" image="icBackward"/>
                                         <connections>
                                             <action selector="cancelBtnAction:" destination="Yme-aY-fPF" eventType="touchUpInside" id="ozc-yg-UIH"/>
@@ -2050,23 +2050,23 @@ Service Center</string>
                                 <rect key="frame" x="0.0" y="100" width="414" height="675"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r3R-jv-6Sw">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="760"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="728"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qJ5-yA-DoH">
-                                                <rect key="frame" x="22" y="16" width="376" height="117.5"/>
+                                                <rect key="frame" x="22" y="16" width="376" height="85.5"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icImg" translatesAutoresizingMaskIntoConstraints="NO" id="1HE-RU-LpJ">
-                                                        <rect key="frame" x="25" y="0.0" width="326" height="64"/>
+                                                        <rect key="frame" x="25" y="0.0" width="326" height="32"/>
                                                     </imageView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RF1-rW-VcO">
-                                                        <rect key="frame" x="40" y="96.5" width="296" height="1"/>
+                                                        <rect key="frame" x="40" y="64.5" width="296" height="1"/>
                                                         <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="abu-85-MKX"/>
                                                         </constraints>
                                                     </view>
                                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="K82-HA-5CL">
-                                                        <rect key="frame" x="134.5" y="72" width="107.5" height="16.5"/>
+                                                        <rect key="frame" x="134.5" y="40" width="107.5" height="16.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Request No:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YRY-nQ-8lE">
                                                                 <rect key="frame" x="0.0" y="0.0" width="78.5" height="16.5"/>
@@ -2097,7 +2097,7 @@ Service Center</string>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hDX-TD-rtm">
-                                                <rect key="frame" x="16" y="133.5" width="382" height="250"/>
+                                                <rect key="frame" x="16" y="101.5" width="382" height="250"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="NtM-yX-Nkv">
                                                         <rect key="frame" x="32" y="32" width="318" height="186"/>
@@ -2246,7 +2246,7 @@ Service Center</string>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hvd-00-fWd">
-                                                <rect key="frame" x="16" y="383.5" width="382" height="46"/>
+                                                <rect key="frame" x="16" y="351.5" width="382" height="46"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Request Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PMW-Rc-J3u">
                                                         <rect key="frame" x="0.0" y="15" width="99" height="16.5"/>
@@ -2263,7 +2263,7 @@ Service Center</string>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qgX-G2-8Al">
-                                                <rect key="frame" x="16" y="429.5" width="382" height="230.5"/>
+                                                <rect key="frame" x="16" y="397.5" width="382" height="230.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="5MO-XC-2cH">
                                                         <rect key="frame" x="16" y="16" width="350" height="198.5"/>
@@ -2326,20 +2326,20 @@ Service Center</string>
                                                                     </view>
                                                                 </subviews>
                                                             </stackView>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="hq6-Pa-d6D">
+                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="hq6-Pa-d6D">
                                                                 <rect key="frame" x="0.0" y="95" width="350" height="32.5"/>
                                                                 <subviews>
-                                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Dif-oJ-V66">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="93" height="16.5"/>
+                                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="Dif-oJ-V66">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="350" height="16.5"/>
                                                                         <subviews>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brands:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Gn-L4-1CK">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="45.5" height="16.5"/>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Brands:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Gn-L4-1CK">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="54.5" height="16.5"/>
                                                                                 <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="13"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NA" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Si3-59-xPR">
-                                                                                <rect key="frame" x="47.5" y="0.0" width="45.5" height="16.5"/>
+                                                                                <rect key="frame" x="57.5" y="0.0" width="292.5" height="16.5"/>
                                                                                 <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="14"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
@@ -2425,7 +2425,7 @@ Service Center</string>
                                             <action selector="cancelRequestBtnAction:" destination="Yme-aY-fPF" eventType="touchUpInside" id="ovY-Rm-JC6"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sck-9u-ea1" customClass="AppButton" customModule="Tara">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sck-9u-ea1" customClass="AppButton" customModule="Tara" customModuleProvider="target">
                                         <rect key="frame" x="197" y="0.0" width="185" height="56"/>
                                         <color key="backgroundColor" name="appRedColor"/>
                                         <state key="normal" title="View All Offers">

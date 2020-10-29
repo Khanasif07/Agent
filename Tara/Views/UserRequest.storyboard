@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,7 +19,7 @@
         <!--Tyre Step1VC-->
         <scene sceneID="48l-CZ-60V">
             <objects>
-                <viewController storyboardIdentifier="URTyreStep1VC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="uZL-xP-exo" customClass="URTyreStep1VC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="URTyreStep1VC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="uZL-xP-exo" customClass="URTyreStep1VC" customModule="Tara" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gjf-mI-Kea">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -181,7 +182,7 @@ looking for?</string>
                                                             <constraint firstItem="qqM-dv-eQM" firstAttribute="width" secondItem="O3U-dG-Uaz" secondAttribute="width" id="ICZ-QD-eC5"/>
                                                         </constraints>
                                                     </stackView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LH3-Us-so6" customClass="AppButton" customModule="ArabianTyres" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LH3-Us-so6" customClass="AppButton" customModule="Tara" customModuleProvider="target">
                                                         <rect key="frame" x="216" y="316" width="150" height="56"/>
                                                         <color key="backgroundColor" red="0.090196078430000007" green="0.1450980392" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
@@ -286,7 +287,7 @@ looking for?</string>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Enter number of tyre you want"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="feu-eZ-cGu" customClass="CustomDashedView" customModule="ArabianTyres" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="feu-eZ-cGu" customClass="CustomDashedView" customModule="Tara" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="156.5" width="382" height="25"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
@@ -409,7 +410,7 @@ looking for?</string>
         <!--Tyre SizeVC-->
         <scene sceneID="bkB-yN-5Kb">
             <objects>
-                <viewController storyboardIdentifier="URTyreSizeVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qAh-dG-X0L" customClass="URTyreSizeVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="URTyreSizeVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qAh-dG-X0L" customClass="URTyreSizeVC" customModule="Tara" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mEw-dN-Qg4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -497,7 +498,7 @@ the provided details.</string>
                                         <rect key="frame" x="0.0" y="165" width="414" height="653"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aYp-8G-iQa" customClass="AppButton" customModule="ArabianTyres">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aYp-8G-iQa" customClass="AppButton" customModule="Tara" customModuleProvider="target">
                                         <rect key="frame" x="22" y="747" width="370" height="56"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
