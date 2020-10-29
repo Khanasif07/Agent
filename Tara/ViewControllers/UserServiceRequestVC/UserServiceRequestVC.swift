@@ -109,6 +109,7 @@ class UserServiceRequestVC: BaseVC {
 extension UserServiceRequestVC {
     
     private func initialSetup() {
+        NotificationCenter.default.addObserver(self, selector: #selector(userServiceAcceptRejectSuccess), name: Notification.Name.UserServiceAcceptRejectSuccess, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(requestRejected), name: Notification.Name.RequestRejected, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(newBidSocketSuccess), name: Notification.Name.NewBidSocketSuccess, object: nil)
         viewModel.delegate = self
@@ -152,6 +153,10 @@ extension UserServiceRequestVC {
     
     @objc func singleTap(){
         AppRouter.presentImageViewerVC(self, image: nil, imageURL: self.viewModel.userRequestDetail.images.first ?? "")
+    }
+    
+    @objc func userServiceAcceptRejectSuccess(){
+        viewModel.getUserMyRequestDetailData(params: [ApiKey.requestId: self.viewModel.requestId])
     }
 }
 
