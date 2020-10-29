@@ -2469,10 +2469,10 @@
 			baseConfigurationReference = 740ED3942100308271F0E8A6 /* Pods-Tara.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = ArabianTyres/ArabianTyres.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_ENTITLEMENTS = Tara/ArabianTyres.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_TEAM = C4X83X2P52;
 				INFOPLIST_FILE = Tara/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -2484,7 +2484,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tara.betaapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = TaraDevProfile;
+				PROVISIONING_PROFILE_SPECIFIER = TaraAdhocProfile;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -2495,10 +2495,10 @@
 			baseConfigurationReference = 8883E751B17B0666A228CF67 /* Pods-Tara.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = ArabianTyres/ArabianTyres.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_ENTITLEMENTS = Tara/ArabianTyres.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_TEAM = C4X83X2P52;
 				INFOPLIST_FILE = Tara/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -2510,7 +2510,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tara.betaapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = TaraDevProfile;
+				PROVISIONING_PROFILE_SPECIFIER = TaraAdhocProfile;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
