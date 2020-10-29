@@ -216,17 +216,18 @@ extension GarageServiceRequestVC {
                         self.viewModel.countryBrandsDict[0][self.selectedCountry]?[selectedIndexx].amount = placedBid.amount
                     }
                 } else {
-                    printDebug(self.viewModel.countryBrandsDict)
-                    for (off,dict) in self.viewModel.countryBrandsDict.enumerated(){
+                    for (off,_) in self.viewModel.countryBrandsDict.enumerated(){
                         self.viewModel.garageRequestDetailArr?.preferredCountries.forEach({ (preferredBrand) in
-                            //
-                            let indexx = dict[preferredBrand.name]?.firstIndex(where: { (preferredBrand) -> Bool in
-                                preferredBrand.countryId == placedBid.countryId
-                            })
-                            guard let selectedCountryIndexx  = indexx else { return }
-                            self.viewModel.countryBrandsDict[off][self.selectedCountry]?[selectedCountryIndexx].isSelected = true
-                            self.viewModel.countryBrandsDict[off][self.selectedCountry]?[selectedCountryIndexx].amount = placedBid.amount
-                            //
+                            if let listingss = self.viewModel.countryBrandsDict[off][preferredBrand.name]{
+                                for (offf,model) in listingss.enumerated(){
+                                    if model.countryId == placedBid.countryId && placedBid.brandID == model.id{
+                                        if !(self.viewModel.countryBrandsDict[off][self.selectedCountry]?[offf].isSelected ?? false) { self.viewModel.countryBrandsDict[off][self.selectedCountry]?[offf].isSelected = true
+                                        self.viewModel.countryBrandsDict[off][self.selectedCountry]?[offf].amount = placedBid.amount
+                                            return
+                                        }
+                                    }
+                                }
+                            }
                         })
                     }
                 }
