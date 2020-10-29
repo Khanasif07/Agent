@@ -253,7 +253,7 @@ extension SignUpVC : CountryDelegate{
 //=========================
 extension SignUpVC: SignUpVMDelegate{
     func sendOtpForSocialLoginSuccess(message: String) {
-        AppRouter.goToOtpVerificationVC(vc: self, phoneNo: UserModel.main.phoneNo, countryCode: UserModel.main.countryCode,isComeFromSignUpScreen: true)
+        AppRouter.goToOtpVerificationVC(vc: self, phoneNo: UserModel.main.phoneNo, countryCode: UserModel.main.countryCode)
     }
     
     func sendOtpForSocialLoginFailed(message: String) {
@@ -282,7 +282,7 @@ extension SignUpVC: SignUpVMDelegate{
     
     func signUpSuccess(message: String) {
         ToastView.shared.showLongToast(self.view, msg: message)
-        AppRouter.goToOtpVerificationVC(vc: self, phoneNo: self.viewModel.model.phoneNo, countryCode: self.viewModel.model.countryCode)
+        AppRouter.goToOtpVerificationVC(vc: self, phoneNo: self.viewModel.model.phoneNo, countryCode: self.viewModel.model.countryCode,isComeFromSignUpScreen: true)
     }
     
     func signUpFailed(message: String) {
