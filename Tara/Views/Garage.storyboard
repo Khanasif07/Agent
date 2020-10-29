@@ -2333,13 +2333,13 @@ Service Center</string>
                                                                         <rect key="frame" x="0.0" y="0.0" width="350" height="16.5"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Brands:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Gn-L4-1CK">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="54.5" height="16.5"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="45.5" height="16.5"/>
                                                                                 <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="13"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NA" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Si3-59-xPR">
-                                                                                <rect key="frame" x="57.5" y="0.0" width="292.5" height="16.5"/>
+                                                                                <rect key="frame" x="48.5" y="0.0" width="301.5" height="16.5"/>
                                                                                 <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="14"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>

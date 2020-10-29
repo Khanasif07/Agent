@@ -100,7 +100,9 @@ class SocketIOManager: NSObject {
             }
             self.socket?.on(SocketKeys.didDisconnect) { (data, ack) in
                 print("//////////+++socket disconnect+++//////////")
-                self.establishConnection()
+                if isUserLoggedin {
+                    self.establishConnection()
+                }
             }
         }
     }
@@ -112,10 +114,4 @@ class SocketIOManager: NSObject {
     }
     
     
-}
-
-// MARK: - IM Sockets
-// remove observer to socket server
-extension SocketIOManager {
-  
 }

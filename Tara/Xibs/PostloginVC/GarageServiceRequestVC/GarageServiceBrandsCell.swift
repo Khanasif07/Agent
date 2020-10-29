@@ -40,21 +40,21 @@ class GarageServiceBrandsCell: UITableViewCell,UITextFieldDelegate {
         if bidStatus == .bidFinalsed{
             unitPrizeTextFiled.isUserInteractionEnabled = false
             rightIcon.isHidden = !(model.isSelected ?? false)
-            setBlurView(isBlur: !(model.isSelected ?? false))
+//            setBlurView(isBlur: !(model.isSelected ?? false))
         }
         if  bidStatus == .bidPlaced {
             rightIcon.isHidden = true
             if placeBidBtnStatus != "Place Bid" {
                 unitPrizeTextFiled.isUserInteractionEnabled = false
-                setBlurView(isBlur: !(model.isSelected ?? false))
+//                setBlurView(isBlur: !(model.isSelected ?? false))
             } else{
                 unitPrizeTextFiled.isUserInteractionEnabled = true
-                setBlurView(isBlur: false)
+//                setBlurView(isBlur: false)
             }
         }
         if  bidStatus == .openForBidding ||  bidStatus == .bidRejected{
              unitPrizeTextFiled.isUserInteractionEnabled = true
-             setBlurView(isBlur: false)
+//             setBlurView(isBlur: false)
         }
     }
     

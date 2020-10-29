@@ -26,8 +26,6 @@ enum AppRouter {
     // MARK: - Show Landing Screen
     //===========================
     static func checkAppInitializationFlow() {
-//        goToTestingVC()
-//        return
         if isUserLoggedin {
             SocketIOManager.shared.establishConnection()
             if !isPhoneNoVerified{
