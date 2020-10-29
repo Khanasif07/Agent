@@ -3406,7 +3406,7 @@ provided details</string>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="mGe-oC-hxo">
                                                 <rect key="frame" x="280" y="0.0" width="90" height="90"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wen-lA-CXP" customClass="KDCircularProgress" customModule="Tara" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wen-lA-CXP" customClass="KDCircularProgress" customModule="KDCircularProgress">
                                                         <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
@@ -3622,7 +3622,7 @@ provided details</string>
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4jN-mb-WUP" customClass="KDCircularProgress" customModule="Tara" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4jN-mb-WUP" customClass="KDCircularProgress" customModule="KDCircularProgress">
                                         <rect key="frame" x="141" y="97" width="100" height="100"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
