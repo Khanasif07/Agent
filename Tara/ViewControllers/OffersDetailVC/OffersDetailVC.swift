@@ -173,7 +173,7 @@ extension OffersDetailVC : UITableViewDelegate, UITableViewDataSource {
 //========================================
 extension OffersDetailVC : OffersDetailVMDelegate {
     func rejectUserBidDataSuccess(message: String) {
-//        NotificationCenter.default.post(name: Notification.Name.UserServiceAcceptRejectSuccess, object: nil)
+        NotificationCenter.default.post(name: Notification.Name.UserServiceAcceptRejectSuccess, object: nil)
         self.dismiss(animated: true,completion: {
             self.proposalBtnTapped?()
         })
@@ -202,7 +202,7 @@ extension OffersDetailVC : OffersDetailVMDelegate {
     }
     
     func acceptUserBidDataSuccess(message: String) {
-//        NotificationCenter.default.post(name: Notification.Name.UserServiceAcceptRejectSuccess, object: nil)
+        NotificationCenter.default.post(name: Notification.Name.UserServiceAcceptRejectSuccess, object: nil)
         self.dismiss(animated: true,completion: {
             self.proposalBtnTapped?()
         })
