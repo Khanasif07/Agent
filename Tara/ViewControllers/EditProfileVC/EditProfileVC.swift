@@ -66,6 +66,7 @@ class EditProfileVC: BaseVC {
 extension EditProfileVC: UITextFieldDelegate {
    
     private func initialSetup(){
+        setupTextFont()
         saveBtn.isEnabled = true
         setUpTextField()
     }

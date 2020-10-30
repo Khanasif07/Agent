@@ -275,6 +275,8 @@
 "applyFilters" = "Apply Filters";
 "editProfile" = "Edit Profile";
 "save" = "Save";
+"enterOldPassWord" = "Enter Old Password";
+"enterNewPassWord" = "Enter New Password";
  // MARK: - Home  VC Values
 //==============================
 "tyre" = "Tyre";

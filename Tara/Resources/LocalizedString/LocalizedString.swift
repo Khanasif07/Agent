@@ -69,7 +69,8 @@ enum LocalizedString : String {
     case imageUploadingFailed
     case accountNumberAreNotSame
     case minTenDigitInAccountNumber
-    
+    case enterOldPassWord
+    case enterNewPassWord
     // MARK: - Validation Messages
     //==================================
     case pleaseEnterValidEmail = "pleaseEnterValidEmail"

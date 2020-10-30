@@ -84,6 +84,22 @@ extension UITextField{
         rightImage.frame = self.rightView!.frame
     }
     
+    func setupPasswordTextField() {
+        self.isSecureText = true
+        self.keyboardType = .asciiCapable
+        self.isSecureTextEntry = self.isSecureText
+        
+        let showButton = UIButton()
+        showButton.addTarget(self, action: #selector(self.showButtonTapped(_:)), for: .touchUpInside)
+        self.setButtonToRightView(btn: showButton, selectedImage:  #imageLiteral(resourceName: "icPasswordHide"), normalImage: #imageLiteral(resourceName: "icPasswordView"), size: CGSize(width: 20, height: 20))
+    }
+    
+    /// Show Button Tapped
+    @objc private func showButtonTapped(_ btn: UIButton) {
+        btn.isSelected = !btn.isSelected
+        self.isSecureText = !self.isSecureText
+    }
+    
     // SET BUTTON TO RIGHT VIEW
     //=========================
     func setButtonToRightView(btn : UIButton, selectedImage : UIImage?, normalImage : UIImage?, size: CGSize?) {
