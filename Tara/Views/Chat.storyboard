@@ -16,7 +16,7 @@
         <!--User ChatVC-->
         <scene sceneID="0OZ-qO-Xso">
             <objects>
-                <viewController storyboardIdentifier="UserChatVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kSb-bi-wAD" customClass="UserChatVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UserChatVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kSb-bi-wAD" customClass="UserChatVC" customModule="Tara" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zeV-fS-bfF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -24,6 +24,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MH9-QT-ltd">
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CKL-wf-u4n">
+                                        <rect key="frame" x="0.0" y="42" width="414" height="1"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="8Kt-qW-Gth"/>
+                                        </constraints>
+                                    </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wbz-ok-9no">
                                         <rect key="frame" x="188.5" y="10" width="37" height="24"/>
                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
@@ -33,9 +40,12 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="CKL-wf-u4n" secondAttribute="trailing" id="7Wv-pY-1wr"/>
                                     <constraint firstItem="Wbz-ok-9no" firstAttribute="centerY" secondItem="MH9-QT-ltd" secondAttribute="centerY" id="OTe-g0-FtT"/>
+                                    <constraint firstAttribute="bottom" secondItem="CKL-wf-u4n" secondAttribute="bottom" constant="1" id="RTx-HL-GCE"/>
                                     <constraint firstAttribute="height" constant="44" id="Wdt-0m-ZYn"/>
                                     <constraint firstItem="Wbz-ok-9no" firstAttribute="centerX" secondItem="MH9-QT-ltd" secondAttribute="centerX" id="dlI-FF-XMq"/>
+                                    <constraint firstItem="CKL-wf-u4n" firstAttribute="leading" secondItem="MH9-QT-ltd" secondAttribute="leading" id="tSa-X9-1vR"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wmq-CY-wH0">
@@ -44,7 +54,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="awB-1B-JMS">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="82"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ird-9c-jgw" customClass="ATCTextField" customModule="ArabianTyres" customModuleProvider="target">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ird-9c-jgw" customClass="ATCTextField" customModule="Tara" customModuleProvider="target">
                                                 <rect key="frame" x="16" y="14" width="382" height="52"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="382" id="wrE-zv-cwA"/>
@@ -67,7 +77,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.96470588235294119" green="0.96862745098039216" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="rBa-aN-MYW" firstAttribute="top" secondItem="awB-1B-JMS" secondAttribute="bottom" id="0Om-cd-aRN"/>
                                     <constraint firstAttribute="trailing" secondItem="rBa-aN-MYW" secondAttribute="trailing" id="3zJ-Ub-PRd"/>
@@ -100,7 +110,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C7K-5X-q0X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-67" y="72"/>
+            <point key="canvasLocation" x="-68.115942028985515" y="71.651785714285708"/>
         </scene>
     </scenes>
 </document>

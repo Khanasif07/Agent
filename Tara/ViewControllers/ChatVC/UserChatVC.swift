@@ -19,6 +19,7 @@ class UserChatVC: BaseVC {
     
     // MARK: - Variables
     //===========================
+     var buttonView = UIButton()
     
     // MARK: - Lifecycle
     //===========================
@@ -39,6 +40,7 @@ extension UserChatVC {
     
     private func initialSetup() {
         self.tableViewSetUp()
+        self.textFieldSetUp()
     }
     
     private func tableViewSetUp(){
@@ -48,6 +50,23 @@ extension UserChatVC {
         self.mainTableView.emptyDataSetDelegate = self
         self.mainTableView.registerCell(with: InboxTableViewCell.self)
     }
+    
+    private func textFieldSetUp(){
+        buttonView.isHidden = true
+        buttonView.addTarget(self, action: #selector(clear(_:)), for: .touchUpInside)
+        buttonView.imageEdgeInsets = UIEdgeInsets(top: 0, left: -5, bottom: 0, right: 5)
+        searchTextField.setButtonToRightView(btn: buttonView, selectedImage: #imageLiteral(resourceName: "icon"), normalImage: #imageLiteral(resourceName: "icon"), size: CGSize(width: 20, height: 20))
+    }
+    
+    @objc private func clear(_ sender: UIButton) {
+        searchTextField.text = ""
+//        viewModel.searchText = searchTextField.text?.byRemovingLeadingTrailingWhiteSpaces ?? ""
+//        self.searchText = searchTextField.text?.byRemovingLeadingTrailingWhiteSpaces ?? ""
+//        isSearchOn = !viewModel.searchText.isEmpty
+//        buttonView.isHidden = viewModel.searchText.isEmpty
+//        tableView.reloadData()
+    }
+    
 }
 
 // MARK: - Extension For TableView
