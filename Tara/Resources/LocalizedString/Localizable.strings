@@ -274,6 +274,7 @@
 
 "applyFilters" = "Apply Filters";
 "editProfile" = "Edit Profile";
+"save" = "Save";
  // MARK: - Home  VC Values
 //==============================
 "tyre" = "Tyre";

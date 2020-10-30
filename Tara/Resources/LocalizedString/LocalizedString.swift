@@ -329,7 +329,7 @@ enum LocalizedString : String {
     case bidRejected
     case applyFilters
     case editProfile
-    
+    case save
     // MARK: - Home  VC Values
     //==============================
     case tyre

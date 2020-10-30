@@ -20,6 +20,7 @@ class EditProfileVC: BaseVC {
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var editImgBtn: UIButton!
     @IBOutlet weak var saveBtn: AppButton!
+    @IBOutlet weak var countryCodeLbl: UILabel!
 
     
     // MARK: - Variables
@@ -56,6 +57,10 @@ class EditProfileVC: BaseVC {
         
     }
     
+    @IBAction func countryCodeTapped(_ sender: UIButton) {
+          AppRouter.showCountryVC(vc: self)
+      }
+      
 }
 
 extension EditProfileVC: UITextFieldDelegate {
@@ -78,7 +83,18 @@ extension EditProfileVC: UITextFieldDelegate {
     }
     
     private func setupTextFont() {
+        self.countryCodeLbl.text = "+91"
         titleLbl.font = AppFonts.NunitoSansSemiBold.withSize(17.0)
         titleLbl.text = LocalizedString.editProfile.localized
+        saveBtn.titleLabel?.font = AppFonts.NunitoSansSemiBold.withSize(16.0)
+        saveBtn.setTitle(LocalizedString.save.localized, for: .normal)
+    }
+}
+
+// MARK: - CountryDelegate
+//=========================
+extension EditProfileVC : CountryDelegate{
+    func sendCountryCode(code: String) {
+        self.countryCodeLbl.text = code
     }
 }
