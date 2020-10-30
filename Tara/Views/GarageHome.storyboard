@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5p8-eV-cRU">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -15,7 +16,7 @@
         <!--Garage ProfileVC-->
         <scene sceneID="bXT-6p-dxh">
             <objects>
-                <viewController storyboardIdentifier="GarageProfileVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Air-qz-MyE" customClass="GarageProfileVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GarageProfileVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Air-qz-MyE" customClass="GarageProfileVC" customModule="Tara" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DdV-d1-SXV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -95,7 +96,7 @@
         <!--Garage HomeVC-->
         <scene sceneID="hax-d7-JBa">
             <objects>
-                <viewController storyboardIdentifier="GarageHomeVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kGq-nU-rZv" customClass="GarageHomeVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GarageHomeVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kGq-nU-rZv" customClass="GarageHomeVC" customModule="Tara" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w9o-Bm-RDC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -187,7 +188,7 @@
         <!--Garage Tab Bar Controller-->
         <scene sceneID="WDw-1Q-0La">
             <objects>
-                <tabBarController storyboardIdentifier="GarageTabBarController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5p8-eV-cRU" customClass="GarageTabBarController" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="GarageTabBarController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5p8-eV-cRU" customClass="GarageTabBarController" customModule="Tara" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="kIj-6V-wWI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -263,22 +264,22 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Fs0-oC-KLg" kind="relationship" relationship="rootViewController" id="6tw-s6-dGd"/>
+                        <segue destination="YEm-zF-u6E" kind="relationship" relationship="rootViewController" id="tgd-lK-bCv"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xYN-Sx-Fqq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="22" y="790"/>
         </scene>
-        <!--OngoingServiceListingVC-->
-        <scene sceneID="fsY-88-Z0A">
+        <!--UserChatVC-->
+        <scene sceneID="hkE-HG-GQG">
             <objects>
-                <viewControllerPlaceholder storyboardName="GarageRequest" referencedIdentifier="OngoingServiceListingVC" id="Fs0-oC-KLg" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="iqB-MQ-Y2h"/>
+                <viewControllerPlaceholder storyboardName="Chat" referencedIdentifier="UserChatVC" id="YEm-zF-u6E" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="oOa-lL-ahq"/>
                 </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="PyH-ne-pf6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eH8-Oq-9R7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1180" y="729"/>
+            <point key="canvasLocation" x="890" y="672"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="YTq-sB-aO1">

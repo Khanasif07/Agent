@@ -23,8 +23,12 @@ enum ApiKey {
     static var data: String { return "data" }
     static var accessToken: String { return "access_token"}
     static var userType : String { return "userType"}
-
+    static var userId : String { return "userId"}
+    static var block : String { return "block"}
+    
     static var name : String {return "name"}
+    static var users : String {return "users"}
+    static var firstName : String {return "firstName"}
     static var nickName : String {return "nick_name"}
     static var email : String {return "email"}
     static var password : String {return "password"}
@@ -32,7 +36,7 @@ enum ApiKey {
     static var phoneNo : String {return "phoneNo"}
     static var image : String {return "image"}
     static var confirmPasssword : String { return "confirmPasssword"}
-
+    
     static var _id : String {return "_id"}
     static var id : String {return "id"}
     static var otp : String {return "otp"}
@@ -40,7 +44,7 @@ enum ApiKey {
     static var device : String {return "device"}
     static var token : String {return "token"}
     static var resetToken : String {return "resetToken"}
-
+    
     static var authToken : String {return "authToken"}
     static var createdAt : String {return "createdAt"}
     static var emailVerified : String {return "emailVerified"}
@@ -50,7 +54,7 @@ enum ApiKey {
     static var phoneVerified : String {return "phoneVerified"}
     static var isGarrage : String {return "isGarrage"}
     static var updatedAt : String {return "updatedAt"}
-
+    
     static var next : String {return "next"}
     static var page : String {return "page"}
     static var limit : String {return "limit"}
@@ -98,7 +102,7 @@ enum ApiKey {
     static var studentProfile: String { return "studentProfile"}
     static var videoHostingCreditId: String { return "videoHostingCreditId"}
     static var credits: String{ return "credits"}
-     static var previewType: String{ return "previewType"}
+    static var previewType: String{ return "previewType"}
     static var isLogin: String{ return "isLogin"}
     static var minvideoCount: String{ return "minvideoCount"}
     static var emailVerifyToken: String { return "emailVerifyToken" }
@@ -139,7 +143,7 @@ enum ApiKey {
     static var countries: String { return "countries" }
     static var tyreBrands: String { return "tyreBrands" }
     static var country: String { return "country" }
-
+    
     static var maxInstallationPrice: String { return "maxInstallationPrice" }
     static var minInstallationPrice: String { return "minInstallationPrice" }
     static var services: String { return "services" }
@@ -170,13 +174,66 @@ enum ApiKey {
     static var endDate : String { return "endDate" }
     static var amount: String { return "amount" }
     static var garageRequestId: String { return "garageRequestId" }
-
+    
     static var maxDistance: String { return "maxDistance" }
     static var bidSort: String { return "bidSort" }
     static var minDistance: String { return "minDistance" }
+
+    
+    //     MARK: Firestore Keys
+    //     ====================
+    static var uid : String {return "uid"}
+    static var messages: String { return "messages" }
+    static var messageType : String {return "messageType"}
+    static var messageId : String {return "messageId"}
+    static var messageStatus : String {return "messageStatus"}
+    static var chat: String { return "chat" }
+    static var lastMessage : String {return "lastMessage"}
+    static var roomInfo : String {return "roomInfo"}
+    static var inbox : String {return "inbox"}
+    static var senderId : String {return "senderId"}
+    static var receiverId : String {return "receiverId"}
+    
+    //MARK:-RoomInfo
+    //===============
+    static var roomId : String {return "roomId"}
+    static var roomImage : String {return "roomImage"}
+    static var roomName  : String {return "roomName"}
+    static var userInfo  :  String {return "userInfo"}
+    static var userDetails : String {return "userDetails" }
+    static var addedTime  : String {return "addedTime"}
+    static var deleteTime : String {return "deleteTime"}
+    static var leaveTime   : String {return "leaveTime"}
+    static var userTypingStatus : String {return "userTypingStatus"}
+    static var roomType : String {return "roomType"}
+    static var mediaUrl : String {return "mediaUrl"}
+    static var batchCount : String {return "batchCount"}
+    static var chatType : String {return "chatType"}
+    static var single : String {return "single"}
+    static var singleCaps : String {return "Single"}
+    static var group : String {return "group"}
+    static var admin : String {return "admin"}
+    static var groupName : String {return "groupName"}
+    static var groupImage : String {return "groupImage"}
+    
+    static var deviceId    : String {return "deviceId"}
+    static var deviceToken : String {return "deviceToken"}
+    static var onlineStatus : String {return "onlineStatus"}
+    static var messageText : String {return "messageText"}
+    static var timeStamp : String {return "timeStamp"}
+    static var messageTime : String {return "messageTime"}
+    static var unreadMessages : String {return "unreadMessages"}
+    static var blocked : String {return "blocked"}
+    static var basic : String { return "Basic"}
+   
+    static var deviceType : String {return "deviceType"}
+    static var deviceDetails: String { return "device_details" }
+    static var video : String { return "video" }
+    static var text : String { return "text" }
+    
+
     static var newRequests: String {return "newRequests"}
     static var acceptedRequets: String {return "acceptedRequets"}
-
 
     
 }
@@ -195,7 +252,7 @@ enum ApiCode {
     static var sessionExpired : Int { return 440 }
     static var emailNotVerify: Int {return 402}
     static var invalidSession: Int {return 498} //(Delete user/ Invalid session)
-
+    
     
     static var notGarageReg: Int {return 600} // not register
     static var pendingGarageReg: Int {return 601}//pending Garage Registration

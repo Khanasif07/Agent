@@ -42,6 +42,7 @@ struct LoginViewModel {
             AppUserDefaults.save(value: json[ApiKey.data][ApiKey.isGarrage].boolValue, forKey: .isGarrage)
             AppUserDefaults.save(value: json[ApiKey.data][ApiKey.currentRole].stringValue, forKey: .currentUserType)
             AppUserDefaults.save(value: json[ApiKey.data][ApiKey._id].stringValue, forKey: .userId)
+            self.addUser(parameters: parameters, user: user)
             self.delegate?.signInSuccess(userModel: UserModel.main)
         }) { (error) -> (Void) in
             if (error as NSError).code == 401 {
@@ -51,6 +52,28 @@ struct LoginViewModel {
             }
         }
     }
+    //Add User in FireStore
+    private func addUser(parameters: JSONDictionary, user: UserModel) {
+        if let email = parameters[ApiKey.email] as? String, let password = parameters[ApiKey.password] as? String {
+            FirestoreController.login(userId: user.id, withEmail: email, with: password, success: {
+                FirestoreController.setFirebaseData(userId: user.id, email: user.email, password: password, name: user.name, imageURL: user.image, phoneNo: user.countryCode + "" + user.phoneNo, status: "", completion: {
+                    self.delegate?.signInSuccess(userModel: user)
+                }) { (error) -> (Void) in
+                    self.delegate?.signInFailed(message: error.localizedDescription)
+                }
+            }) { (error, code) in
+                if code == 17011 {
+                    FirestoreController.createUserNode(userId: user.id, email: user.email, password: password, name: user.name, imageURL: user.image, phoneNo: user.countryCode + "" + user.phoneNo, status: "", completion: {
+                        self.delegate?.signInSuccess(userModel: user)
+                    }) { (error) -> (Void) in
+                        self.delegate?.signInFailed(message: error.localizedDescription)
+                    }
+                } else {
+                    self.delegate?.signInFailed(message: "Please try again")
+                }
+            }
+        }
+        }
     
     func checkSignInValidations(parameters: JSONDictionary) -> (status: Bool, message: String) {
         var validationStatus = true
@@ -94,6 +117,7 @@ struct LoginViewModel {
             AppUserDefaults.save(value: json[ApiKey.data][ApiKey.currentRole].stringValue, forKey: .currentUserType)
             AppUserDefaults.save(value: json[ApiKey.data][ApiKey._id].stringValue, forKey: .userId)
             AppUserDefaults.save(value: json[ApiKey.data][ApiKey.phoneVerified].boolValue, forKey: .phoneNoVerified)
+            self.addUser(parameters: parameters, user: user)
             if UserModel.main.phoneNoAdded && UserModel.main.phoneVerified {
                 self.delegate?.socailLoginApiSuccess(message: "")
                 return

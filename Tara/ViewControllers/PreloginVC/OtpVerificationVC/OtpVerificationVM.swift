@@ -39,11 +39,12 @@ class OtpVerificationVM{
     weak var delegate: OtpVerificationVMDelegate?
     var totalTime = 60
     var countdownTimer:Timer!
-
+    
     //MARK:- Functions
     //Function for verify OTP
     func verifyOTP(dict: JSONDictionary){
         WebServices.verifyOtp(parameters: dict, success: { (userModel) in
+            self.addUser(user: userModel, message: "")
             self.delegate?.otpVerifiedSuccessfully(message: "Otp Verified Successfully")
         }) { (error) -> (Void) in
             self.delegate?.otpVerificationFailed(error: error.localizedDescription)
@@ -60,18 +61,40 @@ class OtpVerificationVM{
     }
     
     func resendOTP(dict: JSONDictionary){
-            WebServices.sendOtpThroughPhone(parameters: dict, success: { (message) in
-                self.delegate?.resendOtpSuccess(message: message)
-            }) { (error) -> (Void) in
-                self.delegate?.resendOtpFailed(error: error.localizedDescription)
-            }
+        WebServices.sendOtpThroughPhone(parameters: dict, success: { (message) in
+            self.delegate?.resendOtpSuccess(message: message)
+        }) { (error) -> (Void) in
+            self.delegate?.resendOtpFailed(error: error.localizedDescription)
+        }
     }
-
+    
     
     func timeFormatted(_ totalSeconds: Int) -> String {
         let seconds: Int = totalSeconds % 60
         let minutes: Int = (totalSeconds / 60) % 60
         return String(format: "%02d:%02d", minutes, seconds)
+    }
+    
+    //Add user to Firestore
+    private func addUser(user: UserModel, message: String) {
+        FirestoreController.login(userId: user.id, withEmail: user.email, with: user.password, success: {
+            FirestoreController.setFirebaseData(userId: user.id, email: user.email, password: "", name: user.name, imageURL: user.image, phoneNo: user.countryCode + "" + user.phoneNo, status: "", completion: {
+                self.delegate?.otpVerifiedSuccessfully(message: "Otp Verified Successfully")
+            }) { (error) -> (Void) in
+                self.delegate?.otpVerificationFailed(error: "Please try again")
+            }
+        }) { (message, code) in
+            if code == 17011 {
+                FirestoreController.createUserNode(userId: user.id, email: user.email, password: user.password, name: user.name, imageURL: user.image, phoneNo: user.countryCode + "" + user.phoneNo, status: "", completion: {
+                    self.delegate?.otpVerifiedSuccessfully(message: "Otp Verified Successfully")
+                }) { (error) -> (Void) in
+                    self.delegate?.otpVerificationFailed(error: error.localizedDescription)
+                }
+            } else {
+                self.delegate?.otpVerificationFailed(error: "Please try again")
+            }
+            
+        }
     }
     
 }
