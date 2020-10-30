@@ -1216,6 +1216,8 @@ Service Center</string>
                                         <state key="normal" image="icBackward"/>
                                         <connections>
                                             <action selector="backBtnAction:" destination="UOe-DA-mSq" eventType="touchUpInside" id="nm2-0P-qkN"/>
+                                            <action selector="backBtnActionWith_sender:" destination="Gei-PQ-cT4" eventType="touchUpInside" id="q9M-Tp-6Hm"/>
+                                            <action selector="editBtnActionWith_sender:" destination="Gei-PQ-cT4" eventType="touchUpInside" id="CeU-Dh-ptI"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mcr-Gu-zMD">
@@ -1245,21 +1247,21 @@ Service Center</string>
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="762"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="group3712" translatesAutoresizingMaskIntoConstraints="NO" id="jNy-jp-svR">
-                                                <rect key="frame" x="16" y="20" width="80" height="80"/>
+                                                <rect key="frame" x="20" y="20" width="80" height="80"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="80" id="45a-rB-kZB"/>
                                                     <constraint firstAttribute="width" secondItem="jNy-jp-svR" secondAttribute="height" multiplier="1:1" id="55M-zf-gqs"/>
                                                 </constraints>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tj4-Ee-VPc">
-                                                <rect key="frame" x="16" y="20" width="80" height="80"/>
+                                                <rect key="frame" x="20" y="20" width="80" height="80"/>
                                                 <state key="normal" image="editProfile"/>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Vnd-5d-Xou">
-                                                <rect key="frame" x="16" y="120" width="382" height="170"/>
+                                                <rect key="frame" x="20" y="130" width="374" height="170"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3y4-WA-o5N" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                        <rect key="frame" x="0.0" y="0.0" width="382" height="50"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="7CZ-PW-m9U"/>
                                                         </constraints>
@@ -1278,7 +1280,7 @@ Service Center</string>
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EZ1-AZ-NFm" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                        <rect key="frame" x="0.0" y="60" width="382" height="50"/>
+                                                        <rect key="frame" x="0.0" y="60" width="374" height="50"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                         <userDefinedRuntimeAttributes>
@@ -1294,7 +1296,7 @@ Service Center</string>
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hy7-CQ-ZtL" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                        <rect key="frame" x="0.0" y="120" width="382" height="50"/>
+                                                        <rect key="frame" x="0.0" y="120" width="374" height="50"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                         <userDefinedRuntimeAttributes>
@@ -1312,7 +1314,7 @@ Service Center</string>
                                                 </subviews>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XW3-jY-bRP" customClass="AppButton" customModule="Tara" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="320" width="382" height="56"/>
+                                                <rect key="frame" x="20" y="336" width="374" height="56"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="56" id="PTI-Sw-NTg"/>
                                                 </constraints>
@@ -1322,23 +1324,26 @@ Service Center</string>
                                                         <real key="value" value="4"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="saveBtnActionWith_sender:" destination="Gei-PQ-cT4" eventType="touchUpInside" id="tqF-Tn-4vM"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstItem="jNy-jp-svR" firstAttribute="leading" secondItem="7lR-FZ-OGQ" secondAttribute="leading" constant="16" id="KP2-HU-9jR"/>
+                                            <constraint firstItem="jNy-jp-svR" firstAttribute="leading" secondItem="7lR-FZ-OGQ" secondAttribute="leading" constant="20" id="KP2-HU-9jR"/>
                                             <constraint firstItem="jNy-jp-svR" firstAttribute="top" secondItem="7lR-FZ-OGQ" secondAttribute="top" constant="20" id="KlF-cY-iYi"/>
-                                            <constraint firstItem="Vnd-5d-Xou" firstAttribute="leading" secondItem="7lR-FZ-OGQ" secondAttribute="leading" constant="16" id="Lle-2h-gmk"/>
+                                            <constraint firstItem="Vnd-5d-Xou" firstAttribute="leading" secondItem="7lR-FZ-OGQ" secondAttribute="leading" constant="20" id="Lle-2h-gmk"/>
                                             <constraint firstItem="XW3-jY-bRP" firstAttribute="trailing" secondItem="Vnd-5d-Xou" secondAttribute="trailing" id="TdO-EZ-9BF"/>
                                             <constraint firstItem="Tj4-Ee-VPc" firstAttribute="top" secondItem="jNy-jp-svR" secondAttribute="top" id="Ufc-AY-DbT"/>
-                                            <constraint firstItem="Vnd-5d-Xou" firstAttribute="top" secondItem="jNy-jp-svR" secondAttribute="bottom" constant="20" id="WB2-In-BBG"/>
+                                            <constraint firstItem="Vnd-5d-Xou" firstAttribute="top" secondItem="jNy-jp-svR" secondAttribute="bottom" constant="30" id="WB2-In-BBG"/>
                                             <constraint firstItem="Tj4-Ee-VPc" firstAttribute="bottom" secondItem="jNy-jp-svR" secondAttribute="bottom" id="crC-mr-oV6"/>
                                             <constraint firstItem="Tj4-Ee-VPc" firstAttribute="leading" secondItem="jNy-jp-svR" secondAttribute="leading" id="cw1-Bh-i29"/>
                                             <constraint firstItem="XW3-jY-bRP" firstAttribute="leading" secondItem="Vnd-5d-Xou" secondAttribute="leading" id="g8Y-TY-yrr"/>
-                                            <constraint firstAttribute="trailing" secondItem="Vnd-5d-Xou" secondAttribute="trailing" constant="16" id="gVB-e3-qV0"/>
+                                            <constraint firstAttribute="trailing" secondItem="Vnd-5d-Xou" secondAttribute="trailing" constant="20" id="gVB-e3-qV0"/>
                                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="XW3-jY-bRP" secondAttribute="bottom" constant="50" id="iAx-6Q-rDs"/>
                                             <constraint firstItem="Tj4-Ee-VPc" firstAttribute="trailing" secondItem="jNy-jp-svR" secondAttribute="trailing" id="jRf-Y6-ywy"/>
-                                            <constraint firstItem="XW3-jY-bRP" firstAttribute="top" secondItem="Vnd-5d-Xou" secondAttribute="bottom" constant="30" id="pPD-Cg-tjJ"/>
+                                            <constraint firstItem="XW3-jY-bRP" firstAttribute="top" secondItem="Vnd-5d-Xou" secondAttribute="bottom" constant="36" id="pPD-Cg-tjJ"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -1365,6 +1370,15 @@ Service Center</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kRh-W3-hLC"/>
                     </view>
+                    <connections>
+                        <outlet property="editImgBtn" destination="Tj4-Ee-VPc" id="hma-Bh-g06"/>
+                        <outlet property="emailTextField" destination="EZ1-AZ-NFm" id="hEx-D2-uUa"/>
+                        <outlet property="mobileNoTextField" destination="hy7-CQ-ZtL" id="eiM-u7-VnF"/>
+                        <outlet property="nameTextField" destination="3y4-WA-o5N" id="r7g-52-da8"/>
+                        <outlet property="saveBtn" destination="XW3-jY-bRP" id="dVR-Po-2WU"/>
+                        <outlet property="titleLbl" destination="RHU-OI-MmS" id="iKb-fx-jja"/>
+                        <outlet property="userImage" destination="jNy-jp-svR" id="DCH-Cg-ueN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vMc-8M-ofZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

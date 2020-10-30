@@ -24,7 +24,10 @@ class EditProfileVC: BaseVC {
     
     // MARK: - Variables
     //===========================
- 
+    var placeHolderArr : [String] = [LocalizedString.name.localized,
+                                     LocalizedString.emailID.localized,
+                                     LocalizedString.mobileNo.localized
+    ]
     
     // MARK: - Lifecycle
     //===========================
@@ -33,15 +36,15 @@ class EditProfileVC: BaseVC {
         initialSetup()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = true
         self.tabBarController?.tabBar.isTranslucent = true
     }
     
     // MARK: - IBActions
     //===========================
-    @IBAction func backBtnAction(_sender : UIButton) {
+    @IBAction func backBtnAction(_sender : Any) {
         pop()
     }
     
@@ -55,9 +58,27 @@ class EditProfileVC: BaseVC {
     
 }
 
-extension EditProfileVC {
+extension EditProfileVC: UITextFieldDelegate {
    
     private func initialSetup(){
-        
+        saveBtn.isEnabled = true
+        setUpTextField()
+    }
+    
+    func setUpTextField(){
+     for (index,txtField) in [nameTextField,emailTextField,mobileNoTextField].enumerated() {
+            txtField?.delegate = self
+            txtField?.placeholder = placeHolderArr[index]
+            txtField?.selectedTitleColor = AppColors.fontTertiaryColor
+            txtField?.placeholderFont = AppFonts.NunitoSansRegular.withSize(15.0)
+            txtField?.font = AppFonts.NunitoSansBold.withSize(14.0)
+            txtField?.textColor = AppColors.fontPrimaryColor
+        }
+        mobileNoTextField.keyboardType = .numberPad
+    }
+    
+    private func setupTextFont() {
+        titleLbl.font = AppFonts.NunitoSansSemiBold.withSize(17.0)
+        titleLbl.text = LocalizedString.editProfile.localized
     }
 }

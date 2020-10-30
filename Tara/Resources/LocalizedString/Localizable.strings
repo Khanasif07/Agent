@@ -25,7 +25,7 @@
 "continueTitle" = "Continue";
 "logout" = "Logout";
 "mobileNo" = "Mobile No";
-
+"name" = "Name";
 //MARK: - Home TabBar Values
 //========================
 "home" = "Home";
@@ -273,7 +273,7 @@
 "ratingHighToLow" = "Rating: High to Low";
 
 "applyFilters" = "Apply Filters";
-
+"editProfile" = "Edit Profile";
  // MARK: - Home  VC Values
 //==============================
 "tyre" = "Tyre";

@@ -168,7 +168,7 @@ enum LocalizedString : String {
     case reportAnIssue
     case faq
     case referFriend
-    
+    case name
     case garageRegistration
     case startRegistration
     case requirementToRegister
@@ -328,7 +328,7 @@ enum LocalizedString : String {
     case bidPlaced
     case bidRejected
     case applyFilters
-    
+    case editProfile
     
     // MARK: - Home  VC Values
     //==============================
