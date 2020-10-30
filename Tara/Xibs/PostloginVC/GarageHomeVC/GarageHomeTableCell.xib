@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="NunitoSans-Bold.ttf">
+            <string>NunitoSans-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="166" id="KGk-i7-Jjw" customClass="GarageHomeTableCell" customModule="ArabianTyres" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="360" height="166"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="360" height="166"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eRV-u0-cJd">
+                        <rect key="frame" x="23" y="11.5" width="314" height="146.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hFm-Yc-wXL">
+                                <rect key="frame" x="115" y="2" width="84.5" height="95.5"/>
+                                <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="70"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Request Accepted" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sQC-tn-SDY">
+                                <rect key="frame" x="98" y="97.5" width="118" height="20"/>
+                                <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="hFm-Yc-wXL" firstAttribute="centerX" secondItem="eRV-u0-cJd" secondAttribute="centerX" id="2Vl-O9-4Fv"/>
+                            <constraint firstAttribute="bottom" secondItem="sQC-tn-SDY" secondAttribute="bottom" constant="29" id="dyf-VJ-teO"/>
+                            <constraint firstItem="sQC-tn-SDY" firstAttribute="centerX" secondItem="eRV-u0-cJd" secondAttribute="centerX" id="qBk-Lh-O1U"/>
+                            <constraint firstItem="hFm-Yc-wXL" firstAttribute="top" secondItem="eRV-u0-cJd" secondAttribute="top" constant="2" id="sRP-t6-gwv"/>
+                            <constraint firstItem="sQC-tn-SDY" firstAttribute="top" secondItem="hFm-Yc-wXL" secondAttribute="bottom" id="zBg-6v-stp"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="eRV-u0-cJd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="23" id="1Qh-UJ-lBD"/>
+                    <constraint firstAttribute="trailing" secondItem="eRV-u0-cJd" secondAttribute="trailing" constant="23" id="2Ki-Hr-4nz"/>
+                    <constraint firstAttribute="bottom" secondItem="eRV-u0-cJd" secondAttribute="bottom" constant="8" id="NlD-sr-4Fn"/>
+                    <constraint firstItem="eRV-u0-cJd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11.5" id="xpT-Fl-Gy3"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="dataContainerView" destination="eRV-u0-cJd" id="7Bk-fA-P4v"/>
+                <outlet property="requestCountLbl" destination="hFm-Yc-wXL" id="zA2-FV-Rj6"/>
+                <outlet property="requestTypeLbl" destination="sQC-tn-SDY" id="OWc-Dr-i7E"/>
+            </connections>
+            <point key="canvasLocation" x="108.69565217391305" y="175.44642857142856"/>
+        </tableViewCell>
+    </objects>
+</document>

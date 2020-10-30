@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="FacilityCollectionViewCell" customModule="ArabianTyres" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="74" height="46"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="74" height="46"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dZL-JL-Jgr">
+                        <rect key="frame" x="0.0" y="0.0" width="74" height="46"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C7k-8R-uh7">
+                                <rect key="frame" x="5" y="0.0" width="43" height="46"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" red="0.10980392156862745" green="0.11372549019607843" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vmd-1T-O6R">
+                                <rect key="frame" x="53" y="15" width="16" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="eq1-4p-atK"/>
+                                    <constraint firstAttribute="width" secondItem="Vmd-1T-O6R" secondAttribute="height" multiplier="1:1" id="zD5-wf-vPC"/>
+                                </constraints>
+                                <state key="normal" image="cancel"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.96470588235294119" green="0.96862745098039216" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Vmd-1T-O6R" firstAttribute="centerY" secondItem="C7k-8R-uh7" secondAttribute="centerY" id="0NK-ku-wvp"/>
+                            <constraint firstItem="C7k-8R-uh7" firstAttribute="top" secondItem="dZL-JL-Jgr" secondAttribute="top" id="92E-ze-wct"/>
+                            <constraint firstAttribute="bottom" secondItem="C7k-8R-uh7" secondAttribute="bottom" id="EOK-UC-Alr"/>
+                            <constraint firstAttribute="trailing" secondItem="Vmd-1T-O6R" secondAttribute="trailing" constant="5" id="bLy-jc-9yz"/>
+                            <constraint firstItem="Vmd-1T-O6R" firstAttribute="leading" secondItem="C7k-8R-uh7" secondAttribute="trailing" constant="5" id="hac-WS-qRa"/>
+                            <constraint firstItem="C7k-8R-uh7" firstAttribute="leading" secondItem="dZL-JL-Jgr" secondAttribute="leading" constant="5" id="r40-PA-0PX"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="dZL-JL-Jgr" secondAttribute="bottom" id="9g5-Sd-GES"/>
+                <constraint firstItem="dZL-JL-Jgr" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="GKi-u7-xQL"/>
+                <constraint firstAttribute="trailing" secondItem="dZL-JL-Jgr" secondAttribute="trailing" id="hgT-sj-xHM"/>
+                <constraint firstItem="dZL-JL-Jgr" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="s6r-yb-sh4"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="Jek-GT-cud"/>
+            <size key="customSize" width="163" height="46"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                    <real key="value" value="4"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="cancelBtn" destination="Vmd-1T-O6R" id="l0Q-Rv-vti"/>
+                <outlet property="cancelBtnHeightConstraint" destination="eq1-4p-atK" id="FK3-HU-ifH"/>
+                <outlet property="containerView" destination="dZL-JL-Jgr" id="pbN-U2-oPY"/>
+                <outlet property="skillLbl" destination="C7k-8R-uh7" id="m3x-bH-J8b"/>
+            </connections>
+            <point key="canvasLocation" x="221.73913043478262" y="101.11607142857143"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="cancel" width="20" height="20"/>
+    </resources>
+</document>

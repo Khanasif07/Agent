@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="NunitoSans-Bold.ttf">
+            <string>NunitoSans-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CountryCodeTableCell" rowHeight="43" id="6B7-w6-WN0" customClass="CountryCodeTableCell" customModule="ArabianTyres" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="51"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6B7-w6-WN0" id="7Ou-hx-edJ">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="51"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J83-M8-KRU">
+                        <rect key="frame" x="18" y="16" width="39" height="19.5"/>
+                        <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gXR-cd-Q6A">
+                        <rect key="frame" x="267" y="16" width="35" height="19.5"/>
+                        <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oYx-F1-JPY">
+                        <rect key="frame" x="0.0" y="50" width="320" height="1"/>
+                        <color key="backgroundColor" red="0.92941176470588238" green="0.92941176470588238" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="ZN6-jL-LG2"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" red="0.96470588235294119" green="0.96862745098039216" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="oYx-F1-JPY" secondAttribute="bottom" id="BC2-BI-BGV"/>
+                    <constraint firstAttribute="trailing" secondItem="oYx-F1-JPY" secondAttribute="trailing" id="M49-yI-vys"/>
+                    <constraint firstAttribute="trailing" secondItem="gXR-cd-Q6A" secondAttribute="trailing" constant="18" id="Obn-SC-OrV"/>
+                    <constraint firstItem="oYx-F1-JPY" firstAttribute="leading" secondItem="7Ou-hx-edJ" secondAttribute="leading" id="b9l-kb-aA7"/>
+                    <constraint firstItem="J83-M8-KRU" firstAttribute="leading" secondItem="7Ou-hx-edJ" secondAttribute="leading" constant="18" id="ck4-3x-UEa"/>
+                    <constraint firstItem="J83-M8-KRU" firstAttribute="centerY" secondItem="7Ou-hx-edJ" secondAttribute="centerY" id="gwn-a3-h6j"/>
+                    <constraint firstItem="gXR-cd-Q6A" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="J83-M8-KRU" secondAttribute="trailing" constant="25" id="kKg-9d-EiW"/>
+                    <constraint firstItem="gXR-cd-Q6A" firstAttribute="centerY" secondItem="7Ou-hx-edJ" secondAttribute="centerY" id="voo-cf-fCk"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <viewLayoutGuide key="safeArea" id="XAF-0h-HYw"/>
+            <connections>
+                <outlet property="countryCodeLabel" destination="gXR-cd-Q6A" id="DdX-pf-1Z0"/>
+                <outlet property="countryNameLabel" destination="J83-M8-KRU" id="z6X-jF-3nk"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="86.049107142857139"/>
+        </tableViewCell>
+    </objects>
+</document>
