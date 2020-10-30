@@ -150,13 +150,13 @@ extension ProfileSettingVC {
     }
     
     private func performCleanUp() {
-        SocketIOManager.shared.closeConnection()
         let lang  = AppUserDefaults.value(forKey: .currentLanguage).stringValue
         AppUserDefaults.removeAllValues()
         AppUserDefaults.save(value: lang, forKey: .currentLanguage)
         AppUserDefaults.save(value: true, forKey: .isLanguageSelect)
         UserModel.main = UserModel()
         UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+        SocketIOManager.shared.closeConnection()
     }
     
     private func showLogoutPopUp(){
