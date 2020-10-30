@@ -219,6 +219,7 @@
 		A413B979250A2BEF0004C534 /* AddDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A413B978250A2BEF0004C534 /* AddDetailVC.swift */; };
 		A413B97D250A44410004C534 /* CustomTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A413B97B250A44400004C534 /* CustomTextView.xib */; };
 		A413B97E250A44410004C534 /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A413B97C250A44400004C534 /* CustomTextView.swift */; };
+		A415C02C254BF79D000CE928 /* EditProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A415C02B254BF79D000CE928 /* EditProfileVC.swift */; };
 		A41AAB402530451B0061887F /* OfferFilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41AAB3F2530451B0061887F /* OfferFilterVC.swift */; };
 		A41AAB43253047A50061887F /* OfferFilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41AAB41253047A50061887F /* OfferFilterTableViewCell.swift */; };
 		A41AAB44253047A50061887F /* OfferFilterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A41AAB42253047A50061887F /* OfferFilterTableViewCell.xib */; };
@@ -523,6 +524,7 @@
 		A413B978250A2BEF0004C534 /* AddDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDetailVC.swift; sourceTree = "<group>"; };
 		A413B97B250A44400004C534 /* CustomTextView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomTextView.xib; sourceTree = "<group>"; };
 		A413B97C250A44400004C534 /* CustomTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
+		A415C02B254BF79D000CE928 /* EditProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileVC.swift; sourceTree = "<group>"; };
 		A41AAB3F2530451B0061887F /* OfferFilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferFilterVC.swift; sourceTree = "<group>"; };
 		A41AAB41253047A50061887F /* OfferFilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferFilterTableViewCell.swift; sourceTree = "<group>"; };
 		A41AAB42253047A50061887F /* OfferFilterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OfferFilterTableViewCell.xib; sourceTree = "<group>"; };
@@ -1237,6 +1239,7 @@
 				A43926372547FC620089E0EB /* SRPopupVC */,
 				A43926382547FC6C0089E0EB /* GarageRequestPopupVC */,
 				A43926392547FF9D0089E0EB /* UserNotificationVC.swift */,
+				A415C02B254BF79D000CE928 /* EditProfileVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -2354,6 +2357,7 @@
 				A43B53AC2524B65300447B24 /* ServiceListingTableViewCell.swift in Sources */,
 				A441A67E252CDF7C00B5420B /* TyreRequestLocationTableViewCell.swift in Sources */,
 				843C8EC52508AE9500515F2E /* ProfileUserInternalCell.swift in Sources */,
+				A415C02C254BF79D000CE928 /* EditProfileVC.swift in Sources */,
 				84476D3725075F6800AB5E80 /* ExploreVC.swift in Sources */,
 				846352D02511E34E004216F1 /* AddImageCollCell.swift in Sources */,
 				8473414F254ADD470083E8D1 /* InboxTableViewCell.swift in Sources */,
