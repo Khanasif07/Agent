@@ -26,8 +26,6 @@ enum AppRouter {
     // MARK: - Show Landing Screen
     //===========================
     static func checkAppInitializationFlow() {
-        goToTestingVC()
-        return
         if isUserLoggedin {
             SocketIOManager.shared.establishConnection()
             if !isPhoneNoVerified{
@@ -57,7 +55,7 @@ enum AppRouter {
     }
     
     static func goToTestingVC(){
-        let scene = ChangePasswordVC.instantiate(fromAppStoryboard: .PostLogin)
+        let scene = ChangeLanguageVC.instantiate(fromAppStoryboard: .PostLogin)
         setAsWindowRoot(scene)
     }
     
@@ -382,6 +380,11 @@ enum AppRouter {
     
     static func goToChangePasswordVC(vc: UIViewController){
         let scene = ChangePasswordVC.instantiate(fromAppStoryboard: .PostLogin)
+        vc.navigationController?.pushViewController(scene, animated: true)
+    }
+    
+    static func goToChangeLanguageVC(vc: UIViewController){
+        let scene = ChangeLanguageVC.instantiate(fromAppStoryboard: .PostLogin)
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     

@@ -221,6 +221,7 @@
 		A413B97E250A44410004C534 /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A413B97C250A44400004C534 /* CustomTextView.swift */; };
 		A415C02C254BF79D000CE928 /* EditProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A415C02B254BF79D000CE928 /* EditProfileVC.swift */; };
 		A415C030254C2B7D000CE928 /* ChangePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A415C02F254C2B7D000CE928 /* ChangePasswordVC.swift */; };
+		A415C032254C3B78000CE928 /* ChangeLanguageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A415C031254C3B78000CE928 /* ChangeLanguageVC.swift */; };
 		A41AAB402530451B0061887F /* OfferFilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41AAB3F2530451B0061887F /* OfferFilterVC.swift */; };
 		A41AAB43253047A50061887F /* OfferFilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41AAB41253047A50061887F /* OfferFilterTableViewCell.swift */; };
 		A41AAB44253047A50061887F /* OfferFilterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A41AAB42253047A50061887F /* OfferFilterTableViewCell.xib */; };
@@ -527,6 +528,7 @@
 		A413B97C250A44400004C534 /* CustomTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 		A415C02B254BF79D000CE928 /* EditProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileVC.swift; sourceTree = "<group>"; };
 		A415C02F254C2B7D000CE928 /* ChangePasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordVC.swift; sourceTree = "<group>"; };
+		A415C031254C3B78000CE928 /* ChangeLanguageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeLanguageVC.swift; sourceTree = "<group>"; };
 		A41AAB3F2530451B0061887F /* OfferFilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferFilterVC.swift; sourceTree = "<group>"; };
 		A41AAB41253047A50061887F /* OfferFilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferFilterTableViewCell.swift; sourceTree = "<group>"; };
 		A41AAB42253047A50061887F /* OfferFilterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OfferFilterTableViewCell.xib; sourceTree = "<group>"; };
@@ -1243,6 +1245,7 @@
 				A415C02E254C2B52000CE928 /* UserNotificationVC */,
 				A415C02D254C2B41000CE928 /* EditProfileVC */,
 				A415C02F254C2B7D000CE928 /* ChangePasswordVC.swift */,
+				A415C031254C3B78000CE928 /* ChangeLanguageVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -2270,6 +2273,7 @@
 				843C8ED22508FB9300515F2E /* HomeCollectionCell.swift in Sources */,
 				8481FA492500BEA400AB6EFB /* DateExtension.swift in Sources */,
 				8481FA632500BFA000AB6EFB /* ApiKeys.swift in Sources */,
+				A415C032254C3B78000CE928 /* ChangeLanguageVC.swift in Sources */,
 				A4B74CC425107C6800771974 /* LinkAccountTableViewCell.swift in Sources */,
 				A49B7D4C251125AC0057239B /* FacilityCollectionViewCell.swift in Sources */,
 				842B2FC52513354B00E3CF67 /* BankListingVC.swift in Sources */,

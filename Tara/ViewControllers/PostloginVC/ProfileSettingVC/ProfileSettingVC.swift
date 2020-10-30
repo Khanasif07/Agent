@@ -89,6 +89,10 @@ extension ProfileSettingVC {
                         guard let `self` = self else { return }
                         self.hitGarageSwitchApi()
                     }
+                    cell.changeLanguageTapped = { [weak self]  in
+                        guard let `self` = self else { return }
+                        AppRouter.goToChangeLanguageVC(vc: self)
+                    }
                     return cell
                 default:
                     let cell = tableView.dequeueCell(with: ProfileUserBottomCell.self, indexPath: indexPath)
@@ -113,6 +117,10 @@ extension ProfileSettingVC {
                         guard let `self` = self else { return }
                         self.hitGarageSwitchApi()
                     }
+                    cell.changeLanguageTapped = { [weak self]  in
+                        guard let `self` = self else { return }
+                        AppRouter.goToChangeLanguageVC(vc: self)
+                    }
                     return cell
                 default:
                     let cell = tableView.dequeueCell(with: ProfileUserBottomCell.self, indexPath: indexPath)
@@ -123,7 +131,6 @@ extension ProfileSettingVC {
                         guard let `self` = self else { return }
                         self.showLogoutPopUp()
                     }
-                    
                     return cell
                 }
             default:
