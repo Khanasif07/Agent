@@ -69,7 +69,8 @@ enum LocalizedString : String {
     case imageUploadingFailed
     case accountNumberAreNotSame
     case minTenDigitInAccountNumber
-    
+    case enterOldPassWord
+    case enterNewPassWord
     // MARK: - Validation Messages
     //==================================
     case pleaseEnterValidEmail = "pleaseEnterValidEmail"
@@ -329,7 +330,7 @@ enum LocalizedString : String {
     case bidRejected
     case applyFilters
     case editProfile
-    
+    case save
     // MARK: - Home  VC Values
     //==============================
     case tyre
