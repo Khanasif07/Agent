@@ -454,6 +454,18 @@ extension WebServices{
         }
     }
     
+    // MARK:- Switch Profile
+    //=========================
+    static func postEditProfileData(parameters: JSONDictionary,
+                              success: @escaping SuccessResponse,
+                              failure: @escaping FailureResponse) {
+        self.commonPutAPI(parameters: parameters, endPoint: .editProfile, success: { (json) in
+            success(json)
+        }) { (error) -> (Void) in
+            failure(error)
+        }
+    }
+    
     // MARK:- Post Tyre Request
     //=========================
     static func postTyreRequest(parameters: JSONDictionary,

@@ -96,7 +96,7 @@ extension ProfileVC {
                     }
                     cell.editProfileBtnTapped = { [weak self] (sender) in
                         guard let `self` = self else { return }
-                        AppRouter.goToEditProfileVC(vc: self)
+                        AppRouter.goToEditProfileVC(vc: self,model: self.viewModel.userModel)
                     }
                     return cell
                 default:
@@ -106,6 +106,10 @@ extension ProfileVC {
                     cell.settingBtnTapped = { [weak self]  in
                         guard let `self` = self else { return }
                         AppRouter.goToProfileSettingVC(vc: self)
+                    }
+                    cell.changePassword = { [weak self]  in
+                        guard let `self` = self else { return }
+                        AppRouter.goToChangePasswordVC(vc: self)
                     }
                     return cell
                 }
@@ -233,7 +237,8 @@ extension ProfileVC: ProfileVMDelegate {
     }
 }
 
-
+// MARK: - UICollectionViewFlowLayout
+//===========================
 class LeftAlignedCollectionViewFlowLayout: UICollectionViewFlowLayout {
     
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
@@ -245,9 +250,7 @@ class LeftAlignedCollectionViewFlowLayout: UICollectionViewFlowLayout {
             if layoutAttribute.frame.origin.y >= maxY {
                 leftMargin = sectionInset.left
             }
-            
             layoutAttribute.frame.origin.x = leftMargin
-            
             leftMargin += layoutAttribute.frame.width + minimumInteritemSpacing
             maxY = max(layoutAttribute.frame.maxY , maxY)
         }
@@ -261,3 +264,12 @@ extension UINavigationController {
            return .default
        }
    }
+
+
+// MARK: - EditProfileVCDelegate
+//===========================
+extension ProfileVC: EditProfileVCDelegate {
+    func editProfileSuccess() {
+        self.hitProfileApi()
+    }
+}

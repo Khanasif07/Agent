@@ -19,20 +19,16 @@ class GarageProfileStep2VC: BaseVC {
     @IBOutlet weak var helpBtn: UIButton!
     @IBOutlet weak var saveAndContinueBtn: AppButton!
     @IBOutlet weak var headingLbl: UILabel!
-//    @IBOutlet weak var serviceCenterNameLbl: UILabel!
     @IBOutlet weak var mainCollView: UICollectionView!
     @IBOutlet weak var collViewHeightConst: NSLayoutConstraint!
-
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var customView : CustomTextView!
     @IBOutlet weak var customCollViewHeightConstraint: NSLayoutConstraint!
-//    @IBOutlet weak var rangeSlider: TTRangeSlider!
   
     // MARK: - Variables
     //===========================
     var selectedFacilitiesArr : [FacilityModel] = []
     var serviceImagesArray = [String]()
-//    var imagesArray = [ImageModel]()
     var selectBrandAndServiceArr : [String] = []
     fileprivate var hasImageUploaded = true {
         didSet {

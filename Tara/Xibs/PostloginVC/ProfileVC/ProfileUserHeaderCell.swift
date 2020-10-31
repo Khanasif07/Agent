@@ -43,10 +43,6 @@ class ProfileUserHeaderCell: UITableViewCell {
         self.phoneNoVerifiedView.round()
     }
     
-    @IBAction func editProfileBtnTapped(_ sender: UIButton) {
-        editProfileBtnAction?()
-    }
-    
     func populateData(model: UserModel){
         profileImgView.setImage_kf(imageString: model.image, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: true)
         userNameLbl.text = model.name.isEmpty ? "N/A" : "\(model.name)"

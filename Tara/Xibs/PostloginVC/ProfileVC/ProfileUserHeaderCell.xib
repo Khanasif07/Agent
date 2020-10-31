@@ -141,7 +141,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KF6-BP-bkA">
                                 <rect key="frame" x="310" y="9" width="24" height="24"/>
                                 <connections>
-                                    <action selector="editProfileBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="7SW-ZF-vhD"/>
+                                    <action selector="editProfileBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="iiM-ni-L6z"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -175,7 +175,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="dataContainerView" destination="chh-L6-f4P" id="eCv-5d-pLo"/>
-                <outlet property="editProfileView" destination="Uso-y6-Adg" id="nGJ-3W-2ov"/>
+                <outlet property="editProfileBtn" destination="KF6-BP-bkA" id="GHb-tp-1nR"/>
                 <outlet property="emailVerifiedView" destination="9zi-xO-oWZ" id="Z4f-P5-6G3"/>
                 <outlet property="emailVerifyBtn" destination="voz-bY-7Ll" id="Jtf-gt-Xwq"/>
                 <outlet property="phoneNoVerifiedView" destination="Wcw-Mb-rBy" id="nhA-Ra-3wp"/>

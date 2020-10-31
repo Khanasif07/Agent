@@ -64,8 +64,10 @@ enum AppRouter {
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
-    static func goToEditProfileVC(vc: UIViewController){
+    static func goToEditProfileVC(vc: UIViewController & EditProfileVCDelegate,model: UserModel){
         let scene = EditProfileVC.instantiate(fromAppStoryboard: .PostLogin)
+        scene.delegate = vc
+        scene.viewModel.userModel = model
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     

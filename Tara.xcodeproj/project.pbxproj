@@ -185,6 +185,7 @@
 		8481FAA7250143CD00AB6EFB /* NunitoSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8481FAA6250143CD00AB6EFB /* NunitoSans-SemiBoldItalic.ttf */; };
 		8481FAAB25015CBC00AB6EFB /* CustommTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481FAAA25015CBC00AB6EFB /* CustommTextField.swift */; };
 		8481FAAF25015D9000AB6EFB /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481FAAE25015D9000AB6EFB /* LoginVC.swift */; };
+		848AF19E254D91EB00F6FB83 /* EditProfileVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848AF19D254D91EB00F6FB83 /* EditProfileVM.swift */; };
 		8495E9442509C824003CA43D /* ProfileVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8495E9432509C824003CA43D /* ProfileVM.swift */; };
 		84991271254C282100EC488A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84991270254C282100EC488A /* GoogleService-Info.plist */; };
 		84B629AC25120FF50080A7C2 /* InterConnectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B629AB25120FF50080A7C2 /* InterConnectivity.swift */; };
@@ -492,6 +493,7 @@
 		8481FAA6250143CD00AB6EFB /* NunitoSans-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NunitoSans-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		8481FAAA25015CBC00AB6EFB /* CustommTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustommTextField.swift; sourceTree = "<group>"; };
 		8481FAAE25015D9000AB6EFB /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		848AF19D254D91EB00F6FB83 /* EditProfileVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileVM.swift; sourceTree = "<group>"; };
 		8495E9432509C824003CA43D /* ProfileVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVM.swift; sourceTree = "<group>"; };
 		84991270254C282100EC488A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Documents/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		84B629AB25120FF50080A7C2 /* InterConnectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterConnectivity.swift; sourceTree = "<group>"; };
@@ -1637,6 +1639,7 @@
 			isa = PBXGroup;
 			children = (
 				A415C02B254BF79D000CE928 /* EditProfileVC.swift */,
+				848AF19D254D91EB00F6FB83 /* EditProfileVM.swift */,
 			);
 			path = EditProfileVC;
 			sourceTree = "<group>";
@@ -2430,6 +2433,7 @@
 				A45707C32513B137003BE7DD /* TyreBrandVC.swift in Sources */,
 				843C8EC92508B0AE00515F2E /* AGTableView.swift in Sources */,
 				A4B74CCB2510CF6C00771974 /* GarageProfileStep2VC.swift in Sources */,
+				848AF19E254D91EB00F6FB83 /* EditProfileVM.swift in Sources */,
 				A44E8D7A251CBF9500ACBC4D /* VehicleDetailForBatteryVC.swift in Sources */,
 				8481F9FF2500AA9A00AB6EFB /* SceneDelegate.swift in Sources */,
 				A4203F0E252C791A00BD8802 /* SRFilterVC.swift in Sources */,

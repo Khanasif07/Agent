@@ -33,6 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , MessagingDelegate , UNUs
         sleep(2)
         self.setUpKeyboardSetup()
         self.setUpTextField()
+        self.registerPushNotification()
         GMSServices.provideAPIKey(AppConstants.googlePlaceApiKey)
         GMSPlacesClient.provideAPIKey(AppConstants.googlePlaceApiKey)
         AWSS3Manager.shared.setupAmazonS3(withPoolID: AppConstants.awss3PoolId)
@@ -119,6 +120,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate , MessagingDelegate , UNUs
             return topViewController(presented)
         }
         return baseScene
+    }
+    
+    func registerPushNotification(){
+        if #available(iOS 10.0, *) {
+            let center = UNUserNotificationCenter.current()
+            center.delegate = self
+            center.requestAuthorization(options:[.badge, .alert, .sound]){ (granted, error) in }
+        }
+        UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.badge, .sound, .alert], categories: nil))
+        UIApplication.shared.registerForRemoteNotifications()
     }
 }
 
