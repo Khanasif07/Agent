@@ -94,6 +94,10 @@ extension ProfileVC {
                         guard let `self` = self else { return }
                         self.showEmailVerificationPopUp()
                     }
+                    cell.editProfileBtnTapped = { [weak self] (sender) in
+                        guard let `self` = self else { return }
+                        AppRouter.goToEditProfileVC(vc: self)
+                    }
                     return cell
                 default:
                     let cell = tableView.dequeueCell(with: ProfileUserBottomCell.self, indexPath: indexPath)

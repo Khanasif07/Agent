@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , MessagingDelegate , UNUs
         GMSPlacesClient.provideAPIKey(AppConstants.googlePlaceApiKey)
         AWSS3Manager.shared.setupAmazonS3(withPoolID: AppConstants.awss3PoolId)
         GoogleLoginController.shared.configure(withClientId: AppConstants.googleId)
-//        getGoogleInfoPlist()
+        getGoogleInfoPlist()
         AppRouter.checkAppInitializationFlow()
         
         return true

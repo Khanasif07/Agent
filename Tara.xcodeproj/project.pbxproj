@@ -186,6 +186,7 @@
 		8481FAAB25015CBC00AB6EFB /* CustommTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481FAAA25015CBC00AB6EFB /* CustommTextField.swift */; };
 		8481FAAF25015D9000AB6EFB /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481FAAE25015D9000AB6EFB /* LoginVC.swift */; };
 		8495E9442509C824003CA43D /* ProfileVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8495E9432509C824003CA43D /* ProfileVM.swift */; };
+		84991271254C282100EC488A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84991270254C282100EC488A /* GoogleService-Info.plist */; };
 		84B629AC25120FF50080A7C2 /* InterConnectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B629AB25120FF50080A7C2 /* InterConnectivity.swift */; };
 		84B629AE251212FC0080A7C2 /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B629AD251212FC0080A7C2 /* ImageModel.swift */; };
 		84B629B12512262C0080A7C2 /* GarageAddLocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B629B02512262C0080A7C2 /* GarageAddLocationVC.swift */; };
@@ -269,7 +270,6 @@
 		A468DCA6253A020300416CF9 /* HandleRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A468DCA5253A020300416CF9 /* HandleRequest.swift */; };
 		A479345E253FFEE8001CDA4A /* SylyfeBuyer_SylyfeBuyer_Helpers_AlignmentFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A479345D253FFEE8001CDA4A /* SylyfeBuyer_SylyfeBuyer_Helpers_AlignmentFlowLayout.swift */; };
 		A480DB0F251F1F9F0031B3E5 /* OilRequestedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A480DB0E251F1F9F0031B3E5 /* OilRequestedVC.swift */; };
-		A493133D2508D231007110E4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A493133C2508D231007110E4 /* GoogleService-Info.plist */; };
 		A49B7D4C251125AC0057239B /* FacilityCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49B7D4A251125AC0057239B /* FacilityCollectionViewCell.swift */; };
 		A49B7D4D251125AC0057239B /* FacilityCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A49B7D4B251125AC0057239B /* FacilityCollectionViewCell.xib */; };
 		A49DF563252D890400A6A5B1 /* ServiceStatusVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49DF562252D890400A6A5B1 /* ServiceStatusVC.swift */; };
@@ -490,6 +490,7 @@
 		8481FAAA25015CBC00AB6EFB /* CustommTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustommTextField.swift; sourceTree = "<group>"; };
 		8481FAAE25015D9000AB6EFB /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		8495E9432509C824003CA43D /* ProfileVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVM.swift; sourceTree = "<group>"; };
+		84991270254C282100EC488A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Documents/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		84B629AB25120FF50080A7C2 /* InterConnectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterConnectivity.swift; sourceTree = "<group>"; };
 		84B629AD251212FC0080A7C2 /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
 		84B629B02512262C0080A7C2 /* GarageAddLocationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageAddLocationVC.swift; sourceTree = "<group>"; };
@@ -576,7 +577,6 @@
 		A479345D253FFEE8001CDA4A /* SylyfeBuyer_SylyfeBuyer_Helpers_AlignmentFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SylyfeBuyer_SylyfeBuyer_Helpers_AlignmentFlowLayout.swift; sourceTree = "<group>"; };
 		A480DB0E251F1F9F0031B3E5 /* OilRequestedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OilRequestedVC.swift; sourceTree = "<group>"; };
 		A493133B2508BF68007110E4 /* ArabianTyres.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ArabianTyres.entitlements; sourceTree = "<group>"; };
-		A493133C2508D231007110E4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A49B7D4A251125AC0057239B /* FacilityCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacilityCollectionViewCell.swift; sourceTree = "<group>"; };
 		A49B7D4B251125AC0057239B /* FacilityCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FacilityCollectionViewCell.xib; sourceTree = "<group>"; };
 		A49DF562252D890400A6A5B1 /* ServiceStatusVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceStatusVC.swift; sourceTree = "<group>"; };
@@ -1178,7 +1178,7 @@
 				8481FA282500BC1400AB6EFB /* LocalizedString */,
 				8481FA052500AA9B00AB6EFB /* Assets.xcassets */,
 				A4363969254AA9D200FE1AE1 /* Info.plist */,
-				A493133C2508D231007110E4 /* GoogleService-Info.plist */,
+				84991270254C282100EC488A /* GoogleService-Info.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -2058,11 +2058,11 @@
 				8481FA932501437000AB6EFB /* NunitoSans-BoldItalic.ttf in Resources */,
 				A4443864251381F700114A75 /* UserHomeScreen.storyboard in Resources */,
 				84594812252B306A00C0B249 /* BookedRequestTableCell.xib in Resources */,
-				A493133D2508D231007110E4 /* GoogleService-Info.plist in Resources */,
 				8459480E252B0C0600C0B249 /* ServiceRequestTableCell.xib in Resources */,
 				843F004E25060822001A78EC /* CountryCodeTableCell.xib in Resources */,
 				842B2FCA25133CD200E3CF67 /* BankListingTableCell.xib in Resources */,
 				A441A67F252CDF7C00B5420B /* TyreRequestLocationTableViewCell.xib in Resources */,
+				84991271254C282100EC488A /* GoogleService-Info.plist in Resources */,
 				A43B53A52524B21300447B24 /* GarageRequest.storyboard in Resources */,
 				8481FA812500DC8800AB6EFB /* Main.storyboard in Resources */,
 				8446AB54252D598E005A1350 /* GarageServiceBottomCell.xib in Resources */,

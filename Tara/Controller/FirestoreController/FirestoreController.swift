@@ -26,8 +26,9 @@ class FirestoreController:NSObject{
                       with password:String,
                       success: @escaping () -> Void,
                       failure: @escaping (_ message: String, _ code: Int) -> Void) {
-        Auth.auth().signIn(withEmail: withEmail, password: "") { (result, error) in
+        Auth.auth().signIn(withEmail: withEmail, password: password) { (result, error) in
             if let err = error {
+//                self.createUserNode(userId: userId, email: withEmail, password: "Tara@123", name: <#T##String#>, imageURL: <#T##String#>, phoneNo: <#T##String#>, status: <#T##String#>, completion: <#T##() -> Void#>, failure: <#T##FailureResponse##FailureResponse##(Error) -> (Void)#>)
                 failure(err.localizedDescription, (err as NSError).code)
             } else {
                 AppUserDefaults.save(value: userId, forKey: .uid)
@@ -73,7 +74,7 @@ class FirestoreController:NSObject{
                                status: String,
                                completion: @escaping () -> Void,
                                failure: @escaping FailureResponse) {
-        Auth.auth().createUser(withEmail: email, password: "") { (result, error) in
+        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
             if let err = error {
                 failure(err)
             } else {

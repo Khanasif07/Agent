@@ -13,6 +13,7 @@ class ProfileUserHeaderCell: UITableViewCell {
     
     var phoneVerifyBtnTapped :((UIButton)->())?
     var emailVerifyBtnTapped :((UIButton)->())?
+    var editProfileBtnTapped :((UIButton)->())?
     
     @IBOutlet weak var dataContainerView: UIView!
     @IBOutlet weak var editProfileView: UIImageView!
@@ -61,6 +62,12 @@ class ProfileUserHeaderCell: UITableViewCell {
     
     @IBAction func emailVerifyBtnAction(_ sender: UIButton) {
         if let handle = emailVerifyBtnTapped{
+            handle(sender)
+        }
+    }
+    
+    @IBAction func editProfileBtnAction(_ sender: UIButton) {
+        if let handle = editProfileBtnTapped{
             handle(sender)
         }
     }

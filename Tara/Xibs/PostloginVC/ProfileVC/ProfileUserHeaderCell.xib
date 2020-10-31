@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,7 +18,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="136" id="KGk-i7-Jjw" customClass="ProfileUserHeaderCell" customModule="ArabianTyres" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="136" id="KGk-i7-Jjw" customClass="ProfileUserHeaderCell" customModule="Tara" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="134"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -137,17 +138,27 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KF6-BP-bkA">
+                                <rect key="frame" x="310" y="9" width="24" height="24"/>
+                                <connections>
+                                    <action selector="editProfileBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="7SW-ZF-vhD"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="fCK-r7-lYU" secondAttribute="bottom" constant="19.5" id="12q-Vg-W3d"/>
                             <constraint firstItem="agU-v8-trU" firstAttribute="bottom" secondItem="fCK-r7-lYU" secondAttribute="bottom" id="22Y-8z-a5f"/>
                             <constraint firstItem="fCK-r7-lYU" firstAttribute="leading" secondItem="chh-L6-f4P" secondAttribute="leading" constant="16" id="27u-9m-OSj"/>
+                            <constraint firstItem="KF6-BP-bkA" firstAttribute="top" secondItem="Uso-y6-Adg" secondAttribute="top" id="9ii-Hj-JOI"/>
                             <constraint firstItem="agU-v8-trU" firstAttribute="top" secondItem="fCK-r7-lYU" secondAttribute="top" id="F0T-LK-C5u"/>
                             <constraint firstItem="Uso-y6-Adg" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="agU-v8-trU" secondAttribute="trailing" constant="5" id="PwE-ql-zgs"/>
                             <constraint firstItem="agU-v8-trU" firstAttribute="leading" secondItem="fCK-r7-lYU" secondAttribute="trailing" constant="8" id="Q9B-BB-YOv"/>
+                            <constraint firstItem="KF6-BP-bkA" firstAttribute="bottom" secondItem="Uso-y6-Adg" secondAttribute="bottom" id="Thq-7t-KXm"/>
                             <constraint firstItem="fCK-r7-lYU" firstAttribute="top" secondItem="chh-L6-f4P" secondAttribute="top" constant="19.5" id="W2O-PS-1J4"/>
                             <constraint firstItem="Uso-y6-Adg" firstAttribute="top" secondItem="chh-L6-f4P" secondAttribute="top" constant="9" id="bXD-fm-0rc"/>
+                            <constraint firstItem="KF6-BP-bkA" firstAttribute="trailing" secondItem="Uso-y6-Adg" secondAttribute="trailing" id="fet-v8-FkC"/>
+                            <constraint firstItem="KF6-BP-bkA" firstAttribute="leading" secondItem="Uso-y6-Adg" secondAttribute="leading" id="hh9-SU-L5j"/>
                             <constraint firstAttribute="trailing" secondItem="Uso-y6-Adg" secondAttribute="trailing" constant="9" id="yE7-UT-qpR"/>
                             <constraint firstItem="fCK-r7-lYU" firstAttribute="centerY" secondItem="chh-L6-f4P" secondAttribute="centerY" id="yX6-XT-QOc"/>
                         </constraints>
