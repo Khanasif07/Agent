@@ -64,6 +64,11 @@ enum AppRouter {
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
+    static func goToEditProfileVC(vc: UIViewController){
+        let scene = EditProfileVC.instantiate(fromAppStoryboard: .PostLogin)
+        vc.navigationController?.pushViewController(scene, animated: true)
+    }
+    
     static func goToBookedTyreRequestVC(vc: UIViewController){
         let scene = BookedTyreRequestVC.instantiate(fromAppStoryboard: .GarageRequest)
         vc.navigationController?.pushViewController(scene, animated: true)
@@ -399,6 +404,11 @@ enum AppRouter {
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
+    static func goToWebVC(vc: UIViewController, screenType : WebViewController.WebViewType) {
+        let scene = WebViewController.instantiate(fromAppStoryboard: .PostLogin)
+        scene.webViewType = screenType
+        vc.navigationController?.pushViewController(scene, animated: true)
+    }
     static func goToFacilityVC(vc: UIViewController,data: [FacilityModel], brandAndServiceArr: [String]){
         let scene = FacilityVC.instantiate(fromAppStoryboard: .Garage)
         scene.delegate = vc as? FacilitiesDelegate

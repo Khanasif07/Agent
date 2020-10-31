@@ -94,6 +94,11 @@ extension GarageProfileVC {
                     guard let `self` = self else { return }
                     self.showEmailVerificationPopUp()
                 }
+                
+                cell.editProfileBtnAction = { [weak self] in
+                    guard let `self` = self else { return }
+                }
+                
                 return cell
             default:
                 let cell = tableView.dequeueCell(with: ProfileUserBottomCell.self, indexPath: indexPath)

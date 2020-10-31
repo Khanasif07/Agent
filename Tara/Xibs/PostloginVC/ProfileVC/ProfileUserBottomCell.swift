@@ -15,6 +15,10 @@ class ProfileUserBottomCell: UITableViewCell {
     var logoutBtnTapped: (()->())?
     var switchProfileToGarage: (()->())?
     var changeLanguageTapped : (()->())?
+    var aboutusTapped : (()->())?
+    var termConditionTapped : (()->())?
+    var privacyPolicyTapped : (()->())?
+
     var isComeFromProfile: Bool = false
     var selectItemArray = [LocalizedString.my_vehicle.localized,LocalizedString.service_history.localized,LocalizedString.payments.localized,LocalizedString.saved_cards.localized,LocalizedString.added_location.localized,LocalizedString.change_password.localized,LocalizedString.setting.localized]
     var selectImageArray: [UIImage] = [#imageLiteral(resourceName: "vehicle"),#imageLiteral(resourceName: "serviceHistory"),#imageLiteral(resourceName: "payment"),#imageLiteral(resourceName: "savedCard"),#imageLiteral(resourceName: "addedLocation"),#imageLiteral(resourceName: "group"),#imageLiteral(resourceName: "profileSettting")]
@@ -89,7 +93,13 @@ extension ProfileUserBottomCell: UITableViewDelegate, UITableViewDataSource {
             
         case LocalizedString.changeLanguage.localized:
             changeLanguageTapped?()
-            
+      
+        case LocalizedString.aboutUs.localized:
+            aboutusTapped?()
+        case LocalizedString.terms_Condition.localized:
+            termConditionTapped?()
+        case LocalizedString.privacy_policy.localized:
+            privacyPolicyTapped?()
         default:
             printDebug("Do Nothing")
         }

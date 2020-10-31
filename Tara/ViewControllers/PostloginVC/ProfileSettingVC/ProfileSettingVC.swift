@@ -93,7 +93,23 @@ extension ProfileSettingVC {
                         guard let `self` = self else { return }
                         AppRouter.goToChangeLanguageVC(vc: self)
                     }
+                    
+                    cell.aboutusTapped = { [weak self]  in
+                    guard let `self` = self else { return }
+                        AppRouter.goToWebVC(vc: self, screenType: .aboutUs)
+                    }
+                    
+                    cell.termConditionTapped = { [weak self]  in
+                    guard let `self` = self else { return }
+                        AppRouter.goToWebVC(vc: self, screenType: .termsCondition)
+                    }
+                    
+                    cell.privacyPolicyTapped = { [weak self]  in
+                    guard let `self` = self else { return }
+                        AppRouter.goToWebVC(vc: self, screenType: .privacyPolicy)
+                    }
                     return cell
+                    
                 default:
                     let cell = tableView.dequeueCell(with: ProfileUserBottomCell.self, indexPath: indexPath)
                     cell.isComeFromProfile = true
@@ -121,6 +137,22 @@ extension ProfileSettingVC {
                         guard let `self` = self else { return }
                         AppRouter.goToChangeLanguageVC(vc: self)
                     }
+                    
+                    cell.aboutusTapped = { [weak self]  in
+                    guard let `self` = self else { return }
+                        AppRouter.goToWebVC(vc: self, screenType: .aboutUs)
+                    }
+                    
+                    cell.termConditionTapped = { [weak self]  in
+                    guard let `self` = self else { return }
+                        AppRouter.goToWebVC(vc: self, screenType: .termsCondition)
+                    }
+                    
+                    cell.privacyPolicyTapped = { [weak self]  in
+                    guard let `self` = self else { return }
+                        AppRouter.goToWebVC(vc: self, screenType: .privacyPolicy)
+                    }
+                    
                     return cell
                 default:
                     let cell = tableView.dequeueCell(with: ProfileUserBottomCell.self, indexPath: indexPath)

@@ -13,9 +13,10 @@ class ProfileUserHeaderCell: UITableViewCell {
     
     var phoneVerifyBtnTapped :((UIButton)->())?
     var emailVerifyBtnTapped :((UIButton)->())?
-    
+    var editProfileBtnAction :(()->())?
+
     @IBOutlet weak var dataContainerView: UIView!
-    @IBOutlet weak var editProfileView: UIImageView!
+    @IBOutlet weak var editProfileBtn: UIButton!
     @IBOutlet weak var profileImgView: UIImageView!
     @IBOutlet weak var userNameLbl: UILabel!
     @IBOutlet weak var userPhoneNoLbl: UILabel!
@@ -36,9 +37,13 @@ class ProfileUserHeaderCell: UITableViewCell {
         self.emailVerifyBtn.round(radius: 4.0)
         self.phoneVerifyBtn.round(radius: 4.0)
         self.profileImgView.round()
-        self.editProfileView.round(radius: 4.0)
+        self.editProfileBtn.round(radius: 4.0)
         self.emailVerifiedView.round()
         self.phoneNoVerifiedView.round()
+    }
+    
+    @IBAction func editProfileBtnTapped(_ sender: UIButton) {
+        editProfileBtnAction?()
     }
     
     func populateData(model: UserModel){
@@ -64,5 +69,4 @@ class ProfileUserHeaderCell: UITableViewCell {
             handle(sender)
         }
     }
-    
 }

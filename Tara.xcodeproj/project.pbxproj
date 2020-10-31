@@ -270,6 +270,7 @@
 		A468DCA22539D80200416CF9 /* SocketIOManager+ApiData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A468DCA12539D80200416CF9 /* SocketIOManager+ApiData.swift */; };
 		A468DCA6253A020300416CF9 /* HandleRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A468DCA5253A020300416CF9 /* HandleRequest.swift */; };
 		A479345E253FFEE8001CDA4A /* SylyfeBuyer_SylyfeBuyer_Helpers_AlignmentFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A479345D253FFEE8001CDA4A /* SylyfeBuyer_SylyfeBuyer_Helpers_AlignmentFlowLayout.swift */; };
+		A47EB1D9254D42040044DD4D /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EB1D8254D42040044DD4D /* WebViewController.swift */; };
 		A480DB0F251F1F9F0031B3E5 /* OilRequestedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A480DB0E251F1F9F0031B3E5 /* OilRequestedVC.swift */; };
 		A493133D2508D231007110E4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A493133C2508D231007110E4 /* GoogleService-Info.plist */; };
 		A49B7D4C251125AC0057239B /* FacilityCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49B7D4A251125AC0057239B /* FacilityCollectionViewCell.swift */; };
@@ -578,6 +579,7 @@
 		A468DCA12539D80200416CF9 /* SocketIOManager+ApiData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SocketIOManager+ApiData.swift"; sourceTree = "<group>"; };
 		A468DCA5253A020300416CF9 /* HandleRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandleRequest.swift; sourceTree = "<group>"; };
 		A479345D253FFEE8001CDA4A /* SylyfeBuyer_SylyfeBuyer_Helpers_AlignmentFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SylyfeBuyer_SylyfeBuyer_Helpers_AlignmentFlowLayout.swift; sourceTree = "<group>"; };
+		A47EB1D8254D42040044DD4D /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		A480DB0E251F1F9F0031B3E5 /* OilRequestedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OilRequestedVC.swift; sourceTree = "<group>"; };
 		A493133B2508BF68007110E4 /* ArabianTyres.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ArabianTyres.entitlements; sourceTree = "<group>"; };
 		A493133C2508D231007110E4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -1244,8 +1246,9 @@
 				A43926382547FC6C0089E0EB /* GarageRequestPopupVC */,
 				A415C02E254C2B52000CE928 /* UserNotificationVC */,
 				A415C02D254C2B41000CE928 /* EditProfileVC */,
-				A415C02F254C2B7D000CE928 /* ChangePasswordVC.swift */,
-				A415C031254C3B78000CE928 /* ChangeLanguageVC.swift */,
+				A47EB1DA254D4A050044DD4D /* ChangePasswordVC */,
+				A47EB1DB254D4A120044DD4D /* ChangeLanguageVC */,
+				A47EB1D8254D42040044DD4D /* WebViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1845,6 +1848,22 @@
 			path = OilRequestedVC;
 			sourceTree = "<group>";
 		};
+		A47EB1DA254D4A050044DD4D /* ChangePasswordVC */ = {
+			isa = PBXGroup;
+			children = (
+				A415C02F254C2B7D000CE928 /* ChangePasswordVC.swift */,
+			);
+			path = ChangePasswordVC;
+			sourceTree = "<group>";
+		};
+		A47EB1DB254D4A120044DD4D /* ChangeLanguageVC */ = {
+			isa = PBXGroup;
+			children = (
+				A415C031254C3B78000CE928 /* ChangeLanguageVC.swift */,
+			);
+			path = ChangeLanguageVC;
+			sourceTree = "<group>";
+		};
 		A49B7D49251125AC0057239B /* FacilityCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -2352,6 +2371,7 @@
 				844D81E92502751D00550334 /* SignUpViewModel.swift in Sources */,
 				844D81E72502723D00550334 /* SignUpModel.swift in Sources */,
 				84476D3325075F4400AB5E80 /* SettingVC.swift in Sources */,
+				A47EB1D9254D42040044DD4D /* WebViewController.swift in Sources */,
 				A44E8D76251C973800ACBC4D /* OilTypeVC.swift in Sources */,
 				844EB71425187CD0003A6E3F /* URTyreSizeTableCell.swift in Sources */,
 				8481FA8A2501081000AB6EFB /* TutorialCollCell.swift in Sources */,
