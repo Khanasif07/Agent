@@ -20,11 +20,12 @@ class UserNotificationTableViewCell: UITableViewCell {
     @IBOutlet weak var crossbtn: UIButton!
 
     //MARK:- Variables
+    var cancelBtnTapped :(()->())?
     
     //MARK:-Life Cycle
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        setupTextAndFont()
     }
     
     override func layoutSubviews() {
@@ -33,7 +34,14 @@ class UserNotificationTableViewCell: UITableViewCell {
         
     }
     
+    private func setupTextAndFont() {
+        headingLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
+        subHeadingLbl.font = AppFonts.NunitoSansSemiBold.withSize(12.0)
+        timeLbl.font = AppFonts.NunitoSansSemiBold.withSize(12.0)
+
+    }
+
     @IBAction func crossbtnAction(_ sender: UIButton) {
-        
+        cancelBtnTapped?()
     }
 }

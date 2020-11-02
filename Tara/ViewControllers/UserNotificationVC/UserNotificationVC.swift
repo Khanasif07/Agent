@@ -86,6 +86,9 @@ extension UserNotificationVC : UITableViewDelegate, UITableViewDataSource {
  
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(with: UserNotificationTableViewCell.self, indexPath: indexPath)
+        cell.cancelBtnTapped = {[weak self] in
+            
+        }
         return cell
     }
     

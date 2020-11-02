@@ -93,6 +93,11 @@
                             <constraint firstAttribute="bottom" secondItem="r93-Ys-Qod" secondAttribute="bottom" constant="8" id="v05-vN-LDf"/>
                             <constraint firstAttribute="bottom" secondItem="qaV-Ya-ITZ" secondAttribute="bottom" constant="6" id="xFw-si-ZQp"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="4"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
                 <color key="backgroundColor" red="0.96470588445663452" green="0.9686274528503418" blue="0.97647058963775635" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
