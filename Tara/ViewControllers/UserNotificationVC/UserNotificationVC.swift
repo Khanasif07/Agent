@@ -28,11 +28,10 @@ class UserNotificationVC: BaseVC {
         initialSetup()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
         self.tabBarController?.tabBar.isTranslucent = false
-        self.mainTableView.reloadData()
     }
     
     // MARK: - IBActions
@@ -46,13 +45,15 @@ class UserNotificationVC: BaseVC {
 extension UserNotificationVC {
     
     private func initialSetup() {
-        self.mainTableView.delegate = self
-        self.mainTableView.dataSource = self
+        titleLbl.text = LocalizedString.notifications.localized
+        mainTableView.delegate = self
+        mainTableView.dataSource = self
         mainTableView.emptyDataSetSource = self
         mainTableView.emptyDataSetDelegate = self
-        self.mainTableView.enablePullToRefresh(tintColor: AppColors.appRedColor ,target: self, selector: #selector(refreshWhenPull(_:)))
-        self.mainTableView.registerCell(with: LoaderCell.self)
-        self.mainTableView.registerCell(with: UserNotificationTableViewCell.self)
+        mainTableView.enablePullToRefresh(tintColor: AppColors.appRedColor ,target: self, selector: #selector(refreshWhenPull(_:)))
+        mainTableView.registerCell(with: LoaderCell.self)
+        mainTableView.registerCell(with: UserNotificationTableViewCell.self)
+        mainTableView.contentInset = UIEdgeInsets(top: 8.0, left: 0, bottom: 0, right: 0)
         
     }
     
@@ -84,7 +85,11 @@ extension UserNotificationVC : UITableViewDelegate, UITableViewDataSource {
     }
  
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueCell(with: UserNotificationTableViewCell.self, indexPath: indexPath)
+        cell.cancelBtnTapped = {[weak self] in
+            
+        }
+        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

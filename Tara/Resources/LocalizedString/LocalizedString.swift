@@ -23,7 +23,7 @@ enum LocalizedString : String {
     case setting
     case notification
     case profile
-    
+    case notifications
     // MARK: - Alert Values
     //==============================
     case chooseOptions = "chooseOptions"

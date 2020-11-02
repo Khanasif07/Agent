@@ -234,6 +234,10 @@ enum ApiKey {
 
     static var newRequests: String {return "newRequests"}
     static var acceptedRequets: String {return "acceptedRequets"}
+    
+    static var phoneChanged: String {return "phoneChanged"}
+    static var emailChanged: String {return "emailChanged"}
+
 
     
 }

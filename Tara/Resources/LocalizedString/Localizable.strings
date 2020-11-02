@@ -34,7 +34,7 @@
 "setting" = "Setting";
 "notification" = "Notification";
 "profile" = "Profile";
-
+"notifications" = "Notifications";
 // MARK: - Tutorial Screen
 //==============================
 "tutorialTitle1" = "A hassle free car tyre repair service";

@@ -11,7 +11,7 @@ import SwiftyJSON
 
 
 protocol EditProfileVMDelegate: class {
-    func getEditProfileVMSuccess(msg: String)
+    func getEditProfileVMSuccess(msg: String,isPhoneNumberChanged : Bool)
     func getEditProfileVMFailed(msg: String, error: Error)
 }
 
@@ -28,8 +28,9 @@ class EditProfileVM {
         WebServices.postEditProfileData(parameters: params, success: { [weak self] (json) in
             guard let `self` = self else { return }
             let msg = json[ApiKey.message].stringValue
-            self.userModel = UserModel(json[ApiKey.data])
-            self.delegate?.getEditProfileVMSuccess(msg:msg)
+            let isPhoneNumberChanged = json[ApiKey.data][ApiKey.phoneChanged].boolValue
+            let isEmailChanged = json[ApiKey.data][ApiKey.emailChanged].boolValue
+            self.delegate?.getEditProfileVMSuccess(msg:msg, isPhoneNumberChanged : isPhoneNumberChanged)
             printDebug(json)
         }) { [weak self] (error) in
             guard let `self` = self else { return }
