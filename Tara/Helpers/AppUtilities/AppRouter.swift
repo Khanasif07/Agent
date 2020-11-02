@@ -395,9 +395,10 @@ enum AppRouter {
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
-    static func goToOneToOneChatVC(_ vc: UIViewController, userId: String, name: String, image: String, unreadMsgs: Int) {
+    static func goToOneToOneChatVC(_ vc: UIViewController, userId: String,requestId: String, name: String, image: String, unreadMsgs: Int) {
         let chatScene = OneToOneChatVC.instantiate(fromAppStoryboard: .Chat)
         chatScene.firstName = name
+        chatScene.requestId = requestId
         chatScene.userImage = image
         chatScene.inboxModel.userId = userId //"5e8483230a60177afa95e0b7"
         chatScene.inboxModel.unreadMessages = unreadMsgs

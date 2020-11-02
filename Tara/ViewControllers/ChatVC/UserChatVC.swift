@@ -24,6 +24,7 @@ class UserChatVC: BaseVC {
     var referenceToDB: Firestore?
     var inboxListing : [Inbox] = []
     var buttonView = UIButton()
+    var searchText : String  = ""
     var currentUserId = AppUserDefaults.value(forKey: .uid).stringValue
     
     // MARK: - Lifecycle
@@ -33,10 +34,19 @@ class UserChatVC: BaseVC {
         initialSetup()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+        self.tabBarController?.tabBar.isTranslucent = false
+    }
     // MARK: - IBActions
     //===========================
     
-    
+    @IBAction func txtFieldChanged(_ sender: UITextField) {
+        buttonView.isHidden = (sender.text?.byRemovingLeadingTrailingWhiteSpaces ?? "").isEmpty
+        mainTableView.reloadData()
+    }
+       
 }
 
 // MARK: - Extension For Functions
@@ -66,11 +76,9 @@ extension UserChatVC {
     
     @objc private func clear(_ sender: UIButton) {
         searchTextField.text = ""
-        //        viewModel.searchText = searchTextField.text?.byRemovingLeadingTrailingWhiteSpaces ?? ""
-        //        self.searchText = searchTextField.text?.byRemovingLeadingTrailingWhiteSpaces ?? ""
-        //        isSearchOn = !viewModel.searchText.isEmpty
-        //        buttonView.isHidden = viewModel.searchText.isEmpty
-        //        tableView.reloadData()
+        self.searchText = searchTextField.text?.byRemovingLeadingTrailingWhiteSpaces ?? ""
+        buttonView.isHidden = true
+        mainTableView.reloadData()
     }
     
     private func getNoOfRowsInSection() -> Int {
@@ -80,7 +88,7 @@ extension UserChatVC {
     private func cellSelected(tableView: UITableView, indexPath: IndexPath) {
         if inboxListing[indexPath.row].chatType == ApiKey.single {
             updateBatch(userId: self.inboxListing[indexPath.row].userId, unreadMessages: self.inboxListing[indexPath.row].unreadMessages)
-            AppRouter.goToOneToOneChatVC(self, userId: inboxListing[indexPath.row].userId, name: inboxListing[indexPath.row].firstName, image: inboxListing[indexPath.row].receiverImgURL, unreadMsgs: inboxListing[indexPath.row].unreadMessages)
+            AppRouter.goToOneToOneChatVC(self, userId: inboxListing[indexPath.row].userId,requestId: "", name: inboxListing[indexPath.row].firstName, image: inboxListing[indexPath.row].receiverImgURL, unreadMsgs: inboxListing[indexPath.row].unreadMessages)
         } else {
             //                AppRouter.goToGroupChatVC(self, model: inboxListing[indexPath.row])
         }
@@ -109,16 +117,19 @@ extension UserChatVC {
             messageCell.userNameLbl.text = model.firstName
             messageCell.lastMsgLbl.text = model.lastMessage
             messageCell.userImgView.setImage_kf(imageString: model.receiverImgURL, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: true)
+            messageCell.timeLbl.text = model.timeStamp.dateValue().convertToTimeString()
+            messageCell.msgCountLbl.text = "\(model.unreadMessages)"
+            messageCell.msgCountView.isHidden = model.unreadMessages == 0
         } else {
             messageCell.userNameLbl.text = model.roomName
             messageCell.lastMsgLbl.text = model.lastMessage
             messageCell.userImgView.setImage_kf(imageString: model.receiverImgURL, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: true)
+            messageCell.timeLbl.text = model.timeStamp.dateValue().convertToTimeString()
+            messageCell.msgCountLbl.text = "\(model.unreadMessages)"
+            messageCell.msgCountView.isHidden = model.unreadMessages == 0
         }
         //            messageCell.onlineStatusView.isHidden = !model.isOnline
         //            messageCell.senderTextLabel.text = model.lastMessage
-        //            messageCell.timeLabel.text = model.timeStamp.dateValue().convertToTimeString()
-        //            messageCell.unreadMessageLabel.text = "\(model.unreadMessages)"
-        //            messageCell.unreadMessageLabel.isHidden = model.unreadMessages == 0
         //            setupLongPressGesture(view: messageCell.contentView, indexPath: indexPath)
         return messageCell
     }

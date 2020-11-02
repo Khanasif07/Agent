@@ -121,7 +121,7 @@ struct SignUpViewModel {
             AppUserDefaults.save(value: "basic", forKey: .currentUserType)
             AppUserDefaults.save(value: json[ApiKey.data][ApiKey.phoneVerified].boolValue, forKey: .phoneNoVerified)
             if UserModel.main.phoneNoAdded && UserModel.main.phoneVerified {
-                self.delegate?.socailLoginApiSuccess(message: "")
+                self.addUser(parameters: parameters, user: user)
                 return
             }
             if !UserModel.main.phoneNoAdded{
@@ -136,6 +136,29 @@ struct SignUpViewModel {
         }) { (error) -> (Void) in
             self.delegate?.socailLoginApiFailure(message: error.localizedDescription)
             
+        }
+    }
+    
+    //Add User in FireStore
+    private func addUser(parameters: JSONDictionary, user: UserModel) {
+        if let email = parameters[ApiKey.email] as? String, let password = parameters[ApiKey.password] as? String {
+            FirestoreController.login(userId: user.id, withEmail: email, with: password, success: {
+                FirestoreController.setFirebaseData(userId: user.id, email: user.email, password: password, name: user.name, imageURL: user.image, phoneNo: user.countryCode + "" + user.phoneNo, status: "", completion: {
+                    self.delegate?.socailLoginApiSuccess(message: "")
+                }) { (error) -> (Void) in
+                    self.delegate?.socailLoginApiFailure(message: error.localizedDescription)
+                }
+            }) { (error, code) in
+                if code == 17011 {
+                    FirestoreController.createUserNode(userId: user.id, email: user.email, password: password, name: user.name, imageURL: user.image, phoneNo: user.countryCode + "" + user.phoneNo, status: "", completion: {
+                        self.delegate?.socailLoginApiSuccess(message: "")
+                    }) { (error) -> (Void) in
+                        self.delegate?.socailLoginApiFailure(message: error.localizedDescription)
+                    }
+                } else {
+                    self.delegate?.socailLoginApiFailure(message: "Please try again")
+                }
+            }
         }
     }
     

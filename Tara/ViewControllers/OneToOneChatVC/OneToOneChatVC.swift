@@ -30,6 +30,7 @@ class OneToOneChatVC: BaseVC {
 
     var inboxModel = Inbox()
     var firstName = ""
+    var requestId = ""
     var userImage = ""
     var imageController = UIImagePickerController()
     var alertController = UIAlertController()
@@ -263,7 +264,7 @@ extension OneToOneChatVC {
     }
 
     private func sendMessage() {
-//        self.view.endEditing(true)
+        self.view.endEditing(true)
         let txt = self.messageTextView.text.byRemovingLeadingTrailingWhiteSpaces
         guard !txt.isEmpty else { return }
             if isRoom {
@@ -933,10 +934,16 @@ extension OneToOneChatVC{
     /// Mark:- Create Inbox
     private func createInbox(){
         //roomId:string,timeStamp:Any,
+        var inboxUserId = ""
+        if self.requestId.isEmpty{
+            inboxUserId = currentUserId
+        } else {
+            inboxUserId = currentUserId + "_" + self.requestId
+        }
         db.collection(ApiKey.inbox)
             .document(inboxModel.userId)
             .collection(ApiKey.chat)
-            .document(currentUserId)
+            .document(inboxUserId)
             .setData([ApiKey.chatType: ApiKey.single,
                       ApiKey.roomId:roomId,
                       ApiKey.roomInfo: db.collection(ApiKey.roomInfo).document(roomId),
@@ -1027,10 +1034,18 @@ extension OneToOneChatVC{
     /// Mark:- Fetching the room Id values
     private func getRoomId()-> String{
         if currentUserId < inboxModel.userId {
-            self.roomId = currentUserId + "_" + inboxModel.userId
+            if !requestId.isEmpty{
+                self.roomId =  currentUserId + "_" + self.requestId + "_" + inboxModel.userId
+            } else {
+                self.roomId = currentUserId + "_" + inboxModel.userId
+            }
             return self.roomId
         } else {
-            self.roomId  = inboxModel.userId + "_" + currentUserId
+            if !requestId.isEmpty{
+                self.roomId =  inboxModel.userId + "_" + self.requestId + "_" + currentUserId
+            } else {
+                self.roomId = inboxModel.userId + "_" + currentUserId
+            }
             return self.roomId
         }
     }
@@ -1072,10 +1087,13 @@ extension OneToOneChatVC{
 
     /// Mark:-  Creating a new room
     private func createRoom() {
-        self.roomId = currentUserId < inboxModel.userId ? currentUserId + "_" + inboxModel.userId : inboxModel.userId + "_" + currentUserId
-
+        if !self.requestId.isEmpty {
+            self.roomId = currentUserId < inboxModel.userId ? currentUserId + "_" + self.requestId + "_" + inboxModel.userId : inboxModel.userId + "_" + self.requestId + "_" + currentUserId
+        }else{
+            self.roomId = currentUserId < inboxModel.userId ? currentUserId + "_" + inboxModel.userId : inboxModel.userId + "_" + currentUserId
+        }
         AppUserDefaults.save(value: roomId, forKey: .roomId)
-        print("sender " + currentUserId,"receiver " + inboxModel.userId,"roomcreated " + roomId)
+        print("sender " + currentUserId,"receiver " + inboxModel.userId,"requestId " + requestId,"roomcreated " + roomId)
 
         /// Mark:- Details relating to the current user
         let currentUserIdDict: [String: Any] = [ApiKey.addedTime:FieldValue.serverTimestamp(),
