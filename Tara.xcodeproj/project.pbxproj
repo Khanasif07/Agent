@@ -49,6 +49,7 @@
 		843F004925060798001A78EC /* CountryVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F004825060798001A78EC /* CountryVM.swift */; };
 		843F004D25060822001A78EC /* CountryCodeTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F004B25060822001A78EC /* CountryCodeTableCell.swift */; };
 		843F004E25060822001A78EC /* CountryCodeTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 843F004C25060822001A78EC /* CountryCodeTableCell.xib */; };
+		843F5829254F9E77008CFA03 /* ChangePasswordVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F5828254F9E77008CFA03 /* ChangePasswordVM.swift */; };
 		8446AB4F252D53B3005A1350 /* GarageServiceCountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8446AB4D252D53B3005A1350 /* GarageServiceCountryCell.swift */; };
 		8446AB50252D53B3005A1350 /* GarageServiceCountryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8446AB4E252D53B3005A1350 /* GarageServiceCountryCell.xib */; };
 		8446AB53252D598E005A1350 /* GarageServiceBottomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8446AB51252D598E005A1350 /* GarageServiceBottomCell.swift */; };
@@ -356,6 +357,7 @@
 		843F004825060798001A78EC /* CountryVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryVM.swift; sourceTree = "<group>"; };
 		843F004B25060822001A78EC /* CountryCodeTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeTableCell.swift; sourceTree = "<group>"; };
 		843F004C25060822001A78EC /* CountryCodeTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountryCodeTableCell.xib; sourceTree = "<group>"; };
+		843F5828254F9E77008CFA03 /* ChangePasswordVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordVM.swift; sourceTree = "<group>"; };
 		8446AB4D252D53B3005A1350 /* GarageServiceCountryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageServiceCountryCell.swift; sourceTree = "<group>"; };
 		8446AB4E252D53B3005A1350 /* GarageServiceCountryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GarageServiceCountryCell.xib; sourceTree = "<group>"; };
 		8446AB51252D598E005A1350 /* GarageServiceBottomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageServiceBottomCell.swift; sourceTree = "<group>"; };
@@ -1855,6 +1857,7 @@
 			isa = PBXGroup;
 			children = (
 				A415C02F254C2B7D000CE928 /* ChangePasswordVC.swift */,
+				843F5828254F9E77008CFA03 /* ChangePasswordVM.swift */,
 			);
 			path = ChangePasswordVC;
 			sourceTree = "<group>";
@@ -2234,6 +2237,7 @@
 				844EB71D2518C59F003A6E3F /* BrandsListingVM.swift in Sources */,
 				84476D28250736F700AB5E80 /* ToastView.swift in Sources */,
 				A4443866251387E000114A75 /* VechicleDetailVC.swift in Sources */,
+				843F5829254F9E77008CFA03 /* ChangePasswordVM.swift in Sources */,
 				8481FA332500BD4A00AB6EFB /* CustomDatePicker.swift in Sources */,
 				8411D35A252DB78C00E6FA6C /* UserAllRequestVM.swift in Sources */,
 				8459480D252B0C0600C0B249 /* ServiceRequestTableCell.swift in Sources */,

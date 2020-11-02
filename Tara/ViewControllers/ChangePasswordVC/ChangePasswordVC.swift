@@ -20,10 +20,11 @@ class ChangePasswordVC: BaseVC {
     @IBOutlet weak var confirmPassWordTextField: SkyFloatingLabelTextField!
     @IBOutlet weak var submitBtn: AppButton!
     @IBOutlet weak var containerView: UIView!
-
+    
     
     // MARK: - Variables
     //===========================
+    var viewModel = ChangePasswordVM()
     var placeHolderArr : [String] = [LocalizedString.enterOldPassWord.localized,
                                      LocalizedString.enterNewPassWord.localized,
                                      LocalizedString.enterNewPassWord.localized
@@ -53,21 +54,32 @@ class ChangePasswordVC: BaseVC {
     }
     
     @IBAction func submitBtnAction(_sender : UIButton) {
+        self.view.endEditing(true)
+        if self.viewModel.checkChangePasswordValidations(parameters: self.viewModel.model.getDict()).status{
+              self.viewModel.changePasswordData(params: self.viewModel.model.getDict())
+        }else{
+            if !self.viewModel.checkChangePasswordValidations(parameters: self.viewModel.model.getDict()).message.isEmpty{
+                ToastView.shared.showLongToast(self.view, msg: self.viewModel.checkChangePasswordValidations(parameters: self.viewModel.model.getDict()).message)
+            }
+        }
         
     }
-
+    
 }
 
+// MARK: - Extension
+//===========================
 extension ChangePasswordVC {
-   
+    
     private func initialSetup(){
+        self.viewModel.delegate = self
         setupTextFont()
         submitBtn.isEnabled = false
         setUpTextField()
     }
     
     func setUpTextField(){
-     for (index,txtField) in [oldPasswordTextField,newPasswordTextField,confirmPassWordTextField].enumerated() {
+        for (index,txtField) in [oldPasswordTextField,newPasswordTextField,confirmPassWordTextField].enumerated() {
             txtField?.delegate = self
             txtField?.placeholder = placeHolderArr[index]
             txtField?.selectedTitleColor = AppColors.fontTertiaryColor
@@ -84,14 +96,51 @@ extension ChangePasswordVC {
         submitBtn.titleLabel?.font = AppFonts.NunitoSansSemiBold.withSize(16.0)
         submitBtn.setTitle(LocalizedString.submit.localized, for: .normal)
     }
+    
+    private func submitBtnStatus()-> Bool{
+        return !self.viewModel.model.oldPass.isEmpty && !self.viewModel.model.newPass.isEmpty && !self.viewModel.model.confirmPass.isEmpty
+    }
 }
 
+// MARK: - TextField Delegate
+//===========================
 extension ChangePasswordVC : UITextFieldDelegate{
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-          let currentText = textField.text ?? ""
-         guard let stringRange = Range(range, in: currentText) else { return false }
-         let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
-         return updatedText.count <= 20
+        let currentString: NSString = textField.text! as NSString
+        let newString: NSString =
+            currentString.replacingCharacters(in: range, with: string) as NSString
+        return (string.checkIfValidCharaters(.password) || string.isEmpty) && newString.length <= 25
     }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        let text = textField.text?.byRemovingLeadingTrailingWhiteSpaces ?? ""
+        switch textField {
+        case oldPasswordTextField:
+            self.viewModel.model.oldPass = text
+            self.submitBtn.isEnabled = submitBtnStatus()
+        case newPasswordTextField:
+            self.viewModel.model.newPass = text
+            self.submitBtn.isEnabled = submitBtnStatus()
+        case confirmPassWordTextField:
+            self.viewModel.model.confirmPass = text
+            self.submitBtn.isEnabled = submitBtnStatus()
+        default:
+            printDebug("Do Nothing")
+        }
+        
+    }
+}
+
+// MARK: - IBActions
+//===========================
+extension ChangePasswordVC : ChangePasswordVMDelegate{
+    func changePasswordSuccess(msg: String) {
+        self.pop()
+    }
+    
+    func changePasswordFailed(msg: String, error: Error) {
+        ToastView.shared.showLongToast(self.view, msg: msg)
+    }
+    
 }

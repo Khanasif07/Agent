@@ -454,12 +454,24 @@ extension WebServices{
         }
     }
     
-    // MARK:- Switch Profile
+    // MARK:- Edit Profile
     //=========================
     static func postEditProfileData(parameters: JSONDictionary,
                               success: @escaping SuccessResponse,
                               failure: @escaping FailureResponse) {
         self.commonPutAPI(parameters: parameters, endPoint: .editProfile, success: { (json) in
+            success(json)
+        }) { (error) -> (Void) in
+            failure(error)
+        }
+    }
+    
+    // MARK:- Change Password
+    //=========================
+    static func changePasswordData(parameters: JSONDictionary,
+                              success: @escaping SuccessResponse,
+                              failure: @escaping FailureResponse) {
+        self.commonPutAPI(parameters: parameters, endPoint: .changePassword, success: { (json) in
             success(json)
         }) { (error) -> (Void) in
             failure(error)
