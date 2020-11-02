@@ -1247,7 +1247,7 @@ Service Center</string>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7lR-FZ-OGQ">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="762"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="group3712" translatesAutoresizingMaskIntoConstraints="NO" id="jNy-jp-svR">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeHolder" translatesAutoresizingMaskIntoConstraints="NO" id="jNy-jp-svR">
                                                 <rect key="frame" x="20" y="20" width="80" height="80"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="80" id="45a-rB-kZB"/>
@@ -1868,13 +1868,13 @@ Service Center</string>
         <image name="battery" width="135" height="135"/>
         <image name="editProfile" width="12" height="14"/>
         <image name="frame3854" width="30" height="30"/>
-        <image name="group3712" width="108" height="108"/>
         <image name="group3714" width="24" height="24"/>
         <image name="group3811" width="41" height="48"/>
         <image name="group3815" width="30" height="30"/>
         <image name="icBackward" width="36" height="34"/>
         <image name="icCurrentLoc" width="20" height="20"/>
         <image name="icImg" width="32.5" height="32"/>
+        <image name="placeHolder" width="80" height="80"/>
         <namedColor name="appRedColor">
             <color red="0.87800002098083496" green="0.13699999451637268" blue="0.25900000333786011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

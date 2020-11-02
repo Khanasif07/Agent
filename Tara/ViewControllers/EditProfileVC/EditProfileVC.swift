@@ -21,7 +21,7 @@ class EditProfileVC: BaseVC {
     @IBOutlet weak var editImgBtn: UIButton!
     @IBOutlet weak var saveBtn: AppButton!
     @IBOutlet weak var countryCodeLbl: UILabel!
-
+    
     
     // MARK: - Variables
     //===========================
@@ -29,12 +29,14 @@ class EditProfileVC: BaseVC {
                                      LocalizedString.emailID.localized,
                                      LocalizedString.mobileNo.localized
     ]
+    let viewModel = EditProfileVM()
     
     // MARK: - Lifecycle
     //===========================
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
+        viewModel.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,7 +52,7 @@ class EditProfileVC: BaseVC {
     }
     
     @IBAction func saveBtnAction(_sender : UIButton) {
-        
+        viewModel.setProfile(params: [:])
     }
     
     @IBAction func editBtnAction(_sender : UIButton) {
@@ -58,21 +60,22 @@ class EditProfileVC: BaseVC {
     }
     
     @IBAction func countryCodeTapped(_ sender: UIButton) {
-          AppRouter.showCountryVC(vc: self)
-      }
-      
+        AppRouter.showCountryVC(vc: self)
+    }
+    
 }
 
 extension EditProfileVC: UITextFieldDelegate {
-   
+    
     private func initialSetup(){
         setupTextFont()
         saveBtn.isEnabled = true
         setUpTextField()
+        setupData()
     }
     
     func setUpTextField(){
-     for (index,txtField) in [nameTextField,emailTextField,mobileNoTextField].enumerated() {
+        for (index,txtField) in [nameTextField,emailTextField,mobileNoTextField].enumerated() {
             txtField?.delegate = self
             txtField?.placeholder = placeHolderArr[index]
             txtField?.selectedTitleColor = AppColors.fontTertiaryColor
@@ -84,18 +87,33 @@ extension EditProfileVC: UITextFieldDelegate {
     }
     
     private func setupTextFont() {
-        self.countryCodeLbl.text = "+91"
         titleLbl.font = AppFonts.NunitoSansSemiBold.withSize(17.0)
         titleLbl.text = LocalizedString.editProfile.localized
         saveBtn.titleLabel?.font = AppFonts.NunitoSansSemiBold.withSize(16.0)
         saveBtn.setTitle(LocalizedString.save.localized, for: .normal)
     }
+    
+    private func setupData() {
+        nameTextField.text = UserModel.main.name
+        emailTextField.text = UserModel.main.email
+        mobileNoTextField.text = UserModel.main.phoneNo
+        userImage.setImage_kf(imageString: UserModel.main.image, placeHolderImage: #imageLiteral(resourceName: "placeHolder"))
+        countryCodeLbl.text = UserModel.main.countryCode
+    }
 }
 
 // MARK: - CountryDelegate
 //=========================
-extension EditProfileVC : CountryDelegate{
+extension EditProfileVC : CountryDelegate, EditProfileVMDelegate{
     func sendCountryCode(code: String) {
         self.countryCodeLbl.text = code
+    }
+    
+    func editProfileSuccess(message: String) {
+        
+    }
+    
+    func editProfileFailed(error: String) {
+        
     }
 }

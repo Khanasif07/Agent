@@ -64,7 +64,7 @@ extension WebServices {
         case garageEditPlacedBid = "user/bids/edit"
         case resendRequest = "user/services/resendRequest"
         case garageHomeServices  = "user/services/dashboard"
-        
+        case editProfile = "user/profile"
         
         var path : String {
             let url = baseUrl

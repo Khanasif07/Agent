@@ -877,4 +877,14 @@ extension WebServices{
             failure(error)
         }
     }
+    
+    static func editUserProfileApi(parameters: JSONDictionary,loader: Bool = false,
+                                        success: @escaping SuccessResponse,
+                                        failure: @escaping FailureResponse) {
+        self.commonPutAPI(parameters: parameters, endPoint: .editProfile, success: { (json) in
+            success(json)
+        }) { (error) -> (Void) in
+            failure(error)
+        }
+    }
 }
