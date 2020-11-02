@@ -14,6 +14,7 @@ class ProfileUserBottomCell: UITableViewCell {
     var settingBtnTapped: (()->())?
     var logoutBtnTapped: (()->())?
     var switchProfileToGarage: (()->())?
+    var changePassword: (()->())?
     var changeLanguageTapped : (()->())?
     var aboutusTapped : (()->())?
     var termConditionTapped : (()->())?
@@ -90,10 +91,12 @@ extension ProfileUserBottomCell: UITableViewDelegate, UITableViewDataSource {
             if let handle = switchProfileToGarage{
                 handle()
             }
-            
+        case LocalizedString.change_password.localized:
+            if let handle = changePassword{
+                handle()
+            }
         case LocalizedString.changeLanguage.localized:
             changeLanguageTapped?()
-      
         case LocalizedString.aboutUs.localized:
             aboutusTapped?()
         case LocalizedString.terms_Condition.localized:

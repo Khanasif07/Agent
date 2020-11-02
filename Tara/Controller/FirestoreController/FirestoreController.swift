@@ -26,7 +26,11 @@ class FirestoreController:NSObject{
                       with password:String,
                       success: @escaping () -> Void,
                       failure: @escaping (_ message: String, _ code: Int) -> Void) {
-        Auth.auth().signIn(withEmail: withEmail, password: "") { (result, error) in
+        var emailId  = withEmail
+        if emailId.isEmpty{
+            emailId = "\(userId)" + "@tara.com"
+        }
+        Auth.auth().signIn(withEmail: emailId, password: password) { (result, error) in
             if let err = error {
                 failure(err.localizedDescription, (err as NSError).code)
             } else {
@@ -73,7 +77,11 @@ class FirestoreController:NSObject{
                                status: String,
                                completion: @escaping () -> Void,
                                failure: @escaping FailureResponse) {
-        Auth.auth().createUser(withEmail: email, password: "") { (result, error) in
+        var emailId  = email
+        if emailId.isEmpty{
+            emailId = "\(userId)" + "@tara.com"
+        }
+        Auth.auth().createUser(withEmail: emailId, password: password) { (result, error) in
             if let err = error {
                 failure(err)
             } else {

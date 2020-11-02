@@ -64,15 +64,16 @@ enum AppRouter {
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
-    static func goToEditProfileVC(vc: UIViewController){
+    static func goToEditProfileVC(vc: UIViewController & EditProfileVCDelegate,model: UserModel){
         let scene = EditProfileVC.instantiate(fromAppStoryboard: .PostLogin)
+        scene.delegate = vc
+        scene.viewModel.userModel = model
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
     static func goToBookedTyreRequestVC(vc: UIViewController){
         let scene = BookedTyreRequestVC.instantiate(fromAppStoryboard: .GarageRequest)
         vc.navigationController?.pushViewController(scene, animated: true)
-//        vc.present(scene, animated: true, completion: nil)
     }
     
     static func goToUserServiceRequestVC(vc: UIViewController & UserServiceRequestVCDelegate,requestId:String = "",serviceType:String = ""){

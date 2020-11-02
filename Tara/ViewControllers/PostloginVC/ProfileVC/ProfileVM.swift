@@ -52,7 +52,6 @@ class ProfileVM {
                 AppUserDefaults.save(value: currentRole, forKey: .currentUserType)
             }
             self.preFillModel = GarageProfilePreFillModel(json[ApiKey.data][ApiKey.garageProfile])
-            printDebug(self.preFillModel)
             self.preFillModel.updateGarageProfileModel(self.preFillModel)
             self.delegate?.getProfileDataSuccess(msg:msg)
             printDebug(json)

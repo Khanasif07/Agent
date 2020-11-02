@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -36,41 +36,37 @@
                                     <constraint firstAttribute="height" constant="80" id="bon-N4-kD5"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8L7-7I-GBn">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="editProfile" translatesAutoresizingMaskIntoConstraints="NO" id="Uso-y6-Adg">
                                 <rect key="frame" x="310" y="9" width="24" height="24"/>
-                                <color key="backgroundColor" red="0.98431372549999996" green="0.70588235290000001" blue="0.039215686270000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="8L7-7I-GBn" secondAttribute="height" multiplier="1:1" id="IKZ-wI-YRr"/>
-                                    <constraint firstAttribute="height" constant="24" id="r2Q-vw-Ldb"/>
+                                    <constraint firstAttribute="width" secondItem="Uso-y6-Adg" secondAttribute="height" id="Sq6-8T-9pO"/>
+                                    <constraint firstAttribute="width" constant="24" id="WCI-td-qYj"/>
                                 </constraints>
-                                <state key="normal" image="editProfile"/>
-                                <connections>
-                                    <action selector="editProfileBtnTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="cO0-nh-LX4"/>
-                                </connections>
-                            </button>
+                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="agU-v8-trU">
-                                <rect key="frame" x="104" y="19.5" width="181.5" height="80"/>
+                                <rect key="frame" x="104" y="19.5" width="188" height="80"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aditya Mishra" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JrU-hF-6PV">
-                                        <rect key="frame" x="0.0" y="0.0" width="128.5" height="24"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="134.5" height="24"/>
                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="21"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="JEK-e1-R3Z">
-                                        <rect key="frame" x="0.0" y="26" width="181.5" height="54"/>
+                                        <rect key="frame" x="0.0" y="26" width="188" height="54"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="MxM-3X-L8b">
-                                                <rect key="frame" x="0.0" y="0.0" width="181.5" height="22"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="188" height="22"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+971 784403399" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rhp-K8-AVQ">
-                                                        <rect key="frame" x="0.0" y="0.0" width="98.5" height="22"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="105" height="22"/>
                                                         <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="13"/>
                                                         <color key="textColor" red="0.54117647058823526" green="0.58431372549019611" blue="0.61960784313725492" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Ilu-bD-9yT">
-                                                        <rect key="frame" x="106.5" y="0.0" width="75" height="22"/>
+                                                        <rect key="frame" x="113" y="0.0" width="75" height="22"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tickIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Wcw-Mb-rBy">
                                                                 <rect key="frame" x="0.0" y="3" width="16" height="16"/>
@@ -100,16 +96,16 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="IqJ-vY-SwG">
-                                                <rect key="frame" x="0.0" y="32" width="167.5" height="22"/>
+                                                <rect key="frame" x="0.0" y="32" width="168.5" height="22"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="user@xyz.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lzn-9N-5ms">
-                                                        <rect key="frame" x="0.0" y="3.5" width="84.5" height="15.5"/>
+                                                        <rect key="frame" x="0.0" y="2" width="85.5" height="18"/>
                                                         <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="13"/>
                                                         <color key="textColor" red="0.54117647059999996" green="0.58431372550000005" blue="0.61960784310000006" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="SK9-hH-WHR">
-                                                        <rect key="frame" x="92.5" y="0.0" width="75" height="22"/>
+                                                        <rect key="frame" x="93.5" y="0.0" width="75" height="22"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tickIcon" translatesAutoresizingMaskIntoConstraints="NO" id="9zi-xO-oWZ">
                                                                 <rect key="frame" x="0.0" y="3" width="16" height="16"/>
@@ -142,18 +138,28 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KF6-BP-bkA">
+                                <rect key="frame" x="310" y="9" width="24" height="24"/>
+                                <connections>
+                                    <action selector="editProfileBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="iiM-ni-L6z"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="fCK-r7-lYU" secondAttribute="bottom" constant="19.5" id="12q-Vg-W3d"/>
                             <constraint firstItem="agU-v8-trU" firstAttribute="bottom" secondItem="fCK-r7-lYU" secondAttribute="bottom" id="22Y-8z-a5f"/>
                             <constraint firstItem="fCK-r7-lYU" firstAttribute="leading" secondItem="chh-L6-f4P" secondAttribute="leading" constant="16" id="27u-9m-OSj"/>
+                            <constraint firstItem="KF6-BP-bkA" firstAttribute="top" secondItem="Uso-y6-Adg" secondAttribute="top" id="9ii-Hj-JOI"/>
                             <constraint firstItem="agU-v8-trU" firstAttribute="top" secondItem="fCK-r7-lYU" secondAttribute="top" id="F0T-LK-C5u"/>
-                            <constraint firstItem="8L7-7I-GBn" firstAttribute="top" secondItem="chh-L6-f4P" secondAttribute="top" constant="9" id="NXX-u2-pJ7"/>
+                            <constraint firstItem="Uso-y6-Adg" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="agU-v8-trU" secondAttribute="trailing" constant="5" id="PwE-ql-zgs"/>
                             <constraint firstItem="agU-v8-trU" firstAttribute="leading" secondItem="fCK-r7-lYU" secondAttribute="trailing" constant="8" id="Q9B-BB-YOv"/>
+                            <constraint firstItem="KF6-BP-bkA" firstAttribute="bottom" secondItem="Uso-y6-Adg" secondAttribute="bottom" id="Thq-7t-KXm"/>
                             <constraint firstItem="fCK-r7-lYU" firstAttribute="top" secondItem="chh-L6-f4P" secondAttribute="top" constant="19.5" id="W2O-PS-1J4"/>
-                            <constraint firstAttribute="trailing" secondItem="8L7-7I-GBn" secondAttribute="trailing" constant="9" id="bMt-eJ-s4Q"/>
-                            <constraint firstItem="8L7-7I-GBn" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="agU-v8-trU" secondAttribute="trailing" constant="5" id="npl-IP-GN2"/>
+                            <constraint firstItem="Uso-y6-Adg" firstAttribute="top" secondItem="chh-L6-f4P" secondAttribute="top" constant="9" id="bXD-fm-0rc"/>
+                            <constraint firstItem="KF6-BP-bkA" firstAttribute="trailing" secondItem="Uso-y6-Adg" secondAttribute="trailing" id="fet-v8-FkC"/>
+                            <constraint firstItem="KF6-BP-bkA" firstAttribute="leading" secondItem="Uso-y6-Adg" secondAttribute="leading" id="hh9-SU-L5j"/>
+                            <constraint firstAttribute="trailing" secondItem="Uso-y6-Adg" secondAttribute="trailing" constant="9" id="yE7-UT-qpR"/>
                             <constraint firstItem="fCK-r7-lYU" firstAttribute="centerY" secondItem="chh-L6-f4P" secondAttribute="centerY" id="yX6-XT-QOc"/>
                         </constraints>
                     </view>
@@ -169,7 +175,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="dataContainerView" destination="chh-L6-f4P" id="eCv-5d-pLo"/>
-                <outlet property="editProfileBtn" destination="8L7-7I-GBn" id="VBf-Bp-9XM"/>
+                <outlet property="editProfileBtn" destination="KF6-BP-bkA" id="GHb-tp-1nR"/>
                 <outlet property="emailVerifiedView" destination="9zi-xO-oWZ" id="Z4f-P5-6G3"/>
                 <outlet property="emailVerifyBtn" destination="voz-bY-7Ll" id="Jtf-gt-Xwq"/>
                 <outlet property="phoneNoVerifiedView" destination="Wcw-Mb-rBy" id="nhA-Ra-3wp"/>

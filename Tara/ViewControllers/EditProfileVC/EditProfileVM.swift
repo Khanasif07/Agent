@@ -2,48 +2,38 @@
 //  EditProfileVM.swift
 //  Tara
 //
-//  Created by Arvind on 01/11/20.
+//  Created by Admin on 31/10/20.
 //  Copyright © 2020 Admin. All rights reserved.
 //
 
 import Foundation
+import SwiftyJSON
+
 
 protocol EditProfileVMDelegate: class {
-    func editProfileSuccess(message: String)
-    func editProfileFailed(error:String)
+    func getEditProfileVMSuccess(msg: String)
+    func getEditProfileVMFailed(msg: String, error: Error)
 }
 
-class EditProfileVM{
+class EditProfileVM {
     
-    //MARK:- Variables
-    //================
-   
+    // MARK: Variables
+    //=================================
     weak var delegate: EditProfileVMDelegate?
+    var userModel = UserModel()
     
-    //MARK:- Functions
-    
-    func setProfile(params: JSONDictionary){
-        WebServices.editUserProfileApi(parameters: params, success: { (json) in
-            self.delegate?.editProfileSuccess(message: json[ApiKey.message].stringValue)
-        }) { (error) -> (Void) in
-            self.delegate?.editProfileFailed(error: error.localizedDescription)
+    // MARK: Functions
+    //=================================
+    func postEditProfileData(params: JSONDictionary,loader: Bool = false) {
+        WebServices.postEditProfileData(parameters: params, success: { [weak self] (json) in
+            guard let `self` = self else { return }
+            let msg = json[ApiKey.message].stringValue
+            self.userModel = UserModel(json[ApiKey.data])
+            self.delegate?.getEditProfileVMSuccess(msg:msg)
+            printDebug(json)
+        }) { [weak self] (error) in
+            guard let `self` = self else { return }
+            self.delegate?.getEditProfileVMFailed(msg: error.localizedDescription,error: error)
         }
-    }
-    
-    func checkSignInValidations(parameters: JSONDictionary) -> (status: Bool, message: String) {
-        var validationStatus = true
-        var errorMessage = ""
-        guard let email = parameters[ApiKey.email] as? String,!email.isEmpty  else{
-            validationStatus = false
-            errorMessage = LocalizedString.pleaseEnterEmail.localized
-            return (status: validationStatus, message: errorMessage)
-        }
-        
-        if !email.checkIfValid(.email) {
-            validationStatus = false
-            errorMessage =  LocalizedString.pleaseEnterValidEmail.localized
-            return (status: validationStatus, message: errorMessage)
-        }
-        return (status: validationStatus, message: errorMessage)
     }
 }
