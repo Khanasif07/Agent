@@ -52,7 +52,13 @@ class EditProfileVC: BaseVC {
     }
     
     @IBAction func saveBtnAction(_sender : UIButton) {
-        viewModel.setProfile(params: [:])
+        if self.viewModel.checkSignInValidations(parameters: getDictForEditProfile()).status{
+            viewModel.setProfile(params: getDictForEditProfile())
+        }else{
+            if !self.viewModel.checkSignInValidations(parameters: getDictForEditProfile()).message.isEmpty{
+                ToastView.shared.showLongToast(self.view, msg: self.viewModel.checkSignInValidations(parameters: getDictForEditProfile()).message)
+            }
+        }
     }
     
     @IBAction func editBtnAction(_sender : UIButton) {
@@ -65,7 +71,7 @@ class EditProfileVC: BaseVC {
     
 }
 
-extension EditProfileVC: UITextFieldDelegate {
+extension EditProfileVC {
     
     private func initialSetup(){
         setupTextFont()
@@ -100,6 +106,14 @@ extension EditProfileVC: UITextFieldDelegate {
         userImage.setImage_kf(imageString: UserModel.main.image, placeHolderImage: #imageLiteral(resourceName: "placeHolder"))
         countryCodeLbl.text = UserModel.main.countryCode
     }
+    
+    private func getDictForEditProfile() -> JSONDictionary{
+        let dict : JSONDictionary = [ApiKey.phoneNo : UserModel.main.phoneNo,
+                                     ApiKey.email : UserModel.main.email,
+                                     ApiKey.countryCode: UserModel.main.countryCode,
+                                     ApiKey.name: UserModel.main.name]
+        return dict
+    }
 }
 
 // MARK: - CountryDelegate
@@ -116,4 +130,16 @@ extension EditProfileVC : CountryDelegate, EditProfileVMDelegate{
     func editProfileFailed(error: String) {
         
     }
+}
+
+extension EditProfileVC : UITextFieldDelegate{
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+          let currentText = textField.text ?? ""
+         guard let stringRange = Range(range, in: currentText) else { return false }
+         let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+         return updatedText.count <= 30
+    }
+    
+    
 }

@@ -29,4 +29,21 @@ class EditProfileVM{
             self.delegate?.editProfileFailed(error: error.localizedDescription)
         }
     }
+    
+    func checkSignInValidations(parameters: JSONDictionary) -> (status: Bool, message: String) {
+        var validationStatus = true
+        var errorMessage = ""
+        guard let email = parameters[ApiKey.email] as? String,!email.isEmpty  else{
+            validationStatus = false
+            errorMessage = LocalizedString.pleaseEnterEmail.localized
+            return (status: validationStatus, message: errorMessage)
+        }
+        
+        if !email.checkIfValid(.email) {
+            validationStatus = false
+            errorMessage =  LocalizedString.pleaseEnterValidEmail.localized
+            return (status: validationStatus, message: errorMessage)
+        }
+        return (status: validationStatus, message: errorMessage)
+    }
 }

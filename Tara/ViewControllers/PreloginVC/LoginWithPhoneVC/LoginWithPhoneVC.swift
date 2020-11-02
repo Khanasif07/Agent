@@ -27,6 +27,7 @@ class LoginWithPhoneVC: BaseVC {
     @IBOutlet weak var sendOtpBtn: AppButton!
     @IBOutlet weak var phoneTextField: SkyFloatingLabelTextField!
     @IBOutlet weak var countryCodeLbl: UILabel!
+   
     // MARK: - Variables
     //===========================
     var loginOption: LoginWithPhoneOption = .basic
