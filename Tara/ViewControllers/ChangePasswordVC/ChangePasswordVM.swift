@@ -79,7 +79,7 @@ class ChangePasswordVM {
             return (status: validationStatus, message: errorMessage)
         }
         
-        if password != self.model.confirmPass{
+        if self.model.newPass != self.model.confirmPass{
             validationStatus = false
             errorMessage = LocalizedString.passwordDoesNotMatch.localized
             return (status: validationStatus, message: errorMessage)
