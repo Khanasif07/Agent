@@ -80,6 +80,7 @@ extension EditProfileVC: UITextFieldDelegate {
     private func initialSetup(){
         self.viewModel.delegate = self
         setupTextFont()
+        userImage.round()
         saveBtn.isEnabled = true
         setUpTextField()
         prefilledData()
@@ -152,9 +153,14 @@ extension EditProfileVC: UITextFieldDelegate {
     }
     
     private func getDictForEditProfile() -> JSONDictionary{
-        let dict : JSONDictionary = [ApiKey.phoneNo : self.viewModel.userModel.phoneNo,
+        var dict : JSONDictionary = [ApiKey.phoneNo : self.viewModel.userModel.phoneNo,
                                      ApiKey.countryCode : self.viewModel.userModel.countryCode,
-                                     ApiKey.name : self.viewModel.userModel.name,ApiKey.email:self.viewModel.userModel.email ]
+                                     ApiKey.name : self.viewModel.userModel.name,
+                                     ApiKey.email:self.viewModel.userModel.email]
+        
+        if !self.viewModel.userModel.image.isEmpty {
+           dict[ApiKey.image]  = self.viewModel.userModel.image
+        }
         return dict
     }
 }
@@ -206,6 +212,7 @@ extension EditProfileVC : EditProfileVMDelegate {
 extension EditProfileVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate , RemovePictureDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[.editedImage] as? UIImage
+        userImage.image = image
         hasImageUploaded = false
         image?.upload(progress: { (progress) in
             printDebug(progress)
