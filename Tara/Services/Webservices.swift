@@ -61,6 +61,8 @@ extension WebServices {
             case ApiCode.success: success(json)
             case ApiCode.notGarageReg, ApiCode.pendingGarageReg, ApiCode.acceptedGarageReg, ApiCode.rejectedGarageReg, ApiCode.garageBlocked, ApiCode.userBlocked:
                 success(json)
+            case ApiCode.phoneNumberUpdated, ApiCode.emailUpdated, ApiCode.phoneEmailUpdated:
+                success(json)
             case ApiCode.tokenExpired :
                 showTokenExpiredAlert()
             default: failure(NSError(code: code, localizedDescription: msg))
@@ -911,4 +913,15 @@ extension WebServices{
             failure(error)
         }
     }
+    
+    static func editNumberWithOtpApi(parameters: JSONDictionary,loader: Bool = false,
+                                        success: @escaping SuccessResponse,
+                                        failure: @escaping FailureResponse) {
+        self.commonGetAPI(parameters: parameters, endPoint: .verifyPhoneNumber, success: { (json) in
+            success(json)
+        }) { (error) -> (Void) in
+            failure(error)
+        }
+    }
+
 }

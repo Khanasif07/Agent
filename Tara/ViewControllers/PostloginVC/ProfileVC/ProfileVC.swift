@@ -155,7 +155,7 @@ extension ProfileVC {
         }
     }
     
-    private func hitProfileApi(){
+    public func hitProfileApi(){
         if isUserLoggedin {
             self.viewModel.getMyProfileData(params: [:])
         }

@@ -80,6 +80,7 @@ extension EditProfileVC: UITextFieldDelegate {
     private func initialSetup(){
         self.viewModel.delegate = self
         setupTextFont()
+        userImage.round()
         saveBtn.isEnabled = true
         setUpTextField()
         prefilledData()
@@ -99,7 +100,6 @@ extension EditProfileVC: UITextFieldDelegate {
     
     private func setupTextFont() {
         self.userImage.backgroundColor = .clear
-        self.countryCodeLbl.text = "+91"
         titleLbl.font = AppFonts.NunitoSansSemiBold.withSize(17.0)
         titleLbl.text = LocalizedString.editProfile.localized
         saveBtn.titleLabel?.font = AppFonts.NunitoSansSemiBold.withSize(16.0)
@@ -110,6 +110,7 @@ extension EditProfileVC: UITextFieldDelegate {
         self.nameTextField.text = self.viewModel.userModel.name
         self.emailTextField.text = self.viewModel.userModel.email
         self.mobileNoTextField.text = self.viewModel.userModel.phoneNo
+        countryCodeLbl.text = self.viewModel.userModel.countryCode
         self.userImage.setImage_kf(imageString: self.viewModel.userModel.image, placeHolderImage:#imageLiteral(resourceName: "placeHolder"), loader: false)
     }
     
@@ -152,9 +153,14 @@ extension EditProfileVC: UITextFieldDelegate {
     }
     
     private func getDictForEditProfile() -> JSONDictionary{
-        let dict : JSONDictionary = [ApiKey.phoneNo : self.viewModel.userModel.phoneNo,
+        var dict : JSONDictionary = [ApiKey.phoneNo : self.viewModel.userModel.phoneNo,
                                      ApiKey.countryCode : self.viewModel.userModel.countryCode,
-                                     ApiKey.name : self.viewModel.userModel.name,ApiKey.email:self.viewModel.userModel.email ]
+                                     ApiKey.name : self.viewModel.userModel.name,
+                                     ApiKey.email:self.viewModel.userModel.email]
+        
+        if !self.viewModel.userModel.image.isEmpty {
+           dict[ApiKey.image]  = self.viewModel.userModel.image
+        }
         return dict
     }
 }
@@ -171,17 +177,32 @@ extension EditProfileVC : CountryDelegate{
 // MARK: - EditProfileVMDelegate
 //=========================
 extension EditProfileVC : EditProfileVMDelegate {
-    func getEditProfileVMSuccess(msg: String,isPhoneNumberChanged : Bool) {
-        if isPhoneNumberChanged {
+    func getEditProfileVMSuccess(msg: String,statusCode : Int) {
+        //only phone number updated
+        if statusCode == 250 {
             AppRouter.goToOtpVerificationVC(vc: self, phoneNo: self.viewModel.userModel.phoneNo, countryCode: self.viewModel.userModel.countryCode,isComeFromEditProfile: true)
-        }else {
+        }
+        
+        //only email updated
+        else if statusCode == 251 {
+            self.delegate?.editProfileSuccess()
+            self.pop()
+        }
+            
+        //email phone number updated
+        else if statusCode == 252 {
+            AppRouter.goToOtpVerificationVC(vc: self, phoneNo: self.viewModel.userModel.phoneNo, countryCode: self.viewModel.userModel.countryCode,isComeFromEditProfile: true)
+            
+        }
+            
+        else {
             self.delegate?.editProfileSuccess()
             self.pop()
         }
     }
     
     func getEditProfileVMFailed(msg: String, error: Error) {
-        ToastView.shared.showLongToast(self.view, msg: error as! String)
+        ToastView.shared.showLongToast(self.view, msg: error.localizedDescription)
     }
 }
 
@@ -191,6 +212,7 @@ extension EditProfileVC : EditProfileVMDelegate {
 extension EditProfileVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate , RemovePictureDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[.editedImage] as? UIImage
+        userImage.image = image
         hasImageUploaded = false
         image?.upload(progress: { (progress) in
             printDebug(progress)
