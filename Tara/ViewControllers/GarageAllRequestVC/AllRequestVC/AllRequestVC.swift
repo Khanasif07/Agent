@@ -149,7 +149,8 @@ extension AllRequestVC : UITableViewDelegate, UITableViewDataSource {
                     self.requestId = self.viewModel.garageRequestListing[indexPath.row].id ?? ""
                     self.viewModel.cancelBid(params:[ApiKey.garageRequestId : self.requestId])
                 case "Chat":
-                    self.showAlert(msg: "Under Development")
+                    self.clearFilterOnTabChange = false
+                    AppRouter.goToOneToOneChatVC(self, userId: self.viewModel.garageRequestListing[indexPath.row].userId ?? "" , name: self.viewModel.garageRequestListing[indexPath.row].userName ?? "", image: self.viewModel.garageRequestListing[indexPath.row].userImage ?? "", unreadMsgs: 0)
                 default:
                     self.clearFilterOnTabChange = false
                     AppRouter.goToGarageServiceRequestVC(vc: self,requestId : self.viewModel.garageRequestListing[indexPath.row].id ?? "", requestType: self.viewModel.garageRequestListing[indexPath.row].requestType.rawValue,bidStatus: self.viewModel.garageRequestListing[indexPath.row].bidStatus ?? .bidFinalsed)

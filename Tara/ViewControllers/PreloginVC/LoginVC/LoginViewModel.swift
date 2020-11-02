@@ -43,7 +43,6 @@ struct LoginViewModel {
             AppUserDefaults.save(value: json[ApiKey.data][ApiKey.currentRole].stringValue, forKey: .currentUserType)
             AppUserDefaults.save(value: json[ApiKey.data][ApiKey._id].stringValue, forKey: .userId)
             self.addUser(parameters: parameters, user: user)
-//            self.delegate?.signInSuccess(userModel: UserModel.main)
         }) { (error) -> (Void) in
             if (error as NSError).code == 401 {
                 self.delegate?.emailNotVerified(message: error.localizedDescription)

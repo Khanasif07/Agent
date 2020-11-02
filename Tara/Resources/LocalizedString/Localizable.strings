@@ -26,6 +26,8 @@
 "logout" = "Logout";
 "mobileNo" = "Mobile No";
 "name" = "Name";
+"gallery" = "Gallery";
+"camera" = "Camera";
 //MARK: - Home TabBar Values
 //========================
 "home" = "Home";

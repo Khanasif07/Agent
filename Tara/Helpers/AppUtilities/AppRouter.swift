@@ -394,6 +394,15 @@ enum AppRouter {
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
+    static func goToOneToOneChatVC(_ vc: UIViewController, userId: String, name: String, image: String, unreadMsgs: Int) {
+        let chatScene = OneToOneChatVC.instantiate(fromAppStoryboard: .Chat)
+        chatScene.firstName = name
+        chatScene.userImage = image
+        chatScene.inboxModel.userId = userId //"5e8483230a60177afa95e0b7"
+        chatScene.inboxModel.unreadMessages = unreadMsgs
+        guard let nvc = vc.navigationController else { return }
+        nvc.pushViewController(chatScene, animated: true)
+    }
     
     static func goToOilTypeVC(vc: UIViewController){
         let scene = OilTypeVC.instantiate(fromAppStoryboard: .UserHomeScreen)

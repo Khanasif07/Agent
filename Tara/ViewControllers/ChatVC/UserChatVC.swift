@@ -80,7 +80,7 @@ extension UserChatVC {
     private func cellSelected(tableView: UITableView, indexPath: IndexPath) {
         if inboxListing[indexPath.row].chatType == ApiKey.single {
             updateBatch(userId: self.inboxListing[indexPath.row].userId, unreadMessages: self.inboxListing[indexPath.row].unreadMessages)
-            //                AppRouter.goToOneToOneChatVC(self, userId: inboxListing[indexPath.row].userId, name: inboxListing[indexPath.row].firstName, image: inboxListing[indexPath.row].receiverImgURL, unreadMsgs: inboxListing[indexPath.row].unreadMessages)
+            AppRouter.goToOneToOneChatVC(self, userId: inboxListing[indexPath.row].userId, name: inboxListing[indexPath.row].firstName, image: inboxListing[indexPath.row].receiverImgURL, unreadMsgs: inboxListing[indexPath.row].unreadMessages)
         } else {
             //                AppRouter.goToGroupChatVC(self, model: inboxListing[indexPath.row])
         }
@@ -107,9 +107,11 @@ extension UserChatVC {
         let messageCell = mainTableView.dequeueCell(with: InboxTableViewCell.self)
         if model.chatType == ApiKey.single {
             messageCell.userNameLbl.text = model.firstName
+            messageCell.lastMsgLbl.text = model.lastMessage
             messageCell.userImgView.setImage_kf(imageString: model.receiverImgURL, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: true)
         } else {
             messageCell.userNameLbl.text = model.roomName
+            messageCell.lastMsgLbl.text = model.lastMessage
             messageCell.userImgView.setImage_kf(imageString: model.receiverImgURL, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: true)
         }
         //            messageCell.onlineStatusView.isHidden = !model.isOnline

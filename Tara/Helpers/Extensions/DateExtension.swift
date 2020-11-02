@@ -567,4 +567,17 @@ extension Date {
         let splitSecond = difference?.split(separator: " ")
         return Int((splitSecond?.first as! NSString).intValue)
     }
+    
+    func convertToTimeString() -> String {
+        // First, get a Date from the String
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = DateFormat.hhmma.rawValue
+        
+        //        // Now, get a new string from the Date in the proper format for the user's locale
+        //        dateFormatter.dateFormat = nil
+        //        dateFormatter.dateStyle = .long // set as desired
+        //        dateFormatter.timeStyle = .medium // set as desired
+        let local = dateFormatter.string(from: self)
+        return local
+    }
 }

@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,9 +14,6 @@
         </array>
         <array key="Proxima Nova Regular.otf">
             <string>ProximaNova-Regular</string>
-        </array>
-        <array key="Proxima Nova Semibold.otf">
-            <string>ProximaNova-Semibold</string>
         </array>
     </customFonts>
     <scenes>
@@ -178,11 +176,12 @@
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o4k-DW-lbK">
                                                                 <rect key="frame" x="333" y="11" width="36" height="36"/>
+                                                                <color key="backgroundColor" name="appRedColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="36" id="9hB-3h-kUd"/>
                                                                     <constraint firstAttribute="width" secondItem="o4k-DW-lbK" secondAttribute="height" multiplier="1:1" id="Le5-lU-5VI"/>
                                                                 </constraints>
-                                                                <state key="normal" image="group3669"/>
+                                                                <state key="normal" image="group3603"/>
                                                                 <connections>
                                                                     <action selector="sendButtonTapped:" destination="zj2-p6-7pB" eventType="touchUpInside" id="WBs-vS-unX"/>
                                                                 </connections>
@@ -250,20 +249,30 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Roman Abramovich" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hDE-W8-g3n">
-                                        <rect key="frame" x="54" y="16" width="306" height="23.5"/>
-                                        <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="20"/>
+                                        <rect key="frame" x="54" y="17.5" width="306" height="20"/>
+                                        <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
                                         <color key="textColor" red="0.098023496569999993" green="0.098048247399999996" blue="0.098021931950000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EOI-rP-mh5">
+                                        <rect key="frame" x="0.0" y="53" width="414" height="1"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="DBY-1h-nqA"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="EOI-rP-mh5" secondAttribute="bottom" constant="1" id="7wA-68-umU"/>
                                     <constraint firstItem="hDE-W8-g3n" firstAttribute="centerY" secondItem="Jas-en-Ecr" secondAttribute="centerY" id="CMN-G1-rZA"/>
                                     <constraint firstItem="tCf-v6-yyr" firstAttribute="centerY" secondItem="hDE-W8-g3n" secondAttribute="centerY" id="GjG-KG-aVU"/>
                                     <constraint firstItem="tCf-v6-yyr" firstAttribute="leading" secondItem="Jas-en-Ecr" secondAttribute="leading" id="M1a-2Z-9Yi"/>
                                     <constraint firstItem="hDE-W8-g3n" firstAttribute="leading" secondItem="tCf-v6-yyr" secondAttribute="trailing" constant="10" id="UVf-E2-Z3j"/>
                                     <constraint firstAttribute="height" constant="55" id="Wew-Dq-EDR"/>
                                     <constraint firstItem="hDE-W8-g3n" firstAttribute="centerX" secondItem="Jas-en-Ecr" secondAttribute="centerX" id="jIG-Ao-0G9"/>
+                                    <constraint firstItem="EOI-rP-mh5" firstAttribute="leading" secondItem="Jas-en-Ecr" secondAttribute="leading" id="oeK-vW-lFm"/>
+                                    <constraint firstAttribute="trailing" secondItem="EOI-rP-mh5" secondAttribute="trailing" id="yEQ-YQ-0SM"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7vw-AB-AZ8">
@@ -289,6 +298,8 @@
                         <viewLayoutGuide key="safeArea" id="ii9-WE-KQV"/>
                     </view>
                     <connections>
+                        <outlet property="addDocumentBtn" destination="MNE-cS-Qcn" id="c24-vD-Rkg"/>
+                        <outlet property="audioBtn" destination="UCy-co-Tgw" id="W1S-pP-hIa"/>
                         <outlet property="backgroundView" destination="7vw-AB-AZ8" id="t3N-Lq-TB8"/>
                         <outlet property="bottomContainerView" destination="R7B-FN-c9J" id="L04-Qo-GON"/>
                         <outlet property="containerScrollView" destination="nAy-Hg-tIu" id="YD4-8a-VEc"/>
@@ -305,12 +316,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bwi-xw-dg6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="652" y="72"/>
+            <point key="canvasLocation" x="650.72463768115949" y="71.651785714285708"/>
         </scene>
     </scenes>
     <resources>
         <image name="group3" width="32" height="32"/>
-        <image name="group3669" width="54" height="54"/>
+        <image name="group3603" width="30" height="30"/>
         <image name="icBackward" width="36" height="34"/>
+        <namedColor name="appRedColor">
+            <color red="0.87800002098083496" green="0.13699999451637268" blue="0.25900000333786011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>
