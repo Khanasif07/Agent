@@ -66,7 +66,7 @@ extension WebServices {
         case garageHomeServices  = "user/services/dashboard"
         case editProfile = "user/profile"
         case changePassword = "user/changePassword"
-        
+        case verifyPhoneNumber = "user/verifyPhoneNumber"
         
         var path : String {
             let url = baseUrl

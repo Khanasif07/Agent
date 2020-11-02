@@ -265,4 +265,8 @@ enum ApiCode {
     static var garageBlocked: Int {return 602}// garage blocked by admin
     static var userBlocked: Int {return 603}//user profile blocked by admin
     
+    
+    static var phoneNumberUpdated: Int {return 250} // only phone number on edit profile (user)
+    static var emailUpdated: Int {return 251} // email  updated
+    static var phoneEmailUpdated: Int {return 252} // phone and email updated
 }

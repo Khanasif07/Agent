@@ -25,7 +25,7 @@ class OtpVerificationVC: BaseVC {
     //===========================
     var otpArray = [String](repeating: "", count: 4)
     var viewModel = OtpVerificationVM()
-    
+
     // MARK: - Lifecycle
     //===========================
     override func viewDidLoad() {
@@ -62,7 +62,10 @@ class OtpVerificationVC: BaseVC {
         self.view.endEditing(true)
         if self.viewModel.isComeForVerifyPassword{
             self.viewModel.verifyForgotPasswordOTP(dict: getDict())
-        } else {
+        } else if self.viewModel.isComeFromEditProfile{
+            self.viewModel.verifyEditNumberWithOTP(dict: getDict())
+        }
+        else {
              self.viewModel.verifyOTP(dict: getDict())
         }
     }
@@ -257,9 +260,12 @@ extension OtpVerificationVC: OtpVerificationVMDelegate{
     func otpVerifiedSuccessfully(message: String) {
         if self.viewModel.isComeFromSignupScreen {
         AppRouter.showSuccessPopUp(vc: self,title: "OTP Verified",desc: "You have successfully verified your mobile no.")
-        }else if self.viewModel.isComeFromEditProfile{
+        }
+        else if self.viewModel.isComeFromEditProfile{
             for controller in self.navigationController!.viewControllers as Array {
                 if controller.isKind(of: ProfileVC.self) {
+                    guard let vc = controller as? ProfileVC else {return}
+                    vc.hitProfileApi()
                     self.navigationController?.popToViewController(controller, animated: true)
                     break
                 }
