@@ -171,9 +171,13 @@ extension EditProfileVC : CountryDelegate{
 // MARK: - EditProfileVMDelegate
 //=========================
 extension EditProfileVC : EditProfileVMDelegate {
-    func getEditProfileVMSuccess(msg: String) {
-        self.delegate?.editProfileSuccess()
-        self.pop()
+    func getEditProfileVMSuccess(msg: String,isPhoneNumberChanged : Bool) {
+        if isPhoneNumberChanged {
+            AppRouter.goToOtpVerificationVC(vc: self, phoneNo: self.viewModel.userModel.phoneNo, countryCode: self.viewModel.userModel.countryCode,isComeFromEditProfile: true)
+        }else {
+            self.delegate?.editProfileSuccess()
+            self.pop()
+        }
     }
     
     func getEditProfileVMFailed(msg: String, error: Error) {

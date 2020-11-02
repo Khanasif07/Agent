@@ -100,6 +100,16 @@ extension ChangePasswordVC {
     private func submitBtnStatus()-> Bool{
         return !self.viewModel.model.oldPass.isEmpty && !self.viewModel.model.newPass.isEmpty && !self.viewModel.model.confirmPass.isEmpty
     }
+    
+    private func performCleanUp() {
+        let lang  = AppUserDefaults.value(forKey: .currentLanguage).stringValue
+        AppUserDefaults.removeAllValues()
+        AppUserDefaults.save(value: lang, forKey: .currentLanguage)
+        AppUserDefaults.save(value: true, forKey: .isLanguageSelect)
+        UserModel.main = UserModel()
+        UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+        SocketIOManager.shared.closeConnection()
+    }
 }
 
 // MARK: - TextField Delegate
@@ -135,8 +145,14 @@ extension ChangePasswordVC : UITextFieldDelegate{
 // MARK: - IBActions
 //===========================
 extension ChangePasswordVC : ChangePasswordVMDelegate{
+    
     func changePasswordSuccess(msg: String) {
-        self.pop()
+        WebServices.logout(parameters: [:], success: { (message) in
+            self.performCleanUp()
+            AppUserDefaults.save(value: "guest", forKey: .currentUserType)
+            AppRouter.goToUserHome()
+        }) {_ in printDebug("Dismiss")}
+//        self.pop()
     }
     
     func changePasswordFailed(msg: String, error: Error) {
