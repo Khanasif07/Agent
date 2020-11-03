@@ -186,7 +186,7 @@ enum LocalizedString : String {
     case locationOfYourServiceCenterDesc
     case imagesOfyourServiceCenterDesc
     case govtIssuedlicensesandDocumentsDesc
-    
+    case choosePdf
     case addDetails
     case thisAllAboutMyServiceCenter
     case addFollowingGarageDetails
