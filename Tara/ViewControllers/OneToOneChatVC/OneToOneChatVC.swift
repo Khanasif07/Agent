@@ -128,7 +128,7 @@ class OneToOneChatVC: BaseVC {
     }
 
     @IBAction func addAttachmentsButtonTapped(_ sender: UIButton) {
-//        createMediaAlertSheet()
+        createMediaAlertSheet()
     }
 
     @IBAction func sendButtonTapped(_ sender: UIButton) {
@@ -151,7 +151,7 @@ extension OneToOneChatVC {
         setupImageController()
         setupTextView()
         fetchDeleteTime()
-//        getBatchCount()
+        getBatchCount()
     }
 
     private func addTapGestureToTitle() {
@@ -181,32 +181,9 @@ extension OneToOneChatVC {
     }
 
 
-//    private func createMediaAlertSheet() {
-//
-////        let chooseOptionText = LocalizedString.K_CHOOSE_HOW_TO_SELECT_IMAGE.localized
-//        alertController = UIAlertController(title: "chooseOptionText", message: nil, preferredStyle: .actionSheet, blurStyle: .dark)
-////        alertController = UIAlertController(title: chooseOptionText, message: nil, preferredStyle: .actionSheet)
-////        alertController.view.backgroundColor = .black
-//        let chooseFromGalleryText =  LocalizedString.gallery.localized
-//        let alertActionGallery = UIAlertAction(title: chooseFromGalleryText, style: .default) { _ in
-//            ImagePicker.shared.imagePickerDelegate = self
-//            ImagePicker.shared.checkAndOpenLibraryForPhotosAndVideo(on: self)
-//        }
-//        alertController.addAction(alertActionGallery)
-//
-//        let takePhotoText =  LocalizedString.camera.localized
-//        let alertActionCamera = UIAlertAction(title: takePhotoText, style: .default) { action in
-//            self.checkCameraAccess()
-//        }
-//        alertController.addAction(alertActionCamera)
-//
-//        let cancelText =  LocalizedString.cancel.localized
-//        let alertActionCancel = UIAlertAction(title: cancelText, style: .cancel) { _ in
-//        }
-//        alertController.addAction(alertActionCancel)
-//
-//        self.present(alertController, animated: true, completion: nil)
-//    }
+    private func createMediaAlertSheet() {
+         self.captureImage(delegate: self,removedImagePicture: false )
+    }
 
     private func checkCameraAccess() {
         switch AVCaptureDevice.authorizationStatus(for: .video) {
@@ -250,11 +227,9 @@ extension OneToOneChatVC {
         messagesTableView.dataSource = self
         messagesTableView.registerCell(with: SenderMessageCell.self)
         messagesTableView.registerCell(with: ReceiverMessageCell.self)
-//        messagesTableView.registerCell(with: SenderMediaCell.self)
-//        messagesTableView.registerCell(with: ReceiverMediaCell.self)
-//        messagesTableView.registerCell(with: ReceiverVideoCell.self)
-//        messagesTableView.registerCell(with: SenderVideoCell.self)
-//        messagesTableView.registerCell(with: DayValueCell.self)
+        messagesTableView.registerCell(with: SenderMediaCell.self)
+        messagesTableView.registerCell(with: ReceiverMediaCell.self)
+        messagesTableView.registerCell(with: DayValueCell.self)
     }
 
     private func setupTextView() {
@@ -390,21 +365,21 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
         return UITableView.automaticDimension
     }
 
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let dayCell = tableView.dequeueCell(with: DayValueCell.self)
-//        let dateVal =  messageListing[section].first?.messageTime.dateValue() ?? Date()
-//        if dateVal.isToday {
-//            dayCell.dateLabel.text = "Today"
-//        } else if dateVal.isYesterday {
-//            dayCell.dateLabel.text = "Yesterday"
-//        } else {
-//            dayCell.dateLabel.text = dateVal.convertToString()
-//        }
-//        return dayCell
-//    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let dayCell = tableView.dequeueCell(with: DayValueCell.self)
+        let dateVal =  messageListing[section].first?.messageTime.dateValue() ?? Date()
+        if dateVal.isToday {
+            dayCell.dateLabel.text = "Today"
+        } else if dateVal.isYesterday {
+            dayCell.dateLabel.text = "Yesterday"
+        } else {
+            dayCell.dateLabel.text = dateVal.convertToDefaultString()
+        }
+        return dayCell
+    }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return CGFloat.leastNonzeroMagnitude
+        return  40.0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -413,20 +388,14 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
         switch model.receiverId {
         case AppUserDefaults.value(forKey: .uid).stringValue:
             switch model.messageType {
-//            case MessageType.image.rawValue:
-//                let senderMediaCell = tableView.dequeueCell(with: SenderMediaCell.self)
-//                senderMediaCell.configureCellWith(model: model)
-//                senderMediaCell.senderImageView.sd_setImage(with: URL(string: userImage), placeholderImage: #imageLiteral(resourceName: StringConstants.eventImagePlaceHolder) , completed: nil)
+            case MessageType.image.rawValue:
+                let senderMediaCell = tableView.dequeueCell(with: SenderMediaCell.self)
+                senderMediaCell.configureCellWith(model: model)
+                senderMediaCell.senderImageView.setImage_kf(imageString: userImage, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
 //                setTapGesture(view: senderMediaCell.msgContainerView, indexPath: indexPath)
-//                senderMediaCell.senderImageView.addGestureRecognizer(imgTap)
-//                return senderMediaCell
-//            case MessageType.video.rawValue:
-//                let senderVideoCell = tableView.dequeueCell(with: SenderVideoCell.self)
-//                senderVideoCell.configureCellWith(model: model)
-//                senderVideoCell.playButton.addTarget(self, action: #selector(playVideo(_:)), for: .touchUpInside)
-//                senderVideoCell.senderImageView.sd_setImage(with: URL(string: userImage), placeholderImage: #imageLiteral(resourceName: StringConstants.eventImagePlaceHolder) , completed: nil)
-//                senderVideoCell.senderImageView.addGestureRecognizer(imgTap)
-//                return senderVideoCell
+                senderMediaCell.senderImageView.addGestureRecognizer(imgTap)
+                senderMediaCell.senderNameLabel.text = self.firstName
+                return senderMediaCell
             default:
                 let receiverCell = tableView.dequeueCell(with: ReceiverMessageCell.self)
                 receiverCell.configureCellWith(model: model)
@@ -437,21 +406,13 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
             }
         default:
             switch model.messageType {
-//            case MessageType.image.rawValue:
-//                let receiverMediaCell = tableView.dequeueCell(with: ReceiverMediaCell.self)
-//                receiverMediaCell.configureCellWith(model: model)
+            case MessageType.image.rawValue:
+                let receiverMediaCell = tableView.dequeueCell(with: ReceiverMediaCell.self)
+                receiverMediaCell.configureCellWith(model: model)
 //                self.setupLongPressGesture(view: receiverMediaCell.msgContainerView, indexPath: indexPath)
 //                self.setTapGesture(view: receiverMediaCell.msgContainerView, indexPath: indexPath)
 //                receiverMediaCell.msgContainerView.backgroundColor = selectedIndexPaths.contains(indexPath) ? AppColors.blackColor : AppColors.blueChatBubble
-//                return receiverMediaCell
-//            case MessageType.video.rawValue:
-//                let receiverVideoCell = tableView.dequeueCell(with: ReceiverVideoCell.self)
-//                receiverVideoCell.configureCellWith(model: model)
-//                receiverVideoCell.playButton.addTarget(self, action: #selector(playVideo(_:)), for: .touchUpInside)
-//                self.setupLongPressGesture(view: receiverVideoCell.msgContainerView, indexPath: indexPath)
-//                self.setTapGesture(view: receiverVideoCell.msgContainerView, indexPath: indexPath)
-//                receiverVideoCell.msgContainerView.backgroundColor = selectedIndexPaths.contains(indexPath) ? AppColors.blackColor : AppColors.blueChatBubble
-//                return receiverVideoCell
+                return receiverMediaCell
             default:
                 let senderCell = tableView.dequeueCell(with: SenderMessageCell.self)
                 senderCell.configureCellWith(model: model)
@@ -474,220 +435,46 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-////MARK: IMAGE PICKER DELEGATES
-////============================
-//extension OneToOneChatVC: ImagePickerDelegate, UploadMediaDelegate {
-//
-//    func cancelMediaUpload() {
-//        return
-//    }
-//
-//    func upload(isImage: Bool, image: UIImage, videoURL: String) {
-//        switch isImage {
-//        case true:
-//            uploadImageToS3(image: image)
-//        case false:
-//            uploadToS3(image: image, ifImage: false, video: videoURL.description)
-//        }
-//    }
-//
-//    func getSelectedVideoWithThumbnail(image: UIImage, ifImage: Bool, videoURL: String) {
-//        dismiss(animated: true, completion: nil)
-//        AppRouter.presentUploadMediaPopUp(self, isImage: false, image: image, videoURL: videoURL.description)
-////        uploadToS3(image: image, ifImage: false, video: videoURL.description)
-//
-//    }
-//
-//    func getSelectedImage(capturedImage image: UIImage) {
-//        dismiss(animated: true, completion: nil)
-//        AppRouter.presentUploadMediaPopUp(self, isImage: true, image: image, videoURL: "")
-////        uploadImageToS3(image: image)
-//    }
-//
-//    func imagePickerControllerDidCancel() {
-//        dismiss(animated: true, completion: nil)
-//    }
-//
-//    func removeImage() { }
-//
-//}
+//MARK: IMAGE PICKER DELEGATES
+//============================
+extension OneToOneChatVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate , RemovePictureDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[.editedImage] as? UIImage
+        hasImageUploaded = false
+        image?.upload(progress: { [weak self] (status) in
+        guard let `self` = self else { return }
+        printDebug(status)
+             if !self.hasImageUploaded { CommonFunctions.showToastWithMessage("\(Int(status * 100))% Uploaded") }
+        }, completion: { (response,error) in
+            if let url = response {
+                self.hasImageUploaded = true
+                if self.isRoom {
+                    self.updateUnreadMessage()
+                    self.restoreDeletedNode()
+                    self.createMediaMessage(url: url, imageURL: url, type: "image")
+                    self.updateInboxTimeStamp()
+                } else {
+                    self.createRoom()
+                    self.createMediaMessage(url: url, imageURL: url, type: "image")
+                    self.createInbox()
+                }
+            }
+            if let _ = error{
+                self.showAlert(msg: LocalizedString.imageUploadingFailed.localized)
+            }
+        })
+        picker.dismiss(animated: true, completion: nil)
+    }
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    func removepicture() {
+    }
+    
+}
 
-
-////MARK: IMAGE CROPPER DELEGATES
-////=============================
-//extension OneToOneChatVC: CropperDelegate {
-//
-//    private func uploadImageToS3(image: UIImage) {
-//        let url = "\(Int(Date().timeIntervalSince1970)).png"
-//        let imageURL = "\(S3_BASE_URL)\(BUCKET_NAME)/\(url)"
-//
-//        hasImageUploaded = false
-//        self.updateData(image: imageURL)
-//
-//        image.uploadImageToS3(imageurl: url ,success: { [weak self] (success, url) in
-//
-//            guard let `self` = self else { return }
-//            self.hasImageUploaded = true
-//            ToastCenter.default.cancelAll()
-//            if self.isBlockedByMe {
-//                self.showAlert(msg: StringConstants.UnblockUserMessage)
-//            } else {
-//                if self.isRoom {
-//                    self.updateUnreadMessage()
-//                    self.restoreDeletedNode()
-//                    self.createMediaMessage(url: url, imageURL: url, type: StringConstants.image)
-//                    self.updateInboxTimeStamp()
-////                    self.createBatch()
-//                } else {
-//                    self.createRoom()
-//                    self.createMediaMessage(url: url, imageURL: url, type: StringConstants.image)
-//                    self.createInbox()
-////                    self.createBatch()
-//                }
-//            }
-//            }, progress: { [weak self] (status) in
-//                guard let `self` = self else { return }
-//                printDebug(status)
-//                if !self.hasImageUploaded { CommonFunctions.showToastWithMessage("\(Int(status * 100))% Uploaded") }
-//            }, failure: { [weak self] (error) in
-//                guard let `self` = self else { return }
-//                self.showAlert(msg: error.localizedDescription)
-//                self.removeImage()
-//                self.hasImageUploaded = true
-//        })
-//    }
-
-//    func imageCropper(didCropImage croppedImage: UIImage, usingCropRect cropRect: CGRect) {
-//        let url = "\(Int(Date().timeIntervalSince1970)).png"
-//        let imageURL = "\(S3_BASE_URL)\(BUCKET_NAME)/\(url)"
-//
-//        hasImageUploaded = false
-//        self.updateData(image: imageURL)
-//
-//        croppedImage.uploadImageToS3(imageurl: url ,success: { [weak self] (success, url) in
-//
-//            guard let `self` = self else { return }
-//            self.hasImageUploaded = true
-//            ToastCenter.default.cancelAll()
-//            if self.isBlockedByMe {
-//                self.showAlert(msg: StringConstants.UnblockUserMessage)
-//            } else {
-//                if self.isRoom {
-//                    self.updateUnreadMessage()
-//                    self.restoreDeletedNode()
-//                    self.createMediaMessage(url: url, imageURL: url, type: StringConstants.image)
-//                    self.updateInboxTimeStamp()
-////                    self.createBatch()
-//                } else {
-//                    self.createRoom()
-//                    self.createMediaMessage(url: url, imageURL: url, type: StringConstants.image)
-//                    self.createInbox()
-////                    self.createBatch()
-//                }
-//            }
-//            }, progress: { [weak self] (status) in
-//                guard let `self` = self else { return }
-//                printDebug(status)
-//                if !self.hasImageUploaded { CommonFunctions.showToastWithMessage("\(Int(status * 100))% Uploaded") }
-//            }, failure: { [weak self] (error) in
-//                guard let `self` = self else { return }
-//                self.showAlert(msg: error.localizedDescription)
-//                self.removeImage()
-//                self.hasImageUploaded = true
-//        })
-//    }
-
-//    func imageCropperDidCancelCrop() {
-//        printDebug("Crop cancelled")
-//    }
-//
-//    fileprivate func updateData(image: String) {
-////        parametersDict[ApiKey.image] = image
-//    }
-
-//}
-
-//MARK: IMAGEPICKER CONTEROLLER DELEGATE
-//======================================
-//extension OneToOneChatVC : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-//
-//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-//
-//        if let choosenImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
-//            AppRouter.presentUploadMediaPopUp(self, isImage: true, image: choosenImage, videoURL: "")
-////            uploadImageToS3(image: choosenImage)
-////            Cropper.shared.openCropper(withImage: choosenImage, mode: .square, on: self)
-//        }
-//
-//        if let videoURL = info[UIImagePickerController.InfoKey.mediaURL] as? URL {
-//            AVAsset(url: videoURL).generateThumbnail { [weak self] (image) in
-//                DispatchQueue.main.async {
-//                    guard let `self` = self, let image = image else { return }
-//                    AppRouter.presentUploadMediaPopUp(self, isImage: false, image: image, videoURL: videoURL.description)
-////                    self.uploadToS3(image: image, ifImage: false, video: videoURL.description)
-//                }
-//            }
-//        }
-//        self.dismiss(animated: true, completion: nil)
-//
-//    }
-
-
-//    func uploadToS3(image: UIImage, ifImage: Bool, video: String = ""){
-//        guard let url = URL(string: video) else {
-//            showAlert(msg: "Video couldn't be uploaded!")
-//            return
-//        }
-//        hasImageUploaded = false
-//        let iurl = "\(Int(Date().timeIntervalSince1970)).png"
-//
-//        image.uploadImageToS3(imageurl: iurl,success: { [weak self] (complete, imageURL) in
-//            guard let `self` = self else { return }
-//            AWSController.uploadTOS3Video(url: url, success: { [weak self] (completion, url) in
-//                guard let `self` = self else { return }
-//                self.hasImageUploaded = true
-//                if self.isBlockedByMe {
-//                    self.showAlert(msg: StringConstants.UnblockUserMessage)
-//                } else {
-//                    if self.isRoom {
-//                        self.updateUnreadMessage()
-//                        self.restoreDeletedNode()
-//                        self.createMediaMessage(url: url, imageURL: imageURL, type: StringConstants.video)
-//                        self.updateInboxTimeStamp()
-////                        self.createBatch()
-//                    } else {
-//                        self.createRoom()
-//                        self.createMediaMessage(url: url, imageURL: imageURL, type: StringConstants.video)
-//                        self.createInbox()
-////                        self.createBatch()
-//                    }
-//                }
-//                }, progress: { [weak self] (status) in
-//                    guard let `self` = self else { return }
-//                    printDebug(status)
-//                    if !self.hasImageUploaded { CommonFunctions.showToastWithMessage("\(Int(status * 100))% Uploaded") }
-//            }) { [weak self] (error) in
-//                guard let `self` = self else { return }
-//                self.hasImageUploaded = true
-//                self.showAlert(msg: error.localizedDescription)
-//            }
-//        }, progress: { (status) in
-//            print(status)
-//        }) { [weak self] (error) in
-//            guard let `self` = self else { return }
-//            self.showAlert(msg: error.localizedDescription)
-//            self.removeImage()
-//            self.hasImageUploaded = true
-//        }
-//
-//    }
-//
-//    private func setupVideoTap(view: UIImageView, indexPath: IndexPath) {
-//        let videoTap = UITapGestureRecognizer(target: self, action: #selector(playVideoFromTap(_:)))
-//        view.isUserInteractionEnabled = true
-//        view.addGestureRecognizer(videoTap)
-//    }
-//
 //    // Long Press Gesture to delete message
     func setupLongPressGesture(view: UIView, indexPath: IndexPath) {
 //        let longPressGesture:UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongPress))

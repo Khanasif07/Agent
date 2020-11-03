@@ -36,7 +36,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wbz-ok-9no">
-                                        <rect key="frame" x="188.5" y="10" width="37" height="24"/>
+                                        <rect key="frame" x="188.5" y="12" width="37" height="20"/>
                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -176,6 +176,9 @@
                                                                     <constraint firstAttribute="width" secondItem="MNE-cS-Qcn" secondAttribute="height" multiplier="1:1" id="ow8-2Q-z3G"/>
                                                                 </constraints>
                                                                 <state key="normal" image="group3"/>
+                                                                <connections>
+                                                                    <action selector="addAttachmentsButtonTapped:" destination="zj2-p6-7pB" eventType="touchUpInside" id="moz-ZR-c67"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o4k-DW-lbK">
                                                                 <rect key="frame" x="333" y="11" width="36" height="36"/>
@@ -252,7 +255,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Roman Abramovich" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hDE-W8-g3n">
-                                        <rect key="frame" x="54" y="16" width="306" height="23.5"/>
+                                        <rect key="frame" x="54" y="17.5" width="306" height="20"/>
                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
                                         <color key="textColor" red="0.098023496569999993" green="0.098048247399999996" blue="0.098021931950000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
