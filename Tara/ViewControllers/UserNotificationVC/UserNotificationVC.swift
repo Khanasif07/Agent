@@ -53,6 +53,7 @@ extension UserNotificationVC {
         mainTableView.enablePullToRefresh(tintColor: AppColors.appRedColor ,target: self, selector: #selector(refreshWhenPull(_:)))
         mainTableView.registerCell(with: LoaderCell.self)
         mainTableView.registerCell(with: UserNotificationTableViewCell.self)
+        mainTableView.registerCell(with: ProfileGuestTableCell.self)
         mainTableView.contentInset = UIEdgeInsets(top: 8.0, left: 0, bottom: 0, right: 0)
         
     }
@@ -75,21 +76,42 @@ extension UserNotificationVC {
         hitApi(params: [ApiKey.page:"1", ApiKey.limit: "10"])
     }
     
+    private func getNoOfRowsInSection() -> Int {
+        if isUserLoggedin {
+            return 3
+        } else {
+            return 1
+        }
+    }
+    
 }
 
 // MARK: - Extension For TableView
 //===========================
 extension UserNotificationVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return self.getNoOfRowsInSection()
     }
  
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueCell(with: UserNotificationTableViewCell.self, indexPath: indexPath)
-        cell.cancelBtnTapped = {[weak self] in
-            
+        if isUserLoggedin {
+            let cell = tableView.dequeueCell(with: UserNotificationTableViewCell.self, indexPath: indexPath)
+            cell.cancelBtnTapped = {[weak self] in
+                
+            }
+            return cell
+        } else {
+            let cell = tableView.dequeueCell(with: ProfileGuestTableCell.self, indexPath: indexPath)
+            cell.loginBtnTapped = { [weak self] (sender) in
+                guard let `self` = self else { return }
+                AppRouter.goToLoginVC(vc: self)
+            }
+            cell.createAccountBtnTapped = { [weak self] (sender) in
+                guard let `self` = self else { return }
+                AppRouter.goToSignUpVC(vc: self)
+            }
+            return cell
         }
-        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

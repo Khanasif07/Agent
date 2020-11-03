@@ -120,7 +120,7 @@ class OneToOneChatVC: BaseVC {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         guard let touch = touches.first else { return }
-        let touchLocation = touch.location(in: self.view)
+        _ = touch.location(in: self.view)
     }
 
     @IBAction func backButtonTapped(_ sender: UIButton) {
@@ -247,12 +247,10 @@ extension OneToOneChatVC {
                 self.restoreDeletedNode()
                 self.createMessage()
                 self.updateInboxTimeStamp()
-//                self.createBatch()
             } else {
                 self.createRoom()
                 self.createMessage()
                 self.createInbox()
-//                self.createBatch()
             }
         messageTextView.text = ""
         messageLabel.isHidden = false
@@ -605,36 +603,6 @@ extension OneToOneChatVC: UIImagePickerControllerDelegate, UINavigationControlle
 //        }
 //    }
 //
-//    // To hide/unhide delete Button
-//    func checkDeletBtnState() {
-//        if self.selectedIndexPaths.isEmpty {
-//            self.deleteMsgBtn.isHidden = true
-//        } else {
-//            self.deleteMsgBtn.isHidden = false
-//        }
-//    }
-//
-//    func showDeleteAlert() {
-//        AppRouter.presentDeleteChatPopUp(self, deleteChat: false, userId: "")
-//    }
-//
-//    private func showDeleteChatAlert() {
-//        AppRouter.presentDeleteChatPopUp(self, deleteChat: true, userId: inboxModel.userId)
-//    }
-//
-//    private func blockUser() {
-//        AppRouter.presentBlockUserPopUp(self, toBlock: !isBlockedByMe)
-//    }
-//
-//    private func hitBlockUserAPI() {
-//        if isBlockedByMe {
-//            viewModel.blockUnblockUser(parameters: [ApiKey.userId: inboxModel.userId,
-//                                                    ApiKey.status: "unblock"])
-//        } else {
-//            viewModel.blockUnblockUser(parameters: [ApiKey.userId: inboxModel.userId,
-//                                                    ApiKey.status: "block"])
-//        }
-//    }
 //}
 //
 

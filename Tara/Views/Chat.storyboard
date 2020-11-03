@@ -26,17 +26,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MH9-QT-ltd">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="56"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CKL-wf-u4n">
-                                        <rect key="frame" x="0.0" y="42" width="414" height="1"/>
+                                        <rect key="frame" x="0.0" y="54" width="414" height="1"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="8Kt-qW-Gth"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wbz-ok-9no">
-                                        <rect key="frame" x="188.5" y="12" width="37" height="20"/>
+                                        <rect key="frame" x="188.5" y="16.5" width="37" height="23.5"/>
                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -47,13 +47,13 @@
                                     <constraint firstAttribute="trailing" secondItem="CKL-wf-u4n" secondAttribute="trailing" id="7Wv-pY-1wr"/>
                                     <constraint firstItem="Wbz-ok-9no" firstAttribute="centerY" secondItem="MH9-QT-ltd" secondAttribute="centerY" id="OTe-g0-FtT"/>
                                     <constraint firstAttribute="bottom" secondItem="CKL-wf-u4n" secondAttribute="bottom" constant="1" id="RTx-HL-GCE"/>
-                                    <constraint firstAttribute="height" constant="44" id="Wdt-0m-ZYn"/>
+                                    <constraint firstAttribute="height" constant="56" id="Wdt-0m-ZYn"/>
                                     <constraint firstItem="Wbz-ok-9no" firstAttribute="centerX" secondItem="MH9-QT-ltd" secondAttribute="centerX" id="dlI-FF-XMq"/>
                                     <constraint firstItem="CKL-wf-u4n" firstAttribute="leading" secondItem="MH9-QT-ltd" secondAttribute="leading" id="tSa-X9-1vR"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wmq-CY-wH0">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="100" width="414" height="796"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="awB-1B-JMS">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="82"/>
@@ -80,7 +80,7 @@
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rBa-aN-MYW">
-                                        <rect key="frame" x="0.0" y="82" width="414" height="726"/>
+                                        <rect key="frame" x="0.0" y="82" width="414" height="714"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableView>
                                 </subviews>
@@ -113,6 +113,7 @@
                         <outlet property="mainTableView" destination="rBa-aN-MYW" id="pBa-9T-fjS"/>
                         <outlet property="searchTextField" destination="Ird-9c-jgw" id="c31-lF-iqg"/>
                         <outlet property="titleLbl" destination="Wbz-ok-9no" id="9e2-2Y-PlC"/>
+                        <outlet property="topViewHConst" destination="HO3-Cp-eEr" id="AYX-Qq-cec"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C7K-5X-q0X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -255,7 +256,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Roman Abramovich" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hDE-W8-g3n">
-                                        <rect key="frame" x="54" y="17.5" width="306" height="20"/>
+                                        <rect key="frame" x="54" y="16" width="306" height="23.5"/>
                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
                                         <color key="textColor" red="0.098023496569999993" green="0.098048247399999996" blue="0.098021931950000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
