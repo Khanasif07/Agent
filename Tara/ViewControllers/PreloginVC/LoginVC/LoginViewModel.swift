@@ -122,11 +122,11 @@ struct LoginViewModel {
                 return
             }
             if !UserModel.main.phoneNoAdded{
-                self.delegate?.socailLoginApiSuccessWithoutPhoneNo(message: "")
+                self.addUserThroughSocialLogin(parameters: parameters, user: user)
                 return
             }
             if !UserModel.main.phoneVerified && UserModel.main.phoneNoAdded{
-                self.delegate?.socailLoginApiSuccessWithoutVerifyPhoneNo(message: "")
+                self.addUserThroughSocialLogin(parameters: parameters, user: user)
                 return
             }
           

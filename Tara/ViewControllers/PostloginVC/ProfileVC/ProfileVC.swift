@@ -96,7 +96,7 @@ extension ProfileVC {
                     }
                     cell.editProfileBtnTapped = { [weak self] (sender) in
                         guard let `self` = self else { return }
-                        AppRouter.goToEditProfileVC(vc: self,model: self.viewModel.userModel)
+                        AppRouter.goToEditProfileVC(vc: self,model: self.viewModel.userModel, isEditProfileFrom: .profile)
                     }
                     return cell
                 default:

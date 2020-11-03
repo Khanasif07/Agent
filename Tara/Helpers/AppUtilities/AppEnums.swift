@@ -214,3 +214,9 @@ enum FilterScreen {
         }
     }
 }
+
+enum EditProfileFrom {
+    case home
+    case garage
+    case profile
+}

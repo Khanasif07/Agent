@@ -310,7 +310,7 @@ extension VehicleDetailForBatteryVC: UIImagePickerControllerDelegate, UINavigati
         batteryImgContainerView.borderWidth = 0.0
         CommonFunctions.showActivityLoader()
         TyreRequestModel.shared.images = []
-        TyreRequestModel.shared.images.append(ImageModel(url: "", mediaType: "image", image: image ?? UIImage()))
+        TyreRequestModel.shared.images.append(ImageModel(url: "", type: "image", image: image ?? UIImage()))
         self.submitBtnStatus()
         image?.upload(progress: { (progress) in
             printDebug(progress)

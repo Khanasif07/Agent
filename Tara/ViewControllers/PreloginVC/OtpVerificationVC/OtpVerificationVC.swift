@@ -25,6 +25,7 @@ class OtpVerificationVC: BaseVC {
     //===========================
     var otpArray = [String](repeating: "", count: 4)
     var viewModel = OtpVerificationVM()
+    var isEditProfileFrom : EditProfileFrom = .profile
 
     // MARK: - Lifecycle
     //===========================
@@ -62,7 +63,7 @@ class OtpVerificationVC: BaseVC {
         self.view.endEditing(true)
         if self.viewModel.isComeForVerifyPassword{
             self.viewModel.verifyForgotPasswordOTP(dict: getDict())
-        } else if self.viewModel.isComeFromEditProfile{
+        } else if isEditProfileFrom == .profile{
             self.viewModel.verifyEditNumberWithOTP(dict: getDict())
         }
         else {

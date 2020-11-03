@@ -64,9 +64,10 @@ enum AppRouter {
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
-    static func goToEditProfileVC(vc: UIViewController & EditProfileVCDelegate,model: UserModel){
+    static func goToEditProfileVC(vc: UIViewController & EditProfileVCDelegate,model: UserModel,isEditProfileFrom : EditProfileFrom){
         let scene = EditProfileVC.instantiate(fromAppStoryboard: .PostLogin)
         scene.delegate = vc
+        scene.isEditProfileFrom = isEditProfileFrom
         scene.viewModel.userModel = model
         vc.navigationController?.pushViewController(scene, animated: true)
     }
@@ -137,11 +138,12 @@ enum AppRouter {
         vc.present(scene, animated: true, completion: nil)
     }
     
-    static func goToOtpVerificationVC(vc: UIViewController,phoneNo: String, countryCode: String,isComeForVerifyPassword: Bool = false,isComeFromSignUpScreen: Bool = false, isComeFromEditProfile: Bool = false){
+    static func goToOtpVerificationVC(vc: UIViewController,phoneNo: String, countryCode: String,isComeForVerifyPassword: Bool = false,isComeFromSignUpScreen: Bool = false, isComeFromEditProfile: Bool = false,isEditProfileFrom: EditProfileFrom = .profile){
         let scene = OtpVerificationVC.instantiate(fromAppStoryboard: .Prelogin)
         scene.viewModel.isComeForVerifyPassword = isComeForVerifyPassword
         scene.viewModel.isComeFromSignupScreen = isComeFromSignUpScreen
         scene.viewModel.isComeFromEditProfile = isComeFromEditProfile
+        scene.isEditProfileFrom = isEditProfileFrom
         scene.viewModel.countryCode = countryCode
         scene.viewModel.phoneNo = phoneNo
         vc.navigationController?.pushViewController(scene, animated: true)

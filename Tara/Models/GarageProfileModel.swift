@@ -44,10 +44,10 @@ struct GarageProfileModel {
             ApiKey.longitude : longitude,
             ApiKey.address : address,
             ApiKey.images : getGarageImgUrl(),
-            ApiKey.commercialRegister : commercialRegister,
-            ApiKey.vatCertificate : vatCertificate,
-            ApiKey.municipalityLicense : municipalityLicense,
-            ApiKey.ownerId : ownerId,
+            ApiKey.commercialRegister : getDocDict(imageModelArr: commercialRegister),
+            ApiKey.vatCertificate : getDocDict(imageModelArr: vatCertificate),
+            ApiKey.municipalityLicense : getDocDict(imageModelArr: municipalityLicense),
+            ApiKey.ownerId : getDocDict(imageModelArr: ownerId),
             ApiKey.bank : bankName,
             ApiKey.accountNumber : accountNumber
            
@@ -60,6 +60,15 @@ struct GarageProfileModel {
         var arr : [String] = []
         serviceCenterImages.forEach { (model) in
             arr.append(model.url)
+        }
+        return arr
+    }
+    
+    
+    func getDocDict(imageModelArr: [ImageModel]) -> [JSONDictionary]{
+        var arr: [JSONDictionary] = []
+        imageModelArr.forEach { (model) in
+            arr.append(model.dictionary())
         }
         return arr
     }
