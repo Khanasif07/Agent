@@ -80,6 +80,8 @@ extension UserAllRequestVC {
         NotificationCenter.default.addObserver(self, selector: #selector(requestRejected), name: Notification.Name.RequestRejected, object: nil)
         
         self.filterBtn.tintColor = .black
+        self.filterBtn.isHidden = !isUserLoggedin
+        self.searchBtn.isHidden = !isUserLoggedin
         self.titleLbl.text = LocalizedString.my_Services.localized
         self.tableViewSetUp()
         hitListingApi()
@@ -123,6 +125,7 @@ extension UserAllRequestVC {
         self.mainTableView.emptyDataSetDelegate = self
         self.mainTableView.enablePullToRefresh(tintColor: AppColors.appRedColor ,target: self, selector: #selector(refreshWhenPull(_:)))
         self.mainTableView.registerCell(with: LoaderCell.self)
+        self.mainTableView.registerCell(with: ProfileGuestTableCell.self)
         self.mainTableView.registerCell(with: MyServiceTableCell.self)
     }
     
@@ -176,6 +179,15 @@ extension UserAllRequestVC {
             self.hitListingApi()
         }
     }
+    
+    private func returnCellCount()->  Int{
+        if isUserLoggedin {
+           return self.viewModel.userRequestListing.endIndex + (self.viewModel.showPaginationLoader ?  1: 0)
+        } else {
+            self.mainTableView.isScrollEnabled = false
+            return 1
+        }
+    }
 }
 
 // MARK: - Extension For TableView
@@ -183,23 +195,36 @@ extension UserAllRequestVC {
 extension UserAllRequestVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.viewModel.userRequestListing.endIndex + (self.viewModel.showPaginationLoader ?  1: 0)
+        self.returnCellCount()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == (viewModel.userRequestListing.endIndex) {
-            let cell = tableView.dequeueCell(with: LoaderCell.self)
-            return cell
-        } else {
-            let cell = tableView.dequeueCell(with: MyServiceTableCell.self, indexPath: indexPath)
-            cell.populateData(model: self.viewModel.userRequestListing[indexPath.row])
-            cell.downloadInvoiceBtnTapped = {[weak self] in
-                self?.showAlert(msg: LocalizedString.underDevelopment.localized)
-
+        if isUserLoggedin {
+            if indexPath.row == (viewModel.userRequestListing.endIndex) {
+                let cell = tableView.dequeueCell(with: LoaderCell.self)
+                return cell
+            } else {
+                let cell = tableView.dequeueCell(with: MyServiceTableCell.self, indexPath: indexPath)
+                cell.populateData(model: self.viewModel.userRequestListing[indexPath.row])
+                cell.downloadInvoiceBtnTapped = {[weak self] in
+                    self?.showAlert(msg: LocalizedString.underDevelopment.localized)
+                    
+                }
+                cell.needHelpBtnTapped = {[weak self] in
+                    self?.showAlert(msg: LocalizedString.underDevelopment.localized)
+                    
+                }
+                return cell
             }
-            cell.needHelpBtnTapped = {[weak self] in
-                self?.showAlert(msg: LocalizedString.underDevelopment.localized)
-
+        }else{
+            let cell = tableView.dequeueCell(with: ProfileGuestTableCell.self, indexPath: indexPath)
+            cell.loginBtnTapped = { [weak self] (sender) in
+                guard let `self` = self else { return }
+                AppRouter.goToLoginVC(vc: self)
+            }
+            cell.createAccountBtnTapped = { [weak self] (sender) in
+                guard let `self` = self else { return }
+                AppRouter.goToSignUpVC(vc: self)
             }
             return cell
         }
@@ -211,7 +236,9 @@ extension UserAllRequestVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         clearFilterOnTabChange = false
+        if isUserLoggedin {
         AppRouter.goToUserServiceRequestVC(vc: self,requestId:self.viewModel.userRequestListing[indexPath.row].id,serviceType:self.viewModel.userRequestListing[indexPath.row].requestType )
+        }
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

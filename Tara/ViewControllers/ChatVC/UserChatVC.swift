@@ -14,6 +14,7 @@ class UserChatVC: BaseVC {
     
     // MARK: - IBOutlets
     //===========================
+    @IBOutlet weak var topViewHConst: NSLayoutConstraint!
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var searchTextField: ATCTextField!
@@ -56,7 +57,10 @@ extension UserChatVC {
     private func initialSetup() {
         self.tableViewSetUp()
         self.textFieldSetUp()
+        self.topViewHConst.constant = isUserLoggedin ? 82.0 : 0.0
+        if isUserLoggedin {
         self.getInboxListing()
+        }
     }
     
     private func tableViewSetUp(){
@@ -64,6 +68,7 @@ extension UserChatVC {
         self.mainTableView.dataSource = self
         self.mainTableView.emptyDataSetSource = self
         self.mainTableView.emptyDataSetDelegate = self
+        self.mainTableView.registerCell(with: ProfileGuestTableCell.self)
         self.mainTableView.registerCell(with: InboxTableViewCell.self)
     }
     
@@ -82,7 +87,11 @@ extension UserChatVC {
     }
     
     private func getNoOfRowsInSection() -> Int {
-        return inboxListing.endIndex
+        if isUserLoggedin {
+            return inboxListing.endIndex
+        } else {
+            return 1
+        }
     }
     
     private func cellSelected(tableView: UITableView, indexPath: IndexPath) {
@@ -111,27 +120,40 @@ extension UserChatVC {
     }
     
     private func populateCells(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
-        let model = inboxListing[indexPath.row]
-        let messageCell = mainTableView.dequeueCell(with: InboxTableViewCell.self)
-        if model.chatType == ApiKey.single {
-            messageCell.userNameLbl.text = model.firstName
-            messageCell.lastMsgLbl.text = model.lastMessage
-            messageCell.userImgView.setImage_kf(imageString: model.receiverImgURL, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: true)
-            messageCell.timeLbl.text = model.timeStamp.dateValue().convertToTimeString()
-            messageCell.msgCountLbl.text = "\(model.unreadMessages)"
-            messageCell.msgCountView.isHidden = model.unreadMessages == 0
+        if isUserLoggedin {
+            let model = inboxListing[indexPath.row]
+            let messageCell = mainTableView.dequeueCell(with: InboxTableViewCell.self)
+            if model.chatType == ApiKey.single {
+                messageCell.userNameLbl.text = model.firstName
+                messageCell.lastMsgLbl.text = model.lastMessage
+                messageCell.userImgView.setImage_kf(imageString: model.receiverImgURL, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: true)
+                messageCell.timeLbl.text = model.timeStamp.dateValue().convertToTimeString()
+                messageCell.msgCountLbl.text = "\(model.unreadMessages)"
+                messageCell.msgCountView.isHidden = model.unreadMessages == 0
+            } else {
+                messageCell.userNameLbl.text = model.roomName
+                messageCell.lastMsgLbl.text = model.lastMessage
+                messageCell.userImgView.setImage_kf(imageString: model.receiverImgURL, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: true)
+                messageCell.timeLbl.text = model.timeStamp.dateValue().convertToTimeString()
+                messageCell.msgCountLbl.text = "\(model.unreadMessages)"
+                messageCell.msgCountView.isHidden = model.unreadMessages == 0
+            }
+            //            messageCell.onlineStatusView.isHidden = !model.isOnline
+            //            messageCell.senderTextLabel.text = model.lastMessage
+            //            setupLongPressGesture(view: messageCell.contentView, indexPath: indexPath)
+            return messageCell
         } else {
-            messageCell.userNameLbl.text = model.roomName
-            messageCell.lastMsgLbl.text = model.lastMessage
-            messageCell.userImgView.setImage_kf(imageString: model.receiverImgURL, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: true)
-            messageCell.timeLbl.text = model.timeStamp.dateValue().convertToTimeString()
-            messageCell.msgCountLbl.text = "\(model.unreadMessages)"
-            messageCell.msgCountView.isHidden = model.unreadMessages == 0
+            let cell = tableView.dequeueCell(with: ProfileGuestTableCell.self, indexPath: indexPath)
+            cell.loginBtnTapped = { [weak self] (sender) in
+                guard let `self` = self else { return }
+                AppRouter.goToLoginVC(vc: self)
+            }
+            cell.createAccountBtnTapped = { [weak self] (sender) in
+                guard let `self` = self else { return }
+                AppRouter.goToSignUpVC(vc: self)
+            }
+            return cell
         }
-        //            messageCell.onlineStatusView.isHidden = !model.isOnline
-        //            messageCell.senderTextLabel.text = model.lastMessage
-        //            setupLongPressGesture(view: messageCell.contentView, indexPath: indexPath)
-        return messageCell
     }
     
 }
@@ -161,7 +183,9 @@ extension UserChatVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if isUserLoggedin {
         cellSelected(tableView: tableView, indexPath: indexPath)
+        }
     }
 }
 

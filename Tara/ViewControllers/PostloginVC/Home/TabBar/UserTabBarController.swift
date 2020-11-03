@@ -128,13 +128,13 @@ extension UserTabBarController:UITabBarControllerDelegate{
     }
     
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-        guard let vc = (viewController as? UINavigationController)?.viewControllers.first else {return true}
-        if vc is UserAllRequestVC || vc is NotificationVC || vc is SettingVC{
-            if !isUserLoggedin {
-                ToastView.shared.showLongToast(self.view, msg: "To continue performing this action, please login")
-                return false
-            }
-        }
+//        guard let vc = (viewController as? UINavigationController)?.viewControllers.first else {return true}
+//        if vc is UserAllRequestVC || vc is NotificationVC || vc is SettingVC{
+//            if !isUserLoggedin {
+//                ToastView.shared.showLongToast(self.view, msg: "To continue performing this action, please login")
+//                return false
+//            }
+//        }
         return true
     }
 }

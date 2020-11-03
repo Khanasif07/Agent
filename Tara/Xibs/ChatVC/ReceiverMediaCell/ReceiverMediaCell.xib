@@ -23,7 +23,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oSr-V6-bvG">
-                        <rect key="frame" x="295.5" y="5" width="19.5" height="15.5"/>
+                        <rect key="frame" x="294.5" y="5" width="20.5" height="15.5"/>
                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
@@ -50,10 +50,10 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="a9o-GI-qUk">
-                                <rect key="frame" x="118" y="116" width="14.5" height="12.5"/>
+                                <rect key="frame" x="114" y="116.5" width="18.5" height="12"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--:--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="klW-r2-pNb">
-                                        <rect key="frame" x="0.0" y="0.0" width="14.5" height="12.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="18.5" height="12"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="10"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -82,7 +82,7 @@
                     <constraint firstItem="oSr-V6-bvG" firstAttribute="top" secondItem="h6i-9n-k4c" secondAttribute="top" constant="5" id="huh-I7-hQg"/>
                     <constraint firstItem="oSr-V6-bvG" firstAttribute="trailing" secondItem="pHP-ee-gmj" secondAttribute="trailing" id="qQv-PM-vhU"/>
                     <constraint firstItem="Wer-j6-1Yx" firstAttribute="top" secondItem="pHP-ee-gmj" secondAttribute="top" id="vsd-gd-yh3"/>
-                    <constraint firstItem="pHP-ee-gmj" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="h6i-9n-k4c" secondAttribute="leading" constant="42" id="x1I-Hi-Hin"/>
+                    <constraint firstItem="pHP-ee-gmj" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="h6i-9n-k4c" secondAttribute="leading" constant="53" id="x1I-Hi-Hin"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="HSu-HW-wJC"/>
