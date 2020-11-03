@@ -148,6 +148,7 @@ enum AppNetworking {
         guard let urlString = (endPoint + "?" + encodeParamaters(params: parameters)).addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) else{
             return
         }
+
         printDebug("============ \n Parameters are =======> \n\n \(parameters) \n")
         let uri = URL(string: urlString)
         
@@ -159,6 +160,7 @@ enum AppNetworking {
                 success: success,
                 failure: failure)
     }
+
     
     static func PUTWithQuery(endPoint : String,
                              parameters : [String : Any] = [:],

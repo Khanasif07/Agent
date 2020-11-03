@@ -219,4 +219,5 @@ enum EditProfileFrom {
     case home
     case garage
     case profile
+    case none
 }

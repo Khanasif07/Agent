@@ -917,7 +917,7 @@ extension WebServices{
     static func editNumberWithOtpApi(parameters: JSONDictionary,loader: Bool = false,
                                         success: @escaping SuccessResponse,
                                         failure: @escaping FailureResponse) {
-        self.commonGetAPI(parameters: parameters, endPoint: .verifyPhoneNumber, success: { (json) in
+        self.commonPutAPI(parameters: parameters, endPoint: .verifyPhoneNumber, success: { (json) in
             success(json)
         }) { (error) -> (Void) in
             failure(error)

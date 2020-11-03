@@ -70,6 +70,7 @@ extension GarageRegistrationVC {
     private func initialSetup() {
         self.tableViewSetUp()
         setupTextAndFont()
+        GarageProfileModel.shared = GarageProfileModel()
     }
     
     private func tableViewSetUp(){

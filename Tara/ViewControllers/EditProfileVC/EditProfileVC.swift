@@ -29,6 +29,7 @@ class EditProfileVC: BaseVC {
     
     // MARK: - Variables
     //===========================
+    
     var isEditProfileFrom : EditProfileFrom = .profile
     weak var delegate: EditProfileVCDelegate?
     var viewModel = EditProfileVM()
@@ -77,12 +78,17 @@ class EditProfileVC: BaseVC {
 }
 
 extension EditProfileVC: UITextFieldDelegate {
-   
+    
     private func initialSetup(){
         self.viewModel.delegate = self
         setupTextFont()
         userImage.round()
-        saveBtn.isEnabled = isEditProfileFrom == .home ? false : true
+        if isEditProfileFrom == .home || isEditProfileFrom == .garage {
+            saveBtn.isEnabled = false
+        }else {
+            saveBtn.isEnabled = true
+            
+        }
         setUpTextField()
         prefilledData()
     }
@@ -155,8 +161,9 @@ extension EditProfileVC: UITextFieldDelegate {
     }
     
     private func getDictForEditProfile() -> JSONDictionary{
+        let countryCode = self.viewModel.userModel.countryCode
         let dict : JSONDictionary = [ApiKey.phoneNo : self.viewModel.userModel.phoneNo,
-                                     ApiKey.countryCode : self.viewModel.userModel.countryCode,
+                                     ApiKey.countryCode : countryCode,
                                      ApiKey.name : self.viewModel.userModel.name,
                                      ApiKey.email:self.viewModel.userModel.email,
                                      ApiKey.image: self.viewModel.userModel.image]
