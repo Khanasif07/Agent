@@ -38,12 +38,12 @@ extension UIViewController {
     
     typealias ImagePickerDelegateController = (UIViewController & UIImagePickerControllerDelegate & UINavigationControllerDelegate)
     
-    func captureImage(delegate controller: ImagePickerDelegateController,
+    func captureImage(delegate controller: ImagePickerDelegateController,docPickDelegate: UIDocumentPickerDelegate? = nil,
                       photoGallery: Bool = true,
                       camera: Bool = true,
                       removedImagePicture : Bool = false,
                       mediaType : [String] = [kUTTypeImage as String],
-                      maxDuration: Double = 15) {
+                      maxDuration: Double = 15,isDocumentPick: Bool = false) {
         
         let chooseOptionText =  LocalizedString.chooseOptions.localized
         let alertController = UIAlertController(title: chooseOptionText, message: nil, preferredStyle: .actionSheet)
@@ -73,6 +73,16 @@ extension UIViewController {
                 }
             }
             alertController.addAction(alertActionRemove)
+        }
+        
+        if isDocumentPick {
+            let pickPdf = LocalizedString.choosePdf.localized
+            let alertActionPdf = UIAlertAction(title: pickPdf, style: .default) { action in
+                guard let docPickDelegate = docPickDelegate else {return}
+                self.pickDoc(delegate: docPickDelegate)
+                
+            }
+            alertController.addAction(alertActionPdf)
         }
         
         let cancelText =  LocalizedString.cancel.localized
@@ -188,6 +198,13 @@ extension UIViewController {
         @unknown default:
             break
         }
+    }
+    
+    func pickDoc(delegate controller: UIDocumentPickerDelegate, mediaType : [String] = [kUTTypeImage as String]){
+        let importMenu = UIDocumentPickerViewController(documentTypes: [String(kUTTypePDF)], in: .import)
+        importMenu.delegate = controller
+        importMenu.modalPresentationStyle = .formSheet
+        self.present(importMenu, animated: true, completion: nil)
     }
     
     private func alertPromptToAllowCameraAccessViaSetting(_ message: String) {
@@ -441,3 +458,5 @@ extension UIWindow {
         }
     }
 }
+
+

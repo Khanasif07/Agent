@@ -32,7 +32,7 @@ class UploadDocumentVC: BaseVC {
             }
         }
         
-        var imgArr: [String] {
+        var imgArr: [ImageModel] {
             switch self {
             case .commericalRegister:
                 return GarageProfileModel.shared.commercialRegister
@@ -134,7 +134,14 @@ extension UploadDocumentVC : UITableViewDelegate, UITableViewDataSource {
         cell.uploadDoc = {[weak self] in
             guard let `self` = self else { return }
             self.sectionType = Section.allCases[indexPath.row]
-            self.captureImage(delegate: self)
+            if let _ = self.sectionType.imgArr.firstIndex(where: { (model) -> Bool in
+                return model.mediaType != "pdf"
+            }) {
+                self.captureImage(delegate: self)
+            }else{
+                self.captureImage(delegate: self,docPickDelegate: self, isDocumentPick: true)
+                
+            }
         }
         return cell
     }
@@ -144,6 +151,7 @@ extension UploadDocumentVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func removeImg(indexPath: Int,isFirstImg : Bool) {
+      
         switch  Section.allCases[indexPath] {
             
         case .commericalRegister:
@@ -177,13 +185,13 @@ extension UploadDocumentVC: UIImagePickerControllerDelegate,UINavigationControll
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[.editedImage] as? UIImage
         CommonFunctions.showActivityLoader()
-        
+    
         image?.upload(progress: { (progress) in
             printDebug(progress)
         }, completion: { (response,error) in
             if let url = response {
                 CommonFunctions.hideActivityLoader()
-                self.saveImage(imgUrl: url)
+                self.saveImage(imgUrl: url, mediaType: "")
             }
             if let _ = error{
                 self.showAlert(msg: "Image upload failed")
@@ -196,16 +204,17 @@ extension UploadDocumentVC: UIImagePickerControllerDelegate,UINavigationControll
         picker.dismiss(animated: true, completion: nil)
     }
 
-    func saveImage(imgUrl: String) {
+    func saveImage(imgUrl: String, mediaType: String) {
+        let imgModel = ImageModel(url: imgUrl, mediaType: mediaType)
         switch sectionType {
         case .commericalRegister:
-            GarageProfileModel.shared.commercialRegister.append(imgUrl)
+            GarageProfileModel.shared.commercialRegister.append(imgModel)
         case .vatCertificate:
-            GarageProfileModel.shared.vatCertificate.append(imgUrl)
+            GarageProfileModel.shared.vatCertificate.append(imgModel)
         case .municipalityLicense:
-            GarageProfileModel.shared.municipalityLicense.append(imgUrl)
+            GarageProfileModel.shared.municipalityLicense.append(imgModel)
         case .ownerId:
-            GarageProfileModel.shared.ownerId.append(imgUrl)
+            GarageProfileModel.shared.ownerId.append(imgModel)
         }
         var status : Bool = false
         for section in Section.allCases  {
@@ -222,3 +231,29 @@ extension UploadDocumentVC: UIImagePickerControllerDelegate,UINavigationControll
         mainTableView.reloadData()
     }
 }
+
+extension UploadDocumentVC: UIDocumentPickerDelegate{
+    public func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        
+        guard let myURL = urls.first else {
+            return
+        }
+        CommonFunctions.showActivityLoader()
+        AWSS3Manager.shared.uploadOtherFile(fileUrl: myURL, conentType: "pdf", progress: { (progress) in
+            printDebug(progress)
+            
+        },  completion: { (response,error) in
+            if let url = response {
+
+                CommonFunctions.hideActivityLoader()
+                self.saveImage(imgUrl: url, mediaType: "pdf")
+            }
+            if let _ = error{
+                self.showAlert(msg: "doc upload failed")
+            }
+        })
+        print("import result : \(myURL)")
+    }
+}
+
+

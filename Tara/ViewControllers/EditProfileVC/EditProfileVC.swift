@@ -156,11 +156,10 @@ extension EditProfileVC: UITextFieldDelegate {
         var dict : JSONDictionary = [ApiKey.phoneNo : self.viewModel.userModel.phoneNo,
                                      ApiKey.countryCode : self.viewModel.userModel.countryCode,
                                      ApiKey.name : self.viewModel.userModel.name,
-                                     ApiKey.email:self.viewModel.userModel.email]
+                                     ApiKey.email:self.viewModel.userModel.email,
+                                     ApiKey.image: self.viewModel.userModel.image]
         
-        if !self.viewModel.userModel.image.isEmpty {
-           dict[ApiKey.image]  = self.viewModel.userModel.image
-        }
+           
         return dict
     }
 }

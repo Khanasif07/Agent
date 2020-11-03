@@ -62,6 +62,7 @@
 "imageUploadingFailed" = "Image uploading failed";
 "accountNumberAreNotSame" = "Account number doesn't match";
 "minTenDigitInAccountNumber" = "Minimum Ten Digit In Account Number";
+"choosePdf" = "Choose PDF";
 // MARK: - Validation Messages
 //==================================
 "newPassword" = "New Password";
