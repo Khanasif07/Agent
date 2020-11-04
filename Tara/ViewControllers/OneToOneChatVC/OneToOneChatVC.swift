@@ -131,6 +131,10 @@ class OneToOneChatVC: BaseVC {
         createMediaAlertSheet()
     }
 
+    @IBAction func addAudioMsgBtnTapped(_ sender: UIButton) {
+        
+    }
+    
     @IBAction func sendButtonTapped(_ sender: UIButton) {
         sendMessage()
     }
