@@ -924,4 +924,14 @@ extension WebServices{
         }
     }
 
+    //MARK:- Submit Rating Detail
+    static func postRatingData(parameters: JSONDictionary,loader: Bool = false,
+                                success: @escaping SuccessResponse,
+                                failure: @escaping FailureResponse) {
+          self.commonPostAPI(parameters: parameters, endPoint: .rating,loader: loader, success: { (json) in
+              success(json)
+          }) { (error) -> (Void) in
+              failure(error)
+          }
+      }
 }

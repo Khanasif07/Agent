@@ -253,6 +253,7 @@
 		A421DDD7252B1A610044E5E0 /* OtpPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A421DDD6252B1A610044E5E0 /* OtpPopUpVC.swift */; };
 		A43137DB2534752C00C20082 /* UserAllOfferVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43137DA2534752C00C20082 /* UserAllOfferVM.swift */; };
 		A43137DD253475B200C20082 /* UserBidModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43137DC253475B200C20082 /* UserBidModel.swift */; };
+		A4357955255298D4009EED61 /* RatingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4357954255298D4009EED61 /* RatingVM.swift */; };
 		A439263A2547FF9D0089E0EB /* UserNotificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43926392547FF9D0089E0EB /* UserNotificationVC.swift */; };
 		A439263D254801810089E0EB /* UserNotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A439263B254801810089E0EB /* UserNotificationTableViewCell.swift */; };
 		A439263E254801810089E0EB /* UserNotificationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A439263C254801810089E0EB /* UserNotificationTableViewCell.xib */; };
@@ -315,6 +316,7 @@
 		A4CC3255252CB3F400669F39 /* TyreRequestDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC3253252CB3F400669F39 /* TyreRequestDetailTableViewCell.swift */; };
 		A4CC3256252CB3F400669F39 /* TyreRequestDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4CC3254252CB3F400669F39 /* TyreRequestDetailTableViewCell.xib */; };
 		A4CC3258252CBCA200669F39 /* ASDynamicCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC3257252CBCA200669F39 /* ASDynamicCollectionView.swift */; };
+		A4DA01D82552C0E000AC60DB /* SROtpPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DA01D72552C0E000AC60DB /* SROtpPopupVC.swift */; };
 		A4DCEE09252DED9C002EB32F /* AllRequestVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DCEE08252DED9C002EB32F /* AllRequestVM.swift */; };
 		A4DCEE0B252DF405002EB32F /* GarageRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DCEE0A252DF405002EB32F /* GarageRequestModel.swift */; };
 		A4DCEE0D252E0D34002EB32F /* GarageServiceRequestVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DCEE0C252E0D34002EB32F /* GarageServiceRequestVM.swift */; };
@@ -577,6 +579,7 @@
 		A421DDD6252B1A610044E5E0 /* OtpPopUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpPopUpVC.swift; sourceTree = "<group>"; };
 		A43137DA2534752C00C20082 /* UserAllOfferVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAllOfferVM.swift; sourceTree = "<group>"; };
 		A43137DC253475B200C20082 /* UserBidModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBidModel.swift; sourceTree = "<group>"; };
+		A4357954255298D4009EED61 /* RatingVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingVM.swift; sourceTree = "<group>"; };
 		A4363969254AA9D200FE1AE1 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A43926392547FF9D0089E0EB /* UserNotificationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationVC.swift; sourceTree = "<group>"; };
 		A439263B254801810089E0EB /* UserNotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationTableViewCell.swift; sourceTree = "<group>"; };
@@ -641,6 +644,7 @@
 		A4CC3253252CB3F400669F39 /* TyreRequestDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TyreRequestDetailTableViewCell.swift; sourceTree = "<group>"; };
 		A4CC3254252CB3F400669F39 /* TyreRequestDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TyreRequestDetailTableViewCell.xib; sourceTree = "<group>"; };
 		A4CC3257252CBCA200669F39 /* ASDynamicCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASDynamicCollectionView.swift; sourceTree = "<group>"; };
+		A4DA01D72552C0E000AC60DB /* SROtpPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SROtpPopupVC.swift; sourceTree = "<group>"; };
 		A4DCEE08252DED9C002EB32F /* AllRequestVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRequestVM.swift; sourceTree = "<group>"; };
 		A4DCEE0A252DF405002EB32F /* GarageRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageRequestModel.swift; sourceTree = "<group>"; };
 		A4DCEE0C252E0D34002EB32F /* GarageServiceRequestVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageServiceRequestVM.swift; sourceTree = "<group>"; };
@@ -1236,8 +1240,7 @@
 				8481FA86250107B600AB6EFB /* PreloginVC */,
 				A41AAB4C2530A0160061887F /* OfferFilterVC */,
 				A439263F2548019E0089E0EB /* UserNotificationVC */,
-				A4DEB8672552865700BD7D2E /* ReviewTableViewCell.swift */,
-				A4DEB8682552865700BD7D2E /* ReviewTableViewCell.xib */,
+				A4357952255298A4009EED61 /* ReViewListingVC */,
 			);
 			path = Xibs;
 			sourceTree = "<group>";
@@ -1315,7 +1318,8 @@
 				A47EB1DA254D4A050044DD4D /* ChangePasswordVC */,
 				A47EB1DB254D4A120044DD4D /* ChangeLanguageVC */,
 				A47EB1D8254D42040044DD4D /* WebViewController.swift */,
-				A4DEB8652552846500BD7D2E /* ReViewListingVC.swift */,
+				A4357953255298BA009EED61 /* ReViewListingVC */,
+				A4DA01D72552C0E000AC60DB /* SROtpPopupVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1776,6 +1780,23 @@
 			path = SRFilterVC;
 			sourceTree = "<group>";
 		};
+		A4357952255298A4009EED61 /* ReViewListingVC */ = {
+			isa = PBXGroup;
+			children = (
+				A4DEB8672552865700BD7D2E /* ReviewTableViewCell.swift */,
+				A4DEB8682552865700BD7D2E /* ReviewTableViewCell.xib */,
+			);
+			path = ReViewListingVC;
+			sourceTree = "<group>";
+		};
+		A4357953255298BA009EED61 /* ReViewListingVC */ = {
+			isa = PBXGroup;
+			children = (
+				A4DEB8652552846500BD7D2E /* ReViewListingVC.swift */,
+			);
+			path = ReViewListingVC;
+			sourceTree = "<group>";
+		};
 		A43926342547FC400089E0EB /* OfferFilterVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -1788,6 +1809,7 @@
 			isa = PBXGroup;
 			children = (
 				A41AAB492530742D0061887F /* RatingVC.swift */,
+				A4357954255298D4009EED61 /* RatingVM.swift */,
 			);
 			path = RatingVC;
 			sourceTree = "<group>";
@@ -2311,6 +2333,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4A6DEE7251A123800564020 /* GarageHomeVC.swift in Sources */,
+				A4357955255298D4009EED61 /* RatingVM.swift in Sources */,
 				A4098E78251228050015B0BD /* FacilityTableHeaderView.swift in Sources */,
 				8481FA592500BF2900AB6EFB /* UIViewExtension.swift in Sources */,
 				84594802252AFE0900C0B249 /* GarageAllRequestVC.swift in Sources */,
@@ -2458,6 +2481,7 @@
 				843C8ECC2508C3A400515F2E /* ProfileSettingVC.swift in Sources */,
 				8481FA4F2500BED600AB6EFB /* UIImageExtension.swift in Sources */,
 				A439263A2547FF9D0089E0EB /* UserNotificationVC.swift in Sources */,
+				A4DA01D82552C0E000AC60DB /* SROtpPopupVC.swift in Sources */,
 				84FF6E97251C77EF0000E2AD /* LineDashedView.swift in Sources */,
 				843F004625060725001A78EC /* CountryVC.swift in Sources */,
 				84CAEFBB2550F59C00F3A329 /* DayValueCell.swift in Sources */,

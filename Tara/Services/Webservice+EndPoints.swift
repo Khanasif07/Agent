@@ -67,6 +67,7 @@ extension WebServices {
         case editProfile = "user/profile"
         case changePassword = "user/changePassword"
         case verifyPhoneNumber = "user/verifyPhoneNumber"
+        case rating = "user/rating"
         
         var path : String {
             let url = baseUrl

@@ -57,7 +57,7 @@ enum AppRouter {
     }
     
     static func goToTestingVC(){
-        let scene = ReViewListingVC.instantiate(fromAppStoryboard: .GarageRequest)
+        let scene = RatingVC.instantiate(fromAppStoryboard: .GarageRequest)
         setAsWindowRoot(scene)
     }
     
@@ -423,6 +423,14 @@ enum AppRouter {
     static func goToReViewListingVC(vc: UIViewController){
         let scene = ReViewListingVC.instantiate(fromAppStoryboard: .GarageRequest)
         vc.navigationController?.pushViewController(scene, animated: true)
+    }
+    
+    
+    static func goToSROtpPopupVC(vc: UIViewController){
+           let scene = SROtpPopupVC.instantiate(fromAppStoryboard: .GarageRequest)
+           vc.modalPresentationStyle = .fullScreen
+           vc.present(scene, animated: true, completion: nil)
+        
     }
     
     static func goToWebVC(vc: UIViewController, screenType : WebViewController.WebViewType) {
