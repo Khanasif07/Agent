@@ -77,9 +77,10 @@ class DocumentTableViewCell: UITableViewCell {
             docImgView.isHidden = false
             cancelBtn.isHidden = false
             
-            if section.imgArr[0].mediaType == "pdf" {
+            if section.imgArr[0].type == "pdf" {
                 docImgView.contentMode = .scaleToFill
                 uploadImgView.isHidden = true
+                uploadCancelBtn.isHidden = true
                 docImgView.image = #imageLiteral(resourceName: "icPdf")
             }else {
                 docImgView.contentMode = .scaleToFill

@@ -29,6 +29,8 @@ class EditProfileVC: BaseVC {
     
     // MARK: - Variables
     //===========================
+    
+    var isEditProfileFrom : EditProfileFrom = .profile
     weak var delegate: EditProfileVCDelegate?
     var viewModel = EditProfileVM()
     var placeHolderArr : [String] = [LocalizedString.enterYourName.localized,
@@ -76,12 +78,17 @@ class EditProfileVC: BaseVC {
 }
 
 extension EditProfileVC: UITextFieldDelegate {
-   
+    
     private func initialSetup(){
         self.viewModel.delegate = self
         setupTextFont()
         userImage.round()
-        saveBtn.isEnabled = true
+        if isEditProfileFrom == .home || isEditProfileFrom == .garage {
+            saveBtn.isEnabled = false
+        }else {
+            saveBtn.isEnabled = true
+            
+        }
         setUpTextField()
         prefilledData()
     }
@@ -110,6 +117,7 @@ extension EditProfileVC: UITextFieldDelegate {
         self.nameTextField.text = self.viewModel.userModel.name
         self.emailTextField.text = self.viewModel.userModel.email
         self.mobileNoTextField.text = self.viewModel.userModel.phoneNo
+        self.viewModel.userModel.countryCode = self.viewModel.userModel.countryCode.isEmpty ? "+91" : self.viewModel.userModel.countryCode
         countryCodeLbl.text = self.viewModel.userModel.countryCode
         self.userImage.setImage_kf(imageString: self.viewModel.userModel.image, placeHolderImage:#imageLiteral(resourceName: "placeHolder"), loader: false)
     }
@@ -153,12 +161,12 @@ extension EditProfileVC: UITextFieldDelegate {
     }
     
     private func getDictForEditProfile() -> JSONDictionary{
-        var dict : JSONDictionary = [ApiKey.phoneNo : self.viewModel.userModel.phoneNo,
-                                     ApiKey.countryCode : self.viewModel.userModel.countryCode,
+        let countryCode = self.viewModel.userModel.countryCode
+        let dict : JSONDictionary = [ApiKey.phoneNo : self.viewModel.userModel.phoneNo,
+                                     ApiKey.countryCode : countryCode,
                                      ApiKey.name : self.viewModel.userModel.name,
                                      ApiKey.email:self.viewModel.userModel.email,
                                      ApiKey.image: self.viewModel.userModel.image]
-        
            
         return dict
     }
@@ -179,7 +187,7 @@ extension EditProfileVC : EditProfileVMDelegate {
     func getEditProfileVMSuccess(msg: String,statusCode : Int) {
         //only phone number updated
         if statusCode == 250 {
-            AppRouter.goToOtpVerificationVC(vc: self, phoneNo: self.viewModel.userModel.phoneNo, countryCode: self.viewModel.userModel.countryCode,isComeFromEditProfile: true)
+            AppRouter.goToOtpVerificationVC(vc: self, phoneNo: self.viewModel.userModel.phoneNo, countryCode: self.viewModel.userModel.countryCode,isComeFromEditProfile: true,isEditProfileFrom: isEditProfileFrom)
         }
         
         //only email updated
@@ -190,7 +198,7 @@ extension EditProfileVC : EditProfileVMDelegate {
             
         //email phone number updated
         else if statusCode == 252 {
-            AppRouter.goToOtpVerificationVC(vc: self, phoneNo: self.viewModel.userModel.phoneNo, countryCode: self.viewModel.userModel.countryCode,isComeFromEditProfile: true)
+            AppRouter.goToOtpVerificationVC(vc: self, phoneNo: self.viewModel.userModel.phoneNo, countryCode: self.viewModel.userModel.countryCode,isComeFromEditProfile: true,isEditProfileFrom: isEditProfileFrom)
             
         }
             

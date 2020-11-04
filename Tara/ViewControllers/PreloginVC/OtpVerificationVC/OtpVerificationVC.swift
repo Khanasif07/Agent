@@ -25,6 +25,7 @@ class OtpVerificationVC: BaseVC {
     //===========================
     var otpArray = [String](repeating: "", count: 4)
     var viewModel = OtpVerificationVM()
+    var isEditProfileFrom : EditProfileFrom = .none
 
     // MARK: - Lifecycle
     //===========================
@@ -62,7 +63,7 @@ class OtpVerificationVC: BaseVC {
         self.view.endEditing(true)
         if self.viewModel.isComeForVerifyPassword{
             self.viewModel.verifyForgotPasswordOTP(dict: getDict())
-        } else if self.viewModel.isComeFromEditProfile{
+        } else if isEditProfileFrom == .profile{
             self.viewModel.verifyEditNumberWithOTP(dict: getDict())
         }
         else {
@@ -144,10 +145,12 @@ extension OtpVerificationVC {
     }
     
     private func getDict() -> JSONDictionary {
-        if self.viewModel.isComeForVerifyPassword{
+        if self.viewModel.isComeForVerifyPassword || isEditProfileFrom == .profile{
             let dict : JSONDictionary = [ApiKey.phoneNo : self.viewModel.phoneNo , ApiKey.countryCode : self.viewModel.countryCode,ApiKey.otp: self.otpArray.joined()]
             return dict
-        }else{
+        }
+        else{
+
             var dict : JSONDictionary = [ApiKey.phoneNo : self.viewModel.phoneNo , ApiKey.countryCode : self.viewModel.countryCode,ApiKey.otp: self.otpArray.joined(), ApiKey.device : [ApiKey.platform : "ios",ApiKey.token : DeviceDetail.deviceToken].toJSONString() ?? [:]]
             if !TyreRequestModel.shared.quantity.isEmpty{
                 dict[ApiKey.makeUser] = true
@@ -263,11 +266,28 @@ extension OtpVerificationVC: OtpVerificationVMDelegate{
         AppRouter.showSuccessPopUp(vc: self,title: "OTP Verified",desc: "You have successfully verified your mobile no.")
         }
             
-        else if self.viewModel.isComeFromEditProfile{
+        else if isEditProfileFrom == .home {
+            for controller in self.navigationController!.viewControllers as Array {
+                if controller.isKind(of: HomeVC.self) {
+                    self.navigationController?.popToViewController(controller, animated: true)
+                    break
+                }
+            }
+        }
+        else if isEditProfileFrom == .profile {
             for controller in self.navigationController!.viewControllers as Array {
                 if controller.isKind(of: ProfileVC.self) {
                     guard let vc = controller as? ProfileVC else {return}
                     vc.hitProfileApi()
+                    self.navigationController?.popToViewController(controller, animated: true)
+                    break
+                }
+            }
+        }
+            
+        else if isEditProfileFrom == .garage {
+            for controller in self.navigationController!.viewControllers as Array {
+                if controller.isKind(of: ProfileSettingVC.self) {
                     self.navigationController?.popToViewController(controller, animated: true)
                     break
                 }

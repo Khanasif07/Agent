@@ -87,6 +87,12 @@ extension ProfileSettingVC {
                     
                     cell.switchProfileToGarage = {  [weak self]  in
                         guard let `self` = self else { return }
+                        if !UserModel.main.phoneNoAdded {
+                            self.showAlertWithAction(title: "", msg: "To continue performing this action, please complete your profile", cancelTitle: "Cancel", actionTitle: LocalizedString.ok.localized, actioncompletion: {
+                                AppRouter.goToEditProfileVC(vc: self, model: UserModel.main, isEditProfileFrom: .garage)
+                            })
+                            return
+                        }
                         self.hitGarageSwitchApi()
                     }
                     cell.changeLanguageTapped = { [weak self]  in
@@ -264,5 +270,14 @@ extension ProfileSettingVC : GarageRegistrationVMDelegate {
     
     func switchGarageRegistrationFailure(msg: String){
         CommonFunctions.showToastWithMessage(msg)
+    }
+}
+
+// MARK: - EditProfileVCDelegate
+//===============================
+
+extension ProfileSettingVC: EditProfileVCDelegate {
+    func editProfileSuccess(){
+        
     }
 }

@@ -145,6 +145,14 @@ extension HomeVC : UICollectionViewDelegate, UICollectionViewDataSource,UICollec
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         TyreRequestModel.shared = TyreRequestModel()
+        if isUserLoggedin {
+            if !UserModel.main.phoneNoAdded {
+                self.showAlertWithAction(title: "", msg: "To continue performing this action, please complete your profile", cancelTitle: "Cancel", actionTitle: LocalizedString.ok.localized, actioncompletion: {
+                    AppRouter.goToEditProfileVC(vc: self, model: UserModel.main, isEditProfileFrom: .home)
+                })
+                return
+            }
+        }
         switch dataArray[indexPath.row].name {
         case LocalizedString.tyre.localized:
             categoryType = .tyres
@@ -159,7 +167,6 @@ extension HomeVC : UICollectionViewDelegate, UICollectionViewDataSource,UICollec
             showAlert(msg: "Under Development")
         }
     }
-    
 }
 
 // MARK: - Extension For LocationPopUpVMDelegate
@@ -193,5 +200,13 @@ extension HomeVC: SuccessPopupVCDelegate {
             TyreRequestModel.shared = TyreRequestModel()
             self.navigationController?.popToViewControllerOfType(classForCoder: HomeVC.self)
         }
+    }
+}
+// MARK: - EditProfileVCDelegate
+//===============================
+
+extension HomeVC: EditProfileVCDelegate {
+    func editProfileSuccess(){
+        
     }
 }

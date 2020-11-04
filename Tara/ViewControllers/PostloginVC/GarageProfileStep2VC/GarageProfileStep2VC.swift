@@ -339,7 +339,7 @@ extension GarageProfileStep2VC: UIImagePickerControllerDelegate, UINavigationCon
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[.editedImage] as? UIImage
         hasImageUploaded = false
-        GarageProfileModel.shared.serviceCenterImages.append(ImageModel(url: "", mediaType: "image", image: image ?? UIImage()))
+        GarageProfileModel.shared.serviceCenterImages.append(ImageModel(url: "", type: "image", image: image ?? UIImage()))
         self.reloadCollectionViewWithUIUpdation()
         image?.upload(progress: { (progress) in
             printDebug(progress)

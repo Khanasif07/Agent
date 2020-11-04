@@ -135,7 +135,7 @@ extension UploadDocumentVC : UITableViewDelegate, UITableViewDataSource {
             guard let `self` = self else { return }
             self.sectionType = Section.allCases[indexPath.row]
             if let _ = self.sectionType.imgArr.firstIndex(where: { (model) -> Bool in
-                return model.mediaType != "pdf"
+                return model.type != "pdf"
             }) {
                 self.captureImage(delegate: self)
             }else{
@@ -191,7 +191,7 @@ extension UploadDocumentVC: UIImagePickerControllerDelegate,UINavigationControll
         }, completion: { (response,error) in
             if let url = response {
                 CommonFunctions.hideActivityLoader()
-                self.saveImage(imgUrl: url, mediaType: "")
+                self.saveImage(imgUrl: url, type: "image")
             }
             if let _ = error{
                 self.showAlert(msg: "Image upload failed")
@@ -204,8 +204,8 @@ extension UploadDocumentVC: UIImagePickerControllerDelegate,UINavigationControll
         picker.dismiss(animated: true, completion: nil)
     }
 
-    func saveImage(imgUrl: String, mediaType: String) {
-        let imgModel = ImageModel(url: imgUrl, mediaType: mediaType)
+    func saveImage(imgUrl: String, type: String) {
+        let imgModel = ImageModel(url: imgUrl, type: type)
         switch sectionType {
         case .commericalRegister:
             GarageProfileModel.shared.commercialRegister.append(imgModel)
@@ -246,7 +246,7 @@ extension UploadDocumentVC: UIDocumentPickerDelegate{
             if let url = response {
 
                 CommonFunctions.hideActivityLoader()
-                self.saveImage(imgUrl: url, mediaType: "pdf")
+                self.saveImage(imgUrl: url, type: "pdf")
             }
             if let _ = error{
                 self.showAlert(msg: "doc upload failed")

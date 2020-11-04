@@ -21,7 +21,7 @@ class EditProfileVM {
     //=================================
     weak var delegate: EditProfileVMDelegate?
     var userModel = UserModel()
-    
+
     // MARK: Functions
     //=================================
     func postEditProfileData(params: JSONDictionary,loader: Bool = false) {

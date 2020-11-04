@@ -11,24 +11,24 @@ import Foundation
 struct ImageModel {
     
     var url : String
-    var mediaType : String = ""
+    var type : String = ""
     var image = UIImage()
     
-    init(url: String, mediaType: String,image: UIImage = UIImage()) {
+    init(url: String, type: String,image: UIImage = UIImage()) {
         self.url = url
-        self.mediaType = mediaType
+        self.type = type
         self.image = image
     }
     
     init(){
         self.url = ""
-        self.mediaType = ""
+        self.type = ""
         self.image = UIImage()
     }
     
     init(withJSON json : JSON){
         self.url = json[ApiKey.url].stringValue.isEmpty ? json.stringValue : json[ApiKey.url].stringValue
-        self.mediaType = json[ApiKey.mediaType].stringValue
+        self.type = json[ApiKey.mediaType].stringValue
         
     }
     
@@ -36,7 +36,7 @@ struct ImageModel {
         
         var details = [String:Any]()
         details[ApiKey.url] = self.url
-        details[ApiKey.mediaType] = self.mediaType
+        details[ApiKey.type] = self.type
         return details
         
     }
