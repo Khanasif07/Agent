@@ -174,4 +174,9 @@ extension UIImage {
     func upload(progress: progressBlock?, completion: completionBlock?) {
         AWSS3Manager.shared.uploadImage(image: self, progress: progress, completion: completion)
     }
+    
+    func uploadAudioFile(audioUrl: URL,progress: progressBlock?, completion: completionBlock?) {
+        AWSS3Manager.shared.uploadAudio(audioUrl: audioUrl, progress: progress, completion: completion)
+    }
 }
+
