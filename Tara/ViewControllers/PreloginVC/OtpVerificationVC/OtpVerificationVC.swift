@@ -63,7 +63,7 @@ class OtpVerificationVC: BaseVC {
         self.view.endEditing(true)
         if self.viewModel.isComeForVerifyPassword{
             self.viewModel.verifyForgotPasswordOTP(dict: getDict())
-        } else if isEditProfileFrom == .profile{
+        } else if isEditProfileFrom == .profile || isEditProfileFrom == .home || isEditProfileFrom == .garage{
             self.viewModel.verifyEditNumberWithOTP(dict: getDict())
         }
         else {
@@ -145,7 +145,7 @@ extension OtpVerificationVC {
     }
     
     private func getDict() -> JSONDictionary {
-        if self.viewModel.isComeForVerifyPassword || isEditProfileFrom == .profile{
+        if self.viewModel.isComeForVerifyPassword || isEditProfileFrom == .profile || isEditProfileFrom == .home || isEditProfileFrom == .garage{
             let dict : JSONDictionary = [ApiKey.phoneNo : self.viewModel.phoneNo , ApiKey.countryCode : self.viewModel.countryCode,ApiKey.otp: self.otpArray.joined()]
             return dict
         }
@@ -269,6 +269,8 @@ extension OtpVerificationVC: OtpVerificationVMDelegate{
         else if isEditProfileFrom == .home {
             for controller in self.navigationController!.viewControllers as Array {
                 if controller.isKind(of: HomeVC.self) {
+                    guard let vc = controller as? HomeVC else {return}
+                    vc.isComeFromGuestUser()
                     self.navigationController?.popToViewController(controller, animated: true)
                     break
                 }

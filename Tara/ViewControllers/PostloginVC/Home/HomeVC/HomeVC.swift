@@ -94,8 +94,14 @@ extension HomeVC {
         mainCollView.registerCell(with: HomeCollectionCell.self)
     }
     
-    private func isComeFromGuestUser(){
+    public func isComeFromGuestUser(){
         if !TyreRequestModel.shared.quantity.isEmpty {
+            if !UserModel.main.phoneNoAdded && isUserLoggedin {
+                self.showAlertWithAction(title: "", msg: "To continue performing this action, please complete your profile", cancelTitle: "Cancel", actionTitle: LocalizedString.ok.localized, actioncompletion: {
+                    AppRouter.goToEditProfileVC(vc: self, model: UserModel.main, isEditProfileFrom: .home)
+                })
+                return
+            }
             switch categoryType {
             case .tyres:
                 self.viewModel.postTyreRequest(dict: TyreRequestModel.shared.getTyreRequestDict())

@@ -26,6 +26,8 @@ enum AppRouter {
     // MARK: - Show Landing Screen
     //===========================
     static func checkAppInitializationFlow() {
+        goToTestingVC()
+        return
         if isUserLoggedin {
             SocketIOManager.shared.establishConnection()
             if !isPhoneNoVerified{
@@ -55,7 +57,7 @@ enum AppRouter {
     }
     
     static func goToTestingVC(){
-        let scene = ChangeLanguageVC.instantiate(fromAppStoryboard: .PostLogin)
+        let scene = ReViewListingVC.instantiate(fromAppStoryboard: .GarageRequest)
         setAsWindowRoot(scene)
     }
     
@@ -418,11 +420,17 @@ enum AppRouter {
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
+    static func goToReViewListingVC(vc: UIViewController){
+        let scene = ReViewListingVC.instantiate(fromAppStoryboard: .GarageRequest)
+        vc.navigationController?.pushViewController(scene, animated: true)
+    }
+    
     static func goToWebVC(vc: UIViewController, screenType : WebViewController.WebViewType) {
         let scene = WebViewController.instantiate(fromAppStoryboard: .PostLogin)
         scene.webViewType = screenType
         vc.navigationController?.pushViewController(scene, animated: true)
     }
+    
     static func goToFacilityVC(vc: UIViewController,data: [FacilityModel], brandAndServiceArr: [String]){
         let scene = FacilityVC.instantiate(fromAppStoryboard: .Garage)
         scene.delegate = vc as? FacilitiesDelegate
