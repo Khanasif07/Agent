@@ -32,6 +32,7 @@ class ServiceStatusTableViewCell: UITableViewCell {
     @IBOutlet weak var amountPaidlbl: UILabel!
     @IBOutlet weak var paidLbl: UILabel!
     @IBOutlet weak var amountLbl: UILabel!
+    @IBOutlet weak var carRecievedStackView: UIStackView!
 
 
     //MARK:-Variables
@@ -80,6 +81,16 @@ class ServiceStatusTableViewCell: UITableViewCell {
     }
     
     @IBAction func takenBtnAction(_ sender : UIButton) {
+        
+    }
+    
+    
+    @IBAction func yesBtnAction(_ sender : UIButton) {
+        
+    }
+    
+    
+    @IBAction func noBtnAction(_ sender : UIButton) {
         
     }
 }

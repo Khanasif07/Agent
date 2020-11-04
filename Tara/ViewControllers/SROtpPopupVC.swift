@@ -21,8 +21,6 @@ class SROtpPopupVC: BaseVC {
     
     // MARK: - Variables
     //===========================
-    var viewModel = OtpVerificationVM()
-    
     
     // MARK: - Lifecycle
     //===========================
