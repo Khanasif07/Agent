@@ -154,7 +154,7 @@
                                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                             </textView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type a message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g5A-s0-3Oh">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type your message here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g5A-s0-3Oh">
                                                                 <rect key="frame" x="26" y="20.5" width="220" height="19"/>
                                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
                                                                 <color key="textColor" red="0.098023496569999993" green="0.098048247399999996" blue="0.098021931950000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -167,7 +167,10 @@
                                                                     <constraint firstAttribute="width" secondItem="UCy-co-Tgw" secondAttribute="height" multiplier="1:1" id="psU-Ye-VR9"/>
                                                                     <constraint firstAttribute="width" constant="36" id="z7f-zY-7pv"/>
                                                                 </constraints>
-                                                                <state key="normal" image="group3"/>
+                                                                <state key="normal" image="audioMsg"/>
+                                                                <connections>
+                                                                    <action selector="addAudioMsgBtnTapped:" destination="zj2-p6-7pB" eventType="touchUpInside" id="ezQ-PC-jzS"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MNE-cS-Qcn">
                                                                 <rect key="frame" x="292" y="11" width="36" height="36"/>
@@ -327,6 +330,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="audioMsg" width="33" height="33"/>
         <image name="group3" width="32" height="32"/>
         <image name="group3603" width="30" height="30"/>
         <image name="icBackward" width="36" height="34"/>

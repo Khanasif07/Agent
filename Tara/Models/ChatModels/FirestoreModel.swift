@@ -218,5 +218,5 @@ struct timeStatus {
 enum MessageType: String {
     case text = "text"
     case image = "image"
-    case video = "video"
+    case audio = "audio"
 }

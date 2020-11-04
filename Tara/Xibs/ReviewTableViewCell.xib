@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="NunitoSans-Bold.ttf">
+            <string>NunitoSans-Bold</string>
+        </array>
         <array key="NunitoSans-SemiBold.ttf">
             <string>NunitoSans-SemiBold</string>
         </array>
@@ -26,13 +29,13 @@
                         <rect key="frame" x="16" y="8" width="343" height="215"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aditya Mishra" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fk4-7B-dZr">
-                                <rect key="frame" x="8" y="8" width="104" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="8" y="8" width="109" height="23.5"/>
+                                <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="raf-gD-ghU">
-                                <rect key="frame" x="8" y="36.5" width="55" height="24"/>
+                                <rect key="frame" x="8" y="39.5" width="56" height="24"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="group3922" translatesAutoresizingMaskIntoConstraints="NO" id="cjV-t1-yjh">
                                         <rect key="frame" x="5" y="4" width="16" height="16"/>
@@ -43,7 +46,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3.5/5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F50-vB-qHJ">
-                                        <rect key="frame" x="23.5" y="5" width="27.5" height="14"/>
+                                        <rect key="frame" x="23.5" y="4" width="28.5" height="16.5"/>
                                         <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="12"/>
                                         <color key="textColor" red="0.92156862750000001" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -60,26 +63,26 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Mne-C2-rza">
-                                <rect key="frame" x="174" y="8" width="161" height="41"/>
+                                <rect key="frame" x="213" y="8" width="122" height="36"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Service: Tyre Service" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5P9-b9-VPr">
-                                        <rect key="frame" x="0.0" y="0.0" width="161" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="122" height="18"/>
+                                        <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="13"/>
                                         <color key="textColor" red="0.32941177487373352" green="0.33725491166114807" blue="0.36078432202339172" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aditya Mishra" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OCb-Dj-A93">
-                                        <rect key="frame" x="0.0" y="20.5" width="161" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="0.0" y="18" width="122" height="18"/>
+                                        <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="13"/>
                                         <color key="textColor" red="0.32941177487373352" green="0.33725491166114807" blue="0.36078432202339172" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1mB-U1-r2S">
-                                <rect key="frame" x="8" y="76.5" width="315" height="47"/>
+                                <rect key="frame" x="8" y="70" width="315" height="53.5"/>
                                 <string key="text">There was a great experience here with this garage , The services they provide is amazing and I really appriciate there efforts, Good Job</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="13"/>
                                 <color key="textColor" red="0.32941176470588235" green="0.33725490196078434" blue="0.36078431372549019" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -101,8 +104,8 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="1mB-U1-r2S" firstAttribute="top" secondItem="raf-gD-ghU" secondAttribute="bottom" constant="16" id="0OP-8V-8xi"/>
                             <constraint firstItem="raf-gD-ghU" firstAttribute="top" secondItem="fk4-7B-dZr" secondAttribute="bottom" constant="8" id="5sw-E5-fw0"/>
+                            <constraint firstItem="1mB-U1-r2S" firstAttribute="top" secondItem="raf-gD-ghU" secondAttribute="bottom" constant="6.5" id="AnM-dy-agZ"/>
                             <constraint firstItem="fk4-7B-dZr" firstAttribute="leading" secondItem="Kcs-k1-msm" secondAttribute="leading" constant="8" id="Bte-sd-Agt"/>
                             <constraint firstItem="fk4-7B-dZr" firstAttribute="top" secondItem="Kcs-k1-msm" secondAttribute="top" constant="8" id="IJ6-ZW-zCo"/>
                             <constraint firstItem="TFC-xQ-C6e" firstAttribute="top" secondItem="1mB-U1-r2S" secondAttribute="bottom" constant="22" id="LBD-fM-jqt"/>
@@ -143,7 +146,7 @@
                 <outlet property="serviceTypeLbl" destination="5P9-b9-VPr" id="dFE-Ip-KtY"/>
                 <outlet property="userNameLbl" destination="fk4-7B-dZr" id="BS8-gH-Fo4"/>
             </connections>
-            <point key="canvasLocation" x="139" y="102"/>
+            <point key="canvasLocation" x="138.40579710144928" y="101.45089285714285"/>
         </tableViewCell>
     </objects>
     <resources>

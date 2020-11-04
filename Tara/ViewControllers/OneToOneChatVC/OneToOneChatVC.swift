@@ -56,6 +56,10 @@ class OneToOneChatVC: BaseVC {
     }
     var selectedIndexPaths: [IndexPath] = []
     var listeners = [ListenerRegistration]()
+    //Audio messages
+    var recordingSession: AVAudioSession!
+    var audioRecorder: AVAudioRecorder!
+    var audioPlayer:AVAudioPlayer!
 
     //MARK: OUTLETS
     //=============
@@ -131,6 +135,14 @@ class OneToOneChatVC: BaseVC {
         createMediaAlertSheet()
     }
 
+    @IBAction func addAudioMsgBtnTapped(_ sender: UIButton) {
+        if audioRecorder == nil {
+            startRecording()
+        } else {
+            finishRecording(success: true)
+        }
+    }
+    
     @IBAction func sendButtonTapped(_ sender: UIButton) {
         sendMessage()
     }
@@ -152,6 +164,7 @@ extension OneToOneChatVC {
         setupTextView()
         fetchDeleteTime()
         getBatchCount()
+        setupAudioMessages()
     }
 
     private func addTapGestureToTitle() {
@@ -185,27 +198,23 @@ extension OneToOneChatVC {
          self.captureImage(delegate: self,removedImagePicture: false )
     }
 
-    private func checkCameraAccess() {
-        switch AVCaptureDevice.authorizationStatus(for: .video) {
-        case .denied:
-             presentCamera()
-//            ImagePicker.shared.alertPromptToAllowCameraAccessViaSetting(LocalizedString.Please_change_your_privacy_setting_from_the_Settings_app_and_allow_access_to_library_for.localized, controller: self)
-        case .restricted:
-             presentCamera()
-//            ImagePicker.shared.alertPromptToAllowCameraAccessViaSetting(LocalizedString.You_have_been_restricted_from_using_the_camera_on_this_device_without_camera_access_this_feature_wont_work.localized, controller: self)
-        case .authorized:
-            presentCamera()
-        case .notDetermined:
-            AVCaptureDevice.requestAccess(for: .video) { [weak self] success in
-                guard let `self` = self else { return }
-                if success {
-                    self.presentCamera()
-                } else {
-//                    ImagePicker.shared.alertPromptToAllowCameraAccessViaSetting(LocalizedString.You_have_been_restricted_from_using_the_camera_on_this_device_without_camera_access_this_feature_wont_work.localized, controller: self)
+    private func setupAudioMessages() {
+        recordingSession = AVAudioSession.sharedInstance()
+        
+        do {
+            try recordingSession.setCategory(.playAndRecord, mode: .default)
+            try recordingSession.setActive(true)
+            recordingSession.requestRecordPermission() { [unowned self] allowed in
+                DispatchQueue.main.async {
+                    if allowed {
+                        printDebug("Loaded Succesfull")
+                    } else {
+                        // failed to record
+                    }
                 }
             }
-        @unknown default:
-            break
+        } catch {
+            // failed to record
         }
     }
 
@@ -418,6 +427,14 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                 senderCell.senderImgView.addGestureRecognizer(imgTap)
                 return senderCell
             }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let model = messageListing[indexPath.section][indexPath.row]
+        if model.messageType == MessageType.audio.rawValue {
+            preparePlayer(model: model)
+           audioPlayer.play()
         }
     }
 
@@ -782,7 +799,7 @@ extension OneToOneChatVC{
 
     private func createMediaMessage(url: String, imageURL: String = "", type: String) {
         FirestoreController.createMessageNode(roomId: self.roomId, messageText: "", messageTime: FieldValue.serverTimestamp(), messageId: self.getMessageId(), messageType: type, messageStatus: 1, senderId: self.currentUserId, receiverId: self.inboxModel.userId, mediaUrl: url, blocked: false, thumbNailURL: imageURL)
-        let attachmentText = type == MessageType.image.rawValue ? "Photo Attachment" : "Video Attachment"
+        let attachmentText = type == MessageType.image.rawValue ? "Photo Attachment" : "Audio Attachment"
         FirestoreController.createLastMessageNode(roomId: self.roomId, messageText: attachmentText, messageTime: FieldValue.serverTimestamp(), messageId: self.getMessageId(), messageType: type, messageStatus: 1, senderId: self.currentUserId, receiverId: self.inboxModel.userId, mediaUrl: url, blocked: false, thumbNailURL: imageURL)
     }
 
@@ -1058,3 +1075,115 @@ extension OneToOneChatVC: UIGestureRecognizerDelegate, UIScrollViewDelegate {
 
 }
 
+ // Mark:- Audio Messages Inbox
+extension OneToOneChatVC:  AVAudioRecorderDelegate, AVAudioPlayerDelegate {
+    func startRecording() {
+        let audioFilename = getFileURL()
+        
+        let settings = [
+            AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
+            AVSampleRateKey: 12000,
+            AVNumberOfChannelsKey: 1,
+            AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
+        ]
+        
+        do {
+            audioRecorder = try AVAudioRecorder(url: audioFilename, settings: settings)
+            audioRecorder.delegate = self
+            audioRecorder.record()
+            
+//            recordButton.setTitle("Tap to Stop", for: .normal)
+//            playButton.isEnabled = false
+        } catch {
+            finishRecording(success: false)
+        }
+    }
+    
+    func finishRecording(success: Bool) {
+        audioRecorder.stop()
+        audioRecorder = nil
+        
+        if success {
+//            recordButton.setTitle("Tap to Re-record", for: .normal)
+        } else {
+//            recordButton.setTitle("Tap to Record", for: .normal)
+            // recording failed :(
+        }
+        
+//        playButton.isEnabled = true
+//        recordButton.isEnabled = true
+    }
+    
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
+    }
+    
+    func getFileURL() -> URL {
+        let path = getDocumentsDirectory().appendingPathComponent("recording.m4a")
+        return path as URL
+    }
+    
+    //MARK: Delegates
+    
+    func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
+        if flag {
+            UIImage().uploadAudioFile(audioUrl: recorder.url, progress: { [weak self] (status) in
+            guard let `self` = self else { return }
+            printDebug(status)
+                 if !self.hasImageUploaded { CommonFunctions.showToastWithMessage("\(Int(status * 100))% Uploaded") }
+            }, completion: { (response,error) in
+                if let url = response {
+                    self.hasImageUploaded = true
+                    if self.isRoom {
+                        self.updateUnreadMessage()
+                        self.restoreDeletedNode()
+                        self.createMediaMessage(url: url, imageURL: url, type: "audio")
+                        self.updateInboxTimeStamp()
+                    } else {
+                        self.createRoom()
+                        self.createMediaMessage(url: url, imageURL: url, type: "audio")
+                        self.createInbox()
+                    }
+                }
+                if let _ = error{
+                    self.showAlert(msg: LocalizedString.imageUploadingFailed.localized)
+                }
+            })
+        }else {
+             finishRecording(success: false)
+        }
+    }
+    
+    func audioRecorderEncodeErrorDidOccur(_ recorder: AVAudioRecorder, error: Error?) {
+        print("Error while recording audio \(error!.localizedDescription)")
+    }
+    
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+//        recordButton.isEnabled = true
+//        playButton.setTitle("Play", for: .normal)
+    }
+    
+    func audioPlayerDecodeErrorDidOccur(_ player: AVAudioPlayer, error: Error?) {
+        print("Error while playing audio \(error!.localizedDescription)")
+    }
+    
+    func preparePlayer(model: Message) {
+        guard let url = URL(string: model.mediaUrl) else { return }
+        var error: NSError?
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: url)
+        } catch let error1 as NSError {
+            error = error1
+            audioPlayer = nil
+        }
+        
+        if let err = error {
+            print("AVAudioPlayer error: \(err.localizedDescription)")
+        } else {
+            audioPlayer.delegate = self
+            audioPlayer.prepareToPlay()
+            audioPlayer.volume = 10.0
+        }
+    }
+}
