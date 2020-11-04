@@ -318,6 +318,9 @@
 		A4DCEE09252DED9C002EB32F /* AllRequestVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DCEE08252DED9C002EB32F /* AllRequestVM.swift */; };
 		A4DCEE0B252DF405002EB32F /* GarageRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DCEE0A252DF405002EB32F /* GarageRequestModel.swift */; };
 		A4DCEE0D252E0D34002EB32F /* GarageServiceRequestVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DCEE0C252E0D34002EB32F /* GarageServiceRequestVM.swift */; };
+		A4DEB8662552846500BD7D2E /* ReViewListingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DEB8652552846500BD7D2E /* ReViewListingVC.swift */; };
+		A4DEB8692552865700BD7D2E /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DEB8672552865700BD7D2E /* ReviewTableViewCell.swift */; };
+		A4DEB86A2552865700BD7D2E /* ReviewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4DEB8682552865700BD7D2E /* ReviewTableViewCell.xib */; };
 		A4E7E904253197F6007E2D6D /* ByDateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E7E902253197F6007E2D6D /* ByDateCollectionViewCell.swift */; };
 		A4E7E905253197F6007E2D6D /* ByDateCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4E7E903253197F6007E2D6D /* ByDateCollectionViewCell.xib */; };
 		A4FEF8EC2518744900D58C13 /* TyreRequestedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FEF8EB2518744900D58C13 /* TyreRequestedVC.swift */; };
@@ -641,6 +644,9 @@
 		A4DCEE08252DED9C002EB32F /* AllRequestVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRequestVM.swift; sourceTree = "<group>"; };
 		A4DCEE0A252DF405002EB32F /* GarageRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageRequestModel.swift; sourceTree = "<group>"; };
 		A4DCEE0C252E0D34002EB32F /* GarageServiceRequestVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageServiceRequestVM.swift; sourceTree = "<group>"; };
+		A4DEB8652552846500BD7D2E /* ReViewListingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReViewListingVC.swift; sourceTree = "<group>"; };
+		A4DEB8672552865700BD7D2E /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
+		A4DEB8682552865700BD7D2E /* ReviewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewTableViewCell.xib; sourceTree = "<group>"; };
 		A4E7E902253197F6007E2D6D /* ByDateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ByDateCollectionViewCell.swift; sourceTree = "<group>"; };
 		A4E7E903253197F6007E2D6D /* ByDateCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ByDateCollectionViewCell.xib; sourceTree = "<group>"; };
 		A4FEF8EB2518744900D58C13 /* TyreRequestedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TyreRequestedVC.swift; sourceTree = "<group>"; };
@@ -1230,6 +1236,8 @@
 				8481FA86250107B600AB6EFB /* PreloginVC */,
 				A41AAB4C2530A0160061887F /* OfferFilterVC */,
 				A439263F2548019E0089E0EB /* UserNotificationVC */,
+				A4DEB8672552865700BD7D2E /* ReviewTableViewCell.swift */,
+				A4DEB8682552865700BD7D2E /* ReviewTableViewCell.xib */,
 			);
 			path = Xibs;
 			sourceTree = "<group>";
@@ -1307,6 +1315,7 @@
 				A47EB1DA254D4A050044DD4D /* ChangePasswordVC */,
 				A47EB1DB254D4A120044DD4D /* ChangeLanguageVC */,
 				A47EB1D8254D42040044DD4D /* WebViewController.swift */,
+				A4DEB8652552846500BD7D2E /* ReViewListingVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -2193,6 +2202,7 @@
 				843F004E25060822001A78EC /* CountryCodeTableCell.xib in Resources */,
 				842B2FCA25133CD200E3CF67 /* BankListingTableCell.xib in Resources */,
 				A441A67F252CDF7C00B5420B /* TyreRequestLocationTableViewCell.xib in Resources */,
+				A4DEB86A2552865700BD7D2E /* ReviewTableViewCell.xib in Resources */,
 				A43B53A52524B21300447B24 /* GarageRequest.storyboard in Resources */,
 				8481FA812500DC8800AB6EFB /* Main.storyboard in Resources */,
 				8446AB54252D598E005A1350 /* GarageServiceBottomCell.xib in Resources */,
@@ -2317,6 +2327,7 @@
 				8481FA672500BFB900AB6EFB /* AppStoryboards.swift in Sources */,
 				84476D2F25075F1E00AB5E80 /* HomeVC.swift in Sources */,
 				8481FA2F2500BCBF00AB6EFB /* LocalizedString.swift in Sources */,
+				A4DEB8692552865700BD7D2E /* ReviewTableViewCell.swift in Sources */,
 				844D81E325025D9600550334 /* LoginWithPhoneVC.swift in Sources */,
 				8481FA392500BDED00AB6EFB /* UIColorExtension.swift in Sources */,
 				8481FA272500BB7300AB6EFB /* Webservices.swift in Sources */,
@@ -2475,6 +2486,7 @@
 				A421DDD7252B1A610044E5E0 /* OtpPopUpVC.swift in Sources */,
 				8446AB57252D63CF005A1350 /* GarageServiceBrandsCell.swift in Sources */,
 				A4B91C3625149BDA00E4811A /* LocationPopUpVC.swift in Sources */,
+				A4DEB8662552846500BD7D2E /* ReViewListingVC.swift in Sources */,
 				8481FA472500BE9400AB6EFB /* UICollectionView+UICollectionViewCellExtension.swift in Sources */,
 				8495E9442509C824003CA43D /* ProfileVM.swift in Sources */,
 				84476D3525075F5600AB5E80 /* NotificationVC.swift in Sources */,

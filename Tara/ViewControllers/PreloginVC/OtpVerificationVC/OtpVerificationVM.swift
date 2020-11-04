@@ -70,7 +70,8 @@ class OtpVerificationVM{
     
     func verifyEditNumberWithOTP(dict: JSONDictionary){
         WebServices.editNumberWithOtpApi(parameters: dict, success: { (json) in
-            self.resetToken = json[ApiKey.data][ApiKey.resetToken].stringValue
+//            self.resetToken = json[ApiKey.data][ApiKey.resetToken].stringValue
+            UserModel.main.phoneNoAdded = true
             self.delegate?.otpVerifiedSuccessfully(message: "Otp Verified Successfully")
         }) { (error) -> (Void) in
             self.delegate?.otpVerificationFailed(error: error.localizedDescription)
