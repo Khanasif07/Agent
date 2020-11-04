@@ -100,7 +100,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qGs-Ig-9TR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-468" y="-8"/>
+            <point key="canvasLocation" x="-1417" y="-8"/>
         </scene>
         <!--Place Bid Pop UpVC-->
         <scene sceneID="dyn-HI-lQK">
@@ -1222,7 +1222,7 @@ start Servicing</string>
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="right" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c9c-VS-PBc">
                                                         <rect key="frame" x="14" y="403.5" width="60" height="60"/>
-                                                        <inset key="imageEdgeInsets" minX="0.0" minY="10" maxX="10" maxY="0.0"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="8" maxX="8" maxY="0.0"/>
                                                         <state key="normal" image="editProfile"/>
                                                         <connections>
                                                             <action selector="editLogoBtnAction:" destination="K8Q-hi-fID" eventType="touchUpInside" id="OwB-CA-Mig"/>
@@ -1533,6 +1533,111 @@ start Servicing</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l5b-fT-y1P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-446" y="733"/>
+        </scene>
+        <!--Otp PopupVC-->
+        <scene sceneID="NJr-Hy-fyG">
+            <objects>
+                <viewController storyboardIdentifier="SROtpPopupVC" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="HBa-gJ-2le" customClass="SROtpPopupVC" customModule="Tara" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="s24-oA-7zV">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aag-ol-jkm">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ilP-sn-SHf">
+                                        <rect key="frame" x="16" y="312" width="382" height="272"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pgI-mN-m15">
+                                                <rect key="frame" x="10" y="16" width="362" height="33.5"/>
+                                                <string key="text">Here is your OTP for Tyre Service
+#1234567890 at XYZ Garage, Riyadh</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" red="0.10980392156862745" green="0.11372549019607843" blue="0.14117647058823529" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4589" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mst-aK-4tS">
+                                                <rect key="frame" x="10" y="89.5" width="362" height="32.5"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
+                                                <color key="textColor" red="0.10980392160000001" green="0.1137254902" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please show this code to the garage to start your service" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f6C-a6-8oR">
+                                                <rect key="frame" x="10" y="139" width="362" height="36"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <color key="textColor" red="0.32941176470588235" green="0.33725490196078434" blue="0.36078431372549019" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qqi-Q1-0QC" customClass="AppButton" customModule="Tara" customModuleProvider="target">
+                                                <rect key="frame" x="134" y="200" width="114" height="48"/>
+                                                <color key="backgroundColor" name="appRedColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="48" id="ZZg-Ok-GsT"/>
+                                                </constraints>
+                                                <state key="normal" title="Cancel">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="cancelBtnAction:" destination="HBa-gJ-2le" eventType="touchUpInside" id="Mec-Wy-4nP"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="Mst-aK-4tS" firstAttribute="leading" secondItem="pgI-mN-m15" secondAttribute="leading" id="5SC-H4-swZ"/>
+                                            <constraint firstItem="Mst-aK-4tS" firstAttribute="trailing" secondItem="pgI-mN-m15" secondAttribute="trailing" id="8bJ-I2-tGh"/>
+                                            <constraint firstItem="pgI-mN-m15" firstAttribute="leading" secondItem="ilP-sn-SHf" secondAttribute="leading" constant="10" id="9Eo-H1-822"/>
+                                            <constraint firstItem="qqi-Q1-0QC" firstAttribute="centerX" secondItem="ilP-sn-SHf" secondAttribute="centerX" id="GK1-Em-XMa"/>
+                                            <constraint firstItem="Mst-aK-4tS" firstAttribute="top" secondItem="pgI-mN-m15" secondAttribute="bottom" constant="40" id="Ibr-Gg-I1D"/>
+                                            <constraint firstAttribute="trailing" secondItem="pgI-mN-m15" secondAttribute="trailing" constant="10" id="Sbo-Jy-a9k"/>
+                                            <constraint firstItem="pgI-mN-m15" firstAttribute="top" secondItem="ilP-sn-SHf" secondAttribute="top" constant="16" id="aiy-qc-UkA"/>
+                                            <constraint firstItem="f6C-a6-8oR" firstAttribute="leading" secondItem="Mst-aK-4tS" secondAttribute="leading" id="aw4-DN-PMZ"/>
+                                            <constraint firstItem="f6C-a6-8oR" firstAttribute="top" secondItem="Mst-aK-4tS" secondAttribute="bottom" constant="17" id="cUu-g9-sdS"/>
+                                            <constraint firstItem="f6C-a6-8oR" firstAttribute="trailing" secondItem="Mst-aK-4tS" secondAttribute="trailing" id="knR-Xu-Z5U"/>
+                                            <constraint firstAttribute="bottom" secondItem="qqi-Q1-0QC" secondAttribute="bottom" constant="24" id="uDA-6P-6Bf"/>
+                                            <constraint firstItem="qqi-Q1-0QC" firstAttribute="top" secondItem="f6C-a6-8oR" secondAttribute="bottom" constant="25" id="uK2-87-KNt"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.53825968170000005" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="qqi-Q1-0QC" firstAttribute="width" secondItem="Aag-ol-jkm" secondAttribute="width" multiplier="114/414" id="2g0-Mb-qzG"/>
+                                    <constraint firstItem="ilP-sn-SHf" firstAttribute="leading" secondItem="Aag-ol-jkm" secondAttribute="leading" constant="16" id="ECe-Nr-9Fq"/>
+                                    <constraint firstAttribute="trailing" secondItem="ilP-sn-SHf" secondAttribute="trailing" constant="16" id="KMD-Yt-TdO"/>
+                                    <constraint firstItem="ilP-sn-SHf" firstAttribute="centerY" secondItem="Aag-ol-jkm" secondAttribute="centerY" id="Oiy-DK-Cog"/>
+                                    <constraint firstItem="ilP-sn-SHf" firstAttribute="centerX" secondItem="Aag-ol-jkm" secondAttribute="centerX" id="jZN-4f-mxO"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Pwv-VS-lAF" firstAttribute="trailing" secondItem="Aag-ol-jkm" secondAttribute="trailing" id="86T-vV-g6g"/>
+                            <constraint firstItem="Aag-ol-jkm" firstAttribute="top" secondItem="s24-oA-7zV" secondAttribute="top" id="FyH-oi-kta"/>
+                            <constraint firstItem="Aag-ol-jkm" firstAttribute="leading" secondItem="Pwv-VS-lAF" secondAttribute="leading" id="MWE-WW-XkW"/>
+                            <constraint firstAttribute="bottom" secondItem="Aag-ol-jkm" secondAttribute="bottom" id="tkc-ii-tFp"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Pwv-VS-lAF"/>
+                    </view>
+                    <connections>
+                        <outlet property="cancelBtn" destination="qqi-Q1-0QC" id="jve-86-RvL"/>
+                        <outlet property="descLbl" destination="f6C-a6-8oR" id="pIa-4y-8GY"/>
+                        <outlet property="otpLbl" destination="Mst-aK-4tS" id="nrr-o6-ufl"/>
+                        <outlet property="titleLbl" destination="pgI-mN-m15" id="jzj-sH-UPU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="igm-Pk-jx7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-564" y="-8"/>
         </scene>
     </scenes>
     <resources>

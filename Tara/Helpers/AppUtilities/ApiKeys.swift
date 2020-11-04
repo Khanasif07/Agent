@@ -237,6 +237,8 @@ enum ApiKey {
     
     static var phoneChanged: String {return "phoneChanged"}
     static var emailChanged: String {return "emailChanged"}
+    static var garageId: String {return "garageId"}
+
 
 
     
