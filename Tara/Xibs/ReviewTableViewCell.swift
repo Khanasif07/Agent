@@ -21,6 +21,7 @@ class ReviewTableViewCell: UITableViewCell {
     @IBOutlet weak var ratingView: UIView!
     @IBOutlet weak var ratingLbl: UILabel!
     @IBOutlet weak var ratingImg: UIImageView!
+    @IBOutlet weak var imgStackView: UIStackView!
 
 
     //MARK:-Life Cycle
