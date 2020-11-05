@@ -80,6 +80,16 @@ class OneToOneChatVC: BaseVC {
     @IBOutlet weak var tableViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var timerLbl: UILabel!
     @IBOutlet weak var timerView: UIView!
+    
+    //MARK:- TopView Outlets
+    @IBOutlet weak var userNameLbl: UILabel!
+    @IBOutlet weak var previousServiceLbl: UILabel!
+    @IBOutlet weak var numberOfServiceLbl: UILabel!
+    @IBOutlet weak var payableAmtLbl: UILabel!
+    @IBOutlet weak var amountValueLbl: UILabel!
+    @IBOutlet weak var addressLbl: UILabel!
+    @IBOutlet weak var userRequestView: UIView!
+
     //MARK: VIEW LIFE CYCLE
     //=====================
     override func viewDidLoad() {
@@ -150,6 +160,9 @@ class OneToOneChatVC: BaseVC {
         sendMessage()
     }
 
+    @IBAction func getLocationTapped(_ sender: UIButton) {
+
+    }
 }
 
 //MARK: PRIVATE FUNCTIONS

@@ -302,6 +302,9 @@
                                                             <constraint firstAttribute="width" secondItem="PcA-Uc-OqI" secondAttribute="height" multiplier="1:1" id="G0W-Qi-s6M"/>
                                                             <constraint firstAttribute="height" constant="30" id="c4e-g7-1J2"/>
                                                         </constraints>
+                                                        <connections>
+                                                            <action selector="getLocationTapped:" destination="zj2-p6-7pB" eventType="touchUpInside" id="lS9-7t-4Z5"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -442,6 +445,8 @@
                     </view>
                     <connections>
                         <outlet property="addDocumentBtn" destination="MNE-cS-Qcn" id="c24-vD-Rkg"/>
+                        <outlet property="addressLbl" destination="Uud-3a-HyF" id="Thy-ab-vLN"/>
+                        <outlet property="amountValueLbl" destination="GE5-bP-L0A" id="qxg-B2-3uF"/>
                         <outlet property="audioBtn" destination="UCy-co-Tgw" id="W1S-pP-hIa"/>
                         <outlet property="backgroundView" destination="7vw-AB-AZ8" id="t3N-Lq-TB8"/>
                         <outlet property="bottomContainerView" destination="R7B-FN-c9J" id="L04-Qo-GON"/>
@@ -449,6 +454,9 @@
                         <outlet property="messageLabel" destination="g5A-s0-3Oh" id="tn2-3e-a2c"/>
                         <outlet property="messageTextView" destination="Abs-De-h3M" id="dnn-0C-fMK"/>
                         <outlet property="messagesTableView" destination="Lyv-I1-HDg" id="ftt-AR-8vb"/>
+                        <outlet property="numberOfServiceLbl" destination="LTV-UH-hJJ" id="iBh-Kd-F24"/>
+                        <outlet property="payableAmtLbl" destination="MUo-PL-h0x" id="0RP-m9-8cp"/>
+                        <outlet property="previousServiceLbl" destination="Ztt-OR-amY" id="81i-I1-I2b"/>
                         <outlet property="sendButton" destination="o4k-DW-lbK" id="5U8-B2-0ps"/>
                         <outlet property="tableViewTopConstraint" destination="RJZ-h4-sNY" id="WiK-cs-e0u"/>
                         <outlet property="textContainerInnerView" destination="lco-eK-Vpf" id="Jtz-s5-deT"/>
@@ -457,6 +465,8 @@
                         <outlet property="timerView" destination="Bw7-xE-W3Q" id="COa-1D-RyI"/>
                         <outlet property="titleLabel" destination="hDE-W8-g3n" id="3CY-Nb-cTI"/>
                         <outlet property="topView" destination="Jas-en-Ecr" id="ocF-zr-v94"/>
+                        <outlet property="userNameLbl" destination="5DH-hZ-vgs" id="wWR-ZD-0jK"/>
+                        <outlet property="userRequestView" destination="OwT-36-nPL" id="2k7-ad-SDH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bwi-xw-dg6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
