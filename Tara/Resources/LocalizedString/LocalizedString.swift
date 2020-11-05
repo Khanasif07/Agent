@@ -180,7 +180,7 @@ enum LocalizedString : String {
     case locationOfYourServiceCenter
     case imagesOfyourServiceCenter
     case govtIssuedlicensesandDocuments
-    
+    case reviewAndRatings
     case garageLogoDesc
     case authorisedNameOfServiceCenterDesc
     case locationOfYourServiceCenterDesc

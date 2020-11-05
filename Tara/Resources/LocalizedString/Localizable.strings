@@ -280,6 +280,7 @@
 "save" = "Save";
 "enterOldPassWord" = "Enter Old Password";
 "enterNewPassWord" = "Enter New Password";
+"reviewAndRatings" = "Review & Ratings";
  // MARK: - Home  VC Values
 //==============================
 "tyre" = "Tyre";

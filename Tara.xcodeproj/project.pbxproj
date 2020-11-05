@@ -317,6 +317,8 @@
 		A4CC3256252CB3F400669F39 /* TyreRequestDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4CC3254252CB3F400669F39 /* TyreRequestDetailTableViewCell.xib */; };
 		A4CC3258252CBCA200669F39 /* ASDynamicCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC3257252CBCA200669F39 /* ASDynamicCollectionView.swift */; };
 		A4DA01D82552C0E000AC60DB /* SROtpPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DA01D72552C0E000AC60DB /* SROtpPopupVC.swift */; };
+		A4DA01DB2553075200AC60DB /* ReviewAndRatingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DA01D92553075200AC60DB /* ReviewAndRatingTableViewCell.swift */; };
+		A4DA01DC2553075200AC60DB /* ReviewAndRatingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4DA01DA2553075200AC60DB /* ReviewAndRatingTableViewCell.xib */; };
 		A4DCEE09252DED9C002EB32F /* AllRequestVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DCEE08252DED9C002EB32F /* AllRequestVM.swift */; };
 		A4DCEE0B252DF405002EB32F /* GarageRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DCEE0A252DF405002EB32F /* GarageRequestModel.swift */; };
 		A4DCEE0D252E0D34002EB32F /* GarageServiceRequestVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DCEE0C252E0D34002EB32F /* GarageServiceRequestVM.swift */; };
@@ -645,6 +647,8 @@
 		A4CC3254252CB3F400669F39 /* TyreRequestDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TyreRequestDetailTableViewCell.xib; sourceTree = "<group>"; };
 		A4CC3257252CBCA200669F39 /* ASDynamicCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASDynamicCollectionView.swift; sourceTree = "<group>"; };
 		A4DA01D72552C0E000AC60DB /* SROtpPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SROtpPopupVC.swift; sourceTree = "<group>"; };
+		A4DA01D92553075200AC60DB /* ReviewAndRatingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewAndRatingTableViewCell.swift; sourceTree = "<group>"; };
+		A4DA01DA2553075200AC60DB /* ReviewAndRatingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewAndRatingTableViewCell.xib; sourceTree = "<group>"; };
 		A4DCEE08252DED9C002EB32F /* AllRequestVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRequestVM.swift; sourceTree = "<group>"; };
 		A4DCEE0A252DF405002EB32F /* GarageRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageRequestModel.swift; sourceTree = "<group>"; };
 		A4DCEE0C252E0D34002EB32F /* GarageServiceRequestVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageServiceRequestVM.swift; sourceTree = "<group>"; };
@@ -1241,6 +1245,8 @@
 				A41AAB4C2530A0160061887F /* OfferFilterVC */,
 				A439263F2548019E0089E0EB /* UserNotificationVC */,
 				A4357952255298A4009EED61 /* ReViewListingVC */,
+				A4DA01D92553075200AC60DB /* ReviewAndRatingTableViewCell.swift */,
+				A4DA01DA2553075200AC60DB /* ReviewAndRatingTableViewCell.xib */,
 			);
 			path = Xibs;
 			sourceTree = "<group>";
@@ -2247,6 +2253,7 @@
 				8481FAA3250143BD00AB6EFB /* NunitoSans-Regular.ttf in Resources */,
 				A4098E7A2512288F0015B0BD /* FacilityTableHeaderView.xib in Resources */,
 				8481FAA1250143B500AB6EFB /* NunitoSans-LightItalic.ttf in Resources */,
+				A4DA01DC2553075200AC60DB /* ReviewAndRatingTableViewCell.xib in Resources */,
 				84CAEFB22550F1E600F3A329 /* SenderMediaCell.xib in Resources */,
 				8481FA8B2501081000AB6EFB /* TutorialCollCell.xib in Resources */,
 				A40C13C12550284600AADD76 /* GoogleService-Info.plist in Resources */,
@@ -2460,6 +2467,7 @@
 				A4A6DEE5251A123800564020 /* GarageTabBarController.swift in Sources */,
 				8481FA612500BF9300AB6EFB /* AppUserDefaults.swift in Sources */,
 				84303E69250649D4000BA5C3 /* UserTabBarController.swift in Sources */,
+				A4DA01DB2553075200AC60DB /* ReviewAndRatingTableViewCell.swift in Sources */,
 				84F65BC4253D4D8D00AF7443 /* GarageHomeCollCell.swift in Sources */,
 				8481FA572500BF1A00AB6EFB /* URLExtension.swift in Sources */,
 				84594806252B082500C0B249 /* AllRequestVC.swift in Sources */,
