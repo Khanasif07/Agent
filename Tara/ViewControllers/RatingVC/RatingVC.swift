@@ -11,7 +11,7 @@ import UIKit
 class RatingVC: BaseVC {
     
     // MARK: - IBOutlets
-    //===========================
+    //==================
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var overAllExpLbl: UILabel!
     @IBOutlet weak var garageNameLbl: UILabel!
@@ -24,19 +24,18 @@ class RatingVC: BaseVC {
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var dashedView: RectangularDashedView!
     @IBOutlet weak var containerView: UIView!
-    
     @IBOutlet var starBtns: [UIButton]!
     
     
     // MARK: - Variables
-    //===========================
+    //==================
     let viewModel = RatingVM()
     var rating : String = ""
     var images : [String] = []
     var garageId: String = ""
     
     // MARK: - Lifecycle
-    //===========================
+    //==================
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
