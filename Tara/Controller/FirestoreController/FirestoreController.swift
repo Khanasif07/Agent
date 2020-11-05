@@ -201,7 +201,7 @@ class FirestoreController:NSObject{
     
     //MARK:- CREATE LAST MESSAGE NODE
     //===============================
-    static func createLastMessageNode(roomId:String,messageText:String,messageTime:FieldValue,messageId:String,messageType:String,messageStatus:Int,senderId:String,receiverId:String,mediaUrl:String,blocked: Bool, thumbNailURL: String) {
+    static func createLastMessageNode(roomId:String,messageText:String,messageTime:FieldValue,messageId:String,messageType:String,messageStatus:Int,senderId:String,receiverId:String,mediaUrl:String,blocked: Bool, thumbNailURL: String,audioTime: Int) {
         db.collection(ApiKey.lastMessage)
             .document(roomId)
             .collection(ApiKey.chat)
@@ -216,7 +216,8 @@ class FirestoreController:NSObject{
                       ApiKey.roomId:roomId,
                       ApiKey.mediaUrl : mediaUrl,
                       ApiKey.blocked :blocked,
-                      ApiKey.thumbnail :thumbNailURL])
+                      ApiKey.thumbnail :thumbNailURL,
+                      ApiKey.audioTime : audioTime])
         
     }
     
@@ -410,7 +411,7 @@ class FirestoreController:NSObject{
     
     //MARK:-CreateMessageNode
     //=======================
-    static func createMessageNode(roomId:String,messageText:String,messageTime:FieldValue,messageId:String,messageType:String,messageStatus:Int,senderId:String,receiverId:String,mediaUrl:String,blocked: Bool, thumbNailURL: String){
+    static func createMessageNode(roomId:String,messageText:String,messageTime:FieldValue,messageId:String,messageType:String,messageStatus:Int,senderId:String,receiverId:String,mediaUrl:String,blocked: Bool, thumbNailURL: String,audioTime: Int){
         
         db.collection(ApiKey.messages).document(roomId).collection(ApiKey.chat).document(messageId).setData([ApiKey.messageText:messageText,
                                                                                                              ApiKey.messageId:messageId,
@@ -422,7 +423,8 @@ class FirestoreController:NSObject{
                                                                                                              ApiKey.roomId:roomId,
                                                                                                              ApiKey.mediaUrl : mediaUrl,
                                                                                                              ApiKey.blocked :blocked,
-                                                                                                             ApiKey.thumbnail :thumbNailURL])
+                                                                                                             ApiKey.thumbnail :thumbNailURL,
+                                                                                                             ApiKey.audioTime: audioTime])
         /// States of the messages
         /// 0 - pending, 1 - sent, 2 - delivered, 3 - read
         

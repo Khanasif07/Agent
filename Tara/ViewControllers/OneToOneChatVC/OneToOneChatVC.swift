@@ -35,8 +35,6 @@ class OneToOneChatVC: BaseVC {
     var userImage = ""
     var imageController = UIImagePickerController()
     var alertController = UIAlertController()
-    lazy var titleTap = UITapGestureRecognizer(target: self, action: #selector(titleLabelTapped(_:)))
-
     var indexVal = 0
     var tempTime = Timestamp.init(date: Date())
 
@@ -65,6 +63,9 @@ class OneToOneChatVC: BaseVC {
 
     //MARK: OUTLETS
     //=============
+    @IBOutlet weak var progressVIew: UIProgressView!
+    @IBOutlet weak var audioCancelBtn: UIButton!
+    @IBOutlet weak var audioRecordBtn: UIButton!
     @IBOutlet weak var audioBtn: UIButton!
     @IBOutlet weak var addDocumentBtn: UIButton!
     @IBOutlet weak var topView: UIView!
@@ -90,6 +91,7 @@ class OneToOneChatVC: BaseVC {
     @IBOutlet weak var amountValueLbl: UILabel!
     @IBOutlet weak var addressLbl: UILabel!
     @IBOutlet weak var userRequestView: UIView!
+    @IBOutlet weak var userImgView: UIImageView!
 
     //MARK: VIEW LIFE CYCLE
     //=====================
@@ -112,6 +114,8 @@ class OneToOneChatVC: BaseVC {
         addDocumentBtn.round()
         audioBtn.round()
         sendButton.round()
+        audioCancelBtn.round()
+        audioRecordBtn.round()
         textContainerInnerView.round(radius: 10)
     }
 
@@ -149,12 +153,8 @@ class OneToOneChatVC: BaseVC {
     }
 
     @IBAction func addAudioMsgBtnTapped(_ sender: UIButton) {
-        if audioRecorder == nil {
-            startTimer()
-            startRecording()
-        } else {
-            finishRecording(success: true)
-        }
+        timerView.isHidden = false
+        audioRecordBtn.setImage(#imageLiteral(resourceName: "audioMsg"), for: .normal)
     }
     
     @IBAction func sendButtonTapped(_ sender: UIButton) {
@@ -164,6 +164,17 @@ class OneToOneChatVC: BaseVC {
     @IBAction func getLocationTapped(_ sender: UIButton) {
 
     }
+    @IBAction func sendAudioToFirestire(_ sender: UIButton) {
+        if sender.imageView?.image !=  #imageLiteral(resourceName: "audioMsg")  {
+            
+        }
+        
+    }
+    
+    @IBAction func audioRecordCancelBtnAction(_ sender: UIButton) {
+        timerView.isHidden = true
+        audioRecordBtn.setImage(#imageLiteral(resourceName: "audioMsg"), for: .normal)
+    }
 }
 
 //MARK: PRIVATE FUNCTIONS
@@ -172,11 +183,13 @@ extension OneToOneChatVC {
 
     private func initialSetup() {
         userRequestView.isHidden = true
+        chatViewModel.delegate = self
+        textContainerInnerView.borderColor = AppColors.fontTertiaryColor.withAlphaComponent(0.5)
+        textContainerInnerView.borderWidth = 2.0
         checkRoomAvailability()
         containerScrollView.delegate = self
         bottomContainerView.isUserInteractionEnabled = true
-        addTapGestureToTitle()
-        chatViewModel.delegate = self
+        addTapGestureToAudioBtn()
 //        viewModel.delegate = self
         setupTableView()
         setupImageController()
@@ -187,13 +200,28 @@ extension OneToOneChatVC {
         getChatData()
     }
 
-    private func addTapGestureToTitle() {
-        titleLabel.isUserInteractionEnabled = true
-        titleLabel.addGestureRecognizer(titleTap)
+    private func addTapGestureToAudioBtn() {
+        let longGesture = UILongPressGestureRecognizer.init(target: self, action: #selector(longTap))
+        audioRecordBtn.addGestureRecognizer(longGesture)
+        audioRecordBtn.isUserInteractionEnabled = true
     }
-
-    @objc private func titleLabelTapped(_ sender: UITapGestureRecognizer) {
-//        AppRouter.goToMyGarageVC(self, userId: inboxModel.userId,userName: inboxModel.firstName, comeFromOtherProfile: true)
+    
+    @objc   func longTap(_ sender : UIGestureRecognizer){
+        print("Long tap")
+        if sender.state == .ended {
+             audioRecordBtn.setImage(#imageLiteral(resourceName: "group3603"), for: .normal)
+             finishRecording(success: true)
+             endTimer()
+        }
+        else if sender.state == .began {
+            print("UIGestureRecognizerStateBegan.")
+            if audioRecorder == nil {
+                startTimer()
+                startRecording()
+            } else {
+                finishRecording(success: true)
+            }
+        }
     }
 
     private func popToInboxView() {
@@ -435,7 +463,7 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = messageListing[indexPath.section][indexPath.row]
-        let imgTap = UITapGestureRecognizer(target: self, action: #selector(titleLabelTapped(_:)))
+//        let imgTap = UITapGestureRecognizer(target: self, action: #selector(titleLabelTapped(_:)))
         switch model.receiverId {
         case AppUserDefaults.value(forKey: .uid).stringValue:
             switch model.messageType {
@@ -444,7 +472,7 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                 senderMediaCell.configureCellWith(model: model)
                 senderMediaCell.senderImageView.setImage_kf(imageString: userImage, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
                 //                setTapGesture(view: senderMediaCell.msgContainerView, indexPath: indexPath)
-                senderMediaCell.senderImageView.addGestureRecognizer(imgTap)
+//                senderMediaCell.senderImageView.addGestureRecognizer(imgTap)
                 senderMediaCell.senderNameLabel.text = self.firstName
                 return senderMediaCell
             case MessageType.audio.rawValue:
@@ -528,10 +556,10 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                     }
                 }
                
-//                senderAudioCell.customSlider.minimumValue = 0
+                senderAudioCell.customSlider.minimumValue = 0
 //                let duration : CMTime = (self.playerItem?.asset.duration)!
 //                        let seconds : Float64 = CMTimeGetSeconds(duration)
-//                senderAudioCell.customSlider.maximumValue = Float(seconds)
+                senderAudioCell.customSlider.maximumValue = Float(model.audioTime)
 //                senderAudioCell.customSlider.isContinuous = true
                 senderAudioCell.customSlider.tintColor = AppColors.appRedColor
 //                senderAudioCell.timeLbl.text = self.stringFromTimeInterval(interval: seconds)
@@ -567,7 +595,7 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                 let senderCell = tableView.dequeueCell(with: SenderMessageCell.self)
                 senderCell.configureCellWith(model: model)
                 senderCell.senderImgView.setImage_kf(imageString: userImage, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
-                senderCell.senderImgView.addGestureRecognizer(imgTap)
+//                senderCell.senderImgView.addGestureRecognizer(imgTap)
                 return senderCell
             }
         }
@@ -851,7 +879,7 @@ extension OneToOneChatVC{
             .document(inboxModel.userId)
             .collection(ApiKey.chat)
             .document(inboxUserId)
-            .setData([ApiKey.chatType: ApiKey.single,
+            .setData([ApiKey.requestId: self.requestId,
                       ApiKey.roomId:roomId,
                       ApiKey.roomInfo: db.collection(ApiKey.roomInfo).document(roomId),
                       ApiKey.timeStamp: FieldValue.serverTimestamp(),
@@ -865,12 +893,18 @@ extension OneToOneChatVC{
                     print("success")
                 }
         }
-
+        //roomId:string,timeStamp:Any,
+        var inboxxUserId = ""
+        if self.requestId.isEmpty{
+            inboxxUserId = inboxModel.userId
+        } else {
+            inboxxUserId = inboxModel.userId + "_" + self.requestId
+        }
         db.collection(ApiKey.inbox)
             .document(currentUserId)
             .collection(ApiKey.chat)
-            .document(inboxModel.userId)
-            .setData([ApiKey.chatType: ApiKey.single,
+            .document(inboxxUserId)
+            .setData([ApiKey.requestId: self.requestId,
                       ApiKey.roomId: roomId,
                       ApiKey.roomInfo: db.collection(ApiKey.roomInfo).document(roomId),
                       ApiKey.timeStamp: FieldValue.serverTimestamp(),
@@ -884,7 +918,7 @@ extension OneToOneChatVC{
                 }
         }
         if !isRoom {
-            FirestoreController.updateUnreadMessages(senderId: currentUserId, receiverId: inboxModel.userId, unread: 0)
+            FirestoreController.updateUnreadMessages(senderId: inboxUserId, receiverId: inboxModel.userId, unread: 0)
         }
     }
 
@@ -927,15 +961,15 @@ extension OneToOneChatVC{
 
     /// Mark:- Creating a message node
     private func createMessage(){
-        FirestoreController.createLastMessageNode(roomId:roomId,messageText:messageTextView.text.byRemovingLeadingTrailingWhiteSpaces ,messageTime:FieldValue.serverTimestamp(), messageId:getMessageId(),messageType:"text", messageStatus:1,senderId:currentUserId,receiverId:inboxModel.userId, mediaUrl: "",blocked:false, thumbNailURL: "")
-        FirestoreController.createMessageNode(roomId:roomId,messageText:messageTextView.text.byRemovingLeadingTrailingWhiteSpaces ,messageTime:FieldValue.serverTimestamp(), messageId:getMessageId(),messageType:"text", messageStatus:1,senderId:currentUserId,receiverId:inboxModel.userId, mediaUrl: "",blocked:false, thumbNailURL: "")
+        FirestoreController.createLastMessageNode(roomId:roomId,messageText:messageTextView.text.byRemovingLeadingTrailingWhiteSpaces ,messageTime:FieldValue.serverTimestamp(), messageId:getMessageId(),messageType:"text", messageStatus:1,senderId:currentUserId,receiverId:inboxModel.userId, mediaUrl: "",blocked:false, thumbNailURL: "", audioTime: 0)
+        FirestoreController.createMessageNode(roomId:roomId,messageText:messageTextView.text.byRemovingLeadingTrailingWhiteSpaces ,messageTime:FieldValue.serverTimestamp(), messageId:getMessageId(),messageType:"text", messageStatus:1,senderId:currentUserId,receiverId:inboxModel.userId, mediaUrl: "",blocked:false, thumbNailURL: "", audioTime: 0)
 
     }
 
     private func createMediaMessage(url: String, imageURL: String = "", type: String) {
-        FirestoreController.createMessageNode(roomId: self.roomId, messageText: "", messageTime: FieldValue.serverTimestamp(), messageId: self.getMessageId(), messageType: type, messageStatus: 1, senderId: self.currentUserId, receiverId: self.inboxModel.userId, mediaUrl: url, blocked: false, thumbNailURL: imageURL)
+        FirestoreController.createMessageNode(roomId: self.roomId, messageText: "", messageTime: FieldValue.serverTimestamp(), messageId: self.getMessageId(), messageType: type, messageStatus: 1, senderId: self.currentUserId, receiverId: self.inboxModel.userId, mediaUrl: url, blocked: false, thumbNailURL: imageURL,audioTime: self.viewModel.totalTime)
         let attachmentText = type == MessageType.image.rawValue ? "Photo Attachment" : "Audio Attachment"
-        FirestoreController.createLastMessageNode(roomId: self.roomId, messageText: attachmentText, messageTime: FieldValue.serverTimestamp(), messageId: self.getMessageId(), messageType: type, messageStatus: 1, senderId: self.currentUserId, receiverId: self.inboxModel.userId, mediaUrl: url, blocked: false, thumbNailURL: imageURL)
+        FirestoreController.createLastMessageNode(roomId: self.roomId, messageText: attachmentText, messageTime: FieldValue.serverTimestamp(), messageId: self.getMessageId(), messageType: type, messageStatus: 1, senderId: self.currentUserId, receiverId: self.inboxModel.userId, mediaUrl: url, blocked: false, thumbNailURL: imageURL,audioTime: self.viewModel.totalTime)
     }
 
     /// Mark:- Fetching the room Id values
@@ -1262,30 +1296,29 @@ extension OneToOneChatVC:  AVAudioRecorderDelegate, AVAudioPlayerDelegate {
     //MARK: Delegates
     
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
-        endTimer()
         if flag {
-            UIImage().uploadAudioFile(audioUrl: recorder.url, progress: { [weak self] (status) in
-            guard let `self` = self else { return }
-            printDebug(status)
-                 if !self.hasImageUploaded { CommonFunctions.showToastWithMessage("\(Int(status * 100))% Uploaded") }
-            }, completion: { (response,error) in
-                if let url = response {
-                    self.hasImageUploaded = true
-                    if self.isRoom {
-                        self.updateUnreadMessage()
-                        self.restoreDeletedNode()
-                        self.createMediaMessage(url: url, imageURL: url, type: "audio")
-                        self.updateInboxTimeStamp()
-                    } else {
-                        self.createRoom()
-                        self.createMediaMessage(url: url, imageURL: url, type: "audio")
-                        self.createInbox()
-                    }
-                }
-                if let _ = error{
-                    self.showAlert(msg: LocalizedString.imageUploadingFailed.localized)
-                }
-            })
+//            UIImage().uploadAudioFile(audioUrl: recorder.url, progress: { [weak self] (status) in
+//            guard let `self` = self else { return }
+//            printDebug(status)
+//                 if !self.hasImageUploaded { CommonFunctions.showToastWithMessage("\(Int(status * 100))% Uploaded") }
+//            }, completion: { (response,error) in
+//                if let url = response {
+//                    self.hasImageUploaded = true
+//                    if self.isRoom {
+//                        self.updateUnreadMessage()
+//                        self.restoreDeletedNode()
+//                        self.createMediaMessage(url: url, imageURL: url, type: "audio")
+//                        self.updateInboxTimeStamp()
+//                    } else {
+//                        self.createRoom()
+//                        self.createMediaMessage(url: url, imageURL: url, type: "audio")
+//                        self.createInbox()
+//                    }
+//                }
+//                if let _ = error{
+//                    self.showAlert(msg: LocalizedString.imageUploadingFailed.localized)
+//                }
+//            })
         }else {
              finishRecording(success: false)
         }
@@ -1306,25 +1339,26 @@ extension OneToOneChatVC:  AVAudioRecorderDelegate, AVAudioPlayerDelegate {
     
     
     private func startTimer() {
-           timerLbl.isHidden = false
-           timerView.isHidden = false
-           viewModel.totalTime = 00
-           viewModel.countdownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
-       }
-       @objc private func updateTime() {
-           let time  = "\(viewModel.timeFormatted(viewModel.totalTime))"
-           timerLbl.text = time
-           if viewModel.totalTime != 120 {
-               viewModel.totalTime += 1
-           } else {
-               endTimer()
-               self.audioBtn.isEnabled = true
-           }
-       }
+        timerLbl.isHidden = false
+        timerView.isHidden = false
+        viewModel.totalTime = 00
+        viewModel.countdownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
+    }
+    
+    @objc private func updateTime() {
+        let time  = "\(viewModel.timeFormatted(viewModel.totalTime))"
+        timerLbl.text = time
+        if viewModel.totalTime != 120 {
+            viewModel.totalTime += 1
+            progressVIew.setProgress(Float(viewModel.totalTime) * 1/120, animated: true)
+        } else {
+            endTimer()
+        }
+    }
        
     private func endTimer() {
-        timerLbl.isHidden = true
-        timerView.isHidden = true
+//        timerLbl.isHidden = true
+//        timerView.isHidden = true
         viewModel.countdownTimer.invalidate()
     }
        
@@ -1337,7 +1371,7 @@ extension OneToOneChatVC : OneToOneChatViewModelDelegate{
         userNameLbl.text = chatViewModel.chatData.userName
         numberOfServiceLbl.text = chatViewModel.chatData.totalRequests.description + " Services"
         addressLbl.text = chatViewModel.chatData.address
-        
+        userImgView.setImage_kf(imageString: chatViewModel.chatData.userImage, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
         var str: NSMutableAttributedString = NSMutableAttributedString()
         str = NSMutableAttributedString(string: chatViewModel.chatData.totalAmount.description, attributes: [
             .font: AppFonts.NunitoSansBold.withSize(17.0),
