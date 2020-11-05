@@ -26,6 +26,7 @@ class OneToOneChatVC: BaseVC {
     var viewModel = OtpVerificationVM()
     weak var delegate: SetLastMessageDelegate?
 
+    var chatViewModel = OneToOneChatViewModel()
     private let db = Firestore.firestore()
 
     var inboxModel = Inbox()
