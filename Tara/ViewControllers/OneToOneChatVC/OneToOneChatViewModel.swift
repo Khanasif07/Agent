@@ -26,9 +26,17 @@ class OneToOneChatViewModel {
     var nextPageAvailable = true
     var isRequestinApi = false
     var chatData = ChatModel()
+    var totalTime = 00
+    var countdownTimer:Timer!
     
     // MARK: Functions
     //=================================
+    func timeFormatted(_ totalSeconds: Int) -> String {
+        let seconds: Int = totalSeconds % 60
+        let minutes: Int = (totalSeconds / 60) % 60
+        return String(format: "%02d:%02d", minutes, seconds)
+    }
+       
     func getChatData(params: JSONDictionary,loader: Bool = false) {
         WebServices.getChatData(parameters: params, success: { [weak self] (json) in
             guard let `self` = self else { return }

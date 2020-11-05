@@ -93,7 +93,7 @@ struct Inbox{
     public var receiverImgURL : String = ""
     public var unreadMessages : Int = 0
     public var userModel : UserChatModel = UserChatModel()
-    public var chatType : String = ""
+    public var chatType : String = "single"
     public var roomName : String = ""
     public var groupImage : String = ""
     public var isOnline : Bool = false
@@ -110,12 +110,13 @@ struct Inbox{
         self.timeStamp = dict[ApiKey.timeStamp] as? Timestamp ?? Timestamp.init(date: Date())
         self.userDetails = dict[ApiKey.userDetails] as? DocumentReference
         self.firstName   = dict[ApiKey.firstName] as? String ?? ""
+        self.firstName   = dict[ApiKey.userName] as? String ?? ""
         self.lastMessage = dict[ApiKey.lastMessage] as? String ?? ""
        // self.blockedLastMessage = dict[ApiKey.lastMessage] as? String ?? StringConstants.defaultValue
         self.receiverImgURL = dict[ApiKey.image] as? String ?? ""
         self.userId = dict[ApiKey.userId] as? String ?? ""
         self.unreadMessages = dict[ApiKey.unreadMessages] as? Int ?? 0
-        self.chatType = dict[ApiKey.chatType] as? String ?? ""
+        self.chatType = "single"
         self.roomName = dict[ApiKey.roomName] as? String ?? ""
         self.groupImage = dict[ApiKey.roomImage] as? String ?? ""
       }

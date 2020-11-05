@@ -62,7 +62,7 @@ struct LoginViewModel {
                 }
             }) { (error, code) in
                 if code == 17011 {
-                    FirestoreController.createUserNode(userId: user.id, email: user.email, password: password, name: user.name, imageURL: user.image, phoneNo: user.countryCode + "" + user.phoneNo, status: "", completion: {
+                    FirestoreController.createUserNode(userId: user.id, email: user.email, password: password, name: user.name, imageURL: user.image, phoneNo: user.countryCode + "" + user.phoneNo, countryCode: user.countryCode, status: "", completion: {
                         self.delegate?.signInSuccess(userModel: user)
                     }) { (error) -> (Void) in
                         self.delegate?.signInFailed(message: error.localizedDescription)
@@ -146,7 +146,7 @@ struct LoginViewModel {
             }
         }) { (error, code) in
             if code == 17011 {
-                FirestoreController.createUserNode(userId: user.id, email: user.email, password:  "Tara@123", name: user.name, imageURL: user.image, phoneNo: user.countryCode + "" + user.phoneNo, status: "", completion: {
+                FirestoreController.createUserNode(userId: user.id, email: user.email, password:  "Tara@123", name: user.name, imageURL: user.image, phoneNo: user.countryCode + "" + user.phoneNo, countryCode: user.countryCode, status: "", completion: {
                     self.delegate?.socailLoginApiSuccess(message: "")
                 }) { (error) -> (Void) in
                     self.delegate?.socailLoginApiFailure(message: error.localizedDescription)

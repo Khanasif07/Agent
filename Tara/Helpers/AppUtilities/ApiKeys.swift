@@ -30,6 +30,8 @@ enum ApiKey {
     static var name : String {return "name"}
     static var users : String {return "users"}
     static var firstName : String {return "firstName"}
+    static var userName : String {return "userName"}
+    static var userImage : String {return "userImage"}
     static var nickName : String {return "nick_name"}
     static var email : String {return "email"}
     static var password : String {return "password"}

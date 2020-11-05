@@ -74,6 +74,7 @@ class FirestoreController:NSObject{
                                name: String,
                                imageURL: String,
                                phoneNo: String,
+                               countryCode: String,
                                status: String,
                                completion: @escaping () -> Void,
                                failure: @escaping FailureResponse) {
@@ -92,10 +93,10 @@ class FirestoreController:NSObject{
                                                                       ApiKey.deviceId:"2",
                                                                       ApiKey.email: email,
                                                                       ApiKey.deviceToken:AppUserDefaults.value(forKey: .fcmToken).stringValue,
-                                                                      ApiKey.firstName:name,
-                                                                      ApiKey.image: imageURL,
+                                                                      ApiKey.userName:name,
+                                                                      ApiKey.userImage: imageURL,
                                                                       ApiKey.onlineStatus:true,
-                                                                      ApiKey.status: status,
+                                                                      ApiKey.countryCode:countryCode,
                                                                       ApiKey.userId: userId,
                     ApiKey.phoneNo: phoneNo]){ err in
                         if let err = err {
@@ -216,7 +217,6 @@ class FirestoreController:NSObject{
                       ApiKey.roomId:roomId,
                       ApiKey.mediaUrl : mediaUrl,
                       ApiKey.blocked :blocked,
-                      ApiKey.thumbnail :thumbNailURL,
                       ApiKey.messageDuration : messageDuration])
         
     }
@@ -423,7 +423,6 @@ class FirestoreController:NSObject{
                                                                                                              ApiKey.roomId:roomId,
                                                                                                              ApiKey.mediaUrl : mediaUrl,
                                                                                                              ApiKey.blocked :blocked,
-                                                                                                             ApiKey.thumbnail :thumbNailURL,
                                                                                                              ApiKey.messageDuration: messageDuration])
         /// States of the messages
         /// 0 - pending, 1 - sent, 2 - delivered, 3 - read

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kSb-bi-wAD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kSb-bi-wAD">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -36,7 +36,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wbz-ok-9no">
-                                        <rect key="frame" x="188.5" y="18" width="37" height="20"/>
+                                        <rect key="frame" x="188.5" y="16.5" width="37" height="23.5"/>
                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -364,13 +364,16 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dfQ-yF-kST">
-                                        <rect key="frame" x="59" y="10" width="36" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <rect key="frame" x="59" y="12" width="27.5" height="16.5"/>
+                                        <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="14"/>
+                                        <color key="textColor" red="0.54117647058823526" green="0.58431372549019611" blue="0.61960784313725492" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eCH-sO-HNq">
-                                        <rect key="frame" x="100" y="19" width="210" height="2"/>
+                                        <rect key="frame" x="91.5" y="18" width="218.5" height="4"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="4" id="cET-ST-k4k"/>
+                                        </constraints>
                                         <color key="progressTintColor" name="appRedColor"/>
                                     </progressView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h6L-Rd-vlz">
@@ -380,7 +383,7 @@
                                             <constraint firstAttribute="width" constant="36" id="iM0-Z9-qGr"/>
                                             <constraint firstAttribute="width" secondItem="h6L-Rd-vlz" secondAttribute="height" multiplier="1:1" id="wB3-CW-LHP"/>
                                         </constraints>
-                                        <state key="normal" image="audioMsg"/>
+                                        <state key="normal" image="audioBtnWhite"/>
                                         <connections>
                                             <action selector="sendAudioToFirestire:" destination="zj2-p6-7pB" eventType="touchUpInside" id="60J-kX-hvF"/>
                                         </connections>
@@ -502,6 +505,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="audioBtnWhite" width="8" height="12.5"/>
         <image name="audioMsg" width="32" height="32"/>
         <image name="default_marker.png" width="26" height="41"/>
         <image name="group3" width="32" height="32"/>
