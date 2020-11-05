@@ -934,4 +934,16 @@ extension WebServices{
               failure(error)
           }
       }
+    
+    //MARK:- Submit Rating Detail
+    static func getChatData(parameters: JSONDictionary,loader: Bool = false,
+                                success: @escaping SuccessResponse,
+                                failure: @escaping FailureResponse) {
+          self.commonGetAPI(parameters: parameters, endPoint: .chatData,loader: loader, success: { (json) in
+              success(json)
+          }) { (error) -> (Void) in
+              failure(error)
+          }
+      }
+    
 }

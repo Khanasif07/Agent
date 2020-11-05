@@ -26,6 +26,7 @@ class OneToOneChatVC: BaseVC {
     var viewModel = OtpVerificationVM()
     weak var delegate: SetLastMessageDelegate?
 
+    var chatViewModel = OneToOneChatViewModel()
     private let db = Firestore.firestore()
 
     var inboxModel = Inbox()
@@ -82,6 +83,17 @@ class OneToOneChatVC: BaseVC {
     @IBOutlet weak var tableViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var timerLbl: UILabel!
     @IBOutlet weak var timerView: UIView!
+    
+    //MARK:- TopView Outlets
+    @IBOutlet weak var userNameLbl: UILabel!
+    @IBOutlet weak var previousServiceLbl: UILabel!
+    @IBOutlet weak var numberOfServiceLbl: UILabel!
+    @IBOutlet weak var payableAmtLbl: UILabel!
+    @IBOutlet weak var amountValueLbl: UILabel!
+    @IBOutlet weak var addressLbl: UILabel!
+    @IBOutlet weak var userRequestView: UIView!
+    @IBOutlet weak var userImgView: UIImageView!
+
     //MARK: VIEW LIFE CYCLE
     //=====================
     override func viewDidLoad() {
@@ -149,12 +161,15 @@ class OneToOneChatVC: BaseVC {
     @IBAction func sendButtonTapped(_ sender: UIButton) {
         sendMessage()
     }
-    
+
+    @IBAction func getLocationTapped(_ sender: UIButton) {
+
+    }
     @IBAction func sendAudioToFirestire(_ sender: UIButton) {
         if sender.imageView?.image !=  #imageLiteral(resourceName: "audioMsg")  {
             self.uploadAudioFileToFirestore(self.recordedUrl!)
         } }
-    
+            
     @IBAction func audioRecordCancelBtnAction(_ sender: UIButton) {
         timerView.isHidden = true
         timerLbl.text = "00"
@@ -169,6 +184,8 @@ class OneToOneChatVC: BaseVC {
 extension OneToOneChatVC {
 
     private func initialSetup() {
+        userRequestView.isHidden = true
+        chatViewModel.delegate = self
         textContainerInnerView.borderColor = AppColors.fontTertiaryColor.withAlphaComponent(0.5)
         textContainerInnerView.borderWidth = 2.0
         checkRoomAvailability()
@@ -182,6 +199,7 @@ extension OneToOneChatVC {
         fetchDeleteTime()
         getBatchCount()
         setupAudioMessages()
+        getChatData()
     }
 
     private func addTapGestureToAudioBtn() {
@@ -225,7 +243,13 @@ extension OneToOneChatVC {
         imageController.mediaTypes = ["public.image", "public.movie"]
     }
 
-
+    private func getChatData() {
+        if !requestId.isEmpty {
+            let dict = [ApiKey.requestId : self.requestId]
+            chatViewModel.getChatData(params: dict)
+        }
+    }
+    
     private func createMediaAlertSheet() {
          self.captureImage(delegate: self,removedImagePicture: false )
     }
@@ -1342,4 +1366,28 @@ extension OneToOneChatVC:  AVAudioRecorderDelegate, AVAudioPlayerDelegate {
         })
     }
        
+}
+
+
+extension OneToOneChatVC : OneToOneChatViewModelDelegate{
+    func chatDataSuccess(msg: String) {
+        userRequestView.isHidden = false
+        userNameLbl.text = chatViewModel.chatData.userName
+        numberOfServiceLbl.text = chatViewModel.chatData.totalRequests.description + " Services"
+        addressLbl.text = chatViewModel.chatData.address
+        userImgView.setImage_kf(imageString: chatViewModel.chatData.userImage, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
+        var str: NSMutableAttributedString = NSMutableAttributedString()
+        str = NSMutableAttributedString(string: chatViewModel.chatData.totalAmount.description, attributes: [
+            .font: AppFonts.NunitoSansBold.withSize(17.0),
+            .foregroundColor: AppColors.successGreenColor
+        ])
+        
+        str.append(NSAttributedString(string: "SAR", attributes: [NSAttributedString.Key.foregroundColor: AppColors.successGreenColor,NSAttributedString.Key.font: AppFonts.NunitoSansSemiBold.withSize(12.0)]))
+        amountValueLbl.attributedText = str
+    }
+    
+    func chatDataFailure(msg: String) {
+        userRequestView.isHidden = true
+        CommonFunctions.showToastWithMessage(msg)
+    }
 }
