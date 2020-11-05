@@ -217,7 +217,6 @@ class FirestoreController:NSObject{
                       ApiKey.roomId:roomId,
                       ApiKey.mediaUrl : mediaUrl,
                       ApiKey.blocked :blocked,
-                      ApiKey.thumbnail :thumbNailURL,
                       ApiKey.messageDuration : messageDuration])
         
     }
@@ -424,7 +423,6 @@ class FirestoreController:NSObject{
                                                                                                              ApiKey.roomId:roomId,
                                                                                                              ApiKey.mediaUrl : mediaUrl,
                                                                                                              ApiKey.blocked :blocked,
-                                                                                                             ApiKey.thumbnail :thumbNailURL,
                                                                                                              ApiKey.messageDuration: messageDuration])
         /// States of the messages
         /// 0 - pending, 1 - sent, 2 - delivered, 3 - read

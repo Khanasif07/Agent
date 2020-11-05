@@ -165,7 +165,7 @@ extension UserAllOffersVC : UITableViewDelegate, UITableViewDataSource {
                 guard let `self` = self else { return }
                 switch sender.titleLabel?.text {
                 case "Chat":
-                    self.showAlert(msg: LocalizedString.underDevelopment.localized)
+                    AppRouter.goToOneToOneChatVC(self, userId: self.viewModel.userBidListingArr[indexPath.row].userId ?? "" ,requestId: self.viewModel.userBidListingArr[indexPath.row].requestID , name: self.viewModel.userBidListingArr[indexPath.row].garageName ?? "", image: self.viewModel.userBidListingArr[indexPath.row].logo ?? "", unreadMsgs: 0)
                 default :
                     AppRouter.presentOfferDetailVC(vc: self,bidId: self.viewModel.userBidListingArr[indexPath.row].id, garageName: self.viewModel.userBidListingArr[indexPath.row].garageName ?? "", completion: {
                         if !self.requestId.isEmpty {
