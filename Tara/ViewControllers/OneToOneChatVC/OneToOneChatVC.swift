@@ -23,7 +23,7 @@ class OneToOneChatVC: BaseVC {
 
     //MARK: VARIABLES
     //===============
-//    var viewModel = OneToOneChatViewModel()
+    var viewModel = OtpVerificationVM()
     weak var delegate: SetLastMessageDelegate?
 
     private let db = Firestore.firestore()
@@ -59,7 +59,8 @@ class OneToOneChatVC: BaseVC {
     //Audio messages
     var recordingSession: AVAudioSession!
     var audioRecorder: AVAudioRecorder!
-    var audioPlayer:AVAudioPlayer!
+    var player:AVPlayer?
+    var playerItem:AVPlayerItem?
 
     //MARK: OUTLETS
     //=============
@@ -77,7 +78,8 @@ class OneToOneChatVC: BaseVC {
     @IBOutlet weak var containerScrollView: UIScrollView!
     @IBOutlet weak var bottomContainerView: UIView!
     @IBOutlet weak var tableViewTopConstraint: NSLayoutConstraint!
-
+    @IBOutlet weak var timerLbl: UILabel!
+    @IBOutlet weak var timerView: UIView!
     //MARK: VIEW LIFE CYCLE
     //=====================
     override func viewDidLoad() {
@@ -137,6 +139,7 @@ class OneToOneChatVC: BaseVC {
 
     @IBAction func addAudioMsgBtnTapped(_ sender: UIButton) {
         if audioRecorder == nil {
+            startTimer()
             startRecording()
         } else {
             finishRecording(success: true)
@@ -199,8 +202,8 @@ extension OneToOneChatVC {
     }
 
     private func setupAudioMessages() {
+        self.timerView.isHidden = true
         recordingSession = AVAudioSession.sharedInstance()
-        
         do {
             try recordingSession.setCategory(.playAndRecord, mode: .default)
             try recordingSession.setActive(true)
@@ -238,6 +241,8 @@ extension OneToOneChatVC {
         messagesTableView.registerCell(with: ReceiverMessageCell.self)
         messagesTableView.registerCell(with: SenderMediaCell.self)
         messagesTableView.registerCell(with: ReceiverMediaCell.self)
+        messagesTableView.registerCell(with: SenderAudioCell.self)
+        messagesTableView.registerCell(with: ReceiverAudioCell.self)
         messagesTableView.registerCell(with: DayValueCell.self)
     }
 
@@ -354,6 +359,15 @@ extension OneToOneChatVC: UITextViewDelegate{
             self.view.layoutIfNeeded()
         }
     }
+    
+    func stringFromTimeInterval(interval: TimeInterval) -> String {
+        
+        let interval = Int(interval)
+        let seconds = interval % 60
+        let minutes = (interval / 60) % 60
+        let hours = (interval / 3600)
+        return String(format: "%02d:%02d:%02d", hours, minutes, seconds)
+    }
 }
 
 //MARK:- TABLEVIEW DELEGATES AND DATASOURCE
@@ -399,10 +413,14 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                 let senderMediaCell = tableView.dequeueCell(with: SenderMediaCell.self)
                 senderMediaCell.configureCellWith(model: model)
                 senderMediaCell.senderImageView.setImage_kf(imageString: userImage, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
-//                setTapGesture(view: senderMediaCell.msgContainerView, indexPath: indexPath)
+                //                setTapGesture(view: senderMediaCell.msgContainerView, indexPath: indexPath)
                 senderMediaCell.senderImageView.addGestureRecognizer(imgTap)
                 senderMediaCell.senderNameLabel.text = self.firstName
                 return senderMediaCell
+            case MessageType.audio.rawValue:
+                let receiverAudioCell = tableView.dequeueCell(with: ReceiverAudioCell.self)
+                receiverAudioCell.receiverNameLbl.text = self.firstName
+                return receiverAudioCell
             default:
                 let receiverCell = tableView.dequeueCell(with: ReceiverMessageCell.self)
                 receiverCell.configureCellWith(model: model)
@@ -416,10 +434,62 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
             case MessageType.image.rawValue:
                 let receiverMediaCell = tableView.dequeueCell(with: ReceiverMediaCell.self)
                 receiverMediaCell.configureCellWith(model: model)
-//                self.setupLongPressGesture(view: receiverMediaCell.msgContainerView, indexPath: indexPath)
-//                self.setTapGesture(view: receiverMediaCell.msgContainerView, indexPath: indexPath)
-//                receiverMediaCell.msgContainerView.backgroundColor = selectedIndexPaths.contains(indexPath) ? AppColors.blackColor : AppColors.blueChatBubble
                 return receiverMediaCell
+            case MessageType.audio.rawValue:
+                let senderAudioCell = tableView.dequeueCell(with: SenderAudioCell.self)
+                //
+                let url = URL(string: model.mediaUrl)
+                self.playerItem = AVPlayerItem(url: url!)
+                self.player = AVPlayer(playerItem: self.playerItem)
+                senderAudioCell.playBtn.setImage(#imageLiteral(resourceName: "group3"), for: .normal)
+                senderAudioCell.playBtnTapped = { [weak self]  in
+                    guard let `self` = self else { return }
+                    if self.player?.rate == 0
+                    {
+                        self.player!.play()
+                        senderAudioCell.playBtn.isHidden = false
+                        //            self.loadingView.isHidden = false
+                        senderAudioCell.playBtn.setImage(#imageLiteral(resourceName: "group3714"), for: UIControl.State.normal)
+                    } else {
+                        self.player!.pause()
+                        senderAudioCell.playBtn.setImage(#imageLiteral(resourceName: "group3"), for: UIControl.State.normal)
+                    }
+                }
+//                let url = URL(string: model.mediaUrl)
+//                self.playerItem = AVPlayerItem(url: url!)
+//                self.player = AVPlayer(playerItem: playerItem)
+                senderAudioCell.customSlider.minimumValue = 0
+//                let duration : CMTime = (self.playerItem?.asset.duration)!
+//                        let seconds : Float64 = CMTimeGetSeconds(duration)
+//                senderAudioCell.customSlider.maximumValue = Float(seconds)
+//                senderAudioCell.customSlider.isContinuous = true
+//                senderAudioCell.customSlider.tintColor = AppColors.appRedColor
+//                senderAudioCell.timeLbl.text = self.stringFromTimeInterval(interval: seconds)
+                       
+//                       lblcurrentText.text = self.stringFromTimeInterval(interval: seconds1)
+                       
+//                       player!.addPeriodicTimeObserver(forInterval: CMTimeMakeWithSeconds(1, preferredTimescale: 1), queue: DispatchQueue.main) { (CMTime) -> Void in
+//                           if self.player!.currentItem?.status == .readyToPlay {
+//                               let time : Float64 = CMTimeGetSeconds(self.player!.currentTime());
+//                               senderAudioCell.customSlider.value = Float ( time );
+//
+//                //               self.lblcurrentText.text = self.stringFromTimeInterval(interval: time)
+//                           }
+//
+//                           let playbackLikelyToKeepUp = self.player?.currentItem?.isPlaybackLikelyToKeepUp
+//                           if playbackLikelyToKeepUp == false{
+//                               print("IsBuffering")
+//                               senderAudioCell.playBtn.isHidden = false
+//                //               self.loadingView.isHidden = false
+//                           } else {
+//                               //stop the activity indicator
+//                               print("Buffering completed")
+//                               senderAudioCell.playBtn.isHidden = false
+//                //               self.loadingView.isHidden = true
+//                           }
+//                        }
+                
+                return senderAudioCell
             default:
                 let senderCell = tableView.dequeueCell(with: SenderMessageCell.self)
                 senderCell.configureCellWith(model: model)
@@ -427,14 +497,6 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                 senderCell.senderImgView.addGestureRecognizer(imgTap)
                 return senderCell
             }
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let model = messageListing[indexPath.section][indexPath.row]
-        if model.messageType == MessageType.audio.rawValue {
-            preparePlayer(model: model)
-           audioPlayer.play()
         }
     }
 
@@ -1127,6 +1189,7 @@ extension OneToOneChatVC:  AVAudioRecorderDelegate, AVAudioPlayerDelegate {
     //MARK: Delegates
     
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
+        endTimer()
         if flag {
             UIImage().uploadAudioFile(audioUrl: recorder.url, progress: { [weak self] (status) in
             guard let `self` = self else { return }
@@ -1168,22 +1231,28 @@ extension OneToOneChatVC:  AVAudioRecorderDelegate, AVAudioPlayerDelegate {
         print("Error while playing audio \(error!.localizedDescription)")
     }
     
-    func preparePlayer(model: Message) {
-        guard let url = URL(string: model.mediaUrl) else { return }
-        var error: NSError?
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: url)
-        } catch let error1 as NSError {
-            error = error1
-            audioPlayer = nil
-        }
-        
-        if let err = error {
-            print("AVAudioPlayer error: \(err.localizedDescription)")
-        } else {
-            audioPlayer.delegate = self
-            audioPlayer.prepareToPlay()
-            audioPlayer.volume = 10.0
-        }
+    
+    private func startTimer() {
+           timerLbl.isHidden = false
+           timerView.isHidden = false
+           viewModel.totalTime = 00
+           viewModel.countdownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
+       }
+       @objc private func updateTime() {
+           let time  = "\(viewModel.timeFormatted(viewModel.totalTime))"
+           timerLbl.text = time
+           if viewModel.totalTime != 120 {
+               viewModel.totalTime += 1
+           } else {
+               endTimer()
+               self.audioBtn.isEnabled = true
+           }
+       }
+       
+    private func endTimer() {
+        timerLbl.isHidden = true
+        timerView.isHidden = true
+        viewModel.countdownTimer.invalidate()
     }
+       
 }

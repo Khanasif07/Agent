@@ -38,7 +38,7 @@ class OtpVerificationVM{
     var resetToken: String = ""
     var phoneNo: String = ""
     weak var delegate: OtpVerificationVMDelegate?
-    var totalTime = 60
+    var totalTime = 00
     var countdownTimer:Timer!
     
     //MARK:- Functions
