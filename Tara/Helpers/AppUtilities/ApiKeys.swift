@@ -25,6 +25,7 @@ enum ApiKey {
     static var userType : String { return "userType"}
     static var userId : String { return "userId"}
     static var block : String { return "block"}
+    static var audioTime : String { return "audioTime"}
     
     static var name : String {return "name"}
     static var users : String {return "users"}

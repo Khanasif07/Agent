@@ -161,6 +161,7 @@ struct Message{
     public var blocked : Bool = false
     public var tempImage : UIImage = UIImage()
     public var thumbnailURL : String = ""
+    public var audioTime : Int = 0
     
     //MARK:- Inits
     //=============
@@ -179,6 +180,7 @@ struct Message{
         self.mediaUrl = dict[ApiKey.mediaUrl] as? String ?? ""
         self.thumbnailURL = dict[ApiKey.thumbnail] as? String ?? ""
         self.blocked = dict[ApiKey.blocked] as? Bool ?? false
+        self.audioTime =  dict[ApiKey.audioTime] as? Int ?? 0
       }
 }
 
