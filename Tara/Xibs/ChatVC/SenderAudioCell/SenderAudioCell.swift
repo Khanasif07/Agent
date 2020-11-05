@@ -11,9 +11,7 @@ import AVFoundation
 
 class SenderAudioCell: UITableViewCell {
     
-//    var player:AVPlayer?
-//    var playerItem:AVPlayerItem?
-    fileprivate let seekDuration: Float64 = 10
+
     var playBtnTapped : (()->())?
 
     @IBOutlet weak var timeLbl: UILabel!
@@ -87,16 +85,6 @@ class SenderAudioCell: UITableViewCell {
         if let handle = playBtnTapped{
             handle()
         }
-//        if player?.rate == 0
-//        {
-//            player!.play()
-//            self.playBtn.isHidden = true
-////            self.loadingView.isHidden = false
-//            playBtn.setImage(#imageLiteral(resourceName: "group3714"), for: UIControl.State.normal)
-//        } else {
-//            player!.pause()
-//            playBtn.setImage(#imageLiteral(resourceName: "group3714"), for: UIControl.State.normal)
-//        }
     }
     
     @IBAction func sliderValueChanged(_ sender: UISlider) {

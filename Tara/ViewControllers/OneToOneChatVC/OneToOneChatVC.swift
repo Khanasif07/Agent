@@ -157,6 +157,7 @@ class OneToOneChatVC: BaseVC {
 extension OneToOneChatVC {
 
     private func initialSetup() {
+        
         checkRoomAvailability()
         containerScrollView.delegate = self
         bottomContainerView.isUserInteractionEnabled = true
@@ -202,6 +203,7 @@ extension OneToOneChatVC {
     }
 
     private func setupAudioMessages() {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.finishedPlaying(_:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: playerItem)
         self.timerView.isHidden = true
         recordingSession = AVAudioSession.sharedInstance()
         do {
@@ -314,6 +316,12 @@ extension OneToOneChatVC {
             player.play()
         }
     }
+    
+    @objc func finishedPlaying( _ myNotification:NSNotification) {
+        self.player?.rate = 0.0
+        
+//        ButtonPlay.setImage(UIImage(named: “ic_play”), for: UIControl.State.normal)
+    }
 }
 
 //MARK:- TEXT VIEW DELEGATES
@@ -420,6 +428,46 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
             case MessageType.audio.rawValue:
                 let receiverAudioCell = tableView.dequeueCell(with: ReceiverAudioCell.self)
                 receiverAudioCell.receiverNameLbl.text = self.firstName
+                receiverAudioCell.customSlider.tintColor = AppColors.appRedColor
+                self.player = nil
+                let url = URL(string: model.mediaUrl)
+                self.playerItem = AVPlayerItem(url: url!)
+                self.player = AVPlayer(playerItem: self.playerItem)
+                receiverAudioCell.playBtn.setImage(#imageLiteral(resourceName: "group3"), for: .normal)
+                receiverAudioCell.playBtnTapped = { [weak self]  in
+                    guard let `self` = self else { return }
+                    self.player!.pause()
+                    if self.player?.rate == 0
+                    {
+                        self.player!.play()
+                        receiverAudioCell.playBtn.isHidden = false
+                        //            self.loadingView.isHidden = false
+                        receiverAudioCell.playBtn.setImage(#imageLiteral(resourceName: "group3714"), for: UIControl.State.normal)
+                    } else {
+                        self.player!.pause()
+                        receiverAudioCell.playBtn.setImage(#imageLiteral(resourceName: "group3"), for: UIControl.State.normal)
+                    }
+                }
+                player!.addPeriodicTimeObserver(forInterval: CMTimeMakeWithSeconds(1, preferredTimescale: 1), queue: DispatchQueue.main) { (CMTime) -> Void in
+                    if self.player!.currentItem?.status == .readyToPlay {
+                        let time : Float64 = CMTimeGetSeconds(self.player!.currentTime());
+                        receiverAudioCell.customSlider.value = Float ( time );
+                        
+                        //               self.lblcurrentText.text = self.stringFromTimeInterval(interval: time)
+                    }
+                    
+                    let playbackLikelyToKeepUp = self.player?.currentItem?.isPlaybackLikelyToKeepUp
+                    if playbackLikelyToKeepUp == false{
+                        print("IsBuffering")
+                        receiverAudioCell.playBtn.isHidden = false
+                        //               self.loadingView.isHidden = false
+                    } else {
+                        //stop the activity indicator
+                        print("Buffering completed")
+                        receiverAudioCell.playBtn.isHidden = false
+                        //               self.loadingView.isHidden = true
+                    }
+                }
                 return receiverAudioCell
             default:
                 let receiverCell = tableView.dequeueCell(with: ReceiverMessageCell.self)
@@ -438,12 +486,14 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
             case MessageType.audio.rawValue:
                 let senderAudioCell = tableView.dequeueCell(with: SenderAudioCell.self)
                 //
+                self.player = nil
                 let url = URL(string: model.mediaUrl)
                 self.playerItem = AVPlayerItem(url: url!)
                 self.player = AVPlayer(playerItem: self.playerItem)
                 senderAudioCell.playBtn.setImage(#imageLiteral(resourceName: "group3"), for: .normal)
                 senderAudioCell.playBtnTapped = { [weak self]  in
                     guard let `self` = self else { return }
+                    self.player!.pause()
                     if self.player?.rate == 0
                     {
                         self.player!.play()
@@ -455,39 +505,40 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                         senderAudioCell.playBtn.setImage(#imageLiteral(resourceName: "group3"), for: UIControl.State.normal)
                     }
                 }
-//                let url = URL(string: model.mediaUrl)
-//                self.playerItem = AVPlayerItem(url: url!)
-//                self.player = AVPlayer(playerItem: playerItem)
-                senderAudioCell.customSlider.minimumValue = 0
+               
+//                senderAudioCell.customSlider.minimumValue = 0
 //                let duration : CMTime = (self.playerItem?.asset.duration)!
 //                        let seconds : Float64 = CMTimeGetSeconds(duration)
 //                senderAudioCell.customSlider.maximumValue = Float(seconds)
 //                senderAudioCell.customSlider.isContinuous = true
-//                senderAudioCell.customSlider.tintColor = AppColors.appRedColor
+                senderAudioCell.customSlider.tintColor = AppColors.appRedColor
 //                senderAudioCell.timeLbl.text = self.stringFromTimeInterval(interval: seconds)
+//                senderAudioCell.timeLbl.text = "\(duration)"
                        
 //                       lblcurrentText.text = self.stringFromTimeInterval(interval: seconds1)
                        
-//                       player!.addPeriodicTimeObserver(forInterval: CMTimeMakeWithSeconds(1, preferredTimescale: 1), queue: DispatchQueue.main) { (CMTime) -> Void in
-//                           if self.player!.currentItem?.status == .readyToPlay {
-//                               let time : Float64 = CMTimeGetSeconds(self.player!.currentTime());
-//                               senderAudioCell.customSlider.value = Float ( time );
-//
-//                //               self.lblcurrentText.text = self.stringFromTimeInterval(interval: time)
-//                           }
-//
-//                           let playbackLikelyToKeepUp = self.player?.currentItem?.isPlaybackLikelyToKeepUp
-//                           if playbackLikelyToKeepUp == false{
-//                               print("IsBuffering")
-//                               senderAudioCell.playBtn.isHidden = false
-//                //               self.loadingView.isHidden = false
-//                           } else {
-//                               //stop the activity indicator
-//                               print("Buffering completed")
-//                               senderAudioCell.playBtn.isHidden = false
-//                //               self.loadingView.isHidden = true
-//                           }
-//                        }
+                       player!.addPeriodicTimeObserver(forInterval: CMTimeMakeWithSeconds(1, preferredTimescale: 1), queue: DispatchQueue.main) { (CMTime) -> Void in
+                           if self.player!.currentItem?.status == .readyToPlay {
+                            let duration = (self.playerItem?.asset.duration.seconds)
+                            senderAudioCell.timeLbl.text = "\(String(describing: duration))"
+                               let time : Float64 = CMTimeGetSeconds(self.player!.currentTime());
+                               senderAudioCell.customSlider.value = Float ( time );
+
+                //               self.lblcurrentText.text = self.stringFromTimeInterval(interval: time)
+                           }
+
+                           let playbackLikelyToKeepUp = self.player?.currentItem?.isPlaybackLikelyToKeepUp
+                           if playbackLikelyToKeepUp == false{
+                               print("IsBuffering")
+                               senderAudioCell.playBtn.isHidden = false
+                //               self.loadingView.isHidden = false
+                           } else {
+                               //stop the activity indicator
+                               print("Buffering completed")
+                               senderAudioCell.playBtn.isHidden = false
+                //               self.loadingView.isHidden = true
+                           }
+                        }
                 
                 return senderAudioCell
             default:
