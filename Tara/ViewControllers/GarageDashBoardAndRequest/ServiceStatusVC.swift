@@ -80,7 +80,6 @@ extension ServiceStatusVC: UITableViewDelegate,UITableViewDataSource{
             cell.sectionArr = self.sectionArr
             return cell
         }else {
-            
             let cell = tableView.dequeueCell(with: ServiceStatusTableViewCell.self)
             return cell
         }

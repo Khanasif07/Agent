@@ -57,7 +57,7 @@ enum AppRouter {
     }
     
     static func goToTestingVC(){
-        let scene = RatingVC.instantiate(fromAppStoryboard: .GarageRequest)
+        let scene = ServiceStatusVC.instantiate(fromAppStoryboard: .GarageRequest)
         setAsWindowRoot(scene)
     }
     

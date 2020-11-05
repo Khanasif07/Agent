@@ -10,12 +10,14 @@ import UIKit
 
 class TyreRequestDetailTableViewCell: UITableViewCell {
     
-    
-    @IBOutlet weak var collView: ASDynamicCollectionView!
+    //MARK:-IBOutlets
+    @IBOutlet weak var collView: UICollectionView!
     @IBOutlet weak var containerView: UIView!
     
+    //MARK:-Variables
     var sectionArr : [CellType] = []
    
+    //MARK:-LifeCycle
     override func awakeFromNib() {
         super.awakeFromNib()
         setupCollView()
