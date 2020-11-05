@@ -34,8 +34,6 @@ class OneToOneChatVC: BaseVC {
     var userImage = ""
     var imageController = UIImagePickerController()
     var alertController = UIAlertController()
-    lazy var titleTap = UITapGestureRecognizer(target: self, action: #selector(titleLabelTapped(_:)))
-
     var indexVal = 0
     var tempTime = Timestamp.init(date: Date())
 
@@ -64,6 +62,9 @@ class OneToOneChatVC: BaseVC {
 
     //MARK: OUTLETS
     //=============
+    @IBOutlet weak var progressVIew: UIProgressView!
+    @IBOutlet weak var audioCancelBtn: UIButton!
+    @IBOutlet weak var audioRecordBtn: UIButton!
     @IBOutlet weak var audioBtn: UIButton!
     @IBOutlet weak var addDocumentBtn: UIButton!
     @IBOutlet weak var topView: UIView!
@@ -101,6 +102,8 @@ class OneToOneChatVC: BaseVC {
         addDocumentBtn.round()
         audioBtn.round()
         sendButton.round()
+        audioCancelBtn.round()
+        audioRecordBtn.round()
         textContainerInnerView.round(radius: 10)
     }
 
@@ -138,18 +141,23 @@ class OneToOneChatVC: BaseVC {
     }
 
     @IBAction func addAudioMsgBtnTapped(_ sender: UIButton) {
-        if audioRecorder == nil {
-            startTimer()
-            startRecording()
-        } else {
-            finishRecording(success: true)
-        }
+        timerView.isHidden = false
+        audioRecordBtn.setImage(#imageLiteral(resourceName: "audioMsg"), for: .normal)
     }
     
     @IBAction func sendButtonTapped(_ sender: UIButton) {
         sendMessage()
     }
-
+    
+    @IBAction func sendAudioToFirestire(_ sender: UIButton) {
+        if sender.imageView?.image !=  #imageLiteral(resourceName: "audioMsg")  {
+            
+        } }
+    
+    @IBAction func audioRecordCancelBtnAction(_ sender: UIButton) {
+        timerView.isHidden = true
+        audioRecordBtn.setImage(#imageLiteral(resourceName: "audioMsg"), for: .normal)
+    }
 }
 
 //MARK: PRIVATE FUNCTIONS
@@ -157,11 +165,12 @@ class OneToOneChatVC: BaseVC {
 extension OneToOneChatVC {
 
     private func initialSetup() {
-        
+        textContainerInnerView.borderColor = AppColors.fontTertiaryColor.withAlphaComponent(0.5)
+        textContainerInnerView.borderWidth = 2.0
         checkRoomAvailability()
         containerScrollView.delegate = self
         bottomContainerView.isUserInteractionEnabled = true
-        addTapGestureToTitle()
+        addTapGestureToAudioBtn()
 //        viewModel.delegate = self
         setupTableView()
         setupImageController()
@@ -171,13 +180,28 @@ extension OneToOneChatVC {
         setupAudioMessages()
     }
 
-    private func addTapGestureToTitle() {
-        titleLabel.isUserInteractionEnabled = true
-        titleLabel.addGestureRecognizer(titleTap)
+    private func addTapGestureToAudioBtn() {
+        let longGesture = UILongPressGestureRecognizer.init(target: self, action: #selector(longTap))
+        audioRecordBtn.addGestureRecognizer(longGesture)
+        audioRecordBtn.isUserInteractionEnabled = true
     }
-
-    @objc private func titleLabelTapped(_ sender: UITapGestureRecognizer) {
-//        AppRouter.goToMyGarageVC(self, userId: inboxModel.userId,userName: inboxModel.firstName, comeFromOtherProfile: true)
+    
+    @objc   func longTap(_ sender : UIGestureRecognizer){
+        print("Long tap")
+        if sender.state == .ended {
+             audioRecordBtn.setImage(#imageLiteral(resourceName: "group3603"), for: .normal)
+             finishRecording(success: true)
+             endTimer()
+        }
+        else if sender.state == .began {
+            print("UIGestureRecognizerStateBegan.")
+            if audioRecorder == nil {
+                startTimer()
+                startRecording()
+            } else {
+                finishRecording(success: true)
+            }
+        }
     }
 
     private func popToInboxView() {
@@ -413,7 +437,7 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = messageListing[indexPath.section][indexPath.row]
-        let imgTap = UITapGestureRecognizer(target: self, action: #selector(titleLabelTapped(_:)))
+//        let imgTap = UITapGestureRecognizer(target: self, action: #selector(titleLabelTapped(_:)))
         switch model.receiverId {
         case AppUserDefaults.value(forKey: .uid).stringValue:
             switch model.messageType {
@@ -422,7 +446,7 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                 senderMediaCell.configureCellWith(model: model)
                 senderMediaCell.senderImageView.setImage_kf(imageString: userImage, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
                 //                setTapGesture(view: senderMediaCell.msgContainerView, indexPath: indexPath)
-                senderMediaCell.senderImageView.addGestureRecognizer(imgTap)
+//                senderMediaCell.senderImageView.addGestureRecognizer(imgTap)
                 senderMediaCell.senderNameLabel.text = self.firstName
                 return senderMediaCell
             case MessageType.audio.rawValue:
@@ -545,7 +569,7 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                 let senderCell = tableView.dequeueCell(with: SenderMessageCell.self)
                 senderCell.configureCellWith(model: model)
                 senderCell.senderImgView.setImage_kf(imageString: userImage, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
-                senderCell.senderImgView.addGestureRecognizer(imgTap)
+//                senderCell.senderImgView.addGestureRecognizer(imgTap)
                 return senderCell
             }
         }
@@ -1246,30 +1270,29 @@ extension OneToOneChatVC:  AVAudioRecorderDelegate, AVAudioPlayerDelegate {
     //MARK: Delegates
     
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
-        endTimer()
         if flag {
-            UIImage().uploadAudioFile(audioUrl: recorder.url, progress: { [weak self] (status) in
-            guard let `self` = self else { return }
-            printDebug(status)
-                 if !self.hasImageUploaded { CommonFunctions.showToastWithMessage("\(Int(status * 100))% Uploaded") }
-            }, completion: { (response,error) in
-                if let url = response {
-                    self.hasImageUploaded = true
-                    if self.isRoom {
-                        self.updateUnreadMessage()
-                        self.restoreDeletedNode()
-                        self.createMediaMessage(url: url, imageURL: url, type: "audio")
-                        self.updateInboxTimeStamp()
-                    } else {
-                        self.createRoom()
-                        self.createMediaMessage(url: url, imageURL: url, type: "audio")
-                        self.createInbox()
-                    }
-                }
-                if let _ = error{
-                    self.showAlert(msg: LocalizedString.imageUploadingFailed.localized)
-                }
-            })
+//            UIImage().uploadAudioFile(audioUrl: recorder.url, progress: { [weak self] (status) in
+//            guard let `self` = self else { return }
+//            printDebug(status)
+//                 if !self.hasImageUploaded { CommonFunctions.showToastWithMessage("\(Int(status * 100))% Uploaded") }
+//            }, completion: { (response,error) in
+//                if let url = response {
+//                    self.hasImageUploaded = true
+//                    if self.isRoom {
+//                        self.updateUnreadMessage()
+//                        self.restoreDeletedNode()
+//                        self.createMediaMessage(url: url, imageURL: url, type: "audio")
+//                        self.updateInboxTimeStamp()
+//                    } else {
+//                        self.createRoom()
+//                        self.createMediaMessage(url: url, imageURL: url, type: "audio")
+//                        self.createInbox()
+//                    }
+//                }
+//                if let _ = error{
+//                    self.showAlert(msg: LocalizedString.imageUploadingFailed.localized)
+//                }
+//            })
         }else {
              finishRecording(success: false)
         }
@@ -1301,15 +1324,15 @@ extension OneToOneChatVC:  AVAudioRecorderDelegate, AVAudioPlayerDelegate {
         timerLbl.text = time
         if viewModel.totalTime != 120 {
             viewModel.totalTime += 1
+            progressVIew.setProgress(Float(viewModel.totalTime) * 1/120, animated: true)
         } else {
             endTimer()
-            self.audioBtn.isEnabled = true
         }
     }
        
     private func endTimer() {
-        timerLbl.isHidden = true
-        timerView.isHidden = true
+//        timerLbl.isHidden = true
+//        timerView.isHidden = true
         viewModel.countdownTimer.invalidate()
     }
        
