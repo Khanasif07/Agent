@@ -92,13 +92,14 @@ enum BidStatus: String, Codable{
         }
     }
 }
+
 struct GarageRequestModel: Codable {
     let createdAt, id, requestID: String?
-    var preferredBrands: [PreferredBrand]
+    var preferredBrands: [PreferredBrand]?
     let profile, rimSize, width: Int?
     let quantity: Int?
-    let images: [String]
-    var preferredCountries: [PreferredBrand]
+    let images: [String]?
+    var preferredCountries: [PreferredBrand]?
     let status: RequestStatus?
     var bidStatus: BidStatus?
     var bidData: [BidDatum]?
@@ -112,15 +113,16 @@ struct GarageRequestModel: Codable {
     let userId: String?
     let userAddress: String?
     let requestDocId : String?
-    
+    let payableAmount : Double?
+    let requestedBy : String?
     enum CodingKeys: String, CodingKey {
         case createdAt
         case userId
         case id = "_id"
         case requestType
         case requestID = "requestId"
-        case bidPlacedByGarage
-        case width, preferredBrands, profile, rimSize, quantity, images, preferredCountries, status, year, make, model, userName, bidStatus, bidData, userLongitude, userLatitude, userImage, userAddress, requestDocId
+        case bidPlacedByGarage, requestedBy
+        case width, preferredBrands, profile, rimSize, quantity, images, preferredCountries, status, year, make, model, userName, bidStatus, bidData, userLongitude, userLatitude, userImage, userAddress, requestDocId, payableAmount
     }
     
     init() {
@@ -149,5 +151,7 @@ struct GarageRequestModel: Codable {
         userLongitude = 0.0
         userAddress = ""
         requestDocId = ""
+        payableAmount = 0.0
+        requestedBy = ""
     }
 }

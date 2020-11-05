@@ -188,7 +188,7 @@ extension GarageServiceRequestVC {
                 }
                 if   brandsType == .countryBrands && bidStatus == .bidFinalsed {
                     for (off,_) in self.viewModel.countryBrandsDict.enumerated(){
-                        self.viewModel.garageRequestDetailArr?.preferredCountries.forEach({ (preferredBrand) in
+                        self.viewModel.garageRequestDetailArr?.preferredCountries?.forEach({ (preferredBrand) in
                             if let listingss = self.viewModel.countryBrandsDict[off][preferredBrand.name]{
                                 for (offf,_) in listingss.enumerated(){
                                     self.viewModel.countryBrandsDict[off][self.selectedCountry]?[offf].isSelected = false
@@ -218,7 +218,7 @@ extension GarageServiceRequestVC {
                     }
                 } else {
                     for (off,_) in self.viewModel.countryBrandsDict.enumerated(){
-                        self.viewModel.garageRequestDetailArr?.preferredCountries.forEach({ (preferredBrand) in
+                        self.viewModel.garageRequestDetailArr?.preferredCountries?.forEach({ (preferredBrand) in
                             if let listingss = self.viewModel.countryBrandsDict[off][preferredBrand.name]{
                                 for (offf,model) in listingss.enumerated(){
                                     if model.countryId == placedBid.countryId && placedBid.brandID == model.id{
@@ -286,7 +286,7 @@ extension GarageServiceRequestVC : UITableViewDelegate, UITableViewDataSource {
             }
             cell.productImgTapped = {[weak self] in
                 guard let `self` = self else {return}
-                AppRouter.presentImageViewerVC(self, image: nil, imageURL: self.viewModel.garageRequestDetailArr?.images.first ?? "")
+                AppRouter.presentImageViewerVC(self, image: nil, imageURL: self.viewModel.garageRequestDetailArr?.images?.first ?? "")
             }
             return cell
             
@@ -482,12 +482,12 @@ extension GarageServiceRequestVC :GarageServiceRequestVMDelegate {
         }
         let serviceType = viewModel.garageRequestDetailArr?.requestType
         titleLbl.text = serviceType == .tyres ? LocalizedString.tyreServiceRequest.localized : serviceType == .battery ? LocalizedString.batteryServiceRequest.localized :  LocalizedString.oilServiceRequest.localized
-        if !(viewModel.garageRequestDetailArr?.preferredCountries.isEmpty ?? false) {
+        if !(viewModel.garageRequestDetailArr?.preferredCountries?.isEmpty ?? false) {
             apiHit = false
             brandsType = .countryBrands
         }
         
-        if !(viewModel.garageRequestDetailArr?.preferredBrands.isEmpty ?? false) {
+        if !(viewModel.garageRequestDetailArr?.preferredBrands?.isEmpty ?? false) {
             apiHit = false
             brandsType = .onlyBrands
             self.viewModel.countryBrandsDict.append([self.selectedCountry : viewModel.garageRequestDetailArr?.preferredBrands ?? [PreferredBrand]()])

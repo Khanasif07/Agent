@@ -87,15 +87,15 @@ class ServiceRequestTableCell: UITableViewCell {
             sizeDetailLbl.text = "\(model.make ?? "") M/ " + "\(model.model ?? "") M/ " + "\(model.year ?? 0) Y"
         }
      
-        if model.preferredBrands.count == 0 && model.preferredCountries.count == 0{
+        if model.preferredBrands?.count == 0 && model.preferredCountries?.count == 0{
             brandsLbl.isHidden = true
             brandDetailLbl.isHidden = true
-        }else if model.preferredCountries.count == 0{
+        }else if model.preferredCountries?.count == 0{
             brandsLbl.text = "Brand: "
-            brandDetailLbl.attributedText = getAttributedString(data: model.preferredBrands)
+            brandDetailLbl.attributedText = getAttributedString(data: model.preferredBrands ?? [])
         }else {
             brandsLbl.text = "Countries: "
-            brandDetailLbl.attributedText = getAttributedString(data :model.preferredCountries)
+            brandDetailLbl.attributedText = getAttributedString(data :model.preferredCountries ?? [])
         }
         let logoImg =  model.requestType == .tyres ? #imageLiteral(resourceName: "maskGroup") : model.requestType == .battery ? #imageLiteral(resourceName: "icBattery") : #imageLiteral(resourceName: "icOil")
         let logoBackGroundColor =  model.requestType == .tyres ? AppColors.blueLightColor : model.requestType == .battery ? AppColors.redLightColor : AppColors.grayLightColor

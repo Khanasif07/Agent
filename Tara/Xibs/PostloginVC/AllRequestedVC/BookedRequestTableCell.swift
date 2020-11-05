@@ -11,12 +11,16 @@ import UIKit
 class BookedRequestTableCell: UITableViewCell {
 
     @IBOutlet weak var payableAmtLbl: UILabel!
+    @IBOutlet weak var payableAmtValueLbl: UILabel!
     @IBOutlet weak var regNumberLbl: UILabel!
+    @IBOutlet weak var regNumberValueLbl: UILabel!
     @IBOutlet weak var vehicleLbl: UILabel!
+    @IBOutlet weak var vehicleNameLbl: UILabel!
     @IBOutlet weak var requestedLbl: UILabel!
     @IBOutlet weak var serviceTimeLbl: UILabel!
     @IBOutlet weak var serviceTyeLbl: UILabel!
     @IBOutlet weak var ratingLbl: UILabel!
+    @IBOutlet weak var userNameLbl: UILabel!
     @IBOutlet weak var ratingImgView: UIImageView!
     @IBOutlet weak var logoImgView: UIImageView!
     @IBOutlet weak var chatBtn: AppButton!
@@ -52,6 +56,7 @@ class BookedRequestTableCell: UITableViewCell {
     }
     
     public func initialSetUp(){
+        ratingView.isHidden = true
         self.logoImgView.backgroundColor = AppColors.fontTertiaryColor
         chatBtn.isBorderSelected = true
         startServiceBtn.isEnabled = true
@@ -63,6 +68,36 @@ class BookedRequestTableCell: UITableViewCell {
         vehicleLbl.text = "Vehicle"
         regNumberLbl.text = "Reg. Number"
         payableAmtLbl.text = "Payable Amount"
+    }
+
+    func bindData(_ model: GarageRequestModel) {
+//        let date = (model.createdAt)?.toDate(dateFormat: Date.DateFormat.givenDateFormat.rawValue) ?? Date()
+//        serviceTimeLbl.text = date.timeAgoSince
+
+        let date = (model.createdAt)?.breakCompletDate(outPutFormat: Date.DateFormat.profileFormat.rawValue, inputFormat: Date.DateFormat.yyyyMMddTHHmmsssssz.rawValue)
+        serviceTimeLbl.text = date
+        
+        regNumberValueLbl.text = model.requestID
+        vehicleNameLbl.text = model.make?.isEmpty ?? true ? "N/A" : model.make
+        userNameLbl.text = model.requestedBy
+        
+        let type = model.requestType == .tyres ? "Tyre" : model.requestType.rawValue
+        serviceTyeLbl.text = (type) + LocalizedString.serviceRequest.localized
+        
+        let logoImg =  model.requestType == .tyres ? #imageLiteral(resourceName: "maskGroup") : model.requestType == .battery ? #imageLiteral(resourceName: "icBattery") : #imageLiteral(resourceName: "icOil")
+        let logoBackGroundColor =  model.requestType == .tyres ? AppColors.blueLightColor : model.requestType == .battery ? AppColors.redLightColor : AppColors.grayLightColor
+        self.logoImgView.backgroundColor = logoBackGroundColor
+        self.logoImgView.image = logoImg
+        
+        var str: NSMutableAttributedString = NSMutableAttributedString()
+        str = NSMutableAttributedString(string: model.payableAmount?.description ?? "", attributes: [
+            .font: AppFonts.NunitoSansBold.withSize(17.0),
+            .foregroundColor: AppColors.successGreenColor
+        ])
+        
+        str.append(NSAttributedString(string: "SAR", attributes: [NSAttributedString.Key.foregroundColor: AppColors.successGreenColor,NSAttributedString.Key.font: AppFonts.NunitoSansSemiBold.withSize(12.0)]))
+        payableAmtValueLbl.attributedText = str
+        
     }
 
 }
