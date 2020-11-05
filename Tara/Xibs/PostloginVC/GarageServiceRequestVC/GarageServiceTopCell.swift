@@ -79,8 +79,8 @@ class GarageServiceTopCell: UITableViewCell {
         }else {
             locationLbl.text = "NA"
         }
-        self.imgStackView.isHidden  = model.images.isEmpty
-        productImgView.setImage_kf(imageString: model.images.first ?? "",placeHolderImage: #imageLiteral(resourceName: "placeHolder"))
+        self.imgStackView.isHidden  = ((model.images?.isEmpty) ?? false)
+        productImgView.setImage_kf(imageString: model.images?.first ?? "",placeHolderImage: #imageLiteral(resourceName: "placeHolder"))
         userImgView.setImage_kf(imageString: model.userImage ?? "",placeHolderImage: #imageLiteral(resourceName: "placeHolder"))
         let date = (model.createdAt)?.breakCompletDate(outPutFormat: Date.DateFormat.profileFormat.rawValue, inputFormat: Date.DateFormat.yyyyMMddTHHmmsssssz.rawValue)
         createAtLbl.text = date
