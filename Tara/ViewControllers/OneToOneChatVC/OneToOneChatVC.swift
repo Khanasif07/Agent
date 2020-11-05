@@ -52,7 +52,7 @@ class OneToOneChatVC: BaseVC {
             }
         }
     }
-    var selectedIndexPaths: [IndexPath] = []
+    var selectedIndexPath: IndexPath?
     var listeners = [ListenerRegistration]()
     //Audio messages
     var recordingSession: AVAudioSession!
@@ -172,7 +172,6 @@ class OneToOneChatVC: BaseVC {
     @IBAction func audioRecordCancelBtnAction(_ sender: UIButton) {
         timerView.isHidden = true
         timerLbl.text = "0:00"
-        self.chatViewModel.totalTime = 00
         self.progressVIew.progress = 0.0
         audioRecordBtn.setImage(#imageLiteral(resourceName: "audioMsg"), for: .normal)
     }
@@ -370,8 +369,10 @@ extension OneToOneChatVC {
     
     @objc func finishedPlaying( _ myNotification:NSNotification) {
         self.player?.rate = 0.0
-        
-//        ButtonPlay.setImage(UIImage(named: “ic_play”), for: UIControl.State.normal)
+        let senderAudioCell = self.messagesTableView.cellForRow(at: self.selectedIndexPath!) as? SenderAudioCell
+        senderAudioCell?.customSlider.value = 0.0
+        senderAudioCell?.playBtn.setImage(#imageLiteral(resourceName: "playButton"), for: .normal)
+        self.messagesTableView.reloadData()
     }
 }
 
@@ -488,7 +489,7 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                 receiverAudioCell.playBtnTapped = { [weak self]  in
                     guard let `self` = self else { return }
                     self.player!.pause()
-                    if self.player?.rate == 0
+                    if self.player?.rate == 0.0
                     {
                         self.player!.play()
                         receiverAudioCell.playBtn.isHidden = false
@@ -541,19 +542,30 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                 let url = URL(string: model.mediaUrl)
                 self.playerItem = AVPlayerItem(url: url!)
                 self.player = AVPlayer(playerItem: self.playerItem)
-//                senderAudioCell.playBtn.setImage(#imageLiteral(resourceName: "group3"), for: .normal)
                 senderAudioCell.playBtnTapped = { [weak self]  in
                     guard let `self` = self else { return }
-                    self.player!.pause()
-                    if self.player?.rate == 0
-                    {
+                    self.selectedIndexPath = indexPath
+                    if self.player?.rate == 0.0 {
                         self.player!.play()
-                        senderAudioCell.playBtn.isHidden = false
-                        //            self.loadingView.isHidden = false
+                        senderAudioCell.playBtn.isHidden = true
+                        senderAudioCell.loadingView.isHidden = false
+                        senderAudioCell.loadingView.startAnimating()
                         senderAudioCell.playBtn.setImage(#imageLiteral(resourceName: "pauseButton"), for: UIControl.State.normal)
                     } else {
                         self.player!.pause()
                         senderAudioCell.playBtn.setImage(#imageLiteral(resourceName: "playButton"), for: UIControl.State.normal)
+                    }
+                }
+                
+                senderAudioCell.sliderValueChangedAction = { [weak self] (sender)  in
+                    guard let `self` = self else { return }
+                    self.selectedIndexPath = indexPath
+                    let seconds : Int64 = Int64(sender.value)
+                    let targetTime:CMTime = CMTimeMake(value: seconds, timescale: 1)
+                    self.player!.seek(to: targetTime)
+                    if self.player!.rate == 0 {
+                        self.player?.play()
+                        senderAudioCell.playBtn.setImage(#imageLiteral(resourceName: "pauseButton"), for: .normal)
                     }
                 }
                
@@ -570,8 +582,6 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                        
                        player!.addPeriodicTimeObserver(forInterval: CMTimeMakeWithSeconds(1, preferredTimescale: 1), queue: DispatchQueue.main) { (CMTime) -> Void in
                            if self.player!.currentItem?.status == .readyToPlay {
-//                            let duration = (self.playerItem?.asset.duration.seconds)
-//                            senderAudioCell.timeLbl.text = "\(String(describing: duration))"
                                let time : Float64 = CMTimeGetSeconds(self.player!.currentTime());
                                senderAudioCell.customSlider.value = Float ( time );
                                senderAudioCell.timeLbl.text = self.stringFromTimeInterval(interval: time)
@@ -580,13 +590,15 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                            let playbackLikelyToKeepUp = self.player?.currentItem?.isPlaybackLikelyToKeepUp
                            if playbackLikelyToKeepUp == false{
                                print("IsBuffering")
-                               senderAudioCell.playBtn.isHidden = false
-                //               self.loadingView.isHidden = false
+                               senderAudioCell.playBtn.isHidden = true
+                               senderAudioCell.loadingView.startAnimating()
+                               senderAudioCell.loadingView.isHidden = false
                            } else {
                                //stop the activity indicator
                                print("Buffering completed")
                                senderAudioCell.playBtn.isHidden = false
-                //               self.loadingView.isHidden = true
+                               senderAudioCell.loadingView.stopAnimating()
+                               senderAudioCell.loadingView.isHidden = true
                            }
                         }
                 
@@ -1169,7 +1181,7 @@ extension OneToOneChatVC{
                         }
                     }
                 }
-                self.selectedIndexPaths = []
+//                self.selectedIndexPaths = []
             })
             DispatchQueue.main.async {
 //                self.reloadTableViewToBottom()
