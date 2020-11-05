@@ -224,7 +224,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OwT-36-nPL">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="136"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="126"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeHolder" translatesAutoresizingMaskIntoConstraints="NO" id="qrE-dg-XlJ">
                                                         <rect key="frame" x="16" y="16" width="40" height="40"/>
@@ -279,17 +279,17 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="0bd-Sy-dAg">
-                                                        <rect key="frame" x="16" y="76" width="328" height="30"/>
+                                                        <rect key="frame" x="16" y="76" width="328" height="20"/>
                                                         <subviews>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6Fz-HZ-6Se">
-                                                                <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_marker.png" translatesAutoresizingMaskIntoConstraints="NO" id="6Fz-HZ-6Se">
+                                                                <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="height" constant="30" id="tYc-aL-oeO"/>
+                                                                    <constraint firstAttribute="height" constant="20" id="tYc-aL-oeO"/>
                                                                     <constraint firstAttribute="width" secondItem="6Fz-HZ-6Se" secondAttribute="height" multiplier="1:1" id="yKF-2Q-4u9"/>
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sector" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uud-3a-HyF">
-                                                                <rect key="frame" x="36" y="0.0" width="292" height="16"/>
+                                                                <rect key="frame" x="26" y="0.0" width="302" height="16"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -503,6 +503,7 @@
     </scenes>
     <resources>
         <image name="audioMsg" width="32" height="32"/>
+        <image name="default_marker.png" width="26" height="41"/>
         <image name="group3" width="32" height="32"/>
         <image name="group3603" width="30" height="30"/>
         <image name="icArrow" width="30" height="30"/>
