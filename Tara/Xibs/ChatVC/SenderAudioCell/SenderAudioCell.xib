@@ -52,13 +52,13 @@
                                 </connections>
                             </button>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="3lx-JI-NvR">
-                                <rect key="frame" x="63" y="3" width="136.5" height="31"/>
+                                <rect key="frame" x="69" y="3" width="130.5" height="31"/>
                                 <connections>
                                     <action selector="sliderValueChanged:" destination="v5W-3u-sBK" eventType="valueChanged" id="qnQ-5J-L1Z"/>
                                 </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="szY-fS-Dz1">
-                                <rect key="frame" x="65" y="19" width="24.5" height="17"/>
+                                <rect key="frame" x="71" y="19" width="24.5" height="17"/>
                                 <fontDescription key="fontDescription" name="NotoSansOriya" family="Noto Sans Oriya" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -74,7 +74,7 @@
                             <constraint firstItem="vN4-J7-hcq" firstAttribute="leading" secondItem="1XN-kw-6WI" secondAttribute="trailing" constant="5" id="czx-Ex-aIe"/>
                             <constraint firstItem="szY-fS-Dz1" firstAttribute="leading" secondItem="3lx-JI-NvR" secondAttribute="leading" id="j2W-gW-r1t"/>
                             <constraint firstItem="1XN-kw-6WI" firstAttribute="leading" secondItem="4lt-w1-0DY" secondAttribute="leading" constant="5" id="laY-mP-Eig"/>
-                            <constraint firstItem="3lx-JI-NvR" firstAttribute="leading" secondItem="vN4-J7-hcq" secondAttribute="trailing" constant="-1" id="t6f-2Y-5n6"/>
+                            <constraint firstItem="3lx-JI-NvR" firstAttribute="leading" secondItem="vN4-J7-hcq" secondAttribute="trailing" constant="5" id="t6f-2Y-5n6"/>
                             <constraint firstAttribute="bottom" secondItem="szY-fS-Dz1" secondAttribute="bottom" id="u3I-LL-eRP"/>
                             <constraint firstItem="vN4-J7-hcq" firstAttribute="centerY" secondItem="4lt-w1-0DY" secondAttribute="centerY" id="zWE-dj-I8Z"/>
                         </constraints>

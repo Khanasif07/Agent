@@ -10,6 +10,11 @@ import UIKit
 
 class ReceiverAudioCell: UITableViewCell {
 
+    
+    var playBtnTapped :(()->())?
+    
+    @IBOutlet weak var playBtn: UIButton!
+    @IBOutlet weak var customSlider: UISlider!
     @IBOutlet weak var receiverImgView: UIImageView!
     @IBOutlet weak var receiverNameLbl: UILabel!
     @IBOutlet weak var dataContainerView: UIView!
@@ -27,5 +32,10 @@ class ReceiverAudioCell: UITableViewCell {
         audioBtn.round()
     }
      
+    @IBAction func playBtnAction(_ sender: UIButton) {
+        if let handle = playBtnTapped{
+            handle()
+        }
+    }
     
 }
