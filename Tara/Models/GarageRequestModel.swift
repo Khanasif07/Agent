@@ -111,6 +111,7 @@ struct GarageRequestModel: Codable {
     let userImage: String?
     let userId: String?
     let userAddress: String?
+    let requestDocId : String?
     
     enum CodingKeys: String, CodingKey {
         case createdAt
@@ -119,7 +120,7 @@ struct GarageRequestModel: Codable {
         case requestType
         case requestID = "requestId"
         case bidPlacedByGarage
-        case width, preferredBrands, profile, rimSize, quantity, images, preferredCountries, status, year, make, model, userName, bidStatus, bidData, userLongitude, userLatitude, userImage, userAddress
+        case width, preferredBrands, profile, rimSize, quantity, images, preferredCountries, status, year, make, model, userName, bidStatus, bidData, userLongitude, userLatitude, userImage, userAddress, requestDocId
     }
     
     init() {
@@ -147,5 +148,6 @@ struct GarageRequestModel: Codable {
         userLatitude = 0.0
         userLongitude = 0.0
         userAddress = ""
+        requestDocId = ""
     }
 }

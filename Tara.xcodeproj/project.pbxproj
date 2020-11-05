@@ -289,6 +289,7 @@
 		A468DCA22539D80200416CF9 /* SocketIOManager+ApiData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A468DCA12539D80200416CF9 /* SocketIOManager+ApiData.swift */; };
 		A468DCA6253A020300416CF9 /* HandleRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A468DCA5253A020300416CF9 /* HandleRequest.swift */; };
 		A46A75B02553E0F00058A267 /* OneToOneChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46A75AF2553E0F00058A267 /* OneToOneChatViewModel.swift */; };
+		A46A75B22553EEBB0058A267 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46A75B12553EEBB0058A267 /* ChatModel.swift */; };
 		A479345E253FFEE8001CDA4A /* SylyfeBuyer_SylyfeBuyer_Helpers_AlignmentFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A479345D253FFEE8001CDA4A /* SylyfeBuyer_SylyfeBuyer_Helpers_AlignmentFlowLayout.swift */; };
 		A47EB1D9254D42040044DD4D /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EB1D8254D42040044DD4D /* WebViewController.swift */; };
 		A480DB0F251F1F9F0031B3E5 /* OilRequestedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A480DB0E251F1F9F0031B3E5 /* OilRequestedVC.swift */; };
@@ -623,6 +624,7 @@
 		A468DCA12539D80200416CF9 /* SocketIOManager+ApiData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SocketIOManager+ApiData.swift"; sourceTree = "<group>"; };
 		A468DCA5253A020300416CF9 /* HandleRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandleRequest.swift; sourceTree = "<group>"; };
 		A46A75AF2553E0F00058A267 /* OneToOneChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneToOneChatViewModel.swift; sourceTree = "<group>"; };
+		A46A75B12553EEBB0058A267 /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 		A479345D253FFEE8001CDA4A /* SylyfeBuyer_SylyfeBuyer_Helpers_AlignmentFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SylyfeBuyer_SylyfeBuyer_Helpers_AlignmentFlowLayout.swift; sourceTree = "<group>"; };
 		A47EB1D8254D42040044DD4D /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		A480DB0E251F1F9F0031B3E5 /* OilRequestedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OilRequestedVC.swift; sourceTree = "<group>"; };
@@ -1649,6 +1651,7 @@
 			isa = PBXGroup;
 			children = (
 				84C3F5C7254AD27C00F374CC /* FirestoreModel.swift */,
+				A46A75B12553EEBB0058A267 /* ChatModel.swift */,
 			);
 			path = ChatModels;
 			sourceTree = "<group>";
@@ -2451,6 +2454,7 @@
 				84FF6E9A251D85F70000E2AD /* BottomSheetVC.swift in Sources */,
 				8481FA232500BB5400AB6EFB /* AppNetworking.swift in Sources */,
 				847BC425250796CB00EEEFDC /* ResetPasswordVM.swift in Sources */,
+				A46A75B22553EEBB0058A267 /* ChatModel.swift in Sources */,
 				8481FA1F2500BAFB00AB6EFB /* AppleLoginController.swift in Sources */,
 				84B629AC25120FF50080A7C2 /* InterConnectivity.swift in Sources */,
 				A4DCEE0D252E0D34002EB32F /* GarageServiceRequestVM.swift in Sources */,

@@ -56,7 +56,7 @@ struct UserModel{
         self.phoneNo = json[ApiKey.phoneNo].stringValue
         self.phoneVerified = json[ApiKey.phoneVerified].boolValue
         self.status = json[ApiKey.status].stringValue
-        self.phoneNoAdded = json[ApiKey.phoneNoAdded].boolValue
+        self.phoneNoAdded = !json[ApiKey.phoneNo].stringValue.isEmpty  // json[ApiKey.phoneNoAdded].boolValue
         self.updatedAt = json[ApiKey.updatedAt].stringValue
         self.userType = json[ApiKey.currentRole].stringValue
         self.emailVerifyToken = json[ApiKey.emailVerifyToken].stringValue

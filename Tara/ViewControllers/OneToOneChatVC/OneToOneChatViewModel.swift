@@ -25,15 +25,14 @@ class OneToOneChatViewModel {
     var totalPages = 1
     var nextPageAvailable = true
     var isRequestinApi = false
+    var chatData = ChatModel()
     
     // MARK: Functions
     //=================================
     func getChatData(params: JSONDictionary,loader: Bool = false) {
         WebServices.getChatData(parameters: params, success: { [weak self] (json) in
             guard let `self` = self else { return }
-            let msg = json[ApiKey.message].stringValue
-            let statusCode = json[ApiKey.statusCode].intValue
-
+            self.parseToMakeListingData(result: json)
             printDebug(json)
         }) { [weak self] (error) in
             guard let `self` = self else { return }
@@ -42,18 +41,19 @@ class OneToOneChatViewModel {
     }
     
     func parseToMakeListingData(result: JSON) {
-        if let jsonString = result[ApiKey.data][ApiKey.result].rawString(), let data = jsonString.data(using: .utf8) {
+        if let jsonString = result[ApiKey.data].rawString(), let data = jsonString.data(using: .utf8) {
             do {
-                if result[ApiKey.data][ApiKey.result].arrayValue.isEmpty {
-                    self.hideLoader = true
-                    isRequestinApi = false
-//                    self.delegate?.getUserBidDataSuccess(message: "")
-                    return
-                }
-                let modelList = try! JSONDecoder().decode([UserBidModel].self, from: data)
+//                if result[ApiKey.data].arrayValue.isEmpty {
+//                    self.hideLoader = true
+//                    isRequestinApi = false
+//                    return
+//                }
+                let modelList = try! JSONDecoder().decode(ChatModel.self, from: data)
                 printDebug(modelList)
                 currentPage = result[ApiKey.data][ApiKey.page].intValue
                 isRequestinApi = false
+                chatData = modelList
+                
                 if currentPage == 1 {
 //                    self.userBidListingArr = modelList
                 } else {
@@ -61,10 +61,10 @@ class OneToOneChatViewModel {
                 }
                 nextPageAvailable = result[ApiKey.data][ApiKey.next].boolValue
                 currentPage += 1
-//                self.delegate?.getUserBidDataSuccess(message: "")
+                self.delegate?.chatDataSuccess(msg: "")
             } catch {
                 isRequestinApi = false
-//                self.delegate?.getUserBidDataFailed(error: "error occured")
+                self.delegate?.chatDataFailure(msg: "error occured")
                 printDebug("error occured")
             }
         }

@@ -171,11 +171,12 @@ class OneToOneChatVC: BaseVC {
 extension OneToOneChatVC {
 
     private func initialSetup() {
-        
+        userRequestView.isHidden = true
         checkRoomAvailability()
         containerScrollView.delegate = self
         bottomContainerView.isUserInteractionEnabled = true
         addTapGestureToTitle()
+        chatViewModel.delegate = self
 //        viewModel.delegate = self
         setupTableView()
         setupImageController()
@@ -183,6 +184,7 @@ extension OneToOneChatVC {
         fetchDeleteTime()
         getBatchCount()
         setupAudioMessages()
+        getChatData()
     }
 
     private func addTapGestureToTitle() {
@@ -211,7 +213,13 @@ extension OneToOneChatVC {
         imageController.mediaTypes = ["public.image", "public.movie"]
     }
 
-
+    private func getChatData() {
+        if !requestId.isEmpty {
+            let dict = [ApiKey.requestId : self.requestId]
+            chatViewModel.getChatData(params: dict)
+        }
+    }
+    
     private func createMediaAlertSheet() {
          self.captureImage(delegate: self,removedImagePicture: false )
     }
@@ -1320,4 +1328,28 @@ extension OneToOneChatVC:  AVAudioRecorderDelegate, AVAudioPlayerDelegate {
         viewModel.countdownTimer.invalidate()
     }
        
+}
+
+
+extension OneToOneChatVC : OneToOneChatViewModelDelegate{
+    func chatDataSuccess(msg: String) {
+        userRequestView.isHidden = false
+        userNameLbl.text = chatViewModel.chatData.userName
+        numberOfServiceLbl.text = chatViewModel.chatData.totalRequests.description + " Services"
+        addressLbl.text = chatViewModel.chatData.address
+        
+        var str: NSMutableAttributedString = NSMutableAttributedString()
+        str = NSMutableAttributedString(string: chatViewModel.chatData.totalAmount.description, attributes: [
+            .font: AppFonts.NunitoSansBold.withSize(17.0),
+            .foregroundColor: AppColors.successGreenColor
+        ])
+        
+        str.append(NSAttributedString(string: "SAR", attributes: [NSAttributedString.Key.foregroundColor: AppColors.successGreenColor,NSAttributedString.Key.font: AppFonts.NunitoSansSemiBold.withSize(12.0)]))
+        amountValueLbl.attributedText = str
+    }
+    
+    func chatDataFailure(msg: String) {
+        userRequestView.isHidden = true
+        CommonFunctions.showToastWithMessage(msg)
+    }
 }
