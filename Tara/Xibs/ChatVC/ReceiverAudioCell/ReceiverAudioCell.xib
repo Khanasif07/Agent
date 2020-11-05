@@ -38,7 +38,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="h6J-Pe-1xe" secondAttribute="height" multiplier="1:1" id="apT-PG-KmV"/>
                                 </constraints>
-                                <state key="normal" image="audioMsg"/>
+                                <state key="normal" image="audioBtnWhite"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qQd-Dy-y5W">
                                 <rect key="frame" x="36" y="3" width="30" height="30"/>
@@ -46,7 +46,7 @@
                                     <constraint firstAttribute="height" constant="30" id="FvA-UF-lho"/>
                                     <constraint firstAttribute="width" secondItem="qQd-Dy-y5W" secondAttribute="height" id="j9B-hs-kBl"/>
                                 </constraints>
-                                <state key="normal" image="audioMsg"/>
+                                <state key="normal" image="playButton"/>
                                 <connections>
                                     <action selector="playBtnAction:" destination="5BE-Om-JgR" eventType="touchUpInside" id="RWQ-PV-9EO"/>
                                 </connections>
@@ -105,7 +105,8 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="audioMsg" width="32" height="32"/>
+        <image name="audioBtnWhite" width="8" height="12.5"/>
         <image name="placeHolder" width="80" height="80"/>
+        <image name="playButton" width="16" height="16"/>
     </resources>
 </document>

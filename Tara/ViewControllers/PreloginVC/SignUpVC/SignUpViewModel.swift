@@ -150,7 +150,7 @@ struct SignUpViewModel {
                 }
             }) { (error, code) in
                 if code == 17011 {
-                    FirestoreController.createUserNode(userId: user.id, email: user.email, password: password, name: user.name, imageURL: user.image, phoneNo: user.countryCode + "" + user.phoneNo, status: "", completion: {
+                    FirestoreController.createUserNode(userId: user.id, email: user.email, password: password, name: user.name, imageURL: user.image, phoneNo: user.countryCode + "" + user.phoneNo, countryCode: user.countryCode, status: "", completion: {
                         self.delegate?.socailLoginApiSuccess(message: "")
                     }) { (error) -> (Void) in
                         self.delegate?.socailLoginApiFailure(message: error.localizedDescription)

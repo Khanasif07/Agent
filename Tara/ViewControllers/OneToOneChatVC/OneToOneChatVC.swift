@@ -117,7 +117,7 @@ class OneToOneChatVC: BaseVC {
         sendButton.round()
         audioCancelBtn.round()
         audioRecordBtn.round()
-        textContainerInnerView.round(radius: 10)
+        textContainerInnerView.round(radius: 4.0)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -168,11 +168,12 @@ class OneToOneChatVC: BaseVC {
     @IBAction func sendAudioToFirestire(_ sender: UIButton) {
         if sender.imageView?.image !=  #imageLiteral(resourceName: "audioMsg")  {
             self.uploadAudioFileToFirestore(self.recordedUrl!)
+            self.audioRecordCancelBtnAction(audioCancelBtn)
         } }
             
     @IBAction func audioRecordCancelBtnAction(_ sender: UIButton) {
         timerView.isHidden = true
-        timerLbl.text = "00"
+        timerLbl.text = "0:00"
         self.viewModel.totalTime = 00
         self.progressVIew.progress = 0.0
         audioRecordBtn.setImage(#imageLiteral(resourceName: "audioMsg"), for: .normal)
@@ -187,7 +188,7 @@ extension OneToOneChatVC {
         userRequestView.isHidden = true
         chatViewModel.delegate = self
         textContainerInnerView.borderColor = AppColors.fontTertiaryColor.withAlphaComponent(0.5)
-        textContainerInnerView.borderWidth = 2.0
+        textContainerInnerView.borderWidth = 1.0
         checkRoomAvailability()
         containerScrollView.delegate = self
         bottomContainerView.isUserInteractionEnabled = true
@@ -485,7 +486,7 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                 let url = URL(string: model.mediaUrl)
                 self.playerItem = AVPlayerItem(url: url!)
                 self.player = AVPlayer(playerItem: self.playerItem)
-                receiverAudioCell.playBtn.setImage(#imageLiteral(resourceName: "group3"), for: .normal)
+                receiverAudioCell.playBtn.setImage(#imageLiteral(resourceName: "playButton"), for: .normal)
                 receiverAudioCell.playBtnTapped = { [weak self]  in
                     guard let `self` = self else { return }
                     self.player!.pause()
@@ -494,10 +495,10 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                         self.player!.play()
                         receiverAudioCell.playBtn.isHidden = false
                         //            self.loadingView.isHidden = false
-                        receiverAudioCell.playBtn.setImage(#imageLiteral(resourceName: "group3714"), for: UIControl.State.normal)
+                        receiverAudioCell.playBtn.setImage(#imageLiteral(resourceName: "pauseButton"), for: UIControl.State.normal)
                     } else {
                         self.player!.pause()
-                        receiverAudioCell.playBtn.setImage(#imageLiteral(resourceName: "group3"), for: UIControl.State.normal)
+                        receiverAudioCell.playBtn.setImage(#imageLiteral(resourceName: "playButton"), for: UIControl.State.normal)
                     }
                 }
                 player!.addPeriodicTimeObserver(forInterval: CMTimeMakeWithSeconds(1, preferredTimescale: 1), queue: DispatchQueue.main) { (CMTime) -> Void in
@@ -542,7 +543,7 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                 let url = URL(string: model.mediaUrl)
                 self.playerItem = AVPlayerItem(url: url!)
                 self.player = AVPlayer(playerItem: self.playerItem)
-                senderAudioCell.playBtn.setImage(#imageLiteral(resourceName: "group3"), for: .normal)
+//                senderAudioCell.playBtn.setImage(#imageLiteral(resourceName: "group3"), for: .normal)
                 senderAudioCell.playBtnTapped = { [weak self]  in
                     guard let `self` = self else { return }
                     self.player!.pause()
@@ -551,32 +552,31 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                         self.player!.play()
                         senderAudioCell.playBtn.isHidden = false
                         //            self.loadingView.isHidden = false
-                        senderAudioCell.playBtn.setImage(#imageLiteral(resourceName: "group3714"), for: UIControl.State.normal)
+                        senderAudioCell.playBtn.setImage(#imageLiteral(resourceName: "pauseButton"), for: UIControl.State.normal)
                     } else {
                         self.player!.pause()
-                        senderAudioCell.playBtn.setImage(#imageLiteral(resourceName: "group3"), for: UIControl.State.normal)
+                        senderAudioCell.playBtn.setImage(#imageLiteral(resourceName: "playButton"), for: UIControl.State.normal)
                     }
                 }
                
                 senderAudioCell.customSlider.minimumValue = 0
 //                let duration : CMTime = (self.playerItem?.asset.duration)!
 //                        let seconds : Float64 = CMTimeGetSeconds(duration)
-                senderAudioCell.customSlider.maximumValue = Float(model.messageDuration)
-//                senderAudioCell.customSlider.isContinuous = true
+                senderAudioCell.customSlider.maximumValue = Float(model.messageDuration).rounded()
+                senderAudioCell.customSlider.isContinuous = true
                 senderAudioCell.customSlider.tintColor = AppColors.appRedColor
 //                senderAudioCell.timeLbl.text = self.stringFromTimeInterval(interval: seconds)
-//                senderAudioCell.timeLbl.text = "\(duration)"
+                senderAudioCell.timeLbl.text = "\(model.messageDuration)"
                        
 //                       lblcurrentText.text = self.stringFromTimeInterval(interval: seconds1)
                        
                        player!.addPeriodicTimeObserver(forInterval: CMTimeMakeWithSeconds(1, preferredTimescale: 1), queue: DispatchQueue.main) { (CMTime) -> Void in
                            if self.player!.currentItem?.status == .readyToPlay {
-                            let duration = (self.playerItem?.asset.duration.seconds)
-                            senderAudioCell.timeLbl.text = "\(String(describing: duration))"
+//                            let duration = (self.playerItem?.asset.duration.seconds)
+//                            senderAudioCell.timeLbl.text = "\(String(describing: duration))"
                                let time : Float64 = CMTimeGetSeconds(self.player!.currentTime());
                                senderAudioCell.customSlider.value = Float ( time );
-
-                //               self.lblcurrentText.text = self.stringFromTimeInterval(interval: time)
+                               senderAudioCell.timeLbl.text = self.stringFromTimeInterval(interval: time)
                            }
 
                            let playbackLikelyToKeepUp = self.player?.currentItem?.isPlaybackLikelyToKeepUp
