@@ -201,7 +201,7 @@ class FirestoreController:NSObject{
     
     //MARK:- CREATE LAST MESSAGE NODE
     //===============================
-    static func createLastMessageNode(roomId:String,messageText:String,messageTime:FieldValue,messageId:String,messageType:String,messageStatus:Int,senderId:String,receiverId:String,mediaUrl:String,blocked: Bool, thumbNailURL: String,audioTime: Int) {
+    static func createLastMessageNode(roomId:String,messageText:String,messageTime:FieldValue,messageId:String,messageType:String,messageStatus:Int,senderId:String,receiverId:String,mediaUrl:String,blocked: Bool, thumbNailURL: String,messageDuration: Int) {
         db.collection(ApiKey.lastMessage)
             .document(roomId)
             .collection(ApiKey.chat)
@@ -217,7 +217,7 @@ class FirestoreController:NSObject{
                       ApiKey.mediaUrl : mediaUrl,
                       ApiKey.blocked :blocked,
                       ApiKey.thumbnail :thumbNailURL,
-                      ApiKey.audioTime : audioTime])
+                      ApiKey.messageDuration : messageDuration])
         
     }
     
@@ -288,7 +288,7 @@ class FirestoreController:NSObject{
     }
     
     static func uploadMedia(croppedImage: UIImage,completion: @escaping (_ url: String?) -> Void) {
-        let storageRef = Storage.storage().reference().child("images/\(croppedImage).png")
+        _ = Storage.storage().reference().child("images/\(croppedImage).png")
 //        let image =  croppedImage.jpeg(.medium)
 //        if let uploadData = image {
 //            storageRef.putData(uploadData, metadata: nil) { (metadata, error) in
@@ -411,7 +411,7 @@ class FirestoreController:NSObject{
     
     //MARK:-CreateMessageNode
     //=======================
-    static func createMessageNode(roomId:String,messageText:String,messageTime:FieldValue,messageId:String,messageType:String,messageStatus:Int,senderId:String,receiverId:String,mediaUrl:String,blocked: Bool, thumbNailURL: String,audioTime: Int){
+    static func createMessageNode(roomId:String,messageText:String,messageTime:FieldValue,messageId:String,messageType:String,messageStatus:Int,senderId:String,receiverId:String,mediaUrl:String,blocked: Bool, thumbNailURL: String,messageDuration: Int){
         
         db.collection(ApiKey.messages).document(roomId).collection(ApiKey.chat).document(messageId).setData([ApiKey.messageText:messageText,
                                                                                                              ApiKey.messageId:messageId,
@@ -424,7 +424,7 @@ class FirestoreController:NSObject{
                                                                                                              ApiKey.mediaUrl : mediaUrl,
                                                                                                              ApiKey.blocked :blocked,
                                                                                                              ApiKey.thumbnail :thumbNailURL,
-                                                                                                             ApiKey.audioTime: audioTime])
+                                                                                                             ApiKey.messageDuration: messageDuration])
         /// States of the messages
         /// 0 - pending, 1 - sent, 2 - delivered, 3 - read
         

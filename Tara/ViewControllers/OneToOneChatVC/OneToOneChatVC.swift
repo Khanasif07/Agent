@@ -36,6 +36,7 @@ class OneToOneChatVC: BaseVC {
     var alertController = UIAlertController()
     var indexVal = 0
     var tempTime = Timestamp.init(date: Date())
+    var recordedUrl : URL?
 
     private var deleteTime = Timestamp.init(date: Date())
     private var userInfo = [String:Any]()
@@ -151,11 +152,14 @@ class OneToOneChatVC: BaseVC {
     
     @IBAction func sendAudioToFirestire(_ sender: UIButton) {
         if sender.imageView?.image !=  #imageLiteral(resourceName: "audioMsg")  {
-            
+            self.uploadAudioFileToFirestore(self.recordedUrl!)
         } }
     
     @IBAction func audioRecordCancelBtnAction(_ sender: UIButton) {
         timerView.isHidden = true
+        timerLbl.text = "00"
+        self.viewModel.totalTime = 00
+        self.progressVIew.progress = 0.0
         audioRecordBtn.setImage(#imageLiteral(resourceName: "audioMsg"), for: .normal)
     }
 }
@@ -533,7 +537,7 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                 senderAudioCell.customSlider.minimumValue = 0
 //                let duration : CMTime = (self.playerItem?.asset.duration)!
 //                        let seconds : Float64 = CMTimeGetSeconds(duration)
-                senderAudioCell.customSlider.maximumValue = Float(model.audioTime)
+                senderAudioCell.customSlider.maximumValue = Float(model.messageDuration)
 //                senderAudioCell.customSlider.isContinuous = true
                 senderAudioCell.customSlider.tintColor = AppColors.appRedColor
 //                senderAudioCell.timeLbl.text = self.stringFromTimeInterval(interval: seconds)
@@ -935,15 +939,15 @@ extension OneToOneChatVC{
 
     /// Mark:- Creating a message node
     private func createMessage(){
-        FirestoreController.createLastMessageNode(roomId:roomId,messageText:messageTextView.text.byRemovingLeadingTrailingWhiteSpaces ,messageTime:FieldValue.serverTimestamp(), messageId:getMessageId(),messageType:"text", messageStatus:1,senderId:currentUserId,receiverId:inboxModel.userId, mediaUrl: "",blocked:false, thumbNailURL: "", audioTime: 0)
-        FirestoreController.createMessageNode(roomId:roomId,messageText:messageTextView.text.byRemovingLeadingTrailingWhiteSpaces ,messageTime:FieldValue.serverTimestamp(), messageId:getMessageId(),messageType:"text", messageStatus:1,senderId:currentUserId,receiverId:inboxModel.userId, mediaUrl: "",blocked:false, thumbNailURL: "", audioTime: 0)
+        FirestoreController.createLastMessageNode(roomId:roomId,messageText:messageTextView.text.byRemovingLeadingTrailingWhiteSpaces ,messageTime:FieldValue.serverTimestamp(), messageId:getMessageId(),messageType:"text", messageStatus:1,senderId:currentUserId,receiverId:inboxModel.userId, mediaUrl: "",blocked:false, thumbNailURL: "", messageDuration: 0)
+        FirestoreController.createMessageNode(roomId:roomId,messageText:messageTextView.text.byRemovingLeadingTrailingWhiteSpaces ,messageTime:FieldValue.serverTimestamp(), messageId:getMessageId(),messageType:"text", messageStatus:1,senderId:currentUserId,receiverId:inboxModel.userId, mediaUrl: "",blocked:false, thumbNailURL: "", messageDuration: 0)
 
     }
 
     private func createMediaMessage(url: String, imageURL: String = "", type: String) {
-        FirestoreController.createMessageNode(roomId: self.roomId, messageText: "", messageTime: FieldValue.serverTimestamp(), messageId: self.getMessageId(), messageType: type, messageStatus: 1, senderId: self.currentUserId, receiverId: self.inboxModel.userId, mediaUrl: url, blocked: false, thumbNailURL: imageURL,audioTime: self.viewModel.totalTime)
+        FirestoreController.createMessageNode(roomId: self.roomId, messageText: "", messageTime: FieldValue.serverTimestamp(), messageId: self.getMessageId(), messageType: type, messageStatus: 1, senderId: self.currentUserId, receiverId: self.inboxModel.userId, mediaUrl: url, blocked: false, thumbNailURL: imageURL,messageDuration: self.viewModel.totalTime)
         let attachmentText = type == MessageType.image.rawValue ? "Photo Attachment" : "Audio Attachment"
-        FirestoreController.createLastMessageNode(roomId: self.roomId, messageText: attachmentText, messageTime: FieldValue.serverTimestamp(), messageId: self.getMessageId(), messageType: type, messageStatus: 1, senderId: self.currentUserId, receiverId: self.inboxModel.userId, mediaUrl: url, blocked: false, thumbNailURL: imageURL,audioTime: self.viewModel.totalTime)
+        FirestoreController.createLastMessageNode(roomId: self.roomId, messageText: attachmentText, messageTime: FieldValue.serverTimestamp(), messageId: self.getMessageId(), messageType: type, messageStatus: 1, senderId: self.currentUserId, receiverId: self.inboxModel.userId, mediaUrl: url, blocked: false, thumbNailURL: imageURL,messageDuration: self.viewModel.totalTime)
     }
 
     /// Mark:- Fetching the room Id values
@@ -1271,28 +1275,7 @@ extension OneToOneChatVC:  AVAudioRecorderDelegate, AVAudioPlayerDelegate {
     
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
         if flag {
-//            UIImage().uploadAudioFile(audioUrl: recorder.url, progress: { [weak self] (status) in
-//            guard let `self` = self else { return }
-//            printDebug(status)
-//                 if !self.hasImageUploaded { CommonFunctions.showToastWithMessage("\(Int(status * 100))% Uploaded") }
-//            }, completion: { (response,error) in
-//                if let url = response {
-//                    self.hasImageUploaded = true
-//                    if self.isRoom {
-//                        self.updateUnreadMessage()
-//                        self.restoreDeletedNode()
-//                        self.createMediaMessage(url: url, imageURL: url, type: "audio")
-//                        self.updateInboxTimeStamp()
-//                    } else {
-//                        self.createRoom()
-//                        self.createMediaMessage(url: url, imageURL: url, type: "audio")
-//                        self.createInbox()
-//                    }
-//                }
-//                if let _ = error{
-//                    self.showAlert(msg: LocalizedString.imageUploadingFailed.localized)
-//                }
-//            })
+            self.recordedUrl = recorder.url
         }else {
              finishRecording(success: false)
         }
@@ -1331,9 +1314,32 @@ extension OneToOneChatVC:  AVAudioRecorderDelegate, AVAudioPlayerDelegate {
     }
        
     private func endTimer() {
-//        timerLbl.isHidden = true
-//        timerView.isHidden = true
         viewModel.countdownTimer.invalidate()
+    }
+    
+    private func uploadAudioFileToFirestore(_ url: URL){
+        UIImage().uploadAudioFile(audioUrl: url, progress: { [weak self] (status) in
+            guard let `self` = self else { return }
+            printDebug(status)
+            if !self.hasImageUploaded { ToastView.shared.showLongToast(self.view, msg: "\(Int(status * 100))% Uploaded")}
+            }, completion: { (response,error) in
+                if let url = response {
+                    self.hasImageUploaded = true
+                    if self.isRoom {
+                        self.updateUnreadMessage()
+                        self.restoreDeletedNode()
+                        self.createMediaMessage(url: url, imageURL: url, type: "audio")
+                        self.updateInboxTimeStamp()
+                    } else {
+                        self.createRoom()
+                        self.createMediaMessage(url: url, imageURL: url, type: "audio")
+                        self.createInbox()
+                    }
+                }
+                if let _ = error{
+                    self.showAlert(msg: LocalizedString.imageUploadingFailed.localized)
+                }
+        })
     }
        
 }
