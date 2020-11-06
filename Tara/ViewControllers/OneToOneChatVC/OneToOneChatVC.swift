@@ -84,7 +84,7 @@ class OneToOneChatVC: BaseVC {
     @IBOutlet weak var timerLbl: UILabel!
     @IBOutlet weak var timerView: UIView!
     
-    //MARK:- TopView Outlets
+    //MARK:- TopView Outlets for User Detail(Garage End)
     @IBOutlet weak var userNameLbl: UILabel!
     @IBOutlet weak var previousServiceLbl: UILabel!
     @IBOutlet weak var numberOfServiceLbl: UILabel!
@@ -93,6 +93,18 @@ class OneToOneChatVC: BaseVC {
     @IBOutlet weak var addressLbl: UILabel!
     @IBOutlet weak var userRequestView: UIView!
     @IBOutlet weak var userImgView: UIImageView!
+    
+    //MARK:- TopView Outlets for Garage Detail(User End)
+    @IBOutlet weak var garageNameLbl: UILabel!
+    @IBOutlet weak var garageAddressLbl: UILabel!
+    @IBOutlet weak var garageRatingLbl: UILabel!
+    @IBOutlet weak var garageAmountValueLbl: UILabel!
+    @IBOutlet weak var garagePayableAmountLbl: UILabel!
+    @IBOutlet weak var garageRequestNoLbl: UILabel!
+    @IBOutlet weak var garageRequestNoValueLbl: UILabel!
+    @IBOutlet weak var garageImgView: UIImageView!
+    @IBOutlet weak var garageTopView: UIView!
+
     
     //MARK: VIEW LIFE CYCLE
     //=====================
@@ -185,6 +197,7 @@ extension OneToOneChatVC {
     
     private func initialSetup() {
         userRequestView.isHidden = true
+        garageTopView.isHidden = true
         chatViewModel.delegate = self
         textContainerInnerView.borderColor = AppColors.fontTertiaryColor.withAlphaComponent(0.5)
         textContainerInnerView.borderWidth = 1.0
