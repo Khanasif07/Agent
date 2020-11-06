@@ -333,10 +333,16 @@ extension OneToOneChatVC {
     private func removeAVPlayerInstance(){
         self.player = nil
         self.playerItem = nil
-        let senderAudioCell = self.messagesTableView.cellForRow(at: self.selectedIndexPath ?? IndexPath.init(row: 0, section: 0)) as? SenderAudioCell
-        self.selectedIndexPath = nil
-        senderAudioCell?.customSlider.value = 0.0
-        senderAudioCell?.playBtn.setImage(#imageLiteral(resourceName: "playButton"), for: .normal)
+        if let senderAudioCell = self.messagesTableView.cellForRow(at: self.selectedIndexPath ?? IndexPath.init(row: 0, section: 0)) as? SenderAudioCell {
+            self.selectedIndexPath = nil
+            senderAudioCell.customSlider.value = 0.0
+            senderAudioCell.playBtn.setImage(#imageLiteral(resourceName: "playButton"), for: .normal)
+        }
+        if let receiverAudioCell = self.messagesTableView.cellForRow(at: self.selectedIndexPath ?? IndexPath.init(row: 0, section: 0)) as? ReceiverAudioCell {
+            self.selectedIndexPath = nil
+            receiverAudioCell.customSlider.value = 0.0
+            receiverAudioCell.playBtn.setImage(#imageLiteral(resourceName: "playButton"), for: .normal)
+        }
         self.messagesTableView.reloadData()
     }
 }
@@ -392,8 +398,8 @@ extension OneToOneChatVC: UITextViewDelegate{
         return String(format: "%02d:%02d",minutes, seconds)
     }
     
-    private func addPeriodicTimerForAudioPlayer(audioCell: UITableViewCell){
-        if let audioTableCell = audioCell as? SenderAudioCell {
+    private func addPeriodicTimerForAudioPlayer(senderAudioCell: UITableViewCell,receiverAudioCell: UITableViewCell){
+        if let audioTableCell = senderAudioCell as? SenderAudioCell {
             self.player!.addPeriodicTimeObserver(forInterval: CMTimeMakeWithSeconds(1, preferredTimescale: 1), queue: DispatchQueue.main) { (CMTime) -> Void in
                 if self.player!.currentItem?.status == .readyToPlay {
                     let time : Float64 = CMTimeGetSeconds(self.player!.currentTime())
@@ -468,23 +474,61 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                 return senderMediaCell
             case MessageType.audio.rawValue:
                 let receiverAudioCell = tableView.dequeueCell(with: ReceiverAudioCell.self)
+                receiverAudioCell.setSlider(model: model)
                 receiverAudioCell.receiverNameLbl.text = self.firstName
-                receiverAudioCell.customSlider.tintColor = AppColors.appRedColor
                 receiverAudioCell.receiverImgView.addGestureRecognizer(imgTap)
               
-                receiverAudioCell.playBtn.setImage(#imageLiteral(resourceName: "playButton"), for: .normal)
                 receiverAudioCell.playBtnTapped = { [weak self]  in
                     guard let `self` = self else { return }
-                    if self.player?.rate == 0.0
-                    {
+                    let url = URL(string: model.mediaUrl)
+                    //
+                    if self.selectedIndexPath != nil && self.selectedIndexPath != indexPath{
+                        self.removeAVPlayerInstance()
+                    }
+                    //
+                    if self.player == nil {
+                        self.playerItem = AVPlayerItem(url: url!)
+                        self.player = AVPlayer(playerItem: self.playerItem)
+                    }
+                    if self.player?.rate == 0.0 {
                         self.player!.play()
-                        receiverAudioCell.playBtn.isHidden = false
-                        //            self.loadingView.isHidden = false
+                        receiverAudioCell.playBtn.isHidden = true
+                        receiverAudioCell.loadingView.isHidden = false
+                        receiverAudioCell.loadingView.startAnimating()
                         receiverAudioCell.playBtn.setImage(#imageLiteral(resourceName: "pauseButton"), for: UIControl.State.normal)
                     } else {
                         self.player!.pause()
                         receiverAudioCell.playBtn.setImage(#imageLiteral(resourceName: "playButton"), for: UIControl.State.normal)
                     }
+                    if  self.selectedIndexPath != indexPath {
+                        self.addPeriodicTimerForAudioPlayer(senderAudioCell: UITableViewCell(), receiverAudioCell: receiverAudioCell)
+                    }
+                    self.selectedIndexPath = indexPath
+                }
+                
+                receiverAudioCell.sliderValueChangedAction = { [weak self] (sender)  in
+                    guard let `self` = self else { return }
+                    let url = URL(string: model.mediaUrl)
+                    //
+                    if self.selectedIndexPath != nil && self.selectedIndexPath != indexPath{
+                        self.removeAVPlayerInstance()
+                    }
+                    //
+                    if self.player == nil {
+                        self.playerItem = AVPlayerItem(url: url!)
+                        self.player = AVPlayer(playerItem: self.playerItem)
+                    }
+                    let seconds : Int64 = Int64(sender.value)
+                    let targetTime:CMTime = CMTimeMake(value: seconds, timescale: 1)
+                    self.player!.seek(to: targetTime)
+                    if self.player!.rate == 0 {
+                        self.player?.play()
+                        receiverAudioCell.playBtn.setImage(#imageLiteral(resourceName: "pauseButton"), for: UIControl.State.normal)
+                    }
+                    if  self.selectedIndexPath != indexPath {
+                        self.addPeriodicTimerForAudioPlayer(senderAudioCell: UITableViewCell(), receiverAudioCell: receiverAudioCell)
+                    }
+                    self.selectedIndexPath = indexPath
                 }
                 return receiverAudioCell
             default:
@@ -529,7 +573,7 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                         senderAudioCell.playBtn.setImage(#imageLiteral(resourceName: "playButton"), for: UIControl.State.normal)
                     }
                     if  self.selectedIndexPath != indexPath {
-                        self.addPeriodicTimerForAudioPlayer(audioCell: senderAudioCell)
+                        self.addPeriodicTimerForAudioPlayer(senderAudioCell: senderAudioCell, receiverAudioCell: UITableViewCell())
                     }
                     self.selectedIndexPath = indexPath
                     
@@ -555,7 +599,7 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                         senderAudioCell.playBtn.setImage(#imageLiteral(resourceName: "pauseButton"), for: UIControl.State.normal)
                     }
                     if  self.selectedIndexPath != indexPath {
-                        self.addPeriodicTimerForAudioPlayer(audioCell: senderAudioCell)
+                        self.addPeriodicTimerForAudioPlayer(senderAudioCell: senderAudioCell, receiverAudioCell: UITableViewCell())
                     }
                     self.selectedIndexPath = indexPath
                 }
@@ -1214,6 +1258,8 @@ extension OneToOneChatVC:  AVAudioRecorderDelegate, AVAudioPlayerDelegate {
             chatViewModel.totalTime += 1
             progressVIew.setProgress(Float(chatViewModel.totalTime) * 1/120, animated: true)
         } else {
+            audioRecordBtn.setImage(#imageLiteral(resourceName: "group3603"), for: .normal)
+            finishRecording(success: true)
             endTimer()
         }
     }
