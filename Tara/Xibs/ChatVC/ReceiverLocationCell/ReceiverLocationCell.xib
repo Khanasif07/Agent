@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Proxima Nova Regular.otf">
+            <string>ProximaNova-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="190" id="T5n-Yb-1bA" customClass="ReceiverLocationCell" customModule="Tara" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="222"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="T5n-Yb-1bA" id="3Xq-hk-N5t">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="222"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NA" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CD8-el-Osw">
+                        <rect key="frame" x="68" y="5" width="16.5" height="15.5"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15.5" id="y99-XU-OLN"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeHolder" translatesAutoresizingMaskIntoConstraints="NO" id="PTb-T1-JrJ">
+                        <rect key="frame" x="24" y="25.5" width="36" height="36"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="36" id="CVK-Kx-ulq"/>
+                            <constraint firstAttribute="width" secondItem="PTb-T1-JrJ" secondAttribute="height" multiplier="1:1" id="zmE-9h-yKF"/>
+                        </constraints>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HUN-az-wam">
+                        <rect key="frame" x="68" y="25.5" width="187" height="176"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BDv-ad-grE">
+                                <rect key="frame" x="12" y="8" width="48" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="BDv-ad-grE" secondAttribute="height" multiplier="1:1" id="GPO-vZ-PhY"/>
+                                    <constraint firstAttribute="height" constant="48" id="JGr-9t-PtO"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ny3-sm-2da">
+                                <rect key="frame" x="12" y="64" width="163" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="oLu-N2-w3V"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.95686274510000002" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Ny3-sm-2da" secondAttribute="bottom" constant="12" id="3Pv-3k-6oW"/>
+                            <constraint firstItem="BDv-ad-grE" firstAttribute="leading" secondItem="HUN-az-wam" secondAttribute="leading" constant="12" id="6vi-ns-Jp9"/>
+                            <constraint firstItem="Ny3-sm-2da" firstAttribute="top" secondItem="BDv-ad-grE" secondAttribute="bottom" constant="8" id="73P-IA-jGr"/>
+                            <constraint firstItem="BDv-ad-grE" firstAttribute="top" secondItem="HUN-az-wam" secondAttribute="top" constant="8" id="ASe-9r-mvi"/>
+                            <constraint firstItem="Ny3-sm-2da" firstAttribute="leading" secondItem="BDv-ad-grE" secondAttribute="leading" id="CXx-ob-Z1V"/>
+                            <constraint firstAttribute="trailing" secondItem="Ny3-sm-2da" secondAttribute="trailing" constant="12" id="aPF-J3-wVk"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="CD8-el-Osw" firstAttribute="leading" secondItem="HUN-az-wam" secondAttribute="leading" id="CRl-wf-L5e"/>
+                    <constraint firstItem="PTb-T1-JrJ" firstAttribute="width" secondItem="PTb-T1-JrJ" secondAttribute="height" multiplier="1:1" id="CY4-7h-poj"/>
+                    <constraint firstAttribute="trailing" secondItem="HUN-az-wam" secondAttribute="trailing" constant="120" id="FKq-ua-KV7"/>
+                    <constraint firstItem="PTb-T1-JrJ" firstAttribute="leading" secondItem="3Xq-hk-N5t" secondAttribute="leading" constant="24" id="Hxq-IM-hVA"/>
+                    <constraint firstAttribute="bottom" secondItem="HUN-az-wam" secondAttribute="bottom" constant="20.5" id="Kjb-JO-Wsk"/>
+                    <constraint firstItem="PTb-T1-JrJ" firstAttribute="top" secondItem="HUN-az-wam" secondAttribute="top" id="T0f-DS-EvW"/>
+                    <constraint firstItem="HUN-az-wam" firstAttribute="top" secondItem="3Xq-hk-N5t" secondAttribute="top" constant="25.5" id="VtA-UU-nmb"/>
+                    <constraint firstItem="HUN-az-wam" firstAttribute="top" secondItem="CD8-el-Osw" secondAttribute="bottom" constant="5" id="WSp-cP-nTu"/>
+                    <constraint firstItem="CD8-el-Osw" firstAttribute="top" secondItem="3Xq-hk-N5t" secondAttribute="top" constant="5" id="ip6-8J-BbY"/>
+                    <constraint firstItem="HUN-az-wam" firstAttribute="leading" secondItem="PTb-T1-JrJ" secondAttribute="trailing" constant="8" id="pTe-gw-1gR"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="LUD-M4-4Df"/>
+            <connections>
+                <outlet property="garageImgView" destination="BDv-ad-grE" id="TRv-RB-U02"/>
+                <outlet property="mapImgView" destination="Ny3-sm-2da" id="9Fc-jr-cxJ"/>
+                <outlet property="msgContainerView" destination="HUN-az-wam" id="VfX-GE-aCF"/>
+                <outlet property="receiverNameLabel" destination="CD8-el-Osw" id="mCk-et-hPX"/>
+                <outlet property="userImgView" destination="PTb-T1-JrJ" id="34E-bs-Rix"/>
+            </connections>
+            <point key="canvasLocation" x="138.40579710144928" y="159.375"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="placeHolder" width="80" height="80"/>
+    </resources>
+</document>

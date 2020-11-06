@@ -251,6 +251,10 @@
 		A41B7DEC25551FC8005D1AC5 /* ServiceCompletedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41B7DEA25551FC8005D1AC5 /* ServiceCompletedTableViewCell.swift */; };
 		A41B7DED25551FC8005D1AC5 /* ServiceCompletedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A41B7DEB25551FC8005D1AC5 /* ServiceCompletedTableViewCell.xib */; };
 		A41B7DEF255524AF005D1AC5 /* ServiceCompletedVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41B7DEE255524AF005D1AC5 /* ServiceCompletedVM.swift */; };
+		A41B7DF225552B7A005D1AC5 /* ReceiverLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41B7DF025552B7A005D1AC5 /* ReceiverLocationCell.swift */; };
+		A41B7DF325552B7A005D1AC5 /* ReceiverLocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A41B7DF125552B7A005D1AC5 /* ReceiverLocationCell.xib */; };
+		A41B7DF725552F4B005D1AC5 /* SenderLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41B7DF525552F4B005D1AC5 /* SenderLocationCell.swift */; };
+		A41B7DF825552F4B005D1AC5 /* SenderLocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A41B7DF625552F4B005D1AC5 /* SenderLocationCell.xib */; };
 		A4203EF6252C2FF300BD8802 /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4203EF5252C2FF300BD8802 /* FilterTableViewCell.swift */; };
 		A4203EF9252C31A100BD8802 /* FilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4203EF7252C31A100BD8802 /* FilterCollectionViewCell.swift */; };
 		A4203EFA252C31A100BD8802 /* FilterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4203EF8252C31A100BD8802 /* FilterCollectionViewCell.xib */; };
@@ -591,6 +595,10 @@
 		A41B7DEA25551FC8005D1AC5 /* ServiceCompletedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCompletedTableViewCell.swift; sourceTree = "<group>"; };
 		A41B7DEB25551FC8005D1AC5 /* ServiceCompletedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServiceCompletedTableViewCell.xib; sourceTree = "<group>"; };
 		A41B7DEE255524AF005D1AC5 /* ServiceCompletedVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCompletedVM.swift; sourceTree = "<group>"; };
+		A41B7DF025552B7A005D1AC5 /* ReceiverLocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiverLocationCell.swift; sourceTree = "<group>"; };
+		A41B7DF125552B7A005D1AC5 /* ReceiverLocationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReceiverLocationCell.xib; sourceTree = "<group>"; };
+		A41B7DF525552F4B005D1AC5 /* SenderLocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenderLocationCell.swift; sourceTree = "<group>"; };
+		A41B7DF625552F4B005D1AC5 /* SenderLocationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SenderLocationCell.xib; sourceTree = "<group>"; };
 		A4203EF5252C2FF300BD8802 /* FilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
 		A4203EF7252C31A100BD8802 /* FilterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCollectionViewCell.swift; sourceTree = "<group>"; };
 		A4203EF8252C31A100BD8802 /* FilterCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -1190,6 +1198,8 @@
 				843F582D254FAF68008CFA03 /* SenderMessageCell */,
 				8473414D254ADD470083E8D1 /* InboxTableViewCell.swift */,
 				8473414E254ADD470083E8D1 /* InboxTableViewCell.xib */,
+				A41B7DF425552B8B005D1AC5 /* ReceiverLocationCell */,
+				A41B7DF925552F56005D1AC5 /* SenderLocationCell */,
 			);
 			path = ChatVC;
 			sourceTree = "<group>";
@@ -1826,6 +1836,24 @@
 			path = ServiceCompletedVC;
 			sourceTree = "<group>";
 		};
+		A41B7DF425552B8B005D1AC5 /* ReceiverLocationCell */ = {
+			isa = PBXGroup;
+			children = (
+				A41B7DF025552B7A005D1AC5 /* ReceiverLocationCell.swift */,
+				A41B7DF125552B7A005D1AC5 /* ReceiverLocationCell.xib */,
+			);
+			path = ReceiverLocationCell;
+			sourceTree = "<group>";
+		};
+		A41B7DF925552F56005D1AC5 /* SenderLocationCell */ = {
+			isa = PBXGroup;
+			children = (
+				A41B7DF525552F4B005D1AC5 /* SenderLocationCell.swift */,
+				A41B7DF625552F4B005D1AC5 /* SenderLocationCell.xib */,
+			);
+			path = SenderLocationCell;
+			sourceTree = "<group>";
+		};
 		A4203F0B252C791A00BD8802 /* SRFilterVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -2276,6 +2304,7 @@
 				84FF6EA3251D8E990000E2AD /* BottomSheetTableCell.xib in Resources */,
 				844D81E0250243B300550334 /* SignUpTopCell.xib in Resources */,
 				A439263E254801810089E0EB /* UserNotificationTableViewCell.xib in Resources */,
+				A41B7DF325552B7A005D1AC5 /* ReceiverLocationCell.xib in Resources */,
 				843D4BA725305EEE00D72D2F /* UserOffersTableCell.xib in Resources */,
 				8481FA952501437C00AB6EFB /* NunitoSans-ExtraBold.ttf in Resources */,
 				846352D12511E34E004216F1 /* AddImageCollCell.xib in Resources */,
@@ -2319,6 +2348,7 @@
 				84CAEFB22550F1E600F3A329 /* SenderMediaCell.xib in Resources */,
 				8481FA8B2501081000AB6EFB /* TutorialCollCell.xib in Resources */,
 				A40C13C12550284600AADD76 /* GoogleService-Info.plist in Resources */,
+				A41B7DF825552F4B005D1AC5 /* SenderLocationCell.xib in Resources */,
 				84144F28252C4AAD00D6572F /* MyServiceTableCell.xib in Resources */,
 				84801CD72547FBDC00F360FC /* Chat.storyboard in Resources */,
 				8481FA9F250143AB00AB6EFB /* NunitoSans-Light.ttf in Resources */,
@@ -2409,6 +2439,7 @@
 				84594802252AFE0900C0B249 /* GarageAllRequestVC.swift in Sources */,
 				A4C39FEC251E69A6001711F8 /* BatteryRequestedVC.swift in Sources */,
 				843DFD1E2503F017000DE6EB /* OtpVerificationVC.swift in Sources */,
+				A41B7DF725552F4B005D1AC5 /* SenderLocationCell.swift in Sources */,
 				84594808252B083300C0B249 /* BookedRequestVC.swift in Sources */,
 				A468DCA22539D80200416CF9 /* SocketIOManager+ApiData.swift in Sources */,
 				8481FA5B2500BF3B00AB6EFB /* CommonExtension.swift in Sources */,
@@ -2541,6 +2572,7 @@
 				A4B74CC7251094E000771974 /* GarageProfileModel.swift in Sources */,
 				8481FA4B2500BEB600AB6EFB /* DoubleExtension.swift in Sources */,
 				844D81DB2502408900550334 /* SignUpVC.swift in Sources */,
+				A41B7DF225552B7A005D1AC5 /* ReceiverLocationCell.swift in Sources */,
 				84144F2F252C8D9C00D6572F /* GarageServiceTopCell.swift in Sources */,
 				A43B53A72524B47000447B24 /* OngoingServiceListingVC.swift in Sources */,
 				84801CD22547F5D100F360FC /* FirestoreController.swift in Sources */,

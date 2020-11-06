@@ -273,6 +273,8 @@ extension OneToOneChatVC {
     private func setupTableView() {
         messagesTableView.delegate = self
         messagesTableView.dataSource = self
+        messagesTableView.registerCell(with: SenderLocationCell.self)
+        messagesTableView.registerCell(with: ReceiverLocationCell.self)
         messagesTableView.registerCell(with: SenderMessageCell.self)
         messagesTableView.registerCell(with: ReceiverMessageCell.self)
         messagesTableView.registerCell(with: SenderMediaCell.self)
@@ -466,6 +468,12 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                 senderMediaCell.senderImageView.addGestureRecognizer(imgTap)
                 senderMediaCell.senderNameLabel.text = self.firstName
                 return senderMediaCell
+                
+                
+//                let senderMediaCell = tableView.dequeueCell(with: SenderLocationCell.self)
+//                return senderMediaCell
+//
+                
             case MessageType.audio.rawValue:
                 let receiverAudioCell = tableView.dequeueCell(with: ReceiverAudioCell.self)
                 receiverAudioCell.receiverNameLbl.text = self.firstName
