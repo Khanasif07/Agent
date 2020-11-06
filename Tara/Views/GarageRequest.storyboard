@@ -1639,6 +1639,78 @@ start Servicing</string>
             </objects>
             <point key="canvasLocation" x="-564" y="-8"/>
         </scene>
+        <!--Service CompletedVC-->
+        <scene sceneID="fmv-hl-LyJ">
+            <objects>
+                <viewController storyboardIdentifier="ServiceCompletedVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aWw-Tl-LT9" customClass="ServiceCompletedVC" customModule="Tara" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Bmm-0T-OAp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3DK-6d-cdR">
+                                <rect key="frame" x="0.0" y="44" width="414" height="56"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Service Complete" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BpM-Rq-QVn">
+                                        <rect key="frame" x="139.5" y="21" width="135.5" height="20"/>
+                                        <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a3a-S6-ZVw">
+                                        <rect key="frame" x="14" y="14" width="36" height="34"/>
+                                        <state key="normal" image="icBackward">
+                                            <color key="titleColor" red="0.54117647059999996" green="0.58431372550000005" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="cancelBtnAction:" destination="aWw-Tl-LT9" eventType="touchUpInside" id="aY5-Xg-gUB"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kjl-jC-CKj">
+                                        <rect key="frame" x="0.0" y="55.5" width="414" height="0.5"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="0.5" id="1IO-Tc-e2v"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="kjl-jC-CKj" secondAttribute="bottom" id="5Kz-m7-tSC"/>
+                                    <constraint firstAttribute="trailing" secondItem="kjl-jC-CKj" secondAttribute="trailing" id="7c6-8z-4ww"/>
+                                    <constraint firstItem="a3a-S6-ZVw" firstAttribute="leading" secondItem="3DK-6d-cdR" secondAttribute="leading" constant="14" id="LiS-yF-Mzi"/>
+                                    <constraint firstItem="BpM-Rq-QVn" firstAttribute="centerX" secondItem="3DK-6d-cdR" secondAttribute="centerX" id="OvR-qr-6op"/>
+                                    <constraint firstItem="BpM-Rq-QVn" firstAttribute="centerY" secondItem="3DK-6d-cdR" secondAttribute="centerY" multiplier="1.1" id="SVM-bR-8uz"/>
+                                    <constraint firstAttribute="height" constant="56" id="fSG-CP-NTD"/>
+                                    <constraint firstItem="kjl-jC-CKj" firstAttribute="leading" secondItem="3DK-6d-cdR" secondAttribute="leading" id="itY-AI-l6V"/>
+                                    <constraint firstItem="a3a-S6-ZVw" firstAttribute="centerY" secondItem="BpM-Rq-QVn" secondAttribute="centerY" id="yzY-Ga-Cp8"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CDI-g4-VPG">
+                                <rect key="frame" x="0.0" y="100" width="414" height="796"/>
+                                <color key="backgroundColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="CDI-g4-VPG" secondAttribute="bottom" id="4mq-Mt-fH5"/>
+                            <constraint firstItem="3DK-6d-cdR" firstAttribute="top" secondItem="vvY-wW-NiQ" secondAttribute="top" id="BUd-od-WrH"/>
+                            <constraint firstItem="CDI-g4-VPG" firstAttribute="top" secondItem="3DK-6d-cdR" secondAttribute="bottom" id="Vuw-hV-RI9"/>
+                            <constraint firstItem="3DK-6d-cdR" firstAttribute="leading" secondItem="vvY-wW-NiQ" secondAttribute="leading" id="g0m-eK-R5I"/>
+                            <constraint firstItem="CDI-g4-VPG" firstAttribute="leading" secondItem="vvY-wW-NiQ" secondAttribute="leading" id="lM4-e4-Azx"/>
+                            <constraint firstItem="3DK-6d-cdR" firstAttribute="trailing" secondItem="vvY-wW-NiQ" secondAttribute="trailing" id="tq8-9s-L22"/>
+                            <constraint firstItem="vvY-wW-NiQ" firstAttribute="trailing" secondItem="CDI-g4-VPG" secondAttribute="trailing" id="wjL-XL-y5I"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="vvY-wW-NiQ"/>
+                    </view>
+                    <connections>
+                        <outlet property="mainTableView" destination="CDI-g4-VPG" id="5Bv-IU-yma"/>
+                        <outlet property="titleLbl" destination="BpM-Rq-QVn" id="cBb-Nx-n5P"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lh6-Lr-ksl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2739" y="731"/>
+        </scene>
     </scenes>
     <resources>
         <image name="editProfile" width="12" height="14"/>
