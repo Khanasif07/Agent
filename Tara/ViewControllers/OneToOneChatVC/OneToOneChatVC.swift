@@ -90,7 +90,6 @@ class OneToOneChatVC: BaseVC {
     @IBOutlet weak var numberOfServiceLbl: UILabel!
     @IBOutlet weak var payableAmtLbl: UILabel!
     @IBOutlet weak var amountValueLbl: UILabel!
-    @IBOutlet weak var addressLbl: UILabel!
     @IBOutlet weak var userRequestView: UIView!
     @IBOutlet weak var userImgView: UIImageView!
     
@@ -117,7 +116,6 @@ class OneToOneChatVC: BaseVC {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isTranslucent = true
         self.tabBarController?.tabBar.isHidden = true
-        self.backgroundView.alpha = 0
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIApplication.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIApplication.keyboardWillHideNotification, object: nil)
     }
@@ -129,6 +127,8 @@ class OneToOneChatVC: BaseVC {
         sendButton.round()
         audioCancelBtn.round()
         audioRecordBtn.round()
+        garageImgView.round()
+        userImgView.round()
         textContainerInnerView.round(radius: 4.0)
     }
     
@@ -173,10 +173,7 @@ class OneToOneChatVC: BaseVC {
     @IBAction func sendButtonTapped(_ sender: UIButton) {
         sendMessage()
     }
-    
-    @IBAction func getLocationTapped(_ sender: UIButton) {
-        
-    }
+
     @IBAction func sendAudioToFirestire(_ sender: UIButton) {
         if sender.imageView?.image !=  #imageLiteral(resourceName: "audioBtnWhite")  {
             self.uploadAudioFileToFirestore(self.recordedUrl!)
@@ -197,6 +194,8 @@ class OneToOneChatVC: BaseVC {
 extension OneToOneChatVC {
     
     private func initialSetup() {
+//        backgroundView.isHidden = false
+//        CommonFunctions.showActivityLoader()
         userRequestView.isHidden = true
         garageTopView.isHidden = true
         chatViewModel.delegate = self
@@ -245,9 +244,10 @@ extension OneToOneChatVC {
     private func getChatData() {
         if !requestId.isEmpty {
             let dict = [ApiKey.requestId : self.requestId]
-            chatViewModel.getChatData(params: dict)
+            chatViewModel.getChatData(params: dict,loader: false)
         }
         else {
+//            backgroundView.isHidden = true
             tableViewTopConstraint.constant = 0.0
         }
     }
@@ -1333,13 +1333,13 @@ extension OneToOneChatVC:  AVAudioRecorderDelegate, AVAudioPlayerDelegate {
 // Chat View Model
 extension OneToOneChatVC : OneToOneChatViewModelDelegate{
     func chatDataSuccess(msg: String) {
+//        backgroundView.isHidden = true
+//        CommonFunctions.hideActivityLoader()
         if isCurrentUserType == .garage {
-            tableViewTopConstraint.constant = 134.0
+            tableViewTopConstraint.constant = 80.0
             userRequestView.isHidden = false
             userNameLbl.text = chatViewModel.chatData.userName
             numberOfServiceLbl.text = chatViewModel.chatData.totalRequests.description + " Services"
-        
-            addressLbl.text = chatViewModel.chatData.address
             userImgView.setImage_kf(imageString: chatViewModel.chatData.userImage, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
             var str: NSMutableAttributedString = NSMutableAttributedString()
             str = NSMutableAttributedString(string: chatViewModel.chatData.totalAmount.description, attributes: [

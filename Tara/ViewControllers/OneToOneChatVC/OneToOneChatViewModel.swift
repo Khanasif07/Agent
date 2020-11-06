@@ -38,7 +38,7 @@ class OneToOneChatViewModel {
     }
        
     func getChatData(params: JSONDictionary,loader: Bool = false) {
-        WebServices.getChatData(parameters: params, success: { [weak self] (json) in
+        WebServices.getChatData(parameters: params,loader: loader, success: { [weak self] (json) in
             guard let `self` = self else { return }
             self.parseToMakeListingData(result: json)
             printDebug(json)
