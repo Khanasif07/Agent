@@ -255,6 +255,7 @@
 		A4213DE0250CB02400BB21B6 /* DocumentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4213DDF250CB02400BB21B6 /* DocumentTableViewCell.swift */; };
 		A421DDD5252AFDF20044E5E0 /* PlaceBidPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A421DDD4252AFDF20044E5E0 /* PlaceBidPopUpVC.swift */; };
 		A421DDD7252B1A610044E5E0 /* OtpPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A421DDD6252B1A610044E5E0 /* OtpPopUpVC.swift */; };
+		A42603502554206B005FE046 /* ReViewListingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A426034F2554206B005FE046 /* ReViewListingVM.swift */; };
 		A43137DB2534752C00C20082 /* UserAllOfferVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43137DA2534752C00C20082 /* UserAllOfferVM.swift */; };
 		A43137DD253475B200C20082 /* UserBidModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43137DC253475B200C20082 /* UserBidModel.swift */; };
 		A4357955255298D4009EED61 /* RatingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4357954255298D4009EED61 /* RatingVM.swift */; };
@@ -590,6 +591,7 @@
 		A4213DDF250CB02400BB21B6 /* DocumentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentTableViewCell.swift; sourceTree = "<group>"; };
 		A421DDD4252AFDF20044E5E0 /* PlaceBidPopUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceBidPopUpVC.swift; sourceTree = "<group>"; };
 		A421DDD6252B1A610044E5E0 /* OtpPopUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpPopUpVC.swift; sourceTree = "<group>"; };
+		A426034F2554206B005FE046 /* ReViewListingVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReViewListingVM.swift; sourceTree = "<group>"; };
 		A43137DA2534752C00C20082 /* UserAllOfferVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAllOfferVM.swift; sourceTree = "<group>"; };
 		A43137DC253475B200C20082 /* UserBidModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBidModel.swift; sourceTree = "<group>"; };
 		A4357954255298D4009EED61 /* RatingVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingVM.swift; sourceTree = "<group>"; };
@@ -1836,6 +1838,7 @@
 			isa = PBXGroup;
 			children = (
 				A4DEB8652552846500BD7D2E /* ReViewListingVC.swift */,
+				A426034F2554206B005FE046 /* ReViewListingVM.swift */,
 			);
 			path = ReViewListingVC;
 			sourceTree = "<group>";
@@ -2545,6 +2548,7 @@
 				8411D35C252DEDD100E6FA6C /* UserServiceRequestModel.swift in Sources */,
 				A441A675252CD5F600B5420B /* DashedCollectionViewCell.swift in Sources */,
 				A49DF566252D986D00A6A5B1 /* ServiceStatusTableViewCell.swift in Sources */,
+				A42603502554206B005FE046 /* ReViewListingVM.swift in Sources */,
 				A45042D0250F3846001C8905 /* AddAccountTableViewCell.swift in Sources */,
 				843C8ECE2508E91700515F2E /* ProfileSettingVM.swift in Sources */,
 				A43F44B42513BE66002B1014 /* BrandsListingVC.swift in Sources */,

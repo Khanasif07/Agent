@@ -34,4 +34,16 @@ class ReviewTableViewCell: UITableViewCell {
         super.layoutSubviews()
         containerView.createShadow(shadowColor: #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1))
     }
+    
+    func bindData(_ model: GarageRequestModel) {
+        userNameLbl.text = model.userName
+        ratingLbl.text = model.rating?.description
+        reviewLbl.text = model.review ?? "" + "/5"
+        garageFirstImgView.setImage_kf(imageString: model.images?.first ?? "")
+        garageSecondImgView.setImage_kf(imageString: model.images?.first ?? "")
+        serviceTypeLbl.text = "Service: " + (model.serviceType ?? "") + " Service"
+      
+        let date = (model.createdAt)?.breakCompletDate(outPutFormat: Date.DateFormat.profileFormat.rawValue, inputFormat: Date.DateFormat.yyyyMMddTHHmmsssssz.rawValue)
+        dateLbl.text = date
+    }
 }

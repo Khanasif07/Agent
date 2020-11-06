@@ -935,6 +935,18 @@ extension WebServices{
           }
       }
     
+    
+    //MARK:- Get review Listing
+       static func getReviewListingData(parameters: JSONDictionary,loader: Bool = false,
+                                   success: @escaping SuccessResponse,
+                                   failure: @escaping FailureResponse) {
+             self.commonGetAPI(parameters: parameters, endPoint: .rating,loader: loader, success: { (json) in
+                 success(json)
+             }) { (error) -> (Void) in
+                 failure(error)
+             }
+    }
+    
     //MARK:- Submit Rating Detail
     static func getChatData(parameters: JSONDictionary,loader: Bool = false,
                                 success: @escaping SuccessResponse,

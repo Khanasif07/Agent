@@ -17,7 +17,8 @@ class ReViewListingVC: BaseVC {
     
     // MARK: - Variables
     //===========================
-    
+    let viewModel = ReViewListingVM()
+    var garageId : String = ""
     
     // MARK: - Lifecycle
     //===========================
@@ -39,8 +40,6 @@ class ReViewListingVC: BaseVC {
     @IBAction func cancelBtnAction(_ sender: Any) {
         pop()
     }
-    
-
 }
 
 // MARK: - Extension For Functions
@@ -48,30 +47,61 @@ class ReViewListingVC: BaseVC {
 extension ReViewListingVC {
     
     private func initialSetup() {
+        viewModel.delegate = self
         mainTableView.delegate = self
         mainTableView.dataSource = self
         mainTableView.contentInset = UIEdgeInsets(top: 8.0, left: 0, bottom: 0, right: 0)
+        self.mainTableView.enablePullToRefresh(tintColor: AppColors.appRedColor ,target: self, selector: #selector(refreshWhenPull(_:)))
+        self.mainTableView.registerCell(with: LoaderCell.self)
         mainTableView.registerCell(with: ReviewTableViewCell.self)
+        hitApi(loader: true)
     }
 
     private func setupTextAndFont(){
         titleLbl.font = AppFonts.NunitoSansBold.withSize(17.0)
         titleLbl.text = LocalizedString.rateService.localized
     }
+    
+    private func hitApi(loader: Bool = false) {
+        let dict = [ApiKey.garageId : self.garageId ,ApiKey.page:"1", ApiKey.limit: "20"]
+        viewModel.fetchReviewListing(params: dict, loader: loader)
+    }
+    
+    @objc func refreshWhenPull(_ sender: UIRefreshControl) {
+        sender.endRefreshing()
+        hitApi(loader: false)
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if cell as? LoaderCell != nil {
+            self.viewModel.fetchReviewListing(params: [ApiKey.page: self.viewModel.currentPage,ApiKey.limit : "20"],loader: false)
+        }
+    }
 }
 
 extension ReViewListingVC :UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return viewModel.reviewListingArr.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(with: ReviewTableViewCell.self, indexPath: indexPath)
+        cell.bindData(viewModel.reviewListingArr[indexPath.row])
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-           return CGFloat.leastNormalMagnitude
-       }
+        return CGFloat.leastNormalMagnitude
+    }
+}
+
+extension ReViewListingVC: ReViewListingVMDelegate{
+    func getReviewListingSuccess(msg: String) {
+        mainTableView.reloadData()
+    }
+    
+    func getReviewListingFailed(msg: String) {
+        
+    }
 }
