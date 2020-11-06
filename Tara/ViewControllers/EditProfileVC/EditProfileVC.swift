@@ -221,11 +221,13 @@ extension EditProfileVC: UIImagePickerControllerDelegate, UINavigationController
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[.editedImage] as? UIImage
         userImage.image = image
+        CommonFunctions.showActivityLoader()
         hasImageUploaded = false
         image?.upload(progress: { (progress) in
             printDebug(progress)
         }, completion: { (response,error) in
             if let url = response {
+                CommonFunctions.hideActivityLoader()
                 self.hasImageUploaded = true
                 self.viewModel.userModel.image = url
             }
