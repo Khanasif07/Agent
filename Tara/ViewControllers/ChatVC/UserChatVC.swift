@@ -26,7 +26,14 @@ class UserChatVC: BaseVC {
     var inboxListing : [Inbox] = []
     var buttonView = UIButton()
     var searchText : String  = ""
+    var isSearchOn: Bool  =  false
     var currentUserId = AppUserDefaults.value(forKey: .uid).stringValue
+    var searchInboxListing : [Inbox] {
+        if searchText.isEmpty{
+            return inboxListing
+        }
+        return inboxListing.filter({$0.firstName.lowercased().contains(s: searchText.lowercased())})
+    }
     
     // MARK: - Lifecycle
     //===========================
@@ -45,6 +52,8 @@ class UserChatVC: BaseVC {
     
     @IBAction func txtFieldChanged(_ sender: UITextField) {
         buttonView.isHidden = (sender.text?.byRemovingLeadingTrailingWhiteSpaces ?? "").isEmpty
+        self.searchText = (sender.text?.byRemovingLeadingTrailingWhiteSpaces ?? "")
+        self.isSearchOn = !self.searchText.isEmpty
         mainTableView.reloadData()
     }
        
@@ -83,12 +92,13 @@ extension UserChatVC {
         searchTextField.text = ""
         self.searchText = searchTextField.text?.byRemovingLeadingTrailingWhiteSpaces ?? ""
         buttonView.isHidden = true
+        isSearchOn = false
         mainTableView.reloadData()
     }
     
     private func getNoOfRowsInSection() -> Int {
         if isUserLoggedin {
-            return inboxListing.endIndex
+            return searchInboxListing.endIndex
         } else {
             return 1
         }
@@ -121,7 +131,7 @@ extension UserChatVC {
     
     private func populateCells(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         if isUserLoggedin {
-            let model = inboxListing[indexPath.row]
+            let model = searchInboxListing[indexPath.row]
             let messageCell = mainTableView.dequeueCell(with: InboxTableViewCell.self)
             if model.chatType == ApiKey.single {
                 messageCell.userNameLbl.text = model.firstName

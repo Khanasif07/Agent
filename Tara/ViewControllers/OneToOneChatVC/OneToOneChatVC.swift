@@ -36,7 +36,7 @@ class OneToOneChatVC: BaseVC {
     var indexVal = 0
     var tempTime = Timestamp.init(date: Date())
     var recordedUrl : URL?
-    
+    lazy var titleTap = UITapGestureRecognizer(target: self, action: #selector(titleLabelTapped(_:)))
     private var deleteTime = Timestamp.init(date: Date())
     private var userInfo = [String:Any]()
     var roomId = ""
@@ -193,7 +193,6 @@ extension OneToOneChatVC {
         bottomContainerView.isUserInteractionEnabled = true
         addTapGestureToAudioBtn()
         setupTableView()
-        setupImageController()
         setupTextView()
         fetchDeleteTime()
         getBatchCount()
@@ -205,6 +204,10 @@ extension OneToOneChatVC {
         let longGesture = UILongPressGestureRecognizer.init(target: self, action: #selector(longTap))
         audioRecordBtn.addGestureRecognizer(longGesture)
         audioRecordBtn.isUserInteractionEnabled = true
+    }
+    
+    @objc private func titleLabelTapped(_ sender: UITapGestureRecognizer) {
+       printDebug("Profile")
     }
     
     @objc   func longTap(_ sender : UIGestureRecognizer){
@@ -233,13 +236,6 @@ extension OneToOneChatVC {
             }
         }
         self.pop()
-    }
-    
-    private func setupImageController(){
-        //        imageController.delegate = self
-        imageController.allowsEditing = false
-        imageController.sourceType = UIImagePickerController.SourceType.photoLibrary
-        imageController.mediaTypes = ["public.image", "public.movie"]
     }
     
     private func getChatData() {
@@ -273,20 +269,7 @@ extension OneToOneChatVC {
             // failed to record
         }
     }
-    
-    private func presentCamera() {
-        let imagePicker = UIImagePickerController()
-        //        imagePicker.delegate = self
-        imagePicker.navigationBar.barTintColor = AppColors.appRedColor
-        imagePicker.navigationBar.isTranslucent = false
-        imagePicker.navigationBar.tintColor = .white
-        let sourceType = UIImagePickerController.SourceType.camera
-        imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .camera) ?? ["public.image", "public.movie"]
-        imagePicker.sourceType = sourceType
-        imagePicker.allowsEditing = false
-        self.present(imagePicker, animated: true, completion: nil)
-    }
-    
+        
     private func setupTableView() {
         messagesTableView.delegate = self
         messagesTableView.dataSource = self
@@ -440,7 +423,7 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = messageListing[indexPath.section][indexPath.row]
-        //        let imgTap = UITapGestureRecognizer(target: self, action: #selector(titleLabelTapped(_:)))
+        let imgTap = UITapGestureRecognizer(target: self, action: #selector(titleLabelTapped(_:)))
         switch model.receiverId {
         case AppUserDefaults.value(forKey: .uid).stringValue:
             switch model.messageType {
@@ -449,14 +432,14 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                 senderMediaCell.configureCellWith(model: model)
                 senderMediaCell.senderImageView.setImage_kf(imageString: userImage, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
                 setTapGesture(view: senderMediaCell.msgContainerView, indexPath: indexPath)
-                //                senderMediaCell.senderImageView.addGestureRecognizer(imgTap)
+                senderMediaCell.senderImageView.addGestureRecognizer(imgTap)
                 senderMediaCell.senderNameLabel.text = self.firstName
                 return senderMediaCell
             case MessageType.audio.rawValue:
                 let receiverAudioCell = tableView.dequeueCell(with: ReceiverAudioCell.self)
                 receiverAudioCell.receiverNameLbl.text = self.firstName
                 receiverAudioCell.customSlider.tintColor = AppColors.appRedColor
-                
+                receiverAudioCell.receiverImgView.addGestureRecognizer(imgTap)
                 let url = URL(string: model.mediaUrl)
                 self.playerItem = AVPlayerItem(url: url!)
                 self.player = AVPlayer(playerItem: self.playerItem)
@@ -501,6 +484,7 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                 receiverCell.configureCellWith(model: model)
                 receiverCell.receiverNameLbl.text = self.firstName
                 self.setTapGesture(view: receiverCell.msgContainerView, indexPath: indexPath)
+                receiverCell.receiverImgView.addGestureRecognizer(imgTap)
                 return receiverCell
             }
         default:
@@ -658,31 +642,6 @@ extension OneToOneChatVC: UIImagePickerControllerDelegate, UINavigationControlle
             openImageViewer(indexPath: indexPath)
             return
         }
-        guard selectedIndexPaths.contains(indexPath) else {
-            if let messageCell = self.messagesTableView.cellForRow(at: indexPath) as? ReceiverMessageCell {
-                messageCell.msgContainerView.backgroundColor = AppColors.appRedColor
-                messageCell.msgLabel.textColor = AppColors.appRedColor
-                self.selectedIndexPaths.append(indexPath)
-            }
-            if let imageCell = self.messagesTableView.cellForRow(at: indexPath) as? ReceiverMediaCell {
-                imageCell.msgContainerView.backgroundColor = AppColors.appRedColor
-                self.selectedIndexPaths.append(indexPath)
-            }
-            return
-        }
-        if let messageCell = self.messagesTableView.cellForRow(at: indexPath) as? ReceiverMessageCell {
-            messageCell.msgContainerView.backgroundColor = AppColors.appRedColor
-            messageCell.msgLabel.textColor = AppColors.appRedColor
-            self.selectedIndexPaths.removeAll { (index) -> Bool in
-                return index == indexPath
-            }
-        }
-        if let imageCell = self.messagesTableView.cellForRow(at: indexPath) as? ReceiverMediaCell {
-            imageCell.msgContainerView.backgroundColor = AppColors.appRedColor
-            self.selectedIndexPaths.removeAll { (index) -> Bool in
-                return index == indexPath
-            }
-        }
     }
     
     //
@@ -715,9 +674,7 @@ extension OneToOneChatVC: UIImagePickerControllerDelegate, UINavigationControlle
             }
         }
     }
-    //
 }
-//
 
 //MARK: CHAT FUNCTIONS
 //====================
