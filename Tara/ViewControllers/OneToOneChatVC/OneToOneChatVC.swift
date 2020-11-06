@@ -158,7 +158,7 @@ class OneToOneChatVC: BaseVC {
     }
     
     @IBAction func backButtonTapped(_ sender: UIButton) {
-        popToInboxView()
+        self.pop()
     }
     
     @IBAction func addAttachmentsButtonTapped(_ sender: UIButton) {
@@ -187,6 +187,7 @@ class OneToOneChatVC: BaseVC {
         timerView.isHidden = true
         timerLbl.text = "0:00"
         self.progressVIew.progress = 0.0
+        self.recordedUrl = nil
         audioRecordBtn.setImage(#imageLiteral(resourceName: "audioMsg"), for: .normal)
     }
 }
@@ -239,16 +240,6 @@ extension OneToOneChatVC {
                 finishRecording(success: true)
             }
         }
-    }
-    
-    private func popToInboxView() {
-        guard let nvc = self.navigationController else { return }
-        for vc in nvc.viewControllers {
-            if vc is UserChatVC {
-                //                self.navigationController?.popToViewControllerOfType(classForCoder: vc.self)
-            }
-        }
-        self.pop()
     }
     
     private func getChatData() {
@@ -339,9 +330,9 @@ extension OneToOneChatVC {
     }
     
     @objc func finishedPlaying( _ myNotification:NSNotification) {
-//        if let ob = self.timeObserver {
-//                        self.player?.removeTimeObserver(ob)
-//        }
+        if let ob = self.timeObserver {
+            self.player?.removeTimeObserver(ob)
+        }
         self.removeAVPlayerInstance()
     }
     
@@ -351,11 +342,13 @@ extension OneToOneChatVC {
         if let senderAudioCell = self.messagesTableView.cellForRow(at: self.selectedIndexPath ?? IndexPath.init(row: 0, section: 0)) as? SenderAudioCell {
             self.selectedIndexPath = nil
             senderAudioCell.customSlider.value = 0.0
+            senderAudioCell.loadingView.isHidden = true
             senderAudioCell.playBtn.setImage(#imageLiteral(resourceName: "playButton"), for: .normal)
         }
         if let receiverAudioCell = self.messagesTableView.cellForRow(at: self.selectedIndexPath ?? IndexPath.init(row: 0, section: 0)) as? ReceiverAudioCell {
             self.selectedIndexPath = nil
             receiverAudioCell.customSlider.value = 0.0
+            receiverAudioCell.loadingView.isHidden = true
             receiverAudioCell.playBtn.setImage(#imageLiteral(resourceName: "playButton"), for: .normal)
         }
         self.messagesTableView.reloadData()
@@ -737,7 +730,7 @@ extension OneToOneChatVC: UIImagePickerControllerDelegate, UINavigationControlle
                 self.showAlert(msg: err.localizedDescription)
                 printDebug("Error removing document: \(err)")
             } else {
-                self.popToInboxView()
+                self.pop()
                 printDebug("Document successfully removed!")
             }
         }
