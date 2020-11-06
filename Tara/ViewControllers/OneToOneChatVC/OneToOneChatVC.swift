@@ -20,13 +20,13 @@ protocol SetLastMessageDelegate : AnyObject {
 }
 
 class OneToOneChatVC: BaseVC {
-
+    
     //MARK: VARIABLES
     //===============
     weak var delegate: SetLastMessageDelegate?
     var chatViewModel = OneToOneChatViewModel()
     private let db = Firestore.firestore()
-
+    
     var inboxModel = Inbox()
     var firstName = ""
     var requestId = ""
@@ -36,7 +36,7 @@ class OneToOneChatVC: BaseVC {
     var indexVal = 0
     var tempTime = Timestamp.init(date: Date())
     var recordedUrl : URL?
-
+    
     private var deleteTime = Timestamp.init(date: Date())
     private var userInfo = [String:Any]()
     var roomId = ""
@@ -52,6 +52,7 @@ class OneToOneChatVC: BaseVC {
             }
         }
     }
+    var selectedIndexPaths : [IndexPath] = []
     var selectedIndexPath: IndexPath?
     var listeners = [ListenerRegistration]()
     //Audio messages
@@ -59,7 +60,8 @@ class OneToOneChatVC: BaseVC {
     var audioRecorder: AVAudioRecorder!
     var player:AVPlayer?
     var playerItem:AVPlayerItem?
-
+    var timeObserver: Any?
+    
     //MARK: OUTLETS
     //=============
     @IBOutlet weak var progressVIew: UIProgressView!
@@ -91,14 +93,14 @@ class OneToOneChatVC: BaseVC {
     @IBOutlet weak var addressLbl: UILabel!
     @IBOutlet weak var userRequestView: UIView!
     @IBOutlet weak var userImgView: UIImageView!
-
+    
     //MARK: VIEW LIFE CYCLE
     //=====================
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isTranslucent = true
@@ -107,7 +109,7 @@ class OneToOneChatVC: BaseVC {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIApplication.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIApplication.keyboardWillHideNotification, object: nil)
     }
-
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         addDocumentBtn.round()
@@ -117,7 +119,7 @@ class OneToOneChatVC: BaseVC {
         audioRecordBtn.round()
         textContainerInnerView.round(radius: 4.0)
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.db.collection(ApiKey.inbox).document(AppUserDefaults.value(forKey: .uid).stringValue).collection(ApiKey.chat).document(inboxModel.userId).getDocument(completion: { (document, error) in
@@ -125,16 +127,16 @@ class OneToOneChatVC: BaseVC {
                 let unreadMsgs = doc.data()?[ApiKey.unreadMessages] as? Int ?? 0
                 var diff = FirestoreController.ownUnreadCount - unreadMsgs
                 diff = diff <= 0 ? 0 : diff
-
+                
                 self.db.collection(ApiKey.inbox).document(self.currentUserId).collection(ApiKey.chat).document(self.inboxModel.userId).updateData([ApiKey.unreadMessages: 0])
-
+                
                 self.db.collection(ApiKey.batchCount)
                     .document(AppUserDefaults.value(forKey: .uid).stringValue)
                     .setData([ApiKey.unreadMessages : (diff)])
             }})
         //        listeners.forEach({$0.remove()})
     }
-
+    
     //MARK: ACTIONS
     //=============
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -142,15 +144,15 @@ class OneToOneChatVC: BaseVC {
         guard let touch = touches.first else { return }
         _ = touch.location(in: self.view)
     }
-
+    
     @IBAction func backButtonTapped(_ sender: UIButton) {
         popToInboxView()
     }
-
+    
     @IBAction func addAttachmentsButtonTapped(_ sender: UIButton) {
         createMediaAlertSheet()
     }
-
+    
     @IBAction func addAudioMsgBtnTapped(_ sender: UIButton) {
         timerView.isHidden = false
         audioRecordBtn.setImage(#imageLiteral(resourceName: "audioBtnWhite"), for: .normal)
@@ -159,16 +161,16 @@ class OneToOneChatVC: BaseVC {
     @IBAction func sendButtonTapped(_ sender: UIButton) {
         sendMessage()
     }
-
+    
     @IBAction func getLocationTapped(_ sender: UIButton) {
-
+        
     }
     @IBAction func sendAudioToFirestire(_ sender: UIButton) {
         if sender.imageView?.image !=  #imageLiteral(resourceName: "audioBtnWhite")  {
             self.uploadAudioFileToFirestore(self.recordedUrl!)
             self.audioRecordCancelBtnAction(audioCancelBtn)
         } }
-            
+    
     @IBAction func audioRecordCancelBtnAction(_ sender: UIButton) {
         timerView.isHidden = true
         timerLbl.text = "0:00"
@@ -180,7 +182,7 @@ class OneToOneChatVC: BaseVC {
 //MARK: PRIVATE FUNCTIONS
 //=======================
 extension OneToOneChatVC {
-
+    
     private func initialSetup() {
         userRequestView.isHidden = true
         chatViewModel.delegate = self
@@ -190,7 +192,6 @@ extension OneToOneChatVC {
         containerScrollView.delegate = self
         bottomContainerView.isUserInteractionEnabled = true
         addTapGestureToAudioBtn()
-//        viewModel.delegate = self
         setupTableView()
         setupImageController()
         setupTextView()
@@ -199,7 +200,7 @@ extension OneToOneChatVC {
         setupAudioMessages()
         getChatData()
     }
-
+    
     private func addTapGestureToAudioBtn() {
         let longGesture = UILongPressGestureRecognizer.init(target: self, action: #selector(longTap))
         audioRecordBtn.addGestureRecognizer(longGesture)
@@ -209,9 +210,9 @@ extension OneToOneChatVC {
     @objc   func longTap(_ sender : UIGestureRecognizer){
         print("Long tap")
         if sender.state == .ended {
-             audioRecordBtn.setImage(#imageLiteral(resourceName: "group3603"), for: .normal)
-             finishRecording(success: true)
-             endTimer()
+            audioRecordBtn.setImage(#imageLiteral(resourceName: "group3603"), for: .normal)
+            finishRecording(success: true)
+            endTimer()
         }
         else if sender.state == .began {
             print("UIGestureRecognizerStateBegan.")
@@ -223,24 +224,24 @@ extension OneToOneChatVC {
             }
         }
     }
-
+    
     private func popToInboxView() {
         guard let nvc = self.navigationController else { return }
         for vc in nvc.viewControllers {
             if vc is UserChatVC {
-//                self.navigationController?.popToViewControllerOfType(classForCoder: vc.self)
+                //                self.navigationController?.popToViewControllerOfType(classForCoder: vc.self)
             }
         }
         self.pop()
     }
-
+    
     private func setupImageController(){
-//        imageController.delegate = self
+        //        imageController.delegate = self
         imageController.allowsEditing = false
         imageController.sourceType = UIImagePickerController.SourceType.photoLibrary
         imageController.mediaTypes = ["public.image", "public.movie"]
     }
-
+    
     private func getChatData() {
         if !requestId.isEmpty {
             let dict = [ApiKey.requestId : self.requestId]
@@ -249,9 +250,9 @@ extension OneToOneChatVC {
     }
     
     private func createMediaAlertSheet() {
-         self.captureImage(delegate: self,removedImagePicture: false )
+        self.captureImage(delegate: self,removedImagePicture: false )
     }
-
+    
     private func setupAudioMessages() {
         NotificationCenter.default.addObserver(self, selector: #selector(self.finishedPlaying(_:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: playerItem)
         self.timerView.isHidden = true
@@ -272,10 +273,10 @@ extension OneToOneChatVC {
             // failed to record
         }
     }
-
+    
     private func presentCamera() {
         let imagePicker = UIImagePickerController()
-//        imagePicker.delegate = self
+        //        imagePicker.delegate = self
         imagePicker.navigationBar.barTintColor = AppColors.appRedColor
         imagePicker.navigationBar.isTranslucent = false
         imagePicker.navigationBar.tintColor = .white
@@ -285,7 +286,7 @@ extension OneToOneChatVC {
         imagePicker.allowsEditing = false
         self.present(imagePicker, animated: true, completion: nil)
     }
-
+    
     private func setupTableView() {
         messagesTableView.delegate = self
         messagesTableView.dataSource = self
@@ -297,33 +298,33 @@ extension OneToOneChatVC {
         messagesTableView.registerCell(with: ReceiverAudioCell.self)
         messagesTableView.registerCell(with: DayValueCell.self)
     }
-
+    
     private func setupTextView() {
         titleLabel.text = firstName
         messageTextView.delegate = self
         messageTextView.tintColor = AppColors.appRedColor
     }
-
+    
     private func sendMessage() {
         self.view.endEditing(true)
         let txt = self.messageTextView.text.byRemovingLeadingTrailingWhiteSpaces
         guard !txt.isEmpty else { return }
-            if isRoom {
-                self.updateUnreadMessage()
-                self.restoreDeletedNode()
-                self.createMessage()
-                self.updateInboxTimeStamp()
-            } else {
-                self.createRoom()
-                self.createMessage()
-                self.createInbox()
-            }
+        if isRoom {
+            self.updateUnreadMessage()
+            self.restoreDeletedNode()
+            self.createMessage()
+            self.updateInboxTimeStamp()
+        } else {
+            self.createRoom()
+            self.createMessage()
+            self.createInbox()
+        }
         messageTextView.text = ""
         messageLabel.isHidden = false
         sendButton.setImage(#imageLiteral(resourceName: "group3603"), for: .normal)
         resetFrames()
     }
-
+    
     @objc func keyboardWillShow(sender: NSNotification) {
         containerScrollView.isScrollEnabled = true
         guard let info = sender.userInfo, let keyboardSize = (info[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height, let duration: TimeInterval = (info[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue else { return }
@@ -331,44 +332,20 @@ extension OneToOneChatVC {
         tableViewTopConstraint.constant = keyboardSize - 20
         UIView.animate(withDuration: duration) { self.view.layoutIfNeeded() }
     }
-
+    
     @objc func keyboardWillHide(sender: NSNotification) {
         guard let info = sender.userInfo, let duration: TimeInterval = (info[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue else { return }
         scrollMsgToBottom()
         tableViewTopConstraint.constant = 0
         UIView.animate(withDuration: duration) { self.view.layoutIfNeeded() }
     }
-
-    @objc private func playVideo(_ sender: UIButton){
-        guard let index = messagesTableView.indexPath(forItem: sender) else { return }
-        let videoURLStr = messageListing[index.section][index.row].mediaUrl
-        guard let videoURL = URL(string: videoURLStr) else { return }
-        let player = AVPlayer(url: videoURL)
-            let playerViewController = AVPlayerViewController()
-            playerViewController.player = player
-
-        present(playerViewController, animated: true) {
-            guard let player = playerViewController.player else { return }
-            player.play()
-        }
-    }
-
-    @objc private func playVideoFromTap(_ sender: UITapGestureRecognizer) {
-        guard let view = sender.view, let index = messagesTableView.indexPath(forItem: view) else { return }
-        let videoURLStr = messageListing[index.section][index.row].mediaUrl
-        guard let videoURL = URL(string: videoURLStr) else { return }
-        let player = AVPlayer(url: videoURL)
-            let playerViewController = AVPlayerViewController()
-            playerViewController.player = player
-
-        present(playerViewController, animated: true) {
-            guard let player = playerViewController.player else { return }
-            player.play()
-        }
-    }
     
     @objc func finishedPlaying( _ myNotification:NSNotification) {
-        self.player?.rate = 0.0
+        if let ob = self.timeObserver {
+            //            self.player?.removeTimeObserver(ob)
+        }
+        self.player = nil
+        self.playerItem = nil
         let senderAudioCell = self.messagesTableView.cellForRow(at: self.selectedIndexPath!) as? SenderAudioCell
         senderAudioCell?.customSlider.value = 0.0
         senderAudioCell?.playBtn.setImage(#imageLiteral(resourceName: "playButton"), for: .normal)
@@ -379,7 +356,7 @@ extension OneToOneChatVC {
 //MARK:- TEXT VIEW DELEGATES
 //==========================
 extension OneToOneChatVC: UITextViewDelegate{
-
+    
     func textViewDidChange(_ textView: UITextView) {
         guard let text = textView.text else { return }
         self.messageLabel.isHidden = !text.isEmpty
@@ -397,12 +374,12 @@ extension OneToOneChatVC: UITextViewDelegate{
             textViewHeightConstraint.constant = height
         }
     }
-
+    
     func textViewDidBeginEditing(_ textView: UITextView) {
         messageLabel.isHidden = true
         textView.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
     }
-
+    
     func textViewDidEndEditing(_ textView: UITextView) {
         messageLabel.isHidden = !textView.text.byRemovingLeadingTrailingWhiteSpaces.isEmpty
         if messageLabel.isHidden {
@@ -411,7 +388,7 @@ extension OneToOneChatVC: UITextViewDelegate{
             sendButton.setImage(#imageLiteral(resourceName: "group3603"), for: .normal)
         }
     }
-
+    
     //MARK: Reset frame function
     fileprivate func resetFrames() {
         UIView.animate(withDuration: 0.3) {
@@ -421,31 +398,29 @@ extension OneToOneChatVC: UITextViewDelegate{
     }
     
     func stringFromTimeInterval(interval: TimeInterval) -> String {
-        
         let interval = Int(interval)
         let seconds = interval % 60
         let minutes = (interval / 60) % 60
-        let hours = (interval / 3600)
-        return String(format: "%02d:%02d:%02d", hours, minutes, seconds)
+        return String(format: "%02d:%02d",minutes, seconds)
     }
 }
 
 //MARK:- TABLEVIEW DELEGATES AND DATASOURCE
 //=========================================
 extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return messageListing[section].endIndex
     }
-
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return messageListing.endIndex
     }
-
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
-
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let dayCell = tableView.dequeueCell(with: DayValueCell.self)
         let dateVal =  messageListing[section].first?.messageTime.dateValue() ?? Date()
@@ -458,14 +433,14 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
         }
         return dayCell
     }
-
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return  40.0
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = messageListing[indexPath.section][indexPath.row]
-//        let imgTap = UITapGestureRecognizer(target: self, action: #selector(titleLabelTapped(_:)))
+        //        let imgTap = UITapGestureRecognizer(target: self, action: #selector(titleLabelTapped(_:)))
         switch model.receiverId {
         case AppUserDefaults.value(forKey: .uid).stringValue:
             switch model.messageType {
@@ -473,15 +448,15 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                 let senderMediaCell = tableView.dequeueCell(with: SenderMediaCell.self)
                 senderMediaCell.configureCellWith(model: model)
                 senderMediaCell.senderImageView.setImage_kf(imageString: userImage, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
-                //                setTapGesture(view: senderMediaCell.msgContainerView, indexPath: indexPath)
-//                senderMediaCell.senderImageView.addGestureRecognizer(imgTap)
+                setTapGesture(view: senderMediaCell.msgContainerView, indexPath: indexPath)
+                //                senderMediaCell.senderImageView.addGestureRecognizer(imgTap)
                 senderMediaCell.senderNameLabel.text = self.firstName
                 return senderMediaCell
             case MessageType.audio.rawValue:
                 let receiverAudioCell = tableView.dequeueCell(with: ReceiverAudioCell.self)
                 receiverAudioCell.receiverNameLbl.text = self.firstName
                 receiverAudioCell.customSlider.tintColor = AppColors.appRedColor
-                self.player = nil
+                
                 let url = URL(string: model.mediaUrl)
                 self.playerItem = AVPlayerItem(url: url!)
                 self.player = AVPlayer(playerItem: self.playerItem)
@@ -500,7 +475,7 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                         receiverAudioCell.playBtn.setImage(#imageLiteral(resourceName: "playButton"), for: UIControl.State.normal)
                     }
                 }
-                player!.addPeriodicTimeObserver(forInterval: CMTimeMakeWithSeconds(1, preferredTimescale: 1), queue: DispatchQueue.main) { (CMTime) -> Void in
+                self.timeObserver =  player!.addPeriodicTimeObserver(forInterval: CMTimeMakeWithSeconds(1, preferredTimescale: 1), queue: DispatchQueue.main) { (CMTime) -> Void in
                     if self.player!.currentItem?.status == .readyToPlay {
                         let time : Float64 = CMTimeGetSeconds(self.player!.currentTime());
                         receiverAudioCell.customSlider.value = Float ( time );
@@ -525,8 +500,7 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                 let receiverCell = tableView.dequeueCell(with: ReceiverMessageCell.self)
                 receiverCell.configureCellWith(model: model)
                 receiverCell.receiverNameLbl.text = self.firstName
-                //                self.setupLongPressGesture(view: receiverCell.msgContainerView, indexPath: indexPath)
-                //                self.setTapGesture(view: receiverCell.msgContainerView, indexPath: indexPath)
+                self.setTapGesture(view: receiverCell.msgContainerView, indexPath: indexPath)
                 return receiverCell
             }
         default:
@@ -534,11 +508,11 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
             case MessageType.image.rawValue:
                 let receiverMediaCell = tableView.dequeueCell(with: ReceiverMediaCell.self)
                 receiverMediaCell.configureCellWith(model: model)
+                self.setTapGesture(view: receiverMediaCell.msgContainerView, indexPath: indexPath)
                 return receiverMediaCell
             case MessageType.audio.rawValue:
                 let senderAudioCell = tableView.dequeueCell(with: SenderAudioCell.self)
                 //
-                self.player = nil
                 let url = URL(string: model.mediaUrl)
                 self.playerItem = AVPlayerItem(url: url!)
                 self.player = AVPlayer(playerItem: self.playerItem)
@@ -565,60 +539,57 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                     self.player!.seek(to: targetTime)
                     if self.player!.rate == 0 {
                         self.player?.play()
-                        senderAudioCell.playBtn.setImage(#imageLiteral(resourceName: "pauseButton"), for: .normal)
+                        senderAudioCell.playBtn.setImage(#imageLiteral(resourceName: "pauseButton"), for: UIControl.State.normal)
                     }
                 }
-               
+                
                 senderAudioCell.customSlider.minimumValue = 0
-//                let duration : CMTime = (self.playerItem?.asset.duration)!
-//                        let seconds : Float64 = CMTimeGetSeconds(duration)
+                //                let duration : CMTime = (self.playerItem?.asset.duration)!
+                //                        let seconds : Float64 = CMTimeGetSeconds(duration)
                 senderAudioCell.customSlider.maximumValue = Float(model.messageDuration).rounded()
                 senderAudioCell.customSlider.isContinuous = true
                 senderAudioCell.customSlider.tintColor = AppColors.appRedColor
-//                senderAudioCell.timeLbl.text = self.stringFromTimeInterval(interval: seconds)
-                senderAudioCell.timeLbl.text = "\(model.messageDuration)"
-                       
-//                       lblcurrentText.text = self.stringFromTimeInterval(interval: seconds1)
-                       
-                       player!.addPeriodicTimeObserver(forInterval: CMTimeMakeWithSeconds(1, preferredTimescale: 1), queue: DispatchQueue.main) { (CMTime) -> Void in
-                           if self.player!.currentItem?.status == .readyToPlay {
-                               let time : Float64 = CMTimeGetSeconds(self.player!.currentTime());
-                               senderAudioCell.customSlider.value = Float ( time );
-                               senderAudioCell.timeLbl.text = self.stringFromTimeInterval(interval: time)
-                           }
-
-                           let playbackLikelyToKeepUp = self.player?.currentItem?.isPlaybackLikelyToKeepUp
-                           if playbackLikelyToKeepUp == false{
-                               print("IsBuffering")
-                               senderAudioCell.playBtn.isHidden = true
-                               senderAudioCell.loadingView.startAnimating()
-                               senderAudioCell.loadingView.isHidden = false
-                           } else {
-                               //stop the activity indicator
-                               print("Buffering completed")
-                               senderAudioCell.playBtn.isHidden = false
-                               senderAudioCell.loadingView.stopAnimating()
-                               senderAudioCell.loadingView.isHidden = true
-                           }
-                        }
+                senderAudioCell.timeLbl.text = self.stringFromTimeInterval(interval: TimeInterval(model.messageDuration))
+                
+                player!.addPeriodicTimeObserver(forInterval: CMTimeMakeWithSeconds(1, preferredTimescale: 1), queue: DispatchQueue.main) { (CMTime) -> Void in
+                    if self.player!.currentItem?.status == .readyToPlay {
+                        let time : Float64 = CMTimeGetSeconds(self.player!.currentTime())
+                        senderAudioCell.customSlider.value = Float ( time )
+                        senderAudioCell.timeLbl.text = self.stringFromTimeInterval(interval: time)
+                    }
+                    
+                    let playbackLikelyToKeepUp = self.player?.currentItem?.isPlaybackLikelyToKeepUp
+                    if playbackLikelyToKeepUp == false{
+                        print("IsBuffering")
+                        senderAudioCell.playBtn.isHidden = true
+                        senderAudioCell.loadingView.startAnimating()
+                        senderAudioCell.loadingView.isHidden = false
+                    } else {
+                        //stop the activity indicator
+                        print("Buffering completed")
+                        senderAudioCell.playBtn.isHidden = false
+                        senderAudioCell.loadingView.stopAnimating()
+                        senderAudioCell.loadingView.isHidden = true
+                    }
+                }
                 
                 return senderAudioCell
             default:
                 let senderCell = tableView.dequeueCell(with: SenderMessageCell.self)
                 senderCell.configureCellWith(model: model)
                 senderCell.senderImgView.setImage_kf(imageString: userImage, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
-//                senderCell.senderImgView.addGestureRecognizer(imgTap)
+                //                senderCell.senderImgView.addGestureRecognizer(imgTap)
                 return senderCell
             }
         }
     }
-
+    
     private func reloadTableViewToBottom() {
         messagesTableView.reloadData()
         self.view.layoutIfNeeded()
         scrollMsgToBottom()
     }
-
+    
     private func scrollMsgToBottom() {
         guard messageListing.endIndex > 0, messageListing[messageListing.endIndex - 1].endIndex > 0 else { return }
         messagesTableView.scrollToRow(at: IndexPath(row: messageListing[messageListing.endIndex - 1].endIndex - 1, section: messageListing.endIndex - 1), at: .bottom, animated: true)
@@ -632,26 +603,26 @@ extension OneToOneChatVC: UIImagePickerControllerDelegate, UINavigationControlle
         let image = info[.editedImage] as? UIImage
         hasImageUploaded = false
         image?.upload(progress: { [weak self] (status) in
-        guard let `self` = self else { return }
-        printDebug(status)
-             if !self.hasImageUploaded { CommonFunctions.showToastWithMessage("\(Int(status * 100))% Uploaded") }
-        }, completion: { (response,error) in
-            if let url = response {
-                self.hasImageUploaded = true
-                if self.isRoom {
-                    self.updateUnreadMessage()
-                    self.restoreDeletedNode()
-                    self.createMediaMessage(url: url, imageURL: url, type: "image")
-                    self.updateInboxTimeStamp()
-                } else {
-                    self.createRoom()
-                    self.createMediaMessage(url: url, imageURL: url, type: "image")
-                    self.createInbox()
+            guard let `self` = self else { return }
+            printDebug(status)
+            if !self.hasImageUploaded { CommonFunctions.showToastWithMessage("\(Int(status * 100))% Uploaded") }
+            }, completion: { (response,error) in
+                if let url = response {
+                    self.hasImageUploaded = true
+                    if self.isRoom {
+                        self.updateUnreadMessage()
+                        self.restoreDeletedNode()
+                        self.createMediaMessage(url: url, imageURL: url, type: "image")
+                        self.updateInboxTimeStamp()
+                    } else {
+                        self.createRoom()
+                        self.createMediaMessage(url: url, imageURL: url, type: "image")
+                        self.createInbox()
+                    }
                 }
-            }
-            if let _ = error{
-                self.showAlert(msg: LocalizedString.imageUploadingFailed.localized)
-            }
+                if let _ = error{
+                    self.showAlert(msg: LocalizedString.imageUploadingFailed.localized)
+                }
         })
         picker.dismiss(animated: true, completion: nil)
     }
@@ -663,156 +634,106 @@ extension OneToOneChatVC: UIImagePickerControllerDelegate, UINavigationControlle
     func removepicture() {
     }
     
-}
-
-//    // Long Press Gesture to delete message
-    func setupLongPressGesture(view: UIView, indexPath: IndexPath) {
-//        let longPressGesture:UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongPress))
-//        longPressGesture.minimumPressDuration = 1.0 // 1 second press
-//        view.addGestureRecognizer(longPressGesture)
+    func setTapGesture(view: UIView, indexPath: IndexPath) {
+        let longPressGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tapGesture))
+        view.addGestureRecognizer(longPressGesture)
     }
-//
-//    func setTapGesture(view: UIView, indexPath: IndexPath) {
-//        let longPressGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tapGesture))
-//        view.addGestureRecognizer(longPressGesture)
-//    }
-//
-//    func openImageViewer(indexPath: IndexPath) {
-//        let message = messageListing[indexPath.section][indexPath.row]
-//        guard message.messageType == MessageType.image.rawValue else { return }
-//        if let tableViewCell = messagesTableView.cellForRow(at: indexPath) as? ReceiverMediaCell {
-//            AppRouter.presentImageViewerVC(self, image: tableViewCell.mediaImageView.image, imageURL: message.mediaUrl)
-//        }
-//        if let tableViewCell = messagesTableView.cellForRow(at: indexPath) as? SenderMediaCell {
-//            AppRouter.presentImageViewerVC(self, image: tableViewCell.mediaImageView.image, imageURL: message.mediaUrl)
-//        }
-//        print(message.mediaUrl)
-//    }
-//
-//    @objc func tapGesture(_ gestureRecognizer: UITapGestureRecognizer) {
-//
-//        guard let indexPath = self.messagesTableView.indexPath(forItem: gestureRecognizer.view ?? UIView()) else { return }
-//        guard !selectedIndexPaths.isEmpty else {
-//            openImageViewer(indexPath: indexPath)
-//            return
-//        }
-//        guard selectedIndexPaths.contains(indexPath) else {
-//            if let messageCell = self.messagesTableView.cellForRow(at: indexPath) as? ReceiverMessageCell {
-//                messageCell.msgContainerView.backgroundColor = AppColors.blackColor
-//                messageCell.msgLabel.textColor = AppColors.whiteColor
-//                self.selectedIndexPaths.append(indexPath)
-//                self.checkDeletBtnState()
-//            }
-//            if let imageCell = self.messagesTableView.cellForRow(at: indexPath) as? ReceiverMediaCell {
-//                imageCell.msgContainerView.backgroundColor = AppColors.blackColor
-//                self.selectedIndexPaths.append(indexPath)
-//                self.checkDeletBtnState()
-//            }
-//            if let videoCell = self.messagesTableView.cellForRow(at: indexPath) as? ReceiverVideoCell {
-//                videoCell.msgContainerView.backgroundColor = AppColors.blackColor
-//                self.selectedIndexPaths.append(indexPath)
-//                self.checkDeletBtnState()
-//            }
-//            printDebug(self.selectedIndexPaths)
-//            return
-//        }
-//        if let messageCell = self.messagesTableView.cellForRow(at: indexPath) as? ReceiverMessageCell {
-//            messageCell.msgContainerView.backgroundColor = AppColors.blueChatBubble
-//            messageCell.msgLabel.textColor = AppColors.darkGreyColorTwo
-//            self.selectedIndexPaths.removeAll { (index) -> Bool in
-//                return index == indexPath
-//            }
-//            self.checkDeletBtnState()
-//        }
-//        if let imageCell = self.messagesTableView.cellForRow(at: indexPath) as? ReceiverMediaCell {
-//            imageCell.msgContainerView.backgroundColor = AppColors.blueChatBubble
-//            self.selectedIndexPaths.removeAll { (index) -> Bool in
-//                return index == indexPath
-//            }
-//            self.checkDeletBtnState()
-//        }
-//        if let videoCell = self.messagesTableView.cellForRow(at: indexPath) as? ReceiverVideoCell {
-//            videoCell.msgContainerView.backgroundColor = AppColors.blueChatBubble
-//            self.selectedIndexPaths.removeAll { (index) -> Bool in
-//                return index == indexPath
-//            }
-//            self.checkDeletBtnState()
-//        }
-//        printDebug(self.selectedIndexPaths)
-//    }
-//
-//    @objc func handleLongPress(_ gestureRecognizer: UILongPressGestureRecognizer) {
-//
-//        if gestureRecognizer.state == .began {
-//            guard let indexPath = self.messagesTableView.indexPath(forItem: gestureRecognizer.view ?? UIView()) else { return }
-//            if let messageCell = self.messagesTableView.cellForRow(at: indexPath) as? ReceiverMessageCell {
-//                messageCell.msgContainerView.backgroundColor = AppColors.blackColor
-//                messageCell.msgLabel.textColor = AppColors.whiteColor
-//                self.selectedIndexPaths.append(indexPath)
-//                self.checkDeletBtnState()
-//            }
-//            if let imageCell = self.messagesTableView.cellForRow(at: indexPath) as? ReceiverMediaCell {
-//                imageCell.msgContainerView.backgroundColor = AppColors.blackColor
-//                self.selectedIndexPaths.append(indexPath)
-//                self.checkDeletBtnState()
-//            }
-//            if let videoCell = self.messagesTableView.cellForRow(at: indexPath) as? ReceiverVideoCell {
-//                videoCell.msgContainerView.backgroundColor = AppColors.blackColor
-//                self.selectedIndexPaths.append(indexPath)
-//                self.checkDeletBtnState()
-//            }
-//            printDebug(self.selectedIndexPaths)
-//        }
-//    }
-//
-//    // Delete full chat
-//    private func deleteFullChat() {
-//        db.collection(ApiKey.inbox).document(currentUserId).collection(ApiKey.chat).document(inboxModel.userId).delete { [weak self] (error) in
-//                guard let `self` = self else { return }
-//                if let err = error {
-//                    self.showAlert(msg: err.localizedDescription)
-//                    printDebug("Error removing document: \(err)")
-//                } else {
-//                    self.popToInboxView()
-//                    printDebug("Document successfully removed!")
-//                }
-//        }
-//    }
-//
-//    // Delete selected messages
-//    func deleteMessages() {
-//        selectedIndexPaths.sort()
-//        selectedIndexPaths.reverse()
-//        for index in selectedIndexPaths {
-//            let id = self.messageListing[index.section][index.row].messageId
-//            self.db.collection(ApiKey.messages).document(self.getRoomId()).collection(ApiKey.chat).document(id).delete() { (err) in
-//                if let err = err {
-//                    printDebug("Error removing document: \(err)")
-//                } else {
-//                    printDebug("Document successfully removed!")
-//                }
-//            }
-//        }
-//    }
-//
-//}
+    
+    func openImageViewer(indexPath: IndexPath) {
+        let message = self.messageListing[indexPath.section][indexPath.row]
+        guard message.messageType == MessageType.image.rawValue else { return }
+        if let tableViewCell = messagesTableView.cellForRow(at: indexPath) as? ReceiverMediaCell {
+            AppRouter.presentImageViewerVC(self, image: tableViewCell.mediaImageView.image, imageURL: message.mediaUrl)
+        }
+        if let tableViewCell = messagesTableView.cellForRow(at: indexPath) as? SenderMediaCell {
+            AppRouter.presentImageViewerVC(self, image: tableViewCell.mediaImageView.image, imageURL: message.mediaUrl)
+        }
+        print(message.mediaUrl)
+    }
+    //
+    @objc func tapGesture(_ gestureRecognizer: UITapGestureRecognizer) {
+        
+        guard let indexPath = self.messagesTableView.indexPath(forItem: gestureRecognizer.view ?? UIView()) else { return }
+        guard !selectedIndexPaths.isEmpty else {
+            openImageViewer(indexPath: indexPath)
+            return
+        }
+        guard selectedIndexPaths.contains(indexPath) else {
+            if let messageCell = self.messagesTableView.cellForRow(at: indexPath) as? ReceiverMessageCell {
+                messageCell.msgContainerView.backgroundColor = AppColors.appRedColor
+                messageCell.msgLabel.textColor = AppColors.appRedColor
+                self.selectedIndexPaths.append(indexPath)
+            }
+            if let imageCell = self.messagesTableView.cellForRow(at: indexPath) as? ReceiverMediaCell {
+                imageCell.msgContainerView.backgroundColor = AppColors.appRedColor
+                self.selectedIndexPaths.append(indexPath)
+            }
+            return
+        }
+        if let messageCell = self.messagesTableView.cellForRow(at: indexPath) as? ReceiverMessageCell {
+            messageCell.msgContainerView.backgroundColor = AppColors.appRedColor
+            messageCell.msgLabel.textColor = AppColors.appRedColor
+            self.selectedIndexPaths.removeAll { (index) -> Bool in
+                return index == indexPath
+            }
+        }
+        if let imageCell = self.messagesTableView.cellForRow(at: indexPath) as? ReceiverMediaCell {
+            imageCell.msgContainerView.backgroundColor = AppColors.appRedColor
+            self.selectedIndexPaths.removeAll { (index) -> Bool in
+                return index == indexPath
+            }
+        }
+    }
+    
+    //
+    // Delete full chat
+    private func deleteFullChat() {
+        db.collection(ApiKey.inbox).document(currentUserId).collection(ApiKey.chat).document(inboxModel.userId).delete { [weak self] (error) in
+            guard let `self` = self else { return }
+            if let err = error {
+                self.showAlert(msg: err.localizedDescription)
+                printDebug("Error removing document: \(err)")
+            } else {
+                self.popToInboxView()
+                printDebug("Document successfully removed!")
+            }
+        }
+    }
+    
+    // Delete selected messages
+    func deleteMessages() {
+        selectedIndexPaths.sort()
+        selectedIndexPaths.reverse()
+        for index in selectedIndexPaths {
+            let id = self.messageListing[index.section][index.row].messageId
+            self.db.collection(ApiKey.messages).document(self.getRoomId()).collection(ApiKey.chat).document(id).delete() { (err) in
+                if let err = err {
+                    printDebug("Error removing document: \(err)")
+                } else {
+                    printDebug("Document successfully removed!")
+                }
+            }
+        }
+    }
+    //
+}
 //
 
 //MARK: CHAT FUNCTIONS
 //====================
 extension OneToOneChatVC{
-
-
+    
+    
     ///Mark:- Checking send button
     private func fetchUnreadMessages(){
         FirestoreController.getUnreadMessageCount(receiverId: inboxModel.userId, senderId: currentUserId)
     }
-
+    
     ///Mark:- Batch count fetching
     private func getBatchCount(){
         FirestoreController.getTotalMessagesCount(senderId: self.inboxModel.userId)
     }
-
+    
     ///Mark:- Update unread messages
     private func updateUnreadMessage() {
         db.collection(ApiKey.inbox)
@@ -831,7 +752,7 @@ extension OneToOneChatVC{
                 }
         }
     }
-
+    
     private func restoreDeletedNode() {
         db.collection(ApiKey.inbox)
             .document(currentUserId)
@@ -850,8 +771,8 @@ extension OneToOneChatVC{
                     print("success")
                 }
         }
-
-    db.collection(ApiKey.inbox).document(inboxModel.userId).collection(ApiKey.chat).document(currentUserId).getDocument { (doc, error) in
+        
+        db.collection(ApiKey.inbox).document(inboxModel.userId).collection(ApiKey.chat).document(currentUserId).getDocument { (doc, error) in
             if let document = doc {
                 if !document.exists {
                     self.db.collection(ApiKey.inbox)
@@ -875,9 +796,9 @@ extension OneToOneChatVC{
                 }
             }
         }
-
+        
     }
-
+    
     /// Mark:- Create Inbox
     private func createInbox(){
         //roomId:string,timeStamp:Any,
@@ -933,11 +854,11 @@ extension OneToOneChatVC{
             FirestoreController.updateUnreadMessages(senderId: inboxUserId, receiverId: inboxModel.userId, unread: 0)
         }
     }
-
-
+    
+    
     /// Mark:- Fetch the last message from a blocked user
     private func getLastMessageBeforeBlock(){
-
+        
         let uid = AppUserDefaults.value(forKey: .uid).string ?? ""
         let listener = db.collection(ApiKey.inbox).document(uid).collection(ApiKey.chat).addSnapshotListener { querySnapshot, error in
             querySnapshot?.documentChanges.forEach({ (newUser) in
@@ -946,44 +867,44 @@ extension OneToOneChatVC{
                     inbox.lastMessageRef?.getDocument(completion: { (document, error) in
                         FirestoreController.createLastMessageOfBlockedUser(roomId: self.roomId, senderId: self.currentUserId, messageModel: (document?.data())! )
                     })
-
+                    
                 } else if newUser.type == .modified {
-
+                    
                 }
                 else if newUser.type == .removed {
-
+                    
                 } else {
-
+                    
                 }
             })
         }
         listeners.append(listener)
     }
-
+    
     /// Mark:- Create a new batch
     private func createBatch(){
         FirestoreController.createTotalMessageNode(receiverId: inboxModel.userId)
     }
-
+    
     /// Mark:- Fetching the message ID
     private func getMessageId() -> String {
         let messageId = Firestore.firestore().collection(ApiKey.roomInfo).document().documentID
         return messageId
     }
-
+    
     /// Mark:- Creating a message node
     private func createMessage(){
         FirestoreController.createLastMessageNode(roomId:roomId,messageText:messageTextView.text.byRemovingLeadingTrailingWhiteSpaces ,messageTime:FieldValue.serverTimestamp(), messageId:getMessageId(),messageType:"text", messageStatus:1,senderId:currentUserId,receiverId:inboxModel.userId, mediaUrl: "",blocked:false, thumbNailURL: "", messageDuration: 0)
         FirestoreController.createMessageNode(roomId:roomId,messageText:messageTextView.text.byRemovingLeadingTrailingWhiteSpaces ,messageTime:FieldValue.serverTimestamp(), messageId:getMessageId(),messageType:"text", messageStatus:1,senderId:currentUserId,receiverId:inboxModel.userId, mediaUrl: "",blocked:false, thumbNailURL: "", messageDuration: 0)
-
+        
     }
-
+    
     private func createMediaMessage(url: String, imageURL: String = "", type: String) {
         FirestoreController.createMessageNode(roomId: self.roomId, messageText: "", messageTime: FieldValue.serverTimestamp(), messageId: self.getMessageId(), messageType: type, messageStatus: 1, senderId: self.currentUserId, receiverId: self.inboxModel.userId, mediaUrl: url, blocked: false, thumbNailURL: imageURL,messageDuration: self.chatViewModel.totalTime)
         let attachmentText = type == MessageType.image.rawValue ? "Photo Attachment" : "Audio Attachment"
         FirestoreController.createLastMessageNode(roomId: self.roomId, messageText: attachmentText, messageTime: FieldValue.serverTimestamp(), messageId: self.getMessageId(), messageType: type, messageStatus: 1, senderId: self.currentUserId, receiverId: self.inboxModel.userId, mediaUrl: url, blocked: false, thumbNailURL: imageURL,messageDuration: self.chatViewModel.totalTime)
     }
-
+    
     /// Mark:- Fetching the room Id values
     private func getRoomId()-> String{
         if currentUserId < inboxModel.userId {
@@ -1002,7 +923,7 @@ extension OneToOneChatVC{
             return self.roomId
         }
     }
-
+    
     /// Mark:- Updating the inbox time stamp
     private func updateInboxTimeStamp(){
         db.collection(ApiKey.inbox).document(inboxModel.userId).collection(ApiKey.chat).document(currentUserId).updateData([ApiKey.timeStamp : FieldValue.serverTimestamp()])
@@ -1013,15 +934,15 @@ extension OneToOneChatVC{
     private func updateIfSenderIsBlocked(){
         FirestoreController.updateLastMessagePathInInbox(senderId: currentUserId, receiverId: inboxModel.userId, roomId: roomId) {
             print("=================updateLastMessageCompletion===========================")
-
+            
         }
     }
-
+    
     /// Mark:- Fetch the last message of the blocked user
     private func fetchLastMessageOfBlockUser(){
         db.collection(ApiKey.messages).document(roomId).collection(ApiKey.chat).document(getRoomId())
     }
-
+    
     /// Mark:- Update delete time in room when deleting full chat
     private func updateDeleteTime() {
         guard var currentUserDict = userInfo[currentUserId] as? [String: Any] else { return }
@@ -1033,11 +954,11 @@ extension OneToOneChatVC{
             if let err = error {
                 print(err.localizedDescription)
             } else {
-//                self.deleteFullChat()
+                //                self.deleteFullChat()
             }
         }
     }
-
+    
     /// Mark:-  Creating a new room
     private func createRoom() {
         if !self.requestId.isEmpty {
@@ -1047,40 +968,40 @@ extension OneToOneChatVC{
         }
         AppUserDefaults.save(value: roomId, forKey: .roomId)
         print("sender " + currentUserId,"receiver " + inboxModel.userId,"requestId " + requestId,"roomcreated " + roomId)
-
+        
         /// Mark:- Details relating to the current user
         let currentUserIdDict: [String: Any] = [ApiKey.addedTime:FieldValue.serverTimestamp(),
                                                 ApiKey.deleteTime:FieldValue.serverTimestamp(),
                                                 ApiKey.leaveTime: ""]
-
+        
         /// Mark:- Details relating to the general user
         let userIdDict: [String: Any] = [ApiKey.addedTime:FieldValue.serverTimestamp(),
                                          ApiKey.leaveTime:"",
                                          ApiKey.deleteTime:FieldValue.serverTimestamp()]
-
+        
         /// Mark:- Information about the user
         let userInfoDict: [String: Any] = [currentUserId: currentUserIdDict,
                                            inboxModel.userId: userIdDict]
-
+        
         /// Mark:- Typing status info abouthe the user
         let userTypingStatus: [String: Any] = [currentUserId:"true",
                                                inboxModel.userId:"true"]
-
+        
         let roomImageURL = "https://console.firebase.google.com"
-
+        
         /// Mark:- Parameter dictionary of the user details
         let _ : [String: Any] = [ApiKey.roomId : roomId,
-                                          ApiKey.roomImage: roomImageURL,
-                                          ApiKey.roomName:"",
-                                          ApiKey.roomType:"single",
-                                          ApiKey.userInfo: userInfoDict,
-                                          ApiKey.userTypingStatus: userTypingStatus]
-
+                                 ApiKey.roomImage: roomImageURL,
+                                 ApiKey.roomName:"",
+                                 ApiKey.roomType:"single",
+                                 ApiKey.userInfo: userInfoDict,
+                                 ApiKey.userTypingStatus: userTypingStatus]
+        
         FirestoreController.createRoomNode(roomId: roomId, roomImage: roomImageURL, roomName: "", roomType: "single", userInfo: userInfoDict, userTypingStatus: userTypingStatus)
-
+        
     }
-
-
+    
+    
     private func fetchDeleteTime() {
         db.collection(ApiKey.roomInfo).document(getRoomId()).addSnapshotListener { [weak self]  (snapshot, error) in
             guard let `self` = self else { return }
@@ -1097,7 +1018,7 @@ extension OneToOneChatVC{
             }
         }
     }
-
+    
     private func checkRoomAvailability() {
         let listenerOne = db.collection(ApiKey.roomInfo).document(getRoomId()).addSnapshotListener { [weak self]  (snapshot, error) in
             guard let `self` = self else { return }
@@ -1105,10 +1026,10 @@ extension OneToOneChatVC{
         }
         listeners.append(listenerOne)
     }
-
+    
     /// Mark:- Fetch the listing of the message
     private func fetchMessageListing(){
-
+        
         let listenerTwo = db.collection(ApiKey.messages).document(getRoomId()).collection(ApiKey.chat).order(by: ApiKey.messageTime, descending: false).start(at: [deleteTime]).addSnapshotListener { [weak self] querySnapshot, error in
             guard let `self` = self else { return }
             querySnapshot?.documentChanges.forEach({ [weak self] (newMessage) in
@@ -1117,13 +1038,13 @@ extension OneToOneChatVC{
                     let message = Message(newMessage.document.data())
                     if !message.blocked {
                         if message.senderId == self.inboxModel.userId {                            self.db.collection(ApiKey.messages).document(self.getRoomId()).collection(ApiKey.chat).document(message.messageId).updateData([ApiKey.messageStatus : 2]) { (error) in
-                                if let err = error {
-                                    print(err.localizedDescription)
-                                } else {
-//                                self.db.collection(ApiKey.inbox).document(self.currentUserId).collection(ApiKey.chat).document(self.inboxModel.userId).updateData([ApiKey.unreadMessages: 0])
-                                }
+                            if let err = error {
+                                print(err.localizedDescription)
+                            } else {
+                                //                                self.db.collection(ApiKey.inbox).document(self.currentUserId).collection(ApiKey.chat).document(self.inboxModel.userId).updateData([ApiKey.unreadMessages: 0])
                             }
-
+                            }
+                            
                         }
                         if (message.messageTime.dateValue().convertToDefaultString() == self.tempTime.dateValue().convertToDefaultString() || self.messageListing.isEmpty) {
                             self.tempTime = message.messageTime
@@ -1149,11 +1070,11 @@ extension OneToOneChatVC{
                     let message = Message(newMessage.document.data())
                     if !message.blocked  {
                         if message.senderId == self.inboxModel.userId {                            self.db.collection(ApiKey.messages).document(self.getRoomId()).collection(ApiKey.chat).document(message.messageId).updateData([ApiKey.messageStatus : 2]) { (error) in
-                                if let err = error {
-                                    print(err.localizedDescription)
-                                } else {
-//                                self.db.collection(ApiKey.inbox).document(self.currentUserId).collection(ApiKey.chat).document(self.inboxModel.userId).updateData([ApiKey.unreadMessages: 0])
-                                }
+                            if let err = error {
+                                print(err.localizedDescription)
+                            } else {
+                                //                                self.db.collection(ApiKey.inbox).document(self.currentUserId).collection(ApiKey.chat).document(self.inboxModel.userId).updateData([ApiKey.unreadMessages: 0])
+                            }
                             }
                         }
                         for (off, section) in self.messageListing.enumerated() {
@@ -1181,35 +1102,35 @@ extension OneToOneChatVC{
                         }
                     }
                 }
-//                self.selectedIndexPaths = []
+                //                self.selectedIndexPaths = []
             })
             DispatchQueue.main.async {
-//                self.reloadTableViewToBottom()
+                //                self.reloadTableViewToBottom()
             }
         }
         listeners.append(listenerTwo)
     }
-
+    
     // Mark:- Update Inbox
     private func updateInbox(section: Int) {
-
-            printDebug(self.messageListing.last)
+        
+        printDebug(self.messageListing.last)
         db.collection(ApiKey.lastMessage).document(roomId).collection(ApiKey.chat).document(ApiKey.message).updateData([ApiKey.messageTime: self.messageListing[section].last?.messageTime ?? Timestamp(), ApiKey.messageText: self.messageListing[section].last?.messageText ?? ""])
-
-            let lastMessageReference = db.collection(ApiKey.lastMessage).document(roomId).collection(ApiKey.chat).document(ApiKey.message)
-
+        
+        let lastMessageReference = db.collection(ApiKey.lastMessage).document(roomId).collection(ApiKey.chat).document(ApiKey.message)
+        
         db.collection(ApiKey.inbox)
             .document(inboxModel.userId)
             .collection(ApiKey.chat)
             .document(currentUserId).updateData([ApiKey.lastMessage : lastMessageReference, ApiKey.timeStamp: FieldValue.serverTimestamp()])
-
+        
         db.collection(ApiKey.inbox)
             .document(currentUserId)
             .collection(ApiKey.chat)
             .document(inboxModel.userId).updateData([ApiKey.lastMessage : lastMessageReference, ApiKey.timeStamp: FieldValue.serverTimestamp()])
-
+        
     }
-
+    
     private func startReceiverBlockListener() {
         db.collection(ApiKey.block).document(currentUserId).getDocument { [weak self] (snapshot, error) in
             guard let `self` = self else { return }
@@ -1217,12 +1138,12 @@ extension OneToOneChatVC{
                 print(err.localizedDescription)
             } else {
                 if let data = snapshot?.data() {
-//                    self.isBlockedByMe = data.keys.contains(self.inboxModel.userId)
+                    //                    self.isBlockedByMe = data.keys.contains(self.inboxModel.userId)
                 }
             }
         }
     }
-
+    
     private func startSenderBlockListener() {
         let listener = db.collection(ApiKey.block).document(inboxModel.userId).addSnapshotListener { [weak self] (snapshot, error) in
             guard let `self` = self else { return }
@@ -1230,7 +1151,7 @@ extension OneToOneChatVC{
                 print(err.localizedDescription)
             } else {
                 if let data = snapshot?.data() {
-//                    self.amIBlocked = data.keys.contains(self.currentUserId)
+                    //                    self.amIBlocked = data.keys.contains(self.currentUserId)
                 }
             }
         }
@@ -1239,24 +1160,23 @@ extension OneToOneChatVC{
 }
 
 extension OneToOneChatVC: UIGestureRecognizerDelegate, UIScrollViewDelegate {
-
-
+    
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         guard scrollView === containerScrollView else { return }
         let vel = scrollView.panGestureRecognizer.velocity(in: scrollView).y
         if vel < 0 {
-
+            
         } else if vel > 0 {
             scrollView.isScrollEnabled = false
-
+            
         } else {
-
+            
         }
     }
-
+    
 }
 
- // Mark:- Audio Messages Inbox
+// Mark:- Audio Messages Inbox
 extension OneToOneChatVC:  AVAudioRecorderDelegate, AVAudioPlayerDelegate {
     func startRecording() {
         let audioFilename = getFileURL()
@@ -1272,9 +1192,6 @@ extension OneToOneChatVC:  AVAudioRecorderDelegate, AVAudioPlayerDelegate {
             audioRecorder = try AVAudioRecorder(url: audioFilename, settings: settings)
             audioRecorder.delegate = self
             audioRecorder.record()
-            
-//            recordButton.setTitle("Tap to Stop", for: .normal)
-//            playButton.isEnabled = false
         } catch {
             finishRecording(success: false)
         }
@@ -1285,14 +1202,11 @@ extension OneToOneChatVC:  AVAudioRecorderDelegate, AVAudioPlayerDelegate {
         audioRecorder = nil
         
         if success {
-//            recordButton.setTitle("Tap to Re-record", for: .normal)
+            //            recordButton.setTitle("Tap to Re-record", for: .normal)
         } else {
-//            recordButton.setTitle("Tap to Record", for: .normal)
+            //            recordButton.setTitle("Tap to Record", for: .normal)
             // recording failed :(
         }
-        
-//        playButton.isEnabled = true
-//        recordButton.isEnabled = true
     }
     
     func getDocumentsDirectory() -> URL {
@@ -1311,7 +1225,7 @@ extension OneToOneChatVC:  AVAudioRecorderDelegate, AVAudioPlayerDelegate {
         if flag {
             self.recordedUrl = recorder.url
         }else {
-             finishRecording(success: false)
+            finishRecording(success: false)
         }
     }
     
@@ -1320,8 +1234,6 @@ extension OneToOneChatVC:  AVAudioRecorderDelegate, AVAudioPlayerDelegate {
     }
     
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-//        recordButton.isEnabled = true
-//        playButton.setTitle("Play", for: .normal)
     }
     
     func audioPlayerDecodeErrorDidOccur(_ player: AVAudioPlayer, error: Error?) {
@@ -1346,7 +1258,7 @@ extension OneToOneChatVC:  AVAudioRecorderDelegate, AVAudioPlayerDelegate {
             endTimer()
         }
     }
-       
+    
     private func endTimer() {
         chatViewModel.countdownTimer.invalidate()
     }
@@ -1375,10 +1287,10 @@ extension OneToOneChatVC:  AVAudioRecorderDelegate, AVAudioPlayerDelegate {
                 }
         })
     }
-       
+    
 }
 
-
+// Chat View Model
 extension OneToOneChatVC : OneToOneChatViewModelDelegate{
     func chatDataSuccess(msg: String) {
         userRequestView.isHidden = false
