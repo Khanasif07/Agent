@@ -1350,6 +1350,16 @@ extension OneToOneChatVC : OneToOneChatViewModelDelegate{
             str.append(NSAttributedString(string: "SAR", attributes: [NSAttributedString.Key.foregroundColor: AppColors.successGreenColor,NSAttributedString.Key.font: AppFonts.NunitoSansSemiBold.withSize(12.0)]))
             amountValueLbl.attributedText = str
         }
+        else if isCurrentUserType == .user{
+            tableViewTopConstraint.constant = 124.0
+            garageTopView.isHidden = false
+            garageImgView.setImage_kf(imageString: chatViewModel.chatData.garageImage, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
+            garageRequestNoValueLbl.text = chatViewModel.chatData.requestId
+            garageAmountValueLbl.text = chatViewModel.chatData.totalAmount.description
+            garageRatingLbl.text = chatViewModel.chatData.garageRating.description + "/5"
+            garageAddressLbl.text = chatViewModel.chatData.garageAddress
+            garageNameLbl.text = chatViewModel.chatData.garageName
+        }
     }
     
     func chatDataFailure(msg: String) {
