@@ -401,7 +401,30 @@ extension OneToOneChatVC: UITextViewDelegate{
     }
     
     private func addPeriodicTimerForAudioPlayer(senderAudioCell: UITableViewCell,receiverAudioCell: UITableViewCell){
-        if let audioTableCell = senderAudioCell as? SenderAudioCell {
+        if let audioTableCell = senderAudioCell as? SenderAudioCell{
+            self.player!.addPeriodicTimeObserver(forInterval: CMTimeMakeWithSeconds(1, preferredTimescale: 1), queue: DispatchQueue.main) { (CMTime) -> Void in
+                if self.player!.currentItem?.status == .readyToPlay {
+                    let time : Float64 = CMTimeGetSeconds(self.player!.currentTime())
+                    audioTableCell.customSlider.value = Float ( time )
+                    audioTableCell.timeLbl.text = self.stringFromTimeInterval(interval: time)
+                }
+                
+                let playbackLikelyToKeepUp = self.player?.currentItem?.isPlaybackLikelyToKeepUp
+                if playbackLikelyToKeepUp == false{
+                    print("IsBuffering")
+                    audioTableCell.playBtn.isHidden = true
+                    audioTableCell.loadingView.startAnimating()
+                    audioTableCell.loadingView.isHidden = false
+                } else {
+                    //stop the activity indicator
+                    print("Buffering completed")
+                    audioTableCell.playBtn.isHidden = false
+                    audioTableCell.loadingView.stopAnimating()
+                    audioTableCell.loadingView.isHidden = true
+                }
+            }
+        }
+        if let audioTableCell = receiverAudioCell as? ReceiverAudioCell{
             self.player!.addPeriodicTimeObserver(forInterval: CMTimeMakeWithSeconds(1, preferredTimescale: 1), queue: DispatchQueue.main) { (CMTime) -> Void in
                 if self.player!.currentItem?.status == .readyToPlay {
                     let time : Float64 = CMTimeGetSeconds(self.player!.currentTime())
@@ -474,12 +497,6 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                 senderMediaCell.senderImageView.addGestureRecognizer(imgTap)
                 senderMediaCell.senderNameLabel.text = self.firstName
                 return senderMediaCell
-                
-                
-//                let senderMediaCell = tableView.dequeueCell(with: SenderLocationCell.self)
-//                return senderMediaCell
-//
-                
             case MessageType.audio.rawValue:
                 let receiverAudioCell = tableView.dequeueCell(with: ReceiverAudioCell.self)
                 receiverAudioCell.setSlider(model: model)
