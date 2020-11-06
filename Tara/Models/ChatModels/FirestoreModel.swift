@@ -84,6 +84,7 @@ struct Inbox{
     //===================
     public var lastMessageRef: DocumentReference?
     public var roomId: String = ""
+    public var requestId: String = ""
     public var roomInfo : DocumentReference?
     public var timeStamp : Timestamp = Timestamp.init(date: Date())
     public var userDetails : DocumentReference?
@@ -119,6 +120,7 @@ struct Inbox{
         self.chatType = "single"
         self.roomName = dict[ApiKey.roomName] as? String ?? ""
         self.groupImage = dict[ApiKey.roomImage] as? String ?? ""
+        self.requestId = dict[ApiKey.requestId] as? String ?? ""
       }
     
     private mutating func getUserModel(completeion: @escaping (_ model: UserChatModel) -> (),

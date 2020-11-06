@@ -105,11 +105,10 @@ extension UserChatVC {
     }
     
     private func cellSelected(tableView: UITableView, indexPath: IndexPath) {
-        if inboxListing[indexPath.row].chatType == ApiKey.single {
-            updateBatch(userId: self.inboxListing[indexPath.row].userId, unreadMessages: self.inboxListing[indexPath.row].unreadMessages)
-            AppRouter.goToOneToOneChatVC(self, userId: inboxListing[indexPath.row].userId,requestId: "", name: inboxListing[indexPath.row].firstName, image: inboxListing[indexPath.row].receiverImgURL, unreadMsgs: inboxListing[indexPath.row].unreadMessages)
+        if searchInboxListing[indexPath.row].chatType == ApiKey.single {
+            updateBatch(userId: self.searchInboxListing[indexPath.row].userId, unreadMessages: self.searchInboxListing[indexPath.row].unreadMessages)
+            AppRouter.goToOneToOneChatVC(self, userId: searchInboxListing[indexPath.row].userId,requestId: searchInboxListing[indexPath.row].requestId, name: searchInboxListing[indexPath.row].firstName, image: searchInboxListing[indexPath.row].receiverImgURL, unreadMsgs: searchInboxListing[indexPath.row].unreadMessages)
         } else {
-            //                AppRouter.goToGroupChatVC(self, model: inboxListing[indexPath.row])
         }
     }
     
