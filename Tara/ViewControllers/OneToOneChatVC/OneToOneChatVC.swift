@@ -247,6 +247,9 @@ extension OneToOneChatVC {
             let dict = [ApiKey.requestId : self.requestId]
             chatViewModel.getChatData(params: dict)
         }
+        else {
+            tableViewTopConstraint.constant = 0.0
+        }
     }
     
     private func createMediaAlertSheet() {
@@ -325,7 +328,8 @@ extension OneToOneChatVC {
     @objc func keyboardWillHide(sender: NSNotification) {
         guard let info = sender.userInfo, let duration: TimeInterval = (info[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue else { return }
         scrollMsgToBottom()
-        tableViewTopConstraint.constant = 0
+        tableViewTopConstraint.constant = requestId.isEmpty ? 0.0 : 134.0
+
         UIView.animate(withDuration: duration) { self.view.layoutIfNeeded() }
     }
     
@@ -1329,19 +1333,23 @@ extension OneToOneChatVC:  AVAudioRecorderDelegate, AVAudioPlayerDelegate {
 // Chat View Model
 extension OneToOneChatVC : OneToOneChatViewModelDelegate{
     func chatDataSuccess(msg: String) {
-        userRequestView.isHidden = false
-        userNameLbl.text = chatViewModel.chatData.userName
-        numberOfServiceLbl.text = chatViewModel.chatData.totalRequests.description + " Services"
-        addressLbl.text = chatViewModel.chatData.address
-        userImgView.setImage_kf(imageString: chatViewModel.chatData.userImage, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
-        var str: NSMutableAttributedString = NSMutableAttributedString()
-        str = NSMutableAttributedString(string: chatViewModel.chatData.totalAmount.description, attributes: [
-            .font: AppFonts.NunitoSansBold.withSize(17.0),
-            .foregroundColor: AppColors.successGreenColor
-        ])
+        if isCurrentUserType == .garage {
+            tableViewTopConstraint.constant = 134.0
+            userRequestView.isHidden = false
+            userNameLbl.text = chatViewModel.chatData.userName
+            numberOfServiceLbl.text = chatViewModel.chatData.totalRequests.description + " Services"
         
-        str.append(NSAttributedString(string: "SAR", attributes: [NSAttributedString.Key.foregroundColor: AppColors.successGreenColor,NSAttributedString.Key.font: AppFonts.NunitoSansSemiBold.withSize(12.0)]))
-        amountValueLbl.attributedText = str
+            addressLbl.text = chatViewModel.chatData.address
+            userImgView.setImage_kf(imageString: chatViewModel.chatData.userImage, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
+            var str: NSMutableAttributedString = NSMutableAttributedString()
+            str = NSMutableAttributedString(string: chatViewModel.chatData.totalAmount.description, attributes: [
+                .font: AppFonts.NunitoSansBold.withSize(17.0),
+                .foregroundColor: AppColors.successGreenColor
+            ])
+            
+            str.append(NSAttributedString(string: "SAR", attributes: [NSAttributedString.Key.foregroundColor: AppColors.successGreenColor,NSAttributedString.Key.font: AppFonts.NunitoSansSemiBold.withSize(12.0)]))
+            amountValueLbl.attributedText = str
+        }
     }
     
     func chatDataFailure(msg: String) {

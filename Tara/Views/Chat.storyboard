@@ -138,7 +138,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="763"/>
                                         <subviews>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Lyv-I1-HDg">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="685"/>
+                                                <rect key="frame" x="0.0" y="134" width="414" height="551"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </tableView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R7B-FN-c9J">
@@ -232,7 +232,7 @@
                                             <constraint firstItem="R7B-FN-c9J" firstAttribute="leading" secondItem="Frc-G1-D1a" secondAttribute="leading" id="1P2-H7-UE2"/>
                                             <constraint firstAttribute="bottom" secondItem="R7B-FN-c9J" secondAttribute="bottom" id="4wq-Cd-39Q"/>
                                             <constraint firstAttribute="trailing" secondItem="Lyv-I1-HDg" secondAttribute="trailing" id="DZA-RA-Voq"/>
-                                            <constraint firstItem="Lyv-I1-HDg" firstAttribute="top" secondItem="Frc-G1-D1a" secondAttribute="top" id="RJZ-h4-sNY"/>
+                                            <constraint firstItem="Lyv-I1-HDg" firstAttribute="top" secondItem="Frc-G1-D1a" secondAttribute="top" constant="134" id="RJZ-h4-sNY"/>
                                             <constraint firstItem="R7B-FN-c9J" firstAttribute="top" secondItem="Lyv-I1-HDg" secondAttribute="bottom" id="rgF-rP-6lG"/>
                                             <constraint firstAttribute="trailing" secondItem="R7B-FN-c9J" secondAttribute="trailing" id="z8d-zQ-c4Y"/>
                                             <constraint firstItem="Lyv-I1-HDg" firstAttribute="leading" secondItem="Frc-G1-D1a" secondAttribute="leading" id="zbY-FW-HEi"/>
