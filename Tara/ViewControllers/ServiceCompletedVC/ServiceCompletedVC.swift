@@ -1,14 +1,14 @@
 //
-//  ReViewListingVC.swift
+//  ServiceCompletedVC.swift
 //  Tara
 //
-//  Created by Arvind on 04/11/20.
+//  Created by Arvind on 06/11/20.
 //  Copyright © 2020 Admin. All rights reserved.
 //
 
 import UIKit
 
-class ReViewListingVC: BaseVC {
+class ServiceCompletedVC: BaseVC {
  
     // MARK: - IBOutlets
     //===========================
@@ -17,7 +17,7 @@ class ReViewListingVC: BaseVC {
     
     // MARK: - Variables
     //===========================
-    let viewModel = ReViewListingVM()
+    let viewModel = ServiceCompletedVM()
     var garageId : String = ""
     
     // MARK: - Lifecycle
@@ -44,7 +44,7 @@ class ReViewListingVC: BaseVC {
 
 // MARK: - Extension For Functions
 //===========================
-extension ReViewListingVC {
+extension ServiceCompletedVC {
     
     private func initialSetup() {
         viewModel.delegate = self
@@ -53,18 +53,17 @@ extension ReViewListingVC {
         mainTableView.contentInset = UIEdgeInsets(top: 8.0, left: 0, bottom: 0, right: 0)
         self.mainTableView.enablePullToRefresh(tintColor: AppColors.appRedColor ,target: self, selector: #selector(refreshWhenPull(_:)))
         self.mainTableView.registerCell(with: LoaderCell.self)
-        mainTableView.registerCell(with: ReviewTableViewCell.self)
+        mainTableView.registerCell(with: ServiceCompletedTableViewCell.self)
         hitApi(loader: true)
     }
 
     private func setupTextAndFont(){
-        titleLbl.font = AppFonts.NunitoSansBold.withSize(17.0)
         titleLbl.text = LocalizedString.rateService.localized
     }
     
     private func hitApi(loader: Bool = false) {
         let dict = [ApiKey.garageId : self.garageId ,ApiKey.page:"1", ApiKey.limit: "20"]
-        viewModel.fetchReviewListing(params: dict, loader: loader)
+//        viewModel.fetchReviewListing(params: dict, loader: loader)
     }
     
     @objc func refreshWhenPull(_ sender: UIRefreshControl) {
@@ -74,20 +73,20 @@ extension ReViewListingVC {
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if cell as? LoaderCell != nil {
-            self.viewModel.fetchReviewListing(params: [ApiKey.page: self.viewModel.currentPage,ApiKey.limit : "20"],loader: false)
+//            self.viewModel.fetchReviewListing(params: [ApiKey.page: self.viewModel.currentPage,ApiKey.limit : "20"],loader: false)
         }
     }
 }
 
-extension ReViewListingVC :UITableViewDelegate, UITableViewDataSource{
+extension ServiceCompletedVC :UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.reviewListingArr.count
+        return 6
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueCell(with: ReviewTableViewCell.self, indexPath: indexPath)
-        cell.bindData(viewModel.reviewListingArr[indexPath.row])
+        let cell = tableView.dequeueCell(with: ServiceCompletedTableViewCell.self, indexPath: indexPath)
+//        cell.bindData(viewModel.reviewListingArr[indexPath.row])
         return cell
     }
     
@@ -96,12 +95,13 @@ extension ReViewListingVC :UITableViewDelegate, UITableViewDataSource{
     }
 }
 
-extension ReViewListingVC: ReViewListingVMDelegate{
-    func getReviewListingSuccess(msg: String) {
+extension ServiceCompletedVC: ServiceCompletedVMDelegate{
+   
+    func ServiceCompleteApiSuccess(msg: String) {
         mainTableView.reloadData()
     }
     
-    func getReviewListingFailed(msg: String) {
+    func ServiceCompleteApiFailure(msg: String) {
         
     }
 }

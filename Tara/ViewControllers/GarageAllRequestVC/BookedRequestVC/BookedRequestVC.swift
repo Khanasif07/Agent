@@ -57,7 +57,7 @@ extension BookedRequestVC {
     
     @objc func refreshWhenPull(_ sender: UIRefreshControl) {
         sender.endRefreshing()
-            hitApi(params: [ApiKey.page:"1", ApiKey.limit: "20"])
+        hitApi(params: [ApiKey.page:"1", ApiKey.limit: "20"])
     }
 }
 

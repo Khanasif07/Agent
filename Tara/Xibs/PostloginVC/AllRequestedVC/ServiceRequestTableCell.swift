@@ -83,7 +83,7 @@ class ServiceRequestTableCell: UITableViewCell {
             tyreSizeLbl.text = "Battery: "
             sizeDetailLbl.text = "\(model.make ?? "") M/ " + "\(model.model ?? "") M/ " + "\(model.year ?? 0) Y"
         }else {
-            tyreSizeLbl.text = "Oil:"
+            tyreSizeLbl.text = "Oil: "
             sizeDetailLbl.text = "\(model.make ?? "") M/ " + "\(model.model ?? "") M/ " + "\(model.year ?? 0) Y"
         }
      

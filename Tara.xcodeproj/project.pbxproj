@@ -247,6 +247,10 @@
 		A41AAB4825304C790061887F /* DistanceSliderCollViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A41AAB4625304C790061887F /* DistanceSliderCollViewCell.xib */; };
 		A41AAB4A2530742D0061887F /* RatingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41AAB492530742D0061887F /* RatingVC.swift */; };
 		A41AAB4E2530A0390061887F /* MyServiceFilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41AAB4D2530A0390061887F /* MyServiceFilterVC.swift */; };
+		A41B7DE825551A24005D1AC5 /* ServiceCompletedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41B7DE725551A24005D1AC5 /* ServiceCompletedVC.swift */; };
+		A41B7DEC25551FC8005D1AC5 /* ServiceCompletedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41B7DEA25551FC8005D1AC5 /* ServiceCompletedTableViewCell.swift */; };
+		A41B7DED25551FC8005D1AC5 /* ServiceCompletedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A41B7DEB25551FC8005D1AC5 /* ServiceCompletedTableViewCell.xib */; };
+		A41B7DEF255524AF005D1AC5 /* ServiceCompletedVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41B7DEE255524AF005D1AC5 /* ServiceCompletedVM.swift */; };
 		A4203EF6252C2FF300BD8802 /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4203EF5252C2FF300BD8802 /* FilterTableViewCell.swift */; };
 		A4203EF9252C31A100BD8802 /* FilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4203EF7252C31A100BD8802 /* FilterCollectionViewCell.swift */; };
 		A4203EFA252C31A100BD8802 /* FilterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4203EF8252C31A100BD8802 /* FilterCollectionViewCell.xib */; };
@@ -255,6 +259,7 @@
 		A4213DE0250CB02400BB21B6 /* DocumentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4213DDF250CB02400BB21B6 /* DocumentTableViewCell.swift */; };
 		A421DDD5252AFDF20044E5E0 /* PlaceBidPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A421DDD4252AFDF20044E5E0 /* PlaceBidPopUpVC.swift */; };
 		A421DDD7252B1A610044E5E0 /* OtpPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A421DDD6252B1A610044E5E0 /* OtpPopUpVC.swift */; };
+		A42603502554206B005FE046 /* ReViewListingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A426034F2554206B005FE046 /* ReViewListingVM.swift */; };
 		A43137DB2534752C00C20082 /* UserAllOfferVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43137DA2534752C00C20082 /* UserAllOfferVM.swift */; };
 		A43137DD253475B200C20082 /* UserBidModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43137DC253475B200C20082 /* UserBidModel.swift */; };
 		A4357955255298D4009EED61 /* RatingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4357954255298D4009EED61 /* RatingVM.swift */; };
@@ -582,6 +587,10 @@
 		A41AAB4625304C790061887F /* DistanceSliderCollViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DistanceSliderCollViewCell.xib; sourceTree = "<group>"; };
 		A41AAB492530742D0061887F /* RatingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingVC.swift; sourceTree = "<group>"; };
 		A41AAB4D2530A0390061887F /* MyServiceFilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyServiceFilterVC.swift; sourceTree = "<group>"; };
+		A41B7DE725551A24005D1AC5 /* ServiceCompletedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCompletedVC.swift; sourceTree = "<group>"; };
+		A41B7DEA25551FC8005D1AC5 /* ServiceCompletedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCompletedTableViewCell.swift; sourceTree = "<group>"; };
+		A41B7DEB25551FC8005D1AC5 /* ServiceCompletedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServiceCompletedTableViewCell.xib; sourceTree = "<group>"; };
+		A41B7DEE255524AF005D1AC5 /* ServiceCompletedVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCompletedVM.swift; sourceTree = "<group>"; };
 		A4203EF5252C2FF300BD8802 /* FilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
 		A4203EF7252C31A100BD8802 /* FilterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCollectionViewCell.swift; sourceTree = "<group>"; };
 		A4203EF8252C31A100BD8802 /* FilterCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -590,6 +599,7 @@
 		A4213DDF250CB02400BB21B6 /* DocumentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentTableViewCell.swift; sourceTree = "<group>"; };
 		A421DDD4252AFDF20044E5E0 /* PlaceBidPopUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceBidPopUpVC.swift; sourceTree = "<group>"; };
 		A421DDD6252B1A610044E5E0 /* OtpPopUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpPopUpVC.swift; sourceTree = "<group>"; };
+		A426034F2554206B005FE046 /* ReViewListingVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReViewListingVM.swift; sourceTree = "<group>"; };
 		A43137DA2534752C00C20082 /* UserAllOfferVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAllOfferVM.swift; sourceTree = "<group>"; };
 		A43137DC253475B200C20082 /* UserBidModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBidModel.swift; sourceTree = "<group>"; };
 		A4357954255298D4009EED61 /* RatingVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingVM.swift; sourceTree = "<group>"; };
@@ -1265,6 +1275,8 @@
 				A4357952255298A4009EED61 /* ReViewListingVC */,
 				A4DA01D92553075200AC60DB /* ReviewAndRatingTableViewCell.swift */,
 				A4DA01DA2553075200AC60DB /* ReviewAndRatingTableViewCell.xib */,
+				A41B7DEA25551FC8005D1AC5 /* ServiceCompletedTableViewCell.swift */,
+				A41B7DEB25551FC8005D1AC5 /* ServiceCompletedTableViewCell.xib */,
 			);
 			path = Xibs;
 			sourceTree = "<group>";
@@ -1344,6 +1356,7 @@
 				A47EB1D8254D42040044DD4D /* WebViewController.swift */,
 				A4357953255298BA009EED61 /* ReViewListingVC */,
 				A4DA01D72552C0E000AC60DB /* SROtpPopupVC.swift */,
+				A41B7DE925551A9B005D1AC5 /* ServiceCompletedVC */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1804,6 +1817,15 @@
 			path = OfferFilterVC;
 			sourceTree = "<group>";
 		};
+		A41B7DE925551A9B005D1AC5 /* ServiceCompletedVC */ = {
+			isa = PBXGroup;
+			children = (
+				A41B7DE725551A24005D1AC5 /* ServiceCompletedVC.swift */,
+				A41B7DEE255524AF005D1AC5 /* ServiceCompletedVM.swift */,
+			);
+			path = ServiceCompletedVC;
+			sourceTree = "<group>";
+		};
 		A4203F0B252C791A00BD8802 /* SRFilterVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -1836,6 +1858,7 @@
 			isa = PBXGroup;
 			children = (
 				A4DEB8652552846500BD7D2E /* ReViewListingVC.swift */,
+				A426034F2554206B005FE046 /* ReViewListingVM.swift */,
 			);
 			path = ReViewListingVC;
 			sourceTree = "<group>";
@@ -2265,6 +2288,7 @@
 				84594812252B306A00C0B249 /* BookedRequestTableCell.xib in Resources */,
 				8459480E252B0C0600C0B249 /* ServiceRequestTableCell.xib in Resources */,
 				843F004E25060822001A78EC /* CountryCodeTableCell.xib in Resources */,
+				A41B7DED25551FC8005D1AC5 /* ServiceCompletedTableViewCell.xib in Resources */,
 				842B2FCA25133CD200E3CF67 /* BankListingTableCell.xib in Resources */,
 				A441A67F252CDF7C00B5420B /* TyreRequestLocationTableViewCell.xib in Resources */,
 				A4DEB86A2552865700BD7D2E /* ReviewTableViewCell.xib in Resources */,
@@ -2401,6 +2425,7 @@
 				8481FA392500BDED00AB6EFB /* UIColorExtension.swift in Sources */,
 				8481FA272500BB7300AB6EFB /* Webservices.swift in Sources */,
 				844EB71D2518C59F003A6E3F /* BrandsListingVM.swift in Sources */,
+				A41B7DE825551A24005D1AC5 /* ServiceCompletedVC.swift in Sources */,
 				84476D28250736F700AB5E80 /* ToastView.swift in Sources */,
 				A4443866251387E000114A75 /* VechicleDetailVC.swift in Sources */,
 				84CAEFB62550F3A700F3A329 /* ReceiverMediaCell.swift in Sources */,
@@ -2480,6 +2505,7 @@
 				A4A6DEE6251A123800564020 /* GarageProfileVC.swift in Sources */,
 				8481FA6D2500BFE400AB6EFB /* AppConstants.swift in Sources */,
 				8481FA3D2500BE1C00AB6EFB /* UIColor+Additions.swift in Sources */,
+				A41B7DEC25551FC8005D1AC5 /* ServiceCompletedTableViewCell.swift in Sources */,
 				844EB6F2251483D0003A6E3F /* URTyreStep1VC.swift in Sources */,
 				8481FA352500BD8C00AB6EFB /* CommonFunctions.swift in Sources */,
 				A4CC324B252CAC3000669F39 /* ServiceDetailCollectionViewCell.swift in Sources */,
@@ -2533,6 +2559,7 @@
 				A4DA01D82552C0E000AC60DB /* SROtpPopupVC.swift in Sources */,
 				84FF6E97251C77EF0000E2AD /* LineDashedView.swift in Sources */,
 				843F004625060725001A78EC /* CountryVC.swift in Sources */,
+				A41B7DEF255524AF005D1AC5 /* ServiceCompletedVM.swift in Sources */,
 				84CAEFBB2550F59C00F3A329 /* DayValueCell.swift in Sources */,
 				843F004925060798001A78EC /* CountryVM.swift in Sources */,
 				84CAEFC52552B6AB00F3A329 /* ReceiverAudioCell.swift in Sources */,
@@ -2545,6 +2572,7 @@
 				8411D35C252DEDD100E6FA6C /* UserServiceRequestModel.swift in Sources */,
 				A441A675252CD5F600B5420B /* DashedCollectionViewCell.swift in Sources */,
 				A49DF566252D986D00A6A5B1 /* ServiceStatusTableViewCell.swift in Sources */,
+				A42603502554206B005FE046 /* ReViewListingVM.swift in Sources */,
 				A45042D0250F3846001C8905 /* AddAccountTableViewCell.swift in Sources */,
 				843C8ECE2508E91700515F2E /* ProfileSettingVM.swift in Sources */,
 				A43F44B42513BE66002B1014 /* BrandsListingVC.swift in Sources */,
@@ -2758,7 +2786,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Tara/ArabianTyres.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = C4X83X2P52;
@@ -2772,7 +2800,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tara.betaapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = TaraAppstoreProfile;
+				PROVISIONING_PROFILE_SPECIFIER = TaraDevProfile;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -2784,7 +2812,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Tara/ArabianTyres.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = C4X83X2P52;
@@ -2798,7 +2826,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tara.betaapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = TaraAppstoreProfile;
+				PROVISIONING_PROFILE_SPECIFIER = TaraDevProfile;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
