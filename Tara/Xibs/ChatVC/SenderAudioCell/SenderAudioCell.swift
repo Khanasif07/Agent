@@ -26,7 +26,8 @@ class SenderAudioCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        setSlider()
+        self.customSlider.value = 0.0
+        loadingView.isHidden = true
     }
 
     override func layoutSubviews() {
@@ -37,18 +38,22 @@ class SenderAudioCell: UITableViewCell {
     }
     
     
-    public func setSlider(){
-        loadingView.isHidden = true
-       }
+    public func setSlider(model: Message){
+        self.customSlider.minimumValue = 0
+        self.customSlider.maximumValue = Float(model.messageDuration).rounded()
+        self.customSlider.isContinuous = true
+        self.customSlider.tintColor = AppColors.appRedColor
+        self.timeLbl.text = self.stringFromTimeInterval(interval: TimeInterval(model.messageDuration))
+        
+    }
     
-//    func stringFromTimeInterval(interval: TimeInterval) -> String {
-//
-//           let interval = Int(interval)
-//           let seconds = interval % 60
-//           let minutes = (interval / 60) % 60
-//           let hours = (interval / 3600)
-//           return String(format: "%02d:%02d:%02d", hours, minutes, seconds)
-//       }
+    func stringFromTimeInterval(interval: TimeInterval) -> String {
+        let interval = Int(interval)
+        let seconds = interval % 60
+        let minutes = (interval / 60) % 60
+        return String(format: "%02d:%02d",minutes, seconds)
+    }
+    
      
     @IBAction func playBtnAction(_ sender: UIButton) {
         if let handle = playBtnTapped{

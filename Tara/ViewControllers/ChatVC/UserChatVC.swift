@@ -51,9 +51,9 @@ class UserChatVC: BaseVC {
     //===========================
     
     @IBAction func txtFieldChanged(_ sender: UITextField) {
-        buttonView.isHidden = (sender.text?.byRemovingLeadingTrailingWhiteSpaces ?? "").isEmpty
         self.searchText = (sender.text?.byRemovingLeadingTrailingWhiteSpaces ?? "")
         self.isSearchOn = !self.searchText.isEmpty
+        self.buttonView.isSelected =  self.isSearchOn
         mainTableView.reloadData()
     }
        
@@ -82,16 +82,16 @@ extension UserChatVC {
     }
     
     private func textFieldSetUp(){
-        buttonView.isHidden = true
+        buttonView.isHidden = false
         buttonView.addTarget(self, action: #selector(clear(_:)), for: .touchUpInside)
         buttonView.imageEdgeInsets = UIEdgeInsets(top: 0, left: -5, bottom: 0, right: 5)
-        searchTextField.setButtonToRightView(btn: buttonView, selectedImage: #imageLiteral(resourceName: "icon"), normalImage: #imageLiteral(resourceName: "icon"), size: CGSize(width: 20, height: 20))
+        searchTextField.setButtonToRightView(btn: buttonView, selectedImage: #imageLiteral(resourceName: "cancel"), normalImage: #imageLiteral(resourceName: "icon"), size: CGSize(width: 20, height: 20))
     }
     
     @objc private func clear(_ sender: UIButton) {
         searchTextField.text = ""
+        buttonView.isSelected = false
         self.searchText = searchTextField.text?.byRemovingLeadingTrailingWhiteSpaces ?? ""
-        buttonView.isHidden = true
         isSearchOn = false
         mainTableView.reloadData()
     }
