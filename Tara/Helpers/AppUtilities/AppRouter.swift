@@ -331,12 +331,12 @@ enum AppRouter {
         
     }
     
-    static func openOtpPopUpVC(vc: UIViewController, requestByUser : String, requestId : String){
+    static func openOtpPopUpVC(vc: UIViewController, requestByUser : String, requestId : String, _ completion : @escaping (() -> ())){
         let scene = OtpPopUpVC.instantiate(fromAppStoryboard: .GarageRequest)
         scene.requestByUser = requestByUser
         scene.requestId = requestId
         scene.onVerifyTap = {
-//            AppRouter.goToServiceStatusVC(vc: vc)
+                completion()
         }
         vc.modalPresentationStyle = .fullScreen
         vc.present(scene, animated: true, completion: nil)

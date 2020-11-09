@@ -53,12 +53,16 @@ extension BookedRequestVC {
         self.mainTableView.registerCell(with: LoaderCell.self)
         self.mainTableView.registerCell(with: BookedRequestTableCell.self)
         hitApi(params: [ApiKey.page:"1", ApiKey.limit: "20"],loader: false)
-
+        NotificationCenter.default.addObserver(self, selector: #selector(updateServiceStatus), name: Notification.Name.UpdateServiceStatus, object: nil)
     }
     
     public func hitApi(params: JSONDictionary = [:],loader: Bool = false){
         viewModel.getBookedRequests(params: params,loader: loader)
         
+    }
+    
+    @objc func updateServiceStatus() {
+        hitApi(params: [ApiKey.page:"1", ApiKey.limit: "20"])
     }
     
     @objc func refreshWhenPull(_ sender: UIRefreshControl) {
@@ -83,9 +87,11 @@ extension BookedRequestVC : UITableViewDelegate, UITableViewDataSource {
         }else {
             let cell = tableView.dequeueCell(with: BookedRequestTableCell.self, indexPath: indexPath)
             cell.bindData(viewModel.bookedRequestListing[indexPath.row])
-            cell.startServiceBtnTapped = {[weak self] in
+            cell.startServiceBtnTapped = { [weak self] in
                 guard let `self` = self else { return }
-                AppRouter.openOtpPopUpVC(vc: self, requestByUser: self.viewModel.bookedRequestListing[indexPath.row].requestedBy ?? "",requestId: self.viewModel.bookedRequestListing[indexPath.row].id ?? "")
+                AppRouter.openOtpPopUpVC(vc: self, requestByUser: self.viewModel.bookedRequestListing[indexPath.row].requestedBy ?? "",requestId: self.viewModel.bookedRequestListing[indexPath.row].id ?? "") {
+                    self.hitApi(params: [ApiKey.page:"1", ApiKey.limit: "20"])
+                }
             }
             cell.chatBtnTapped = {[weak self] in
                 self?.showAlert(msg: LocalizedString.underDevelopment.localized)
@@ -108,6 +114,8 @@ extension BookedRequestVC : UITableViewDelegate, UITableViewDataSource {
         }
     }
 }
+
+
 //MARK: DZNEmptyDataSetSource and DZNEmptyDataSetDelegate
 //================================
 extension BookedRequestVC : DZNEmptyDataSetSource,DZNEmptyDataSetDelegate {

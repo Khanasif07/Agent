@@ -125,6 +125,7 @@ extension ServiceStatusVC: UITableViewDelegate,UITableViewDataSource{
 
 extension ServiceStatusVC: ServiceStatusVMDelegate {
     func updateServiceStatusSuccess(msg: String) {
+        NotificationCenter.default.post(name: Notification.Name.UpdateServiceStatus, object: nil)
         mainTableView.reloadData()
     }
     
@@ -145,7 +146,9 @@ extension ServiceStatusVC {
     func updateStatus(cell: ServiceStatusTableViewCell) {
         cell.carReceivedUpdateBtnTapped = {[weak self] in
             guard let `self` = self else { return }
-            AppRouter.openOtpPopUpVC(vc: self, requestByUser: self.viewModel.bookedRequestDetail?.userName ?? "",requestId: self.viewModel.bookedRequestDetail?.id ?? "")
+            AppRouter.openOtpPopUpVC(vc: self, requestByUser: self.viewModel.bookedRequestDetail?.userName ?? "",requestId: self.viewModel.bookedRequestDetail?.id ?? "") {
+                self.viewModel.fetchBookedRequestDetail(params: [ApiKey.requestId: self.requestId], loader: true)
+            }
         }
         
         cell.inProgressUpdateBtnTapped = {[weak self] in

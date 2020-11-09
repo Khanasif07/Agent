@@ -10,6 +10,7 @@
 import UIKit
 import SkyFloatingLabelTextField
 
+
 class OtpPopUpVC: BaseVC {
     
     // MARK: - IBOutlets
@@ -177,14 +178,13 @@ extension OtpPopUpVC: OtpPopUpVMDelegate{
    
     func getStartServiceSuccess(msg: String) {
         self.dismiss(animated: true) {
+            NotificationCenter.default.post(name: Notification.Name.UpdateServiceStatus, object: nil)
             self.onVerifyTap?()
         }
     }
     
     func getStartServiceFailed(msg: String){
         CommonFunctions.showToastWithMessage(msg)
-        self.dismiss(animated: true) {
-            self.onVerifyTap?()
-        }
+        self.dismiss(animated: true)
     }
 }
