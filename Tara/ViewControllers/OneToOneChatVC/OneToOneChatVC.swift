@@ -1353,7 +1353,7 @@ extension OneToOneChatVC : OneToOneChatViewModelDelegate{
             numberOfServiceLbl.text = chatViewModel.chatData.totalRequests.description + " Services"
             userImgView.setImage_kf(imageString: chatViewModel.chatData.userImage, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
             var str: NSMutableAttributedString = NSMutableAttributedString()
-            str = NSMutableAttributedString(string: chatViewModel.chatData.totalAmount.description, attributes: [
+            str = NSMutableAttributedString(string: chatViewModel.chatData.totalAmount?.description ?? "\(0)", attributes: [
                 .font: AppFonts.NunitoSansBold.withSize(17.0),
                 .foregroundColor: AppColors.successGreenColor
             ])
@@ -1366,7 +1366,7 @@ extension OneToOneChatVC : OneToOneChatViewModelDelegate{
             garageTopView.isHidden = false
             garageImgView.setImage_kf(imageString: chatViewModel.chatData.garageImage, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
             garageRequestNoValueLbl.text = chatViewModel.chatData.requestId
-            garageAmountValueLbl.text = chatViewModel.chatData.totalAmount.description
+            garageAmountValueLbl.text = chatViewModel.chatData.totalAmount?.description
             garageRatingLbl.text = chatViewModel.chatData.garageRating.description + "/5"
             garageAddressLbl.text = chatViewModel.chatData.garageAddress
             garageNameLbl.text = chatViewModel.chatData.garageName
