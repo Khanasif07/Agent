@@ -100,8 +100,10 @@ class BookedRequestTableCell: UITableViewCell {
        
         if let btnText = model.serviceStatus?.serviceBtnTitle {
             startServiceBtn.setTitle(btnText, for: .normal)
+            startServiceBtn.isUserInteractionEnabled = false
         }else {
             startServiceBtn.setTitle(LocalizedString.startService.localized, for: .normal)
+            startServiceBtn.isUserInteractionEnabled = true
         }
     }
 }

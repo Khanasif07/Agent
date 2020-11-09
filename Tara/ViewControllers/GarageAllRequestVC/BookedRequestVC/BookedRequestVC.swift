@@ -99,7 +99,7 @@ extension BookedRequestVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        AppRouter.goToServiceStatusVC(vc: self, requestId: viewModel.bookedRequestListing[indexPath.row].id ?? "",requestType: viewModel.bookedRequestListing[indexPath.row].requestType)
+        AppRouter.goToServiceStatusVC(vc: self, requestId: viewModel.bookedRequestListing[indexPath.row].id ?? "",requestType: viewModel.bookedRequestListing[indexPath.row].requestType,serviceNo: viewModel.bookedRequestListing[indexPath.row].requestID ?? "")
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

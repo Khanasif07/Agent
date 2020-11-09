@@ -383,9 +383,10 @@ enum AppRouter {
     }
    
     
-    static func goToServiceStatusVC(vc: UIViewController, requestId : String,requestType : Category){
+    static func goToServiceStatusVC(vc: UIViewController, requestId : String,requestType : Category, serviceNo: String){
         let scene = ServiceStatusVC.instantiate(fromAppStoryboard: .GarageRequest)
         scene.requestId = requestId
+        scene.serviceNo = serviceNo
         scene.viewModel.requestType = requestType
         vc.navigationController?.pushViewController(scene, animated: true)
     }

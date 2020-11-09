@@ -20,7 +20,8 @@ class ServiceStatusVC: BaseVC, BookedTyreRequestVMDelegate {
     var sectionArr : [CellType] = [.userDetail ,.none,.serviceDetail]
     let viewModel = ServiceStatusVM()
     var requestId : String = ""
-
+    var serviceNo : String = ""
+    
     // MARK: - Lifecycle
     //===========================
     override func viewDidLoad() {
@@ -69,7 +70,7 @@ extension ServiceStatusVC {
     
     private func setupTextAndFont(){
         titleLbl.font = AppFonts.NunitoSansBold.withSize(17.0)
-        titleLbl.text = LocalizedString.tyreServiceRequest.localized
+        titleLbl.text = "Service No. " + serviceNo
     }
 }
 

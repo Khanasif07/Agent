@@ -106,7 +106,7 @@ enum ServiceState : String, Codable{
         case .inProgress:
             return "In Progress"
         case .completed:
-            return "Completed"
+            return "Service Completed"
         case .readyToBeTaken:
             return "Taken"
         
@@ -137,7 +137,7 @@ struct GarageRequestModel: Codable {
     let requestDocId : String?
     let payableAmount : Double?
     let requestedBy : String?
-    let serviceStatus: ServiceState? // for car Received, in Progress, complete, ready to be taken
+    var serviceStatus: ServiceState? // for car Received, in Progress, complete, ready to be taken
     
     //Review listing Api key
     let rating : Int?
