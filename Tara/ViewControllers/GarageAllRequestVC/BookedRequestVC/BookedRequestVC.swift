@@ -78,7 +78,8 @@ extension BookedRequestVC : UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueCell(with: BookedRequestTableCell.self, indexPath: indexPath)
             cell.bindData(viewModel.bookedRequestListing[indexPath.row])
             cell.startServiceBtnTapped = {[weak self] in
-                self?.showAlert(msg: LocalizedString.underDevelopment.localized)
+                guard let `self` = self else { return }
+                AppRouter.openOtpPopUpVC(vc: self, requestByUser: self.viewModel.bookedRequestListing[indexPath.row].requestedBy ?? "",requestId: self.viewModel.bookedRequestListing[indexPath.row].id ?? "")
             }
             cell.chatBtnTapped = {[weak self] in
                 self?.showAlert(msg: LocalizedString.underDevelopment.localized)
@@ -92,7 +93,7 @@ extension BookedRequestVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        AppRouter.goToBookedTyreRequestVC(vc: self, requestId: viewModel.bookedRequestListing[indexPath.row].id ?? "",requestType: viewModel.bookedRequestListing[indexPath.row].requestType)
+        AppRouter.goToServiceStatusVC(vc: self, requestId: viewModel.bookedRequestListing[indexPath.row].id ?? "",requestType: viewModel.bookedRequestListing[indexPath.row].requestType)
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

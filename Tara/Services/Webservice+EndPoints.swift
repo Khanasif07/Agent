@@ -71,7 +71,7 @@ extension WebServices {
         case chatData = "user/chatData"
         case bookedRequest = "user/services/bookedRequests"
         case bookedRequestDetail =  "user/services/bookedRequestDetails"
-        
+        case startService = "user/services/startService"
         
         var path : String {
             let url = baseUrl

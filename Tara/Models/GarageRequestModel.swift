@@ -93,6 +93,13 @@ enum BidStatus: String, Codable{
     }
 }
 
+enum ServiceState : String, Codable{
+    case carReceived = "car_received"
+    case inProgress = "in_progress"
+    case completed = "completed"
+    case readyToBeTaken = "ready_to_be_taken"
+}
+
 struct GarageRequestModel: Codable {
   
     let createdAt, id, requestID: String?
@@ -116,6 +123,7 @@ struct GarageRequestModel: Codable {
     let requestDocId : String?
     let payableAmount : Double?
     let requestedBy : String?
+    let serviceStatus: ServiceState? // for car Received, in Progress, complete, ready to be taken
     
     //Review listing Api key
     let rating : Int?
@@ -130,7 +138,7 @@ struct GarageRequestModel: Codable {
         case requestType
         case requestID = "requestId"
         case bidPlacedByGarage, requestedBy
-        case rating, review, garageId, serviceType
+        case rating, review, garageId, serviceType, serviceStatus
         case width, preferredBrands, profile, rimSize, quantity, images, preferredCountries, status, year, make, model, userName, bidStatus, bidData, userLongitude, userLatitude, userImage, userAddress, requestDocId, payableAmount
     }
     
@@ -167,5 +175,6 @@ struct GarageRequestModel: Codable {
         review = ""
         garageId = ""
         serviceType = ""
+        serviceStatus = .carReceived
     }
 }

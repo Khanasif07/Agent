@@ -342,6 +342,8 @@
 		A4DA01D82552C0E000AC60DB /* SROtpPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DA01D72552C0E000AC60DB /* SROtpPopupVC.swift */; };
 		A4DA01DB2553075200AC60DB /* ReviewAndRatingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DA01D92553075200AC60DB /* ReviewAndRatingTableViewCell.swift */; };
 		A4DA01DC2553075200AC60DB /* ReviewAndRatingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4DA01DA2553075200AC60DB /* ReviewAndRatingTableViewCell.xib */; };
+		A4DBD24C255919A5006466C0 /* OtpPopUpVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DBD24B255919A5006466C0 /* OtpPopUpVM.swift */; };
+		A4DBD24F25593025006466C0 /* ServiceStatusVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DBD24E25593025006466C0 /* ServiceStatusVM.swift */; };
 		A4DCEE09252DED9C002EB32F /* AllRequestVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DCEE08252DED9C002EB32F /* AllRequestVM.swift */; };
 		A4DCEE0B252DF405002EB32F /* GarageRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DCEE0A252DF405002EB32F /* GarageRequestModel.swift */; };
 		A4DCEE0D252E0D34002EB32F /* GarageServiceRequestVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DCEE0C252E0D34002EB32F /* GarageServiceRequestVM.swift */; };
@@ -695,6 +697,8 @@
 		A4DA01D72552C0E000AC60DB /* SROtpPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SROtpPopupVC.swift; sourceTree = "<group>"; };
 		A4DA01D92553075200AC60DB /* ReviewAndRatingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewAndRatingTableViewCell.swift; sourceTree = "<group>"; };
 		A4DA01DA2553075200AC60DB /* ReviewAndRatingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewAndRatingTableViewCell.xib; sourceTree = "<group>"; };
+		A4DBD24B255919A5006466C0 /* OtpPopUpVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpPopUpVM.swift; sourceTree = "<group>"; };
+		A4DBD24E25593025006466C0 /* ServiceStatusVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceStatusVM.swift; sourceTree = "<group>"; };
 		A4DCEE08252DED9C002EB32F /* AllRequestVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRequestVM.swift; sourceTree = "<group>"; };
 		A4DCEE0A252DF405002EB32F /* GarageRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageRequestModel.swift; sourceTree = "<group>"; };
 		A4DCEE0C252E0D34002EB32F /* GarageServiceRequestVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageServiceRequestVM.swift; sourceTree = "<group>"; };
@@ -1970,9 +1974,10 @@
 			children = (
 				A4203F0B252C791A00BD8802 /* SRFilterVC */,
 				A49DF562252D890400A6A5B1 /* ServiceStatusVC.swift */,
+				A4DBD24E25593025006466C0 /* ServiceStatusVM.swift */,
 				A43B53A62524B47000447B24 /* OngoingServiceListingVC.swift */,
 				A421DDD4252AFDF20044E5E0 /* PlaceBidPopUpVC.swift */,
-				A421DDD6252B1A610044E5E0 /* OtpPopUpVC.swift */,
+				A4DBD24D255919B2006466C0 /* OtpPopUpVC */,
 			);
 			path = GarageDashBoardAndRequest;
 			sourceTree = "<group>";
@@ -2193,6 +2198,15 @@
 				A45042CF250F3846001C8905 /* AddAccountTableViewCell.xib */,
 			);
 			path = AddAccountVC;
+			sourceTree = "<group>";
+		};
+		A4DBD24D255919B2006466C0 /* OtpPopUpVC */ = {
+			isa = PBXGroup;
+			children = (
+				A421DDD6252B1A610044E5E0 /* OtpPopUpVC.swift */,
+				A4DBD24B255919A5006466C0 /* OtpPopUpVM.swift */,
+			);
+			path = OtpPopUpVC;
 			sourceTree = "<group>";
 		};
 		A4F7BA49251DC219009FF659 /* TyreRequestedVC */ = {
@@ -2615,6 +2629,7 @@
 				843CD3A32505409C00945937 /* LoginWithPhoneViewModel.swift in Sources */,
 				84B629B12512262C0080A7C2 /* GarageAddLocationVC.swift in Sources */,
 				8481FA512500BEEC00AB6EFB /* DictionaryExtension.swift in Sources */,
+				A4DBD24C255919A5006466C0 /* OtpPopUpVM.swift in Sources */,
 				A413B9722509E7960004C534 /* GarageRegistrationVC.swift in Sources */,
 				A413B979250A2BEF0004C534 /* AddDetailVC.swift in Sources */,
 				8481FA1D2500BAC700AB6EFB /* FacebookController.swift in Sources */,
@@ -2624,6 +2639,7 @@
 				8481FA4F2500BED600AB6EFB /* UIImageExtension.swift in Sources */,
 				A439263A2547FF9D0089E0EB /* UserNotificationVC.swift in Sources */,
 				A4DA01D82552C0E000AC60DB /* SROtpPopupVC.swift in Sources */,
+				A4DBD24F25593025006466C0 /* ServiceStatusVM.swift in Sources */,
 				84FF6E97251C77EF0000E2AD /* LineDashedView.swift in Sources */,
 				843F004625060725001A78EC /* CountryVC.swift in Sources */,
 				A41B7DEF255524AF005D1AC5 /* ServiceCompletedVM.swift in Sources */,

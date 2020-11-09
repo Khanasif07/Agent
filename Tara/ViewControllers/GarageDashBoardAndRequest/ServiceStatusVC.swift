@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ServiceStatusVC: BaseVC {
+class ServiceStatusVC: BaseVC, BookedTyreRequestVMDelegate {
     
     // MARK: - IBOutlets
     //===========================
@@ -17,8 +17,10 @@ class ServiceStatusVC: BaseVC {
 
     // MARK: - Variables
     //===========================
-    var sectionArr : [CellType] = [.userDetail, .none, .serviceDetail]
-    
+    var sectionArr : [CellType] = [.userDetail ,.none,.serviceDetail]
+    let viewModel = ServiceStatusVM()
+    var requestId : String = ""
+
     // MARK: - Lifecycle
     //===========================
     override func viewDidLoad() {
@@ -49,13 +51,17 @@ extension ServiceStatusVC {
     private func initialSetup() {
         setupTextAndFont()
         setupTableView()
+        viewModel.delegate = self
+        viewModel.fetchBookedRequestDetail(params: [ApiKey.requestId: self.requestId], loader: true)
     }
     
     private func setupTableView() {
         mainTableView.contentInset = UIEdgeInsets(top: 8.0, left: 0, bottom: 0, right: 0)
         mainTableView.delegate = self
         mainTableView.dataSource = self
-        mainTableView.registerCell(with: TyreRequestDetailTableViewCell.self)
+        mainTableView.registerCell(with: RequestDetailTableViewCell.self)
+        mainTableView.registerCell(with: ServiceDetailTableViewCell.self)
+        mainTableView.registerCell(with: DashedTableViewCell.self)
         mainTableView.registerCell(with: ServiceStatusTableViewCell.self)
     }
     
@@ -71,14 +77,31 @@ extension ServiceStatusVC: UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return section == 0 ? sectionArr.count : 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let cell = tableView.dequeueCell(with: TyreRequestDetailTableViewCell.self)
-            cell.sectionArr = self.sectionArr
-            return cell
+            switch sectionArr[indexPath.row] {
+            case .userDetail:
+                let cell = tableView.dequeueCell(with: RequestDetailTableViewCell.self)
+                cell.populateData(sectionArr[indexPath.row], model: viewModel.bookedRequestDetail ?? GarageRequestModel())
+                return cell
+                
+            case .none:
+                let cell = tableView.dequeueCell(with: DashedTableViewCell.self)
+                return cell
+                
+            case .serviceDetail:
+                let cell = tableView.dequeueCell(with: ServiceDetailTableViewCell.self)
+                cell.bindDataForBookedRequestDetail(viewModel.bookedRequestDetail ?? GarageRequestModel())
+                return cell
+                
+            default:
+                return UITableViewCell()
+                
+            }
+            
         }else {
             let cell = tableView.dequeueCell(with: ServiceStatusTableViewCell.self)
             return cell
@@ -86,8 +109,7 @@ extension ServiceStatusVC: UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.section == 0 ? 210.0 : UITableView.automaticDimension
-//        return UITableView.automaticDimension
+        return UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -95,3 +117,12 @@ extension ServiceStatusVC: UITableViewDelegate,UITableViewDataSource{
     }
 }
 
+extension ServiceStatusVC: ServiceStatusVMDelegate {
+    func bookedRequestDetailSuccess(msg: String) {
+        mainTableView.reloadData()
+    }
+    
+    func bookedRequestDetailFailed(msg: String) {
+        
+    }
+}

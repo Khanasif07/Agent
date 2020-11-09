@@ -19,15 +19,16 @@ class OtpPopUpVC: BaseVC {
     @IBOutlet weak var verifyBtn: AppButton!
     @IBOutlet var otpTxtFields: [OTPTextField]!
     @IBOutlet var txtFieldViews: [UIView]!
-    @IBOutlet weak var timerLbl: UILabel!
-    @IBOutlet weak var resendBtn: UIButton!
+  
     
     // MARK: - Variables
     //===========================
     var otpArray = [String](repeating: "", count: 4)
-    var viewModel = OtpVerificationVM()
-    
-    
+    var viewModel = OtpPopUpVM()
+    var requestByUser : String = ""
+    var requestId : String = ""
+    var onVerifyTap: (()->())?
+
     // MARK: - Lifecycle
     //===========================
     override func viewDidLoad() {
@@ -38,7 +39,6 @@ class OtpPopUpVC: BaseVC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         verifyBtn.isEnabled = false
-        resendBtn.isEnabled = false
     }
     
     override func viewDidLayoutSubviews() {
@@ -53,17 +53,8 @@ class OtpPopUpVC: BaseVC {
     }
     
     @IBAction func verifyBtnAction(_ sender: UIButton) {
-        
-    }
-    
-    @IBAction func resendOtpBtnAction(_ sender: UIButton) {
-//        self.viewModel.resendOTP(dict: getDictForResendOtp())
-        self.otpTxtFields.forEach({$0.text = ""})
-        self.txtFieldViews.forEach({$0.backgroundColor = AppColors.fontTertiaryColor})
-        self.otpArray = [String](repeating: "", count: 4)
-        timerLbl.isHidden = false
-        otpTxtFields[0].becomeFirstResponder()
-        startTimer()
+        let dict : JSONDictionary = [ApiKey.otp : self.otpArray.joined(), ApiKey.requestId : self.requestId]
+        viewModel.startService(params: dict,loader : true)
     }
 }
 
@@ -75,8 +66,6 @@ extension OtpPopUpVC {
         setupTextAndFont()
         setUpTextField()
         setUpAttributedString()
-        self.timerLbl.isHidden = false
-        self.startTimer()
         self.viewModel.delegate = self
     }
     
@@ -106,7 +95,7 @@ extension OtpPopUpVC {
        
         attributedString.append(NSAttributedString(string: LocalizedString.to.localized, attributes: [NSAttributedString.Key.foregroundColor: AppColors.fontTertiaryColor,NSAttributedString.Key.font: AppFonts.NunitoSansBold.withSize(14.0)]))
         
-        attributedString.append(NSAttributedString(string: UserModel.main.name, attributes: [NSAttributedString.Key.foregroundColor: AppColors.fontPrimaryColor,NSAttributedString.Key.font: AppFonts.NunitoSansBold.withSize(14.0)]))
+        attributedString.append(NSAttributedString(string: requestByUser, attributes: [NSAttributedString.Key.foregroundColor: AppColors.fontPrimaryColor,NSAttributedString.Key.font: AppFonts.NunitoSansBold.withSize(14.0)]))
         
         attributedString.append(NSAttributedString(string: ",\n", attributes: [NSAttributedString.Key.foregroundColor: AppColors.fontTertiaryColor,NSAttributedString.Key.font: AppFonts.NunitoSansBold.withSize(14.0)]))
         
@@ -136,34 +125,8 @@ extension OtpPopUpVC {
     private func setUpVerifyButton(enable: Bool){
         verifyBtn.isEnabled = enable
     }
+   
     
-    private func startTimer() {
-        viewModel.totalTime = 60
-        viewModel.countdownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
-    }
-    
-    private func endTimer() {
-        timerLbl.isHidden = true
-        viewModel.countdownTimer.invalidate()
-    }
-    
-    
-    @objc private func updateTime() {
-        let time  = "\(viewModel.timeFormatted(viewModel.totalTime))"
-        timerLbl.text = time
-        if viewModel.totalTime != 0 {
-            viewModel.totalTime -= 1
-        } else {
-            endTimer()
-            self.resendBtn.isEnabled = true
-        }
-    }
-    
-    
-    private func getDictForResendOtp() -> JSONDictionary{
-        let dict : JSONDictionary = [ApiKey.phoneNo:  self.viewModel.phoneNo,ApiKey.countryCode: self.viewModel.countryCode, ApiKey.device : [ApiKey.platform : "ios", ApiKey.token : DeviceDetail.deviceToken].toJSONString() ?? ""]
-        return dict
-    }
 }
 
 extension OtpPopUpVC : OTPTextFieldDelegate ,UITextFieldDelegate{
@@ -210,13 +173,18 @@ extension OtpPopUpVC : OTPTextFieldDelegate ,UITextFieldDelegate{
     }
 }
 
-extension OtpPopUpVC: OtpVerificationVMDelegate{
-    func resendOtpSuccess(message: String) {
-        
+extension OtpPopUpVC: OtpPopUpVMDelegate{
+   
+    func getStartServiceSuccess(msg: String) {
+        self.dismiss(animated: true) {
+            self.onVerifyTap?()
+        }
     }
     
-    func resendOtpFailed(error: String) {
-        
+    func getStartServiceFailed(msg: String){
+        CommonFunctions.showToastWithMessage(msg)
+        self.dismiss(animated: true) {
+            self.onVerifyTap?()
+        }
     }
-    
 }

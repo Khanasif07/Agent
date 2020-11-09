@@ -299,7 +299,7 @@ never be changed</string>
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xV5-8j-046">
-                                        <rect key="frame" x="16" y="294" width="382" height="308"/>
+                                        <rect key="frame" x="16" y="319" width="382" height="258"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Oa-PI-Hif">
                                                 <rect key="frame" x="24" y="16" width="348" height="50.5"/>
@@ -316,7 +316,7 @@ start Servicing</string>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Bd0-84-5vv">
                                                         <rect key="frame" x="0.0" y="0.0" width="87" height="44.5"/>
                                                         <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JBi-KH-4Am" customClass="OTPTextField" customModule="ArabianTyres">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JBi-KH-4Am" customClass="OTPTextField" customModule="Tara" customModuleProvider="target">
                                                                 <rect key="frame" x="23.5" y="0.0" width="40" height="43"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="40" id="ZDs-fK-Jqa"/>
@@ -338,7 +338,7 @@ start Servicing</string>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="WGQ-iL-h6a">
                                                         <rect key="frame" x="87" y="0.0" width="87" height="44.5"/>
                                                         <subviews>
-                                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Ku-ao-DqX" customClass="OTPTextField" customModule="ArabianTyres">
+                                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Ku-ao-DqX" customClass="OTPTextField" customModule="Tara" customModuleProvider="target">
                                                                 <rect key="frame" x="23.5" y="0.0" width="40" height="43"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="40" id="f0d-NL-gpm"/>
@@ -360,7 +360,7 @@ start Servicing</string>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Ec0-RJ-bBB">
                                                         <rect key="frame" x="174" y="0.0" width="87" height="44.5"/>
                                                         <subviews>
-                                                            <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QXs-Em-DKJ" customClass="OTPTextField" customModule="ArabianTyres">
+                                                            <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QXs-Em-DKJ" customClass="OTPTextField" customModule="Tara" customModuleProvider="target">
                                                                 <rect key="frame" x="23.5" y="0.0" width="40" height="43"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="43" id="KPI-XQ-4bn"/>
@@ -382,7 +382,7 @@ start Servicing</string>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="vrg-0Q-dw5">
                                                         <rect key="frame" x="261" y="0.0" width="87" height="44.5"/>
                                                         <subviews>
-                                                            <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2pG-ja-Oth" customClass="OTPTextField" customModule="ArabianTyres">
+                                                            <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2pG-ja-Oth" customClass="OTPTextField" customModule="Tara" customModuleProvider="target">
                                                                 <rect key="frame" x="23.5" y="0.0" width="40" height="43"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="40" id="DXu-zv-8nK"/>
@@ -447,39 +447,17 @@ start Servicing</string>
                                                     </button>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Z28-c0-AOm">
-                                                <rect key="frame" x="145" y="255" width="92" height="30"/>
-                                                <subviews>
-                                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JqA-NI-Ha7">
-                                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="30"/>
-                                                        <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="13"/>
-                                                        <color key="textColor" red="0.41960784309999999" green="0.41960784309999999" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b6S-7B-TG9">
-                                                        <rect key="frame" x="0.0" y="0.0" width="92" height="30"/>
-                                                        <state key="normal" title="RESEND OTP">
-                                                            <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="resendOtpBtnAction:" destination="9Sx-XT-7CB" eventType="touchUpInside" id="tXl-Jy-kub"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
-                                            <constraint firstItem="Z28-c0-AOm" firstAttribute="centerX" secondItem="xV5-8j-046" secondAttribute="centerX" id="0op-17-5fd"/>
                                             <constraint firstItem="7Oa-PI-Hif" firstAttribute="leading" secondItem="xV5-8j-046" secondAttribute="leading" constant="24" id="63y-cn-Kmo"/>
-                                            <constraint firstAttribute="bottom" secondItem="Z28-c0-AOm" secondAttribute="bottom" constant="23" id="6nI-1f-5uA"/>
                                             <constraint firstItem="uCd-BQ-vLA" firstAttribute="trailing" secondItem="7Oa-PI-Hif" secondAttribute="trailing" id="6oC-dL-NZk"/>
                                             <constraint firstItem="7Oa-PI-Hif" firstAttribute="top" secondItem="xV5-8j-046" secondAttribute="top" constant="16" id="7vb-8K-TTD"/>
                                             <constraint firstItem="a3C-9r-kUZ" firstAttribute="top" secondItem="uCd-BQ-vLA" secondAttribute="bottom" constant="34" id="ClR-Ko-CoP"/>
                                             <constraint firstItem="uCd-BQ-vLA" firstAttribute="top" secondItem="7Oa-PI-Hif" secondAttribute="bottom" constant="30" id="Dcg-cL-0BO"/>
                                             <constraint firstAttribute="trailing" secondItem="7Oa-PI-Hif" secondAttribute="trailing" constant="10" id="MiR-Nt-nSl"/>
                                             <constraint firstItem="uCd-BQ-vLA" firstAttribute="trailing" secondItem="a3C-9r-kUZ" secondAttribute="trailing" id="mPa-BK-M1J"/>
-                                            <constraint firstItem="Z28-c0-AOm" firstAttribute="top" secondItem="a3C-9r-kUZ" secondAttribute="bottom" constant="32" id="zTr-4y-aaL"/>
+                                            <constraint firstAttribute="bottom" secondItem="a3C-9r-kUZ" secondAttribute="bottom" constant="35" id="wmA-KZ-NTw"/>
                                             <constraint firstItem="uCd-BQ-vLA" firstAttribute="leading" secondItem="7Oa-PI-Hif" secondAttribute="leading" id="zhH-ty-30a"/>
                                         </constraints>
                                     </view>
@@ -505,8 +483,6 @@ start Servicing</string>
                     </view>
                     <connections>
                         <outlet property="cancelBtn" destination="N61-nb-wpr" id="QXM-7v-Vg9"/>
-                        <outlet property="resendBtn" destination="b6S-7B-TG9" id="LjF-DW-LfH"/>
-                        <outlet property="timerLbl" destination="JqA-NI-Ha7" id="zhn-nQ-S46"/>
                         <outlet property="titleLbl" destination="7Oa-PI-Hif" id="a54-eL-7Ps"/>
                         <outlet property="verifyBtn" destination="jZ7-Nn-wMZ" id="LBZ-dc-EGF"/>
                         <outletCollection property="otpTxtFields" destination="JBi-KH-4Am" collectionClass="NSMutableArray" id="0U0-w9-tik"/>

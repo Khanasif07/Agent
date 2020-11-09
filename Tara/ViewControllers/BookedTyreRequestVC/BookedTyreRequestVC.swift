@@ -92,7 +92,7 @@ extension BookedTyreRequestVC: UITableViewDelegate,UITableViewDataSource{
            
             case .created, .accepted, .payAmount:
                 let cell = tableView.dequeueCell(with: RequestDetailTableViewCell.self)
-                cell.bindCell(sectionArr[indexPath.row], model: viewModel.bookedRequestDetail ?? GarageRequestModel())
+//                cell.bindCell(sectionArr[indexPath.row], model: viewModel.bookedRequestDetail ?? GarageRequestModel())
                 return cell
             
             case .none:

@@ -979,4 +979,15 @@ extension WebServices{
             failure(error)
         }
     }
+    
+    //MARK:- Start Service Api
+       static func getStartService(parameters: JSONDictionary,loader: Bool = false,
+                                          success: @escaping SuccessResponse,
+                                          failure: @escaping FailureResponse) {
+           self.commonGetAPI(parameters: parameters, endPoint: .startService,loader: loader, success: { (json) in
+               success(json)
+           }) { (error) -> (Void) in
+               failure(error)
+           }
+       }
 }

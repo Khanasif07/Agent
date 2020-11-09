@@ -323,9 +323,14 @@ enum AppRouter {
         
     }
     
-    static func openOtpPopUpVC(vc: UIViewController){
-           let scene = OtpPopUpVC.instantiate(fromAppStoryboard: .GarageRequest)
-           vc.modalPresentationStyle = .fullScreen
+    static func openOtpPopUpVC(vc: UIViewController, requestByUser : String, requestId : String){
+        let scene = OtpPopUpVC.instantiate(fromAppStoryboard: .GarageRequest)
+        scene.requestByUser = requestByUser
+        scene.requestId = requestId
+        scene.onVerifyTap = {
+//            AppRouter.goToServiceStatusVC(vc: vc)
+        }
+        vc.modalPresentationStyle = .fullScreen
         vc.present(scene, animated: true, completion: nil)
         
     }
@@ -370,8 +375,10 @@ enum AppRouter {
     }
    
     
-    static func goToServiceStatusVC(vc: UIViewController){
+    static func goToServiceStatusVC(vc: UIViewController, requestId : String,requestType : Category){
         let scene = ServiceStatusVC.instantiate(fromAppStoryboard: .GarageRequest)
+        scene.requestId = requestId
+        scene.viewModel.requestType = requestType
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     

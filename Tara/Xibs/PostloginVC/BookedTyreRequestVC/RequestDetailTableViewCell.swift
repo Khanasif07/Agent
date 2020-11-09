@@ -34,7 +34,36 @@ class RequestDetailTableViewCell: UITableViewCell {
         
     }
     
-    func bindCell(_ cellType: CellType, model: GarageRequestModel) {
+//    func bindCell(_ cellType: CellType, model: GarageRequestModel) {
+//        createdByLbl.text = cellType.text
+//        mainImgView.image = cellType.image
+//        bidFinalContainerView.isHidden = cellType != .created
+//        userNameLbl.textColor = cellType == .payAmount ? #colorLiteral(red: 0.1725490196, green: 0.7137254902, blue: 0.4549019608, alpha: 1) : #colorLiteral(red: 0.1098039216, green: 0.1137254902, blue: 0.1411764706, alpha: 1)
+//        bottomView.isHidden = cellType == .payAmount
+//        mainImgView.contentMode = .center
+//
+//        switch cellType {
+//
+//        case .created:
+//            userNameLbl.text = model.userName
+//            mainImgView.round()
+//            mainImgView.contentMode = .scaleToFill
+//            mainImgView.setImage_kf(imageString: model.userImage ?? "", placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
+//
+//        case .accepted:
+//            let date = (model.createdAt)?.breakCompletDate(outPutFormat: Date.DateFormat.profileFormat.rawValue, inputFormat: Date.DateFormat.yyyyMMddTHHmmsssssz.rawValue)
+//            userNameLbl.text = date
+//
+//        case .payAmount:
+//            userNameLbl.text = model.payableAmount?.description
+//
+//        default:
+//            break
+//        }
+//
+//    }
+    
+    func populateData(_ cellType: CellType, model: GarageRequestModel) {
         createdByLbl.text = cellType.text
         mainImgView.image = cellType.image
         bidFinalContainerView.isHidden = cellType != .created
@@ -44,25 +73,18 @@ class RequestDetailTableViewCell: UITableViewCell {
 
         switch cellType {
             
-        case .created:
+        case .userDetail:
             userNameLbl.text = model.userName
             mainImgView.round()
             mainImgView.contentMode = .scaleToFill
             mainImgView.setImage_kf(imageString: model.userImage ?? "", placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
-      
-        case .accepted:
-            let date = (model.createdAt)?.breakCompletDate(outPutFormat: Date.DateFormat.profileFormat.rawValue, inputFormat: Date.DateFormat.yyyyMMddTHHmmsssssz.rawValue)
-            userNameLbl.text = date
-
-        case .payAmount:
-            userNameLbl.text = model.payableAmount?.description
-
+            helpBtn.isHidden = false
+            bottomView.isHidden = true
         default:
             break
         }
         
     }
-    
     @IBAction func bidFinalisedBtnAction(_ sender: UIButton) {
         
     }

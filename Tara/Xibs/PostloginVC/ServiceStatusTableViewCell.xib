@@ -430,14 +430,17 @@
                 <outlet property="carReceivedStepBtn" destination="eEz-la-rpD" id="Igp-ks-mU5"/>
                 <outlet property="carReceivedUpdateBtn" destination="NQG-PL-gUy" id="BW4-XY-IT5"/>
                 <outlet property="carRecievedStackView" destination="qYT-4U-WfO" id="Qjd-Ub-ewR"/>
+                <outlet property="carServiceLineView" destination="dF9-mS-3Gk" id="COs-IF-6j6"/>
                 <outlet property="completeLbl" destination="KT5-Pc-UML" id="SdW-0t-Gfr"/>
                 <outlet property="completeStepBtn" destination="tVw-m3-xDV" id="8Is-Jt-PlI"/>
                 <outlet property="completeUpdateBtn" destination="XbJ-H6-NOp" id="VUD-6n-syT"/>
+                <outlet property="completedLineView" destination="pUJ-KL-TGo" id="C2D-DB-wlj"/>
                 <outlet property="paidLbl" destination="Vrj-RX-oyv" id="xe9-CV-ZzS"/>
                 <outlet property="paymentStatusLbl" destination="9tI-hh-ujP" id="cQY-ex-FSw"/>
                 <outlet property="progressLbl" destination="8Dp-T8-Xqr" id="qBm-Pk-KL8"/>
                 <outlet property="progressStepBtn" destination="2sN-cu-q6c" id="4nP-pa-kVc"/>
                 <outlet property="progressUpdateBtn" destination="dZP-yT-KaP" id="iL3-Cq-drr"/>
+                <outlet property="readyToBeTakenLineView" destination="Z6b-Mx-bH0" id="GCw-zc-7hc"/>
                 <outlet property="serviceStatusLbl" destination="JkX-FI-KFF" id="6ng-wD-3el"/>
                 <outlet property="takenLbl" destination="j6Q-0m-R6S" id="cT4-Qm-aAo"/>
                 <outlet property="takenStepBtn" destination="j5g-BP-7RK" id="jmo-qb-CXY"/>
