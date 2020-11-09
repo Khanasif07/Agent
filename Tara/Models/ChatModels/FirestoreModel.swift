@@ -165,6 +165,7 @@ struct Message{
     public var tempImage : UIImage = UIImage()
     public var thumbnailURL : String = ""
     public var messageDuration : Int = 0
+    public var price : Int = 0
     
     //MARK:- Inits
     //=============
@@ -184,6 +185,7 @@ struct Message{
         self.thumbnailURL = dict[ApiKey.thumbnail] as? String ?? ""
         self.blocked = dict[ApiKey.blocked] as? Bool ?? false
         self.messageDuration =  dict[ApiKey.messageDuration] as? Int ?? 0
+        self.price = dict[ApiKey.price] as? Int ?? 0
       }
 }
 
@@ -227,4 +229,5 @@ enum MessageType: String {
     case location = "location"
     case offer = "offer"
     case payment = "payment"
+    case bidEdit = "bidEdit"
 }

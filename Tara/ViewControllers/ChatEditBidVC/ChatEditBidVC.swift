@@ -9,6 +9,10 @@
 import UIKit
 import DZNEmptyDataSet
 
+protocol ChatEditBidVCDelegate : class{
+    func bidEditSuccess(price: Int)
+}
+
 class ChatEditBidVC: BaseVC {
     
     enum Section {
@@ -32,12 +36,14 @@ class ChatEditBidVC: BaseVC {
     // MARK: - Variables
     //===========================
     var quantity : Int = 0
+    var amount : Int = 0
     var bidStatus : BidStatus = .bidFinalsed
     var selectedCountry: String  = ""
     var acceptedProposalId : String  = ""
     var sectionType : [Section] = [.brandListing]
     var brandsType : BrandsType = .onlyBrands
     let viewModel = GarageServiceRequestVM()
+    weak var delegate : ChatEditBidVCDelegate?
     
     // MARK: - Lifecycle
     //===========================
@@ -65,6 +71,7 @@ class ChatEditBidVC: BaseVC {
             dict[ApiKey.brandName] = model.name
             dict[ApiKey.brandId] = model.id
             self.acceptedProposalId = model.bidId ?? ""
+            self.amount = Int(model.amount ?? 0)
             if brandsType == .countryBrands {
                 dict[ApiKey.countryId] = model.countryId
                 dict[ApiKey.countryName] = model.countryName
@@ -284,6 +291,7 @@ extension ChatEditBidVC :GarageServiceRequestVMDelegate {
     }
     
     func editPlacedBidDataSuccess(message: String) {
+        self.delegate?.bidEditSuccess(price: self.amount)
         NotificationCenter.default.post(name: Notification.Name.PlaceBidRejectBidSuccess, object: nil)
         self.dismiss(animated: true, completion: nil)
     }

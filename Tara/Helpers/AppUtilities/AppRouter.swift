@@ -284,10 +284,11 @@ enum AppRouter {
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
-    static func goToChatEditBidVC(vc: UIViewController,requestId:String){
+    static func goToChatEditBidVC(vc: UIViewController ,requestId:String){
         let scene = ChatEditBidVC.instantiate(fromAppStoryboard: .Chat)
         scene.viewModel.requestId = requestId
         vc.modalPresentationStyle = .fullScreen
+        scene.delegate = vc as? ChatEditBidVCDelegate
         vc.present(scene, animated: true, completion: nil)
     }
     

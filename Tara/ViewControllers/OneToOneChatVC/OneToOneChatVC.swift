@@ -105,7 +105,7 @@ class OneToOneChatVC: BaseVC {
     @IBOutlet weak var garageRequestNoValueLbl: UILabel!
     @IBOutlet weak var garageImgView: UIImageView!
     @IBOutlet weak var garageTopView: UIView!
-
+    
     
     //MARK: VIEW LIFE CYCLE
     //=====================
@@ -173,9 +173,9 @@ class OneToOneChatVC: BaseVC {
     }
     
     @IBAction func sendButtonTapped(_ sender: UIButton) {
-        sendMessage()
+        sendMessage(msgType: MessageType.text.rawValue)
     }
-
+    
     @IBAction func sendAudioToFirestire(_ sender: UIButton) {
         if sender.imageView?.image !=  #imageLiteral(resourceName: "audioBtnWhite")  {
             self.uploadAudioFileToFirestore(self.recordedUrl!)
@@ -202,8 +202,8 @@ class OneToOneChatVC: BaseVC {
 extension OneToOneChatVC {
     
     private func initialSetup() {
-//        backgroundView.isHidden = false
-//        CommonFunctions.showActivityLoader()
+        //        backgroundView.isHidden = false
+        //        CommonFunctions.showActivityLoader()
         editBtn.isHidden = !(isCurrentUserType == .garage)
         userRequestView.isHidden = true
         garageTopView.isHidden = true
@@ -229,7 +229,7 @@ extension OneToOneChatVC {
     }
     
     @objc private func titleLabelTapped(_ sender: UITapGestureRecognizer) {
-       printDebug("Profile")
+        printDebug("Profile")
     }
     
     @objc   func longTap(_ sender : UIGestureRecognizer){
@@ -256,7 +256,7 @@ extension OneToOneChatVC {
             chatViewModel.getChatData(params: dict,loader: false)
         }
         else {
-//            backgroundView.isHidden = true
+            //            backgroundView.isHidden = true
             tableViewTopConstraint.constant = 0.0
         }
     }
@@ -285,7 +285,7 @@ extension OneToOneChatVC {
             // failed to record
         }
     }
-        
+    
     private func setupTableView() {
         messagesTableView.delegate = self
         messagesTableView.dataSource = self
@@ -297,6 +297,7 @@ extension OneToOneChatVC {
         messagesTableView.registerCell(with: ReceiverMediaCell.self)
         messagesTableView.registerCell(with: SenderAudioCell.self)
         messagesTableView.registerCell(with: ReceiverAudioCell.self)
+        messagesTableView.registerCell(with: ReceiverOfferCell.self)
         messagesTableView.registerCell(with: DayValueCell.self)
     }
     
@@ -306,18 +307,18 @@ extension OneToOneChatVC {
         messageTextView.tintColor = AppColors.appRedColor
     }
     
-    private func sendMessage() {
+    private func sendMessage(msgType: String = MessageType.text.rawValue ,price: Int = 0) {
         self.view.endEditing(true)
         let txt = self.messageTextView.text.byRemovingLeadingTrailingWhiteSpaces
         guard !txt.isEmpty else { return }
         if isRoom {
             self.updateUnreadMessage()
             self.restoreDeletedNode()
-            self.createMessage()
+            self.createMessage(msgType: msgType,price: price)
             self.updateInboxTimeStamp()
         } else {
             self.createRoom()
-            self.createMessage()
+            self.createMessage(msgType: msgType,price: price)
             self.createInbox()
         }
         messageTextView.text = ""
@@ -338,7 +339,7 @@ extension OneToOneChatVC {
         guard let info = sender.userInfo, let duration: TimeInterval = (info[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue else { return }
         scrollMsgToBottom()
         tableViewTopConstraint.constant = requestId.isEmpty ? 0.0 : 134.0
-
+        
         UIView.animate(withDuration: duration) { self.view.layoutIfNeeded() }
     }
     
@@ -522,7 +523,7 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                 receiverAudioCell.receiverNameLbl.text = self.firstName
                 receiverAudioCell.receiverImgView.setImage_kf(imageString: userImage, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
                 receiverAudioCell.receiverImgView.addGestureRecognizer(imgTap)
-              
+                
                 receiverAudioCell.playBtnTapped = { [weak self]  in
                     guard let `self` = self else { return }
                     let url = URL(string: model.mediaUrl)
@@ -576,6 +577,14 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                     self.selectedIndexPath = indexPath
                 }
                 return receiverAudioCell
+            case MessageType.offer.rawValue:
+                let receiverOfferCell = tableView.dequeueCell(with: ReceiverOfferCell.self)
+                receiverOfferCell.userNameLbl.text = self.firstName
+                receiverOfferCell.userImgView.setImage_kf(imageString: userImage, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
+                receiverOfferCell.priceLbl.text = "\(model.price)" + "SAR"
+                self.setTapGesture(view: receiverOfferCell.msgContainerView, indexPath: indexPath)
+                receiverOfferCell.userImgView.addGestureRecognizer(imgTap)
+                return receiverOfferCell
             default:
                 let receiverCell = tableView.dequeueCell(with: ReceiverMessageCell.self)
                 receiverCell.configureCellWith(model: model)
@@ -605,8 +614,8 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                     }
                     //
                     if self.player == nil {
-                    self.playerItem = AVPlayerItem(url: url!)
-                    self.player = AVPlayer(playerItem: self.playerItem)
+                        self.playerItem = AVPlayerItem(url: url!)
+                        self.player = AVPlayer(playerItem: self.playerItem)
                     }
                     if self.player?.rate == 0.0 {
                         self.player!.play()
@@ -650,6 +659,11 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                     self.selectedIndexPath = indexPath
                 }
                 return senderAudioCell
+            case MessageType.offer.rawValue:
+                let senderCell = tableView.dequeueCell(with: SenderMessageCell.self)
+                senderCell.configureCellWith(model: model)
+                //                senderCell.senderImgView.addGestureRecognizer(imgTap)
+                return senderCell
             default:
                 let senderCell = tableView.dequeueCell(with: SenderMessageCell.self)
                 senderCell.configureCellWith(model: model)
@@ -941,16 +955,16 @@ extension OneToOneChatVC{
     }
     
     /// Mark:- Creating a message node
-    private func createMessage(){
-        FirestoreController.createLastMessageNode(roomId:roomId,messageText:messageTextView.text.byRemovingLeadingTrailingWhiteSpaces ,messageTime:FieldValue.serverTimestamp(), messageId:getMessageId(),messageType:"text", messageStatus:1,senderId:currentUserId,receiverId:inboxModel.userId, mediaUrl: "",blocked:false, thumbNailURL: "", messageDuration: 0)
-        FirestoreController.createMessageNode(roomId:roomId,messageText:messageTextView.text.byRemovingLeadingTrailingWhiteSpaces ,messageTime:FieldValue.serverTimestamp(), messageId:getMessageId(),messageType:"text", messageStatus:1,senderId:currentUserId,receiverId:inboxModel.userId, mediaUrl: "",blocked:false, thumbNailURL: "", messageDuration: 0)
+    private func createMessage(msgType: String = "text",price: Int = 0){
+        FirestoreController.createLastMessageNode(roomId:roomId,messageText:messageTextView.text.byRemovingLeadingTrailingWhiteSpaces ,messageTime:FieldValue.serverTimestamp(), messageId:getMessageId(),messageType: msgType, messageStatus:1,senderId:currentUserId,receiverId:inboxModel.userId, mediaUrl: "",blocked:false, thumbNailURL: "", messageDuration: 0,price: price )
+        FirestoreController.createMessageNode(roomId:roomId,messageText:messageTextView.text.byRemovingLeadingTrailingWhiteSpaces ,messageTime:FieldValue.serverTimestamp(), messageId:getMessageId(),messageType: msgType, messageStatus:1,senderId:currentUserId,receiverId:inboxModel.userId, mediaUrl: "",blocked:false, thumbNailURL: "", messageDuration: 0,price: price )
         
     }
     
     private func createMediaMessage(url: String, imageURL: String = "", type: String) {
-        FirestoreController.createMessageNode(roomId: self.roomId, messageText: "", messageTime: FieldValue.serverTimestamp(), messageId: self.getMessageId(), messageType: type, messageStatus: 1, senderId: self.currentUserId, receiverId: self.inboxModel.userId, mediaUrl: url, blocked: false, thumbNailURL: imageURL,messageDuration: self.chatViewModel.totalTime)
+        FirestoreController.createMessageNode(roomId: self.roomId, messageText: "", messageTime: FieldValue.serverTimestamp(), messageId: self.getMessageId(), messageType: type, messageStatus: 1, senderId: self.currentUserId, receiverId: self.inboxModel.userId, mediaUrl: url, blocked: false, thumbNailURL: imageURL,messageDuration: self.chatViewModel.totalTime, price: 0)
         let attachmentText = type == MessageType.image.rawValue ? "Photo Attachment" : "Audio Attachment"
-        FirestoreController.createLastMessageNode(roomId: self.roomId, messageText: attachmentText, messageTime: FieldValue.serverTimestamp(), messageId: self.getMessageId(), messageType: type, messageStatus: 1, senderId: self.currentUserId, receiverId: self.inboxModel.userId, mediaUrl: url, blocked: false, thumbNailURL: imageURL,messageDuration: self.chatViewModel.totalTime)
+        FirestoreController.createLastMessageNode(roomId: self.roomId, messageText: attachmentText, messageTime: FieldValue.serverTimestamp(), messageId: self.getMessageId(), messageType: type, messageStatus: 1, senderId: self.currentUserId, receiverId: self.inboxModel.userId, mediaUrl: url, blocked: false, thumbNailURL: imageURL,messageDuration: self.chatViewModel.totalTime,price: 0)
     }
     
     /// Mark:- Fetching the room Id values
@@ -1150,7 +1164,7 @@ extension OneToOneChatVC{
                         }
                     }
                 }
-                                self.selectedIndexPaths = []
+                self.selectedIndexPaths = []
             })
             DispatchQueue.main.async {
                 //                self.reloadTableViewToBottom()
@@ -1343,9 +1357,9 @@ extension OneToOneChatVC:  AVAudioRecorderDelegate, AVAudioPlayerDelegate {
 // Chat View Model
 extension OneToOneChatVC : OneToOneChatViewModelDelegate{
     func chatDataSuccess(msg: String) {
-//        backgroundView.isHidden = true
-//        CommonFunctions.hideActivityLoader()
-//        self.requestDetailId = chatViewModel.chatData.id
+        //        backgroundView.isHidden = true
+        //        CommonFunctions.hideActivityLoader()
+        //        self.requestDetailId = chatViewModel.chatData.id
         if isCurrentUserType == .garage {
             tableViewTopConstraint.constant = 80.0
             userRequestView.isHidden = false
@@ -1376,5 +1390,13 @@ extension OneToOneChatVC : OneToOneChatViewModelDelegate{
     func chatDataFailure(msg: String) {
         userRequestView.isHidden = true
         CommonFunctions.showToastWithMessage(msg)
+    }
+}
+
+//MARK:- ChatEditBidVCDelegate
+extension OneToOneChatVC : ChatEditBidVCDelegate {
+    func bidEditSuccess(price: Int) {
+        self.messageTextView.text = "Bid Edited Successfully"
+        sendMessage(msgType: MessageType.offer.rawValue,price: price)
     }
 }
