@@ -965,8 +965,18 @@ extension WebServices{
           self.commonGetAPI(parameters: parameters, endPoint: .bookedRequest,loader: loader, success: { (json) in
               success(json)
           }) { (error) -> (Void) in
-              failure(error)
-          }
-      }
+            failure(error)
+        }
+    }
     
+    //MARK:- Submit Rating Detail
+    static func getBookedRequestDetail(parameters: JSONDictionary,loader: Bool = false,
+                                       success: @escaping SuccessResponse,
+                                       failure: @escaping FailureResponse) {
+        self.commonGetAPI(parameters: parameters, endPoint: .bookedRequestDetail,loader: loader, success: { (json) in
+            success(json)
+        }) { (error) -> (Void) in
+            failure(error)
+        }
+    }
 }

@@ -70,6 +70,8 @@ extension WebServices {
         case rating = "user/rating"
         case chatData = "user/chatData"
         case bookedRequest = "user/services/bookedRequests"
+        case bookedRequestDetail =  "user/services/bookedRequestDetails"
+        
         
         var path : String {
             let url = baseUrl

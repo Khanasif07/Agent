@@ -19,6 +19,8 @@ class BookedTyreRequestVC: BaseVC {
     // MARK: - Variables
     //===========================
     var sectionArr : [CellType] = [.created, .accepted,.payAmount,.none,.serviceDetail]
+    var requestId : String = ""
+    let viewModel = BookedTyreRequestVM()
     
     // MARK: - Lifecycle
     //===========================
@@ -51,21 +53,27 @@ class BookedTyreRequestVC: BaseVC {
 extension BookedTyreRequestVC {
     
     private func initialSetup() {
+        viewModel.delegate = self
         setupTextAndFont()
         setupTableView()
+        viewModel.fetchBookedRequestDetail(params: [ApiKey.requestId: self.requestId], loader: true)
+     
     }
     
     private func setupTableView() {
         mainTableView.contentInset = UIEdgeInsets(top: 8.0, left: 0, bottom: 0, right: 0)
         mainTableView.delegate = self
         mainTableView.dataSource = self
-        mainTableView.registerCell(with: TyreRequestDetailTableViewCell.self)
+        mainTableView.registerCell(with: RequestDetailTableViewCell.self)
+        mainTableView.registerCell(with: DashedTableViewCell.self)
+        mainTableView.registerCell(with: ServiceDetailTableViewCell.self)
+
         mainTableView.registerCell(with: TyreRequestLocationTableViewCell.self)
     }
     
     private func setupTextAndFont(){
         titleLbl.font = AppFonts.NunitoSansBold.withSize(17.0)
-        titleLbl.text = LocalizedString.tyreServiceRequest.localized
+        titleLbl.text =  self.viewModel.requestType == .tyres ? LocalizedString.tyreServiceRequest.localized : self.viewModel.requestType == .battery ? LocalizedString.batteryServiceRequest.localized : LocalizedString.oilServiceRequest.localized
     }
 }
 
@@ -75,14 +83,30 @@ extension BookedTyreRequestVC: UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return section == 0 ? sectionArr.count : 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let cell = tableView.dequeueCell(with: TyreRequestDetailTableViewCell.self)
-            cell.sectionArr = self.sectionArr
-            return cell
+            switch sectionArr[indexPath.row] {
+           
+            case .created, .accepted, .payAmount:
+                let cell = tableView.dequeueCell(with: RequestDetailTableViewCell.self)
+                cell.bindCell(sectionArr[indexPath.row], model: viewModel.bookedRequestDetail ?? GarageRequestModel())
+                return cell
+            
+            case .none:
+                let cell = tableView.dequeueCell(with: DashedTableViewCell.self)
+                return cell
+                
+            case .serviceDetail:
+                let cell = tableView.dequeueCell(with: ServiceDetailTableViewCell.self)
+                cell.bindDataForBookedRequestDetail(viewModel.bookedRequestDetail ?? GarageRequestModel())
+                return cell
+                
+            default:
+                return UITableViewCell()
+            }
         }else {
             
             let cell = tableView.dequeueCell(with: TyreRequestLocationTableViewCell.self)
@@ -97,11 +121,21 @@ extension BookedTyreRequestVC: UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.section == 0 ? 375.0 : UITableView.automaticDimension
+        return UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return CGFloat.leastNormalMagnitude
+    }
+}
+
+extension BookedTyreRequestVC : BookedTyreRequestVMDelegate{
+    func bookedRequestDetailSuccess(msg: String) {
+        mainTableView.reloadData()
+    }
+    
+    func bookedRequestDetailFailed(msg: String) {
+        CommonFunctions.showToastWithMessage(msg)
     }
 }
 

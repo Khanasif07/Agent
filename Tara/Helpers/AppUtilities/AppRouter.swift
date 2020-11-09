@@ -74,8 +74,10 @@ enum AppRouter {
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
-    static func goToBookedTyreRequestVC(vc: UIViewController){
+    static func goToBookedTyreRequestVC(vc: UIViewController, requestId : String,requestType : Category){
         let scene = BookedTyreRequestVC.instantiate(fromAppStoryboard: .GarageRequest)
+        scene.requestId = requestId
+        scene.viewModel.requestType = requestType
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
