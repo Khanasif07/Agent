@@ -72,7 +72,8 @@ extension WebServices {
         case bookedRequest = "user/services/bookedRequests"
         case bookedRequestDetail =  "user/services/bookedRequestDetails"
         case startService = "user/services/startService"
-        
+        case acceptEditedBid =  "user/bids/acceptEditedBid"
+                
         var path : String {
             let url = baseUrl
             return url + self.rawValue

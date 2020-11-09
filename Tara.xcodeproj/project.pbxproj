@@ -224,6 +224,7 @@
 		84FF6EA5251DA3530000E2AD /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF6EA4251DA3530000E2AD /* ModelData.swift */; };
 		84FF6EA7251DCB460000E2AD /* URTyreSizeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF6EA6251DCB460000E2AD /* URTyreSizeVM.swift */; };
 		84FF6EA9251E0F400000E2AD /* TyreSizeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF6EA8251E0F400000E2AD /* TyreSizeModel.swift */; };
+		84FF9D602559154C00692FF0 /* ChatEditBidVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF9D5F2559154C00692FF0 /* ChatEditBidVC.swift */; };
 		A4098E742511FF800015B0BD /* RangeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4098E732511FF7F0015B0BD /* RangeSlider.swift */; };
 		A4098E762512274C0015B0BD /* FacilityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4098E752512274C0015B0BD /* FacilityVC.swift */; };
 		A4098E78251228050015B0BD /* FacilityTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4098E77251228050015B0BD /* FacilityTableHeaderView.swift */; };
@@ -576,6 +577,7 @@
 		84FF6EA4251DA3530000E2AD /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 		84FF6EA6251DCB460000E2AD /* URTyreSizeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URTyreSizeVM.swift; sourceTree = "<group>"; };
 		84FF6EA8251E0F400000E2AD /* TyreSizeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TyreSizeModel.swift; sourceTree = "<group>"; };
+		84FF9D5F2559154C00692FF0 /* ChatEditBidVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatEditBidVC.swift; sourceTree = "<group>"; };
 		87C28A2FABCB3D22226632AC /* Pods_Tara.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tara.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4098E732511FF7F0015B0BD /* RangeSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeSlider.swift; sourceTree = "<group>"; };
 		A4098E752512274C0015B0BD /* FacilityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityVC.swift; sourceTree = "<group>"; };
@@ -1360,6 +1362,7 @@
 			isa = PBXGroup;
 			children = (
 				8481FA7A2500CC2C00AB6EFB /* BaseVC.swift */,
+				84FF9D5E2559152700692FF0 /* ChatEditBidVC */,
 				843F582A254FAAC7008CFA03 /* OneToOneChatVC */,
 				84801CD32547FB7900F360FC /* ChatVC */,
 				84303E6A25064AF2000BA5C3 /* UnderDevelopmentVC */,
@@ -1787,6 +1790,14 @@
 				84FF6EA1251D8E990000E2AD /* BottomSheetTableCell.xib */,
 			);
 			path = BottomSheetVC;
+			sourceTree = "<group>";
+		};
+		84FF9D5E2559152700692FF0 /* ChatEditBidVC */ = {
+			isa = PBXGroup;
+			children = (
+				84FF9D5F2559154C00692FF0 /* ChatEditBidVC.swift */,
+			);
+			path = ChatEditBidVC;
 			sourceTree = "<group>";
 		};
 		A413B9732509E7A00004C534 /* GarageRegistrationVC */ = {
@@ -2624,6 +2635,7 @@
 				A41B7DF225552B7A005D1AC5 /* ReceiverLocationCell.swift in Sources */,
 				84144F2F252C8D9C00D6572F /* GarageServiceTopCell.swift in Sources */,
 				A43B53A72524B47000447B24 /* OngoingServiceListingVC.swift in Sources */,
+				84FF9D602559154C00692FF0 /* ChatEditBidVC.swift in Sources */,
 				84801CD22547F5D100F360FC /* FirestoreController.swift in Sources */,
 				8481FA712500BFFD00AB6EFB /* AppFonts.swift in Sources */,
 				843CD3A32505409C00945937 /* LoginWithPhoneViewModel.swift in Sources */,

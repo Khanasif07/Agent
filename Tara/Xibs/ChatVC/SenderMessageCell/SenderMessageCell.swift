@@ -42,6 +42,7 @@ extension SenderMessageCell {
     
     public func configureCellWith(model: Message) {
         self.senderMsgLbl.text = model.messageText
+        self.senderImgView.setImage_kf(imageString: UserModel.main.image, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
         let date = model.messageTime.dateValue()
         self.timeLbl.text = date.convertToTimeString()//"\(date.timeAgoSince)"
         self.contentView.layoutIfNeeded()

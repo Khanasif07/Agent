@@ -16,6 +16,7 @@ class ReceiverMediaCell: UITableViewCell {
     
     //    MARK: OUTLETS
     //    =============
+    @IBOutlet weak var userImgView: UIImageView!
     @IBOutlet weak var msgContainerView: UIView!
     @IBOutlet weak var mediaImageView: UIImageView!
     @IBOutlet weak var timeLabel: UILabel!
@@ -37,6 +38,7 @@ class ReceiverMediaCell: UITableViewCell {
         super.layoutSubviews()
         msgContainerView.roundCorners([.topLeft, .topRight, .bottomLeft], radius: 15)
         mediaImageView.round(radius: 4.0)
+        userImgView.round()
     }
     
 }
@@ -50,6 +52,7 @@ extension ReceiverMediaCell {
     }
     
     public func configureCellWith(model: Message) {
+        self.userImgView.setImage_kf(imageString: UserModel.main.image, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
         self.mediaImageView.setImage_kf(imageString: model.mediaUrl, placeHolderImage: #imageLiteral(resourceName: "icImg"), loader: true)
         let date = model.messageTime.dateValue()
         self.timeLabel.text = date.convertToTimeString()//"\(date.timeAgoSince)"

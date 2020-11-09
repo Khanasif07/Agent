@@ -39,6 +39,7 @@ class ReceiverMessageCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         msgContainerView.roundCorners([.topLeft, .topRight, .bottomRight], radius: 15)
+        receiverImgView.round()
     }
     
 }

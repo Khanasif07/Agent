@@ -30,6 +30,7 @@ class OneToOneChatVC: BaseVC {
     var inboxModel = Inbox()
     var firstName = ""
     var requestId = ""
+    var requestDetailId = ""
     var userImage = ""
     var imageController = UIImagePickerController()
     var alertController = UIAlertController()
@@ -64,6 +65,7 @@ class OneToOneChatVC: BaseVC {
     
     //MARK: OUTLETS
     //=============
+    @IBOutlet weak var editBtn: UIButton!
     @IBOutlet weak var progressVIew: UIProgressView!
     @IBOutlet weak var audioCancelBtn: UIButton!
     @IBOutlet weak var audioRecordBtn: UIButton!
@@ -187,6 +189,12 @@ class OneToOneChatVC: BaseVC {
         self.recordedUrl = nil
         audioRecordBtn.setImage(#imageLiteral(resourceName: "audioMsg"), for: .normal)
     }
+    
+    @IBAction func editBidBtnAction(_ sender: UIButton) {
+        AppRouter.goToChatEditBidVC(vc: self,requestId: requestDetailId)
+    }
+    
+    
 }
 
 //MARK: PRIVATE FUNCTIONS
@@ -196,6 +204,7 @@ extension OneToOneChatVC {
     private func initialSetup() {
 //        backgroundView.isHidden = false
 //        CommonFunctions.showActivityLoader()
+        editBtn.isHidden = !(isCurrentUserType == .garage)
         userRequestView.isHidden = true
         garageTopView.isHidden = true
         chatViewModel.delegate = self
@@ -511,6 +520,7 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                 let receiverAudioCell = tableView.dequeueCell(with: ReceiverAudioCell.self)
                 receiverAudioCell.setSlider(model: model)
                 receiverAudioCell.receiverNameLbl.text = self.firstName
+                receiverAudioCell.receiverImgView.setImage_kf(imageString: userImage, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
                 receiverAudioCell.receiverImgView.addGestureRecognizer(imgTap)
               
                 receiverAudioCell.playBtnTapped = { [weak self]  in
@@ -570,6 +580,7 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                 let receiverCell = tableView.dequeueCell(with: ReceiverMessageCell.self)
                 receiverCell.configureCellWith(model: model)
                 receiverCell.receiverNameLbl.text = self.firstName
+                receiverCell.receiverImgView.setImage_kf(imageString: userImage, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
                 self.setTapGesture(view: receiverCell.msgContainerView, indexPath: indexPath)
                 receiverCell.receiverImgView.addGestureRecognizer(imgTap)
                 return receiverCell
@@ -642,7 +653,6 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
             default:
                 let senderCell = tableView.dequeueCell(with: SenderMessageCell.self)
                 senderCell.configureCellWith(model: model)
-                senderCell.senderImgView.setImage_kf(imageString: userImage, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
                 //                senderCell.senderImgView.addGestureRecognizer(imgTap)
                 return senderCell
             }
@@ -1335,6 +1345,7 @@ extension OneToOneChatVC : OneToOneChatViewModelDelegate{
     func chatDataSuccess(msg: String) {
 //        backgroundView.isHidden = true
 //        CommonFunctions.hideActivityLoader()
+//        self.requestDetailId = chatViewModel.chatData.id
         if isCurrentUserType == .garage {
             tableViewTopConstraint.constant = 80.0
             userRequestView.isHidden = false

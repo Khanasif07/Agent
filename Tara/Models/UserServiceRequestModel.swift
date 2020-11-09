@@ -108,6 +108,7 @@ struct UserServiceRequestModel: Codable {
 // MARK: - PreferredBrand
 struct PreferredBrand: Codable {
     let id, name: String
+    var bidId : String? = ""
     let countrySpecificBrands : [String]?
     var isSelected: Bool?
     var amount: Double?
@@ -121,9 +122,11 @@ struct PreferredBrand: Codable {
         case isSelected
         case countrySpecificBrands ,countryName,countryId
         case amount
+        case bidId
         case quantity
     }
     init(){
+        bidId = ""
         id  = ""
         name  = ""
         isSelected = false

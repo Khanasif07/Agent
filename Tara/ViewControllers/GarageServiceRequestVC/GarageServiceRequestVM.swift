@@ -23,9 +23,13 @@ protocol GarageServiceRequestVMDelegate: class {
     func cancelBidFailure(error:String)
     func editPlacedBidDataSuccess(message: String)
     func editPlacedBidDataFailure(error:String)
+    func acceptEditedBidSuccess(message: String)
+    func acceptEditedBidFailure(error: String)
 }
 
 extension GarageServiceRequestVMDelegate {
+    func acceptEditedBidSuccess(message: String){}
+    func acceptEditedBidFailure(error: String){}
     func brandListingSuccess(message: String){}
     func brandListingFailed(error:String){}
     func cancelGarageRequestSuccess(message: String){}
@@ -36,7 +40,7 @@ class GarageServiceRequestVM {
     
     //MARK:- Variables
     //================
-    var makeId: String  = ""
+    var requestId: String  = ""
     var searchText: String = ""
     var hideLoader: Bool = false
     var currentPage = 1
@@ -68,16 +72,16 @@ class GarageServiceRequestVM {
     }
     
     func editPlacedBidData(params: JSONDictionary,loader: Bool = false) {
-           WebServices.editPlacedBidData(parameters: params, success: { [weak self] (json) in
-               guard let `self` = self else { return }
-               let msg = json[ApiKey.message].stringValue
-               self.delegate?.editPlacedBidDataSuccess(message: msg)
-               printDebug(msg)
-           }) { [weak self] (error) in
-               guard let `self` = self else { return }
-               self.delegate?.editPlacedBidDataFailure(error: error.localizedDescription)
-           }
-       }
+        WebServices.editPlacedBidData(parameters: params, success: { [weak self] (json) in
+            guard let `self` = self else { return }
+            let msg = json[ApiKey.message].stringValue
+            self.delegate?.editPlacedBidDataSuccess(message: msg)
+            printDebug(msg)
+        }) { [weak self] (error) in
+            guard let `self` = self else { return }
+            self.delegate?.editPlacedBidDataFailure(error: error.localizedDescription)
+        }
+    }
     
     func cancelBid(params: JSONDictionary,loader: Bool = true,pagination: Bool = false) {
         WebServices.bidCancelByUser(parameters: params, success: { [weak self] (json) in
@@ -177,6 +181,18 @@ class GarageServiceRequestVM {
                 self.delegate?.brandListingFailed(error: "error occured")
                 printDebug("error occured")
             }
+        }
+    }
+    
+    func acceptEditedBid(params: JSONDictionary,loader: Bool = false) {
+        WebServices.acceptEditedBid(parameters: params, success: { [weak self] (json) in
+            guard let `self` = self else { return }
+            let msg = json[ApiKey.message].stringValue
+            self.delegate?.acceptEditedBidSuccess(message: msg)
+            printDebug(msg)
+        }) { [weak self] (error) in
+            guard let `self` = self else { return }
+            self.delegate?.acceptEditedBidFailure(error: error.localizedDescription)
         }
     }
 }

@@ -90,6 +90,7 @@
                 <outlet property="mediaImageView" destination="cFC-Rv-m1P" id="pF2-dE-Ow7"/>
                 <outlet property="msgContainerView" destination="pHP-ee-gmj" id="DLe-rz-eqC"/>
                 <outlet property="timeLabel" destination="klW-r2-pNb" id="Xj8-ru-aDO"/>
+                <outlet property="userImgView" destination="Wer-j6-1Yx" id="kb6-fX-RNh"/>
             </connections>
             <point key="canvasLocation" x="138.40579710144928" y="159.375"/>
         </tableViewCell>

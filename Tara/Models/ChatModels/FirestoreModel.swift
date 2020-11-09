@@ -224,4 +224,7 @@ enum MessageType: String {
     case text = "text"
     case image = "image"
     case audio = "audio"
+    case location = "location"
+    case offer = "offer"
+    case payment = "payment"
 }

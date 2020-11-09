@@ -39,6 +39,7 @@ class SenderAudioCell: UITableViewCell {
     
     
     public func setSlider(model: Message){
+        self.senderImgView.setImage_kf(imageString: UserModel.main.image, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
         self.customSlider.minimumValue = 0
         self.customSlider.maximumValue = Float(model.messageDuration).rounded()
         self.customSlider.isContinuous = true
