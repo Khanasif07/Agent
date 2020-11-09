@@ -30,8 +30,10 @@ class ServiceStatusVC: BaseVC, BookedTyreRequestVMDelegate {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = true
+        self.tabBarController?.tabBar.isTranslucent = true
     }
-    
+  
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
@@ -104,6 +106,9 @@ extension ServiceStatusVC: UITableViewDelegate,UITableViewDataSource{
             
         }else {
             let cell = tableView.dequeueCell(with: ServiceStatusTableViewCell.self)
+            cell.populateData(status: viewModel.bookedRequestDetail?.serviceStatus ?? nil)
+            updateStatus(cell: cell)
+           
             return cell
         }
     }
@@ -118,11 +123,55 @@ extension ServiceStatusVC: UITableViewDelegate,UITableViewDataSource{
 }
 
 extension ServiceStatusVC: ServiceStatusVMDelegate {
+    func updateServiceStatusSuccess(msg: String) {
+        mainTableView.reloadData()
+    }
+    
+    func updateServiceStatusFailed(msg: String) {
+        
+    }
+    
     func bookedRequestDetailSuccess(msg: String) {
         mainTableView.reloadData()
     }
     
     func bookedRequestDetailFailed(msg: String) {
         
+    }
+}
+
+extension ServiceStatusVC {
+    func updateStatus(cell: ServiceStatusTableViewCell) {
+        cell.carReceivedUpdateBtnTapped = {[weak self] in
+            guard let `self` = self else { return }
+            AppRouter.openOtpPopUpVC(vc: self, requestByUser: self.viewModel.bookedRequestDetail?.userName ?? "",requestId: self.viewModel.bookedRequestDetail?.id ?? "")
+        }
+        
+        cell.inProgressUpdateBtnTapped = {[weak self] in
+            guard let `self` = self else { return }
+            self.viewModel.updateServiceStatus(params: [ApiKey.requestId : self.viewModel.bookedRequestDetail?.id ?? "", ApiKey.status : "in_progress"],loader: true)
+        }
+        
+        cell.completedUpdateBtnTapped = {
+            [weak self] in
+            guard let `self` = self else { return }
+            self.viewModel.updateServiceStatus(params: [ApiKey.requestId : self.viewModel.bookedRequestDetail?.id ?? "", ApiKey.status : "completed"],loader: true)
+        }
+        
+        cell.takenUpdateBtnTapped = { [weak self] in
+            guard let `self` = self else { return }
+            self.viewModel.updateServiceStatus(params: [ApiKey.requestId : self.viewModel.bookedRequestDetail?.id ?? "", ApiKey.status : "ready_to_be_taken"],loader: true)
+        }
+        
+        cell.yesBtnTapped = { [weak self] in
+            guard let `self` = self else { return }
+            printDebug("nothing to do")
+        }
+        
+        cell.noBtnTapped = { [weak self] in
+            guard let `self` = self else { return }
+            printDebug("nothing to do")
+        }
+
     }
 }

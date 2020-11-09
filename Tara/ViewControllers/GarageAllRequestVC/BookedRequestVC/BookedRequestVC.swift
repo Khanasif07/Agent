@@ -27,6 +27,12 @@ class BookedRequestVC: BaseVC {
         initialSetup()
     }
     
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+        self.tabBarController?.tabBar.isTranslucent = false
+    }
     // MARK: - IBActions
     //===========================
     

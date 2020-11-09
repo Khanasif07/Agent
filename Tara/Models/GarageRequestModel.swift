@@ -98,6 +98,20 @@ enum ServiceState : String, Codable{
     case inProgress = "in_progress"
     case completed = "completed"
     case readyToBeTaken = "ready_to_be_taken"
+    
+    var serviceBtnTitle: String {
+        switch self {
+        case .carReceived:
+            return "Car Received"
+        case .inProgress:
+            return "In Progress"
+        case .completed:
+            return "Completed"
+        case .readyToBeTaken:
+            return "Taken"
+        
+        }
+    }
 }
 
 struct GarageRequestModel: Codable {

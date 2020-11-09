@@ -13,13 +13,15 @@ import SwiftyJSON
 protocol ServiceStatusVMDelegate: class {
     func bookedRequestDetailSuccess(msg: String)
     func bookedRequestDetailFailed(msg: String)
+    func updateServiceStatusSuccess(msg: String)
+    func updateServiceStatusFailed(msg: String)
 }
 
 class ServiceStatusVM {
     
     // MARK: Variables
     //=================================
-    weak var delegate: BookedTyreRequestVMDelegate?
+    weak var delegate: ServiceStatusVMDelegate?
     var bookedRequestDetail : GarageRequestModel? = nil
     var requestType: Category = .tyres
     var hideLoader: Bool = false
@@ -41,6 +43,19 @@ class ServiceStatusVM {
         }) { [weak self] (error) in
             guard let `self` = self else { return }
             self.delegate?.bookedRequestDetailFailed(msg: error.localizedDescription)
+        }
+    }
+    
+    
+    func updateServiceStatus(params: JSONDictionary,loader: Bool = false) {
+        WebServices.serviceStatusApi(parameters: params, loader : loader,success: { [weak self] (json) in
+            guard let `self` = self else { return }
+            let msg = json[ApiKey.message].stringValue
+            self.delegate?.updateServiceStatusSuccess(msg: msg)
+            printDebug(json)
+        }) { [weak self] (error) in
+            guard let `self` = self else { return }
+            self.delegate?.updateServiceStatusFailed(msg: error.localizedDescription)
         }
     }
     

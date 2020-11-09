@@ -1002,4 +1002,16 @@ extension WebServices{
                failure(error)
            }
        }
+    
+    
+    //MARK:- Service Status Api
+    static func serviceStatusApi(parameters: JSONDictionary,loader: Bool = false,
+                                     success: @escaping SuccessResponse,
+                                     failure: @escaping FailureResponse) {
+        self.commonPutAPI(parameters: parameters, endPoint: .serviceStatus, success: { (json) in
+            success(json)
+        }) { (error) -> (Void) in
+            failure(error)
+        }
+    }
 }

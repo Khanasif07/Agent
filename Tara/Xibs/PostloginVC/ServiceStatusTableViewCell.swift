@@ -40,7 +40,13 @@ class ServiceStatusTableViewCell: UITableViewCell {
 
 
     //MARK:-Variables
-    
+    var carReceivedUpdateBtnTapped : (()->())?
+    var inProgressUpdateBtnTapped : (()->())?
+    var completedUpdateBtnTapped : (()->())?
+    var takenUpdateBtnTapped : (()->())?
+    var yesBtnTapped : (()->())?
+    var noBtnTapped : (()->())?
+
     //MARK:-LifeCycle
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -78,53 +84,82 @@ class ServiceStatusTableViewCell: UITableViewCell {
     
     //MARK:-Functions
     
-    func populateData(status: ServiceState) {
+    func populateData(status: ServiceState?) {
        
         if status == nil {
             carReceivedUpdateBtn.isHidden = false
-            carReceivedUpdateBtn.isUserInteractionEnabled = true
-            
+            carReceivedUpdateBtn.isEnabled = true
         }
         
         if status == .carReceived {
-            carReceivedStepBtn.setImage(#imageLiteral(resourceName: "icRgt"), for: .normal)
+            carReceivedLbl.textColor = AppColors.fontPrimaryColor
+            carReceivedStepBtn.setTitle(nil, for: .normal)
+            carReceivedStepBtn.setImage(#imageLiteral(resourceName: "group467"), for: .normal)
             carReceivedUpdateBtn.isHidden = true
+            progressUpdateBtn.isEnabled = true
         }
         
         if status == .inProgress {
-            carReceivedStepBtn.setImage(#imageLiteral(resourceName: "icRgt"), for: .normal)
+            carReceivedLbl.textColor = AppColors.fontPrimaryColor
+            progressLbl.textColor = AppColors.fontPrimaryColor
+            carReceivedStepBtn.setTitle(nil, for: .normal)
+            carReceivedStepBtn.setImage(#imageLiteral(resourceName: "group467"), for: .normal)
+            progressStepBtn.setImage(#imageLiteral(resourceName: "group467"), for: .normal)
+            progressStepBtn.setTitle(nil, for: .normal)
             carReceivedUpdateBtn.isHidden = true
-            progressStepBtn.setImage(#imageLiteral(resourceName: "icRgt"), for: .normal)
             progressUpdateBtn.isHidden = true
             carServiceLineView.backgroundColor = #colorLiteral(red: 0.07843137255, green: 0.6352941176, blue: 0.5411764706, alpha: 1)
-            
+            completeUpdateBtn.isEnabled = true
+
         }
         
         if status == .completed {
-            carReceivedStepBtn.setImage(#imageLiteral(resourceName: "icRgt"), for: .normal)
+            carReceivedLbl.textColor = AppColors.fontPrimaryColor
+            progressLbl.textColor = AppColors.fontPrimaryColor
+            completeLbl.textColor = AppColors.fontPrimaryColor
+         
+            carReceivedStepBtn.setTitle(nil, for: .normal)
+            carReceivedStepBtn.setImage(#imageLiteral(resourceName: "group467"), for: .normal)
             carReceivedUpdateBtn.isHidden = true
-            progressStepBtn.setImage(#imageLiteral(resourceName: "icRgt"), for: .normal)
+            
+            progressStepBtn.setImage(#imageLiteral(resourceName: "group467"), for: .normal)
+            progressStepBtn.setTitle(nil, for: .normal)
             progressUpdateBtn.isHidden = true
-            completeStepBtn.setImage(#imageLiteral(resourceName: "icRgt"), for: .normal)
+           
+            completeStepBtn.setImage(#imageLiteral(resourceName: "group467"), for: .normal)
             completeUpdateBtn.isHidden = true
+            completeStepBtn.setTitle(nil, for: .normal)
             carServiceLineView.backgroundColor = #colorLiteral(red: 0.07843137255, green: 0.6352941176, blue: 0.5411764706, alpha: 1)
             completedLineView.backgroundColor = #colorLiteral(red: 0.07843137255, green: 0.6352941176, blue: 0.5411764706, alpha: 1)
+            
+            takenUpdateBtn.isEnabled = true
         }
         
         if status == .readyToBeTaken {
-            carReceivedStepBtn.setImage(#imageLiteral(resourceName: "icRgt"), for: .normal)
+            carReceivedLbl.textColor = AppColors.fontPrimaryColor
+            progressLbl.textColor = AppColors.fontPrimaryColor
+            completeLbl.textColor = AppColors.fontPrimaryColor
+            takenLbl.textColor = AppColors.fontPrimaryColor
+
+            carReceivedStepBtn.setTitle(nil, for: .normal)
+            carReceivedStepBtn.setImage(#imageLiteral(resourceName: "group467"), for: .normal)
             carReceivedUpdateBtn.isHidden = true
-            progressStepBtn.setImage(#imageLiteral(resourceName: "icRgt"), for: .normal)
+            
+            progressStepBtn.setTitle(nil, for: .normal)
+            progressStepBtn.setImage(#imageLiteral(resourceName: "group467"), for: .normal)
             progressUpdateBtn.isHidden = true
-            completeStepBtn.setImage(#imageLiteral(resourceName: "icRgt"), for: .normal)
+           
+            completeStepBtn.setImage(#imageLiteral(resourceName: "group467"), for: .normal)
+            completeStepBtn.setTitle(nil, for: .normal)
             completeUpdateBtn.isHidden = true
-            takenStepBtn.setImage(#imageLiteral(resourceName: "icRgt"), for: .normal)
+          
+            takenStepBtn.setImage(#imageLiteral(resourceName: "group467"), for: .normal)
+            takenStepBtn.setTitle(nil, for: .normal)
             takenUpdateBtn.isHidden = true
+           
             carServiceLineView.backgroundColor = #colorLiteral(red: 0.07843137255, green: 0.6352941176, blue: 0.5411764706, alpha: 1)
             completedLineView.backgroundColor = #colorLiteral(red: 0.07843137255, green: 0.6352941176, blue: 0.5411764706, alpha: 1)
             readyToBeTakenLineView.backgroundColor = #colorLiteral(red: 0.07843137255, green: 0.6352941176, blue: 0.5411764706, alpha: 1)
-            
-            carRecievedStackView.isHidden = false
         }
     }
     
@@ -132,28 +167,28 @@ class ServiceStatusTableViewCell: UITableViewCell {
     //MARK:- IBActions
    
     @IBAction func carReceivedBtnAction(_ sender : UIButton) {
-        
+        carReceivedUpdateBtnTapped?()
     }
    
     @IBAction func progressBtnAction(_ sender : UIButton) {
-        
+        inProgressUpdateBtnTapped?()
     }
     
     @IBAction func completeBtnAction(_ sender : UIButton) {
-        
+        completedUpdateBtnTapped?()
     }
     
     @IBAction func takenBtnAction(_ sender : UIButton) {
-        
+        takenUpdateBtnTapped?()
     }
     
     
     @IBAction func yesBtnAction(_ sender : UIButton) {
-        
+        yesBtnTapped?()
     }
     
     
     @IBAction func noBtnAction(_ sender : UIButton) {
-        
+        noBtnTapped?()
     }
 }

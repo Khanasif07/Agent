@@ -97,8 +97,12 @@ class BookedRequestTableCell: UITableViewCell {
         
         str.append(NSAttributedString(string: "SAR", attributes: [NSAttributedString.Key.foregroundColor: AppColors.successGreenColor,NSAttributedString.Key.font: AppFonts.NunitoSansSemiBold.withSize(12.0)]))
         payableAmtValueLbl.attributedText = str
-        
+       
+        if let btnText = model.serviceStatus?.serviceBtnTitle {
+            startServiceBtn.setTitle(btnText, for: .normal)
+        }else {
+            startServiceBtn.setTitle(LocalizedString.startService.localized, for: .normal)
+        }
     }
-
 }
 
