@@ -885,6 +885,18 @@ extension WebServices{
             failure(error)
         }
     }
+    
+    // MARK:- Accept Edited  Bid Data
+    //=================
+    static func acceptEditedBid(parameters: JSONDictionary,
+                                        success: @escaping SuccessResponse,
+                                        failure: @escaping FailureResponse) {
+        self.commonGetAPI(parameters: parameters, endPoint: .acceptEditedBid, success: { (json) in
+            success(json)
+        }) { (error) -> (Void) in
+            failure(error)
+        }
+    }
 
     
     static func userRequestResend(parameters: JSONDictionary,loader: Bool = false,

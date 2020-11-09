@@ -71,6 +71,7 @@ extension WebServices {
         case chatData = "user/chatData"
         case bookedRequest = "user/services/bookedRequests"
         case bookedRequestDetail =  "user/services/bookedRequestDetails"
+        case acceptEditedBid =  "user/bids/acceptEditedBid"
         
         
         var path : String {

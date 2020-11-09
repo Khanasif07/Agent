@@ -9,7 +9,7 @@
 import Foundation
 
 struct ChatModel: Codable {
-    let garageName: String
+    let garageName: String?
     let longitude, latitude: Double
     let garageImage: String
     let totalAmount: Int

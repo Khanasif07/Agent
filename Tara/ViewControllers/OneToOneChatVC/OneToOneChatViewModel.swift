@@ -51,11 +51,12 @@ class OneToOneChatViewModel {
     func parseToMakeListingData(result: JSON) {
         if let jsonString = result[ApiKey.data].rawString(), let data = jsonString.data(using: .utf8) {
             do {
-//                if result[ApiKey.data].arrayValue.isEmpty {
-//                    self.hideLoader = true
-//                    isRequestinApi = false
-//                    return
-//                }
+                if result[ApiKey.data].arrayValue.isEmpty {
+                    self.hideLoader = true
+                    self.chatData = ChatModel()
+                    isRequestinApi = false
+                    return
+                }
                 let modelList = try! JSONDecoder().decode(ChatModel.self, from: data)
                 printDebug(modelList)
                 currentPage = result[ApiKey.data][ApiKey.page].intValue
