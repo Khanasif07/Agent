@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="NunitoSans-Bold.ttf">
+            <string>NunitoSans-Bold</string>
+        </array>
+        <array key="NunitoSans-SemiBold.ttf">
+            <string>NunitoSans-SemiBold</string>
+        </array>
+        <array key="Proxima Nova Regular.otf">
+            <string>ProximaNova-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="190" id="Kps-EH-taQ" customClass="ReceiverOfferCell" customModule="Tara" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="170"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Kps-EH-taQ" id="RJU-wq-FnN">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="170"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NA" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EIf-Qf-ksA">
+                        <rect key="frame" x="68" y="5" width="16.5" height="15.5"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15.5" id="4kZ-67-sr6"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeHolder" translatesAutoresizingMaskIntoConstraints="NO" id="0Bx-N1-lmh">
+                        <rect key="frame" x="24" y="25.5" width="36" height="36"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="36" id="ifq-hI-Wbh"/>
+                            <constraint firstAttribute="width" secondItem="0Bx-N1-lmh" secondAttribute="height" multiplier="1:1" id="jvI-Zf-56a"/>
+                        </constraints>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7T7-rS-tQb">
+                        <rect key="frame" x="68" y="25.5" width="203" height="124.5"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="cBW-N7-54y">
+                                <rect key="frame" x="73.5" y="8" width="56.5" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Offer price" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VAM-cU-SdJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="56.5" height="21"/>
+                                        <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="12"/>
+                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PYU-vh-QHd">
+                                        <rect key="frame" x="0.0" y="24" width="56.5" height="26"/>
+                                        <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="22"/>
+                                        <color key="textColor" name="outgoingMessageBackground"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="fnw-LO-D1m">
+                                <rect key="frame" x="114" y="116.5" width="18.5" height="12"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--:--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YOe-sG-L2H">
+                                        <rect key="frame" x="0.0" y="0.0" width="18.5" height="12"/>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="10"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="GMT-c3-IaD">
+                                <rect key="frame" x="0.0" y="71.5" width="198" height="43"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GXT-uJ-3Kg">
+                                        <rect key="frame" x="0.0" y="0.0" width="198" height="1"/>
+                                        <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="meA-vy-S88"/>
+                                        </constraints>
+                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="xX3-ra-hml">
+                                        <rect key="frame" x="80" y="9" width="118" height="34"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sur-6E-MdE" customClass="AppButton" customModule="Tara" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="55" height="34"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="55" id="tv1-g8-Ebf"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="14"/>
+                                                <state key="normal" title="Reject">
+                                                    <color key="titleColor" name="appRedColor"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" name="appRedColor"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Uw-5x-Mf2" customClass="AppButton" customModule="Tara" customModuleProvider="target">
+                                                <rect key="frame" x="63" y="0.0" width="55" height="34"/>
+                                                <color key="backgroundColor" name="appRedColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="34" id="qn8-hE-aTf"/>
+                                                    <constraint firstAttribute="width" constant="55" id="xaa-0b-w5B"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="14"/>
+                                                <state key="normal" title="Accept">
+                                                    <color key="titleColor" name="collectionViewBackground"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="198" id="xgm-KL-hnE"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.95686274510000002" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="cBW-N7-54y" firstAttribute="top" secondItem="7T7-rS-tQb" secondAttribute="top" constant="8" id="9ft-BH-Pb3"/>
+                            <constraint firstItem="GMT-c3-IaD" firstAttribute="leading" secondItem="7T7-rS-tQb" secondAttribute="leading" id="BYg-ja-typ"/>
+                            <constraint firstItem="GMT-c3-IaD" firstAttribute="top" secondItem="cBW-N7-54y" secondAttribute="bottom" constant="13.5" id="Fhm-r8-rz6"/>
+                            <constraint firstItem="cBW-N7-54y" firstAttribute="centerX" secondItem="7T7-rS-tQb" secondAttribute="centerX" id="IjU-qc-Tfh"/>
+                            <constraint firstAttribute="trailing" secondItem="GMT-c3-IaD" secondAttribute="trailing" constant="10" id="OSX-k3-xLr"/>
+                            <constraint firstItem="GXT-uJ-3Kg" firstAttribute="width" secondItem="7T7-rS-tQb" secondAttribute="width" multiplier="0.975369" id="dXc-kN-xEX"/>
+                            <constraint firstAttribute="bottom" secondItem="GMT-c3-IaD" secondAttribute="bottom" constant="10" id="nNE-uG-Ef2"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="0Bx-N1-lmh" firstAttribute="leading" secondItem="RJU-wq-FnN" secondAttribute="leading" constant="24" id="4UR-Xz-srN"/>
+                    <constraint firstItem="0Bx-N1-lmh" firstAttribute="width" secondItem="0Bx-N1-lmh" secondAttribute="height" multiplier="1:1" id="5Ca-dC-ubd"/>
+                    <constraint firstItem="7T7-rS-tQb" firstAttribute="leading" secondItem="0Bx-N1-lmh" secondAttribute="trailing" constant="8" id="K4M-oG-FnM"/>
+                    <constraint firstAttribute="bottom" secondItem="7T7-rS-tQb" secondAttribute="bottom" constant="20" id="RBd-Q7-X5r"/>
+                    <constraint firstItem="EIf-Qf-ksA" firstAttribute="leading" secondItem="7T7-rS-tQb" secondAttribute="leading" id="WUm-CY-Rh2"/>
+                    <constraint firstItem="7T7-rS-tQb" firstAttribute="top" secondItem="EIf-Qf-ksA" secondAttribute="bottom" constant="5" id="XfV-8E-Nud"/>
+                    <constraint firstItem="0Bx-N1-lmh" firstAttribute="top" secondItem="7T7-rS-tQb" secondAttribute="top" id="YNx-Jz-N27"/>
+                    <constraint firstItem="7T7-rS-tQb" firstAttribute="top" secondItem="RJU-wq-FnN" secondAttribute="top" constant="25.5" id="bCO-fa-iP6"/>
+                    <constraint firstAttribute="trailing" secondItem="7T7-rS-tQb" secondAttribute="trailing" constant="104" id="icU-5A-inK"/>
+                    <constraint firstItem="EIf-Qf-ksA" firstAttribute="top" secondItem="RJU-wq-FnN" secondAttribute="top" constant="5" id="zBF-UR-w6d"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="D0G-1W-ITj"/>
+            <connections>
+                <outlet property="msgContainerView" destination="7T7-rS-tQb" id="tF2-GC-pdO"/>
+                <outlet property="priceLbl" destination="PYU-vh-QHd" id="2ds-PM-HHY"/>
+                <outlet property="userImgView" destination="0Bx-N1-lmh" id="FSz-t5-cTI"/>
+                <outlet property="userNameLbl" destination="EIf-Qf-ksA" id="HDA-Df-Efd"/>
+            </connections>
+            <point key="canvasLocation" x="138.40579710144928" y="159.04017857142856"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="placeHolder" width="80" height="80"/>
+        <namedColor name="appRedColor">
+            <color red="0.87800002098083496" green="0.13699999451637268" blue="0.25900000333786011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="collectionViewBackground">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+        <namedColor name="outgoingMessageBackground">
+            <color red="0.20399999618530273" green="0.77999997138977051" blue="0.34900000691413879" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

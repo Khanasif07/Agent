@@ -25,6 +25,7 @@ enum ApiKey {
     static var userType : String { return "userType"}
     static var userId : String { return "userId"}
     static var block : String { return "block"}
+    static var price : String { return "price"}
     static var messageDuration : String { return "messageDuration"}
     
     static var name : String {return "name"}
@@ -241,6 +242,8 @@ enum ApiKey {
     static var phoneChanged: String {return "phoneChanged"}
     static var emailChanged: String {return "emailChanged"}
     static var garageId: String {return "garageId"}
+    static var acceptedProposalId: String {return "acceptedProposalId"}
+       
 
 
 
@@ -273,5 +276,5 @@ enum ApiCode {
     
     static var phoneNumberUpdated: Int {return 250} // only phone number on edit profile (user)
     static var emailUpdated: Int {return 251} // email  updated
-    static var phoneEmailUpdated: Int {return 252} // phone and email updated
+    static var phoneEmailUpdated: Int {return 252} // phone and email update
 }

@@ -9,6 +9,10 @@
 import UIKit
 import DZNEmptyDataSet
 
+protocol ChatEditBidVCDelegate : class{
+    func bidEditSuccess(price: Int)
+}
+
 class ChatEditBidVC: BaseVC {
     
     enum Section {
@@ -32,11 +36,14 @@ class ChatEditBidVC: BaseVC {
     // MARK: - Variables
     //===========================
     var quantity : Int = 0
+    var amount : Int = 0
     var bidStatus : BidStatus = .bidFinalsed
     var selectedCountry: String  = ""
+    var acceptedProposalId : String  = ""
     var sectionType : [Section] = [.brandListing]
     var brandsType : BrandsType = .onlyBrands
     let viewModel = GarageServiceRequestVM()
+    weak var delegate : ChatEditBidVCDelegate?
     
     // MARK: - Lifecycle
     //===========================
@@ -63,7 +70,8 @@ class ChatEditBidVC: BaseVC {
             var dict  = JSONDictionary()
             dict[ApiKey.brandName] = model.name
             dict[ApiKey.brandId] = model.id
-//            dict[ApiKey.bidId] = model.bidId
+            self.acceptedProposalId = model.bidId ?? ""
+            self.amount = Int(model.amount ?? 0)
             if brandsType == .countryBrands {
                 dict[ApiKey.countryId] = model.countryId
                 dict[ApiKey.countryName] = model.countryName
@@ -77,7 +85,7 @@ class ChatEditBidVC: BaseVC {
             selectedDict.append(dict)
         }
         if bidAmountValid {
-            self.viewModel.editPlacedBidData(params: [ApiKey.requestId:viewModel.requestId,ApiKey.bidData: selectedDict])
+            self.viewModel.editPlacedBidData(params: [ApiKey.requestId: viewModel.requestId,ApiKey.bidData: selectedDict,ApiKey.acceptedProposalId: self.acceptedProposalId ])
 //            self.viewModel.acceptEditedBid(params: [ApiKey.bidId: selectedDict.first?[ApiKey.bidId] ?? ""])
         }else {
             CommonFunctions.showToastWithMessage("Unit Price should not be 0 or empty")
@@ -283,8 +291,9 @@ extension ChatEditBidVC :GarageServiceRequestVMDelegate {
     }
     
     func editPlacedBidDataSuccess(message: String) {
+        self.delegate?.bidEditSuccess(price: self.amount)
         NotificationCenter.default.post(name: Notification.Name.PlaceBidRejectBidSuccess, object: nil)
-        pop()
+        self.dismiss(animated: true, completion: nil)
     }
     
     func editPlacedBidDataFailure(error: String) {

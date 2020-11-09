@@ -12,7 +12,7 @@ struct ChatModel: Codable {
     let garageName: String?
     let longitude, latitude: Double
     let garageImage: String
-    let totalAmount: Int
+    let totalAmount: Int?
     let address: String?
     let garageID : String
     let garageAddress: String?

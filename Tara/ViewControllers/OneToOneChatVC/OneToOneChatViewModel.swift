@@ -51,7 +51,7 @@ class OneToOneChatViewModel {
     func parseToMakeListingData(result: JSON) {
         if let jsonString = result[ApiKey.data].rawString(), let data = jsonString.data(using: .utf8) {
             do {
-                if result[ApiKey.data].arrayValue.isEmpty {
+                if result[ApiKey.data][ApiKey._id].stringValue.isEmpty {
                     self.hideLoader = true
                     self.chatData = ChatModel()
                     isRequestinApi = false

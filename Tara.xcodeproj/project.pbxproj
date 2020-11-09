@@ -225,6 +225,8 @@
 		84FF6EA7251DCB460000E2AD /* URTyreSizeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF6EA6251DCB460000E2AD /* URTyreSizeVM.swift */; };
 		84FF6EA9251E0F400000E2AD /* TyreSizeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF6EA8251E0F400000E2AD /* TyreSizeModel.swift */; };
 		84FF9D602559154C00692FF0 /* ChatEditBidVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF9D5F2559154C00692FF0 /* ChatEditBidVC.swift */; };
+		84FF9D642559677F00692FF0 /* ReceiverOfferCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF9D622559677F00692FF0 /* ReceiverOfferCell.swift */; };
+		84FF9D652559677F00692FF0 /* ReceiverOfferCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84FF9D632559677F00692FF0 /* ReceiverOfferCell.xib */; };
 		A4098E742511FF800015B0BD /* RangeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4098E732511FF7F0015B0BD /* RangeSlider.swift */; };
 		A4098E762512274C0015B0BD /* FacilityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4098E752512274C0015B0BD /* FacilityVC.swift */; };
 		A4098E78251228050015B0BD /* FacilityTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4098E77251228050015B0BD /* FacilityTableHeaderView.swift */; };
@@ -578,6 +580,8 @@
 		84FF6EA6251DCB460000E2AD /* URTyreSizeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URTyreSizeVM.swift; sourceTree = "<group>"; };
 		84FF6EA8251E0F400000E2AD /* TyreSizeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TyreSizeModel.swift; sourceTree = "<group>"; };
 		84FF9D5F2559154C00692FF0 /* ChatEditBidVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatEditBidVC.swift; sourceTree = "<group>"; };
+		84FF9D622559677F00692FF0 /* ReceiverOfferCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiverOfferCell.swift; sourceTree = "<group>"; };
+		84FF9D632559677F00692FF0 /* ReceiverOfferCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReceiverOfferCell.xib; sourceTree = "<group>"; };
 		87C28A2FABCB3D22226632AC /* Pods_Tara.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tara.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4098E732511FF7F0015B0BD /* RangeSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeSlider.swift; sourceTree = "<group>"; };
 		A4098E752512274C0015B0BD /* FacilityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityVC.swift; sourceTree = "<group>"; };
@@ -1209,6 +1213,7 @@
 		8473414C254ADD1C0083E8D1 /* ChatVC */ = {
 			isa = PBXGroup;
 			children = (
+				84FF9D612559675200692FF0 /* ReceiverOfferCell */,
 				84CAEFC22552B69500F3A329 /* ReceiverAudioCell */,
 				84CAEFBD2552B45C00F3A329 /* SenderAudioCell */,
 				84CAEFB82550F58500F3A329 /* DayValueCell */,
@@ -1798,6 +1803,15 @@
 				84FF9D5F2559154C00692FF0 /* ChatEditBidVC.swift */,
 			);
 			path = ChatEditBidVC;
+			sourceTree = "<group>";
+		};
+		84FF9D612559675200692FF0 /* ReceiverOfferCell */ = {
+			isa = PBXGroup;
+			children = (
+				84FF9D622559677F00692FF0 /* ReceiverOfferCell.swift */,
+				84FF9D632559677F00692FF0 /* ReceiverOfferCell.xib */,
+			);
+			path = ReceiverOfferCell;
 			sourceTree = "<group>";
 		};
 		A413B9732509E7A00004C534 /* GarageRegistrationVC */ = {
@@ -2390,6 +2404,7 @@
 				8446AB50252D53B3005A1350 /* GarageServiceCountryCell.xib in Resources */,
 				A4CC3250252CB10C00669F39 /* RequestDetailCollectionViewCell.xib in Resources */,
 				A4A6DEF0251A157C00564020 /* GarageHomeTableCell.xib in Resources */,
+				84FF9D652559677F00692FF0 /* ReceiverOfferCell.xib in Resources */,
 				A441A676252CD5F600B5420B /* DashedCollectionViewCell.xib in Resources */,
 				844EB71525187CD0003A6E3F /* URTyreSizeTableCell.xib in Resources */,
 				A4CC324C252CAC3000669F39 /* ServiceDetailCollectionViewCell.xib in Resources */,
@@ -2626,6 +2641,7 @@
 				8481FA612500BF9300AB6EFB /* AppUserDefaults.swift in Sources */,
 				84303E69250649D4000BA5C3 /* UserTabBarController.swift in Sources */,
 				A4DA01DB2553075200AC60DB /* ReviewAndRatingTableViewCell.swift in Sources */,
+				84FF9D642559677F00692FF0 /* ReceiverOfferCell.swift in Sources */,
 				84F65BC4253D4D8D00AF7443 /* GarageHomeCollCell.swift in Sources */,
 				8481FA572500BF1A00AB6EFB /* URLExtension.swift in Sources */,
 				84594806252B082500C0B249 /* AllRequestVC.swift in Sources */,
