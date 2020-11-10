@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kSb-bi-wAD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kSb-bi-wAD">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -39,7 +39,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wbz-ok-9no">
-                                        <rect key="frame" x="188.5" y="16.5" width="37" height="23.5"/>
+                                        <rect key="frame" x="188.5" y="18" width="37" height="20"/>
                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -322,13 +322,17 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a69-qq-VXB">
-                                        <rect key="frame" x="345" y="12.5" width="53" height="30"/>
+                                        <rect key="frame" x="368" y="12.5" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="EwT-DX-tuB"/>
+                                            <constraint firstAttribute="width" constant="30" id="jlZ-Ae-d0M"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="15"/>
-                                        <state key="normal" title="Edit Bid">
+                                        <state key="normal" image="iconDot">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="editBidBtnAction:" destination="zj2-p6-7pB" eventType="touchUpInside" id="Jqe-kP-WhT"/>
+                                            <action selector="editBtnAction:" destination="zj2-p6-7pB" eventType="touchUpInside" id="OHM-aV-aOk"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EOI-rP-mh5">
@@ -541,6 +545,45 @@
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Opo-7I-QwF" secondAttribute="trailing" constant="20" id="xPD-dq-adC"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fGU-Bo-btL">
+                                <rect key="frame" x="274" y="89" width="130" height="80"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="5BC-Rq-vvU">
+                                        <rect key="frame" x="0.0" y="0.0" width="130" height="80"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MtD-lT-K4F">
+                                                <rect key="frame" x="0.0" y="0.0" width="130" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="9Bg-LV-Nfn"/>
+                                                </constraints>
+                                                <state key="normal" title="UnBlock">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="blockBtnAction:" destination="zj2-p6-7pB" eventType="touchUpInside" id="EWN-MV-DeA"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RgN-1k-Z7o">
+                                                <rect key="frame" x="0.0" y="40" width="130" height="40"/>
+                                                <state key="normal" title="Edit Bid">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="editBidBtnAction:" destination="zj2-p6-7pB" eventType="touchUpInside" id="4aT-NP-aHv"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="5BC-Rq-vvU" secondAttribute="bottom" id="4gR-Kf-FZv"/>
+                                    <constraint firstAttribute="trailing" secondItem="5BC-Rq-vvU" secondAttribute="trailing" id="5F7-dB-DIj"/>
+                                    <constraint firstAttribute="width" constant="130" id="7TV-SI-JYH"/>
+                                    <constraint firstItem="5BC-Rq-vvU" firstAttribute="leading" secondItem="fGU-Bo-btL" secondAttribute="leading" id="Cst-vW-wqS"/>
+                                    <constraint firstItem="5BC-Rq-vvU" firstAttribute="top" secondItem="fGU-Bo-btL" secondAttribute="top" id="bt0-fd-ji2"/>
+                                </constraints>
+                            </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7vw-AB-AZ8">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -558,7 +601,9 @@
                             <constraint firstItem="Bw7-xE-W3Q" firstAttribute="top" secondItem="Abs-De-h3M" secondAttribute="top" id="CLC-EG-cXd"/>
                             <constraint firstItem="OwT-36-nPL" firstAttribute="top" secondItem="nAy-Hg-tIu" secondAttribute="top" id="CUs-SE-yQv"/>
                             <constraint firstItem="nAy-Hg-tIu" firstAttribute="top" secondItem="Jas-en-Ecr" secondAttribute="bottom" id="EGc-7r-H9A"/>
+                            <constraint firstItem="fGU-Bo-btL" firstAttribute="top" secondItem="Jas-en-Ecr" secondAttribute="bottom" constant="-10" id="F1q-8o-d2W"/>
                             <constraint firstItem="ii9-WE-KQV" firstAttribute="trailing" secondItem="Jas-en-Ecr" secondAttribute="trailing" id="Lhc-68-Dnr"/>
+                            <constraint firstItem="fGU-Bo-btL" firstAttribute="trailing" secondItem="Jas-en-Ecr" secondAttribute="trailing" constant="-10" id="Ma1-B9-BWA"/>
                             <constraint firstItem="Bw7-xE-W3Q" firstAttribute="leading" secondItem="lco-eK-Vpf" secondAttribute="leading" constant="2" id="N7m-Yu-6Nk"/>
                             <constraint firstItem="Jas-en-Ecr" firstAttribute="leading" secondItem="ii9-WE-KQV" secondAttribute="leading" id="Og5-lu-3kS"/>
                             <constraint firstItem="Bw7-xE-W3Q" firstAttribute="bottom" secondItem="Abs-De-h3M" secondAttribute="bottom" id="YMY-0n-PBA"/>
@@ -581,8 +626,10 @@
                         <outlet property="audioRecordBtn" destination="h6L-Rd-vlz" id="aeD-w7-mzs"/>
                         <outlet property="backgroundView" destination="7vw-AB-AZ8" id="t3N-Lq-TB8"/>
                         <outlet property="bottomContainerView" destination="R7B-FN-c9J" id="L04-Qo-GON"/>
+                        <outlet property="btnContaninerView" destination="fGU-Bo-btL" id="ygP-eS-yeH"/>
                         <outlet property="containerScrollView" destination="nAy-Hg-tIu" id="YD4-8a-VEc"/>
-                        <outlet property="editBtn" destination="a69-qq-VXB" id="h6V-q3-JjT"/>
+                        <outlet property="editBidBtn" destination="RgN-1k-Z7o" id="DP4-6v-Rhe"/>
+                        <outlet property="editBtn" destination="a69-qq-VXB" id="ePF-wa-tNb"/>
                         <outlet property="garageAddressLbl" destination="11l-bD-SWn" id="yQQ-dy-wuV"/>
                         <outlet property="garageAmountValueLbl" destination="Mvd-tT-99o" id="FbZ-tl-7cS"/>
                         <outlet property="garageImgView" destination="Da9-Ls-ekl" id="8Eg-63-YwP"/>
@@ -607,6 +654,7 @@
                         <outlet property="timerView" destination="Bw7-xE-W3Q" id="COa-1D-RyI"/>
                         <outlet property="titleLabel" destination="hDE-W8-g3n" id="3CY-Nb-cTI"/>
                         <outlet property="topView" destination="Jas-en-Ecr" id="ocF-zr-v94"/>
+                        <outlet property="unblockBtn" destination="MtD-lT-K4F" id="NUW-CW-iWY"/>
                         <outlet property="userImgView" destination="qrE-dg-XlJ" id="2L6-7B-1DB"/>
                         <outlet property="userNameLbl" destination="5DH-hZ-vgs" id="cGJ-IJ-Ov1"/>
                         <outlet property="userRequestView" destination="OwT-36-nPL" id="RfF-sV-ZGO"/>
@@ -738,10 +786,10 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="4ff-AM-N7z">
-                            <rect key="frame" x="16" y="16" width="387" height="18"/>
+                            <rect key="frame" x="16" y="16" width="387" height="15.5"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please fill the options to edit bid." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tYC-df-CbU">
-                                    <rect key="frame" x="0.0" y="0.0" width="196" height="18"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="190" height="15.5"/>
                                     <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="13"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -768,6 +816,7 @@
         <image name="group3603" width="30" height="30"/>
         <image name="icArrow" width="30" height="30"/>
         <image name="icBackward" width="36" height="34"/>
+        <image name="iconDot" width="30" height="30"/>
         <image name="placeHolder" width="80" height="80"/>
         <namedColor name="appRedColor">
             <color red="0.87800002098083496" green="0.13699999451637268" blue="0.25900000333786011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

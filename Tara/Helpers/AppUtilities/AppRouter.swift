@@ -66,6 +66,11 @@ enum AppRouter {
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
+    static func goToServiceCompletedVC(vc: UIViewController){
+        let scene = ServiceCompletedVC.instantiate(fromAppStoryboard: .GarageRequest)
+        vc.navigationController?.pushViewController(scene, animated: true)
+    }
+    
     static func goToEditProfileVC(vc: UIViewController & EditProfileVCDelegate,model: UserModel,isEditProfileFrom : EditProfileFrom){
         let scene = EditProfileVC.instantiate(fromAppStoryboard: .PostLogin)
         scene.delegate = vc

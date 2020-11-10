@@ -62,8 +62,8 @@ extension ServiceCompletedVC {
     }
     
     private func hitApi(loader: Bool = false) {
-        let dict = [ApiKey.garageId : self.garageId ,ApiKey.page:"1", ApiKey.limit: "20"]
-//        viewModel.fetchReviewListing(params: dict, loader: loader)
+        let dict = [ApiKey.page:"1", ApiKey.limit: "20"]
+        viewModel.fetchServiceCompleteListing(params: dict, loader: loader)
     }
     
     @objc func refreshWhenPull(_ sender: UIRefreshControl) {
@@ -96,12 +96,12 @@ extension ServiceCompletedVC :UITableViewDelegate, UITableViewDataSource{
 }
 
 extension ServiceCompletedVC: ServiceCompletedVMDelegate{
-   
-    func ServiceCompleteApiSuccess(msg: String) {
+
+    func serviceCompleteApiSuccess(msg: String) {
         mainTableView.reloadData()
     }
     
-    func ServiceCompleteApiFailure(msg: String) {
+    func serviceCompleteApiFailure(msg: String) {
         
     }
 }

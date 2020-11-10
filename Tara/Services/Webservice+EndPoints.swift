@@ -74,6 +74,7 @@ extension WebServices {
         case startService = "user/services/startService"
         case acceptEditedBid =  "user/bids/acceptEditedBid"
         case serviceStatus = "user/services/serviceStatus"
+        case garageCompletedServices = "user/services/garageCompletedServices"
         
         var path : String {
             let url = baseUrl

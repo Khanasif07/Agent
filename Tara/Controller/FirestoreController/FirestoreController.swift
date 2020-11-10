@@ -202,7 +202,8 @@ class FirestoreController:NSObject{
     
     //MARK:- CREATE LAST MESSAGE NODE
     //===============================
-    static func createLastMessageNode(roomId:String,messageText:String,messageTime:FieldValue,messageId:String,messageType:String,messageStatus:Int,senderId:String,receiverId:String,mediaUrl:String,blocked: Bool, thumbNailURL: String,messageDuration: Int,price: Int) {
+    static func createLastMessageNode(roomId:String,messageText:String,messageTime:FieldValue,messageId:String,messageType:String,messageStatus:Int,senderId:String,receiverId:String,mediaUrl:String,blocked: Bool, thumbNailURL: String,messageDuration: Int,price: Int, amIBlocked : Bool) {
+        
         db.collection(ApiKey.lastMessage)
             .document(roomId)
             .collection(ApiKey.chat)
@@ -220,6 +221,12 @@ class FirestoreController:NSObject{
                       ApiKey.price: price,
                       ApiKey.messageDuration : messageDuration])
         
+        if !amIBlocked {
+            db.collection(ApiKey.lastMessage)
+                .document(roomId)
+                .collection(ApiKey.chat)
+                .document(receiverId).delete()
+        }
     }
     
     //MARK:- CREATE LAST MESSAGE OF BLOCKED USER
@@ -233,7 +240,7 @@ class FirestoreController:NSObject{
     
     //MARK:- CREATE TOTAL MESSAGE COUNT
     //=================================
-    static func getTotalMessagesCount(senderId:String) {
+    static func getTotalMessagesCount(senderId: String) {
         db.collection(ApiKey.batchCount).document(senderId).addSnapshotListener { (documentSnapshot, error) in
             if  let error = error {
                 print(error.localizedDescription)

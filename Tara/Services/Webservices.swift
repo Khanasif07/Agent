@@ -1014,4 +1014,15 @@ extension WebServices{
             failure(error)
         }
     }
+    
+    //MARK:- Garage Complete Services Api
+    static func getGarageCompletedServicesList(parameters: JSONDictionary,loader: Bool = false,
+                                       success: @escaping SuccessResponse,
+                                       failure: @escaping FailureResponse) {
+        self.commonGetAPI(parameters: parameters, endPoint: .garageCompletedServices,loader: loader, success: { (json) in
+            success(json)
+        }) { (error) -> (Void) in
+            failure(error)
+        }
+    }
 }

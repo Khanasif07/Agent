@@ -19,7 +19,7 @@ class ProfileUserBottomCell: UITableViewCell {
     var aboutusTapped : (()->())?
     var termConditionTapped : (()->())?
     var privacyPolicyTapped : (()->())?
-
+    var serviceCompletedTapped : (()->())?
     var isComeFromProfile: Bool = false
     var selectItemArray = [LocalizedString.my_vehicle.localized,LocalizedString.service_history.localized,LocalizedString.payments.localized,LocalizedString.saved_cards.localized,LocalizedString.added_location.localized,LocalizedString.change_password.localized,LocalizedString.setting.localized]
     var selectImageArray: [UIImage] = [#imageLiteral(resourceName: "vehicle"),#imageLiteral(resourceName: "serviceHistory"),#imageLiteral(resourceName: "payment"),#imageLiteral(resourceName: "savedCard"),#imageLiteral(resourceName: "addedLocation"),#imageLiteral(resourceName: "group"),#imageLiteral(resourceName: "profileSettting")]
@@ -103,6 +103,8 @@ extension ProfileUserBottomCell: UITableViewDelegate, UITableViewDataSource {
             termConditionTapped?()
         case LocalizedString.privacy_policy.localized:
             privacyPolicyTapped?()
+        case LocalizedString.service_Completed.localized:
+            serviceCompletedTapped?()
         default:
             printDebug("Do Nothing")
         }

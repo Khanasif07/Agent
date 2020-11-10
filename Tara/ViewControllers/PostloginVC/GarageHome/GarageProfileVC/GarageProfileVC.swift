@@ -104,9 +104,14 @@ extension GarageProfileVC {
                 let cell = tableView.dequeueCell(with: ProfileUserBottomCell.self, indexPath: indexPath)
                 cell.selectItemArray = self.selectItemArray
                 cell.selectImageArray = self.selectImageArray
+              
                 cell.settingBtnTapped = { [weak self]  in
                     guard let `self` = self else { return }
                     AppRouter.goToProfileSettingVC(vc: self)
+                }
+                cell.serviceCompletedTapped = { [weak self]  in
+                    guard let `self` = self else { return }
+                    AppRouter.goToServiceCompletedVC(vc: self)
                 }
                 return cell
         }

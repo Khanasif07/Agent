@@ -333,6 +333,7 @@ enum LocalizedString : String {
     case applyFilters
     case editProfile
     case save
+    case PLEASEUNBLOCKUSERTOSENDMESSAGES
     // MARK: - Home  VC Values
     //==============================
     case tyre

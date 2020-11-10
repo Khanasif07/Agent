@@ -56,6 +56,7 @@ class OneToOneChatVC: BaseVC {
     var selectedIndexPaths : [IndexPath] = []
     var selectedIndexPath: IndexPath?
     var listeners = [ListenerRegistration]()
+ 
     //Audio messages
     var recordingSession: AVAudioSession!
     var audioRecorder: AVAudioRecorder!
@@ -63,9 +64,21 @@ class OneToOneChatVC: BaseVC {
     var playerItem:AVPlayerItem?
     var timeObserver: Any?
     
+    //for block case
+    var isBlockedByMe = false {
+        didSet {
+            unblockBtn.setTitle(isBlockedByMe ? "Unblock User" : "Block User", for: .normal)
+        }
+    }
+    var amIBlocked = false
+
     //MARK: OUTLETS
     //=============
     @IBOutlet weak var editBtn: UIButton!
+    @IBOutlet weak var unblockBtn: UIButton!
+    @IBOutlet weak var editBidBtn: UIButton!
+    @IBOutlet weak var btnContaninerView: UIView!
+
     @IBOutlet weak var progressVIew: UIProgressView!
     @IBOutlet weak var audioCancelBtn: UIButton!
     @IBOutlet weak var audioRecordBtn: UIButton!
@@ -190,11 +203,34 @@ class OneToOneChatVC: BaseVC {
         audioRecordBtn.setImage(#imageLiteral(resourceName: "audioMsg"), for: .normal)
     }
     
+    @IBAction func editBtnAction(_ sender: UIButton) {
+        btnContaninerView.isHidden.toggle()
+        
+    }
+    
     @IBAction func editBidBtnAction(_ sender: UIButton) {
+        btnContaninerView.isHidden = true
         AppRouter.goToChatEditBidVC(vc: self,requestId: requestDetailId)
     }
     
-    
+    @IBAction func blockBtnAction(_ sender: UIButton) {
+        btnContaninerView.isHidden = true
+        if unblockBtn.titleLabel?.text == "Block User"{
+         db.collection(ApiKey.block)
+            .document(currentUserId)
+            .collection(ApiKey.chat)
+            .document(inboxModel.userId)
+            .setData([ApiKey.userId: inboxModel.userId,
+                      ApiKey.userName: firstName,
+            ])
+        }else {
+            db.collection(ApiKey.block)
+                .document(currentUserId)
+                .collection(ApiKey.chat)
+                .document(inboxModel.userId)
+                .delete()
+        }
+    }
 }
 
 //MARK: PRIVATE FUNCTIONS
@@ -204,7 +240,8 @@ extension OneToOneChatVC {
     private func initialSetup() {
         //        backgroundView.isHidden = false
         //        CommonFunctions.showActivityLoader()
-        editBtn.isHidden = !(isCurrentUserType == .garage)
+        btnContaninerView.isHidden = true
+        editBidBtn.isHidden = !(isCurrentUserType == .garage)
         userRequestView.isHidden = true
         garageTopView.isHidden = true
         chatViewModel.delegate = self
@@ -214,6 +251,8 @@ extension OneToOneChatVC {
         containerScrollView.delegate = self
         bottomContainerView.isUserInteractionEnabled = true
         addTapGestureToAudioBtn()
+        startSenderBlockListener()
+        startReceiverBlockListener()
         setupTableView()
         setupTextView()
         fetchDeleteTime()
@@ -310,6 +349,10 @@ extension OneToOneChatVC {
     private func sendMessage(msgType: String = MessageType.text.rawValue ,price: Int = 0) {
         self.view.endEditing(true)
         let txt = self.messageTextView.text.byRemovingLeadingTrailingWhiteSpaces
+        if isBlockedByMe {
+            CommonFunctions.showToastWithMessage( LocalizedString.PLEASEUNBLOCKUSERTOSENDMESSAGES.localized)
+            return
+        }
         guard !txt.isEmpty else { return }
         if isRoom {
             self.updateUnreadMessage()
@@ -919,29 +962,45 @@ extension OneToOneChatVC{
     
     
     /// Mark:- Fetch the last message from a blocked user
+    
+//    private func getLastMessageBeforeBlock(){
+//
+//        let uid = AppUserDefaults.value(forKey: .uid).string ?? ""
+//        let listener = db.collection(ApiKey.inbox).document(uid).collection(ApiKey.chat).addSnapshotListener { querySnapshot, error in
+//            querySnapshot?.documentChanges.forEach({ (newUser) in
+//                let inbox = Inbox(newUser.document.data())
+//                if newUser.type == .added{
+//                    inbox.lastMessageRef?.getDocument(completion: { (document, error) in
+//                        FirestoreController.createLastMessageOfBlockedUser(roomId: self.roomId, senderId: self.currentUserId, messageModel: (document?.data())! )
+//                    })
+//
+//                } else if newUser.type == .modified {
+//
+//                }
+//                else if newUser.type == .removed {
+//
+//                } else {
+//
+//                }
+//            })
+//        }
+//        listeners.append(listener)
+//    }
+    
     private func getLastMessageBeforeBlock(){
-        
-        let uid = AppUserDefaults.value(forKey: .uid).string ?? ""
-        let listener = db.collection(ApiKey.inbox).document(uid).collection(ApiKey.chat).addSnapshotListener { querySnapshot, error in
-            querySnapshot?.documentChanges.forEach({ (newUser) in
-                let inbox = Inbox(newUser.document.data())
-                if newUser.type == .added{
-                    inbox.lastMessageRef?.getDocument(completion: { (document, error) in
-                        FirestoreController.createLastMessageOfBlockedUser(roomId: self.roomId, senderId: self.currentUserId, messageModel: (document?.data())! )
-                    })
+        db.collection(ApiKey.lastMessage).document(roomId).collection(ApiKey.chat).document(ApiKey.message).getDocument { [weak self] (snapshot, error) in
+            if let err = error {
+            print(err.localizedDescription)
+        } else {
+                if let data = snapshot?.data() {
+                printDebug(data)
                     
-                } else if newUser.type == .modified {
-                    
-                }
-                else if newUser.type == .removed {
-                    
-                } else {
-                    
-                }
-            })
+              FirestoreController.createLastMessageOfBlockedUser(roomId: self?.roomId ?? "", senderId: self?.currentUserId ?? "", messageModel: (data))
+
+            }
         }
-        listeners.append(listener)
     }
+}
     
     /// Mark:- Create a new batch
     private func createBatch(){
@@ -956,7 +1015,8 @@ extension OneToOneChatVC{
     
     /// Mark:- Creating a message node
     private func createMessage(msgType: String = "text",price: Int = 0){
-        FirestoreController.createLastMessageNode(roomId:roomId,messageText:messageTextView.text.byRemovingLeadingTrailingWhiteSpaces ,messageTime:FieldValue.serverTimestamp(), messageId:getMessageId(),messageType: msgType, messageStatus:1,senderId:currentUserId,receiverId:inboxModel.userId, mediaUrl: "",blocked:false, thumbNailURL: "", messageDuration: 0,price: price )
+        FirestoreController.createLastMessageNode(roomId:roomId,messageText:messageTextView.text.byRemovingLeadingTrailingWhiteSpaces ,messageTime:FieldValue.serverTimestamp(), messageId:getMessageId(),messageType: msgType, messageStatus:1,senderId:currentUserId,receiverId:inboxModel.userId, mediaUrl: "",blocked:false, thumbNailURL: "", messageDuration: 0,price: price, amIBlocked: amIBlocked)
+      
         FirestoreController.createMessageNode(roomId:roomId,messageText:messageTextView.text.byRemovingLeadingTrailingWhiteSpaces ,messageTime:FieldValue.serverTimestamp(), messageId:getMessageId(),messageType: msgType, messageStatus:1,senderId:currentUserId,receiverId:inboxModel.userId, mediaUrl: "",blocked:false, thumbNailURL: "", messageDuration: 0,price: price )
         
     }
@@ -964,7 +1024,7 @@ extension OneToOneChatVC{
     private func createMediaMessage(url: String, imageURL: String = "", type: String) {
         FirestoreController.createMessageNode(roomId: self.roomId, messageText: "", messageTime: FieldValue.serverTimestamp(), messageId: self.getMessageId(), messageType: type, messageStatus: 1, senderId: self.currentUserId, receiverId: self.inboxModel.userId, mediaUrl: url, blocked: false, thumbNailURL: imageURL,messageDuration: self.chatViewModel.totalTime, price: 0)
         let attachmentText = type == MessageType.image.rawValue ? "Photo Attachment" : "Audio Attachment"
-        FirestoreController.createLastMessageNode(roomId: self.roomId, messageText: attachmentText, messageTime: FieldValue.serverTimestamp(), messageId: self.getMessageId(), messageType: type, messageStatus: 1, senderId: self.currentUserId, receiverId: self.inboxModel.userId, mediaUrl: url, blocked: false, thumbNailURL: imageURL,messageDuration: self.chatViewModel.totalTime,price: 0)
+        FirestoreController.createLastMessageNode(roomId: self.roomId, messageText: attachmentText, messageTime: FieldValue.serverTimestamp(), messageId: self.getMessageId(), messageType: type, messageStatus: 1, senderId: self.currentUserId, receiverId: self.inboxModel.userId, mediaUrl: url, blocked: false, thumbNailURL: imageURL,messageDuration: self.chatViewModel.totalTime,price: 0, amIBlocked: amIBlocked)
     }
     
     /// Mark:- Fetching the room Id values
@@ -1194,31 +1254,44 @@ extension OneToOneChatVC{
     }
     
     private func startReceiverBlockListener() {
-        db.collection(ApiKey.block).document(currentUserId).getDocument { [weak self] (snapshot, error) in
+        db.collection(ApiKey.block).document(currentUserId).collection(ApiKey.chat).document(inboxModel.userId).addSnapshotListener { [weak self] (snapshot, error) in
             guard let `self` = self else { return }
             if let err = error {
                 print(err.localizedDescription)
             } else {
                 if let data = snapshot?.data() {
-                    //                    self.isBlockedByMe = data.keys.contains(self.inboxModel.userId)
+                    self.getLastMessageBeforeBlock()
+                    self.isBlockedByMe = true
+                    printDebug(self.isBlockedByMe)
+                    printDebug(data.keys.contains(self.inboxModel.userId))
+                    
+                }else {
+                    self.isBlockedByMe = false
+
                 }
             }
         }
     }
     
     private func startSenderBlockListener() {
-        let listener = db.collection(ApiKey.block).document(inboxModel.userId).addSnapshotListener { [weak self] (snapshot, error) in
+        let listener = db.collection(ApiKey.block).document(inboxModel.userId).collection(ApiKey.chat).document(currentUserId).addSnapshotListener { [weak self] (snapshot, error) in
             guard let `self` = self else { return }
             if let err = error {
                 print(err.localizedDescription)
             } else {
                 if let data = snapshot?.data() {
-                    //                    self.amIBlocked = data.keys.contains(self.currentUserId)
+                    self.amIBlocked = true
+                    printDebug(self.amIBlocked)
+                    printDebug(data.keys.contains(self.inboxModel.userId))
+                    
+                }else {
+                    self.amIBlocked = false
                 }
             }
         }
         listeners.append(listener)
     }
+    
 }
 
 extension OneToOneChatVC: UIGestureRecognizerDelegate, UIScrollViewDelegate {
@@ -1235,7 +1308,6 @@ extension OneToOneChatVC: UIGestureRecognizerDelegate, UIScrollViewDelegate {
             
         }
     }
-    
 }
 
 // Mark:- Audio Messages Inbox
