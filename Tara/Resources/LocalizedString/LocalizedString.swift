@@ -334,6 +334,7 @@ enum LocalizedString : String {
     case editProfile
     case save
     case PLEASEUNBLOCKUSERTOSENDMESSAGES
+    case serviceOn
     // MARK: - Home  VC Values
     //==============================
     case tyre

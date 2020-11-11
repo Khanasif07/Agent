@@ -303,6 +303,9 @@
 		A45566CD250B4EAC009E4324 /* RegistraionPendingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45566CC250B4EAC009E4324 /* RegistraionPendingVC.swift */; };
 		A45566D0250CA6C0009E4324 /* UploadDocumentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45566CF250CA6C0009E4324 /* UploadDocumentVC.swift */; };
 		A45707C32513B137003BE7DD /* TyreBrandVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45707C22513B137003BE7DD /* TyreBrandVC.swift */; };
+		A459A140255BB45500645E45 /* GarageCustomerRatingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A459A13F255BB45500645E45 /* GarageCustomerRatingVC.swift */; };
+		A459A142255BB78A00645E45 /* GarageCustomerRatingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A459A141255BB78A00645E45 /* GarageCustomerRatingVM.swift */; };
+		A459A145255BC39C00645E45 /* ReportPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A459A144255BC39C00645E45 /* ReportPopupVC.swift */; };
 		A46808E82539CFBD00C2D404 /* SRPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46808E72539CFBD00C2D404 /* SRPopupVC.swift */; };
 		A468DCA02539D74100416CF9 /* GarageRequestPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A468DC9F2539D74100416CF9 /* GarageRequestPopupVC.swift */; };
 		A468DCA22539D80200416CF9 /* SocketIOManager+ApiData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A468DCA12539D80200416CF9 /* SocketIOManager+ApiData.swift */; };
@@ -660,6 +663,9 @@
 		A45566CC250B4EAC009E4324 /* RegistraionPendingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistraionPendingVC.swift; sourceTree = "<group>"; };
 		A45566CF250CA6C0009E4324 /* UploadDocumentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadDocumentVC.swift; sourceTree = "<group>"; };
 		A45707C22513B137003BE7DD /* TyreBrandVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TyreBrandVC.swift; sourceTree = "<group>"; };
+		A459A13F255BB45500645E45 /* GarageCustomerRatingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageCustomerRatingVC.swift; sourceTree = "<group>"; };
+		A459A141255BB78A00645E45 /* GarageCustomerRatingVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageCustomerRatingVM.swift; sourceTree = "<group>"; };
+		A459A144255BC39C00645E45 /* ReportPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportPopupVC.swift; sourceTree = "<group>"; };
 		A46808E72539CFBD00C2D404 /* SRPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRPopupVC.swift; sourceTree = "<group>"; };
 		A468DC9F2539D74100416CF9 /* GarageRequestPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageRequestPopupVC.swift; sourceTree = "<group>"; };
 		A468DCA12539D80200416CF9 /* SocketIOManager+ApiData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SocketIOManager+ApiData.swift"; sourceTree = "<group>"; };
@@ -1394,6 +1400,8 @@
 				A4357953255298BA009EED61 /* ReViewListingVC */,
 				A4DA01D72552C0E000AC60DB /* SROtpPopupVC.swift */,
 				A41B7DE925551A9B005D1AC5 /* ServiceCompletedVC */,
+				A459A143255BB7CE00645E45 /* GarageCustomerRatingVC */,
+				A459A144255BC39C00645E45 /* ReportPopupVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -2102,6 +2110,15 @@
 			path = RegistraionPendingVC;
 			sourceTree = "<group>";
 		};
+		A459A143255BB7CE00645E45 /* GarageCustomerRatingVC */ = {
+			isa = PBXGroup;
+			children = (
+				A459A141255BB78A00645E45 /* GarageCustomerRatingVM.swift */,
+				A459A13F255BB45500645E45 /* GarageCustomerRatingVC.swift */,
+			);
+			path = GarageCustomerRatingVC;
+			sourceTree = "<group>";
+		};
 		A47C149E251F31B7005C8EA2 /* BatteryRequestedVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -2548,6 +2565,7 @@
 				844EB71725189916003A6E3F /* TyreRequestModel.swift in Sources */,
 				8481FA552500BF0700AB6EFB /* DispatchQueueExtension.swift in Sources */,
 				A4098E7D251231DD0015B0BD /* FacilityTableViewCell.swift in Sources */,
+				A459A140255BB45500645E45 /* GarageCustomerRatingVC.swift in Sources */,
 				A4A6DEEF251A157C00564020 /* GarageHomeTableCell.swift in Sources */,
 				844EB6F425149D51003A6E3F /* CustomPickerView.swift in Sources */,
 				842B2FC925133CD200E3CF67 /* BankListingTableCell.swift in Sources */,
@@ -2650,6 +2668,7 @@
 				844D81DB2502408900550334 /* SignUpVC.swift in Sources */,
 				A41B7DF225552B7A005D1AC5 /* ReceiverLocationCell.swift in Sources */,
 				84144F2F252C8D9C00D6572F /* GarageServiceTopCell.swift in Sources */,
+				A459A145255BC39C00645E45 /* ReportPopupVC.swift in Sources */,
 				A43B53A72524B47000447B24 /* OngoingServiceListingVC.swift in Sources */,
 				84FF9D602559154C00692FF0 /* ChatEditBidVC.swift in Sources */,
 				84801CD22547F5D100F360FC /* FirestoreController.swift in Sources */,
@@ -2721,6 +2740,7 @@
 				A41AAB4A2530742D0061887F /* RatingVC.swift in Sources */,
 				8481FA7B2500CC2C00AB6EFB /* BaseVC.swift in Sources */,
 				8481FA5F2500BF8400AB6EFB /* AppRouter.swift in Sources */,
+				A459A142255BB78A00645E45 /* GarageCustomerRatingVM.swift in Sources */,
 				A41AAB4725304C790061887F /* DistanceSliderCollViewCell.swift in Sources */,
 				A49DF563252D890400A6A5B1 /* ServiceStatusVC.swift in Sources */,
 				A415C030254C2B7D000CE928 /* ChangePasswordVC.swift in Sources */,

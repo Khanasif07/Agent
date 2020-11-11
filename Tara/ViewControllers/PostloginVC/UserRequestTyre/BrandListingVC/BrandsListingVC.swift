@@ -184,7 +184,7 @@ extension BrandsListingVC : UITableViewDelegate, UITableViewDataSource {
         } else {
                view.arrowImg.isHidden = true
         }
-        if   self.listingType == .brands {
+        if self.listingType == .brands {
             let isPowerSelected = self.viewModel.selectedBrandsArr.contains(where: {$0.id == (self.isSearchOn ? self.viewModel.searchBrandListing[section].id : self.viewModel.brandsListings[section].id)})
             if self.viewModel.brandsListings.endIndex  > 0  {
                 if section == 0{

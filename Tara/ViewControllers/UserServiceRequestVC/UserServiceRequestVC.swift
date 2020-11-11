@@ -88,11 +88,16 @@ class UserServiceRequestVC: BaseVC {
         default:
             showAlert(msg: "Under Development")
         }
-       
+        
     }
     
     @IBAction func viewAllBtnAction(_ sender: AppButton) {
-        AppRouter.goToUserAllOffersVC(vc: self, requestId: requestId)
+        if viewAllBtn.titleLabel?.text == "View Details" {
+            
+        }else {
+            AppRouter.goToUserAllOffersVC(vc: self, requestId: requestId)
+            
+        }
     }
     
     @IBAction func cancelBtnAction(_ sender: UIButton) {
@@ -232,6 +237,12 @@ extension UserServiceRequestVC: UserServiceRequestVMDelegate{
         productImgView.isHidden = model.images.isEmpty
         bottomLineView.isHidden = model.images.isEmpty
         self.productImgView.setImage_kf(imageString: model.images.first ?? "", placeHolderImage: logoImg, loader: false)
+        
+        if viewModel.userRequestDetail.isServiceStarted ?? false {
+            viewAllBtn.isHidden = false
+            viewAllBtn.setTitle("View Details", for: .normal)
+        }
+        
     }
     
     func getUserMyRequestDetailFailed(error: String) {

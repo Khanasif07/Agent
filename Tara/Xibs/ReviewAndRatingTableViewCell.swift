@@ -25,7 +25,6 @@ class ReviewAndRatingTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         setupTextAndFonts()
-        reportReviewBtn.isHidden = true
     }
 
     private func setupTextAndFonts() {

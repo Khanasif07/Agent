@@ -80,6 +80,12 @@ class RequestDetailTableViewCell: UITableViewCell {
             mainImgView.setImage_kf(imageString: model.userImage ?? "", placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
             helpBtn.isHidden = false
             bottomView.isHidden = true
+        
+        case .serviceOn:
+            mainImgView.contentMode = .center
+            let date = (model.serviceCompletedOn)?.breakCompletDate(outPutFormat: Date.DateFormat.ddMMyyyy.rawValue, inputFormat: Date.DateFormat.yyyyMMddTHHmmsssssz.rawValue)
+            userNameLbl.text = date
+
         default:
             break
         }

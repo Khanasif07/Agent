@@ -49,7 +49,7 @@ enum CellType : CaseIterable{
     case none
     case serviceDetail
     case userDetail
- 
+    case serviceOn
     var text: String {
         switch self {
             
@@ -63,7 +63,9 @@ enum CellType : CaseIterable{
             return LocalizedString.serviceDetails.localized
         case .userDetail:
             return LocalizedString.userDetails.localized
-     
+        case .serviceOn:
+            return LocalizedString.serviceOn.localized
+
         default:
             return ""
         }
@@ -78,6 +80,8 @@ enum CellType : CaseIterable{
             return  #imageLiteral(resourceName: "subtract")
         case .payAmount:
             return  #imageLiteral(resourceName: "icAtm")
+        case .serviceOn:
+            return  #imageLiteral(resourceName: "subtract")
         default :
             return nil
         }

@@ -71,6 +71,20 @@ enum AppRouter {
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
+    static func goToReportPopupVC(vc: UIViewController){
+        let scene = ReportPopupVC.instantiate(fromAppStoryboard: .GarageRequest)
+        vc.modalPresentationStyle = .fullScreen
+        vc.present(scene, animated: true, completion: nil)
+        
+    }
+    
+    
+    static func goToGarageCustomerRatingVC(vc: UIViewController, requestId: String){
+        let scene = GarageCustomerRatingVC.instantiate(fromAppStoryboard: .GarageRequest)
+        scene.requestId = requestId
+        vc.navigationController?.pushViewController(scene, animated: true)
+    }
+    
     static func goToEditProfileVC(vc: UIViewController & EditProfileVCDelegate,model: UserModel,isEditProfileFrom : EditProfileFrom){
         let scene = EditProfileVC.instantiate(fromAppStoryboard: .PostLogin)
         scene.delegate = vc
