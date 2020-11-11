@@ -81,12 +81,12 @@ extension ServiceCompletedVC {
 extension ServiceCompletedVC :UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return viewModel.serviceCompletedListing.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(with: ServiceCompletedTableViewCell.self, indexPath: indexPath)
-//        cell.bindData(viewModel.reviewListingArr[indexPath.row])
+        cell.bindData(viewModel.serviceCompletedListing[indexPath.row])
         return cell
     }
     

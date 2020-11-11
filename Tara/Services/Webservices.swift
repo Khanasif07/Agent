@@ -1015,11 +1015,56 @@ extension WebServices{
         }
     }
     
-    //MARK:- Garage Complete Services Api
+    //MARK:- Garage CompletedServices Listing Api
     static func getGarageCompletedServicesList(parameters: JSONDictionary,loader: Bool = false,
-                                       success: @escaping SuccessResponse,
-                                       failure: @escaping FailureResponse) {
+                                               success: @escaping SuccessResponse,
+                                               failure: @escaping FailureResponse) {
         self.commonGetAPI(parameters: parameters, endPoint: .garageCompletedServices,loader: loader, success: { (json) in
+            success(json)
+        }) { (error) -> (Void) in
+            failure(error)
+        }
+    }
+    
+    //MARK:- Garage CompleteServices Detail Api
+    static func getGarageCompletedServicesDetail(parameters: JSONDictionary,loader: Bool = false,
+                                                 success: @escaping SuccessResponse,
+                                                 failure: @escaping FailureResponse) {
+        self.commonGetAPI(parameters: parameters, endPoint: .garageCompletedServiceDetail,loader: loader, success: { (json) in
+            success(json)
+        }) { (error) -> (Void) in
+            failure(error)
+        }
+    }
+    
+    //MARK:- Report Review Api
+    static func reportReview(parameters: JSONDictionary,loader: Bool = false,
+                             success: @escaping SuccessResponse,
+                             failure: @escaping FailureResponse) {
+        self.commonPostAPI(parameters: parameters, endPoint: .reportReview,loader: loader, success: { (json) in
+            success(json)
+        }) { (error) -> (Void) in
+            failure(error)
+        }
+    }
+    
+    
+    //MARK:- User Service Detail Api
+    static func userServiceDetail(parameters: JSONDictionary,loader: Bool = false,
+                                  success: @escaping SuccessResponse,
+                                  failure: @escaping FailureResponse) {
+        self.commonGetAPI(parameters: parameters, endPoint: .userServiceDetails,loader: loader, success: { (json) in
+            success(json)
+        }) { (error) -> (Void) in
+            failure(error)
+        }
+    }
+    
+    //MARK:- Mark Car Received Api
+    static func markCarReceived(parameters: JSONDictionary,loader: Bool = false,
+                                success: @escaping SuccessResponse,
+                                failure: @escaping FailureResponse) {
+        self.commonGetAPI(parameters: parameters, endPoint: .markCarReceived,loader: loader, success: { (json) in
             success(json)
         }) { (error) -> (Void) in
             failure(error)

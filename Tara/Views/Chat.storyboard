@@ -546,7 +546,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fGU-Bo-btL">
-                                <rect key="frame" x="274" y="89" width="130" height="80"/>
+                                <rect key="frame" x="264" y="89" width="130" height="80"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="5BC-Rq-vvU">
                                         <rect key="frame" x="0.0" y="0.0" width="130" height="80"/>
@@ -603,7 +603,7 @@
                             <constraint firstItem="nAy-Hg-tIu" firstAttribute="top" secondItem="Jas-en-Ecr" secondAttribute="bottom" id="EGc-7r-H9A"/>
                             <constraint firstItem="fGU-Bo-btL" firstAttribute="top" secondItem="Jas-en-Ecr" secondAttribute="bottom" constant="-10" id="F1q-8o-d2W"/>
                             <constraint firstItem="ii9-WE-KQV" firstAttribute="trailing" secondItem="Jas-en-Ecr" secondAttribute="trailing" id="Lhc-68-Dnr"/>
-                            <constraint firstItem="fGU-Bo-btL" firstAttribute="trailing" secondItem="Jas-en-Ecr" secondAttribute="trailing" constant="-10" id="Ma1-B9-BWA"/>
+                            <constraint firstItem="fGU-Bo-btL" firstAttribute="trailing" secondItem="Jas-en-Ecr" secondAttribute="trailing" constant="-20" id="Ma1-B9-BWA"/>
                             <constraint firstItem="Bw7-xE-W3Q" firstAttribute="leading" secondItem="lco-eK-Vpf" secondAttribute="leading" constant="2" id="N7m-Yu-6Nk"/>
                             <constraint firstItem="Jas-en-Ecr" firstAttribute="leading" secondItem="ii9-WE-KQV" secondAttribute="leading" id="Og5-lu-3kS"/>
                             <constraint firstItem="Bw7-xE-W3Q" firstAttribute="bottom" secondItem="Abs-De-h3M" secondAttribute="bottom" id="YMY-0n-PBA"/>
@@ -816,7 +816,7 @@
         <image name="group3603" width="30" height="30"/>
         <image name="icArrow" width="30" height="30"/>
         <image name="icBackward" width="36" height="34"/>
-        <image name="iconDot" width="30" height="30"/>
+        <image name="iconDot" width="20" height="20"/>
         <image name="placeHolder" width="80" height="80"/>
         <namedColor name="appRedColor">
             <color red="0.87800002098083496" green="0.13699999451637268" blue="0.25900000333786011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

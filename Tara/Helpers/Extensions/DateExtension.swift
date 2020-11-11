@@ -23,6 +23,7 @@ extension Date {
         case yyyyMMddTHHmmsssssz = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
         case yyyyMMddTHHmmssssZZZZZ = "yyyy-MM-dd'T'HH:mm:ss.ssZZZZZ"
         case yyyyMMdd = "yyyy/MM/dd"
+        case ddMMyyyy = "dd/MM/yyyy"
         case dMMMyyyy = "d MMM, yyyy"
         case ddMMMyyyy = "dd MMM yyyy"
         case MMMdyyyy = "MMM d, yyyy"

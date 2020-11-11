@@ -51,7 +51,7 @@ class ServiceStatusVM {
         WebServices.serviceStatusApi(parameters: params, loader : loader,success: { [weak self] (json) in
             guard let `self` = self else { return }
             let msg = json[ApiKey.message].stringValue
-            let status = json[ApiKey.data][ApiKey.status].stringValue
+            let status = json[ApiKey.data][ApiKey.serviceStatus].stringValue
             self.bookedRequestDetail?.serviceStatus = ServiceState(rawValue: status)
             self.delegate?.updateServiceStatusSuccess(msg: msg)
             printDebug(json)

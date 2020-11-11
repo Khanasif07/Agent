@@ -129,7 +129,7 @@ enum LocalizedString : String {
     case offerReceived
     case noOffers
     case costLowToHigh
-    
+    case service
     case lowToHigh
     case highToLow
     case ratingHighToLow

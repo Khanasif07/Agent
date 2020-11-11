@@ -32,4 +32,13 @@ class ServiceCompletedTableViewCell: UITableViewCell {
         userImgView.round()
         containerView.createShadow(shadowColor: #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1))
     }
+    
+    func bindData(_ model: GarageRequestModel) {
+        let type = model.requestType == .tyres ? "Tyre" : model.requestType.rawValue
+        serviceTypeLbl.text = (type) + LocalizedString.service.localized
+        userImgView.setImage_kf(imageString: model.userImage ?? "", placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
+        userNameLbl.text = model.userName
+        let date = (model.serviceCompletedOn)?.breakCompletDate(outPutFormat: Date.DateFormat.ddMMyyyy.rawValue, inputFormat: Date.DateFormat.yyyyMMddTHHmmsssssz.rawValue)
+        timeLbl.text = date
+    }
 }

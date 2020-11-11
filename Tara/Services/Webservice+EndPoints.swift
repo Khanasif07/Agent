@@ -76,6 +76,11 @@ extension WebServices {
         case serviceStatus = "user/services/serviceStatus"
         case garageCompletedServices = "user/services/garageCompletedServices"
         
+        case garageCompletedServiceDetail = "user/services/garageCompletedServiceDetail"
+        case reportReview = "user/services/reportReview"
+        case userServiceDetails = "user/services/userServiceDetails"
+        case markCarReceived = "user/services/markCarReceived"
+        
         var path : String {
             let url = baseUrl
             return url + self.rawValue

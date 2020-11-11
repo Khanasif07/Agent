@@ -255,7 +255,7 @@
 "byServiceType" = "By Service Type";
 "byStatus" = "By Status";
 "PLEASEUNBLOCKUSERTOSENDMESSAGES" = "PLEASE UNBLOCK USER TO SEND MESSAGES";
-
+"service" = " Service";
 "tyreServices" = "Tyre Services";
 "oilSevices" = "Oil Sevices";
 "batteryServices" = "Battery Services";
