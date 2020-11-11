@@ -17,6 +17,8 @@ class ReviewAndRatingTableViewCell: UITableViewCell {
     @IBOutlet weak var reviewReportedLbl: UILabel!
     @IBOutlet weak var reviewReasonLbl: UILabel!
     @IBOutlet weak var reportReviewBtn: UIButton!
+    @IBOutlet weak var imgContainerStackView: UIStackView!
+    @IBOutlet weak var reviewReportStackView: UIStackView!
 
     //MARK:- Variables
     var reportReviewBtnTapped: (()->())?
@@ -25,6 +27,7 @@ class ReviewAndRatingTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         setupTextAndFonts()
+        imgContainerStackView.isHidden = true
     }
 
     private func setupTextAndFonts() {
@@ -37,5 +40,32 @@ class ReviewAndRatingTableViewCell: UITableViewCell {
 
     @IBAction func reportReviewBtnAction(_ sender: UIButton) {
         reportReviewBtnTapped?()
+    }
+    
+    func bindData(_ model: GarageRequestModel) {
+        if let rating = model.rating {
+            for i in 0...starBtns.count - 1{
+                if i < rating {
+                    starBtns[i].isSelected = true
+                }else {
+                    starBtns[i].isSelected = false
+                }
+            }
+        }
+        reviewLbl.text = model.review
+      
+        if model.isReviewReported ?? false {
+           
+            reviewReportStackView.isHidden = false
+            reportReviewBtn.isHidden = true
+            let date = (model.reportedTime)?.breakCompletDate(outPutFormat: Date.DateFormat.profileFormat.rawValue, inputFormat: Date.DateFormat.yyyyMMddTHHmmsssssz.rawValue)
+            
+            reviewReportedLbl.text = "Review Reported on " + (date ?? "")
+            reviewReasonLbl.text = "Reason: " + (model.reportReason ?? "")
+        }
+        else {
+            reportReviewBtn.isHidden = false
+            reviewReportStackView.isHidden = true
+        }
     }
 }

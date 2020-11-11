@@ -853,8 +853,10 @@ extension OneToOneChatVC{
                     guard let data = snapshot?.data() else { return }
                     print(data[ApiKey.unreadMessages] as? Int ?? 0)
                     self.inboxModel.unreadMessages = data[ApiKey.unreadMessages] as? Int ?? 0
-                    FirestoreController.updateUnreadMessages(senderId: self.currentUserId, receiverId: self.inboxModel.userId, unread: data[ApiKey.unreadMessages] as? Int ?? 0)
+                    if !self.amIBlocked {
+                        FirestoreController.updateUnreadMessages(senderId: self.currentUserId, receiverId: self.inboxModel.userId, unread: data[ApiKey.unreadMessages] as? Int ?? 0)
                 }
+            }
         }
     }
     
@@ -955,7 +957,7 @@ extension OneToOneChatVC{
                     print("success")
                 }
         }
-        if !isRoom {
+        if !isRoom && !amIBlocked {
             FirestoreController.updateUnreadMessages(senderId: inboxUserId, receiverId: inboxModel.userId, unread: 0)
         }
     }
@@ -1015,16 +1017,16 @@ extension OneToOneChatVC{
     
     /// Mark:- Creating a message node
     private func createMessage(msgType: String = "text",price: Int = 0){
-        FirestoreController.createLastMessageNode(roomId:roomId,messageText:messageTextView.text.byRemovingLeadingTrailingWhiteSpaces ,messageTime:FieldValue.serverTimestamp(), messageId:getMessageId(),messageType: msgType, messageStatus:1,senderId:currentUserId,receiverId:inboxModel.userId, mediaUrl: "",blocked:false, thumbNailURL: "", messageDuration: 0,price: price, amIBlocked: amIBlocked)
+        FirestoreController.createLastMessageNode(roomId:roomId,messageText:messageTextView.text.byRemovingLeadingTrailingWhiteSpaces ,messageTime:FieldValue.serverTimestamp(), messageId:getMessageId(),messageType: msgType, messageStatus:1,senderId:currentUserId,receiverId:inboxModel.userId, mediaUrl: "",blocked:amIBlocked, thumbNailURL: "", messageDuration: 0,price: price, amIBlocked: amIBlocked)
       
-        FirestoreController.createMessageNode(roomId:roomId,messageText:messageTextView.text.byRemovingLeadingTrailingWhiteSpaces ,messageTime:FieldValue.serverTimestamp(), messageId:getMessageId(),messageType: msgType, messageStatus:1,senderId:currentUserId,receiverId:inboxModel.userId, mediaUrl: "",blocked:false, thumbNailURL: "", messageDuration: 0,price: price )
+        FirestoreController.createMessageNode(roomId:roomId,messageText:messageTextView.text.byRemovingLeadingTrailingWhiteSpaces ,messageTime:FieldValue.serverTimestamp(), messageId:getMessageId(),messageType: msgType, messageStatus:1,senderId:currentUserId,receiverId:inboxModel.userId, mediaUrl: "",blocked: amIBlocked, thumbNailURL: "", messageDuration: 0,price: price )
         
     }
     
     private func createMediaMessage(url: String, imageURL: String = "", type: String) {
-        FirestoreController.createMessageNode(roomId: self.roomId, messageText: "", messageTime: FieldValue.serverTimestamp(), messageId: self.getMessageId(), messageType: type, messageStatus: 1, senderId: self.currentUserId, receiverId: self.inboxModel.userId, mediaUrl: url, blocked: false, thumbNailURL: imageURL,messageDuration: self.chatViewModel.totalTime, price: 0)
+        FirestoreController.createMessageNode(roomId: self.roomId, messageText: "", messageTime: FieldValue.serverTimestamp(), messageId: self.getMessageId(), messageType: type, messageStatus: 1, senderId: self.currentUserId, receiverId: self.inboxModel.userId, mediaUrl: url, blocked: amIBlocked, thumbNailURL: imageURL,messageDuration: self.chatViewModel.totalTime, price: 0)
         let attachmentText = type == MessageType.image.rawValue ? "Photo Attachment" : "Audio Attachment"
-        FirestoreController.createLastMessageNode(roomId: self.roomId, messageText: attachmentText, messageTime: FieldValue.serverTimestamp(), messageId: self.getMessageId(), messageType: type, messageStatus: 1, senderId: self.currentUserId, receiverId: self.inboxModel.userId, mediaUrl: url, blocked: false, thumbNailURL: imageURL,messageDuration: self.chatViewModel.totalTime,price: 0, amIBlocked: amIBlocked)
+        FirestoreController.createLastMessageNode(roomId: self.roomId, messageText: attachmentText, messageTime: FieldValue.serverTimestamp(), messageId: self.getMessageId(), messageType: type, messageStatus: 1, senderId: self.currentUserId, receiverId: self.inboxModel.userId, mediaUrl: url, blocked: amIBlocked, thumbNailURL: imageURL,messageDuration: self.chatViewModel.totalTime,price: 0, amIBlocked: amIBlocked)
     }
     
     /// Mark:- Fetching the room Id values
@@ -1156,9 +1158,13 @@ extension OneToOneChatVC{
             guard let `self` = self else { return }
             querySnapshot?.documentChanges.forEach({ [weak self] (newMessage) in
                 guard let `self` = self else { return }
+
                 if newMessage.type == .added {
                     let message = Message(newMessage.document.data())
-                    if !message.blocked {
+                    if message.blocked && message.receiverId == self.currentUserId {
+                        return
+                    }
+//                    if !message.blocked {
                         if message.senderId == self.inboxModel.userId {                            self.db.collection(ApiKey.messages).document(self.getRoomId()).collection(ApiKey.chat).document(message.messageId).updateData([ApiKey.messageStatus : 2]) { (error) in
                             if let err = error {
                                 print(err.localizedDescription)
@@ -1183,14 +1189,17 @@ extension OneToOneChatVC{
                             self.tempTime = message.messageTime
                             self.messageListing.append([message])
                         }
-                    }
+//                    }
                     DispatchQueue.main.async {
                         self.reloadTableViewToBottom()
                     }
                 }
                 else if newMessage.type == .modified {
                     let message = Message(newMessage.document.data())
-                    if !message.blocked  {
+                    if message.blocked && message.receiverId == self.currentUserId {
+                        return
+                    }
+//                    if !message.blocked  {
                         if message.senderId == self.inboxModel.userId {                            self.db.collection(ApiKey.messages).document(self.getRoomId()).collection(ApiKey.chat).document(message.messageId).updateData([ApiKey.messageStatus : 2]) { (error) in
                             if let err = error {
                                 print(err.localizedDescription)
@@ -1205,7 +1214,7 @@ extension OneToOneChatVC{
                                 break
                             }
                         }
-                    }
+//                    }
                     DispatchQueue.main.async {
                         self.reloadTableViewToBottom()
                     }
@@ -1453,7 +1462,7 @@ extension OneToOneChatVC : OneToOneChatViewModelDelegate{
             garageImgView.setImage_kf(imageString: chatViewModel.chatData.garageImage, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
             garageRequestNoValueLbl.text = chatViewModel.chatData.requestId
             garageAmountValueLbl.text = chatViewModel.chatData.totalAmount?.description
-            garageRatingLbl.text = chatViewModel.chatData.garageRating.description + "/5"
+            garageRatingLbl.text = (chatViewModel.chatData.garageRating?.description ?? "") + "/5"
             garageAddressLbl.text = chatViewModel.chatData.garageAddress
             garageNameLbl.text = chatViewModel.chatData.garageName
         }

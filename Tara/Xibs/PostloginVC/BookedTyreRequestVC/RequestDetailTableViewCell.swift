@@ -85,6 +85,7 @@ class RequestDetailTableViewCell: UITableViewCell {
             mainImgView.contentMode = .center
             let date = (model.serviceCompletedOn)?.breakCompletDate(outPutFormat: Date.DateFormat.ddMMyyyy.rawValue, inputFormat: Date.DateFormat.yyyyMMddTHHmmsssssz.rawValue)
             userNameLbl.text = date
+            bottomView.isHidden = true
 
         case .garageDetail:
             helpBtn.isHidden = false

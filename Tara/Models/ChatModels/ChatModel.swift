@@ -20,7 +20,7 @@ struct ChatModel: Codable {
     let garageOwner: String
     let totalRequests: Int
     let userName: String
-    let garageRating: Int
+    let garageRating: Double?
     let garageLogo: String
     let userImage, id: String
     let requestId: String?
@@ -50,7 +50,7 @@ struct ChatModel: Codable {
         garageAddress = ""
         totalRequests = 0
         userName = ""
-        garageRating = 0
+        garageRating = 0.0
         garageLogo = ""
         userImage = ""
         requestId = ""

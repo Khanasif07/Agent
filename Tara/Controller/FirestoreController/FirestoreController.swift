@@ -284,13 +284,13 @@ class FirestoreController:NSObject{
             .updateData([ApiKey.unreadMessages : unread + 1])
         
         db.collection(ApiKey.batchCount).document(receiverId).getDocument { (document, error) in
-            if let doc = document {
-                if doc.exists {
-                    guard let count = doc.data()?[ApiKey.unreadMessages] as? Int else { return }
-                    db.collection(ApiKey.batchCount).document(receiverId).setData([ApiKey.unreadMessages : count + 1])
-                } else {
-                    db.collection(ApiKey.batchCount).document(receiverId).setData([ApiKey.unreadMessages: 1])
-                }
+                if let doc = document {
+                    if doc.exists {
+                        guard let count = doc.data()?[ApiKey.unreadMessages] as? Int else { return }
+                        db.collection(ApiKey.batchCount).document(receiverId).setData([ApiKey.unreadMessages : count + 1])
+                    } else {
+                        db.collection(ApiKey.batchCount).document(receiverId).setData([ApiKey.unreadMessages: 1])
+                    }
             }
         }
     }

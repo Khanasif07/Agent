@@ -12,7 +12,9 @@ import SwiftyJSON
 protocol GarageCustomerRatingVMDelegate: class {
     func customerRatingSuccess(msg: String)
     func customerRatingFailure(msg: String)
-   
+    func reportReviewSuccess(msg: String)
+    func reportReviewFailure(msg: String)
+
 }
 
 class GarageCustomerRatingVM {
@@ -45,16 +47,23 @@ class GarageCustomerRatingVM {
     }
     
     
-    func updateServiceStatus(params: JSONDictionary,loader: Bool = false) {
-        WebServices.serviceStatusApi(parameters: params, loader : loader,success: { [weak self] (json) in
+    func postReportReview(params: JSONDictionary,loader: Bool = false) {
+        WebServices.reportReview(parameters: params, loader : loader,success: { [weak self] (json) in
             guard let `self` = self else { return }
             let msg = json[ApiKey.message].stringValue
-            let status = json[ApiKey.data][ApiKey.serviceStatus].stringValue
-//            self.delegate?.updateServiceStatusSuccess(msg: msg)
+
+            let time = json[ApiKey.data][ApiKey.reportedTime].stringValue
+            let reason = json[ApiKey.data][ApiKey.reportReason].stringValue
+            
+            self.garageCompletedDetail?.isReviewReported = true
+            self.garageCompletedDetail?.reportedTime = time
+            self.garageCompletedDetail?.reportReason = reason
+
+            self.delegate?.reportReviewSuccess(msg: msg)
             printDebug(json)
         }) { [weak self] (error) in
             guard let `self` = self else { return }
-//            self.delegate?.updateServiceStatusFailed(msg: error.localizedDescription)
+            self.delegate?.reportReviewFailure(msg: error.localizedDescription)
         }
     }
     

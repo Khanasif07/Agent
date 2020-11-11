@@ -16,8 +16,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "58"
             endingLineNumber = "58"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "filterBtnAction(_:)"
+            landmarkType = "7">
             <Locations>
                <Location
                   uuid = "B87966E9-6C2C-4DF3-8849-B093DB833BC7 - 6ac7a716e1e0c62c"

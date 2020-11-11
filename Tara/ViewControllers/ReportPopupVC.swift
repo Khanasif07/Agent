@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol PickerDataDelegate {
+    func selectedReason(str: String)
+}
+
 class ReportPopupVC: BaseVC {
     
     // MARK: - IBOutlets
@@ -19,6 +23,7 @@ class ReportPopupVC: BaseVC {
     //=================
     var dataArr : [String] = ["Not Satisfying", "Threats of Voilance", "Defamation", "Obscenity", "Inappropriate Review"]
     var pickerSelectedValue : String = ""
+    var delegate :PickerDataDelegate?
     
     // MARK: - Lifecycle
     //===========================
@@ -45,7 +50,12 @@ class ReportPopupVC: BaseVC {
     }
     
     @IBAction func doneBtnAction(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true) {
+            if self.pickerSelectedValue.isEmpty {
+                self.pickerSelectedValue = self.dataArr[0]
+            }
+            self.delegate?.selectedReason(str: self.pickerSelectedValue)
+        }
     }
 }
 

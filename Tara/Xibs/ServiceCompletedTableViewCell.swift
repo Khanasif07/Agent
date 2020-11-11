@@ -40,5 +40,6 @@ class ServiceCompletedTableViewCell: UITableViewCell {
         userNameLbl.text = model.userName
         let date = (model.serviceCompletedOn)?.breakCompletDate(outPutFormat: Date.DateFormat.ddMMyyyy.rawValue, inputFormat: Date.DateFormat.yyyyMMddTHHmmsssssz.rawValue)
         timeLbl.text = date
+        ratingLbl.text = (model.rating?.description ?? "") + "/5"
     }
 }

@@ -43,16 +43,16 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="4nO-NZ-kdL">
-                                <rect key="frame" x="58" y="43" width="134" height="34"/>
+                                <rect key="frame" x="58" y="43" width="119.5" height="34"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tyre Service " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="slW-40-w8Q">
-                                        <rect key="frame" x="0.0" y="0.0" width="134" height="16.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="119.5" height="16.5"/>
                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="14"/>
                                         <color key="textColor" red="0.32941176470588235" green="0.33725490196078434" blue="0.36078431372549019" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ooL-5T-rX9">
-                                        <rect key="frame" x="0.0" y="18.5" width="134" height="15.5"/>
+                                        <rect key="frame" x="0.0" y="18.5" width="119.5" height="15.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount Paid: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rPx-jh-t17">
                                                 <rect key="frame" x="0.0" y="0.0" width="82.5" height="15.5"/>
@@ -60,8 +60,8 @@
                                                 <color key="textColor" red="0.3294117647" green="0.33725490200000002" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="250 SAR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JKU-OY-k2I">
-                                                <rect key="frame" x="82.5" y="0.0" width="51.5" height="15.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 SAR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JKU-OY-k2I">
+                                                <rect key="frame" x="82.5" y="0.0" width="37" height="15.5"/>
                                                 <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="13"/>
                                                 <color key="textColor" name="outgoingMessageBackground"/>
                                                 <nil key="highlightedColor"/>

@@ -245,7 +245,12 @@ enum ApiKey {
     static var acceptedProposalId: String {return "acceptedProposalId"}
     static var serviceStatus: String {return "serviceStatus"}
     
-    
+    static var reviewId: String {return "reviewId"}
+    static var reportedTime: String {return "reportedTime"}
+    static var reportReason: String {return "reportReason"}
+    static var isacceptedProposalEdited: String {return "isacceptedProposalEdited"}
+
+
 
 
     

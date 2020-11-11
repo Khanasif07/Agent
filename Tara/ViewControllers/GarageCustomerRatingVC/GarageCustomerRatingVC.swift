@@ -20,7 +20,8 @@ class GarageCustomerRatingVC: BaseVC {
     var sectionArr : [CellType] = [.userDetail ,.serviceOn,.none,.serviceDetail]
     let viewModel = GarageCustomerRatingVM()
     var requestId : String = ""
-    
+    var reasonOfReport : String = ""
+   
     // MARK: - Lifecycle
     //===========================
     override func viewDidLoad() {
@@ -107,6 +108,7 @@ extension GarageCustomerRatingVC: UITableViewDelegate,UITableViewDataSource{
             
         }else {
             let cell = tableView.dequeueCell(with: ReviewAndRatingTableViewCell.self)
+            cell.bindData(viewModel.garageCompletedDetail ?? GarageRequestModel())
             cell.reportReviewBtnTapped = { [weak self] in
                 guard let `self` = self else { return }
                 AppRouter.goToReportPopupVC(vc: self)
@@ -124,7 +126,12 @@ extension GarageCustomerRatingVC: UITableViewDelegate,UITableViewDataSource{
     }
 }
 
-extension GarageCustomerRatingVC : GarageCustomerRatingVMDelegate{
+extension GarageCustomerRatingVC : GarageCustomerRatingVMDelegate, PickerDataDelegate {
+    
+    func selectedReason(str: String) {
+        viewModel.postReportReview(params: [ApiKey.reviewId: viewModel.garageCompletedDetail?.ratingId ?? "", ApiKey.reason: str], loader: true)
+    }
+    
     func customerRatingSuccess(msg: String) {
         mainTableView.reloadData()
     }
@@ -132,5 +139,13 @@ extension GarageCustomerRatingVC : GarageCustomerRatingVMDelegate{
     func customerRatingFailure(msg: String) {
         CommonFunctions.showToastWithMessage(msg)
     }
-
+    
+    func reportReviewSuccess(msg: String) {
+        mainTableView.reloadData()
+    }
+    
+    func reportReviewFailure(msg: String) {
+        CommonFunctions.showToastWithMessage(msg)
+    }
+    
 }

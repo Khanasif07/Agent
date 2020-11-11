@@ -73,6 +73,7 @@ enum AppRouter {
     
     static func goToReportPopupVC(vc: UIViewController){
         let scene = ReportPopupVC.instantiate(fromAppStoryboard: .GarageRequest)
+        scene.delegate = vc as? PickerDataDelegate
         vc.modalPresentationStyle = .fullScreen
         vc.present(scene, animated: true, completion: nil)
         

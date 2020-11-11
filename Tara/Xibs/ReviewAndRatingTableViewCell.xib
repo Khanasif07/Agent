@@ -116,7 +116,7 @@
                                         <real key="value" value="2"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="0.14901960784313725" green="0.14901960784313725" blue="0.14901960784313725" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" red="0.14901960784313725" green="0.14901960784313725" blue="0.14901960784313725" alpha="0.080000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
@@ -196,10 +196,12 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="imgContainerStackView" destination="wRL-M7-9DY" id="Kpx-5p-ybd"/>
                 <outlet property="reportReviewBtn" destination="dmi-0Q-UlP" id="IcD-rb-6Xt"/>
                 <outlet property="reviewLbl" destination="paz-F3-2Sg" id="Pg4-Lk-CaP"/>
                 <outlet property="reviewRatingLbl" destination="BeS-yr-Sba" id="gZy-Yl-Mq0"/>
                 <outlet property="reviewReasonLbl" destination="uQe-jq-193" id="4Ct-vz-S11"/>
+                <outlet property="reviewReportStackView" destination="sgz-ca-Tgf" id="8mo-3o-9gU"/>
                 <outlet property="reviewReportedLbl" destination="7hV-qD-kkK" id="ghc-ek-cR2"/>
                 <outletCollection property="starBtns" destination="T3B-hj-oSP" collectionClass="NSMutableArray" id="1sx-jn-erp"/>
                 <outletCollection property="starBtns" destination="qle-AC-eXL" collectionClass="NSMutableArray" id="lVO-TW-cN8"/>
