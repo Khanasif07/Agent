@@ -86,6 +86,19 @@ class RequestDetailTableViewCell: UITableViewCell {
             let date = (model.serviceCompletedOn)?.breakCompletDate(outPutFormat: Date.DateFormat.ddMMyyyy.rawValue, inputFormat: Date.DateFormat.yyyyMMddTHHmmsssssz.rawValue)
             userNameLbl.text = date
 
+        case .garageDetail:
+            helpBtn.isHidden = false
+            userNameLbl.text = model.garageName
+            mainImgView.contentMode = .scaleToFill
+            mainImgView.setImage_kf(imageString: model.logo ?? "", placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
+
+            break
+            
+        case .requestNumber:
+            userNameLbl.text = model.requestID
+            mainImgView.contentMode = .center
+            mainImgView.image = cellType.image
+            bottomView.isHidden = true
         default:
             break
         }

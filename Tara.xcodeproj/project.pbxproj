@@ -306,6 +306,8 @@
 		A459A140255BB45500645E45 /* GarageCustomerRatingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A459A13F255BB45500645E45 /* GarageCustomerRatingVC.swift */; };
 		A459A142255BB78A00645E45 /* GarageCustomerRatingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A459A141255BB78A00645E45 /* GarageCustomerRatingVM.swift */; };
 		A459A145255BC39C00645E45 /* ReportPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A459A144255BC39C00645E45 /* ReportPopupVC.swift */; };
+		A459A147255BE20800645E45 /* UserServiceStatusVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A459A146255BE20800645E45 /* UserServiceStatusVC.swift */; };
+		A459A149255BE26900645E45 /* UserServiceStatusVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A459A148255BE26900645E45 /* UserServiceStatusVM.swift */; };
 		A46808E82539CFBD00C2D404 /* SRPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46808E72539CFBD00C2D404 /* SRPopupVC.swift */; };
 		A468DCA02539D74100416CF9 /* GarageRequestPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A468DC9F2539D74100416CF9 /* GarageRequestPopupVC.swift */; };
 		A468DCA22539D80200416CF9 /* SocketIOManager+ApiData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A468DCA12539D80200416CF9 /* SocketIOManager+ApiData.swift */; };
@@ -666,6 +668,8 @@
 		A459A13F255BB45500645E45 /* GarageCustomerRatingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageCustomerRatingVC.swift; sourceTree = "<group>"; };
 		A459A141255BB78A00645E45 /* GarageCustomerRatingVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageCustomerRatingVM.swift; sourceTree = "<group>"; };
 		A459A144255BC39C00645E45 /* ReportPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportPopupVC.swift; sourceTree = "<group>"; };
+		A459A146255BE20800645E45 /* UserServiceStatusVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceStatusVC.swift; sourceTree = "<group>"; };
+		A459A148255BE26900645E45 /* UserServiceStatusVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceStatusVM.swift; sourceTree = "<group>"; };
 		A46808E72539CFBD00C2D404 /* SRPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRPopupVC.swift; sourceTree = "<group>"; };
 		A468DC9F2539D74100416CF9 /* GarageRequestPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageRequestPopupVC.swift; sourceTree = "<group>"; };
 		A468DCA12539D80200416CF9 /* SocketIOManager+ApiData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SocketIOManager+ApiData.swift"; sourceTree = "<group>"; };
@@ -1402,6 +1406,7 @@
 				A41B7DE925551A9B005D1AC5 /* ServiceCompletedVC */,
 				A459A143255BB7CE00645E45 /* GarageCustomerRatingVC */,
 				A459A144255BC39C00645E45 /* ReportPopupVC.swift */,
+				A459A14A255BE37F00645E45 /* UserServiceStatusVC */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -2119,6 +2124,15 @@
 			path = GarageCustomerRatingVC;
 			sourceTree = "<group>";
 		};
+		A459A14A255BE37F00645E45 /* UserServiceStatusVC */ = {
+			isa = PBXGroup;
+			children = (
+				A459A146255BE20800645E45 /* UserServiceStatusVC.swift */,
+				A459A148255BE26900645E45 /* UserServiceStatusVM.swift */,
+			);
+			path = UserServiceStatusVC;
+			sourceTree = "<group>";
+		};
 		A47C149E251F31B7005C8EA2 /* BatteryRequestedVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -2540,6 +2554,7 @@
 				A479345E253FFEE8001CDA4A /* SylyfeBuyer_SylyfeBuyer_Helpers_AlignmentFlowLayout.swift in Sources */,
 				8481FA672500BFB900AB6EFB /* AppStoryboards.swift in Sources */,
 				84476D2F25075F1E00AB5E80 /* HomeVC.swift in Sources */,
+				A459A149255BE26900645E45 /* UserServiceStatusVM.swift in Sources */,
 				8481FA2F2500BCBF00AB6EFB /* LocalizedString.swift in Sources */,
 				A4DEB8692552865700BD7D2E /* ReviewTableViewCell.swift in Sources */,
 				844D81E325025D9600550334 /* LoginWithPhoneVC.swift in Sources */,
@@ -2613,6 +2628,7 @@
 				A4DCEE0D252E0D34002EB32F /* GarageServiceRequestVM.swift in Sources */,
 				A45042D3250F76D5001C8905 /* AddAccountDetailVC.swift in Sources */,
 				A4CC3255252CB3F400669F39 /* TyreRequestDetailTableViewCell.swift in Sources */,
+				A459A147255BE20800645E45 /* UserServiceStatusVC.swift in Sources */,
 				8481FA772500C5CD00AB6EFB /* CountryData.swift in Sources */,
 				847BC423250774E100EEEFDC /* ResetPasswordVC.swift in Sources */,
 				843C8ED22508FB9300515F2E /* HomeCollectionCell.swift in Sources */,

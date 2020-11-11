@@ -1,14 +1,14 @@
 //
-//  ServiceStatusVC.swift
-//  ArabianTyres
+//  UserServiceStatusVC.swift
+//  Tara
 //
-//  Created by Arvind on 07/10/20.
+//  Created by Arvind on 11/11/20.
 //  Copyright © 2020 Admin. All rights reserved.
 //
 
 import UIKit
 
-class ServiceStatusVC: BaseVC {
+class UserServiceStatusVC: BaseVC {
     
     // MARK: - IBOutlets
     //===========================
@@ -17,10 +17,9 @@ class ServiceStatusVC: BaseVC {
 
     // MARK: - Variables
     //===========================
-    var sectionArr : [CellType] = [.userDetail ,.none,.serviceDetail]
-    let viewModel = ServiceStatusVM()
+    var sectionArr : [CellType] = [.garageDetail ,.requestNumber,.none,.serviceDetail]
+    let viewModel = UserServiceStatusVM()
     var requestId : String = ""
-    var serviceNo : String = ""
     
     // MARK: - Lifecycle
     //===========================
@@ -49,13 +48,13 @@ class ServiceStatusVC: BaseVC {
 
 // MARK: - Extension For Functions
 //===========================
-extension ServiceStatusVC {
+extension UserServiceStatusVC {
     
     private func initialSetup() {
         setupTextAndFont()
         setupTableView()
         viewModel.delegate = self
-        viewModel.fetchBookedRequestDetail(params: [ApiKey.requestId: self.requestId], loader: true)
+        viewModel.fetchRequestDetail(params: [ApiKey.requestId: self.requestId], loader: true)
     }
     
     private func setupTableView() {
@@ -70,11 +69,11 @@ extension ServiceStatusVC {
     
     private func setupTextAndFont(){
         titleLbl.font = AppFonts.NunitoSansBold.withSize(17.0)
-        titleLbl.text = "Service No. " + serviceNo
+        titleLbl.text = "Ongoing Service"
     }
 }
 
-extension ServiceStatusVC: UITableViewDelegate,UITableViewDataSource{
+extension UserServiceStatusVC: UITableViewDelegate,UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
@@ -86,9 +85,9 @@ extension ServiceStatusVC: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             switch sectionArr[indexPath.row] {
-            case .userDetail:
+            case .garageDetail, .requestNumber:
                 let cell = tableView.dequeueCell(with: RequestDetailTableViewCell.self)
-                cell.populateData(sectionArr[indexPath.row], model: viewModel.bookedRequestDetail ?? GarageRequestModel())
+                cell.populateData(sectionArr[indexPath.row], model: viewModel.serviceDetailData ?? GarageRequestModel())
                 return cell
                 
             case .none:
@@ -97,7 +96,7 @@ extension ServiceStatusVC: UITableViewDelegate,UITableViewDataSource{
                 
             case .serviceDetail:
                 let cell = tableView.dequeueCell(with: ServiceDetailTableViewCell.self)
-                cell.bindDataForBookedRequestDetail(viewModel.bookedRequestDetail ?? GarageRequestModel())
+                cell.bindDataForBookedRequestDetail(viewModel.serviceDetailData ?? GarageRequestModel())
                 return cell
                 
             default:
@@ -107,7 +106,7 @@ extension ServiceStatusVC: UITableViewDelegate,UITableViewDataSource{
             
         }else {
             let cell = tableView.dequeueCell(with: ServiceStatusTableViewCell.self)
-            cell.populateData(status: viewModel.bookedRequestDetail?.serviceStatus ?? nil)
+            cell.populateDataForUserService(status: viewModel.serviceDetailData?.serviceStatus ?? nil)
             updateStatus(cell: cell)
            
             return cell
@@ -123,59 +122,34 @@ extension ServiceStatusVC: UITableViewDelegate,UITableViewDataSource{
     }
 }
 
-extension ServiceStatusVC: ServiceStatusVMDelegate {
-    func updateServiceStatusSuccess(msg: String) {
-        NotificationCenter.default.post(name: Notification.Name.UpdateServiceStatus, object: nil)
+extension UserServiceStatusVC: UserServiceStatusVMDelegate {
+    func serviceDetailSuccess(msg: String) {
         mainTableView.reloadData()
     }
     
-    func updateServiceStatusFailed(msg: String) {
-        
+    func serviceDetailFailed(msg: String) {
+        CommonFunctions.showToastWithMessage(msg)
     }
     
-    func bookedRequestDetailSuccess(msg: String) {
-        mainTableView.reloadData()
+    func markCarReceivedSuccess(msg: String){
+        AppRouter.goToRatingVC(vc: self, requestId: self.requestId, garageName: viewModel.serviceDetailData?.garageName ?? "")
     }
     
-    func bookedRequestDetailFailed(msg: String) {
-        
+    func markCarReceivedFailure(msg: String){
+        CommonFunctions.showToastWithMessage(msg)
     }
 }
 
-extension ServiceStatusVC {
+extension UserServiceStatusVC {
     func updateStatus(cell: ServiceStatusTableViewCell) {
-        cell.carReceivedUpdateBtnTapped = {[weak self] in
-            guard let `self` = self else { return }
-            AppRouter.openOtpPopUpVC(vc: self, requestByUser: self.viewModel.bookedRequestDetail?.userName ?? "",requestId: self.viewModel.bookedRequestDetail?.id ?? "") {
-                self.viewModel.fetchBookedRequestDetail(params: [ApiKey.requestId: self.requestId], loader: true)
-            }
-        }
-        
-        cell.inProgressUpdateBtnTapped = {[weak self] in
-            guard let `self` = self else { return }
-            self.viewModel.updateServiceStatus(params: [ApiKey.requestId : self.viewModel.bookedRequestDetail?.id ?? "", ApiKey.status : "in_progress"],loader: true)
-        }
-        
-        cell.completedUpdateBtnTapped = {
-            [weak self] in
-            guard let `self` = self else { return }
-            self.viewModel.updateServiceStatus(params: [ApiKey.requestId : self.viewModel.bookedRequestDetail?.id ?? "", ApiKey.status : "completed"],loader: true)
-        }
-        
-        cell.takenUpdateBtnTapped = { [weak self] in
-            guard let `self` = self else { return }
-            self.viewModel.updateServiceStatus(params: [ApiKey.requestId : self.viewModel.bookedRequestDetail?.id ?? "", ApiKey.status : "ready_to_be_taken"],loader: true)
-        }
-        
         cell.yesBtnTapped = { [weak self] in
             guard let `self` = self else { return }
-            printDebug("nothing to do")
+            self.viewModel.carReceived(params: [ApiKey.requestId: self.requestId, ApiKey.status : true], loader: true)
         }
         
         cell.noBtnTapped = { [weak self] in
             guard let `self` = self else { return }
             printDebug("nothing to do")
         }
-
     }
 }

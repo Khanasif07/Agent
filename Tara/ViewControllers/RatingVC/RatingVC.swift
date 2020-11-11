@@ -32,7 +32,8 @@ class RatingVC: BaseVC {
     let viewModel = RatingVM()
     var rating : String = ""
     var images : [String] = []
-    var garageId: String = ""
+    var requestId : String = ""
+    var garageName : String = ""
     
     // MARK: - Lifecycle
     //==================
@@ -103,8 +104,7 @@ extension RatingVC {
         rateOutOfFiveLbl.text = LocalizedString.rateOutOfFive.localized
         descWhyLbl.text = LocalizedString.describeWhy.localized
         uploadAnyPicLbl.text = LocalizedString.uploadAnyPictureOfYourExperience.localized
-        overAllExpLbl.text = LocalizedString.filters.localized
-        
+        garageNameLbl.text = garageName + " Garage?"
         
     }
     
@@ -114,7 +114,7 @@ extension RatingVC {
     }
     
     private func getDict() -> JSONDictionary{
-        let dict : JSONDictionary = [ApiKey.garageId : self.garageId ,
+        let dict : JSONDictionary = [ApiKey.requestId : self.requestId ,
                                      ApiKey.rating : self.rating,
                                      ApiKey.review: txtView.text.byRemovingLeadingSpaces,
                                      ApiKey.images : self.images]
@@ -183,7 +183,7 @@ extension RatingVC: UIImagePickerControllerDelegate,UINavigationControllerDelega
 
 extension RatingVC : RatingVMDelegate{
     func ratingSuccess(msg: String) {
-        
+        pop()
     }
     
     func ratingFailed(msg: String) {

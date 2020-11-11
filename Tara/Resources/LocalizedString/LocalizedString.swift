@@ -340,7 +340,8 @@ enum LocalizedString : String {
     case tyre
     case oil
     case battery
-    
+    case garageDetails
+    case requestNumber
     
     // MARK: - Garage Home Values
     //==============================

@@ -263,7 +263,8 @@
 "offerAccepted" = "Offer Accepted";
 "offerReceived" = "Offer Received";
 "noOffers" = "No Offers";
-
+"garageDetails" = "Garage Details";
+"requestNumber" = "Request Number";
 "fromDate" = "From Date";
 "endDate" = "End Date";
 

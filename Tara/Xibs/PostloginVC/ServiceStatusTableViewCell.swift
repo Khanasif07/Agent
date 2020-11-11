@@ -163,6 +163,90 @@ class ServiceStatusTableViewCell: UITableViewCell {
         }
     }
     
+    func populateDataForUserService(status: ServiceState?) {
+        carReceivedUpdateBtn.isHidden = true
+        progressUpdateBtn.isHidden = true
+        completeUpdateBtn.isHidden = true
+        takenUpdateBtn.isHidden = true
+
+        if status == nil {
+            carReceivedUpdateBtn.isHidden = false
+            carReceivedUpdateBtn.isEnabled = true
+        }
+        
+        if status == .carReceived {
+            carReceivedLbl.textColor = AppColors.fontPrimaryColor
+            carReceivedStepBtn.setTitle(nil, for: .normal)
+            carReceivedStepBtn.setImage(#imageLiteral(resourceName: "group467"), for: .normal)
+            carReceivedUpdateBtn.isHidden = true
+            progressUpdateBtn.isEnabled = true
+        }
+        
+        if status == .inProgress {
+            carReceivedLbl.textColor = AppColors.fontPrimaryColor
+            progressLbl.textColor = AppColors.fontPrimaryColor
+            carReceivedStepBtn.setTitle(nil, for: .normal)
+            carReceivedStepBtn.setImage(#imageLiteral(resourceName: "group467"), for: .normal)
+            progressStepBtn.setImage(#imageLiteral(resourceName: "group467"), for: .normal)
+            progressStepBtn.setTitle(nil, for: .normal)
+            carReceivedUpdateBtn.isHidden = true
+            progressUpdateBtn.isHidden = true
+            carServiceLineView.backgroundColor = #colorLiteral(red: 0.07843137255, green: 0.6352941176, blue: 0.5411764706, alpha: 1)
+            completeUpdateBtn.isEnabled = true
+
+        }
+        
+        if status == .completed {
+            carReceivedLbl.textColor = AppColors.fontPrimaryColor
+            progressLbl.textColor = AppColors.fontPrimaryColor
+            completeLbl.textColor = AppColors.fontPrimaryColor
+         
+            carReceivedStepBtn.setTitle(nil, for: .normal)
+            carReceivedStepBtn.setImage(#imageLiteral(resourceName: "group467"), for: .normal)
+            carReceivedUpdateBtn.isHidden = true
+            
+            progressStepBtn.setImage(#imageLiteral(resourceName: "group467"), for: .normal)
+            progressStepBtn.setTitle(nil, for: .normal)
+            progressUpdateBtn.isHidden = true
+           
+            completeStepBtn.setImage(#imageLiteral(resourceName: "group467"), for: .normal)
+            completeUpdateBtn.isHidden = true
+            completeStepBtn.setTitle(nil, for: .normal)
+            carServiceLineView.backgroundColor = #colorLiteral(red: 0.07843137255, green: 0.6352941176, blue: 0.5411764706, alpha: 1)
+            completedLineView.backgroundColor = #colorLiteral(red: 0.07843137255, green: 0.6352941176, blue: 0.5411764706, alpha: 1)
+            
+            takenUpdateBtn.isEnabled = true
+        }
+        
+        if status == .readyToBeTaken {
+            carReceivedLbl.textColor = AppColors.fontPrimaryColor
+            progressLbl.textColor = AppColors.fontPrimaryColor
+            completeLbl.textColor = AppColors.fontPrimaryColor
+            takenLbl.textColor = AppColors.fontPrimaryColor
+
+            carReceivedStepBtn.setTitle(nil, for: .normal)
+            carReceivedStepBtn.setImage(#imageLiteral(resourceName: "group467"), for: .normal)
+            carReceivedUpdateBtn.isHidden = true
+            
+            progressStepBtn.setTitle(nil, for: .normal)
+            progressStepBtn.setImage(#imageLiteral(resourceName: "group467"), for: .normal)
+            progressUpdateBtn.isHidden = true
+           
+            completeStepBtn.setImage(#imageLiteral(resourceName: "group467"), for: .normal)
+            completeStepBtn.setTitle(nil, for: .normal)
+            completeUpdateBtn.isHidden = true
+          
+            takenStepBtn.setImage(#imageLiteral(resourceName: "group467"), for: .normal)
+            takenStepBtn.setTitle(nil, for: .normal)
+            takenUpdateBtn.isHidden = true
+           
+            carServiceLineView.backgroundColor = #colorLiteral(red: 0.07843137255, green: 0.6352941176, blue: 0.5411764706, alpha: 1)
+            completedLineView.backgroundColor = #colorLiteral(red: 0.07843137255, green: 0.6352941176, blue: 0.5411764706, alpha: 1)
+            readyToBeTakenLineView.backgroundColor = #colorLiteral(red: 0.07843137255, green: 0.6352941176, blue: 0.5411764706, alpha: 1)
+            
+            carRecievedStackView.isHidden = false
+        }
+    }
     
     //MARK:- IBActions
    

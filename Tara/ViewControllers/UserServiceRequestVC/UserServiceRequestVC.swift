@@ -93,7 +93,7 @@ class UserServiceRequestVC: BaseVC {
     
     @IBAction func viewAllBtnAction(_ sender: AppButton) {
         if viewAllBtn.titleLabel?.text == "View Details" {
-            
+            AppRouter.goToUserServiceStatusVC(vc: self, requestId: viewModel.requestId)
         }else {
             AppRouter.goToUserAllOffersVC(vc: self, requestId: requestId)
             

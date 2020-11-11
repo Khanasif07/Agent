@@ -410,6 +410,19 @@ enum AppRouter {
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
+    static func goToUserServiceStatusVC(vc: UIViewController, requestId : String){
+        let scene = UserServiceStatusVC.instantiate(fromAppStoryboard: .GarageRequest)
+        scene.requestId = requestId
+        vc.navigationController?.pushViewController(scene, animated: true)
+    }
+    
+    static func goToRatingVC(vc: UIViewController, requestId : String,garageName: String){
+        let scene = RatingVC.instantiate(fromAppStoryboard: .GarageRequest)
+        scene.requestId = requestId
+        scene.garageName = garageName
+        vc.navigationController?.pushViewController(scene, animated: true)
+    }
+    
     
     static func goToGarageServiceRequestVC(vc: UIViewController,requestId : String,requestType : String, bidStatus: BidStatus){
         let scene = GarageServiceRequestVC.instantiate(fromAppStoryboard: .Garage)
