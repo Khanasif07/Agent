@@ -295,7 +295,6 @@
 		A44E8D78251CBC3B00ACBC4D /* BatteryBrandVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44E8D77251CBC3B00ACBC4D /* BatteryBrandVC.swift */; };
 		A44E8D7A251CBF9500ACBC4D /* VehicleDetailForBatteryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44E8D79251CBF9500ACBC4D /* VehicleDetailForBatteryVC.swift */; };
 		A44E8D7C251CD24900ACBC4D /* VehicleDetailForOilVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44E8D7B251CD24900ACBC4D /* VehicleDetailForOilVC.swift */; };
-		A45034A7255D23B200FB5951 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A45034A6255D23B200FB5951 /* GoogleService-Info.plist */; };
 		A45034AA255D4A7400FB5951 /* SenderOfferCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45034A8255D4A7400FB5951 /* SenderOfferCell.swift */; };
 		A45034AB255D4A7400FB5951 /* SenderOfferCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A45034A9255D4A7400FB5951 /* SenderOfferCell.xib */; };
 		A45042C7250F2D12001C8905 /* AddAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45042C6250F2D12001C8905 /* AddAccountVC.swift */; };
@@ -362,6 +361,7 @@
 		A4DEB8662552846500BD7D2E /* ReViewListingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DEB8652552846500BD7D2E /* ReViewListingVC.swift */; };
 		A4DEB8692552865700BD7D2E /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DEB8672552865700BD7D2E /* ReviewTableViewCell.swift */; };
 		A4DEB86A2552865700BD7D2E /* ReviewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4DEB8682552865700BD7D2E /* ReviewTableViewCell.xib */; };
+		A4E415A0255DB3D9003E833E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A4E4159F255DB3D8003E833E /* GoogleService-Info.plist */; };
 		A4E7E904253197F6007E2D6D /* ByDateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E7E902253197F6007E2D6D /* ByDateCollectionViewCell.swift */; };
 		A4E7E905253197F6007E2D6D /* ByDateCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4E7E903253197F6007E2D6D /* ByDateCollectionViewCell.xib */; };
 		A4FEF8EC2518744900D58C13 /* TyreRequestedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FEF8EB2518744900D58C13 /* TyreRequestedVC.swift */; };
@@ -661,7 +661,6 @@
 		A44E8D77251CBC3B00ACBC4D /* BatteryBrandVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryBrandVC.swift; sourceTree = "<group>"; };
 		A44E8D79251CBF9500ACBC4D /* VehicleDetailForBatteryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleDetailForBatteryVC.swift; sourceTree = "<group>"; };
 		A44E8D7B251CD24900ACBC4D /* VehicleDetailForOilVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleDetailForOilVC.swift; sourceTree = "<group>"; };
-		A45034A6255D23B200FB5951 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A45034A8255D4A7400FB5951 /* SenderOfferCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenderOfferCell.swift; sourceTree = "<group>"; };
 		A45034A9255D4A7400FB5951 /* SenderOfferCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SenderOfferCell.xib; sourceTree = "<group>"; };
 		A45042C6250F2D12001C8905 /* AddAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountVC.swift; sourceTree = "<group>"; };
@@ -729,6 +728,7 @@
 		A4DEB8652552846500BD7D2E /* ReViewListingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReViewListingVC.swift; sourceTree = "<group>"; };
 		A4DEB8672552865700BD7D2E /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
 		A4DEB8682552865700BD7D2E /* ReviewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewTableViewCell.xib; sourceTree = "<group>"; };
+		A4E4159F255DB3D8003E833E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A4E7E902253197F6007E2D6D /* ByDateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ByDateCollectionViewCell.swift; sourceTree = "<group>"; };
 		A4E7E903253197F6007E2D6D /* ByDateCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ByDateCollectionViewCell.xib; sourceTree = "<group>"; };
 		A4FEF8EB2518744900D58C13 /* TyreRequestedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TyreRequestedVC.swift; sourceTree = "<group>"; };
@@ -1341,7 +1341,7 @@
 				8481FA2D2500BC7800AB6EFB /* Fonts */,
 				8481FA282500BC1400AB6EFB /* LocalizedString */,
 				8481FA052500AA9B00AB6EFB /* Assets.xcassets */,
-				A45034A6255D23B200FB5951 /* GoogleService-Info.plist */,
+				A4E4159F255DB3D8003E833E /* GoogleService-Info.plist */,
 				A4363969254AA9D200FE1AE1 /* Info.plist */,
 			);
 			path = Resources;
@@ -2459,7 +2459,6 @@
 				A441A676252CD5F600B5420B /* DashedCollectionViewCell.xib in Resources */,
 				844EB71525187CD0003A6E3F /* URTyreSizeTableCell.xib in Resources */,
 				A4CC324C252CAC3000669F39 /* ServiceDetailCollectionViewCell.xib in Resources */,
-				A45034A7255D23B200FB5951 /* GoogleService-Info.plist in Resources */,
 				844EB7222518C9C3003A6E3F /* LoaderCell.xib in Resources */,
 				84FF6E93251C625F0000E2AD /* CustomDashedView.xib in Resources */,
 				A41508322556787A005DF8FD /* RequestDetailTableViewCell.xib in Resources */,
@@ -2472,6 +2471,7 @@
 				8481FA8B2501081000AB6EFB /* TutorialCollCell.xib in Resources */,
 				A415083625567CAB005DF8FD /* DashedTableViewCell.xib in Resources */,
 				A41B7DF825552F4B005D1AC5 /* SenderLocationCell.xib in Resources */,
+				A4E415A0255DB3D9003E833E /* GoogleService-Info.plist in Resources */,
 				84144F28252C4AAD00D6572F /* MyServiceTableCell.xib in Resources */,
 				84801CD72547FBDC00F360FC /* Chat.storyboard in Resources */,
 				8481FA9F250143AB00AB6EFB /* NunitoSans-Light.ttf in Resources */,
@@ -2960,7 +2960,7 @@
 				CODE_SIGN_ENTITLEMENTS = Tara/ArabianTyres.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = C4X83X2P52;
 				INFOPLIST_FILE = Tara/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -2986,7 +2986,7 @@
 				CODE_SIGN_ENTITLEMENTS = Tara/ArabianTyres.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = C4X83X2P52;
 				INFOPLIST_FILE = Tara/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;

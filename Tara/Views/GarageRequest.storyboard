@@ -1967,7 +1967,7 @@ start Servicing</string>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="edt-by-0Ju">
                                         <rect key="frame" x="16" y="321.5" width="382" height="253"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icRgt" translatesAutoresizingMaskIntoConstraints="NO" id="L1H-Hy-tZT">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="questionMark" translatesAutoresizingMaskIntoConstraints="NO" id="L1H-Hy-tZT">
                                                 <rect key="frame" x="155" y="30" width="72" height="72"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="72" id="QZY-aP-apF"/>
@@ -2263,8 +2263,8 @@ start Servicing</string>
         <image name="icCheckStar" width="48" height="48"/>
         <image name="icImg" width="32.5" height="32"/>
         <image name="icMinus" width="20" height="20"/>
-        <image name="icRgt" width="14" height="14"/>
         <image name="icUnCheckStar" width="48" height="48"/>
+        <image name="questionMark" width="80" height="80"/>
         <namedColor name="appRedColor">
             <color red="0.87800002098083496" green="0.13699999451637268" blue="0.25900000333786011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
