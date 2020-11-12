@@ -1081,5 +1081,28 @@ extension WebServices{
                failure(error)
            }
        }
+    
+    //MARK:- Mark Car Received Api
+    static func acceptRejectEditedBid(parameters: JSONDictionary,loader: Bool = false,
+                                success: @escaping SuccessResponse,
+                                failure: @escaping FailureResponse) {
+        self.commonGetAPI(parameters: parameters, endPoint: .acceptRejectEditedBid,loader: loader, success: { (json) in
+            success(json)
+        }) { (error) -> (Void) in
+            failure(error)
+        }
+    }
+    
+    
+       //MARK:- User Query Api
+       static func userQuery(parameters: JSONDictionary,loader: Bool = false,
+                                   success: @escaping SuccessResponse,
+                                   failure: @escaping FailureResponse) {
+           self.commonPostAPI(parameters: parameters, endPoint: .userQuery,loader: loader, success: { (json) in
+               success(json)
+           }) { (error) -> (Void) in
+               failure(error)
+           }
+       }
 }
 

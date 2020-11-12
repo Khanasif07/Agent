@@ -131,7 +131,11 @@ class ServiceRequestTableCell: UITableViewCell {
         }else {
             if model.bidStatus == .bidFinalsed  {
                 placeBidBtn.isEnabled = true
-                rejectRequestBtn.isHidden = false
+                if model.isServiceStarted ?? false {
+                    rejectRequestBtn.isHidden = true
+                }else {
+                    rejectRequestBtn.isHidden = false
+                }
                 placeBidBtn.isHidden = false
                 rejectRequestBtn.isBorderSelected = true
                 placeBidBtn.setTitle("Chat", for: .normal)

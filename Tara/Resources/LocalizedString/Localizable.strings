@@ -267,7 +267,7 @@
 "requestNumber" = "Request Number";
 "fromDate" = "From Date";
 "endDate" = "End Date";
-
+"description" = "Description";
 "bidFinalized" = "Bid Finalized";
 "openForBid" = "Open for Bid";
 "bidPlaced" = "Bid Placed";

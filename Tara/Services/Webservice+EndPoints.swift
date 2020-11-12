@@ -81,6 +81,9 @@ extension WebServices {
         case userServiceDetails = "user/services/userServiceDetails"
         case markCarReceived = "user/services/markCarReceived"
         case sendOtpToStartService = "user/services/sendOtpToStartService"
+        case acceptRejectEditedBid = "user/bids/acceptRejectEditedBid"
+        case userQuery = "user/query"
+        
         
         var path : String {
             let url = baseUrl

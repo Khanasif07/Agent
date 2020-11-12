@@ -46,6 +46,9 @@ class OneToOneChatVC: BaseVC {
     var messageListing = [[Message]]()
     var isRoom = false
     
+    var messageId :String = ""
+    var acceptedRejectBtnStatus: Bool = false
+    
     fileprivate var hasImageUploaded = true {
         didSet {
             if hasImageUploaded {
@@ -328,6 +331,7 @@ extension OneToOneChatVC {
     private func setupTableView() {
         messagesTableView.delegate = self
         messagesTableView.dataSource = self
+        messagesTableView.registerCell(with: SenderOfferCell.self)
         messagesTableView.registerCell(with: SenderLocationCell.self)
         messagesTableView.registerCell(with: ReceiverLocationCell.self)
         messagesTableView.registerCell(with: SenderMessageCell.self)
@@ -622,6 +626,42 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                 return receiverAudioCell
             case MessageType.offer.rawValue:
                 let receiverOfferCell = tableView.dequeueCell(with: ReceiverOfferCell.self)
+                receiverOfferCell.acceptBtnTapped = {[weak self] in
+                    guard let `self` = self else { return }
+                    self.messageId = model.messageId
+                    self.acceptedRejectBtnStatus = true
+                    self.chatViewModel.acceptRejectEditedBid(params: [ApiKey.requestId: self.requestId,ApiKey.status: true], loader: true)
+                }
+                
+                receiverOfferCell.rejectBtnTapped = {[weak self] in
+                    guard let `self` = self else { return }
+                    self.acceptedRejectBtnStatus = false
+                    self.messageId = model.messageId
+                    self.chatViewModel.acceptRejectEditedBid(params: [ApiKey.requestId: self.requestId,ApiKey.status: true], loader: false)
+                }
+                
+                if model.messageStatus == 1 {// show both button
+                    receiverOfferCell.acceptBtn.isHidden = false
+                    receiverOfferCell.rejectBtn.isHidden = false
+                    receiverOfferCell.acceptBtn.isUserInteractionEnabled = true
+                    receiverOfferCell.acceptBtn.setTitle("Accept", for: .normal)
+                    receiverOfferCell.rejectBtn.setTitle("Reject", for: .normal)
+
+                    
+                }
+                else if model.messageStatus == 2 { //offer accpted
+                    receiverOfferCell.acceptBtn.isHidden = false
+                    receiverOfferCell.acceptBtn.isUserInteractionEnabled = false
+                    receiverOfferCell.acceptBtn.setTitle("Offer Accepted", for: .normal)
+                    receiverOfferCell.rejectBtn.isHidden = true
+                }
+                else if model.messageStatus == 3 { //offer rejected
+                    receiverOfferCell.acceptBtn.isHidden = false
+                    receiverOfferCell.acceptBtn.isUserInteractionEnabled = false
+                    receiverOfferCell.acceptBtn.setTitle("Offer Rejected", for: .normal)
+                    receiverOfferCell.rejectBtn.isHidden = true
+                }
+                
                 receiverOfferCell.userNameLbl.text = self.firstName
                 receiverOfferCell.userImgView.setImage_kf(imageString: userImage, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
                 receiverOfferCell.priceLbl.text = "\(model.price)" + "SAR"
@@ -702,11 +742,37 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                     self.selectedIndexPath = indexPath
                 }
                 return senderAudioCell
+                
             case MessageType.offer.rawValue:
-                let senderCell = tableView.dequeueCell(with: SenderMessageCell.self)
-                senderCell.configureCellWith(model: model)
+                let senderOfferCell = tableView.dequeueCell(with: SenderOfferCell.self)
+            
+                if model.messageStatus == 1 {// hide both button
+                    senderOfferCell.btnStackView.isHidden = true
+                }
+                else if model.messageStatus == 2 { //offer accpted
+                    senderOfferCell.btnStackView.isHidden = false
+                    senderOfferCell.acceptBtn.isHidden = false
+                    senderOfferCell.acceptBtn.isUserInteractionEnabled = false
+                    senderOfferCell.acceptBtn.setTitle("Offer Accepted", for: .normal)
+                    senderOfferCell.rejectBtn.isHidden = true
+                }
+                else if model.messageStatus == 3 { //offer rejected
+                    senderOfferCell.btnStackView.isHidden = false
+                    senderOfferCell.acceptBtn.isHidden = false
+                    senderOfferCell.acceptBtn.isUserInteractionEnabled = false
+                    senderOfferCell.acceptBtn.setTitle("Offer Rejected", for: .normal)
+                    senderOfferCell.rejectBtn.isHidden = true
+                }
+                senderOfferCell.userNameLbl.text = self.firstName
+                senderOfferCell.userImgView.setImage_kf(imageString: userImage, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
+                senderOfferCell.priceLbl.text = "\(model.price)" + "SAR"
+                self.setTapGesture(view: senderOfferCell.msgContainerView, indexPath: indexPath)
+                senderOfferCell.userImgView.addGestureRecognizer(imgTap)
+                return senderOfferCell
+                
+//                let senderCell = tableView.dequeueCell(with: SenderMessageCell.self)
+//                senderCell.configureCellWith(model: model)
                 //                senderCell.senderImgView.addGestureRecognizer(imgTap)
-                return senderCell
             default:
                 let senderCell = tableView.dequeueCell(with: SenderMessageCell.self)
                 senderCell.configureCellWith(model: model)
@@ -1017,10 +1083,20 @@ extension OneToOneChatVC{
     
     /// Mark:- Creating a message node
     private func createMessage(msgType: String = "text",price: Int = 0){
-        FirestoreController.createLastMessageNode(roomId:roomId,messageText:messageTextView.text.byRemovingLeadingTrailingWhiteSpaces ,messageTime:FieldValue.serverTimestamp(), messageId:getMessageId(),messageType: msgType, messageStatus:1,senderId:currentUserId,receiverId:inboxModel.userId, mediaUrl: "",blocked:amIBlocked, thumbNailURL: "", messageDuration: 0,price: price, amIBlocked: amIBlocked)
-      
-        FirestoreController.createMessageNode(roomId:roomId,messageText:messageTextView.text.byRemovingLeadingTrailingWhiteSpaces ,messageTime:FieldValue.serverTimestamp(), messageId:getMessageId(),messageType: msgType, messageStatus:1,senderId:currentUserId,receiverId:inboxModel.userId, mediaUrl: "",blocked: amIBlocked, thumbNailURL: "", messageDuration: 0,price: price )
         
+        if msgType == "payment" {
+             FirestoreController.createLastMessageNode(roomId:roomId,messageText: messageTextView.text.byRemovingLeadingTrailingWhiteSpaces ,messageTime:FieldValue.serverTimestamp(), messageId:getMessageId(),messageType: msgType, messageStatus:1,senderId:inboxModel.userId , receiverId: currentUserId, mediaUrl: "",blocked:amIBlocked, thumbNailURL: "", messageDuration: 0,price: price, amIBlocked: amIBlocked)
+        }
+        else {
+            FirestoreController.createLastMessageNode(roomId:roomId,messageText: messageTextView.text.byRemovingLeadingTrailingWhiteSpaces ,messageTime:FieldValue.serverTimestamp(), messageId:getMessageId(),messageType: msgType, messageStatus:1,senderId:currentUserId,receiverId:inboxModel.userId, mediaUrl: "",blocked:amIBlocked, thumbNailURL: "", messageDuration: 0,price: price, amIBlocked: amIBlocked)
+        }
+        
+        
+        if msgType == "payment" {
+             FirestoreController.createMessageNode(roomId:roomId,messageText: messageTextView.text.byRemovingLeadingTrailingWhiteSpaces ,messageTime:FieldValue.serverTimestamp(), messageId:getMessageId(),messageType: msgType, messageStatus:1,senderId: inboxModel.userId, receiverId: currentUserId , mediaUrl: "",blocked: amIBlocked, thumbNailURL: "", messageDuration: 0,price: price)
+        }else {
+            FirestoreController.createMessageNode(roomId:roomId,messageText: messageTextView.text.byRemovingLeadingTrailingWhiteSpaces ,messageTime:FieldValue.serverTimestamp(), messageId:getMessageId(),messageType: msgType, messageStatus:1,senderId:currentUserId, receiverId:inboxModel.userId, mediaUrl: "",blocked: amIBlocked, thumbNailURL: "", messageDuration: 0,price: price)
+        }
     }
     
     private func createMediaMessage(url: String, imageURL: String = "", type: String) {
@@ -1165,15 +1241,17 @@ extension OneToOneChatVC{
                         return
                     }
 //                    if !message.blocked {
-                        if message.senderId == self.inboxModel.userId {                            self.db.collection(ApiKey.messages).document(self.getRoomId()).collection(ApiKey.chat).document(message.messageId).updateData([ApiKey.messageStatus : 2]) { (error) in
+                    if message.messageType != "offer" && message.messageType != "payment" {
+                       if message.senderId == self.inboxModel.userId {                            self.db.collection(ApiKey.messages).document(self.getRoomId()).collection(ApiKey.chat).document(message.messageId).updateData([ApiKey.messageStatus : 3]) { (error) in
                             if let err = error {
                                 print(err.localizedDescription)
                             } else {
                                 //                                self.db.collection(ApiKey.inbox).document(self.currentUserId).collection(ApiKey.chat).document(self.inboxModel.userId).updateData([ApiKey.unreadMessages: 0])
+                               }
                             }
-                            }
-                            
                         }
+                    }
+                        
                         if (message.messageTime.dateValue().convertToDefaultString() == self.tempTime.dateValue().convertToDefaultString() || self.messageListing.isEmpty) {
                             self.tempTime = message.messageTime
                             if self.messageListing.isEmpty {
@@ -1199,15 +1277,20 @@ extension OneToOneChatVC{
                     if message.blocked && message.receiverId == self.currentUserId {
                         return
                     }
-//                    if !message.blocked  {
-                        if message.senderId == self.inboxModel.userId {                            self.db.collection(ApiKey.messages).document(self.getRoomId()).collection(ApiKey.chat).document(message.messageId).updateData([ApiKey.messageStatus : 2]) { (error) in
-                            if let err = error {
-                                print(err.localizedDescription)
-                            } else {
-                                //                                self.db.collection(ApiKey.inbox).document(self.currentUserId).collection(ApiKey.chat).document(self.inboxModel.userId).updateData([ApiKey.unreadMessages: 0])
-                            }
+                    //                    if !message.blocked  {
+                    if message.messageType != "offer" && message.messageType != "payment" {
+                        
+                        if message.senderId == self.inboxModel.userId {
+                            
+                            self.db.collection(ApiKey.messages).document(self.getRoomId()).collection(ApiKey.chat).document(message.messageId).updateData([ApiKey.messageStatus : 3]) { (error) in
+                                if let err = error {
+                                    print(err.localizedDescription)
+                                } else {
+                                    //                                self.db.collection(ApiKey.inbox).document(self.currentUserId).collection(ApiKey.chat).document(self.inboxModel.userId).updateData([ApiKey.unreadMessages: 0])
+                                }
                             }
                         }
+                    }
                         for (off, section) in self.messageListing.enumerated() {
                             if let msgIndex = section.firstIndex(where: {$0.messageId == message.messageId}) {
                                 self.messageListing[off][msgIndex] = message
@@ -1472,12 +1555,36 @@ extension OneToOneChatVC : OneToOneChatViewModelDelegate{
         userRequestView.isHidden = true
         CommonFunctions.showToastWithMessage(msg)
     }
+    
+    func acceptRejectEditedBidSuccess(msg: String) {
+        if acceptedRejectBtnStatus {
+            self.db.collection(ApiKey.messages).document(self.getRoomId()).collection(ApiKey.chat).document(self.messageId).updateData([ApiKey.messageStatus : 2]) { (error) in
+                if let err = error {
+                    print(err.localizedDescription)
+                } else {
+                    //                                self.db.collection(ApiKey.inbox).document(self.currentUserId).collection(ApiKey.chat).document(self.inboxModel.userId).updateData([ApiKey.unreadMessages: 0])
+                }
+            }
+        }else {
+            self.db.collection(ApiKey.messages).document(self.getRoomId()).collection(ApiKey.chat).document(self.messageId).updateData([ApiKey.messageStatus : 3]) { (error) in
+                if let err = error {
+                    print(err.localizedDescription)
+                } else {
+                    //                                self.db.collection(ApiKey.inbox).document(self.currentUserId).collection(ApiKey.chat).document(self.inboxModel.userId).updateData([ApiKey.unreadMessages: 0])
+                }
+            }
+        }
+    }
+    
+    func acceptRejectEditedBidFailure(msg: String) {
+        
+    }
 }
 
 //MARK:- ChatEditBidVCDelegate
 extension OneToOneChatVC : ChatEditBidVCDelegate {
     func bidEditSuccess(price: Int) {
-        self.messageTextView.text = "Bid Edited Successfully"
+        self.messageTextView.text = "Offer"
         sendMessage(msgType: MessageType.offer.rawValue,price: price)
     }
 }

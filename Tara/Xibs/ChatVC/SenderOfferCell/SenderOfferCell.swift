@@ -1,14 +1,14 @@
 //
-//  ReceiverOfferCell.swift
+//  SenderOfferCell.swift
 //  Tara
 //
-//  Created by Admin on 09/11/20.
+//  Created by Arvind on 12/11/20.
 //  Copyright © 2020 Admin. All rights reserved.
 //
 
 import UIKit
 
-class ReceiverOfferCell: UITableViewCell {
+class SenderOfferCell: UITableViewCell {
     
     @IBOutlet weak var userNameLbl: UILabel!
     @IBOutlet weak var priceLbl: UILabel!
@@ -16,28 +16,30 @@ class ReceiverOfferCell: UITableViewCell {
     @IBOutlet weak var msgContainerView: UIView!
     @IBOutlet weak var acceptBtn: UIButton!
     @IBOutlet weak var rejectBtn: UIButton!
+    @IBOutlet weak var btnStackView: UIStackView!
 
     var acceptBtnTapped:(()->())?
     var rejectBtnTapped:(()->())?
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        btnStackView.isHidden = true
         // Initialization code
     }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        msgContainerView.roundCorners([.topLeft, .topRight, .bottomRight], radius: 15)
-        userImgView.round()
-    }
 
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
+    }
+    
     @IBAction func acceptBtnAction(_ sender: UIButton) {
-        acceptBtnTapped?()
-    }
-    
-    @IBAction func rejectBtnAction(_ sender: UIButton) {
-        rejectBtnTapped?()
+         acceptBtnTapped?()
+     }
+     
+     @IBAction func rejectBtnAction(_ sender: UIButton) {
+         rejectBtnTapped?()
 
-    }
+     }
     
 }

@@ -13,6 +13,9 @@ import SwiftyJSON
 protocol OneToOneChatViewModelDelegate: class {
     func chatDataSuccess(msg: String)
     func chatDataFailure(msg: String)
+    func acceptRejectEditedBidSuccess(msg: String)
+    func acceptRejectEditedBidFailure(msg: String)
+
 }
 
 class OneToOneChatViewModel {
@@ -45,6 +48,17 @@ class OneToOneChatViewModel {
         }) { [weak self] (error) in
             guard let `self` = self else { return }
             self.delegate?.chatDataFailure(msg: error.localizedDescription)
+        }
+    }
+    
+    func acceptRejectEditedBid(params: JSONDictionary,loader: Bool = false) {
+        WebServices.acceptRejectEditedBid(parameters: params,loader: loader, success: { [weak self] (json) in
+            guard let `self` = self else { return }
+            self.delegate?.acceptRejectEditedBidSuccess(msg: "")
+            printDebug(json)
+        }) { [weak self] (error) in
+            guard let `self` = self else { return }
+            self.delegate?.acceptRejectEditedBidFailure(msg: error.localizedDescription)
         }
     }
     

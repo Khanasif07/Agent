@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -49,16 +49,16 @@
                         <rect key="frame" x="68" y="25.5" width="203" height="124.5"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="cBW-N7-54y">
-                                <rect key="frame" x="73.5" y="8" width="56.5" height="50"/>
+                                <rect key="frame" x="73.5" y="8" width="56.5" height="43"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Offer price" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VAM-cU-SdJ">
-                                        <rect key="frame" x="0.0" y="0.0" width="56.5" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Offer price" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VAM-cU-SdJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="56.5" height="14"/>
                                         <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="12"/>
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PYU-vh-QHd">
-                                        <rect key="frame" x="0.0" y="24" width="56.5" height="26"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PYU-vh-QHd">
+                                        <rect key="frame" x="0.0" y="17" width="56.5" height="26"/>
                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="22"/>
                                         <color key="textColor" name="outgoingMessageBackground"/>
                                         <nil key="highlightedColor"/>
@@ -87,14 +87,12 @@
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="xX3-ra-hml">
-                                        <rect key="frame" x="80" y="9" width="118" height="34"/>
+                                        <rect key="frame" x="73" y="9" width="125" height="34"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sur-6E-MdE" customClass="AppButton" customModule="Tara" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="55" height="34"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="55" id="tv1-g8-Ebf"/>
-                                                </constraints>
+                                                <rect key="frame" x="0.0" y="0.0" width="56" height="34"/>
                                                 <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="14"/>
+                                                <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                                                 <state key="normal" title="Reject">
                                                     <color key="titleColor" name="appRedColor"/>
                                                 </state>
@@ -106,18 +104,24 @@
                                                         <color key="value" name="appRedColor"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="rejectBtnAction:" destination="Kps-EH-taQ" eventType="touchUpInside" id="cxL-0s-E31"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Uw-5x-Mf2" customClass="AppButton" customModule="Tara" customModuleProvider="target">
-                                                <rect key="frame" x="63" y="0.0" width="55" height="34"/>
+                                                <rect key="frame" x="64" y="0.0" width="61" height="34"/>
                                                 <color key="backgroundColor" name="appRedColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="34" id="qn8-hE-aTf"/>
-                                                    <constraint firstAttribute="width" constant="55" id="xaa-0b-w5B"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="14"/>
+                                                <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                                                 <state key="normal" title="Accept">
                                                     <color key="titleColor" name="collectionViewBackground"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="acceptBtnAction:" destination="Kps-EH-taQ" eventType="touchUpInside" id="njZ-pG-3bY"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -130,8 +134,8 @@
                         <color key="backgroundColor" red="0.95686274510000002" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="cBW-N7-54y" firstAttribute="top" secondItem="7T7-rS-tQb" secondAttribute="top" constant="8" id="9ft-BH-Pb3"/>
+                            <constraint firstItem="GMT-c3-IaD" firstAttribute="top" secondItem="cBW-N7-54y" secondAttribute="bottom" constant="20.5" id="B6e-le-kCo"/>
                             <constraint firstItem="GMT-c3-IaD" firstAttribute="leading" secondItem="7T7-rS-tQb" secondAttribute="leading" id="BYg-ja-typ"/>
-                            <constraint firstItem="GMT-c3-IaD" firstAttribute="top" secondItem="cBW-N7-54y" secondAttribute="bottom" constant="13.5" id="Fhm-r8-rz6"/>
                             <constraint firstItem="cBW-N7-54y" firstAttribute="centerX" secondItem="7T7-rS-tQb" secondAttribute="centerX" id="IjU-qc-Tfh"/>
                             <constraint firstAttribute="trailing" secondItem="GMT-c3-IaD" secondAttribute="trailing" constant="10" id="OSX-k3-xLr"/>
                             <constraint firstItem="GXT-uJ-3Kg" firstAttribute="width" secondItem="7T7-rS-tQb" secondAttribute="width" multiplier="0.975369" id="dXc-kN-xEX"/>
@@ -154,8 +158,10 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="D0G-1W-ITj"/>
             <connections>
+                <outlet property="acceptBtn" destination="5Uw-5x-Mf2" id="tW4-fY-bJ3"/>
                 <outlet property="msgContainerView" destination="7T7-rS-tQb" id="tF2-GC-pdO"/>
                 <outlet property="priceLbl" destination="PYU-vh-QHd" id="2ds-PM-HHY"/>
+                <outlet property="rejectBtn" destination="Sur-6E-MdE" id="ss3-Fe-APW"/>
                 <outlet property="userImgView" destination="0Bx-N1-lmh" id="FSz-t5-cTI"/>
                 <outlet property="userNameLbl" destination="EIf-Qf-ksA" id="HDA-Df-Efd"/>
             </connections>

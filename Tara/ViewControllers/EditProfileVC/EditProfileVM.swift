@@ -13,6 +13,15 @@ import SwiftyJSON
 protocol EditProfileVMDelegate: class {
     func getEditProfileVMSuccess(msg: String,statusCode : Int)
     func getEditProfileVMFailed(msg: String, error: Error)
+    func userQuerySuccess(msg: String)
+    func userQueryFailure(msg: String)
+}
+
+extension EditProfileVMDelegate {
+    func getEditProfileVMSuccess(msg: String,statusCode : Int) {}
+    func getEditProfileVMFailed(msg: String, error: Error) {}
+    func userQuerySuccess(msg: String) {}
+    func userQueryFailure(msg: String){}
 }
 
 class EditProfileVM {
@@ -36,4 +45,17 @@ class EditProfileVM {
             self.delegate?.getEditProfileVMFailed(msg: error.localizedDescription,error: error)
         }
     }
+    
+    func userQuery(params: JSONDictionary,loader: Bool = false) {
+        WebServices.userQuery(parameters: params, loader: loader,success: { [weak self] (json) in
+               guard let `self` = self else { return }
+               let msg = json[ApiKey.message].stringValue
+               let statusCode = json[ApiKey.statusCode].intValue
+               self.delegate?.userQuerySuccess(msg:msg)
+               printDebug(json)
+           }) { [weak self] (error) in
+               guard let `self` = self else { return }
+               self.delegate?.userQueryFailure(msg: error.localizedDescription)
+           }
+       }
 }

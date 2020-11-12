@@ -424,6 +424,21 @@ enum AppRouter {
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
+    static func goToContactUsVC(vc: UIViewController){
+        let scene = ContactUsVC.instantiate(fromAppStoryboard: .GarageRequest)
+        vc.navigationController?.pushViewController(scene, animated: true)
+    }
+    
+    
+    static func goToContactusPopupVC(vc: UIViewController){
+        let scene = ContactusPopupVC.instantiate(fromAppStoryboard: .GarageRequest)
+        scene.onContactUsBtnTapped = {
+            AppRouter.goToContactUsVC(vc: vc)
+        }
+
+        vc.modalPresentationStyle = .fullScreen
+        vc.present(scene, animated: true, completion: nil)
+    }
     
     static func goToGarageServiceRequestVC(vc: UIViewController,requestId : String,requestType : String, bidStatus: BidStatus){
         let scene = GarageServiceRequestVC.instantiate(fromAppStoryboard: .Garage)

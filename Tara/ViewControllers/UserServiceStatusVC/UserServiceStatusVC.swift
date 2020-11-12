@@ -20,6 +20,7 @@ class UserServiceStatusVC: BaseVC {
     var sectionArr : [CellType] = [.garageDetail ,.requestNumber,.none,.serviceDetail]
     let viewModel = UserServiceStatusVM()
     var requestId : String = ""
+    var status: Bool = false
     
     // MARK: - Lifecycle
     //===========================
@@ -137,7 +138,13 @@ extension UserServiceStatusVC: UserServiceStatusVMDelegate {
     }
     
     func markCarReceivedSuccess(msg: String){
-        AppRouter.goToRatingVC(vc: self, requestId: self.requestId, garageName: viewModel.serviceDetailData?.garageName ?? "")
+        if status {
+            AppRouter.goToRatingVC(vc: self, requestId: self.requestId, garageName: viewModel.serviceDetailData?.garageName ?? "")
+        }else {
+            DispatchQueue.main.async {
+                AppRouter.goToContactusPopupVC(vc: self)
+            }
+        }
     }
     
     func markCarReceivedFailure(msg: String){
@@ -146,15 +153,18 @@ extension UserServiceStatusVC: UserServiceStatusVMDelegate {
 }
 
 extension UserServiceStatusVC {
+    
     func updateStatus(cell: ServiceStatusTableViewCell) {
         cell.yesBtnTapped = { [weak self] in
             guard let `self` = self else { return }
+            self.status = true
             self.viewModel.carReceived(params: [ApiKey.requestId: self.requestId, ApiKey.status : true], loader: true)
         }
         
         cell.noBtnTapped = { [weak self] in
             guard let `self` = self else { return }
-            printDebug("nothing to do")
+            self.status = false
+            self.viewModel.carReceived(params: [ApiKey.requestId: self.requestId, ApiKey.status : false], loader: true)
         }
     }
 }

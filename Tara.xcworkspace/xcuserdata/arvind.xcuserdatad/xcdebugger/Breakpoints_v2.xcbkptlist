@@ -55,32 +55,112 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "CBDF95A8-7A35-418A-B21F-4C4ED98E57A7"
+            uuid = "0A36B067-0A1A-43D5-8054-FAA792A9CAA2"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Tara/ViewControllers/UserServiceStatusVC/UserServiceStatusVC.swift"
+            filePath = "Tara/ViewControllers/OneToOneChatVC/OneToOneChatVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
-            landmarkName = "updateState()"
+            startingLineNumber = "644"
+            endingLineNumber = "644"
+            landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "D9DF6806-B15B-4131-9D79-A0C1F4559F78"
+            uuid = "10883667-3131-4214-8C99-8B279E47DC98"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Tara/Services/Socket.io/SocketListener.swift"
+            filePath = "Tara/ViewControllers/OneToOneChatVC/OneToOneChatVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
-            landmarkName = "listenOnlineUsers()"
+            startingLineNumber = "653"
+            endingLineNumber = "653"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B6706E47-719F-40F2-AA66-A01EAF17E17C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tara/ViewControllers/OneToOneChatVC/OneToOneChatVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "659"
+            endingLineNumber = "659"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D43C809A-E99F-47DD-8507-0F8AAD400947"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tara/ViewControllers/OneToOneChatVC/OneToOneChatVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1561"
+            endingLineNumber = "1561"
+            landmarkName = "acceptRejectEditedBidSuccess(msg:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D43C809A-E99F-47DD-8507-0F8AAD400947 - d7bea69cb70f48b9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Tara.OneToOneChatVC.acceptRejectEditedBidSuccess(msg: Swift.String) -&gt; ()"
+                  moduleName = "Tara"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/arvind/Desktop/GitCode/ArabianTyres/Tara/ViewControllers/OneToOneChatVC/OneToOneChatVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1561"
+                  endingLineNumber = "1561"
+                  offsetFromSymbolStart = "163">
+               </Location>
+               <Location
+                  uuid = "D43C809A-E99F-47DD-8507-0F8AAD400947 - fc0cb6c99475dd35"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Tara.OneToOneChatVC.acceptRejectEditedBidSuccess(msg: Swift.String) -&gt; ()"
+                  moduleName = "Tara"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/arvind/Desktop/GitCode/ArabianTyres/Tara/ViewControllers/OneToOneChatVC/OneToOneChatVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1562"
+                  endingLineNumber = "1562"
+                  offsetFromSymbolStart = "75">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1E597452-D058-478E-A18F-659273506422"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tara/ViewControllers/OneToOneChatVC/OneToOneChatVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1560"
+            endingLineNumber = "1560"
+            landmarkName = "acceptRejectEditedBidSuccess(msg:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

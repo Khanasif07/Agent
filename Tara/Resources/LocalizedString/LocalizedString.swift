@@ -156,7 +156,7 @@ enum LocalizedString : String {
     case my_Subscription
     case installation_price_range
     case location
-   
+    case description
 
     // MARK: - Profile VC Values
       //==============================
