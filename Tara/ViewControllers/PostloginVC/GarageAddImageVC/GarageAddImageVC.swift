@@ -49,8 +49,7 @@ class GarageAddImageVC: BaseVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        self.saveContinueBtn.isEnabled = !GarageProfileModel.shared.serviceCenterImages.isEmpty
-        saveContinueBtn.isEnabled = true
+        self.saveContinueBtn.isEnabled = !GarageProfileModel.shared.serviceCenterImages.isEmpty
     }
     
     override func viewDidLayoutSubviews() {
@@ -65,14 +64,14 @@ class GarageAddImageVC: BaseVC {
     
     
     @IBAction func saveBtnAction(_ sender: UIButton) {
-//        if !self.hasImageUploaded{
-//             ToastView.shared.showLongToast(self.view, msg: LocalizedString.wait_Img_Upload.localized)
-//            return
-//        }
-//        if GarageProfileModel.shared.serviceCenterImages.isEmpty{
-//            ToastView.shared.showLongToast(self.view, msg: "please upload atlest one image")
-//            return
-//        }
+        if !self.hasImageUploaded{
+             ToastView.shared.showLongToast(self.view, msg: LocalizedString.wait_Img_Upload.localized)
+            return
+        }
+        if GarageProfileModel.shared.serviceCenterImages.isEmpty{
+            ToastView.shared.showLongToast(self.view, msg: "please upload atlest one image")
+            return
+        }
         AppRouter.goToUploadDocumentVC(vc: self)
     }
     

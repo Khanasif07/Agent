@@ -233,7 +233,6 @@
 		A4098E7A2512288F0015B0BD /* FacilityTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4098E792512288F0015B0BD /* FacilityTableHeaderView.xib */; };
 		A4098E7D251231DD0015B0BD /* FacilityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4098E7B251231DD0015B0BD /* FacilityTableViewCell.swift */; };
 		A4098E7E251231DD0015B0BD /* FacilityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4098E7C251231DD0015B0BD /* FacilityTableViewCell.xib */; };
-		A40C13C12550284600AADD76 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A40C13C02550284600AADD76 /* GoogleService-Info.plist */; };
 		A413B9702509E7400004C534 /* Garage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A413B96F2509E7400004C534 /* Garage.storyboard */; };
 		A413B9722509E7960004C534 /* GarageRegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A413B9712509E7960004C534 /* GarageRegistrationVC.swift */; };
 		A413B9762509F0950004C534 /* GarageRegistrationDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A413B9742509F0950004C534 /* GarageRegistrationDetailCell.swift */; };
@@ -296,6 +295,7 @@
 		A44E8D78251CBC3B00ACBC4D /* BatteryBrandVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44E8D77251CBC3B00ACBC4D /* BatteryBrandVC.swift */; };
 		A44E8D7A251CBF9500ACBC4D /* VehicleDetailForBatteryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44E8D79251CBF9500ACBC4D /* VehicleDetailForBatteryVC.swift */; };
 		A44E8D7C251CD24900ACBC4D /* VehicleDetailForOilVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44E8D7B251CD24900ACBC4D /* VehicleDetailForOilVC.swift */; };
+		A45034A7255D23B200FB5951 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A45034A6255D23B200FB5951 /* GoogleService-Info.plist */; };
 		A45042C7250F2D12001C8905 /* AddAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45042C6250F2D12001C8905 /* AddAccountVC.swift */; };
 		A45042D0250F3846001C8905 /* AddAccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45042CE250F3846001C8905 /* AddAccountTableViewCell.swift */; };
 		A45042D1250F3846001C8905 /* AddAccountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A45042CF250F3846001C8905 /* AddAccountTableViewCell.xib */; };
@@ -594,7 +594,6 @@
 		A4098E792512288F0015B0BD /* FacilityTableHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FacilityTableHeaderView.xib; sourceTree = "<group>"; };
 		A4098E7B251231DD0015B0BD /* FacilityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityTableViewCell.swift; sourceTree = "<group>"; };
 		A4098E7C251231DD0015B0BD /* FacilityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FacilityTableViewCell.xib; sourceTree = "<group>"; };
-		A40C13C02550284600AADD76 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A413B96F2509E7400004C534 /* Garage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Garage.storyboard; sourceTree = "<group>"; };
 		A413B9712509E7960004C534 /* GarageRegistrationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageRegistrationVC.swift; sourceTree = "<group>"; };
 		A413B9742509F0950004C534 /* GarageRegistrationDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageRegistrationDetailCell.swift; sourceTree = "<group>"; };
@@ -658,6 +657,7 @@
 		A44E8D77251CBC3B00ACBC4D /* BatteryBrandVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryBrandVC.swift; sourceTree = "<group>"; };
 		A44E8D79251CBF9500ACBC4D /* VehicleDetailForBatteryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleDetailForBatteryVC.swift; sourceTree = "<group>"; };
 		A44E8D7B251CD24900ACBC4D /* VehicleDetailForOilVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleDetailForOilVC.swift; sourceTree = "<group>"; };
+		A45034A6255D23B200FB5951 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A45042C6250F2D12001C8905 /* AddAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountVC.swift; sourceTree = "<group>"; };
 		A45042CE250F3846001C8905 /* AddAccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountTableViewCell.swift; sourceTree = "<group>"; };
 		A45042CF250F3846001C8905 /* AddAccountTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddAccountTableViewCell.xib; sourceTree = "<group>"; };
@@ -1332,7 +1332,7 @@
 				8481FA2D2500BC7800AB6EFB /* Fonts */,
 				8481FA282500BC1400AB6EFB /* LocalizedString */,
 				8481FA052500AA9B00AB6EFB /* Assets.xcassets */,
-				A40C13C02550284600AADD76 /* GoogleService-Info.plist */,
+				A45034A6255D23B200FB5951 /* GoogleService-Info.plist */,
 				A4363969254AA9D200FE1AE1 /* Info.plist */,
 			);
 			path = Resources;
@@ -2439,6 +2439,7 @@
 				A441A676252CD5F600B5420B /* DashedCollectionViewCell.xib in Resources */,
 				844EB71525187CD0003A6E3F /* URTyreSizeTableCell.xib in Resources */,
 				A4CC324C252CAC3000669F39 /* ServiceDetailCollectionViewCell.xib in Resources */,
+				A45034A7255D23B200FB5951 /* GoogleService-Info.plist in Resources */,
 				844EB7222518C9C3003A6E3F /* LoaderCell.xib in Resources */,
 				84FF6E93251C625F0000E2AD /* CustomDashedView.xib in Resources */,
 				A41508322556787A005DF8FD /* RequestDetailTableViewCell.xib in Resources */,
@@ -2450,7 +2451,6 @@
 				84CAEFB22550F1E600F3A329 /* SenderMediaCell.xib in Resources */,
 				8481FA8B2501081000AB6EFB /* TutorialCollCell.xib in Resources */,
 				A415083625567CAB005DF8FD /* DashedTableViewCell.xib in Resources */,
-				A40C13C12550284600AADD76 /* GoogleService-Info.plist in Resources */,
 				A41B7DF825552F4B005D1AC5 /* SenderLocationCell.xib in Resources */,
 				84144F28252C4AAD00D6572F /* MyServiceTableCell.xib in Resources */,
 				84801CD72547FBDC00F360FC /* Chat.storyboard in Resources */,

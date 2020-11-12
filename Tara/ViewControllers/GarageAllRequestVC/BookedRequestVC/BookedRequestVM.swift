@@ -55,6 +55,18 @@ class BookedRequestVM {
         }
     }
    
+    func sendOtpToStartService(params: JSONDictionary,loader: Bool = false,pagination: Bool = false) {
+        WebServices.sendOtpToStartService(parameters: params,loader: loader, success: { [weak self] (json) in
+            guard let `self` = self else { return }
+            printDebug("Otp send to user")
+        }) { [weak self] (error) in
+            guard let `self` = self else { return }
+            self.isRequestinApi = false
+            self.delegate?.getBookedListingDataFailed(error: error.localizedDescription)
+        }
+    }
+    
+    
     func parseToMakeListingData(result: JSON) {
         if let jsonString = result[ApiKey.data][ApiKey.result].rawString(), let data = jsonString.data(using: .utf8) {
             do {

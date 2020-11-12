@@ -55,6 +55,7 @@ extension UserServiceStatusVC {
         setupTableView()
         viewModel.delegate = self
         viewModel.fetchRequestDetail(params: [ApiKey.requestId: self.requestId], loader: true)
+         NotificationCenter.default.addObserver(self, selector: #selector(updateState), name: Notification.Name.UpdateServiceStatusUserSide, object: nil)
     }
     
     private func setupTableView() {
@@ -70,6 +71,10 @@ extension UserServiceStatusVC {
     private func setupTextAndFont(){
         titleLbl.font = AppFonts.NunitoSansBold.withSize(17.0)
         titleLbl.text = "Ongoing Service"
+    }
+    
+    @objc func updateState() {
+        viewModel.fetchRequestDetail(params: [ApiKey.requestId: self.requestId], loader: false)
     }
 }
 

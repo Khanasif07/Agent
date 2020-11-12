@@ -67,7 +67,6 @@ extension BookedTyreRequestVC {
         mainTableView.registerCell(with: RequestDetailTableViewCell.self)
         mainTableView.registerCell(with: DashedTableViewCell.self)
         mainTableView.registerCell(with: ServiceDetailTableViewCell.self)
-
         mainTableView.registerCell(with: TyreRequestLocationTableViewCell.self)
     }
     

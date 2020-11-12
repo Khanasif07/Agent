@@ -80,6 +80,7 @@ extension WebServices {
         case reportReview = "user/services/reportReview"
         case userServiceDetails = "user/services/userServiceDetails"
         case markCarReceived = "user/services/markCarReceived"
+        case sendOtpToStartService = "user/services/sendOtpToStartService"
         
         var path : String {
             let url = baseUrl

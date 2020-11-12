@@ -1070,4 +1070,16 @@ extension WebServices{
             failure(error)
         }
     }
+    
+    //MARK:- Mark Car Received Api
+       static func sendOtpToStartService(parameters: JSONDictionary,loader: Bool = false,
+                                   success: @escaping SuccessResponse,
+                                   failure: @escaping FailureResponse) {
+           self.commonGetAPI(parameters: parameters, endPoint: .sendOtpToStartService,loader: loader, success: { (json) in
+               success(json)
+           }) { (error) -> (Void) in
+               failure(error)
+           }
+       }
 }
+

@@ -36,18 +36,21 @@ enum QuantumValue: Decodable,Encodable {
 
 struct RequestModel: Codable {
     let eventName: String
-    let distance: QuantumValue
-    let userImage: String
+    let distance: QuantumValue?
+    let userImage: String?
     let requestId: String
     let time: String
     let message: String
     let amount: Double?
     let bidId : String?
     let garageName : String?
+    let otp :Int?
+    let garageOwner : String?
+    let request : String?
 }
 
 enum CodingKeys: String, CodingKey {
-    case eventName, time, message, userImage, distance, requestId,bidId,garageName, amount
+    case eventName, time, message, userImage, distance, requestId,bidId,garageName, amount,otp, garageOwner, request
 }
 
 extension SocketIOManager {
@@ -58,7 +61,7 @@ extension SocketIOManager {
                 if result.arrayValue.isEmpty {
                     return
                 }
-                let modelList = try JSONDecoder().decode(RequestModel.self, from: data)
+                let modelList = try! JSONDecoder().decode(RequestModel.self, from: data)
                 printDebug(modelList)
                 HandleRequest.shared.dataArr.append(modelList)
             } catch {
@@ -96,7 +99,30 @@ extension SocketIOManager {
                                 HandleRequest.shared.dataArr.remove(at: 0)
                             }
                             
-                        }else {
+                        }
+                        else if data.eventName == "OTP_TO_START_SERVICE" {
+                           
+                            //for request
+                            let vc = SROtpPopupVC.instantiate(fromAppStoryboard: .GarageRequest)
+                            vc.modalPresentationStyle = .overCurrentContext
+                            vc.requestData = data
+                            
+                            vc.onDismiss = {
+                                HandleRequest.shared.dataProcess = false
+                                HandleRequest.shared.dataArr.remove(at: 0)
+                            }
+                          
+                            if CommonFunctions.presentOnTabBar() {
+                                navC.present(vc, animated: true, completion: nil)
+                                
+                            }else {
+                                HandleRequest.shared.dataProcess = false
+                                HandleRequest.shared.dataArr.remove(at: 0)
+                            }
+
+                        }
+
+                        else {
                             //for request
                             let vc = SRPopupVC.instantiate(fromAppStoryboard: .UserHomeScreen)
                             vc.modalPresentationStyle = .overCurrentContext

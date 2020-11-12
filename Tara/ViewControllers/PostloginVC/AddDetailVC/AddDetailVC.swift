@@ -63,12 +63,12 @@ class AddDetailVC: BaseVC {
     }
     
     @IBAction func saveAndContinueAction(_ sender: UIButton) {
-//       if GarageProfileModel.shared.logoUrl.isEmpty {
-//        CommonFunctions.showToastWithMessage(LocalizedString.uploadGarageLogo.localized)
-//        }
-//       else {
+       if GarageProfileModel.shared.logoUrl.isEmpty {
+        CommonFunctions.showToastWithMessage(LocalizedString.uploadGarageLogo.localized)
+        }
+       else {
         AppRouter.goToGarageAddLocationVC(vc: self)
-//        }
+        }
     }
     
     @IBAction func editLogoBtnAction(_ sender: UIButton) {
@@ -90,8 +90,7 @@ extension AddDetailVC {
         customTView.floatLbl.text = LocalizedString.serviceCenterNames.localized
         customTView.rightImgContainerView.isHidden = true
         customTView.leftImgContainerView.isHidden = true
-//        saveAndContinueBtn.isEnabled = false
-        saveAndContinueBtn.isEnabled = true
+        saveAndContinueBtn.isEnabled = false
     }
   
     private func setupTextAndFont(){

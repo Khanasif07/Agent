@@ -25,6 +25,8 @@ enum EventListnerKeys : String {
     case handshakeWithServer = "handshakeWithServer"
     case eventAck = "eventAck"
     case syncResponse = "contact_sync_response"
+    case otpToStartService = "OTP_TO_START_SERVICE"
+    case serviceStatusUpdated = "SERVICE_STATUS_UPDATED"
 }
 
 class SocketIOManager: NSObject {

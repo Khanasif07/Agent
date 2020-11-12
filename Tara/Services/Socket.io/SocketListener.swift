@@ -84,5 +84,18 @@ extension SocketIOManager {
             //garage request detail
             NotificationCenter.default.post(name: Notification.Name.RequestAccepted, object: nil)
         })
+        
+        self.socket?.on(EventListnerKeys.otpToStartService.rawValue, callback: { data, _ in
+            let json = JSON(data)
+            printDebug(json)
+            self.parseToMakeListingData(result: json)
+        })
+        
+        self.socket?.on(EventListnerKeys.serviceStatusUpdated.rawValue, callback: { data, _ in
+            let json = JSON(data)
+            NotificationCenter.default.post(name: Notification.Name.UpdateServiceStatusUserSide, object: nil)
+            printDebug(json)
+        })
+        
     }
 }

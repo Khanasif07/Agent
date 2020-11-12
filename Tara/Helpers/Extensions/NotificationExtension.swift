@@ -20,8 +20,8 @@ extension Notification.Name {
     static let BidAcceptedRejected = Notification.Name("bidAcceptedRejected")
     static let RequestRejected = Notification.Name("RequestRejected")
     static let RequestAccepted = Notification.Name("RequestAccepted")
-   
     static let UpdateServiceStatus = Notification.Name("UpdateServiceStatus")
 
-    
+    static let UpdateServiceStatusUserSide = Notification.Name("UpdateServiceStatusUserSide")
+
 }

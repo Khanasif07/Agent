@@ -21,7 +21,9 @@ class SROtpPopupVC: BaseVC {
     
     // MARK: - Variables
     //===========================
-    
+    var requestData: RequestModel? = nil
+    var onDismiss : (()->())?
+
     // MARK: - Lifecycle
     //===========================
     override func viewDidLoad() {
@@ -37,7 +39,9 @@ class SROtpPopupVC: BaseVC {
     // MARK: - IBActions
     //===========================
     @IBAction func cancelBtnAction(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: {
+            self.onDismiss?()
+        })
     }
 }
 
@@ -46,6 +50,7 @@ class SROtpPopupVC: BaseVC {
 extension SROtpPopupVC {
     
     private func initialSetup() {
+        setupRequestData()
         setupTextAndFont()
     }
     
@@ -62,9 +67,14 @@ extension SROtpPopupVC {
             .foregroundColor: AppColors.fontPrimaryColor
         ])
         
-        str.append(NSAttributedString(string: "#1234567890", attributes: [NSAttributedString.Key.foregroundColor: AppColors.linkTextColor,NSAttributedString.Key.font: AppFonts.NunitoSansBold.withSize(14.0)]))
+        str.append(NSAttributedString(string: "#\(requestData?.request ?? "")", attributes: [NSAttributedString.Key.foregroundColor: AppColors.linkTextColor,NSAttributedString.Key.font: AppFonts.NunitoSansBold.withSize(14.0)]))
         
-        str.append(NSAttributedString(string: " at XYZ Garage, Riyadh", attributes: [NSAttributedString.Key.foregroundColor: AppColors.fontPrimaryColor,NSAttributedString.Key.font: AppFonts.NunitoSansBold.withSize(14.0)]))
+        str.append(NSAttributedString(string: " at \(requestData?.garageName ?? "") Garage", attributes: [NSAttributedString.Key.foregroundColor: AppColors.fontPrimaryColor,NSAttributedString.Key.font: AppFonts.NunitoSansBold.withSize(14.0)]))
         titleLbl.attributedText = str
+    }
+    
+    private func setupRequestData() {
+        otpLbl.text = requestData?.otp?.description
+        otpLbl.text = requestData?.otp?.description
     }
 }

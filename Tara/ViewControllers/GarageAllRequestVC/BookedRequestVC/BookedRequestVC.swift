@@ -89,6 +89,8 @@ extension BookedRequestVC : UITableViewDelegate, UITableViewDataSource {
             cell.bindData(viewModel.bookedRequestListing[indexPath.row])
             cell.startServiceBtnTapped = { [weak self] in
                 guard let `self` = self else { return }
+                self.viewModel.sendOtpToStartService(params: [ApiKey.requestId: self.viewModel.bookedRequestListing[indexPath.row].id ?? ""])
+                
                 AppRouter.openOtpPopUpVC(vc: self, requestByUser: self.viewModel.bookedRequestListing[indexPath.row].requestedBy ?? "",requestId: self.viewModel.bookedRequestListing[indexPath.row].id ?? "") {
                     self.hitApi(params: [ApiKey.page:"1", ApiKey.limit: "20"])
                 }
