@@ -112,9 +112,8 @@ extension UserServiceStatusVC: UITableViewDelegate,UITableViewDataSource{
             
         }else {
             let cell = tableView.dequeueCell(with: ServiceStatusTableViewCell.self)
-            cell.populateDataForUserService(status: viewModel.serviceDetailData?.serviceStatus ?? nil)
+            cell.populateDataForUserService(status: viewModel.serviceDetailData?.serviceStatus ?? nil, isServiceCompleted: viewModel.serviceDetailData?.isServiceCompleted ?? false)
             updateStatus(cell: cell)
-           
             return cell
         }
     }
@@ -126,6 +125,7 @@ extension UserServiceStatusVC: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return CGFloat.leastNormalMagnitude
     }
+    
 }
 
 extension UserServiceStatusVC: UserServiceStatusVMDelegate {
@@ -166,5 +166,12 @@ extension UserServiceStatusVC {
             self.status = false
             self.viewModel.carReceived(params: [ApiKey.requestId: self.requestId, ApiKey.status : false], loader: true)
         }
+    }
+}
+
+extension UserServiceStatusVC : PickerDataDelegate{
+    func changeCarReceivedStatus(){
+        viewModel.serviceDetailData?.isServiceCompleted = true
+        mainTableView.reloadData()
     }
 }

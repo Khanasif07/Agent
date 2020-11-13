@@ -15,6 +15,8 @@ protocol LocationPopUpVMDelegate: class {
     func postBatteryRequestFailed(error:String)
     func postOilRequestSuccess(message: String)
     func postOilRequestFailed(error:String)
+    func getAdminIdSuccess(id: String, name: String, image: String)
+    func getAdminIdFailed(error:String)
     
 }
 
@@ -25,6 +27,9 @@ extension LocationPopUpVMDelegate {
     func postBatteryRequestFailed(error:String){}
     func postOilRequestSuccess(message: String){}
     func postOilRequestFailed(error:String){}
+    func getAdminIdSuccess(id: String, name: String, image: String){}
+    func getAdminIdFailed(error:String){}
+
 }
 
 
@@ -59,5 +64,18 @@ class LocationPopUpVM{
             self.delegate?.postOilRequestFailed(error: error.localizedDescription)
         }
     }
-
+    
+    
+    func getAdminId(dict: JSONDictionary,loader: Bool){
+        WebServices.getAdminId(parameters: dict,loader: loader, success: { (json) in
+     
+            let addminId = json[ApiKey.data][ApiKey.id].stringValue
+            let name = json[ApiKey.data][ApiKey.name].stringValue
+            let image = json[ApiKey.data][ApiKey.image].stringValue
+            
+            self.delegate?.getAdminIdSuccess(id: addminId, name: name,image: image)
+        }) { (error) -> (Void) in
+            self.delegate?.getAdminIdFailed(error: error.localizedDescription)
+        }
+    }
 }

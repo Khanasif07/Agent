@@ -421,6 +421,7 @@ enum AppRouter {
         let scene = RatingVC.instantiate(fromAppStoryboard: .GarageRequest)
         scene.requestId = requestId
         scene.garageName = garageName
+        scene.delegate = vc as? PickerDataDelegate
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
@@ -465,9 +466,10 @@ enum AppRouter {
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
-    static func goToOneToOneChatVC(_ vc: UIViewController, userId: String,requestDetailId: String = "",requestId: String, name: String, image: String, unreadMsgs: Int) {
+    static func goToOneToOneChatVC(_ vc: UIViewController, userId: String,requestDetailId: String = "",requestId: String, name: String, image: String, unreadMsgs: Int,isSupportChat: Bool = false) {
         let chatScene = OneToOneChatVC.instantiate(fromAppStoryboard: .Chat)
         chatScene.firstName = name
+        chatScene.isSupportChat = isSupportChat
         chatScene.requestId = requestId
         chatScene.requestDetailId = requestDetailId
         chatScene.userImage = image

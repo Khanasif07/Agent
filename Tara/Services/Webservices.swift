@@ -1101,8 +1101,19 @@ extension WebServices{
            self.commonPostAPI(parameters: parameters, endPoint: .userQuery,loader: loader, success: { (json) in
                success(json)
            }) { (error) -> (Void) in
-               failure(error)
-           }
-       }
+            failure(error)
+        }
+    }
+    
+    //MARK:- getAdminId
+    static func getAdminId(parameters: JSONDictionary,loader: Bool = false,
+                           success: @escaping SuccessResponse,
+                           failure: @escaping FailureResponse) {
+        self.commonGetAPI(parameters: parameters, endPoint: .adminId,loader: loader, success: { (json) in
+            success(json)
+        }) { (error) -> (Void) in
+            failure(error)
+        }
+    }
 }
 

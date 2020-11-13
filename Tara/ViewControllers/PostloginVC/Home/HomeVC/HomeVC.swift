@@ -27,7 +27,8 @@ class HomeVC: BaseVC {
     //===========================
     @IBOutlet weak var userNameLbl: UILabel!
     @IBOutlet weak var mainCollView: UICollectionView!
-    
+    @IBOutlet weak var helpBtn: UIButton!
+
     // MARK: - Variables
     //===========================
     var viewModel = LocationPopUpVM()
@@ -62,7 +63,9 @@ class HomeVC: BaseVC {
     }
     // MARK: - IBActions
     //===========================
-    
+    @IBAction func helpBtnTapped(_ sender: UIButton) {
+        viewModel.getAdminId(dict: [:], loader: true)
+    }
     
 }
 
@@ -193,8 +196,17 @@ extension HomeVC:LocationPopUpVMDelegate {
     func postOilRequestSuccess(message: String){
           AppRouter.showSuccessPopUp(vc: self, title: "Successfully Requested", desc: "Your request for oil service has been submitted successfully.")
     }
+    
     func postOilRequestFailed(error:String){
         ToastView.shared.showLongToast(self.view, msg: error)
+    }
+    
+    func getAdminIdSuccess(id: String, name: String, image: String){
+        AppRouter.goToOneToOneChatVC(self, userId: id, requestId: "", name: name, image: image, unreadMsgs: 0, isSupportChat: true)
+    }
+    
+    func getAdminIdFailed(error:String){
+        
     }
 }
 
@@ -215,4 +227,5 @@ extension HomeVC: EditProfileVCDelegate {
     func editProfileSuccess(){
         
     }
+
 }

@@ -10,7 +10,14 @@ import UIKit
 
 protocol PickerDataDelegate {
     func selectedReason(str: String)
+    func changeCarReceivedStatus()
 }
+
+extension PickerDataDelegate {
+    func selectedReason(str: String){}
+    func changeCarReceivedStatus(){}
+}
+
 
 class ReportPopupVC: BaseVC {
     

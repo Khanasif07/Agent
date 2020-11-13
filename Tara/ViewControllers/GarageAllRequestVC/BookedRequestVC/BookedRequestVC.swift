@@ -87,6 +87,12 @@ extension BookedRequestVC : UITableViewDelegate, UITableViewDataSource {
         }else {
             let cell = tableView.dequeueCell(with: BookedRequestTableCell.self, indexPath: indexPath)
             cell.bindData(viewModel.bookedRequestListing[indexPath.row])
+         
+            cell.chatBtnTapped = { [weak self] in
+                guard let `self` = self else { return }
+                AppRouter.goToOneToOneChatVC(self, userId: self.viewModel.bookedRequestListing[indexPath.row].userId ?? "" ,requestDetailId:self.viewModel.bookedRequestListing[indexPath.row].id ?? "",requestId: self.viewModel.bookedRequestListing[indexPath.row].requestDocId ?? "", name: self.viewModel.bookedRequestListing[indexPath.row].userName ?? "", image: self.viewModel.bookedRequestListing[indexPath.row].userImage ?? "", unreadMsgs: 0)
+            }
+            
             cell.startServiceBtnTapped = { [weak self] in
                 guard let `self` = self else { return }
                 self.viewModel.sendOtpToStartService(params: [ApiKey.requestId: self.viewModel.bookedRequestListing[indexPath.row].id ?? ""])
@@ -95,9 +101,7 @@ extension BookedRequestVC : UITableViewDelegate, UITableViewDataSource {
                     self.hitApi(params: [ApiKey.page:"1", ApiKey.limit: "20"])
                 }
             }
-            cell.chatBtnTapped = {[weak self] in
-                self?.showAlert(msg: LocalizedString.underDevelopment.localized)
-            }
+          
             return cell
         }
     }

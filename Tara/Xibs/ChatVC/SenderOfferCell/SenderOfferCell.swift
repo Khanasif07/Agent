@@ -24,6 +24,7 @@ class SenderOfferCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         btnStackView.isHidden = true
+        userImgView.round()
         // Initialization code
     }
 

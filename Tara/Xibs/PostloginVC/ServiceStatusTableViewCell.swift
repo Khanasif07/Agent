@@ -163,7 +163,7 @@ class ServiceStatusTableViewCell: UITableViewCell {
         }
     }
     
-    func populateDataForUserService(status: ServiceState?) {
+    func populateDataForUserService(status: ServiceState?, isServiceCompleted : Bool) {
         carReceivedUpdateBtn.isHidden = true
         progressUpdateBtn.isHidden = true
         completeUpdateBtn.isHidden = true
@@ -243,8 +243,11 @@ class ServiceStatusTableViewCell: UITableViewCell {
             carServiceLineView.backgroundColor = #colorLiteral(red: 0.07843137255, green: 0.6352941176, blue: 0.5411764706, alpha: 1)
             completedLineView.backgroundColor = #colorLiteral(red: 0.07843137255, green: 0.6352941176, blue: 0.5411764706, alpha: 1)
             readyToBeTakenLineView.backgroundColor = #colorLiteral(red: 0.07843137255, green: 0.6352941176, blue: 0.5411764706, alpha: 1)
-            
             carRecievedStackView.isHidden = false
+        }
+        
+        if isServiceCompleted {
+            carRecievedStackView.isHidden = true
         }
     }
     

@@ -22,6 +22,7 @@ class ReceiverOfferCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        userImgView.round()
         // Initialization code
     }
     

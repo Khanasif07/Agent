@@ -94,13 +94,18 @@ enum BidStatus: String, Codable{
 }
 
 enum ServiceState : String, Codable{
+    case startService = "start_service"
     case carReceived = "car_received"
     case inProgress = "in_progress"
-    case completed = "completed"
+    case completed = "service_completed"
     case readyToBeTaken = "ready_to_be_taken"
+    case delivered = "delivered"
+    case none = "completed"
     
     var serviceBtnTitle: String {
         switch self {
+        case .startService:
+            return "Start Service"
         case .carReceived:
             return "Car Received"
         case .inProgress:
@@ -108,8 +113,11 @@ enum ServiceState : String, Codable{
         case .completed:
             return "Service Completed"
         case .readyToBeTaken:
-            return "Taken"
-        
+            return "Ready To Be Taken"
+        case .delivered:
+            return "Delivered"
+        default:
+            return ""
         }
     }
 }
@@ -141,6 +149,7 @@ struct GarageRequestModel: Codable {
     let garageName: String?
     let logo : String?
     let isServiceStarted: Bool?
+    var isServiceCompleted: Bool?
     
     //Review listing Api key
     let rating : Int?
@@ -165,7 +174,7 @@ struct GarageRequestModel: Codable {
         case bidPlacedByGarage, requestedBy
         case rating, review, garageId, serviceType, serviceStatus
         case width, preferredBrands, profile, rimSize, quantity, images, preferredCountries, status, year, make, model, userName, bidStatus, bidData, userLongitude, userLatitude, userImage, userAddress, requestDocId, payableAmount
-        case isRated, serviceCompletedOn, garageName, logo, isReviewReported, ratingId, reportedTime, reportReason, isServiceStarted
+        case isRated, serviceCompletedOn, garageName, logo, isReviewReported, ratingId, reportedTime, reportReason, isServiceStarted, isServiceCompleted
     }
     
     init() {
@@ -210,5 +219,6 @@ struct GarageRequestModel: Codable {
         reportedTime = ""
         reportReason = ""
         isServiceStarted = false
+        isServiceCompleted = false
     }
 }

@@ -52,7 +52,7 @@ class GarageHomeVC: BaseVC {
     // MARK: - IBActions
     //===========================
     @IBAction func chatBtnAction(_ sender: UIButton) {
-        showAlert(msg: "Under Development")
+        viewModel.getAdminId(dict: [:], loader: true)
     }
     
     
@@ -153,6 +153,15 @@ extension GarageHomeVC : UICollectionViewDelegate, UICollectionViewDataSource,UI
 // MARK: - Extension For GarageHomeVMDelegate
 //===========================
 extension GarageHomeVC:  GarageHomeVMDelegate{
+    
+     func getAdminIdSuccess(id: String, name: String, image: String){
+        AppRouter.goToOneToOneChatVC(self, userId: id, requestId: "", name: name, image: image, unreadMsgs: 0, isSupportChat: true)
+    }
+    
+    func getAdminIdFailed(msg: String) {
+        
+    }
+    
     func getGarageHomeDataSuccess(msg: String) {
         self.dataArray = [GarageDataValue(requestCount: self.viewModel.garageHomeModel.acceptedRequets, name: LocalizedString.requestAccepted.localized,requestColor: UIColor(r: 6, g: 130, b: 191, alpha: 1.0),backgroundColor: UIColor(r: 230, g: 240, b: 245, alpha: 1.0) ),
                           GarageDataValue(requestCount: self.viewModel.garageHomeModel.newRequests, name: LocalizedString.newRequest.localized,requestColor: UIColor(r: 52 , g: 88, b: 158, alpha: 1.0),backgroundColor: UIColor(r: 230, g: 240, b: 245, alpha: 1.0)),

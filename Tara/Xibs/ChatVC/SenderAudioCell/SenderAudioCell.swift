@@ -35,6 +35,8 @@ class SenderAudioCell: UITableViewCell {
         dataContainerView.roundCorners([.topLeft, .topRight, .bottomLeft], radius: 15)
         senderImgView.round()
         audioBtn.round()
+        customSlider.setThumbImage( #imageLiteral(resourceName: "slider"), for: .normal)
+        
     }
     
     

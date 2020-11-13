@@ -30,7 +30,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NA" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EIf-Qf-ksA">
-                        <rect key="frame" x="68" y="5" width="16.5" height="15.5"/>
+                        <rect key="frame" x="60" y="5" width="16.5" height="15.5"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15.5" id="4kZ-67-sr6"/>
                         </constraints>
@@ -39,14 +39,14 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeHolder" translatesAutoresizingMaskIntoConstraints="NO" id="0Bx-N1-lmh">
-                        <rect key="frame" x="24" y="25.5" width="36" height="36"/>
+                        <rect key="frame" x="16" y="25.5" width="36" height="36"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="36" id="ifq-hI-Wbh"/>
                             <constraint firstAttribute="width" secondItem="0Bx-N1-lmh" secondAttribute="height" multiplier="1:1" id="jvI-Zf-56a"/>
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7T7-rS-tQb">
-                        <rect key="frame" x="68" y="25.5" width="203" height="124.5"/>
+                        <rect key="frame" x="60" y="25.5" width="203" height="124.5"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="cBW-N7-54y">
                                 <rect key="frame" x="73.5" y="8" width="56.5" height="43"/>
@@ -144,7 +144,7 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="0Bx-N1-lmh" firstAttribute="leading" secondItem="RJU-wq-FnN" secondAttribute="leading" constant="24" id="4UR-Xz-srN"/>
+                    <constraint firstItem="0Bx-N1-lmh" firstAttribute="leading" secondItem="RJU-wq-FnN" secondAttribute="leading" constant="16" id="4UR-Xz-srN"/>
                     <constraint firstItem="0Bx-N1-lmh" firstAttribute="width" secondItem="0Bx-N1-lmh" secondAttribute="height" multiplier="1:1" id="5Ca-dC-ubd"/>
                     <constraint firstItem="7T7-rS-tQb" firstAttribute="leading" secondItem="0Bx-N1-lmh" secondAttribute="trailing" constant="8" id="K4M-oG-FnM"/>
                     <constraint firstAttribute="bottom" secondItem="7T7-rS-tQb" secondAttribute="bottom" constant="20" id="RBd-Q7-X5r"/>

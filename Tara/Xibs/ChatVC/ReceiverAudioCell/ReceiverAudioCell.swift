@@ -27,6 +27,7 @@ class ReceiverAudioCell: UITableViewCell {
         super.awakeFromNib()
         self.customSlider.value = 0.0
         loadingView.isHidden = true
+        customSlider.setThumbImage( #imageLiteral(resourceName: "slider"), for: .normal)
     }
 
     override func layoutSubviews() {

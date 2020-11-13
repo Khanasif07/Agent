@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CMp-XE-JrL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CMp-XE-JrL">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,13 +16,13 @@
         <!--NotificationVC-->
         <scene sceneID="94Z-Zm-ooY">
             <objects>
-                <viewController storyboardIdentifier="NotificationVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="H83-E0-Ku1" customClass="NotificationVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NotificationVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="H83-E0-Ku1" customClass="NotificationVC" customModule="Tara" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LNd-XH-YAH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Under Development" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mvO-dw-K0C">
-                                <rect key="frame" x="128.5" y="417" width="157" height="23.5"/>
+                                <rect key="frame" x="131" y="418.5" width="152.5" height="20"/>
                                 <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -44,7 +44,7 @@
         <!--HomeVC-->
         <scene sceneID="xTQ-vG-Aa1">
             <objects>
-                <viewController storyboardIdentifier="HomeVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="YRH-GU-vSd" customClass="HomeVC" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="YRH-GU-vSd" customClass="HomeVC" customModule="Tara" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Trh-6v-nx3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -67,38 +67,38 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="119"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="I6v-OG-PqU">
-                                                <rect key="frame" x="26" y="35.5" width="216.5" height="48.5"/>
+                                                <rect key="frame" x="26" y="39" width="209" height="41"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi, User" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="69m-jt-V00">
-                                                        <rect key="frame" x="0.0" y="0.0" width="77.5" height="29"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="75.5" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="21"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What service are you looking for?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pUU-E8-xqh">
-                                                        <rect key="frame" x="0.0" y="29" width="216.5" height="19.5"/>
+                                                        <rect key="frame" x="0.0" y="24.5" width="209" height="16.5"/>
                                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="14"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="group3811" translatesAutoresizingMaskIntoConstraints="NO" id="fEP-Vz-usz">
-                                                <rect key="frame" x="338" y="35.5" width="48" height="48"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="48" id="Ifh-4S-K0a"/>
-                                                    <constraint firstAttribute="width" secondItem="fEP-Vz-usz" secondAttribute="height" id="PBC-s7-08j"/>
-                                                </constraints>
-                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W5P-O1-mcC">
+                                                <rect key="frame" x="345" y="35.5" width="41" height="48"/>
+                                                <state key="normal" image="group3811"/>
+                                                <connections>
+                                                    <action selector="helpBtnTapped:" destination="YRH-GU-vSd" eventType="touchUpInside" id="NOT-aJ-pYm"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="119" id="MO6-AL-6Qp"/>
-                                            <constraint firstItem="fEP-Vz-usz" firstAttribute="centerY" secondItem="S0V-P5-7Wk" secondAttribute="centerY" id="Qc1-zM-NDb"/>
+                                            <constraint firstItem="W5P-O1-mcC" firstAttribute="centerY" secondItem="I6v-OG-PqU" secondAttribute="centerY" id="UdW-rE-Inc"/>
                                             <constraint firstItem="I6v-OG-PqU" firstAttribute="centerY" secondItem="S0V-P5-7Wk" secondAttribute="centerY" id="fyU-W3-jgo"/>
                                             <constraint firstItem="I6v-OG-PqU" firstAttribute="leading" secondItem="S0V-P5-7Wk" secondAttribute="leading" constant="26" id="gOB-ts-Zfk"/>
-                                            <constraint firstAttribute="trailing" secondItem="fEP-Vz-usz" secondAttribute="trailing" constant="28" id="lDJ-cy-9eF"/>
-                                            <constraint firstItem="fEP-Vz-usz" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="I6v-OG-PqU" secondAttribute="trailing" constant="10" id="sje-mg-ltc"/>
+                                            <constraint firstItem="W5P-O1-mcC" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="I6v-OG-PqU" secondAttribute="trailing" constant="10" id="rzw-Xm-pck"/>
+                                            <constraint firstAttribute="trailing" secondItem="W5P-O1-mcC" secondAttribute="trailing" constant="28" id="t6V-cw-MRj"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -125,6 +125,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Vvy-Bo-nDm"/>
                     <connections>
+                        <outlet property="helpBtn" destination="W5P-O1-mcC" id="ZPr-NP-7Ex"/>
                         <outlet property="mainCollView" destination="CAW-S0-fc3" id="IzA-Xr-L9c"/>
                         <outlet property="userNameLbl" destination="69m-jt-V00" id="2Qc-FV-zTj"/>
                     </connections>
@@ -136,7 +137,7 @@
         <!--User Tab Bar Controller-->
         <scene sceneID="jql-1S-YUM">
             <objects>
-                <tabBarController storyboardIdentifier="UserTabBarController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="CMp-XE-JrL" customClass="UserTabBarController" customModule="ArabianTyres" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="UserTabBarController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="CMp-XE-JrL" customClass="UserTabBarController" customModule="Tara" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="N3q-or-z8A">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

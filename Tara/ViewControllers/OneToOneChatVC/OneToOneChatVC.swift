@@ -26,7 +26,7 @@ class OneToOneChatVC: BaseVC {
     weak var delegate: SetLastMessageDelegate?
     var chatViewModel = OneToOneChatViewModel()
     private let db = Firestore.firestore()
-    
+    var isSupportChat : Bool = false
     var inboxModel = Inbox()
     var firstName = ""
     var requestId = ""
@@ -122,7 +122,7 @@ class OneToOneChatVC: BaseVC {
     @IBOutlet weak var garageImgView: UIImageView!
     @IBOutlet weak var garageTopView: UIView!
     
-    
+
     //MARK: VIEW LIFE CYCLE
     //=====================
     override func viewDidLoad() {
@@ -262,6 +262,11 @@ extension OneToOneChatVC {
         getBatchCount()
         setupAudioMessages()
         getChatData()
+        editBtn.isHidden = isSupportChat
+        let tap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped(_:)))
+        containerScrollView.addGestureRecognizer(tap)
+        let topViewTap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped(_:)))
+        topView.addGestureRecognizer(topViewTap)
     }
     
     private func addTapGestureToAudioBtn() {
@@ -271,7 +276,12 @@ extension OneToOneChatVC {
     }
     
     @objc private func titleLabelTapped(_ sender: UITapGestureRecognizer) {
-        printDebug("Profile")
+       
+    }
+    
+    
+    @objc private func scrollViewTapped(_ sender: UITapGestureRecognizer) {
+        btnContaninerView.isHidden = true
     }
     
     @objc   func longTap(_ sender : UIGestureRecognizer){
@@ -385,7 +395,7 @@ extension OneToOneChatVC {
     @objc func keyboardWillHide(sender: NSNotification) {
         guard let info = sender.userInfo, let duration: TimeInterval = (info[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue else { return }
         scrollMsgToBottom()
-        tableViewTopConstraint.constant = requestId.isEmpty ? 0.0 : 134.0
+        tableViewTopConstraint.constant = requestId.isEmpty ? 0.0 :  isCurrentUserType == .garage ? 80.0 : 124.0
         
         UIView.animate(withDuration: duration) { self.view.layoutIfNeeded() }
     }
@@ -533,6 +543,10 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
         return UITableView.automaticDimension
     }
     
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 200.0
+    }
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let dayCell = tableView.dequeueCell(with: DayValueCell.self)
         let dateVal =  messageListing[section].first?.messageTime.dateValue() ?? Date()
@@ -559,6 +573,9 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
             case MessageType.image.rawValue:
                 let senderMediaCell = tableView.dequeueCell(with: SenderMediaCell.self)
                 senderMediaCell.configureCellWith(model: model)
+                senderMediaCell.layoutSubviews()
+                senderMediaCell.layoutIfNeeded()
+                senderMediaCell.setNeedsLayout()
                 senderMediaCell.senderImageView.setImage_kf(imageString: userImage, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
                 setTapGesture(view: senderMediaCell.msgContainerView, indexPath: indexPath)
                 senderMediaCell.senderImageView.addGestureRecognizer(imgTap)
@@ -679,11 +696,13 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
             }
         default:
             switch model.messageType {
+         
             case MessageType.image.rawValue:
                 let receiverMediaCell = tableView.dequeueCell(with: ReceiverMediaCell.self)
                 receiverMediaCell.configureCellWith(model: model)
                 self.setTapGesture(view: receiverMediaCell.msgContainerView, indexPath: indexPath)
                 return receiverMediaCell
+                
             case MessageType.audio.rawValue:
                 let senderAudioCell = tableView.dequeueCell(with: SenderAudioCell.self)
                 senderAudioCell.setSlider(model: model)
@@ -764,7 +783,7 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                     senderOfferCell.rejectBtn.isHidden = true
                 }
                 senderOfferCell.userNameLbl.text = self.firstName
-                senderOfferCell.userImgView.setImage_kf(imageString: userImage, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
+                senderOfferCell.userImgView.setImage_kf(imageString: UserModel.main.image, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
                 senderOfferCell.priceLbl.text = "\(model.price)" + "SAR"
                 self.setTapGesture(view: senderOfferCell.msgContainerView, indexPath: indexPath)
                 senderOfferCell.userImgView.addGestureRecognizer(imgTap)
@@ -788,9 +807,9 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
         scrollMsgToBottom()
     }
     
-    private func scrollMsgToBottom() {
+    private func scrollMsgToBottom(animated: Bool = false) {
         guard messageListing.endIndex > 0, messageListing[messageListing.endIndex - 1].endIndex > 0 else { return }
-        messagesTableView.scrollToRow(at: IndexPath(row: messageListing[messageListing.endIndex - 1].endIndex - 1, section: messageListing.endIndex - 1), at: .bottom, animated: true)
+            self.messagesTableView.scrollToRow(at: IndexPath(row: self.messageListing[self.messageListing.endIndex - 1].endIndex - 1, section: self.messageListing.endIndex - 1), at: .bottom, animated: animated)
     }
 }
 
@@ -800,12 +819,14 @@ extension OneToOneChatVC: UIImagePickerControllerDelegate, UINavigationControlle
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[.editedImage] as? UIImage
         hasImageUploaded = false
+        CommonFunctions.showActivityLoader()
         image?.upload(progress: { [weak self] (status) in
             guard let `self` = self else { return }
             printDebug(status)
             if !self.hasImageUploaded { CommonFunctions.showToastWithMessage("\(Int(status * 100))% Uploaded") }
             }, completion: { (response,error) in
                 if let url = response {
+                    CommonFunctions.hideActivityLoader()
                     self.hasImageUploaded = true
                     if self.isRoom {
                         self.updateUnreadMessage()
@@ -1424,7 +1445,10 @@ extension OneToOneChatVC:  AVAudioRecorderDelegate, AVAudioPlayerDelegate {
     }
     
     func finishRecording(success: Bool) {
-        audioRecorder.stop()
+        if let recorder = audioRecorder {
+            recorder.stop()
+        }
+//        audioRecorder.stop()
         audioRecorder = nil
         
         if success {
@@ -1477,9 +1501,9 @@ extension OneToOneChatVC:  AVAudioRecorderDelegate, AVAudioPlayerDelegate {
     @objc private func updateTime() {
         let time  = "\(chatViewModel.timeFormatted(chatViewModel.totalTime))"
         timerLbl.text = time
-        if chatViewModel.totalTime != 120 {
+        if chatViewModel.totalTime != 300 {
             chatViewModel.totalTime += 1
-            progressVIew.setProgress(Float(chatViewModel.totalTime) * 1/120, animated: true)
+            progressVIew.setProgress(Float(chatViewModel.totalTime) * 1/300, animated: true)
         } else {
             audioRecordBtn.setImage(#imageLiteral(resourceName: "group3603"), for: .normal)
             finishRecording(success: true)
@@ -1492,6 +1516,7 @@ extension OneToOneChatVC:  AVAudioRecorderDelegate, AVAudioPlayerDelegate {
     }
     
     private func uploadAudioFileToFirestore(_ url: URL){
+        CommonFunctions.showActivityLoader()
         UIImage().uploadAudioFile(audioUrl: url, progress: { [weak self] (status) in
             guard let `self` = self else { return }
             printDebug(status)
@@ -1499,6 +1524,7 @@ extension OneToOneChatVC:  AVAudioRecorderDelegate, AVAudioPlayerDelegate {
             }, completion: { (response,error) in
                 if let url = response {
                     self.hasImageUploaded = true
+                    CommonFunctions.hideActivityLoader()
                     if self.isRoom {
                         self.updateUnreadMessage()
                         self.restoreDeletedNode()
@@ -1545,9 +1571,12 @@ extension OneToOneChatVC : OneToOneChatViewModelDelegate{
             garageImgView.setImage_kf(imageString: chatViewModel.chatData.garageImage, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
             garageRequestNoValueLbl.text = chatViewModel.chatData.requestId
             garageAmountValueLbl.text = chatViewModel.chatData.totalAmount?.description
-            garageRatingLbl.text = (chatViewModel.chatData.garageRating?.description ?? "") + "/5"
+            garageRatingLbl.text = (chatViewModel.chatData.garageRating?.truncate(places: 1).description ?? "") + "/5"
             garageAddressLbl.text = chatViewModel.chatData.garageAddress
             garageNameLbl.text = chatViewModel.chatData.garageName
+        }
+        CommonFunctions.delay(delay: 0.2) {
+            self.scrollMsgToBottom(animated: true)
         }
     }
     

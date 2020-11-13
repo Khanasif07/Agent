@@ -482,9 +482,9 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8vG-rO-ciS">
-                                        <rect key="frame" x="98" y="64.5" width="57" height="24"/>
+                                        <rect key="frame" x="98" y="64.5" width="55.5" height="24"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1Ll-Ht-Uey">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="1Ll-Ht-Uey">
                                                 <rect key="frame" x="4" y="4" width="16" height="16"/>
                                                 <color key="backgroundColor" red="1" green="0.69411764710000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
@@ -493,7 +493,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3.5/5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bci-wE-2jd">
-                                                <rect key="frame" x="24" y="5" width="29" height="14"/>
+                                                <rect key="frame" x="24" y="5" width="27.5" height="14"/>
                                                 <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="12"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -505,7 +505,6 @@
                                             <constraint firstItem="bci-wE-2jd" firstAttribute="leading" secondItem="1Ll-Ht-Uey" secondAttribute="trailing" constant="4" id="7mr-sl-XNR"/>
                                             <constraint firstItem="1Ll-Ht-Uey" firstAttribute="centerY" secondItem="8vG-rO-ciS" secondAttribute="centerY" id="CN7-D3-HRN"/>
                                             <constraint firstAttribute="height" constant="24" id="OdV-ih-YdB"/>
-                                            <constraint firstAttribute="width" constant="57" id="SzK-vm-wtA"/>
                                             <constraint firstItem="bci-wE-2jd" firstAttribute="centerY" secondItem="8vG-rO-ciS" secondAttribute="centerY" id="nOQ-e0-KbP"/>
                                             <constraint firstItem="1Ll-Ht-Uey" firstAttribute="leading" secondItem="8vG-rO-ciS" secondAttribute="leading" constant="4" id="nmZ-PM-TSm"/>
                                         </constraints>
@@ -818,6 +817,7 @@
         <image name="icBackward" width="36" height="34"/>
         <image name="iconDot" width="20" height="20"/>
         <image name="placeHolder" width="80" height="80"/>
+        <image name="star" width="8" height="8"/>
         <namedColor name="appRedColor">
             <color red="0.87800002098083496" green="0.13699999451637268" blue="0.25900000333786011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

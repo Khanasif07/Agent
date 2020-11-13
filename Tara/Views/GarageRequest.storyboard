@@ -160,7 +160,7 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </textField>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SAR" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zTV-9c-FLc">
-                                                                <rect key="frame" x="298" y="13.5" width="40" height="20"/>
+                                                                <rect key="frame" x="298" y="21" width="40" height="20"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="40" id="BfB-P2-ell"/>
                                                                 </constraints>
@@ -299,7 +299,7 @@ never be changed</string>
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xV5-8j-046">
-                                        <rect key="frame" x="16" y="319" width="382" height="258"/>
+                                        <rect key="frame" x="16" y="267.5" width="382" height="245"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Oa-PI-Hif">
                                                 <rect key="frame" x="24" y="16" width="348" height="50.5"/>
@@ -404,7 +404,7 @@ start Servicing</string>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="a3C-9r-kUZ">
-                                                <rect key="frame" x="150" y="175" width="222" height="48"/>
+                                                <rect key="frame" x="150" y="167" width="222" height="48"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N61-nb-wpr" customClass="AppButton" customModule="Tara" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="107" height="48"/>
@@ -453,11 +453,11 @@ start Servicing</string>
                                             <constraint firstItem="7Oa-PI-Hif" firstAttribute="leading" secondItem="xV5-8j-046" secondAttribute="leading" constant="24" id="63y-cn-Kmo"/>
                                             <constraint firstItem="uCd-BQ-vLA" firstAttribute="trailing" secondItem="7Oa-PI-Hif" secondAttribute="trailing" id="6oC-dL-NZk"/>
                                             <constraint firstItem="7Oa-PI-Hif" firstAttribute="top" secondItem="xV5-8j-046" secondAttribute="top" constant="16" id="7vb-8K-TTD"/>
-                                            <constraint firstItem="a3C-9r-kUZ" firstAttribute="top" secondItem="uCd-BQ-vLA" secondAttribute="bottom" constant="34" id="ClR-Ko-CoP"/>
+                                            <constraint firstItem="a3C-9r-kUZ" firstAttribute="top" secondItem="uCd-BQ-vLA" secondAttribute="bottom" constant="26" id="ClR-Ko-CoP"/>
                                             <constraint firstItem="uCd-BQ-vLA" firstAttribute="top" secondItem="7Oa-PI-Hif" secondAttribute="bottom" constant="30" id="Dcg-cL-0BO"/>
                                             <constraint firstAttribute="trailing" secondItem="7Oa-PI-Hif" secondAttribute="trailing" constant="10" id="MiR-Nt-nSl"/>
                                             <constraint firstItem="uCd-BQ-vLA" firstAttribute="trailing" secondItem="a3C-9r-kUZ" secondAttribute="trailing" id="mPa-BK-M1J"/>
-                                            <constraint firstAttribute="bottom" secondItem="a3C-9r-kUZ" secondAttribute="bottom" constant="35" id="wmA-KZ-NTw"/>
+                                            <constraint firstAttribute="bottom" secondItem="a3C-9r-kUZ" secondAttribute="bottom" constant="30" id="wmA-KZ-NTw"/>
                                             <constraint firstItem="uCd-BQ-vLA" firstAttribute="leading" secondItem="7Oa-PI-Hif" secondAttribute="leading" id="zhH-ty-30a"/>
                                         </constraints>
                                     </view>
@@ -468,7 +468,7 @@ start Servicing</string>
                                     <constraint firstItem="xV5-8j-046" firstAttribute="centerX" secondItem="c6a-Eu-UVg" secondAttribute="centerX" id="Lc5-si-hDx"/>
                                     <constraint firstItem="jZ7-Nn-wMZ" firstAttribute="width" secondItem="c6a-Eu-UVg" secondAttribute="width" multiplier="107/414" id="TUt-HP-M0y"/>
                                     <constraint firstItem="xV5-8j-046" firstAttribute="leading" secondItem="c6a-Eu-UVg" secondAttribute="leading" constant="16" id="bXr-w2-OVl"/>
-                                    <constraint firstItem="xV5-8j-046" firstAttribute="centerY" secondItem="c6a-Eu-UVg" secondAttribute="centerY" id="cpb-iR-kOp"/>
+                                    <constraint firstItem="xV5-8j-046" firstAttribute="centerY" secondItem="c6a-Eu-UVg" secondAttribute="centerY" multiplier="0.87" id="cpb-iR-kOp"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1086,14 +1086,21 @@ start Servicing</string>
                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="aLs-aP-dxz">
                                                                 <rect key="frame" x="0.0" y="0.0" width="272" height="48"/>
                                                                 <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bG5-2L-cwM">
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bG5-2L-cwM">
                                                                         <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" secondItem="bG5-2L-cwM" secondAttribute="height" multiplier="1:1" id="WBf-fq-XA2"/>
                                                                             <constraint firstAttribute="height" constant="48" id="xUC-9X-OPQ"/>
                                                                         </constraints>
+                                                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <state key="normal" image="icUnCheckStar"/>
                                                                         <state key="selected" image="icCheckStar"/>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                                                <size key="value" width="1" height="0.0"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                        </userDefinedRuntimeAttributes>
                                                                         <connections>
                                                                             <action selector="starBtnsTapped:" destination="K8Q-hi-fID" eventType="touchUpInside" id="r72-C7-nPV"/>
                                                                         </connections>

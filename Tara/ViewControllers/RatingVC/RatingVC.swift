@@ -34,7 +34,8 @@ class RatingVC: BaseVC {
     var images : [String] = []
     var requestId : String = ""
     var garageName : String = ""
-    
+    var delegate : PickerDataDelegate?
+
     // MARK: - Lifecycle
     //==================
     override func viewDidLoad() {
@@ -122,7 +123,7 @@ extension RatingVC {
     }
     
     func saveBtnStatus() -> Bool{
-        return !rating.isEmpty && !txtView.text.isEmpty && !images.isEmpty
+        return !rating.isEmpty && !txtView.text.isEmpty && !(txtView.text == LocalizedString.typeHere.localized) //&& !images.isEmpty
     }
 }
 
@@ -183,6 +184,7 @@ extension RatingVC: UIImagePickerControllerDelegate,UINavigationControllerDelega
 
 extension RatingVC : RatingVMDelegate{
     func ratingSuccess(msg: String) {
+        self.delegate?.changeCarReceivedStatus()
         pop()
     }
     

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -38,7 +38,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pHP-ee-gmj">
                         <rect key="frame" x="166.5" y="25.5" width="148.5" height="144.5"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="fE2-AL-KHi">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="fE2-AL-KHi">
                                 <rect key="frame" x="12" y="8" width="128.5" height="128.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cFC-Rv-m1P">
@@ -66,6 +66,7 @@
                             <constraint firstItem="a9o-GI-qUk" firstAttribute="trailing" secondItem="cFC-Rv-m1P" secondAttribute="trailing" constant="-8" id="8cY-pf-pAY"/>
                             <constraint firstItem="a9o-GI-qUk" firstAttribute="bottom" secondItem="cFC-Rv-m1P" secondAttribute="bottom" constant="-8" id="DNw-AP-V1J"/>
                             <constraint firstItem="fE2-AL-KHi" firstAttribute="leading" secondItem="pHP-ee-gmj" secondAttribute="leading" constant="12" id="Laq-MZ-QMt"/>
+                            <constraint firstAttribute="height" constant="144.5" id="YEp-ZX-VgG"/>
                             <constraint firstItem="fE2-AL-KHi" firstAttribute="top" secondItem="pHP-ee-gmj" secondAttribute="top" constant="8" id="fKS-Km-W21"/>
                             <constraint firstAttribute="bottom" secondItem="fE2-AL-KHi" secondAttribute="bottom" constant="8" id="pBh-Q2-A9R"/>
                             <constraint firstAttribute="trailing" secondItem="fE2-AL-KHi" secondAttribute="trailing" constant="8" id="pIj-lT-j3Q"/>
