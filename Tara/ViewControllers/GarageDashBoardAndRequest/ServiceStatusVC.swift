@@ -146,6 +146,8 @@ extension ServiceStatusVC {
     func updateStatus(cell: ServiceStatusTableViewCell) {
         cell.carReceivedUpdateBtnTapped = {[weak self] in
             guard let `self` = self else { return }
+            self.viewModel.sendOtpToStartService(params: [ApiKey.requestId: self.viewModel.bookedRequestDetail?.id ?? ""])
+            
             AppRouter.openOtpPopUpVC(vc: self, requestByUser: self.viewModel.bookedRequestDetail?.userName ?? "",requestId: self.viewModel.bookedRequestDetail?.id ?? "") {
                 self.viewModel.fetchBookedRequestDetail(params: [ApiKey.requestId: self.requestId], loader: true)
             }
@@ -159,12 +161,12 @@ extension ServiceStatusVC {
         cell.completedUpdateBtnTapped = {
             [weak self] in
             guard let `self` = self else { return }
-            self.viewModel.updateServiceStatus(params: [ApiKey.requestId : self.viewModel.bookedRequestDetail?.id ?? "", ApiKey.status : "completed"],loader: true)
+            self.viewModel.updateServiceStatus(params: [ApiKey.requestId : self.viewModel.bookedRequestDetail?.id ?? "", ApiKey.status : "ready_to_be_taken"],loader: true)
         }
         
         cell.takenUpdateBtnTapped = { [weak self] in
             guard let `self` = self else { return }
-            self.viewModel.updateServiceStatus(params: [ApiKey.requestId : self.viewModel.bookedRequestDetail?.id ?? "", ApiKey.status : "ready_to_be_taken"],loader: true)
+            self.viewModel.updateServiceStatus(params: [ApiKey.requestId : self.viewModel.bookedRequestDetail?.id ?? "", ApiKey.status : "delivered"],loader: true)
         }
         
         cell.yesBtnTapped = { [weak self] in

@@ -91,7 +91,7 @@ class ServiceStatusTableViewCell: UITableViewCell {
             carReceivedUpdateBtn.isEnabled = true
         }
         
-        if status == .carReceived {
+        if status == .startService {
             carReceivedLbl.textColor = AppColors.fontPrimaryColor
             carReceivedStepBtn.setTitle(nil, for: .normal)
             carReceivedStepBtn.setImage(#imageLiteral(resourceName: "group467"), for: .normal)
@@ -113,7 +113,7 @@ class ServiceStatusTableViewCell: UITableViewCell {
 
         }
         
-        if status == .completed {
+        if status == .readyToBeTaken {
             carReceivedLbl.textColor = AppColors.fontPrimaryColor
             progressLbl.textColor = AppColors.fontPrimaryColor
             completeLbl.textColor = AppColors.fontPrimaryColor
@@ -135,7 +135,7 @@ class ServiceStatusTableViewCell: UITableViewCell {
             takenUpdateBtn.isEnabled = true
         }
         
-        if status == .readyToBeTaken {
+        if status == .delivered {
             carReceivedLbl.textColor = AppColors.fontPrimaryColor
             progressLbl.textColor = AppColors.fontPrimaryColor
             completeLbl.textColor = AppColors.fontPrimaryColor
@@ -174,7 +174,7 @@ class ServiceStatusTableViewCell: UITableViewCell {
             carReceivedUpdateBtn.isEnabled = true
         }
         
-        if status == .carReceived {
+        if status == .startService {
             carReceivedLbl.textColor = AppColors.fontPrimaryColor
             carReceivedStepBtn.setTitle(nil, for: .normal)
             carReceivedStepBtn.setImage(#imageLiteral(resourceName: "group467"), for: .normal)
@@ -196,7 +196,7 @@ class ServiceStatusTableViewCell: UITableViewCell {
 
         }
         
-        if status == .completed {
+        if status == .readyToBeTaken {
             carReceivedLbl.textColor = AppColors.fontPrimaryColor
             progressLbl.textColor = AppColors.fontPrimaryColor
             completeLbl.textColor = AppColors.fontPrimaryColor
@@ -218,7 +218,7 @@ class ServiceStatusTableViewCell: UITableViewCell {
             takenUpdateBtn.isEnabled = true
         }
         
-        if status == .readyToBeTaken {
+        if status == .delivered {
             carReceivedLbl.textColor = AppColors.fontPrimaryColor
             progressLbl.textColor = AppColors.fontPrimaryColor
             completeLbl.textColor = AppColors.fontPrimaryColor

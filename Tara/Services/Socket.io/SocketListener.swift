@@ -96,6 +96,5 @@ extension SocketIOManager {
             NotificationCenter.default.post(name: Notification.Name.UpdateServiceStatusUserSide, object: nil)
             printDebug(json)
         })
-        
     }
 }

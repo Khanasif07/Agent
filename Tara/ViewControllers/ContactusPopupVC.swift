@@ -22,6 +22,7 @@ class ContactusPopupVC: BaseVC {
     //===========================
     var requestData: RequestModel? = nil
     var onContactUsBtnTapped : (()->())?
+    var chatBtnTapped : (()->())?
 
     // MARK: - Lifecycle
     //===========================
@@ -38,7 +39,9 @@ class ContactusPopupVC: BaseVC {
     // MARK: - IBActions
     //===========================
     @IBAction func goToChatBtnAction(_ sender: UIButton) {
-        showAlert(msg: LocalizedString.underDevelopment.localized)
+        dismiss(animated: true) {
+            self.chatBtnTapped?()
+        }
     }
     
     @IBAction func contactUsBtnAction(_ sender: UIButton) {

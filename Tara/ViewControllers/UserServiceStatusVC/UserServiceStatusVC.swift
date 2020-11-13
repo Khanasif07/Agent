@@ -129,6 +129,15 @@ extension UserServiceStatusVC: UITableViewDelegate,UITableViewDataSource{
 }
 
 extension UserServiceStatusVC: UserServiceStatusVMDelegate {
+    
+    func getAdminIdSuccess(id: String, name: String, image: String) {
+            AppRouter.goToOneToOneChatVC(self, userId: id, requestId: "", name: name, image: image, unreadMsgs: 0, isSupportChat: true)
+    }
+    
+    func getAdminIdFailed(error: String) {
+        CommonFunctions.showToastWithMessage(error)
+    }
+    
     func serviceDetailSuccess(msg: String) {
         mainTableView.reloadData()
     }
@@ -142,7 +151,9 @@ extension UserServiceStatusVC: UserServiceStatusVMDelegate {
             AppRouter.goToRatingVC(vc: self, requestId: self.requestId, garageName: viewModel.serviceDetailData?.garageName ?? "")
         }else {
             DispatchQueue.main.async {
-                AppRouter.goToContactusPopupVC(vc: self)
+                AppRouter.goToContactusPopupVC(vc: self) {
+                    self.viewModel.getAdminId(dict: [:], loader: true)
+                }
             }
         }
     }

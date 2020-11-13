@@ -431,12 +431,14 @@ enum AppRouter {
     }
     
     
-    static func goToContactusPopupVC(vc: UIViewController){
+    static func goToContactusPopupVC(vc: UIViewController, completion : @escaping (() -> ())){
         let scene = ContactusPopupVC.instantiate(fromAppStoryboard: .GarageRequest)
         scene.onContactUsBtnTapped = {
             AppRouter.goToContactUsVC(vc: vc)
         }
-
+        scene.chatBtnTapped = {
+            completion()
+        }
         vc.modalPresentationStyle = .fullScreen
         vc.present(scene, animated: true, completion: nil)
     }

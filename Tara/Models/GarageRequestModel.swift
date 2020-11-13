@@ -101,6 +101,7 @@ enum ServiceState : String, Codable{
     case readyToBeTaken = "ready_to_be_taken"
     case delivered = "delivered"
     case none = "completed"
+    case inGarage = "in_garage"
     
     var serviceBtnTitle: String {
         switch self {

@@ -16,7 +16,8 @@ protocol UserServiceStatusVMDelegate: class {
     func serviceDetailFailed(msg: String)
     func markCarReceivedSuccess(msg: String)
     func markCarReceivedFailure(msg: String)
-
+    func getAdminIdSuccess(id: String, name: String, image: String)
+    func getAdminIdFailed(error:String)
 }
 
 class UserServiceStatusVM {
@@ -59,6 +60,19 @@ class UserServiceStatusVM {
            }
        }
     
+    func getAdminId(dict: JSONDictionary,loader: Bool){
+        WebServices.getAdminId(parameters: dict,loader: loader, success: { (json) in
+     
+            let addminId = json[ApiKey.data][ApiKey.id].stringValue
+            let name = json[ApiKey.data][ApiKey.name].stringValue
+            let image = json[ApiKey.data][ApiKey.image].stringValue
+            
+            self.delegate?.getAdminIdSuccess(id: addminId, name: name,image: image)
+        }) { (error) -> (Void) in
+            self.delegate?.getAdminIdFailed(error: error.localizedDescription)
+        }
+    }
+
     func parseToMakeListingData(result: JSON) {
         if let jsonString = result[ApiKey.data].rawString(), let data = jsonString.data(using: .utf8) {
             do {
