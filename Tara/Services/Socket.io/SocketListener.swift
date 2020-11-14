@@ -96,5 +96,10 @@ extension SocketIOManager {
             NotificationCenter.default.post(name: Notification.Name.UpdateServiceStatusUserSide, object: nil)
             printDebug(json)
         })
+        
+        self.socket?.on(EventListnerKeys.serviceStarted.rawValue, callback: { data, _ in
+            let json = JSON(data)
+            printDebug(json)
+        })
     }
 }
