@@ -417,9 +417,11 @@ enum AppRouter {
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
-    static func goToRatingVC(vc: UIViewController, requestId : String,garageName: String){
+    static func goToRatingVC(vc: UIViewController, requestId : String,garageName: String,ratingId : String = "",ratingModel: RatingModel = RatingModel()){
         let scene = RatingVC.instantiate(fromAppStoryboard: .GarageRequest)
         scene.requestId = requestId
+        scene.viewModel.ratingModel = ratingModel
+        scene.ratingId = ratingId
         scene.garageName = garageName
         scene.delegate = vc as? PickerDataDelegate
         vc.navigationController?.pushViewController(scene, animated: true)

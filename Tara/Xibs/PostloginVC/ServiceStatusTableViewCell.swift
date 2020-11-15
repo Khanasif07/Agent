@@ -13,6 +13,9 @@ class ServiceStatusTableViewCell: UITableViewCell {
     //MARK:-IBOutlet
     @IBOutlet weak var serviceStatusLbl: UILabel!
     
+    @IBOutlet weak var reviewLbl: UILabel!
+    @IBOutlet weak var noRatingContainerView: UIView!
+    @IBOutlet weak var ratingLbl: UILabel!
     @IBOutlet weak var carReceivedLbl: UILabel!
     @IBOutlet weak var progressLbl: UILabel!
     @IBOutlet weak var completeLbl: UILabel!
@@ -46,6 +49,8 @@ class ServiceStatusTableViewCell: UITableViewCell {
     var takenUpdateBtnTapped : (()->())?
     var yesBtnTapped : (()->())?
     var noBtnTapped : (()->())?
+    var rateNowBtnTapped : ((UIButton)->())?
+    var editRatingReviewBtnTapped : ((UIButton)->())?
 
     //MARK:-LifeCycle
     override func awakeFromNib() {
@@ -278,4 +283,17 @@ class ServiceStatusTableViewCell: UITableViewCell {
     @IBAction func noBtnAction(_ sender : UIButton) {
         noBtnTapped?()
     }
+    
+    @IBAction func rateNowBtnAction(_ sender: UIButton) {
+        if let handle = rateNowBtnTapped{
+            handle(sender)
+        }
+    }
+    
+    @IBAction func editRatingReviewBtnAction(_ sender: UIButton) {
+        if let handle = editRatingReviewBtnTapped{
+            handle(sender)
+        }
+    }
+    
 }

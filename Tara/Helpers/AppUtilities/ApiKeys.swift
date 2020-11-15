@@ -120,6 +120,7 @@ enum ApiKey {
     static var videosOnPlatform: String { return "videosOnPlatform"}
     static var reviewCount: String { return "reviewCount"}
     static var rating: String { return "rating"}
+    static var ratingId: String { return "ratingId"}
     static var categoryID: String { return "categoryId"}
     static var review: String { return "review"}
     static var length: String{ return "length"}

@@ -947,6 +947,17 @@ extension WebServices{
           }
       }
     
+    //MARK:- Update Rating Detail
+    static func updateRatingData(parameters: JSONDictionary,loader: Bool = false,
+                                 success: @escaping SuccessResponse,
+                                 failure: @escaping FailureResponse) {
+        self.commonPutAPI(parameters: parameters, endPoint: .rating,loader: loader, success: { (json) in
+            success(json)
+        }) { (error) -> (Void) in
+            failure(error)
+        }
+    }
+    
     
     //MARK:- Get review Listing
        static func getReviewListingData(parameters: JSONDictionary,loader: Bool = false,

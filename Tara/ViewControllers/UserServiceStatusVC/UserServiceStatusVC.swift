@@ -56,7 +56,7 @@ extension UserServiceStatusVC {
         setupTableView()
         viewModel.delegate = self
         viewModel.fetchRequestDetail(params: [ApiKey.requestId: self.requestId], loader: true)
-         NotificationCenter.default.addObserver(self, selector: #selector(updateState), name: Notification.Name.UpdateServiceStatusUserSide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateState), name: Notification.Name.UpdateServiceStatusUserSide, object: nil)
     }
     
     private func setupTableView() {
@@ -113,6 +113,9 @@ extension UserServiceStatusVC: UITableViewDelegate,UITableViewDataSource{
         }else {
             let cell = tableView.dequeueCell(with: ServiceStatusTableViewCell.self)
             cell.populateDataForUserService(status: viewModel.serviceDetailData?.serviceStatus ?? nil, isServiceCompleted: viewModel.serviceDetailData?.isServiceCompleted ?? false)
+            cell.noRatingContainerView.isHidden = !(self.viewModel.serviceDetailData?.ratingDetails?._id?.isEmpty ?? true)
+            cell.reviewLbl.text = self.viewModel.serviceDetailData?.ratingDetails?.review ?? ""
+            cell.ratingLbl.text = "\(self.viewModel.serviceDetailData?.ratingDetails?.rating ?? 0)" + "/5"
             updateStatus(cell: cell)
             return cell
         }
@@ -177,6 +180,16 @@ extension UserServiceStatusVC {
             self.status = false
             self.viewModel.carReceived(params: [ApiKey.requestId: self.requestId, ApiKey.status : false], loader: true)
         }
+        
+        cell.rateNowBtnTapped = { [weak self] (sender) in
+            guard let `self` = self else { return }
+            AppRouter.goToRatingVC(vc: self, requestId: self.requestId, garageName: self.viewModel.serviceDetailData?.garageName ?? "")
+        }
+        
+        cell.editRatingReviewBtnTapped = { [weak self] (sender) in
+            guard let `self` = self else { return }
+            AppRouter.goToRatingVC(vc: self, requestId: self.requestId, garageName: self.viewModel.serviceDetailData?.garageName ?? "",ratingId: self.viewModel.serviceDetailData?.ratingDetails?._id ?? "",ratingModel: self.viewModel.serviceDetailData?.ratingDetails ?? RatingModel())
+        }
     }
 }
 
@@ -184,5 +197,9 @@ extension UserServiceStatusVC : PickerDataDelegate{
     func changeCarReceivedStatus(){
         viewModel.serviceDetailData?.isServiceCompleted = true
         mainTableView.reloadData()
+    }
+    
+    func updateRatingStatus(){
+       viewModel.fetchRequestDetail(params: [ApiKey.requestId: self.requestId], loader: true)
     }
 }

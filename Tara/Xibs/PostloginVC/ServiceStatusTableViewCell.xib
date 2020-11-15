@@ -1,25 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="NunitoSans-Bold.ttf">
+            <string>NunitoSans-Bold</string>
+        </array>
+        <array key="NunitoSans-Regular.ttf">
+            <string>NunitoSans-Regular</string>
+        </array>
+        <array key="NunitoSans-SemiBold.ttf">
+            <string>NunitoSans-SemiBold</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="422" id="KGk-i7-Jjw" customClass="ServiceStatusTableViewCell" customModule="Tara" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="477" height="410"/>
+            <rect key="frame" x="0.0" y="0.0" width="477" height="564.5"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="477" height="410"/>
+                <rect key="frame" x="0.0" y="0.0" width="477" height="564.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cQp-1T-7Cc">
-                        <rect key="frame" x="16" y="8" width="445" height="394"/>
+                        <rect key="frame" x="16" y="8" width="445" height="548.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Service Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JkX-FI-KFF">
                                 <rect key="frame" x="10" y="8" width="88" height="16"/>
@@ -246,43 +257,176 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="yyb-Le-vie">
-                                <rect key="frame" x="0.0" y="255" width="445" height="125.5"/>
+                                <rect key="frame" x="0.0" y="255" width="445" height="280"/>
                                 <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A46-Lq-nqz">
+                                        <rect key="frame" x="0.0" y="0.0" width="445" height="48.5"/>
+                                        <subviews>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MUB-es-Q0x">
+                                                <rect key="frame" x="405" y="0.0" width="30" height="18"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="18" id="BB2-8D-iCd"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="13"/>
+                                                <state key="normal" title="Edit">
+                                                    <color key="titleColor" red="0.54117647058823526" green="0.58431372549019611" blue="0.61960784313725492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="editRatingReviewBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="S4w-H0-Gua"/>
+                                                </connections>
+                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="zDe-gF-Fin">
+                                                <rect key="frame" x="10" y="0.0" width="425" height="48.5"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="EHq-kr-IAh">
+                                                        <rect key="frame" x="0.0" y="0.0" width="425" height="48.5"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating and Review" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qk7-RJ-dIH">
+                                                                <rect key="frame" x="0.0" y="0.0" width="109" height="15.5"/>
+                                                                <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="13"/>
+                                                                <color key="textColor" red="0.5411764979" green="0.58431375029999999" blue="0.61960786580000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecq-Pd-dmY">
+                                                                <rect key="frame" x="0.0" y="20.5" width="58" height="28"/>
+                                                                <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="13"/>
+                                                                <state key="normal" title="Rate Now">
+                                                                    <color key="titleColor" name="outgoingMessageBackground"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="rateNowBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="vm4-ew-e9T"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="MUB-es-Q0x" secondAttribute="trailing" constant="10" id="1zV-zC-kIw"/>
+                                            <constraint firstItem="MUB-es-Q0x" firstAttribute="top" secondItem="A46-Lq-nqz" secondAttribute="top" id="64S-MK-gl6"/>
+                                            <constraint firstItem="zDe-gF-Fin" firstAttribute="leading" secondItem="A46-Lq-nqz" secondAttribute="leading" constant="10" id="JsY-Nv-cQa"/>
+                                            <constraint firstAttribute="bottom" secondItem="zDe-gF-Fin" secondAttribute="bottom" id="U4M-nt-a7c"/>
+                                            <constraint firstItem="zDe-gF-Fin" firstAttribute="top" secondItem="A46-Lq-nqz" secondAttribute="top" id="g3D-Ag-TKK"/>
+                                            <constraint firstAttribute="trailing" secondItem="zDe-gF-Fin" secondAttribute="trailing" constant="10" id="xf6-YQ-bYr"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wsl-wI-lTe">
+                                        <rect key="frame" x="0.0" y="55" width="445" height="62.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Svr-aQ-ltf">
+                                                <rect key="frame" x="405" y="0.0" width="30" height="18"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="18" id="BE3-4q-KMi"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="13"/>
+                                                <state key="normal" title="Edit">
+                                                    <color key="titleColor" red="0.54117647059999996" green="0.58431372550000005" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="editRatingReviewBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="qGO-R0-AfY"/>
+                                                </connections>
+                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="7.5" translatesAutoresizingMaskIntoConstraints="NO" id="c1Q-Dm-sSz">
+                                                <rect key="frame" x="10" y="0.0" width="385" height="62.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating and Review" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NwF-nS-H2d">
+                                                        <rect key="frame" x="0.0" y="0.0" width="109" height="15.5"/>
+                                                        <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="13"/>
+                                                        <color key="textColor" red="0.5411764979" green="0.58431375029999999" blue="0.61960786580000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u44-th-Kmt">
+                                                        <rect key="frame" x="0.0" y="23" width="56" height="16"/>
+                                                        <subviews>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="group3922" translatesAutoresizingMaskIntoConstraints="NO" id="f8O-fK-5d6">
+                                                                <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="f8O-fK-5d6" secondAttribute="height" id="IJc-Yh-pTg"/>
+                                                                    <constraint firstAttribute="height" constant="16" id="hBa-6K-CB8"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3.5/5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZBM-9r-4lA">
+                                                                <rect key="frame" x="18.5" y="1" width="33.5" height="14"/>
+                                                                <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="12"/>
+                                                                <color key="textColor" red="0.54117647058823526" green="0.58431372549019611" blue="0.61960784313725492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="trailing" secondItem="ZBM-9r-4lA" secondAttribute="trailing" constant="4" id="4yW-iL-Wgf"/>
+                                                            <constraint firstAttribute="bottom" secondItem="f8O-fK-5d6" secondAttribute="bottom" id="FZJ-bd-ZZm"/>
+                                                            <constraint firstItem="f8O-fK-5d6" firstAttribute="top" secondItem="u44-th-Kmt" secondAttribute="top" id="J7a-fw-Bu1"/>
+                                                            <constraint firstItem="ZBM-9r-4lA" firstAttribute="leading" secondItem="f8O-fK-5d6" secondAttribute="trailing" constant="2.5" id="TCQ-qu-HJu"/>
+                                                            <constraint firstItem="f8O-fK-5d6" firstAttribute="leading" secondItem="u44-th-Kmt" secondAttribute="leading" id="fNT-wi-3kv"/>
+                                                            <constraint firstItem="f8O-fK-5d6" firstAttribute="centerY" secondItem="u44-th-Kmt" secondAttribute="centerY" id="kZY-l7-pHM"/>
+                                                            <constraint firstItem="ZBM-9r-4lA" firstAttribute="centerY" secondItem="u44-th-Kmt" secondAttribute="centerY" id="rJv-e9-O6u"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MFA-gA-vfT">
+                                                        <rect key="frame" x="0.0" y="47" width="22.5" height="15.5"/>
+                                                        <fontDescription key="fontDescription" name="NunitoSans-Regular" family="Nunito Sans" pointSize="13"/>
+                                                        <color key="textColor" red="0.54117647058823526" green="0.58431372549019611" blue="0.61960784313725492" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="c1Q-Dm-sSz" secondAttribute="bottom" id="4ao-fa-t30"/>
+                                            <constraint firstAttribute="trailing" secondItem="Svr-aQ-ltf" secondAttribute="trailing" constant="10" id="PtU-NG-XbL"/>
+                                            <constraint firstItem="Svr-aQ-ltf" firstAttribute="leading" secondItem="c1Q-Dm-sSz" secondAttribute="trailing" constant="10" id="Tyw-jd-LWQ"/>
+                                            <constraint firstItem="c1Q-Dm-sSz" firstAttribute="top" secondItem="wsl-wI-lTe" secondAttribute="top" id="Xn9-2H-ojx"/>
+                                            <constraint firstItem="c1Q-Dm-sSz" firstAttribute="leading" secondItem="wsl-wI-lTe" secondAttribute="leading" constant="10" id="v4g-9p-ka6"/>
+                                            <constraint firstItem="Svr-aQ-ltf" firstAttribute="top" secondItem="wsl-wI-lTe" secondAttribute="top" id="wa1-ct-vrk"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Ds-Zt-YtE" customClass="CustomDashedView" customModule="Tara" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="124" width="445" height="25"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="ac0-Uz-dAS"/>
+                                        </constraints>
+                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eTF-0Q-ucG">
-                                        <rect key="frame" x="0.0" y="0.0" width="445" height="41.5"/>
+                                        <rect key="frame" x="0.0" y="155" width="445" height="40.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="GUz-1d-H5N">
-                                                <rect key="frame" x="10" y="0.0" width="425" height="41.5"/>
+                                                <rect key="frame" x="10" y="0.0" width="425" height="40.5"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="pla-J7-rrN">
-                                                        <rect key="frame" x="0.0" y="0.0" width="95" height="41.5"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="pla-J7-rrN">
+                                                        <rect key="frame" x="0.0" y="0.0" width="92.5" height="40.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9tI-hh-ujP">
-                                                                <rect key="frame" x="0.0" y="0.0" width="95" height="16"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="92.5" height="15.5"/>
+                                                                <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="13"/>
                                                                 <color key="textColor" red="0.54117649793624878" green="0.58431375026702881" blue="0.61960786581039429" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vrj-RX-oyv">
-                                                                <rect key="frame" x="0.0" y="21" width="95" height="20.5"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <rect key="frame" x="0.0" y="20.5" width="29" height="20"/>
+                                                                <fontDescription key="fontDescription" name="NunitoSans-Regular" family="Nunito Sans" pointSize="17"/>
                                                                 <color key="textColor" red="0.92941176470588238" green="0.27843137254901962" blue="0.2196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
                                                     </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="bsC-P7-CDw">
-                                                        <rect key="frame" x="348" y="0.0" width="77" height="41.5"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="bottom" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="bsC-P7-CDw">
+                                                        <rect key="frame" x="349.5" y="0.0" width="75.5" height="40.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount Paid" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ruR-3g-sSY">
-                                                                <rect key="frame" x="0.0" y="0.0" width="77" height="16"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="75.5" height="15.5"/>
+                                                                <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="13"/>
                                                                 <color key="textColor" red="0.54117649793624878" green="0.58431375026702881" blue="0.61960786581039429" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 SAR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5a8-h0-fS0">
-                                                                <rect key="frame" x="0.0" y="21" width="77" height="20.5"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <rect key="frame" x="27.5" y="20.5" width="48" height="20"/>
+                                                                <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
                                                                 <color key="textColor" red="0.17254901959999999" green="0.71372549019999998" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -300,7 +444,7 @@
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="qYT-4U-WfO">
-                                        <rect key="frame" x="0.0" y="47.5" width="445" height="78"/>
+                                        <rect key="frame" x="0.0" y="202" width="445" height="78"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mRa-QS-onx" customClass="CustomDashedView" customModule="Tara" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="445" height="25"/>
@@ -422,7 +566,7 @@
                     <constraint firstAttribute="trailing" secondItem="cQp-1T-7Cc" secondAttribute="trailing" constant="16" id="AqD-zD-GOQ"/>
                     <constraint firstItem="dZP-yT-KaP" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="80/414" id="OOI-YU-Gb2"/>
                     <constraint firstAttribute="bottom" secondItem="cQp-1T-7Cc" secondAttribute="bottom" constant="8" id="SKD-SR-mMf"/>
-                    <constraint firstItem="cQp-1T-7Cc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="dec-HE-xEh"/>
+                    <constraint firstItem="cQp-1T-7Cc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="fOM-Br-vxc"/>
                     <constraint firstItem="cQp-1T-7Cc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="pGL-yF-RzX"/>
                 </constraints>
             </tableViewCellContentView>
@@ -439,12 +583,15 @@
                 <outlet property="completeStepBtn" destination="tVw-m3-xDV" id="8Is-Jt-PlI"/>
                 <outlet property="completeUpdateBtn" destination="XbJ-H6-NOp" id="VUD-6n-syT"/>
                 <outlet property="completedLineView" destination="pUJ-KL-TGo" id="C2D-DB-wlj"/>
+                <outlet property="noRatingContainerView" destination="A46-Lq-nqz" id="4jq-3V-beL"/>
                 <outlet property="paidLbl" destination="Vrj-RX-oyv" id="xe9-CV-ZzS"/>
                 <outlet property="paymentStatusLbl" destination="9tI-hh-ujP" id="cQY-ex-FSw"/>
                 <outlet property="progressLbl" destination="8Dp-T8-Xqr" id="qBm-Pk-KL8"/>
                 <outlet property="progressStepBtn" destination="2sN-cu-q6c" id="4nP-pa-kVc"/>
                 <outlet property="progressUpdateBtn" destination="dZP-yT-KaP" id="iL3-Cq-drr"/>
+                <outlet property="ratingLbl" destination="ZBM-9r-4lA" id="bYy-xJ-V8J"/>
                 <outlet property="readyToBeTakenLineView" destination="Z6b-Mx-bH0" id="GCw-zc-7hc"/>
+                <outlet property="reviewLbl" destination="MFA-gA-vfT" id="APd-f1-3lr"/>
                 <outlet property="serviceStatusLbl" destination="JkX-FI-KFF" id="6ng-wD-3el"/>
                 <outlet property="takenLbl" destination="j6Q-0m-R6S" id="cT4-Qm-aAo"/>
                 <outlet property="takenStepBtn" destination="j5g-BP-7RK" id="jmo-qb-CXY"/>
@@ -454,8 +601,12 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="group3922" width="48" height="48"/>
         <namedColor name="appRedColor">
             <color red="0.87800002098083496" green="0.13699999451637268" blue="0.25900000333786011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="outgoingMessageBackground">
+            <color red="0.20399999618530273" green="0.77999997138977051" blue="0.34900000691413879" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

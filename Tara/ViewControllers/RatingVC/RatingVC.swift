@@ -34,6 +34,7 @@ class RatingVC: BaseVC {
     var rating : String = ""
     var images : [String] = []
     var requestId : String = ""
+    var ratingId : String = ""
     var garageName : String = ""
     var delegate : PickerDataDelegate?
 
@@ -60,7 +61,11 @@ class RatingVC: BaseVC {
     }
     
     @IBAction func saveBtnBtnAction(_ sender: Any) {
-        viewModel.postRatingData(params: getDict(), loader: true)
+        if self.ratingId.isEmpty{
+            viewModel.postRatingData(params: getDict(), loader: true)
+        } else{
+            viewModel.updateRatingData(params: getDictForUpdate(), loader: true)
+        }
     }
     
     @IBAction func editLogoBtnAction(_ sender: UIButton) {
@@ -87,10 +92,11 @@ extension RatingVC {
     
     private func initialSetup() {
         editLogoBtn.setImage(nil, for: .normal)
-        setupTextAndFont()
-        setupTextView()
         saveBtn.isEnabled = false
         viewModel.delegate = self
+        setupTextAndFont()
+        setupTextView()
+        prefilledData()
     }
     
     private func setupTextAndFont(){
@@ -110,6 +116,18 @@ extension RatingVC {
         
     }
     
+    private func prefilledData(){
+        self.txtView.text = viewModel.ratingModel?.review ?? ""
+        for i in 0...starBtns.count - 1{
+            if  i < (viewModel.ratingModel?.rating ??  0) {
+                starBtns[i].isSelected = true
+                rating = (i+1).description
+            }
+        }
+        saveBtn.setTitle(self.ratingId.isEmpty ? "Save" : "Update", for: .normal)
+        saveBtn.isEnabled = saveBtnStatus()
+    }
+    
     private func setupTextView(){
         txtView.delegate = self
         txtView.text = LocalizedString.typeHere.localized
@@ -117,6 +135,14 @@ extension RatingVC {
     
     private func getDict() -> JSONDictionary{
         let dict : JSONDictionary = [ApiKey.requestId : self.requestId ,
+                                     ApiKey.rating : self.rating,
+                                     ApiKey.review: txtView.text.byRemovingLeadingSpaces,
+                                     ApiKey.images : self.images]
+        return dict
+    }
+    
+    private func getDictForUpdate() -> JSONDictionary{
+        let dict : JSONDictionary = [ApiKey.ratingId : self.ratingId ,
                                      ApiKey.rating : self.rating,
                                      ApiKey.review: txtView.text.byRemovingLeadingSpaces,
                                      ApiKey.images : self.images]
@@ -192,6 +218,10 @@ extension RatingVC: UIImagePickerControllerDelegate,UINavigationControllerDelega
 extension RatingVC : RatingVMDelegate{
     func ratingSuccess(msg: String) {
         self.delegate?.changeCarReceivedStatus()
+        pop()
+    }
+    func updateRatingSuccess(msg: String) {
+        self.delegate?.updateRatingStatus()
         pop()
     }
     
