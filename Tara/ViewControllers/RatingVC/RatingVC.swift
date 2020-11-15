@@ -12,6 +12,7 @@ class RatingVC: BaseVC {
     
     // MARK: - IBOutlets
     //==================
+    @IBOutlet weak var txtViewCountLbl: UILabel!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var overAllExpLbl: UILabel!
     @IBOutlet weak var garageNameLbl: UILabel!
@@ -143,6 +144,12 @@ extension RatingVC : UITextViewDelegate{
             
         }
         saveBtn.isEnabled = saveBtnStatus()
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool{
+        let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
+        txtViewCountLbl.text = "\(newText.count)" + "/250"
+        return newText.count < 250
     }
 }
 

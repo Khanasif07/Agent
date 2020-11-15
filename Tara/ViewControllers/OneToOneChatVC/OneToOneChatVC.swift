@@ -263,6 +263,7 @@ extension OneToOneChatVC {
         setupAudioMessages()
         getChatData()
         editBtn.isHidden = isSupportChat
+        self.sendButton.backgroundColor = AppColors.fontTertiaryColor
         let tap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped(_:)))
         containerScrollView.addGestureRecognizer(tap)
         let topViewTap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped(_:)))
@@ -381,6 +382,7 @@ extension OneToOneChatVC {
         messageTextView.text = ""
         messageLabel.isHidden = false
         sendButton.setImage(#imageLiteral(resourceName: "group3603"), for: .normal)
+        sendButton.backgroundColor = AppColors.fontTertiaryColor
         resetFrames()
     }
     
@@ -435,12 +437,14 @@ extension OneToOneChatVC: UITextViewDelegate{
         guard let text = textView.text else { return }
         self.messageLabel.isHidden = !text.isEmpty
         if text.byRemovingLeadingTrailingWhiteSpaces.isEmpty {
-            sendButton.setImage(#imageLiteral(resourceName: "group3603"), for: .normal)
+            self.sendButton.setImage(#imageLiteral(resourceName: "group3603"), for: .normal)
+            self.sendButton.backgroundColor = AppColors.fontTertiaryColor
             if text.isEmpty {
                 self.resetFrames()
                 return
             }
         } else {
+            self.sendButton.backgroundColor = AppColors.appRedColor
             sendButton.setImage(#imageLiteral(resourceName: "group3603"), for: .normal)
         }
         let height = text.heightOfText(self.messageTextView.bounds.width - 10, font: AppFonts.NunitoSansRegular.withSize(16)) + 10
@@ -457,8 +461,10 @@ extension OneToOneChatVC: UITextViewDelegate{
     func textViewDidEndEditing(_ textView: UITextView) {
         messageLabel.isHidden = !textView.text.byRemovingLeadingTrailingWhiteSpaces.isEmpty
         if messageLabel.isHidden {
+            self.sendButton.backgroundColor = AppColors.appRedColor
             sendButton.setImage(#imageLiteral(resourceName: "group3603"), for: .normal)
         } else {
+            self.sendButton.backgroundColor = AppColors.fontTertiaryColor
             sendButton.setImage(#imageLiteral(resourceName: "group3603"), for: .normal)
         }
     }

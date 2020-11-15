@@ -26,8 +26,8 @@ enum AppRouter {
     // MARK: - Show Landing Screen
     //===========================
     static func checkAppInitializationFlow() {
-//        goToTestingVC()
-//        return
+        goToTestingVC()
+        return
         if isUserLoggedin {
             SocketIOManager.shared.establishConnection()
             if !isPhoneNoVerified{
@@ -57,7 +57,7 @@ enum AppRouter {
     }
     
     static func goToTestingVC(){
-        let scene = ServiceCompletedVC.instantiate(fromAppStoryboard: .GarageRequest)
+        let scene = RatingVC.instantiate(fromAppStoryboard: .GarageRequest)
         setAsWindowRoot(scene)
     }
     
