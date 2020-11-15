@@ -147,6 +147,7 @@ class OneToOneChatVC: BaseVC {
         audioRecordBtn.round()
         garageImgView.round()
         userImgView.round()
+        btnContaninerView.addShadow(cornerRadius: 5, color: UIColor.black16, offset: CGSize(width: 0.5, height: 0.5), opacity: 1, shadowRadius: 5)
         textContainerInnerView.round(radius: 4.0)
     }
     
@@ -208,7 +209,6 @@ class OneToOneChatVC: BaseVC {
     
     @IBAction func editBtnAction(_ sender: UIButton) {
         btnContaninerView.isHidden.toggle()
-        
     }
     
     @IBAction func editBidBtnAction(_ sender: UIButton) {
@@ -411,17 +411,18 @@ extension OneToOneChatVC {
         self.player = nil
         self.playerItem = nil
         if let senderAudioCell = self.messagesTableView.cellForRow(at: self.selectedIndexPath ?? IndexPath.init(row: 0, section: 0)) as? SenderAudioCell {
-            self.selectedIndexPath = nil
             senderAudioCell.customSlider.value = 0.0
             senderAudioCell.loadingView.isHidden = true
+            senderAudioCell.playBtn.isHidden = false
             senderAudioCell.playBtn.setImage(#imageLiteral(resourceName: "playButton"), for: .normal)
         }
         if let receiverAudioCell = self.messagesTableView.cellForRow(at: self.selectedIndexPath ?? IndexPath.init(row: 0, section: 0)) as? ReceiverAudioCell {
-            self.selectedIndexPath = nil
             receiverAudioCell.customSlider.value = 0.0
             receiverAudioCell.loadingView.isHidden = true
+            receiverAudioCell.playBtn.isHidden = false
             receiverAudioCell.playBtn.setImage(#imageLiteral(resourceName: "playButton"), for: .normal)
         }
+        self.selectedIndexPath = nil
         self.messagesTableView.reloadData()
     }
 }

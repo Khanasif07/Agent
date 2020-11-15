@@ -110,11 +110,11 @@ struct Inbox{
         self.roomInfo =  dict[ApiKey.roomInfo] as? DocumentReference
         self.timeStamp = dict[ApiKey.timeStamp] as? Timestamp ?? Timestamp.init(date: Date())
         self.userDetails = dict[ApiKey.userDetails] as? DocumentReference
-        self.firstName   = dict[ApiKey.firstName] as? String ?? ""
-//        self.firstName   = dict[ApiKey.userName] as? String ?? ""
+//        self.firstName   = dict[ApiKey.firstName] as? String ?? ""
+        self.firstName   = dict[ApiKey.userName] as? String ?? ""
         self.lastMessage = dict[ApiKey.lastMessage] as? String ?? ""
        // self.blockedLastMessage = dict[ApiKey.lastMessage] as? String ?? StringConstants.defaultValue
-        self.receiverImgURL = dict[ApiKey.image] as? String ?? ""
+        self.receiverImgURL = dict[ApiKey.userImage] as? String ?? ""
         self.userId = dict[ApiKey.userId] as? String ?? ""
         self.unreadMessages = dict[ApiKey.unreadMessages] as? Int ?? 0
         self.chatType = "single"

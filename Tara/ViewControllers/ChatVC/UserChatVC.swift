@@ -303,7 +303,7 @@ extension UserChatVC {
                                     if var currentInbox = self.inboxListing.first(where: { $0.roomId == inbox.roomId }) {
                                         currentInbox.firstName = (document.data()?[ApiKey.userName] as? String ?? "").isEmpty ? document.data()?[ApiKey.firstName] as? String ?? "" : document.data()?[ApiKey.userName] as? String ?? ""
                                         currentInbox.userId = document.data()?[ApiKey.userId] as? String ?? ""
-                                        currentInbox.receiverImgURL = document.data()?[ApiKey.userImage] as? String ?? ""
+                                        currentInbox.receiverImgURL = (document.data()?[ApiKey.userImage] as? String ?? "").isEmpty ? document.data()?[ApiKey.image] as? String ?? "" : document.data()?[ApiKey.userImage] as? String ?? ""
                                         currentInbox.isOnline = document.data()?[ApiKey.onlineStatus] as? Bool ?? false
                                         currentInbox.lastMessageRef?.getDocument(completion: { (document, error) in
                                             if let document = document {
