@@ -244,6 +244,7 @@ extension OneToOneChatVC {
         //        backgroundView.isHidden = false
         //        CommonFunctions.showActivityLoader()
         btnContaninerView.isHidden = true
+        self.isSupportChat = self.requestId.isEmpty
         editBidBtn.isHidden = !(isCurrentUserType == .garage)
         userRequestView.isHidden = true
         garageTopView.isHidden = true
@@ -583,7 +584,8 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                 senderMediaCell.layoutSubviews()
                 senderMediaCell.layoutIfNeeded()
                 senderMediaCell.setNeedsLayout()
-                senderMediaCell.senderImageView.setImage_kf(imageString: userImage, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
+                senderMediaCell.senderImageView.setImage_kf(imageString: userImage, placeHolderImage: isSupportChat ? #imageLiteral(resourceName: "splashUpdated") : #imageLiteral(resourceName: "placeHolder"), loader: false)
+                senderMediaCell.senderImageView.backgroundColor = AppColors.fontTertiaryColor
                 setTapGesture(view: senderMediaCell.msgContainerView, indexPath: indexPath)
                 senderMediaCell.senderImageView.addGestureRecognizer(imgTap)
                 senderMediaCell.senderNameLabel.text = self.firstName
@@ -592,7 +594,8 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                 let receiverAudioCell = tableView.dequeueCell(with: ReceiverAudioCell.self)
                 receiverAudioCell.setSlider(model: model)
                 receiverAudioCell.receiverNameLbl.text = self.firstName
-                receiverAudioCell.receiverImgView.setImage_kf(imageString: userImage, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
+                receiverAudioCell.receiverImgView.setImage_kf(imageString: userImage, placeHolderImage: isSupportChat ? #imageLiteral(resourceName: "splashUpdated") : #imageLiteral(resourceName: "placeHolder"), loader: false)
+                receiverAudioCell.receiverImgView.backgroundColor = AppColors.fontTertiaryColor
                 receiverAudioCell.receiverImgView.addGestureRecognizer(imgTap)
                 
                 receiverAudioCell.playBtnTapped = { [weak self]  in
@@ -687,7 +690,8 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                 }
                 
                 receiverOfferCell.userNameLbl.text = self.firstName
-                receiverOfferCell.userImgView.setImage_kf(imageString: userImage, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
+                receiverOfferCell.userImgView.setImage_kf(imageString: userImage, placeHolderImage: isSupportChat ? #imageLiteral(resourceName: "splashUpdated") : #imageLiteral(resourceName: "placeHolder"), loader: false)
+                receiverOfferCell.userImgView.backgroundColor = AppColors.fontTertiaryColor
                 receiverOfferCell.priceLbl.text = "\(model.price)" + "SAR"
                 self.setTapGesture(view: receiverOfferCell.msgContainerView, indexPath: indexPath)
                 receiverOfferCell.userImgView.addGestureRecognizer(imgTap)
@@ -696,7 +700,8 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                 let receiverCell = tableView.dequeueCell(with: ReceiverMessageCell.self)
                 receiverCell.configureCellWith(model: model)
                 receiverCell.receiverNameLbl.text = self.firstName
-                receiverCell.receiverImgView.setImage_kf(imageString: userImage, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
+                receiverCell.receiverImgView.setImage_kf(imageString: userImage, placeHolderImage: isSupportChat ? #imageLiteral(resourceName: "splashUpdated") : #imageLiteral(resourceName: "placeHolder"), loader: false)
+                receiverCell.receiverImgView.backgroundColor = AppColors.fontTertiaryColor
                 self.setTapGesture(view: receiverCell.msgContainerView, indexPath: indexPath)
                 receiverCell.receiverImgView.addGestureRecognizer(imgTap)
                 return receiverCell

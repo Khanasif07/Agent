@@ -13,6 +13,8 @@ class ServiceStatusTableViewCell: UITableViewCell {
     //MARK:-IBOutlet
     @IBOutlet weak var serviceStatusLbl: UILabel!
     
+    @IBOutlet weak var bottomDashedVIew: CustomDashedView!
+    @IBOutlet weak var ratingContainerView: UIView!
     @IBOutlet weak var reviewLbl: UILabel!
     @IBOutlet weak var noRatingContainerView: UIView!
     @IBOutlet weak var ratingLbl: UILabel!
