@@ -72,7 +72,7 @@ struct RoomInfo{
         self.roomType =  dict[ApiKey.roomType] as? String ?? ""
         self.roomName = dict[ApiKey.roomName] as? String ?? ""
         self.userInfo = dict[ApiKey.userInfo] as? String ?? ""
-        self.userTypingStatus = dict[ApiKey.userTypingStatus] as? String ?? ""
+        self.userTypingStatus = dict[ApiKey.typingStatus] as? String ?? ""
       }
 }
 

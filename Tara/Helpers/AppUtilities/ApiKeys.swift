@@ -209,7 +209,7 @@ enum ApiKey {
     static var addedTime  : String {return "addedTime"}
     static var deleteTime : String {return "deleteTime"}
     static var leaveTime   : String {return "leaveTime"}
-    static var userTypingStatus : String {return "userTypingStatus"}
+    static var typingStatus : String {return "typingStatus"}
     static var roomType : String {return "roomType"}
     static var mediaUrl : String {return "mediaUrl"}
     static var batchCount : String {return "batchCount"}

@@ -652,6 +652,7 @@
                         <outlet property="timerView" destination="Bw7-xE-W3Q" id="COa-1D-RyI"/>
                         <outlet property="titleLabel" destination="hDE-W8-g3n" id="3CY-Nb-cTI"/>
                         <outlet property="topView" destination="Jas-en-Ecr" id="ocF-zr-v94"/>
+                        <outlet property="typingStatusFooterView" destination="aiC-4y-Adm" id="1ri-J0-LQe"/>
                         <outlet property="unblockBtn" destination="MtD-lT-K4F" id="NUW-CW-iWY"/>
                         <outlet property="userImgView" destination="qrE-dg-XlJ" id="2L6-7B-1DB"/>
                         <outlet property="userNameLbl" destination="5DH-hZ-vgs" id="cGJ-IJ-Ov1"/>
@@ -659,6 +660,33 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bwi-xw-dg6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="aiC-4y-Adm">
+                    <rect key="frame" x="0.0" y="0.0" width="419" height="50"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EAZ-rz-q0E">
+                            <rect key="frame" x="16" y="0.0" width="387" height="50"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Typing...." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5dD-2d-RYj">
+                                    <rect key="frame" x="20" y="20" width="54" height="18"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="13"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="RIp-lm-HHL" firstAttribute="trailing" secondItem="EAZ-rz-q0E" secondAttribute="trailing" constant="16" id="M82-GW-fIg"/>
+                        <constraint firstItem="EAZ-rz-q0E" firstAttribute="bottom" secondItem="aiC-4y-Adm" secondAttribute="bottom" id="PwC-Cg-RfY"/>
+                        <constraint firstItem="RIp-lm-HHL" firstAttribute="leading" secondItem="EAZ-rz-q0E" secondAttribute="leading" constant="-16" id="cBJ-t9-miz"/>
+                        <constraint firstAttribute="top" secondItem="EAZ-rz-q0E" secondAttribute="top" id="eZq-jf-NkA"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="RIp-lm-HHL"/>
+                </view>
             </objects>
             <point key="canvasLocation" x="650.72463768115949" y="71.651785714285708"/>
         </scene>

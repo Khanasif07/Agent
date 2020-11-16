@@ -63,7 +63,7 @@ class FirestoreController:NSObject{
                                                                  ApiKey.roomName:roomName,
                                                                  ApiKey.roomType:roomType,
                                                                  ApiKey.userInfo:userInfo,
-                                                                 ApiKey.userTypingStatus:userTypingStatus])
+                                                                 ApiKey.typingStatus:userTypingStatus])
     }
     
     //MARK:- CREATE USER NODE

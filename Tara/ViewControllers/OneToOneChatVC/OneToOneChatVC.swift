@@ -77,6 +77,7 @@ class OneToOneChatVC: BaseVC {
 
     //MARK: OUTLETS
     //=============
+    @IBOutlet var typingStatusFooterView: UIView!
     @IBOutlet weak var editBtn: UIButton!
     @IBOutlet weak var unblockBtn: UIButton!
     @IBOutlet weak var editBidBtn: UIButton!
@@ -269,6 +270,12 @@ extension OneToOneChatVC {
         containerScrollView.addGestureRecognizer(tap)
         let topViewTap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped(_:)))
         topView.addGestureRecognizer(topViewTap)
+//        footerViewSetUp()
+    }
+    
+    private func footerViewSetUp(){
+        self.messagesTableView.tableFooterView = typingStatusFooterView
+        self.messagesTableView.tableFooterView?.height = 50.0
     }
     
     private func addTapGestureToAudioBtn() {
@@ -454,12 +461,36 @@ extension OneToOneChatVC: UITextViewDelegate{
         }
     }
     
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        
+//        self.setTypingUser(isTyping: true)
+//        NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(typingDisable), object: nil)
+//        self.perform(#selector(typingDisable), with: nil, afterDelay: 0.5)
+        
+        return true
+    }
+    
+    
+    @objc func typingDisable() {
+        self.setTypingUser(isTyping: false)
+    }
+    
+    //MARK: ---------------Setting Typing Status for Single Chat-------------------
+    @objc func setTypingUser(isTyping : Bool) {
+        /// Mark:- Typing status info abouthe the user
+        let userTypingStatus: [String: Any] = [currentUserId: "\(isTyping)",
+                                               inboxModel.userId:"false"]
+        db.collection(ApiKey.roomInfo).document(roomId).setData([
+            ApiKey.typingStatus:userTypingStatus],merge: true)
+    }
+    
     func textViewDidBeginEditing(_ textView: UITextView) {
         messageLabel.isHidden = true
         textView.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
+        self.setTypingUser(isTyping: false)
         messageLabel.isHidden = !textView.text.byRemovingLeadingTrailingWhiteSpaces.isEmpty
         if messageLabel.isHidden {
             self.sendButton.backgroundColor = AppColors.appRedColor
@@ -1228,7 +1259,7 @@ extension OneToOneChatVC{
                                  ApiKey.roomName:"",
                                  ApiKey.roomType:"single",
                                  ApiKey.userInfo: userInfoDict,
-                                 ApiKey.userTypingStatus: userTypingStatus]
+                                 ApiKey.typingStatus: userTypingStatus]
         
         FirestoreController.createRoomNode(roomId: roomId, roomImage: roomImageURL, roomName: "", roomType: "single", userInfo: userInfoDict, userTypingStatus: userTypingStatus)
         

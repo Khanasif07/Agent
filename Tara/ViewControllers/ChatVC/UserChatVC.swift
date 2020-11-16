@@ -247,7 +247,7 @@ extension UserChatVC {
         documentRef.getDocument { (document, error) in
             if let document = document {
                 var userInfo = document.data()?[ApiKey.userInfo] as? [String: Any] ?? [:]
-                let userTypingStatus = document.data()?[ApiKey.userTypingStatus] as? [String: Any] ?? [:]
+                let userTypingStatus = document.data()?[ApiKey.typingStatus] as? [String: Any] ?? [:]
                 
                 // to update delete time of current user when deleting chat
                 guard var userDetail = userInfo[AppUserDefaults.value(forKey: .uid).stringValue] as? [String: Any] else { return }
@@ -255,7 +255,7 @@ extension UserChatVC {
                 userDetail[ApiKey.deleteTime] = FieldValue.serverTimestamp()
                 userInfo[AppUserDefaults.value(forKey: .uid).stringValue] = userDetail
                 documentRef.updateData([ ApiKey.userInfo: userInfo,
-                                         ApiKey.userTypingStatus : userTypingStatus], completion: { (error) in
+                                         ApiKey.typingStatus : userTypingStatus], completion: { (error) in
                                             if error == nil {
                                                 self.referenceToDB?.collection(ApiKey.inbox).document(AppUserDefaults.value(forKey: .uid).stringValue).collection(ApiKey.chat).document(roomId).updateData([ApiKey.lastMessage : "", ApiKey.timeStamp: FieldValue.serverTimestamp()])
                                                 db.collection(ApiKey.inbox).document(currentUserId).collection(ApiKey.chat).document(userId).updateData([ApiKey.unreadMessages: 0]) { (error) in

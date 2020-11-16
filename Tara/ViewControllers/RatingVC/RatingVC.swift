@@ -217,6 +217,7 @@ extension RatingVC: UIImagePickerControllerDelegate,UINavigationControllerDelega
 
 extension RatingVC : RatingVMDelegate{
     func ratingSuccess(msg: String) {
+        self.delegate?.updateRatingStatus()
         self.delegate?.changeCarReceivedStatus()
         pop()
     }
