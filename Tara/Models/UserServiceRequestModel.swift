@@ -55,10 +55,11 @@ enum ServiceStatuss : String,Codable {
     case in_progress
     case ready_to_be_taken
     case delivered
+    case car_received
+    case completed
     
     var text :String{
         switch self {
-            
         case .start_service:
             return "Service started"//"Car Received"
         case .in_progress:
@@ -67,12 +68,15 @@ enum ServiceStatuss : String,Codable {
             return "Ready to pick"//"Service Completed"
         case .delivered:
             return "Delivered"//"Delivered"
+        case .car_received:
+            return "Car Received"
+        default:
+            return "Completed"
         }
     }
     
     var textColor : UIColor {
         switch self {
-            
         case .start_service:
             return #colorLiteral(red: 0.937254902, green: 0.6509803922, blue: 0.1803921569, alpha: 1)
         case .in_progress:
@@ -80,6 +84,8 @@ enum ServiceStatuss : String,Codable {
         case .delivered:
             return #colorLiteral(red: 0.1725490196, green: 0.7137254902, blue: 0.4549019608, alpha: 1)
         case .ready_to_be_taken:
+            return #colorLiteral(red: 0.937254902, green: 0.6509803922, blue: 0.1803921569, alpha: 1)
+        default:
             return #colorLiteral(red: 0.937254902, green: 0.6509803922, blue: 0.1803921569, alpha: 1)
         }
     }

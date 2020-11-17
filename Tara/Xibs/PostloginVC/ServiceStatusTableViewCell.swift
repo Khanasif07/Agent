@@ -170,11 +170,18 @@ class ServiceStatusTableViewCell: UITableViewCell {
         }
     }
     
-    func populateDataForUserService(status: ServiceState?, isServiceCompleted : Bool) {
+    func populateDataForUserService(status: ServiceState?, isServiceCompleted : Bool,model: GarageRequestModel = GarageRequestModel()) {
         carReceivedUpdateBtn.isHidden = true
         progressUpdateBtn.isHidden = true
         completeUpdateBtn.isHidden = true
         takenUpdateBtn.isHidden = true
+        
+        self.noRatingContainerView.isHidden = !(model.ratingDetails?._id?.isEmpty ?? true)
+        if status != .delivered  {
+             self.noRatingContainerView.isHidden = true
+        }
+        self.ratingContainerView.isHidden = (model.ratingDetails?._id?.isEmpty ?? true)
+        self.bottomDashedVIew.isHidden =  self.noRatingContainerView.isHidden && self.ratingContainerView.isHidden
 
         if status == nil {
             carReceivedUpdateBtn.isHidden = false
