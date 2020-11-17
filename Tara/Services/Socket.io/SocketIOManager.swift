@@ -33,14 +33,23 @@ class SocketIOManager: NSObject {
     
     // MARK: - PROPERTIES
     //==================
+    
+    var baseSocketUrl: String {
+        #if ENV_DEV
+        return "https://arabiantyersdevapi.appskeeper.com"
+        #elseif ENV_STAG
+        return "http://arabiantyersstgapi.appskeeper.com"
+        #elseif ENV_QA
+        return "http://arabiantyersqaapi.appskeeper.com"
+        #elseif ENV_PROD
+        return "http://arabiantyersstgapi.appskeeper.com"
+        #else
+        return ""
+        #endif
+    }
     var socket: SocketIOClient?
     private var manager: SocketManager?
     static let shared: SocketIOManager = SocketIOManager()
-    public var baseSocketUrl: String  = "https://arabiantyersdevapi.appskeeper.com" // dev socket url
-//    public var baseSocketUrl: String  = "http://arabiantyersqaapi.appskeeper.com" // qa socket url
-//    public var baseSocketUrl: String  = "http://arabiantyersstgapi.appskeeper.com" // stg socket url
-
-
     var messageQueue = [[String: Any]]()
     static var isSocketConnected: Bool {
         return SocketIOManager.shared.socket?.status == SocketIOStatus.connected ? true: false
