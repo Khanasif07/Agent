@@ -8,12 +8,22 @@
 
 import Foundation
 
-let baseUrl = "http://arabiantyersdevapi.appskeeper.com/api/v1/"//dev url
-//let baseUrl = "http://arabiantyersstgapi.appskeeper.com/api/v1/"//stag url
-//let baseUrl = "http://arabiantyersqaapi.appskeeper.com/api/v1/" //qa url
-
 //API path: http://arabiantyersdevapi.appskeeper.com/api/v1/
 //Swagger Url: http://arabiantyersdevapi.appskeeper.com/api-docs/swagger
+
+var baseUrl: String {
+    #if ENV_DEV
+    return "http://arabiantyersdevapi.appskeeper.com/api/v1/"
+    #elseif ENV_STAG
+    return "http://arabiantyersstgapi.appskeeper.com/api/v1/"
+    #elseif ENV_QA
+    return "http://arabiantyersqaapi.appskeeper.com/api/v1/"
+    #elseif ENV_PROD
+    return "http://arabiantyersstgapi.appskeeper.com/api/v1/"
+    #else
+    return ""
+    #endif
+}
 
 let settingsUrl = ""
 
