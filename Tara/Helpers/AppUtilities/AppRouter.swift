@@ -476,6 +476,7 @@ enum AppRouter {
         chatScene.isSupportChat = isSupportChat
         chatScene.requestId = requestId
         chatScene.requestDetailId = requestDetailId
+        chatScene.bidRequestId = requestDetailId
         chatScene.userImage = image
         chatScene.inboxModel.userId = userId //"5e8483230a60177afa95e0b7"
         chatScene.inboxModel.unreadMessages = unreadMsgs

@@ -39,7 +39,7 @@ struct UserChatModel {
         self.deviceId =  dict[ApiKey.deviceId] as? String ?? ""
         self.deviceToken = dict[ApiKey.deviceToken] as? String ?? ""
         self.email = dict[ApiKey.email] as? String ?? ""
-        self.image = dict[ApiKey.image] as? String ?? ""
+        self.image = dict[ApiKey.userImage] as? String ?? ""
         self.deviceType = dict[ApiKey.deviceType] as? String ?? ""
         let onlineStatusValue = dict[ApiKey.onlineStatus] as? Bool ?? false
         self.onlineStatus = onlineStatusValue ? "online" : "offline"
@@ -98,6 +98,8 @@ struct Inbox{
     public var roomName : String = ""
     public var groupImage : String = ""
     public var isOnline : Bool = false
+    public var bidRequestId : String = ""
+    public var garageUserId : String = ""
 
     //MARK:- Inits
     //=============
@@ -121,6 +123,8 @@ struct Inbox{
         self.roomName = dict[ApiKey.roomName] as? String ?? ""
         self.groupImage = dict[ApiKey.roomImage] as? String ?? ""
         self.requestId = dict[ApiKey.requestId] as? String ?? ""
+        self.bidRequestId = dict[ApiKey.bidRequestId] as? String ?? ""
+        self.garageUserId = dict[ApiKey.garageUserId] as? String ?? ""
       }
     
     private mutating func getUserModel(completeion: @escaping (_ model: UserChatModel) -> (),

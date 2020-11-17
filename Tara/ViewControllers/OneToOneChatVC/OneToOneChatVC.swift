@@ -30,6 +30,8 @@ class OneToOneChatVC: BaseVC {
     var inboxModel = Inbox()
     var firstName = ""
     var requestId = ""
+    var garageUserId = ""
+    var bidRequestId = ""
     var requestDetailId = ""
     var userImage = ""
     var imageController = UIImagePickerController()
@@ -191,10 +193,12 @@ class OneToOneChatVC: BaseVC {
     }
     
     @IBAction func sendButtonTapped(_ sender: UIButton) {
+        typingDisable()
         sendMessage(msgType: MessageType.text.rawValue)
     }
     
     @IBAction func sendAudioToFirestire(_ sender: UIButton) {
+        typingDisable()
         if sender.imageView?.image !=  #imageLiteral(resourceName: "audioBtnWhite")  {
             self.uploadAudioFileToFirestore(self.recordedUrl!)
             self.audioRecordCancelBtnAction(audioCancelBtn)
@@ -461,18 +465,10 @@ extension OneToOneChatVC: UITextViewDelegate{
         }
     }
     
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        
-//        self.setTypingUser(isTyping: true)
-//        NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(typingDisable), object: nil)
-//        self.perform(#selector(typingDisable), with: nil, afterDelay: 0.5)
-        
-        return true
-    }
-    
-    
     @objc func typingDisable() {
-        self.setTypingUser(isTyping: false)
+        if self.isRoom {
+            self.setTypingUser(isTyping: false)
+        }
     }
     
     //MARK: ---------------Setting Typing Status for Single Chat-------------------
@@ -485,12 +481,15 @@ extension OneToOneChatVC: UITextViewDelegate{
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
+        if self.isRoom {
+        self.setTypingUser(isTyping: true)
+        }
         messageLabel.isHidden = true
         textView.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        self.setTypingUser(isTyping: false)
+        typingDisable()
         messageLabel.isHidden = !textView.text.byRemovingLeadingTrailingWhiteSpaces.isEmpty
         if messageLabel.isHidden {
             self.sendButton.backgroundColor = AppColors.appRedColor
@@ -1050,6 +1049,8 @@ extension OneToOneChatVC{
             .collection(ApiKey.chat)
             .document(inboxUserId)
             .setData([ApiKey.requestId: self.requestId,
+                      ApiKey.garageUserId: self.garageUserId,
+                      ApiKey.bidRequestId: self.bidRequestId,
                       ApiKey.roomId:roomId,
                       ApiKey.roomInfo: db.collection(ApiKey.roomInfo).document(roomId),
                       ApiKey.timeStamp: FieldValue.serverTimestamp(),
@@ -1075,6 +1076,8 @@ extension OneToOneChatVC{
             .collection(ApiKey.chat)
             .document(inboxxUserId)
             .setData([ApiKey.requestId: self.requestId,
+                      ApiKey.garageUserId: self.garageUserId,
+                      ApiKey.bidRequestId: self.bidRequestId,
                       ApiKey.roomId: roomId,
                       ApiKey.roomInfo: db.collection(ApiKey.roomInfo).document(roomId),
                       ApiKey.timeStamp: FieldValue.serverTimestamp(),
@@ -1274,10 +1277,28 @@ extension OneToOneChatVC{
                     self.userInfo = dictonary
                     if let dict = dictonary[self.currentUserId] as? [String: Any] {
                         if let time = dict[ApiKey.deleteTime] as? Timestamp {
+                            if   self.deleteTime != time {
                             self.deleteTime = time
+                            self.fetchMessageListing()
+                            }
                         }
                     }
-                    self.fetchMessageListing()
+                    //
+                    if let typingDict = document[ApiKey.typingStatus] as? [String : Any]{
+                        if let senderTypingStatus =  typingDict[self.inboxModel.userId] as? String {
+                            if senderTypingStatus == "true" {
+                                self.messagesTableView.tableFooterView = self.typingStatusFooterView
+                                self.messagesTableView.tableFooterView?.height = 50.0
+                                self.reloadTableViewToBottom()
+                            } else {
+                                self.messagesTableView.tableFooterView = nil
+                                self.messagesTableView.tableFooterView?.height = 0.0
+                                self.reloadTableViewToBottom()
+                            }
+                        }
+                    }
+                    //
+//                    self.fetchMessageListing()
                 }
             }
         }

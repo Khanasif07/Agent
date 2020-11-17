@@ -140,9 +140,9 @@ extension AppDelegate {
     func getGoogleInfoPlist() {
         var filePath = ""
 //        #if ENV_DEV
-//        filePath = Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist")!
+        filePath = Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist")!
 //        #elseif ENV_QA
-        filePath = Bundle.main.path(forResource: "GoogleService-Info-QA", ofType: "plist")!
+//        filePath = Bundle.main.path(forResource: "GoogleService-Info-QA", ofType: "plist")!
 //        #elseif ENV_PROD
 //        filePath = Bundle.main.path(forResource: "GoogleService-Info-Prod", ofType: "plist")!
 //        #else

@@ -243,6 +243,8 @@ enum ApiKey {
     static var phoneChanged: String {return "phoneChanged"}
     static var emailChanged: String {return "emailChanged"}
     static var garageId: String {return "garageId"}
+    static var garageUserId: String {return "garageUserId"}
+    static var bidRequestId: String {return "bidRequestId"}
     static var acceptedProposalId: String {return "acceptedProposalId"}
     static var serviceStatus: String {return "serviceStatus"}
     

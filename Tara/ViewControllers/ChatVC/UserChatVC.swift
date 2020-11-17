@@ -107,7 +107,7 @@ extension UserChatVC {
     private func cellSelected(tableView: UITableView, indexPath: IndexPath) {
         if searchInboxListing[indexPath.row].chatType == ApiKey.single {
             updateBatch(userId: self.searchInboxListing[indexPath.row].userId, unreadMessages: self.searchInboxListing[indexPath.row].unreadMessages)
-            AppRouter.goToOneToOneChatVC(self, userId: searchInboxListing[indexPath.row].userId,requestId: searchInboxListing[indexPath.row].requestId, name: searchInboxListing[indexPath.row].firstName, image: searchInboxListing[indexPath.row].receiverImgURL, unreadMsgs: searchInboxListing[indexPath.row].unreadMessages)
+            AppRouter.goToOneToOneChatVC(self, userId: searchInboxListing[indexPath.row].userId,requestDetailId: self.searchInboxListing[indexPath.row].bidRequestId, requestId: searchInboxListing[indexPath.row].requestId, name: searchInboxListing[indexPath.row].firstName, image: searchInboxListing[indexPath.row].receiverImgURL, unreadMsgs: searchInboxListing[indexPath.row].unreadMessages)
         } else {
         }
     }

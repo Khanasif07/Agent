@@ -114,6 +114,7 @@ extension UserServiceStatusVC: UITableViewDelegate,UITableViewDataSource{
             let cell = tableView.dequeueCell(with: ServiceStatusTableViewCell.self)
             cell.populateDataForUserService(status: viewModel.serviceDetailData?.serviceStatus ?? nil, isServiceCompleted: viewModel.serviceDetailData?.isServiceCompleted ?? false)
             cell.noRatingContainerView.isHidden = !(self.viewModel.serviceDetailData?.ratingDetails?._id?.isEmpty ?? true)
+            cell.noRatingContainerView.isHidden = !(self.viewModel.serviceDetailData?.serviceStatus == .delivered)
             cell.ratingContainerView.isHidden = (self.viewModel.serviceDetailData?.ratingDetails?._id?.isEmpty ?? true)
             cell.bottomDashedVIew.isHidden =  cell.noRatingContainerView.isHidden && cell.ratingContainerView.isHidden
             cell.reviewLbl.text = self.viewModel.serviceDetailData?.ratingDetails?.review ?? ""
@@ -161,6 +162,7 @@ extension UserServiceStatusVC: UserServiceStatusVMDelegate {
                 }
             }
         }
+//        self.viewModel.fetchRequestDetail(params: [ApiKey.requestId: self.requestId], loader: true)
     }
     
     func markCarReceivedFailure(msg: String){
