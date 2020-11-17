@@ -113,8 +113,7 @@ extension UserServiceStatusVC: UITableViewDelegate,UITableViewDataSource{
         }else {
             let cell = tableView.dequeueCell(with: ServiceStatusTableViewCell.self)
             cell.populateDataForUserService(status: viewModel.serviceDetailData?.serviceStatus ?? nil, isServiceCompleted: viewModel.serviceDetailData?.isServiceCompleted ?? false)
-            cell.noRatingContainerView.isHidden = !(self.viewModel.serviceDetailData?.ratingDetails?._id?.isEmpty ?? true)
-            cell.noRatingContainerView.isHidden = !(self.viewModel.serviceDetailData?.serviceStatus == .delivered)
+            cell.noRatingContainerView.isHidden = !(self.viewModel.serviceDetailData?.ratingDetails?._id?.isEmpty ?? true) && !(self.viewModel.serviceDetailData?.serviceStatus == .delivered)
             cell.ratingContainerView.isHidden = (self.viewModel.serviceDetailData?.ratingDetails?._id?.isEmpty ?? true)
             cell.bottomDashedVIew.isHidden =  cell.noRatingContainerView.isHidden && cell.ratingContainerView.isHidden
             cell.reviewLbl.text = self.viewModel.serviceDetailData?.ratingDetails?.review ?? ""
