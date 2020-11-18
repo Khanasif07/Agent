@@ -372,6 +372,8 @@
 
 /* Begin PBXFileReference section */
 		0DB69EB761B7BF21E1CD2115 /* Pods-Tara.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tara.debug.xcconfig"; path = "Target Support Files/Pods-Tara/Pods-Tara.debug.xcconfig"; sourceTree = "<group>"; };
+		2A0ECF7C0177035F6EB0F654 /* Pods-Tara.stg.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tara.stg.xcconfig"; path = "Target Support Files/Pods-Tara/Pods-Tara.stg.xcconfig"; sourceTree = "<group>"; };
+		33BF1FA33CB24886074AD566 /* Pods-Tara.prod.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tara.prod.xcconfig"; path = "Target Support Files/Pods-Tara/Pods-Tara.prod.xcconfig"; sourceTree = "<group>"; };
 		8411D357252DA79300E6FA6C /* UserServiceRequestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceRequestVC.swift; sourceTree = "<group>"; };
 		8411D359252DB78C00E6FA6C /* UserAllRequestVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAllRequestVM.swift; sourceTree = "<group>"; };
 		8411D35B252DEDD100E6FA6C /* UserServiceRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceRequestModel.swift; sourceTree = "<group>"; };
@@ -596,6 +598,7 @@
 		84FF9D622559677F00692FF0 /* ReceiverOfferCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiverOfferCell.swift; sourceTree = "<group>"; };
 		84FF9D632559677F00692FF0 /* ReceiverOfferCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReceiverOfferCell.xib; sourceTree = "<group>"; };
 		87C28A2FABCB3D22226632AC /* Pods_Tara.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tara.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A12D33C76F5797086FF88B2E /* Pods-Tara.qa.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tara.qa.xcconfig"; path = "Target Support Files/Pods-Tara/Pods-Tara.qa.xcconfig"; sourceTree = "<group>"; };
 		A4098E732511FF7F0015B0BD /* RangeSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeSlider.swift; sourceTree = "<group>"; };
 		A4098E752512274C0015B0BD /* FacilityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityVC.swift; sourceTree = "<group>"; };
 		A4098E77251228050015B0BD /* FacilityTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityTableHeaderView.swift; sourceTree = "<group>"; };
@@ -764,6 +767,9 @@
 			children = (
 				0DB69EB761B7BF21E1CD2115 /* Pods-Tara.debug.xcconfig */,
 				E7E08BC58C8F29ACF642F2D5 /* Pods-Tara.release.xcconfig */,
+				A12D33C76F5797086FF88B2E /* Pods-Tara.qa.xcconfig */,
+				33BF1FA33CB24886074AD566 /* Pods-Tara.prod.xcconfig */,
+				2A0ECF7C0177035F6EB0F654 /* Pods-Tara.stg.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -2896,12 +2902,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG ENV_DEV";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -2950,7 +2956,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -2968,7 +2974,7 @@
 				CODE_SIGN_ENTITLEMENTS = Tara/ArabianTyres.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = C4X83X2P52;
 				INFOPLIST_FILE = Tara/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -2995,7 +3001,7 @@
 				CODE_SIGN_ENTITLEMENTS = Tara/ArabianTyres.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = C4X83X2P52;
 				INFOPLIST_FILE = Tara/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -3064,25 +3070,25 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG ENV_QA";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = QA;
 		};
 		84D4CB242563E1D4005EB8AD /* QA */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0DB69EB761B7BF21E1CD2115 /* Pods-Tara.debug.xcconfig */;
+			baseConfigurationReference = A12D33C76F5797086FF88B2E /* Pods-Tara.qa.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Tara/ArabianTyres.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = C4X83X2P52;
 				INFOPLIST_FILE = Tara/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -3145,10 +3151,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = ENV_STG;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
@@ -3157,13 +3164,13 @@
 		};
 		84D4CB262563E1FA005EB8AD /* Stg */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E7E08BC58C8F29ACF642F2D5 /* Pods-Tara.release.xcconfig */;
+			baseConfigurationReference = 2A0ECF7C0177035F6EB0F654 /* Pods-Tara.stg.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Tara/ArabianTyres.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = C4X83X2P52;
 				INFOPLIST_FILE = Tara/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -3226,10 +3233,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = ENV_PROD;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
@@ -3238,13 +3246,13 @@
 		};
 		84D4CB282563E20F005EB8AD /* Prod */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E7E08BC58C8F29ACF642F2D5 /* Pods-Tara.release.xcconfig */;
+			baseConfigurationReference = 33BF1FA33CB24886074AD566 /* Pods-Tara.prod.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Tara/ArabianTyres.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = C4X83X2P52;
 				INFOPLIST_FILE = Tara/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -3276,7 +3284,7 @@
 				84D4CB252563E1FA005EB8AD /* Stg */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		8481FA0D2500AA9B00AB6EFB /* Build configuration list for PBXNativeTarget "Tara" */ = {
 			isa = XCConfigurationList;
@@ -3288,7 +3296,7 @@
 				84D4CB262563E1FA005EB8AD /* Stg */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};

@@ -20,7 +20,7 @@ target 'Tara' do
   pod 'Toaster'
   
   pod 'GooglePlaces'
-  pod 'GoogleMaps'
+  pod 'GoogleMaps', '~> 3.9.0'
   pod 'Google-Maps-iOS-Utils'
   
   # Recommended: Add the Firebase pod for Google Analytics

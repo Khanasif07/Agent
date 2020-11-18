@@ -158,15 +158,15 @@ class OneToOneChatVC: BaseVC {
         super.viewWillDisappear(animated)
         self.db.collection(ApiKey.inbox).document(AppUserDefaults.value(forKey: .uid).stringValue).collection(ApiKey.chat).document(inboxModel.userId).getDocument(completion: { (document, error) in
             if let doc = document {
-                let unreadMsgs = doc.data()?[ApiKey.unreadMessages] as? Int ?? 0
-                var diff = FirestoreController.ownUnreadCount - unreadMsgs
-                diff = diff <= 0 ? 0 : diff
-                
-                self.db.collection(ApiKey.inbox).document(self.currentUserId).collection(ApiKey.chat).document(self.inboxModel.userId).updateData([ApiKey.unreadMessages: 0])
+//                let unreadMsgs = doc.data()?[ApiKey.unreadCount] as? Int ?? 0
+//                var diff = FirestoreController.ownUnreadCount - unreadMsgs
+//                diff = diff <= 0 ? 0 : diff
+//
+                self.db.collection(ApiKey.inbox).document(self.currentUserId).collection(ApiKey.chat).document(self.inboxModel.userId).updateData([ApiKey.unreadCount: 0])
                 
                 self.db.collection(ApiKey.batchCount)
                     .document(AppUserDefaults.value(forKey: .uid).stringValue)
-                    .setData([ApiKey.unreadMessages : (diff)])
+                    .setData([ApiKey.unreadCount : 0])
             }})
         //        listeners.forEach({$0.remove()})
     }
@@ -248,6 +248,7 @@ extension OneToOneChatVC {
     private func initialSetup() {
         //        backgroundView.isHidden = false
         //        CommonFunctions.showActivityLoader()
+        NotificationCenter.default.addObserver(self, selector: #selector(editedBidAccepted), name: Notification.Name.EditedBidAccepted, object: nil)
         btnContaninerView.isHidden = true
         self.isSupportChat = self.requestId.isEmpty
         editBidBtn.isHidden = !(isCurrentUserType == .garage)
@@ -292,6 +293,9 @@ extension OneToOneChatVC {
        
     }
     
+    @objc func editedBidAccepted(){
+        self.getChatData()
+    }
     
     @objc private func scrollViewTapped(_ sender: UITapGestureRecognizer) {
         btnContaninerView.isHidden = true
@@ -980,10 +984,10 @@ extension OneToOneChatVC{
                 } else{
                     print("============================")
                     guard let data = snapshot?.data() else { return }
-                    print(data[ApiKey.unreadMessages] as? Int ?? 0)
-                    self.inboxModel.unreadMessages = data[ApiKey.unreadMessages] as? Int ?? 0
+                    print(data[ApiKey.unreadCount] as? Int ?? 0)
+                    self.inboxModel.unreadCount = data[ApiKey.unreadCount] as? Int ?? 0
                     if !self.amIBlocked {
-                        FirestoreController.updateUnreadMessages(senderId: self.currentUserId, receiverId: self.inboxModel.userId, unread: data[ApiKey.unreadMessages] as? Int ?? 0)
+                        FirestoreController.updateUnreadMessages(senderId: self.currentUserId, receiverId: self.inboxModel.userId, unread: data[ApiKey.unreadCount] as? Int ?? 0)
                 }
             }
         }
@@ -1021,7 +1025,7 @@ extension OneToOneChatVC{
                                   ApiKey.timeStamp: FieldValue.serverTimestamp(),
                                   ApiKey.lastMessage: self.db.collection(ApiKey.lastMessage).document(self.roomId).collection(ApiKey.chat).document(ApiKey.message),
                                   ApiKey.userDetails: self.db.collection(ApiKey.users).document(self.currentUserId),
-                                  ApiKey.unreadMessages: self.inboxModel.unreadMessages + 1])
+                                  ApiKey.unreadCount: self.inboxModel.unreadCount + 1])
                         { err in
                             if let err = err {
                                 print("Error writing document: \(err)")
@@ -1056,7 +1060,7 @@ extension OneToOneChatVC{
                       ApiKey.timeStamp: FieldValue.serverTimestamp(),
                       ApiKey.lastMessage: db.collection(ApiKey.lastMessage).document(roomId).collection(ApiKey.chat).document(ApiKey.message),
                       ApiKey.userDetails: db.collection(ApiKey.users).document(currentUserId),
-                      ApiKey.unreadMessages: inboxModel.unreadMessages + 1])
+                      ApiKey.unreadCount: inboxModel.unreadCount + 1])
             { err in
                 if let err = err {
                     print("Error writing document: \(err)")
@@ -1252,7 +1256,7 @@ extension OneToOneChatVC{
         
         /// Mark:- Typing status info abouthe the user
         let userTypingStatus: [String: Any] = [currentUserId:"true",
-                                               inboxModel.userId:"true"]
+                                               inboxModel.userId:"false"]
         
         let roomImageURL = "https://console.firebase.google.com"
         
@@ -1657,6 +1661,7 @@ extension OneToOneChatVC : OneToOneChatViewModelDelegate{
                 } else {
                     //                                self.db.collection(ApiKey.inbox).document(self.currentUserId).collection(ApiKey.chat).document(self.inboxModel.userId).updateData([ApiKey.unreadMessages: 0])
                 }
+                self.getChatData()
             }
         }else {
             self.db.collection(ApiKey.messages).document(self.getRoomId()).collection(ApiKey.chat).document(self.messageId).updateData([ApiKey.messageStatus : 3]) { (error) in

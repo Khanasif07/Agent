@@ -93,6 +93,7 @@ struct Inbox{
     public var userId : String = ""
     public var receiverImgURL : String = ""
     public var unreadMessages : Int = 0
+    public var unreadCount : Int = 0
     public var userModel : UserChatModel = UserChatModel()
     public var chatType : String = "single"
     public var roomName : String = ""
@@ -119,6 +120,7 @@ struct Inbox{
         self.receiverImgURL = dict[ApiKey.userImage] as? String ?? ""
         self.userId = dict[ApiKey.userId] as? String ?? ""
         self.unreadMessages = dict[ApiKey.unreadMessages] as? Int ?? 0
+        self.unreadCount = dict[ApiKey.unreadCount] as? Int ?? 0
         self.chatType = "single"
         self.roomName = dict[ApiKey.roomName] as? String ?? ""
         self.groupImage = dict[ApiKey.roomImage] as? String ?? ""

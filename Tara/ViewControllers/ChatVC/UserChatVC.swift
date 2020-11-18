@@ -106,8 +106,9 @@ extension UserChatVC {
     
     private func cellSelected(tableView: UITableView, indexPath: IndexPath) {
         if searchInboxListing[indexPath.row].chatType == ApiKey.single {
-            updateBatch(userId: self.searchInboxListing[indexPath.row].userId, unreadMessages: self.searchInboxListing[indexPath.row].unreadMessages)
-            AppRouter.goToOneToOneChatVC(self, userId: searchInboxListing[indexPath.row].userId,requestDetailId: self.searchInboxListing[indexPath.row].bidRequestId, requestId: searchInboxListing[indexPath.row].requestId, name: searchInboxListing[indexPath.row].firstName, image: searchInboxListing[indexPath.row].receiverImgURL, unreadMsgs: searchInboxListing[indexPath.row].unreadMessages)
+            updateBatch(userId: self.searchInboxListing[indexPath.row].userId, unreadMessages: self.searchInboxListing[indexPath.row].unreadCount)
+            let garageUserId = searchInboxListing[indexPath.row].garageUserId == UserModel.main.id ? searchInboxListing[indexPath.row].garageUserId : searchInboxListing[indexPath.row].userId
+            AppRouter.goToOneToOneChatVC(self, userId: searchInboxListing[indexPath.row].userId,requestDetailId: self.searchInboxListing[indexPath.row].bidRequestId, requestId: searchInboxListing[indexPath.row].requestId, name: searchInboxListing[indexPath.row].firstName, image: searchInboxListing[indexPath.row].receiverImgURL, unreadMsgs: searchInboxListing[indexPath.row].unreadCount,garageUserId: garageUserId)
         } else {
         }
     }
@@ -119,13 +120,13 @@ extension UserChatVC {
         
         db.collection(ApiKey.batchCount)
             .document(AppUserDefaults.value(forKey: .uid).stringValue)
-            .setData([ApiKey.unreadMessages : diff])
+            .setData([ApiKey.unreadCount : diff])
         
         db.collection(ApiKey.inbox)
             .document(AppUserDefaults.value(forKey: .uid).stringValue)
             .collection(ApiKey.chat)
             .document(userId)
-            .updateData([ApiKey.unreadMessages: 0])
+            .updateData([ApiKey.unreadCount: 0])
     }
     
     private func populateCells(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
@@ -137,19 +138,9 @@ extension UserChatVC {
                 messageCell.lastMsgLbl.text = model.lastMessage
                 messageCell.userImgView.setImage_kf(imageString: model.receiverImgURL, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: true)
                 messageCell.timeLbl.text = model.timeStamp.dateValue().convertToTimeString()
-                messageCell.msgCountLbl.text = "\(model.unreadMessages)"
-                messageCell.msgCountView.isHidden = model.unreadMessages == 0
-            } else {
-                messageCell.userNameLbl.text = model.roomName
-                messageCell.lastMsgLbl.text = model.lastMessage
-                messageCell.userImgView.setImage_kf(imageString: model.receiverImgURL, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: true)
-                messageCell.timeLbl.text = model.timeStamp.dateValue().convertToTimeString()
-                messageCell.msgCountLbl.text = "\(model.unreadMessages)"
-                messageCell.msgCountView.isHidden = model.unreadMessages == 0
+                messageCell.msgCountLbl.text = "\(model.unreadCount)"
+                messageCell.msgCountView.isHidden = model.unreadCount == 0
             }
-            //            messageCell.onlineStatusView.isHidden = !model.isOnline
-            //            messageCell.senderTextLabel.text = model.lastMessage
-            //            setupLongPressGesture(view: messageCell.contentView, indexPath: indexPath)
             return messageCell
         } else {
             let cell = tableView.dequeueCell(with: ProfileGuestTableCell.self, indexPath: indexPath)
@@ -258,7 +249,7 @@ extension UserChatVC {
                                          ApiKey.typingStatus : userTypingStatus], completion: { (error) in
                                             if error == nil {
                                                 self.referenceToDB?.collection(ApiKey.inbox).document(AppUserDefaults.value(forKey: .uid).stringValue).collection(ApiKey.chat).document(roomId).updateData([ApiKey.lastMessage : "", ApiKey.timeStamp: FieldValue.serverTimestamp()])
-                                                db.collection(ApiKey.inbox).document(currentUserId).collection(ApiKey.chat).document(userId).updateData([ApiKey.unreadMessages: 0]) { (error) in
+                                                db.collection(ApiKey.inbox).document(currentUserId).collection(ApiKey.chat).document(userId).updateData([ApiKey.unreadCount: 0]) { (error) in
                                                     if let err = error {
                                                         printDebug("Error removing document: \(err)")
                                                     }
@@ -361,7 +352,7 @@ extension UserChatVC {
                             if self.inboxListing[index].roomId == inbox.roomId {
                                 if self.inboxListing[index].chatType == ApiKey.single {
                                     self.inboxListing[index].timeStamp = inbox.timeStamp
-                                    self.inboxListing[index].unreadMessages = inbox.unreadMessages
+                                    self.inboxListing[index].unreadCount = inbox.unreadCount
                                     guard let lastMessage = inbox.lastMessageRef else { continue }
                                     lastMessage.getDocument(completion: { (document, error) in
                                         if error != nil{
@@ -381,7 +372,7 @@ extension UserChatVC {
                                     })
                                 } else {
                                     self.inboxListing[index].timeStamp = inbox.timeStamp
-                                    self.inboxListing[index].unreadMessages = inbox.unreadMessages
+                                    self.inboxListing[index].unreadCount = inbox.unreadCount
                                     guard let lastMessage = inbox.lastMessageRef else {
                                         inbox.lastMessage = ""
                                         self.inboxListing[index].lastMessage = inbox.lastMessage

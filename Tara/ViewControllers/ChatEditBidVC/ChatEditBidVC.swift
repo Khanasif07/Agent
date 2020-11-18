@@ -117,7 +117,6 @@ extension ChatEditBidVC {
         self.mainTableView.dataSource = self
         self.mainTableView.emptyDataSetSource = self
         self.mainTableView.emptyDataSetDelegate = self
-        self.mainTableView.registerCell(with: GarageServiceTopCell.self)
         self.mainTableView.registerCell(with: GarageServiceCountryCell.self)
         self.mainTableView.registerCell(with: GarageServiceBrandsCell.self)
         self.mainTableView.tableHeaderView = headerView
@@ -378,7 +377,9 @@ extension ChatEditBidVC :GarageServiceRequestVMDelegate {
             apiHit = false
             brandsType = .countryBrands
             if !sectionType.contains(.countryDetail){
-                sectionType.append(.countryDetail)
+                self.mainTableView.tableHeaderView = nil
+                self.mainTableView.tableHeaderView?.height = 0.0
+                sectionType.insert(.countryDetail, at: 0)
             }
         }
         

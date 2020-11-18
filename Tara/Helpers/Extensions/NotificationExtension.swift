@@ -23,5 +23,6 @@ extension Notification.Name {
     static let UpdateServiceStatus = Notification.Name("UpdateServiceStatus")
 
     static let UpdateServiceStatusUserSide = Notification.Name("UpdateServiceStatusUserSide")
+    static let EditedBidAccepted = Notification.Name("EditedBidAccepted")
 
 }

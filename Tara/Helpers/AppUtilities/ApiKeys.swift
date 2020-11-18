@@ -228,6 +228,7 @@ enum ApiKey {
     static var timeStamp : String {return "timeStamp"}
     static var messageTime : String {return "messageTime"}
     static var unreadMessages : String {return "unreadMessages"}
+    static var unreadCount : String {return "unreadCount"}
     static var blocked : String {return "blocked"}
     static var basic : String { return "Basic"}
    

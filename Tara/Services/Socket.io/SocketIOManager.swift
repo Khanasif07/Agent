@@ -27,6 +27,7 @@ enum EventListnerKeys : String {
     case syncResponse = "contact_sync_response"
     case otpToStartService = "OTP_TO_START_SERVICE"
     case serviceStatusUpdated = "SERVICE_STATUS_UPDATED"
+    case editedBidAccepted = "EDITED_BID_ACCEPTED"
 }
 
 class SocketIOManager: NSObject {

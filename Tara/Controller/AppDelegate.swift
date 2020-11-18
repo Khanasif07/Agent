@@ -45,11 +45,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate , MessagingDelegate , UNUs
         return true
     }
    
-    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
-        if fcmToken != AppUserDefaults.value(forKey: .fcmToken).stringValue {
-            print(fcmToken)
-        }
-        AppUserDefaults.save(value: fcmToken , forKey: .fcmToken) // Used for saving device token
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
+        print(fcmToken ?? "")
+        AppUserDefaults.save(value: fcmToken ?? "" , forKey: .fcmToken) // Used for saving device token
     }
     
     // Setup IQKeyboard Manager (Third party for handling keyboard in app)
@@ -146,9 +144,8 @@ extension AppDelegate {
         #elseif ENV_PROD
         filePath = Bundle.main.path(forResource: "GoogleService-Info-Prod", ofType: "plist")!
         #else
-        filePath = Bundle.main.path(forResource: "GoogleService-Info-Stg", ofType: "plist")!
+        filePath = Bundle.main.path(forResource: "GoogleService-Info-Prod", ofType: "plist")!
         #endif
-//
         if let options = FirebaseOptions(contentsOfFile: filePath) {
             FirebaseApp.configure(options: options)
         } else {

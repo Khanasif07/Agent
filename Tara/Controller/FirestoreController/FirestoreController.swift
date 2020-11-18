@@ -258,7 +258,7 @@ class FirestoreController:NSObject{
     static func createTotalMessageNode(receiverId: String) {
         db.collection(ApiKey.batchCount)
             .document(receiverId)
-            .setData([ApiKey.unreadMessages: FirestoreController.otherUnreadCount + 1])
+            .setData([ApiKey.unreadCount: FirestoreController.otherUnreadCount + 1])
     }
     
     //MARK:-GetUnreadMessages
@@ -272,7 +272,7 @@ class FirestoreController:NSObject{
                 guard let document = documentSnapshot else { print("Error fetching document: \(error!)")
                     return }
                 guard let data = document.data() else { return }
-                FirestoreController.otherUnreadCount =   data[ApiKey.unreadMessages] as? Int ?? 0
+                FirestoreController.otherUnreadCount =   data[ApiKey.unreadCount] as? Int ?? 0
         }
     }
     
@@ -281,15 +281,15 @@ class FirestoreController:NSObject{
             .document(receiverId)
             .collection(ApiKey.chat)
             .document(senderId)
-            .updateData([ApiKey.unreadMessages : unread + 1])
+            .updateData([ApiKey.unreadCount : unread + 1])
         
         db.collection(ApiKey.batchCount).document(receiverId).getDocument { (document, error) in
                 if let doc = document {
                     if doc.exists {
-                        guard let count = doc.data()?[ApiKey.unreadMessages] as? Int else { return }
-                        db.collection(ApiKey.batchCount).document(receiverId).setData([ApiKey.unreadMessages : count + 1])
+                        guard let count = doc.data()?[ApiKey.unreadCount] as? Int else { return }
+                        db.collection(ApiKey.batchCount).document(receiverId).setData([ApiKey.unreadCount : count + 1])
                     } else {
-                        db.collection(ApiKey.batchCount).document(receiverId).setData([ApiKey.unreadMessages: 1])
+                        db.collection(ApiKey.batchCount).document(receiverId).setData([ApiKey.unreadCount: 1])
                     }
             }
         }
