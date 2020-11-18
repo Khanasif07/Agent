@@ -487,8 +487,8 @@ extension OneToOneChatVC: UITextViewDelegate{
     //MARK: ---------------Setting Typing Status for Single Chat-------------------
     @objc func setTypingUser(isTyping : Bool) {
         /// Mark:- Typing status info abouthe the user
-        let userTypingStatus: [String: Any] = [currentUserId: "\(isTyping)",
-                                               inboxModel.userId:"false"]
+        let userTypingStatus: [String: Any] = [currentUserId: isTyping,
+                                               inboxModel.userId: false]
         db.collection(ApiKey.roomInfo).document(roomId).setData([
             ApiKey.typingStatus:userTypingStatus],merge: true)
     }
@@ -1264,8 +1264,8 @@ extension OneToOneChatVC{
                                            inboxModel.userId: userIdDict]
         
         /// Mark:- Typing status info abouthe the user
-        let userTypingStatus: [String: Any] = [currentUserId:"true",
-                                               inboxModel.userId:"false"]
+        let userTypingStatus: [String: Any] = [currentUserId:true,
+                                               inboxModel.userId:false]
         
         let roomImageURL = "https://console.firebase.google.com"
         
@@ -1296,10 +1296,10 @@ extension OneToOneChatVC{
                             }
                         }
                     }
-                    //
+                    //Typing status observer.....
                     if let typingDict = document[ApiKey.typingStatus] as? [String : Any]{
-                        if let senderTypingStatus =  typingDict[self.inboxModel.userId] as? String {
-                            if senderTypingStatus == "true" {
+                        if let senderTypingStatus =  typingDict[self.inboxModel.userId] as? String{
+                            if String(senderTypingStatus) == "true" {
                                 self.footerViewSetUp(isFooter: true)
                                 self.reloadTableViewToBottom()
                             } else {
@@ -1308,8 +1308,6 @@ extension OneToOneChatVC{
                             }
                         }
                     }
-                    //
-//                    self.fetchMessageListing()
                 }
             }
         }
