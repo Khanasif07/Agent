@@ -120,7 +120,7 @@ extension ChatEditBidVC {
         self.mainTableView.registerCell(with: GarageServiceCountryCell.self)
         self.mainTableView.registerCell(with: GarageServiceBrandsCell.self)
         self.mainTableView.tableHeaderView = headerView
-        self.mainTableView.tableHeaderView?.height = 50.0
+        self.mainTableView.tableHeaderView?.height = 102.5
     }
     
     private func hitApi(){

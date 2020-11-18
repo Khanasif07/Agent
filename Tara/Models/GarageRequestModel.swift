@@ -106,11 +106,11 @@ enum ServiceState : String, Codable{
     var serviceBtnTitle: String {
         switch self {
         case .startService:
-            return "Start Service"
+            return "Car Received"
         case .carReceived:
             return "Car Received"
         case .inProgress:
-            return "In Progress"
+            return "In Garage"
         case .completed:
             return "Service Completed"
         case .readyToBeTaken:
@@ -118,7 +118,7 @@ enum ServiceState : String, Codable{
         case .delivered:
             return "Delivered"
         default:
-            return ""
+            return "Start Service"
         }
     }
 }

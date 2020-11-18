@@ -34,6 +34,7 @@ class OneToOneChatVC: BaseVC {
     var bidRequestId = ""
     var requestDetailId = ""
     var userImage = ""
+    var chatUserType: UserType = .user
     var imageController = UIImagePickerController()
     var alertController = UIAlertController()
     var indexVal = 0
@@ -251,7 +252,6 @@ extension OneToOneChatVC {
         NotificationCenter.default.addObserver(self, selector: #selector(editedBidAccepted), name: Notification.Name.EditedBidAccepted, object: nil)
         btnContaninerView.isHidden = true
         self.isSupportChat = self.requestId.isEmpty
-        editBidBtn.isHidden = !(isCurrentUserType == .garage)
         userRequestView.isHidden = true
         garageTopView.isHidden = true
         chatViewModel.delegate = self
@@ -269,18 +269,27 @@ extension OneToOneChatVC {
         getBatchCount()
         setupAudioMessages()
         getChatData()
+        setUpChatUserType()
         editBtn.isHidden = isSupportChat
         self.sendButton.backgroundColor = AppColors.fontTertiaryColor
         let tap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped(_:)))
         containerScrollView.addGestureRecognizer(tap)
         let topViewTap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped(_:)))
         topView.addGestureRecognizer(topViewTap)
-//        footerViewSetUp()
     }
     
-    private func footerViewSetUp(){
-        self.messagesTableView.tableFooterView = typingStatusFooterView
-        self.messagesTableView.tableFooterView?.height = 50.0
+    private func footerViewSetUp(isFooter: Bool = true){
+        self.messagesTableView.tableFooterView = isFooter ? typingStatusFooterView : nil
+        self.messagesTableView.tableFooterView?.height =  isFooter ? 50.0 : 0.0
+    }
+    
+    private func setUpChatUserType(){
+        if UserModel.main.id == self.garageUserId{
+            self.chatUserType = .garage
+        } else {
+            self.chatUserType = .user
+        }
+        editBidBtn.isHidden = !(self.chatUserType == .garage)
     }
     
     private func addTapGestureToAudioBtn() {
@@ -1291,12 +1300,10 @@ extension OneToOneChatVC{
                     if let typingDict = document[ApiKey.typingStatus] as? [String : Any]{
                         if let senderTypingStatus =  typingDict[self.inboxModel.userId] as? String {
                             if senderTypingStatus == "true" {
-                                self.messagesTableView.tableFooterView = self.typingStatusFooterView
-                                self.messagesTableView.tableFooterView?.height = 50.0
+                                self.footerViewSetUp(isFooter: true)
                                 self.reloadTableViewToBottom()
                             } else {
-                                self.messagesTableView.tableFooterView = nil
-                                self.messagesTableView.tableFooterView?.height = 0.0
+                                self.footerViewSetUp(isFooter: false)
                                 self.reloadTableViewToBottom()
                             }
                         }
@@ -1618,7 +1625,9 @@ extension OneToOneChatVC : OneToOneChatViewModelDelegate{
         //        backgroundView.isHidden = true
         //        CommonFunctions.hideActivityLoader()
         //        self.requestDetailId = chatViewModel.chatData.id
-        if isCurrentUserType == .garage {
+       
+        if self.chatUserType == .garage {
+            self.editBidBtn.isHidden = (chatViewModel.chatData.isServiceStarted ?? true)
             tableViewTopConstraint.constant = 80.0
             userRequestView.isHidden = false
             userNameLbl.text = chatViewModel.chatData.userName
@@ -1633,7 +1642,7 @@ extension OneToOneChatVC : OneToOneChatViewModelDelegate{
             str.append(NSAttributedString(string: "SAR", attributes: [NSAttributedString.Key.foregroundColor: AppColors.successGreenColor,NSAttributedString.Key.font: AppFonts.NunitoSansSemiBold.withSize(12.0)]))
             amountValueLbl.attributedText = str
         }
-        else if isCurrentUserType == .user{
+        else if chatUserType == .user{
             tableViewTopConstraint.constant = 124.0
             garageTopView.isHidden = false
             garageImgView.setImage_kf(imageString: chatViewModel.chatData.garageImage, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
