@@ -169,7 +169,7 @@ extension UserAllOffersVC : UITableViewDelegate, UITableViewDataSource {
                 default :
                     AppRouter.presentOfferDetailVC(vc: self,bidId: self.viewModel.userBidListingArr[indexPath.row].id, garageName: self.viewModel.userBidListingArr[indexPath.row].garageName ?? "", completion: {
                         if !self.requestId.isEmpty {
-                            self.hitApi(loader: true)
+                            self.hitApi(loader: false)
                             AppRouter.goToOneToOneChatVC(self, userId: self.viewModel.userBidListingArr[indexPath.row].userId ?? "" ,requestDetailId: self.viewModel.userBidListingArr[indexPath.row].garageRequestId ?? "",requestId: self.viewModel.userBidListingArr[indexPath.row].requestID , name: self.viewModel.userBidListingArr[indexPath.row].garageName ?? "", image: self.viewModel.userBidListingArr[indexPath.row].logo ?? "", unreadMsgs: 0,garageUserId: isCurrentUserType == .garage ? UserModel.main.id : self.viewModel.userBidListingArr[indexPath.row].userId ?? "")
                         }
                     })
