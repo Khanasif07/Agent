@@ -106,7 +106,7 @@ extension UserChatVC {
     
     private func cellSelected(tableView: UITableView, indexPath: IndexPath) {
         if searchInboxListing[indexPath.row].chatType == ApiKey.single {
-            updateBatch(userId: self.searchInboxListing[indexPath.row].userId, unreadMessages: self.searchInboxListing[indexPath.row].unreadCount)
+            updateBatch(userId: self.searchInboxListing[indexPath.row].userId, unreadMessages: self.searchInboxListing[indexPath.row].unreadCount,requestId: searchInboxListing[indexPath.row].requestId)
             let garageUserId = searchInboxListing[indexPath.row].garageUserId == UserModel.main.id ? searchInboxListing[indexPath.row].garageUserId : searchInboxListing[indexPath.row].userId
             AppRouter.goToOneToOneChatVC(self, userId: searchInboxListing[indexPath.row].userId,requestDetailId: self.searchInboxListing[indexPath.row].bidRequestId, requestId: searchInboxListing[indexPath.row].requestId, name: searchInboxListing[indexPath.row].firstName, image: searchInboxListing[indexPath.row].receiverImgURL, unreadMsgs: searchInboxListing[indexPath.row].unreadCount,garageUserId: garageUserId)
         } else {
@@ -114,18 +114,26 @@ extension UserChatVC {
     }
     
     ///Mark:- Update the batch of the messages
-    private func updateBatch(userId: String, unreadMessages: Int) {
+    private func updateBatch(userId: String, unreadMessages: Int,requestId: String) {
+        //roomId:string,timeStamp:Any,
+        var inboxxUserId = ""
+        if requestId.isEmpty{
+            inboxxUserId = userId
+        } else {
+            inboxxUserId = userId + "_" + requestId
+        }
+        
         let diff = FirestoreController.ownUnreadCount - unreadMessages
         let db = Firestore.firestore()
         
         db.collection(ApiKey.batchCount)
             .document(AppUserDefaults.value(forKey: .uid).stringValue)
             .setData([ApiKey.unreadCount : diff])
-        
+
         db.collection(ApiKey.inbox)
             .document(AppUserDefaults.value(forKey: .uid).stringValue)
             .collection(ApiKey.chat)
-            .document(userId)
+            .document(inboxxUserId)
             .updateData([ApiKey.unreadCount: 0])
     }
     
@@ -224,54 +232,54 @@ extension UserChatVC : DZNEmptyDataSetSource,DZNEmptyDataSetDelegate {
 //MARK: Extension
 //================================
 extension UserChatVC {
-    private func deleteFullChat(userId : String) {
-        let currentUserId = AppUserDefaults.value(forKey: .uid).stringValue
-        let db = Firestore.firestore()
-        var roomId = ""
-        if currentUserId < userId {
-            roomId = currentUserId + "_" + userId
-        } else {
-            roomId  = userId + "_" + currentUserId
-        }
-        let documentRef = db.collection(ApiKey.roomInfo).document(roomId)
-        
-        documentRef.getDocument { (document, error) in
-            if let document = document {
-                var userInfo = document.data()?[ApiKey.userInfo] as? [String: Any] ?? [:]
-                let userTypingStatus = document.data()?[ApiKey.typingStatus] as? [String: Any] ?? [:]
-                
-                // to update delete time of current user when deleting chat
-                guard var userDetail = userInfo[AppUserDefaults.value(forKey: .uid).stringValue] as? [String: Any] else { return }
-                
-                userDetail[ApiKey.deleteTime] = FieldValue.serverTimestamp()
-                userInfo[AppUserDefaults.value(forKey: .uid).stringValue] = userDetail
-                documentRef.updateData([ ApiKey.userInfo: userInfo,
-                                         ApiKey.typingStatus : userTypingStatus], completion: { (error) in
-                                            if error == nil {
-                                                self.referenceToDB?.collection(ApiKey.inbox).document(AppUserDefaults.value(forKey: .uid).stringValue).collection(ApiKey.chat).document(roomId).updateData([ApiKey.lastMessage : "", ApiKey.timeStamp: FieldValue.serverTimestamp()])
-                                                db.collection(ApiKey.inbox).document(currentUserId).collection(ApiKey.chat).document(userId).updateData([ApiKey.unreadCount: 0]) { (error) in
-                                                    if let err = error {
-                                                        printDebug("Error removing document: \(err)")
-                                                    }
-                                                    else {
-                                                        db.collection(ApiKey.inbox).document(currentUserId).collection(ApiKey.chat).document(userId).delete { [weak self] (error) in
-                                                            guard let `self` = self else { return }
-                                                            if let err = error {
-                                                                self.showAlert(msg: err.localizedDescription)
-                                                                printDebug("Error removing document: \(err)")
-                                                            } else {
-                                                                printDebug("Document successfully removed!")
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                })
-                
-            }
-        }
-        
-    }
+//    private func deleteFullChat(userId : String) {
+//        let currentUserId = AppUserDefaults.value(forKey: .uid).stringValue
+//        let db = Firestore.firestore()
+//        var roomId = ""
+//        if currentUserId < userId {
+//            roomId = currentUserId + "_" + userId
+//        } else {
+//            roomId  = userId + "_" + currentUserId
+//        }
+//        let documentRef = db.collection(ApiKey.roomInfo).document(roomId)
+//
+//        documentRef.getDocument { (document, error) in
+//            if let document = document {
+//                var userInfo = document.data()?[ApiKey.userInfo] as? [String: Any] ?? [:]
+//                let userTypingStatus = document.data()?[ApiKey.typingStatus] as? [String: Any] ?? [:]
+//
+//                // to update delete time of current user when deleting chat
+//                guard var userDetail = userInfo[AppUserDefaults.value(forKey: .uid).stringValue] as? [String: Any] else { return }
+//
+//                userDetail[ApiKey.deleteTime] = FieldValue.serverTimestamp()
+//                userInfo[AppUserDefaults.value(forKey: .uid).stringValue] = userDetail
+//                documentRef.updateData([ ApiKey.userInfo: userInfo,
+//                                         ApiKey.typingStatus : userTypingStatus], completion: { (error) in
+//                                            if error == nil {
+//                                                self.referenceToDB?.collection(ApiKey.inbox).document(AppUserDefaults.value(forKey: .uid).stringValue).collection(ApiKey.chat).document(roomId).updateData([ApiKey.lastMessage : "", ApiKey.timeStamp: FieldValue.serverTimestamp()])
+//                                                db.collection(ApiKey.inbox).document(currentUserId).collection(ApiKey.chat).document(userId).updateData([ApiKey.unreadCount: 0]) { (error) in
+//                                                    if let err = error {
+//                                                        printDebug("Error removing document: \(err)")
+//                                                    }
+//                                                    else {
+//                                                        db.collection(ApiKey.inbox).document(currentUserId).collection(ApiKey.chat).document(userId).delete { [weak self] (error) in
+//                                                            guard let `self` = self else { return }
+//                                                            if let err = error {
+//                                                                self.showAlert(msg: err.localizedDescription)
+//                                                                printDebug("Error removing document: \(err)")
+//                                                            } else {
+//                                                                printDebug("Document successfully removed!")
+//                                                            }
+//                                                        }
+//                                                    }
+//                                                }
+//                                            }
+//                })
+//
+//            }
+//        }
+//
+//    }
     
     ///Mark:- Fetch the inbox listing
     private func getInboxListing() {

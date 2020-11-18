@@ -157,18 +157,25 @@ class OneToOneChatVC: BaseVC {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.db.collection(ApiKey.inbox).document(AppUserDefaults.value(forKey: .uid).stringValue).collection(ApiKey.chat).document(inboxModel.userId).getDocument(completion: { (document, error) in
-            if let doc = document {
-//                let unreadMsgs = doc.data()?[ApiKey.unreadCount] as? Int ?? 0
-//                var diff = FirestoreController.ownUnreadCount - unreadMsgs
-//                diff = diff <= 0 ? 0 : diff
+        //roomId:string,timeStamp:Any,
+        var inboxxUserId = ""
+        if self.requestId.isEmpty{
+            inboxxUserId = inboxModel.userId
+        } else {
+            inboxxUserId = inboxModel.userId + "_" + self.requestId
+        }
+//        self.db.collection(ApiKey.inbox).document(AppUserDefaults.value(forKey: .uid).stringValue).collection(ApiKey.chat).document(inboxModel.userId).getDocument(completion: { (document, error) in
+//            if let doc = document {
+////                let unreadMsgs = doc.data()?[ApiKey.unreadCount] as? Int ?? 0
+////                var diff = FirestoreController.ownUnreadCount - unreadMsgs
+////                diff = diff <= 0 ? 0 : diff
+////
+//                self.db.collection(ApiKey.inbox).document(self.currentUserId).collection(ApiKey.chat).document(self.inboxModel.userId).updateData([ApiKey.unreadCount: 0])
 //
-                self.db.collection(ApiKey.inbox).document(self.currentUserId).collection(ApiKey.chat).document(self.inboxModel.userId).updateData([ApiKey.unreadCount: 0])
-                
-                self.db.collection(ApiKey.batchCount)
-                    .document(AppUserDefaults.value(forKey: .uid).stringValue)
-                    .setData([ApiKey.unreadCount : 0])
-            }})
+//                self.db.collection(ApiKey.batchCount)
+//                    .document(AppUserDefaults.value(forKey: .uid).stringValue)
+//                    .setData([ApiKey.unreadCount : 0])
+//            }})
         //        listeners.forEach({$0.remove()})
     }
     
@@ -422,7 +429,9 @@ extension OneToOneChatVC {
     @objc func keyboardWillHide(sender: NSNotification) {
         guard let info = sender.userInfo, let duration: TimeInterval = (info[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue else { return }
         scrollMsgToBottom()
-        tableViewTopConstraint.constant = requestId.isEmpty ? 0.0 :  isCurrentUserType == .garage ? 80.0 : 124.0
+        if requestId.isEmpty{tableViewTopConstraint.constant = 0.0}
+        tableViewTopConstraint.constant =  isCurrentUserType == .garage ? (chatViewModel.chatData.id.isEmpty ? 0.0 : 80.0)  : (chatViewModel.chatData.id.isEmpty ? 0.0 : 124.0)
+
         
         UIView.animate(withDuration: duration) { self.view.layoutIfNeeded() }
     }
@@ -983,10 +992,18 @@ extension OneToOneChatVC{
     
     ///Mark:- Update unread messages
     private func updateUnreadMessage() {
+        //roomId:string,timeStamp:Any,
+         var inboxUserId = ""
+         if self.requestId.isEmpty{
+             inboxUserId = currentUserId
+         } else {
+             inboxUserId = currentUserId + "_" + self.requestId
+         }
+        
         db.collection(ApiKey.inbox)
             .document(inboxModel.userId)
             .collection(ApiKey.chat)
-            .document(currentUserId)
+            .document(inboxUserId)
             .getDocument { (snapshot, error) in
                 if let error = error {
                     print(error.localizedDescription)
@@ -996,18 +1013,34 @@ extension OneToOneChatVC{
                     print(data[ApiKey.unreadCount] as? Int ?? 0)
                     self.inboxModel.unreadCount = data[ApiKey.unreadCount] as? Int ?? 0
                     if !self.amIBlocked {
-                        FirestoreController.updateUnreadMessages(senderId: self.currentUserId, receiverId: self.inboxModel.userId, unread: data[ApiKey.unreadCount] as? Int ?? 0)
+//                        FirestoreController.updateUnreadMessages(senderId: inboxUserId, receiverId: self.inboxModel.userId, unread: data[ApiKey.unreadCount] as? Int ?? 0)
                 }
             }
         }
     }
     
     private func restoreDeletedNode() {
+        //roomId:string,timeStamp:Any,
+        var inboxxUserId = ""
+        if self.requestId.isEmpty{
+            inboxxUserId = inboxModel.userId
+        } else {
+            inboxxUserId = inboxModel.userId + "_" + self.requestId
+        }
+        //roomId:string,timeStamp:Any,
+        var inboxUserId = ""
+        if self.requestId.isEmpty{
+            inboxUserId = currentUserId
+        } else {
+            inboxUserId = currentUserId + "_" + self.requestId
+        }
         db.collection(ApiKey.inbox)
             .document(currentUserId)
             .collection(ApiKey.chat)
-            .document(inboxModel.userId)
-            .setData([ApiKey.chatType: ApiKey.single,
+            .document(inboxxUserId)
+            .setData([ApiKey.requestId: self.requestId,
+                      ApiKey.garageUserId: self.garageUserId,
+                      ApiKey.bidRequestId: self.bidRequestId,ApiKey.chatType: ApiKey.single,
                       ApiKey.roomId: roomId,
                       ApiKey.roomInfo: db.collection(ApiKey.roomInfo).document(roomId),
                       ApiKey.timeStamp: FieldValue.serverTimestamp(),
@@ -1021,14 +1054,16 @@ extension OneToOneChatVC{
                 }
         }
         
-        db.collection(ApiKey.inbox).document(inboxModel.userId).collection(ApiKey.chat).document(currentUserId).getDocument { (doc, error) in
+        db.collection(ApiKey.inbox).document(inboxModel.userId).collection(ApiKey.chat).document(inboxUserId).getDocument { (doc, error) in
             if let document = doc {
                 if !document.exists {
                     self.db.collection(ApiKey.inbox)
                         .document(self.inboxModel.userId)
                         .collection(ApiKey.chat)
-                        .document(self.currentUserId)
-                        .setData([ApiKey.chatType: ApiKey.single,
+                        .document(inboxUserId)
+                        .setData([ApiKey.requestId: self.requestId,
+                                  ApiKey.garageUserId: self.garageUserId,
+                                  ApiKey.bidRequestId: self.bidRequestId,ApiKey.chatType: ApiKey.single,
                                   ApiKey.roomId:self.roomId,
                                   ApiKey.roomInfo: self.db.collection(ApiKey.roomInfo).document(self.roomId),
                                   ApiKey.timeStamp: FieldValue.serverTimestamp(),
@@ -1206,8 +1241,22 @@ extension OneToOneChatVC{
     
     /// Mark:- Updating the inbox time stamp
     private func updateInboxTimeStamp(){
-        db.collection(ApiKey.inbox).document(inboxModel.userId).collection(ApiKey.chat).document(currentUserId).updateData([ApiKey.timeStamp : FieldValue.serverTimestamp()])
-        db.collection(ApiKey.inbox).document(currentUserId).collection(ApiKey.chat).document(inboxModel.userId).updateData([ApiKey.timeStamp : FieldValue.serverTimestamp()])
+        //roomId:string,timeStamp:Any,
+        var inboxUserId = ""
+        if self.requestId.isEmpty{
+            inboxUserId = currentUserId
+        } else {
+            inboxUserId = currentUserId + "_" + self.requestId
+        }
+        db.collection(ApiKey.inbox).document(inboxModel.userId).collection(ApiKey.chat).document(inboxUserId).updateData([ApiKey.timeStamp : FieldValue.serverTimestamp()])
+        //roomId:string,timeStamp:Any,
+        var inboxxUserId = ""
+        if self.requestId.isEmpty{
+            inboxxUserId = inboxModel.userId
+        } else {
+            inboxxUserId = inboxModel.userId + "_" + self.requestId
+        }
+        db.collection(ApiKey.inbox).document(currentUserId).collection(ApiKey.chat).document(inboxxUserId).updateData([ApiKey.timeStamp : FieldValue.serverTimestamp()])
     }
     
     /// Mark:- Update the status of sender if it is blocked
@@ -1421,6 +1470,21 @@ extension OneToOneChatVC{
     
     // Mark:- Update Inbox
     private func updateInbox(section: Int) {
+        //roomId:string,timeStamp:Any,
+        var inboxxUserId = ""
+        if self.requestId.isEmpty{
+            inboxxUserId = inboxModel.userId
+        } else {
+            inboxxUserId = inboxModel.userId + "_" + self.requestId
+        }
+        
+        //roomId:string,timeStamp:Any,
+        var inboxUserId = ""
+        if self.requestId.isEmpty{
+            inboxUserId = currentUserId
+        } else {
+            inboxUserId = currentUserId + "_" + self.requestId
+        }
         
         printDebug(self.messageListing.last)
         db.collection(ApiKey.lastMessage).document(roomId).collection(ApiKey.chat).document(ApiKey.message).updateData([ApiKey.messageTime: self.messageListing[section].last?.messageTime ?? Timestamp(), ApiKey.messageText: self.messageListing[section].last?.messageText ?? ""])
@@ -1430,12 +1494,12 @@ extension OneToOneChatVC{
         db.collection(ApiKey.inbox)
             .document(inboxModel.userId)
             .collection(ApiKey.chat)
-            .document(currentUserId).updateData([ApiKey.lastMessage : lastMessageReference, ApiKey.timeStamp: FieldValue.serverTimestamp()])
+            .document(inboxUserId).updateData([ApiKey.lastMessage : lastMessageReference, ApiKey.timeStamp: FieldValue.serverTimestamp()])
         
         db.collection(ApiKey.inbox)
             .document(currentUserId)
             .collection(ApiKey.chat)
-            .document(inboxModel.userId).updateData([ApiKey.lastMessage : lastMessageReference, ApiKey.timeStamp: FieldValue.serverTimestamp()])
+            .document(inboxxUserId).updateData([ApiKey.lastMessage : lastMessageReference, ApiKey.timeStamp: FieldValue.serverTimestamp()])
         
     }
     
@@ -1620,13 +1684,9 @@ extension OneToOneChatVC:  AVAudioRecorderDelegate, AVAudioPlayerDelegate {
 // Chat View Model
 extension OneToOneChatVC : OneToOneChatViewModelDelegate{
     func chatDataSuccess(msg: String) {
-        //        backgroundView.isHidden = true
-        //        CommonFunctions.hideActivityLoader()
-        //        self.requestDetailId = chatViewModel.chatData.id
-       
         if self.chatUserType == .garage {
             self.editBidBtn.isHidden = (chatViewModel.chatData.isServiceStarted ?? true)
-            tableViewTopConstraint.constant = 80.0
+            tableViewTopConstraint.constant = chatViewModel.chatData.id.isEmpty ? 0.0 : 80.0
             userRequestView.isHidden = false
             userNameLbl.text = chatViewModel.chatData.userName
             numberOfServiceLbl.text = chatViewModel.chatData.totalRequests.description + " Services"
@@ -1641,7 +1701,7 @@ extension OneToOneChatVC : OneToOneChatViewModelDelegate{
             amountValueLbl.attributedText = str
         }
         else if chatUserType == .user{
-            tableViewTopConstraint.constant = 124.0
+            tableViewTopConstraint.constant = chatViewModel.chatData.id.isEmpty  ? 0.0 : 124.0
             garageTopView.isHidden = false
             garageImgView.setImage_kf(imageString: chatViewModel.chatData.garageImage, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
             garageRequestNoValueLbl.text = chatViewModel.chatData.requestId
