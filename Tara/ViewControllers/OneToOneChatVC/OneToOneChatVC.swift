@@ -625,6 +625,7 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
             case MessageType.audio.rawValue:
                 let receiverAudioCell = tableView.dequeueCell(with: ReceiverAudioCell.self)
                 receiverAudioCell.setSlider(model: model)
+                setTapGesture(view: receiverAudioCell.dataContainerView, indexPath: indexPath)
                 receiverAudioCell.receiverNameLbl.text = self.firstName
                 receiverAudioCell.receiverImgView.setImage_kf(imageString: userImage, placeHolderImage: isSupportChat ? #imageLiteral(resourceName: "splashUpdated") : #imageLiteral(resourceName: "placeHolder"), loader: false)
                 receiverAudioCell.receiverImgView.backgroundColor = AppColors.fontTertiaryColor
@@ -725,7 +726,6 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                 receiverOfferCell.userImgView.setImage_kf(imageString: userImage, placeHolderImage: isSupportChat ? #imageLiteral(resourceName: "splashUpdated") : #imageLiteral(resourceName: "placeHolder"), loader: false)
                 receiverOfferCell.userImgView.backgroundColor = AppColors.fontTertiaryColor
                 receiverOfferCell.priceLbl.text = "\(model.price)" + "SAR"
-                self.setTapGesture(view: receiverOfferCell.msgContainerView, indexPath: indexPath)
                 receiverOfferCell.userImgView.addGestureRecognizer(imgTap)
                 return receiverOfferCell
             default:
@@ -750,6 +750,7 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
             case MessageType.audio.rawValue:
                 let senderAudioCell = tableView.dequeueCell(with: SenderAudioCell.self)
                 senderAudioCell.setSlider(model: model)
+                setTapGesture(view: senderAudioCell.dataContainerView, indexPath: indexPath)
                 //
                 senderAudioCell.playBtnTapped = { [weak self]  in
                     guard let `self` = self else { return }
@@ -835,6 +836,7 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
             default:
                 let senderCell = tableView.dequeueCell(with: SenderMessageCell.self)
                 senderCell.configureCellWith(model: model)
+                self.setTapGesture(view: senderCell.dataContainerView, indexPath: indexPath)
                 return senderCell
             }
         }
@@ -893,7 +895,9 @@ extension OneToOneChatVC: UIImagePickerControllerDelegate, UINavigationControlle
     }
     
     func setTapGesture(view: UIView, indexPath: IndexPath) {
-        let longPressGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tapGesture))
+        let pressGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tapGesture))
+        view.addGestureRecognizer(pressGesture)
+        let longPressGesture: UILongPressGestureRecognizer = UILongPressGestureRecognizer.init(target: self, action: #selector(self.tapLongGesture))
         view.addGestureRecognizer(longPressGesture)
     }
     
@@ -910,7 +914,6 @@ extension OneToOneChatVC: UIImagePickerControllerDelegate, UINavigationControlle
     }
     //
     @objc func tapGesture(_ gestureRecognizer: UITapGestureRecognizer) {
-        
         guard let indexPath = self.messagesTableView.indexPath(forItem: gestureRecognizer.view ?? UIView()) else { return }
         guard !selectedIndexPaths.isEmpty else {
             openImageViewer(indexPath: indexPath)
@@ -918,6 +921,61 @@ extension OneToOneChatVC: UIImagePickerControllerDelegate, UINavigationControlle
         }
     }
     
+    @objc func tapLongGesture(_ gestureRecognizer: UILongPressGestureRecognizer) {
+        //roomId:string,timeStamp:Any,
+        var inboxUserId = ""
+        if self.requestId.isEmpty{
+            inboxUserId = currentUserId
+        } else {
+            inboxUserId = currentUserId + "_" + self.requestId
+        }
+        guard let indexPath = self.messagesTableView.indexPath(forItem: gestureRecognizer.view ?? UIView()) else { return }
+        if self.messageListing[indexPath.section][indexPath.row].senderId != self.currentUserId { return }
+        guard !selectedIndexPaths.isEmpty else {
+            showAlertWithAction(title: "Delete Message", msg: "Do you want to delete message?", cancelTitle: "No", actionTitle: "Delete", actioncompletion: {
+                if indexPath.section == self.messageListing.endIndex - 1 &&  indexPath.row == self.messageListing[indexPath.section].endIndex - 1{
+                    self.deleteMessages(index: indexPath)
+                    self.updateInboxTimeStamp()
+                    let prevMsgModel =  indexPath.row > 0 ? self.messageListing[indexPath.section][indexPath.row - 1] : (indexPath.section > 0 ? self.messageListing[indexPath.section - 1][indexPath.row] : Message())
+                    //Assign previous LastMessage model to Last Message
+                    if prevMsgModel.messageId.isEmpty {
+                        self.db.collection(ApiKey.lastMessage)
+                            .document(self.roomId)
+                            .collection(ApiKey.chat)
+                            .document(ApiKey.message).delete()
+                    }else {
+                    FirestoreController.createLastMessageNodeAfterDeleteMessage(roomId: prevMsgModel.roomId, messageText: prevMsgModel.messageText, messageTime: prevMsgModel.messageTime, messageId: prevMsgModel.messageId, messageType: prevMsgModel.messageType, messageStatus: prevMsgModel.messageStatus, senderId: prevMsgModel.senderId, receiverId: prevMsgModel.receiverId, mediaUrl: prevMsgModel.mediaUrl, blocked: prevMsgModel.blocked, thumbNailURL: prevMsgModel.thumbnailURL, messageDuration: prevMsgModel.messageDuration, price: prevMsgModel.price, amIBlocked: self.amIBlocked)
+                    }
+                } else {
+                    if self.messageListing[indexPath.section][indexPath.row].messageStatus == 1 || self.messageListing[indexPath.section][indexPath.row].messageStatus == 2{
+                        self.deleteMessages(index: indexPath)
+                        self.updateInboxTimeStamp()
+                        self.db.collection(ApiKey.inbox)
+                            .document(self.inboxModel.userId)
+                            .collection(ApiKey.chat)
+                            .document(inboxUserId)
+                            .getDocument { (snapshot, error) in
+                                if let error = error {
+                                    print(error.localizedDescription)
+                                } else{
+                                    print("============================")
+                                    guard let data = snapshot?.data() else { return }
+                                    print(data[ApiKey.unreadCount] as? Int ?? 0)
+                                    self.inboxModel.unreadCount = data[ApiKey.unreadCount] as? Int ?? 0
+                                    if !self.amIBlocked {
+                                        FirestoreController.updateUnreadMessagesAfterDeleteMessage(senderId: inboxUserId, receiverId: self.inboxModel.userId, unread: data[ApiKey.unreadCount] as? Int ?? 0)
+                                    }
+                                }
+                        }
+                    }else{
+                        self.deleteMessages(index: indexPath)
+                        self.updateInboxTimeStamp()
+                    }
+                }
+            } ) {}
+            return
+        }
+    }
     //
     // Delete full chat
     private func deleteFullChat() {
@@ -934,19 +992,19 @@ extension OneToOneChatVC: UIImagePickerControllerDelegate, UINavigationControlle
     }
     
     // Delete selected messages
-    func deleteMessages() {
-        selectedIndexPaths.sort()
-        selectedIndexPaths.reverse()
-        for index in selectedIndexPaths {
-            let id = self.messageListing[index.section][index.row].messageId
-            self.db.collection(ApiKey.messages).document(self.getRoomId()).collection(ApiKey.chat).document(id).delete() { (err) in
-                if let err = err {
-                    printDebug("Error removing document: \(err)")
-                } else {
-                    printDebug("Document successfully removed!")
-                }
+    func deleteMessages(index: IndexPath) {
+        //        selectedIndexPaths.sort()
+        //        selectedIndexPaths.reverse()
+        //        for index in selectedIndexPaths {
+        let id = self.messageListing[index.section][index.row].messageId
+        self.db.collection(ApiKey.messages).document(self.getRoomId()).collection(ApiKey.chat).document(id).delete() { (err) in
+            if let err = err {
+                printDebug("Error removing document: \(err)")
+            } else {
+                printDebug("Document successfully removed!")
             }
         }
+        //        }
     }
 }
 

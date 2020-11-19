@@ -230,6 +230,29 @@ class FirestoreController:NSObject{
         }
     }
     
+    //MARK:- CREATE LAST MESSAGE NODE AFTER DELETE MESSAGE
+    //===============================
+    static func createLastMessageNodeAfterDeleteMessage(roomId:String,messageText:String,messageTime:Timestamp,messageId:String,messageType:String,messageStatus:Int,senderId:String,receiverId:String,mediaUrl:String,blocked: Bool, thumbNailURL: String,messageDuration: Int,price: Int, amIBlocked : Bool) {
+        
+        db.collection(ApiKey.lastMessage)
+            .document(roomId)
+            .collection(ApiKey.chat)
+            .document(ApiKey.message)
+            .setData([ApiKey.messageText:messageText,
+                      ApiKey.messageId:messageId,
+                      ApiKey.messageTime: messageTime,
+                      ApiKey.messageStatus:messageStatus,
+                      ApiKey.messageType:messageType,
+                      ApiKey.senderId:senderId,
+                      ApiKey.receiverId:receiverId,
+                      ApiKey.roomId:roomId,
+                      ApiKey.mediaUrl : mediaUrl,
+                      ApiKey.blocked :blocked,
+                      ApiKey.price: price,
+                      ApiKey.messageDuration : messageDuration])
+        
+    }
+    
     //MARK:- CREATE LAST MESSAGE OF BLOCKED USER
     //==========================================
     static func createLastMessageOfBlockedUser(roomId: String, senderId: String, messageModel: [String:Any]) {
@@ -291,6 +314,25 @@ class FirestoreController:NSObject{
                         db.collection(ApiKey.batchCount).document(receiverId).setData([ApiKey.unreadCount : count + 1])
                     } else {
                         db.collection(ApiKey.batchCount).document(receiverId).setData([ApiKey.unreadCount: 1])
+                    }
+            }
+        }
+    }
+    
+    static func updateUnreadMessagesAfterDeleteMessage(senderId: String, receiverId: String, unread: Int) {
+        db.collection(ApiKey.inbox)
+            .document(receiverId)
+            .collection(ApiKey.chat)
+            .document(senderId)
+            .updateData([ApiKey.unreadCount : unread - 1])
+        
+        db.collection(ApiKey.batchCount).document(receiverId).getDocument { (document, error) in
+                if let doc = document {
+                    if doc.exists {
+                        guard let count = doc.data()?[ApiKey.unreadCount] as? Int else { return }
+                        db.collection(ApiKey.batchCount).document(receiverId).setData([ApiKey.unreadCount : count - 1])
+                    } else {
+                        db.collection(ApiKey.batchCount).document(receiverId).setData([ApiKey.unreadCount: 0])
                     }
             }
         }
