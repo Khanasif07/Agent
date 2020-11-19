@@ -11,7 +11,10 @@ import SwiftyJSON
 
 struct GarageHomeModel {
     var newRequests: Int
-    var  acceptedRequets: Int
+    var acceptedRequets: Int
+    var garageId: String
+    var ratingCount: Int
+    var averageRating : Double
     
     init() {
         self.init(JSON([:]))
@@ -20,6 +23,10 @@ struct GarageHomeModel {
     init(_ json : JSON = JSON()){
         self.newRequests = json[ApiKey.newRequests].intValue
         self.acceptedRequets = json[ApiKey.acceptedRequets].intValue
+        self.ratingCount = json[ApiKey.ratingCount].intValue
+        self.averageRating = json[ApiKey.averageRating].doubleValue
+        self.garageId = json[ApiKey.garageId].stringValue
+
     }
     
 }

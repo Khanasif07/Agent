@@ -495,8 +495,9 @@ enum AppRouter {
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
-    static func goToReViewListingVC(vc: UIViewController){
+    static func goToReViewListingVC(vc: UIViewController, garageId: String){
         let scene = ReViewListingVC.instantiate(fromAppStoryboard: .GarageRequest)
+        scene.garageId = garageId
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     

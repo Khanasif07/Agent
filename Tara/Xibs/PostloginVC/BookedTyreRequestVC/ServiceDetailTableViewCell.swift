@@ -37,7 +37,8 @@ class ServiceDetailTableViewCell: UITableViewCell {
     }
     
     func bindDataForBookedRequestDetail(_ model: GarageRequestModel) {
-        switch model.requestType {
+        let type = model.requestType ?? .battery
+        switch type {
         case .tyres:
             tyreSizeValueLbl.text = "Width \(model.width ?? 0), " + "Rim \(model.rimSize ?? 0), " + "Profile \(model.profile ?? 0)"
             tyreSizeLbl.text = "Tyre Size:"
@@ -49,6 +50,7 @@ class ServiceDetailTableViewCell: UITableViewCell {
         case .battery:
             tyreSizeValueLbl.text = "Vechicle Make \(model.make ?? ""), " + "Vechicle Model \(model.model ?? ""), " + "Vechicle Year \(model.year ?? 0)"
             tyreSizeLbl.text = "Battery:"
+      
         }
 
         if !(model.preferredBrands?.isEmpty ?? true) {

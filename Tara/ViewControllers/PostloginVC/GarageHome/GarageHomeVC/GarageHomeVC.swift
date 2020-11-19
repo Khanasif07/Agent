@@ -13,6 +13,8 @@ struct GarageDataValue{
     var name:String
     var requestColor: UIColor
     var backgroundColor: UIColor
+    
+    
     init(requestCount:Int,name:String,requestColor: UIColor,backgroundColor: UIColor) {
         self.requestCount = requestCount
         self.name = name
@@ -28,7 +30,10 @@ class GarageHomeVC: BaseVC {
     @IBOutlet weak var mainCollView: UICollectionView!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var currentDateLbl: UILabel!
-    
+    @IBOutlet weak var myRatingLbl: UILabel!
+    @IBOutlet weak var ratingValueLbl: UILabel!
+    @IBOutlet weak var totalRatingLbl: UILabel!
+
     // MARK: - Variables
     //===========================
     var viewModel = GarageHomeVM()
@@ -55,7 +60,9 @@ class GarageHomeVC: BaseVC {
         viewModel.getAdminId(dict: [:], loader: true)
     }
     
-    
+    @IBAction func reviewBtnAction(_ sender: UIButton) {
+           AppRouter.goToReViewListingVC(vc: self, garageId: self.viewModel.garageHomeModel.garageId)
+    }
 }
 
 // MARK: - Extension For Functions
@@ -78,6 +85,7 @@ extension GarageHomeVC {
         } else {
             self.titleLbl.text = "Hi, User"
         }
+        
         self.currentDateLbl.textColor = AppColors.fontTertiaryColor
         self.dataArray = [GarageDataValue(requestCount: self.viewModel.garageHomeModel.acceptedRequets, name: LocalizedString.requestAccepted.localized,requestColor: UIColor(r: 6, g: 130, b: 191, alpha: 1.0),backgroundColor: UIColor(r: 230, g: 240, b: 245, alpha: 1.0) ),
                           GarageDataValue(requestCount: self.viewModel.garageHomeModel.newRequests, name: LocalizedString.newRequest.localized,requestColor: UIColor(r: 52 , g: 88, b: 158, alpha: 1.0),backgroundColor: UIColor(r: 230, g: 240, b: 245, alpha: 1.0)),
@@ -108,6 +116,7 @@ extension GarageHomeVC {
     @objc func  bidAcceptedRejected() {
         self.viewModel.getGarageHomeData(params: [:])
     }
+
 }
 
 
@@ -155,7 +164,7 @@ extension GarageHomeVC : UICollectionViewDelegate, UICollectionViewDataSource,UI
 extension GarageHomeVC:  GarageHomeVMDelegate{
     
      func getAdminIdSuccess(id: String, name: String, image: String){
-        AppRouter.goToOneToOneChatVC(self, userId: id, requestId: "", name: name, image: image, unreadMsgs: 0, isSupportChat: true)
+        AppRouter.goToOneToOneChatVC(self, userId: id, requestId: "", name: "Support Chat", image: image, unreadMsgs: 0, isSupportChat: true)
     }
     
     func getAdminIdFailed(msg: String) {
@@ -166,11 +175,13 @@ extension GarageHomeVC:  GarageHomeVMDelegate{
         self.dataArray = [GarageDataValue(requestCount: self.viewModel.garageHomeModel.acceptedRequets, name: LocalizedString.requestAccepted.localized,requestColor: UIColor(r: 6, g: 130, b: 191, alpha: 1.0),backgroundColor: UIColor(r: 230, g: 240, b: 245, alpha: 1.0) ),
                           GarageDataValue(requestCount: self.viewModel.garageHomeModel.newRequests, name: LocalizedString.newRequest.localized,requestColor: UIColor(r: 52 , g: 88, b: 158, alpha: 1.0),backgroundColor: UIColor(r: 230, g: 240, b: 245, alpha: 1.0)),
                           GarageDataValue(requestCount: 0, name: LocalizedString.service_sheduled_for_today.localized,requestColor: UIColor(r: 210, g: 103, b: 9, alpha: 1.0),backgroundColor: UIColor(r: 253 , g: 237, b: 223, alpha: 1.0)),GarageDataValue(requestCount: 0, name:LocalizedString.today_Revenue.localized,requestColor: UIColor(r: 44, g: 182, b: 16, alpha: 1.0),backgroundColor: UIColor(r: 239 , g: 246, b: 231, alpha: 1.0))]
+       
+        ratingValueLbl.text = self.viewModel.garageHomeModel.averageRating.description
+        totalRatingLbl.text = "(\(self.viewModel.garageHomeModel.ratingCount.description))"
         self.mainCollView.reloadData()
     }
     
     func getGarageHomeDataFailed(msg: String, error: Error) {
         ToastView.shared.showLongToast(self.view, msg: msg)
     }
-    
 }

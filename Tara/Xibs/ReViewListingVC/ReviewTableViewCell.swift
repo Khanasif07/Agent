@@ -37,10 +37,12 @@ class ReviewTableViewCell: UITableViewCell {
     
     func bindData(_ model: GarageRequestModel) {
         userNameLbl.text = model.userName
-        ratingLbl.text = model.rating?.description
-        reviewLbl.text = model.review ?? "" + "/5"
+        ratingLbl.text = (model.rating?.description ?? "")  + "/5"
+        reviewLbl.text = model.review ?? ""
         garageFirstImgView.setImage_kf(imageString: model.images?.first ?? "")
-        garageSecondImgView.setImage_kf(imageString: model.images?.first ?? "")
+        garageSecondImgView.isHidden = true
+//        garageSecondImgView.setImage_kf(imageString: model.images?.last ?? "")
+        imgStackView.isHidden = model.images?.isEmpty ?? false
         serviceTypeLbl.text = "Service: " + (model.serviceType ?? "") + " Service"
       
         let date = (model.createdAt)?.breakCompletDate(outPutFormat: Date.DateFormat.profileFormat.rawValue, inputFormat: Date.DateFormat.yyyyMMddTHHmmsssssz.rawValue)

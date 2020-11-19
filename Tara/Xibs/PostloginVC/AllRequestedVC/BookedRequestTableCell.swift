@@ -81,8 +81,8 @@ class BookedRequestTableCell: UITableViewCell {
         vehicleNameLbl.text = model.make?.isEmpty ?? true ? "N/A" : model.make
         userNameLbl.text = model.requestedBy
         
-        let type = model.requestType == .tyres ? "Tyre" : model.requestType.rawValue
-        serviceTyeLbl.text = (type) + LocalizedString.serviceRequest.localized
+        let type = (model.requestType) == .tyres ? "Tyre" : model.requestType?.rawValue
+        serviceTyeLbl.text = (type ?? "") + LocalizedString.serviceRequest.localized
         
         let logoImg =  model.requestType == .tyres ? #imageLiteral(resourceName: "maskGroup") : model.requestType == .battery ? #imageLiteral(resourceName: "icBattery") : #imageLiteral(resourceName: "icOil")
         let logoBackGroundColor =  model.requestType == .tyres ? AppColors.blueLightColor : model.requestType == .battery ? AppColors.redLightColor : AppColors.grayLightColor

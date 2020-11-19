@@ -202,7 +202,7 @@ extension HomeVC:LocationPopUpVMDelegate {
     }
     
     func getAdminIdSuccess(id: String, name: String, image: String){
-        AppRouter.goToOneToOneChatVC(self, userId: id, requestId: "", name: name, image: image, unreadMsgs: 0, isSupportChat: true)
+        AppRouter.goToOneToOneChatVC(self, userId: id, requestId: "", name: "Support Chat", image: image, unreadMsgs: 0, isSupportChat: true)
     }
     
     func getAdminIdFailed(error:String){

@@ -105,8 +105,8 @@ class ServiceRequestTableCell: UITableViewCell {
         statusValueLbl.text = model.bidStatus?.text
         statusValueLbl.textColor = model.bidStatus?.textColor
     
-        let str = model.requestType == .tyres ? "Tyre" : model.requestType.rawValue
-        serviceTyeLbl.text = (str) + LocalizedString.serviceRequest.localized
+        let str = (model.requestType) == .tyres ? "Tyre" : model.requestType?.rawValue
+        serviceTyeLbl.text = (str ?? "") + LocalizedString.serviceRequest.localized
         
         if model.bidStatus == .bidFinalsed || model.bidStatus == .bidPlaced {
             bidAmountStackView.isHidden = false

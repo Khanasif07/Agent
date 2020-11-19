@@ -36,7 +36,7 @@ class ReViewListingVM {
     // MARK: Functions
     //=================================
     func fetchReviewListing(params: JSONDictionary,loader: Bool = false) {
-        WebServices.getReviewListingData(parameters: params, success: { [weak self] (json) in
+        WebServices.getReviewListingData(parameters: params,loader: loader, success: { [weak self] (json) in
             guard let `self` = self else { return }
             self.parseToMakeListingData(result: json)
             printDebug(json)
