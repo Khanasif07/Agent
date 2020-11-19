@@ -148,6 +148,7 @@ class FirestoreController:NSObject{
     //=======================
     static func updateUserNode(name: String,
                                imageURL: String,
+                               countryCode:String,
                                phoneNo: String,
                                completion: @escaping () -> Void,
                                failure: @escaping FailureResponse) {
@@ -157,7 +158,7 @@ class FirestoreController:NSObject{
                                                               ApiKey.deviceToken:AppUserDefaults.value(forKey: .fcmToken).stringValue,
                                                               ApiKey.firstName:name,
                                                               ApiKey.image: imageURL,
-                                                              ApiKey.phoneNo: phoneNo])
+                                                              ApiKey.phoneNo: phoneNo,ApiKey.countryCode:countryCode])
         { (error) in
             if let err = error {
                 failure(err)

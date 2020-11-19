@@ -2974,7 +2974,7 @@
 				CODE_SIGN_ENTITLEMENTS = Tara/ArabianTyres.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = C4X83X2P52;
 				INFOPLIST_FILE = Tara/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -3001,7 +3001,7 @@
 				CODE_SIGN_ENTITLEMENTS = Tara/ArabianTyres.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = C4X83X2P52;
 				INFOPLIST_FILE = Tara/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -3088,7 +3088,7 @@
 				CODE_SIGN_ENTITLEMENTS = Tara/ArabianTyres.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = C4X83X2P52;
 				INFOPLIST_FILE = Tara/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -3170,7 +3170,7 @@
 				CODE_SIGN_ENTITLEMENTS = Tara/ArabianTyres.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = C4X83X2P52;
 				INFOPLIST_FILE = Tara/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -3252,7 +3252,7 @@
 				CODE_SIGN_ENTITLEMENTS = Tara/ArabianTyres.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = C4X83X2P52;
 				INFOPLIST_FILE = Tara/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;

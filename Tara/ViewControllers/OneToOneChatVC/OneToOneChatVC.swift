@@ -157,26 +157,6 @@ class OneToOneChatVC: BaseVC {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        //roomId:string,timeStamp:Any,
-        var inboxxUserId = ""
-        if self.requestId.isEmpty{
-            inboxxUserId = inboxModel.userId
-        } else {
-            inboxxUserId = inboxModel.userId + "_" + self.requestId
-        }
-//        self.db.collection(ApiKey.inbox).document(AppUserDefaults.value(forKey: .uid).stringValue).collection(ApiKey.chat).document(inboxModel.userId).getDocument(completion: { (document, error) in
-//            if let doc = document {
-////                let unreadMsgs = doc.data()?[ApiKey.unreadCount] as? Int ?? 0
-////                var diff = FirestoreController.ownUnreadCount - unreadMsgs
-////                diff = diff <= 0 ? 0 : diff
-////
-//                self.db.collection(ApiKey.inbox).document(self.currentUserId).collection(ApiKey.chat).document(self.inboxModel.userId).updateData([ApiKey.unreadCount: 0])
-//
-//                self.db.collection(ApiKey.batchCount)
-//                    .document(AppUserDefaults.value(forKey: .uid).stringValue)
-//                    .setData([ApiKey.unreadCount : 0])
-//            }})
-        //        listeners.forEach({$0.remove()})
     }
     
     //MARK: ACTIONS
@@ -852,14 +832,9 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                 self.setTapGesture(view: senderOfferCell.msgContainerView, indexPath: indexPath)
                 senderOfferCell.userImgView.addGestureRecognizer(imgTap)
                 return senderOfferCell
-                
-//                let senderCell = tableView.dequeueCell(with: SenderMessageCell.self)
-//                senderCell.configureCellWith(model: model)
-                //                senderCell.senderImgView.addGestureRecognizer(imgTap)
             default:
                 let senderCell = tableView.dequeueCell(with: SenderMessageCell.self)
                 senderCell.configureCellWith(model: model)
-                //                senderCell.senderImgView.addGestureRecognizer(imgTap)
                 return senderCell
             }
         }
@@ -1013,7 +988,7 @@ extension OneToOneChatVC{
                     print(data[ApiKey.unreadCount] as? Int ?? 0)
                     self.inboxModel.unreadCount = data[ApiKey.unreadCount] as? Int ?? 0
                     if !self.amIBlocked {
-//                        FirestoreController.updateUnreadMessages(senderId: inboxUserId, receiverId: self.inboxModel.userId, unread: data[ApiKey.unreadCount] as? Int ?? 0)
+                        FirestoreController.updateUnreadMessages(senderId: inboxUserId, receiverId: self.inboxModel.userId, unread: data[ApiKey.unreadCount] as? Int ?? 0)
                 }
             }
         }
@@ -1347,8 +1322,8 @@ extension OneToOneChatVC{
                     }
                     //Typing status observer.....
                     if let typingDict = document[ApiKey.typingStatus] as? [String : Any]{
-                        if let senderTypingStatus =  typingDict[self.inboxModel.userId] as? String{
-                            if String(senderTypingStatus) == "true" {
+                        if let senderTypingStatus =  typingDict[self.inboxModel.userId] as? Bool{
+                            if (senderTypingStatus) {
                                 self.footerViewSetUp(isFooter: true)
                                 self.reloadTableViewToBottom()
                             } else {
