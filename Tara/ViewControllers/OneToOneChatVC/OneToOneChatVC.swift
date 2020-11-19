@@ -172,6 +172,10 @@ class OneToOneChatVC: BaseVC {
     }
     
     @IBAction func addAttachmentsButtonTapped(_ sender: UIButton) {
+        if isBlockedByMe {
+            CommonFunctions.showToastWithMessage( LocalizedString.PLEASEUNBLOCKUSERTOSENDMESSAGES.localized)
+            return
+        }
         createMediaAlertSheet()
     }
     
@@ -187,12 +191,20 @@ class OneToOneChatVC: BaseVC {
     
     @IBAction func sendAudioToFirestire(_ sender: UIButton) {
         typingDisable()
+        if isBlockedByMe {
+            CommonFunctions.showToastWithMessage( LocalizedString.PLEASEUNBLOCKUSERTOSENDMESSAGES.localized)
+            return
+        }
         if sender.imageView?.image !=  #imageLiteral(resourceName: "audioBtnWhite")  {
             self.uploadAudioFileToFirestore(self.recordedUrl!)
             self.audioRecordCancelBtnAction(audioCancelBtn)
         } }
     
     @IBAction func audioRecordCancelBtnAction(_ sender: UIButton) {
+        if isBlockedByMe {
+            CommonFunctions.showToastWithMessage( LocalizedString.PLEASEUNBLOCKUSERTOSENDMESSAGES.localized)
+            return
+        }
         timerView.isHidden = true
         timerLbl.text = "0:00"
         self.progressVIew.progress = 0.0
@@ -205,6 +217,10 @@ class OneToOneChatVC: BaseVC {
     }
     
     @IBAction func editBidBtnAction(_ sender: UIButton) {
+        if isBlockedByMe {
+            CommonFunctions.showToastWithMessage( LocalizedString.PLEASEUNBLOCKUSERTOSENDMESSAGES.localized)
+            return
+        }
         btnContaninerView.isHidden = true
         AppRouter.goToChatEditBidVC(vc: self,requestId: requestDetailId)
     }
@@ -860,6 +876,10 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
 extension OneToOneChatVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate , RemovePictureDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[.editedImage] as? UIImage
+        if isBlockedByMe {
+            CommonFunctions.showToastWithMessage( LocalizedString.PLEASEUNBLOCKUSERTOSENDMESSAGES.localized)
+            return
+        }
         hasImageUploaded = false
         CommonFunctions.showActivityLoader()
         image?.upload(progress: { [weak self] (status) in
@@ -1799,6 +1819,10 @@ extension OneToOneChatVC : OneToOneChatViewModelDelegate{
 //MARK:- ChatEditBidVCDelegate
 extension OneToOneChatVC : ChatEditBidVCDelegate {
     func bidEditSuccess(price: Int) {
+        if isBlockedByMe {
+            CommonFunctions.showToastWithMessage( LocalizedString.PLEASEUNBLOCKUSERTOSENDMESSAGES.localized)
+            return
+        }
         self.messageTextView.text = "Offer"
         sendMessage(msgType: MessageType.offer.rawValue,price: price)
     }
