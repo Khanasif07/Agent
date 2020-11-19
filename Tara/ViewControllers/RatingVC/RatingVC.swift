@@ -69,7 +69,7 @@ class RatingVC: BaseVC {
     }
     
     @IBAction func editLogoBtnAction(_ sender: UIButton) {
-        self.captureImage(delegate: self)
+        self.captureImage(delegate: self,removedImagePicture: true)
     }
     
     @IBAction func starBtnsTapped(_ sender: UIButton) {
@@ -209,6 +209,7 @@ extension RatingVC: UIImagePickerControllerDelegate,UINavigationControllerDelega
     }
     
     func removepicture() {
+        dashedView.isHidden = false
         imgView.image = #imageLiteral(resourceName: "icImg")
         imgView.contentMode = .center
         editLogoBtn.setImage(nil, for: .normal)
@@ -216,11 +217,13 @@ extension RatingVC: UIImagePickerControllerDelegate,UINavigationControllerDelega
 }
 
 extension RatingVC : RatingVMDelegate{
+    
     func ratingSuccess(msg: String) {
         self.delegate?.updateRatingStatus()
         self.delegate?.changeCarReceivedStatus()
         pop()
     }
+    
     func updateRatingSuccess(msg: String) {
         self.delegate?.updateRatingStatus()
         pop()

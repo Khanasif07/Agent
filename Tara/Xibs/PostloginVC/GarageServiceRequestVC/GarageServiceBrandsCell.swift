@@ -74,7 +74,10 @@ class GarageServiceBrandsCell: UITableViewCell,UITextFieldDelegate {
         //
         let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
         if updatedText.contains(s: ".") {
-            return updatedText.count <= 6
+            let arr = updatedText.components(separatedBy: ".")
+            return arr[1].count == 1 || arr[1].count == 0
+       
+//            return updatedText.count <= 6
         }else {
             return updatedText.count <= 4
         }

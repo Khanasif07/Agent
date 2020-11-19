@@ -97,6 +97,11 @@ extension SocketIOManager {
             printDebug(json)
         })
         
+        self.socket?.on(EventListnerKeys.serviceStarted.rawValue, callback: { data, _ in
+            let json = JSON(data)
+            printDebug(json)
+        })
+        
         self.socket?.on(EventListnerKeys.editedBidAccepted.rawValue, callback: { data, _ in
             let json = JSON(data)
             NotificationCenter.default.post(name: Notification.Name.EditedBidAccepted, object: nil)
