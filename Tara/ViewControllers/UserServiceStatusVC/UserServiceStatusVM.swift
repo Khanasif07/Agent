@@ -83,7 +83,7 @@ class UserServiceStatusVM {
                     self.delegate?.serviceDetailSuccess(msg: "")
                     return
                 }
-                let modelList = try! JSONDecoder().decode(GarageRequestModel.self, from: data)
+                let modelList = try JSONDecoder().decode(GarageRequestModel.self, from: data)
                 currentPage = result[ApiKey.data][ApiKey.page].intValue
                 isRequestinApi = false
                 self.serviceDetailData = nil

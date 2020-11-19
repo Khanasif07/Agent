@@ -13,6 +13,11 @@ class ServiceStatusTableViewCell: UITableViewCell {
     //MARK:-IBOutlet
     @IBOutlet weak var serviceStatusLbl: UILabel!
     
+    @IBOutlet weak var bottomDashedVIew: CustomDashedView!
+    @IBOutlet weak var ratingContainerView: UIView!
+    @IBOutlet weak var reviewLbl: UILabel!
+    @IBOutlet weak var noRatingContainerView: UIView!
+    @IBOutlet weak var ratingLbl: UILabel!
     @IBOutlet weak var carReceivedLbl: UILabel!
     @IBOutlet weak var progressLbl: UILabel!
     @IBOutlet weak var completeLbl: UILabel!
@@ -46,6 +51,8 @@ class ServiceStatusTableViewCell: UITableViewCell {
     var takenUpdateBtnTapped : (()->())?
     var yesBtnTapped : (()->())?
     var noBtnTapped : (()->())?
+    var rateNowBtnTapped : ((UIButton)->())?
+    var editRatingReviewBtnTapped : ((UIButton)->())?
 
     //MARK:-LifeCycle
     override func awakeFromNib() {
@@ -163,11 +170,18 @@ class ServiceStatusTableViewCell: UITableViewCell {
         }
     }
     
-    func populateDataForUserService(status: ServiceState?, isServiceCompleted : Bool) {
+    func populateDataForUserService(status: ServiceState?, isServiceCompleted : Bool,model: GarageRequestModel = GarageRequestModel()) {
         carReceivedUpdateBtn.isHidden = true
         progressUpdateBtn.isHidden = true
         completeUpdateBtn.isHidden = true
         takenUpdateBtn.isHidden = true
+        
+        self.noRatingContainerView.isHidden = !(model.ratingDetails?._id?.isEmpty ?? true)
+        if status != .delivered  {
+             self.noRatingContainerView.isHidden = true
+        }
+        self.ratingContainerView.isHidden = (model.ratingDetails?._id?.isEmpty ?? true)
+        self.bottomDashedVIew.isHidden =  self.noRatingContainerView.isHidden && self.ratingContainerView.isHidden
 
         if status == nil {
             carReceivedUpdateBtn.isHidden = false
@@ -278,4 +292,17 @@ class ServiceStatusTableViewCell: UITableViewCell {
     @IBAction func noBtnAction(_ sender : UIButton) {
         noBtnTapped?()
     }
+    
+    @IBAction func rateNowBtnAction(_ sender: UIButton) {
+        if let handle = rateNowBtnTapped{
+            handle(sender)
+        }
+    }
+    
+    @IBAction func editRatingReviewBtnAction(_ sender: UIButton) {
+        if let handle = editRatingReviewBtnTapped{
+            handle(sender)
+        }
+    }
+    
 }

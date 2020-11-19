@@ -120,6 +120,7 @@ enum ApiKey {
     static var videosOnPlatform: String { return "videosOnPlatform"}
     static var reviewCount: String { return "reviewCount"}
     static var rating: String { return "rating"}
+    static var ratingId: String { return "ratingId"}
     static var categoryID: String { return "categoryId"}
     static var review: String { return "review"}
     static var length: String{ return "length"}
@@ -208,7 +209,7 @@ enum ApiKey {
     static var addedTime  : String {return "addedTime"}
     static var deleteTime : String {return "deleteTime"}
     static var leaveTime   : String {return "leaveTime"}
-    static var userTypingStatus : String {return "userTypingStatus"}
+    static var typingStatus : String {return "typingStatus"}
     static var roomType : String {return "roomType"}
     static var mediaUrl : String {return "mediaUrl"}
     static var batchCount : String {return "batchCount"}
@@ -227,6 +228,7 @@ enum ApiKey {
     static var timeStamp : String {return "timeStamp"}
     static var messageTime : String {return "messageTime"}
     static var unreadMessages : String {return "unreadMessages"}
+    static var unreadCount : String {return "unreadCount"}
     static var blocked : String {return "blocked"}
     static var basic : String { return "Basic"}
    
@@ -242,6 +244,8 @@ enum ApiKey {
     static var phoneChanged: String {return "phoneChanged"}
     static var emailChanged: String {return "emailChanged"}
     static var garageId: String {return "garageId"}
+    static var garageUserId: String {return "garageUserId"}
+    static var bidRequestId: String {return "bidRequestId"}
     static var acceptedProposalId: String {return "acceptedProposalId"}
     static var serviceStatus: String {return "serviceStatus"}
     

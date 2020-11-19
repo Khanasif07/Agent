@@ -11,11 +11,13 @@ import UIKit
 protocol PickerDataDelegate {
     func selectedReason(str: String)
     func changeCarReceivedStatus()
+    func updateRatingStatus()
 }
 
 extension PickerDataDelegate {
     func selectedReason(str: String){}
     func changeCarReceivedStatus(){}
+    func updateRatingStatus(){}
 }
 
 

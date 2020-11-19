@@ -50,6 +50,48 @@ enum ServiceStatus : String,Codable {
     }
 }
 
+enum ServiceStatuss : String,Codable {
+    case start_service
+    case in_progress
+    case ready_to_be_taken
+    case delivered
+    case car_received
+    case completed
+    
+    var text :String{
+        switch self {
+        case .start_service:
+            return "Service started"//"Car Received"
+        case .in_progress:
+            return "In garage"//"In Garage"
+        case .ready_to_be_taken:
+            return "Ready to pick"//"Service Completed"
+        case .delivered:
+            return "Delivered"//"Delivered"
+        case .car_received:
+            return "Car Received"
+        default:
+            return "Completed"
+        }
+    }
+    
+    var textColor : UIColor {
+        switch self {
+        case .start_service:
+            return #colorLiteral(red: 0.937254902, green: 0.6509803922, blue: 0.1803921569, alpha: 1)
+        case .in_progress:
+            return #colorLiteral(red: 0.937254902, green: 0.6509803922, blue: 0.1803921569, alpha: 1)
+        case .delivered:
+            return #colorLiteral(red: 0.1725490196, green: 0.7137254902, blue: 0.4549019608, alpha: 1)
+        case .ready_to_be_taken:
+            return #colorLiteral(red: 0.937254902, green: 0.6509803922, blue: 0.1803921569, alpha: 1)
+        default:
+            return #colorLiteral(red: 0.937254902, green: 0.6509803922, blue: 0.1803921569, alpha: 1)
+        }
+    }
+}
+
+
 // MARK: - Result
 struct UserServiceRequestModel: Codable {
     let requestID, createdAt: String
@@ -57,6 +99,7 @@ struct UserServiceRequestModel: Codable {
     let requestType: String
     let rimSize: Int?
     var status: ServiceStatus
+    var serviceStatus : ServiceStatuss?
     let preferredBrands: [PreferredBrand]
     let preferredCountries: [PreferredBrand]
     let quantity, width: Int?
@@ -78,7 +121,7 @@ struct UserServiceRequestModel: Codable {
         case requestID = "requestId"
         case createdAt, profile, requestType, rimSize, status, preferredBrands, preferredCountries, quantity, width , make ,model
         case id = "_id"
-        case images
+        case images , serviceStatus
         case totalBids,lowestBid,nearestBidder,isOfferAccepted, totalOffers, seenBy,year, isServiceStarted, otp
     }
     
@@ -89,6 +132,7 @@ struct UserServiceRequestModel: Codable {
         requestType = ""
         rimSize = 0
         status = .pending
+        serviceStatus = .start_service
         preferredBrands = []
         preferredCountries = []
         quantity = 0

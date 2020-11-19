@@ -104,6 +104,7 @@
 		8459480E252B0C0600C0B249 /* ServiceRequestTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8459480C252B0C0600C0B249 /* ServiceRequestTableCell.xib */; };
 		84594811252B306A00C0B249 /* BookedRequestTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8459480F252B306A00C0B249 /* BookedRequestTableCell.swift */; };
 		84594812252B306A00C0B249 /* BookedRequestTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84594810252B306A00C0B249 /* BookedRequestTableCell.xib */; };
+		845C09BB2562464400888376 /* GoogleService-Info-QA.plist in Resources */ = {isa = PBXBuildFile; fileRef = 845C09BA2562464300888376 /* GoogleService-Info-QA.plist */; };
 		84634C8625347E28002FC33F /* OffersDetailTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84634C8425347E28002FC33F /* OffersDetailTableCell.swift */; };
 		84634C8725347E28002FC33F /* OffersDetailTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84634C8525347E28002FC33F /* OffersDetailTableCell.xib */; };
 		846352D02511E34E004216F1 /* AddImageCollCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846352CE2511E34E004216F1 /* AddImageCollCell.swift */; };
@@ -208,6 +209,7 @@
 		84CAEFC12552B47F00F3A329 /* SenderAudioCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84CAEFBF2552B47E00F3A329 /* SenderAudioCell.xib */; };
 		84CAEFC52552B6AB00F3A329 /* ReceiverAudioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CAEFC32552B6AB00F3A329 /* ReceiverAudioCell.swift */; };
 		84CAEFC62552B6AB00F3A329 /* ReceiverAudioCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84CAEFC42552B6AB00F3A329 /* ReceiverAudioCell.xib */; };
+		84D4CB222562D361005EB8AD /* GoogleService-Info-Prod.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84D4CB212562D361005EB8AD /* GoogleService-Info-Prod.plist */; };
 		84D83D68252AAF5800F6C420 /* URTyreStep1VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D83D67252AAF5800F6C420 /* URTyreStep1VM.swift */; };
 		84E166E4250362DE00C2F2EF /* SuccessPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E166E3250362DE00C2F2EF /* SuccessPopupVC.swift */; };
 		84E4B4702513759600A3E11C /* CompleteProfileStep1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E4B46F2513759600A3E11C /* CompleteProfileStep1.swift */; };
@@ -370,6 +372,8 @@
 
 /* Begin PBXFileReference section */
 		0DB69EB761B7BF21E1CD2115 /* Pods-Tara.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tara.debug.xcconfig"; path = "Target Support Files/Pods-Tara/Pods-Tara.debug.xcconfig"; sourceTree = "<group>"; };
+		2A0ECF7C0177035F6EB0F654 /* Pods-Tara.stg.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tara.stg.xcconfig"; path = "Target Support Files/Pods-Tara/Pods-Tara.stg.xcconfig"; sourceTree = "<group>"; };
+		33BF1FA33CB24886074AD566 /* Pods-Tara.prod.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tara.prod.xcconfig"; path = "Target Support Files/Pods-Tara/Pods-Tara.prod.xcconfig"; sourceTree = "<group>"; };
 		8411D357252DA79300E6FA6C /* UserServiceRequestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceRequestVC.swift; sourceTree = "<group>"; };
 		8411D359252DB78C00E6FA6C /* UserAllRequestVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAllRequestVM.swift; sourceTree = "<group>"; };
 		8411D35B252DEDD100E6FA6C /* UserServiceRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceRequestModel.swift; sourceTree = "<group>"; };
@@ -467,6 +471,7 @@
 		8459480C252B0C0600C0B249 /* ServiceRequestTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServiceRequestTableCell.xib; sourceTree = "<group>"; };
 		8459480F252B306A00C0B249 /* BookedRequestTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookedRequestTableCell.swift; sourceTree = "<group>"; };
 		84594810252B306A00C0B249 /* BookedRequestTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookedRequestTableCell.xib; sourceTree = "<group>"; };
+		845C09BA2562464300888376 /* GoogleService-Info-QA.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-QA.plist"; sourceTree = "<group>"; };
 		84634C8425347E28002FC33F /* OffersDetailTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffersDetailTableCell.swift; sourceTree = "<group>"; };
 		84634C8525347E28002FC33F /* OffersDetailTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OffersDetailTableCell.xib; sourceTree = "<group>"; };
 		846352CE2511E34E004216F1 /* AddImageCollCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageCollCell.swift; sourceTree = "<group>"; };
@@ -572,6 +577,7 @@
 		84CAEFBF2552B47E00F3A329 /* SenderAudioCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SenderAudioCell.xib; sourceTree = "<group>"; };
 		84CAEFC32552B6AB00F3A329 /* ReceiverAudioCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiverAudioCell.swift; sourceTree = "<group>"; };
 		84CAEFC42552B6AB00F3A329 /* ReceiverAudioCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReceiverAudioCell.xib; sourceTree = "<group>"; };
+		84D4CB212562D361005EB8AD /* GoogleService-Info-Prod.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Prod.plist"; sourceTree = "<group>"; };
 		84D83D67252AAF5800F6C420 /* URTyreStep1VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URTyreStep1VM.swift; sourceTree = "<group>"; };
 		84E166E3250362DE00C2F2EF /* SuccessPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessPopupVC.swift; sourceTree = "<group>"; };
 		84E4B46F2513759600A3E11C /* CompleteProfileStep1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteProfileStep1.swift; sourceTree = "<group>"; };
@@ -592,6 +598,7 @@
 		84FF9D622559677F00692FF0 /* ReceiverOfferCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiverOfferCell.swift; sourceTree = "<group>"; };
 		84FF9D632559677F00692FF0 /* ReceiverOfferCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReceiverOfferCell.xib; sourceTree = "<group>"; };
 		87C28A2FABCB3D22226632AC /* Pods_Tara.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tara.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A12D33C76F5797086FF88B2E /* Pods-Tara.qa.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tara.qa.xcconfig"; path = "Target Support Files/Pods-Tara/Pods-Tara.qa.xcconfig"; sourceTree = "<group>"; };
 		A4098E732511FF7F0015B0BD /* RangeSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeSlider.swift; sourceTree = "<group>"; };
 		A4098E752512274C0015B0BD /* FacilityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityVC.swift; sourceTree = "<group>"; };
 		A4098E77251228050015B0BD /* FacilityTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityTableHeaderView.swift; sourceTree = "<group>"; };
@@ -760,6 +767,9 @@
 			children = (
 				0DB69EB761B7BF21E1CD2115 /* Pods-Tara.debug.xcconfig */,
 				E7E08BC58C8F29ACF642F2D5 /* Pods-Tara.release.xcconfig */,
+				A12D33C76F5797086FF88B2E /* Pods-Tara.qa.xcconfig */,
+				33BF1FA33CB24886074AD566 /* Pods-Tara.prod.xcconfig */,
+				2A0ECF7C0177035F6EB0F654 /* Pods-Tara.stg.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -1341,6 +1351,8 @@
 				8481FA2D2500BC7800AB6EFB /* Fonts */,
 				8481FA282500BC1400AB6EFB /* LocalizedString */,
 				8481FA052500AA9B00AB6EFB /* Assets.xcassets */,
+				84D4CB212562D361005EB8AD /* GoogleService-Info-Prod.plist */,
+				845C09BA2562464300888376 /* GoogleService-Info-QA.plist */,
 				A4E4159F255DB3D8003E833E /* GoogleService-Info.plist */,
 				A4363969254AA9D200FE1AE1 /* Info.plist */,
 			);
@@ -2413,6 +2425,7 @@
 				844CBD232501FFC0009BE668 /* LoginEmailPhoneTableCell.xib in Resources */,
 				8470D1FB251B36C700790768 /* GarageProfileHeaderCell.xib in Resources */,
 				A41AAB4825304C790061887F /* DistanceSliderCollViewCell.xib in Resources */,
+				845C09BB2562464400888376 /* GoogleService-Info-QA.plist in Resources */,
 				844CBD1F2501FA31009BE668 /* LoginSocialTableCell.xib in Resources */,
 				84634C8725347E28002FC33F /* OffersDetailTableCell.xib in Resources */,
 				A415082E255676DC005DF8FD /* ServiceDetailTableViewCell.xib in Resources */,
@@ -2439,6 +2452,7 @@
 				843F004E25060822001A78EC /* CountryCodeTableCell.xib in Resources */,
 				A41B7DED25551FC8005D1AC5 /* ServiceCompletedTableViewCell.xib in Resources */,
 				842B2FCA25133CD200E3CF67 /* BankListingTableCell.xib in Resources */,
+				84D4CB222562D361005EB8AD /* GoogleService-Info-Prod.plist in Resources */,
 				A441A67F252CDF7C00B5420B /* TyreRequestLocationTableViewCell.xib in Resources */,
 				A4DEB86A2552865700BD7D2E /* ReviewTableViewCell.xib in Resources */,
 				A43B53A52524B21300447B24 /* GarageRequest.storyboard in Resources */,
@@ -2888,12 +2902,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG ENV_DEV";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -2942,7 +2956,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -2960,7 +2974,7 @@
 				CODE_SIGN_ENTITLEMENTS = Tara/ArabianTyres.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = C4X83X2P52;
 				INFOPLIST_FILE = Tara/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -2973,6 +2987,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tara.betaapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = TaraDevProfile;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG ENV_DEV";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -2986,7 +3001,7 @@
 				CODE_SIGN_ENTITLEMENTS = Tara/ArabianTyres.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = C4X83X2P52;
 				INFOPLIST_FILE = Tara/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -2999,10 +3014,262 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tara.betaapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = TaraDevProfile;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
+		};
+		84D4CB232563E1D4005EB8AD /* QA */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG ENV_QA";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = QA;
+		};
+		84D4CB242563E1D4005EB8AD /* QA */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A12D33C76F5797086FF88B2E /* Pods-Tara.qa.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Tara/ArabianTyres.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 8;
+				DEVELOPMENT_TEAM = C4X83X2P52;
+				INFOPLIST_FILE = Tara/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/lib/swift,
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tara.betaapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = TaraDevProfile;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG ENV_QA";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = QA;
+		};
+		84D4CB252563E1FA005EB8AD /* Stg */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = ENV_STG;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Stg;
+		};
+		84D4CB262563E1FA005EB8AD /* Stg */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2A0ECF7C0177035F6EB0F654 /* Pods-Tara.stg.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Tara/ArabianTyres.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 8;
+				DEVELOPMENT_TEAM = C4X83X2P52;
+				INFOPLIST_FILE = Tara/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/lib/swift,
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tara.betaapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = TaraDevProfile;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = ENV_STG;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Stg;
+		};
+		84D4CB272563E20F005EB8AD /* Prod */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = ENV_PROD;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Prod;
+		};
+		84D4CB282563E20F005EB8AD /* Prod */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 33BF1FA33CB24886074AD566 /* Pods-Tara.prod.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Tara/ArabianTyres.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 8;
+				DEVELOPMENT_TEAM = C4X83X2P52;
+				INFOPLIST_FILE = Tara/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/lib/swift,
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tara.betaapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = TaraDevProfile;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = ENV_PROD;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Prod;
 		};
 /* End XCBuildConfiguration section */
 
@@ -3011,19 +3278,25 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8481FA0B2500AA9B00AB6EFB /* Debug */,
+				84D4CB232563E1D4005EB8AD /* QA */,
 				8481FA0C2500AA9B00AB6EFB /* Release */,
+				84D4CB272563E20F005EB8AD /* Prod */,
+				84D4CB252563E1FA005EB8AD /* Stg */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		8481FA0D2500AA9B00AB6EFB /* Build configuration list for PBXNativeTarget "Tara" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8481FA0E2500AA9B00AB6EFB /* Debug */,
+				84D4CB242563E1D4005EB8AD /* QA */,
 				8481FA0F2500AA9B00AB6EFB /* Release */,
+				84D4CB282563E20F005EB8AD /* Prod */,
+				84D4CB262563E1FA005EB8AD /* Stg */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};

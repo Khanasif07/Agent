@@ -12,6 +12,7 @@ class RatingVC: BaseVC {
     
     // MARK: - IBOutlets
     //==================
+    @IBOutlet weak var txtViewCountLbl: UILabel!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var overAllExpLbl: UILabel!
     @IBOutlet weak var garageNameLbl: UILabel!
@@ -33,6 +34,7 @@ class RatingVC: BaseVC {
     var rating : String = ""
     var images : [String] = []
     var requestId : String = ""
+    var ratingId : String = ""
     var garageName : String = ""
     var delegate : PickerDataDelegate?
 
@@ -59,11 +61,15 @@ class RatingVC: BaseVC {
     }
     
     @IBAction func saveBtnBtnAction(_ sender: Any) {
-        viewModel.postRatingData(params: getDict(), loader: true)
+        if self.ratingId.isEmpty{
+            viewModel.postRatingData(params: getDict(), loader: true)
+        } else{
+            viewModel.updateRatingData(params: getDictForUpdate(), loader: true)
+        }
     }
     
     @IBAction func editLogoBtnAction(_ sender: UIButton) {
-        self.captureImage(delegate: self)
+        self.captureImage(delegate: self,removedImagePicture: true)
     }
     
     @IBAction func starBtnsTapped(_ sender: UIButton) {
@@ -86,10 +92,11 @@ extension RatingVC {
     
     private func initialSetup() {
         editLogoBtn.setImage(nil, for: .normal)
-        setupTextAndFont()
-        setupTextView()
         saveBtn.isEnabled = false
         viewModel.delegate = self
+        setupTextAndFont()
+        setupTextView()
+        prefilledData()
     }
     
     private func setupTextAndFont(){
@@ -109,6 +116,18 @@ extension RatingVC {
         
     }
     
+    private func prefilledData(){
+        self.txtView.text = viewModel.ratingModel?.review ?? ""
+        for i in 0...starBtns.count - 1{
+            if  i < (viewModel.ratingModel?.rating ??  0) {
+                starBtns[i].isSelected = true
+                rating = (i+1).description
+            }
+        }
+        saveBtn.setTitle(self.ratingId.isEmpty ? "Save" : "Update", for: .normal)
+        saveBtn.isEnabled = saveBtnStatus()
+    }
+    
     private func setupTextView(){
         txtView.delegate = self
         txtView.text = LocalizedString.typeHere.localized
@@ -116,6 +135,14 @@ extension RatingVC {
     
     private func getDict() -> JSONDictionary{
         let dict : JSONDictionary = [ApiKey.requestId : self.requestId ,
+                                     ApiKey.rating : self.rating,
+                                     ApiKey.review: txtView.text.byRemovingLeadingSpaces,
+                                     ApiKey.images : self.images]
+        return dict
+    }
+    
+    private func getDictForUpdate() -> JSONDictionary{
+        let dict : JSONDictionary = [ApiKey.ratingId : self.ratingId ,
                                      ApiKey.rating : self.rating,
                                      ApiKey.review: txtView.text.byRemovingLeadingSpaces,
                                      ApiKey.images : self.images]
@@ -143,6 +170,12 @@ extension RatingVC : UITextViewDelegate{
             
         }
         saveBtn.isEnabled = saveBtnStatus()
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool{
+        let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
+        txtViewCountLbl.text = "\(newText.count)" + "/250"
+        return text.checkIfValidCharaters(.name) && newText.count < 250
     }
 }
 
@@ -176,6 +209,7 @@ extension RatingVC: UIImagePickerControllerDelegate,UINavigationControllerDelega
     }
     
     func removepicture() {
+        dashedView.isHidden = false
         imgView.image = #imageLiteral(resourceName: "icImg")
         imgView.contentMode = .center
         editLogoBtn.setImage(nil, for: .normal)
@@ -183,8 +217,15 @@ extension RatingVC: UIImagePickerControllerDelegate,UINavigationControllerDelega
 }
 
 extension RatingVC : RatingVMDelegate{
+    
     func ratingSuccess(msg: String) {
+        self.delegate?.updateRatingStatus()
         self.delegate?.changeCarReceivedStatus()
+        pop()
+    }
+    
+    func updateRatingSuccess(msg: String) {
+        self.delegate?.updateRatingStatus()
         pop()
     }
     

@@ -57,7 +57,7 @@ enum AppRouter {
     }
     
     static func goToTestingVC(){
-        let scene = ServiceCompletedVC.instantiate(fromAppStoryboard: .GarageRequest)
+        let scene = ContactUsVC.instantiate(fromAppStoryboard: .GarageRequest)
         setAsWindowRoot(scene)
     }
     
@@ -417,9 +417,11 @@ enum AppRouter {
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
-    static func goToRatingVC(vc: UIViewController, requestId : String,garageName: String){
+    static func goToRatingVC(vc: UIViewController, requestId : String,garageName: String,ratingId : String = "",ratingModel: RatingModel = RatingModel()){
         let scene = RatingVC.instantiate(fromAppStoryboard: .GarageRequest)
         scene.requestId = requestId
+        scene.viewModel.ratingModel = ratingModel
+        scene.ratingId = ratingId
         scene.garageName = garageName
         scene.delegate = vc as? PickerDataDelegate
         vc.navigationController?.pushViewController(scene, animated: true)
@@ -468,12 +470,14 @@ enum AppRouter {
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
-    static func goToOneToOneChatVC(_ vc: UIViewController, userId: String,requestDetailId: String = "",requestId: String, name: String, image: String, unreadMsgs: Int,isSupportChat: Bool = false) {
+    static func goToOneToOneChatVC(_ vc: UIViewController, userId: String,requestDetailId: String = "",requestId: String, name: String, image: String, unreadMsgs: Int,isSupportChat: Bool = false,garageUserId:  String = "") {
         let chatScene = OneToOneChatVC.instantiate(fromAppStoryboard: .Chat)
         chatScene.firstName = name
         chatScene.isSupportChat = isSupportChat
         chatScene.requestId = requestId
+        chatScene.garageUserId = garageUserId
         chatScene.requestDetailId = requestDetailId
+        chatScene.bidRequestId = requestDetailId
         chatScene.userImage = image
         chatScene.inboxModel.userId = userId //"5e8483230a60177afa95e0b7"
         chatScene.inboxModel.unreadMessages = unreadMsgs

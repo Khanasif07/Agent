@@ -22,12 +22,13 @@ class ReceiverOfferCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        userImgView.round()
-        // Initialization code
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        userImgView.round()
+        acceptBtn.round(radius: 4.0)
+        rejectBtn.round(radius: 4.0)
         msgContainerView.roundCorners([.topLeft, .topRight, .bottomRight], radius: 15)
         userImgView.round()
     }

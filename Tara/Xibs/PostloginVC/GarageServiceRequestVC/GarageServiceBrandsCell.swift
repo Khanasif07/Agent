@@ -68,12 +68,21 @@ class GarageServiceBrandsCell: UITableViewCell,UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let currentText = textField.text ?? ""
         guard let stringRange = Range(range, in: currentText) else { return false }
+        //
+        guard let counter = textField.text?.components(separatedBy: ".") else { return false }
+        if (counter.count - 1 > 0 && string == ".")  { return false }
+        //
         let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
         if updatedText.contains(s: ".") {
-            return updatedText.count <= 6
-
+            if updatedText.count == 4 {
+                return false
+            }else {
+                let value = updatedText.components(separatedBy: ".")
+                return value[1].count == 1 || value[1].count == 0
+            }
+            
         }else {
-            return updatedText.count <= 5
+            return updatedText.count <= 4
         }
     }
     

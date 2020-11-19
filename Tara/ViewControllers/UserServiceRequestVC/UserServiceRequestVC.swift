@@ -206,6 +206,7 @@ extension UserServiceRequestVC: UserServiceRequestVMDelegate{
             cancelBtn.setTitle("Resend", for: .normal)
             viewAllBtn.isHidden = true
         }
+        cancelBtn.isHidden = viewModel.userRequestDetail.isServiceStarted ?? cancelBtn.isHidden
         requestSeenValueLbl.text = viewModel.userRequestDetail.seenBy?.description
         if viewModel.userRequestDetail.lowestBid == 0 {
             lowestBidValueLbl.textColor = AppColors.fontPrimaryColor

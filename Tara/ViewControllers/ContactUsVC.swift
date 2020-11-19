@@ -24,6 +24,7 @@ class ContactUsVC: BaseVC {
     // MARK: - Variables
     //===========================
     let viewModel = EditProfileVM()
+    var descText : String = ""
     
     // MARK: - Lifecycle
     //===========================
@@ -54,7 +55,7 @@ class ContactUsVC: BaseVC {
     }
     
     func sendBtnStatus() -> Bool {
-        return !(subjectTextField.text?.isEmpty ?? true) && !(customTextView.tView.text == LocalizedString.description.localized)
+        return !(subjectTextField.text?.isEmpty ?? true) && !(customTextView.tView.text == LocalizedString.description.localized) && ((descText ).count >= 5)
     }
 }
 
@@ -93,7 +94,7 @@ extension ContactUsVC : CustomTextViewDelegate , UITextFieldDelegate{
         let currentText = textField.text ?? ""
         guard let stringRange = Range(range, in: currentText) else { return false }
         let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
-        return updatedText.count <= 30
+        return updatedText.count <= 25
         
     }
     
@@ -106,6 +107,7 @@ extension ContactUsVC : CustomTextViewDelegate , UITextFieldDelegate{
         customTextView.floatLbl.isHidden = false
         if tView.text == LocalizedString.description.localized {
             tView.text = ""
+            descText = tView.text
         }
     }
     
@@ -115,6 +117,7 @@ extension ContactUsVC : CustomTextViewDelegate , UITextFieldDelegate{
             customTextView.placeHolderTxt = LocalizedString.description.localized
             customTextView.floatLbl.text = LocalizedString.description.localized
         }
+        descText = tView.text
         sendMessageBtn.isEnabled = sendBtnStatus()
     }
 }

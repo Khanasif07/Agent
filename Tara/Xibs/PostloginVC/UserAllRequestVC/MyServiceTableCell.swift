@@ -62,9 +62,9 @@ class MyServiceTableCell: UITableViewCell {
     }
     
     public func populateData(model: UserServiceRequestModel){
-        statusValueLbl.text = model.status.text
-        statusValueLbl.textColor = model.status.textColor
-        statusValueLineView.backgroundColor = model.status.textColor
+        statusValueLbl.text =  (model.isServiceStarted ?? false) ?  model.serviceStatus?.text : model.status.text
+        statusValueLbl.textColor =  (model.isServiceStarted ?? false) ?  model.serviceStatus?.textColor : model.status.textColor
+        statusValueLineView.backgroundColor =  (model.isServiceStarted ?? false) ?  model.serviceStatus?.textColor : model.status.textColor
         statusView.isHidden = model.status == .pending
         
         self.serviceTypeLbl.text = model.requestType + " Service Request"

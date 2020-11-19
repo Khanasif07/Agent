@@ -39,7 +39,7 @@ struct UserChatModel {
         self.deviceId =  dict[ApiKey.deviceId] as? String ?? ""
         self.deviceToken = dict[ApiKey.deviceToken] as? String ?? ""
         self.email = dict[ApiKey.email] as? String ?? ""
-        self.image = dict[ApiKey.image] as? String ?? ""
+        self.image = dict[ApiKey.userImage] as? String ?? ""
         self.deviceType = dict[ApiKey.deviceType] as? String ?? ""
         let onlineStatusValue = dict[ApiKey.onlineStatus] as? Bool ?? false
         self.onlineStatus = onlineStatusValue ? "online" : "offline"
@@ -72,7 +72,7 @@ struct RoomInfo{
         self.roomType =  dict[ApiKey.roomType] as? String ?? ""
         self.roomName = dict[ApiKey.roomName] as? String ?? ""
         self.userInfo = dict[ApiKey.userInfo] as? String ?? ""
-        self.userTypingStatus = dict[ApiKey.userTypingStatus] as? String ?? ""
+        self.userTypingStatus = dict[ApiKey.typingStatus] as? String ?? ""
       }
 }
 
@@ -93,11 +93,14 @@ struct Inbox{
     public var userId : String = ""
     public var receiverImgURL : String = ""
     public var unreadMessages : Int = 0
+    public var unreadCount : Int = 0
     public var userModel : UserChatModel = UserChatModel()
     public var chatType : String = "single"
     public var roomName : String = ""
     public var groupImage : String = ""
     public var isOnline : Bool = false
+    public var bidRequestId : String = ""
+    public var garageUserId : String = ""
 
     //MARK:- Inits
     //=============
@@ -110,17 +113,20 @@ struct Inbox{
         self.roomInfo =  dict[ApiKey.roomInfo] as? DocumentReference
         self.timeStamp = dict[ApiKey.timeStamp] as? Timestamp ?? Timestamp.init(date: Date())
         self.userDetails = dict[ApiKey.userDetails] as? DocumentReference
-        self.firstName   = dict[ApiKey.firstName] as? String ?? ""
-//        self.firstName   = dict[ApiKey.userName] as? String ?? ""
+//        self.firstName   = dict[ApiKey.firstName] as? String ?? ""
+        self.firstName   = dict[ApiKey.userName] as? String ?? ""
         self.lastMessage = dict[ApiKey.lastMessage] as? String ?? ""
        // self.blockedLastMessage = dict[ApiKey.lastMessage] as? String ?? StringConstants.defaultValue
-        self.receiverImgURL = dict[ApiKey.image] as? String ?? ""
+        self.receiverImgURL = dict[ApiKey.userImage] as? String ?? ""
         self.userId = dict[ApiKey.userId] as? String ?? ""
         self.unreadMessages = dict[ApiKey.unreadMessages] as? Int ?? 0
+        self.unreadCount = dict[ApiKey.unreadCount] as? Int ?? 0
         self.chatType = "single"
         self.roomName = dict[ApiKey.roomName] as? String ?? ""
         self.groupImage = dict[ApiKey.roomImage] as? String ?? ""
         self.requestId = dict[ApiKey.requestId] as? String ?? ""
+        self.bidRequestId = dict[ApiKey.bidRequestId] as? String ?? ""
+        self.garageUserId = dict[ApiKey.garageUserId] as? String ?? ""
       }
     
     private mutating func getUserModel(completeion: @escaping (_ model: UserChatModel) -> (),

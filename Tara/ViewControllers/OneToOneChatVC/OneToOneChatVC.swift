@@ -30,8 +30,11 @@ class OneToOneChatVC: BaseVC {
     var inboxModel = Inbox()
     var firstName = ""
     var requestId = ""
+    var garageUserId = ""
+    var bidRequestId = ""
     var requestDetailId = ""
     var userImage = ""
+    var chatUserType: UserType = .user
     var imageController = UIImagePickerController()
     var alertController = UIAlertController()
     var indexVal = 0
@@ -77,6 +80,7 @@ class OneToOneChatVC: BaseVC {
 
     //MARK: OUTLETS
     //=============
+    @IBOutlet var typingStatusFooterView: UIView!
     @IBOutlet weak var editBtn: UIButton!
     @IBOutlet weak var unblockBtn: UIButton!
     @IBOutlet weak var editBidBtn: UIButton!
@@ -147,23 +151,31 @@ class OneToOneChatVC: BaseVC {
         audioRecordBtn.round()
         garageImgView.round()
         userImgView.round()
+        btnContaninerView.addShadow(cornerRadius: 5, color: UIColor.black16, offset: CGSize(width: 0.5, height: 0.5), opacity: 1, shadowRadius: 5)
         textContainerInnerView.round(radius: 4.0)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.db.collection(ApiKey.inbox).document(AppUserDefaults.value(forKey: .uid).stringValue).collection(ApiKey.chat).document(inboxModel.userId).getDocument(completion: { (document, error) in
-            if let doc = document {
-                let unreadMsgs = doc.data()?[ApiKey.unreadMessages] as? Int ?? 0
-                var diff = FirestoreController.ownUnreadCount - unreadMsgs
-                diff = diff <= 0 ? 0 : diff
-                
-                self.db.collection(ApiKey.inbox).document(self.currentUserId).collection(ApiKey.chat).document(self.inboxModel.userId).updateData([ApiKey.unreadMessages: 0])
-                
-                self.db.collection(ApiKey.batchCount)
-                    .document(AppUserDefaults.value(forKey: .uid).stringValue)
-                    .setData([ApiKey.unreadMessages : (diff)])
-            }})
+        //roomId:string,timeStamp:Any,
+        var inboxxUserId = ""
+        if self.requestId.isEmpty{
+            inboxxUserId = inboxModel.userId
+        } else {
+            inboxxUserId = inboxModel.userId + "_" + self.requestId
+        }
+//        self.db.collection(ApiKey.inbox).document(AppUserDefaults.value(forKey: .uid).stringValue).collection(ApiKey.chat).document(inboxModel.userId).getDocument(completion: { (document, error) in
+//            if let doc = document {
+////                let unreadMsgs = doc.data()?[ApiKey.unreadCount] as? Int ?? 0
+////                var diff = FirestoreController.ownUnreadCount - unreadMsgs
+////                diff = diff <= 0 ? 0 : diff
+////
+//                self.db.collection(ApiKey.inbox).document(self.currentUserId).collection(ApiKey.chat).document(self.inboxModel.userId).updateData([ApiKey.unreadCount: 0])
+//
+//                self.db.collection(ApiKey.batchCount)
+//                    .document(AppUserDefaults.value(forKey: .uid).stringValue)
+//                    .setData([ApiKey.unreadCount : 0])
+//            }})
         //        listeners.forEach({$0.remove()})
     }
     
@@ -189,10 +201,12 @@ class OneToOneChatVC: BaseVC {
     }
     
     @IBAction func sendButtonTapped(_ sender: UIButton) {
+        typingDisable()
         sendMessage(msgType: MessageType.text.rawValue)
     }
     
     @IBAction func sendAudioToFirestire(_ sender: UIButton) {
+        typingDisable()
         if sender.imageView?.image !=  #imageLiteral(resourceName: "audioBtnWhite")  {
             self.uploadAudioFileToFirestore(self.recordedUrl!)
             self.audioRecordCancelBtnAction(audioCancelBtn)
@@ -208,7 +222,6 @@ class OneToOneChatVC: BaseVC {
     
     @IBAction func editBtnAction(_ sender: UIButton) {
         btnContaninerView.isHidden.toggle()
-        
     }
     
     @IBAction func editBidBtnAction(_ sender: UIButton) {
@@ -243,8 +256,9 @@ extension OneToOneChatVC {
     private func initialSetup() {
         //        backgroundView.isHidden = false
         //        CommonFunctions.showActivityLoader()
+        NotificationCenter.default.addObserver(self, selector: #selector(editedBidAccepted), name: Notification.Name.EditedBidAccepted, object: nil)
         btnContaninerView.isHidden = true
-        editBidBtn.isHidden = !(isCurrentUserType == .garage)
+        self.isSupportChat = self.requestId.isEmpty
         userRequestView.isHidden = true
         garageTopView.isHidden = true
         chatViewModel.delegate = self
@@ -262,11 +276,27 @@ extension OneToOneChatVC {
         getBatchCount()
         setupAudioMessages()
         getChatData()
+        setUpChatUserType()
         editBtn.isHidden = isSupportChat
+        self.sendButton.backgroundColor = AppColors.fontTertiaryColor
         let tap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped(_:)))
         containerScrollView.addGestureRecognizer(tap)
         let topViewTap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped(_:)))
         topView.addGestureRecognizer(topViewTap)
+    }
+    
+    private func footerViewSetUp(isFooter: Bool = true){
+        self.messagesTableView.tableFooterView = isFooter ? typingStatusFooterView : nil
+        self.messagesTableView.tableFooterView?.height =  isFooter ? 50.0 : 0.0
+    }
+    
+    private func setUpChatUserType(){
+        if UserModel.main.id == self.garageUserId{
+            self.chatUserType = .garage
+        } else {
+            self.chatUserType = .user
+        }
+        editBidBtn.isHidden = !(self.chatUserType == .garage)
     }
     
     private func addTapGestureToAudioBtn() {
@@ -279,6 +309,9 @@ extension OneToOneChatVC {
        
     }
     
+    @objc func editedBidAccepted(){
+        self.getChatData()
+    }
     
     @objc private func scrollViewTapped(_ sender: UITapGestureRecognizer) {
         btnContaninerView.isHidden = true
@@ -381,6 +414,7 @@ extension OneToOneChatVC {
         messageTextView.text = ""
         messageLabel.isHidden = false
         sendButton.setImage(#imageLiteral(resourceName: "group3603"), for: .normal)
+        sendButton.backgroundColor = AppColors.fontTertiaryColor
         resetFrames()
     }
     
@@ -395,7 +429,9 @@ extension OneToOneChatVC {
     @objc func keyboardWillHide(sender: NSNotification) {
         guard let info = sender.userInfo, let duration: TimeInterval = (info[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue else { return }
         scrollMsgToBottom()
-        tableViewTopConstraint.constant = requestId.isEmpty ? 0.0 :  isCurrentUserType == .garage ? 80.0 : 124.0
+        if requestId.isEmpty{tableViewTopConstraint.constant = 0.0}
+        tableViewTopConstraint.constant =  isCurrentUserType == .garage ? (chatViewModel.chatData.id.isEmpty ? 0.0 : 80.0)  : (chatViewModel.chatData.id.isEmpty ? 0.0 : 124.0)
+
         
         UIView.animate(withDuration: duration) { self.view.layoutIfNeeded() }
     }
@@ -411,17 +447,18 @@ extension OneToOneChatVC {
         self.player = nil
         self.playerItem = nil
         if let senderAudioCell = self.messagesTableView.cellForRow(at: self.selectedIndexPath ?? IndexPath.init(row: 0, section: 0)) as? SenderAudioCell {
-            self.selectedIndexPath = nil
             senderAudioCell.customSlider.value = 0.0
             senderAudioCell.loadingView.isHidden = true
+            senderAudioCell.playBtn.isHidden = false
             senderAudioCell.playBtn.setImage(#imageLiteral(resourceName: "playButton"), for: .normal)
         }
         if let receiverAudioCell = self.messagesTableView.cellForRow(at: self.selectedIndexPath ?? IndexPath.init(row: 0, section: 0)) as? ReceiverAudioCell {
-            self.selectedIndexPath = nil
             receiverAudioCell.customSlider.value = 0.0
             receiverAudioCell.loadingView.isHidden = true
+            receiverAudioCell.playBtn.isHidden = false
             receiverAudioCell.playBtn.setImage(#imageLiteral(resourceName: "playButton"), for: .normal)
         }
+        self.selectedIndexPath = nil
         self.messagesTableView.reloadData()
     }
 }
@@ -434,12 +471,14 @@ extension OneToOneChatVC: UITextViewDelegate{
         guard let text = textView.text else { return }
         self.messageLabel.isHidden = !text.isEmpty
         if text.byRemovingLeadingTrailingWhiteSpaces.isEmpty {
-            sendButton.setImage(#imageLiteral(resourceName: "group3603"), for: .normal)
+            self.sendButton.setImage(#imageLiteral(resourceName: "group3603"), for: .normal)
+            self.sendButton.backgroundColor = AppColors.fontTertiaryColor
             if text.isEmpty {
                 self.resetFrames()
                 return
             }
         } else {
+            self.sendButton.backgroundColor = AppColors.appRedColor
             sendButton.setImage(#imageLiteral(resourceName: "group3603"), for: .normal)
         }
         let height = text.heightOfText(self.messageTextView.bounds.width - 10, font: AppFonts.NunitoSansRegular.withSize(16)) + 10
@@ -448,16 +487,37 @@ extension OneToOneChatVC: UITextViewDelegate{
         }
     }
     
+    @objc func typingDisable() {
+        if self.isRoom {
+            self.setTypingUser(isTyping: false)
+        }
+    }
+    
+    //MARK: ---------------Setting Typing Status for Single Chat-------------------
+    @objc func setTypingUser(isTyping : Bool) {
+        /// Mark:- Typing status info abouthe the user
+        let userTypingStatus: [String: Any] = [currentUserId: isTyping,
+                                               inboxModel.userId: false]
+        db.collection(ApiKey.roomInfo).document(roomId).setData([
+            ApiKey.typingStatus:userTypingStatus],merge: true)
+    }
+    
     func textViewDidBeginEditing(_ textView: UITextView) {
+        if self.isRoom {
+        self.setTypingUser(isTyping: true)
+        }
         messageLabel.isHidden = true
         textView.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
+        typingDisable()
         messageLabel.isHidden = !textView.text.byRemovingLeadingTrailingWhiteSpaces.isEmpty
         if messageLabel.isHidden {
+            self.sendButton.backgroundColor = AppColors.appRedColor
             sendButton.setImage(#imageLiteral(resourceName: "group3603"), for: .normal)
         } else {
+            self.sendButton.backgroundColor = AppColors.fontTertiaryColor
             sendButton.setImage(#imageLiteral(resourceName: "group3603"), for: .normal)
         }
     }
@@ -576,7 +636,8 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                 senderMediaCell.layoutSubviews()
                 senderMediaCell.layoutIfNeeded()
                 senderMediaCell.setNeedsLayout()
-                senderMediaCell.senderImageView.setImage_kf(imageString: userImage, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
+                senderMediaCell.senderImageView.setImage_kf(imageString: userImage, placeHolderImage: isSupportChat ? #imageLiteral(resourceName: "splashUpdated") : #imageLiteral(resourceName: "placeHolder"), loader: false)
+                senderMediaCell.senderImageView.backgroundColor = AppColors.fontTertiaryColor
                 setTapGesture(view: senderMediaCell.msgContainerView, indexPath: indexPath)
                 senderMediaCell.senderImageView.addGestureRecognizer(imgTap)
                 senderMediaCell.senderNameLabel.text = self.firstName
@@ -585,7 +646,8 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                 let receiverAudioCell = tableView.dequeueCell(with: ReceiverAudioCell.self)
                 receiverAudioCell.setSlider(model: model)
                 receiverAudioCell.receiverNameLbl.text = self.firstName
-                receiverAudioCell.receiverImgView.setImage_kf(imageString: userImage, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
+                receiverAudioCell.receiverImgView.setImage_kf(imageString: userImage, placeHolderImage: isSupportChat ? #imageLiteral(resourceName: "splashUpdated") : #imageLiteral(resourceName: "placeHolder"), loader: false)
+                receiverAudioCell.receiverImgView.backgroundColor = AppColors.fontTertiaryColor
                 receiverAudioCell.receiverImgView.addGestureRecognizer(imgTap)
                 
                 receiverAudioCell.playBtnTapped = { [weak self]  in
@@ -680,7 +742,8 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                 }
                 
                 receiverOfferCell.userNameLbl.text = self.firstName
-                receiverOfferCell.userImgView.setImage_kf(imageString: userImage, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
+                receiverOfferCell.userImgView.setImage_kf(imageString: userImage, placeHolderImage: isSupportChat ? #imageLiteral(resourceName: "splashUpdated") : #imageLiteral(resourceName: "placeHolder"), loader: false)
+                receiverOfferCell.userImgView.backgroundColor = AppColors.fontTertiaryColor
                 receiverOfferCell.priceLbl.text = "\(model.price)" + "SAR"
                 self.setTapGesture(view: receiverOfferCell.msgContainerView, indexPath: indexPath)
                 receiverOfferCell.userImgView.addGestureRecognizer(imgTap)
@@ -689,7 +752,8 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                 let receiverCell = tableView.dequeueCell(with: ReceiverMessageCell.self)
                 receiverCell.configureCellWith(model: model)
                 receiverCell.receiverNameLbl.text = self.firstName
-                receiverCell.receiverImgView.setImage_kf(imageString: userImage, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
+                receiverCell.receiverImgView.setImage_kf(imageString: userImage, placeHolderImage: isSupportChat ? #imageLiteral(resourceName: "splashUpdated") : #imageLiteral(resourceName: "placeHolder"), loader: false)
+                receiverCell.receiverImgView.backgroundColor = AppColors.fontTertiaryColor
                 self.setTapGesture(view: receiverCell.msgContainerView, indexPath: indexPath)
                 receiverCell.receiverImgView.addGestureRecognizer(imgTap)
                 return receiverCell
@@ -928,31 +992,55 @@ extension OneToOneChatVC{
     
     ///Mark:- Update unread messages
     private func updateUnreadMessage() {
+        //roomId:string,timeStamp:Any,
+         var inboxUserId = ""
+         if self.requestId.isEmpty{
+             inboxUserId = currentUserId
+         } else {
+             inboxUserId = currentUserId + "_" + self.requestId
+         }
+        
         db.collection(ApiKey.inbox)
             .document(inboxModel.userId)
             .collection(ApiKey.chat)
-            .document(currentUserId)
+            .document(inboxUserId)
             .getDocument { (snapshot, error) in
                 if let error = error {
                     print(error.localizedDescription)
                 } else{
                     print("============================")
                     guard let data = snapshot?.data() else { return }
-                    print(data[ApiKey.unreadMessages] as? Int ?? 0)
-                    self.inboxModel.unreadMessages = data[ApiKey.unreadMessages] as? Int ?? 0
+                    print(data[ApiKey.unreadCount] as? Int ?? 0)
+                    self.inboxModel.unreadCount = data[ApiKey.unreadCount] as? Int ?? 0
                     if !self.amIBlocked {
-                        FirestoreController.updateUnreadMessages(senderId: self.currentUserId, receiverId: self.inboxModel.userId, unread: data[ApiKey.unreadMessages] as? Int ?? 0)
+//                        FirestoreController.updateUnreadMessages(senderId: inboxUserId, receiverId: self.inboxModel.userId, unread: data[ApiKey.unreadCount] as? Int ?? 0)
                 }
             }
         }
     }
     
     private func restoreDeletedNode() {
+        //roomId:string,timeStamp:Any,
+        var inboxxUserId = ""
+        if self.requestId.isEmpty{
+            inboxxUserId = inboxModel.userId
+        } else {
+            inboxxUserId = inboxModel.userId + "_" + self.requestId
+        }
+        //roomId:string,timeStamp:Any,
+        var inboxUserId = ""
+        if self.requestId.isEmpty{
+            inboxUserId = currentUserId
+        } else {
+            inboxUserId = currentUserId + "_" + self.requestId
+        }
         db.collection(ApiKey.inbox)
             .document(currentUserId)
             .collection(ApiKey.chat)
-            .document(inboxModel.userId)
-            .setData([ApiKey.chatType: ApiKey.single,
+            .document(inboxxUserId)
+            .setData([ApiKey.requestId: self.requestId,
+                      ApiKey.garageUserId: self.garageUserId,
+                      ApiKey.bidRequestId: self.bidRequestId,ApiKey.chatType: ApiKey.single,
                       ApiKey.roomId: roomId,
                       ApiKey.roomInfo: db.collection(ApiKey.roomInfo).document(roomId),
                       ApiKey.timeStamp: FieldValue.serverTimestamp(),
@@ -966,20 +1054,22 @@ extension OneToOneChatVC{
                 }
         }
         
-        db.collection(ApiKey.inbox).document(inboxModel.userId).collection(ApiKey.chat).document(currentUserId).getDocument { (doc, error) in
+        db.collection(ApiKey.inbox).document(inboxModel.userId).collection(ApiKey.chat).document(inboxUserId).getDocument { (doc, error) in
             if let document = doc {
                 if !document.exists {
                     self.db.collection(ApiKey.inbox)
                         .document(self.inboxModel.userId)
                         .collection(ApiKey.chat)
-                        .document(self.currentUserId)
-                        .setData([ApiKey.chatType: ApiKey.single,
+                        .document(inboxUserId)
+                        .setData([ApiKey.requestId: self.requestId,
+                                  ApiKey.garageUserId: self.garageUserId,
+                                  ApiKey.bidRequestId: self.bidRequestId,ApiKey.chatType: ApiKey.single,
                                   ApiKey.roomId:self.roomId,
                                   ApiKey.roomInfo: self.db.collection(ApiKey.roomInfo).document(self.roomId),
                                   ApiKey.timeStamp: FieldValue.serverTimestamp(),
                                   ApiKey.lastMessage: self.db.collection(ApiKey.lastMessage).document(self.roomId).collection(ApiKey.chat).document(ApiKey.message),
                                   ApiKey.userDetails: self.db.collection(ApiKey.users).document(self.currentUserId),
-                                  ApiKey.unreadMessages: self.inboxModel.unreadMessages + 1])
+                                  ApiKey.unreadCount: self.inboxModel.unreadCount + 1])
                         { err in
                             if let err = err {
                                 print("Error writing document: \(err)")
@@ -1007,12 +1097,14 @@ extension OneToOneChatVC{
             .collection(ApiKey.chat)
             .document(inboxUserId)
             .setData([ApiKey.requestId: self.requestId,
+                      ApiKey.garageUserId: self.garageUserId,
+                      ApiKey.bidRequestId: self.bidRequestId,
                       ApiKey.roomId:roomId,
                       ApiKey.roomInfo: db.collection(ApiKey.roomInfo).document(roomId),
                       ApiKey.timeStamp: FieldValue.serverTimestamp(),
                       ApiKey.lastMessage: db.collection(ApiKey.lastMessage).document(roomId).collection(ApiKey.chat).document(ApiKey.message),
                       ApiKey.userDetails: db.collection(ApiKey.users).document(currentUserId),
-                      ApiKey.unreadMessages: inboxModel.unreadMessages + 1])
+                      ApiKey.unreadCount: inboxModel.unreadCount + 1])
             { err in
                 if let err = err {
                     print("Error writing document: \(err)")
@@ -1032,6 +1124,8 @@ extension OneToOneChatVC{
             .collection(ApiKey.chat)
             .document(inboxxUserId)
             .setData([ApiKey.requestId: self.requestId,
+                      ApiKey.garageUserId: self.garageUserId,
+                      ApiKey.bidRequestId: self.bidRequestId,
                       ApiKey.roomId: roomId,
                       ApiKey.roomInfo: db.collection(ApiKey.roomInfo).document(roomId),
                       ApiKey.timeStamp: FieldValue.serverTimestamp(),
@@ -1147,8 +1241,22 @@ extension OneToOneChatVC{
     
     /// Mark:- Updating the inbox time stamp
     private func updateInboxTimeStamp(){
-        db.collection(ApiKey.inbox).document(inboxModel.userId).collection(ApiKey.chat).document(currentUserId).updateData([ApiKey.timeStamp : FieldValue.serverTimestamp()])
-        db.collection(ApiKey.inbox).document(currentUserId).collection(ApiKey.chat).document(inboxModel.userId).updateData([ApiKey.timeStamp : FieldValue.serverTimestamp()])
+        //roomId:string,timeStamp:Any,
+        var inboxUserId = ""
+        if self.requestId.isEmpty{
+            inboxUserId = currentUserId
+        } else {
+            inboxUserId = currentUserId + "_" + self.requestId
+        }
+        db.collection(ApiKey.inbox).document(inboxModel.userId).collection(ApiKey.chat).document(inboxUserId).updateData([ApiKey.timeStamp : FieldValue.serverTimestamp()])
+        //roomId:string,timeStamp:Any,
+        var inboxxUserId = ""
+        if self.requestId.isEmpty{
+            inboxxUserId = inboxModel.userId
+        } else {
+            inboxxUserId = inboxModel.userId + "_" + self.requestId
+        }
+        db.collection(ApiKey.inbox).document(currentUserId).collection(ApiKey.chat).document(inboxxUserId).updateData([ApiKey.timeStamp : FieldValue.serverTimestamp()])
     }
     
     /// Mark:- Update the status of sender if it is blocked
@@ -1205,8 +1313,8 @@ extension OneToOneChatVC{
                                            inboxModel.userId: userIdDict]
         
         /// Mark:- Typing status info abouthe the user
-        let userTypingStatus: [String: Any] = [currentUserId:"true",
-                                               inboxModel.userId:"true"]
+        let userTypingStatus: [String: Any] = [currentUserId:true,
+                                               inboxModel.userId:false]
         
         let roomImageURL = "https://console.firebase.google.com"
         
@@ -1216,7 +1324,7 @@ extension OneToOneChatVC{
                                  ApiKey.roomName:"",
                                  ApiKey.roomType:"single",
                                  ApiKey.userInfo: userInfoDict,
-                                 ApiKey.userTypingStatus: userTypingStatus]
+                                 ApiKey.typingStatus: userTypingStatus]
         
         FirestoreController.createRoomNode(roomId: roomId, roomImage: roomImageURL, roomName: "", roomType: "single", userInfo: userInfoDict, userTypingStatus: userTypingStatus)
         
@@ -1231,10 +1339,24 @@ extension OneToOneChatVC{
                     self.userInfo = dictonary
                     if let dict = dictonary[self.currentUserId] as? [String: Any] {
                         if let time = dict[ApiKey.deleteTime] as? Timestamp {
+                            if   self.deleteTime != time {
                             self.deleteTime = time
+                            self.fetchMessageListing()
+                            }
                         }
                     }
-                    self.fetchMessageListing()
+                    //Typing status observer.....
+                    if let typingDict = document[ApiKey.typingStatus] as? [String : Any]{
+                        if let senderTypingStatus =  typingDict[self.inboxModel.userId] as? String{
+                            if String(senderTypingStatus) == "true" {
+                                self.footerViewSetUp(isFooter: true)
+                                self.reloadTableViewToBottom()
+                            } else {
+                                self.footerViewSetUp(isFooter: false)
+                                self.reloadTableViewToBottom()
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -1348,6 +1470,21 @@ extension OneToOneChatVC{
     
     // Mark:- Update Inbox
     private func updateInbox(section: Int) {
+        //roomId:string,timeStamp:Any,
+        var inboxxUserId = ""
+        if self.requestId.isEmpty{
+            inboxxUserId = inboxModel.userId
+        } else {
+            inboxxUserId = inboxModel.userId + "_" + self.requestId
+        }
+        
+        //roomId:string,timeStamp:Any,
+        var inboxUserId = ""
+        if self.requestId.isEmpty{
+            inboxUserId = currentUserId
+        } else {
+            inboxUserId = currentUserId + "_" + self.requestId
+        }
         
         printDebug(self.messageListing.last)
         db.collection(ApiKey.lastMessage).document(roomId).collection(ApiKey.chat).document(ApiKey.message).updateData([ApiKey.messageTime: self.messageListing[section].last?.messageTime ?? Timestamp(), ApiKey.messageText: self.messageListing[section].last?.messageText ?? ""])
@@ -1357,12 +1494,12 @@ extension OneToOneChatVC{
         db.collection(ApiKey.inbox)
             .document(inboxModel.userId)
             .collection(ApiKey.chat)
-            .document(currentUserId).updateData([ApiKey.lastMessage : lastMessageReference, ApiKey.timeStamp: FieldValue.serverTimestamp()])
+            .document(inboxUserId).updateData([ApiKey.lastMessage : lastMessageReference, ApiKey.timeStamp: FieldValue.serverTimestamp()])
         
         db.collection(ApiKey.inbox)
             .document(currentUserId)
             .collection(ApiKey.chat)
-            .document(inboxModel.userId).updateData([ApiKey.lastMessage : lastMessageReference, ApiKey.timeStamp: FieldValue.serverTimestamp()])
+            .document(inboxxUserId).updateData([ApiKey.lastMessage : lastMessageReference, ApiKey.timeStamp: FieldValue.serverTimestamp()])
         
     }
     
@@ -1547,11 +1684,9 @@ extension OneToOneChatVC:  AVAudioRecorderDelegate, AVAudioPlayerDelegate {
 // Chat View Model
 extension OneToOneChatVC : OneToOneChatViewModelDelegate{
     func chatDataSuccess(msg: String) {
-        //        backgroundView.isHidden = true
-        //        CommonFunctions.hideActivityLoader()
-        //        self.requestDetailId = chatViewModel.chatData.id
-        if isCurrentUserType == .garage {
-            tableViewTopConstraint.constant = 80.0
+        if self.chatUserType == .garage {
+            self.editBidBtn.isHidden = (chatViewModel.chatData.isServiceStarted ?? true)
+            tableViewTopConstraint.constant = chatViewModel.chatData.id.isEmpty ? 0.0 : 80.0
             userRequestView.isHidden = false
             userNameLbl.text = chatViewModel.chatData.userName
             numberOfServiceLbl.text = chatViewModel.chatData.totalRequests.description + " Services"
@@ -1565,8 +1700,8 @@ extension OneToOneChatVC : OneToOneChatViewModelDelegate{
             str.append(NSAttributedString(string: "SAR", attributes: [NSAttributedString.Key.foregroundColor: AppColors.successGreenColor,NSAttributedString.Key.font: AppFonts.NunitoSansSemiBold.withSize(12.0)]))
             amountValueLbl.attributedText = str
         }
-        else if isCurrentUserType == .user{
-            tableViewTopConstraint.constant = 124.0
+        else if chatUserType == .user{
+            tableViewTopConstraint.constant = chatViewModel.chatData.id.isEmpty  ? 0.0 : 124.0
             garageTopView.isHidden = false
             garageImgView.setImage_kf(imageString: chatViewModel.chatData.garageImage, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
             garageRequestNoValueLbl.text = chatViewModel.chatData.requestId
@@ -1593,6 +1728,7 @@ extension OneToOneChatVC : OneToOneChatViewModelDelegate{
                 } else {
                     //                                self.db.collection(ApiKey.inbox).document(self.currentUserId).collection(ApiKey.chat).document(self.inboxModel.userId).updateData([ApiKey.unreadMessages: 0])
                 }
+                self.getChatData()
             }
         }else {
             self.db.collection(ApiKey.messages).document(self.getRoomId()).collection(ApiKey.chat).document(self.messageId).updateData([ApiKey.messageStatus : 3]) { (error) in

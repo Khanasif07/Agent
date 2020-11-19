@@ -39,16 +39,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate , MessagingDelegate , UNUs
         AWSS3Manager.shared.setupAmazonS3(withPoolID: AppConstants.awss3PoolId)
         GoogleLoginController.shared.configure(withClientId: AppConstants.googleId)
         getGoogleInfoPlist()
+//        getGoogleClientID()
         AppRouter.checkAppInitializationFlow()
         
         return true
     }
    
-    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
-        if fcmToken != AppUserDefaults.value(forKey: .fcmToken).stringValue {
-            print(fcmToken)
-        }
-        AppUserDefaults.save(value: fcmToken , forKey: .fcmToken) // Used for saving device token
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
+        print(fcmToken ?? "")
+        AppUserDefaults.save(value: fcmToken ?? "" , forKey: .fcmToken) // Used for saving device token
     }
     
     // Setup IQKeyboard Manager (Third party for handling keyboard in app)
@@ -137,22 +136,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate , MessagingDelegate , UNUs
 extension AppDelegate {
     // To fetch different google infoplist according to different servers
     func getGoogleInfoPlist() {
-//        var filePath = ""
-//        #if ENV_DEV
-//        filePath = Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist")!
-//        #elseif ENV_QA
-//        filePath = Bundle.main.path(forResource: "GoogleService-Info-QA", ofType: "plist")!
-//        #elseif ENV_PROD
-//        filePath = Bundle.main.path(forResource: "GoogleService-Info-Prod", ofType: "plist")!
-//        #else
-//        filePath = Bundle.main.path(forResource: "GoogleService-Info-Stg", ofType: "plist")!
-//        #endif
-        
-//        if let options = FirebaseOptions(contentsOfFile: filePath) {
-//            FirebaseApp.configure(options: options)
-//        } else {
+        var filePath = ""
+        #if ENV_DEV
+        filePath = Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist")!
+        #elseif ENV_QA
+        filePath = Bundle.main.path(forResource: "GoogleService-Info-QA", ofType: "plist")!
+        #elseif ENV_PROD
+        filePath = Bundle.main.path(forResource: "GoogleService-Info-Prod", ofType: "plist")!
+        #else
+        filePath = Bundle.main.path(forResource: "GoogleService-Info-Prod", ofType: "plist")!
+        #endif
+        if let options = FirebaseOptions(contentsOfFile: filePath) {
+            FirebaseApp.configure(options: options)
+        } else {
             FirebaseApp.configure()
-//        }
+        }
     }
     
     func getGoogleClientID() {

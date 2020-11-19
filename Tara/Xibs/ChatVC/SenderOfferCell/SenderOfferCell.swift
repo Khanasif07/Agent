@@ -24,15 +24,16 @@ class SenderOfferCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         btnStackView.isHidden = true
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        msgContainerView.roundCorners([.topLeft, .topRight, .bottomLeft], radius: 15)
+        acceptBtn.round(radius: 4.0)
+        rejectBtn.round(radius: 4.0)
         userImgView.round()
-        // Initialization code
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
     @IBAction func acceptBtnAction(_ sender: UIButton) {
          acceptBtnTapped?()
