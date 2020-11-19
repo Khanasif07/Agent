@@ -945,12 +945,9 @@ extension OneToOneChatVC: UIImagePickerControllerDelegate, UINavigationControlle
                             .collection(ApiKey.chat)
                             .document(ApiKey.message).delete()
                     }else {
-                    FirestoreController.createLastMessageNodeAfterDeleteMessage(roomId: prevMsgModel.roomId, messageText: prevMsgModel.messageText, messageTime: prevMsgModel.messageTime, messageId: prevMsgModel.messageId, messageType: prevMsgModel.messageType, messageStatus: prevMsgModel.messageStatus, senderId: prevMsgModel.senderId, receiverId: prevMsgModel.receiverId, mediaUrl: prevMsgModel.mediaUrl, blocked: prevMsgModel.blocked, thumbNailURL: prevMsgModel.thumbnailURL, messageDuration: prevMsgModel.messageDuration, price: prevMsgModel.price, amIBlocked: self.amIBlocked)
+                        FirestoreController.createLastMessageNodeAfterDeleteMessage(roomId: prevMsgModel.roomId, messageText: prevMsgModel.messageText, messageTime: prevMsgModel.messageTime, messageId: prevMsgModel.messageId, messageType: prevMsgModel.messageType, messageStatus: prevMsgModel.messageStatus, senderId: prevMsgModel.senderId, receiverId: prevMsgModel.receiverId, mediaUrl: prevMsgModel.mediaUrl, blocked: prevMsgModel.blocked, thumbNailURL: prevMsgModel.thumbnailURL, messageDuration: prevMsgModel.messageDuration, price: prevMsgModel.price, amIBlocked: self.amIBlocked)
                     }
-                } else {
                     if self.messageListing[indexPath.section][indexPath.row].messageStatus == 1 || self.messageListing[indexPath.section][indexPath.row].messageStatus == 2{
-                        self.deleteMessages(index: indexPath)
-                        self.updateInboxTimeStamp()
                         self.db.collection(ApiKey.inbox)
                             .document(self.inboxModel.userId)
                             .collection(ApiKey.chat)
@@ -968,9 +965,28 @@ extension OneToOneChatVC: UIImagePickerControllerDelegate, UINavigationControlle
                                     }
                                 }
                         }
-                    }else{
-                        self.deleteMessages(index: indexPath)
-                        self.updateInboxTimeStamp()
+                    }
+                } else {
+                    self.deleteMessages(index: indexPath)
+                    self.updateInboxTimeStamp()
+                    if self.messageListing[indexPath.section][indexPath.row].messageStatus == 1 || self.messageListing[indexPath.section][indexPath.row].messageStatus == 2{
+                        self.db.collection(ApiKey.inbox)
+                            .document(self.inboxModel.userId)
+                            .collection(ApiKey.chat)
+                            .document(inboxUserId)
+                            .getDocument { (snapshot, error) in
+                                if let error = error {
+                                    print(error.localizedDescription)
+                                } else{
+                                    print("============================")
+                                    guard let data = snapshot?.data() else { return }
+                                    print(data[ApiKey.unreadCount] as? Int ?? 0)
+                                    self.inboxModel.unreadCount = data[ApiKey.unreadCount] as? Int ?? 0
+                                    if !self.amIBlocked {
+                                        FirestoreController.updateUnreadMessagesAfterDeleteMessage(senderId: inboxUserId, receiverId: self.inboxModel.userId, unread: data[ApiKey.unreadCount] as? Int ?? 0)
+                                    }
+                                }
+                        }
                     }
                 }
             } ) {}
