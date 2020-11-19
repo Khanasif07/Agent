@@ -67,6 +67,9 @@ class GarageAllRequestVC: BaseVC {
                 filterArr = [.allRequestServiceType([],false), .allRequestByStatus([],false)]
                 allRequestVC.hitApi()
             }
+        }else {
+            filterBtn.isSelected = false
+            filterArr = [.allRequestServiceType([],false), .allRequestByStatus([],false)]
         }
     }
     

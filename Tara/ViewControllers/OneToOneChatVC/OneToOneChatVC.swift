@@ -374,6 +374,7 @@ extension OneToOneChatVC {
     private func setupTableView() {
         messagesTableView.delegate = self
         messagesTableView.dataSource = self
+        
         messagesTableView.registerCell(with: SenderOfferCell.self)
         messagesTableView.registerCell(with: SenderLocationCell.self)
         messagesTableView.registerCell(with: ReceiverLocationCell.self)
