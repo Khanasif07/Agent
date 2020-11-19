@@ -38,10 +38,14 @@ class EditProfileVM {
             guard let `self` = self else { return }
             let msg = json[ApiKey.message].stringValue
             let statusCode = json[ApiKey.statusCode].intValue
-            FirestoreController.updateUserNode(name: json[ApiKey.data][ApiKey.name].stringValue, imageURL: json[ApiKey.data][ApiKey.image].stringValue, countryCode: json[ApiKey.data][ApiKey.countryCode].stringValue,email: json[ApiKey.data][ApiKey.email].stringValue,phoneNo: json[ApiKey.data][ApiKey.phoneNo].stringValue, completion: {
-                 self.delegate?.getEditProfileVMSuccess(msg:msg, statusCode : statusCode)
-            }) { (error) -> (Void) in
-                 self.delegate?.getEditProfileVMSuccess(msg:msg, statusCode : statusCode)
+            if !json[ApiKey.data][ApiKey.name].stringValue.isEmpty {
+                FirestoreController.updateUserNode(name: json[ApiKey.data][ApiKey.name].stringValue, imageURL: json[ApiKey.data][ApiKey.image].stringValue, countryCode: json[ApiKey.data][ApiKey.countryCode].stringValue,email: json[ApiKey.data][ApiKey.email].stringValue,phoneNo: json[ApiKey.data][ApiKey.phoneNo].stringValue, completion: {
+                    self.delegate?.getEditProfileVMSuccess(msg:msg, statusCode : statusCode)
+                }) { (error) -> (Void) in
+                    self.delegate?.getEditProfileVMSuccess(msg:msg, statusCode : statusCode)
+                }
+            }else {
+                   self.delegate?.getEditProfileVMSuccess(msg:msg, statusCode : statusCode)
             }
             printDebug(json)
         }) { [weak self] (error) in
