@@ -43,6 +43,9 @@ class ProfileVM {
             guard let `self` = self else { return }
             let msg = json[ApiKey.message].stringValue
             self.userModel = UserModel(json[ApiKey.data])
+            if !json[ApiKey.data][ApiKey._id].stringValue.isEmpty{
+            UserModel.main =  self.userModel
+            }
             AppUserDefaults.save(value: json[ApiKey.data][ApiKey.phoneVerified].boolValue, forKey: .phoneNoVerified)
             AppUserDefaults.save(value: json[ApiKey.data][ApiKey.emailVerified].boolValue, forKey: .emailVerified)
             AppUserDefaults.save(value: json[ApiKey.data][ApiKey.isGarrage].boolValue, forKey: .isGarrage)

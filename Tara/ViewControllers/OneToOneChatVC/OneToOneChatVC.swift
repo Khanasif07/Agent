@@ -180,6 +180,10 @@ class OneToOneChatVC: BaseVC {
     }
     
     @IBAction func addAudioMsgBtnTapped(_ sender: UIButton) {
+        if isBlockedByMe {
+            CommonFunctions.showToastWithMessage( LocalizedString.PLEASEUNBLOCKUSERTOSENDMESSAGES.localized)
+            return
+        }
         timerView.isHidden = false
         audioRecordBtn.setImage(#imageLiteral(resourceName: "audioBtnWhite"), for: .normal)
     }
@@ -201,10 +205,6 @@ class OneToOneChatVC: BaseVC {
         } }
     
     @IBAction func audioRecordCancelBtnAction(_ sender: UIButton) {
-        if isBlockedByMe {
-            CommonFunctions.showToastWithMessage( LocalizedString.PLEASEUNBLOCKUSERTOSENDMESSAGES.localized)
-            return
-        }
         timerView.isHidden = true
         timerLbl.text = "0:00"
         self.progressVIew.progress = 0.0
@@ -479,7 +479,7 @@ extension OneToOneChatVC: UITextViewDelegate{
             sendButton.setImage(#imageLiteral(resourceName: "group3603"), for: .normal)
         }
         let height = text.heightOfText(self.messageTextView.bounds.width - 10, font: AppFonts.NunitoSansRegular.withSize(16)) + 10
-        if height >= 40 && height < 120 {
+        if height >= 40 && height < 80 {
             textViewHeightConstraint.constant = height
         }
     }
@@ -862,7 +862,7 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
     private func reloadTableViewToBottom() {
         messagesTableView.reloadData()
         self.view.layoutIfNeeded()
-        scrollMsgToBottom()
+        self.messagesTableView.scrollRectToVisible(self.messagesTableView.tableFooterView?.frame ?? CGRect.init(), animated: true)
     }
     
     private func scrollMsgToBottom(animated: Bool = false) {

@@ -59,6 +59,7 @@ class HomeVC: BaseVC {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        self.dataSetUp()
         self.mainCollView.reloadData()
     }
     // MARK: - IBActions
