@@ -138,7 +138,7 @@ struct GarageRequestModel: Codable {
     var bidPlacedByGarage: [BidDatum]?
     let year: Int?
     let make, model,userName: String?
-    let requestType : Category
+    let requestType : Category?
     let userLongitude: Double?
     let userLatitude: Double?
     let userImage: String?
@@ -154,7 +154,7 @@ struct GarageRequestModel: Codable {
     var isServiceCompleted: Bool?
     
     //Review listing Api key
-    let rating : Int?
+    let rating : Double?
     let review : String?
     let garageId : String?
     let serviceType : String?

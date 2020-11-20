@@ -153,7 +153,7 @@ extension AllRequestVC : UITableViewDelegate, UITableViewDataSource {
                     AppRouter.goToOneToOneChatVC(self, userId: self.viewModel.garageRequestListing[indexPath.row].userId ?? "" ,requestDetailId:self.viewModel.garageRequestListing[indexPath.row].id ?? "",requestId: self.viewModel.garageRequestListing[indexPath.row].requestDocId ?? "", name: self.viewModel.garageRequestListing[indexPath.row].userName ?? "", image: self.viewModel.garageRequestListing[indexPath.row].userImage ?? "", unreadMsgs: 0,garageUserId: isCurrentUserType == .garage ? UserModel.main.id : self.viewModel.garageRequestListing[indexPath.row].userId ?? "")
                 default:
                     self.clearFilterOnTabChange = false
-                    AppRouter.goToGarageServiceRequestVC(vc: self,requestId : self.viewModel.garageRequestListing[indexPath.row].id ?? "", requestType: self.viewModel.garageRequestListing[indexPath.row].requestType.rawValue,bidStatus: self.viewModel.garageRequestListing[indexPath.row].bidStatus ?? .bidFinalsed)
+                    AppRouter.goToGarageServiceRequestVC(vc: self,requestId : self.viewModel.garageRequestListing[indexPath.row].id ?? "", requestType: self.viewModel.garageRequestListing[indexPath.row].requestType?.rawValue ?? "", bidStatus: self.viewModel.garageRequestListing[indexPath.row].bidStatus ?? .bidFinalsed)
                 }
             }
             return cell
@@ -177,7 +177,7 @@ extension AllRequestVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.clearFilterOnTabChange = false
-        AppRouter.goToGarageServiceRequestVC(vc: self,requestId : self.viewModel.garageRequestListing[indexPath.row].id ?? "", requestType: self.viewModel.garageRequestListing[indexPath.row].requestType.rawValue, bidStatus: self.viewModel.garageRequestListing[indexPath.row].bidStatus ?? .bidFinalsed)
+        AppRouter.goToGarageServiceRequestVC(vc: self,requestId : self.viewModel.garageRequestListing[indexPath.row].id ?? "", requestType: self.viewModel.garageRequestListing[indexPath.row].requestType?.rawValue ?? "", bidStatus: self.viewModel.garageRequestListing[indexPath.row].bidStatus ?? .bidFinalsed)
     }
 }
 

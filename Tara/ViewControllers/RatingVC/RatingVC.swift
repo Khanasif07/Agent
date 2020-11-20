@@ -118,6 +118,8 @@ extension RatingVC {
     
     private func prefilledData(){
         self.txtView.text = viewModel.ratingModel?.review ?? ""
+        txtViewCountLbl.text = "\(viewModel.ratingModel?.review?.count ?? 0)" + "/250"
+        
         for i in 0...starBtns.count - 1{
             if  i < (viewModel.ratingModel?.rating ??  0) {
                 starBtns[i].isSelected = true
@@ -155,6 +157,7 @@ extension RatingVC {
 }
 
 extension RatingVC : UITextViewDelegate{
+    
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
         if textView.text == LocalizedString.typeHere.localized {
             textView.text = ""

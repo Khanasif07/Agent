@@ -45,7 +45,7 @@ class ReviewAndRatingTableViewCell: UITableViewCell {
     func bindData(_ model: GarageRequestModel) {
         if let rating = model.rating {
             for i in 0...starBtns.count - 1{
-                if i < rating {
+                if i < Int(rating) {
                     starBtns[i].isSelected = true
                 }else {
                     starBtns[i].isSelected = false

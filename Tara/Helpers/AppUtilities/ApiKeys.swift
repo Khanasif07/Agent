@@ -254,9 +254,8 @@ enum ApiKey {
     static var reportReason: String {return "reportReason"}
     static var isacceptedProposalEdited: String {return "isacceptedProposalEdited"}
 
-
-
-
+    static var ratingCount: String {return "ratingCount"}
+    static var averageRating: String {return "averageRating"}
     
 }
 

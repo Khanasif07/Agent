@@ -34,8 +34,8 @@ class ServiceCompletedTableViewCell: UITableViewCell {
     }
     
     func bindData(_ model: GarageRequestModel) {
-        let type = model.requestType == .tyres ? "Tyre" : model.requestType.rawValue
-        serviceTypeLbl.text = (type) + LocalizedString.service.localized
+        let type = model.requestType == .tyres ? "Tyre" : model.requestType?.rawValue
+        serviceTypeLbl.text = (type ?? "") + LocalizedString.service.localized
         userImgView.setImage_kf(imageString: model.userImage ?? "", placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
         userNameLbl.text = model.userName
         let date = (model.serviceCompletedOn)?.breakCompletDate(outPutFormat: Date.DateFormat.ddMMyyyy.rawValue, inputFormat: Date.DateFormat.yyyyMMddTHHmmsssssz.rawValue)

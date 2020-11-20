@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DZNEmptyDataSet
 
 class ReViewListingVC: BaseVC {
  
@@ -29,6 +30,8 @@ class ReViewListingVC: BaseVC {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = true
+        self.tabBarController?.tabBar.isTranslucent = true
     }
     
     override func viewDidLayoutSubviews() {
@@ -103,5 +106,37 @@ extension ReViewListingVC: ReViewListingVMDelegate{
     
     func getReviewListingFailed(msg: String) {
         
+    }
+}
+
+//MARK: DZNEmptyDataSetSource and DZNEmptyDataSetDelegate
+//================================
+extension ReViewListingVC : DZNEmptyDataSetSource,DZNEmptyDataSetDelegate {
+    
+    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
+        return  #imageLiteral(resourceName: "layerX00201")
+    }
+    
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        var emptyData = ""
+        emptyData = viewModel.reviewListingArr.endIndex == 0 ? "No data found" : ""
+    
+        return NSAttributedString(string: emptyData, attributes: [NSAttributedString.Key.foregroundColor: AppColors.fontTertiaryColor,NSAttributedString.Key.font: AppFonts.NunitoSansBold.withSize(18)])
+    }
+    
+    func emptyDataSetShouldDisplay(_ scrollView: UIScrollView!) -> Bool {
+        return true
+    }
+    
+    func emptyDataSetShouldAllowScroll(_ scrollView: UIScrollView!) -> Bool {
+        return true
+    }
+    
+    func emptyDataSetShouldAllowTouch(_ scrollView: UIScrollView!) -> Bool {
+        return true
+    }
+    
+    func emptyDataSetShouldBeForced(toDisplay scrollView: UIScrollView!) -> Bool {
+        return false
     }
 }

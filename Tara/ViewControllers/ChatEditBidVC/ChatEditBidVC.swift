@@ -405,7 +405,7 @@ extension ChatEditBidVC :GarageServiceRequestVMDelegate {
     }
     
     func hitBrandListingApi(country: String = "") {
-        var params = [ApiKey.page: "1",ApiKey.limit : "100",ApiKey.type: viewModel.garageRequestDetailArr?.requestType.rawValue ?? ""]
+        var params = [ApiKey.page: "1",ApiKey.limit : "100",ApiKey.type: viewModel.garageRequestDetailArr?.requestType?.rawValue ?? ""]
         if !country.isEmpty {
             params[ApiKey.country] = country
         }
