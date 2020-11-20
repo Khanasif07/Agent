@@ -153,7 +153,6 @@ extension GarageHomeVC : UICollectionViewDelegate, UICollectionViewDataSource,UI
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        showAlert(msg: "Under Development")
     }
     
 }
