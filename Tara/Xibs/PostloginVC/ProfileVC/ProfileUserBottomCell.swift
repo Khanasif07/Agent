@@ -108,6 +108,8 @@ extension ProfileUserBottomCell: UITableViewDelegate, UITableViewDataSource {
             serviceCompletedTapped?()
         case LocalizedString.help.localized:
             helpBtnTapped?()
+        case LocalizedString.change_password.localized:
+            changePassword?()
         default:
             printDebug("Do Nothing")
         }
