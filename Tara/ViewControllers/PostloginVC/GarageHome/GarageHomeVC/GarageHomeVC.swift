@@ -61,7 +61,7 @@ class GarageHomeVC: BaseVC {
     }
     
     @IBAction func reviewBtnAction(_ sender: UIButton) {
-           AppRouter.goToReViewListingVC(vc: self, garageId: self.viewModel.garageHomeModel.garageId)
+        AppRouter.goToReViewListingVC(vc: self, garageId: self.viewModel.garageHomeModel.garageId)
     }
 }
 
@@ -163,7 +163,7 @@ extension GarageHomeVC : UICollectionViewDelegate, UICollectionViewDataSource,UI
 extension GarageHomeVC:  GarageHomeVMDelegate{
     
      func getAdminIdSuccess(id: String, name: String, image: String){
-        AppRouter.goToOneToOneChatVC(self, userId: id, requestId: "", name: name, image: image, unreadMsgs: 0, isSupportChat: true,garageUserId: isCurrentUserType == .garage ? UserModel.main.id : "")
+        AppRouter.goToOneToOneChatVC(self, userId: id, requestId: "", name: "Support Chat", image: image, unreadMsgs: 0, isSupportChat: true,garageUserId: isCurrentUserType == .garage ? UserModel.main.id : "")
     }
     
     func getAdminIdFailed(msg: String) {
