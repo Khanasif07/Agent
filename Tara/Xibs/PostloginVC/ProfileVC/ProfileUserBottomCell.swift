@@ -20,8 +20,9 @@ class ProfileUserBottomCell: UITableViewCell {
     var termConditionTapped : (()->())?
     var privacyPolicyTapped : (()->())?
     var serviceCompletedTapped : (()->())?
+    var helpBtnTapped : (()->())?
     var isComeFromProfile: Bool = false
-    var selectItemArray = [LocalizedString.my_vehicle.localized,LocalizedString.service_history.localized,LocalizedString.payments.localized,LocalizedString.saved_cards.localized,LocalizedString.added_location.localized,LocalizedString.change_password.localized,LocalizedString.setting.localized]
+    var selectItemArray = [LocalizedString.my_vehicle.localized,LocalizedString.service_history.localized,LocalizedString.payments.localized,LocalizedString.saved_cards.localized,LocalizedString.added_location.localized,LocalizedString.change_password.localized, LocalizedString.setting.localized]
     var selectImageArray: [UIImage] = [#imageLiteral(resourceName: "vehicle"),#imageLiteral(resourceName: "serviceHistory"),#imageLiteral(resourceName: "payment"),#imageLiteral(resourceName: "savedCard"),#imageLiteral(resourceName: "addedLocation"),#imageLiteral(resourceName: "group"),#imageLiteral(resourceName: "profileSettting")]
     
     @IBOutlet weak var internalTableView: AGTableView!
@@ -105,6 +106,8 @@ extension ProfileUserBottomCell: UITableViewDelegate, UITableViewDataSource {
             privacyPolicyTapped?()
         case LocalizedString.service_Completed.localized:
             serviceCompletedTapped?()
+        case LocalizedString.help.localized:
+            helpBtnTapped?()
         default:
             printDebug("Do Nothing")
         }

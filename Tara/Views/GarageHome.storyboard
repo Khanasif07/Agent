@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -133,78 +132,62 @@
                                                 </connections>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="whX-Pg-2AH">
-                                                <rect key="frame" x="26" y="41" width="133.5" height="22"/>
+                                                <rect key="frame" x="26" y="41" width="91" height="15.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Ratings:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W5i-Jr-aHL">
-                                                        <rect key="frame" x="0.0" y="0.0" width="69.5" height="22"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="69.5" height="15.5"/>
                                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="13"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zlb-XM-wcY">
-                                                        <rect key="frame" x="72.5" y="0.0" width="18.5" height="22"/>
-                                                        <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="13"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="group3922" translatesAutoresizingMaskIntoConstraints="NO" id="bq0-5Y-YU2">
-                                                        <rect key="frame" x="94" y="0.0" width="22" height="22"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" secondItem="bq0-5Y-YU2" secondAttribute="height" multiplier="1:1" id="bAi-kw-ACf"/>
-                                                            <constraint firstAttribute="height" constant="22" id="uYs-N0-sV3"/>
-                                                        </constraints>
-                                                    </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q8E-R7-nYu">
-                                                        <rect key="frame" x="119" y="0.0" width="14.5" height="22"/>
+                                                        <rect key="frame" x="72.5" y="0.0" width="18.5" height="15.5"/>
                                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="13"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fy8-Vz-r8C">
-                                                <rect key="frame" x="98.5" y="61" width="18.5" height="1"/>
-                                                <color key="backgroundColor" name="incomingMessageLabel"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="group3922" translatesAutoresizingMaskIntoConstraints="NO" id="bq0-5Y-YU2">
+                                                <rect key="frame" x="121" y="42" width="14" height="14"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="1" id="JUY-C3-ueW"/>
+                                                    <constraint firstAttribute="width" secondItem="bq0-5Y-YU2" secondAttribute="height" multiplier="1:1" id="bAi-kw-ACf"/>
+                                                    <constraint firstAttribute="height" constant="14" id="uYs-N0-sV3"/>
                                                 </constraints>
-                                            </view>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q8E-R7-nYu">
+                                                <rect key="frame" x="139" y="34" width="14.5" height="30"/>
+                                                <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="13"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j3c-6F-q9s">
-                                                <rect key="frame" x="98.5" y="41" width="61" height="22"/>
+                                                <rect key="frame" x="98.5" y="34" width="55" height="30"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <connections>
                                                     <action selector="reviewBtnAction:" destination="kGq-nU-rZv" eventType="touchUpInside" id="RVY-Mq-Csa"/>
                                                 </connections>
                                             </button>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6DL-rn-N6X">
-                                                <rect key="frame" x="145" y="61" width="14.5" height="1"/>
-                                                <color key="backgroundColor" name="incomingMessageLabel"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="1" id="7Xu-4C-gWg"/>
-                                                </constraints>
-                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstItem="whX-Pg-2AH" firstAttribute="top" secondItem="hLN-OY-EcT" secondAttribute="bottom" constant="1" id="1yK-pd-fcd"/>
+                                            <constraint firstItem="j3c-6F-q9s" firstAttribute="top" secondItem="q8E-R7-nYu" secondAttribute="top" id="5WY-J8-dzn"/>
                                             <constraint firstItem="j3c-6F-q9s" firstAttribute="leading" secondItem="zlb-XM-wcY" secondAttribute="leading" id="7VH-IR-VtG"/>
-                                            <constraint firstItem="j3c-6F-q9s" firstAttribute="top" secondItem="whX-Pg-2AH" secondAttribute="top" id="8Y8-AT-wRO"/>
-                                            <constraint firstItem="6DL-rn-N6X" firstAttribute="bottom" secondItem="whX-Pg-2AH" secondAttribute="bottom" constant="-1.2" id="9ct-zJ-Oim"/>
-                                            <constraint firstItem="j3c-6F-q9s" firstAttribute="trailing" secondItem="q8E-R7-nYu" secondAttribute="trailing" id="Aqy-fG-2TA"/>
-                                            <constraint firstItem="6DL-rn-N6X" firstAttribute="leading" secondItem="q8E-R7-nYu" secondAttribute="leading" id="DBX-YP-Yye"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="whX-Pg-2AH" secondAttribute="trailing" constant="20" id="EEz-he-rtp"/>
                                             <constraint firstAttribute="trailing" secondItem="sLo-3k-oiT" secondAttribute="trailing" constant="21" id="IH8-KG-6l9"/>
-                                            <constraint firstItem="Fy8-Vz-r8C" firstAttribute="leading" secondItem="zlb-XM-wcY" secondAttribute="leading" id="RWr-9n-bdq"/>
-                                            <constraint firstItem="j3c-6F-q9s" firstAttribute="bottom" secondItem="whX-Pg-2AH" secondAttribute="bottom" id="X6D-4E-gSi"/>
+                                            <constraint firstItem="j3c-6F-q9s" firstAttribute="bottom" secondItem="q8E-R7-nYu" secondAttribute="bottom" id="WWQ-To-fqO"/>
                                             <constraint firstItem="whX-Pg-2AH" firstAttribute="leading" secondItem="hLN-OY-EcT" secondAttribute="leading" id="YJG-0b-Tli"/>
                                             <constraint firstItem="sLo-3k-oiT" firstAttribute="centerY" secondItem="hLN-OY-EcT" secondAttribute="centerY" id="YgU-4O-1rH"/>
-                                            <constraint firstItem="Fy8-Vz-r8C" firstAttribute="bottom" secondItem="whX-Pg-2AH" secondAttribute="bottom" constant="-1.2" id="aIc-DO-Myy"/>
-                                            <constraint firstItem="Fy8-Vz-r8C" firstAttribute="trailing" secondItem="zlb-XM-wcY" secondAttribute="trailing" id="cF4-5n-JZo"/>
+                                            <constraint firstItem="bq0-5Y-YU2" firstAttribute="leading" secondItem="whX-Pg-2AH" secondAttribute="trailing" constant="4" id="aGq-Rd-ulV"/>
                                             <constraint firstAttribute="height" constant="60" id="ccH-bU-FLd"/>
+                                            <constraint firstItem="j3c-6F-q9s" firstAttribute="trailing" secondItem="q8E-R7-nYu" secondAttribute="trailing" id="drT-R8-l8j"/>
                                             <constraint firstItem="hLN-OY-EcT" firstAttribute="top" secondItem="9fU-T0-Tcz" secondAttribute="top" id="er1-xe-OO2"/>
                                             <constraint firstItem="sLo-3k-oiT" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hLN-OY-EcT" secondAttribute="trailing" constant="10" id="f9q-W2-Vz8"/>
-                                            <constraint firstItem="6DL-rn-N6X" firstAttribute="trailing" secondItem="q8E-R7-nYu" secondAttribute="trailing" id="lzl-Ki-HVa"/>
+                                            <constraint firstItem="q8E-R7-nYu" firstAttribute="leading" secondItem="bq0-5Y-YU2" secondAttribute="trailing" constant="4" id="rqD-Hz-TiU"/>
                                             <constraint firstItem="hLN-OY-EcT" firstAttribute="leading" secondItem="9fU-T0-Tcz" secondAttribute="leading" constant="26" id="tSs-oR-C5r"/>
+                                            <constraint firstItem="bq0-5Y-YU2" firstAttribute="centerY" secondItem="whX-Pg-2AH" secondAttribute="centerY" id="zkc-ZR-RWg"/>
+                                            <constraint firstItem="q8E-R7-nYu" firstAttribute="centerY" secondItem="bq0-5Y-YU2" secondAttribute="centerY" id="zxB-0f-Y5j"/>
                                         </constraints>
                                     </view>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="PsR-QJ-u51">
@@ -378,8 +361,5 @@
         <image name="profile" width="34" height="34"/>
         <image name="secondTab" width="60" height="60"/>
         <image name="setting" width="34" height="34"/>
-        <namedColor name="incomingMessageLabel">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </namedColor>
     </resources>
 </document>

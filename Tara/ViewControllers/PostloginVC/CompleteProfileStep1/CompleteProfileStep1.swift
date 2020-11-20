@@ -55,6 +55,12 @@ class CompleteProfileStep1: BaseVC {
         initialSetup()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = true
+        tabBarController?.tabBar.isTranslucent = true
+
+    }
     // MARK: - IBActions
     //===========================
     
@@ -101,6 +107,8 @@ extension CompleteProfileStep1 {
         self.prepareMap()
         self.setAddress()
         viewModel.delegate = self
+        titleLbl.text = fromGarage == .editGarageProfile ? "Edit Profile" : "Complete Profile"
+        saveContinueBtn.isEnabled = addBtnStatus()
         self.viewModel.getMyProfileData(params: [:])
     }
     
@@ -120,7 +128,7 @@ extension CompleteProfileStep1 {
         [nameTxtField,distTxtField,addressTxtField].forEach({$0?.placeholderColor = AppColors.fontSecondaryColor})
         [nameTxtField,distTxtField,addressTxtField].forEach({$0?.delegate = self})
         self.saveContinueBtn.setTitle(LocalizedString.saveContinue.localized, for: .normal)
-        self.saveContinueBtn.isEnabled = false
+//        self.saveContinueBtn.isEnabled = false
     }
     
     private func prepareMap() {

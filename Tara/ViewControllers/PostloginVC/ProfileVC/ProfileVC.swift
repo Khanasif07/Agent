@@ -19,8 +19,8 @@ class ProfileVC: BaseVC {
     // MARK: - Variables
     //===========================
     var viewModel = ProfileVM()
-    var selectItemArray = [LocalizedString.my_vehicle.localized,LocalizedString.service_history.localized,LocalizedString.payments.localized,LocalizedString.saved_cards.localized,LocalizedString.added_location.localized,LocalizedString.change_password.localized,LocalizedString.settings.localized]
-    var selectImageArray: [UIImage] = [#imageLiteral(resourceName: "vehicle"),#imageLiteral(resourceName: "serviceHistory"),#imageLiteral(resourceName: "payment"),#imageLiteral(resourceName: "savedCard"),#imageLiteral(resourceName: "addedLocation"),#imageLiteral(resourceName: "group"),#imageLiteral(resourceName: "profileSettting")]
+    var selectItemArray = [LocalizedString.service_history.localized,LocalizedString.payments.localized,LocalizedString.saved_cards.localized,LocalizedString.change_password.localized,LocalizedString.settings.localized]
+    var selectImageArray: [UIImage] = [#imageLiteral(resourceName: "serviceHistory"),#imageLiteral(resourceName: "payment"),#imageLiteral(resourceName: "savedCard"),#imageLiteral(resourceName: "group"),#imageLiteral(resourceName: "profileSettting")]
     
     // MARK: - Lifecycle
     //===========================

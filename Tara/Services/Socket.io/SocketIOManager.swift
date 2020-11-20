@@ -40,11 +40,11 @@ class SocketIOManager: NSObject {
         #if ENV_DEV
         return "https://arabiantyersdevapi.appskeeper.com"
         #elseif ENV_STAG
-        return "http://arabiantyersstgapi.appskeeper.com"
+        return "https://arabiantyersstgapi.appskeeper.com"
         #elseif ENV_QA
-        return "http://arabiantyersqaapi.appskeeper.com"
+        return "https://arabiantyersqaapi.appskeeper.com"
         #elseif ENV_PROD
-        return "http://arabiantyersstgapi.appskeeper.com"
+        return "https://arabiantyersstgapi.appskeeper.com"
         #else
         return ""
         #endif

@@ -13,13 +13,13 @@ import Foundation
 
 var baseUrl: String {
     #if ENV_DEV
-    return "http://arabiantyersdevapi.appskeeper.com/api/v1/"
+    return "https://arabiantyersdevapi.appskeeper.com/api/v1/"
     #elseif ENV_STAG
-    return "http://arabiantyersstgapi.appskeeper.com/api/v1/"
+    return "https://arabiantyersstgapi.appskeeper.com/api/v1/"
     #elseif ENV_QA
-    return "http://arabiantyersqaapi.appskeeper.com/api/v1/"
+    return "https://arabiantyersqaapi.appskeeper.com/api/v1/"
     #elseif ENV_PROD
-    return "http://arabiantyersstgapi.appskeeper.com/api/v1/"
+    return "https://arabiantyersstgapi.appskeeper.com/api/v1/"
     #else
     return ""
     #endif

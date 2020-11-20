@@ -227,5 +227,4 @@ extension HomeVC: EditProfileVCDelegate {
     func editProfileSuccess(){
         
     }
-
 }
