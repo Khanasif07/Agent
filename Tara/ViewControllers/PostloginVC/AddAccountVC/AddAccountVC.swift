@@ -128,7 +128,8 @@ extension AddAccountVC {
             termAndConditionBottomView.isHidden = true
             checkBtn.isHidden = true
             lblContainerView.isHidden = true
-            titleLbl.text = LocalizedString.completeProfile.localized
+            
+            titleLbl.text = fromGarage == .editGarageProfile ? "Edit Profile" : LocalizedString.completeProfile.localized
             registerBtn.setTitle(LocalizedString.submit.localized, for: .normal)
             helpBtn.setTitle(nil, for: .normal) 
             helpBtn.setImage(#imageLiteral(resourceName: "group3887"), for: .normal)
@@ -205,10 +206,22 @@ extension AddAccountVC: GarageRegistrationVMDelegate {
     private func fillDataStatus()-> Bool{
         return !GarageProfileModel.shared.bankName.isEmpty && !GarageProfileModel.shared.accountNumber.isEmpty && !GarageProfileModel.shared.confirmAccountNumber.isEmpty
     }
-  
+    
     func completeProfileSuccess(msg: String){
-        AppUserDefaults.save(value: "2", forKey: .currentUserType)
-        AppRouter.goToGarageHome()
+        if fromGarage == .editGarageProfile {
+            for controller in self.navigationController!.viewControllers as Array {
+                if controller.isKind(of: GarageProfileVC.self) {
+                    guard let vc = controller as? GarageProfileVC else {return}
+                    vc.hitProfileApi()
+                    _ =  self.navigationController!.popToViewController(controller, animated: true)
+                    break
+                }
+            }
+        }
+        else {
+            AppUserDefaults.save(value: "2", forKey: .currentUserType)
+            AppRouter.goToGarageHome()
+        }
     }
     
     func completeProfileFailure(msg: String){

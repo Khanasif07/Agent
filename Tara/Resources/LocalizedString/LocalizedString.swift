@@ -351,7 +351,7 @@ enum LocalizedString : String {
     case today_Revenue
     case allRequests
     case bookedRequests
-
+    case serviceCompleted
     
     // MARK:c - Complete profile 1  VC Values
     //==============================

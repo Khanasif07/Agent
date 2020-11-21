@@ -41,6 +41,11 @@ enum Category : String,Codable{
     case battery = "Battery"
 }
 
+enum GarageProfile {
+    case normal
+    case editGarageProfile
+}
+
 enum CellType : CaseIterable{
   
     case created

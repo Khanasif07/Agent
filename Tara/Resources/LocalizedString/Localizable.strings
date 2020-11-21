@@ -272,7 +272,7 @@
 "openForBid" = "Open for Bid";
 "bidPlaced" = "Bid Placed";
 "bidRejected" = "Bid Rejected";
-
+"serviceCompleted" = "Service Completed";
 "lowToHigh" = "Cost: Low to High";
 "highToLow" = "Cost: High to Low";
 "ratingHighToLow" = "Rating: High to Low";

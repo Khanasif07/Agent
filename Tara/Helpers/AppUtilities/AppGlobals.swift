@@ -64,6 +64,8 @@ var isCurrentUserType : UserType {
 
 var categoryType : Category = .battery
 
+var fromGarage : GarageProfile = .normal
+
 var isPhoneNoVerified : Bool {
     return AppUserDefaults.value(forKey: .phoneNoVerified).boolValue
 }

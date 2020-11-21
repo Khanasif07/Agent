@@ -256,7 +256,9 @@ enum ApiKey {
 
     static var ratingCount: String {return "ratingCount"}
     static var averageRating: String {return "averageRating"}
-    
+    static var ongoingServices: String {return "ongoingServices"}
+    static var servicesCompletedToday: String {return "servicesCompletedToday"}
+
 }
 
 //MARK:- Api Code

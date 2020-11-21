@@ -97,6 +97,8 @@ extension GarageProfileVC {
                 
                 cell.editProfileBtnAction = { [weak self] in
                     guard let `self` = self else { return }
+                    fromGarage = .editGarageProfile
+                    AppRouter.goToCompleteProfileStep1VC(vc: self)
                 }
                 
                 return cell
@@ -122,7 +124,7 @@ extension GarageProfileVC {
                 return 2
     }
     
-    private func hitProfileApi(){
+    public func hitProfileApi(){
         if isUserLoggedin {
             self.viewModel.getMyProfileData(params: [:])
         }

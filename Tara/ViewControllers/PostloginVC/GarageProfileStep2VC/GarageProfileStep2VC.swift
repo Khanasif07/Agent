@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 import SkyFloatingLabelTextField
 //import TTRangeSlider
 
@@ -29,6 +30,7 @@ class GarageProfileStep2VC: BaseVC {
     //===========================
     var selectedFacilitiesArr : [FacilityModel] = []
     var serviceImagesArray = [String]()
+    var imagesArray : [ImageModel] = []
     var selectBrandAndServiceArr : [String] = []
     fileprivate var hasImageUploaded = true {
         didSet {
@@ -100,8 +102,28 @@ class GarageProfileStep2VC: BaseVC {
            return
        }
        self.captureImage(delegate: self)
-       }
     }
+    
+    func getBrandAndServiceName(data : [JSONDictionary])-> [String] {
+        var arr : [String] = []
+        data.forEach { (element) in
+            selectedFacilitiesArr.append(FacilityModel(element))
+            if let brands = JSON(element[ApiKey.brands]).array {
+                let serviceName = JSON(element[ApiKey.serviceName]).stringValue ?? ""
+                if brands.isEmpty {
+                    arr.append(serviceName)
+                }else {
+                    brands.forEach { (brand) in
+                        let brandName = JSON(brand[ApiKey.brandName]).stringValue ?? ""
+                        let txt = brandName + " (\(serviceName))"
+                        arr.append(txt)
+                    }
+                }
+            }
+        }
+        return arr
+    }
+}
 
 // MARK: - Extension For Functions
 //===========================
@@ -140,7 +162,7 @@ extension GarageProfileStep2VC {
         saveAndContinueBtn.titleLabel?.font =  AppFonts.NunitoSansSemiBold.withSize(16.0)
 
 //        serviceCenterNameLbl.text = LocalizedString.installationPriceRange.localized
-        titleLbl.text = LocalizedString.completeProfile.localized
+        titleLbl.text = fromGarage == .editGarageProfile ? "Edit Profile" : LocalizedString.completeProfile.localized
         headingLbl.text = LocalizedString.serviceCenterImage.localized
         helpBtn.setTitle(LocalizedString.help.localized, for: .normal)
         saveAndContinueBtn.setTitle(LocalizedString.saveContinue.localized, for: .normal)
@@ -171,7 +193,15 @@ extension GarageProfileStep2VC {
     
     private func setPreFilledData(){
         mainCollView.dataSource = self
-//        imagesArray = GarageProfileModel.shared.serviceCenterImages
+        imagesArray = GarageProfileModel.shared.serviceCenterImages
+        if !GarageProfileModel.shared.services.isEmpty {
+            selectBrandAndServiceArr = getBrandAndServiceName(data: GarageProfileModel.shared.services)
+            customView.collView.isHidden = selectBrandAndServiceArr.isEmpty
+            customView.floatLbl.isHidden = selectBrandAndServiceArr.isEmpty
+            view.layoutIfNeeded()
+            view.setNeedsLayout()
+            mainCollView.reloadData()
+        }
     }
 
     @objc private func crossImageBtnTapped(_ sender: UIButton) {

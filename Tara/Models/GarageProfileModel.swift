@@ -93,8 +93,6 @@ struct GarageProfileModel {
 
            return dict
        }
-       
-    
 }
 
 struct GarageProfilePreFillModel {
@@ -162,7 +160,7 @@ struct GarageProfilePreFillModel {
         GarageProfileModel.shared.accountNumber = model.accountNumber
         GarageProfileModel.shared.serviceCenterDist = model.serviceCenterDist
         GarageProfileModel.shared.serviceCenterImages = model.serviceCenterImages
-        
+        GarageProfileModel.shared.services = model.services.map({$0.getSelectedService()})
     }
     
     func getBrandAndServiceName()-> [String] {
@@ -189,9 +187,18 @@ struct ServicesModel {
     init(_ json : JSON = JSON()) {
         self.serviceName = json[ApiKey.serviceName].stringValue
         self.serviceId = json[ApiKey.serviceId].stringValue
-        self.brands = json[ApiKey.brands].arrayValue.map({Brands($0)})
+        self.brands = json[ApiKey.brands].arrayValue.map({Brands($0,isSelected: true)})
     }
 
+    func getSelectedService() -> JSONDictionary {
+         var brandArr : [JSONDictionary] = []
+         var dict : JSONDictionary = [ApiKey.serviceId: self.serviceId, ApiKey.serviceName: self.serviceName]
+         for cat in brands {
+                 brandArr.append(cat.getSelectedBrands())
+         }
+         dict[ApiKey.brands] = brandArr
+         return dict
+     }
 }
 
 

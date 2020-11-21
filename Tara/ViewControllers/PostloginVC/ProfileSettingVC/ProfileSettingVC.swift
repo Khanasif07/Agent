@@ -18,12 +18,13 @@ class ProfileSettingVC: BaseVC {
     // MARK: - Variables
     //===========================
     var switchProfileString = isCurrentUserType == .user ? LocalizedString.switchProfileTogarage.localized : LocalizedString.switchProfileToUser.localized
-    var selectItemArray = [LocalizedString.aboutUs.localized,LocalizedString.terms_Condition.localized,LocalizedString.privacy_policy.localized,LocalizedString.contactUs.localized,LocalizedString.changeLanguage.localized,LocalizedString.switchProfileTogarage.localized,LocalizedString.reportAnIssue.localized,LocalizedString.faq.localized,LocalizedString.referFriend.localized]
-    var selectImageArray: [UIImage] = [#imageLiteral(resourceName: "favicon2"),#imageLiteral(resourceName: "terms"),#imageLiteral(resourceName: "privacyPolicy"),#imageLiteral(resourceName: "contactUs"),#imageLiteral(resourceName: "changeLang"),#imageLiteral(resourceName: "switchProfile"),#imageLiteral(resourceName: "report"),#imageLiteral(resourceName: "faq"),#imageLiteral(resourceName: "refer")]
+    var selectItemArray = [LocalizedString.aboutUs.localized,LocalizedString.terms_Condition.localized,LocalizedString.privacy_policy.localized,LocalizedString.contactUs.localized,LocalizedString.changeLanguage.localized,LocalizedString.switchProfileTogarage.localized,LocalizedString.help.localized,LocalizedString.faq.localized]
+    var selectImageArray: [UIImage] = [#imageLiteral(resourceName: "favicon2"),#imageLiteral(resourceName: "terms"),#imageLiteral(resourceName: "privacyPolicy"),#imageLiteral(resourceName: "contactUs"),#imageLiteral(resourceName: "changeLang"),#imageLiteral(resourceName: "switchProfile"),isCurrentUserType == .user ? #imageLiteral(resourceName: "group3887") : #imageLiteral(resourceName: "changePassword") , #imageLiteral(resourceName: "faq")]
     var selectItemArray1 = [LocalizedString.logout.localized]
     var selectImageArray1: [UIImage] = [#imageLiteral(resourceName: "logout")]
     var viewModel = GarageRegistrationVM()
-    
+    var locationViewModel = LocationPopUpVM()
+
     // MARK: - Lifecycle
     //===========================
     override func viewDidLoad() {
@@ -63,6 +64,7 @@ extension ProfileSettingVC {
         switchProfileTitle()
         self.tableViewSetUp()
         viewModel.delegate = self
+        locationViewModel.delegate = self
     }
     
     private func tableViewSetUp(){
@@ -106,13 +108,19 @@ extension ProfileSettingVC {
                     }
                     
                     cell.termConditionTapped = { [weak self]  in
-                    guard let `self` = self else { return }
+                        guard let `self` = self else { return }
                         AppRouter.goToWebVC(vc: self, screenType: .termsCondition)
                     }
                     
                     cell.privacyPolicyTapped = { [weak self]  in
-                    guard let `self` = self else { return }
+                        guard let `self` = self else { return }
                         AppRouter.goToWebVC(vc: self, screenType: .privacyPolicy)
+                    }
+                    
+                    cell.helpBtnTapped = { [weak self]  in
+                        guard let `self` = self else { return }
+                        self.locationViewModel.getAdminId(dict: [:], loader: true)
+                        
                     }
                     return cell
                     
@@ -159,6 +167,10 @@ extension ProfileSettingVC {
                         AppRouter.goToWebVC(vc: self, screenType: .privacyPolicy)
                     }
                     
+                    cell.changePassword = { [weak self]  in
+                        guard let `self` = self else { return }
+                        AppRouter.goToChangePasswordVC(vc: self)
+                    }
                     return cell
                 default:
                     let cell = tableView.dequeueCell(with: ProfileUserBottomCell.self, indexPath: indexPath)
@@ -222,7 +234,7 @@ extension ProfileSettingVC {
         } else {
             self.switchProfileString = LocalizedString.switchProfileToUser.localized
         }
-        self.selectItemArray = [LocalizedString.aboutUs.localized,LocalizedString.terms_Condition.localized,LocalizedString.privacy_policy.localized,LocalizedString.contactUs.localized,LocalizedString.changeLanguage.localized,switchProfileString,LocalizedString.reportAnIssue.localized,LocalizedString.faq.localized,LocalizedString.referFriend.localized]
+        self.selectItemArray = [LocalizedString.aboutUs.localized,LocalizedString.terms_Condition.localized,LocalizedString.privacy_policy.localized,LocalizedString.contactUs.localized,LocalizedString.changeLanguage.localized,switchProfileString, isCurrentUserType == .user ?  LocalizedString.help.localized : LocalizedString.change_password.localized,LocalizedString.faq.localized,LocalizedString.referFriend.localized]
     }
 }
 // MARK: - Extension For TableView
@@ -279,5 +291,15 @@ extension ProfileSettingVC : GarageRegistrationVMDelegate {
 extension ProfileSettingVC: EditProfileVCDelegate {
     func editProfileSuccess(){
         
+    }
+}
+
+extension ProfileSettingVC:LocationPopUpVMDelegate {
+    func getAdminIdSuccess(id: String, name: String, image: String){
+        AppRouter.goToOneToOneChatVC(self, userId: id, requestId: "", name: "Support Chat", image: image, unreadMsgs: 0, isSupportChat: true,garageUserId: isCurrentUserType == .garage ? UserModel.main.id : "" )
+    }
+    
+    func getAdminIdFailed(error:String){
+        CommonFunctions.showToastWithMessage(error)
     }
 }
