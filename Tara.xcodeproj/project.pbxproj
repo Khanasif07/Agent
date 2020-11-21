@@ -45,6 +45,7 @@
 		843D4BA725305EEE00D72D2F /* UserOffersTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 843D4BA525305EEE00D72D2F /* UserOffersTableCell.xib */; };
 		843DFD1E2503F017000DE6EB /* OtpVerificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DFD1D2503F017000DE6EB /* OtpVerificationVC.swift */; };
 		843DFD202503F93A000DE6EB /* OtpVerificationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DFD1F2503F93A000DE6EB /* OtpVerificationVM.swift */; };
+		843E03F92568DFF500ED16F8 /* AppDelegate + PushRedirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843E03F82568DFF500ED16F8 /* AppDelegate + PushRedirection.swift */; };
 		843F004625060725001A78EC /* CountryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F004425060725001A78EC /* CountryVC.swift */; };
 		843F004925060798001A78EC /* CountryVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F004825060798001A78EC /* CountryVM.swift */; };
 		843F004D25060822001A78EC /* CountryCodeTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F004B25060822001A78EC /* CountryCodeTableCell.swift */; };
@@ -414,6 +415,7 @@
 		843D4BA525305EEE00D72D2F /* UserOffersTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserOffersTableCell.xib; sourceTree = "<group>"; };
 		843DFD1D2503F017000DE6EB /* OtpVerificationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpVerificationVC.swift; sourceTree = "<group>"; };
 		843DFD1F2503F93A000DE6EB /* OtpVerificationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpVerificationVM.swift; sourceTree = "<group>"; };
+		843E03F82568DFF500ED16F8 /* AppDelegate + PushRedirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate + PushRedirection.swift"; sourceTree = "<group>"; };
 		843F004425060725001A78EC /* CountryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryVC.swift; sourceTree = "<group>"; };
 		843F004825060798001A78EC /* CountryVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryVM.swift; sourceTree = "<group>"; };
 		843F004B25060822001A78EC /* CountryCodeTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeTableCell.swift; sourceTree = "<group>"; };
@@ -1395,6 +1397,7 @@
 				8481F9FE2500AA9A00AB6EFB /* SceneDelegate.swift */,
 				8481F9FC2500AA9A00AB6EFB /* AppDelegate.swift */,
 				844956342510A60900846ED9 /* LocationController.swift */,
+				843E03F82568DFF500ED16F8 /* AppDelegate + PushRedirection.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2711,6 +2714,7 @@
 				84303E6C25064B27000BA5C3 /* UnderDevelopmentVC.swift in Sources */,
 				8481FAAF25015D9000AB6EFB /* LoginVC.swift in Sources */,
 				843C8EBD25089BBE00515F2E /* ProfileUserHeaderCell.swift in Sources */,
+				843E03F92568DFF500ED16F8 /* AppDelegate + PushRedirection.swift in Sources */,
 				84E4B4702513759600A3E11C /* CompleteProfileStep1.swift in Sources */,
 				8481FA452500BE7600AB6EFB /* UIViewControllerExtension.swift in Sources */,
 				843F5830254FAFC5008CFA03 /* SenderMessageCell.swift in Sources */,

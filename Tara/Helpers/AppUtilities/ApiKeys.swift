@@ -258,6 +258,7 @@ enum ApiKey {
     static var averageRating: String {return "averageRating"}
     static var ongoingServices: String {return "ongoingServices"}
     static var servicesCompletedToday: String {return "servicesCompletedToday"}
+    static var notificationType : String {return "notificationType"}
 
 }
 

@@ -21,8 +21,15 @@ enum UserType {
     case garage
 }
 
-enum PushNotificationType : String {
-    case checkin, checkout, other
+// Notification Type
+enum PushNotificationType: String {
+    case event = "EVENT"
+    case chat = "CHAT"
+    case plan = "PLAN"
+    case post = "POST"
+    case like = "LIKE"
+    case comment = "COMMENT"
+    case other
 }
 
 enum SelectedLangauage: String{
