@@ -101,7 +101,6 @@ extension ServiceCompletedVC {
             }else {
                 self.viewModel.fetchUserServiceHistory(params: [ApiKey.page: self.viewModel.currentPage,ApiKey.limit : "20"],loader: false)
             }
-            
         }
     }
 }

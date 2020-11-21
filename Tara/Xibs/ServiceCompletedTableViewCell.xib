@@ -35,12 +35,17 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeHolder" translatesAutoresizingMaskIntoConstraints="NO" id="ZKi-b0-22w">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeHolder" translatesAutoresizingMaskIntoConstraints="NO" id="ZKi-b0-22w">
                                 <rect key="frame" x="8" y="39" width="42" height="42"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="P4W-Sm-M3y"/>
                                     <constraint firstAttribute="width" secondItem="ZKi-b0-22w" secondAttribute="height" multiplier="1:1" id="od2-vh-nLk"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="4nO-NZ-kdL">
                                 <rect key="frame" x="58" y="43" width="119.5" height="34"/>
