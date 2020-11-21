@@ -10,7 +10,22 @@ import UIKit
 import DZNEmptyDataSet
 
 class ServiceCompletedVC: BaseVC {
- 
+    
+    enum ScreenType {
+        case serviceComplete
+        case serviceHistory
+        
+        var titleText : String{
+            switch self {
+                
+            case .serviceComplete:
+                return LocalizedString.serviceCompleted.localized
+            case .serviceHistory:
+                return LocalizedString.service_history.localized
+            }
+        }
+    }
+    
     // MARK: - IBOutlets
     //===========================
     @IBOutlet weak var titleLbl: UILabel!
@@ -20,6 +35,7 @@ class ServiceCompletedVC: BaseVC {
     //===========================
     let viewModel = ServiceCompletedVM()
     var garageId : String = ""
+    var screenType : ScreenType = .serviceComplete
     
     // MARK: - Lifecycle
     //===========================
@@ -48,6 +64,7 @@ class ServiceCompletedVC: BaseVC {
 extension ServiceCompletedVC {
     
     private func initialSetup() {
+        setupTextAndFont()
         viewModel.delegate = self
         mainTableView.delegate = self
         mainTableView.dataSource = self
@@ -61,12 +78,15 @@ extension ServiceCompletedVC {
     }
 
     private func setupTextAndFont(){
-        titleLbl.text = LocalizedString.rateService.localized
+        titleLbl.text = screenType == .serviceComplete ? LocalizedString.serviceCompleted.localized : LocalizedString.service_history.localized
+       
     }
     
     private func hitApi(loader: Bool = false) {
         let dict = [ApiKey.page:"1", ApiKey.limit: "20"]
-        viewModel.fetchServiceCompleteListing(params: dict, loader: loader)
+        screenType == .serviceComplete ? viewModel.fetchServiceCompleteListing(params: dict, loader: loader) :
+            viewModel.fetchUserServiceHistory(params: dict, loader: loader)
+        
     }
     
     @objc func refreshWhenPull(_ sender: UIRefreshControl) {
@@ -76,7 +96,12 @@ extension ServiceCompletedVC {
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if cell as? LoaderCell != nil {
-//            self.viewModel.fetchReviewListing(params: [ApiKey.page: self.viewModel.currentPage,ApiKey.limit : "20"],loader: false)
+            if screenType == .serviceComplete {
+                self.viewModel.fetchServiceCompleteListing(params: [ApiKey.page: self.viewModel.currentPage,ApiKey.limit : "20"],loader: false)
+            }else {
+                self.viewModel.fetchUserServiceHistory(params: [ApiKey.page: self.viewModel.currentPage,ApiKey.limit : "20"],loader: false)
+            }
+            
         }
     }
 }
@@ -89,7 +114,7 @@ extension ServiceCompletedVC :UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(with: ServiceCompletedTableViewCell.self, indexPath: indexPath)
-        cell.bindData(viewModel.serviceCompletedListing[indexPath.row])
+        cell.bindData(viewModel.serviceCompletedListing[indexPath.row],screenType: self.screenType)
         return cell
     }
     

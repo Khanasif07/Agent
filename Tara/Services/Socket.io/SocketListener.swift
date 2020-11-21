@@ -99,6 +99,7 @@ extension SocketIOManager {
         
         self.socket?.on(EventListnerKeys.serviceStarted.rawValue, callback: { data, _ in
             let json = JSON(data)
+            NotificationCenter.default.post(name: Notification.Name.UserServiceAcceptRejectSuccess, object: nil)
             printDebug(json)
         })
         

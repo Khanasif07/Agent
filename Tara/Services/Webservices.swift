@@ -1126,5 +1126,17 @@ extension WebServices{
             failure(error)
         }
     }
+    
+    //MARK:- getAdminId
+       static func getUserServiceHistory(parameters: JSONDictionary,loader: Bool = false,
+                              success: @escaping SuccessResponse,
+                              failure: @escaping FailureResponse) {
+           self.commonGetAPI(parameters: parameters, endPoint: .userServiceHistory, loader: loader, success: { (json) in
+               success(json)
+           }) { (error) -> (Void) in
+               failure(error)
+           }
+       }
+    
 }
 
