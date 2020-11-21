@@ -184,26 +184,14 @@ extension FacilityVC :GarageRegistrationVMDelegate{
     
     func getfacilitySuccess(){
         if !selectedItemArr.isEmpty {
+            self.udpateSelectedItemArr() //return update selectedItemArr when it's contain dummy Facility array
             for (indexx,item) in viewModel.facilityDataArr.enumerated() {
                 if let firstIndex = self.selectedItemArr.firstIndex(where: { (model) -> Bool in
                     return model.id == item.id
                 }){
                     viewModel.facilityDataArr[indexx].isSubCategorySelected = true
                     viewModel.facilityDataArr[indexx].isSelected = true
-                    
-                    if self.selectedItemArr[firstIndex].createdAt.isEmpty {
-                        for (index, data) in viewModel.facilityDataArr[indexx].subCategory.enumerated(){
-                            if let firstIndexx = self.selectedItemArr[firstIndex].subCategory.firstIndex(where: { (model) -> Bool in
-                                return model.id == data.id
-                            }){
-                                viewModel.facilityDataArr[indexx].subCategory[firstIndexx].isSelected = true
-                            }
-                        }
-                        
-                    }else {
-                        viewModel.facilityDataArr[indexx].subCategory = self.selectedItemArr[firstIndex].subCategory
-                        
-                    }
+                    viewModel.facilityDataArr[indexx].subCategory = self.selectedItemArr[firstIndex].subCategory
                 }
             }
         }
@@ -212,5 +200,28 @@ extension FacilityVC :GarageRegistrationVMDelegate{
     
     func getfacilityFailure(){
         
+    }
+    
+    private func udpateSelectedItemArr() {
+        if self.selectedItemArr[0].createdAt.isEmpty { //Created at is only empty when we create a dummy selectedItemArr
+            let dummyArr = self.selectedItemArr
+            self.selectedItemArr.removeAll()
+            for data in dummyArr {
+                if let firstIndex = self.viewModel.facilityDataArr.firstIndex(where: { (model) -> Bool in
+                    return model.id == data.id
+                }) {
+                    self.viewModel.facilityDataArr[firstIndex].isSelected = true
+                    self.viewModel.facilityDataArr[firstIndex].isSubCategorySelected = true
+                    for brand in data.subCategory {
+                        if let facilityBrandFirstIndex = self.viewModel.facilityDataArr[firstIndex].subCategory.firstIndex(where: { (facilityBrand) -> Bool in
+                            return brand.id == facilityBrand.id
+                        }) {
+                            self.viewModel.facilityDataArr[firstIndex].subCategory[facilityBrandFirstIndex].isSelected = true
+                        }
+                    }
+                    self.selectedItemArr.append(viewModel.facilityDataArr[firstIndex])
+                }
+            }
+        }
     }
 }

@@ -170,7 +170,7 @@ struct GarageProfilePreFillModel {
                 arr.append(model.serviceName)
             }else {
                 model.brands.forEach { (brand) in
-                    let txt = brand.brandName + " (\(model.serviceName))"
+                    let txt = brand.name + " (\(model.serviceName))"
                     arr.append(txt)
                 }
             }
