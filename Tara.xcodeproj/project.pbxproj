@@ -235,6 +235,10 @@
 		A4098E7A2512288F0015B0BD /* FacilityTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4098E792512288F0015B0BD /* FacilityTableHeaderView.xib */; };
 		A4098E7D251231DD0015B0BD /* FacilityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4098E7B251231DD0015B0BD /* FacilityTableViewCell.swift */; };
 		A4098E7E251231DD0015B0BD /* FacilityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4098E7C251231DD0015B0BD /* FacilityTableViewCell.xib */; };
+		A40F35A525691AD700A4AED4 /* PaymentListingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40F35A425691AD700A4AED4 /* PaymentListingVC.swift */; };
+		A40F35A725691B6300A4AED4 /* PaymentListingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40F35A625691B6300A4AED4 /* PaymentListingVM.swift */; };
+		A40F35AB25691EF800A4AED4 /* PaymentListingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40F35A925691EF800A4AED4 /* PaymentListingCell.swift */; };
+		A40F35AC25691EF800A4AED4 /* PaymentListingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A40F35AA25691EF800A4AED4 /* PaymentListingCell.xib */; };
 		A413B9702509E7400004C534 /* Garage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A413B96F2509E7400004C534 /* Garage.storyboard */; };
 		A413B9722509E7960004C534 /* GarageRegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A413B9712509E7960004C534 /* GarageRegistrationVC.swift */; };
 		A413B9762509F0950004C534 /* GarageRegistrationDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A413B9742509F0950004C534 /* GarageRegistrationDetailCell.swift */; };
@@ -607,6 +611,10 @@
 		A4098E792512288F0015B0BD /* FacilityTableHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FacilityTableHeaderView.xib; sourceTree = "<group>"; };
 		A4098E7B251231DD0015B0BD /* FacilityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityTableViewCell.swift; sourceTree = "<group>"; };
 		A4098E7C251231DD0015B0BD /* FacilityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FacilityTableViewCell.xib; sourceTree = "<group>"; };
+		A40F35A425691AD700A4AED4 /* PaymentListingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentListingVC.swift; sourceTree = "<group>"; };
+		A40F35A625691B6300A4AED4 /* PaymentListingVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentListingVM.swift; sourceTree = "<group>"; };
+		A40F35A925691EF800A4AED4 /* PaymentListingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentListingCell.swift; sourceTree = "<group>"; };
+		A40F35AA25691EF800A4AED4 /* PaymentListingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentListingCell.xib; sourceTree = "<group>"; };
 		A413B96F2509E7400004C534 /* Garage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Garage.storyboard; sourceTree = "<group>"; };
 		A413B9712509E7960004C534 /* GarageRegistrationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageRegistrationVC.swift; sourceTree = "<group>"; };
 		A413B9742509F0950004C534 /* GarageRegistrationDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageRegistrationDetailCell.swift; sourceTree = "<group>"; };
@@ -1342,10 +1350,9 @@
 				A41AAB4C2530A0160061887F /* OfferFilterVC */,
 				A439263F2548019E0089E0EB /* UserNotificationVC */,
 				A4357952255298A4009EED61 /* ReViewListingVC */,
-				A4DA01D92553075200AC60DB /* ReviewAndRatingTableViewCell.swift */,
-				A4DA01DA2553075200AC60DB /* ReviewAndRatingTableViewCell.xib */,
-				A41B7DEA25551FC8005D1AC5 /* ServiceCompletedTableViewCell.swift */,
-				A41B7DEB25551FC8005D1AC5 /* ServiceCompletedTableViewCell.xib */,
+				A40F35AE25692A5000A4AED4 /* ReviewAndRatingTableViewCell */,
+				A40F35AF25692A6600A4AED4 /* ServiceCompletedTableViewCell */,
+				A40F35AD25691F2900A4AED4 /* PaymentListingVC */,
 			);
 			path = Xibs;
 			sourceTree = "<group>";
@@ -1435,6 +1442,7 @@
 				A459A14A255BE37F00645E45 /* UserServiceStatusVC */,
 				A45659ED255D5CCB00CA1475 /* ContactusPopupVC.swift */,
 				A45659EF255D634D00CA1475 /* ContactUsVC.swift */,
+				A40F35A825691BBF00A4AED4 /* PaymentListingVC */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1853,6 +1861,42 @@
 				84FF9D632559677F00692FF0 /* ReceiverOfferCell.xib */,
 			);
 			path = ReceiverOfferCell;
+			sourceTree = "<group>";
+		};
+		A40F35A825691BBF00A4AED4 /* PaymentListingVC */ = {
+			isa = PBXGroup;
+			children = (
+				A40F35A425691AD700A4AED4 /* PaymentListingVC.swift */,
+				A40F35A625691B6300A4AED4 /* PaymentListingVM.swift */,
+			);
+			path = PaymentListingVC;
+			sourceTree = "<group>";
+		};
+		A40F35AD25691F2900A4AED4 /* PaymentListingVC */ = {
+			isa = PBXGroup;
+			children = (
+				A40F35A925691EF800A4AED4 /* PaymentListingCell.swift */,
+				A40F35AA25691EF800A4AED4 /* PaymentListingCell.xib */,
+			);
+			path = PaymentListingVC;
+			sourceTree = "<group>";
+		};
+		A40F35AE25692A5000A4AED4 /* ReviewAndRatingTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				A4DA01D92553075200AC60DB /* ReviewAndRatingTableViewCell.swift */,
+				A4DA01DA2553075200AC60DB /* ReviewAndRatingTableViewCell.xib */,
+			);
+			path = ReviewAndRatingTableViewCell;
+			sourceTree = "<group>";
+		};
+		A40F35AF25692A6600A4AED4 /* ServiceCompletedTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				A41B7DEA25551FC8005D1AC5 /* ServiceCompletedTableViewCell.swift */,
+				A41B7DEB25551FC8005D1AC5 /* ServiceCompletedTableViewCell.xib */,
+			);
+			path = ServiceCompletedTableViewCell;
 			sourceTree = "<group>";
 		};
 		A413B9732509E7A00004C534 /* GarageRegistrationVC */ = {
@@ -2467,6 +2511,7 @@
 				A41B7DED25551FC8005D1AC5 /* ServiceCompletedTableViewCell.xib in Resources */,
 				842B2FCA25133CD200E3CF67 /* BankListingTableCell.xib in Resources */,
 				84D4CB222562D361005EB8AD /* GoogleService-Info-Prod.plist in Resources */,
+				A40F35AC25691EF800A4AED4 /* PaymentListingCell.xib in Resources */,
 				A441A67F252CDF7C00B5420B /* TyreRequestLocationTableViewCell.xib in Resources */,
 				A4DEB86A2552865700BD7D2E /* ReviewTableViewCell.xib in Resources */,
 				A43B53A52524B21300447B24 /* GarageRequest.storyboard in Resources */,
@@ -2625,6 +2670,7 @@
 				844CBD1A2501F7D5009BE668 /* LoginTopTableCell.swift in Sources */,
 				8481FA852500EEC400AB6EFB /* ChooseLanguageVC.swift in Sources */,
 				843F004D25060822001A78EC /* CountryCodeTableCell.swift in Sources */,
+				A40F35A725691B6300A4AED4 /* PaymentListingVM.swift in Sources */,
 				844EB71A2518BC5A003A6E3F /* LocationPopUpVM.swift in Sources */,
 				842B2FCE25133F1800E3CF67 /* BankData.swift in Sources */,
 				844EB71725189916003A6E3F /* TyreRequestModel.swift in Sources */,
@@ -2655,6 +2701,7 @@
 				8481FA692500BFC700AB6EFB /* DeviceDetails.swift in Sources */,
 				844956352510A60900846ED9 /* LocationController.swift in Sources */,
 				A413B97E250A44410004C534 /* CustomTextView.swift in Sources */,
+				A40F35A525691AD700A4AED4 /* PaymentListingVC.swift in Sources */,
 				A4A6DED92519DCF100564020 /* FacilityModel.swift in Sources */,
 				84FF6E95251C6E8A0000E2AD /* CustomDashedView.swift in Sources */,
 				8481FA212500BB2100AB6EFB /* GoogleLoginController.swift in Sources */,
@@ -2841,6 +2888,7 @@
 				84144F23252C485B00D6572F /* UserAllRequestVC.swift in Sources */,
 				84FF6E9E251D8CEA0000E2AD /* MakeModel.swift in Sources */,
 				8481FA412500BE3800AB6EFB /* UILabelExtension.swift in Sources */,
+				A40F35AB25691EF800A4AED4 /* PaymentListingCell.swift in Sources */,
 				8446AB4F252D53B3005A1350 /* GarageServiceCountryCell.swift in Sources */,
 				8470D1FA251B36C700790768 /* GarageProfileHeaderCell.swift in Sources */,
 				A45707C32513B137003BE7DD /* TyreBrandVC.swift in Sources */,

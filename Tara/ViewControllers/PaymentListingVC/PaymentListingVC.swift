@@ -1,30 +1,15 @@
 //
-//  ServiceCompletedVC.swift
+//  PaymentListingVC.swift
 //  Tara
 //
-//  Created by Arvind on 06/11/20.
+//  Created by Arvind on 21/11/20.
 //  Copyright © 2020 Admin. All rights reserved.
 //
 
 import UIKit
 import DZNEmptyDataSet
 
-class ServiceCompletedVC : BaseVC {
-    
-    enum ScreenType {
-        case serviceComplete
-        case serviceHistory
-        
-        var titleText : String{
-            switch self {
-                
-            case .serviceComplete:
-                return LocalizedString.serviceCompleted.localized
-            case .serviceHistory:
-                return LocalizedString.service_history.localized
-            }
-        }
-    }
+class PaymentListingVC : BaseVC {
     
     // MARK: - IBOutlets
     //===========================
@@ -33,9 +18,8 @@ class ServiceCompletedVC : BaseVC {
     
     // MARK: - Variables
     //===========================
-    let viewModel = ServiceCompletedVM()
+    let viewModel = PaymentListingVM()
     var garageId : String = ""
-    var screenType : ScreenType = .serviceComplete
     
     // MARK: - Lifecycle
     //===========================
@@ -54,14 +38,14 @@ class ServiceCompletedVC : BaseVC {
     
     // MARK: - IBActions
     //===========================
-    @IBAction func cancelBtnAction(_ sender: Any) {
+    @IBAction func backBtnAction(_ sender: Any) {
         pop()
     }
 }
 
 // MARK: - Extension For Functions
 //===========================
-extension ServiceCompletedVC {
+extension PaymentListingVC {
     
     private func initialSetup() {
         setupTextAndFont()
@@ -73,19 +57,18 @@ extension ServiceCompletedVC {
         mainTableView.emptyDataSetDelegate = self
         self.mainTableView.enablePullToRefresh(tintColor: AppColors.appRedColor ,target: self, selector: #selector(refreshWhenPull(_:)))
         self.mainTableView.registerCell(with: LoaderCell.self)
-        mainTableView.registerCell(with: ServiceCompletedTableViewCell.self)
-        hitApi(loader: true)
+        mainTableView.registerCell(with: PaymentListingCell.self)
+//        hitApi(loader: true)
     }
-
+    
     private func setupTextAndFont(){
-        titleLbl.text = screenType == .serviceComplete ? LocalizedString.serviceCompleted.localized : LocalizedString.service_history.localized
-       
+        titleLbl.text = LocalizedString.service_history.localized
+        
     }
     
     private func hitApi(loader: Bool = false) {
         let dict = [ApiKey.page:"1", ApiKey.limit: "20"]
-        screenType == .serviceComplete ? viewModel.fetchServiceCompleteListing(params: dict, loader: loader) :
-            viewModel.fetchUserServiceHistory(params: dict, loader: loader)
+        viewModel.fetchPaymentListing(params: dict, loader: loader)
         
     }
     
@@ -96,24 +79,20 @@ extension ServiceCompletedVC {
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if cell as? LoaderCell != nil {
-            if screenType == .serviceComplete {
-                self.viewModel.fetchServiceCompleteListing(params: [ApiKey.page: self.viewModel.currentPage,ApiKey.limit : "20"],loader: false)
-            }else {
-                self.viewModel.fetchUserServiceHistory(params: [ApiKey.page: self.viewModel.currentPage,ApiKey.limit : "20"],loader: false)
-            }
+                self.viewModel.fetchPaymentListing(params: [ApiKey.page: self.viewModel.currentPage,ApiKey.limit : "20"],loader: false)
+           
         }
     }
 }
 
-extension ServiceCompletedVC :UITableViewDelegate, UITableViewDataSource{
+extension PaymentListingVC : UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.serviceCompletedListing.count
+        return 4//viewModel.paymentListing.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueCell(with: ServiceCompletedTableViewCell.self, indexPath: indexPath)
-        cell.bindData(viewModel.serviceCompletedListing[indexPath.row],screenType: self.screenType)
+        let cell = tableView.dequeueCell(with: PaymentListingCell.self, indexPath: indexPath)
         return cell
     }
     
@@ -122,30 +101,24 @@ extension ServiceCompletedVC :UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if screenType == .serviceComplete {
-            AppRouter.goToGarageCustomerRatingVC(vc: self, requestId: viewModel.serviceCompletedListing[indexPath.row].id ?? "")
-            
-        }else {
-            
-        }
     }
 }
 
-extension ServiceCompletedVC: ServiceCompletedVMDelegate{
-
-    func serviceCompleteApiSuccess(msg: String) {
+extension PaymentListingVC: PaymentListingVMDelegate{
+   
+    func paymentListingApiSuccess(msg: String) {
         mainTableView.reloadData()
     }
     
-    func serviceCompleteApiFailure(msg: String) {
-        
+    func paymentListingApiFailure(msg: String) {
+    
     }
 }
 
 
 //MARK: DZNEmptyDataSetSource and DZNEmptyDataSetDelegate
 //================================
-extension ServiceCompletedVC : DZNEmptyDataSetSource,DZNEmptyDataSetDelegate {
+extension PaymentListingVC : DZNEmptyDataSetSource,DZNEmptyDataSetDelegate {
     
     func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
         return  #imageLiteral(resourceName: "layerX00201")
@@ -153,7 +126,7 @@ extension ServiceCompletedVC : DZNEmptyDataSetSource,DZNEmptyDataSetDelegate {
     
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         var emptyData = ""
-        emptyData = viewModel.serviceCompletedListing.endIndex == 0 ? "No data found" : ""
+        emptyData = viewModel.paymentListing.endIndex == 0 ? "No data found" : ""
     
         return NSAttributedString(string: emptyData, attributes: [NSAttributedString.Key.foregroundColor: AppColors.fontTertiaryColor,NSAttributedString.Key.font: AppFonts.NunitoSansBold.withSize(18)])
     }
