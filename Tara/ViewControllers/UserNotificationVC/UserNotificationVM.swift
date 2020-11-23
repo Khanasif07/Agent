@@ -29,7 +29,7 @@ class UserNotificationVM {
     var showPaginationLoader: Bool {
         return  hideLoader ? false : nextPageAvailable
     }
-    var serviceCompletedListing = [GarageRequestModel]()
+    var notificationListingArr = [NotificationModel]()
 
     // MARK: Functions
     //=================================
@@ -40,7 +40,7 @@ class UserNotificationVM {
             guard !isRequestinApi else { return }
         }
         isRequestinApi = true
-        WebServices.getGarageCompletedServicesList(parameters: params,loader: loader, success: { [weak self] (json) in
+        WebServices.getUserNotifications(parameters: params,loader: loader, success: { [weak self] (json) in
             guard let `self` = self else { return }
             self.parseToMakeListingData(result: json)
         }) { [weak self] (error) in
@@ -55,19 +55,19 @@ class UserNotificationVM {
             do {
                 if result[ApiKey.data][ApiKey.result].arrayValue.isEmpty {
                     self.hideLoader = true
-                    self.serviceCompletedListing = []
+                    self.notificationListingArr = []
                     isRequestinApi = false
                     self.delegate?.notificationListingSuccess(msg: "")
                     return
                 }
-                let modelList = try! JSONDecoder().decode([GarageRequestModel].self, from: data)
+                let modelList = try! JSONDecoder().decode([NotificationModel].self, from: data)
                 printDebug(modelList)
                 currentPage = result[ApiKey.data][ApiKey.page].intValue
                 isRequestinApi = false
                 if currentPage == 1 {
-                    self.serviceCompletedListing = modelList
+                    self.notificationListingArr = modelList
                 } else {
-                    self.serviceCompletedListing.append(contentsOf: modelList)
+                    self.notificationListingArr.append(contentsOf: modelList)
                 }
                 nextPageAvailable = result[ApiKey.data][ApiKey.next].boolValue
                 currentPage += 1
