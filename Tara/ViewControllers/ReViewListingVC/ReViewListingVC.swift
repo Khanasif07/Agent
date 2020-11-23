@@ -53,6 +53,8 @@ extension ReViewListingVC {
         viewModel.delegate = self
         mainTableView.delegate = self
         mainTableView.dataSource = self
+        mainTableView.emptyDataSetSource = self
+        mainTableView.emptyDataSetDelegate = self
         mainTableView.contentInset = UIEdgeInsets(top: 8.0, left: 0, bottom: 0, right: 0)
         self.mainTableView.enablePullToRefresh(tintColor: AppColors.appRedColor ,target: self, selector: #selector(refreshWhenPull(_:)))
         self.mainTableView.registerCell(with: LoaderCell.self)

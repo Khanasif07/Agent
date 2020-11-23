@@ -19,7 +19,7 @@ class UserNotificationVC: BaseVC {
     
     // MARK: - Variables
     //===========================
- 
+    let viewModel = UserNotificationVM()
     
     // MARK: - Lifecycle
     //===========================
@@ -48,6 +48,7 @@ extension UserNotificationVC {
         titleLbl.text = LocalizedString.notifications.localized
         mainTableView.delegate = self
         mainTableView.dataSource = self
+        viewModel.delegate = self
         mainTableView.emptyDataSetSource = self
         mainTableView.emptyDataSetDelegate = self
         mainTableView.enablePullToRefresh(tintColor: AppColors.appRedColor ,target: self, selector: #selector(refreshWhenPull(_:)))
@@ -155,5 +156,15 @@ extension UserNotificationVC : DZNEmptyDataSetSource,DZNEmptyDataSetDelegate {
     
     func emptyDataSetShouldBeForced(toDisplay scrollView: UIScrollView!) -> Bool {
         return false
+    }
+}
+
+extension UserNotificationVC : UserNotificationVMDelegate{
+    func notificationListingSuccess(msg: String) {
+        mainTableView.reloadData()
+    }
+    
+    func notificationListingFailure(msg: String) {
+        CommonFunctions.showToastWithMessage(msg)
     }
 }
