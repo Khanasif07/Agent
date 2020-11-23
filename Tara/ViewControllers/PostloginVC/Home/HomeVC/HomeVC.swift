@@ -62,8 +62,9 @@ class HomeVC: BaseVC {
         self.dataSetUp()
         self.mainCollView.reloadData()
     }
+    
     // MARK: - IBActions
-    //===========================
+    //==================
     @IBAction func helpBtnTapped(_ sender: UIButton) {
         viewModel.getAdminId(dict: [:], loader: true)
     }
