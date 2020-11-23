@@ -73,10 +73,10 @@ extension GarageHomeVC {
         NotificationCenter.default.addObserver(self, selector: #selector(bidAcceptedRejected), name: Notification.Name.BidAcceptedRejected, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(serviceRequestReceived), name: Notification.Name.ServiceRequestReceived, object: nil)
         self.viewModel.delegate = self
-        self.viewModel.getGarageHomeData(params: [:],loader: true)
         self.dataSetUp()
         self.tableViewSetUp()
         self.getCurrentTime()
+        self.viewModel.getGarageHomeData(params: [:],loader: true)
     }
     
     private func dataSetUp(){

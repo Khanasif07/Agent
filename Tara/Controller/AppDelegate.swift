@@ -251,7 +251,7 @@ extension AppDelegate{
                                 didReceive response: UNNotificationResponse,
                                 withCompletionHandler completionHandler: @escaping () -> Void) {
         guard let userInfo = response.notification.request.content.userInfo as? [String: Any] else { return }
-//        PushNotificationRedirection.redirectionOnNotification(userInfo)
+        PushNotificationRedirection.redirectionOnNotification(userInfo)
         print("tap on on forground app", userInfo)
         completionHandler()
     }
