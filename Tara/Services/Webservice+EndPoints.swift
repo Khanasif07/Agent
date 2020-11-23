@@ -94,7 +94,7 @@ extension WebServices {
         case acceptRejectEditedBid = "user/bids/acceptRejectEditedBid"
         case userQuery = "user/query"
         case adminId = "user/adminId"
-
+        case userServiceHistory = "user/services/userServiceHistory"
         
         var path : String {
             let url = baseUrl

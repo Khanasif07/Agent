@@ -111,9 +111,10 @@ extension GarageProfileVC {
                     guard let `self` = self else { return }
                     AppRouter.goToProfileSettingVC(vc: self)
                 }
+             
                 cell.serviceCompletedTapped = { [weak self]  in
                     guard let `self` = self else { return }
-                    AppRouter.goToServiceCompletedVC(vc: self)
+                    AppRouter.goToServiceCompletedVC(vc: self,screenType: .serviceComplete)
                 }
                 return cell
         }

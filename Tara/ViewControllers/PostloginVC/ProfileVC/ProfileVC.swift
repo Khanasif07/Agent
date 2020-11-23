@@ -111,6 +111,11 @@ extension ProfileVC {
                         guard let `self` = self else { return }
                         AppRouter.goToChangePasswordVC(vc: self)
                     }
+                    cell.serviceHistroyTapped = { [weak self]  in
+                        guard let `self` = self else { return }
+                        AppRouter.goToServiceCompletedVC(vc: self, screenType: .serviceHistory)
+                        
+                    }
                     return cell
                 }
             default:

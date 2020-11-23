@@ -48,6 +48,22 @@ class ServiceCompletedVM {
         }
     }
     
+    func fetchUserServiceHistory(params: JSONDictionary,loader: Bool = false,pagination: Bool = false) {
+          if pagination {
+              guard nextPageAvailable, !isRequestinApi else { return }
+          } else {
+              guard !isRequestinApi else { return }
+          }
+          isRequestinApi = true
+          WebServices.getUserServiceHistory(parameters: params,loader: loader, success: { [weak self] (json) in
+              guard let `self` = self else { return }
+              self.parseToMakeListingData(result: json)
+          }) { [weak self] (error) in
+              guard let `self` = self else { return }
+              self.isRequestinApi = false
+              self.delegate?.serviceCompleteApiFailure(msg: error.localizedDescription)
+          }
+      }
     
     func parseToMakeListingData(result: JSON) {
         if let jsonString = result[ApiKey.data][ApiKey.result].rawString(), let data = jsonString.data(using: .utf8) {

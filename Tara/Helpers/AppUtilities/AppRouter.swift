@@ -66,8 +66,9 @@ enum AppRouter {
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
-    static func goToServiceCompletedVC(vc: UIViewController){
+    static func goToServiceCompletedVC(vc: UIViewController,screenType : ServiceCompletedVC.ScreenType){
         let scene = ServiceCompletedVC.instantiate(fromAppStoryboard: .GarageRequest)
+        scene.screenType = screenType
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     

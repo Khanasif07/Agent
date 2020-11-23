@@ -152,6 +152,7 @@ struct GarageRequestModel: Codable {
     let logo : String?
     let isServiceStarted: Bool?
     var isServiceCompleted: Bool?
+    var garageLogo : String?
     
     //Review listing Api key
     let rating : Double?
@@ -177,7 +178,7 @@ struct GarageRequestModel: Codable {
         case bidPlacedByGarage, requestedBy
         case rating, review, garageId, serviceType, serviceStatus
         case width, preferredBrands, profile, rimSize, quantity, images, preferredCountries, status, year, make, model, userName, bidStatus, bidData, userLongitude, userLatitude, userImage, userAddress, requestDocId, payableAmount
-        case isRated, serviceCompletedOn, garageName, logo, isReviewReported, ratingId, reportedTime, reportReason, isServiceStarted, isServiceCompleted
+        case isRated, serviceCompletedOn, garageName, logo, isReviewReported, ratingId, reportedTime, reportReason, isServiceStarted, isServiceCompleted, garageLogo
     }
     
     init() {
@@ -224,6 +225,7 @@ struct GarageRequestModel: Codable {
         reportReason = ""
         isServiceStarted = false
         isServiceCompleted = false
+        garageLogo = ""
     }
 }
 
