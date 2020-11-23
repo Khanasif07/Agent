@@ -196,43 +196,6 @@ extension AppDelegate{
         if value == PushNotificationType.other.rawValue {
             completionHandler([.alert, .badge, .sound])
         }
-        
-        if value == PushNotificationType.other.rawValue || value == PushNotificationType.other.rawValue {
-            if let nav = AppDelegate.shared.window?.rootViewController as? UINavigationController {
-                if let topVC = nav.viewControllers.last?.presentedViewController as? UserChatVC {
-//                    let _ = userInfo[ApiKey.notificationViewId]
-//                    let _ = userInfo[ApiKey.notificationEventId]
-//                    let postId = userInfo[ApiKey.notificationPostId] as! String
-//                    topVC.viewModel.getCommentListing(params: [ApiKey.postId: postId,ApiKey.page: 1 ,ApiKey.limit: 10])
-                    completionHandler([])
-                    return
-                }
-            }
-            completionHandler([.alert, .badge, .sound])
-        }
-        
-        guard let roomId = userInfo[ApiKey.notificationId] as? String, let roomType = userInfo[ApiKey.gcm_notification_type] as? String else {
-            return }
-        
-        if let nav = AppDelegate.shared.window?.rootViewController as? UINavigationController {
-            if let topVC = nav.viewControllers.last as? OneToOneChatVC {
-                if (roomType == ApiKey.singleCaps || roomType == ApiKey.single), roomId == topVC.roomId {
-                    completionHandler([])
-                } else {
-                    completionHandler([.alert, .badge, .sound])
-                }
-            } else if let topVC = nav.viewControllers.last as? UserChatVC {
-                if roomType == ApiKey.group, roomId == topVC.currentUserId {
-                    completionHandler([])
-                } else {
-                    completionHandler([.alert, .badge, .sound])
-                }
-            }else {
-                completionHandler([.alert, .badge, .sound])
-            }
-        } else {
-            completionHandler([.alert, .badge, .sound])
-        }
     }
     
     func application(_ application: UIApplication,didReceiveRemoteNotification userInfo: [AnyHashable: Any],fetchCompletionHandler completionHandler:@escaping (UIBackgroundFetchResult) -> Void) {

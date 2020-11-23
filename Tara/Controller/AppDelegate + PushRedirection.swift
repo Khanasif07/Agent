@@ -18,7 +18,7 @@ class PushNotificationRedirection {
     
     ///Managing the redirection on Notification
     static func redirectionOnNotification(_ userInfo: [String: Any]) {
-        guard let value = userInfo[ApiKey.notificationType] as? String else { return }
+        guard let value = userInfo[ApiKey.gcm_notification_type] as? String else { return }
         
 //        switch value {
 //        case PushNotificationType.chat.rawValue:
