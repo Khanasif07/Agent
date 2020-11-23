@@ -62,7 +62,7 @@ extension PaymentListingVC {
     }
     
     private func setupTextAndFont(){
-        titleLbl.text = LocalizedString.service_history.localized
+        titleLbl.text = LocalizedString.payments.localized
         
     }
     
