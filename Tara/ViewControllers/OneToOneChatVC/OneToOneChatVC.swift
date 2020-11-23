@@ -862,12 +862,18 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
     private func reloadTableViewToBottom() {
         messagesTableView.reloadData()
         self.view.layoutIfNeeded()
+        self.scrollMsgToBottom()
+    }
+    
+    private func reloadTableViewToBottomWithFooter() {
+        messagesTableView.reloadData()
+        self.view.layoutIfNeeded()
         self.messagesTableView.scrollRectToVisible(self.messagesTableView.tableFooterView?.frame ?? CGRect.init(), animated: true)
     }
     
     private func scrollMsgToBottom(animated: Bool = false) {
         guard messageListing.endIndex > 0, messageListing[messageListing.endIndex - 1].endIndex > 0 else { return }
-            self.messagesTableView.scrollToRow(at: IndexPath(row: self.messageListing[self.messageListing.endIndex - 1].endIndex - 1, section: self.messageListing.endIndex - 1), at: .bottom, animated: animated)
+        self.messagesTableView.scrollToRow(at: IndexPath(row: self.messageListing[self.messageListing.endIndex - 1].endIndex - 1, section: self.messageListing.endIndex - 1), at: .bottom, animated: animated)
     }
 }
 
@@ -1420,10 +1426,10 @@ extension OneToOneChatVC{
                         if let senderTypingStatus =  typingDict[self.inboxModel.userId] as? Bool{
                             if (senderTypingStatus) {
                                 self.footerViewSetUp(isFooter: true)
-                                self.reloadTableViewToBottom()
+                                self.reloadTableViewToBottomWithFooter()
                             } else {
                                 self.footerViewSetUp(isFooter: false)
-                                self.reloadTableViewToBottom()
+                                self.reloadTableViewToBottomWithFooter()
                             }
                         }
                     }

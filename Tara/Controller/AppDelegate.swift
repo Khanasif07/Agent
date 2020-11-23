@@ -34,18 +34,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate , MessagingDelegate , UNUs
         self.setUpKeyboardSetup()
         self.setUpTextField()
         self.registerPushNotification()
+        AWSS3Manager.shared.setupAmazonS3(withPoolID: AppConstants.awss3PoolId)
+        self.getGoogleInfoPlist()
         Messaging.messaging().delegate = self
         GMSServices.provideAPIKey(AppConstants.googlePlaceApiKey)
         GMSPlacesClient.provideAPIKey(AppConstants.googlePlaceApiKey)
-        AWSS3Manager.shared.setupAmazonS3(withPoolID: AppConstants.awss3PoolId)
         GoogleLoginController.shared.configure(withClientId: AppConstants.googleId)
-        getGoogleInfoPlist()
         guard let unreadCount = AppUserDefaults.value(forKey: .unreadCount).int else {
             AppUserDefaults.save(value: 0, forKey: .unreadCount)
             return true
         }
         AppDelegate.shared.unreadNotificationCount = unreadCount
-        //        getGoogleClientID()
         AppRouter.checkAppInitializationFlow()
         
         return true
@@ -121,14 +120,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate , MessagingDelegate , UNUs
         return baseScene
     }
     
-    func registerPushNotification(){
-        if #available(iOS 10.0, *) {
-            let center = UNUserNotificationCenter.current()
-            center.delegate = self
-            center.requestAuthorization(options:[.badge, .alert, .sound]){ (granted, error) in }
+    func registerPushNotification() {
+        UNUserNotificationCenter.current().delegate = self
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
+            (granted, error) in
+            print("Permission granted: \(granted)")
+            // 1. Check if permission granted
+            guard granted else { return }
+            // 2. Attempt registration for remote notifications on the main thread
+            DispatchQueue.main.async {
+                UIApplication.shared.registerForRemoteNotifications()
+            }
         }
-        UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.badge, .sound, .alert], categories: nil))
-        UIApplication.shared.registerForRemoteNotifications()
     }
 }
 
@@ -169,6 +172,7 @@ extension AppDelegate{
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
         AppUserDefaults.save(value: deviceTokenString, forKey: .token)
+        DeviceDetail.deviceToken = deviceTokenString
         print("APNs device token: \(deviceTokenString)")
     }
     
@@ -176,6 +180,7 @@ extension AppDelegate{
         print("APNs registration failed: \(error)")
     }
     
+    @available(iOS 10.0, *)
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         
         guard let userInfo = (notification.request.content.userInfo as? [String: Any]) else { return }
