@@ -56,35 +56,27 @@ extension UserNotificationVC {
         mainTableView.registerCell(with: UserNotificationTableViewCell.self)
         mainTableView.registerCell(with: ProfileGuestTableCell.self)
         mainTableView.contentInset = UIEdgeInsets(top: 8.0, left: 0, bottom: 0, right: 0)
-        
+        hitApi()
     }
     
-    public func hitApi(params: JSONDictionary = [:],loader: Bool = false){
-     
+    public func hitApi(){
+        let params = [ApiKey.page: "1",ApiKey.limit : "20"]
+        viewModel.fetchNotificationListing(params: params, loader: false)
     }
-  
+    
     
     @objc func refreshWhenPull(_ sender: UIRefreshControl) {
         sender.endRefreshing()
-       
-    }
-    
-    @objc func serviceRequestReceived() {
-        hitApi(params: [ApiKey.page:"1", ApiKey.limit: "10"])
-    }
-    
-    @objc func placeBidRejectBidSuccess(){
-        hitApi(params: [ApiKey.page:"1", ApiKey.limit: "10"])
+        hitApi()
     }
     
     private func getNoOfRowsInSection() -> Int {
         if isUserLoggedin {
-            return 3
+            return viewModel.notificationListingArr.endIndex + (self.viewModel.showPaginationLoader ?  1: 0)
         } else {
             return 1
         }
     }
-    
 }
 
 // MARK: - Extension For TableView
@@ -93,14 +85,23 @@ extension UserNotificationVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.getNoOfRowsInSection()
     }
- 
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if isUserLoggedin {
-            let cell = tableView.dequeueCell(with: UserNotificationTableViewCell.self, indexPath: indexPath)
-            cell.cancelBtnTapped = {[weak self] in
+            if indexPath.row == (viewModel.notificationListingArr.endIndex) {
+                let cell = tableView.dequeueCell(with: LoaderCell.self)
+                return cell
+            } else {
+                let cell = tableView.dequeueCell(with: UserNotificationTableViewCell.self, indexPath: indexPath)
+                cell.bindData(viewModel.notificationListingArr[indexPath.row])
                 
+                cell.cancelBtnTapped = {[weak self] in
+                    guard let `self` = self else { return }
+                    self.viewModel.notificationListingArr.remove(at: indexPath.row)
+                    self.mainTableView.reloadData()
+                }
+                return cell
             }
-            return cell
         } else {
             let cell = tableView.dequeueCell(with: ProfileGuestTableCell.self, indexPath: indexPath)
             cell.loginBtnTapped = { [weak self] (sender) in
@@ -120,9 +121,11 @@ extension UserNotificationVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-      
+        if cell as? LoaderCell != nil {
+            self.viewModel.fetchNotificationListing(params: [ApiKey.page: self.viewModel.currentPage, ApiKey.limit : "20"],loader: false,pagination: true)
+        }
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
@@ -138,7 +141,8 @@ extension UserNotificationVC : DZNEmptyDataSetSource,DZNEmptyDataSetDelegate {
     
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         var emptyData = ""
-    
+        emptyData =  self.viewModel.notificationListingArr.endIndex  == 0 ? "No data found" : ""
+        
         return NSAttributedString(string: emptyData, attributes: [NSAttributedString.Key.foregroundColor: AppColors.fontTertiaryColor,NSAttributedString.Key.font: AppFonts.NunitoSansBold.withSize(18)])
     }
     

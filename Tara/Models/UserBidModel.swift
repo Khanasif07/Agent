@@ -73,6 +73,7 @@ struct BidDatum: Codable {
     var isSelected: Bool? = false
     let countryName: String?
     let countryId: String?
+   
     enum CodingKeys: String, CodingKey {
         case isAccepted
         case id = "_id"
@@ -83,5 +84,26 @@ struct BidDatum: Codable {
     }
 }
 
+// MARK: - BidDatum
+struct NotificationModel: Codable {
+ 
+    var isDelete: Bool
+    var isRead: Bool
+    let message: String
+    let title: String
+    let id: String
+    let type: Int
+    let receiverId: String
+    let status: String
+    let image : String?
+    let createdAt : String?
+    let updatedAt : String?
+    let userType : String?
+    
+    enum CodingKeys: String, CodingKey {
+        case isDelete, isRead, message, title, type, receiverId, status, image, createdAt, updatedAt, userType
+        case id = "_id"
+    }
+}
 
 

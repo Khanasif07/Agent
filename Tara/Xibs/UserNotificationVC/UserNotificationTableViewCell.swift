@@ -38,9 +38,17 @@ class UserNotificationTableViewCell: UITableViewCell {
         headingLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
         subHeadingLbl.font = AppFonts.NunitoSansSemiBold.withSize(12.0)
         timeLbl.font = AppFonts.NunitoSansSemiBold.withSize(12.0)
-
+        
     }
-
+    
+    func bindData(_ model: NotificationModel) {
+        headingLbl.text = model.title
+        subHeadingLbl.text = model.message
+        let date = (model.createdAt)?.toDate(dateFormat: Date.DateFormat.givenDateFormat.rawValue) ?? Date()
+        timeLbl.text = date.timeAgoSince
+        
+    }
+    
     @IBAction func crossbtnAction(_ sender: UIButton) {
         cancelBtnTapped?()
     }

@@ -1134,9 +1134,19 @@ extension WebServices{
            self.commonGetAPI(parameters: parameters, endPoint: .userServiceHistory, loader: loader, success: { (json) in
                success(json)
            }) { (error) -> (Void) in
-               failure(error)
-           }
-       }
+            failure(error)
+        }
+    }
     
+    //MARK:- getUserNotifications
+    static func getUserNotifications(parameters: JSONDictionary,loader: Bool = false,
+                                      success: @escaping SuccessResponse,
+                                      failure: @escaping FailureResponse) {
+        self.commonGetAPI(parameters: parameters, endPoint: .userNotifications, loader: loader, success: { (json) in
+            success(json)
+        }) { (error) -> (Void) in
+            failure(error)
+        }
+    }
 }
 
