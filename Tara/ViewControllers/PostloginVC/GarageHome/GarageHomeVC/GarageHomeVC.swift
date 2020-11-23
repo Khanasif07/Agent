@@ -76,7 +76,7 @@ extension GarageHomeVC {
         self.dataSetUp()
         self.tableViewSetUp()
         self.getCurrentTime()
-        self.viewModel.getGarageHomeData(params: [:],loader: true)
+//        self.viewModel.getGarageHomeData(params: [:],loader: true)
     }
     
     private func dataSetUp(){

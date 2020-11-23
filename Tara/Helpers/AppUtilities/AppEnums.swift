@@ -23,12 +23,17 @@ enum UserType {
 
 // Notification Type
 enum PushNotificationType: String {
-    case event = "EVENT"
-    case chat = "CHAT"
-    case plan = "PLAN"
-    case post = "POST"
-    case like = "LIKE"
-    case comment = "COMMENT"
+    case NEW_REQUEST_EVENT =  "NEW_REQUEST"
+    case NEW_BID_EVENT = "NEW_BID"
+    case BID_EDIT = "BID_EDIT"
+    case BID_ACCEPTED = "BID_ACCEPTED"
+    case BID_REJECTED = "BID_REJECTED"
+    case REQUEST_CANCELLED = "REQUEST_CANCELLED"
+    case SERVICE_STATUS_UPDATED = "SERVICE_STATUS_UPDATED"
+    case SERVICE_STARTED = "SERVICE_STARTED"
+    case GARAGE_REQUEST_REJECTED = "GARAGE_REQUEST_REJECTED"
+    case COMPLETED_GARAGE_PROFILE = "GARAGE_PROFILE_COMPLETED"
+    case BID_CANCELLED = "BID_CANCELLED"
     case other
 }
 

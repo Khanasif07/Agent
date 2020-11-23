@@ -259,7 +259,8 @@ enum ApiKey {
     static var ongoingServices: String {return "ongoingServices"}
     static var servicesCompletedToday: String {return "servicesCompletedToday"}
     static var notificationType : String {return "notificationType"}
-
+    static var gcm_notification_type : String {return "gcm.notification.type"}
+    static var gcm_notification_requestId : String {return "gcm.notification.requestId"}
 }
 
 //MARK:- Api Code

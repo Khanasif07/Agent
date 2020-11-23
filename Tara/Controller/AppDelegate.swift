@@ -53,6 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , MessagingDelegate , UNUs
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
         print(fcmToken ?? "")
         AppUserDefaults.save(value: fcmToken ?? "" , forKey: .fcmToken) // Used for saving device token
+        DeviceDetail.deviceToken = fcmToken ?? ""
     }
     
     // Setup IQKeyboard Manager (Third party for handling keyboard in app)
@@ -172,7 +173,6 @@ extension AppDelegate{
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
         AppUserDefaults.save(value: deviceTokenString, forKey: .token)
-        DeviceDetail.deviceToken = deviceTokenString
         print("APNs device token: \(deviceTokenString)")
     }
     
@@ -184,7 +184,7 @@ extension AppDelegate{
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         
         guard let userInfo = (notification.request.content.userInfo as? [String: Any]) else { return }
-        guard let value = userInfo[ApiKey.notificationType] as? String else { return }
+        guard let value = userInfo[ApiKey.gcm_notification_type] as? String else { return }
         
         if value == PushNotificationType.other.rawValue {
             AppDelegate.shared.unreadNotificationCount += 1
@@ -211,7 +211,7 @@ extension AppDelegate{
             completionHandler([.alert, .badge, .sound])
         }
         
-        guard let roomId = userInfo[ApiKey.notificationId] as? String, let roomType = userInfo[ApiKey.notificationType] as? String else {
+        guard let roomId = userInfo[ApiKey.notificationId] as? String, let roomType = userInfo[ApiKey.gcm_notification_type] as? String else {
             return }
         
         if let nav = AppDelegate.shared.window?.rootViewController as? UINavigationController {
