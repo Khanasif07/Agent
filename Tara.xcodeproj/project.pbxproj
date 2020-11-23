@@ -327,6 +327,7 @@
 		A46A75B02553E0F00058A267 /* OneToOneChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46A75AF2553E0F00058A267 /* OneToOneChatViewModel.swift */; };
 		A46A75B22553EEBB0058A267 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46A75B12553EEBB0058A267 /* ChatModel.swift */; };
 		A46A75B4255402680058A267 /* BookedRequestVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46A75B3255402680058A267 /* BookedRequestVM.swift */; };
+		A4712881256B9CF400586BE9 /* UserNotificationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4712880256B9CF400586BE9 /* UserNotificationVM.swift */; };
 		A479345E253FFEE8001CDA4A /* SylyfeBuyer_SylyfeBuyer_Helpers_AlignmentFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A479345D253FFEE8001CDA4A /* SylyfeBuyer_SylyfeBuyer_Helpers_AlignmentFlowLayout.swift */; };
 		A47EB1D9254D42040044DD4D /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EB1D8254D42040044DD4D /* WebViewController.swift */; };
 		A480DB0F251F1F9F0031B3E5 /* OilRequestedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A480DB0E251F1F9F0031B3E5 /* OilRequestedVC.swift */; };
@@ -705,6 +706,7 @@
 		A46A75AF2553E0F00058A267 /* OneToOneChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneToOneChatViewModel.swift; sourceTree = "<group>"; };
 		A46A75B12553EEBB0058A267 /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 		A46A75B3255402680058A267 /* BookedRequestVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookedRequestVM.swift; sourceTree = "<group>"; };
+		A4712880256B9CF400586BE9 /* UserNotificationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationVM.swift; sourceTree = "<group>"; };
 		A479345D253FFEE8001CDA4A /* SylyfeBuyer_SylyfeBuyer_Helpers_AlignmentFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SylyfeBuyer_SylyfeBuyer_Helpers_AlignmentFlowLayout.swift; sourceTree = "<group>"; };
 		A47EB1D8254D42040044DD4D /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		A480DB0E251F1F9F0031B3E5 /* OilRequestedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OilRequestedVC.swift; sourceTree = "<group>"; };
@@ -1951,6 +1953,7 @@
 			isa = PBXGroup;
 			children = (
 				A43926392547FF9D0089E0EB /* UserNotificationVC.swift */,
+				A4712880256B9CF400586BE9 /* UserNotificationVM.swift */,
 			);
 			path = UserNotificationVC;
 			sourceTree = "<group>";
@@ -2419,6 +2422,7 @@
 				8481F9F72500AA9A00AB6EFB /* Resources */,
 				A66388142DF211E967B3E450 /* [CP] Embed Pods Frameworks */,
 				A091B7F167016AFC6CDC455C /* [CP] Copy Pods Resources */,
+				A471287F256B8CA200586BE9 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -2608,6 +2612,25 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Tara/Pods-Tara-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		A471287F256B8CA200586BE9 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n\n";
 		};
 		A66388142DF211E967B3E450 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2882,6 +2905,7 @@
 				A468DCA6253A020300416CF9 /* HandleRequest.swift in Sources */,
 				84558EEA252F098B00BFF8C6 /* SocketIOManager.swift in Sources */,
 				8411D35E252EAC4B00E6FA6C /* UserServiceRequestVM.swift in Sources */,
+				A4712881256B9CF400586BE9 /* UserNotificationVM.swift in Sources */,
 				A4B74CC92510C22700771974 /* GarageRegistrationVM.swift in Sources */,
 				844D81DF250243B300550334 /* SignUpTopCell.swift in Sources */,
 				8481FA6B2500BFD500AB6EFB /* AWSS3Manager.swift in Sources */,
@@ -3043,6 +3067,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 9;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = C4X83X2P52;
 				INFOPLIST_FILE = Tara/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
