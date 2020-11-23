@@ -80,6 +80,10 @@ class CompleteProfileStep1: BaseVC {
         showAlert(msg: LocalizedString.underDevelopment.localized)
     }
     
+    @IBAction func backBtnAction(_ sender: UIButton) {
+        pop()
+    }
+    
     private func isMapLocationEnable() {
         if CLLocationManager.locationServicesEnabled() {
             switch CLLocationManager.authorizationStatus() {
