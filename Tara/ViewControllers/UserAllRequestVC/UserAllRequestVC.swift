@@ -78,6 +78,8 @@ extension UserAllRequestVC {
         NotificationCenter.default.addObserver(self, selector: #selector(userServiceAcceptRejectSuccess), name: Notification.Name.UserServiceAcceptRejectSuccess, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ServiceRequestSuccess), name: Notification.Name.ServiceRequestSuccess, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(requestRejected), name: Notification.Name.RequestRejected, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(BidCancelled), name: Notification.Name.BidCancelled, object: nil)
+        
         
         self.filterBtn.tintColor = .black
         self.filterBtn.isHidden = !isUserLoggedin
@@ -188,6 +190,15 @@ extension UserAllRequestVC {
             return 1
         }
     }
+    
+    @objc func BidCancelled() {
+        if filterApplied {
+            getFilterData(data: filterArr,loader: false)
+        }else {
+            self.hitListingApi()
+        }
+    }
+    
 }
 
 // MARK: - Extension For TableView

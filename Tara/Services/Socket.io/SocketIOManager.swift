@@ -29,6 +29,7 @@ enum EventListnerKeys : String {
     case serviceStatusUpdated = "SERVICE_STATUS_UPDATED"
     case serviceStarted = "SERVICE_STARTED"
     case editedBidAccepted = "EDITED_BID_ACCEPTED"
+    case bid_cancelled = "BID_CANCELLED"
 }
 
 class SocketIOManager: NSObject {

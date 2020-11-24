@@ -117,6 +117,7 @@ extension UserServiceRequestVC {
         NotificationCenter.default.addObserver(self, selector: #selector(userServiceAcceptRejectSuccess), name: Notification.Name.UserServiceAcceptRejectSuccess, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(requestRejected), name: Notification.Name.RequestRejected, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(newBidSocketSuccess), name: Notification.Name.NewBidSocketSuccess, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(BidCancelled), name: Notification.Name.BidCancelled, object: nil)
         viewModel.delegate = self
         textSetUp()
         addTapGesture()
@@ -161,6 +162,10 @@ extension UserServiceRequestVC {
     }
     
     @objc func userServiceAcceptRejectSuccess(){
+        viewModel.getUserMyRequestDetailData(params: [ApiKey.requestId: self.viewModel.requestId])
+    }
+    
+    @objc func BidCancelled(){
         viewModel.getUserMyRequestDetailData(params: [ApiKey.requestId: self.viewModel.requestId])
     }
 }
