@@ -165,8 +165,10 @@ extension GarageServiceRequestVC {
             placeBidBtn.isHidden  = false
             requestBtn.isHidden = false
             placeBidBtn.setTitle("Place Bid", for: .normal)
-        default:
-            printDebug("Do nothing")
+        case .openForBidding:
+            placeBidBtn.isHidden  = false
+            requestBtn.isHidden = false
+            placeBidBtn.setTitle("Place Bid", for: .normal)
         }
     }
     
