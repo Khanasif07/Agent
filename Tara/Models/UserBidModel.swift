@@ -92,7 +92,6 @@ struct NotificationModel: Codable {
     let message: String
     let title: String
     let id: String
-    let type: Int
     let receiverId: String
     let status: String
     let image : String?
@@ -101,7 +100,7 @@ struct NotificationModel: Codable {
     let userType : String?
     
     enum CodingKeys: String, CodingKey {
-        case isDelete, isRead, message, title, type, receiverId, status, image, createdAt, updatedAt, userType
+        case isDelete, isRead, message, title, receiverId, status, image, createdAt, updatedAt, userType
         case id = "_id"
     }
 }
