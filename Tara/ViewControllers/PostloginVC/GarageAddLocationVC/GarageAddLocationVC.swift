@@ -176,6 +176,7 @@ extension GarageAddLocationVC :  GMSMapViewDelegate ,CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if(status == .authorizedWhenInUse || status == .authorizedAlways){
             self.mapPermission = true
+            self.isMapLocationEnable()
         } else {
             self.mapPermission = false
         }
