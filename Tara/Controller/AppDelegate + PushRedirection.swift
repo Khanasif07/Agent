@@ -21,46 +21,41 @@ class PushNotificationRedirection {
         guard let value = userInfo[ApiKey.gcm_notification_type] as? String else { return }
         switch value {
         case PushNotificationType.NEW_REQUEST_EVENT.rawValue:
-            AppDelegate.shared.unreadNotificationCount -= 1
-            AppUserDefaults.save(value: AppDelegate.shared.unreadNotificationCount, forKey: .unreadCount)
             let requestId = userInfo[ApiKey.gcm_notification_requestId] as? String ?? ""
             _ = userInfo[ApiKey.gcm_notification_type] as? String ?? ""
             AppRouter.goToGarageServiceRequestVCThroughNotification(requestId)
         case PushNotificationType.NEW_BID_EVENT.rawValue:
-            AppDelegate.shared.unreadNotificationCount -= 1
-            AppUserDefaults.save(value: AppDelegate.shared.unreadNotificationCount, forKey: .unreadCount)
-//            let viewId = userInfo[ApiKey.notificationViewId]
             let requestId = userInfo[ApiKey.gcm_notification_requestId] as? String ?? ""
-//            AppRouter.goToUserAllOffersVC(vc: <#T##UIViewController#>, requestId: requestId)
-            break
-//        case PushNotificationType.BID_EDIT.rawValue:
-//            guard let userType = userInfo["userType"] as? String else { return }
-//            AppRouter.goToWalkthrough()
-//        case PushNotificationType.BID_ACCEPTED.rawValue:
-//            let _ = userInfo[ApiKey.notificationViewId]
-//            let eventId = userInfo[ApiKey.notificationEventId]
-//            let _ = userInfo[ApiKey.notificationPostId]
-//            AppRouter.redirectUserToEventDetailSCreen(eventId as! String)
-//        case PushNotificationType.BID_REJECTED.rawValue:
-//            let _ = userInfo[ApiKey.notificationViewId]
-//            let eventId = userInfo[ApiKey.notificationEventId]
-//            let _ = userInfo[ApiKey.notificationPostId]
-//            AppRouter.redirectUserToEventDetailSCreen(eventId as! String)
-//        case PushNotificationType.BID_CANCELLED.rawValue:
-//            let _ = userInfo[ApiKey.notificationViewId]
-//            let eventId = userInfo[ApiKey.notificationEventId]
-//            let _ = userInfo[ApiKey.notificationPostId]
-//            AppRouter.redirectUserToEventDetailSCreen(eventId as! String)
-//        case PushNotificationType.GARAGE_REGISTRATION_REQUEST.rawValue:
-//            let _ = userInfo[ApiKey.notificationViewId]
-//            let eventId = userInfo[ApiKey.notificationEventId]
-//            let _ = userInfo[ApiKey.notificationPostId]
-//            AppRouter.redirectUserToEventDetailSCreen(eventId as! String)
-//        case PushNotificationType.SERVICE_STARTED.rawValue:
-//            let _ = userInfo[ApiKey.notificationViewId]
-//            let eventId = userInfo[ApiKey.notificationEventId]
-//            let _ = userInfo[ApiKey.notificationPostId]
-//            AppRouter.redirectUserToEventDetailSCreen(eventId as! String)
+            AppRouter.goToUserAllOffersVCThroughNotification(requestId: requestId)
+        case PushNotificationType.BID_EDIT.rawValue:
+            let requestId = userInfo[ApiKey.gcm_notification_requestId] as? String ?? ""
+            AppRouter.goToUserAllOffersVCThroughNotification(requestId: requestId)
+        case PushNotificationType.BID_ACCEPTED.rawValue:
+            let requestId = userInfo[ApiKey.gcm_notification_requestId] as? String ?? ""
+            AppRouter.goToGarageServiceRequestVCThroughNotification(requestId)
+        case PushNotificationType.BID_REJECTED.rawValue:
+            let requestId = userInfo[ApiKey.gcm_notification_requestId] as? String ?? ""
+            AppRouter.goToGarageServiceRequestVCThroughNotification(requestId)
+        case PushNotificationType.SERVICE_STATUS_UPDATED.rawValue:
+            let requestId = userInfo[ApiKey.gcm_notification_requestId] as? String ?? ""
+            AppRouter.goToUserServiceStatusVCThroughNotification(requestId: requestId)
+        case PushNotificationType.GARAGE_REQUEST_REJECTED.rawValue:
+            let requestId = userInfo[ApiKey.gcm_notification_requestId] as? String ?? ""
+            AppRouter.goToGarageServiceRequestVCThroughNotification(requestId)
+        case PushNotificationType.BID_CANCELLED.rawValue:
+            let requestId = userInfo[ApiKey.gcm_notification_requestId] as? String ?? ""
+            AppRouter.goToUserServiceDetailVCThroughNotification(requestId: requestId)
+        case PushNotificationType.GARAGE_REQUEST_APPROVED.rawValue:
+            //complete garage profile screen
+             printDebug(userInfo)
+        case PushNotificationType.REQUEST_REJECTED.rawValue:
+            let requestId = userInfo[ApiKey.gcm_notification_requestId] as? String ?? ""
+            AppRouter.goToUserServiceDetailVCThroughNotification(requestId: requestId)
+        case PushNotificationType.GARAGE_REGISTRATION_REQUEST.rawValue:
+             printDebug(userInfo)
+        case PushNotificationType.SERVICE_STARTED.rawValue:
+            let requestId = userInfo[ApiKey.gcm_notification_requestId] as? String ?? ""
+            AppRouter.goToUserServiceStatusVCThroughNotification(requestId: requestId)
         default:
             break
         }

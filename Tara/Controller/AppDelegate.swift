@@ -185,11 +185,26 @@ extension AppDelegate{
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         
         guard let userInfo = (notification.request.content.userInfo as? [String: Any]) else { return }
-//        guard let value = userInfo[ApiKey.gcm_notification_type] as? String else { return }
-        completionHandler([.alert, .badge, .sound])
-//        if value == PushNotificationType.other.rawValue {
-//            completionHandler([.alert, .badge, .sound])
-//        }
+        guard let value = userInfo[ApiKey.gcm_notification_type] as? String else { return }
+        if let nav = AppDelegate.shared.window?.rootViewController as? UINavigationController {
+            if let _ = nav.viewControllers.last as? GarageServiceRequestVC {
+                if value == PushNotificationType.NEW_REQUEST_EVENT.rawValue || value == PushNotificationType.BID_ACCEPTED.rawValue || value == PushNotificationType.BID_REJECTED.rawValue || value == PushNotificationType.GARAGE_REQUEST_REJECTED.rawValue {
+                    completionHandler([])
+                }else {
+                    completionHandler([.alert, .badge, .sound])
+                }
+            } else if let _ = nav.viewControllers.last as? UserAllOffersVC {
+               if value == PushNotificationType.NEW_BID_EVENT.rawValue || value == PushNotificationType.BID_EDIT.rawValue{
+                    completionHandler([])
+                }else {
+                    completionHandler([.alert, .badge, .sound])
+                }
+            }else {
+                completionHandler([.alert, .badge, .sound])
+            }
+        } else {
+            completionHandler([.alert, .badge, .sound])
+        }
     }
     
     func application(_ application: UIApplication,didReceiveRemoteNotification userInfo: [AnyHashable: Any],fetchCompletionHandler completionHandler:@escaping (UIBackgroundFetchResult) -> Void) {

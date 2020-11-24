@@ -488,6 +488,78 @@ enum AppRouter {
         }
     }
     
+    // Redirect  to  User All Offer screen
+    static func goToUserAllOffersVCThroughNotification(requestId : String){
+        guard let nav: UINavigationController = AppDelegate.shared.window?.rootViewController as? UINavigationController else { return }
+        if let homeScene = nav.hasViewController(ofKind: UserTabBarController.self) as? UserTabBarController {
+            homeScene.selectedIndex = 1
+            let navigationController = UINavigationController(rootViewController: homeScene)
+            navigationController.setNavigationBarHidden(true, animated: false)
+            defaultSetAsWindowRoot(navigationController)
+            let serviceScene = UserAllOffersVC.instantiate(fromAppStoryboard: .Garage)
+            serviceScene.requestId = requestId
+            navigationController.pushViewController(serviceScene, animated: true)
+        } else {
+            if let vwController = (nav.hasViewController(ofKind: UserAllOffersVC.self) as? UserAllOffersVC) {
+                vwController.requestId = requestId
+                nav.popToViewController(vwController, animated: true)
+                return
+            } else {
+                let serviceScene = UserAllOffersVC.instantiate(fromAppStoryboard: .Garage)
+                serviceScene.requestId = requestId
+                nav.pushViewController(serviceScene, animated: true)
+            }
+        }
+    }
+    
+    // Redirect  to  User Service Detail screen
+    static func goToUserServiceDetailVCThroughNotification(requestId : String){
+        guard let nav: UINavigationController = AppDelegate.shared.window?.rootViewController as? UINavigationController else { return }
+        if let homeScene = nav.hasViewController(ofKind: UserTabBarController.self) as? UserTabBarController {
+            homeScene.selectedIndex = 1
+            let navigationController = UINavigationController(rootViewController: homeScene)
+            navigationController.setNavigationBarHidden(true, animated: false)
+            defaultSetAsWindowRoot(navigationController)
+            let serviceScene = UserServiceRequestVC.instantiate(fromAppStoryboard: .Garage)
+            serviceScene.requestId = requestId
+            navigationController.pushViewController(serviceScene, animated: true)
+        } else {
+            if let vwController = (nav.hasViewController(ofKind: UserServiceRequestVC.self) as? UserServiceRequestVC) {
+                vwController.requestId = requestId
+                nav.popToViewController(vwController, animated: true)
+                return
+            } else {
+                let serviceScene = UserServiceRequestVC.instantiate(fromAppStoryboard: .Garage)
+                serviceScene.requestId = requestId
+                nav.pushViewController(serviceScene, animated: true)
+            }
+        }
+    }
+    
+    // Redirect  to  User Service Status screen
+    static func goToUserServiceStatusVCThroughNotification(requestId : String){
+        guard let nav: UINavigationController = AppDelegate.shared.window?.rootViewController as? UINavigationController else { return }
+        if let homeScene = nav.hasViewController(ofKind: UserTabBarController.self) as? UserTabBarController {
+            homeScene.selectedIndex = 1
+            let navigationController = UINavigationController(rootViewController: homeScene)
+            navigationController.setNavigationBarHidden(true, animated: false)
+            defaultSetAsWindowRoot(navigationController)
+            let serviceScene = UserServiceStatusVC.instantiate(fromAppStoryboard: .GarageRequest)
+            serviceScene.requestId = requestId
+            navigationController.pushViewController(serviceScene, animated: true)
+        } else {
+            if let vwController = (nav.hasViewController(ofKind: UserServiceStatusVC.self) as? UserServiceStatusVC) {
+                vwController.requestId = requestId
+                nav.popToViewController(vwController, animated: true)
+                return
+            } else {
+                let serviceScene = UserServiceStatusVC.instantiate(fromAppStoryboard: .GarageRequest)
+                serviceScene.requestId = requestId
+                nav.pushViewController(serviceScene, animated: true)
+            }
+        }
+    }
+    
     static func goToOilBrandsVC(vc: UIViewController){
         let scene = OilBrandsVC.instantiate(fromAppStoryboard: .UserHomeScreen)
         vc.navigationController?.pushViewController(scene, animated: true)
