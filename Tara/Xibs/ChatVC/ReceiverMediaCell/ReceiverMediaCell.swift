@@ -20,8 +20,8 @@ class ReceiverMediaCell: UITableViewCell {
     @IBOutlet weak var msgContainerView: UIView!
     @IBOutlet weak var mediaImageView: UIImageView!
     @IBOutlet weak var timeLabel: UILabel!
-//    @IBOutlet weak var deliveredImgview: UIImageView!
-//    @IBOutlet weak var readImageView: UIImageView!
+    //    @IBOutlet weak var deliveredImgview: UIImageView!
+    //    @IBOutlet weak var readImageView: UIImageView!
     
     //    MARK: CELL LIFE CYCLE
     //    =====================
