@@ -14,6 +14,8 @@ protocol UserNotificationVMDelegate: class {
     func notificationListingFailure(msg : String)
     func deleteNotificationSuccess(msg : String)
     func deleteNotificationFailure(msg : String)
+    func markNotificationSuccess(msg : String)
+    func markNotificationFailure(msg : String)
 }
 
 
@@ -67,11 +69,11 @@ class UserNotificationVM {
        
         WebServices.setNotificationMarkRead(parameters: params,loader: loader, success: { [weak self] (json) in
             guard let `self` = self else { return }
-            self.delegate?.deleteNotificationSuccess(msg: "")
+            self.delegate?.markNotificationSuccess(msg: "")
         }) { [weak self] (error) in
             guard let `self` = self else { return }
             self.isRequestinApi = false
-            self.delegate?.deleteNotificationFailure(msg: error.localizedDescription)
+            self.delegate?.markNotificationFailure(msg: error.localizedDescription)
         }
     }
     
