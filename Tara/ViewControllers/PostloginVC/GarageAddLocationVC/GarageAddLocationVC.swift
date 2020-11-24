@@ -92,6 +92,7 @@ extension GarageAddLocationVC {
     
     private func initialSetup() {
         locationManager.delegate = self
+        self.locationValue = LocationController.sharedLocationManager.locationManager.location?.coordinate ?? CLLocationCoordinate2D(latitude: 18.052238, longitude: 77.24334)
         self.prepareMap()
         self.setAddress()
         logoImgView.image = GarageProfileModel.shared.logo
