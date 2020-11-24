@@ -58,6 +58,7 @@ struct LoginViewModel {
                 FirestoreController.setFirebaseData(userId: user.id, email: user.email, password: password, name: user.name, imageURL: user.image, phoneNo: user.phoneNo, countryCode: user.countryCode, status: "", completion: {
                     self.delegate?.signInSuccess(userModel: user)
                 }) { (error) -> (Void) in
+                    AppUserDefaults.removeValue(forKey: .accesstoken)
                     self.delegate?.signInFailed(message: error.localizedDescription)
                 }
             }) { (error, code) in
@@ -65,10 +66,12 @@ struct LoginViewModel {
                     FirestoreController.createUserNode(userId: user.id, email: user.email, password: password, name: user.name, imageURL: user.image, phoneNo: user.countryCode + "" + user.phoneNo, countryCode: user.countryCode, status: "", completion: {
                         self.delegate?.signInSuccess(userModel: user)
                     }) { (error) -> (Void) in
+                        AppUserDefaults.removeValue(forKey: .accesstoken)
                         self.delegate?.signInFailed(message: error.localizedDescription)
                     }
                 } else {
-                    self.delegate?.signInFailed(message: "Please try again")
+                     AppUserDefaults.removeValue(forKey: .accesstoken)
+                     self.delegate?.signInFailed(message: error)
                 }
             }
         }
@@ -116,19 +119,7 @@ struct LoginViewModel {
             AppUserDefaults.save(value: json[ApiKey.data][ApiKey.currentRole].stringValue, forKey: .currentUserType)
             AppUserDefaults.save(value: json[ApiKey.data][ApiKey._id].stringValue, forKey: .userId)
             AppUserDefaults.save(value: json[ApiKey.data][ApiKey.phoneVerified].boolValue, forKey: .phoneNoVerified)
-            self.addUser(parameters: parameters, user: user)
-            if UserModel.main.phoneNoAdded && UserModel.main.phoneVerified {
-                self.addUserThroughSocialLogin(parameters: parameters, user: user)
-                return
-            }
-            if !UserModel.main.phoneNoAdded{
-                self.addUserThroughSocialLogin(parameters: parameters, user: user)
-                return
-            }
-            if !UserModel.main.phoneVerified && UserModel.main.phoneNoAdded{
-                self.addUserThroughSocialLogin(parameters: parameters, user: user)
-                return
-            }
+            self.addUserThroughSocialLogin(parameters: parameters, user: user)
           
         }) { (error) -> (Void) in
             self.delegate?.socailLoginApiFailure(message: error.localizedDescription)
@@ -142,6 +133,7 @@ struct LoginViewModel {
             FirestoreController.setFirebaseData(userId: user.id, email: user.email, password: "Tara@123", name: user.name, imageURL: user.image, phoneNo: user.phoneNo, countryCode: user.countryCode , status: "", completion: {
                 self.delegate?.socailLoginApiSuccess(message: "")
             }) { (error) -> (Void) in
+                AppUserDefaults.removeValue(forKey: .accesstoken)
                 self.delegate?.socailLoginApiFailure(message: error.localizedDescription)
             }
         }) { (error, code) in
@@ -149,10 +141,12 @@ struct LoginViewModel {
                 FirestoreController.createUserNode(userId: user.id, email: user.email, password:  "Tara@123", name: user.name, imageURL: user.image, phoneNo: user.phoneNo, countryCode: user.countryCode, status: "", completion: {
                     self.delegate?.socailLoginApiSuccess(message: "")
                 }) { (error) -> (Void) in
+                    AppUserDefaults.removeValue(forKey: .accesstoken)
                     self.delegate?.socailLoginApiFailure(message: error.localizedDescription)
                 }
             } else {
-                self.delegate?.socailLoginApiFailure(message: "Please try again")
+                AppUserDefaults.removeValue(forKey: .accesstoken)
+                self.delegate?.socailLoginApiFailure(message: error)
             }
         }
     }

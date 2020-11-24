@@ -91,14 +91,13 @@ class GarageAddLocationVC: BaseVC {
 extension GarageAddLocationVC {
     
     private func initialSetup() {
-        locationManager.delegate = self
-        self.locationValue = LocationController.sharedLocationManager.locationManager.location?.coordinate ?? CLLocationCoordinate2D(latitude: 18.052238, longitude: 77.24334)
         self.prepareMap()
         self.setAddress()
         logoImgView.image = GarageProfileModel.shared.logo
         garageName.text = GarageProfileModel.shared.serviceCenterName
         self.saveContinueBtn.isEnabled = false
         self.mapView.isUserInteractionEnabled = false
+        locationManager.delegate = self
     }
     
     private func isMapLocationEnable() {
@@ -120,7 +119,6 @@ extension GarageAddLocationVC {
         self.isMarkerAnimation =  false
         self.mapView.isMyLocationEnabled = true
         self.mapView.delegate = self
-        self.locationManager.delegate = self
         markerView.image = #imageLiteral(resourceName: "markerIcon")
         self.gmssMarker = GMSMarker(position: CLLocationCoordinate2D(latitude:  locationValue.latitude, longitude: locationValue.longitude))
         DispatchQueue.main.async {
@@ -176,7 +174,9 @@ extension GarageAddLocationVC :  GMSMapViewDelegate ,CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if(status == .authorizedWhenInUse || status == .authorizedAlways){
             self.mapPermission = true
-            self.isMapLocationEnable()
+            CommonFunctions.delay(delay: 0.20) {
+                   self.isMapLocationEnable()
+            }
         } else {
             self.mapPermission = false
         }

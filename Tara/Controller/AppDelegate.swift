@@ -69,6 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , MessagingDelegate , UNUs
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
+        application.applicationIconBadgeNumber = 0
         if isUserLoggedin{
             if !(SocketIOManager.isSocketConnected) {
                 SocketIOManager.shared.establishConnection()

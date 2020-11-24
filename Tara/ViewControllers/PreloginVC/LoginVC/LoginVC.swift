@@ -102,7 +102,7 @@ extension LoginVC {
             self.viewModel.signIn(getDict())
         }else{
             if !self.viewModel.checkSignInValidations(parameters: getDict()).message.isEmpty{
-                ToastView.shared.showLongToast(self.view, msg: self.viewModel.checkSignInValidations(parameters: getDict()).message)
+                CommonFunctions.showToastWithMessage(self.viewModel.checkSignInValidations(parameters: getDict()).message)
             }
         }
     }
@@ -283,11 +283,11 @@ extension LoginVC: SignInVMDelegate {
     }
     
     func signInFailed(message: String) {
-        ToastView.shared.showLongToast(self.view, msg: message)
+        CommonFunctions.showToastWithMessage(message)
     }
     
     func emailNotVerified(message: String){
-        ToastView.shared.showLongToast(self.view, msg: message)
+       CommonFunctions.showToastWithMessage(message)
     }
     
 }
