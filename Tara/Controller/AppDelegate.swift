@@ -185,18 +185,11 @@ extension AppDelegate{
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         
         guard let userInfo = (notification.request.content.userInfo as? [String: Any]) else { return }
-        guard let value = userInfo[ApiKey.gcm_notification_type] as? String else { return }
-        
-        if value == PushNotificationType.other.rawValue {
-            AppDelegate.shared.unreadNotificationCount += 1
-            AppUserDefaults.save(value: AppDelegate.shared.unreadNotificationCount, forKey: .unreadCount)
-//            NotificationCenter.default.post(name: .didReceiveNotification, object: nil)
-            completionHandler([.alert, .badge, .sound])
-        }
-        
-        if value == PushNotificationType.other.rawValue {
-            completionHandler([.alert, .badge, .sound])
-        }
+//        guard let value = userInfo[ApiKey.gcm_notification_type] as? String else { return }
+        completionHandler([.alert, .badge, .sound])
+//        if value == PushNotificationType.other.rawValue {
+//            completionHandler([.alert, .badge, .sound])
+//        }
     }
     
     func application(_ application: UIApplication,didReceiveRemoteNotification userInfo: [AnyHashable: Any],fetchCompletionHandler completionHandler:@escaping (UIBackgroundFetchResult) -> Void) {
@@ -215,7 +208,7 @@ extension AppDelegate{
                                 didReceive response: UNNotificationResponse,
                                 withCompletionHandler completionHandler: @escaping () -> Void) {
         guard let userInfo = response.notification.request.content.userInfo as? [String: Any] else { return }
-//        PushNotificationRedirection.redirectionOnNotification(userInfo)
+        PushNotificationRedirection.redirectionOnNotification(userInfo)
         print("tap on on forground app", userInfo)
         completionHandler()
     }
