@@ -1148,5 +1148,25 @@ extension WebServices{
             failure(error)
         }
     }
+    
+    static func deleteUserNotification(parameters: JSONDictionary,loader: Bool = false,
+                                       success: @escaping SuccessResponse,
+                                       failure: @escaping FailureResponse) {
+        self.commonDeleteAPIWithQuery(parameters: parameters, endPoint: .userNotifications, loader: loader, success: { (json) in
+            success(json)
+        }) { (error) -> (Void) in
+            failure(error)
+        }
+    }
+    
+    static func setNotificationMarkRead(parameters: JSONDictionary,loader: Bool = false,
+                                      success: @escaping SuccessResponse,
+                                      failure: @escaping FailureResponse) {
+        self.commonGetAPI(parameters: parameters, endPoint: .userNotificationMarkRead, loader: loader, success: { (json) in
+            success(json)
+        }) { (error) -> (Void) in
+            failure(error)
+        }
+    }
 }
 

@@ -98,6 +98,7 @@ extension UserNotificationVC : UITableViewDelegate, UITableViewDataSource {
                 cell.cancelBtnTapped = {[weak self] in
                     guard let `self` = self else { return }
                     self.viewModel.notificationListingArr.remove(at: indexPath.row)
+                    self.viewModel.deleteNotification(params: [ApiKey.notificationId: self.viewModel.notificationListingArr[indexPath.row].id], loader: false)
                     self.mainTableView.reloadData()
                 }
                 return cell
@@ -125,9 +126,11 @@ extension UserNotificationVC : UITableViewDelegate, UITableViewDataSource {
             self.viewModel.fetchNotificationListing(params: [ApiKey.page: self.viewModel.currentPage, ApiKey.limit : "20"],loader: false,pagination: true)
         }
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        if !self.viewModel.notificationListingArr[indexPath.row].isRead {
+            viewModel.setNotificationMarkRead(params : [ApiKey.notificationId: self.viewModel.notificationListingArr[indexPath.row].id], loader: true)
+        }
     }
 }
 
@@ -164,6 +167,14 @@ extension UserNotificationVC : DZNEmptyDataSetSource,DZNEmptyDataSetDelegate {
 }
 
 extension UserNotificationVC : UserNotificationVMDelegate{
+    func deleteNotificationSuccess(msg: String) {
+        mainTableView.reloadData()
+    }
+    
+    func deleteNotificationFailure(msg: String) {
+        CommonFunctions.showToastWithMessage(msg)
+    }
+    
     func notificationListingSuccess(msg: String) {
         mainTableView.reloadData()
     }

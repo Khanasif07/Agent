@@ -95,8 +95,11 @@ extension WebServices {
         case userQuery = "user/query"
         case adminId = "user/adminId"
         case userServiceHistory = "user/services/userServiceHistory"
-        case userNotifications = "user/notifications"
         
+        //MARK:-Notifications
+        case userNotifications = "user/notifications"
+        case userNotificationMarkRead = "user/notifications/markRead"
+
         var path : String {
             let url = baseUrl
             return url + self.rawValue
