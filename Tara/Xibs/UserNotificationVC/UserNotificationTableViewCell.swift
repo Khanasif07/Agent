@@ -42,18 +42,14 @@ class UserNotificationTableViewCell: UITableViewCell {
     }
     
     func bindData(_ model: NotificationModel) {
+        containerView.backgroundColor = model.isRead ? #colorLiteral(red: 0.6078431373, green: 0.6509803922, blue: 0.6823529412, alpha: 0.2) : #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         headingLbl.text = model.title
         subHeadingLbl.text = model.message
         let date = (model.createdAt)?.toDate(dateFormat: Date.DateFormat.givenDateFormat.rawValue) ?? Date()
         timeLbl.text = date.timeAgoSince
-        if let code = model.code {
-            lineView.backgroundColor = code.color
-            imgView.image = code.image
-        }
-        else {
-            lineView.backgroundColor = AppColors.successGreenColor
-            imgView.image = #imageLiteral(resourceName: "icRgt")
-        }
+        lineView.backgroundColor = model.code?.color
+        imgView.image = model.code?.image
+        
     }
     
     @IBAction func crossbtnAction(_ sender: UIButton) {

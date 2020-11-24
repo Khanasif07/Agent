@@ -126,9 +126,11 @@ extension UserNotificationVC : UITableViewDelegate, UITableViewDataSource {
             self.viewModel.fetchNotificationListing(params: [ApiKey.page: self.viewModel.currentPage, ApiKey.limit : "20"],loader: false,pagination: true)
         }
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        if !self.viewModel.notificationListingArr[indexPath.row].isRead {
+            viewModel.setNotificationMarkRead(params : [ApiKey.notificationId: self.viewModel.notificationListingArr[indexPath.row].id], loader: true)
+        }
     }
 }
 

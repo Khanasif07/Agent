@@ -98,6 +98,7 @@ extension WebServices {
         
         //MARK:-Notifications
         case userNotifications = "user/notifications"
+        case userNotificationMarkRead = "user/notifications/markRead"
 
         var path : String {
             let url = baseUrl

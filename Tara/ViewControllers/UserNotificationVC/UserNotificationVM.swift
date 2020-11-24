@@ -52,12 +52,7 @@ class UserNotificationVM {
     }
     
     func deleteNotification(params: JSONDictionary,loader: Bool = false,pagination: Bool = false) {
-          if pagination {
-              guard nextPageAvailable, !isRequestinApi else { return }
-          } else {
-              guard !isRequestinApi else { return }
-          }
-          isRequestinApi = true
+        
           WebServices.deleteUserNotification(parameters: params,loader: loader, success: { [weak self] (json) in
               guard let `self` = self else { return }
               self.delegate?.deleteNotificationSuccess(msg: "")
@@ -68,6 +63,18 @@ class UserNotificationVM {
           }
       }
 
+    func setNotificationMarkRead(params: JSONDictionary,loader: Bool = false,pagination: Bool = false) {
+       
+        WebServices.setNotificationMarkRead(parameters: params,loader: loader, success: { [weak self] (json) in
+            guard let `self` = self else { return }
+            self.delegate?.deleteNotificationSuccess(msg: "")
+        }) { [weak self] (error) in
+            guard let `self` = self else { return }
+            self.isRequestinApi = false
+            self.delegate?.deleteNotificationFailure(msg: error.localizedDescription)
+        }
+    }
+    
     func parseToMakeListingData(result: JSON) {
         if let jsonString = result[ApiKey.data][ApiKey.result].rawString(), let data = jsonString.data(using: .utf8) {
             do {
