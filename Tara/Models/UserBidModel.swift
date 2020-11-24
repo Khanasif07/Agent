@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct UserBidModel: Codable {
     let id, status: String
@@ -87,6 +88,36 @@ struct BidDatum: Codable {
 // MARK: - BidDatum
 struct NotificationModel: Codable {
  
+    enum NotificationStatus : String, Codable{
+        case ongoing = "2"
+        case failure = "0"
+        case success = "1"
+        
+        var color : UIColor {
+            switch self {
+                
+            case .ongoing:
+                return AppColors.warningYellowColor
+            case .failure:
+                return AppColors.errorRedColor
+            case .success:
+                return AppColors.successGreenColor
+                
+            }
+        }
+        
+        var image : UIImage {
+            switch self {
+            case .ongoing:
+                return #imageLiteral(resourceName: "icEr")
+            case .failure:
+                return #imageLiteral(resourceName: "error")
+            case .success:
+                return #imageLiteral(resourceName: "icRgt")
+            }
+        }
+    }
+    
     var isDelete: Bool
     var isRead: Bool
     let message: String
@@ -98,11 +129,13 @@ struct NotificationModel: Codable {
     let createdAt : String?
     let updatedAt : String?
     let userType : String?
+    let code: NotificationStatus?
     
     enum CodingKeys: String, CodingKey {
-        case isDelete, isRead, message, title, receiverId, status, image, createdAt, updatedAt, userType
+        case isDelete, isRead, message, title, receiverId, status, image, createdAt, updatedAt, userType, code
         case id = "_id"
     }
+    
 }
 
 

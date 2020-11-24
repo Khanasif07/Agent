@@ -46,7 +46,14 @@ class UserNotificationTableViewCell: UITableViewCell {
         subHeadingLbl.text = model.message
         let date = (model.createdAt)?.toDate(dateFormat: Date.DateFormat.givenDateFormat.rawValue) ?? Date()
         timeLbl.text = date.timeAgoSince
-        
+        if let code = model.code {
+            lineView.backgroundColor = code.color
+            imgView.image = code.image
+        }
+        else {
+            lineView.backgroundColor = AppColors.successGreenColor
+            imgView.image = #imageLiteral(resourceName: "icRgt")
+        }
     }
     
     @IBAction func crossbtnAction(_ sender: UIButton) {
