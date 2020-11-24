@@ -20,6 +20,7 @@ class UserNotificationVC: BaseVC {
     // MARK: - Variables
     //===========================
     let viewModel = UserNotificationVM()
+    var notificationId: String?
     
     // MARK: - Lifecycle
     //===========================
@@ -82,6 +83,7 @@ extension UserNotificationVC {
 // MARK: - Extension For TableView
 //===========================
 extension UserNotificationVC : UITableViewDelegate, UITableViewDataSource {
+   
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.getNoOfRowsInSection()
     }
@@ -92,16 +94,8 @@ extension UserNotificationVC : UITableViewDelegate, UITableViewDataSource {
                 let cell = tableView.dequeueCell(with: LoaderCell.self)
                 return cell
             } else {
-                let cell = tableView.dequeueCell(with: UserNotificationTableViewCell.self, indexPath: indexPath)
-                cell.bindData(viewModel.notificationListingArr[indexPath.row])
-                
-                cell.cancelBtnTapped = {[weak self] in
-                    guard let `self` = self else { return }
-                    self.viewModel.notificationListingArr.remove(at: indexPath.row)
-                    self.viewModel.deleteNotification(params: [ApiKey.notificationId: self.viewModel.notificationListingArr[indexPath.row].id], loader: false)
-                    self.mainTableView.reloadData()
-                }
-                return cell
+               return getNotificationCell(tableView, indexPath: indexPath)
+              
             }
         } else {
             let cell = tableView.dequeueCell(with: ProfileGuestTableCell.self, indexPath: indexPath)
@@ -129,6 +123,7 @@ extension UserNotificationVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if !self.viewModel.notificationListingArr[indexPath.row].isRead {
+            self.notificationId = self.viewModel.notificationListingArr[indexPath.row].id
             viewModel.setNotificationMarkRead(params : [ApiKey.notificationId: self.viewModel.notificationListingArr[indexPath.row].id], loader: true)
         }
     }
@@ -167,6 +162,20 @@ extension UserNotificationVC : DZNEmptyDataSetSource,DZNEmptyDataSetDelegate {
 }
 
 extension UserNotificationVC : UserNotificationVMDelegate{
+   
+    func markNotificationSuccess(msg: String) {
+        let index =  self.viewModel.notificationListingArr.firstIndex(where: { (model) -> Bool in
+            return model.id == notificationId
+        })
+        guard let selectedIndex = index else {return}
+        self.viewModel.notificationListingArr[selectedIndex].isRead = true
+        self.mainTableView.reloadData()
+    }
+    
+    func markNotificationFailure(msg: String) {
+        
+    }
+    
     func deleteNotificationSuccess(msg: String) {
         mainTableView.reloadData()
     }
@@ -183,3 +192,21 @@ extension UserNotificationVC : UserNotificationVMDelegate{
         CommonFunctions.showToastWithMessage(msg)
     }
 }
+
+extension UserNotificationVC {
+   
+    private func getNotificationCell(_ tableView: UITableView,indexPath: IndexPath) -> UITableViewCell{
+        let cell = tableView.dequeueCell(with: UserNotificationTableViewCell.self, indexPath: indexPath)
+        cell.bindData(viewModel.notificationListingArr[indexPath.row])
+        
+        cell.cancelBtnTapped = {[weak self] in
+            guard let `self` = self else { return }
+            self.viewModel.notificationListingArr.remove(at: indexPath.row)
+            self.mainTableView.reloadData()
+            self.viewModel.deleteNotification(params: [ApiKey.notificationId: self.viewModel.notificationListingArr[indexPath.row].id], loader: false)
+        }
+        return cell
+    }
+}
+
+
