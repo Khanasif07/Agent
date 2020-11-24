@@ -37,7 +37,7 @@ class ServiceCompletedTableViewCell: UITableViewCell {
         serviceTypeLbl.text = (type ?? "") + LocalizedString.service.localized
         if screenType == .serviceComplete {
             userImgView.setImage_kf(imageString: model.userImage ?? "", placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
-            userImgView.contentMode = .scaleAspectFit
+            userImgView.contentMode = .scaleToFill
             userNameLbl.text = model.userName
             userImgView.round()
         }else {

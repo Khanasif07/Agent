@@ -173,7 +173,7 @@ extension UserNotificationVC : UserNotificationVMDelegate{
     }
     
     func markNotificationFailure(msg: String) {
-        
+        CommonFunctions.showToastWithMessage(msg)
     }
     
     func deleteNotificationSuccess(msg: String) {
