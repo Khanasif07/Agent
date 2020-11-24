@@ -418,14 +418,18 @@ extension OneToOneChatVC {
     @objc func keyboardWillShow(sender: NSNotification) {
         containerScrollView.isScrollEnabled = true
         guard let info = sender.userInfo, let keyboardSize = (info[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height, let duration: TimeInterval = (info[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue else { return }
-        scrollMsgToBottom()
+        CommonFunctions.delay(delay: 0.2) {
+            self.scrollMsgToBottom()
+        }
         tableViewTopConstraint.constant = keyboardSize - 20
         UIView.animate(withDuration: duration) { self.view.layoutIfNeeded() }
     }
     
     @objc func keyboardWillHide(sender: NSNotification) {
         guard let info = sender.userInfo, let duration: TimeInterval = (info[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue else { return }
-        scrollMsgToBottom()
+        CommonFunctions.delay(delay: 0.2) {
+            self.scrollMsgToBottom()
+        }
         if requestId.isEmpty{tableViewTopConstraint.constant = 0.0}
         tableViewTopConstraint.constant =  isCurrentUserType == .garage ? (chatViewModel.chatData.id.isEmpty ? 0.0 : 80.0)  : (chatViewModel.chatData.id.isEmpty ? 0.0 : 124.0)
 
@@ -862,7 +866,10 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
     private func reloadTableViewToBottom() {
         messagesTableView.reloadData()
         self.view.layoutIfNeeded()
-        self.scrollMsgToBottom()
+        CommonFunctions.delay(delay: 0.2) {
+            self.scrollMsgToBottom(animated: true)
+        }
+//        self.scrollMsgToBottom()
     }
     
     private func reloadTableViewToBottomWithFooter() {
@@ -871,9 +878,11 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
         self.messagesTableView.scrollRectToVisible(self.messagesTableView.tableFooterView?.frame ?? CGRect.init(), animated: true)
     }
     
-    private func scrollMsgToBottom(animated: Bool = false) {
-        guard messageListing.endIndex > 0, messageListing[messageListing.endIndex - 1].endIndex > 0 else { return }
+    private func scrollMsgToBottom(animated: Bool = false, duration: Double = 0.1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
+            guard self.messageListing.endIndex > 0, self.messageListing[self.messageListing.endIndex - 1].endIndex > 0 else { return }
         self.messagesTableView.scrollToRow(at: IndexPath(row: self.messageListing[self.messageListing.endIndex - 1].endIndex - 1, section: self.messageListing.endIndex - 1), at: .bottom, animated: animated)
+        }
     }
 }
 
@@ -1787,7 +1796,7 @@ extension OneToOneChatVC : OneToOneChatViewModelDelegate{
             garageNameLbl.text = chatViewModel.chatData.garageName
         }
         CommonFunctions.delay(delay: 0.2) {
-            self.scrollMsgToBottom(animated: true)
+          //  self.scrollMsgToBottom(animated: true)
         }
     }
     

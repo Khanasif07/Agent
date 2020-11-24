@@ -128,7 +128,7 @@
                                                 <rect key="frame" x="352" y="-4" width="41" height="48"/>
                                                 <state key="normal" image="group3811"/>
                                                 <connections>
-                                                    <action selector="chatBtnAction:" destination="kGq-nU-rZv" eventType="touchUpInside" id="OlD-F6-Ge8"/>
+                                                    <action selector="chatBtnAction:" destination="kGq-nU-rZv" eventType="touchUpInside" id="0nR-9b-gqa"/>
                                                 </connections>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="whX-Pg-2AH">

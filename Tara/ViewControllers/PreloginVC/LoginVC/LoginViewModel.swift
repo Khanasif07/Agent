@@ -72,7 +72,7 @@ struct LoginViewModel {
                 }
             }
         }
-        }
+    }
     
     func checkSignInValidations(parameters: JSONDictionary) -> (status: Bool, message: String) {
         var validationStatus = true
