@@ -84,6 +84,22 @@ class GarageAddLocationVC: BaseVC {
         showAlert(msg: LocalizedString.underDevelopment.localized)
     }
     
+}
+
+// MARK: - Extension For Functions
+//===========================
+extension GarageAddLocationVC {
+    
+    private func initialSetup() {
+        self.prepareMap()
+        self.setAddress()
+        logoImgView.image = GarageProfileModel.shared.logo
+        garageName.text = GarageProfileModel.shared.serviceCenterName
+        self.saveContinueBtn.isEnabled = false
+        self.mapView.isUserInteractionEnabled = false
+        locationManager.delegate = self
+    }
+    
     private func isMapLocationEnable() {
         if CLLocationManager.locationServicesEnabled() {
             switch CLLocationManager.authorizationStatus() {
@@ -98,27 +114,11 @@ class GarageAddLocationVC: BaseVC {
             print("Location services are not enabled")
         }
     }
-}
-
-// MARK: - Extension For Functions
-//===========================
-extension GarageAddLocationVC {
-    
-    private func initialSetup() {
-        locationManager.delegate = self
-        self.prepareMap()
-        self.setAddress()
-        logoImgView.image = GarageProfileModel.shared.logo
-        garageName.text = GarageProfileModel.shared.serviceCenterName
-        self.saveContinueBtn.isEnabled = false
-        self.mapView.isUserInteractionEnabled = false
-    }
     
     private func prepareMap() {
         self.isMarkerAnimation =  false
         self.mapView.isMyLocationEnabled = true
         self.mapView.delegate = self
-        self.locationManager.delegate = self
         markerView.image = #imageLiteral(resourceName: "markerIcon")
         self.gmssMarker = GMSMarker(position: CLLocationCoordinate2D(latitude:  locationValue.latitude, longitude: locationValue.longitude))
         DispatchQueue.main.async {
@@ -154,24 +154,6 @@ extension GarageAddLocationVC {
         }
     }
     
-    ///SETUP LOCATIONS
-    private func setupLocations() {
-        let status = CLLocationManager.authorizationStatus()
-        if CLLocationManager.locationServicesEnabled() {
-            if  status == CLAuthorizationStatus.authorizedAlways
-                || status == CLAuthorizationStatus.authorizedWhenInUse {
-                self.moveMarker(coordinate: locationValue)
-                self.setAddress()
-            }
-            else { self.locationPermissonPopUp() }
-        }
-        else{ self.locationPermissonPopUp() }
-    }
-    
-    private func locationPermissonPopUp() {
-        openSettingApp(message: "We need permission to access this app")
-    }
-    
     private func openSettingApp(message: String) {
         
         guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
@@ -192,6 +174,9 @@ extension GarageAddLocationVC :  GMSMapViewDelegate ,CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if(status == .authorizedWhenInUse || status == .authorizedAlways){
             self.mapPermission = true
+            CommonFunctions.delay(delay: 0.20) {
+                   self.isMapLocationEnable()
+            }
         } else {
             self.mapPermission = false
         }
@@ -228,7 +213,7 @@ extension GarageAddLocationVC :  GMSMapViewDelegate ,CLLocationManagerDelegate {
                let lng = mapView.myLocation?.coordinate.longitude else { return false }
         self.mapView.isUserInteractionEnabled = true
         self.isMarkerAnimation = false
-        self.locationValue = CLLocationCoordinate2D.init(latitude: lat, longitude: lng)
+        self.locationValue = CLLocationCoordinate2D(latitude: lat, longitude: lng)
         moveMarker(coordinate:  self.locationValue)
         self.setAddress()
         return true

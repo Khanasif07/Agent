@@ -21,6 +21,7 @@ class ChangeLanguageVC: BaseVC {
     
     // MARK: - Variables
     //===========================
+    let currentSelectedLang = AppUserDefaults.value(forKey: .currentLanguage).stringValue
  
     // MARK: - Lifecycle
     //===========================
@@ -65,6 +66,11 @@ extension ChangeLanguageVC {
     private func initialSetup(){
         setupTextFont()
         saveBtn.isEnabled = true
+        if currentSelectedLang == LocalizedString.english.localized{
+            englishBtnAction(_sender: self.englishBtn)
+        } else{
+            arabicBtnAction(_sender:  self.arabicBtn)
+        }
     }
     
     private func setupTextFont() {

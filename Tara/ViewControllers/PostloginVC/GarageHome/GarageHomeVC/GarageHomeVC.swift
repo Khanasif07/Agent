@@ -172,7 +172,7 @@ extension GarageHomeVC:  GarageHomeVMDelegate{
     }
     
     func getAdminIdFailed(msg: String) {
-        
+        ToastView.shared.showLongToast(self.view, msg: msg)
     }
     
     func getGarageHomeDataSuccess(msg: String) {

@@ -262,7 +262,7 @@ extension WebServices{
                                success: @escaping SuccessResponse,
                                failure: @escaping FailureResponse) {
         self.commonPostAPI(parameters: parameters, endPoint: .socialLogin, loader: true, success: { (json) in
-            let user = UserModel.init(json[ApiKey.data])
+            let user = UserModel(json[ApiKey.data])
             UserModel.main = user
             success(json)
         }) { (error) -> (Void) in

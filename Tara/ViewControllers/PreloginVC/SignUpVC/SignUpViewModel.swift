@@ -120,19 +120,7 @@ struct SignUpViewModel {
             AppUserDefaults.save(value: accessToken, forKey: .accesstoken)
             AppUserDefaults.save(value: "basic", forKey: .currentUserType)
             AppUserDefaults.save(value: json[ApiKey.data][ApiKey.phoneVerified].boolValue, forKey: .phoneNoVerified)
-            if UserModel.main.phoneNoAdded && UserModel.main.phoneVerified {
-                self.addUser(parameters: parameters, user: user)
-                return
-            }
-            if !UserModel.main.phoneNoAdded{
-                self.delegate?.socailLoginApiSuccessWithoutPhoneNo(message: "")
-                return
-            }
-            if !UserModel.main.phoneVerified && UserModel.main.phoneNoAdded{
-                self.delegate?.socailLoginApiSuccessWithoutVerifyPhoneNo(message: "")
-                return
-            }
-            self.delegate?.socailLoginApiSuccess(message: "")
+            self.addUserThroughSocialLogin(parameters: parameters, user: user)
         }) { (error) -> (Void) in
             self.delegate?.socailLoginApiFailure(message: error.localizedDescription)
             
@@ -140,24 +128,25 @@ struct SignUpViewModel {
     }
     
     //Add User in FireStore
-    private func addUser(parameters: JSONDictionary, user: UserModel) {
-        if let email = parameters[ApiKey.email] as? String, let password = parameters[ApiKey.password] as? String {
-            FirestoreController.login(userId: user.id, withEmail: email, with: password, success: {
-                FirestoreController.setFirebaseData(userId: user.id, email: user.email, password: password, name: user.name, imageURL: user.image, phoneNo: user.phoneNo, countryCode:  user.countryCode, status: "", completion: {
+    private func addUserThroughSocialLogin(parameters: JSONDictionary, user: UserModel) {
+        FirestoreController.login(userId: user.id, withEmail: user.email, with: "Tara@123", success: {
+            FirestoreController.setFirebaseData(userId: user.id, email: user.email, password: "Tara@123", name: user.name, imageURL: user.image, phoneNo: user.phoneNo, countryCode: user.countryCode , status: "", completion: {
+                self.delegate?.socailLoginApiSuccess(message: "")
+            }) { (error) -> (Void) in
+                AppUserDefaults.removeValue(forKey: .accesstoken)
+                self.delegate?.socailLoginApiFailure(message: error.localizedDescription)
+            }
+        }) { (error, code) in
+            if code == 17011 {
+                FirestoreController.createUserNode(userId: user.id, email: user.email, password:  "Tara@123", name: user.name, imageURL: user.image, phoneNo: user.phoneNo, countryCode: user.countryCode, status: "", completion: {
                     self.delegate?.socailLoginApiSuccess(message: "")
                 }) { (error) -> (Void) in
+                    AppUserDefaults.removeValue(forKey: .accesstoken)
                     self.delegate?.socailLoginApiFailure(message: error.localizedDescription)
                 }
-            }) { (error, code) in
-                if code == 17011 {
-                    FirestoreController.createUserNode(userId: user.id, email: user.email, password: password, name: user.name, imageURL: user.image, phoneNo: user.countryCode + "" + user.phoneNo, countryCode: user.countryCode, status: "", completion: {
-                        self.delegate?.socailLoginApiSuccess(message: "")
-                    }) { (error) -> (Void) in
-                        self.delegate?.socailLoginApiFailure(message: error.localizedDescription)
-                    }
-                } else {
-                    self.delegate?.socailLoginApiFailure(message: "Please try again")
-                }
+            } else {
+                AppUserDefaults.removeValue(forKey: .accesstoken)
+                self.delegate?.socailLoginApiFailure(message: error)
             }
         }
     }
