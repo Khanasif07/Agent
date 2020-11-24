@@ -12,7 +12,8 @@ import SwiftyJSON
 protocol UserNotificationVMDelegate: class {
     func notificationListingSuccess(msg : String)
     func notificationListingFailure(msg : String)
-    
+    func deleteNotificationSuccess(msg : String)
+    func deleteNotificationFailure(msg : String)
 }
 
 
@@ -49,6 +50,23 @@ class UserNotificationVM {
             self.delegate?.notificationListingFailure(msg: error.localizedDescription)
         }
     }
+    
+    func deleteNotification(params: JSONDictionary,loader: Bool = false,pagination: Bool = false) {
+          if pagination {
+              guard nextPageAvailable, !isRequestinApi else { return }
+          } else {
+              guard !isRequestinApi else { return }
+          }
+          isRequestinApi = true
+          WebServices.deleteUserNotification(parameters: params,loader: loader, success: { [weak self] (json) in
+              guard let `self` = self else { return }
+              self.delegate?.deleteNotificationSuccess(msg: "")
+          }) { [weak self] (error) in
+              guard let `self` = self else { return }
+              self.isRequestinApi = false
+              self.delegate?.deleteNotificationFailure(msg: error.localizedDescription)
+          }
+      }
 
     func parseToMakeListingData(result: JSON) {
         if let jsonString = result[ApiKey.data][ApiKey.result].rawString(), let data = jsonString.data(using: .utf8) {
