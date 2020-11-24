@@ -208,7 +208,7 @@ extension HomeVC:LocationPopUpVMDelegate {
     }
     
     func getAdminIdFailed(error:String){
-        
+        ToastView.shared.showLongToast(self.view, msg: error)
     }
 }
 

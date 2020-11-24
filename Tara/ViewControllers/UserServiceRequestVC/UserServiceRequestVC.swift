@@ -105,7 +105,7 @@ class UserServiceRequestVC: BaseVC {
     }
     
     @IBAction func helpBtnAction(_ sender: UIButton) {
-        showAlert(msg: LocalizedString.underDevelopment.localized)
+        viewModel.getAdminId(dict: [:], loader: true)
     }
 }
 
@@ -247,6 +247,14 @@ extension UserServiceRequestVC: UserServiceRequestVMDelegate{
     }
     
     func getUserMyRequestDetailFailed(error: String) {
+        ToastView.shared.showLongToast(self.view, msg: error)
+    }
+    
+    func getAdminIdSuccess(id: String, name: String, image: String){
+        AppRouter.goToOneToOneChatVC(self, userId: id, requestId: "", name: "Support Chat", image: image, unreadMsgs: 0, isSupportChat: true,garageUserId: isCurrentUserType == .garage ? UserModel.main.id : "" )
+    }
+    
+    func getAdminIdFailed(error:String){
         ToastView.shared.showLongToast(self.view, msg: error)
     }
 }
