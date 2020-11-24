@@ -23,6 +23,15 @@ enum AppRouter {
         AppDelegate.shared.window?.makeKeyAndVisible()
     }
     
+    // MARK: - General Method to set Root VC
+    //=========================================
+    static func defaultSetAsWindowRoot(_ navigationController: UINavigationController) {
+        AppDelegate.shared.window?.rootViewController = navigationController
+        AppDelegate.shared.window?.becomeKey()
+        AppDelegate.shared.window?.makeKeyAndVisible()
+    }
+       
+    
     // MARK: - Show Landing Screen
     //===========================
     static func checkAppInitializationFlow() {
@@ -462,7 +471,7 @@ enum AppRouter {
             homeScene.selectedIndex = 1
             let navigationController = UINavigationController(rootViewController: homeScene)
             navigationController.setNavigationBarHidden(true, animated: false)
-            setAsWindowRoot(navigationController)
+            defaultSetAsWindowRoot(navigationController)
             let serviceScene = GarageServiceRequestVC.instantiate(fromAppStoryboard: .Garage)
             serviceScene.requestId = requestId
             navigationController.pushViewController(serviceScene, animated: true)
