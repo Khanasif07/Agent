@@ -55,7 +55,7 @@ struct LoginViewModel {
     private func addUser(parameters: JSONDictionary, user: UserModel) {
         if let email = parameters[ApiKey.email] as? String, let password = parameters[ApiKey.password] as? String {
             FirestoreController.login(userId: user.id, withEmail: email, with: password, success: {
-                FirestoreController.setFirebaseData(userId: user.id, email: user.email, password: password, name: user.name, imageURL: user.image, phoneNo: user.countryCode + "" + user.phoneNo, status: "", completion: {
+                FirestoreController.setFirebaseData(userId: user.id, email: user.email, password: password, name: user.name, imageURL: user.image, phoneNo: user.phoneNo, countryCode: user.countryCode, status: "", completion: {
                     self.delegate?.signInSuccess(userModel: user)
                 }) { (error) -> (Void) in
                     self.delegate?.signInFailed(message: error.localizedDescription)
@@ -139,14 +139,14 @@ struct LoginViewModel {
     //Add User in FireStore
     private func addUserThroughSocialLogin(parameters: JSONDictionary, user: UserModel) {
         FirestoreController.login(userId: user.id, withEmail: user.email, with: "Tara@123", success: {
-            FirestoreController.setFirebaseData(userId: user.id, email: user.email, password: "Tara@123", name: user.name, imageURL: user.image, phoneNo: user.countryCode + "" + user.phoneNo, status: "", completion: {
+            FirestoreController.setFirebaseData(userId: user.id, email: user.email, password: "Tara@123", name: user.name, imageURL: user.image, phoneNo: user.phoneNo, countryCode: user.countryCode , status: "", completion: {
                 self.delegate?.socailLoginApiSuccess(message: "")
             }) { (error) -> (Void) in
                 self.delegate?.socailLoginApiFailure(message: error.localizedDescription)
             }
         }) { (error, code) in
             if code == 17011 {
-                FirestoreController.createUserNode(userId: user.id, email: user.email, password:  "Tara@123", name: user.name, imageURL: user.image, phoneNo: user.countryCode + "" + user.phoneNo, countryCode: user.countryCode, status: "", completion: {
+                FirestoreController.createUserNode(userId: user.id, email: user.email, password:  "Tara@123", name: user.name, imageURL: user.image, phoneNo: user.phoneNo, countryCode: user.countryCode, status: "", completion: {
                     self.delegate?.socailLoginApiSuccess(message: "")
                 }) { (error) -> (Void) in
                     self.delegate?.socailLoginApiFailure(message: error.localizedDescription)

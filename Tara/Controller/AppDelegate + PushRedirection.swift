@@ -19,47 +19,51 @@ class PushNotificationRedirection {
     ///Managing the redirection on Notification
     static func redirectionOnNotification(_ userInfo: [String: Any]) {
         guard let value = userInfo[ApiKey.gcm_notification_type] as? String else { return }
-        
-//        switch value {
-//        case PushNotificationType.chat.rawValue:
-//            let model = ChatNotificationModel(userInfo)
-//            if model.roomType == ApiKey.singleCaps || model.roomType == ApiKey.single {
-//                AppDelegate.shared.userID = model.senderId
-//                NotificationCenter.default.post(name: .updateBatchCount, object: nil)
-//                AppRouter.redirectUserToChat(model)
-//            } else {
-//                AppRouter.redirectUserToGroupChat(model)
-//            }
-//        case PushNotificationType.event.rawValue:
-//            AppDelegate.shared.unreadNotificationCount -= 1
-//            AppUserDefaults.save(value: AppDelegate.shared.unreadNotificationCount, forKey: .unreadCount)
-//            NotificationCenter.default.post(name: .didReceiveNotification, object: nil)
+        switch value {
+        case PushNotificationType.NEW_REQUEST_EVENT.rawValue:
+            AppDelegate.shared.unreadNotificationCount -= 1
+            AppUserDefaults.save(value: AppDelegate.shared.unreadNotificationCount, forKey: .unreadCount)
+            let requestId = userInfo[ApiKey.gcm_notification_requestId] as? String ?? ""
+            _ = userInfo[ApiKey.gcm_notification_type] as? String ?? ""
+            AppRouter.goToGarageServiceRequestVCThroughNotification(requestId)
+        case PushNotificationType.NEW_BID_EVENT.rawValue:
+            AppDelegate.shared.unreadNotificationCount -= 1
+            AppUserDefaults.save(value: AppDelegate.shared.unreadNotificationCount, forKey: .unreadCount)
 //            let viewId = userInfo[ApiKey.notificationViewId]
-//            let eventId = userInfo[ApiKey.notificationEventId]
-//            AppRouter.goToHome(isComeFromshareUrl: (viewId as! String) == "2",eventId: eventId as! String)
-//            break
-//        case PushNotificationType.event.rawValue:
+            let requestId = userInfo[ApiKey.gcm_notification_requestId] as? String ?? ""
+//            AppRouter.goToUserAllOffersVC(vc: <#T##UIViewController#>, requestId: requestId)
+            break
+//        case PushNotificationType.BID_EDIT.rawValue:
 //            guard let userType = userInfo["userType"] as? String else { return }
-//            AppUserDefaults.save(value: userType, forKey: .userType)
 //            AppRouter.goToWalkthrough()
-//        case PushNotificationType.post.rawValue:
+//        case PushNotificationType.BID_ACCEPTED.rawValue:
 //            let _ = userInfo[ApiKey.notificationViewId]
 //            let eventId = userInfo[ApiKey.notificationEventId]
 //            let _ = userInfo[ApiKey.notificationPostId]
 //            AppRouter.redirectUserToEventDetailSCreen(eventId as! String)
-//        case PushNotificationType.like.rawValue:
+//        case PushNotificationType.BID_REJECTED.rawValue:
 //            let _ = userInfo[ApiKey.notificationViewId]
 //            let eventId = userInfo[ApiKey.notificationEventId]
 //            let _ = userInfo[ApiKey.notificationPostId]
 //            AppRouter.redirectUserToEventDetailSCreen(eventId as! String)
-//        case PushNotificationType.comment.rawValue:
+//        case PushNotificationType.BID_CANCELLED.rawValue:
 //            let _ = userInfo[ApiKey.notificationViewId]
 //            let eventId = userInfo[ApiKey.notificationEventId]
 //            let _ = userInfo[ApiKey.notificationPostId]
 //            AppRouter.redirectUserToEventDetailSCreen(eventId as! String)
-//        default:
-//            break
-//        }
+//        case PushNotificationType.GARAGE_REGISTRATION_REQUEST.rawValue:
+//            let _ = userInfo[ApiKey.notificationViewId]
+//            let eventId = userInfo[ApiKey.notificationEventId]
+//            let _ = userInfo[ApiKey.notificationPostId]
+//            AppRouter.redirectUserToEventDetailSCreen(eventId as! String)
+//        case PushNotificationType.SERVICE_STARTED.rawValue:
+//            let _ = userInfo[ApiKey.notificationViewId]
+//            let eventId = userInfo[ApiKey.notificationEventId]
+//            let _ = userInfo[ApiKey.notificationPostId]
+//            AppRouter.redirectUserToEventDetailSCreen(eventId as! String)
+        default:
+            break
+        }
     }
 }
 

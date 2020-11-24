@@ -74,6 +74,8 @@ class ChooseLanguageVC: BaseVC {
         self.arabicBtn.setImage(#imageLiteral(resourceName: "roundUnSelected"), for: .normal)
         self.englishBtnView.layer.borderWidth = 1.5
         self.arabicBtnView.layer.borderWidth = 1.0
+        self.arabicLbl.textColor = UIColor.black.withAlphaComponent(0.5)
+        self.englishLbl.textColor = UIColor.black
         self.continueBtn.isEnabled = true
         AppUserDefaults.save(value: LocalizedString.english.localized, forKey: .currentLanguage)
         AppUserDefaults.save(value: true, forKey: .isLanguageSelect)
@@ -86,6 +88,8 @@ class ChooseLanguageVC: BaseVC {
         self.arabicBtnView.layer.borderWidth = 1.5
         self.arabicBtnView.layer.borderColor = AppColors.appRedColor.cgColor
         self.englishBtnView.layer.borderColor = AppColors.primaryBlueLightShade.cgColor
+        self.englishLbl.textColor = UIColor.black.withAlphaComponent(0.5)
+        self.arabicLbl.textColor = UIColor.black
         self.continueBtn.isEnabled = true
         AppUserDefaults.save(value: LocalizedString.arabic.localized, forKey: .currentLanguage)
         AppUserDefaults.save(value: true, forKey: .isLanguageSelect)
@@ -126,6 +130,8 @@ extension ChooseLanguageVC {
         self.continueBtn.setTitle(LocalizedString.continueTitle.localized, for: .normal)
         self.continueBtn.isEnabled = false
         self.englishLbl.text = LocalizedString.english.localized
+        self.englishLbl.textColor = UIColor.black.withAlphaComponent(0.5)
+        self.arabicLbl.textColor = UIColor.black.withAlphaComponent(0.5)
         self.arabicLbl.text = LocalizedString.arabic.localized
         self.arabicBtn.setImage(#imageLiteral(resourceName: "roundUnSelected"), for: .normal)
         self.englishBtn.setImage(#imageLiteral(resourceName: "roundUnSelected"), for: .normal)

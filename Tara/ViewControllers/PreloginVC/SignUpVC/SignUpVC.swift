@@ -105,7 +105,7 @@ extension SignUpVC {
             self.viewModel.signUp(getDict())
         }else{
             if !self.viewModel.checkSignupValidations(parameters: getDict()).message.isEmpty{
-                ToastView.shared.showLongToast(self.view, msg: self.viewModel.checkSignupValidations(parameters: getDict()).message)
+                CommonFunctions.showToastWithMessage(self.viewModel.checkSignupValidations(parameters: getDict()).message)
             }
         }
     }

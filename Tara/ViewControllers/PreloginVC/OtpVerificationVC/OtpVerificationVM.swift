@@ -87,14 +87,14 @@ class OtpVerificationVM{
     //Add user to Firestore
     private func addUser(user: UserModel, message: String) {
         FirestoreController.login(userId: user.id, withEmail: user.email, with: "Tara@123", success: {
-            FirestoreController.setFirebaseData(userId: user.id, email: user.email, password: "Tara@123", name: user.name, imageURL: user.image, phoneNo: user.countryCode + "" + user.phoneNo, status: "", completion: {
+            FirestoreController.setFirebaseData(userId: user.id, email: user.email, password: "Tara@123", name: user.name, imageURL: user.image, phoneNo: user.phoneNo, countryCode: user.countryCode, status: "", completion: {
                 self.delegate?.otpVerifiedSuccessfully(message: "Otp Verified Successfully")
             }) { (error) -> (Void) in
                 self.delegate?.otpVerificationFailed(error: "Please try again")
             }
         }) { (message, code) in
             if code == 17011 {
-                FirestoreController.createUserNode(userId: user.id, email: user.email, password: "Tara@123", name: user.name, imageURL: user.image, phoneNo: user.countryCode + "" + user.phoneNo, countryCode: user.countryCode, status: "", completion: {
+                FirestoreController.createUserNode(userId: user.id, email: user.email, password: "Tara@123", name: user.name, imageURL: user.image, phoneNo: user.phoneNo, countryCode: user.countryCode, status: "", completion: {
                     self.delegate?.otpVerifiedSuccessfully(message: "Otp Verified Successfully")
                 }) { (error) -> (Void) in
                     self.delegate?.otpVerificationFailed(error: error.localizedDescription)

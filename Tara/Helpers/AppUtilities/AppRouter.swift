@@ -453,7 +453,30 @@ enum AppRouter {
         scene.viewModel.requestType = requestType
         scene.delegate = vc as? UserServiceRequestVCDelegate
         vc.navigationController?.pushViewController(scene, animated: true)
-//        vc.present(scene, animated: true, completion: nil)
+    }
+    
+    // Redirect  to  Garage Service Detail screen
+    static func goToGarageServiceRequestVCThroughNotification(_ requestId: String) {
+        guard let nav: UINavigationController = AppDelegate.shared.window?.rootViewController as? UINavigationController else { return }
+        if let homeScene = nav.hasViewController(ofKind: GarageTabBarController.self) as? GarageTabBarController {
+            homeScene.selectedIndex = 1
+            let navigationController = UINavigationController(rootViewController: homeScene)
+            navigationController.setNavigationBarHidden(true, animated: false)
+            setAsWindowRoot(navigationController)
+            let serviceScene = GarageServiceRequestVC.instantiate(fromAppStoryboard: .Garage)
+            serviceScene.requestId = requestId
+            navigationController.pushViewController(serviceScene, animated: true)
+        } else {
+            if let vwController = (nav.hasViewController(ofKind: GarageServiceRequestVC.self) as? GarageServiceRequestVC) {
+                vwController.requestId = requestId
+                nav.popToViewController(vwController, animated: true)
+                return
+            } else {
+                let serviceScene = GarageServiceRequestVC.instantiate(fromAppStoryboard: .Garage)
+                serviceScene.requestId = requestId
+                nav.pushViewController(serviceScene, animated: true)
+            }
+        }
     }
     
     static func goToOilBrandsVC(vc: UIViewController){
