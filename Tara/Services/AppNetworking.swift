@@ -121,7 +121,6 @@ enum AppNetworking {
                                           timeoutInterval: timeOutInterval)
         request.httpMethod = method
         var updatedHeaders = header
-        //        updatedHeaders[ApiKey.Authorization] =  "Basic YWRtaW46MTIzNA=="
         
         if isUserLoggedin {
             let strToken: String = AppUserDefaults.value(forKey: .accesstoken).stringValue

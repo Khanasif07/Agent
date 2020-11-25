@@ -1168,5 +1168,15 @@ extension WebServices{
             failure(error)
         }
     }
+    
+    static func postMessageToFirestoreForPush(parameters: JSONDictionary,loader: Bool = false,
+                                              success: @escaping SuccessResponse,
+                                              failure: @escaping FailureResponse) {
+        self.commonPostAPI(parameters: parameters, endPoint: .acceptEditedBid, loader: loader, success: { (json) in
+            success(json)
+        }) { (error) -> (Void) in
+            failure(error)
+        }
+    }
 }
 

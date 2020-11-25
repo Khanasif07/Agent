@@ -71,17 +71,11 @@ class OneToOneChatViewModel {
                     isRequestinApi = false
                     return
                 }
-                let modelList = try! JSONDecoder().decode(ChatModel.self, from: data)
+                let modelList = try JSONDecoder().decode(ChatModel.self, from: data)
                 printDebug(modelList)
                 currentPage = result[ApiKey.data][ApiKey.page].intValue
                 isRequestinApi = false
                 chatData = modelList
-                
-                if currentPage == 1 {
-//                    self.userBidListingArr = modelList
-                } else {
-//                    self.userBidListingArr.append(contentsOf: modelList)
-                }
                 nextPageAvailable = result[ApiKey.data][ApiKey.next].boolValue
                 currentPage += 1
                 self.delegate?.chatDataSuccess(msg: "")
@@ -90,6 +84,17 @@ class OneToOneChatViewModel {
                 self.delegate?.chatDataFailure(msg: "error occured")
                 printDebug("error occured")
             }
+        }
+    }
+    
+    func postMessageToFirestoreForPush(params: JSONDictionary,loader: Bool = false) {
+        WebServices.postMessageToFirestoreForPush(parameters: params,loader: loader, success: { [weak self] (json) in
+            guard let `self` = self else { return }
+            self.delegate?.chatDataSuccess(msg: "")
+        }) { [weak self] (error) in
+            guard let `self` = self else { return }
+            self.delegate?.chatDataSuccess(msg: "")
+            printDebug(error)
         }
     }
 }
