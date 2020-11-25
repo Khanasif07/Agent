@@ -70,8 +70,6 @@ class GarageHomeVM {
             let addminId = json[ApiKey.data][ApiKey.id].stringValue
             let name = json[ApiKey.data][ApiKey.name].stringValue
             let image = json[ApiKey.data][ApiKey.image].stringValue
-           
-            AppConstants.adminId = addminId
             self.delegate?.getAdminIdSuccess(id: addminId, name: name,image: image)
         }) { (error) -> (Void) in
             self.delegate?.getAdminIdFailed(msg: error.localizedDescription)

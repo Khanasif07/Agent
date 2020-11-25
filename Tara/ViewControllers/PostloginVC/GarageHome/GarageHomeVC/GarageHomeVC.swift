@@ -57,7 +57,8 @@ class GarageHomeVC: BaseVC {
     // MARK: - IBActions
     //===========================
     @IBAction func chatBtnAction(_ sender: UIButton) {
-        viewModel.getAdminId(dict: [:], loader: true)
+       // viewModel.getAdminId(dict: [:], loader: true)
+        AppRouter.goToOneToOneChatVC(self, userId: AppConstants.adminId, requestId: "", name: "Support Chat", image: "", unreadMsgs: 0, isSupportChat: true,garageUserId: isCurrentUserType == .garage ? UserModel.main.id : "")
     }
     
     @IBAction func reviewBtnAction(_ sender: UIButton) {
@@ -77,6 +78,7 @@ extension GarageHomeVC {
         self.tableViewSetUp()
         self.getCurrentTime()
         self.viewModel.getGarageHomeData(params: [:],loader: false)
+        viewModel.getAdminId(dict: [:], loader: false)
     }
     
     private func dataSetUp(){
@@ -168,7 +170,7 @@ extension GarageHomeVC : UICollectionViewDelegate, UICollectionViewDataSource,UI
 extension GarageHomeVC:  GarageHomeVMDelegate{
     
      func getAdminIdSuccess(id: String, name: String, image: String){
-        AppRouter.goToOneToOneChatVC(self, userId: id, requestId: "", name: "Support Chat", image: image, unreadMsgs: 0, isSupportChat: true,garageUserId: isCurrentUserType == .garage ? UserModel.main.id : "")
+        AppConstants.adminId = id
     }
     
     func getAdminIdFailed(msg: String) {

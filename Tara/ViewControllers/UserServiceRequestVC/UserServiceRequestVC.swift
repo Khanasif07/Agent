@@ -105,7 +105,8 @@ class UserServiceRequestVC: BaseVC {
     }
     
     @IBAction func helpBtnAction(_ sender: UIButton) {
-        viewModel.getAdminId(dict: [:], loader: true)
+        AppRouter.goToOneToOneChatVC(self, userId: AppConstants.adminId, requestId: "", name: "Support Chat", image: "", unreadMsgs: 0, isSupportChat: true,garageUserId: isCurrentUserType == .garage ? UserModel.main.id : "" )
+       // viewModel.getAdminId(dict: [:], loader: true)
     }
 }
 
