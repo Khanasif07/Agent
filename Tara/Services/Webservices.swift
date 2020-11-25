@@ -32,7 +32,7 @@ extension WebServices {
                               success : @escaping SuccessResponse,
                               failure : @escaping FailureResponse) {
         
-        AppNetworking.POST(endPoint: endPoint.path, parameters: parameters, headers: headers, loader: loader, success: { (json) in
+        AppNetworking.POSTFORPUSH(endPoint: endPoint.pushPath, parameters: parameters, headers: headers, loader: loader, success: { (json) in
             let code = json[ApiKey.statusCode].intValue
             let msg = json[ApiKey.message].stringValue
             
@@ -1172,7 +1172,7 @@ extension WebServices{
     static func postMessageToFirestoreForPush(parameters: JSONDictionary,loader: Bool = false,
                                               success: @escaping SuccessResponse,
                                               failure: @escaping FailureResponse) {
-        self.commonPostAPI(parameters: parameters, endPoint: .acceptEditedBid, loader: loader, success: { (json) in
+        self.commonPostAPI(parameters: parameters, endPoint: .pushNotification, loader: loader, success: { (json) in
             success(json)
         }) { (error) -> (Void) in
             failure(error)

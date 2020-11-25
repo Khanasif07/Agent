@@ -93,7 +93,7 @@ class OneToOneChatViewModel {
             self.delegate?.chatDataSuccess(msg: "")
         }) { [weak self] (error) in
             guard let `self` = self else { return }
-            self.delegate?.chatDataSuccess(msg: "")
+            self.delegate?.chatDataFailure(msg: "")
             printDebug(error)
         }
     }

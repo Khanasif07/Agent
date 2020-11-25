@@ -137,6 +137,38 @@ enum AppNetworking {
         
     }
     
+    private static func REQUESTFORPUSH(withUrl url : URL?,method : String,postData : Data?,header : [String:String],loader : Bool, success : @escaping (JSON) -> Void, failure : @escaping (Error) -> Void) {
+        
+        guard let url = url else {
+            let error = NSError.init(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey:"Url or parameters not valid"])
+            failure(error)
+            return
+        }
+        printDebug("URL =======================>\n\(url)\n")
+        let request = NSMutableURLRequest(url: url,
+                                          cachePolicy: .useProtocolCachePolicy,
+                                          timeoutInterval: timeOutInterval)
+        request.httpMethod = method
+        var updatedHeaders = header
+        
+        if isUserLoggedin {
+            let strToken: String = AppUserDefaults.value(forKey: .accesstoken).stringValue
+            if !strToken.isEmpty {
+                updatedHeaders["Authorization"] =  "key=" + "AAAAAWkz5pQ:APA91bEd7Dtty8RMJI9ieIvIWGGqIGC4CD4xJ_vxQRKMdjdf4f0jHRmbFac9Z_PeVxgw6zr-VSMl2TZ2YbC18AHxmtligcnRDSHh_iX6B0j6IyDDlXCveW5BwZeq9pW2rUQnFqAcMbmy"
+
+
+
+            }
+        }
+        request.allHTTPHeaderFields = updatedHeaders
+        
+        request.httpBody = postData
+        if loader { CommonFunctions.showActivityLoader() }
+        
+        checkRefereshTokenAndExecute(request, loader, success, failure)
+        
+    }
+    
     static func GET(endPoint : String,
                     parameters : [String : Any] = [:],
                     headers : HTTPHeaders = [:],
@@ -223,6 +255,32 @@ enum AppNetworking {
         printDebug("============ \n Parameters are =======> \n\n \(parameters) \n")
         
         REQUEST(withUrl: uri,
+                method: "POST",
+                postData : postData,
+                header: updatedHeaders,
+                loader: loader,
+                success: success,
+                failure: failure)
+        
+    }
+    
+    static func POSTFORPUSH(endPoint : String,
+                     parameters : [String : Any] = [:],
+                     headers : HTTPHeaders = [:],
+                     loader : Bool = true,
+                     success : @escaping (JSON) -> Void,
+                     failure : @escaping (Error) -> Void) {
+        
+        let uri = URL(string: endPoint)
+        let postData = try? JSONSerialization.data(withJSONObject: parameters)
+        
+        //        let postData = encodeParamaters(params: parameters).data(using: String.Encoding.utf8)
+        var updatedHeaders = headers
+        updatedHeaders["Content-Type"] =  "application/json"
+//        updatedHeaders["accept"] =  "application/json"
+        printDebug("============ \n Parameters are =======> \n\n \(parameters) \n")
+        
+        REQUESTFORPUSH(withUrl: uri,
                 method: "POST",
                 postData : postData,
                 header: updatedHeaders,

@@ -21,6 +21,7 @@ class UserNotificationVC: BaseVC {
     //===========================
     let viewModel = UserNotificationVM()
     var notificationId: String?
+    var selectedNotificationId: String?
     
     // MARK: - Lifecycle
     //===========================
@@ -177,7 +178,12 @@ extension UserNotificationVC : UserNotificationVMDelegate{
     }
     
     func deleteNotificationSuccess(msg: String) {
-        mainTableView.reloadData()
+        let index =  self.viewModel.notificationListingArr.firstIndex(where: { (model) -> Bool in
+            return model.id == selectedNotificationId
+        })
+        guard let selectedIndex = index else {return}
+        self.viewModel.notificationListingArr.remove(at: selectedIndex)
+        self.mainTableView.reloadData()
     }
     
     func deleteNotificationFailure(msg: String) {
@@ -201,8 +207,7 @@ extension UserNotificationVC {
         
         cell.cancelBtnTapped = {[weak self] in
             guard let `self` = self else { return }
-            self.viewModel.notificationListingArr.remove(at: indexPath.row)
-            self.mainTableView.reloadData()
+            self.selectedNotificationId = self.viewModel.notificationListingArr[indexPath.row].id
             self.viewModel.deleteNotification(params: [ApiKey.notificationId: self.viewModel.notificationListingArr[indexPath.row].id], loader: false)
         }
         return cell

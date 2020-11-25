@@ -9,7 +9,7 @@
 import Foundation
 extension OneToOneChatVC {
     
-    public func  postMessageToFirestoreForPush(){
+    public func  postMessageToFirestoreForPush(body: String){
         db.collection(ApiKey.users)
             .document(inboxModel.userId).getDocument { (snapshot, error) in
                 if let error = error {
@@ -19,21 +19,23 @@ extension OneToOneChatVC {
                     guard let data = snapshot?.data() else { return }
                     let deviceToken = data[ApiKey.deviceToken] as? String ?? ""
                     let deviceType = data[ApiKey.deviceType] as? String ?? ""
+                    self.chatViewModel.postMessageToFirestoreForPush(params: self.getDictForPushNotification(deviceType: deviceType, deviceToken: deviceToken, body: body))
                     printDebug(data)
                 }
-                self.chatViewModel.postMessageToFirestoreForPush(params: [:])
         }
-        }
+    }
     
-    private func getDictForPushNotification(deviceType: String = "IOS"){
+    private func getDictForPushNotification(deviceType: String = "IOS",deviceToken: String,body: String) -> [String:Any]{
         var dict =  JSONDictionary()
         dict["badge"] = 1
-        dict["priority"] = 1
-        dict["forceShow"] = 1
-        dict["mutableContent"] = 1
-        dict["to"] = 1
+        dict["priority"] = "High"
+        dict["forceShow"] = true
+        dict["mutableContent"] = true
+        dict["to"] = deviceToken
         dict[deviceType == "IOS" ? "notification" : "data"] = [
-            "roomId":self.roomId,"senderId": self.currentUserId,"image": UserModel.main.image,"badge":1,"title": UserModel.main.name,"body": self.messageTextView.text.byRemovingLeadingTrailingWhiteSpaces,ApiKey.requestId: self.requestId,ApiKey.bidRequestId: self.bidRequestId,ApiKey.userRole:"",ApiKey.type: "CHAT"]
-        }
-        
+            "roomId":self.roomId,"senderId": self.currentUserId,"image": UserModel.main.image,"badge":1,"title": UserModel.main.name,"body": body,ApiKey.requestId: self.requestId,ApiKey.bidRequestId: self.bidRequestId,ApiKey.userRole: chatUserType == .garage ? 1 : 2,ApiKey.type: "CHAT"]
+        return dict
+    }
+   
+    
 }
