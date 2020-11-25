@@ -277,7 +277,7 @@ enum AppNetworking {
         //        let postData = encodeParamaters(params: parameters).data(using: String.Encoding.utf8)
         var updatedHeaders = headers
         updatedHeaders["Content-Type"] =  "application/json"
-        updatedHeaders["accept"] =  "application/json"
+//        updatedHeaders["accept"] =  "application/json"
         printDebug("============ \n Parameters are =======> \n\n \(parameters) \n")
         
         REQUESTFORPUSH(withUrl: uri,
