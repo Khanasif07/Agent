@@ -264,6 +264,11 @@ extension CompleteProfileStep1: GMSAutocompleteViewControllerDelegate {
             self.isMarkerAnimation =  false
             self.locationValue = CLLocationCoordinate2D(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
             self.addressTxtField.text = address
+           
+            GarageProfileModel.shared.address = address
+            GarageProfileModel.shared.latitude = place.coordinate.latitude
+            GarageProfileModel.shared.longitude = place.coordinate.longitude
+            
             liveAddress = address
             moveMarker(coordinate: CLLocationCoordinate2D(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude))
         }
