@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , MessagingDelegate , UNUs
         sleep(2)
         self.setUpKeyboardSetup()
         self.setUpTextField()
-        self.registerPushNotification()
+      //  self.registerPushNotification()
         AWSS3Manager.shared.setupAmazonS3(withPoolID: AppConstants.awss3PoolId)
         self.getGoogleInfoPlist()
         Messaging.messaging().delegate = self

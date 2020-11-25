@@ -89,6 +89,10 @@ extension GarageCustomerRatingVC: UITableViewDelegate,UITableViewDataSource{
             switch sectionArr[indexPath.row] {
             case .userDetail, .serviceOn:
                 let cell = tableView.dequeueCell(with: RequestDetailTableViewCell.self)
+                cell.helpBtnTapped = { [weak self] in
+                    guard let `self` = self else {return}
+                  //  AppRouter.goToOneToOneChatVC(self, userId: AppConstants.adminId, requestId: "", name: "Support Chat", image: "", unreadMsgs: 0, isSupportChat: true,garageUserId: isCurrentUserType == .garage ? UserModel.main.id : "")
+                }
                 cell.populateData(sectionArr[indexPath.row], model: viewModel.garageCompletedDetail ?? GarageRequestModel())
                 return cell
                 

@@ -19,6 +19,8 @@ class RequestDetailTableViewCell: UITableViewCell {
     @IBOutlet weak var bidFinalContainerView: UIView!
     @IBOutlet weak var helpBtn: UIButton!
     
+    var helpBtnTapped: (()-> ())?
+    
     //MARK:- Life Cycle
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -110,6 +112,6 @@ class RequestDetailTableViewCell: UITableViewCell {
     }
     
     @IBAction func helpBtnAction(_ sender: UIButton) {
-        CommonFunctions.showToastWithMessage(LocalizedString.underDevelopment.localized)
+        helpBtnTapped?()
     }
 }

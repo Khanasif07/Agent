@@ -23,5 +23,5 @@ enum AppConstants {
     static let googleId = "945865667688-17hgjjn4tgqikhmcq7ufigggcqta2t75.apps.googleusercontent.com"//testing
     static var awss3PoolId          =  "us-east-1:b1f250f2-66a7-4d07-96e9-01817149a439"
     
-
+    static var adminId = ""
 }
