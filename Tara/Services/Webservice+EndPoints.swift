@@ -11,6 +11,7 @@ import Foundation
 //API path: http://arabiantyersdevapi.appskeeper.com/api/v1/
 //Swagger Url: http://arabiantyersdevapi.appskeeper.com/api-docs/swagger
 
+var firebase_push_Url = "https://fcm.googleapis.com/fcm/send"
 var baseUrl: String {
     #if ENV_DEV
     return "https://arabiantyersdevapi.appskeeper.com/api/v1/"

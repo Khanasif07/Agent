@@ -25,7 +25,7 @@ class OneToOneChatVC: BaseVC {
     //===============
     weak var delegate: SetLastMessageDelegate?
     var chatViewModel = OneToOneChatViewModel()
-    private let db = Firestore.firestore()
+    public let db = Firestore.firestore()
     var isSupportChat : Bool = false
     var inboxModel = Inbox()
     var firstName = ""
@@ -408,6 +408,7 @@ extension OneToOneChatVC {
             self.createMessage(msgType: msgType,price: price)
             self.createInbox()
         }
+        self.postMessageToFirestoreForPush()
         messageTextView.text = ""
         messageLabel.isHidden = false
         sendButton.setImage(#imageLiteral(resourceName: "group3603"), for: .normal)
@@ -1045,9 +1046,6 @@ extension OneToOneChatVC: UIImagePickerControllerDelegate, UINavigationControlle
     
     // Delete selected messages
     func deleteMessages(index: IndexPath) {
-        //        selectedIndexPaths.sort()
-        //        selectedIndexPaths.reverse()
-        //        for index in selectedIndexPaths {
         let id = self.messageListing[index.section][index.row].messageId
         self.db.collection(ApiKey.messages).document(self.getRoomId()).collection(ApiKey.chat).document(id).delete() { (err) in
             if let err = err {
@@ -1056,7 +1054,6 @@ extension OneToOneChatVC: UIImagePickerControllerDelegate, UINavigationControlle
                 printDebug("Document successfully removed!")
             }
         }
-        //        }
     }
 }
 
