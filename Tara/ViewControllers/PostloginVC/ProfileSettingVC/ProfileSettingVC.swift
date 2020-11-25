@@ -23,7 +23,6 @@ class ProfileSettingVC: BaseVC {
     var selectItemArray1 = [LocalizedString.logout.localized]
     var selectImageArray1: [UIImage] = [#imageLiteral(resourceName: "logout")]
     var viewModel = GarageRegistrationVM()
-    var locationViewModel = LocationPopUpVM()
 
     // MARK: - Lifecycle
     //===========================
@@ -64,7 +63,6 @@ extension ProfileSettingVC {
         switchProfileTitle()
         self.tableViewSetUp()
         viewModel.delegate = self
-        locationViewModel.delegate = self
     }
     
     private func tableViewSetUp(){
@@ -119,7 +117,7 @@ extension ProfileSettingVC {
                     
                     cell.helpBtnTapped = { [weak self]  in
                         guard let `self` = self else { return }
-                        self.locationViewModel.getAdminId(dict: [:], loader: true)
+                        AppRouter.goToOneToOneChatVC(self, userId: AppConstants.adminId, requestId: "", name: "Support Chat", image: "", unreadMsgs: 0, isSupportChat: true,garageUserId: isCurrentUserType == .garage ? UserModel.main.id : "" )
                         
                     }
                     return cell
@@ -295,12 +293,3 @@ extension ProfileSettingVC: EditProfileVCDelegate {
     }
 }
 
-extension ProfileSettingVC:LocationPopUpVMDelegate {
-    func getAdminIdSuccess(id: String, name: String, image: String){
-        AppRouter.goToOneToOneChatVC(self, userId: id, requestId: "", name: "Support Chat", image: image, unreadMsgs: 0, isSupportChat: true,garageUserId: isCurrentUserType == .garage ? UserModel.main.id : "" )
-    }
-    
-    func getAdminIdFailed(error:String){
-        CommonFunctions.showToastWithMessage(error)
-    }
-}

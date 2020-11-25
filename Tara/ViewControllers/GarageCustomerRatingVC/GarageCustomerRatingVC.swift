@@ -21,7 +21,8 @@ class GarageCustomerRatingVC: BaseVC {
     let viewModel = GarageCustomerRatingVM()
     var requestId : String = ""
     var reasonOfReport : String = ""
-   
+    var name :String = ""
+    
     // MARK: - Lifecycle
     //===========================
     override func viewDidLoad() {
@@ -71,7 +72,7 @@ extension GarageCustomerRatingVC {
     
     private func setupTextAndFont(){
         titleLbl.font = AppFonts.NunitoSansBold.withSize(17.0)
-        titleLbl.text = "Service No. " 
+        titleLbl.text = name
     }
 }
 

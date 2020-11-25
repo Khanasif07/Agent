@@ -123,7 +123,7 @@ extension ServiceCompletedVC :UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if screenType == .serviceComplete {
-            AppRouter.goToGarageCustomerRatingVC(vc: self, requestId: viewModel.serviceCompletedListing[indexPath.row].id ?? "")
+            AppRouter.goToGarageCustomerRatingVC(vc: self, requestId: viewModel.serviceCompletedListing[indexPath.row].id ?? "",name : viewModel.serviceCompletedListing[indexPath.row].userName ?? "")
             
         }else {
             

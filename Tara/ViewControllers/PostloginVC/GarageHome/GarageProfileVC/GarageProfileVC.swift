@@ -36,7 +36,7 @@ class GarageProfileVC: BaseVC {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.mainTableView.reloadData()
+        //self.mainTableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
