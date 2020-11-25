@@ -408,7 +408,7 @@ extension OneToOneChatVC {
             self.createMessage(msgType: msgType,price: price)
             self.createInbox()
         }
-        self.postMessageToFirestoreForPush()
+        self.postMessageToFirestoreForPush(body: txt)
         messageTextView.text = ""
         messageLabel.isHidden = false
         sendButton.setImage(#imageLiteral(resourceName: "group3603"), for: .normal)
@@ -1186,7 +1186,7 @@ extension OneToOneChatVC{
                       ApiKey.timeStamp: FieldValue.serverTimestamp(),
                       ApiKey.lastMessage: db.collection(ApiKey.lastMessage).document(roomId).collection(ApiKey.chat).document(ApiKey.message),
                       ApiKey.userDetails: db.collection(ApiKey.users).document(currentUserId),
-                      ApiKey.unreadCount: inboxModel.unreadCount + 1])
+                      ApiKey.unreadCount: inboxModel.unreadCount + 1,ApiKey.userName: UserModel.main.name,ApiKey.userId: self.currentUserId,ApiKey.userImage: UserModel.main.image])
             { err in
                 if let err = err {
                     print("Error writing document: \(err)")
@@ -1212,7 +1212,7 @@ extension OneToOneChatVC{
                       ApiKey.roomInfo: db.collection(ApiKey.roomInfo).document(roomId),
                       ApiKey.timeStamp: FieldValue.serverTimestamp(),
                       ApiKey.lastMessage: db.collection(ApiKey.lastMessage).document(roomId).collection(ApiKey.chat).document(ApiKey.message),
-                      ApiKey.userDetails: db.collection(ApiKey.users).document(inboxModel.userId)])
+                      ApiKey.userDetails: db.collection(ApiKey.users).document(inboxModel.userId),ApiKey.userName: self.firstName,ApiKey.userId: inboxModel.userId,ApiKey.userImage: self.userImage])
             { err in
                 if let err = err {
                     print("Error writing document: \(err)")

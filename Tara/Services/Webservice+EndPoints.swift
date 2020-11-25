@@ -96,6 +96,7 @@ extension WebServices {
         case userQuery = "user/query"
         case adminId = "user/adminId"
         case userServiceHistory = "user/services/userServiceHistory"
+        case pushNotification = ""
         
         //MARK:-Notifications
         case userNotifications = "user/notifications"
@@ -108,6 +109,11 @@ extension WebServices {
         
         var settingsPath: String {
             let url = settingsUrl
+            return url + self.rawValue
+        }
+        
+        var pushPath: String {
+            let url = firebase_push_Url
             return url + self.rawValue
         }
     }
