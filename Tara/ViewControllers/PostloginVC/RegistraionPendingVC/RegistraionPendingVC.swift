@@ -10,7 +10,7 @@ import UIKit
 
 
 
-class RegistraionPendingVC: BaseVC {
+class RegistraionPendingVC : BaseVC {
     
     enum ScreenType {
         case pending
@@ -61,6 +61,11 @@ class RegistraionPendingVC: BaseVC {
         case .pending:
             for controller in self.navigationController!.viewControllers as Array {
                 if controller.isKind(of: ProfileSettingVC.self) {
+                    _ =  self.navigationController!.popToViewController(controller, animated: true)
+                    break
+                }
+                
+                if controller.isKind(of: UserNotificationVC.self) {
                     _ =  self.navigationController!.popToViewController(controller, animated: true)
                     break
                 }
@@ -158,8 +163,6 @@ extension RegistraionPendingVC {
             inappropriateLbl.isHidden = true
 
         }
-      
-
     
 //        headingLbl.text = message
     }
