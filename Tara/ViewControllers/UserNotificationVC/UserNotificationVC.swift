@@ -84,7 +84,7 @@ extension UserNotificationVC {
 // MARK: - Extension For TableView
 //===========================
 extension UserNotificationVC : UITableViewDelegate, UITableViewDataSource {
-   
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.getNoOfRowsInSection()
     }
@@ -95,8 +95,8 @@ extension UserNotificationVC : UITableViewDelegate, UITableViewDataSource {
                 let cell = tableView.dequeueCell(with: LoaderCell.self)
                 return cell
             } else {
-               return getNotificationCell(tableView, indexPath: indexPath)
-              
+                return getNotificationCell(tableView, indexPath: indexPath)
+                
             }
         } else {
             let cell = tableView.dequeueCell(with: ProfileGuestTableCell.self, indexPath: indexPath)
@@ -126,6 +126,14 @@ extension UserNotificationVC : UITableViewDelegate, UITableViewDataSource {
         if !self.viewModel.notificationListingArr[indexPath.row].isRead {
             self.notificationId = self.viewModel.notificationListingArr[indexPath.row].id
             viewModel.setNotificationMarkRead(params : [ApiKey.notificationId: self.viewModel.notificationListingArr[indexPath.row].id], loader: true)
+        }
+        
+        switch self.viewModel.notificationListingArr[indexPath.row].type {
+        case .newBid:
+            break
+        case .newRequest :
+            break
+        default: break
         }
     }
 }
@@ -163,7 +171,7 @@ extension UserNotificationVC : DZNEmptyDataSetSource,DZNEmptyDataSetDelegate {
 }
 
 extension UserNotificationVC : UserNotificationVMDelegate{
-   
+    
     func markNotificationSuccess(msg: String) {
         let index =  self.viewModel.notificationListingArr.firstIndex(where: { (model) -> Bool in
             return model.id == notificationId
@@ -200,7 +208,7 @@ extension UserNotificationVC : UserNotificationVMDelegate{
 }
 
 extension UserNotificationVC {
-   
+    
     private func getNotificationCell(_ tableView: UITableView,indexPath: IndexPath) -> UITableViewCell{
         let cell = tableView.dequeueCell(with: UserNotificationTableViewCell.self, indexPath: indexPath)
         cell.bindData(viewModel.notificationListingArr[indexPath.row])

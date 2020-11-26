@@ -130,9 +130,10 @@ struct NotificationModel: Codable {
     let updatedAt : String?
     let userType : String?
     let code: NotificationStatus?
+    let type: EventListnerKeys
     
     enum CodingKeys: String, CodingKey {
-        case isDelete, isRead, message, title, receiverId, status, image, createdAt, updatedAt, userType, code
+        case isDelete, isRead, message, title, receiverId, status, image, createdAt, updatedAt, userType, code, type 
         case id = "_id"
     }
     

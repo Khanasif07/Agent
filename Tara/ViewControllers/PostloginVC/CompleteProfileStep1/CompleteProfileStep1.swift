@@ -39,7 +39,7 @@ class CompleteProfileStep1: BaseVC {
     var getLocation: ((CLLocationCoordinate2D,String)->())?
     var currentZoomLevel: Float = 14.0
     private var mapPermission: Bool = false
-    private var isMarkerAnimation : Bool = true
+    private var isMarkerAnimation : Bool = false
     private var liveAddress : String = ""
     fileprivate var hasImageUploaded = true {
         didSet {
@@ -95,7 +95,9 @@ class CompleteProfileStep1: BaseVC {
             case .notDetermined, .restricted, .denied:
                 openSettingApp(message: "")
             case .authorizedAlways, .authorizedWhenInUse:
-                self.didTapMyLocationButton(for: mapView)
+                CommonFunctions.delay(delay: 0.1) {
+                    self.didTapMyLocationButton(for: self.mapView)
+                }
             @unknown default:
                 break
             }
@@ -115,6 +117,7 @@ extension CompleteProfileStep1 {
         self.setUpTextField()
         self.prepareMap()
         self.setAddress()
+        self.mapView.isMyLocationEnabled = true
         viewModel.delegate = self
         titleLbl.text = fromGarage == .editGarageProfile ? "Edit Profile" : "Complete Profile"
         saveContinueBtn.isEnabled = addBtnStatus()
@@ -144,7 +147,7 @@ extension CompleteProfileStep1 {
 //        self.mapView.isMyLocationEnabled = true
 //        self.mapView.settings.myLocationButton = true
         self.mapView.delegate = self
-        self.locationManager.delegate = self
+      //  self.locationManager.delegate = self
         markerView.image = #imageLiteral(resourceName: "markerIcon")
         self.gmssMarker = GMSMarker(position: CLLocationCoordinate2D(latitude:  locationValue.latitude, longitude: locationValue.longitude))
         DispatchQueue.main.async {
@@ -163,10 +166,6 @@ extension CompleteProfileStep1 {
             self.addressTxtField.text = "\(lines.joined(separator: ","))"
             self.liveAddress = lines.joined(separator: ",")
         }
-    }
-    
-    private func addMarkers() {
-        mapView.clear()
     }
     
     private func locationButtonTapped() {

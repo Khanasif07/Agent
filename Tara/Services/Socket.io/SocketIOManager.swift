@@ -12,7 +12,7 @@ import Foundation
 import SocketIO
 import SwiftyJSON
 
-enum EventListnerKeys : String {
+enum EventListnerKeys : String ,Codable {
     case newBid =  "NEW_BID"
     case bidAccepted = "BID_ACCEPTED"
     case newRequest = "NEW_REQUEST"
