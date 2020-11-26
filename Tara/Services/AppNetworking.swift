@@ -154,8 +154,7 @@ enum AppNetworking {
         if isUserLoggedin {
             let strToken: String = AppUserDefaults.value(forKey: .accesstoken).stringValue
             if !strToken.isEmpty {
-                updatedHeaders["Authorization"] =  "key=" + "AAAAAWkz5pQ:APA91bEd7Dtty8RMJI9ieIvIWGGqIGC4CD4xJ_vxQRKMdjdf4f0jHRmbFac9Z_PeVxgw6zr-VSMl2TZ2YbC18AHxmtligcnRDSHh_iX6B0j6IyDDlXCveW5BwZeq9pW2rUQnFqAcMbmy"
-
+                updatedHeaders["Authorization"] =  "key=" + firestoreServerUrl
 
 
             }
