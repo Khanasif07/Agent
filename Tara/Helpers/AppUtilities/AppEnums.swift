@@ -23,6 +23,7 @@ enum UserType {
 
 // Notification Type
 enum PushNotificationType: String {
+    case CHAT
     case NEW_REQUEST_EVENT =  "NEW_REQUEST"
     case NEW_BID_EVENT = "NEW_BID"
     case BID_EDIT = "BID_EDIT"

@@ -916,6 +916,7 @@ extension OneToOneChatVC: UIImagePickerControllerDelegate, UINavigationControlle
                         self.createMediaMessage(url: url, imageURL: url, type: "image")
                         self.createInbox()
                     }
+                    self.postMessageToFirestoreForPush(image: url)
                 }
                 if let _ = error{
                     self.showAlert(msg: LocalizedString.imageUploadingFailed.localized)
@@ -1754,6 +1755,7 @@ extension OneToOneChatVC:  AVAudioRecorderDelegate, AVAudioPlayerDelegate {
                         self.createMediaMessage(url: url, imageURL: url, type: "audio")
                         self.createInbox()
                     }
+                    self.postMessageToFirestoreForPush(body: "",image:url )
                 }
                 if let _ = error{
                     self.showAlert(msg: LocalizedString.imageUploadingFailed.localized)
@@ -1765,6 +1767,14 @@ extension OneToOneChatVC:  AVAudioRecorderDelegate, AVAudioPlayerDelegate {
 
 // Chat View Model
 extension OneToOneChatVC : OneToOneChatViewModelDelegate{
+    func pushDataSuccess(msg: String) {
+        printDebug(msg)
+    }
+    
+    func pushDataFailure(msg: String) {
+         printDebug(msg)
+    }
+    
     func chatDataSuccess(msg: String) {
         if self.chatUserType == .garage {
             self.editBidBtn.isHidden = (chatViewModel.chatData.isServiceStarted ?? true)

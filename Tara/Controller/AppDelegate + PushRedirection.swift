@@ -20,6 +20,18 @@ class PushNotificationRedirection {
     static func redirectionOnNotification(_ userInfo: [String: Any]) {
         guard let value = userInfo[ApiKey.gcm_notification_type] as? String else { return }
         switch value {
+        case PushNotificationType.CHAT.rawValue:
+            let requestId = userInfo[ApiKey.gcm_notification_requestId] as? String ?? ""
+            let userId = userInfo[ApiKey.gcm_notification_senderId] as? String ?? ""
+            let bidRequestId = userInfo[ApiKey.gcm_notification_bidRequestId] as? String ?? ""
+            let userRole = userInfo[ApiKey.gcm_notification_userRole] as? String ?? ""
+            let garageUserId = userRole == "\(1)" ? UserModel.main.id : userId
+            if let dict = userInfo["aps"] as? [String:Any] {
+                if let userNameDict = dict["alert"] as? [String:Any]{
+                    let userName = userNameDict[ApiKey.title] as? String ?? ""
+                    AppRouter.goToOneToOneChatVCThroughNotification(requestId,userId,bidRequestId,userName,garageUserId)
+                }
+            }
         case PushNotificationType.NEW_REQUEST_EVENT.rawValue:
             let requestId = userInfo[ApiKey.gcm_notification_requestId] as? String ?? ""
             _ = userInfo[ApiKey.gcm_notification_type] as? String ?? ""

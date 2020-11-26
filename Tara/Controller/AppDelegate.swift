@@ -187,7 +187,14 @@ extension AppDelegate{
         guard let userInfo = (notification.request.content.userInfo as? [String: Any]) else { return }
         guard let value = userInfo[ApiKey.gcm_notification_type] as? String else { return }
         if let nav = AppDelegate.shared.window?.rootViewController as? UINavigationController {
-            if let _ = nav.viewControllers.last as? GarageServiceRequestVC {
+            if let topVC = UIApplication.shared.visibleViewController as? OneToOneChatVC {
+                guard let senderId = userInfo[ApiKey.gcm_notification_senderId] as? String else { return }
+                if (value == "CHAT"), senderId == topVC.inboxModel.userId {
+                    completionHandler([])
+                } else {
+                    completionHandler([.alert, .badge, .sound])
+                }
+            } else if let _ = nav.viewControllers.last as? GarageServiceRequestVC {
                 if value == PushNotificationType.NEW_REQUEST_EVENT.rawValue || value == PushNotificationType.BID_ACCEPTED.rawValue || value == PushNotificationType.BID_REJECTED.rawValue || value == PushNotificationType.GARAGE_REQUEST_REJECTED.rawValue {
                     completionHandler([])
                 }else {
