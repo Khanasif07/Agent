@@ -262,6 +262,9 @@ enum ApiKey {
     static var notificationType : String {return "notificationType"}
     static var gcm_notification_type : String {return "gcm.notification.type"}
     static var gcm_notification_requestId : String {return "gcm.notification.requestId"}
+    static var gcm_notification_senderId : String {return "gcm.notification.senderId"}
+    static var gcm_notification_bidRequestId : String {return "gcm.notification.bidRequestId"}
+    static var gcm_notification_userRole : String {return "gcm.notification.userRole"}
 }
 
 //MARK:- Api Code

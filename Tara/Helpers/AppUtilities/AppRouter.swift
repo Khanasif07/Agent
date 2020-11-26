@@ -489,6 +489,51 @@ enum AppRouter {
         }
     }
     
+    // Redirect  to   ONETOONECHATVC
+    static func goToOneToOneChatVCThroughNotification(_ requestId: String,_ userId: String,_ bidRequestId: String,_ userName: String,_ garageUserId: String) {
+        guard let nav: UINavigationController = AppDelegate.shared.window?.rootViewController as? UINavigationController else { return }
+        if let homeScene = nav.hasViewController(ofKind: GarageTabBarController.self) as? GarageTabBarController {
+            homeScene.selectedIndex = 3
+            let navigationController = UINavigationController(rootViewController: homeScene)
+            navigationController.setNavigationBarHidden(true, animated: false)
+            defaultSetAsWindowRoot(navigationController)
+            let chatScene = OneToOneChatVC.instantiate(fromAppStoryboard: .Chat)
+            chatScene.firstName = userName
+            chatScene.isSupportChat = requestId.isEmpty
+            chatScene.requestId = requestId
+            chatScene.garageUserId = garageUserId
+            chatScene.requestDetailId = bidRequestId
+            chatScene.bidRequestId = bidRequestId
+            chatScene.inboxModel.userId = userId //"5e8483230a60177afa95e0b7"
+            chatScene.inboxModel.unreadMessages = 0
+            navigationController.pushViewController(chatScene, animated: true)
+        } else {
+            if let vwController = (nav.hasViewController(ofKind: OneToOneChatVC.self) as? OneToOneChatVC) {
+                vwController.firstName = userName
+                vwController.isSupportChat = requestId.isEmpty
+                vwController.requestId = requestId
+                vwController.garageUserId = garageUserId
+                vwController.requestDetailId = bidRequestId
+                vwController.bidRequestId = bidRequestId
+                vwController.inboxModel.userId = userId //"5e8483230a60177afa95e0b7"
+                vwController.inboxModel.unreadMessages = 0
+                nav.popToViewController(vwController, animated: true)
+                return
+            } else {
+                let chatScene = OneToOneChatVC.instantiate(fromAppStoryboard: .Chat)
+                chatScene.firstName = userName
+                chatScene.isSupportChat = requestId.isEmpty
+                chatScene.requestId = requestId
+                chatScene.garageUserId = garageUserId
+                chatScene.requestDetailId = bidRequestId
+                chatScene.bidRequestId = bidRequestId
+                chatScene.inboxModel.userId = userId //"5e8483230a60177afa95e0b7"
+                chatScene.inboxModel.unreadMessages = 0
+                nav.pushViewController(chatScene, animated: true)
+            }
+        }
+    }
+    
     // Redirect  to  User All Offer screen
     static func goToUserAllOffersVCThroughNotification(requestId : String){
         guard let nav: UINavigationController = AppDelegate.shared.window?.rootViewController as? UINavigationController else { return }

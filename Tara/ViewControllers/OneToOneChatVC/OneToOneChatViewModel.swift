@@ -13,6 +13,8 @@ import SwiftyJSON
 protocol OneToOneChatViewModelDelegate: class {
     func chatDataSuccess(msg: String)
     func chatDataFailure(msg: String)
+    func pushDataSuccess(msg: String)
+    func pushDataFailure(msg: String)
     func acceptRejectEditedBidSuccess(msg: String)
     func acceptRejectEditedBidFailure(msg: String)
 
@@ -90,10 +92,10 @@ class OneToOneChatViewModel {
     func postMessageToFirestoreForPush(params: JSONDictionary,loader: Bool = false) {
         WebServices.postMessageToFirestoreForPush(parameters: params,loader: loader, success: { [weak self] (json) in
             guard let `self` = self else { return }
-            self.delegate?.chatDataSuccess(msg: "")
+            self.delegate?.pushDataSuccess(msg: "")
         }) { [weak self] (error) in
             guard let `self` = self else { return }
-            self.delegate?.chatDataFailure(msg: "")
+            self.delegate?.pushDataFailure(msg: "")
             printDebug(error)
         }
     }
