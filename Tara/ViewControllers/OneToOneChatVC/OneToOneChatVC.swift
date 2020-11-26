@@ -719,7 +719,7 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                     guard let `self` = self else { return }
                     self.acceptedRejectBtnStatus = false
                     self.messageId = model.messageId
-                    self.chatViewModel.acceptRejectEditedBid(params: [ApiKey.requestId: self.requestId,ApiKey.status: true], loader: false)
+                    self.chatViewModel.acceptRejectEditedBid(params: [ApiKey.requestId: self.requestId,ApiKey.status: false], loader: false)
                 }
                 
                 if model.messageStatus == 1 {// show both button
