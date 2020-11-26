@@ -78,7 +78,7 @@ class UploadDocumentVC: BaseVC {
     }
     
     @IBAction func helpBtnAction(_ sender: UIButton) {
-        showAlert(msg: LocalizedString.underDevelopment.localized)
+        AppRouter.goToOneToOneChatVC(self, userId: AppConstants.adminId, requestId: "", name: "Support Chat", image: "", unreadMsgs: 0, isSupportChat: true,garageUserId: isCurrentUserType == .garage ? UserModel.main.id : "" )
     }
 }
 

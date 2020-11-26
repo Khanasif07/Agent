@@ -46,8 +46,13 @@ class RegistraionPendingVC: BaseVC {
         super.viewDidLoad()
         initialSetup()
     }
-
-   
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = true
+        self.tabBarController?.tabBar.isTranslucent = true
+    }
+    
     // MARK: - IBActions
     //===========================
     
@@ -118,12 +123,15 @@ extension RegistraionPendingVC {
                 [emailLbl,mobileNotVerifyLbl,inappropriateLbl].forEach({$0?.isHidden = true})
             } else if reason.endIndex == 1{
                 emailLbl.isHidden = false
+                inappropriateLbl.isHidden = true
+                mobileNotVerifyLbl.isHidden = true
                 emailLbl.text = reason.first ?? ""
             }else if reason.endIndex == 2{
                 emailLbl.isHidden = false
                 emailLbl.text = reason.first ?? ""
                 mobileNotVerifyLbl.isHidden = false
                 mobileNotVerifyLbl.text = reason.last ?? ""
+                inappropriateLbl.isHidden = true
             } else {
                 [emailLbl,mobileNotVerifyLbl,inappropriateLbl].forEach({$0?.isHidden = false})
                 emailLbl.text = reason.first ?? ""

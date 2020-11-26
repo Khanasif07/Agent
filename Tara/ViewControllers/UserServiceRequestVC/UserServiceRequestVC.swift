@@ -15,6 +15,12 @@ protocol UserServiceRequestVCDelegate: class {
     func resendUserMyRequestDetailSuccess(requestId: String)
 }
 
+extension UserServiceRequestVCDelegate {
+    func cancelUserMyRequestDetailSuccess(requestId: String){}
+    func rejectUserMyRequestDetailSuccess(requestId: String){}
+    func resendUserMyRequestDetailSuccess(requestId: String){}
+}
+
 class UserServiceRequestVC: BaseVC {
     
     // MARK: - IBOutlets

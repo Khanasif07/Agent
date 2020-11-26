@@ -125,14 +125,29 @@ extension UserNotificationVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if !self.viewModel.notificationListingArr[indexPath.row].isRead {
             self.notificationId = self.viewModel.notificationListingArr[indexPath.row].id
-            viewModel.setNotificationMarkRead(params : [ApiKey.notificationId: self.viewModel.notificationListingArr[indexPath.row].id], loader: true)
+            viewModel.setNotificationMarkRead(params : [ApiKey.notificationId: self.viewModel.notificationListingArr[indexPath.row].id], loader: false)
         }
         
         switch self.viewModel.notificationListingArr[indexPath.row].type {
-        case .newBid:
-            break
-        case .newRequest :
-            break
+      
+        case .newBid, .bidEdit :
+            AppRouter.goToUserAllOffersVC(vc: self, requestId: self.viewModel.notificationListingArr[indexPath.row].requestID ?? "")
+            
+        case .newRequest, .bidAccepted, .bidRejected :
+            AppRouter.goToGarageServiceRequestVC(vc: self,requestId : self.viewModel.notificationListingArr[indexPath.row].requestID ?? "",  requestType: "",bidStatus: .openForBidding)
+            
+        case .bid_cancelled, .requestRejected:
+            AppRouter.goToUserServiceRequestVC(vc: self,requestId: self.viewModel.notificationListingArr[indexPath.row].requestID ?? "", serviceType: "Tyres")
+        
+        case .serviceStatusUpdated, .serviceStarted:
+            AppRouter.goToUserServiceStatusVC(vc: self, requestId: self.viewModel.notificationListingArr[indexPath.row].requestID ?? "")
+       
+        case .garageRequestRejected:
+            AppRouter.goToRegistraionPendingVC(vc: self, screenType: .rejected, msg: "", reason: self.viewModel.notificationListingArr[indexPath.row].reason ?? [],time: self.viewModel.notificationListingArr[indexPath.row].time ?? "")
+       
+        case .garageRequestApproved:
+            AppRouter.goToCompleteProfileStep1VC(vc: self)
+            
         default: break
         }
     }
