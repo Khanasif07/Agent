@@ -85,7 +85,7 @@ extension ProfileVC {
                 switch indexPath.row {
                 case 0:
                     let cell = tableView.dequeueCell(with: ProfileUserHeaderCell.self, indexPath: indexPath)
-                    cell.populateData(model: self.viewModel.userModel)
+                    cell.populateData(model: UserModel.main)
                     cell.phoneVerifyBtnTapped = { [weak self] (sender) in
                         guard let `self` = self else { return }
                         self.showPhoneVerificationPopUp()

@@ -151,10 +151,6 @@ struct GarageProfilePreFillModel {
         GarageProfileModel.shared.address = model.address
         GarageProfileModel.shared.maxInstallationPrice = model.maxInstallationPrice
         GarageProfileModel.shared.minInstallationPrice = model.minInstallationPrice
-//        GarageProfileModel.shared.commercialRegister = model.commercialRegister
-//        GarageProfileModel.shared.municipalityLicense = model.municipalityLicense
-//        GarageProfileModel.shared.vatCertificate = model.vatCertificate
-//        GarageProfileModel.shared.ownerId = model.ownerId
         GarageProfileModel.shared.latitude = model.latitude
         GarageProfileModel.shared.longitude = model.longitude
         GarageProfileModel.shared.accountNumber = model.accountNumber

@@ -85,7 +85,7 @@ extension GarageProfileVC {
                 cell.categoryNameArray = self.viewModel.preFillModel.services
                 cell.catNameArr = self.viewModel.preFillModel.getBrandAndServiceName()
 
-                cell.populateData(model: self.viewModel.preFillModel,userModel: self.viewModel.userModel )
+                cell.populateData(model: self.viewModel.preFillModel,userModel: UserModel.main )
                 cell.phoneVerifyBtnTapped = { [weak self] (sender) in
                     guard let `self` = self else { return }
                     self.showPhoneVerificationPopUp()
