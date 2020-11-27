@@ -183,6 +183,7 @@ class OneToOneChatVC: BaseVC {
     }
     
     @IBAction func addAudioMsgBtnTapped(_ sender: UIButton) {
+        if  self.isAuthorized() {
         if isBlockedByMe {
             CommonFunctions.showToastWithMessage( LocalizedString.PLEASEUNBLOCKUSERTOSENDMESSAGES.localized)
             return
@@ -190,6 +191,11 @@ class OneToOneChatVC: BaseVC {
         CommonFunctions.showToastWithMessage( LocalizedString.holdThisToRecord.localized)
         timerView.isHidden = false
         audioRecordBtn.setImage(#imageLiteral(resourceName: "audioBtnWhite"), for: .normal)
+        } else {
+            showAlert(title: "", msg: LocalizedString.kindly_provide_the_access_to_record_audio.localized) {
+                  self.openSettingApp(message: "")
+            }
+        }
     }
     
     @IBAction func sendButtonTapped(_ sender: UIButton) {
@@ -309,6 +315,16 @@ extension OneToOneChatVC {
        
     }
     
+    private func openSettingApp(message: String) {
+        
+        guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+            return
+        }
+        if UIApplication.shared.canOpenURL(settingsUrl) {
+            UIApplication.shared.open(settingsUrl, options: [:], completionHandler: nil)
+        }
+    }
+    
     @objc func editedBidAccepted(){
         self.getChatData()
     }
@@ -348,6 +364,10 @@ extension OneToOneChatVC {
     
     private func createMediaAlertSheet() {
         self.captureImage(delegate: self,removedImagePicture: false )
+    }
+    
+    private  func isAuthorized() -> Bool {
+        return AVCaptureDevice.authorizationStatus(for: .audio) == .authorized
     }
     
     private func setupAudioMessages() {
