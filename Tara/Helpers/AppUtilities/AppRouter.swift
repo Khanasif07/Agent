@@ -490,7 +490,7 @@ enum AppRouter {
     }
     
     // Redirect  to   ONETOONECHATVC
-    static func goToOneToOneChatVCThroughNotification(_ requestId: String,_ userId: String,_ bidRequestId: String,_ userName: String,_ garageUserId: String) {
+    static func goToOneToOneChatVCThroughNotification(_ requestId: String,_ userId: String,_ userImage:String,_ bidRequestId: String,_ userName: String,_ garageUserId: String) {
         guard let nav: UINavigationController = AppDelegate.shared.window?.rootViewController as? UINavigationController else { return }
         if let homeScene = nav.hasViewController(ofKind: GarageTabBarController.self) as? GarageTabBarController {
             homeScene.selectedIndex = 3
@@ -499,6 +499,7 @@ enum AppRouter {
             defaultSetAsWindowRoot(navigationController)
             let chatScene = OneToOneChatVC.instantiate(fromAppStoryboard: .Chat)
             chatScene.firstName = userName
+            chatScene.userImage = userImage
             chatScene.isSupportChat = requestId.isEmpty
             chatScene.requestId = requestId
             chatScene.garageUserId = garageUserId
@@ -512,6 +513,7 @@ enum AppRouter {
                 vwController.firstName = userName
                 vwController.isSupportChat = requestId.isEmpty
                 vwController.requestId = requestId
+                vwController.userImage = userImage
                 vwController.garageUserId = garageUserId
                 vwController.requestDetailId = bidRequestId
                 vwController.bidRequestId = bidRequestId
@@ -522,6 +524,7 @@ enum AppRouter {
             } else {
                 let chatScene = OneToOneChatVC.instantiate(fromAppStoryboard: .Chat)
                 chatScene.firstName = userName
+                chatScene.userImage = userImage
                 chatScene.isSupportChat = requestId.isEmpty
                 chatScene.requestId = requestId
                 chatScene.garageUserId = garageUserId

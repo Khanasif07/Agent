@@ -33,7 +33,7 @@ extension OneToOneChatVC {
         dict["mutableContent"] = true
         dict["to"] = deviceToken
         dict[deviceType == "iOS" ? "notification" : "data"] = [
-            "roomId":self.roomId,"senderId": self.currentUserId,"image": image,"badge":1,"title": UserModel.main.name,"body": body,ApiKey.requestId: self.requestId,ApiKey.bidRequestId: self.bidRequestId,ApiKey.userRole: chatUserType == .garage ? 1 : 2,ApiKey.type: "CHAT"]
+            "roomId":self.roomId,"senderId": self.currentUserId,"image": image,"badge":1,"title": UserModel.main.name,"body": body,ApiKey.requestId: self.requestId,ApiKey.bidRequestId: self.bidRequestId,ApiKey.userRole: chatUserType == .garage ? 1 : 2,ApiKey.type: "CHAT",ApiKey.userImage: UserModel.main.image]
         return dict
     }
    
