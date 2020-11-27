@@ -37,7 +37,6 @@ class UserServiceStatusVC: BaseVC {
   
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-
     }
     
     // MARK: - IBActions
@@ -94,6 +93,10 @@ extension UserServiceStatusVC: UITableViewDelegate,UITableViewDataSource{
             case .garageDetail, .requestNumber:
                 let cell = tableView.dequeueCell(with: RequestDetailTableViewCell.self)
                 cell.populateData(sectionArr[indexPath.row], model: viewModel.serviceDetailData ?? GarageRequestModel())
+                cell.helpBtnTapped = {[weak self] in
+                    guard let `self` = self else {return}
+                    AppRouter.goToOneToOneChatVC(self, userId: AppConstants.adminId, requestId: "", name: "Support Chat", image: "", unreadMsgs: 0, isSupportChat: true,garageUserId: isCurrentUserType == .garage ? UserModel.main.id : "" )
+                }
                 return cell
                 
             case .none:
@@ -127,7 +130,6 @@ extension UserServiceStatusVC: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return CGFloat.leastNormalMagnitude
     }
-    
 }
 
 extension UserServiceStatusVC: UserServiceStatusVMDelegate {
@@ -169,6 +171,7 @@ extension UserServiceStatusVC: UserServiceStatusVMDelegate {
 extension UserServiceStatusVC {
     
     func updateStatus(cell: ServiceStatusTableViewCell) {
+        
         cell.yesBtnTapped = { [weak self] in
             guard let `self` = self else { return }
             self.status = true
@@ -177,6 +180,8 @@ extension UserServiceStatusVC {
         
         cell.noBtnTapped = { [weak self] in
             guard let `self` = self else { return }
+            self.viewModel.serviceDetailData?.isServiceCompleted = true
+            self.mainTableView.reloadData()
             self.status = false
             self.viewModel.carReceived(params: [ApiKey.requestId: self.requestId, ApiKey.status : false], loader: true)
         }
@@ -194,12 +199,13 @@ extension UserServiceStatusVC {
 }
 
 extension UserServiceStatusVC : PickerDataDelegate{
+   
     func changeCarReceivedStatus(){
         viewModel.serviceDetailData?.isServiceCompleted = true
         mainTableView.reloadData()
     }
     
     func updateRatingStatus(){
-       viewModel.fetchRequestDetail(params: [ApiKey.requestId: self.requestId], loader: true)
+        viewModel.fetchRequestDetail(params: [ApiKey.requestId: self.requestId], loader: true)
     }
 }

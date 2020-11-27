@@ -891,7 +891,7 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
     private func reloadTableViewToBottom() {
         messagesTableView.reloadData()
         self.view.layoutIfNeeded()
-        CommonFunctions.delay(delay: 0.2) {
+        CommonFunctions.delay(delay: 0.33) {
             self.scrollMsgToBottom(animated: true)
         }
 //        self.scrollMsgToBottom()
