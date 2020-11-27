@@ -236,7 +236,11 @@ extension BatteryRequestedVC: SuccessPopupVCDelegate {
     func okBtnAction() {
         self.dismiss(animated: true) {
             TyreRequestModel.shared = TyreRequestModel()
-            self.navigationController?.popToViewControllerOfType(classForCoder: HomeVC.self)
+            guard let nav: UINavigationController = AppDelegate.shared.window?.rootViewController as? UINavigationController else { return }
+            if let homeScene = nav.hasViewController(ofKind: UserTabBarController.self) as? UserTabBarController {
+                homeScene.selectedIndex = 1
+                self.navigationController?.popToViewControllerOfType(classForCoder: HomeVC.self)
+            }
         }
     }
 }
