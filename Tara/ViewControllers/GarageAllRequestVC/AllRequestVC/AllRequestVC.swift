@@ -244,7 +244,7 @@ extension AllRequestVC : DZNEmptyDataSetSource,DZNEmptyDataSetDelegate {
     
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         var emptyData = ""
-        emptyData = viewModel.garageRequestListing.endIndex == 0 ? "No data found" : ""
+        emptyData = viewModel.garageRequestListing.endIndex == 0 ? LocalizedString.no_service_request_available.localized : ""
     
         return NSAttributedString(string: emptyData, attributes: [NSAttributedString.Key.foregroundColor: AppColors.fontTertiaryColor,NSAttributedString.Key.font: AppFonts.NunitoSansBold.withSize(18)])
     }

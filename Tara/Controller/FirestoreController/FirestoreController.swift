@@ -431,8 +431,8 @@ class FirestoreController:NSObject{
             if  error != nil{
                 print(error?.localizedDescription ?? "Some error")
             } else{
-                documentSnapshot?.data()?.forEach({ (blocedUser,blockedTime) in
-                    if blocedUser == receiverId{
+                documentSnapshot?.data()?.forEach({ (userId,blockedTime) in
+                    if userId == receiverId{
                         completion(true)
                     }
                 })

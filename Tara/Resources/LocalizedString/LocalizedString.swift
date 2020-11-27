@@ -334,6 +334,10 @@ enum LocalizedString : String {
     case editProfile
     case save
     case PLEASEUNBLOCKUSERTOSENDMESSAGES
+    case block
+    case unBlock
+    case are_you_sure_you_want_to_block_this_user = "are_you_sure_you_want_to_block_this_user"
+    case are_you_sure_you_want_to_unblock_this_user = "are_you_sure_you_want_to_unblock_this_user"
     case holdThisToRecord
     case serviceOn
     
@@ -367,6 +371,7 @@ enum LocalizedString : String {
     case rimSize
     case quantity
     case enter_number_of_tyre_you_want
+    case no_service_request_available
     
    
 }
