@@ -176,7 +176,7 @@ extension OffersDetailVC : OffersDetailVMDelegate {
     func rejectUserBidDataSuccess(message: String) {
         NotificationCenter.default.post(name: Notification.Name.UserServiceAcceptRejectSuccess, object: nil)
         self.dismiss(animated: true,completion: {
-            self.proposalBtnTapped?()
+          //  self.proposalBtnTapped?()
         })
     }
     
