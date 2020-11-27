@@ -72,7 +72,6 @@ class GarageAllRequestVC: BaseVC {
     //===========================
     @IBAction func allRequestButtonTapped(_ sender: UIButton) {
           self.view.endEditing(true)
-          filterBtn.isHidden = false 
           self.mainScrollView.setContentOffset(CGPoint.zero, animated: true)
           self.view.layoutIfNeeded()
           
@@ -80,7 +79,6 @@ class GarageAllRequestVC: BaseVC {
       
       @IBAction func bookedButtonTapped(_ sender: UIButton) {
           self.view.endEditing(true)
-          filterBtn.isHidden = true
           self.mainScrollView.setContentOffset(CGPoint(x: UIScreen.width, y: 0), animated: true)
           self.view.layoutIfNeeded()
           
@@ -157,12 +155,14 @@ extension GarageAllRequestVC: UIScrollViewDelegate{
     
     func setButtonColor(){
         if self.mainScrollView.contentOffset.x <= UIScreen.width/2 {
+            filterBtn.isHidden = false
             self.allRequestBtn.backgroundColor = AppColors.appRedColor
             self.allRequestBtn.setTitleColor(.white, for: .normal)
             self.bookedRequestBtn.backgroundColor = .white
             self.bookedRequestBtn.setTitleColor(.black, for: .normal)
         }
         else {
+            filterBtn.isHidden = true
             self.bookedRequestBtn.setTitleColor(.white, for: .normal)
             self.bookedRequestBtn.backgroundColor = AppColors.appRedColor
             self.allRequestBtn.setTitleColor(.black, for: .normal)

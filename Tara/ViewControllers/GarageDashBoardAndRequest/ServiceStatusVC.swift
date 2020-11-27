@@ -113,7 +113,7 @@ extension ServiceStatusVC: UITableViewDelegate,UITableViewDataSource{
             cell.ratingContainerView.isHidden = (self.viewModel.bookedRequestDetail?.ratingDetails?._id?.isEmpty ?? true)
             cell.bottomDashedVIew.isHidden =  cell.noRatingContainerView.isHidden && cell.ratingContainerView.isHidden
             cell.reviewLbl.text = self.viewModel.bookedRequestDetail?.ratingDetails?.review ?? ""
-            cell.ratingLbl.text = "\(self.viewModel.bookedRequestDetail?.ratingDetails?.rating ?? 0)" + "/5"
+            cell.ratingLbl.text = "\(self.viewModel.bookedRequestDetail?.ratingDetails?.rating ?? 0)" //+ "/5"
             return cell
         }
     }

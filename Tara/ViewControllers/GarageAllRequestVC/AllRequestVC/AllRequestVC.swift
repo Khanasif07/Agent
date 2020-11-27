@@ -138,6 +138,7 @@ extension AllRequestVC : UITableViewDelegate, UITableViewDataSource {
       
             cell.rejectRequestBtnTapped = {[weak self] in
                 guard let `self` = self else {return}
+                NotificationCenter.default.post(name: Notification.Name.UpdateServiceStatus, object: nil)
                 self.requestId = self.viewModel.garageRequestListing[indexPath.row].id ?? ""
                 self.viewModel.rejectGarageRequest(params:[ApiKey.requestId : self.requestId])
             }
