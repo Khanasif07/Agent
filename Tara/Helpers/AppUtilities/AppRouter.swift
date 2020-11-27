@@ -495,7 +495,7 @@ enum AppRouter {
         if let homeScene = nav.hasViewController(ofKind: GarageTabBarController.self) as? GarageTabBarController {
             homeScene.selectedIndex = 3
             let navigationController = UINavigationController(rootViewController: homeScene)
-            navigationController.setNavigationBarHidden(true, animated: false)
+            navigationController.setNavigationBarHidden(true, animated: true)
             defaultSetAsWindowRoot(navigationController)
             let chatScene = OneToOneChatVC.instantiate(fromAppStoryboard: .Chat)
             chatScene.firstName = userName

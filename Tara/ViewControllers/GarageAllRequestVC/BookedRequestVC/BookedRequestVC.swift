@@ -90,7 +90,7 @@ extension BookedRequestVC : UITableViewDelegate, UITableViewDataSource {
          
             cell.chatBtnTapped = { [weak self] in
                 guard let `self` = self else { return }
-                AppRouter.goToOneToOneChatVC(self, userId: self.viewModel.bookedRequestListing[indexPath.row].userId ?? "" ,requestDetailId:self.viewModel.bookedRequestListing[indexPath.row].id ?? "",requestId: self.viewModel.bookedRequestListing[indexPath.row].requestDocId ?? "", name: self.viewModel.bookedRequestListing[indexPath.row].userName ?? "", image: self.viewModel.bookedRequestListing[indexPath.row].userImage ?? "", unreadMsgs: 0)
+                AppRouter.goToOneToOneChatVC(self, userId: self.viewModel.bookedRequestListing[indexPath.row].userId ?? "" ,requestDetailId:self.viewModel.bookedRequestListing[indexPath.row].id ?? "",requestId: self.viewModel.bookedRequestListing[indexPath.row].requestDocId ?? "", name: self.viewModel.bookedRequestListing[indexPath.row].userName ?? "", image: self.viewModel.bookedRequestListing[indexPath.row].userImage ?? "",unreadMsgs: 0, garageUserId: isCurrentUserType == .garage ? UserModel.main.id : self.viewModel.bookedRequestListing[indexPath.row].userId ?? "")
             }
             
             cell.startServiceBtnTapped = { [weak self] in
