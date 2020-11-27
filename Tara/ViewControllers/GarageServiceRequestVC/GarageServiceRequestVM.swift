@@ -102,7 +102,7 @@ class GarageServiceRequestVM {
     }
     
     func getGarageRequestDetailData(params: JSONDictionary,loader: Bool = false) {
-        WebServices.getGarageRequestDetail(parameters: params, success: { [weak self] (json) in
+        WebServices.getGarageRequestDetail(parameters: params,loader:loader, success: { [weak self] (json) in
             guard let `self` = self else { return }
             self.parseToGarageRequestDetailData(result: json)
         }) { [weak self] (error) in
