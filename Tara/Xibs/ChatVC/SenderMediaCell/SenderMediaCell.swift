@@ -63,8 +63,8 @@ extension SenderMediaCell {
         senderNameLabel.isHidden = false
         guard let url = dict[ApiKey.mediaUrl] as? String else { return }
         mediaImageView.setImage_kf(imageString: url, placeHolderImage: #imageLiteral(resourceName: "icImg"), loader: true)
-        let date = ((dict[ApiKey.messageTime] as? Timestamp) ?? Timestamp()).dateValue()
-        self.timeLabel.text = date.convertToTimeString()//"\(date.timeAgoSince)"
+//        let date = ((dict[ApiKey.messageTime] as? Timestamp) ?? Timestamp()).dateValue()
+//        self.timeLabel.text = date.convertToTimeString()//"\(date.timeAgoSince)"
         self.contentView.layoutIfNeeded()
     }
 }

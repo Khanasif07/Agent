@@ -364,3 +364,11 @@
 "allRequests" = "All Requests";
 "bookedRequests" = "Booked Requests";
 
+// MARK: - OneToOneChat VC Values
+//==============================
+"holdThisToRecord" = "Hold this to record";
+"block" = "Block";
+"unBlock" = "UnBlock";
+"are_you_sure_you_want_to_block_this_user" = "Are you sure you want to block this user?";
+"are_you_sure_you_want_to_unblock_this_user" = "Are you sure you want to unblock this user?";
+"no_service_request_available" = "No service request available";

@@ -73,6 +73,20 @@ var isPhoneNoVerified : Bool {
 // for Language
 var selectedLanguage =  AppUserDefaults.value(forKey: .currentLanguage).stringValue
 
+var firestoreServerUrl: String {
+    #if ENV_DEV
+    return "AAAAAWkz5pQ:APA91bEd7Dtty8RMJI9ieIvIWGGqIGC4CD4xJ_vxQRKMdjdf4f0jHRmbFac9Z_PeVxgw6zr-VSMl2TZ2YbC18AHxmtligcnRDSHh_iX6B0j6IyDDlXCveW5BwZeq9pW2rUQnFqAcMbmy"
+    #elseif ENV_STAG
+    return "AAAAvMebQI4:APA91bHonAa5qUlD1Ogpqe2-umkToUqKRU8dQuaFHdviOItVHWEuz4kCGfyRnCGpWl_Wb_ghE8L5kitQ0u_geaG5HGr7ip3mB7L7NVsGSyZZdyuJHoV_mBvZtN1Q0Bim7Zu_azNj0Emq"
+    #elseif ENV_QA
+    return "AAAAwvZ9zW0:APA91bENRk9IgDvEdllqlrycdtbsUDbyqEDVqepD-YSqn9UdrH34SM0ZFyvMVH7fqbcd8C4tL3aBOBzt_YFmvdmBdA4WPiajpUxi0RymP7z7l7BUiKlMsfhLTbDg316aqndpizczmf3D"
+    #elseif ENV_PROD
+    return "AAAAvMebQI4:APA91bHonAa5qUlD1Ogpqe2-umkToUqKRU8dQuaFHdviOItVHWEuz4kCGfyRnCGpWl_Wb_ghE8L5kitQ0u_geaG5HGr7ip3mB7L7NVsGSyZZdyuJHoV_mBvZtN1Q0Bim7Zu_azNj0Emq"
+    #else
+    return ""
+    #endif
+}
+
 extension UIDevice {
     var hasNotch: Bool {
         let bottom = UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0

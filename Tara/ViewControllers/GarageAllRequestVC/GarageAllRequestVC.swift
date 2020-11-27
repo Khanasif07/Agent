@@ -10,13 +10,6 @@ import UIKit
 
 class GarageAllRequestVC: BaseVC {
     
-    //MARK: ENUM
-       //==========
-       enum SelectedVC {
-           case goingEventsVC
-           case myEventsVC
-       }
-       
     
     // MARK: - IBOutlets
     //===========================
@@ -30,7 +23,6 @@ class GarageAllRequestVC: BaseVC {
     
     // MARK: - Variables
     //===========================
-    var selectedVC          : SelectedVC = .goingEventsVC
     var allRequestVC        : AllRequestVC!
     var bookedRequestVC     : BookedRequestVC!
     var filterArr : [FilterScreen] = [.allRequestServiceType([],false), .allRequestByStatus([],false)]

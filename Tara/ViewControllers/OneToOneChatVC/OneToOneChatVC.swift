@@ -140,6 +140,9 @@ class OneToOneChatVC: BaseVC {
         self.tabBarController?.tabBar.isHidden = true
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIApplication.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIApplication.keyboardWillHideNotification, object: nil)
+        FirestoreController.isReceiverBlocked(senderId: currentUserId, receiverId: inboxModel.userId) { (bool) in
+                   self.isBlockedByMe = bool
+               }
     }
     
     override func viewDidLayoutSubviews() {
@@ -184,6 +187,7 @@ class OneToOneChatVC: BaseVC {
             CommonFunctions.showToastWithMessage( LocalizedString.PLEASEUNBLOCKUSERTOSENDMESSAGES.localized)
             return
         }
+        CommonFunctions.showToastWithMessage( LocalizedString.holdThisToRecord.localized)
         timerView.isHidden = false
         audioRecordBtn.setImage(#imageLiteral(resourceName: "audioBtnWhite"), for: .normal)
     }
@@ -226,22 +230,24 @@ class OneToOneChatVC: BaseVC {
     }
     
     @IBAction func blockBtnAction(_ sender: UIButton) {
-        btnContaninerView.isHidden = true
-        if unblockBtn.titleLabel?.text == "Block User"{
-         db.collection(ApiKey.block)
-            .document(currentUserId)
-            .collection(ApiKey.chat)
-            .document(inboxModel.userId)
-            .setData([ApiKey.userId: inboxModel.userId,
-                      ApiKey.userName: firstName,
-            ])
-        }else {
-            db.collection(ApiKey.block)
-                .document(currentUserId)
-                .collection(ApiKey.chat)
-                .document(inboxModel.userId)
-                .delete()
-        }
+        showAlertWithAction(title: !isBlockedByMe ? LocalizedString.block.localized : LocalizedString.unBlock.localized, msg: !isBlockedByMe ?  LocalizedString.are_you_sure_you_want_to_block_this_user.localized : LocalizedString.are_you_sure_you_want_to_unblock_this_user.localized , cancelTitle: "No", actionTitle: "Yes", actioncompletion: {
+            self.btnContaninerView.isHidden = true
+            if self.unblockBtn.titleLabel?.text == "Block User"{
+                self.db.collection(ApiKey.block)
+                    .document(self.currentUserId)
+                    .collection(ApiKey.chat)
+                    .document(self.inboxModel.userId)
+                    .setData([ApiKey.userId: self.inboxModel.userId,
+                              ApiKey.userName: self.firstName,
+                    ])
+            }else {
+                self.db.collection(ApiKey.block)
+                    .document(self.currentUserId)
+                    .collection(ApiKey.chat)
+                    .document(self.inboxModel.userId)
+                    .delete()
+            }
+        }) {}
     }
 }
 
@@ -250,8 +256,6 @@ class OneToOneChatVC: BaseVC {
 extension OneToOneChatVC {
     
     private func initialSetup() {
-        //        backgroundView.isHidden = false
-        //        CommonFunctions.showActivityLoader()
         NotificationCenter.default.addObserver(self, selector: #selector(editedBidAccepted), name: Notification.Name.EditedBidAccepted, object: nil)
         btnContaninerView.isHidden = true
         self.isSupportChat = self.requestId.isEmpty
