@@ -174,6 +174,8 @@ extension UserServiceStatusVC {
         
         cell.yesBtnTapped = { [weak self] in
             guard let `self` = self else { return }
+            self.viewModel.serviceDetailData?.isServiceCompleted = true
+            self.mainTableView.reloadData()
             self.status = true
             self.viewModel.carReceived(params: [ApiKey.requestId: self.requestId, ApiKey.status : true], loader: true)
         }

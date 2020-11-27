@@ -58,6 +58,7 @@ extension UserNotificationVC {
         mainTableView.registerCell(with: UserNotificationTableViewCell.self)
         mainTableView.registerCell(with: ProfileGuestTableCell.self)
         mainTableView.contentInset = UIEdgeInsets(top: 8.0, left: 0, bottom: 0, right: 0)
+        NotificationCenter.default.addObserver(self, selector: #selector(hitNotificationApi), name: Notification.Name.NotificationUpdate, object: nil)
         hitApi()
     }
     
@@ -78,6 +79,10 @@ extension UserNotificationVC {
         } else {
             return 1
         }
+    }
+    
+    @objc func hitNotificationApi(){
+       hitApi()
     }
 }
 

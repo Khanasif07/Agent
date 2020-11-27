@@ -222,6 +222,7 @@ extension AppDelegate{
             printDebug("Did receive remote notification \(userInfo)")
         } else {
             print("foreground")
+            NotificationCenter.default.post(name: Notification.Name.NotificationUpdate, object: nil)
             printDebug("Did receive remote notification \(userInfo)")
         }
     }
