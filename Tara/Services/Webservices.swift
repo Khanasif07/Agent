@@ -703,9 +703,10 @@ extension WebServices{
     // MARK:- Tyre Size Listing Data
     //=================
     static func getGarageRequestDetail(parameters: JSONDictionary,
+                                       loader: Bool ,
                                        success: @escaping SuccessResponse,
                                        failure: @escaping FailureResponse) {
-        self.commonGetAPI(parameters: parameters,endPoint: .garageRequestDetail, success: { (json) in
+        self.commonGetAPI(parameters: parameters,endPoint: .garageRequestDetail, loader: loader, success: { (json) in
             let code = json[ApiKey.statusCode].intValue
             let msg = json[ApiKey.message].stringValue
             switch code {

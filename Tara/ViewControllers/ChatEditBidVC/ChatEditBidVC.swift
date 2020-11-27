@@ -124,7 +124,7 @@ extension ChatEditBidVC {
     }
     
     private func hitApi(){
-        viewModel.getGarageRequestDetailData(params: [ApiKey.requestId: self.viewModel.requestId])
+        viewModel.getGarageRequestDetailData(params: [ApiKey.requestId: self.viewModel.requestId],loader: false)
     }
     
     private func getPlacedBidData(){
