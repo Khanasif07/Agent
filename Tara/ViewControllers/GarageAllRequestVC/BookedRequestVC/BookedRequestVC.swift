@@ -99,6 +99,7 @@ extension BookedRequestVC : UITableViewDelegate, UITableViewDataSource {
                 
                 AppRouter.openOtpPopUpVC(vc: self, requestByUser: self.viewModel.bookedRequestListing[indexPath.row].requestedBy ?? "",requestId: self.viewModel.bookedRequestListing[indexPath.row].id ?? "") {
                     self.hitApi(params: [ApiKey.page:"1", ApiKey.limit: "20"])
+                    AppRouter.goToServiceStatusVC(vc: self, requestId: self.viewModel.bookedRequestListing[indexPath.row].id ?? "",requestType: self.viewModel.bookedRequestListing[indexPath.row].requestType ?? .battery ,serviceNo: self.viewModel.bookedRequestListing[indexPath.row].requestID ?? "")
                 }
             }
           
