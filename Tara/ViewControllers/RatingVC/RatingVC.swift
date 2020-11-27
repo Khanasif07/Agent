@@ -128,6 +128,7 @@ extension RatingVC {
         }
         saveBtn.setTitle(self.ratingId.isEmpty ? "Save" : "Update", for: .normal)
         saveBtn.isEnabled = saveBtnStatus()
+        txtView.textColor = AppColors.fontPrimaryColor
     }
     
     private func setupTextView(){
