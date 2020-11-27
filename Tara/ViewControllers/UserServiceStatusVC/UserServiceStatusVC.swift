@@ -114,7 +114,7 @@ extension UserServiceStatusVC: UITableViewDelegate,UITableViewDataSource{
             let cell = tableView.dequeueCell(with: ServiceStatusTableViewCell.self)
             cell.populateDataForUserService(status: viewModel.serviceDetailData?.serviceStatus ?? nil, isServiceCompleted: viewModel.serviceDetailData?.isServiceCompleted ?? false,model: self.viewModel.serviceDetailData ?? GarageRequestModel())
             cell.reviewLbl.text = self.viewModel.serviceDetailData?.ratingDetails?.review ?? ""
-            cell.ratingLbl.text = "\(self.viewModel.serviceDetailData?.ratingDetails?.rating ?? 0)" + "/5"
+            cell.ratingLbl.text = "\(self.viewModel.serviceDetailData?.ratingDetails?.rating ?? 0)" //+ "/5"
             updateStatus(cell: cell)
             return cell
         }

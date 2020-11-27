@@ -37,7 +37,7 @@ class ReviewTableViewCell: UITableViewCell {
     
     func bindData(_ model: GarageRequestModel) {
         userNameLbl.text = model.userName
-        ratingLbl.text = (model.rating?.description ?? "")  + "/5"
+        ratingLbl.text = (model.rating?.description ?? "")  //+ "/5"
         reviewLbl.text = model.review ?? ""
         garageFirstImgView.setImage_kf(imageString: model.images?.first ?? "")
         garageSecondImgView.isHidden = true
