@@ -304,5 +304,4 @@ class ServiceStatusTableViewCell: UITableViewCell {
             handle(sender)
         }
     }
-    
 }

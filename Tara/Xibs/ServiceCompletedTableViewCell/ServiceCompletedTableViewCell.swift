@@ -46,7 +46,12 @@ class ServiceCompletedTableViewCell: UITableViewCell {
             userImgView.contentMode = .scaleToFill
             userImgView.setImage_kf(imageString: model.garageLogo ?? "", placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
             userNameLbl.text = model.garageName
-            ratingLbl.text = (model.rating?.description ?? "") //+ "/5"
+            if let rating = model.rating {
+                ratingLbl.text = (rating.description) //+ "/5"
+
+            }else {
+                ratingLbl.text = "No Rating"
+            }
         }
         let date = (model.serviceCompletedOn)?.breakCompletDate(outPutFormat: Date.DateFormat.ddMMyyyy.rawValue, inputFormat: Date.DateFormat.yyyyMMddTHHmmsssssz.rawValue)
         timeLbl.text = date
