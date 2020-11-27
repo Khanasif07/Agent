@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -30,7 +30,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NA" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="87P-SN-oWT">
-                        <rect key="frame" x="99" y="5" width="16.5" height="15.5"/>
+                        <rect key="frame" x="290.5" y="5" width="16.5" height="15.5"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15.5" id="aAF-Xi-J5Z"/>
                         </constraints>
@@ -146,7 +146,6 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="87P-SN-oWT" firstAttribute="leading" secondItem="YqA-gp-fZK" secondAttribute="leading" id="3Tl-Rv-LT3"/>
                     <constraint firstItem="YqA-gp-fZK" firstAttribute="top" secondItem="jD7-VC-Hv7" secondAttribute="top" constant="25.5" id="4DN-D4-yF9"/>
                     <constraint firstItem="YqA-gp-fZK" firstAttribute="leading" secondItem="jD7-VC-Hv7" secondAttribute="leading" constant="99" id="CUv-I1-9Vx"/>
                     <constraint firstItem="ed8-Ne-l9b" firstAttribute="top" secondItem="YqA-gp-fZK" secondAttribute="top" id="V54-oY-ACH"/>
@@ -154,6 +153,7 @@
                     <constraint firstItem="ed8-Ne-l9b" firstAttribute="leading" secondItem="YqA-gp-fZK" secondAttribute="trailing" constant="8" id="Z17-Lc-mSQ"/>
                     <constraint firstAttribute="trailing" secondItem="ed8-Ne-l9b" secondAttribute="trailing" constant="24" id="Zaz-f9-gu9"/>
                     <constraint firstItem="ed8-Ne-l9b" firstAttribute="width" secondItem="ed8-Ne-l9b" secondAttribute="height" multiplier="1:1" id="aKY-v8-Klh"/>
+                    <constraint firstItem="87P-SN-oWT" firstAttribute="trailing" secondItem="YqA-gp-fZK" secondAttribute="trailing" id="gu0-WC-iRJ"/>
                     <constraint firstItem="YqA-gp-fZK" firstAttribute="top" secondItem="87P-SN-oWT" secondAttribute="bottom" constant="5" id="hkL-zo-Cep"/>
                     <constraint firstItem="87P-SN-oWT" firstAttribute="top" secondItem="jD7-VC-Hv7" secondAttribute="top" constant="5" id="msY-Ot-EZt"/>
                 </constraints>

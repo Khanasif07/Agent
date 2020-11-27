@@ -853,7 +853,7 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                     senderOfferCell.acceptBtn.setTitle("Offer Rejected", for: .normal)
                     senderOfferCell.rejectBtn.isHidden = true
                 }
-                senderOfferCell.userNameLbl.text = self.firstName
+                senderOfferCell.userNameLbl.text = "You"
                 senderOfferCell.userImgView.setImage_kf(imageString: UserModel.main.image, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
                 senderOfferCell.priceLbl.text = "\(model.price)" + "SAR"
                 self.setTapGesture(view: senderOfferCell.msgContainerView, indexPath: indexPath)
