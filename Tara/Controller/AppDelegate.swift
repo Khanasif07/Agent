@@ -186,6 +186,7 @@ extension AppDelegate{
         
         guard let userInfo = (notification.request.content.userInfo as? [String: Any]) else { return }
         guard let value = userInfo[ApiKey.gcm_notification_type] as? String else { return }
+        NotificationCenter.default.post(name: Notification.Name.NotificationUpdate, object: nil)
         if let nav = AppDelegate.shared.window?.rootViewController as? UINavigationController {
             if let topVC = UIApplication.shared.visibleViewController as? OneToOneChatVC {
                 guard let senderId = userInfo[ApiKey.gcm_notification_senderId] as? String else { return }
@@ -222,7 +223,6 @@ extension AppDelegate{
             printDebug("Did receive remote notification \(userInfo)")
         } else {
             print("foreground")
-            NotificationCenter.default.post(name: Notification.Name.NotificationUpdate, object: nil)
             printDebug("Did receive remote notification \(userInfo)")
         }
     }
@@ -237,7 +237,7 @@ extension AppDelegate{
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
-        FirestoreController.updateUserOnlineStatus(isOnline: false)
+//        FirestoreController.updateUserOnlineStatus(isOnline: false)
     }
     
 }

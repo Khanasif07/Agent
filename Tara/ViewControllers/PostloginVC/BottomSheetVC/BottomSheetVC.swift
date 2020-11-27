@@ -32,6 +32,8 @@ class BottomSheetVC: BaseVC {
     var optionArr : [String] = []
     var buttonView = UIButton()
     var isSearchOn: Bool = false
+    var emptyData: String = ""
+    var isApiHitInProcess : Bool = false
     
     // MARK: - Lifecycle
     //===========================
@@ -53,6 +55,7 @@ class BottomSheetVC: BaseVC {
     }
     
     private func hitApi(){
+        isApiHitInProcess = false
         if   (vehicleDetailtype == .make) {
             self.headingLbl.text = "Make"
             self.searchTxtField.placeholder = "Select vehicle make"
@@ -170,6 +173,8 @@ extension BottomSheetVC: BottomSheetVMDelegate {
     }
     
     func makeListingFailed(error: String) {
+        isApiHitInProcess = true
+        tableView.reloadData()
         ToastView.shared.showLongToast(self.view, msg: error)
     }
     
@@ -178,6 +183,8 @@ extension BottomSheetVC: BottomSheetVMDelegate {
     }
     
     func modelListingFailed(error: String) {
+        isApiHitInProcess = true
+        tableView.reloadData()
         ToastView.shared.showLongToast(self.view, msg: error)
     }
 }
@@ -193,8 +200,13 @@ extension BottomSheetVC : DZNEmptyDataSetSource,DZNEmptyDataSetDelegate {
     }
     
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        
-        return NSAttributedString(string: "No Data Found", attributes: [NSAttributedString.Key.foregroundColor: AppColors.fontTertiaryColor,NSAttributedString.Key.font: AppFonts.NunitoSansBold.withSize(18)])
+        var emptyData: String = ""
+        if (vehicleDetailtype == .make) {
+            emptyData =  (self.viewModel.searchMakeListing.endIndex == 0 && !isApiHitInProcess) ? "Loading..." : (self.viewModel.searchMakeListing.endIndex == 0 ? "No Data Found" : "")
+        }else {
+            emptyData =  (self.viewModel.searchModelListing.endIndex  == 0 && !isApiHitInProcess) ? "Loading..." : (self.viewModel.searchModelListing.endIndex == 0 ? "No Data Found" : "")
+        }
+        return NSAttributedString(string: emptyData, attributes: [NSAttributedString.Key.foregroundColor: AppColors.fontTertiaryColor,NSAttributedString.Key.font: AppFonts.NunitoSansBold.withSize(18)])
     }
     
     func emptyDataSetShouldDisplay(_ scrollView: UIScrollView!) -> Bool {
@@ -209,4 +221,14 @@ extension BottomSheetVC : DZNEmptyDataSetSource,DZNEmptyDataSetDelegate {
         return true
     }
     
+    func emptyDataSetShouldBeForced(toDisplay scrollView: UIScrollView!) -> Bool {
+        if let tableView = scrollView as? UITableView, tableView.numberOfRows(inSection: 0) == 0 {
+            isApiHitInProcess = true
+            return true
+        }
+        return false
+    }
+    
 }
+
+
