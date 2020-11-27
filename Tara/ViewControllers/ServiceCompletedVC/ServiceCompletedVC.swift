@@ -74,7 +74,7 @@ extension ServiceCompletedVC {
         self.mainTableView.enablePullToRefresh(tintColor: AppColors.appRedColor ,target: self, selector: #selector(refreshWhenPull(_:)))
         self.mainTableView.registerCell(with: LoaderCell.self)
         mainTableView.registerCell(with: ServiceCompletedTableViewCell.self)
-        hitApi(loader: true)
+        hitApi(loader: false)
     }
 
     private func setupTextAndFont(){
@@ -83,7 +83,7 @@ extension ServiceCompletedVC {
     }
     
     private func hitApi(loader: Bool = false) {
-        let dict = [ApiKey.page:"1", ApiKey.limit: "20"]
+        let dict = [ApiKey.page:"1", ApiKey.limit: "10"]
         screenType == .serviceComplete ? viewModel.fetchServiceCompleteListing(params: dict, loader: loader) :
             viewModel.fetchUserServiceHistory(params: dict, loader: loader)
         
@@ -93,28 +93,25 @@ extension ServiceCompletedVC {
         sender.endRefreshing()
         hitApi(loader: false)
     }
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if cell as? LoaderCell != nil {
-            if screenType == .serviceComplete {
-                self.viewModel.fetchServiceCompleteListing(params: [ApiKey.page: self.viewModel.currentPage,ApiKey.limit : "20"],loader: false)
-            }else {
-                self.viewModel.fetchUserServiceHistory(params: [ApiKey.page: self.viewModel.currentPage,ApiKey.limit : "20"],loader: false)
-            }
-        }
-    }
+  
 }
 
 extension ServiceCompletedVC :UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.serviceCompletedListing.count
+        return viewModel.serviceCompletedListing.count + (self.viewModel.showPaginationLoader ?  1: 0)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueCell(with: ServiceCompletedTableViewCell.self, indexPath: indexPath)
-        cell.bindData(viewModel.serviceCompletedListing[indexPath.row],screenType: self.screenType)
-        return cell
+        if indexPath.row == (viewModel.serviceCompletedListing.endIndex) {
+            let cell = tableView.dequeueCell(with: LoaderCell.self)
+            return cell
+        }else {
+            let cell = tableView.dequeueCell(with: ServiceCompletedTableViewCell.self, indexPath: indexPath)
+            cell.bindData(viewModel.serviceCompletedListing[indexPath.row],screenType: self.screenType)
+            return cell
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -127,6 +124,16 @@ extension ServiceCompletedVC :UITableViewDelegate, UITableViewDataSource{
             
         }else {
             
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if cell as? LoaderCell != nil {
+            if screenType == .serviceComplete {
+                self.viewModel.fetchServiceCompleteListing(params: [ApiKey.page: self.viewModel.currentPage,ApiKey.limit : "10"],loader: false)
+            }else {
+                self.viewModel.fetchUserServiceHistory(params: [ApiKey.page: self.viewModel.currentPage,ApiKey.limit : "10"],loader: false,pagination: true)
+            }
         }
     }
 }

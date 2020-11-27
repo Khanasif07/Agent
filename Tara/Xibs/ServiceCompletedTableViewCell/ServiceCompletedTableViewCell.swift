@@ -40,13 +40,16 @@ class ServiceCompletedTableViewCell: UITableViewCell {
             userImgView.contentMode = .scaleToFill
             userNameLbl.text = model.userName
             userImgView.round()
+            ratingLbl.text = (model.isRated ?? false) ? (model.rating?.description ?? "") + "/5" : "No Rated"
+          
         }else {
             userImgView.contentMode = .scaleToFill
             userImgView.setImage_kf(imageString: model.garageLogo ?? "", placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
             userNameLbl.text = model.garageName
+            ratingLbl.text = (model.rating?.description ?? "") + "/5"
         }
         let date = (model.serviceCompletedOn)?.breakCompletDate(outPutFormat: Date.DateFormat.ddMMyyyy.rawValue, inputFormat: Date.DateFormat.yyyyMMddTHHmmsssssz.rawValue)
         timeLbl.text = date
-        ratingLbl.text = (model.rating?.description ?? "") + "/5"
+       
     }
 }

@@ -116,7 +116,7 @@ extension CompleteProfileStep1 {
     private func initialSetup() {
         self.setUpTextField()
         self.prepareMap()
-        self.setAddress()
+       // self.setAddress()
         self.mapView.isMyLocationEnabled = true
         viewModel.delegate = self
         titleLbl.text = fromGarage == .editGarageProfile ? "Edit Profile" : "Complete Profile"
@@ -201,6 +201,7 @@ extension CompleteProfileStep1 {
         logoImgView.contentMode = .scaleToFill
         logoImgView.setImage_kf(imageString: GarageProfileModel.shared.logoUrl, placeHolderImage: #imageLiteral(resourceName: "icImg"), loader: true)
         dashedView.isHidden = true
+        liveAddress = GarageProfileModel.shared.address
         addressTxtField.text = GarageProfileModel.shared.address
         nameTxtField.text = GarageProfileModel.shared.serviceCenterName
         distTxtField.text = GarageProfileModel.shared.serviceCenterDist

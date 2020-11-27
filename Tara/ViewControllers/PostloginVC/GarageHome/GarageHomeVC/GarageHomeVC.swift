@@ -183,7 +183,7 @@ extension GarageHomeVC:  GarageHomeVMDelegate{
                                  GarageDataValue(requestCount: self.viewModel.garageHomeModel.ongoingServices, name: LocalizedString.ongoingServices.localized,requestColor: UIColor(r: 210, g: 103, b: 9, alpha: 1.0),backgroundColor: UIColor(r: 253 , g: 237, b: 223, alpha: 1.0)),GarageDataValue(requestCount: self.viewModel.garageHomeModel.servicesCompletedToday, name: LocalizedString.serviceCompleted.localized,requestColor: UIColor(r: 44, g: 182, b: 16, alpha: 1.0),backgroundColor: UIColor(r: 239 , g: 246, b: 231, alpha: 1.0)),
                                  GarageDataValue(requestCount: 0, name: LocalizedString.today_Revenue.localized,requestColor: UIColor(r: 216, g: 91, b: 134, alpha: 1.0),backgroundColor: UIColor(r: 253 , g: 219, b: 219, alpha: 1.0))]
        
-        ratingValueLbl.text = self.viewModel.garageHomeModel.averageRating.description
+        ratingValueLbl.text = self.viewModel.garageHomeModel.averageRating.truncate(places: 1).description
         totalRatingLbl.text = "(\(self.viewModel.garageHomeModel.ratingCount.description))"
         self.mainCollView.reloadData()
     }

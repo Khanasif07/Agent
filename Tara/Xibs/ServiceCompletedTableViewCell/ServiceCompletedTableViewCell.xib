@@ -76,7 +76,7 @@
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7ev-Nj-qi6">
-                                <rect key="frame" x="278" y="8" width="57" height="24"/>
+                                <rect key="frame" x="279.5" y="8" width="55.5" height="24"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="D9T-FF-SYe">
                                         <rect key="frame" x="4" y="4" width="16" height="16"/>
@@ -87,7 +87,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3.5/5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nij-SI-HXb">
-                                        <rect key="frame" x="24" y="5" width="29" height="14"/>
+                                        <rect key="frame" x="24" y="5" width="27.5" height="14"/>
                                         <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -100,7 +100,6 @@
                                     <constraint firstItem="D9T-FF-SYe" firstAttribute="centerY" secondItem="7ev-Nj-qi6" secondAttribute="centerY" id="S1D-fG-PFo"/>
                                     <constraint firstItem="Nij-SI-HXb" firstAttribute="centerY" secondItem="7ev-Nj-qi6" secondAttribute="centerY" id="W0I-88-4vg"/>
                                     <constraint firstItem="D9T-FF-SYe" firstAttribute="leading" secondItem="7ev-Nj-qi6" secondAttribute="leading" constant="4" id="Z1Q-gm-pV6"/>
-                                    <constraint firstAttribute="width" constant="57" id="aZI-5a-Us7"/>
                                     <constraint firstAttribute="height" constant="24" id="iR5-dh-1uF"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>

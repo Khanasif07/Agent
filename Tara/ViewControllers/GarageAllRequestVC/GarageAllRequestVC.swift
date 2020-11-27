@@ -80,6 +80,7 @@ class GarageAllRequestVC: BaseVC {
     //===========================
     @IBAction func allRequestButtonTapped(_ sender: UIButton) {
           self.view.endEditing(true)
+          filterBtn.isHidden = false 
           self.mainScrollView.setContentOffset(CGPoint.zero, animated: true)
           self.view.layoutIfNeeded()
           
@@ -87,6 +88,7 @@ class GarageAllRequestVC: BaseVC {
       
       @IBAction func bookedButtonTapped(_ sender: UIButton) {
           self.view.endEditing(true)
+          filterBtn.isHidden = true
           self.mainScrollView.setContentOffset(CGPoint(x: UIScreen.width, y: 0), animated: true)
           self.view.layoutIfNeeded()
           
