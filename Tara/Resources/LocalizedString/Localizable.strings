@@ -360,3 +360,6 @@
 "allRequests" = "All Requests";
 "bookedRequests" = "Booked Requests";
 
+// MARK: - OneToOneChat VC Values
+//==============================
+"holdThisToRecord" = "Hold this to record";

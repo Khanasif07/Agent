@@ -184,6 +184,7 @@ class OneToOneChatVC: BaseVC {
             CommonFunctions.showToastWithMessage( LocalizedString.PLEASEUNBLOCKUSERTOSENDMESSAGES.localized)
             return
         }
+        CommonFunctions.showToastWithMessage( LocalizedString.holdThisToRecord.localized)
         timerView.isHidden = false
         audioRecordBtn.setImage(#imageLiteral(resourceName: "audioBtnWhite"), for: .normal)
     }

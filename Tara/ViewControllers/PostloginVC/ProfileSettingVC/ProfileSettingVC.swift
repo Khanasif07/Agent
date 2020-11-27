@@ -207,7 +207,6 @@ extension ProfileSettingVC {
     private func performCleanUp() {
         let lang  = AppUserDefaults.value(forKey: .currentLanguage).stringValue
         AppUserDefaults.removeAllValues()
-        DeviceDetail.deviceToken = ""
         AppUserDefaults.save(value: lang, forKey: .currentLanguage)
         AppUserDefaults.save(value: true, forKey: .isLanguageSelect)
         UserModel.main = UserModel()
