@@ -87,7 +87,7 @@ class ChatEditBidVC: BaseVC {
         if bidAmountValid {
             //            self.viewModel.editPlacedBidData(params: [ApiKey.requestId: viewModel.requestId,ApiKey.bidData: selectedDict,ApiKey.acceptedProposalId: self.acceptedProposalId ])
             
-            self.viewModel.editPlacedBidData(params: [ApiKey.requestId: viewModel.requestId,ApiKey.bidData: selectedDict,ApiKey.isacceptedProposalEdited: true ])
+            self.viewModel.editPlacedBidData(params: [ApiKey.requestId: viewModel.requestId,ApiKey.bidData: selectedDict,ApiKey.isacceptedProposalEdited: true ],loader: false)
             //            self.viewModel.acceptEditedBid(params: [ApiKey.bidId: selectedDict.first?[ApiKey.bidId] ?? ""])
         }else {
             CommonFunctions.showToastWithMessage("Unit Price should not be 0 or empty")

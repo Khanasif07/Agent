@@ -64,7 +64,7 @@ class BrandsListingVM{
             guard !isRequestinApi else { return }
         }
         isRequestinApi = true
-        WebServices.getBrandListingData(parameters: params, success: { (json) in
+        WebServices.getBrandListingData(parameters: params, loader: loader, success: { (json) in
             self.parseToBankListingData(result: json)
         }) { (error) -> (Void) in
             self.delegate?.brandListingFailed(error: error.localizedDescription)

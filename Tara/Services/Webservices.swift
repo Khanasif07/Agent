@@ -540,9 +540,10 @@ extension WebServices{
     // MARK:- Brand Listing Data
     //=================
     static func getBrandListingData(parameters: JSONDictionary,
+                                    loader: Bool,
                                     success: @escaping SuccessResponse,
                                     failure: @escaping FailureResponse) {
-        self.commonGetAPI(parameters: parameters,endPoint: .userServiceBrands, success: { (json) in
+        self.commonGetAPI(parameters: parameters,endPoint: .userServiceBrands, loader:loader, success: { (json) in
             let code = json[ApiKey.statusCode].intValue
             let msg = json[ApiKey.message].stringValue
             switch code {
@@ -901,9 +902,10 @@ extension WebServices{
     // MARK:- Edit Placed Bid Data
     //=================
     static func editPlacedBidData(parameters: JSONDictionary,
+                                  loader:Bool,
                                         success: @escaping SuccessResponse,
                                         failure: @escaping FailureResponse) {
-        self.commonPutAPI(parameters: parameters, endPoint: .garageEditPlacedBid, success: { (json) in
+        self.commonPutAPI(parameters: parameters,endPoint: .garageEditPlacedBid, loader:loader, success: { (json) in
             success(json)
         }) { (error) -> (Void) in
             failure(error)
