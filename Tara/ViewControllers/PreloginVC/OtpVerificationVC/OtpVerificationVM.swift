@@ -45,6 +45,7 @@ class OtpVerificationVM{
     //Function for verify OTP
     func verifyOTP(dict: JSONDictionary){
         WebServices.verifyOtp(parameters: dict, success: { (userModel) in
+            CommonFunctions.showActivityLoader()
             self.addUser(user: userModel, message: "")
         }) { (error) -> (Void) in
             self.delegate?.otpVerificationFailed(error: error.localizedDescription)
@@ -88,20 +89,25 @@ class OtpVerificationVM{
     private func addUser(user: UserModel, message: String) {
         FirestoreController.login(userId: user.id, withEmail: user.email, with: "Tara@123", success: {
             FirestoreController.setFirebaseData(userId: user.id, email: user.email, password: "Tara@123", name: user.name, imageURL: user.image, phoneNo: user.phoneNo, countryCode: user.countryCode, status: "", completion: {
+                CommonFunctions.hideActivityLoader()
                 self.delegate?.otpVerifiedSuccessfully(message: "Otp Verified Successfully")
             }) { (error) -> (Void) in
+                CommonFunctions.hideActivityLoader()
                 AppUserDefaults.removeValue(forKey: .accesstoken)
                 self.delegate?.otpVerificationFailed(error: error.localizedDescription)
             }
         }) { (message, code) in
             if code == 17011 {
                 FirestoreController.createUserNode(userId: user.id, email: user.email, password: "Tara@123", name: user.name, imageURL: user.image, phoneNo: user.phoneNo, countryCode: user.countryCode, status: "", completion: {
+                    CommonFunctions.hideActivityLoader()
                     self.delegate?.otpVerifiedSuccessfully(message: "Otp Verified Successfully")
                 }) { (error) -> (Void) in
+                    CommonFunctions.hideActivityLoader()
                     AppUserDefaults.removeValue(forKey: .accesstoken)
                     self.delegate?.otpVerificationFailed(error: error.localizedDescription)
                 }
             } else {
+                CommonFunctions.hideActivityLoader()
                 AppUserDefaults.removeValue(forKey: .accesstoken)
                 self.delegate?.otpVerificationFailed(error: message)
             }
