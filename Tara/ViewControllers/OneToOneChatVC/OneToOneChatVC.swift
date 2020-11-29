@@ -278,6 +278,7 @@ extension OneToOneChatVC {
         startReceiverBlockListener()
         setupTableView()
         setupTextView()
+        getOtherUserData()
         fetchDeleteTime()
         getBatchCount()
         setupAudioMessages()
