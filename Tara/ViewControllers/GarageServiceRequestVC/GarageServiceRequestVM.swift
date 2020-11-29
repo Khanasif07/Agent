@@ -72,7 +72,7 @@ class GarageServiceRequestVM {
     }
     
     func editPlacedBidData(params: JSONDictionary,loader: Bool = false) {
-        WebServices.editPlacedBidData(parameters: params, success: { [weak self] (json) in
+        WebServices.editPlacedBidData(parameters: params,loader: loader, success: { [weak self] (json) in
             guard let `self` = self else { return }
             let msg = json[ApiKey.message].stringValue
             self.delegate?.editPlacedBidDataSuccess(message: msg)
@@ -147,7 +147,7 @@ class GarageServiceRequestVM {
             guard !isRequestinApi else { return }
         }
         isRequestinApi = true
-        WebServices.getBrandListingData(parameters: params, success: { (json) in
+        WebServices.getBrandListingData(parameters: params,loader: loader, success: { (json) in
             self.parseToBankListingData(result: json)
         }) { (error) -> (Void) in
             self.delegate?.brandListingFailed(error: error.localizedDescription)

@@ -87,7 +87,7 @@ class ChatEditBidVC: BaseVC {
         if bidAmountValid {
             //            self.viewModel.editPlacedBidData(params: [ApiKey.requestId: viewModel.requestId,ApiKey.bidData: selectedDict,ApiKey.acceptedProposalId: self.acceptedProposalId ])
             
-            self.viewModel.editPlacedBidData(params: [ApiKey.requestId: viewModel.requestId,ApiKey.bidData: selectedDict,ApiKey.isacceptedProposalEdited: true ])
+            self.viewModel.editPlacedBidData(params: [ApiKey.requestId: viewModel.requestId,ApiKey.bidData: selectedDict,ApiKey.isacceptedProposalEdited: true ],loader: true)
             //            self.viewModel.acceptEditedBid(params: [ApiKey.bidId: selectedDict.first?[ApiKey.bidId] ?? ""])
         }else {
             CommonFunctions.showToastWithMessage("Unit Price should not be 0 or empty")
@@ -124,7 +124,7 @@ extension ChatEditBidVC {
     }
     
     private func hitApi(){
-        viewModel.getGarageRequestDetailData(params: [ApiKey.requestId: self.viewModel.requestId],loader: false)
+        viewModel.getGarageRequestDetailData(params: [ApiKey.requestId: self.viewModel.requestId],loader: true)
     }
     
     private func getPlacedBidData(){
@@ -409,7 +409,7 @@ extension ChatEditBidVC :GarageServiceRequestVMDelegate {
         if !country.isEmpty {
             params[ApiKey.country] = country
         }
-        viewModel.getBrandListingData(params : params,loader: false)
+        viewModel.getBrandListingData(params : params,loader: true)
     }
 }
 

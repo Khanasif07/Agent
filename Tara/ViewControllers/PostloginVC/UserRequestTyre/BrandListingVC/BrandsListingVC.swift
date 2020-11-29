@@ -31,6 +31,7 @@ class BrandsListingVC: BaseVC {
     weak var delegate : BrandsListnig?
     var isSearchOn: Bool = false
     let buttonView = UIButton()
+    var isApiHitInProcess : Bool = false
     var selectedIndexPath = [Int]()
     
     // MARK: - Lifecycle
@@ -98,10 +99,11 @@ extension BrandsListingVC {
     }
     
     private func hitApi(){
+        isApiHitInProcess = false
         if   (listingType == .brands) {
-            self.hitBrandListingApi()
+            self.hitBrandListingApi(loader:true)
         } else {
-            self.hitCountryListingApi()
+            self.hitCountryListingApi(loader:true)
         }
     }
     
@@ -122,15 +124,15 @@ extension BrandsListingVC {
         searchTxtField.placeholder = (listingType == .brands) ? "Search Brand by name" : "Search Country by name"
     }
     
-    private func hitBrandListingApi(){
+    private func hitBrandListingApi(loader:Bool){
         let type = categoryType == .tyres ? "Tyres" : (categoryType == .battery ? "Battery" : "Oil")
-        self.viewModel.getBrandListingData(params: [ApiKey.page: "1",ApiKey.limit : "100",ApiKey.type: type],loader: false)
+        self.viewModel.getBrandListingData(params: [ApiKey.page: "1",ApiKey.limit : "100",ApiKey.type: type],loader: loader)
     }
     
-    private func hitCountryListingApi(){
-        self.viewModel.getCountryListingData(params: [ApiKey.page: "1",ApiKey.limit : "100",ApiKey.type: "Tyres"],loader: false)
+    private func hitCountryListingApi(loader:Bool){
+        self.viewModel.getCountryListingData(params: [ApiKey.page: "1",ApiKey.limit : "100",ApiKey.type: "Tyres"],loader: loader)
     }
-
+    
     private func setupTextAndFont(){
         
         if listingType == .brands {
@@ -182,7 +184,7 @@ extension BrandsListingVC : UITableViewDelegate, UITableViewDataSource {
                 view.arrowImg.setImage_kf(imageString: self.viewModel.searchBrandListing[section].iconImage, placeHolderImage: #imageLiteral(resourceName: "terms"), loader: false)
             }
         } else {
-               view.arrowImg.isHidden = true
+            view.arrowImg.isHidden = true
         }
         if self.listingType == .brands {
             let isPowerSelected = self.viewModel.selectedBrandsArr.contains(where: {$0.id == (self.isSearchOn ? self.viewModel.searchBrandListing[section].id : self.viewModel.brandsListings[section].id)})
@@ -289,18 +291,24 @@ extension BrandsListingVC : UITableViewDelegate, UITableViewDataSource {
 //===========================
 extension BrandsListingVC: BrandsListingVMDelegate{
     func countryListingSuccess(message: String) {
+        isApiHitInProcess = true
         self.mainTableView.reloadData()
     }
     
     func countryListingFailed(error: String) {
+        isApiHitInProcess = true
+        self.mainTableView.reloadData()
         ToastView.shared.showLongToast(self.view, msg: error)
     }
     
     func brandListingSuccess(message: String) {
+        isApiHitInProcess = true
         self.mainTableView.reloadData()
     }
     
     func brandListingFailed(error: String) {
+        isApiHitInProcess = true
+        self.mainTableView.reloadData()
         ToastView.shared.showLongToast(self.view, msg: error)
     }
 }
@@ -316,9 +324,9 @@ extension BrandsListingVC : DZNEmptyDataSetSource,DZNEmptyDataSetDelegate {
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         var emptyData = ""
         if (listingType == .brands) {
-            emptyData =  self.viewModel.searchBrandListing.endIndex == 0 ? "No data found" : ""
+            emptyData =  (self.viewModel.searchBrandListing.endIndex == 0 && !isApiHitInProcess) ? "Loading..." : (self.viewModel.searchBrandListing.endIndex == 0 ? "No Data Found" : "")
         }else {
-             emptyData =  self.viewModel.searchCountryListing.endIndex  == 0 ? "No data found" : ""
+            emptyData =  (self.viewModel.searchCountryListing.endIndex  == 0 && !isApiHitInProcess) ? "Loading..." : (self.viewModel.searchCountryListing.endIndex == 0 ? "No Data Found" : "")
         }
         return NSAttributedString(string:emptyData , attributes: [NSAttributedString.Key.foregroundColor: AppColors.fontTertiaryColor,NSAttributedString.Key.font: AppFonts.NunitoSansBold.withSize(18)])
     }
@@ -337,8 +345,10 @@ extension BrandsListingVC : DZNEmptyDataSetSource,DZNEmptyDataSetDelegate {
     
     func emptyDataSetShouldBeForced(toDisplay scrollView: UIScrollView!) -> Bool {
         if let tableView = scrollView as? UITableView, tableView.numberOfSections == 0 {
+            isApiHitInProcess = true
             return true
         }
         return false
     }
 }
+

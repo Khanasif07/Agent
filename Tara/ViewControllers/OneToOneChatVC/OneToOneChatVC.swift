@@ -1837,6 +1837,7 @@ extension OneToOneChatVC : OneToOneChatViewModelDelegate{
     }
     
     func acceptRejectEditedBidSuccess(msg: String) {
+        CommonFunctions.showToastWithMessage(msg)
         if acceptedRejectBtnStatus {
             self.db.collection(ApiKey.messages).document(self.getRoomId()).collection(ApiKey.chat).document(self.messageId).updateData([ApiKey.messageStatus : 2]) { (error) in
                 if let err = error {
@@ -1858,7 +1859,7 @@ extension OneToOneChatVC : OneToOneChatViewModelDelegate{
     }
     
     func acceptRejectEditedBidFailure(msg: String) {
-        
+          CommonFunctions.showToastWithMessage(msg)
     }
 }
 
