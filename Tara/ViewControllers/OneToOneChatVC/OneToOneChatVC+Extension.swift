@@ -36,6 +36,20 @@ extension OneToOneChatVC {
             "roomId":self.roomId,"senderId": self.currentUserId,"image": image,"badge":1,"title": UserModel.main.name,"body": body,ApiKey.requestId: self.requestId,ApiKey.bidRequestId: self.bidRequestId,ApiKey.userRole: chatUserType == .garage ? 1 : 2,ApiKey.type: "CHAT",ApiKey.userImage: UserModel.main.image]
         return dict
     }
-   
     
+    public func getOtherUserData(){
+        db.collection(ApiKey.users)
+            .document(inboxModel.userId).getDocument { (snapshot, error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                } else{
+                    print("============================")
+                    guard let data = snapshot?.data() else { return }
+                    let userImage = data[ApiKey.userImage] as? String ?? ""
+                    if self.userImage.isEmpty{
+                        self.userImage = userImage
+                    }
+                }
+        }
+    }
 }

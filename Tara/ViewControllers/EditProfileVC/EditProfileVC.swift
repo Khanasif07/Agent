@@ -65,7 +65,21 @@ class EditProfileVC: BaseVC {
     }
     
     @IBAction func saveBtnAction(_sender : UIButton) {
-        self.viewModel.postEditProfileData(params: self.getDictForEditProfile())
+        CommonFunctions.showActivityLoader()
+        userImage.image?.upload(progress: { (progress) in
+            printDebug(progress)
+        }, completion: { (response,error) in
+            if let url = response {
+                CommonFunctions.hideActivityLoader()
+                self.hasImageUploaded = true
+                self.viewModel.userModel.image = url
+                self.viewModel.postEditProfileData(params: self.getDictForEditProfile())
+            }
+            if let _ = error{
+                CommonFunctions.hideActivityLoader()
+                self.showAlert(msg: LocalizedString.imageUploadingFailed.localized)
+            }
+        })
     }
     
     @IBAction func editBtnAction(_sender : UIButton) {
@@ -221,20 +235,7 @@ extension EditProfileVC: UIImagePickerControllerDelegate, UINavigationController
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[.editedImage] as? UIImage
         userImage.image = image
-        CommonFunctions.showActivityLoader()
         hasImageUploaded = false
-        image?.upload(progress: { (progress) in
-            printDebug(progress)
-        }, completion: { (response,error) in
-            if let url = response {
-                CommonFunctions.hideActivityLoader()
-                self.hasImageUploaded = true
-                self.viewModel.userModel.image = url
-            }
-            if let _ = error{
-                self.showAlert(msg: LocalizedString.imageUploadingFailed.localized)
-            }
-        })
         picker.dismiss(animated: true, completion: nil)
     }
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

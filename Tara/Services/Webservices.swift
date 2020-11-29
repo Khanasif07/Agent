@@ -400,9 +400,10 @@ extension WebServices{
     // MARK:- My Profile Api
     //=================
     static func getMyProfileData(parameters: JSONDictionary,
+                                 loader: Bool,
                                  success: @escaping SuccessResponse,
                                  failure: @escaping FailureResponse) {
-        self.commonGetAPI(parameters: parameters,endPoint: .myProfile, success: { (json) in
+        self.commonGetAPI(parameters: parameters,endPoint: .myProfile, loader: loader, success: { (json) in
             let code = json[ApiKey.statusCode].intValue
             let msg = json[ApiKey.message].stringValue
             switch code {

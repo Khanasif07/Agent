@@ -60,7 +60,7 @@ class ProfileVC: BaseVC {
 extension ProfileVC {
     
     private func initialSetup() {
-        self.hitProfileApi()
+        self.hitProfileApi(loader: true)
         self.tableViewSetUp()
     }
     
@@ -160,9 +160,9 @@ extension ProfileVC {
         }
     }
     
-    public func hitProfileApi(){
+    public func hitProfileApi(loader: Bool){
         if isUserLoggedin {
-            self.viewModel.getMyProfileData(params: [:])
+            self.viewModel.getMyProfileData(params: [:],loader: loader)
         }
     }
     
@@ -275,6 +275,6 @@ extension UINavigationController {
 //===========================
 extension ProfileVC: EditProfileVCDelegate {
     func editProfileSuccess() {
-        self.hitProfileApi()
+        self.hitProfileApi(loader: false)
     }
 }
