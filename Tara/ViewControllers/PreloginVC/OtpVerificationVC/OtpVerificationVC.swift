@@ -280,7 +280,7 @@ extension OtpVerificationVC: OtpVerificationVMDelegate{
             for controller in self.navigationController!.viewControllers as Array {
                 if controller.isKind(of: ProfileVC.self) {
                     guard let vc = controller as? ProfileVC else {return}
-                    vc.hitProfileApi()
+                    vc.hitProfileApi(loader: false)
                     self.navigationController?.popToViewController(controller, animated: true)
                     break
                 }
