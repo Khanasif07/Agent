@@ -80,6 +80,7 @@ class OneToOneChatVC: BaseVC {
 
     //MARK: OUTLETS
     //=============
+    @IBOutlet weak var bottomVIewWithMsg: UIView!
     @IBOutlet var typingStatusFooterView: UIView!
     @IBOutlet weak var editBtn: UIButton!
     @IBOutlet weak var unblockBtn: UIButton!
@@ -264,6 +265,7 @@ extension OneToOneChatVC {
     private func initialSetup() {
         NotificationCenter.default.addObserver(self, selector: #selector(editedBidAccepted), name: Notification.Name.EditedBidAccepted, object: nil)
         btnContaninerView.isHidden = true
+        bottomVIewWithMsg.isHidden = true
         self.isSupportChat = self.requestId.isEmpty
         userRequestView.isHidden = true
         garageTopView.isHidden = true
@@ -415,7 +417,7 @@ extension OneToOneChatVC {
         messageTextView.tintColor = AppColors.appRedColor
     }
     
-    private func sendMessage(msgType: String = MessageType.text.rawValue ,price: Int = 0) {
+    private func sendMessage(msgType: String = MessageType.text.rawValue ,price: Int = 0,isPush: Bool = true) {
         self.view.endEditing(true)
         let txt = self.messageTextView.text.byRemovingLeadingTrailingWhiteSpaces
         if isBlockedByMe {
@@ -433,7 +435,9 @@ extension OneToOneChatVC {
             self.createMessage(msgType: msgType,price: price)
             self.createInbox()
         }
+        if isPush {
         self.postMessageToFirestoreForPush(body: txt)
+        }
         messageTextView.text = ""
         messageLabel.isHidden = false
         sendButton.setImage(#imageLiteral(resourceName: "group3603"), for: .normal)
@@ -1421,7 +1425,7 @@ extension OneToOneChatVC{
                                            inboxModel.userId: userIdDict]
         
         /// Mark:- Typing status info abouthe the user
-        let userTypingStatus: [String: Any] = [currentUserId:true,
+        let userTypingStatus: [String: Any] = [currentUserId:false,
                                                inboxModel.userId:false]
         
         let roomImageURL = "https://console.firebase.google.com"
@@ -1792,6 +1796,17 @@ extension OneToOneChatVC:  AVAudioRecorderDelegate, AVAudioPlayerDelegate {
 
 // Chat View Model
 extension OneToOneChatVC : OneToOneChatViewModelDelegate{
+    func chatDataFailure(msg: String, statusCode: Int) {
+        if statusCode == 400 {
+            userRequestView.isHidden = true
+            bottomVIewWithMsg.isHidden = false
+            textContainerInnerView.borderWidth = 0.0
+            return
+        }
+        userRequestView.isHidden = true
+        CommonFunctions.showToastWithMessage(msg)
+    }
+    
     func pushDataSuccess(msg: String) {
         printDebug(msg)
     }
@@ -1831,12 +1846,7 @@ extension OneToOneChatVC : OneToOneChatViewModelDelegate{
           //  self.scrollMsgToBottom(animated: true)
         }
     }
-    
-    func chatDataFailure(msg: String) {
-        userRequestView.isHidden = true
-        CommonFunctions.showToastWithMessage(msg)
-    }
-    
+
     func acceptRejectEditedBidSuccess(msg: String) {
         CommonFunctions.showToastWithMessage(msg)
         if acceptedRejectBtnStatus {
@@ -1872,6 +1882,6 @@ extension OneToOneChatVC : ChatEditBidVCDelegate {
             return
         }
         self.messageTextView.text = "Offer"
-        sendMessage(msgType: MessageType.offer.rawValue,price: price)
+        sendMessage(msgType: MessageType.offer.rawValue,price: price,isPush: false)
     }
 }

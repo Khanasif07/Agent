@@ -373,6 +373,7 @@ enum LocalizedString : String {
     case enter_number_of_tyre_you_want
     case no_service_request_available
     case kindly_provide_the_access_to_record_audio
+    case please_enter_different_amount_to_edit_bid
     
    
 }

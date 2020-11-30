@@ -12,7 +12,7 @@ import SwiftyJSON
 
 protocol OneToOneChatViewModelDelegate: class {
     func chatDataSuccess(msg: String)
-    func chatDataFailure(msg: String)
+    func chatDataFailure(msg: String,statusCode: Int)
     func pushDataSuccess(msg: String)
     func pushDataFailure(msg: String)
     func acceptRejectEditedBidSuccess(msg: String)
@@ -49,7 +49,9 @@ class OneToOneChatViewModel {
             printDebug(json)
         }) { [weak self] (error) in
             guard let `self` = self else { return }
-            self.delegate?.chatDataFailure(msg: error.localizedDescription)
+            if let errorr =  error as? NSError {
+                self.delegate?.chatDataFailure(msg: error.localizedDescription, statusCode: errorr.code)
+            }
         }
     }
     
@@ -83,7 +85,7 @@ class OneToOneChatViewModel {
                 self.delegate?.chatDataSuccess(msg: "")
             } catch {
                 isRequestinApi = false
-                self.delegate?.chatDataFailure(msg: "error occured")
+                self.delegate?.chatDataFailure(msg: "error occured", statusCode: 200)
                 printDebug("error occured")
             }
         }
