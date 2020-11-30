@@ -149,14 +149,14 @@ extension ChangePasswordVC : ChangePasswordVMDelegate{
     func changePasswordSuccess(msg: String) {
         WebServices.logout(parameters: [:], success: { (message) in
             self.performCleanUp()
-            AppUserDefaults.save(value: "guest", forKey: .currentUserType)
+            AppUserDefaults.save(value: "3", forKey: .currentUserType)
             AppRouter.goToUserHome()
         }) {_ in printDebug("Dismiss")}
 //        self.pop()
     }
     
     func changePasswordFailed(msg: String, error: Error) {
-        ToastView.shared.showLongToast(self.view, msg: msg)
+        CommonFunctions.showToastWithMessage(msg)
     }
     
 }
