@@ -76,7 +76,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="wRL-M7-9DY">
                                                 <rect key="frame" x="0.0" y="60" width="105" height="48"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CIx-0s-4ct">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CIx-0s-4ct">
                                                         <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="CIx-0s-4ct" secondAttribute="height" multiplier="1:1" id="Nlv-Pf-1R3"/>
@@ -88,7 +88,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </imageView>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uAu-Tx-Vl4">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uAu-Tx-Vl4">
                                                         <rect key="frame" x="57" y="0.0" width="48" height="48"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -196,6 +196,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="firstImgView" destination="CIx-0s-4ct" id="qLg-dG-4ge"/>
                 <outlet property="imgContainerStackView" destination="wRL-M7-9DY" id="Kpx-5p-ybd"/>
                 <outlet property="reportReviewBtn" destination="dmi-0Q-UlP" id="IcD-rb-6Xt"/>
                 <outlet property="reviewLbl" destination="paz-F3-2Sg" id="Pg4-Lk-CaP"/>
@@ -203,6 +204,7 @@
                 <outlet property="reviewReasonLbl" destination="uQe-jq-193" id="4Ct-vz-S11"/>
                 <outlet property="reviewReportStackView" destination="sgz-ca-Tgf" id="8mo-3o-9gU"/>
                 <outlet property="reviewReportedLbl" destination="7hV-qD-kkK" id="ghc-ek-cR2"/>
+                <outlet property="secondImgView" destination="uAu-Tx-Vl4" id="xW1-sP-7lm"/>
                 <outletCollection property="starBtns" destination="T3B-hj-oSP" collectionClass="NSMutableArray" id="1sx-jn-erp"/>
                 <outletCollection property="starBtns" destination="qle-AC-eXL" collectionClass="NSMutableArray" id="lVO-TW-cN8"/>
                 <outletCollection property="starBtns" destination="csd-bW-jbH" collectionClass="NSMutableArray" id="gFf-sG-vy7"/>
