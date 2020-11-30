@@ -415,7 +415,7 @@ extension OneToOneChatVC {
         messageTextView.tintColor = AppColors.appRedColor
     }
     
-    private func sendMessage(msgType: String = MessageType.text.rawValue ,price: Int = 0) {
+    private func sendMessage(msgType: String = MessageType.text.rawValue ,price: Int = 0,isPush: Bool = true) {
         self.view.endEditing(true)
         let txt = self.messageTextView.text.byRemovingLeadingTrailingWhiteSpaces
         if isBlockedByMe {
@@ -433,7 +433,9 @@ extension OneToOneChatVC {
             self.createMessage(msgType: msgType,price: price)
             self.createInbox()
         }
+        if isPush {
         self.postMessageToFirestoreForPush(body: txt)
+        }
         messageTextView.text = ""
         messageLabel.isHidden = false
         sendButton.setImage(#imageLiteral(resourceName: "group3603"), for: .normal)
@@ -1421,7 +1423,7 @@ extension OneToOneChatVC{
                                            inboxModel.userId: userIdDict]
         
         /// Mark:- Typing status info abouthe the user
-        let userTypingStatus: [String: Any] = [currentUserId:true,
+        let userTypingStatus: [String: Any] = [currentUserId:false,
                                                inboxModel.userId:false]
         
         let roomImageURL = "https://console.firebase.google.com"
@@ -1872,6 +1874,6 @@ extension OneToOneChatVC : ChatEditBidVCDelegate {
             return
         }
         self.messageTextView.text = "Offer"
-        sendMessage(msgType: MessageType.offer.rawValue,price: price)
+        sendMessage(msgType: MessageType.offer.rawValue,price: price,isPush: false)
     }
 }
