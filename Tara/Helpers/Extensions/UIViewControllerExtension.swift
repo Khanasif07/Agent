@@ -162,7 +162,7 @@ extension UIViewController {
     }
     
     func checkAndOpenLibrary(delegate controller: ImagePickerDelegateController,mediaType : [String] = [kUTTypeImage as String],maxDuration: Double) {
-        
+        let authStatus = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
         let authStatus = PHPhotoLibrary.authorizationStatus()
         switch authStatus {
             

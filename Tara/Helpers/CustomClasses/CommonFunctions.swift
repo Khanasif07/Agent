@@ -79,16 +79,16 @@ class CommonFunctions {
     class func hideActivityLoader() {
         DispatchQueue.mainQueueAsync {
             if let vc = AppDelegate.shared.window?.rootViewController {
-                if let nav = AppDelegate.shared.window?.rootViewController as? UINavigationController {
-                    if let topVC = nav.viewControllers.last?.presentedViewController{
-                        topVC.stopAnimating()
-                        return
-                    }
-                }
-                if let presentedVC = vc.presentingViewController{
-                    presentedVC.stopAnimating()
-                    return
-                }
+//                if let nav = AppDelegate.shared.window?.rootViewController as? UINavigationController {
+//                    if let topVC = nav.viewControllers.last?.presentedViewController{
+//                        topVC.stopAnimating()
+//                        return
+//                    }
+//                }
+//                if let presentedVC = vc.presentingViewController{
+//                    presentedVC.stopAnimating()
+//                    return
+//                }
                 vc.stopAnimating()
             }
         }
