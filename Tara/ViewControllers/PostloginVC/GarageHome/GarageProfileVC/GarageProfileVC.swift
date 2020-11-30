@@ -127,15 +127,13 @@ extension GarageProfileVC {
     
     public func hitProfileApi(){
         if isUserLoggedin {
-            self.viewModel.getMyProfileData(params: [:])
+            self.viewModel.getMyProfileData(params: [:],loader: true)
         }
     }
     
     @objc func refreshWhenPull(_ sender: UIRefreshControl) {
         sender.endRefreshing()
-        if isUserLoggedin {
-            self.viewModel.getMyProfileData(params: [:])
-        }
+        hitProfileApi()
     }
     
     private func showEmailVerificationPopUp(){

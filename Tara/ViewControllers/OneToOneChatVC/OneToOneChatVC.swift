@@ -80,6 +80,7 @@ class OneToOneChatVC: BaseVC {
 
     //MARK: OUTLETS
     //=============
+    @IBOutlet weak var bottomVIewWithMsg: UIView!
     @IBOutlet var typingStatusFooterView: UIView!
     @IBOutlet weak var editBtn: UIButton!
     @IBOutlet weak var unblockBtn: UIButton!
@@ -264,6 +265,7 @@ extension OneToOneChatVC {
     private func initialSetup() {
         NotificationCenter.default.addObserver(self, selector: #selector(editedBidAccepted), name: Notification.Name.EditedBidAccepted, object: nil)
         btnContaninerView.isHidden = true
+        bottomVIewWithMsg.isHidden = true
         self.isSupportChat = self.requestId.isEmpty
         userRequestView.isHidden = true
         garageTopView.isHidden = true
@@ -1794,6 +1796,16 @@ extension OneToOneChatVC:  AVAudioRecorderDelegate, AVAudioPlayerDelegate {
 
 // Chat View Model
 extension OneToOneChatVC : OneToOneChatViewModelDelegate{
+    func chatDataFailure(msg: String, statusCode: Int) {
+        if statusCode == 400 {
+            userRequestView.isHidden = true
+            bottomVIewWithMsg.isHidden = false
+            return
+        }
+        userRequestView.isHidden = true
+        CommonFunctions.showToastWithMessage(msg)
+    }
+    
     func pushDataSuccess(msg: String) {
         printDebug(msg)
     }
@@ -1833,12 +1845,7 @@ extension OneToOneChatVC : OneToOneChatViewModelDelegate{
           //  self.scrollMsgToBottom(animated: true)
         }
     }
-    
-    func chatDataFailure(msg: String) {
-        userRequestView.isHidden = true
-        CommonFunctions.showToastWithMessage(msg)
-    }
-    
+
     func acceptRejectEditedBidSuccess(msg: String) {
         CommonFunctions.showToastWithMessage(msg)
         if acceptedRejectBtnStatus {
