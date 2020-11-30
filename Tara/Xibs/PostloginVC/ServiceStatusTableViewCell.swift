@@ -182,6 +182,8 @@ class ServiceStatusTableViewCell: UITableViewCell {
         }
         self.ratingContainerView.isHidden = (model.ratingDetails?._id?.isEmpty ?? true)
         self.bottomDashedVIew.isHidden =  self.noRatingContainerView.isHidden && self.ratingContainerView.isHidden
+        self.noRatingContainerView.isHidden = !(model.isServiceCompleted ?? true)
+        self.bottomDashedVIew.isHidden = !(model.isServiceCompleted ?? true)
 
         if status == nil {
             carReceivedUpdateBtn.isHidden = false

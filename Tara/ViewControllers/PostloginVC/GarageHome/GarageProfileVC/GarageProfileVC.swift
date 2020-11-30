@@ -116,6 +116,10 @@ extension GarageProfileVC {
                     guard let `self` = self else { return }
                     AppRouter.goToServiceCompletedVC(vc: self,screenType: .serviceComplete)
                 }
+                cell.bankAccTapped = { [weak self]  in
+                    self?.showAlert(msg: LocalizedString.underDevelopment.localized)
+                }
+                
                 return cell
         }
     }
