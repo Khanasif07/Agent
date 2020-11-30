@@ -31,8 +31,8 @@ class CompleteProfileStep1: BaseVC {
     //===========================
     var viewModel = ProfileVM()
     var locationValue =  CLLocationCoordinate2D(latitude: GarageProfileModel.shared.latitude, longitude: GarageProfileModel.shared.longitude)
-    var latitude : Double = 0.0
-    var longitude : Double = 0.0
+//    var latitude : Double = 0.0
+//    var longitude : Double = 0.0
     private var locationManager = CLLocationManager()
     let markerView = UIImageView(frame:CGRect(x: 0, y: 0, width: 21, height: 21))
     var gmssMarker = GMSMarker()
@@ -67,8 +67,8 @@ class CompleteProfileStep1: BaseVC {
     //===========================
     
     @IBAction func saveContinueAction(_ sender: UIButton) {
-        GarageProfileModel.shared.latitude = latitude
-        GarageProfileModel.shared.longitude = longitude
+        GarageProfileModel.shared.latitude = locationValue.latitude
+        GarageProfileModel.shared.longitude = locationValue.longitude
         GarageProfileModel.shared.address = liveAddress
         AppRouter.goToGarageProfileStep2VC(vc: self)
     }
@@ -269,9 +269,9 @@ extension CompleteProfileStep1: GMSAutocompleteViewControllerDelegate {
             self.isMarkerAnimation =  false
             self.locationValue = CLLocationCoordinate2D(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
             self.addressTxtField.text = address
-            
-            self.latitude = place.coordinate.latitude
-            self.longitude = place.coordinate.longitude
+//
+//            self.latitude = place.coordinate.latitude
+//            self.longitude = place.coordinate.longitude
             liveAddress = address
             moveMarker(coordinate: CLLocationCoordinate2D(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude))
         }

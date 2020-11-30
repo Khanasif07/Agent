@@ -27,6 +27,7 @@ class BookedRequestTableCell: UITableViewCell {
     @IBOutlet weak var startServiceBtn: AppButton!
     @IBOutlet weak var ratingView: UIView!
     @IBOutlet weak var dataContainerView: UIView!
+    @IBOutlet weak var vehicleStackView: UIStackView!
     
     var chatBtnTapped: (()->())?
     var startServiceBtnTapped: (()->())?
@@ -78,6 +79,7 @@ class BookedRequestTableCell: UITableViewCell {
         serviceTimeLbl.text = date
         
         regNumberValueLbl.text = model.requestID
+        vehicleStackView.isHidden = (model.make?.isEmpty ?? true)
         vehicleNameLbl.text = model.make?.isEmpty ?? true ? "N/A" : model.make
         userNameLbl.text = model.requestedBy
         
