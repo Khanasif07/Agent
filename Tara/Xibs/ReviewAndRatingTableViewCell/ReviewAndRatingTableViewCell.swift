@@ -9,7 +9,7 @@
 import UIKit
 
 class ReviewAndRatingTableViewCell: UITableViewCell {
-
+    
     //MARK:-IBOutlets
     @IBOutlet var starBtns: [UIButton]!
     @IBOutlet weak var reviewRatingLbl: UILabel!
@@ -19,6 +19,8 @@ class ReviewAndRatingTableViewCell: UITableViewCell {
     @IBOutlet weak var reportReviewBtn: UIButton!
     @IBOutlet weak var imgContainerStackView: UIStackView!
     @IBOutlet weak var reviewReportStackView: UIStackView!
+    @IBOutlet weak var firstImgView: UIImageView!
+    @IBOutlet weak var secondImgView: UIImageView!
 
     //MARK:- Variables
     var reportReviewBtnTapped: (()->())?
@@ -29,7 +31,7 @@ class ReviewAndRatingTableViewCell: UITableViewCell {
         setupTextAndFonts()
         imgContainerStackView.isHidden = true
     }
-
+    
     private func setupTextAndFonts() {
         reviewRatingLbl.font = AppFonts.NunitoSansSemiBold.withSize(13.0)
         reviewReportedLbl.font = AppFonts.NunitoSansBold.withSize(13.0)
@@ -37,7 +39,7 @@ class ReviewAndRatingTableViewCell: UITableViewCell {
         
         reviewRatingLbl.text = LocalizedString.reviewAndRatings.localized
     }
-
+    
     @IBAction func reportReviewBtnAction(_ sender: UIButton) {
         reportReviewBtnTapped?()
     }
@@ -53,7 +55,18 @@ class ReviewAndRatingTableViewCell: UITableViewCell {
             }
         }
         reviewLbl.text = model.review
-      
+        setData(model,screenType)
+        if !(model.images?.isEmpty ?? true) {
+            imgContainerStackView.isHidden = false
+            firstImgView.setImage_kf(imageString: model.images?.first ?? "", placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: true)
+        }else {
+            
+        }
+    }
+    
+    private func setData(_ model: GarageRequestModel, _ screenType: ServiceCompletedVC.ScreenType) {
+       
+        //for service complete detail
         if screenType == .serviceComplete {
             if model.isReviewReported ?? false {
                 
@@ -69,7 +82,10 @@ class ReviewAndRatingTableViewCell: UITableViewCell {
                 reviewReportStackView.isHidden = true
             }
         }
+            
+        //for service history detail
         else {
+        
             reportReviewBtn.isHidden = true
             reviewReportStackView.isHidden = true
         }

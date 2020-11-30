@@ -123,7 +123,7 @@ extension ServiceCompletedVC :UITableViewDelegate, UITableViewDataSource{
             AppRouter.goToGarageCustomerRatingVC(vc: self, requestId: viewModel.serviceCompletedListing[indexPath.row].id ?? "",name : viewModel.serviceCompletedListing[indexPath.row].userName ?? "", screenType: .serviceComplete)
             
         }else {
-           // AppRouter.goToGarageCustomerRatingVC(vc: self, requestId: viewModel.serviceCompletedListing[indexPath.row].id ?? "",name : viewModel.serviceCompletedListing[indexPath.row].userName ?? "", screenType: .serviceHistory)
+            AppRouter.goToGarageCustomerRatingVC(vc: self, requestId: viewModel.serviceCompletedListing[indexPath.row].id ?? "",name : viewModel.serviceCompletedListing[indexPath.row].garageName ?? "", screenType: .serviceHistory)
         }
     }
     

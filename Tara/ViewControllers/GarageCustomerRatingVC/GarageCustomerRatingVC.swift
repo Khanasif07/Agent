@@ -17,7 +17,7 @@ class GarageCustomerRatingVC: BaseVC {
 
     // MARK: - Variables
     //===========================
-    var sectionArr : [CellType] = [.userDetail ,.serviceOn,.none,.serviceDetail]
+    var sectionArr : [CellType] = []
     let viewModel = GarageCustomerRatingVM()
     var requestId : String = ""
     var reasonOfReport : String = ""
@@ -77,22 +77,25 @@ extension GarageCustomerRatingVC {
     }
     private func hitApi(){
         if screenType == .serviceComplete {
+            self.sectionArr = [.userDetail, .serviceOn, .none, .serviceDetail]
             viewModel.fetchCustomerRatingDetail(params: [ApiKey.requestId: self.requestId], loader: true)
             
         }
         else {
+            self.sectionArr = [.userDetail, .none, .serviceDetail]
             viewModel.fetchServiceHistoryDetail(params: [ApiKey.requestId: self.requestId], loader: true)
         }
     }
 }
 
 extension GarageCustomerRatingVC: UITableViewDelegate,UITableViewDataSource{
+ 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return (viewModel.garageCompletedDetail?.isRated ?? false) ? 2 : 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? sectionArr.count : 1
+        return section == 0 ? sectionArr.count : (viewModel.garageCompletedDetail?.isRated ?? false) ? 1 : 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -100,11 +103,11 @@ extension GarageCustomerRatingVC: UITableViewDelegate,UITableViewDataSource{
             switch sectionArr[indexPath.row] {
             case .userDetail, .serviceOn:
                 let cell = tableView.dequeueCell(with: RequestDetailTableViewCell.self)
+                cell.populateData(sectionArr[indexPath.row], model: viewModel.garageCompletedDetail ?? GarageRequestModel(), screenType: self.screenType)
                 cell.helpBtnTapped = { [weak self] in
-                    guard let `self` = self else {return}
+                    guard let `self` = self else { return }
                     AppRouter.goToOneToOneChatVC(self, userId: AppConstants.adminId, requestId: "", name: "Support Chat", image: "", unreadMsgs: 0, isSupportChat: true,garageUserId: isCurrentUserType == .garage ? UserModel.main.id : "")
                 }
-                cell.populateData(sectionArr[indexPath.row], model: viewModel.garageCompletedDetail ?? GarageRequestModel())
                 return cell
                 
             case .none:
@@ -123,7 +126,7 @@ extension GarageCustomerRatingVC: UITableViewDelegate,UITableViewDataSource{
             
         }else {
             let cell = tableView.dequeueCell(with: ReviewAndRatingTableViewCell.self)
-            cell.bindData(viewModel.garageCompletedDetail ?? GarageRequestModel(),screenType: self.screenType)
+            cell.bindData(viewModel.garageCompletedDetail ?? GarageRequestModel(), screenType: self.screenType)
             cell.reportReviewBtnTapped = { [weak self] in
                 guard let `self` = self else { return }
                 AppRouter.goToReportPopupVC(vc: self)
@@ -162,5 +165,4 @@ extension GarageCustomerRatingVC : GarageCustomerRatingVMDelegate, PickerDataDel
     func reportReviewFailure(msg: String) {
         CommonFunctions.showToastWithMessage(msg)
     }
-    
 }
