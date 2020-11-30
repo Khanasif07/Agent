@@ -115,7 +115,7 @@ extension UserServiceStatusVC: UITableViewDelegate,UITableViewDataSource{
             
         }else {
             let cell = tableView.dequeueCell(with: ServiceStatusTableViewCell.self)
-            cell.populateDataForUserService(status: viewModel.serviceDetailData?.serviceStatus ?? nil, isServiceCompleted: viewModel.serviceDetailData?.isServiceCompleted ?? false,model: self.viewModel.serviceDetailData ?? GarageRequestModel())
+            cell.populateDataForUserService(status: viewModel.serviceDetailData?.serviceStatus ?? nil, isServiceCompleted: viewModel.serviceDetailData?.isServiceCompleted ?? false,model: self.viewModel.serviceDetailData ?? GarageRequestModel(), isNoBtnTapped: self.status)
             cell.reviewLbl.text = self.viewModel.serviceDetailData?.ratingDetails?.review ?? ""
             cell.ratingLbl.text = "\(self.viewModel.serviceDetailData?.ratingDetails?.rating ?? 0)" //+ "/5"
             updateStatus(cell: cell)
@@ -157,8 +157,10 @@ extension UserServiceStatusVC: UserServiceStatusVMDelegate {
             self.viewModel.serviceDetailData?.isServiceCompleted = true
             self.mainTableView.reloadData()
         }else {
+            
             DispatchQueue.main.async {
                 AppRouter.goToContactusPopupVC(vc: self) {
+//                    self.viewModel.fetchRequestDetail(params: [ApiKey.requestId: self.requestId], loader: false)
                     self.viewModel.getAdminId(dict: [:], loader: true)
                 }
             }
@@ -184,7 +186,9 @@ extension UserServiceStatusVC {
         
         cell.noBtnTapped = { [weak self] in
             guard let `self` = self else { return }
+            self.viewModel.serviceDetailData?.isServiceCompleted = true
             self.status = false
+            self.mainTableView.reloadData()
             self.viewModel.carReceived(params: [ApiKey.requestId: self.requestId, ApiKey.status : false], loader: true)
         }
         

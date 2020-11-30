@@ -170,7 +170,7 @@ class ServiceStatusTableViewCell: UITableViewCell {
         }
     }
     
-    func populateDataForUserService(status: ServiceState?, isServiceCompleted : Bool,model: GarageRequestModel = GarageRequestModel()) {
+    func populateDataForUserService(status: ServiceState?, isServiceCompleted : Bool,model: GarageRequestModel = GarageRequestModel(),isNoBtnTapped : Bool = false) {
         carReceivedUpdateBtn.isHidden = true
         progressUpdateBtn.isHidden = true
         completeUpdateBtn.isHidden = true
@@ -178,12 +178,20 @@ class ServiceStatusTableViewCell: UITableViewCell {
         
         self.noRatingContainerView.isHidden = !(model.ratingDetails?._id?.isEmpty ?? true)
         if status != .delivered  {
-             self.noRatingContainerView.isHidden = true
+            self.noRatingContainerView.isHidden = true
         }
         self.ratingContainerView.isHidden = (model.ratingDetails?._id?.isEmpty ?? true)
         self.bottomDashedVIew.isHidden =  self.noRatingContainerView.isHidden && self.ratingContainerView.isHidden
-        self.noRatingContainerView.isHidden = !(model.isServiceCompleted ?? true)
-        self.bottomDashedVIew.isHidden = !(model.isServiceCompleted ?? true)
+        
+        if (model.ratingDetails?._id?.isEmpty ?? true) {
+            if isNoBtnTapped {
+                self.noRatingContainerView.isHidden = !(model.isServiceCompleted ?? true)
+                self.bottomDashedVIew.isHidden = !(model.isServiceCompleted ?? true)
+            }else {
+                self.noRatingContainerView.isHidden = true
+                self.bottomDashedVIew.isHidden = true
+            }
+        }
 
         if status == nil {
             carReceivedUpdateBtn.isHidden = false

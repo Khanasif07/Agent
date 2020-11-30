@@ -96,6 +96,7 @@ extension WebServices {
         case userQuery = "user/query"
         case adminId = "user/adminId"
         case userServiceHistory = "user/services/userServiceHistory"
+        case userServiceHistoryDetail = "user/services/userServiceHistoryDetails"
         case pushNotification = ""
         
         //MARK:-Notifications

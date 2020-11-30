@@ -22,6 +22,7 @@ class GarageCustomerRatingVC: BaseVC {
     var requestId : String = ""
     var reasonOfReport : String = ""
     var name :String = ""
+    var screenType: ServiceCompletedVC.ScreenType = .serviceComplete
     
     // MARK: - Lifecycle
     //===========================
@@ -56,7 +57,7 @@ extension GarageCustomerRatingVC {
         setupTextAndFont()
         setupTableView()
         viewModel.delegate = self
-        viewModel.fetchCustomerRatingDetail(params: [ApiKey.requestId: self.requestId], loader: true)
+        hitApi()
     }
     
     private func setupTableView() {
@@ -73,6 +74,15 @@ extension GarageCustomerRatingVC {
     private func setupTextAndFont(){
         titleLbl.font = AppFonts.NunitoSansBold.withSize(17.0)
         titleLbl.text = name
+    }
+    private func hitApi(){
+        if screenType == .serviceComplete {
+            viewModel.fetchCustomerRatingDetail(params: [ApiKey.requestId: self.requestId], loader: true)
+            
+        }
+        else {
+            viewModel.fetchServiceHistoryDetail(params: [ApiKey.requestId: self.requestId], loader: true)
+        }
     }
 }
 
@@ -113,7 +123,7 @@ extension GarageCustomerRatingVC: UITableViewDelegate,UITableViewDataSource{
             
         }else {
             let cell = tableView.dequeueCell(with: ReviewAndRatingTableViewCell.self)
-            cell.bindData(viewModel.garageCompletedDetail ?? GarageRequestModel())
+            cell.bindData(viewModel.garageCompletedDetail ?? GarageRequestModel(),screenType: self.screenType)
             cell.reportReviewBtnTapped = { [weak self] in
                 guard let `self` = self else { return }
                 AppRouter.goToReportPopupVC(vc: self)
