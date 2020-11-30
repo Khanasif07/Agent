@@ -218,7 +218,7 @@ extension ProfileSettingVC {
         self.showAlertWithAction(title: "Logout", msg: "Are you sure you want to logout?", cancelTitle: "Cancel", actionTitle: LocalizedString.ok.localized, actioncompletion: {
             WebServices.logout(parameters: [:], success: { (message) in
                 self.performCleanUp()
-                AppUserDefaults.save(value: "guest", forKey: .currentUserType)
+                AppUserDefaults.save(value: "3", forKey: .currentUserType)
                 AppRouter.goToUserHome()
             }) {_ in printDebug("Dismiss")}
         })

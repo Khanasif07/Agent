@@ -264,6 +264,8 @@ extension OneToOneChatVC {
     
     private func initialSetup() {
         NotificationCenter.default.addObserver(self, selector: #selector(editedBidAccepted), name: Notification.Name.EditedBidAccepted, object: nil)
+         NotificationCenter.default.addObserver(self, selector: #selector(requestRejected), name: Notification.Name.RequestRejected, object: nil)
+         NotificationCenter.default.addObserver(self, selector: #selector(requestAccepted), name: Notification.Name.RequestAccepted, object: nil)
         btnContaninerView.isHidden = true
         bottomVIewWithMsg.isHidden = true
         self.isSupportChat = self.requestId.isEmpty
@@ -329,6 +331,14 @@ extension OneToOneChatVC {
     }
     
     @objc func editedBidAccepted(){
+        self.getChatData()
+    }
+    
+    @objc func requestRejected(){
+       self.getChatData()
+    }
+    
+    @objc func requestAccepted(){
         self.getChatData()
     }
     
@@ -1800,6 +1810,7 @@ extension OneToOneChatVC : OneToOneChatViewModelDelegate{
         if statusCode == 400 {
             userRequestView.isHidden = true
             bottomVIewWithMsg.isHidden = false
+            editBidBtn.isHidden = true
             textContainerInnerView.borderWidth = 0.0
             return
         }
@@ -1850,6 +1861,7 @@ extension OneToOneChatVC : OneToOneChatViewModelDelegate{
     func acceptRejectEditedBidSuccess(msg: String) {
         CommonFunctions.showToastWithMessage(msg)
         if acceptedRejectBtnStatus {
+            self.postMessageToFirestoreForPush(body: "Offer Accepted", image: "")
             self.db.collection(ApiKey.messages).document(self.getRoomId()).collection(ApiKey.chat).document(self.messageId).updateData([ApiKey.messageStatus : 2]) { (error) in
                 if let err = error {
                     print(err.localizedDescription)
