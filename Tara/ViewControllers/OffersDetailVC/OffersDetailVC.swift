@@ -96,6 +96,7 @@ extension OffersDetailVC {
         mainTableView.emptyDataSetDelegate = self
         mainTableView.registerCell(with: OffersDetailTableCell.self)
         mainTableView.tableHeaderView = headerView
+        mainTableView.tableHeaderView?.isHidden = true
         hitApi()
     }
     
@@ -175,7 +176,7 @@ extension OffersDetailVC : OffersDetailVMDelegate {
     func rejectUserBidDataSuccess(message: String) {
         NotificationCenter.default.post(name: Notification.Name.UserServiceAcceptRejectSuccess, object: nil)
         self.dismiss(animated: true,completion: {
-            self.proposalBtnTapped?()
+          //  self.proposalBtnTapped?()
         })
     }
     
@@ -188,6 +189,7 @@ extension OffersDetailVC : OffersDetailVMDelegate {
     }
     
     func getOfferDetailSuccess(message: String) {
+        mainTableView.tableHeaderView?.isHidden = false
         countryCollView.isHidden = viewModel.userBidDetail.countries?.isEmpty ?? true
         mainTableView.tableHeaderView?.height = viewModel.userBidDetail.countries?.isEmpty ?? true ? 180.0 : 226.0
         self.mainTableView.reloadData()
@@ -198,6 +200,7 @@ extension OffersDetailVC : OffersDetailVMDelegate {
     }
     
     func getOfferDetailFailed(error: String) {
+        mainTableView.tableHeaderView?.isHidden = true
         ToastView.shared.showLongToast(self.view, msg: error)
     }
     
@@ -219,12 +222,12 @@ extension OffersDetailVC : OffersDetailVMDelegate {
 extension OffersDetailVC: DZNEmptyDataSetSource,DZNEmptyDataSetDelegate{
     
     func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
-        return  nil
+        return  #imageLiteral(resourceName: "layerX00201")
     }
     
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         var emptyData = ""
-        emptyData =  self.viewModel.userBidDetail.bidData.endIndex  == 0 ? "No data found" : ""
+        emptyData =  self.viewModel.userBidDetail.bidData.endIndex  == 0 ? "" : ""
         return NSAttributedString(string:emptyData, attributes: [NSAttributedString.Key.foregroundColor: AppColors.fontTertiaryColor,NSAttributedString.Key.font: AppFonts.NunitoSansBold.withSize(18)])
     }
     

@@ -200,6 +200,7 @@ extension BottomSheetVC : DZNEmptyDataSetSource,DZNEmptyDataSetDelegate {
     }
     
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+
         var emptyData: String = ""
         if (vehicleDetailtype == .make) {
             emptyData =  (self.viewModel.searchMakeListing.endIndex == 0 && !isApiHitInProcess) ? "Loading..." : (self.viewModel.searchMakeListing.endIndex == 0 ? "No Data Found" : "")
