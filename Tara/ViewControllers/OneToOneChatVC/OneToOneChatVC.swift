@@ -1800,6 +1800,7 @@ extension OneToOneChatVC : OneToOneChatViewModelDelegate{
         if statusCode == 400 {
             userRequestView.isHidden = true
             bottomVIewWithMsg.isHidden = false
+            textContainerInnerView.borderWidth = 0.0
             return
         }
         userRequestView.isHidden = true
