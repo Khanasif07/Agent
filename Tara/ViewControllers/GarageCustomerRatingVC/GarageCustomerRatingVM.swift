@@ -46,6 +46,16 @@ class GarageCustomerRatingVM {
         }
     }
     
+    func fetchServiceHistoryDetail(params: JSONDictionary,loader: Bool = false) {
+           WebServices.getUserServiceHistoryDetail(parameters: params, loader : loader,success: { [weak self] (json) in
+               guard let `self` = self else { return }
+               self.parseToMakeListingData(result: json)
+               printDebug(json)
+           }) { [weak self] (error) in
+               guard let `self` = self else { return }
+               self.delegate?.customerRatingFailure(msg: error.localizedDescription)
+           }
+       }
     
     func postReportReview(params: JSONDictionary,loader: Bool = false) {
         WebServices.reportReview(parameters: params, loader : loader,success: { [weak self] (json) in

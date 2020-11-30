@@ -84,10 +84,11 @@ enum AppRouter {
     }
     
     
-    static func goToGarageCustomerRatingVC(vc: UIViewController, requestId: String,name: String ){
+    static func goToGarageCustomerRatingVC(vc: UIViewController, requestId: String,name: String, screenType: ServiceCompletedVC.ScreenType){
         let scene = GarageCustomerRatingVC.instantiate(fromAppStoryboard: .GarageRequest)
         scene.requestId = requestId
         scene.name = name
+        scene.screenType = screenType
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     

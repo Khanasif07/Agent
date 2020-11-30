@@ -42,7 +42,7 @@ class ReviewAndRatingTableViewCell: UITableViewCell {
         reportReviewBtnTapped?()
     }
     
-    func bindData(_ model: GarageRequestModel) {
+    func bindData(_ model: GarageRequestModel, screenType: ServiceCompletedVC.ScreenType) {
         if let rating = model.rating {
             for i in 0...starBtns.count - 1{
                 if i < Int(rating) {
@@ -54,17 +54,23 @@ class ReviewAndRatingTableViewCell: UITableViewCell {
         }
         reviewLbl.text = model.review
       
-        if model.isReviewReported ?? false {
-           
-            reviewReportStackView.isHidden = false
-            reportReviewBtn.isHidden = true
-            let date = (model.reportedTime)?.breakCompletDate(outPutFormat: Date.DateFormat.profileFormat.rawValue, inputFormat: Date.DateFormat.yyyyMMddTHHmmsssssz.rawValue)
-            
-            reviewReportedLbl.text = "Review Reported on " + (date ?? "")
-            reviewReasonLbl.text = "Reason: " + (model.reportReason ?? "")
+        if screenType == .serviceComplete {
+            if model.isReviewReported ?? false {
+                
+                reviewReportStackView.isHidden = false
+                reportReviewBtn.isHidden = true
+                let date = (model.reportedTime)?.breakCompletDate(outPutFormat: Date.DateFormat.profileFormat.rawValue, inputFormat: Date.DateFormat.yyyyMMddTHHmmsssssz.rawValue)
+                
+                reviewReportedLbl.text = "Review Reported on " + (date ?? "")
+                reviewReasonLbl.text = "Reason: " + (model.reportReason ?? "")
+            }
+            else {
+                reportReviewBtn.isHidden = false
+                reviewReportStackView.isHidden = true
+            }
         }
         else {
-            reportReviewBtn.isHidden = false
+            reportReviewBtn.isHidden = true
             reviewReportStackView.isHidden = true
         }
     }

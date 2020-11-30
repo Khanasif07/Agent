@@ -1205,5 +1205,15 @@ extension WebServices{
             failure(error)
         }
     }
+    
+    static func getUserServiceHistoryDetail(parameters: JSONDictionary,loader: Bool = false,
+                                      success: @escaping SuccessResponse,
+                                      failure: @escaping FailureResponse) {
+        self.commonGetAPI(parameters: parameters, endPoint: .userServiceHistoryDetail, loader: loader, success: { (json) in
+            success(json)
+        }) { (error) -> (Void) in
+            failure(error)
+        }
+    }
 }
 
