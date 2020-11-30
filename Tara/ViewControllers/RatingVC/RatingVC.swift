@@ -117,6 +117,15 @@ extension RatingVC {
     }
     
     private func prefilledData(){
+        if !(viewModel.ratingModel?.images?.isEmpty ?? true) {
+            imgView.contentMode = .scaleToFill
+            dashedView.isHidden = true
+            imgView.setImage_kf(imageString: viewModel.ratingModel?.images?.first ?? "", placeHolderImage: #imageLiteral(resourceName: "icImg"), loader: true)
+
+        }else {
+            imgView.contentMode = .center
+            dashedView.isHidden = false
+        }
         self.txtView.text = viewModel.ratingModel?.review ?? ""
         txtViewCountLbl.text = "\(viewModel.ratingModel?.review?.count ?? 0)" + "/250"
         
