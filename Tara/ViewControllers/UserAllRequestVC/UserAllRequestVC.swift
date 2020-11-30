@@ -221,8 +221,9 @@ extension UserAllRequestVC : UITableViewDelegate, UITableViewDataSource {
                     self?.showAlert(msg: LocalizedString.underDevelopment.localized)
                     
                 }
-                cell.needHelpBtnTapped = {[weak self] in
-                    self?.showAlert(msg: LocalizedString.underDevelopment.localized)
+                cell.needHelpBtnTapped = { [weak self] in
+                    guard let `self` = self else { return }
+                    AppRouter.goToOneToOneChatVC(self, userId: AppConstants.adminId, requestId: "", name: "Support Chat", image: "", unreadMsgs: 0, isSupportChat: true,garageUserId: isCurrentUserType == .garage ? UserModel.main.id : "" )
                     
                 }
                 return cell
