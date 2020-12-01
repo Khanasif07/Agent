@@ -44,6 +44,10 @@
 "tutorialTitle3" = "A quality oil is lifeline of any vehicle";
 "chooseLanguage" = "Choose Language";
 "login_with_emailId" = "Login with Email Id";
+"accept" = "Accept";
+"accepted" = "Accepted";
+"thisBidIsProposedBy" = "This bid is proposed by ";
+"asPerYourTyreService" = " as per your tyre\nservice request.";
 
 // MARK: - Login VC Values
 //==============================
@@ -280,7 +284,7 @@
 "lowToHigh" = "Cost: Low to High";
 "highToLow" = "Cost: High to Low";
 "ratingHighToLow" = "Rating: High to Low";
-
+"imageUploadFailed" = "Image upload failed";
 "applyFilters" = "Apply Filters";
 "editProfile" = "Edit Profile";
 "save" = "Save";
@@ -377,6 +381,12 @@
 "anOTPWillBeSendToYourPhoneNumber" = "An OTP will be send to your phone number";
 "aVerificationLinkWillBeSendToYourEmailAddress" = "A verification link will be send to your email address";
 "verifyPhone" = "Verify Phone";
+"unitPriceShouldNotBeEmpty" = "Unit Price should not be 0 or empty";
+"cancelBid" = "Cancel Bid";
+"milesAway" = " miles away";
+"hereIsYourOTPForTyreService" = "Here is your OTP for Tyre Service\n";
+
+
 
  // MARK: - Garage Profile Values
 //==============================

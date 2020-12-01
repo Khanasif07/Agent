@@ -373,10 +373,15 @@ enum LocalizedString : String {
     case anOTPWillBeSendToYourPhoneNumber
     case aVerificationLinkWillBeSendToYourEmailAddress
     case verifyPhone
-    
-    
-    
-    
+    case unitPriceShouldNotBeEmpty
+    case accept
+    case accepted
+    case asPerYourTyreService
+    case thisBidIsProposedBy
+    case cancelBid
+    case imageUploadFailed
+    case milesAway
+    case hereIsYourOTPForTyreService
     
     // MARK: - Home  VC Values
     //==============================

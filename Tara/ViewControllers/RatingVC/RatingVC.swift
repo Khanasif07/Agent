@@ -142,7 +142,7 @@ extension RatingVC {
                 rating = (i+1).description
             }
         }
-        saveBtn.setTitle(self.ratingId.isEmpty ? "Save" : "Update", for: .normal)
+        saveBtn.setTitle(self.ratingId.isEmpty ? LocalizedString.save.localized : LocalizedString.update.localized, for: .normal)
         saveBtn.isEnabled = saveBtnStatus()
         txtView.textColor = AppColors.fontPrimaryColor
     }
@@ -218,7 +218,7 @@ extension RatingVC: UIImagePickerControllerDelegate,UINavigationControllerDelega
                 self.saveBtn.isEnabled = self.saveBtnStatus()
             }
             if let _ = error{
-                self.showAlert(msg: "Image upload failed")
+                self.showAlert(msg: LocalizedString.imageUploadFailed.localized)
             }
         })
         picker.dismiss(animated: true, completion: nil)

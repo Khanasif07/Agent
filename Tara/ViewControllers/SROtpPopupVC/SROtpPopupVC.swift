@@ -62,7 +62,7 @@ extension SROtpPopupVC {
         cancelBtn.titleLabel?.font = AppFonts.NunitoSansSemiBold.withSize(16.0)
 
         var str: NSMutableAttributedString = NSMutableAttributedString()
-        str = NSMutableAttributedString(string: "Here is your OTP for Tyre Service\n", attributes: [
+        str = NSMutableAttributedString(string: LocalizedString.hereIsYourOTPForTyreService.localized, attributes: [
             .font: AppFonts.NunitoSansBold.withSize(14.0),
             .foregroundColor: AppColors.fontPrimaryColor
         ])

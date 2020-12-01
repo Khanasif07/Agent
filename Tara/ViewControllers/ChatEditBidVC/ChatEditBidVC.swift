@@ -90,7 +90,7 @@ class ChatEditBidVC: BaseVC {
             self.viewModel.editPlacedBidData(params: [ApiKey.requestId: viewModel.requestId,ApiKey.bidData: selectedDict,ApiKey.isacceptedProposalEdited: true ],loader: true)
             //            self.viewModel.acceptEditedBid(params: [ApiKey.bidId: selectedDict.first?[ApiKey.bidId] ?? ""])
         }else {
-            CommonFunctions.showToastWithMessage("Unit Price should not be 0 or empty")
+            CommonFunctions.showToastWithMessage(LocalizedString.unitPriceShouldNotBeEmpty.localized)
         }
     }
 

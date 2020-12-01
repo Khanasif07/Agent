@@ -102,12 +102,12 @@ class GarageServiceRequestVC: BaseVC {
                 }
             }
         }else {
-            CommonFunctions.showToastWithMessage("Unit Price should not be 0 or empty")
+            CommonFunctions.showToastWithMessage(LocalizedString.unitPriceShouldNotBeEmpty.localized)
         }
     }
     
     @IBAction func rejectRequestAction(_ sender: AppButton) {
-        if requestBtn.titleLabel?.text == "Cancel Bid"{
+        if requestBtn.titleLabel?.text == LocalizedString.cancelBid.localized{
             viewModel.cancelBid(params:[ApiKey.garageRequestId : self.requestId])
         } else {
             viewModel.rejectGarageRequest(params: [ApiKey.requestId : viewModel.garageRequestDetailArr?.id ?? ""] )
@@ -149,7 +149,7 @@ extension GarageServiceRequestVC {
     }
     
     private func bidStatusSetUp(){
-        placeBidBtn.setTitle((bidStatus == .bidPlaced) ? "Edit" : "Place Bid", for: .normal)
+        placeBidBtn.setTitle((bidStatus == .bidPlaced) ? LocalizedString.edit.localized : LocalizedString.placeBid.localized, for: .normal)
         titleLbl.text =  self.viewModel.requestType == "Tyres" ? LocalizedString.tyreServiceRequest.localized : self.viewModel.requestType == "Battery" ? LocalizedString.batteryServiceRequest.localized : LocalizedString.oilServiceRequest.localized
         switch bidStatus {
         case .bidFinalsed:

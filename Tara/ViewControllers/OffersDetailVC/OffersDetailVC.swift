@@ -75,13 +75,13 @@ extension OffersDetailVC {
         
         var str: NSMutableAttributedString = NSMutableAttributedString()
         
-        str = NSMutableAttributedString(string: "This bid is proposed by ", attributes: [
+        str = NSMutableAttributedString(string: LocalizedString.thisBidIsProposedBy.localized, attributes: [
             .font: AppFonts.NunitoSansSemiBold.withSize(13.0),
             .foregroundColor: AppColors.fontSecondaryColor
         ])
         str.append(NSAttributedString(string: viewModel.garageName, attributes: [NSAttributedString.Key.foregroundColor: AppColors.fontPrimaryColor,NSAttributedString.Key.font: AppFonts.NunitoSansBold.withSize(13.0)]))
         
-        str.append(NSAttributedString(string: " as per your tyre\nservice request.", attributes: [NSAttributedString.Key.foregroundColor: AppColors.fontSecondaryColor,NSAttributedString.Key.font: AppFonts.NunitoSansSemiBold.withSize(13.0)]))
+        str.append(NSAttributedString(string: LocalizedString.asPerYourTyreService.localized, attributes: [NSAttributedString.Key.foregroundColor: AppColors.fontSecondaryColor,NSAttributedString.Key.font: AppFonts.NunitoSansSemiBold.withSize(13.0)]))
         
         thisBidProposedLbl.attributedText = str
         
@@ -195,7 +195,7 @@ extension OffersDetailVC : OffersDetailVMDelegate {
         self.mainTableView.reloadData()
         self.acceptBtn.isEnabled = (viewModel.userBidDetail.status == "accepted")
         self.acceptBtn.isUserInteractionEnabled = !(viewModel.userBidDetail.status == "accepted")
-        self.acceptBtn.setTitle( self.acceptBtn.isUserInteractionEnabled ? "Accept" : "Accepted", for: .normal)
+        self.acceptBtn.setTitle( self.acceptBtn.isUserInteractionEnabled ? LocalizedString.accept.localized : LocalizedString.accepted.localized, for: .normal)
         collectionView(countryCollView, didSelectItemAt: IndexPath(item: 0, section: 0))
     }
     

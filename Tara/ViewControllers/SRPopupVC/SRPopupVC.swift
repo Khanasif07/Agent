@@ -108,7 +108,7 @@ extension SRPopupVC {
         case .string(let txt):
 //            let distanceMiles = getMiles(meters: (txt as NSString).doubleValue)
 //            distanceLbl.text =  "\(distanceMiles.truncate(places: 2))" + " miles away"
-            distanceLbl.text =  "\((txt as NSString).doubleValue.truncate(places: 2))" + " miles away"
+            distanceLbl.text =  "\((txt as NSString).doubleValue.truncate(places: 2))" + LocalizedString.milesAway.localized
 
         default:
             break
