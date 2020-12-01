@@ -1215,5 +1215,15 @@ extension WebServices{
             failure(error)
         }
     }
+    
+    static func userServicePayment(parameters: JSONDictionary,loader: Bool = false,
+                                      success: @escaping SuccessResponse,
+                                      failure: @escaping FailureResponse) {
+        self.commonPostAPI(parameters: parameters, endPoint: .userServicePayment, loader: loader, success: { (json) in
+            success(json)
+        }) { (error) -> (Void) in
+            failure(error)
+        }
+    }
 }
 
