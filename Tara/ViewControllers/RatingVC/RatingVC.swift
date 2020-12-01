@@ -106,6 +106,7 @@ extension RatingVC {
     }
     
     private func setupTextAndFont(){
+        
         titleLbl.font = AppFonts.NunitoSansBold.withSize(17.0)
         overAllExpLbl.font = AppFonts.NunitoSansSemiBold.withSize(13.0)
         rateOutOfFiveLbl.font = AppFonts.NunitoSansSemiBold.withSize(13.0)
@@ -118,7 +119,7 @@ extension RatingVC {
         rateOutOfFiveLbl.text = LocalizedString.rateOutOfFive.localized
         descWhyLbl.text = LocalizedString.describeWhy.localized
         uploadAnyPicLbl.text = LocalizedString.uploadAnyPictureOfYourExperience.localized
-        garageNameLbl.text = garageName + " Garage?"
+        garageNameLbl.text = garageName + " " + LocalizedString.garageQuestionMark.localized
         
     }
     

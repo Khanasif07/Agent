@@ -292,6 +292,7 @@
 "oil" = "Oil";
 "battery" = "Battery";
 "yourRegRequestHasBeenAccepted" = "Your Registration Request has been Accepted. Kindly complete your profile";
+"garageQuestionMark" = "Garage?";
 
  // MARK: - Complete profile 1  VC Values
  //==============================
