@@ -20,8 +20,8 @@ class ReceiverMediaCell: UITableViewCell {
     @IBOutlet weak var msgContainerView: UIView!
     @IBOutlet weak var mediaImageView: UIImageView!
     @IBOutlet weak var timeLabel: UILabel!
-    //    @IBOutlet weak var deliveredImgview: UIImageView!
-    //    @IBOutlet weak var readImageView: UIImageView!
+    @IBOutlet weak var deliveredImgview: UIImageView!
+    @IBOutlet weak var readImageView: UIImageView!
     
     //    MARK: CELL LIFE CYCLE
     //    =====================
@@ -56,14 +56,14 @@ extension ReceiverMediaCell {
         self.mediaImageView.setImage_kf(imageString: model.mediaUrl, placeHolderImage: #imageLiteral(resourceName: "icImg"), loader: true)
         let date = model.messageTime.dateValue()
         self.timeLabel.text = date.convertToTimeString()//"\(date.timeAgoSince)"
-//        self.deliveredImgview.image = model.messageStatus < 2 ? #imageLiteral(resourceName: "icSingletick") : #imageLiteral(resourceName: "redTickOne")
-//        self.readImageView.isHidden = model.messageStatus < 2
+        self.deliveredImgview.image = model.messageStatus < 2 ? #imageLiteral(resourceName: "icSingletick") : #imageLiteral(resourceName: "redTickOne")
+        self.readImageView.isHidden = model.messageStatus < 2
         self.contentView.layoutIfNeeded()
     }
     
     public func populateData(dict: [String: Any]) {
-//        self.deliveredImgview.image = #imageLiteral(resourceName: "icSingletick")
-//        self.readImageView.isHidden = true
+        self.deliveredImgview.image = #imageLiteral(resourceName: "icSingletick")
+        self.readImageView.isHidden = true
         guard let url = dict[ApiKey.mediaUrl] as? String else { return }
         mediaImageView.setImage_kf(imageString: url, placeHolderImage: #imageLiteral(resourceName: "icImg"), loader: true)
 //        let date = ((dict[ApiKey.messageTime] as? Timestamp) ?? Timestamp()).dateValue()

@@ -16,6 +16,9 @@ class SenderMessageCell: UITableViewCell {
     @IBOutlet weak var senderImgView: UIImageView!
     @IBOutlet weak var dataContainerView: UIView!
     @IBOutlet weak var timeLbl: UILabel!
+    @IBOutlet weak var deliveredImgview: UIImageView!
+    @IBOutlet weak var readImageView: UIImageView!
+      
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -45,6 +48,8 @@ extension SenderMessageCell {
         self.senderImgView.setImage_kf(imageString: UserModel.main.image, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
         let date = model.messageTime.dateValue()
         self.timeLbl.text = date.convertToTimeString()//"\(date.timeAgoSince)"
+        self.deliveredImgview.image = model.messageStatus < 2 ? #imageLiteral(resourceName: "icSingletick") : #imageLiteral(resourceName: "redTickOne")
+        self.readImageView.isHidden = model.messageStatus < 2
         self.contentView.layoutIfNeeded()
     }
     

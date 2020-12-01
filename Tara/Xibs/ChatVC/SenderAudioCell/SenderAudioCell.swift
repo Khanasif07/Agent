@@ -23,6 +23,9 @@ class SenderAudioCell: UITableViewCell {
     @IBOutlet weak var senderNameLbl: UILabel!
     @IBOutlet weak var dataContainerView: UIView!
     @IBOutlet weak var audioBtn: UIButton!
+    @IBOutlet weak var deliveredImgview: UIImageView!
+    @IBOutlet weak var readImageView: UIImageView!
+    @IBOutlet weak var durationLbl: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -45,8 +48,12 @@ class SenderAudioCell: UITableViewCell {
         self.customSlider.minimumValue = 0
         self.customSlider.maximumValue = Float(model.messageDuration).rounded()
         self.customSlider.isContinuous = true
+        let date = model.messageTime.dateValue()
+        self.timeLbl.text = date.convertToTimeString()//"\(date.timeAgoSince)"
+        self.deliveredImgview.image = model.messageStatus < 2 ? #imageLiteral(resourceName: "icSingletick") : #imageLiteral(resourceName: "redTickOne")
+        self.readImageView.isHidden = model.messageStatus < 2
         self.customSlider.tintColor = AppColors.appRedColor
-        self.timeLbl.text = self.stringFromTimeInterval(interval: TimeInterval(model.messageDuration))
+        self.durationLbl.text = self.stringFromTimeInterval(interval: TimeInterval(model.messageDuration))
         
     }
     

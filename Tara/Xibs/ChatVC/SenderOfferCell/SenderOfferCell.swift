@@ -17,6 +17,8 @@ class SenderOfferCell: UITableViewCell {
     @IBOutlet weak var acceptBtn: UIButton!
     @IBOutlet weak var rejectBtn: UIButton!
     @IBOutlet weak var btnStackView: UIStackView!
+//    @IBOutlet weak var deliveredImgview: UIImageView!
+//    @IBOutlet weak var readImageView: UIImageView!
 
     var acceptBtnTapped:(()->())?
     var rejectBtnTapped:(()->())?

@@ -31,13 +31,13 @@ class SenderMediaCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        senderNameLabel.isHidden = true
+//        senderNameLabel.isHidden = true
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         senderImageView.round()
-        msgContainerView.roundCorners([.topRight,.bottomRight,.bottomLeft], radius: 15)
+        msgContainerView.roundCorners([.topRight,.bottomRight,.topLeft], radius: 15)
         mediaImageView.round(radius: 4.0)
     }
     
@@ -48,7 +48,7 @@ class SenderMediaCell: UITableViewCell {
 extension SenderMediaCell {
     
     private func initialSetup() {
-        senderNameLabel.isHidden = true
+//        senderNameLabel.isHidden = true
         senderImageView.isUserInteractionEnabled = true
     }
     

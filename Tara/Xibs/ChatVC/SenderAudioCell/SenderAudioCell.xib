@@ -14,6 +14,9 @@
         <array key="NunitoSans-Regular.ttf">
             <string>NunitoSans-Regular</string>
         </array>
+        <array key="Proxima Nova Regular.otf">
+            <string>ProximaNova-Regular</string>
+        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -56,30 +59,65 @@
                                 </connections>
                             </button>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="3lx-JI-NvR">
-                                <rect key="frame" x="67" y="3" width="186" height="39"/>
+                                <rect key="frame" x="67" y="7" width="186" height="31"/>
                                 <connections>
                                     <action selector="sliderValueChanged:" destination="v5W-3u-sBK" eventType="valueChanged" id="qnQ-5J-L1Z"/>
                                 </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="szY-fS-Dz1">
-                                <rect key="frame" x="69" y="41" width="16.5" height="11"/>
+                                <rect key="frame" x="69" y="40" width="16.5" height="11"/>
                                 <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="8"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="L7O-dK-dK7">
+                                <rect key="frame" x="213.5" y="41" width="38.5" height="10"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--:--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N7O-0W-Y4a">
+                                        <rect key="frame" x="0.0" y="0.0" width="18.5" height="10"/>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="10"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="-4" translatesAutoresizingMaskIntoConstraints="NO" id="sWb-gW-1wF">
+                                        <rect key="frame" x="22.5" y="0.0" width="16" height="10"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icSingletick" translatesAutoresizingMaskIntoConstraints="NO" id="m55-OH-ffV">
+                                                <rect key="frame" x="0.0" y="0.0" width="10" height="10"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="10" id="c3t-y1-uBJ"/>
+                                                    <constraint firstAttribute="width" secondItem="m55-OH-ffV" secondAttribute="height" multiplier="1:1" id="hyZ-Wg-6EX"/>
+                                                </constraints>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="redTickOne" translatesAutoresizingMaskIntoConstraints="NO" id="r4S-4u-hmg">
+                                                <rect key="frame" x="6" y="0.0" width="10" height="10"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="10" id="Olm-23-gLS"/>
+                                                    <constraint firstAttribute="width" secondItem="r4S-4u-hmg" secondAttribute="height" multiplier="1:1" id="hJu-vc-olm"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="m55-OH-ffV" firstAttribute="width" secondItem="m55-OH-ffV" secondAttribute="height" multiplier="1:1" id="EWA-Wo-CUq"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.97254901959999995" green="0.82745098039999998" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="vN4-J7-hcq" firstAttribute="centerY" secondItem="1XN-kw-6WI" secondAttribute="centerY" id="2Jn-LO-MNz"/>
+                            <constraint firstItem="L7O-dK-dK7" firstAttribute="top" secondItem="3lx-JI-NvR" secondAttribute="bottom" constant="4" id="CrV-VV-oJD"/>
+                            <constraint firstAttribute="trailing" secondItem="L7O-dK-dK7" secondAttribute="trailing" constant="10" id="DOk-wu-2aO"/>
+                            <constraint firstItem="szY-fS-Dz1" firstAttribute="leading" secondItem="3lx-JI-NvR" secondAttribute="leading" id="FH4-OY-MKn"/>
                             <constraint firstAttribute="trailing" secondItem="3lx-JI-NvR" secondAttribute="trailing" constant="11" id="Nnv-2L-Zf4"/>
-                            <constraint firstItem="szY-fS-Dz1" firstAttribute="top" secondItem="3lx-JI-NvR" secondAttribute="bottom" id="PK5-uK-xQ9"/>
                             <constraint firstItem="1XN-kw-6WI" firstAttribute="top" secondItem="4lt-w1-0DY" secondAttribute="top" constant="10" id="QxO-Yd-j8a"/>
+                            <constraint firstAttribute="bottom" secondItem="szY-fS-Dz1" secondAttribute="bottom" constant="6" id="YVv-WM-OVy"/>
+                            <constraint firstAttribute="bottom" secondItem="L7O-dK-dK7" secondAttribute="bottom" constant="6" id="b6F-go-6Wg"/>
                             <constraint firstItem="vN4-J7-hcq" firstAttribute="leading" secondItem="1XN-kw-6WI" secondAttribute="trailing" constant="5" id="czx-Ex-aIe"/>
-                            <constraint firstItem="szY-fS-Dz1" firstAttribute="leading" secondItem="3lx-JI-NvR" secondAttribute="leading" id="j2W-gW-r1t"/>
                             <constraint firstItem="3lx-JI-NvR" firstAttribute="centerY" secondItem="1XN-kw-6WI" secondAttribute="centerY" id="j7G-5l-CiD"/>
                             <constraint firstItem="1XN-kw-6WI" firstAttribute="leading" secondItem="4lt-w1-0DY" secondAttribute="leading" constant="5" id="laY-mP-Eig"/>
                             <constraint firstItem="3lx-JI-NvR" firstAttribute="leading" secondItem="vN4-J7-hcq" secondAttribute="trailing" constant="5" id="t6f-2Y-5n6"/>
-                            <constraint firstAttribute="bottom" secondItem="szY-fS-Dz1" secondAttribute="bottom" constant="5" id="u3I-LL-eRP"/>
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RoK-Rf-uWE">
@@ -117,18 +155,23 @@
                 <outlet property="audioBtn" destination="1XN-kw-6WI" id="IR8-0d-F7p"/>
                 <outlet property="customSlider" destination="3lx-JI-NvR" id="sX0-ej-JTW"/>
                 <outlet property="dataContainerView" destination="4lt-w1-0DY" id="h7W-fx-OAL"/>
+                <outlet property="deliveredImgview" destination="m55-OH-ffV" id="ewT-3h-ayX"/>
+                <outlet property="durationLbl" destination="szY-fS-Dz1" id="7Gf-I9-Mbk"/>
                 <outlet property="loadingView" destination="L7e-2s-hKW" id="Xfs-Qg-Aa3"/>
                 <outlet property="playBtn" destination="vN4-J7-hcq" id="F6F-Xd-Ydg"/>
+                <outlet property="readImageView" destination="r4S-4u-hmg" id="xAH-Te-uuD"/>
                 <outlet property="senderImgView" destination="tPn-Mn-hGa" id="58q-cB-BOy"/>
                 <outlet property="senderNameLbl" destination="RoK-Rf-uWE" id="5pd-ZN-nON"/>
-                <outlet property="timeLbl" destination="szY-fS-Dz1" id="GH2-AI-74H"/>
+                <outlet property="timeLbl" destination="N7O-0W-Y4a" id="GVO-T2-WC1"/>
             </connections>
             <point key="canvasLocation" x="144.92753623188406" y="102.79017857142857"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="audioBtnWhite" width="8" height="12.5"/>
+        <image name="icSingletick" width="10" height="10"/>
         <image name="placeHolder" width="80" height="80"/>
         <image name="playButton" width="16" height="16"/>
+        <image name="redTickOne" width="10" height="10"/>
     </resources>
 </document>

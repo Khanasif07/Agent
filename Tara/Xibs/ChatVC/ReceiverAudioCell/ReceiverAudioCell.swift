@@ -14,6 +14,7 @@ class ReceiverAudioCell: UITableViewCell {
     var playBtnTapped :(()->())?
     var sliderValueChangedAction : ((UISlider)->())?
     
+    @IBOutlet weak var durationLbl: UILabel!
     @IBOutlet weak var loadingView: UIActivityIndicatorView!
     @IBOutlet weak var playBtn: UIButton!
     @IBOutlet weak var customSlider: UISlider!
@@ -41,8 +42,10 @@ class ReceiverAudioCell: UITableViewCell {
         self.customSlider.minimumValue = 0
         self.customSlider.maximumValue = Float(model.messageDuration).rounded()
         self.customSlider.isContinuous = true
+        let date = model.messageTime.dateValue()
+        self.timeLbl.text = date.convertToTimeString()//"\(date.timeAgoSince)"
         self.customSlider.tintColor = AppColors.appRedColor
-        self.timeLbl.text = self.stringFromTimeInterval(interval: TimeInterval(model.messageDuration))
+        self.durationLbl.text = self.stringFromTimeInterval(interval: TimeInterval(model.messageDuration))
         
     }
     
