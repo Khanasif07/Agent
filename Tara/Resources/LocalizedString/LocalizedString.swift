@@ -347,7 +347,7 @@ enum LocalizedString : String {
     case regNumber
     case requestedBy
     case noDataFound
-    
+    case payableAmount
     
     
     // MARK: - Home  VC Values

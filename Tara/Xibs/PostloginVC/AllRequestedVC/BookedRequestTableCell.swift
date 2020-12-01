@@ -67,7 +67,7 @@ class BookedRequestTableCell: UITableViewCell {
         payableAmtLbl.textColor = AppColors.fontTertiaryColor
         requestedLbl.text = LocalizedString.requestedBy.localized
         vehicleLbl.text = LocalizedString.vehicle.localized
-        regNumberLbl.text = LocalizedString.RegNumber.localized
+        regNumberLbl.text = LocalizedString.regNumber.localized
         payableAmtLbl.text = LocalizedString.payableAmount.localized
     }
 
