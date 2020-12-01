@@ -346,6 +346,10 @@ enum LocalizedString : String {
     case vehicle
     case regNumber
     case requestedBy
+    case noDataFound
+    
+    
+    
     // MARK: - Home  VC Values
     //==============================
     case tyre

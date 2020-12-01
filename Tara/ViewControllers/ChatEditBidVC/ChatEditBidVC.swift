@@ -428,7 +428,7 @@ extension ChatEditBidVC: DZNEmptyDataSetSource,DZNEmptyDataSetDelegate{
             Array(model.keys)[0] == self.selectedCountry
         }
         guard let selectedIndexx  = indexx else { return NSAttributedString(string:emptyData, attributes: [NSAttributedString.Key.foregroundColor: AppColors.fontTertiaryColor,NSAttributedString.Key.font: AppFonts.NunitoSansBold.withSize(18)])}
-        emptyData =  self.viewModel.countryBrandsDict[selectedIndexx][self.selectedCountry]?.endIndex ?? 0  == 0 ? "No data found" : ""
+        emptyData =  self.viewModel.countryBrandsDict[selectedIndexx][self.selectedCountry]?.endIndex ?? 0  == 0 ? LocalizedString.noDataFound.localized : ""
         return NSAttributedString(string:emptyData, attributes: [NSAttributedString.Key.foregroundColor: AppColors.fontTertiaryColor,NSAttributedString.Key.font: AppFonts.NunitoSansBold.withSize(18)])
     }
     

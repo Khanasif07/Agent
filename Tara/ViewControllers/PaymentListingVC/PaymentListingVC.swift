@@ -126,7 +126,7 @@ extension PaymentListingVC : DZNEmptyDataSetSource,DZNEmptyDataSetDelegate {
     
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         var emptyData = ""
-        emptyData = viewModel.paymentListing.endIndex == 0 ? "No data found" : ""
+        emptyData = viewModel.paymentListing.endIndex == 0 ? LocalizedString.noDataFound.localized : ""
     
         return NSAttributedString(string: emptyData, attributes: [NSAttributedString.Key.foregroundColor: AppColors.fontTertiaryColor,NSAttributedString.Key.font: AppFonts.NunitoSansBold.withSize(18)])
     }
