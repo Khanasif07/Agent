@@ -65,6 +65,7 @@
 "accountNumberAreNotSame" = "Account number doesn't match";
 "minTenDigitInAccountNumber" = "Minimum Ten Digit In Account Number";
 "choosePdf" = "Choose PDF";
+
 // MARK: - Validation Messages
 //==================================
 "newPassword" = "New Password";
@@ -214,6 +215,7 @@
 "pleaseSelectServices" = "Please Select Services";
 "pleaseSelectServiceCenterImage" = "Please Select Service Center Image";
 "ongoingServices" = "Ongoing Services";
+"ongoingService" = "Ongoing Service";
 "update" = "Update";
 "tyreServiceRequest" = "Tyre Service Request";
 "batteryServiceRequest" = "Battery Service Request";
@@ -286,6 +288,26 @@
 "enterNewPassWord" = "Enter New Password";
 "reviewAndRatings" = "Review & Ratings";
 "noDataFound" = "No data found";
+"carReceived" = "Car Received";
+"inGarage" = "In Garage";
+"readyToBeTaken" = "Ready To Be Taken";
+"delivered" = "Delivered";
+"inABid" = "In a Bid";
+"bidFinalised" = "Bid Finalised";
+"closedForBid" = "Closed for Bid";
+"expired" = "Expired";
+"bidClosed" = "Bid Closed";
+"openForBidding" = "open For Bidding";
+"resend" = "Resend";
+"no" = "No";
+"viewDetails" = "View Details";
+"hiUser" = "Hi, User";
+"hi" = "Hi, ";
+"toContinuePerformingThisAction" = "To continue performing this action, please complete your profile";
+"successfullyRequested" = "Successfully Requested";
+"yourRequestForTyreServiceHasBeenSubmittedSuccessfully" = "Your request for tyre service has been submitted successfully.";
+"yourRequestForBatteryServiceHasBeenSubmitted" = "Your request for battery service has been submitted successfully.";
+"yourRequestForOilServiceHasBeenSubmitted" = "Your request for oil service has been submitted successfully.";
  // MARK: - Home  VC Values
 //==============================
 "tyre" = "Tyre";
@@ -351,6 +373,10 @@
 "numberOfUnit" = "Number of Unit";
 "oilImage" = "Oil Image";
 "selectNumberOfUnitYouWant" = "Select number of unit you want";
+"verifyEmail" = "Verify Email";
+"anOTPWillBeSendToYourPhoneNumber" = "An OTP will be send to your phone number";
+"aVerificationLinkWillBeSendToYourEmailAddress" = "A verification link will be send to your email address";
+"verifyPhone" = "Verify Phone";
 
  // MARK: - Garage Profile Values
 //==============================

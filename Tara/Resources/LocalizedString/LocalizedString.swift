@@ -285,6 +285,7 @@ enum LocalizedString : String {
     case pleaseSelectServices
     case pleaseSelectServiceCenterImage
     case ongoingServices
+    case ongoingService
     case tyreServiceRequest
     case batteryServiceRequest
     case oilServiceRequest
@@ -348,6 +349,33 @@ enum LocalizedString : String {
     case requestedBy
     case noDataFound
     case payableAmount
+    case carReceived
+    case inGarage
+    case readyToBeTaken
+    case delivered
+    case inABid
+    case bidFinalised
+    case closedForBid
+    case expired
+    case bidClosed
+    case openForBidding
+    case resend
+    case no
+    case viewDetails
+    case hiUser
+    case toContinuePerformingThisAction
+    case successfullyRequested
+    case yourRequestForTyreServiceHasBeenSubmittedSuccessfully
+    case yourRequestForBatteryServiceHasBeenSubmitted
+    case yourRequestForOilServiceHasBeenSubmitted
+    case hi
+    case verifyEmail
+    case anOTPWillBeSendToYourPhoneNumber
+    case aVerificationLinkWillBeSendToYourEmailAddress
+    case verifyPhone
+    
+    
+    
     
     
     // MARK: - Home  VC Values

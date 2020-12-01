@@ -83,9 +83,9 @@ extension GarageHomeVC {
     
     private func dataSetUp(){
         if isUserLoggedin{
-            self.titleLbl.text = "Hi, " + "\(UserModel.main.name)"
+            self.titleLbl.text = LocalizedString.hi.localized + "\(UserModel.main.name)"
         } else {
-            self.titleLbl.text = "Hi, User"
+            self.titleLbl.text = LocalizedString.hiUser.localized
         }
         
         self.currentDateLbl.textColor = AppColors.fontTertiaryColor

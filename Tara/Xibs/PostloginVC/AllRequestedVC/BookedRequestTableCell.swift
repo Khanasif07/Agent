@@ -69,6 +69,7 @@ class BookedRequestTableCell: UITableViewCell {
         vehicleLbl.text = LocalizedString.vehicle.localized
         regNumberLbl.text = LocalizedString.regNumber.localized
         payableAmtLbl.text = LocalizedString.payableAmount.localized
+        chatBtn.setTitle(LocalizedString.chat.localized, for: .normal)
     }
 
     func bindData(_ model: GarageRequestModel) {

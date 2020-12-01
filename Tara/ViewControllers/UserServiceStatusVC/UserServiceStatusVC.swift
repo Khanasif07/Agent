@@ -70,7 +70,7 @@ extension UserServiceStatusVC {
     
     private func setupTextAndFont(){
         titleLbl.font = AppFonts.NunitoSansBold.withSize(17.0)
-        titleLbl.text = "Ongoing Service"
+        titleLbl.text = LocalizedString.ongoingService.localized
     }
     
     @objc func updateState() {

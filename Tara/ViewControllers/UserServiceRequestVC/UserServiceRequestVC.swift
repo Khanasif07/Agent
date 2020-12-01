@@ -87,9 +87,9 @@ class UserServiceRequestVC: BaseVC {
     //===========================
     @IBAction func cancelRequestBtnAction(_ sender: AppButton) {
         switch cancelBtn.titleLabel?.text {
-        case "Cancel":
+        case LocalizedString.cancel.localized:
             self.viewModel.cancelUserMyRequestDetailData(params: [ApiKey.requestId: self.viewModel.requestId])
-        case "Resend":
+        case LocalizedString.resend.localized:
             self.viewModel.resendRequest(params: [ApiKey.requestId: self.viewModel.requestId])
         default:
             showAlert(msg: "Under Development")
@@ -98,7 +98,7 @@ class UserServiceRequestVC: BaseVC {
     }
     
     @IBAction func viewAllBtnAction(_ sender: AppButton) {
-        if viewAllBtn.titleLabel?.text == "View Details" {
+        if viewAllBtn.titleLabel?.text == LocalizedString.viewDetails.localized {
             AppRouter.goToUserServiceStatusVC(vc: self, requestId: viewModel.requestId)
         }else {
             AppRouter.goToUserAllOffersVC(vc: self, requestId: requestId)
@@ -215,14 +215,14 @@ extension UserServiceRequestVC: UserServiceRequestVMDelegate{
         }
         if viewModel.userRequestDetail.status == .expired {
             cancelBtn.isHidden = false
-            cancelBtn.setTitle("Resend", for: .normal)
+            cancelBtn.setTitle(LocalizedString.resend.localized, for: .normal)
             viewAllBtn.isHidden = true
         }
         cancelBtn.isHidden = viewModel.userRequestDetail.isServiceStarted ?? cancelBtn.isHidden
         requestSeenValueLbl.text = viewModel.userRequestDetail.seenBy?.description
         if viewModel.userRequestDetail.lowestBid == 0 {
             lowestBidValueLbl.textColor = AppColors.fontPrimaryColor
-            lowestBidValueLbl.text = "No"
+            lowestBidValueLbl.text = LocalizedString.no.localized
             sarLbl.isHidden = true
         }else {
             lowestBidValueLbl.textColor = #colorLiteral(red: 0.1725490196, green: 0.7137254902, blue: 0.4549019608, alpha: 1)
@@ -253,7 +253,7 @@ extension UserServiceRequestVC: UserServiceRequestVMDelegate{
         
         if viewModel.userRequestDetail.isServiceStarted ?? false {
             viewAllBtn.isHidden = false
-            viewAllBtn.setTitle("View Details", for: .normal)
+            viewAllBtn.setTitle(LocalizedString.viewDetails.localized, for: .normal)
         }
         
     }

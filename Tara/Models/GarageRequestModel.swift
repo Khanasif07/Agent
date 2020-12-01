@@ -21,17 +21,17 @@ enum RequestStatus: String, Codable{
     var text : String {
         switch self {
         case .openForBidding:
-            return "open For Bidding"
+            return LocalizedString.openForBidding.localized
         case .bidPlaced:
-            return "Bid Placed"
+            return LocalizedString.bidPlaced.localized
         case .bidFinalsed:
-            return "Bid Finalsed"
+            return LocalizedString.bidFinalised.localized
         case .ongoing:
             return ""
         case .bidClosed:
-            return "Bid Closed"
+            return LocalizedString.bidClosed.localized
         case .expired:
-            return "Expired"
+            return LocalizedString.expired.localized
         }
     }
     
@@ -65,15 +65,15 @@ enum BidStatus: String, Codable{
     var text : String {
         switch self {
         case .openForBidding:
-            return "In a Bid"
+            return LocalizedString.inABid.localized
         case .bidPlaced:
-            return "Bid Placed"
+            return LocalizedString.bidPlaced.localized
         case .bidFinalsed:
-            return "Bid Finalised"
+            return LocalizedString.bidFinalised.localized
         case .bidClosed:
-            return "Closed for Bid"
+            return LocalizedString.closedForBid.localized
         case .bidRejected:
-            return "Bid Rejected"
+            return LocalizedString.bidRejected.localized
         }
     }
     
@@ -106,19 +106,19 @@ enum ServiceState : String, Codable{
     var serviceBtnTitle: String {
         switch self {
         case .startService:
-            return "Car Received"
+            return LocalizedString.carReceived.localized
         case .carReceived:
-            return "Car Received"
+            return LocalizedString.carReceived.localized
         case .inProgress:
-            return "In Garage"
+            return LocalizedString.inGarage.localized
         case .completed:
-            return "Service Completed"
+            return LocalizedString.serviceCompleted.localized
         case .readyToBeTaken:
-            return "Ready To Be Taken"
+            return LocalizedString.readyToBeTaken.localized
         case .delivered:
-            return "Delivered"
+            return LocalizedString.delivered.localized
         default:
-            return "Start Service"
+            return LocalizedString.startService.localized
         }
     }
 }

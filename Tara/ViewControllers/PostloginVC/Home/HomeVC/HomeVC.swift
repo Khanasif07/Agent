@@ -84,9 +84,9 @@ extension HomeVC {
     
     private func dataSetUp(){
         if isUserLoggedin{
-            self.userNameLbl.text = "Hi, " + "\(UserModel.main.name)"
+            self.userNameLbl.text = LocalizedString.hi.localized + "\(UserModel.main.name)"
         } else {
-             self.userNameLbl.text = "Hi, User"
+            self.userNameLbl.text = LocalizedString.hiUser.localized
         }
         self.dataArray = [DataValue(image: #imageLiteral(resourceName: "maskGroup"), name: LocalizedString.tyre.localized,productColor: UIColor(r: 230, g: 240, b: 245, alpha: 1.0)),
                      DataValue(image: #imageLiteral(resourceName: "oil"), name: LocalizedString.oil.localized,productColor: UIColor(r: 233 , g: 235, b: 239, alpha: 1.0)),
@@ -102,7 +102,7 @@ extension HomeVC {
     public func isComeFromGuestUser(){
         if !TyreRequestModel.shared.quantity.isEmpty {
             if !UserModel.main.phoneNoAdded && isUserLoggedin {
-                self.showAlertWithAction(title: "", msg: "To continue performing this action, please complete your profile", cancelTitle: "Cancel", actionTitle: LocalizedString.ok.localized, actioncompletion: {
+                self.showAlertWithAction(title: "", msg: LocalizedString.toContinuePerformingThisAction.localized, cancelTitle: LocalizedString.cancel.localized, actionTitle: LocalizedString.ok.localized, actioncompletion: {
                     AppRouter.goToEditProfileVC(vc: self, model: UserModel.main, isEditProfileFrom: .home)
                 })
                 return
@@ -158,7 +158,7 @@ extension HomeVC : UICollectionViewDelegate, UICollectionViewDataSource,UICollec
         TyreRequestModel.shared = TyreRequestModel()
         if isUserLoggedin {
             if !UserModel.main.phoneNoAdded {
-                self.showAlertWithAction(title: "", msg: "To continue performing this action, please complete your profile", cancelTitle: "Cancel", actionTitle: LocalizedString.ok.localized, actioncompletion: {
+                self.showAlertWithAction(title: "", msg: LocalizedString.toContinuePerformingThisAction.localized, cancelTitle: LocalizedString.cancel.localized, actionTitle: LocalizedString.ok.localized, actioncompletion: {
                     AppRouter.goToEditProfileVC(vc: self, model: UserModel.main, isEditProfileFrom: .home)
                 })
                 return
@@ -175,7 +175,7 @@ extension HomeVC : UICollectionViewDelegate, UICollectionViewDataSource,UICollec
             categoryType = .battery
             AppRouter.goToVehicleDetailForBatteryVC(vc: self)
         default:
-            showAlert(msg: "Under Development")
+            showAlert(msg: LocalizedString.underDevelopment.localized)
         }
     }
 }
@@ -184,19 +184,19 @@ extension HomeVC : UICollectionViewDelegate, UICollectionViewDataSource,UICollec
 //===========================
 extension HomeVC:LocationPopUpVMDelegate {
     func postTyreRequestSuccess(message: String){
-          AppRouter.showSuccessPopUp(vc: self, title: "Successfully Requested", desc: "Your request for tyre service has been submitted successfully.")
+        AppRouter.showSuccessPopUp(vc: self, title: LocalizedString.successfullyRequested.localized, desc: LocalizedString.yourRequestForTyreServiceHasBeenSubmittedSuccessfully.localized)
     }
     func postTyreRequestFailed(error:String){
         ToastView.shared.showLongToast(self.view, msg: error)
     }
     func postBatteryRequestSuccess(message: String){
-          AppRouter.showSuccessPopUp(vc: self, title: "Successfully Requested", desc: "Your request for battery service has been submitted successfully.")
+        AppRouter.showSuccessPopUp(vc: self, title: LocalizedString.successfullyRequested.localized, desc: LocalizedString.yourRequestForBatteryServiceHasBeenSubmitted.localized)
     }
     func postBatteryRequestFailed(error:String){
         ToastView.shared.showLongToast(self.view, msg: error)
     }
     func postOilRequestSuccess(message: String){
-          AppRouter.showSuccessPopUp(vc: self, title: "Successfully Requested", desc: "Your request for oil service has been submitted successfully.")
+        AppRouter.showSuccessPopUp(vc: self, title: LocalizedString.successfullyRequested.localized, desc: LocalizedString.yourRequestForOilServiceHasBeenSubmitted.localized)
     }
     
     func postOilRequestFailed(error:String){

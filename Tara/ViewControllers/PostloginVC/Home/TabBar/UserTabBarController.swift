@@ -53,6 +53,7 @@ class UserTabBarController: UITabBarController {
 extension UserTabBarController {
     
     private func initialSetup() {
+      //  setupTabBarBackGroundView(itemIndex: 0)
         self.bottomSafeArea = UIDevice.current.hasNotch ? 34.0 : 0.0
         self.navigationController?.navigationBar.isHidden = true
         UITabBar.appearance().tintColor = AppColors.primaryBlueColor
@@ -62,6 +63,19 @@ extension UserTabBarController {
         self.delegate = self
         setupTabBar()
         firstTabBarSelected()
+    }
+    
+    private func setupTabBarBackGroundView(itemIndex: Int) {
+        self.tabBar.barTintColor = UIColor.blue
+        guard let itemView = self.tabBar.items?[itemIndex].value(forKey: "view") as? UIView else {return}
+        printDebug(itemView.frame)
+        let viewOverTabBar = UIView()
+        viewOverTabBar.frame = itemView.frame
+        viewOverTabBar.origin.x = 10
+        viewOverTabBar.frame.size = CGSize(width: 60.0, height: 60.0)
+        viewOverTabBar.backgroundColor = AppColors.appRedColor
+        viewOverTabBar.roundCorner([.bottomLeft,.bottomRight], radius: 10.0)
+        itemView.addSubview(viewOverTabBar)
     }
     
     private func createTabVC(vc: UIViewController.Type, storyBoard: AppStoryboard) -> UIViewController {
@@ -75,6 +89,7 @@ extension UserTabBarController {
         let numberOfItems = CGFloat(self.tabBar.items!.count)
         let tabBarItemSize = CGSize(width: self.tabBar.frame.width / numberOfItems, height: self.tabBar.frame.height)
         self.tabBar.selectedImageTintColor = .white
+       // setupTabBarBackGroundView(itemIndex: 0)
         self.tabBar.selectionIndicatorImage = UIImage.imageWithColor(color: AppColors.appRedColor, size: tabBarItemSize).resizableImage(withCapInsets: UIEdgeInsets.init(top: 0, left: 0, bottom: bottomSafeArea, right: 0))
     }
     
@@ -118,12 +133,14 @@ extension UserTabBarController {
         }
     }
 }
-extension UserTabBarController:UITabBarControllerDelegate{
+extension UserTabBarController: UITabBarControllerDelegate{
+    
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController){
         let numberOfItems = CGFloat(tabBar.items!.count)
         let tabBarItemSize = CGSize(width: tabBar.frame.width / numberOfItems, height: tabBar.frame.height)
         tabBar.selectedImageTintColor = .white
-        tabBar.selectionIndicatorImage = UIImage.imageWithColor(color: AppColors.appRedColor, size: tabBarItemSize).resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: 0, bottom: bottomSafeArea, right: 10))
+      //  setupTabBarBackGroundView(itemIndex: tabBarController.selectedIndex)
+       tabBar.selectionIndicatorImage = UIImage.imageWithColor(color: AppColors.appRedColor, size: tabBarItemSize).resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: 0, bottom: bottomSafeArea, right: 10))
         
     }
     

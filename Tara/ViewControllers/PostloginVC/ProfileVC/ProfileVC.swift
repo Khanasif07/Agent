@@ -173,14 +173,14 @@ extension ProfileVC {
         }
     }
     
-    private func showEmailVerificationPopUp(){
-        self.showAlertWithAction(title: "Verify Email", msg: "A verification link will be send to your email address", cancelTitle: "Cancel", actionTitle: "Send", actioncompletion: {
+    private func showEmailVerificationPopUp() {
+        self.showAlertWithAction(title: LocalizedString.verifyEmail.localized, msg: LocalizedString.aVerificationLinkWillBeSendToYourEmailAddress.localized, cancelTitle: LocalizedString.cancel.localized, actionTitle: LocalizedString.send.localized, actioncompletion: {
             self.viewModel.sendVerificationLink(dict: [:])
         }){self.dismiss(animated: true, completion: nil)}
     }
     
-    private func showPhoneVerificationPopUp(){
-        self.showAlertWithAction(title: "Verify Phone", msg: "An OTP will be send to your phone number", cancelTitle: "Cancel", actionTitle: "Send", actioncompletion: {
+    private func showPhoneVerificationPopUp() {
+        self.showAlertWithAction(title: LocalizedString.verifyPhone.localized, msg: LocalizedString.anOTPWillBeSendToYourPhoneNumber.localized, cancelTitle: LocalizedString.cancel.localized, actionTitle: LocalizedString.send.localized, actioncompletion: {
              self.sendOtp()
         }) {self.dismiss(animated: true, completion: nil)}
     }
