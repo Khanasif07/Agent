@@ -65,10 +65,10 @@ class BookedRequestTableCell: UITableViewCell {
         requestedLbl.textColor = AppColors.fontTertiaryColor
         regNumberLbl.textColor = AppColors.fontTertiaryColor
         payableAmtLbl.textColor = AppColors.fontTertiaryColor
-        requestedLbl.text = "Requested By: "
-        vehicleLbl.text = "Vehicle"
-        regNumberLbl.text = "Reg. Number"
-        payableAmtLbl.text = "Payable Amount"
+        requestedLbl.text = LocalizedString.requestedBy.localized
+        vehicleLbl.text = LocalizedString.vehicle.localized
+        regNumberLbl.text = LocalizedString.RegNumber.localized
+        payableAmtLbl.text = LocalizedString.payableAmount.localized
     }
 
     func bindData(_ model: GarageRequestModel) {

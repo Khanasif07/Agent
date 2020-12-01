@@ -69,7 +69,7 @@ class GarageAddImageVC: BaseVC {
             return
         }
         if GarageProfileModel.shared.serviceCenterImages.isEmpty{
-            ToastView.shared.showLongToast(self.view, msg: "please upload atlest one image")
+            ToastView.shared.showLongToast(self.view, msg: LocalizedString.pleaseUploadAtlestOneImage.localized)
             return
         }
         AppRouter.goToUploadDocumentVC(vc: self)

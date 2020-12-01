@@ -294,7 +294,11 @@
 "yourRegRequestHasBeenAccepted" = "Your Registration Request has been Accepted. Kindly complete your profile";
 "garageQuestionMark" = "Garage?";
 "supportChat" = "Support Chat";
-
+"pleaseUploadAtlestOneImage" = "please upload atlest one image";
+"vehicle" = "Vehicle";
+"regNumber" = "Reg. Number";
+"payableAmount" = "Payable Amount";
+"requestedBy" = "Requested By:";
  // MARK: - Complete profile 1  VC Values
  //==============================
 "enterServiceCenterDist" = "Enter Service Center’s District";

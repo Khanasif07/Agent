@@ -342,7 +342,10 @@ enum LocalizedString : String {
     case serviceOn
     case garageQuestionMark
     case supportChat
-    
+    case pleaseUploadAtlestOneImage
+    case vehicle
+    case regNumber
+    case requestedBy
     // MARK: - Home  VC Values
     //==============================
     case tyre
