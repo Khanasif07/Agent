@@ -293,6 +293,7 @@
 "battery" = "Battery";
 "yourRegRequestHasBeenAccepted" = "Your Registration Request has been Accepted. Kindly complete your profile";
 "garageQuestionMark" = "Garage?";
+"supportChat" = "Support Chat";
 
  // MARK: - Complete profile 1  VC Values
  //==============================

@@ -173,7 +173,7 @@ extension RatingVC {
     }
 }
 
-extension RatingVC : UITextViewDelegate{
+extension RatingVC : UITextViewDelegate {
     
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
         if textView.text == LocalizedString.typeHere.localized {

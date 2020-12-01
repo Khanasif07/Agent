@@ -106,7 +106,7 @@ extension GarageCustomerRatingVC: UITableViewDelegate,UITableViewDataSource{
                 cell.populateData(sectionArr[indexPath.row], model: viewModel.garageCompletedDetail ?? GarageRequestModel(), screenType: self.screenType)
                 cell.helpBtnTapped = { [weak self] in
                     guard let `self` = self else { return }
-                    AppRouter.goToOneToOneChatVC(self, userId: AppConstants.adminId, requestId: "", name: "Support Chat", image: "", unreadMsgs: 0, isSupportChat: true,garageUserId: isCurrentUserType == .garage ? UserModel.main.id : "")
+                    AppRouter.goToOneToOneChatVC(self, userId: AppConstants.adminId, requestId: "", name: LocalizedString.supportChat.localized, image: "", unreadMsgs: 0, isSupportChat: true,garageUserId: isCurrentUserType == .garage ? UserModel.main.id : "")
                 }
                 return cell
                 

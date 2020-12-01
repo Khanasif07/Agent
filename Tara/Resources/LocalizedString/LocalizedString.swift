@@ -341,6 +341,7 @@ enum LocalizedString : String {
     case holdThisToRecord
     case serviceOn
     case garageQuestionMark
+    case supportChat
     
     // MARK: - Home  VC Values
     //==============================
