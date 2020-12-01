@@ -118,7 +118,7 @@ extension RatingVC {
         rateOutOfFiveLbl.text = LocalizedString.rateOutOfFive.localized
         descWhyLbl.text = LocalizedString.describeWhy.localized
         uploadAnyPicLbl.text = LocalizedString.uploadAnyPictureOfYourExperience.localized
-        garageNameLbl.text = garageName + " Garage?"
+        garageNameLbl.text = garageName + " " + LocalizedString.garageQuestionMark.localized
         
     }
     
