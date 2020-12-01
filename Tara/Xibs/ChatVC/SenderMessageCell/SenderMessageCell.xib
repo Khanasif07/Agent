@@ -46,21 +46,48 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--:--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qxa-XU-fZ4">
-                                <rect key="frame" x="191" y="62.5" width="18.5" height="12"/>
-                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="10"/>
-                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="os8-bX-biZ">
+                                <rect key="frame" x="173" y="63" width="38.5" height="10"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--:--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qxa-XU-fZ4">
+                                        <rect key="frame" x="0.0" y="0.0" width="18.5" height="10"/>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="10"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="-4" translatesAutoresizingMaskIntoConstraints="NO" id="G4r-fL-gq8">
+                                        <rect key="frame" x="22.5" y="0.0" width="16" height="10"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icSingletick" translatesAutoresizingMaskIntoConstraints="NO" id="4S1-k3-nHN">
+                                                <rect key="frame" x="0.0" y="0.0" width="10" height="10"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="4S1-k3-nHN" secondAttribute="height" multiplier="1:1" id="Iiv-ch-nFq"/>
+                                                    <constraint firstAttribute="width" constant="10" id="R5G-uJ-Zpp"/>
+                                                </constraints>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="redTickOne" translatesAutoresizingMaskIntoConstraints="NO" id="LgN-bm-Ekc">
+                                                <rect key="frame" x="6" y="0.0" width="10" height="10"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="LgN-bm-Ekc" secondAttribute="height" multiplier="1:1" id="LmV-kb-GcM"/>
+                                                    <constraint firstAttribute="width" constant="10" id="tgH-Kv-ceM"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="4S1-k3-nHN" firstAttribute="width" secondItem="4S1-k3-nHN" secondAttribute="height" multiplier="1:1" id="ukh-VJ-UEP"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.97254901960784312" green="0.82745098039215681" blue="0.85098039215686272" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="os8-bX-biZ" secondAttribute="bottom" constant="7.5" id="C57-wB-yit"/>
                             <constraint firstAttribute="bottom" secondItem="WdA-xd-XPU" secondAttribute="bottom" priority="998" constant="25" id="LaS-we-QRR"/>
-                            <constraint firstItem="Qxa-XU-fZ4" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="zZA-Vn-5FB" secondAttribute="leading" constant="20" id="LlQ-xq-VNe"/>
+                            <constraint firstAttribute="trailing" secondItem="os8-bX-biZ" secondAttribute="trailing" constant="10" id="MSE-qn-xHT"/>
+                            <constraint firstItem="os8-bX-biZ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="zZA-Vn-5FB" secondAttribute="leading" constant="20" id="S49-1f-vg0"/>
                             <constraint firstAttribute="trailing" secondItem="WdA-xd-XPU" secondAttribute="trailing" priority="999" constant="30" id="U3m-Fb-f28"/>
-                            <constraint firstAttribute="trailing" secondItem="Qxa-XU-fZ4" secondAttribute="trailing" constant="12" id="ZL6-UB-rwe"/>
                             <constraint firstItem="WdA-xd-XPU" firstAttribute="leading" secondItem="zZA-Vn-5FB" secondAttribute="leading" constant="12" id="ida-ie-MTW"/>
-                            <constraint firstAttribute="bottom" secondItem="Qxa-XU-fZ4" secondAttribute="bottom" constant="6" id="nfo-dy-drE"/>
                             <constraint firstItem="WdA-xd-XPU" firstAttribute="top" secondItem="zZA-Vn-5FB" secondAttribute="top" constant="12" id="z0Z-XX-tWB"/>
                         </constraints>
                     </view>
@@ -91,6 +118,8 @@
             <viewLayoutGuide key="safeArea" id="Kio-FI-JSM"/>
             <connections>
                 <outlet property="dataContainerView" destination="zZA-Vn-5FB" id="azV-eZ-Pea"/>
+                <outlet property="deliveredImgview" destination="4S1-k3-nHN" id="yWc-AV-SGB"/>
+                <outlet property="readImageView" destination="LgN-bm-Ekc" id="Mk9-s4-8DG"/>
                 <outlet property="senderImgView" destination="S9f-Qw-nle" id="GUU-Re-NyY"/>
                 <outlet property="senderMsgLbl" destination="Qci-bX-McA" id="kNo-EU-TFy"/>
                 <outlet property="senderNameLbl" destination="Wla-RG-HBF" id="tCj-cN-TuM"/>
@@ -100,6 +129,8 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="icSingletick" width="10" height="10"/>
         <image name="placeHolder" width="80" height="80"/>
+        <image name="redTickOne" width="10" height="10"/>
     </resources>
 </document>

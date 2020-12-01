@@ -14,6 +14,9 @@
         <array key="NunitoSans-Regular.ttf">
             <string>NunitoSans-Regular</string>
         </array>
+        <array key="Proxima Nova Regular.otf">
+            <string>ProximaNova-Regular</string>
+        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -56,31 +59,44 @@
                                 </connections>
                             </button>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="obU-hf-6tF">
-                                <rect key="frame" x="68" y="4.5" width="178" height="36"/>
+                                <rect key="frame" x="68" y="7" width="178" height="31"/>
                                 <connections>
                                     <action selector="sliderValueChanged:" destination="5BE-Om-JgR" eventType="valueChanged" id="OZw-yp-B7a"/>
                                 </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="59V-mV-QfA">
-                                <rect key="frame" x="70" y="39.5" width="16.5" height="11"/>
+                                <rect key="frame" x="70" y="40" width="16.5" height="11"/>
                                 <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="8"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="vef-gm-ecA">
+                                <rect key="frame" x="226.5" y="41" width="18.5" height="10"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--:--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OBh-as-DP8">
+                                        <rect key="frame" x="0.0" y="0.0" width="18.5" height="10"/>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="10"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.95686274509803915" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="qQd-Dy-y5W" firstAttribute="leading" secondItem="h6J-Pe-1xe" secondAttribute="trailing" constant="5" id="4WP-bG-awv"/>
-                            <constraint firstItem="59V-mV-QfA" firstAttribute="top" secondItem="obU-hf-6tF" secondAttribute="bottom" id="4gc-lh-d8K"/>
                             <constraint firstItem="obU-hf-6tF" firstAttribute="centerY" secondItem="h6J-Pe-1xe" secondAttribute="centerY" id="8Dx-k0-qlQ"/>
                             <constraint firstItem="obU-hf-6tF" firstAttribute="leading" secondItem="qQd-Dy-y5W" secondAttribute="trailing" constant="5" id="8bF-uM-6aK"/>
                             <constraint firstItem="obU-hf-6tF" firstAttribute="centerY" secondItem="qQd-Dy-y5W" secondAttribute="centerY" id="AzK-hs-csk"/>
                             <constraint firstItem="59V-mV-QfA" firstAttribute="leading" secondItem="obU-hf-6tF" secondAttribute="leading" id="YO0-Mi-3Fz"/>
                             <constraint firstAttribute="trailing" secondItem="obU-hf-6tF" secondAttribute="trailing" constant="11" id="ZUs-bX-tMd"/>
-                            <constraint firstAttribute="bottom" secondItem="59V-mV-QfA" secondAttribute="bottom" constant="6.5" id="Zrh-8F-H7A"/>
+                            <constraint firstAttribute="bottom" secondItem="59V-mV-QfA" secondAttribute="bottom" constant="6" id="Zrh-8F-H7A"/>
                             <constraint firstItem="qQd-Dy-y5W" firstAttribute="centerY" secondItem="h6J-Pe-1xe" secondAttribute="centerY" id="cnJ-ma-f11"/>
+                            <constraint firstAttribute="bottom" secondItem="vef-gm-ecA" secondAttribute="bottom" constant="6" id="fGE-Uu-eOO"/>
                             <constraint firstItem="h6J-Pe-1xe" firstAttribute="leading" secondItem="nny-Qc-us7" secondAttribute="leading" constant="6" id="ibw-OM-hHL"/>
+                            <constraint firstAttribute="trailing" secondItem="vef-gm-ecA" secondAttribute="trailing" constant="10" id="rfn-lS-r0K"/>
                             <constraint firstItem="h6J-Pe-1xe" firstAttribute="top" secondItem="nny-Qc-us7" secondAttribute="top" constant="10" id="yMA-Xf-SZC"/>
+                            <constraint firstItem="vef-gm-ecA" firstAttribute="top" secondItem="obU-hf-6tF" secondAttribute="bottom" constant="4" id="yzB-87-zMh"/>
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MfI-Ff-gXN">
@@ -118,11 +134,12 @@
                 <outlet property="audioBtn" destination="h6J-Pe-1xe" id="H5b-z0-x9Z"/>
                 <outlet property="customSlider" destination="obU-hf-6tF" id="kSq-c0-wLj"/>
                 <outlet property="dataContainerView" destination="nny-Qc-us7" id="Kn8-KZ-P0y"/>
+                <outlet property="durationLbl" destination="59V-mV-QfA" id="BoZ-VU-LH1"/>
                 <outlet property="loadingView" destination="zLN-cZ-rbs" id="6xp-dn-iYQ"/>
                 <outlet property="playBtn" destination="qQd-Dy-y5W" id="AlH-qC-BS1"/>
                 <outlet property="receiverImgView" destination="Slp-sw-9ZG" id="r0k-2a-qqs"/>
                 <outlet property="receiverNameLbl" destination="MfI-Ff-gXN" id="doD-dd-uca"/>
-                <outlet property="timeLbl" destination="59V-mV-QfA" id="YBo-OU-3bm"/>
+                <outlet property="timeLbl" destination="OBh-as-DP8" id="0SV-0d-8ie"/>
             </connections>
             <point key="canvasLocation" x="138.40579710144928" y="97.433035714285708"/>
         </tableViewCell>

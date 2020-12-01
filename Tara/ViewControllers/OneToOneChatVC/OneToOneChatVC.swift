@@ -584,7 +584,7 @@ extension OneToOneChatVC: UITextViewDelegate{
                 if self.player!.currentItem?.status == .readyToPlay {
                     let time : Float64 = CMTimeGetSeconds(self.player!.currentTime())
                     audioTableCell.customSlider.value = Float ( time )
-                    audioTableCell.timeLbl.text = self.stringFromTimeInterval(interval: time)
+                    audioTableCell.durationLbl.text = self.stringFromTimeInterval(interval: time)
                 }
                 
                 let playbackLikelyToKeepUp = self.player?.currentItem?.isPlaybackLikelyToKeepUp
