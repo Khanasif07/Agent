@@ -15,7 +15,7 @@ protocol OneToOneChatViewModelDelegate: class {
     func chatDataFailure(msg: String,statusCode: Int)
     func pushDataSuccess(msg: String)
     func pushDataFailure(msg: String)
-    func acceptRejectEditedBidSuccess(msg: String)
+    func acceptRejectEditedBidSuccess(msg: String,totalAmount: Int)
     func acceptRejectEditedBidFailure(msg: String)
 
 }
@@ -58,7 +58,8 @@ class OneToOneChatViewModel {
     func acceptRejectEditedBid(params: JSONDictionary,loader: Bool = false) {
         WebServices.acceptRejectEditedBid(parameters: params,loader: loader, success: { [weak self] (json) in
             guard let `self` = self else { return }
-            self.delegate?.acceptRejectEditedBidSuccess(msg: "")
+            let totalAmount = json[ApiKey.data][ApiKey.totalAmount].intValue
+            self.delegate?.acceptRejectEditedBidSuccess(msg: "",totalAmount: totalAmount)
             printDebug(json)
         }) { [weak self] (error) in
             guard let `self` = self else { return }

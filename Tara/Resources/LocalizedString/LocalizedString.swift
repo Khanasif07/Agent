@@ -335,6 +335,7 @@ enum LocalizedString : String {
     case editProfile
     case save
     case PLEASEUNBLOCKUSERTOSENDMESSAGES
+    case make_Payment_to_get_hassle_free_service
     case block
     case unBlock
     case are_you_sure_you_want_to_block_this_user = "are_you_sure_you_want_to_block_this_user"

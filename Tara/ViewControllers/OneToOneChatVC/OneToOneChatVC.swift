@@ -62,7 +62,7 @@ class OneToOneChatVC: BaseVC {
     var selectedIndexPaths : [IndexPath] = []
     var selectedIndexPath: IndexPath?
     var listeners = [ListenerRegistration]()
- 
+    
     //Audio messages
     var recordingSession: AVAudioSession!
     var audioRecorder: AVAudioRecorder!
@@ -77,7 +77,7 @@ class OneToOneChatVC: BaseVC {
         }
     }
     var amIBlocked = false
-
+    
     //MARK: OUTLETS
     //=============
     @IBOutlet weak var bottomVIewWithMsg: UIView!
@@ -86,7 +86,7 @@ class OneToOneChatVC: BaseVC {
     @IBOutlet weak var unblockBtn: UIButton!
     @IBOutlet weak var editBidBtn: UIButton!
     @IBOutlet weak var btnContaninerView: UIView!
-
+    
     @IBOutlet weak var progressVIew: UIProgressView!
     @IBOutlet weak var audioCancelBtn: UIButton!
     @IBOutlet weak var audioRecordBtn: UIButton!
@@ -127,7 +127,7 @@ class OneToOneChatVC: BaseVC {
     @IBOutlet weak var garageImgView: UIImageView!
     @IBOutlet weak var garageTopView: UIView!
     
-
+    
     //MARK: VIEW LIFE CYCLE
     //=====================
     override func viewDidLoad() {
@@ -142,8 +142,8 @@ class OneToOneChatVC: BaseVC {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIApplication.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIApplication.keyboardWillHideNotification, object: nil)
         FirestoreController.isReceiverBlocked(senderId: currentUserId, receiverId: inboxModel.userId) { (bool) in
-                   self.isBlockedByMe = bool
-               }
+            self.isBlockedByMe = bool
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -185,16 +185,16 @@ class OneToOneChatVC: BaseVC {
     
     @IBAction func addAudioMsgBtnTapped(_ sender: UIButton) {
         if  self.isAuthorized() {
-        if isBlockedByMe {
-            CommonFunctions.showToastWithMessage( LocalizedString.PLEASEUNBLOCKUSERTOSENDMESSAGES.localized)
-            return
-        }
-        CommonFunctions.showToastWithMessage( LocalizedString.holdThisToRecord.localized)
-        timerView.isHidden = false
-        audioRecordBtn.setImage(#imageLiteral(resourceName: "audioBtnWhite"), for: .normal)
+            if isBlockedByMe {
+                CommonFunctions.showToastWithMessage( LocalizedString.PLEASEUNBLOCKUSERTOSENDMESSAGES.localized)
+                return
+            }
+            CommonFunctions.showToastWithMessage( LocalizedString.holdThisToRecord.localized)
+            timerView.isHidden = false
+            audioRecordBtn.setImage(#imageLiteral(resourceName: "audioBtnWhite"), for: .normal)
         } else {
             showAlert(title: "", msg: LocalizedString.kindly_provide_the_access_to_record_audio.localized) {
-                  self.openSettingApp(message: "")
+                self.openSettingApp(message: "")
             }
         }
     }
@@ -264,8 +264,8 @@ extension OneToOneChatVC {
     
     private func initialSetup() {
         NotificationCenter.default.addObserver(self, selector: #selector(editedBidAccepted), name: Notification.Name.EditedBidAccepted, object: nil)
-         NotificationCenter.default.addObserver(self, selector: #selector(requestRejected), name: Notification.Name.RequestRejected, object: nil)
-         NotificationCenter.default.addObserver(self, selector: #selector(requestAccepted), name: Notification.Name.RequestAccepted, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(requestRejected), name: Notification.Name.RequestRejected, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(requestAccepted), name: Notification.Name.RequestAccepted, object: nil)
         btnContaninerView.isHidden = true
         bottomVIewWithMsg.isHidden = true
         self.isSupportChat = self.requestId.isEmpty
@@ -317,7 +317,7 @@ extension OneToOneChatVC {
     }
     
     @objc private func titleLabelTapped(_ sender: UITapGestureRecognizer) {
-       
+        
     }
     
     private func openSettingApp(message: String) {
@@ -335,7 +335,7 @@ extension OneToOneChatVC {
     }
     
     @objc func requestRejected(){
-       self.getChatData()
+        self.getChatData()
     }
     
     @objc func requestAccepted(){
@@ -418,6 +418,7 @@ extension OneToOneChatVC {
         messagesTableView.registerCell(with: SenderAudioCell.self)
         messagesTableView.registerCell(with: ReceiverAudioCell.self)
         messagesTableView.registerCell(with: ReceiverOfferCell.self)
+        messagesTableView.registerCell(with: PaymentCardCell.self)
         messagesTableView.registerCell(with: DayValueCell.self)
     }
     
@@ -446,7 +447,7 @@ extension OneToOneChatVC {
             self.createInbox()
         }
         if isPush {
-        self.postMessageToFirestoreForPush(body: txt)
+            self.postMessageToFirestoreForPush(body: txt)
         }
         messageTextView.text = ""
         messageLabel.isHidden = false
@@ -472,7 +473,7 @@ extension OneToOneChatVC {
         }
         if requestId.isEmpty{tableViewTopConstraint.constant = 0.0}
         tableViewTopConstraint.constant =  isCurrentUserType == .garage ? (chatViewModel.chatData.id.isEmpty ? 0.0 : 80.0)  : (chatViewModel.chatData.id.isEmpty ? 0.0 : 124.0)
-
+        
         
         UIView.animate(withDuration: duration) { self.view.layoutIfNeeded() }
     }
@@ -545,7 +546,7 @@ extension OneToOneChatVC: UITextViewDelegate{
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         if self.isRoom {
-        self.setTypingUser(isTyping: true)
+            self.setTypingUser(isTyping: true)
         }
         messageLabel.isHidden = true
         textView.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
@@ -767,7 +768,7 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                     receiverOfferCell.acceptBtn.isUserInteractionEnabled = true
                     receiverOfferCell.acceptBtn.setTitle("Accept", for: .normal)
                     receiverOfferCell.rejectBtn.setTitle("Reject", for: .normal)
-
+                    
                     
                 }
                 else if model.messageStatus == 2 { //offer accpted
@@ -789,6 +790,13 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                 receiverOfferCell.priceLbl.text = "\(model.price)" + "SAR"
                 receiverOfferCell.userImgView.addGestureRecognizer(imgTap)
                 return receiverOfferCell
+            case  MessageType.payment.rawValue:
+                let receiverPaymentCell = tableView.dequeueCell(with: PaymentCardCell.self)
+                receiverPaymentCell.amountLabel.text = "\(model.price)"
+                receiverPaymentCell.receiverImgView.setImage_kf(imageString: userImage, placeHolderImage: isSupportChat ? #imageLiteral(resourceName: "splashUpdated") : #imageLiteral(resourceName: "placeHolder"), loader: false)
+                receiverPaymentCell.receiverNameLbl.text = self.firstName
+                receiverPaymentCell.receiverImgView.backgroundColor = AppColors.fontTertiaryColor
+                return receiverPaymentCell
             default:
                 let receiverCell = tableView.dequeueCell(with: ReceiverMessageCell.self)
                 receiverCell.configureCellWith(model: model)
@@ -801,13 +809,11 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
             }
         default:
             switch model.messageType {
-         
             case MessageType.image.rawValue:
                 let receiverMediaCell = tableView.dequeueCell(with: ReceiverMediaCell.self)
                 receiverMediaCell.configureCellWith(model: model)
                 self.setTapGesture(view: receiverMediaCell.msgContainerView, indexPath: indexPath)
                 return receiverMediaCell
-                
             case MessageType.audio.rawValue:
                 let senderAudioCell = tableView.dequeueCell(with: SenderAudioCell.self)
                 senderAudioCell.setSlider(model: model)
@@ -870,7 +876,7 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                 
             case MessageType.offer.rawValue:
                 let senderOfferCell = tableView.dequeueCell(with: SenderOfferCell.self)
-            
+                
                 if model.messageStatus == 1 {// hide both button
                     senderOfferCell.btnStackView.isHidden = true
                 }
@@ -894,6 +900,10 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                 self.setTapGesture(view: senderOfferCell.msgContainerView, indexPath: indexPath)
                 senderOfferCell.userImgView.addGestureRecognizer(imgTap)
                 return senderOfferCell
+            case  MessageType.payment.rawValue:
+                let receiverPaymentCell = tableView.dequeueCell(with: PaymentCardCell.self)
+                receiverPaymentCell.amountLabel.text = "\(model.price)"
+                return receiverPaymentCell
             default:
                 let senderCell = tableView.dequeueCell(with: SenderMessageCell.self)
                 senderCell.configureCellWith(model: model)
@@ -909,7 +919,7 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
         CommonFunctions.delay(delay: 0.33) {
             self.scrollMsgToBottom(animated: true)
         }
-//        self.scrollMsgToBottom()
+        //        self.scrollMsgToBottom()
     }
     
     private func reloadTableViewToBottomWithFooter() {
@@ -921,7 +931,7 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
     private func scrollMsgToBottom(animated: Bool = false, duration: Double = 0.1) {
         DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
             guard self.messageListing.endIndex > 0, self.messageListing[self.messageListing.endIndex - 1].endIndex > 0 else { return }
-        self.messagesTableView.scrollToRow(at: IndexPath(row: self.messageListing[self.messageListing.endIndex - 1].endIndex - 1, section: self.messageListing.endIndex - 1), at: .bottom, animated: animated)
+            self.messagesTableView.scrollToRow(at: IndexPath(row: self.messageListing[self.messageListing.endIndex - 1].endIndex - 1, section: self.messageListing.endIndex - 1), at: .bottom, animated: animated)
         }
     }
 }
@@ -1115,12 +1125,12 @@ extension OneToOneChatVC{
     ///Mark:- Update unread messages
     private func updateUnreadMessage() {
         //roomId:string,timeStamp:Any,
-         var inboxUserId = ""
-         if self.requestId.isEmpty{
-             inboxUserId = currentUserId
-         } else {
-             inboxUserId = currentUserId + "_" + self.requestId
-         }
+        var inboxUserId = ""
+        if self.requestId.isEmpty{
+            inboxUserId = currentUserId
+        } else {
+            inboxUserId = currentUserId + "_" + self.requestId
+        }
         
         db.collection(ApiKey.inbox)
             .document(inboxModel.userId)
@@ -1136,8 +1146,8 @@ extension OneToOneChatVC{
                     self.inboxModel.unreadCount = data[ApiKey.unreadCount] as? Int ?? 0
                     if !self.amIBlocked {
                         FirestoreController.updateUnreadMessages(senderId: inboxUserId, receiverId: self.inboxModel.userId, unread: data[ApiKey.unreadCount] as? Int ?? 0)
+                    }
                 }
-            }
         }
     }
     
@@ -1268,44 +1278,44 @@ extension OneToOneChatVC{
     
     /// Mark:- Fetch the last message from a blocked user
     
-//    private func getLastMessageBeforeBlock(){
-//
-//        let uid = AppUserDefaults.value(forKey: .uid).string ?? ""
-//        let listener = db.collection(ApiKey.inbox).document(uid).collection(ApiKey.chat).addSnapshotListener { querySnapshot, error in
-//            querySnapshot?.documentChanges.forEach({ (newUser) in
-//                let inbox = Inbox(newUser.document.data())
-//                if newUser.type == .added{
-//                    inbox.lastMessageRef?.getDocument(completion: { (document, error) in
-//                        FirestoreController.createLastMessageOfBlockedUser(roomId: self.roomId, senderId: self.currentUserId, messageModel: (document?.data())! )
-//                    })
-//
-//                } else if newUser.type == .modified {
-//
-//                }
-//                else if newUser.type == .removed {
-//
-//                } else {
-//
-//                }
-//            })
-//        }
-//        listeners.append(listener)
-//    }
+    //    private func getLastMessageBeforeBlock(){
+    //
+    //        let uid = AppUserDefaults.value(forKey: .uid).string ?? ""
+    //        let listener = db.collection(ApiKey.inbox).document(uid).collection(ApiKey.chat).addSnapshotListener { querySnapshot, error in
+    //            querySnapshot?.documentChanges.forEach({ (newUser) in
+    //                let inbox = Inbox(newUser.document.data())
+    //                if newUser.type == .added{
+    //                    inbox.lastMessageRef?.getDocument(completion: { (document, error) in
+    //                        FirestoreController.createLastMessageOfBlockedUser(roomId: self.roomId, senderId: self.currentUserId, messageModel: (document?.data())! )
+    //                    })
+    //
+    //                } else if newUser.type == .modified {
+    //
+    //                }
+    //                else if newUser.type == .removed {
+    //
+    //                } else {
+    //
+    //                }
+    //            })
+    //        }
+    //        listeners.append(listener)
+    //    }
     
     private func getLastMessageBeforeBlock(){
         db.collection(ApiKey.lastMessage).document(roomId).collection(ApiKey.chat).document(ApiKey.message).getDocument { [weak self] (snapshot, error) in
             if let err = error {
-            print(err.localizedDescription)
-        } else {
+                print(err.localizedDescription)
+            } else {
                 if let data = snapshot?.data() {
-                printDebug(data)
+                    printDebug(data)
                     
-              FirestoreController.createLastMessageOfBlockedUser(roomId: self?.roomId ?? "", senderId: self?.currentUserId ?? "", messageModel: (data))
-
+                    FirestoreController.createLastMessageOfBlockedUser(roomId: self?.roomId ?? "", senderId: self?.currentUserId ?? "", messageModel: (data))
+                    
+                }
             }
         }
     }
-}
     
     /// Mark:- Create a new batch
     private func createBatch(){
@@ -1321,16 +1331,16 @@ extension OneToOneChatVC{
     /// Mark:- Creating a message node
     private func createMessage(msgType: String = "text",price: Int = 0){
         
-        if msgType == "payment" {
-             FirestoreController.createLastMessageNode(roomId:roomId,messageText: messageTextView.text.byRemovingLeadingTrailingWhiteSpaces ,messageTime:FieldValue.serverTimestamp(), messageId:getMessageId(),messageType: msgType, messageStatus:1,senderId:inboxModel.userId , receiverId: currentUserId, mediaUrl: "",blocked:amIBlocked, thumbNailURL: "", messageDuration: 0,price: price, amIBlocked: amIBlocked)
+        if msgType == MessageType.payment.rawValue {
+            FirestoreController.createLastMessageNode(roomId:roomId,messageText: messageTextView.text.byRemovingLeadingTrailingWhiteSpaces ,messageTime:FieldValue.serverTimestamp(), messageId:getMessageId(),messageType: msgType, messageStatus:1,senderId:inboxModel.userId , receiverId: currentUserId, mediaUrl: "",blocked:amIBlocked, thumbNailURL: "", messageDuration: 0,price: price, amIBlocked: amIBlocked)
         }
         else {
             FirestoreController.createLastMessageNode(roomId:roomId,messageText: messageTextView.text.byRemovingLeadingTrailingWhiteSpaces ,messageTime:FieldValue.serverTimestamp(), messageId:getMessageId(),messageType: msgType, messageStatus:1,senderId:currentUserId,receiverId:inboxModel.userId, mediaUrl: "",blocked:amIBlocked, thumbNailURL: "", messageDuration: 0,price: price, amIBlocked: amIBlocked)
         }
         
         
-        if msgType == "payment" {
-             FirestoreController.createMessageNode(roomId:roomId,messageText: messageTextView.text.byRemovingLeadingTrailingWhiteSpaces ,messageTime:FieldValue.serverTimestamp(), messageId:getMessageId(),messageType: msgType, messageStatus:1,senderId: inboxModel.userId, receiverId: currentUserId , mediaUrl: "",blocked: amIBlocked, thumbNailURL: "", messageDuration: 0,price: price)
+        if msgType == MessageType.payment.rawValue {
+            FirestoreController.createMessageNode(roomId:roomId,messageText: messageTextView.text.byRemovingLeadingTrailingWhiteSpaces ,messageTime:FieldValue.serverTimestamp(), messageId:getMessageId(),messageType: msgType, messageStatus:1,senderId: inboxModel.userId, receiverId: currentUserId , mediaUrl: "",blocked: amIBlocked, thumbNailURL: "", messageDuration: 0,price: price)
         }else {
             FirestoreController.createMessageNode(roomId:roomId,messageText: messageTextView.text.byRemovingLeadingTrailingWhiteSpaces ,messageTime:FieldValue.serverTimestamp(), messageId:getMessageId(),messageType: msgType, messageStatus:1,senderId:currentUserId, receiverId:inboxModel.userId, mediaUrl: "",blocked: amIBlocked, thumbNailURL: "", messageDuration: 0,price: price)
         }
@@ -1462,8 +1472,8 @@ extension OneToOneChatVC{
                     if let dict = dictonary[self.currentUserId] as? [String: Any] {
                         if let time = dict[ApiKey.deleteTime] as? Timestamp {
                             if   self.deleteTime != time {
-                            self.deleteTime = time
-                            self.fetchMessageListing()
+                                self.deleteTime = time
+                                self.fetchMessageListing()
                             }
                         }
                     }
@@ -1499,40 +1509,40 @@ extension OneToOneChatVC{
             guard let `self` = self else { return }
             querySnapshot?.documentChanges.forEach({ [weak self] (newMessage) in
                 guard let `self` = self else { return }
-
+                
                 if newMessage.type == .added {
                     let message = Message(newMessage.document.data())
                     if message.blocked && message.receiverId == self.currentUserId {
                         return
                     }
-//                    if !message.blocked {
+                    //                    if !message.blocked {
                     if message.messageType != "offer" && message.messageType != "payment" {
-                       if message.senderId == self.inboxModel.userId {                            self.db.collection(ApiKey.messages).document(self.getRoomId()).collection(ApiKey.chat).document(message.messageId).updateData([ApiKey.messageStatus : 3]) { (error) in
+                        if message.senderId == self.inboxModel.userId {                            self.db.collection(ApiKey.messages).document(self.getRoomId()).collection(ApiKey.chat).document(message.messageId).updateData([ApiKey.messageStatus : 3]) { (error) in
                             if let err = error {
                                 print(err.localizedDescription)
                             } else {
                                 //                                self.db.collection(ApiKey.inbox).document(self.currentUserId).collection(ApiKey.chat).document(self.inboxModel.userId).updateData([ApiKey.unreadMessages: 0])
-                               }
+                            }
                             }
                         }
                     }
-                        
-                        if (message.messageTime.dateValue().convertToDefaultString() == self.tempTime.dateValue().convertToDefaultString() || self.messageListing.isEmpty) {
-                            self.tempTime = message.messageTime
-                            if self.messageListing.isEmpty {
-                                self.messageListing.append([message])
-                            } else {
-                                self.messageListing[self.indexVal].removeAll { (msg) -> Bool in
-                                    return msg.messageId == message.messageId
-                                }
-                                self.messageListing[self.indexVal].append(message)
-                            }
-                        } else {
-                            self.indexVal += 1
-                            self.tempTime = message.messageTime
+                    
+                    if (message.messageTime.dateValue().convertToDefaultString() == self.tempTime.dateValue().convertToDefaultString() || self.messageListing.isEmpty) {
+                        self.tempTime = message.messageTime
+                        if self.messageListing.isEmpty {
                             self.messageListing.append([message])
+                        } else {
+                            self.messageListing[self.indexVal].removeAll { (msg) -> Bool in
+                                return msg.messageId == message.messageId
+                            }
+                            self.messageListing[self.indexVal].append(message)
                         }
-//                    }
+                    } else {
+                        self.indexVal += 1
+                        self.tempTime = message.messageTime
+                        self.messageListing.append([message])
+                    }
+                    //                    }
                     DispatchQueue.main.async {
                         self.reloadTableViewToBottom()
                     }
@@ -1556,13 +1566,13 @@ extension OneToOneChatVC{
                             }
                         }
                     }
-                        for (off, section) in self.messageListing.enumerated() {
-                            if let msgIndex = section.firstIndex(where: {$0.messageId == message.messageId}) {
-                                self.messageListing[off][msgIndex] = message
-                                break
-                            }
+                    for (off, section) in self.messageListing.enumerated() {
+                        if let msgIndex = section.firstIndex(where: {$0.messageId == message.messageId}) {
+                            self.messageListing[off][msgIndex] = message
+                            break
                         }
-//                    }
+                    }
+                    //                    }
                     DispatchQueue.main.async {
                         self.reloadTableViewToBottom()
                     }
@@ -1639,7 +1649,7 @@ extension OneToOneChatVC{
                     
                 }else {
                     self.isBlockedByMe = false
-
+                    
                 }
             }
         }
@@ -1707,7 +1717,7 @@ extension OneToOneChatVC:  AVAudioRecorderDelegate, AVAudioPlayerDelegate {
         if let recorder = audioRecorder {
             recorder.stop()
         }
-//        audioRecorder.stop()
+        //        audioRecorder.stop()
         audioRecorder = nil
         
         if success {
@@ -1823,7 +1833,7 @@ extension OneToOneChatVC : OneToOneChatViewModelDelegate{
     }
     
     func pushDataFailure(msg: String) {
-         printDebug(msg)
+        printDebug(msg)
     }
     
     func chatDataSuccess(msg: String) {
@@ -1854,13 +1864,15 @@ extension OneToOneChatVC : OneToOneChatViewModelDelegate{
             garageNameLbl.text = chatViewModel.chatData.garageName
         }
         CommonFunctions.delay(delay: 0.2) {
-          //  self.scrollMsgToBottom(animated: true)
+            //  self.scrollMsgToBottom(animated: true)
         }
     }
-
-    func acceptRejectEditedBidSuccess(msg: String) {
+    
+    func acceptRejectEditedBidSuccess(msg: String,totalAmount: Int) {
         CommonFunctions.showToastWithMessage(msg)
         if acceptedRejectBtnStatus {
+            self.messageTextView.text = MessageType.payment.rawValue
+            self.sendMessage(msgType: MessageType.payment.rawValue,price: totalAmount, isPush: false)
             self.postMessageToFirestoreForPush(body: "Offer Accepted", image: "")
             self.db.collection(ApiKey.messages).document(self.getRoomId()).collection(ApiKey.chat).document(self.messageId).updateData([ApiKey.messageStatus : 2]) { (error) in
                 if let err = error {
@@ -1882,7 +1894,7 @@ extension OneToOneChatVC : OneToOneChatViewModelDelegate{
     }
     
     func acceptRejectEditedBidFailure(msg: String) {
-          CommonFunctions.showToastWithMessage(msg)
+        CommonFunctions.showToastWithMessage(msg)
     }
 }
 
@@ -1893,7 +1905,7 @@ extension OneToOneChatVC : ChatEditBidVCDelegate {
             CommonFunctions.showToastWithMessage( LocalizedString.PLEASEUNBLOCKUSERTOSENDMESSAGES.localized)
             return
         }
-        self.messageTextView.text = "Offer"
+        self.messageTextView.text = MessageType.offer.rawValue
         sendMessage(msgType: MessageType.offer.rawValue,price: price,isPush: false)
     }
 }
