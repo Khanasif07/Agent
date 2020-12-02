@@ -11,6 +11,9 @@ import UIKit
 class PaymentCardCell: UITableViewCell {
 
     
+    var payNowBtnAction :((UIButton)->())?
+    var declineBtnAction : ((UIButton)->())?
+    
     //    MARK: OUTLETS
     //    =============
     @IBOutlet weak var receiverNameLbl: UILabel!
@@ -41,10 +44,14 @@ class PaymentCardCell: UITableViewCell {
     
     
     @IBAction func declineBtnTapped(_ sender: UIButton) {
-        
+        if let handle = declineBtnAction{
+            handle(sender)
+        }
     }
     
     @IBAction func payNowBtnTapped(_ sender: UIButton) {
-        
+        if let handle = payNowBtnAction{
+            handle(sender)
+        }
     }
 }
