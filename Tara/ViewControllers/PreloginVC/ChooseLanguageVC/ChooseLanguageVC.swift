@@ -77,7 +77,7 @@ class ChooseLanguageVC: BaseVC {
         self.arabicLbl.textColor = UIColor.black.withAlphaComponent(0.5)
         self.englishLbl.textColor = UIColor.black
         self.continueBtn.isEnabled = true
-        AppUserDefaults.save(value: LocalizedString.english.localized, forKey: .currentLanguage)
+        AppUserDefaults.save(value: 0, forKey: .language)
         AppUserDefaults.save(value: true, forKey: .isLanguageSelect)
     }
     
@@ -91,7 +91,7 @@ class ChooseLanguageVC: BaseVC {
         self.englishLbl.textColor = UIColor.black.withAlphaComponent(0.5)
         self.arabicLbl.textColor = UIColor.black
         self.continueBtn.isEnabled = true
-        AppUserDefaults.save(value: LocalizedString.arabic.localized, forKey: .currentLanguage)
+        AppUserDefaults.save(value: 1, forKey: .language)
         AppUserDefaults.save(value: true, forKey: .isLanguageSelect)
     }
     

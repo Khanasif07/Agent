@@ -59,9 +59,12 @@ class ChangeLanguageVC: BaseVC {
             AppUserDefaults.save(value: 0, forKey: .language)
         }else {
             AppUserDefaults.save(value: 1, forKey: .language)
-            
         }
-        setupTextFont()
+        if isCurrentUserType == .garage{
+            AppRouter.goToGarageHome()
+        } else {
+            AppRouter.goToUserHome()
+        }
     }
 
     @IBAction func englishBtnAction(_sender : UIButton) {

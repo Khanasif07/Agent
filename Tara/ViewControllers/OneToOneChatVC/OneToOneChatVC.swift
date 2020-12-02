@@ -792,6 +792,15 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                 return receiverOfferCell
             case  MessageType.payment.rawValue:
                 let receiverPaymentCell = tableView.dequeueCell(with: PaymentCardCell.self)
+                receiverPaymentCell.payNowBtnAction = {[weak self] (sender) in
+                    guard let `self` = self else { return }
+                    AppRouter.goToWebVC(vc: self, screenType: .payment)
+                }
+                
+                receiverPaymentCell.declineBtnAction = {[weak self] (sender) in
+                    guard let `self` = self else { return }
+                    AppRouter.goToWebVC(vc: self, screenType: .payment)
+                }
                 receiverPaymentCell.amountLabel.text = "\(model.price)"
                 receiverPaymentCell.receiverImgView.setImage_kf(imageString: userImage, placeHolderImage: isSupportChat ? #imageLiteral(resourceName: "splashUpdated") : #imageLiteral(resourceName: "placeHolder"), loader: false)
                 receiverPaymentCell.receiverNameLbl.text = self.firstName
@@ -900,10 +909,6 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                 self.setTapGesture(view: senderOfferCell.msgContainerView, indexPath: indexPath)
                 senderOfferCell.userImgView.addGestureRecognizer(imgTap)
                 return senderOfferCell
-            case  MessageType.payment.rawValue:
-                let receiverPaymentCell = tableView.dequeueCell(with: PaymentCardCell.self)
-                receiverPaymentCell.amountLabel.text = "\(model.price)"
-                return receiverPaymentCell
             default:
                 let senderCell = tableView.dequeueCell(with: SenderMessageCell.self)
                 senderCell.configureCellWith(model: model)

@@ -16,6 +16,7 @@ class WebViewController: BaseVC {
         case aboutUs
         case privacyPolicy
         case termsCondition
+        case payment
         
         var text :String {
             switch self {
@@ -25,6 +26,8 @@ class WebViewController: BaseVC {
                 return LocalizedString.privacy_policy.localized
             case .termsCondition:
                 return LocalizedString.terms_Condition.localized
+            case .payment:
+                return LocalizedString.payments.localized
             }
         }
         
@@ -36,6 +39,8 @@ class WebViewController: BaseVC {
             case .privacyPolicy:
                 return "https://google.com"
             case .termsCondition:
+                return "https://google.com"
+            case .payment:
                 return "https://google.com"
                 
             }
