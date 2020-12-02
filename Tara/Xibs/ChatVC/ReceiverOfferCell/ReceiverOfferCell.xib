@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -46,10 +46,10 @@
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7T7-rS-tQb">
-                        <rect key="frame" x="60" y="25.5" width="203" height="124.5"/>
+                        <rect key="frame" x="60" y="25.5" width="198" height="124.5"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="cBW-N7-54y">
-                                <rect key="frame" x="63" y="8" width="77" height="43"/>
+                                <rect key="frame" x="60.5" y="8" width="77" height="43"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OFFER PRICE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VAM-cU-SdJ">
                                         <rect key="frame" x="0.0" y="0.0" width="77" height="14"/>
@@ -65,17 +65,6 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="fnw-LO-D1m">
-                                <rect key="frame" x="114" y="116.5" width="18.5" height="12"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--:--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YOe-sG-L2H">
-                                        <rect key="frame" x="0.0" y="0.0" width="18.5" height="12"/>
-                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="10"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="GMT-c3-IaD">
                                 <rect key="frame" x="0.0" y="71.5" width="198" height="43"/>
                                 <subviews>
@@ -86,45 +75,57 @@
                                             <constraint firstAttribute="height" constant="1" id="meA-vy-S88"/>
                                         </constraints>
                                     </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="xX3-ra-hml">
-                                        <rect key="frame" x="73" y="9" width="125" height="34"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gbd-tA-U8n">
+                                        <rect key="frame" x="33" y="9" width="165" height="34"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sur-6E-MdE" customClass="AppButton" customModule="Tara" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="56" height="34"/>
-                                                <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="14"/>
-                                                <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
-                                                <state key="normal" title="Reject">
-                                                    <color key="titleColor" name="appRedColor"/>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                        <real key="value" value="1"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" name="appRedColor"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="rejectBtnAction:" destination="Kps-EH-taQ" eventType="touchUpInside" id="cxL-0s-E31"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Uw-5x-Mf2" customClass="AppButton" customModule="Tara" customModuleProvider="target">
-                                                <rect key="frame" x="64" y="0.0" width="61" height="34"/>
-                                                <color key="backgroundColor" name="appRedColor"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="34" id="qn8-hE-aTf"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="14"/>
-                                                <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
-                                                <state key="normal" title="Accept">
-                                                    <color key="titleColor" name="collectionViewBackground"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="acceptBtnAction:" destination="Kps-EH-taQ" eventType="touchUpInside" id="njZ-pG-3bY"/>
-                                                </connections>
-                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="xX3-ra-hml">
+                                                <rect key="frame" x="0.0" y="0.0" width="157" height="34"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sur-6E-MdE" customClass="AppButton" customModule="Tara" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="88" height="34"/>
+                                                        <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="14"/>
+                                                        <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
+                                                        <state key="normal" title="Reject">
+                                                            <color key="titleColor" name="appRedColor"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                <real key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" name="appRedColor"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="rejectBtnAction:" destination="Kps-EH-taQ" eventType="touchUpInside" id="cxL-0s-E31"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Uw-5x-Mf2" customClass="AppButton" customModule="Tara" customModuleProvider="target">
+                                                        <rect key="frame" x="96" y="0.0" width="61" height="34"/>
+                                                        <color key="backgroundColor" name="appRedColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="34" id="qn8-hE-aTf"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="14"/>
+                                                        <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
+                                                        <state key="normal" title="Accept">
+                                                            <color key="titleColor" name="collectionViewBackground"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="acceptBtnAction:" destination="Kps-EH-taQ" eventType="touchUpInside" id="njZ-pG-3bY"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
-                                    </stackView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="xX3-ra-hml" secondAttribute="trailing" constant="8" id="6kS-m5-BJV"/>
+                                            <constraint firstItem="xX3-ra-hml" firstAttribute="leading" secondItem="gbd-tA-U8n" secondAttribute="leading" id="E4h-Tz-9Cr"/>
+                                            <constraint firstItem="xX3-ra-hml" firstAttribute="top" secondItem="gbd-tA-U8n" secondAttribute="top" id="mtU-IE-c82"/>
+                                            <constraint firstAttribute="bottom" secondItem="xX3-ra-hml" secondAttribute="bottom" id="oHZ-7i-eZf"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="198" id="xgm-KL-hnE"/>
@@ -137,8 +138,8 @@
                             <constraint firstItem="GMT-c3-IaD" firstAttribute="top" secondItem="cBW-N7-54y" secondAttribute="bottom" constant="20.5" id="B6e-le-kCo"/>
                             <constraint firstItem="GMT-c3-IaD" firstAttribute="leading" secondItem="7T7-rS-tQb" secondAttribute="leading" id="BYg-ja-typ"/>
                             <constraint firstItem="cBW-N7-54y" firstAttribute="centerX" secondItem="7T7-rS-tQb" secondAttribute="centerX" id="IjU-qc-Tfh"/>
-                            <constraint firstAttribute="trailing" secondItem="GMT-c3-IaD" secondAttribute="trailing" constant="10" id="OSX-k3-xLr"/>
-                            <constraint firstItem="GXT-uJ-3Kg" firstAttribute="width" secondItem="7T7-rS-tQb" secondAttribute="width" multiplier="0.975369" id="dXc-kN-xEX"/>
+                            <constraint firstAttribute="trailing" secondItem="GMT-c3-IaD" secondAttribute="trailing" id="OSX-k3-xLr"/>
+                            <constraint firstItem="GXT-uJ-3Kg" firstAttribute="width" secondItem="7T7-rS-tQb" secondAttribute="width" id="dXc-kN-xEX"/>
                             <constraint firstAttribute="bottom" secondItem="GMT-c3-IaD" secondAttribute="bottom" constant="10" id="nNE-uG-Ef2"/>
                         </constraints>
                     </view>
