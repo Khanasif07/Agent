@@ -99,6 +99,18 @@ extension UIView {
         self.layer.insertSublayer(shape, at: 1)
     }
     
+    /// Flip view horizontally.
+    func flipX() {
+        if !CommonFunctions.isEnglishSelected() {
+            transform = CGAffineTransform(scaleX: -transform.a, y: transform.d)
+        }
+    }
+    
+    /// Flip view vertically.
+    func flipY() {
+        transform = CGAffineTransform(scaleX: transform.a, y: -transform.d)
+    }
+    
     
     ///Sets the corner radius of the view
     @IBInspectable var cornerRadius: CGFloat {
@@ -968,3 +980,5 @@ class AppButton: UIButton {
            }
        }
 }
+
+
