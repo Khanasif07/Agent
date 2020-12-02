@@ -67,7 +67,7 @@ class WebViewController: BaseVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        CommonFunctions.showActivityLoader()
+       // CommonFunctions.showActivityLoader()
     }
     
     // MARK: - IBActions
@@ -116,12 +116,12 @@ extension WebViewController: WKUIDelegate,WKNavigationDelegate {
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        CommonFunctions.hideActivityLoader()
+       // CommonFunctions.hideActivityLoader()
         
     }
     
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-        CommonFunctions.hideActivityLoader()
+      //  CommonFunctions.hideActivityLoader()
         
     }
     
