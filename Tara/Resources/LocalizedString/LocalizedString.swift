@@ -422,7 +422,16 @@ enum LocalizedString : String {
 
 
 extension LocalizedString {
+    
     var localized : String {
-        return self.rawValue.localized
+        let language = AppUserDefaults.value(forKey: .language).intValue
+        guard let selectedLang = AppLanguage(rawValue: language) else { return self.rawValue.localizedString(lang: "en") }
+        switch selectedLang {
+        case .english:
+            return self.rawValue.localizedString(lang: "en")
+        case .arabic:
+            return self.rawValue.localizedString(lang: "ar")
+        }
+        // return self.rawValue.localized
     }
 }

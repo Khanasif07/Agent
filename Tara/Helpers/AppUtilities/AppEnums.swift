@@ -256,3 +256,9 @@ enum EditProfileFrom {
     case profile
     case none
 }
+
+enum AppLanguage : Int{
+    case english = 0
+    case arabic = 1
+}
+
