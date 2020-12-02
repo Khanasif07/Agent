@@ -165,4 +165,11 @@ class CommonFunctions {
             
         }
     }
+    
+    //Return true if Selected Language is English otherwise false
+    class func isEnglishSelected() -> Bool {
+        let language = AppUserDefaults.value(forKey: .language).intValue
+        let selectedLanguage = AppLanguage(rawValue: language)
+        return selectedLanguage == .english
+    }
 }

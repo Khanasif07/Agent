@@ -26,6 +26,7 @@ class ProfileUserInternalCell: UITableViewCell {
     
     public func populateCell(title: String,img: UIImage){
         self.langLbl.isHidden = (title == LocalizedString.changeLanguage.localized) ? false : true
+        langLbl.text = CommonFunctions.isEnglishSelected() ? "EN" : "AR"
         profileImgView.image = img
         titleLbl.text = title
     }
