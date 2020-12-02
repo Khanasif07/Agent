@@ -65,6 +65,7 @@ extension ProfileVC {
     }
     
     private func tableViewSetUp(){
+        self.titleLbl.text = LocalizedString.profile.localized
         self.headerImgView.backgroundColor = UIColor.init(r: 28, g: 29, b: 36, alpha: 1.0)
         self.mainTableView.delegate = self
         self.mainTableView.dataSource = self
