@@ -21,8 +21,16 @@ class ChangeLanguageVC: BaseVC {
     
     // MARK: - Variables
     //===========================
-    let currentSelectedLang = AppUserDefaults.value(forKey: .currentLanguage).stringValue
- 
+    var currentSelectedLang : AppLanguage{
+        let language = AppUserDefaults.value(forKey: .language).intValue
+        if let selectedLang = AppLanguage(rawValue: language) {
+            return selectedLang
+        } else{
+            return .english
+    
+        }
+    }
+    
     // MARK: - Lifecycle
     //===========================
     override func viewDidLoad() {
@@ -47,7 +55,13 @@ class ChangeLanguageVC: BaseVC {
     }
 
     @IBAction func saveBtnAction(_sender : UIButton) {
-        
+        if englishBtn.isSelected {
+            AppUserDefaults.save(value: 0, forKey: .language)
+        }else {
+            AppUserDefaults.save(value: 1, forKey: .language)
+            
+        }
+        setupTextFont()
     }
 
     @IBAction func englishBtnAction(_sender : UIButton) {
@@ -59,6 +73,10 @@ class ChangeLanguageVC: BaseVC {
         englishBtn.isSelected = false
         arabicBtn.isSelected.toggle()
     }
+    
+    private func setupText(){
+        titleLbl.text = LocalizedString.changeLanguage.localized
+    }
 }
 
 extension ChangeLanguageVC {
@@ -66,7 +84,7 @@ extension ChangeLanguageVC {
     private func initialSetup(){
         setupTextFont()
         saveBtn.isEnabled = true
-        if currentSelectedLang == LocalizedString.english.localized{
+        if currentSelectedLang == .english {
             englishBtnAction(_sender: self.englishBtn)
         } else{
             arabicBtnAction(_sender:  self.arabicBtn)
