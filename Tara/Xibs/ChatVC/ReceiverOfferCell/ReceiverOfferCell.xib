@@ -48,21 +48,32 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7T7-rS-tQb">
                         <rect key="frame" x="60" y="25.5" width="198" height="124.5"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="cBW-N7-54y">
-                                <rect key="frame" x="60.5" y="8" width="77" height="43"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="cBW-N7-54y">
+                                <rect key="frame" x="68" y="8" width="62.5" height="57.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OFFER PRICE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VAM-cU-SdJ">
-                                        <rect key="frame" x="0.0" y="0.0" width="77" height="14"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Offer Price" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VAM-cU-SdJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="62.5" height="14"/>
                                         <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="12"/>
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PYU-vh-QHd">
-                                        <rect key="frame" x="32.5" y="17" width="12.5" height="26"/>
-                                        <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="22"/>
-                                        <color key="textColor" name="outgoingMessageBackground"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="firstBaseline" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="6Kb-Ru-3Bu">
+                                        <rect key="frame" x="0.0" y="14" width="62.5" height="43.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tDl-6Z-DeP">
+                                                <rect key="frame" x="0.0" y="8.5" width="33.5" height="35"/>
+                                                <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="30"/>
+                                                <color key="textColor" name="outgoingMessageBackground"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SAR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R7h-5j-3Hr">
+                                                <rect key="frame" x="36.5" y="24.5" width="26" height="15.5"/>
+                                                <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="13"/>
+                                                <color key="textColor" name="outgoingMessageBackground"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="GMT-c3-IaD">
@@ -135,10 +146,10 @@
                         <color key="backgroundColor" red="0.95686274510000002" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="cBW-N7-54y" firstAttribute="top" secondItem="7T7-rS-tQb" secondAttribute="top" constant="8" id="9ft-BH-Pb3"/>
-                            <constraint firstItem="GMT-c3-IaD" firstAttribute="top" secondItem="cBW-N7-54y" secondAttribute="bottom" constant="20.5" id="B6e-le-kCo"/>
                             <constraint firstItem="GMT-c3-IaD" firstAttribute="leading" secondItem="7T7-rS-tQb" secondAttribute="leading" id="BYg-ja-typ"/>
                             <constraint firstItem="cBW-N7-54y" firstAttribute="centerX" secondItem="7T7-rS-tQb" secondAttribute="centerX" id="IjU-qc-Tfh"/>
                             <constraint firstAttribute="trailing" secondItem="GMT-c3-IaD" secondAttribute="trailing" id="OSX-k3-xLr"/>
+                            <constraint firstItem="GMT-c3-IaD" firstAttribute="top" secondItem="cBW-N7-54y" secondAttribute="bottom" constant="6" id="Ve3-Q8-EKt"/>
                             <constraint firstItem="GXT-uJ-3Kg" firstAttribute="width" secondItem="7T7-rS-tQb" secondAttribute="width" id="dXc-kN-xEX"/>
                             <constraint firstAttribute="bottom" secondItem="GMT-c3-IaD" secondAttribute="bottom" constant="10" id="nNE-uG-Ef2"/>
                         </constraints>
@@ -161,7 +172,7 @@
             <connections>
                 <outlet property="acceptBtn" destination="5Uw-5x-Mf2" id="tW4-fY-bJ3"/>
                 <outlet property="msgContainerView" destination="7T7-rS-tQb" id="tF2-GC-pdO"/>
-                <outlet property="priceLbl" destination="PYU-vh-QHd" id="2ds-PM-HHY"/>
+                <outlet property="priceLbl" destination="tDl-6Z-DeP" id="1E2-WO-fLG"/>
                 <outlet property="rejectBtn" destination="Sur-6E-MdE" id="ss3-Fe-APW"/>
                 <outlet property="userImgView" destination="0Bx-N1-lmh" id="FSz-t5-cTI"/>
                 <outlet property="userNameLbl" destination="EIf-Qf-ksA" id="HDA-Df-Efd"/>

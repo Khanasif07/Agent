@@ -39,7 +39,6 @@ class ReceiverOfferCell: UITableViewCell {
     
     @IBAction func rejectBtnAction(_ sender: UIButton) {
         rejectBtnTapped?()
-
     }
     
 }

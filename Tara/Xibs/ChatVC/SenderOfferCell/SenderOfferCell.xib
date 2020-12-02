@@ -48,75 +48,98 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YqA-gp-fZK">
                         <rect key="frame" x="99" y="25.5" width="208" height="124.5"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="3Sf-ia-hTb">
-                                <rect key="frame" x="0.0" y="8" width="198" height="106"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="3Sf-ia-hTb">
+                                <rect key="frame" x="0.0" y="8" width="208" height="106"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="POW-hu-coH">
-                                        <rect key="frame" x="0.0" y="0.0" width="198" height="43"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="POW-hu-coH">
+                                        <rect key="frame" x="0.0" y="0.0" width="208" height="63"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OFFER PRICE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DAg-Y2-knR">
-                                                <rect key="frame" x="60.5" y="0.0" width="77" height="14"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Offer Price" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DAg-Y2-knR">
+                                                <rect key="frame" x="75.5" y="0.0" width="57.5" height="14"/>
                                                 <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="12"/>
                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oWC-CZ-jbv">
-                                                <rect key="frame" x="93" y="17" width="12.5" height="26"/>
-                                                <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="22"/>
-                                                <color key="textColor" name="outgoingMessageBackground"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="firstBaseline" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="UH4-UF-BH2">
+                                                <rect key="frame" x="73" y="17" width="62.5" height="46"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8rI-TH-Jv7">
+                                                        <rect key="frame" x="0.0" y="11" width="33.5" height="35"/>
+                                                        <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="30"/>
+                                                        <color key="textColor" name="outgoingMessageBackground"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SAR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lhV-0f-ywH">
+                                                        <rect key="frame" x="36.5" y="27" width="26" height="15.5"/>
+                                                        <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="13"/>
+                                                        <color key="textColor" name="outgoingMessageBackground"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="V87-hi-fGN">
-                                        <rect key="frame" x="0.0" y="63" width="198" height="43"/>
+                                        <rect key="frame" x="0.0" y="63" width="208" height="43"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xgs-pX-d5A">
-                                                <rect key="frame" x="0.0" y="0.0" width="198" height="1"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="208" height="1"/>
                                                 <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="A3r-o8-zKb"/>
                                                 </constraints>
                                             </view>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="jTE-4O-E4D">
-                                                <rect key="frame" x="73" y="9" width="125" height="34"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gb2-tt-I5W">
+                                                <rect key="frame" x="43" y="9" width="165" height="34"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u4D-7l-RDQ" customClass="AppButton" customModule="Tara" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="56" height="34"/>
-                                                        <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="14"/>
-                                                        <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
-                                                        <state key="normal" title="Reject">
-                                                            <color key="titleColor" name="appRedColor"/>
-                                                        </state>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                <real key="value" value="1"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                <color key="value" name="appRedColor"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                        <connections>
-                                                            <action selector="rejectBtnAction:" destination="hYU-1b-gpD" eventType="touchUpInside" id="iVy-yh-x6V"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gai-aB-y1V" customClass="AppButton" customModule="Tara" customModuleProvider="target">
-                                                        <rect key="frame" x="64" y="0.0" width="61" height="34"/>
-                                                        <color key="backgroundColor" name="appRedColor"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="34" id="78x-vB-n2g"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="14"/>
-                                                        <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
-                                                        <state key="normal" title="Accept">
-                                                            <color key="titleColor" name="collectionViewBackground"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="acceptBtnAction:" destination="hYU-1b-gpD" eventType="touchUpInside" id="bKB-vt-Fak"/>
-                                                        </connections>
-                                                    </button>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="jTE-4O-E4D">
+                                                        <rect key="frame" x="0.0" y="0.0" width="155" height="34"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u4D-7l-RDQ" customClass="AppButton" customModule="Tara" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="86" height="34"/>
+                                                                <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="14"/>
+                                                                <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
+                                                                <state key="normal" title="Reject">
+                                                                    <color key="titleColor" name="appRedColor"/>
+                                                                </state>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                        <real key="value" value="1"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                        <color key="value" name="appRedColor"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <action selector="rejectBtnAction:" destination="hYU-1b-gpD" eventType="touchUpInside" id="iVy-yh-x6V"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gai-aB-y1V" customClass="AppButton" customModule="Tara" customModuleProvider="target">
+                                                                <rect key="frame" x="94" y="0.0" width="61" height="34"/>
+                                                                <color key="backgroundColor" name="appRedColor"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="34" id="78x-vB-n2g"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="14"/>
+                                                                <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
+                                                                <state key="normal" title="Accept">
+                                                                    <color key="titleColor" name="collectionViewBackground"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="acceptBtnAction:" destination="hYU-1b-gpD" eventType="touchUpInside" id="bKB-vt-Fak"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
                                                 </subviews>
-                                            </stackView>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="jTE-4O-E4D" firstAttribute="top" secondItem="gb2-tt-I5W" secondAttribute="top" id="9QT-mb-IRZ"/>
+                                                    <constraint firstItem="jTE-4O-E4D" firstAttribute="leading" secondItem="gb2-tt-I5W" secondAttribute="leading" id="tGY-YF-W0m"/>
+                                                    <constraint firstAttribute="trailing" secondItem="jTE-4O-E4D" secondAttribute="trailing" constant="10" id="tmo-fF-HqJ"/>
+                                                    <constraint firstAttribute="bottom" secondItem="jTE-4O-E4D" secondAttribute="bottom" id="yxS-LT-TsS"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -124,23 +147,12 @@
                                     <constraint firstItem="xgs-pX-d5A" firstAttribute="width" secondItem="3Sf-ia-hTb" secondAttribute="width" id="Kky-Vk-uHY"/>
                                 </constraints>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Thk-di-uim">
-                                <rect key="frame" x="114" y="116.5" width="18.5" height="12"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--:--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uxz-JI-CIt">
-                                        <rect key="frame" x="0.0" y="0.0" width="18.5" height="12"/>
-                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="10"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.95686274510000002" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="3Sf-ia-hTb" secondAttribute="bottom" constant="10.5" id="1fl-7a-E2S"/>
                             <constraint firstItem="3Sf-ia-hTb" firstAttribute="top" secondItem="YqA-gp-fZK" secondAttribute="top" constant="8" id="D6U-bT-eF8"/>
-                            <constraint firstAttribute="trailing" secondItem="3Sf-ia-hTb" secondAttribute="trailing" constant="10" id="haE-Yc-rPf"/>
+                            <constraint firstAttribute="trailing" secondItem="3Sf-ia-hTb" secondAttribute="trailing" id="haE-Yc-rPf"/>
                             <constraint firstItem="3Sf-ia-hTb" firstAttribute="leading" secondItem="YqA-gp-fZK" secondAttribute="leading" id="laW-dt-BDt"/>
                         </constraints>
                     </view>
@@ -163,7 +175,7 @@
                 <outlet property="acceptBtn" destination="gai-aB-y1V" id="GdV-nP-PuH"/>
                 <outlet property="btnStackView" destination="V87-hi-fGN" id="bDg-7u-CR6"/>
                 <outlet property="msgContainerView" destination="YqA-gp-fZK" id="4Vh-Ft-Uzi"/>
-                <outlet property="priceLbl" destination="oWC-CZ-jbv" id="lDU-TH-3vh"/>
+                <outlet property="priceLbl" destination="8rI-TH-Jv7" id="ate-gw-68J"/>
                 <outlet property="rejectBtn" destination="u4D-7l-RDQ" id="xW1-en-EH9"/>
                 <outlet property="userImgView" destination="ed8-Ne-l9b" id="gVB-8Y-wwV"/>
                 <outlet property="userNameLbl" destination="87P-SN-oWT" id="AF1-Vu-Oym"/>

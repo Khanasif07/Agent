@@ -33,7 +33,6 @@ class WebViewController: BaseVC {
         
         var url : String {
             switch self {
-                
             case .aboutUs:
                 return "https://google.com"
             case .privacyPolicy:
@@ -41,7 +40,7 @@ class WebViewController: BaseVC {
             case .termsCondition:
                 return "https://google.com"
             case .payment:
-                return "https://google.com"
+                return baseUrl + WebServices.EndPoint.payment.rawValue
                 
             }
         }
@@ -57,6 +56,7 @@ class WebViewController: BaseVC {
     var webViewType : WebViewType = .aboutUs
     var webView : WKWebView!
     var request : URLRequest!
+    var requestId : String = ""
     
     // MARK: - Lifecycle
     //===========================
@@ -97,6 +97,12 @@ class WebViewController: BaseVC {
     }
     
     private func loadUrl() {
+        if webViewType == .payment{
+            guard let url = URL(string: webViewType.url + "/" + self.requestId) else {return}
+            request = URLRequest(url: url)
+            webView.load(request)
+            return
+        }
         guard let url = URL(string: webViewType.url) else {return}
         request = URLRequest(url: url)
         webView.load(request)

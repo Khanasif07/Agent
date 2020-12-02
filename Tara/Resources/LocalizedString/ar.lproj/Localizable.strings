@@ -34,7 +34,7 @@
 "home" = "Home";
 "setting" = "Setting";
 "notification" = "Notification";
-"profile" = "Profile";
+"profile" = "الملف الشخصي";
 "notifications" = "Notifications";
 
 // MARK: - Tutorial Screen
@@ -286,7 +286,7 @@
 "ratingHighToLow" = "Rating: High to Low";
 "imageUploadFailed" = "Image upload failed";
 "applyFilters" = "Apply Filters";
-"editProfile" = "Edit Profile";
+"editProfile" = "تعديل الملف الشخصي";
 "save" = "Save";
 "enterOldPassWord" = "Enter Old Password";
 "enterNewPassWord" = "Enter New Password";

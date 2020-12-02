@@ -658,9 +658,10 @@ enum AppRouter {
         
     }
     
-    static func goToWebVC(vc: UIViewController, screenType : WebViewController.WebViewType) {
+    static func goToWebVC(vc: UIViewController, screenType : WebViewController.WebViewType,requestId: String = "") {
         let scene = WebViewController.instantiate(fromAppStoryboard: .PostLogin)
         scene.webViewType = screenType
+        scene.requestId = requestId
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     

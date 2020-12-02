@@ -419,6 +419,7 @@ extension OneToOneChatVC {
         messagesTableView.registerCell(with: ReceiverAudioCell.self)
         messagesTableView.registerCell(with: ReceiverOfferCell.self)
         messagesTableView.registerCell(with: PaymentCardCell.self)
+        messagesTableView.registerCell(with: ReceiverPaymentCardCell.self)
         messagesTableView.registerCell(with: DayValueCell.self)
     }
     
@@ -787,14 +788,14 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                 receiverOfferCell.userNameLbl.text = self.firstName
                 receiverOfferCell.userImgView.setImage_kf(imageString: userImage, placeHolderImage: isSupportChat ? #imageLiteral(resourceName: "splashUpdated") : #imageLiteral(resourceName: "placeHolder"), loader: false)
                 receiverOfferCell.userImgView.backgroundColor = AppColors.fontTertiaryColor
-                receiverOfferCell.priceLbl.text = "\(model.price)" + "SAR"
+                receiverOfferCell.priceLbl.text = "\(model.price)"
                 receiverOfferCell.userImgView.addGestureRecognizer(imgTap)
                 return receiverOfferCell
             case  MessageType.payment.rawValue:
                 let receiverPaymentCell = tableView.dequeueCell(with: PaymentCardCell.self)
                 receiverPaymentCell.payNowBtnAction = {[weak self] (sender) in
                     guard let `self` = self else { return }
-                    AppRouter.goToWebVC(vc: self, screenType: .payment)
+                    AppRouter.goToWebVC(vc: self, screenType: .payment,requestId: self.requestId)
                 }
                 
                 receiverPaymentCell.declineBtnAction = {[weak self] (sender) in
@@ -905,10 +906,17 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                 }
                 senderOfferCell.userNameLbl.text = "You"
                 senderOfferCell.userImgView.setImage_kf(imageString: UserModel.main.image, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
-                senderOfferCell.priceLbl.text = "\(model.price)" + "SAR"
+                senderOfferCell.priceLbl.text = "\(model.price)"
                 self.setTapGesture(view: senderOfferCell.msgContainerView, indexPath: indexPath)
                 senderOfferCell.userImgView.addGestureRecognizer(imgTap)
                 return senderOfferCell
+            case  MessageType.payment.rawValue:
+                let receiverPaymentCell = tableView.dequeueCell(with: ReceiverPaymentCardCell.self)
+                receiverPaymentCell.amountLabel.text = "\(model.price)"
+                receiverPaymentCell.receiverImgView.setImage_kf(imageString: UserModel.main.image, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
+                receiverPaymentCell.receiverNameLbl.text = "You"
+                receiverPaymentCell.receiverImgView.backgroundColor = AppColors.fontTertiaryColor
+                return receiverPaymentCell
             default:
                 let senderCell = tableView.dequeueCell(with: SenderMessageCell.self)
                 senderCell.configureCellWith(model: model)
