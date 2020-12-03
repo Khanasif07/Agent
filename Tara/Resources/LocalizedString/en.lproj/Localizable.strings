@@ -48,6 +48,7 @@
 "accepted" = "Accepted";
 "thisBidIsProposedBy" = "This bid is proposed by ";
 "asPerYourTyreService" = " as per your tyre\nservice request.";
+"status" = "Status";
 
 // MARK: - Login VC Values
 //==============================

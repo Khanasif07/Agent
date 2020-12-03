@@ -1438,6 +1438,7 @@ Service Center</string>
                         <outlet property="nameTextField" destination="3y4-WA-o5N" id="r7g-52-da8"/>
                         <outlet property="saveBtn" destination="XW3-jY-bRP" id="dVR-Po-2WU"/>
                         <outlet property="titleLbl" destination="RHU-OI-MmS" id="iKb-fx-jja"/>
+                        <outlet property="txtFieldStackView" destination="Vnd-5d-Xou" id="RlY-pl-nvC"/>
                         <outlet property="userImage" destination="jNy-jp-svR" id="DCH-Cg-ueN"/>
                     </connections>
                 </viewController>

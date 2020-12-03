@@ -120,6 +120,7 @@
 "saved_cards" = "Saved Cards";
 "added_location" = "Added Location";
 "change_password" = "Change Password";
+"status" = "الحالة:";
 
 // MARK: - Profile Setting VC Values
 //==============================

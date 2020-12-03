@@ -25,6 +25,7 @@ class EditProfileVC: BaseVC {
     @IBOutlet weak var editImgBtn: UIButton!
     @IBOutlet weak var saveBtn: AppButton!
     @IBOutlet weak var countryCodeLbl: UILabel!
+    @IBOutlet weak var txtFieldStackView: UIStackView!
 
     
     // MARK: - Variables
@@ -117,6 +118,7 @@ extension EditProfileVC: UITextFieldDelegate {
             txtField?.font = AppFonts.NunitoSansBold.withSize(14.0)
             txtField?.textColor = AppColors.fontPrimaryColor
         }
+        CommonFunctions.setupTextFieldAlignment([nameTextField,emailTextField,mobileNoTextField])
         mobileNoTextField.keyboardType = .numberPad
     }
     

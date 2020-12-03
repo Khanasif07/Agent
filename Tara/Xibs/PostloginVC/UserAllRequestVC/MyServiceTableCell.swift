@@ -50,6 +50,7 @@ class MyServiceTableCell: UITableViewCell {
         logoImgView.round(radius: 4.0)
         statusView.round(radius: 4.0)
         requestNoLbl.text = "Request No: "
+        statusLbl.text = LocalizedString.status.localized
         dataContainerView.addShadow(cornerRadius: 5, color: UIColor.black16, offset: CGSize(width: 0.5, height: 0.5), opacity: 1, shadowRadius: 5)
     }
     

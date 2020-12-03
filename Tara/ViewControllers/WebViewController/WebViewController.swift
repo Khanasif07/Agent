@@ -122,7 +122,6 @@ extension WebViewController: WKUIDelegate,WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
       //  CommonFunctions.hideActivityLoader()
-        
     }
     
     func webViewDidClose(_ webView: WKWebView) {

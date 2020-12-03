@@ -13,9 +13,11 @@ class ProfileUserInternalCell: UITableViewCell {
     @IBOutlet weak var langLbl: UILabel!
     @IBOutlet weak var profileImgView: UIImageView!
     @IBOutlet weak var titleLbl: UILabel!
-    
+    @IBOutlet weak var icArrowBtn: UIButton!
+
     override func awakeFromNib() {
         super.awakeFromNib()
+        icArrowBtn.flipX()
         profileImgView.setBorder(width: 1.0, color: UIColor.init(r: 225, g: 239, b: 244, alpha: 1.0))
     }
     

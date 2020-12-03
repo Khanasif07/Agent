@@ -12,6 +12,7 @@ import NVActivityIndicatorView
 import MobileCoreServices
 import AVFoundation
 import AVKit
+import SkyFloatingLabelTextField
 
 class CommonFunctions {
 
@@ -166,10 +167,23 @@ class CommonFunctions {
         }
     }
     
+    class func setLanguage(lang : Int){
+        AppUserDefaults.save(value: lang, forKey: .language)
+        isCurrentUserType == .garage ? AppRouter.goToGarageHome() :  AppRouter.goToUserHome()
+        UIView.appearance().semanticContentAttribute = lang == 1 ? .forceRightToLeft : .forceLeftToRight
+    }
+    
     //Return true if Selected Language is English otherwise false
     class func isEnglishSelected() -> Bool {
         let language = AppUserDefaults.value(forKey: .language).intValue
         let selectedLanguage = AppLanguage(rawValue: language)
         return selectedLanguage == .english
+    }
+    
+    class func setupTextFieldAlignment(_ txtArr : [SkyFloatingLabelTextField]){
+        txtArr.forEach { (textField) in
+            textField.textAlignment = CommonFunctions.isEnglishSelected() ? .left : .right
+            textField.titleLabel.textAlignment = CommonFunctions.isEnglishSelected() ? .left : .right
+        }
     }
 }

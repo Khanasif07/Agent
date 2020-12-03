@@ -48,6 +48,7 @@ class ChangeLanguageVC: BaseVC {
         super.viewDidLayoutSubviews()
         containerView.createShadow(shadowColor: #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1))
     }
+    
     // MARK: - IBActions
     //===========================
     @IBAction func backBtnAction(_sender : Any) {
@@ -55,16 +56,7 @@ class ChangeLanguageVC: BaseVC {
     }
 
     @IBAction func saveBtnAction(_sender : UIButton) {
-        if englishBtn.isSelected {
-            AppUserDefaults.save(value: 0, forKey: .language)
-        }else {
-            AppUserDefaults.save(value: 1, forKey: .language)
-        }
-        if isCurrentUserType == .garage{
-            AppRouter.goToGarageHome()
-        } else {
-            AppRouter.goToUserHome()
-        }
+        CommonFunctions.setLanguage(lang: englishBtn.isSelected ? 0 : 1)
     }
 
     @IBAction func englishBtnAction(_sender : UIButton) {

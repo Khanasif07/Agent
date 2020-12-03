@@ -416,7 +416,7 @@ enum LocalizedString : String {
     case no_service_request_available
     case kindly_provide_the_access_to_record_audio
     case please_enter_different_amount_to_edit_bid
-    
+    case status
    
 }
 
@@ -424,9 +424,11 @@ enum LocalizedString : String {
 extension LocalizedString {
     
     var localized : String {
+
         let language = AppUserDefaults.value(forKey: .language).intValue
         guard let selectedLang = AppLanguage(rawValue: language) else { return self.rawValue.localizedString(lang: "en") }
         switch selectedLang {
+            
         case .english:
             return self.rawValue.localizedString(lang: "en")
         case .arabic:
