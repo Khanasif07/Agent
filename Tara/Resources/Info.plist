@@ -38,6 +38,14 @@
 				<string>fb331106654612712</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.tara</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
@@ -56,13 +64,13 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>Tara needs permisson</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Tara needs permisson</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>Tara needs permisson</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Tara needs permisson</string>
 	<key>NSMicrophoneUsageDescription</key>
+	<string>Tara needs permisson</string>
+	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Tara needs permisson</string>
 	<key>UIAppFonts</key>
 	<array>

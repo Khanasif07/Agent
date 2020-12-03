@@ -1873,8 +1873,8 @@ extension OneToOneChatVC : OneToOneChatViewModelDelegate{
             garageAddressLbl.text = chatViewModel.chatData.garageAddress
             garageNameLbl.text = chatViewModel.chatData.garageName
         }
-        CommonFunctions.delay(delay: 0.2) {
-            //  self.scrollMsgToBottom(animated: true)
+        CommonFunctions.delay(delay: 0.0) {
+              self.scrollMsgToBottom(animated: true)
         }
     }
     
