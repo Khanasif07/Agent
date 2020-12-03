@@ -238,20 +238,20 @@ extension AppDelegate{
     
     func applicationDidEnterBackground(_ application: UIApplication) {
     }
-    
-    //Deep Linking
+}
+
+//MARK:- Deep Linking
+//=========================
+extension AppDelegate {
     func application(_ app: UIApplication, open url: URL,
                      options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         if let scheme = url.scheme,
             scheme.localizedCaseInsensitiveCompare("com.tara") == .orderedSame,
             let view = url.host {
-            
             var parameters: [String: String] = [:]
             URLComponents(url: url, resolvingAgainstBaseURL: false)?.queryItems?.forEach {
                 parameters[$0.name] = $0.value
             }
-            
-//            redirect(to: view, with: parameters)
         }
         return true
     }

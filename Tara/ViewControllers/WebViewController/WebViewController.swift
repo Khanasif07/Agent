@@ -117,7 +117,14 @@ extension WebViewController: WKUIDelegate,WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
        // CommonFunctions.hideActivityLoader()
-        
+        if let url = webView.url?.absoluteString{
+            if url.contains(s: "paymentRedirectUrl"){
+                CommonFunctions.delay(delay: 1.0) {
+                    self.pop()
+                }
+            }
+        }
+        printDebug(webView.url?.absoluteString)
     }
     
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
