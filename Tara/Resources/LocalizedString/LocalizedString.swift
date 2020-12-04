@@ -126,6 +126,7 @@ enum LocalizedString : String {
     case oilSevices
     case batteryServices
     case offerAccepted
+    case offerRejected
     case offerReceived
     case noOffers
     case costLowToHigh
@@ -417,6 +418,13 @@ enum LocalizedString : String {
     case kindly_provide_the_access_to_record_audio
     case please_enter_different_amount_to_edit_bid
     case status
+    
+    // MARK: - Chat Screen
+    //==============================
+    case payNow
+    case decline
+    case paymentPaid
+    case paymentDeclined
    
 }
 
@@ -428,12 +436,10 @@ extension LocalizedString {
         let language = AppUserDefaults.value(forKey: .language).intValue
         guard let selectedLang = AppLanguage(rawValue: language) else { return self.rawValue.localizedString(lang: "en") }
         switch selectedLang {
-            
         case .english:
             return self.rawValue.localizedString(lang: "en")
         case .arabic:
             return self.rawValue.localizedString(lang: "ar")
         }
-        // return self.rawValue.localized
     }
 }

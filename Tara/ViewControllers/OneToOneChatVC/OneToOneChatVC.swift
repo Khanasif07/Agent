@@ -837,19 +837,19 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                     receiverPaymentCell.payNowBtn.isHidden = false
                     receiverPaymentCell.declineBtn.isHidden = false
                     receiverPaymentCell.payNowBtn.isUserInteractionEnabled = true
-                    receiverPaymentCell.payNowBtn.setTitle("Pay Now", for: .normal)
-                    receiverPaymentCell.declineBtn.setTitle("Decline", for: .normal)
+                    receiverPaymentCell.payNowBtn.setTitle(LocalizedString.payNow.localized, for: .normal)
+                    receiverPaymentCell.declineBtn.setTitle(LocalizedString.decline.localized, for: .normal)
                 }
                 else if model.messageStatus == 2 { //payment paid accpted
                     receiverPaymentCell.payNowBtn.isHidden = false
                     receiverPaymentCell.payNowBtn.isUserInteractionEnabled = false
-                    receiverPaymentCell.payNowBtn.setTitle("Payment Paid", for: .normal)
+                    receiverPaymentCell.payNowBtn.setTitle(LocalizedString.paymentPaid.localized, for: .normal)
                     receiverPaymentCell.declineBtn.isHidden = true
                 }
                 else if model.messageStatus == 3 { //payment Decline
                     receiverPaymentCell.payNowBtn.isHidden = false
                     receiverPaymentCell.payNowBtn.isUserInteractionEnabled = false
-                    receiverPaymentCell.payNowBtn.setTitle("Payment Declined", for: .normal)
+                    receiverPaymentCell.payNowBtn.setTitle(LocalizedString.paymentDeclined.localized, for: .normal)
                     receiverPaymentCell.declineBtn.isHidden = true
                 }
                 receiverPaymentCell.amountLabel.text = "\(model.price)"
@@ -944,14 +944,14 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                     senderOfferCell.btnStackView.isHidden = false
                     senderOfferCell.acceptBtn.isHidden = false
                     senderOfferCell.acceptBtn.isUserInteractionEnabled = false
-                    senderOfferCell.acceptBtn.setTitle("Offer Accepted", for: .normal)
+                    senderOfferCell.acceptBtn.setTitle(LocalizedString.offerAccepted.localized, for: .normal)
                     senderOfferCell.rejectBtn.isHidden = true
                 }
                 else if model.messageStatus == 3 { //offer rejected
                     senderOfferCell.btnStackView.isHidden = false
                     senderOfferCell.acceptBtn.isHidden = false
                     senderOfferCell.acceptBtn.isUserInteractionEnabled = false
-                    senderOfferCell.acceptBtn.setTitle("Offer Rejected", for: .normal)
+                    senderOfferCell.acceptBtn.setTitle(LocalizedString.offerRejected.localized, for: .normal)
                     senderOfferCell.rejectBtn.isHidden = true
                 }
                 senderOfferCell.userNameLbl.text = "You"
@@ -973,14 +973,14 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                     receiverPaymentCell.buttonsView.isHidden = false
                     receiverPaymentCell.payNowBtn.isHidden = false
                     receiverPaymentCell.payNowBtn.isUserInteractionEnabled = false
-                    receiverPaymentCell.payNowBtn.setTitle("Payment Paid", for: .normal)
+                    receiverPaymentCell.payNowBtn.setTitle(LocalizedString.paymentPaid.localized, for: .normal)
                     receiverPaymentCell.declineBtn.isHidden = true
                 }
                 else if model.messageStatus == 3 { //payment Decline
                     receiverPaymentCell.buttonsView.isHidden = false
                     receiverPaymentCell.payNowBtn.isHidden = false
                     receiverPaymentCell.payNowBtn.isUserInteractionEnabled = false
-                    receiverPaymentCell.payNowBtn.setTitle("Payment Declined", for: .normal)
+                    receiverPaymentCell.payNowBtn.setTitle(LocalizedString.paymentDeclined.localized, for: .normal)
                     receiverPaymentCell.declineBtn.isHidden = true
                 }
                 receiverPaymentCell.amountLabel.text = "\(model.price)"
