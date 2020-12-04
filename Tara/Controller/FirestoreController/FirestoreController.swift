@@ -234,7 +234,7 @@ class FirestoreController:NSObject{
     
     //MARK:- CREATE LAST MESSAGE NODE AFTER DELETE MESSAGE
     //===============================
-    static func createLastMessageNodeAfterDeleteMessage(roomId:String,messageText:String,messageTime:Timestamp,messageId:String,messageType:String,messageStatus:Int,senderId:String,receiverId:String,mediaUrl:String,blocked: Bool, thumbNailURL: String,messageDuration: Int,price: Int, amIBlocked : Bool) {
+    static func createLastMessageNodeAfterDeleteMessage(roomId:String,messageText:String,messageTime:Timestamp,messageId:String,messageType:String,messageStatus:Int,senderId:String,receiverId:String,mediaUrl:String,blocked: Bool, thumbNailURL: String,messageDuration: Int,price: Double, amIBlocked : Bool) {
         
         db.collection(ApiKey.lastMessage)
             .document(roomId)
