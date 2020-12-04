@@ -248,6 +248,18 @@ extension UserAllOffersVC : UserAllOfferVMDelegate {
     }
     
     func getUserBidDataSuccess(message: String){
+        if let acceptedModel = viewModel.userBidListingArr.first{
+            switch acceptedModel.paymentStatus {
+            case .pending:
+                payNowBtn.setTitle(LocalizedString.pending.localized + " " + "\(acceptedModel.getMinAmount().0)" , for: .normal)
+            case .paid:
+                payNowBtn.setTitle(LocalizedString.paid.localized + " " + "\(acceptedModel.getMinAmount().0)", for: .normal)
+            case .refunded:
+                payNowBtn.setTitle(LocalizedString.refunded.localized, for: .normal)
+            case .failed:
+                payNowBtn.setTitle(LocalizedString.failed.localized, for: .normal)
+            }
+        }
         mainTableView.reloadData()
     }
     

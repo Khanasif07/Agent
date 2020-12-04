@@ -426,3 +426,7 @@
 "decline" = "Decline";
 "paymentPaid" = "Payment Paid";
 "paymentDeclined" = "Payment Declined";
+"pending" = "Payment Pending";
+"paid" = "Payment Paid";
+"refunded" = "Payment Refunded";
+"failed" = "Payment Failed";
