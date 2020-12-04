@@ -22,6 +22,7 @@ struct UserBidModel: Codable {
     var userId : String?
     var garageRequestId : String?
     let logo: String?
+    let garageRating: Int?
     
     enum CodingKeys: String, CodingKey {
         case id = "_id"
@@ -30,7 +31,7 @@ struct UserBidModel: Codable {
         case requestID = "requestId"
         case garageID = "garageId"
         case garageRequestId
-        case distance, createdAt, garageName,garage, countries, logo ,garageAddress
+        case distance, createdAt, garageName,garage, countries, logo ,garageAddress, garageRating
     }
     
     init(){
@@ -48,6 +49,7 @@ struct UserBidModel: Codable {
         countries = []
         logo = ""
         garageAddress = ""
+        garageRating = 0
     }
     
     func getMinAmount() -> (Double, Int){

@@ -66,6 +66,7 @@ class UserOffersTableCell: UITableViewCell {
     }
     
     func bindData(_ model: UserBidModel,isBidAccepted : Bool) {
+        ratingLbl.text = model.garageRating?.description
         offerSubTitleLbl.text = model.garageAddress ?? "N/A"
         let distance = model.distance ?? 0.0
         distanceValueLbl.attributedText =  getAttributedString(value: "\(distance.truncate(places: 3))",attributedLabel: distanceValueLbl)
@@ -124,7 +125,7 @@ class UserOffersTableCell: UITableViewCell {
     func changeWithBlurView(isAdded: Bool) {
         imgBlurView.isHidden = isAdded
         blurView.isUserInteractionEnabled = isAdded
-        ratingImgView.backgroundColor =  isAdded ? #colorLiteral(red: 0.5411764706, green: 0.5843137255, blue: 0.6196078431, alpha: 0.8) : #colorLiteral(red: 0.7642653584, green: 0.7569509149, blue: 0.7566949725, alpha: 1)
+        ratingImgView.backgroundColor =  isAdded ? #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1) : #colorLiteral(red: 0.7642653584, green: 0.7569509149, blue: 0.7566949725, alpha: 1)
         ratingView.backgroundColor =  isAdded ? #colorLiteral(red: 0.5411764706, green: 0.5843137255, blue: 0.6196078431, alpha: 0.15) : #colorLiteral(red: 0.9171934724, green: 0.9099001288, blue: 0.9096190333, alpha: 1)
         offerTitleLbl.textColor =  isAdded ? AppColors.fontPrimaryColor : #colorLiteral(red: 0.1098039216, green: 0.1137254902, blue: 0.1411764706, alpha: 0.5)
         offerSubTitleLbl.textColor = isAdded ? AppColors.fontSecondaryColor : #colorLiteral(red: 0.3294117647, green: 0.337254902, blue: 0.3607843137, alpha: 0.5)
@@ -138,7 +139,7 @@ class UserOffersTableCell: UITableViewCell {
             distanceValueLbl.textColor =  #colorLiteral(red: 0.1098039216, green: 0.1137254902, blue: 0.1411764706, alpha: 0.5)
             tAValueLbl.textColor =  #colorLiteral(red: 0.1098039216, green: 0.1137254902, blue: 0.1411764706, alpha: 0.5)
         }
-        ratingLbl.textColor = isAdded ? #colorLiteral(red: 0.5411764706, green: 0.5843137255, blue: 0.6196078431, alpha: 0.8) : #colorLiteral(red: 0.1490196078, green: 0.1490196078, blue: 0.1490196078, alpha: 0.5)
+        ratingLbl.textColor = isAdded ? AppColors.fontPrimaryColor : #colorLiteral(red: 0.1490196078, green: 0.1490196078, blue: 0.1490196078, alpha: 0.5)
         
         dataContainerView.backgroundColor = isAdded ? #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1) : #colorLiteral(red: 0.9647058824, green: 0.968627451, blue: 0.9764705882, alpha: 1)
         viewProposalBtn.backgroundColor = isAdded ? AppColors.appRedColor : #colorLiteral(red: 0.6348647475, green: 0.6275323629, blue: 0.6272975802, alpha: 1)
