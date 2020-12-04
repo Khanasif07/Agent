@@ -45,26 +45,12 @@
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="AeA-u1-gmV">
-                                <rect key="frame" x="188.5" y="39" width="25.5" height="12"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11:30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cu8-19-Zd2">
-                                        <rect key="frame" x="0.0" y="0.0" width="25.5" height="12"/>
-                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="10"/>
-                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.95686274510000002" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="AeA-u1-gmV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="NMA-9g-pV6" secondAttribute="leading" constant="12" id="0Km-or-UJm"/>
-                            <constraint firstAttribute="trailing" secondItem="AeA-u1-gmV" secondAttribute="trailing" constant="10" id="6Sh-J2-sFS"/>
                             <constraint firstAttribute="bottom" secondItem="MrC-wd-aK0" secondAttribute="bottom" constant="12" id="E26-fj-GsH"/>
                             <constraint firstAttribute="trailing" secondItem="MrC-wd-aK0" secondAttribute="trailing" priority="999" constant="30" id="KbZ-CK-U2R"/>
                             <constraint firstItem="MrC-wd-aK0" firstAttribute="top" secondItem="NMA-9g-pV6" secondAttribute="top" constant="12" id="he9-Sb-T9t"/>
-                            <constraint firstAttribute="bottom" secondItem="AeA-u1-gmV" secondAttribute="bottom" constant="6" id="vEe-kP-mvb"/>
                             <constraint firstItem="MrC-wd-aK0" firstAttribute="leading" secondItem="NMA-9g-pV6" secondAttribute="leading" constant="12" id="ynb-r9-Btm"/>
                         </constraints>
                     </view>
@@ -263,7 +249,6 @@
                 <outlet property="paymentRequestLabel" destination="SJ2-Uq-zMC" id="Gte-3C-YiO"/>
                 <outlet property="receiverImgView" destination="T68-eD-CmR" id="unD-PT-aSA"/>
                 <outlet property="receiverNameLbl" destination="yj3-NH-Wam" id="qNK-L1-WkO"/>
-                <outlet property="timeLabel" destination="Cu8-19-Zd2" id="3Ha-iB-sjY"/>
             </connections>
             <point key="canvasLocation" x="138" y="43"/>
         </tableViewCell>

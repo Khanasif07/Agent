@@ -235,5 +235,6 @@ enum MessageType: String {
     case location = "location"
     case offer = "offer"
     case payment = "payment"
+    case paymentCompleted = "paymentCompleted"
     case bidEdit = "bidEdit"
 }

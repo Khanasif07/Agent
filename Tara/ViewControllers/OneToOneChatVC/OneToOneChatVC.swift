@@ -48,7 +48,6 @@ class OneToOneChatVC: BaseVC {
     let currentUserId = AppUserDefaults.value(forKey: .uid).stringValue
     var messageListing = [[Message]]()
     var isRoom = false
-    
     var messageId :String = ""
     var acceptedRejectBtnStatus: Bool = false
     
@@ -139,8 +138,6 @@ class OneToOneChatVC: BaseVC {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isTranslucent = true
         self.tabBarController?.tabBar.isHidden = true
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIApplication.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIApplication.keyboardWillHideNotification, object: nil)
         FirestoreController.isReceiverBlocked(senderId: currentUserId, receiverId: inboxModel.userId) { (bool) in
             self.isBlockedByMe = bool
         }
@@ -161,6 +158,25 @@ class OneToOneChatVC: BaseVC {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        //roomId:string,timeStamp:Any,
+        var inboxxUserId = ""
+        if self.requestId.isEmpty{
+            inboxxUserId = inboxModel.userId
+        } else {
+            inboxxUserId = inboxModel.userId + "_" + self.requestId
+        }
+        self.db.collection(ApiKey.inbox).document(currentUserId).collection(ApiKey.chat).document(inboxxUserId).getDocument(completion: { (document, error) in
+            if let doc = document {
+                let unreadMsgs = doc.data()?[ApiKey.unreadMessages] as? Int ?? 0
+                var diff = FirestoreController.ownUnreadCount - unreadMsgs
+                diff = diff <= 0 ? 0 : diff
+                
+                self.db.collection(ApiKey.inbox).document(self.currentUserId).collection(ApiKey.chat).document(inboxxUserId).updateData([ApiKey.unreadMessages: 0])
+                
+                self.db.collection(ApiKey.batchCount)
+                    .document(self.currentUserId)
+                    .setData([ApiKey.unreadMessages : (diff)])
+            }})
     }
     
     //MARK: ACTIONS
@@ -263,20 +279,10 @@ class OneToOneChatVC: BaseVC {
 extension OneToOneChatVC {
     
     private func initialSetup() {
-        NotificationCenter.default.addObserver(self, selector: #selector(editedBidAccepted), name: Notification.Name.EditedBidAccepted, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(requestRejected), name: Notification.Name.RequestRejected, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(requestAccepted), name: Notification.Name.RequestAccepted, object: nil)
-        btnContaninerView.isHidden = true
-        bottomVIewWithMsg.isHidden = true
-        self.isSupportChat = self.requestId.isEmpty
-        userRequestView.isHidden = true
-        garageTopView.isHidden = true
+        registerNotification()
         chatViewModel.delegate = self
-        textContainerInnerView.borderColor = AppColors.fontTertiaryColor.withAlphaComponent(0.5)
-        textContainerInnerView.borderWidth = 1.0
         checkRoomAvailability()
         containerScrollView.delegate = self
-        bottomContainerView.isUserInteractionEnabled = true
         addTapGestureToAudioBtn()
         startSenderBlockListener()
         startReceiverBlockListener()
@@ -288,12 +294,19 @@ extension OneToOneChatVC {
         setupAudioMessages()
         getChatData()
         setUpChatUserType()
-        editBtn.isHidden = isSupportChat
-        self.sendButton.backgroundColor = AppColors.fontTertiaryColor
         let tap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped(_:)))
         containerScrollView.addGestureRecognizer(tap)
         let topViewTap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped(_:)))
         topView.addGestureRecognizer(topViewTap)
+    }
+    
+    private func registerNotification(){
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIApplication.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIApplication.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(editedBidAccepted), name: Notification.Name.EditedBidAccepted, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(requestRejected), name: Notification.Name.RequestRejected, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(requestAccepted), name: Notification.Name.RequestAccepted, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(paymentSucessfullyDone), name: Notification.Name.PaymentSucessfullyDone, object: nil)
     }
     
     private func footerViewSetUp(isFooter: Bool = true){
@@ -308,6 +321,7 @@ extension OneToOneChatVC {
             self.chatUserType = .user
         }
         editBidBtn.isHidden = !(self.chatUserType == .garage)
+        editBtn.isHidden = isSupportChat
     }
     
     private func addTapGestureToAudioBtn() {
@@ -342,19 +356,25 @@ extension OneToOneChatVC {
         self.getChatData()
     }
     
+    @objc func paymentSucessfullyDone(){
+    self.db.collection(ApiKey.messages).document(self.getRoomId()).collection(ApiKey.chat).document(self.messageId).updateData([ApiKey.messageStatus : 2]) { (error) in
+            if let err = error {
+                print(err.localizedDescription)
+            } else {}
+        }
+    }
+    
     @objc private func scrollViewTapped(_ sender: UITapGestureRecognizer) {
         btnContaninerView.isHidden = true
     }
     
     @objc   func longTap(_ sender : UIGestureRecognizer){
-        print("Long tap")
         if sender.state == .ended {
             audioRecordBtn.setImage(#imageLiteral(resourceName: "group3603"), for: .normal)
             finishRecording(success: true)
             endTimer()
         }
         else if sender.state == .began {
-            print("UIGestureRecognizerStateBegan.")
             if audioRecorder == nil {
                 startTimer()
                 startRecording()
@@ -370,7 +390,6 @@ extension OneToOneChatVC {
             chatViewModel.getChatData(params: dict,loader: false)
         }
         else {
-            //            backgroundView.isHidden = true
             tableViewTopConstraint.constant = 0.0
         }
     }
@@ -395,12 +414,12 @@ extension OneToOneChatVC {
                     if allowed {
                         printDebug("Loaded Succesfull")
                     } else {
-                        // failed to record
+                        printDebug("Failed to Record")
                     }
                 }
             }
         } catch {
-            // failed to record
+            printDebug("Failed to Record")
         }
     }
     
@@ -421,6 +440,15 @@ extension OneToOneChatVC {
     }
     
     private func setupTextView() {
+        btnContaninerView.isHidden = true
+        bottomVIewWithMsg.isHidden = true
+        self.isSupportChat = self.requestId.isEmpty
+        userRequestView.isHidden = true
+        garageTopView.isHidden = true
+        textContainerInnerView.borderColor = AppColors.fontTertiaryColor.withAlphaComponent(0.5)
+        textContainerInnerView.borderWidth = 1.0
+        self.sendButton.backgroundColor = AppColors.fontTertiaryColor
+        bottomContainerView.isUserInteractionEnabled = true
         titleLabel.text = firstName
         messageTextView.delegate = self
         messageTextView.tintColor = AppColors.appRedColor
@@ -792,12 +820,37 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                 let receiverPaymentCell = tableView.dequeueCell(with: PaymentCardCell.self)
                 receiverPaymentCell.payNowBtnAction = {[weak self] (sender) in
                     guard let `self` = self else { return }
+                    self.messageId = model.messageId
                     AppRouter.goToWebVC(vc: self, screenType: .payment,requestId: self.requestId)
                 }
                 
                 receiverPaymentCell.declineBtnAction = {[weak self] (sender) in
                     guard let `self` = self else { return }
-                    AppRouter.goToWebVC(vc: self, screenType: .payment)
+                    self.messageId = model.messageId
+                    self.db.collection(ApiKey.messages).document(self.getRoomId()).collection(ApiKey.chat).document(self.messageId).updateData([ApiKey.messageStatus : 3]) { (error) in
+                        if let err = error {
+                            print(err.localizedDescription)
+                        } else {}
+                    }
+                }
+                if model.messageStatus == 1 {// show both button
+                    receiverPaymentCell.payNowBtn.isHidden = false
+                    receiverPaymentCell.declineBtn.isHidden = false
+                    receiverPaymentCell.payNowBtn.isUserInteractionEnabled = true
+                    receiverPaymentCell.payNowBtn.setTitle("Pay Now", for: .normal)
+                    receiverPaymentCell.declineBtn.setTitle("Decline", for: .normal)
+                }
+                else if model.messageStatus == 2 { //payment paid accpted
+                    receiverPaymentCell.payNowBtn.isHidden = false
+                    receiverPaymentCell.payNowBtn.isUserInteractionEnabled = false
+                    receiverPaymentCell.payNowBtn.setTitle("Payment Paid", for: .normal)
+                    receiverPaymentCell.declineBtn.isHidden = true
+                }
+                else if model.messageStatus == 3 { //payment Decline
+                    receiverPaymentCell.payNowBtn.isHidden = false
+                    receiverPaymentCell.payNowBtn.isUserInteractionEnabled = false
+                    receiverPaymentCell.payNowBtn.setTitle("Payment Declined", for: .normal)
+                    receiverPaymentCell.declineBtn.isHidden = true
                 }
                 receiverPaymentCell.amountLabel.text = "\(model.price)"
                 receiverPaymentCell.receiverImgView.setImage_kf(imageString: userImage, placeHolderImage: isSupportChat ? #imageLiteral(resourceName: "splashUpdated") : #imageLiteral(resourceName: "placeHolder"), loader: false)
@@ -909,6 +962,27 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                 return senderOfferCell
             case  MessageType.payment.rawValue:
                 let receiverPaymentCell = tableView.dequeueCell(with: ReceiverPaymentCardCell.self)
+                if model.messageStatus == 1 {// show both button
+                    receiverPaymentCell.payNowBtn.isHidden = true
+                    receiverPaymentCell.declineBtn.isHidden = true
+                    receiverPaymentCell.payNowBtn.isUserInteractionEnabled = false
+                    receiverPaymentCell.payNowBtn.isUserInteractionEnabled = false
+                    receiverPaymentCell.buttonsView.isHidden = true
+                }
+                else if model.messageStatus == 2 { //payment paid accpted
+                    receiverPaymentCell.buttonsView.isHidden = false
+                    receiverPaymentCell.payNowBtn.isHidden = false
+                    receiverPaymentCell.payNowBtn.isUserInteractionEnabled = false
+                    receiverPaymentCell.payNowBtn.setTitle("Payment Paid", for: .normal)
+                    receiverPaymentCell.declineBtn.isHidden = true
+                }
+                else if model.messageStatus == 3 { //payment Decline
+                    receiverPaymentCell.buttonsView.isHidden = false
+                    receiverPaymentCell.payNowBtn.isHidden = false
+                    receiverPaymentCell.payNowBtn.isUserInteractionEnabled = false
+                    receiverPaymentCell.payNowBtn.setTitle("Payment Declined", for: .normal)
+                    receiverPaymentCell.declineBtn.isHidden = true
+                }
                 receiverPaymentCell.amountLabel.text = "\(model.price)"
                 receiverPaymentCell.receiverImgView.setImage_kf(imageString: UserModel.main.image, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
                 receiverPaymentCell.receiverNameLbl.text = "You"
@@ -1887,18 +1961,14 @@ extension OneToOneChatVC : OneToOneChatViewModelDelegate{
             self.db.collection(ApiKey.messages).document(self.getRoomId()).collection(ApiKey.chat).document(self.messageId).updateData([ApiKey.messageStatus : 2]) { (error) in
                 if let err = error {
                     print(err.localizedDescription)
-                } else {
-                    //                                self.db.collection(ApiKey.inbox).document(self.currentUserId).collection(ApiKey.chat).document(self.inboxModel.userId).updateData([ApiKey.unreadMessages: 0])
-                }
+                } else {}
                 self.getChatData()
             }
         }else {
             self.db.collection(ApiKey.messages).document(self.getRoomId()).collection(ApiKey.chat).document(self.messageId).updateData([ApiKey.messageStatus : 3]) { (error) in
                 if let err = error {
                     print(err.localizedDescription)
-                } else {
-                    //                                self.db.collection(ApiKey.inbox).document(self.currentUserId).collection(ApiKey.chat).document(self.inboxModel.userId).updateData([ApiKey.unreadMessages: 0])
-                }
+                } else {}
             }
         }
     }
