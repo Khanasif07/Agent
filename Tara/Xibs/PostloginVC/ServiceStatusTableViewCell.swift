@@ -273,6 +273,12 @@ class ServiceStatusTableViewCell: UITableViewCell {
         if isServiceCompleted {
             carRecievedStackView.isHidden = true
         }
+        if let paymentStatus = model.paymentStatus{
+            self.paidLbl.textColor = (paymentStatus.textColor)
+            self.paidLbl.text = (paymentStatus.text)
+            self.amountLbl.text = "\(model.amountPaid ?? 0.0)"
+        }
+       
     }
     
     //MARK:- IBActions

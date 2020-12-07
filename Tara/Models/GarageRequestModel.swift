@@ -116,9 +116,9 @@ enum PaymentStatus: String, Codable{
     var textColor : UIColor {
         switch self {
         case .pending:
-            return AppColors.successGreenColor
+            return AppColors.appRedColor
         case .paid:
-            return AppColors.successGreenColor
+            return AppColors.appRedColor
         case .failed:
             return AppColors.appRedColor
         case .refunded:
