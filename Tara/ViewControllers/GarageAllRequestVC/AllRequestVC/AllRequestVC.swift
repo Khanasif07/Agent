@@ -51,6 +51,7 @@ extension AllRequestVC {
         NotificationCenter.default.addObserver(self, selector: #selector(bidAcceptedRejected), name: Notification.Name.BidAcceptedRejected, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(placeBidRejectBidSuccess), name: Notification.Name.PlaceBidRejectBidSuccess, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(serviceRequestReceived), name: Notification.Name.ServiceRequestReceived, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(paymentSucessfullyDone), name: Notification.Name.PaymentSucessfullyDone, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(requestAccepted), name: Notification.Name.RequestAccepted, object: nil)
         
         viewModel.delegate = self
@@ -102,6 +103,10 @@ extension AllRequestVC {
     }
     
     @objc func serviceRequestReceived() {
+        hitApi(params: [ApiKey.page:"1", ApiKey.limit: "20"])
+    }
+    
+    @objc func paymentSucessfullyDone(){
         hitApi(params: [ApiKey.page:"1", ApiKey.limit: "20"])
     }
     

@@ -44,6 +44,8 @@ class BookedRequestVC: BaseVC {
 extension BookedRequestVC {
     
     private func initialSetup() {
+        NotificationCenter.default.addObserver(self, selector: #selector(paymentSucessfullyDone), name: Notification.Name.PaymentSucessfullyDone, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateServiceStatus), name: Notification.Name.UpdateServiceStatus, object: nil)
         viewModel.delegate = self
         self.mainTableView.delegate = self
         self.mainTableView.dataSource = self
@@ -53,7 +55,6 @@ extension BookedRequestVC {
         self.mainTableView.registerCell(with: LoaderCell.self)
         self.mainTableView.registerCell(with: BookedRequestTableCell.self)
         hitApi(params: [ApiKey.page:"1", ApiKey.limit: "20"],loader: false)
-        NotificationCenter.default.addObserver(self, selector: #selector(updateServiceStatus), name: Notification.Name.UpdateServiceStatus, object: nil)
     }
     
     public func hitApi(params: JSONDictionary = [:],loader: Bool = false){
@@ -63,6 +64,10 @@ extension BookedRequestVC {
     
     @objc func updateServiceStatus() {
         hitApi(params: [ApiKey.page:"1", ApiKey.limit: "20"])
+    }
+    
+    @objc func paymentSucessfullyDone(){
+          hitApi(params: [ApiKey.page:"1", ApiKey.limit: "20"])
     }
     
     @objc func refreshWhenPull(_ sender: UIRefreshControl) {
