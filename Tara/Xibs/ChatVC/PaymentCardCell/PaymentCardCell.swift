@@ -20,8 +20,6 @@ class PaymentCardCell: UITableViewCell {
     @IBOutlet weak var receiverImgView: UIImageView!
     @IBOutlet weak var msgContainerView: UIView!
     @IBOutlet weak var msgLabel: UILabel!
-    @IBOutlet weak var timeLabel: UILabel!
-    
     @IBOutlet weak var buttonsView: UIStackView!
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var paymentRequestLabel: UILabel!

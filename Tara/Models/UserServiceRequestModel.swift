@@ -115,12 +115,14 @@ struct UserServiceRequestModel: Codable {
     let isOfferAccepted : Bool?
     let seenBy: Int?
     let isServiceStarted : Bool?
+    let paymentStatus : PaymentStatus?
     let otp : Int?
     
     enum CodingKeys: String, CodingKey {
         case requestID = "requestId"
         case createdAt, profile, requestType, rimSize, status, preferredBrands, preferredCountries, quantity, width , make ,model
         case id = "_id"
+        case paymentStatus
         case images , serviceStatus
         case totalBids,lowestBid,nearestBidder,isOfferAccepted, totalOffers, seenBy,year, isServiceStarted, otp
     }
@@ -150,6 +152,7 @@ struct UserServiceRequestModel: Codable {
         seenBy = 0
         isServiceStarted = false
         otp = 0
+        paymentStatus = .pending
     }
 }
 

@@ -12,6 +12,9 @@ class ReceiverPaymentCardCell: UITableViewCell {
     
     //    MARK: OUTLETS
     //    =============
+    @IBOutlet weak var buttonsView: UIStackView!
+    @IBOutlet weak var payNowBtn: AppButton!
+    @IBOutlet weak var declineBtn: AppButton!
     @IBOutlet weak var receiverNameLbl: UILabel!
     @IBOutlet weak var receiverImgView: UIImageView!
     @IBOutlet weak var msgContainerView: UIView!

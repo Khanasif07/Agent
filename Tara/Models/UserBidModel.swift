@@ -22,11 +22,13 @@ struct UserBidModel: Codable {
     var userId : String?
     var garageRequestId : String?
     let logo: String?
-    let garageRating: Int?
+    let garageRating: Double?
+    let paymentStatus: PaymentStatus
     
     enum CodingKeys: String, CodingKey {
         case id = "_id"
         case userId
+        case paymentStatus
         case status, bidData
         case requestID = "requestId"
         case garageID = "garageId"
@@ -50,6 +52,7 @@ struct UserBidModel: Codable {
         logo = ""
         garageAddress = ""
         garageRating = 0
+        paymentStatus = .pending
     }
     
     func getMinAmount() -> (Double, Int){

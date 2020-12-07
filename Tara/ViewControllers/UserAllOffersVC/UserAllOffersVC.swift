@@ -14,6 +14,7 @@ class UserAllOffersVC: BaseVC {
     // MARK: - IBOutlets
     //===========================
     
+    @IBOutlet weak var payNowBtn: AppButton!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var mainTableView: UITableView!
  
@@ -37,6 +38,11 @@ class UserAllOffersVC: BaseVC {
         self.tabBarController?.tabBar.isTranslucent = true
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        payNowBtn.round(radius: 4.0)
+    }
+    
     // MARK: - IBActions
     //===========================
     @IBAction func backBtnAction(_ sender: UIButton) {
@@ -54,6 +60,9 @@ class UserAllOffersVC: BaseVC {
             self?.getFilterData(data: filterData)
             self?.filterArr = filterData
         }
+    }
+    
+    @IBAction func payNowBtnAction(_ sender: AppButton) {
     }
 }
 
@@ -239,6 +248,18 @@ extension UserAllOffersVC : UserAllOfferVMDelegate {
     }
     
     func getUserBidDataSuccess(message: String){
+        if let acceptedModel = viewModel.userBidListingArr.first{
+            switch acceptedModel.paymentStatus {
+            case .pending:
+                payNowBtn.setTitle(LocalizedString.pending.localized + " " + "\(acceptedModel.getMinAmount().0)" , for: .normal)
+            case .paid:
+                payNowBtn.setTitle(LocalizedString.paid.localized + " " + "\(acceptedModel.getMinAmount().0)", for: .normal)
+            case .refunded:
+                payNowBtn.setTitle(LocalizedString.refunded.localized, for: .normal)
+            case .failed:
+                payNowBtn.setTitle(LocalizedString.failed.localized, for: .normal)
+            }
+        }
         mainTableView.reloadData()
     }
     

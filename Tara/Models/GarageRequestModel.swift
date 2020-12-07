@@ -93,6 +93,27 @@ enum BidStatus: String, Codable{
     }
 }
 
+enum PaymentStatus: String, Codable{
+    
+    case pending = "pending"
+    case paid = "paid"
+    case failed = "failed"
+    case refunded = "refunded"
+    
+    var text : String {
+        switch self {
+        case .pending:
+            return LocalizedString.pending.localized
+        case .paid:
+            return LocalizedString.paid.localized
+        case .failed:
+            return LocalizedString.failed.localized
+        case .refunded:
+            return LocalizedString.refunded.localized
+        }
+    }
+}
+
 enum ServiceState : String, Codable{
     case startService = "start_service"
     case carReceived = "car_received"

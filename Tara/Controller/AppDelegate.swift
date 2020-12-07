@@ -40,13 +40,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate , MessagingDelegate , UNUs
         GMSServices.provideAPIKey(AppConstants.googlePlaceApiKey)
         GMSPlacesClient.provideAPIKey(AppConstants.googlePlaceApiKey)
         GoogleLoginController.shared.configure(withClientId: AppConstants.googleId)
+        removeAllNotifications()
+        AppRouter.checkAppInitializationFlow()
         guard let unreadCount = AppUserDefaults.value(forKey: .unreadCount).int else {
             AppUserDefaults.save(value: 0, forKey: .unreadCount)
             return true
         }
         AppDelegate.shared.unreadNotificationCount = unreadCount
-        AppRouter.checkAppInitializationFlow()
-        
         return true
     }
     
@@ -61,11 +61,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate , MessagingDelegate , UNUs
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.layoutIfNeededOnUpdate = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
-    }
-    
-    func application(_ app: UIApplication, open url: URL,
-                     options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        return true
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -135,9 +130,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate , MessagingDelegate , UNUs
             }
         }
     }
+    
+     private func removeAllNotifications() {
+            UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+        }
 }
 
-
+//MARK:- Extension AppDelegate
+//=========================
 extension AppDelegate {
     // To fetch different google infoplist according to different servers
     func getGoogleInfoPlist() {
@@ -237,7 +237,23 @@ extension AppDelegate{
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
-//        FirestoreController.updateUserOnlineStatus(isOnline: false)
+    }
+}
+
+//MARK:- Deep Linking
+//=========================
+extension AppDelegate {
+    func application(_ app: UIApplication, open url: URL,
+                     options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        if let scheme = url.scheme,
+            scheme.localizedCaseInsensitiveCompare("com.tara") == .orderedSame,
+            let view = url.host {
+            var parameters: [String: String] = [:]
+            URLComponents(url: url, resolvingAgainstBaseURL: false)?.queryItems?.forEach {
+                parameters[$0.name] = $0.value
+            }
+        }
+        return true
     }
     
 }
