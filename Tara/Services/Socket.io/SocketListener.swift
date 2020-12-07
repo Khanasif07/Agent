@@ -115,5 +115,11 @@ extension SocketIOManager {
             printDebug(json)
         })
         
+        self.socket?.on(EventListnerKeys.payment_recieved_by_garage.rawValue, callback: { data, _ in
+            let json = JSON(data)
+            NotificationCenter.default.post(name: Notification.Name.PaymentSucessfullyDone, object: nil)
+            printDebug(json)
+        })
+        
     }
 }

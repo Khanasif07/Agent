@@ -69,6 +69,9 @@ class PushNotificationRedirection {
         case PushNotificationType.SERVICE_STARTED.rawValue:
             let requestId = userInfo[ApiKey.gcm_notification_requestId] as? String ?? ""
             AppRouter.goToUserServiceStatusVCThroughNotification(requestId: requestId)
+        case PushNotificationType.PAYMENT_RECEIVED_BY_GARAGE.rawValue:
+            let requestId = userInfo[ApiKey.gcm_notification_requestId] as? String ?? ""
+            AppRouter.goToGarageServiceStatusVCThroughNotification(requestId: requestId)
         default:
             break
         }

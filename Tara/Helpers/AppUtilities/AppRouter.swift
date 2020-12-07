@@ -604,6 +604,31 @@ enum AppRouter {
         }
     }
     
+    // Redirect  to  Garage Service Status screen
+    static func goToGarageServiceStatusVCThroughNotification(requestId : String){
+        guard let nav: UINavigationController = AppDelegate.shared.window?.rootViewController as? UINavigationController else { return }
+        if let homeScene = nav.hasViewController(ofKind: UserTabBarController.self) as? GarageTabBarController {
+            homeScene.selectedIndex = 1
+            let navigationController = UINavigationController(rootViewController: homeScene)
+            navigationController.setNavigationBarHidden(true, animated: false)
+            defaultSetAsWindowRoot(navigationController)
+            let serviceScene = ServiceStatusVC.instantiate(fromAppStoryboard: .GarageRequest)
+            serviceScene.requestId = requestId
+            navigationController.pushViewController(serviceScene, animated: true)
+        } else {
+            if let vwController = (nav.hasViewController(ofKind: ServiceStatusVC.self) as? ServiceStatusVC) {
+                vwController.requestId = requestId
+                nav.popToViewController(vwController, animated: true)
+                return
+            } else {
+                let serviceScene = ServiceStatusVC.instantiate(fromAppStoryboard: .GarageRequest)
+                serviceScene.requestId = requestId
+                nav.pushViewController(serviceScene, animated: true)
+            }
+        }
+    }
+       
+    
     static func goToOilBrandsVC(vc: UIViewController){
         let scene = OilBrandsVC.instantiate(fromAppStoryboard: .UserHomeScreen)
         vc.navigationController?.pushViewController(scene, animated: true)
