@@ -262,13 +262,13 @@ extension UserAllOffersVC : UserAllOfferVMDelegate {
                 payNowBtn.setTitle(LocalizedString.pay.localized + " " + "\(acceptedModel.getMinAmount().0)" + " SAR", for: .normal)
                 payNowBtn.isUserInteractionEnabled = true
             case .paid:
-                payNowBtn.setTitle(LocalizedString.paid.localized, for: .normal)
-                 payNowBtn.isUserInteractionEnabled = true
+                 payNowBtn.setTitle(LocalizedString.paid.localized, for: .normal)
+                 payNowBtn.isUserInteractionEnabled = false
             case .refunded:
-                payNowBtn.setTitle(LocalizedString.refunded.localized, for: .normal)
+                payNowBtn.setTitle(LocalizedString.pay.localized + " " + "\(acceptedModel.getMinAmount().0)" + " SAR", for: .normal)
                  payNowBtn.isUserInteractionEnabled = true
             case .failed:
-                payNowBtn.setTitle(LocalizedString.failed.localized, for: .normal)
+                 payNowBtn.setTitle(LocalizedString.pay.localized + " " + "\(acceptedModel.getMinAmount().0)" + " SAR", for: .normal)
                  payNowBtn.isUserInteractionEnabled = true
             case .none:
                 payNowBtn.isHidden = true

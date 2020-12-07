@@ -428,6 +428,7 @@ enum LocalizedString : String {
     case pending
     case pay
     case paid
+    case paid_Caps
     case refunded
     case failed
    

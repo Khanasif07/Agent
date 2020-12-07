@@ -20,7 +20,8 @@ class MyServiceTableCell: UITableViewCell {
     @IBOutlet weak var requestNoValueLbl: UILabel!
     @IBOutlet weak var statusView: UIView!
     @IBOutlet weak var bottomView: UIView!
-   
+    @IBOutlet weak var paymentStatusLbl: UILabel!
+    
     @IBOutlet weak var statusValueLbl: UILabel!
     @IBOutlet weak var statusLbl: UILabel!
     @IBOutlet weak var statusValueLineView: UIView!
@@ -67,7 +68,7 @@ class MyServiceTableCell: UITableViewCell {
         statusValueLbl.textColor =  (model.isServiceStarted ?? false) ?  model.serviceStatus?.textColor : model.status.textColor
         statusValueLineView.backgroundColor =  (model.isServiceStarted ?? false) ?  model.serviceStatus?.textColor : model.status.textColor
         statusView.isHidden = model.status == .pending
-        
+        paymentStatusLbl.isHidden = model.status == .pending
         self.serviceTypeLbl.text = model.requestType + " Service Request"
         let logoImg =  model.requestType == "Tyres" ? #imageLiteral(resourceName: "maskGroup") : model.requestType == "Battery" ? #imageLiteral(resourceName: "icBattery") : #imageLiteral(resourceName: "icOil")
         let logoBackGroundColor =  model.requestType == "Tyres" ? AppColors.blueLightColor : model.requestType == "Battery" ? AppColors.redLightColor : AppColors.grayLightColor
@@ -110,6 +111,8 @@ class MyServiceTableCell: UITableViewCell {
                 offerLbl.text = (model.totalOffers?.description ?? "") + " Offers"
             }
         }
+        paymentStatusLbl.textColor = model.paymentStatus?.textColor
+        paymentStatusLbl.text = model.paymentStatus?.text
     }
     
     func getTimeFromDate(date: String) -> String {

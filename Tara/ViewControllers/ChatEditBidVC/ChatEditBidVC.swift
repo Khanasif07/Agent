@@ -71,7 +71,7 @@ class ChatEditBidVC: BaseVC {
             dict[ApiKey.brandName] = model.name
             dict[ApiKey.brandId] = model.id
             self.acceptedProposalId = model.bidId ?? ""
-            self.amount = Int(model.amount ?? 0)
+            self.amount = Int(model.amount ?? 0) * quantity
             if brandsType == .countryBrands {
                 dict[ApiKey.countryId] = model.countryId
                 dict[ApiKey.countryName] = model.countryName

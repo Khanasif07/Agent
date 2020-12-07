@@ -429,6 +429,7 @@
 "paymentDeclined" = "Payment Declined";
 "pending" = "Payment Pending";
 "paid" = "Payment Paid";
+"paid_Caps" = "PAID";
 "refunded" = "Payment Refunded";
 "failed" = "Payment Failed";
 

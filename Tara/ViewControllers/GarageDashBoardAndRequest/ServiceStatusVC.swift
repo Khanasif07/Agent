@@ -115,12 +115,15 @@ extension ServiceStatusVC: UITableViewDelegate,UITableViewDataSource{
             let cell = tableView.dequeueCell(with: ServiceStatusTableViewCell.self)
             cell.populateData(status: viewModel.bookedRequestDetail?.serviceStatus ?? nil)
             updateStatus(cell: cell)
-            cell.paidLbl.textColor = (viewModel.bookedRequestDetail?.paymentStatus?.textColor)
-            cell.paidLbl.text = (viewModel.bookedRequestDetail?.paymentStatus?.text)
-            cell.amountLbl.text = "\(viewModel.bookedRequestDetail?.amountPaid ?? 0.0)"
+            if let paymentStatus = viewModel.bookedRequestDetail?.paymentStatus{
+                cell.paidLbl.textColor = (paymentStatus.textColor)
+                cell.paidLbl.text = (paymentStatus == .paid ) ? LocalizedString.paid_Caps.localized : paymentStatus.text
+                cell.amountLbl.text = "\(viewModel.bookedRequestDetail?.amountPaid ?? 0.0)" + " SAR"
+                cell.refundedPaymentView.isHidden = !(paymentStatus == .refunded)
+            }
             cell.noRatingContainerView.isHidden = true
             cell.ratingContainerView.isHidden = (self.viewModel.bookedRequestDetail?.ratingDetails?._id?.isEmpty ?? true)
-            cell.bottomDashedVIew.isHidden =  cell.noRatingContainerView.isHidden && cell.ratingContainerView.isHidden
+//            cell.bottomDashedVIew.isHidden =  cell.noRatingContainerView.isHidden && cell.ratingContainerView.isHidden
             cell.reviewLbl.text = self.viewModel.bookedRequestDetail?.ratingDetails?.review ?? ""
             cell.ratingLbl.text = "\(self.viewModel.bookedRequestDetail?.ratingDetails?.rating ?? 0)" //+ "/5"
             return cell
