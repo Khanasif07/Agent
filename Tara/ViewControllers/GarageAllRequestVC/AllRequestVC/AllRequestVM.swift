@@ -84,7 +84,7 @@ class AllRequestVM {
                     self.delegate?.getGarageListingDataSuccess(message: "")
                     return
                 }
-                let modelList = try! JSONDecoder().decode([GarageRequestModel].self, from: data)
+                let modelList = try JSONDecoder().decode([GarageRequestModel].self, from: data)
                 printDebug(modelList)
                 currentPage = result[ApiKey.data][ApiKey.page].intValue
                 isRequestinApi = false

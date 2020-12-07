@@ -116,9 +116,6 @@ extension WebViewController: WKUIDelegate,WKNavigationDelegate {
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        //"https://arabiantyersdevapi.appskeeper.com/api/v1/user/paymentRedirectUrl?id=05e02711-ebc1-483b-94c0-0e80fbe82c66&status=paid&amount=30000&message=Succeeded%21"
-        // payment paid == 2
-        // payment payNow == 3
         if let url = webView.url?.absoluteString{
             if url.contains(s: "paymentRedirectUrl"){
                 NotificationCenter.default.post(name: Notification.Name.PaymentSucessfullyDone, object: nil)

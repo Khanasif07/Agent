@@ -121,6 +121,7 @@ class UserServiceRequestVC: BaseVC {
 extension UserServiceRequestVC {
     
     private func initialSetup() {
+        NotificationCenter.default.addObserver(self, selector: #selector(paymentSucessfullyDone), name: Notification.Name.PaymentSucessfullyDone, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(userServiceAcceptRejectSuccess), name: Notification.Name.UserServiceAcceptRejectSuccess, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(requestRejected), name: Notification.Name.RequestRejected, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(newBidSocketSuccess), name: Notification.Name.NewBidSocketSuccess, object: nil)
@@ -151,6 +152,10 @@ extension UserServiceRequestVC {
     }
     
     @objc func requestRejected(){
+        viewModel.getUserMyRequestDetailData(params: [ApiKey.requestId: self.viewModel.requestId])
+    }
+    
+    @objc func paymentSucessfullyDone(){
         viewModel.getUserMyRequestDetailData(params: [ApiKey.requestId: self.viewModel.requestId])
     }
     
@@ -254,6 +259,11 @@ extension UserServiceRequestVC: UserServiceRequestVMDelegate{
         if viewModel.userRequestDetail.isServiceStarted ?? false {
             viewAllBtn.isHidden = false
             viewAllBtn.setTitle(LocalizedString.viewDetails.localized, for: .normal)
+        }
+        if let paymentStatus = viewModel.userRequestDetail.paymentStatus{
+            if paymentStatus == .paid{
+                cancelBtn.isHidden = true
+            }
         }
         
     }

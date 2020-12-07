@@ -52,6 +52,7 @@ class ServiceStatusVC: BaseVC {
 extension ServiceStatusVC {
     
     private func initialSetup() {
+        NotificationCenter.default.addObserver(self, selector: #selector(paymentSucessfullyDone), name: Notification.Name.PaymentSucessfullyDone, object: nil)
         setupTextAndFont()
         setupTableView()
         viewModel.delegate = self
@@ -69,8 +70,13 @@ extension ServiceStatusVC {
     }
     
     private func setupTextAndFont(){
+        self.serviceNo = self.viewModel.bookedRequestDetail?.requestID ?? ""
         titleLbl.font = AppFonts.NunitoSansBold.withSize(17.0)
         titleLbl.text = "Service No. " + serviceNo
+    }
+    
+    @objc func paymentSucessfullyDone(){
+        viewModel.fetchBookedRequestDetail(params: [ApiKey.requestId: self.requestId], loader: true)
     }
 }
 
@@ -109,6 +115,9 @@ extension ServiceStatusVC: UITableViewDelegate,UITableViewDataSource{
             let cell = tableView.dequeueCell(with: ServiceStatusTableViewCell.self)
             cell.populateData(status: viewModel.bookedRequestDetail?.serviceStatus ?? nil)
             updateStatus(cell: cell)
+            cell.paidLbl.textColor = (viewModel.bookedRequestDetail?.paymentStatus?.textColor)
+            cell.paidLbl.text = (viewModel.bookedRequestDetail?.paymentStatus?.text)
+            cell.amountLbl.text = "\(viewModel.bookedRequestDetail?.amountPaid ?? 0.0)"
             cell.noRatingContainerView.isHidden = true
             cell.ratingContainerView.isHidden = (self.viewModel.bookedRequestDetail?.ratingDetails?._id?.isEmpty ?? true)
             cell.bottomDashedVIew.isHidden =  cell.noRatingContainerView.isHidden && cell.ratingContainerView.isHidden
@@ -138,6 +147,7 @@ extension ServiceStatusVC: ServiceStatusVMDelegate {
     }
     
     func bookedRequestDetailSuccess(msg: String) {
+        self.setupTextAndFont()
         mainTableView.reloadData()
     }
     

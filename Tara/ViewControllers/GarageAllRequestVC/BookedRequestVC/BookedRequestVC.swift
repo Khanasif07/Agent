@@ -117,7 +117,13 @@ extension BookedRequestVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        AppRouter.goToServiceStatusVC(vc: self, requestId: viewModel.bookedRequestListing[indexPath.row].id ?? "",requestType: viewModel.bookedRequestListing[indexPath.row].requestType ?? .battery ,serviceNo: viewModel.bookedRequestListing[indexPath.row].requestID ?? "")
+        if  let paymentStatus = viewModel.bookedRequestListing[indexPath.row].paymentStatus{
+            if paymentStatus == .paid{
+                AppRouter.goToServiceStatusVC(vc: self, requestId: viewModel.bookedRequestListing[indexPath.row].id ?? "",requestType: viewModel.bookedRequestListing[indexPath.row].requestType ?? .battery ,serviceNo: viewModel.bookedRequestListing[indexPath.row].requestID ?? "")
+            } else {
+                printDebug("Do Nothing")
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

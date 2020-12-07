@@ -86,6 +86,12 @@ class UserOffersTableCell: UITableViewCell {
             viewProposalBtn.setTitle("View Proposal", for: .normal)
             
         }
+        
+        if let paymentStatus = model.paymentStatus{
+            if paymentStatus == .paid{
+                rejectBtn.isHidden = true
+            }
+        }
     }
     
     func getAttributedString(value : String,attributedLabel: UILabel) -> NSMutableAttributedString{

@@ -197,6 +197,11 @@ extension OffersDetailVC : OffersDetailVMDelegate {
         self.acceptBtn.isUserInteractionEnabled = !(viewModel.userBidDetail.status == "accepted")
         self.acceptBtn.setTitle( self.acceptBtn.isUserInteractionEnabled ? LocalizedString.accept.localized : LocalizedString.accepted.localized, for: .normal)
         collectionView(countryCollView, didSelectItemAt: IndexPath(item: 0, section: 0))
+        if let paymentStatus = viewModel.userBidDetail.paymentStatus{
+            if paymentStatus == .paid{
+                rejectBtn.isHidden = true
+            }
+        }
     }
     
     func getOfferDetailFailed(error: String) {

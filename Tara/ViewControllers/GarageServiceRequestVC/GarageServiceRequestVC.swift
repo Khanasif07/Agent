@@ -170,6 +170,11 @@ extension GarageServiceRequestVC {
             requestBtn.isHidden = false
             placeBidBtn.setTitle("Place Bid", for: .normal)
         }
+        if let paymentStatus = self.viewModel.garageRequestDetailArr?.paymentStatus {
+           if paymentStatus == .paid {
+                requestBtn.isHidden = true
+            }
+        }
     }
     
     private func hitApi(){

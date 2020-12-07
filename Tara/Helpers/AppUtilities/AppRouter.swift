@@ -409,7 +409,7 @@ enum AppRouter {
     }
    
     
-    static func goToServiceStatusVC(vc: UIViewController, requestId : String,requestType : Category, serviceNo: String){
+    static func goToServiceStatusVC(vc: UIViewController, requestId : String,requestType : Category = .tyres, serviceNo: String = ""){
         let scene = ServiceStatusVC.instantiate(fromAppStoryboard: .GarageRequest)
         scene.requestId = requestId
         scene.serviceNo = serviceNo

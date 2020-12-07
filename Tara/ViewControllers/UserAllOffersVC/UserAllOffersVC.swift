@@ -63,6 +63,7 @@ class UserAllOffersVC: BaseVC {
     }
     
     @IBAction func payNowBtnAction(_ sender: AppButton) {
+        AppRouter.goToWebVC(vc: self, screenType: .payment,requestId: self.requestId)
     }
 }
 
@@ -71,6 +72,7 @@ class UserAllOffersVC: BaseVC {
 extension UserAllOffersVC {
     
     private func initialSetup() {
+        NotificationCenter.default.addObserver(self, selector: #selector(paymentSucessfullyDone), name: Notification.Name.PaymentSucessfullyDone, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(newBidSocketSuccess), name: Notification.Name.NewBidSocketSuccess, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(userServiceAcceptRejectSuccess), name: Notification.Name.UserServiceAcceptRejectSuccess, object: nil)
         setupTextAndFont()
@@ -93,6 +95,12 @@ extension UserAllOffersVC {
     @objc func refreshWhenPull(_ sender: UIRefreshControl) {
         sender.endRefreshing()
         getFilterData(data: filterArr,loader: false, pagination: true)
+    }
+    
+    @objc func paymentSucessfullyDone(){
+        if !self.requestId.isEmpty {
+            self.hitApi()
+        }
     }
     
     private func setupTextAndFont(){
@@ -251,13 +259,19 @@ extension UserAllOffersVC : UserAllOfferVMDelegate {
         if let acceptedModel = viewModel.userBidListingArr.first{
             switch acceptedModel.paymentStatus {
             case .pending:
-                payNowBtn.setTitle(LocalizedString.pending.localized + " " + "\(acceptedModel.getMinAmount().0)" , for: .normal)
+                payNowBtn.setTitle(LocalizedString.pay.localized + " " + "\(acceptedModel.getMinAmount().0)" + " SAR", for: .normal)
+                payNowBtn.isUserInteractionEnabled = true
             case .paid:
-                payNowBtn.setTitle(LocalizedString.paid.localized + " " + "\(acceptedModel.getMinAmount().0)", for: .normal)
+                payNowBtn.setTitle(LocalizedString.paid.localized, for: .normal)
+                 payNowBtn.isUserInteractionEnabled = true
             case .refunded:
                 payNowBtn.setTitle(LocalizedString.refunded.localized, for: .normal)
+                 payNowBtn.isUserInteractionEnabled = true
             case .failed:
                 payNowBtn.setTitle(LocalizedString.failed.localized, for: .normal)
+                 payNowBtn.isUserInteractionEnabled = true
+            case .none:
+                payNowBtn.isHidden = true
             }
         }
         mainTableView.reloadData()

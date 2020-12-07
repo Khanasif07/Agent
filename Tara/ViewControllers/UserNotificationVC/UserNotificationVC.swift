@@ -146,6 +146,9 @@ extension UserNotificationVC : UITableViewDelegate, UITableViewDataSource {
         
         case .serviceStatusUpdated, .serviceStarted:
             AppRouter.goToUserServiceStatusVC(vc: self, requestId: self.viewModel.notificationListingArr[indexPath.row].requestID ?? "")
+            
+        case .payment_recieved_by_garage:
+            AppRouter.goToServiceStatusVC(vc: self, requestId: self.viewModel.notificationListingArr[indexPath.row].requestID ?? "")
        
         case .garageRequestRejected:
             AppRouter.goToRegistraionPendingVC(vc: self, screenType: .rejected, msg: "", reason: self.viewModel.notificationListingArr[indexPath.row].reason ?? [],time: self.viewModel.notificationListingArr[indexPath.row].time ?? "")

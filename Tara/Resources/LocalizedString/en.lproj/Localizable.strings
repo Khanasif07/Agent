@@ -423,6 +423,7 @@
 // MARK: - Chat Screen
 //==============================
 "payNow" = "Pay Now";
+"pay" = "Pay";
 "decline" = "Decline";
 "paymentPaid" = "Payment Paid";
 "paymentDeclined" = "Payment Declined";

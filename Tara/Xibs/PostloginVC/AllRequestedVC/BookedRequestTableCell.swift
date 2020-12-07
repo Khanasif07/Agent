@@ -108,6 +108,14 @@ class BookedRequestTableCell: UITableViewCell {
             startServiceBtn.setTitle(LocalizedString.startService.localized, for: .normal)
             startServiceBtn.isUserInteractionEnabled = true
         }
+        
+        if let paymentStatus = model.paymentStatus{
+            if paymentStatus == .paid{
+                startServiceBtn.isEnabled = true
+            } else {
+                startServiceBtn.isEnabled = false
+            }
+        }
     }
 }
 

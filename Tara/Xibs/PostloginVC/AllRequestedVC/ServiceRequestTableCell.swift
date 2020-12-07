@@ -153,6 +153,12 @@ class ServiceRequestTableCell: UITableViewCell {
         }else {
             bottomStackView.isHidden = false
         }
+        
+        if let paymentStatus = model.paymentStatus{
+            if paymentStatus == .paid{
+                rejectRequestBtn.isHidden = true
+            }
+        }
     }
     
     func getAttributedString(data : [PreferredBrand]) -> NSMutableAttributedString{
