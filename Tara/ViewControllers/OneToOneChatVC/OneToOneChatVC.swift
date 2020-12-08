@@ -259,9 +259,9 @@ class OneToOneChatVC: BaseVC {
     }
     
     @IBAction func blockBtnAction(_ sender: UIButton) {
-        showAlertWithAction(title: !isBlockedByMe ? LocalizedString.block.localized : LocalizedString.unBlock.localized, msg: !isBlockedByMe ?  LocalizedString.are_you_sure_you_want_to_block_this_user.localized : LocalizedString.are_you_sure_you_want_to_unblock_this_user.localized , cancelTitle: "No", actionTitle: "Yes", actioncompletion: {
+        showAlertWithAction(title: !isBlockedByMe ? LocalizedString.block.localized : LocalizedString.unBlock.localized, msg: !isBlockedByMe ?  LocalizedString.are_you_sure_you_want_to_block_this_user.localized : LocalizedString.are_you_sure_you_want_to_unblock_this_user.localized , cancelTitle: LocalizedString.no.localized, actionTitle: LocalizedString.yes.localized, actioncompletion: {
             self.btnContaninerView.isHidden = true
-            if self.unblockBtn.titleLabel?.text == "Block User"{
+            if self.unblockBtn.titleLabel?.text == LocalizedString.blockUser.localized{
                 self.db.collection(ApiKey.block)
                     .document(self.currentUserId)
                     .collection(ApiKey.chat)
@@ -706,9 +706,9 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
         let dayCell = tableView.dequeueCell(with: DayValueCell.self)
         let dateVal =  messageListing[section].first?.messageTime.dateValue() ?? Date()
         if dateVal.isToday {
-            dayCell.dateLabel.text = "Today"
+            dayCell.dateLabel.text = LocalizedString.today.localized
         } else if dateVal.isYesterday {
-            dayCell.dateLabel.text = "Yesterday"
+            dayCell.dateLabel.text = LocalizedString.yesterday.localized
         } else {
             dayCell.dateLabel.text = dateVal.convertToDefaultString()
         }
@@ -990,7 +990,7 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                     senderOfferCell.acceptBtn.setTitle(LocalizedString.offerExpired.localized, for: .normal)
                     senderOfferCell.rejectBtn.isHidden = true
                 }
-                senderOfferCell.userNameLbl.text = "You"
+                senderOfferCell.userNameLbl.text = LocalizedString.you.localized
                 senderOfferCell.userImgView.setImage_kf(imageString: UserModel.main.image, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
                 senderOfferCell.priceLbl.text = "\(model.price)"
                 self.setTapGesture(view: senderOfferCell.msgContainerView, indexPath: indexPath)
@@ -1021,7 +1021,7 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                 }
                 receiverPaymentCell.amountLabel.text = "\(model.price)"
                 receiverPaymentCell.receiverImgView.setImage_kf(imageString: UserModel.main.image, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
-                receiverPaymentCell.receiverNameLbl.text = "You"
+                receiverPaymentCell.receiverNameLbl.text = LocalizedString.you.localized
                 receiverPaymentCell.receiverImgView.backgroundColor = AppColors.fontTertiaryColor
                 return receiverPaymentCell
             default:
@@ -1138,7 +1138,7 @@ extension OneToOneChatVC: UIImagePickerControllerDelegate, UINavigationControlle
         guard let indexPath = self.messagesTableView.indexPath(forItem: gestureRecognizer.view ?? UIView()) else { return }
         if self.messageListing[indexPath.section][indexPath.row].senderId != self.currentUserId { return }
         guard !selectedIndexPaths.isEmpty else {
-            showAlertWithAction(title: "Delete Message", msg: "Do you want to delete message?", cancelTitle: "No", actionTitle: "Delete", actioncompletion: {
+            showAlertWithAction(title: LocalizedString.delete_Message.localized, msg: LocalizedString.do_you_want_to_delete_message.localized, cancelTitle: LocalizedString.no.localized, actionTitle: LocalizedString.delete.localized, actioncompletion: {
                 if indexPath.section == self.messageListing.endIndex - 1 &&  indexPath.row == self.messageListing[indexPath.section].endIndex - 1{
                     self.deleteMessages(index: indexPath)
                     self.updateInboxTimeStamp()
@@ -1636,7 +1636,7 @@ extension OneToOneChatVC{
                         return
                     }
                     //                    if !message.blocked {
-                    if message.messageType != "offer" && message.messageType != "payment" {
+                    if message.messageType != LocalizedString.offerSmall.localized && message.messageType !=  LocalizedString.paymentSmall.localized  {
                         if message.senderId == self.inboxModel.userId {                            self.db.collection(ApiKey.messages).document(self.getRoomId()).collection(ApiKey.chat).document(message.messageId).updateData([ApiKey.messageStatus : 3]) { (error) in
                             if let err = error {
                                 print(err.localizedDescription)
@@ -1673,7 +1673,7 @@ extension OneToOneChatVC{
                         return
                     }
                     //                    if !message.blocked  {
-                    if message.messageType != "offer" && message.messageType != "payment" {
+                    if message.messageType != LocalizedString.offerSmall.localized && message.messageType != LocalizedString.paymentSmall.localized {
                         
                         if message.senderId == self.inboxModel.userId {
                             
@@ -1994,7 +1994,7 @@ extension OneToOneChatVC : OneToOneChatViewModelDelegate{
         if acceptedRejectBtnStatus {
             self.messageTextView.text = MessageType.payment.rawValue
             self.sendMessage(msgType: MessageType.payment.rawValue,price: totalAmount, isPush: false)
-            self.postMessageToFirestoreForPush(body: "Offer Accepted", image: "")
+            self.postMessageToFirestoreForPush(body: LocalizedString.offerAccepted.localized, image: "")
             self.db.collection(ApiKey.messages).document(self.getRoomId()).collection(ApiKey.chat).document(self.messageId).updateData([ApiKey.messageStatus : 2]) { (error) in
                 if let err = error {
                     print(err.localizedDescription)

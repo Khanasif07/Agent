@@ -24,7 +24,6 @@
 		842B2FCC25133EC500E3CF67 /* BankListingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842B2FCB25133EC500E3CF67 /* BankListingVM.swift */; };
 		842B2FCE25133F1800E3CF67 /* BankData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842B2FCD25133F1800E3CF67 /* BankData.swift */; };
 		84303E69250649D4000BA5C3 /* UserTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84303E68250649D4000BA5C3 /* UserTabBarController.swift */; };
-		84303E6C25064B27000BA5C3 /* UnderDevelopmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84303E6B25064B27000BA5C3 /* UnderDevelopmentVC.swift */; };
 		84303E6E25064CC8000BA5C3 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84303E6D25064CC8000BA5C3 /* Home.storyboard */; };
 		843C8EB925087DD200515F2E /* ProfileGuestTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843C8EB725087DD200515F2E /* ProfileGuestTableCell.swift */; };
 		843C8EBA25087DD200515F2E /* ProfileGuestTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 843C8EB825087DD200515F2E /* ProfileGuestTableCell.xib */; };
@@ -402,7 +401,6 @@
 		842B2FCB25133EC500E3CF67 /* BankListingVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankListingVM.swift; sourceTree = "<group>"; };
 		842B2FCD25133F1800E3CF67 /* BankData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankData.swift; sourceTree = "<group>"; };
 		84303E68250649D4000BA5C3 /* UserTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTabBarController.swift; sourceTree = "<group>"; };
-		84303E6B25064B27000BA5C3 /* UnderDevelopmentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderDevelopmentVC.swift; sourceTree = "<group>"; };
 		84303E6D25064CC8000BA5C3 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		843C8EB725087DD200515F2E /* ProfileGuestTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileGuestTableCell.swift; sourceTree = "<group>"; };
 		843C8EB825087DD200515F2E /* ProfileGuestTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileGuestTableCell.xib; sourceTree = "<group>"; };
@@ -884,14 +882,6 @@
 			path = TabBar;
 			sourceTree = "<group>";
 		};
-		84303E6A25064AF2000BA5C3 /* UnderDevelopmentVC */ = {
-			isa = PBXGroup;
-			children = (
-				84303E6B25064B27000BA5C3 /* UnderDevelopmentVC.swift */,
-			);
-			path = UnderDevelopmentVC;
-			sourceTree = "<group>";
-		};
 		843C8EB625087D9E00515F2E /* ProfileVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -1184,8 +1174,6 @@
 		84594800252AFDDC00C0B249 /* GarageAllRequestVC */ = {
 			isa = PBXGroup;
 			children = (
-				84594804252B081000C0B249 /* BookedRequestVC */,
-				84594803252B080300C0B249 /* AllRequestVC */,
 				84594801252AFE0900C0B249 /* GarageAllRequestVC.swift */,
 			);
 			path = GarageAllRequestVC;
@@ -1432,39 +1420,13 @@
 			isa = PBXGroup;
 			children = (
 				8481FA7A2500CC2C00AB6EFB /* BaseVC.swift */,
+				84A43618257F94A4004BA59E /* GaragePostloginVC */,
+				84A43617257F9465004BA59E /* UserPostloginVC */,
+				8481FA832500EE1500AB6EFB /* PostloginVC */,
+				8481FA822500EE0600AB6EFB /* PreloginVC */,
 				84FF9D5E2559152700692FF0 /* ChatEditBidVC */,
 				843F582A254FAAC7008CFA03 /* OneToOneChatVC */,
 				84801CD32547FB7900F360FC /* ChatVC */,
-				84303E6A25064AF2000BA5C3 /* UnderDevelopmentVC */,
-				8481FA832500EE1500AB6EFB /* PostloginVC */,
-				8481FA822500EE0600AB6EFB /* PreloginVC */,
-				84C82F6225347A190014CD4A /* OffersDetailVC */,
-				843D4B9C25305C3300D72D2F /* UserAllOffersVC */,
-				84144F21252C481F00D6572F /* UserAllRequestVC */,
-				84594800252AFDDC00C0B249 /* GarageAllRequestVC */,
-				8411D356252DA6F600E6FA6C /* UserServiceRequestVC */,
-				84144F29252C8BA800D6572F /* GarageServiceRequestVC */,
-				A415082825566513005DF8FD /* BookedTyreRequestVC */,
-				A43B53A82524B5AC00447B24 /* GarageDashBoardAndRequest */,
-				A43926342547FC400089E0EB /* OfferFilterVC */,
-				A43926352547FC4D0089E0EB /* RatingVC */,
-				A43926362547FC590089E0EB /* MyServiceFilterVC */,
-				A43926372547FC620089E0EB /* SRPopupVC */,
-				A43926382547FC6C0089E0EB /* GarageRequestPopupVC */,
-				A415C02E254C2B52000CE928 /* UserNotificationVC */,
-				A415C02D254C2B41000CE928 /* EditProfileVC */,
-				A47EB1DA254D4A050044DD4D /* ChangePasswordVC */,
-				A47EB1DB254D4A120044DD4D /* ChangeLanguageVC */,
-				A4BB50F925766D0E00F8E8D0 /* WebViewController */,
-				A4357953255298BA009EED61 /* ReViewListingVC */,
-				A4BB50F825766CFB00F8E8D0 /* SROtpPopupVC */,
-				A41B7DE925551A9B005D1AC5 /* ServiceCompletedVC */,
-				A459A143255BB7CE00645E45 /* GarageCustomerRatingVC */,
-				A4BB50F725766CF100F8E8D0 /* ReportPopupVC */,
-				A459A14A255BE37F00645E45 /* UserServiceStatusVC */,
-				A4BB50F625766CE600F8E8D0 /* ContactusPopupVC */,
-				A4BB50F525766CDA00F8E8D0 /* ContactUsVC */,
-				A40F35A825691BBF00A4AED4 /* PaymentListingVC */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1664,6 +1626,12 @@
 		8481FA832500EE1500AB6EFB /* PostloginVC */ = {
 			isa = PBXGroup;
 			children = (
+				A415C02D254C2B41000CE928 /* EditProfileVC */,
+				A415C02E254C2B52000CE928 /* UserNotificationVC */,
+				A43926372547FC620089E0EB /* SRPopupVC */,
+				A4BB50F825766CFB00F8E8D0 /* SROtpPopupVC */,
+				A47EB1DA254D4A050044DD4D /* ChangePasswordVC */,
+				A47EB1DB254D4A120044DD4D /* ChangeLanguageVC */,
 				84FF6E98251D85990000E2AD /* BottomSheetVC */,
 				A4A6DEDA251A123800564020 /* GarageHome */,
 				844EB6EF25148381003A6E3F /* UserRequestTyre */,
@@ -1761,6 +1729,43 @@
 				844D81E4250271B400550334 /* LoginViewModel.swift */,
 			);
 			path = LoginVC;
+			sourceTree = "<group>";
+		};
+		84A43617257F9465004BA59E /* UserPostloginVC */ = {
+			isa = PBXGroup;
+			children = (
+				A459A14A255BE37F00645E45 /* UserServiceStatusVC */,
+				A4BB50F525766CDA00F8E8D0 /* ContactUsVC */,
+				A4BB50F925766D0E00F8E8D0 /* WebViewController */,
+				A43926342547FC400089E0EB /* OfferFilterVC */,
+				A43926352547FC4D0089E0EB /* RatingVC */,
+				8411D356252DA6F600E6FA6C /* UserServiceRequestVC */,
+				84C82F6225347A190014CD4A /* OffersDetailVC */,
+				A43926362547FC590089E0EB /* MyServiceFilterVC */,
+				A4BB50F725766CF100F8E8D0 /* ReportPopupVC */,
+				843D4B9C25305C3300D72D2F /* UserAllOffersVC */,
+				84144F21252C481F00D6572F /* UserAllRequestVC */,
+			);
+			path = UserPostloginVC;
+			sourceTree = "<group>";
+		};
+		84A43618257F94A4004BA59E /* GaragePostloginVC */ = {
+			isa = PBXGroup;
+			children = (
+				A415082825566513005DF8FD /* BookedTyreRequestVC */,
+				A4BB50F625766CE600F8E8D0 /* ContactusPopupVC */,
+				A459A143255BB7CE00645E45 /* GarageCustomerRatingVC */,
+				A41B7DE925551A9B005D1AC5 /* ServiceCompletedVC */,
+				A4357953255298BA009EED61 /* ReViewListingVC */,
+				84594800252AFDDC00C0B249 /* GarageAllRequestVC */,
+				84594804252B081000C0B249 /* BookedRequestVC */,
+				84594803252B080300C0B249 /* AllRequestVC */,
+				84144F29252C8BA800D6572F /* GarageServiceRequestVC */,
+				A43926382547FC6C0089E0EB /* GarageRequestPopupVC */,
+				A40F35A825691BBF00A4AED4 /* PaymentListingVC */,
+				A43B53A82524B5AC00447B24 /* GarageDashBoardAndRequest */,
+			);
+			path = GaragePostloginVC;
 			sourceTree = "<group>";
 		};
 		84B629AF251225EB0080A7C2 /* GarageAddLocationVC */ = {
@@ -2843,7 +2848,6 @@
 				84E166E4250362DE00C2F2EF /* SuccessPopupVC.swift in Sources */,
 				844EB7212518C9C3003A6E3F /* LoaderCell.swift in Sources */,
 				A45659EE255D5CCB00CA1475 /* ContactusPopupVC.swift in Sources */,
-				84303E6C25064B27000BA5C3 /* UnderDevelopmentVC.swift in Sources */,
 				8481FAAF25015D9000AB6EFB /* LoginVC.swift in Sources */,
 				843C8EBD25089BBE00515F2E /* ProfileUserHeaderCell.swift in Sources */,
 				843E03F92568DFF500ED16F8 /* AppDelegate + PushRedirection.swift in Sources */,

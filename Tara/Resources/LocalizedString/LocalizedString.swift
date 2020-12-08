@@ -340,6 +340,7 @@ enum LocalizedString : String {
     case make_Payment_to_get_hassle_free_service
     case block
     case unBlock
+    case blockUser
     case are_you_sure_you_want_to_block_this_user = "are_you_sure_you_want_to_block_this_user"
     case are_you_sure_you_want_to_unblock_this_user = "are_you_sure_you_want_to_unblock_this_user"
     case holdThisToRecord
@@ -357,6 +358,7 @@ enum LocalizedString : String {
     case inGarage
     case readyToBeTaken
     case delivered
+    case delete
     case inABid
     case bidFinalised
     case closedForBid
@@ -365,6 +367,7 @@ enum LocalizedString : String {
     case openForBidding
     case resend
     case no
+    case yes
     case viewDetails
     case hiUser
     case toContinuePerformingThisAction
@@ -402,6 +405,8 @@ enum LocalizedString : String {
     case newRequest
     case service_sheduled_for_today
     case today_Revenue
+    case today
+    case yesterday
     case allRequests
     case bookedRequests
     case serviceCompleted
@@ -434,6 +439,11 @@ enum LocalizedString : String {
     case paid_Caps
     case refunded
     case failed
+    case you
+    case delete_Message
+    case do_you_want_to_delete_message
+    case offerSmall
+    case paymentSmall
    
 }
 

@@ -309,6 +309,7 @@
 "openForBidding" = "open For Bidding";
 "resend" = "Resend";
 "no" = "No";
+"yes" = "Yes";
 "viewDetails" = "View Details";
 "hiUser" = "Hi, User";
 "hi" = "Hi, ";
@@ -407,6 +408,8 @@
 "newRequest" = "New Request";
 "service_sheduled_for_today" = "Services Scheduled for Today";
 "today_Revenue" = "Today’s Revenue";
+"today" = "Today";
+"yesterday" = "Yesterday";
 "requests" = "Requests";
 "allRequests" = "All Requests";
 "bookedRequests" = "Booked Requests";
@@ -415,6 +418,7 @@
 //==============================
 "holdThisToRecord" = "Hold this to record";
 "block" = "Block";
+"blockUser" = "Block User";
 "unBlock" = "UnBlock";
 "are_you_sure_you_want_to_block_this_user" = "Are you sure you want to block this user?";
 "are_you_sure_you_want_to_unblock_this_user" = "Are you sure you want to unblock this user?";
@@ -435,3 +439,9 @@
 "paid_Caps" = "PAID";
 "refunded" = "Payment Refunded";
 "failed" = "Payment Failed";
+"you" = "You";
+"delete" = "Delete";
+"delete_Message" = "Delete Message";
+"do_you_want_to_delete_message" = "Do you want to delete message?";
+"offerSmall" = "offer";
+"paymentSmall" = "payment";
