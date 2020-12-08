@@ -263,7 +263,7 @@ extension OtpVerificationVC: OtpVerificationVMDelegate{
     func otpVerifiedSuccessfully(message: String) {
         
         if self.viewModel.isComeFromSignupScreen {
-        AppRouter.showSuccessPopUp(vc: self,title: "OTP Verified",desc: "You have successfully verified your mobile no.")
+            AppRouter.showSuccessPopUp(vc: self,title: LocalizedString.otp_Verified.localized ,desc: LocalizedString.you_have_successfully_verified_your_mobile_no.localized)
         }
             
         else if isEditProfileFrom == .home {

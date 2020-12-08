@@ -179,11 +179,6 @@ enum AppRouter {
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
-    static func goToDovelopmentVC(vc: UIViewController){
-        let scene = UnderDevelopmentVC.instantiate(fromAppStoryboard: .Prelogin)
-        vc.navigationController?.pushViewController(scene, animated: true)
-    }
-    
     static func goToUserHome() {
         let homeScene = UserTabBarController.instantiate(fromAppStoryboard: .Home)
         setAsWindowRoot(homeScene)

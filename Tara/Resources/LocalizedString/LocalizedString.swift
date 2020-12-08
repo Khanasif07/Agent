@@ -12,7 +12,7 @@ enum LocalizedString : String {
     
     // MARK:- App Title
     //===================
-    case appTitle = "NewProject"
+    case appTitle = "TARA"
     case ok = "ok"
     case dot = "\u{2022}"
     case logout
@@ -444,6 +444,12 @@ enum LocalizedString : String {
     case do_you_want_to_delete_message
     case offerSmall
     case paymentSmall
+    case successful
+    case password_has_been_reset_successfully
+    case otp_Verified
+    case you_have_successfully_verified_your_mobile_no
+    case verify_email
+    case a_verification_link_will_be_send_to_your_email_address
    
 }
 
