@@ -275,6 +275,7 @@
 "offerExpired" = "Offer Expired";
 "offerReceived" = "Offer Received";
 "noOffers" = "No Offers";
+"noNotificationAvailable" = "No notification available";
 "garageDetails" = "Garage Details";
 "requestNumber" = "Request Number";
 "fromDate" = "From Date";

@@ -672,6 +672,7 @@ extension OneToOneChatVC: UITextViewDelegate{
             case .paid:
                 paymentBtn.setTitle(LocalizedString.paid.localized, for: .normal)
                 paymentBtn.isUserInteractionEnabled = false
+                editBidBtn.isHidden = true
             case .refunded:
                 paymentBtn.setTitle(LocalizedString.payNow.localized, for: .normal)
                 paymentBtn.isUserInteractionEnabled = true
@@ -2033,6 +2034,18 @@ extension OneToOneChatVC : ChatEditBidVCDelegate {
                 if let err = error {
                     print(err.localizedDescription)
                 } else {}
+            }
+        }else{
+            for messageArray in self.messageListing{
+                for message in messageArray{
+                    if message.messageType == MessageType.offer.rawValue && message.messageStatus != 4 {
+                        self.db.collection(ApiKey.messages).document(self.getRoomId()).collection(ApiKey.chat).document(message.messageId).updateData([ApiKey.messageStatus : 4]) { (error) in
+                            if let err = error {
+                                print(err.localizedDescription)
+                            } else {}
+                        }
+                    }
+                }
             }
         }
         self.messageTextView.text = MessageType.offer.rawValue

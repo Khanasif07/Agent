@@ -604,6 +604,30 @@ enum AppRouter {
         }
     }
     
+    // Redirect  to  Garage  Service Completed screen
+    static func goToGarageServiceCompletedVCThroughNotification(){
+        guard let nav: UINavigationController = AppDelegate.shared.window?.rootViewController as? UINavigationController else { return }
+        if let homeScene = nav.hasViewController(ofKind: GarageTabBarController.self) as? GarageTabBarController {
+            homeScene.selectedIndex = 4
+            let navigationController = UINavigationController(rootViewController: homeScene)
+            navigationController.setNavigationBarHidden(true, animated: false)
+            defaultSetAsWindowRoot(navigationController)
+            let serviceScene = ServiceCompletedVC.instantiate(fromAppStoryboard: .GarageRequest)
+            serviceScene.screenType = ServiceCompletedVC.ScreenType.serviceComplete
+            navigationController.pushViewController(serviceScene, animated: true)
+        } else {
+            if let vwController = (nav.hasViewController(ofKind: ServiceCompletedVC.self) as? ServiceCompletedVC) {
+                vwController.screenType = ServiceCompletedVC.ScreenType.serviceComplete
+                nav.popToViewController(vwController, animated: true)
+                return
+            } else {
+                let serviceScene = ServiceCompletedVC.instantiate(fromAppStoryboard: .GarageRequest)
+                serviceScene.screenType = ServiceCompletedVC.ScreenType.serviceComplete
+                nav.pushViewController(serviceScene, animated: true)
+            }
+        }
+    }
+    
     // Redirect  to  Garage Service Status screen
     static func goToGarageServiceStatusVCThroughNotification(requestId : String){
         guard let nav: UINavigationController = AppDelegate.shared.window?.rootViewController as? UINavigationController else { return }

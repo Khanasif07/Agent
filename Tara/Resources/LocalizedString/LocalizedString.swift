@@ -351,6 +351,7 @@ enum LocalizedString : String {
     case regNumber
     case requestedBy
     case noDataFound
+    case noNotificationAvailable
     case payableAmount
     case carReceived
     case inGarage

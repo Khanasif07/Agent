@@ -184,7 +184,7 @@ extension UserNotificationVC : DZNEmptyDataSetSource,DZNEmptyDataSetDelegate {
     
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         var emptyData = ""
-        emptyData =  self.viewModel.notificationListingArr.endIndex  == 0 ? LocalizedString.noDataFound.localized : ""
+        emptyData =  self.viewModel.notificationListingArr.endIndex  == 0 ? LocalizedString.noNotificationAvailable.localized : ""
         
         return NSAttributedString(string: emptyData, attributes: [NSAttributedString.Key.foregroundColor: AppColors.fontTertiaryColor,NSAttributedString.Key.font: AppFonts.NunitoSansBold.withSize(18)])
     }

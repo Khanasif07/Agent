@@ -74,10 +74,9 @@ class PushNotificationRedirection {
             AppRouter.goToGarageServiceStatusVCThroughNotification(requestId: requestId)
         case PushNotificationType.PAYMENT_REFUNDED.rawValue:
             let requestId = userInfo[ApiKey.gcm_notification_requestId] as? String ?? ""
-             printDebug(userInfo)
+            AppRouter.goToUserServiceStatusVCThroughNotification(requestId: requestId)
         case PushNotificationType.RATING_RECEIVED.rawValue:
-            let requestId = userInfo[ApiKey.gcm_notification_requestId] as? String ?? ""
-            printDebug(userInfo)
+            AppRouter.goToGarageServiceCompletedVCThroughNotification()
         default:
             break
         }
