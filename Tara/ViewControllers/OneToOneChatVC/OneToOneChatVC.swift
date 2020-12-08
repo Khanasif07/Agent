@@ -507,9 +507,7 @@ extension OneToOneChatVC {
             self.scrollMsgToBottom()
         }
         if requestId.isEmpty{tableViewTopConstraint.constant = 0.0}
-        tableViewTopConstraint.constant =  isCurrentUserType == .garage ? (chatViewModel.chatData.id.isEmpty ? 0.0 : 80.0)  : (chatViewModel.chatData.id.isEmpty ? 0.0 : 124.0)
-        
-        
+        tableViewTopConstraint.constant =  chatUserType == .garage ? (chatViewModel.chatData.id.isEmpty ? 0.0 : 80.0)  : (chatViewModel.chatData.id.isEmpty ? 0.0 : 124.0)
         UIView.animate(withDuration: duration) { self.view.layoutIfNeeded() }
     }
     
