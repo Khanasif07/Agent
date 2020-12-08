@@ -117,9 +117,10 @@ extension ServiceStatusVC: UITableViewDelegate,UITableViewDataSource{
             updateStatus(cell: cell)
             if let paymentStatus = viewModel.bookedRequestDetail?.paymentStatus{
                 cell.paidLbl.textColor = (paymentStatus.textColor)
-                cell.paidLbl.text = (paymentStatus == .paid ) ? LocalizedString.paid_Caps.localized : paymentStatus.text
+                cell.paidLbl.text = (paymentStatus == .paid || paymentStatus == .refunded) ? LocalizedString.paid_Caps.localized : paymentStatus.text
                 cell.amountLbl.text = "\(viewModel.bookedRequestDetail?.amountPaid ?? 0.0)" + " SAR"
                 cell.refundedPaymentView.isHidden = !(paymentStatus == .refunded)
+                cell.refundedAmountLbl.text = "\(viewModel.bookedRequestDetail?.refundedAmount ?? 0.0)" + " SAR"
             }
             cell.noRatingContainerView.isHidden = true
             cell.ratingContainerView.isHidden = (self.viewModel.bookedRequestDetail?.ratingDetails?._id?.isEmpty ?? true)

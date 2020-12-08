@@ -205,7 +205,7 @@ class FirestoreController:NSObject{
     
     //MARK:- CREATE LAST MESSAGE NODE
     //===============================
-    static func createLastMessageNode(roomId:String,messageText:String,messageTime:FieldValue,messageId:String,messageType:String,messageStatus:Int,senderId:String,receiverId:String,mediaUrl:String,blocked: Bool, thumbNailURL: String,messageDuration: Int,price: Int, amIBlocked : Bool) {
+    static func createLastMessageNode(roomId:String,messageText:String,messageTime:FieldValue,messageId:String,messageType:String,messageStatus:Int,senderId:String,receiverId:String,mediaUrl:String,blocked: Bool, thumbNailURL: String,messageDuration: Int,price: Double, amIBlocked : Bool) {
         
         db.collection(ApiKey.lastMessage)
             .document(roomId)
@@ -464,7 +464,7 @@ class FirestoreController:NSObject{
     
     //MARK:-CreateMessageNode
     //=======================
-    static func createMessageNode(roomId:String,messageText:String,messageTime:FieldValue,messageId:String,messageType:String,messageStatus:Int,senderId:String,receiverId:String,mediaUrl:String,blocked: Bool, thumbNailURL: String,messageDuration: Int,price: Int){
+    static func createMessageNode(roomId:String,messageText:String,messageTime:FieldValue,messageId:String,messageType:String,messageStatus:Int,senderId:String,receiverId:String,mediaUrl:String,blocked: Bool, thumbNailURL: String,messageDuration: Int,price: Double){
         
         db.collection(ApiKey.messages).document(roomId).collection(ApiKey.chat).document(messageId).setData([ApiKey.messageText:messageText,
                                                                                                              ApiKey.messageId:messageId,

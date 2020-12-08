@@ -270,6 +270,7 @@
 "batteryServices" = "Battery Services";
 "serviceOn" = "Serviced On";
 "offerAccepted" = "Offer Accepted";
+"offerExpired" = "Offer Expired";
 "offerRejected" = "Offer Rejected";
 "offerReceived" = "Offer Received";
 "noOffers" = "No Offers";

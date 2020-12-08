@@ -263,13 +263,13 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dfQ-yF-kST">
-                                        <rect key="frame" x="59" y="10.5" width="29" height="19.5"/>
+                                        <rect key="frame" x="59" y="12" width="27.5" height="16.5"/>
                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="14"/>
                                         <color key="textColor" red="0.54117647058823526" green="0.58431372549019611" blue="0.61960784313725492" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eCH-sO-HNq">
-                                        <rect key="frame" x="93" y="18" width="217" height="4"/>
+                                        <rect key="frame" x="91.5" y="18" width="218.5" height="4"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="4" id="cET-ST-k4k"/>
                                         </constraints>
@@ -312,7 +312,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Request Rejected" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mr8-Mz-bLl">
-                                        <rect key="frame" x="125.5" y="10" width="119.5" height="20.5"/>
+                                        <rect key="frame" x="125.5" y="11.5" width="119.5" height="17.5"/>
                                         <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -342,7 +342,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Roman Abramovich" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hDE-W8-g3n">
-                                        <rect key="frame" x="54" y="16" width="306" height="23.5"/>
+                                        <rect key="frame" x="54" y="17.5" width="306" height="20"/>
                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
                                         <color key="textColor" red="0.098023496569999993" green="0.098048247399999996" blue="0.098021931950000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -509,7 +509,7 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8vG-rO-ciS">
-                                        <rect key="frame" x="98" y="64.5" width="56.5" height="24"/>
+                                        <rect key="frame" x="98" y="64.5" width="55.5" height="24"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="1Ll-Ht-Uey">
                                                 <rect key="frame" x="4" y="4" width="16" height="16"/>
@@ -520,7 +520,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3.5/5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bci-wE-2jd">
-                                                <rect key="frame" x="24" y="4" width="28.5" height="16.5"/>
+                                                <rect key="frame" x="24" y="5" width="27.5" height="14"/>
                                                 <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="12"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -553,9 +553,28 @@
                                             </label>
                                         </subviews>
                                     </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gPd-wa-xrD" customClass="AppButton" customModule="Tara" customModuleProvider="target">
+                                        <rect key="frame" x="281.5" y="98" width="116.5" height="30"/>
+                                        <color key="backgroundColor" name="appRedColor"/>
+                                        <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="15"/>
+                                        <state key="normal" title="Pay">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="paymentBtnAction:" destination="zj2-p6-7pB" eventType="touchUpInside" id="ipM-Zw-49g"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.95640581849999995" green="0.94911783930000004" blue="0.9488303065" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="gPd-wa-xrD" firstAttribute="leading" relation="lessThanOrEqual" secondItem="Opo-7I-QwF" secondAttribute="trailing" constant="100" id="2zE-bQ-hAS"/>
+                                    <constraint firstAttribute="trailing" secondItem="gPd-wa-xrD" secondAttribute="trailing" constant="16" id="3mk-kJ-1b5"/>
+                                    <constraint firstItem="gPd-wa-xrD" firstAttribute="centerY" secondItem="Opo-7I-QwF" secondAttribute="centerY" id="48c-wZ-5EL"/>
                                     <constraint firstItem="Opo-7I-QwF" firstAttribute="top" secondItem="Da9-Ls-ekl" secondAttribute="bottom" constant="17" id="6ee-ya-yDU"/>
                                     <constraint firstItem="Da9-Ls-ekl" firstAttribute="top" secondItem="t4g-pb-aHl" secondAttribute="top" constant="16" id="K7W-qH-BgO"/>
                                     <constraint firstItem="8vG-rO-ciS" firstAttribute="leading" secondItem="hXO-XZ-U9V" secondAttribute="leading" id="P9d-gh-O1O"/>
@@ -572,13 +591,13 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fGU-Bo-btL">
-                                <rect key="frame" x="258" y="89" width="130" height="64"/>
+                                <rect key="frame" x="258" y="89" width="130" height="58"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="5BC-Rq-vvU">
-                                        <rect key="frame" x="0.0" y="0.0" width="130" height="64"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="130" height="58"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MtD-lT-K4F">
-                                                <rect key="frame" x="38" y="0.0" width="54" height="32"/>
+                                                <rect key="frame" x="38" y="0.0" width="54" height="29"/>
                                                 <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="14"/>
                                                 <state key="normal" title="UnBlock">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -588,7 +607,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RgN-1k-Z7o">
-                                                <rect key="frame" x="40" y="32" width="50" height="32"/>
+                                                <rect key="frame" x="40" y="29" width="50" height="29"/>
                                                 <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="14"/>
                                                 <state key="normal" title="Edit Bid">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -674,6 +693,7 @@
                         <outlet property="messagesTableView" destination="Lyv-I1-HDg" id="ftt-AR-8vb"/>
                         <outlet property="numberOfServiceLbl" destination="LTV-UH-hJJ" id="OAg-t9-wQj"/>
                         <outlet property="payableAmtLbl" destination="MUo-PL-h0x" id="Pfv-DW-U5e"/>
+                        <outlet property="paymentBtn" destination="gPd-wa-xrD" id="njX-0k-HOL"/>
                         <outlet property="previousServiceLbl" destination="Ztt-OR-amY" id="AD5-5l-8tC"/>
                         <outlet property="progressVIew" destination="eCH-sO-HNq" id="l4C-ZO-BFo"/>
                         <outlet property="sendButton" destination="o4k-DW-lbK" id="5U8-B2-0ps"/>

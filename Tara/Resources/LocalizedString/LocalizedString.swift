@@ -127,6 +127,7 @@ enum LocalizedString : String {
     case batteryServices
     case offerAccepted
     case offerRejected
+    case offerExpired
     case offerReceived
     case noOffers
     case costLowToHigh
@@ -377,6 +378,7 @@ enum LocalizedString : String {
     case verifyPhone
     case unitPriceShouldNotBeEmpty
     case accept
+    case reject
     case accepted
     case asPerYourTyreService
     case thisBidIsProposedBy

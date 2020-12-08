@@ -92,6 +92,27 @@ extension UserAllOffersVC {
         mainTableView.registerCell(with: UserOffersTableCell.self)
     }
     
+    private func setUpPaymentStatus(){
+        if let acceptedModel = viewModel.userBidListingArr.first{
+            switch acceptedModel.paymentStatus {
+            case .pending:
+                payNowBtn.setTitle(LocalizedString.pay.localized + " " + "\(acceptedModel.getMinAmount().0)" + " SAR", for: .normal)
+                payNowBtn.isUserInteractionEnabled = true
+            case .paid:
+                payNowBtn.setTitle(LocalizedString.paid.localized, for: .normal)
+                payNowBtn.isUserInteractionEnabled = false
+            case .refunded:
+                payNowBtn.setTitle(LocalizedString.pay.localized + " " + "\(acceptedModel.getMinAmount().0)" + " SAR", for: .normal)
+                payNowBtn.isUserInteractionEnabled = true
+            case .failed:
+                payNowBtn.setTitle(LocalizedString.pay.localized + " " + "\(acceptedModel.getMinAmount().0)" + " SAR", for: .normal)
+                payNowBtn.isUserInteractionEnabled = true
+            case .none:
+                payNowBtn.isHidden = true
+            }
+        }
+    }
+    
     @objc func refreshWhenPull(_ sender: UIRefreshControl) {
         sender.endRefreshing()
         getFilterData(data: filterArr,loader: false, pagination: true)
@@ -256,24 +277,7 @@ extension UserAllOffersVC : UserAllOfferVMDelegate {
     }
     
     func getUserBidDataSuccess(message: String){
-        if let acceptedModel = viewModel.userBidListingArr.first{
-            switch acceptedModel.paymentStatus {
-            case .pending:
-                payNowBtn.setTitle(LocalizedString.pay.localized + " " + "\(acceptedModel.getMinAmount().0)" + " SAR", for: .normal)
-                payNowBtn.isUserInteractionEnabled = true
-            case .paid:
-                 payNowBtn.setTitle(LocalizedString.paid.localized, for: .normal)
-                 payNowBtn.isUserInteractionEnabled = false
-            case .refunded:
-                payNowBtn.setTitle(LocalizedString.pay.localized + " " + "\(acceptedModel.getMinAmount().0)" + " SAR", for: .normal)
-                 payNowBtn.isUserInteractionEnabled = true
-            case .failed:
-                 payNowBtn.setTitle(LocalizedString.pay.localized + " " + "\(acceptedModel.getMinAmount().0)" + " SAR", for: .normal)
-                 payNowBtn.isUserInteractionEnabled = true
-            case .none:
-                payNowBtn.isHidden = true
-            }
-        }
+        self.setUpPaymentStatus()
         mainTableView.reloadData()
     }
     

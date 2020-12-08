@@ -41,7 +41,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fL7-yf-Ewb">
-                                        <rect key="frame" x="6" y="-3" width="72" height="68"/>
+                                        <rect key="frame" x="6" y="14" width="36" height="34"/>
                                         <state key="normal" image="icBackward"/>
                                     </button>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="axu-FF-BQ3">
@@ -1649,7 +1649,7 @@ start Servicing</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a3a-S6-ZVw">
-                                        <rect key="frame" x="14" y="-3" width="72" height="68"/>
+                                        <rect key="frame" x="14" y="14" width="36" height="34"/>
                                         <state key="normal" image="icBackward">
                                             <color key="titleColor" red="0.54117647059999996" green="0.58431372550000005" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -2286,7 +2286,7 @@ start Servicing</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="skU-Ld-DYn">
-                                        <rect key="frame" x="14" y="-3" width="72" height="68"/>
+                                        <rect key="frame" x="14" y="14" width="36" height="34"/>
                                         <state key="normal" image="icBackward">
                                             <color key="titleColor" red="0.54117647059999996" green="0.58431372550000005" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>

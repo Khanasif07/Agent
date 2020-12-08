@@ -107,7 +107,7 @@ class BookedRequestTableCell: UITableViewCell {
         }
         
         if let paymentStatus = model.paymentStatus{
-            if paymentStatus == .paid{
+            if paymentStatus == .paid || paymentStatus == .refunded{
                 startServiceBtn.isEnabled = true
             } else {
                 startServiceBtn.isEnabled = false

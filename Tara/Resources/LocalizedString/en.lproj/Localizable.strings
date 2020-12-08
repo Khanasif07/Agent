@@ -45,6 +45,7 @@
 "chooseLanguage" = "Choose Language";
 "login_with_emailId" = "Login with Email Id";
 "accept" = "Accept";
+"reject" = "Reject";
 "accepted" = "Accepted";
 "thisBidIsProposedBy" = "This bid is proposed by ";
 "asPerYourTyreService" = " as per your tyre\nservice request.";
@@ -271,6 +272,7 @@
 "serviceOn" = "Serviced On";
 "offerAccepted" = "Offer Accepted";
 "offerRejected" = "Offer Rejected";
+"offerExpired" = "Offer Expired";
 "offerReceived" = "Offer Received";
 "noOffers" = "No Offers";
 "garageDetails" = "Garage Details";

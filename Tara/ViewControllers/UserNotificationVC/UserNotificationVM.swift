@@ -87,7 +87,7 @@ class UserNotificationVM {
                     self.delegate?.notificationListingSuccess(msg: "")
                     return
                 }
-                let modelList = try! JSONDecoder().decode([NotificationModel].self, from: data)
+                let modelList = try JSONDecoder().decode([NotificationModel].self, from: data)
                 printDebug(modelList)
                 currentPage = result[ApiKey.data][ApiKey.page].intValue
                 isRequestinApi = false

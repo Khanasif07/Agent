@@ -181,6 +181,7 @@ struct GarageRequestModel: Codable {
     let requestDocId : String?
     let payableAmount : Double?
     let amountPaid: Double?
+    let refundedAmount : Double?
     let requestedBy : String?
     var serviceStatus: ServiceState? // for car Received, in Progress, complete, ready to be taken
     var paymentStatus : PaymentStatus?
@@ -208,6 +209,7 @@ struct GarageRequestModel: Codable {
         case createdAt
         case userId
         case paymentStatus
+        case refundedAmount
         case amountPaid
         case id = "_id"
         case requestType
@@ -248,6 +250,7 @@ struct GarageRequestModel: Codable {
         requestDocId = ""
         payableAmount = 0.0
         amountPaid = 0.0
+        refundedAmount = 0.0
         requestedBy = ""
         logo = ""
         rating = 0

@@ -118,7 +118,7 @@ extension BookedRequestVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if  let paymentStatus = viewModel.bookedRequestListing[indexPath.row].paymentStatus{
-            if paymentStatus == .paid{
+            if paymentStatus == .paid ||  paymentStatus == .refunded{
                 AppRouter.goToServiceStatusVC(vc: self, requestId: viewModel.bookedRequestListing[indexPath.row].id ?? "",requestType: viewModel.bookedRequestListing[indexPath.row].requestType ?? .battery ,serviceNo: viewModel.bookedRequestListing[indexPath.row].requestID ?? "")
             } else {
                 printDebug("Do Nothing")
