@@ -117,9 +117,9 @@ extension WebViewController: WKUIDelegate,WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         if let url = webView.url?.absoluteString{
-            if url.contains(s: "paymentRedirectUrl"){
+            if url.contains(s: "paymentRedirectUrl") && url.contains(s: "status=paid"){
                 NotificationCenter.default.post(name: Notification.Name.PaymentSucessfullyDone, object: nil)
-                CommonFunctions.delay(delay: 5.0) {
+                CommonFunctions.delay(delay: 2.5) {
                     self.pop()
                 }
             }

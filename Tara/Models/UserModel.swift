@@ -36,6 +36,7 @@ struct UserModel{
     var updatedAt : String
     var userType : String
     var emailVerifyToken: String
+//    var garageModel = GarageProfilePreFillModel()
     
     init() {
         self.init(JSON([:]))
@@ -62,10 +63,28 @@ struct UserModel{
         self.userType = json[ApiKey.currentRole].stringValue
         self.emailVerifyToken = json[ApiKey.emailVerifyToken].stringValue
         self.canChangePassword = json[ApiKey.canChangePassword].boolValue
+//        self.garageModel = GarageProfilePreFillModel(json[ApiKey.garageProfile])
     }
     
+//    func garageProfileData ()-> Data{
+//        do {
+//            let encodedData =  (try? NSKeyedArchiver.archivedData(withRootObject: garageModel, requiringSecureCoding: false)) ?? nil
+//            return encodedData ?? Data()
+//        } catch {
+//            printDebug("error occured")
+//        }
+//    }
+//
+//    func garageProfileDataDict (garageData: Data)-> JSONDictionary{
+//        do {
+//            let decodedData =  (try? NSKeyedUnarchiver.unarchiveObject(with: garageData)) ?? JSONDictionary()
+//            return decodedData as! JSONDictionary
+//        } catch {
+//            printDebug("error occured")
+//        }
+//    }
+    
     func saveToUserDefaults() {
-        
         let dict: JSONDictionary = [
             ApiKey._id : id,
             ApiKey.authToken: accessToken,
@@ -84,7 +103,8 @@ struct UserModel{
             ApiKey.status : status,
             ApiKey.updatedAt : updatedAt,
             ApiKey.userType : userType,
-            ApiKey.canChangePassword : canChangePassword
+            ApiKey.canChangePassword : canChangePassword,
+//            ApiKey.garageModel: self.garageProfileData()
         ]
         self.userType == "1" ? AppUserDefaults.save(value: "1",forKey: .currentUserType) : AppUserDefaults.save(value: "2",forKey: .currentUserType)
         
