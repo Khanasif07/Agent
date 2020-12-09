@@ -14,10 +14,15 @@ class ServiceCompletedVC : BaseVC {
     enum ScreenType {
         case serviceComplete
         case serviceHistory
+        case payments
+        case bankAccount
         
         var titleText : String{
             switch self {
-                
+            case .bankAccount:
+                return LocalizedString.bank_Account.localized
+            case .payments:
+                return LocalizedString.payments.localized
             case .serviceComplete:
                 return LocalizedString.serviceCompleted.localized
             case .serviceHistory:
@@ -74,19 +79,28 @@ extension ServiceCompletedVC {
         self.mainTableView.enablePullToRefresh(tintColor: AppColors.appRedColor ,target: self, selector: #selector(refreshWhenPull(_:)))
         self.mainTableView.registerCell(with: LoaderCell.self)
         mainTableView.registerCell(with: ServiceCompletedTableViewCell.self)
+        mainTableView.registerCell(with: PaymentListingCell.self)
+        mainTableView.registerCell(with: LinkAccountTableViewCell.self)
         hitApi(loader: false)
     }
 
     private func setupTextAndFont(){
-        titleLbl.text = screenType == .serviceComplete ? LocalizedString.serviceCompleted.localized : LocalizedString.service_history.localized
+        titleLbl.text = screenType == .serviceComplete ? LocalizedString.serviceCompleted.localized : screenType == .serviceHistory ? LocalizedString.service_history.localized : (screenType == .payments ? LocalizedString.payments.localized : LocalizedString.bank_Account.localized )
        
     }
     
     private func hitApi(loader: Bool = false) {
         let dict = [ApiKey.page:"1", ApiKey.limit: "10"]
-        screenType == .serviceComplete ? viewModel.fetchServiceCompleteListing(params: dict, loader: loader) :
+        switch screenType {
+        case .serviceComplete:
+            viewModel.fetchServiceCompleteListing(params: dict, loader: loader)
+        case .serviceHistory:
             viewModel.fetchUserServiceHistory(params: dict, loader: loader)
-        
+        case .payments:
+            viewModel.fetchPaymentsListing(params: dict, loader: loader)
+        default:
+            printDebug("Do Nothing")
+        }
     }
     
     @objc func refreshWhenPull(_ sender: UIRefreshControl) {
@@ -99,19 +113,41 @@ extension ServiceCompletedVC {
 extension ServiceCompletedVC :UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.serviceCompletedListing.count + (self.viewModel.showPaginationLoader ?  1: 0)
+        switch screenType {
+        case .serviceComplete ,.serviceHistory,.payments:
+            return  viewModel.serviceCompletedListing.count + (self.viewModel.showPaginationLoader ?  1: 0)
+        default:
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == (viewModel.serviceCompletedListing.endIndex) {
-            let cell = tableView.dequeueCell(with: LoaderCell.self)
-            return cell
-        }else {
-            let cell = tableView.dequeueCell(with: ServiceCompletedTableViewCell.self, indexPath: indexPath)
-            cell.bindData(viewModel.serviceCompletedListing[indexPath.row],screenType: self.screenType)
+        switch screenType {
+        case .serviceComplete ,.serviceHistory:
+            if indexPath.row == (viewModel.serviceCompletedListing.endIndex) {
+                let cell = tableView.dequeueCell(with: LoaderCell.self)
+                return cell
+            }else {
+                let cell = tableView.dequeueCell(with: ServiceCompletedTableViewCell.self, indexPath: indexPath)
+                cell.bindData(viewModel.serviceCompletedListing[indexPath.row],screenType: self.screenType)
+                return cell
+            }
+        case .payments:
+            if indexPath.row == (viewModel.serviceCompletedListing.endIndex) {
+                let cell = tableView.dequeueCell(with: LoaderCell.self)
+                return cell
+            }else {
+                let cell = tableView.dequeueCell(with: PaymentListingCell.self, indexPath: indexPath)
+                cell.bindData(viewModel.serviceCompletedListing[indexPath.row],screenType: self.screenType)
+                return cell
+            }
+        default:
+            let cell = tableView.dequeueCell(with: LinkAccountTableViewCell.self, indexPath: indexPath)
+            cell.bankNameLbl.text = GarageProfileModel.shared.bankName
+            cell.editbtn.isHidden = true
+            cell.accNumberLbl.text = GarageProfileModel.shared.accountNumber.displaySecureText
             return cell
         }
-        
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -122,8 +158,10 @@ extension ServiceCompletedVC :UITableViewDelegate, UITableViewDataSource{
         if screenType == .serviceComplete {
             AppRouter.goToGarageCustomerRatingVC(vc: self, requestId: viewModel.serviceCompletedListing[indexPath.row].id ?? "",name : viewModel.serviceCompletedListing[indexPath.row].userName ?? "", screenType: .serviceComplete)
             
-        }else {
+        }else if  screenType == .serviceHistory{
             AppRouter.goToGarageCustomerRatingVC(vc: self, requestId: viewModel.serviceCompletedListing[indexPath.row].id ?? "",name : viewModel.serviceCompletedListing[indexPath.row].garageName ?? "", screenType: .serviceHistory)
+        } else {
+            printDebug("Do Nothing")
         }
     }
     

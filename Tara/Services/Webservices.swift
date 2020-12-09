@@ -1064,6 +1064,17 @@ extension WebServices{
         }
     }
     
+    //MARK:- Payment Listing Api
+    static func getPaymentsServicesList(parameters: JSONDictionary,loader: Bool = false,endPoint: EndPoint,
+                                               success: @escaping SuccessResponse,
+                                               failure: @escaping FailureResponse) {
+        self.commonGetAPI(parameters: parameters, endPoint: endPoint,loader: loader, success: { (json) in
+            success(json)
+        }) { (error) -> (Void) in
+            failure(error)
+        }
+    }
+    
     //MARK:- Garage CompleteServices Detail Api
     static func getGarageCompletedServicesDetail(parameters: JSONDictionary,loader: Bool = false,
                                                  success: @escaping SuccessResponse,

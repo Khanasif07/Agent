@@ -116,6 +116,10 @@ extension ProfileVC {
                         AppRouter.goToChangePasswordVC(vc: self)
                         }
                     }
+                    cell.paymentsBtnTapped = { [weak self]  in
+                        guard let `self` = self else { return }
+                        AppRouter.goToServiceCompletedVC(vc: self, screenType: .payments)
+                    }
                     cell.serviceHistroyTapped = { [weak self]  in
                         guard let `self` = self else { return }
                         AppRouter.goToServiceCompletedVC(vc: self, screenType: .serviceHistory)

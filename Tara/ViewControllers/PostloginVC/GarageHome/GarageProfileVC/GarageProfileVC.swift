@@ -112,13 +112,17 @@ extension GarageProfileVC {
                     guard let `self` = self else { return }
                     AppRouter.goToProfileSettingVC(vc: self)
                 }
-             
+                cell.paymentsBtnTapped = { [weak self]  in
+                    guard let `self` = self else { return }
+                    AppRouter.goToServiceCompletedVC(vc: self,screenType: .payments)
+                }
                 cell.serviceCompletedTapped = { [weak self]  in
                     guard let `self` = self else { return }
                     AppRouter.goToServiceCompletedVC(vc: self,screenType: .serviceComplete)
                 }
                 cell.bankAccTapped = { [weak self]  in
-                    self?.showAlert(msg: LocalizedString.underDevelopment.localized)
+                    guard let `self` = self else { return }
+                    AppRouter.goToServiceCompletedVC(vc: self,screenType: .bankAccount)
                 }
                 
                 return cell

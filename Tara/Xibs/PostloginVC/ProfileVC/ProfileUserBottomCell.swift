@@ -17,10 +17,12 @@ class ProfileUserBottomCell: UITableViewCell {
     var changePassword: (()->())?
     var changeLanguageTapped : (()->())?
     var aboutusTapped : (()->())?
+    var contactUsTapped : (()->())?
     var termConditionTapped : (()->())?
     var privacyPolicyTapped : (()->())?
     var serviceCompletedTapped : (()->())?
     var helpBtnTapped : (()->())?
+    var paymentsBtnTapped : (()->())?
     var serviceHistroyTapped : (()->())?
     var bankAccTapped : (()->())?
 
@@ -85,6 +87,14 @@ extension ProfileUserBottomCell: UITableViewDelegate, UITableViewDataSource {
         switch self.selectItemArray[indexPath.row] {
         case  LocalizedString.logout.localized :
             if let handle = logoutBtnTapped{
+                handle()
+            }
+        case LocalizedString.contactUs.localized:
+            if let handle = contactUsTapped{
+                handle()
+            }
+        case LocalizedString.payments.localized:
+            if let handle = paymentsBtnTapped{
                 handle()
             }
         case LocalizedString.settings.localized:

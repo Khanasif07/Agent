@@ -48,6 +48,23 @@ class ServiceCompletedVM {
         }
     }
     
+    func fetchPaymentsListing(params: JSONDictionary,loader: Bool = false,pagination: Bool = false) {
+        if pagination {
+            guard nextPageAvailable, !isRequestinApi else { return }
+        } else {
+            guard !isRequestinApi else { return }
+        }
+        isRequestinApi = true
+        WebServices.getPaymentsServicesList(parameters: params,loader: loader, endPoint: (isCurrentUserType == .user) ? WebServices.EndPoint.userPaymentList : WebServices.EndPoint.garagePaymentList, success: { [weak self] (json) in
+            guard let `self` = self else { return }
+            self.parseToMakeListingData(result: json)
+        }) { [weak self] (error) in
+            guard let `self` = self else { return }
+            self.isRequestinApi = false
+            self.delegate?.serviceCompleteApiFailure(msg: error.localizedDescription)
+        }
+    }
+    
     func fetchUserServiceHistory(params: JSONDictionary,loader: Bool = false,pagination: Bool = false) {
           if pagination {
               guard nextPageAvailable, !isRequestinApi else { return }
@@ -75,7 +92,7 @@ class ServiceCompletedVM {
                     self.delegate?.serviceCompleteApiSuccess(msg: "")
                     return
                 }
-                let modelList = try! JSONDecoder().decode([GarageRequestModel].self, from: data)
+                let modelList = try JSONDecoder().decode([GarageRequestModel].self, from: data)
                 printDebug(modelList)
                 currentPage = result[ApiKey.data][ApiKey.page].intValue
                 isRequestinApi = false

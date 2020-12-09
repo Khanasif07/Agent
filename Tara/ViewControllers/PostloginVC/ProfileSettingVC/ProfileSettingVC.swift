@@ -98,11 +98,14 @@ extension ProfileSettingVC {
                         }
                         self.hitGarageSwitchApi()
                     }
+                    cell.contactUsTapped = { [weak self]  in
+                        guard let `self` = self else { return }
+                        AppRouter.goToContactUsVC(vc: self)
+                    }
                     cell.changeLanguageTapped = { [weak self]  in
                         guard let `self` = self else { return }
                         AppRouter.goToChangeLanguageVC(vc: self)
                     }
-                    
                     cell.aboutusTapped = { [weak self]  in
                     guard let `self` = self else { return }
                         AppRouter.goToWebVC(vc: self, screenType: .aboutUs)
