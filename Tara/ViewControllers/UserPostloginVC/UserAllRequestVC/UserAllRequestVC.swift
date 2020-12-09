@@ -14,7 +14,6 @@ class UserAllRequestVC: BaseVC {
     // MARK: - IBOutlets
     //===========================
     @IBOutlet weak var filterBtn: UIButton!
-    @IBOutlet weak var searchBtn: UIButton!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var mainTableView: UITableView!
     
@@ -49,10 +48,6 @@ class UserAllRequestVC: BaseVC {
     
     // MARK: - IBActions
     //===========================
-    @IBAction func searchBtnAction(_ sender: UIButton) {
-        showAlert(msg: LocalizedString.underDevelopment.localized)
-    }
-    
     @IBAction func filterBtnAction(_ sender: UIButton) {
         clearFilterOnTabChange = false
         AppRouter.goToMyServiceFilterVC(vc: self, filterArr: filterArr) {[weak self] (filterData, isReset) in
@@ -83,7 +78,6 @@ extension UserAllRequestVC {
         
         self.filterBtn.tintColor = .black
         self.filterBtn.isHidden = !isUserLoggedin
-        self.searchBtn.isHidden = !isUserLoggedin
         self.titleLbl.text = LocalizedString.my_Services.localized
         self.tableViewSetUp()
         hitListingApi()

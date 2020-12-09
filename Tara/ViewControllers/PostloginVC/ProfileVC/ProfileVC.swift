@@ -36,11 +36,11 @@ class ProfileVC: BaseVC {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.mainTableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.mainTableView.reloadData()
         setNeedsStatusBarAppearanceUpdate()
         self.tabBarController?.tabBar.isHidden = false
     }
@@ -110,7 +110,9 @@ extension ProfileVC {
                     }
                     cell.changePassword = { [weak self]  in
                         guard let `self` = self else { return }
+                        if UserModel.main.canChangePassword {
                         AppRouter.goToChangePasswordVC(vc: self)
+                        }
                     }
                     cell.serviceHistroyTapped = { [weak self]  in
                         guard let `self` = self else { return }

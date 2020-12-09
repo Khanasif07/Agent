@@ -31,5 +31,6 @@ class ProfileUserInternalCell: UITableViewCell {
         langLbl.text = CommonFunctions.isEnglishSelected() ? "EN" : "AR"
         profileImgView.image = img
         titleLbl.text = title
+        titleLbl.alpha = (title == LocalizedString.change_password.localized) ? (UserModel.main.canChangePassword ? 1 : 0.5) : 1
     }
 }

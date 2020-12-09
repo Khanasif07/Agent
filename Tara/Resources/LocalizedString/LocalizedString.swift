@@ -450,6 +450,8 @@ enum LocalizedString : String {
     case you_have_successfully_verified_your_mobile_no
     case verify_email
     case a_verification_link_will_be_send_to_your_email_address
+    case are_you_sure_you_want_to_logout
+    case to_continue_performing_this_action_please_complete_your_profile
    
 }
 

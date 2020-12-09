@@ -33,11 +33,11 @@ class ProfileSettingVC: BaseVC {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.mainTableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.mainTableView.reloadData()
         switchProfileTitle()
         self.tabBarController?.tabBar.isHidden = true
         self.tabBarController?.tabBar.isTranslucent = true
@@ -88,7 +88,7 @@ extension ProfileSettingVC {
                     cell.switchProfileToGarage = {  [weak self]  in
                         guard let `self` = self else { return }
                         if !UserModel.main.phoneNoAdded {
-                            self.showAlertWithAction(title: "", msg: "To continue performing this action, please complete your profile", cancelTitle: "Cancel", actionTitle: LocalizedString.ok.localized, actioncompletion: {
+                            self.showAlertWithAction(title: "", msg: LocalizedString.to_continue_performing_this_action_please_complete_your_profile.localized, cancelTitle: LocalizedString.cancel.localized, actionTitle: LocalizedString.ok.localized, actioncompletion: {
                                 AppRouter.goToEditProfileVC(vc: self, model: UserModel.main, isEditProfileFrom: .garage)
                             })
                             return
@@ -167,7 +167,9 @@ extension ProfileSettingVC {
                     
                     cell.changePassword = { [weak self]  in
                         guard let `self` = self else { return }
+                        if UserModel.main.canChangePassword {
                         AppRouter.goToChangePasswordVC(vc: self)
+                        }
                     }
                     return cell
                 default:
@@ -215,7 +217,7 @@ extension ProfileSettingVC {
     }
     
     private func showLogoutPopUp(){
-        self.showAlertWithAction(title: "Logout", msg: "Are you sure you want to logout?", cancelTitle: "Cancel", actionTitle: LocalizedString.ok.localized, actioncompletion: {
+        self.showAlertWithAction(title: LocalizedString.logout.localized, msg: LocalizedString.are_you_sure_you_want_to_logout.localized, cancelTitle: LocalizedString.cancel.localized, actionTitle: LocalizedString.ok.localized, actioncompletion: {
             WebServices.logout(parameters: [:], success: { (message) in
                 self.performCleanUp()
                 AppUserDefaults.save(value: "3", forKey: .currentUserType)

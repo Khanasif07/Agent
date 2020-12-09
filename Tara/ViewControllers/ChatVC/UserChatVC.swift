@@ -67,6 +67,7 @@ extension UserChatVC {
         self.tableViewSetUp()
         self.textFieldSetUp()
         self.topViewHConst.constant = isUserLoggedin ? 82.0 : 0.0
+        self.buttonView.isHidden = !isUserLoggedin
         if isUserLoggedin {
         self.getInboxListing()
         }
