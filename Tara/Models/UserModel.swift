@@ -31,6 +31,7 @@ struct UserModel{
     var phoneNo : String
     var phoneVerified : Bool
     var phoneNoAdded: Bool
+    var canChangePassword : Bool
     var status : String
     var updatedAt : String
     var userType : String
@@ -60,6 +61,7 @@ struct UserModel{
         self.updatedAt = json[ApiKey.updatedAt].stringValue
         self.userType = json[ApiKey.currentRole].stringValue
         self.emailVerifyToken = json[ApiKey.emailVerifyToken].stringValue
+        self.canChangePassword = json[ApiKey.canChangePassword].boolValue
     }
     
     func saveToUserDefaults() {
@@ -81,7 +83,8 @@ struct UserModel{
             ApiKey.phoneVerified : phoneVerified,
             ApiKey.status : status,
             ApiKey.updatedAt : updatedAt,
-            ApiKey.userType : userType
+            ApiKey.userType : userType,
+            ApiKey.canChangePassword : canChangePassword
         ]
         self.userType == "1" ? AppUserDefaults.save(value: "1",forKey: .currentUserType) : AppUserDefaults.save(value: "2",forKey: .currentUserType)
         

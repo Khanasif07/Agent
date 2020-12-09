@@ -363,12 +363,27 @@ extension OneToOneChatVC {
     }
     
     @objc func paymentSucessfullyDone(){
-        if self.messageId.isEmpty {  self.getChatData()}
+        if self.messageId.isEmpty {
+            self.getChatData()
+            guard self.messageListing.endIndex > 0, self.messageListing[self.messageListing.endIndex - 1].endIndex > 0 else { return }
+            for messageArray in self.messageListing{
+                for message in messageArray{
+                    if message.messageType == MessageType.payment.rawValue && message.messageStatus != 2 {
+                        self.db.collection(ApiKey.messages).document(self.getRoomId()).collection(ApiKey.chat).document(message.messageId).updateData([ApiKey.messageStatus : 2]) { (error) in
+                            if let err = error {
+                                print(err.localizedDescription)
+                            } else {}
+                        }
+                    }
+                }
+            }
+        }
         else {
             self.db.collection(ApiKey.messages).document(self.getRoomId()).collection(ApiKey.chat).document(self.messageId).updateData([ApiKey.messageStatus : 2]) { (error) in
                 if let err = error {
                     print(err.localizedDescription)
                 } else {}
+                self.getChatData()
             }
         }
     }
