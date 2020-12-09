@@ -19,8 +19,8 @@ class GarageProfileVC: BaseVC {
     // MARK: - Variables
     //===========================
     var viewModel = ProfileVM()
-    var selectItemArray = [LocalizedString.service_Completed.localized,LocalizedString.payments.localized,LocalizedString.bank_Account.localized,LocalizedString.my_Subscription.localized,LocalizedString.settings.localized]
-    var selectImageArray: [UIImage] = [#imageLiteral(resourceName: "serviceHistory"),#imageLiteral(resourceName: "payment"),#imageLiteral(resourceName: "savedCard"),#imageLiteral(resourceName: "icSub"),#imageLiteral(resourceName: "profileSettting")]
+    var selectItemArray = [LocalizedString.service_Completed.localized,LocalizedString.payments.localized,LocalizedString.bank_Account.localized,LocalizedString.settings.localized]
+    var selectImageArray: [UIImage] = [#imageLiteral(resourceName: "serviceHistory"),#imageLiteral(resourceName: "payment"),#imageLiteral(resourceName: "savedCard"),#imageLiteral(resourceName: "profileSettting")]
     
     // MARK: - Lifecycle
     //===========================
@@ -36,11 +36,13 @@ class GarageProfileVC: BaseVC {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        //self.mainTableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        DispatchQueue.main.async {
+            self.mainTableView.reloadData()
+        }
         setNeedsStatusBarAppearanceUpdate()
         self.tabBarController?.tabBar.isHidden = false
     }

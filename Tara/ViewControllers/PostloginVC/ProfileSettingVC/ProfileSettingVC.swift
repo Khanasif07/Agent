@@ -29,6 +29,7 @@ class ProfileSettingVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
+        self.mainTableView.reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -37,7 +38,9 @@ class ProfileSettingVC: BaseVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.mainTableView.reloadData()
+        DispatchQueue.main.async {
+            self.mainTableView.reloadData()
+        }
         switchProfileTitle()
         self.tabBarController?.tabBar.isHidden = true
         self.tabBarController?.tabBar.isTranslucent = true

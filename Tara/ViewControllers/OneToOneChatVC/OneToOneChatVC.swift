@@ -1972,7 +1972,6 @@ extension OneToOneChatVC : OneToOneChatViewModelDelegate{
     }
     
     func chatDataSuccess(msg: String) {
-        self.setUpPaymentStatus()
         if self.chatUserType == .garage {
             self.editBidBtn.isHidden = (chatViewModel.chatData.isServiceStarted ?? true)
             tableViewTopConstraint.constant = chatViewModel.chatData.id.isEmpty ? 0.0 : 80.0
@@ -1999,6 +1998,7 @@ extension OneToOneChatVC : OneToOneChatViewModelDelegate{
             garageAddressLbl.text = chatViewModel.chatData.garageAddress
             garageNameLbl.text = chatViewModel.chatData.garageName
         }
+        self.setUpPaymentStatus()
         CommonFunctions.delay(delay: 0.1) {
               self.scrollMsgToBottom(animated: true)
         }
