@@ -67,7 +67,7 @@ class WebViewController: BaseVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-       // CommonFunctions.showActivityLoader()
+        // CommonFunctions.showActivityLoader()
     }
     
     // MARK: - IBActions
@@ -90,6 +90,8 @@ class WebViewController: BaseVC {
     private func setupView() {
         let webConfig = WKWebViewConfiguration()
         webView = WKWebView(frame: self.view.bounds, configuration: webConfig)
+        webView.configuration.preferences.javaScriptEnabled = true
+        webView.uiDelegate = self
         webView.backgroundColor = .white
         containerView.addSubview(webView)
         webView.uiDelegate = self
@@ -128,7 +130,19 @@ extension WebViewController: WKUIDelegate,WKNavigationDelegate {
     }
     
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-      //  CommonFunctions.hideActivityLoader()
+        printDebug("web view close")
+    }
+    
+    func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message:
+        String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () ->
+        Void) {
+        let alertController = UIAlertController(title: message,message: nil,preferredStyle:
+            .alert)
+        
+        alertController.addAction(UIAlertAction(title: "OK", style: .cancel) {_ in
+            completionHandler()})
+        
+        self.present(alertController, animated: true, completion: nil)
     }
     
     func webViewDidClose(_ webView: WKWebView) {
