@@ -2460,6 +2460,7 @@ Service Center</string>
                         <outlet property="bottomLineView" destination="R4Y-cN-07A" id="ai8-BB-jQX"/>
                         <outlet property="brandsLbl" destination="2Gn-L4-1CK" id="Aqy-8N-c0N"/>
                         <outlet property="brandsValueLbl" destination="Si3-59-xPR" id="Jcw-sh-EM3"/>
+                        <outlet property="buttonsBottomConst" destination="j11-rq-UaZ" id="bbv-C0-ald"/>
                         <outlet property="cancelBtn" destination="h1o-s4-PBe" id="IBh-cD-K8L"/>
                         <outlet property="countryAndBrandStackView" destination="hq6-Pa-d6D" id="CIe-GU-SkP"/>
                         <outlet property="lowestBidLbl" destination="5Dw-LD-Kpy" id="21N-1S-K5F"/>

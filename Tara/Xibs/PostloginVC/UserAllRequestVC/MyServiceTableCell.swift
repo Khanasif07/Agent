@@ -10,6 +10,9 @@ import UIKit
 
 class MyServiceTableCell: UITableViewCell {
     
+    @IBOutlet weak var bottomLineView: UIView!
+    @IBOutlet weak var downloadInvoiceBtnView: UIStackView!
+    @IBOutlet weak var needHelpBtnView: UIStackView!
     @IBOutlet weak var downloadInvoiceBtn: UIButton!
     @IBOutlet weak var needHelpBtn: UIButton!
     @IBOutlet weak var dataContainerView: UIView!
@@ -23,11 +26,9 @@ class MyServiceTableCell: UITableViewCell {
     @IBOutlet weak var statusView: UIView!
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var paymentStatusLbl: UILabel!
-    
     @IBOutlet weak var statusValueLbl: UILabel!
     @IBOutlet weak var statusLbl: UILabel!
     @IBOutlet weak var statusValueLineView: UIView!
-
     @IBOutlet weak var otpContainerStackView: UIStackView!
     @IBOutlet weak var lineView: UIView!
     @IBOutlet weak var otpLbl: UILabel!
@@ -103,6 +104,8 @@ class MyServiceTableCell: UITableViewCell {
             offerView.backgroundColor =  #colorLiteral(red: 0.9098039216, green: 0.9843137255, blue: 0.9490196078, alpha: 1)
             offerLbl.text = LocalizedString.offerAccepted.localized
             bottomView.isHidden = false
+            downloadInvoiceBtnView.isHidden = !(model.serviceStatus == .delivered)
+            bottomLineView.isHidden = !(model.serviceStatus == .delivered)
         }else {
             bottomView.isHidden = true
             if model.totalOffers == 0 || model.status == .cancelled {

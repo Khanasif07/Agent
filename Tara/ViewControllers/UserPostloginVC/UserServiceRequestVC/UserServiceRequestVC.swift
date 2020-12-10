@@ -26,6 +26,7 @@ class UserServiceRequestVC: BaseVC {
     // MARK: - IBOutlets
     //===========================
  
+    @IBOutlet weak var buttonsBottomConst: NSLayoutConstraint!
     @IBOutlet weak var requestDetailLbl: UILabel!
     @IBOutlet weak var nearestBidLbl: UILabel!
     @IBOutlet weak var lowestBidLbl: UILabel!
@@ -138,6 +139,7 @@ extension UserServiceRequestVC {
     }
     
     private func textSetUp(){
+        self.buttonsBottomConst.constant = -90
         viewAllBtn.isEnabled = true
         [tyreSizeValueLbl,unitValueLblb,brandsValueLbl].forEach({$0?.textColor = AppColors.fontTertiaryColor})
         unitValueLblb.text = LocalizedString.unit.localized + ":"
@@ -274,6 +276,10 @@ extension UserServiceRequestVC: UserServiceRequestVMDelegate{
                 cancelBtn.isHidden = true
             }
         }
+        self.buttonsBottomConst.constant = 16
+        UIView.animate(withDuration: 1.0, animations: {
+                self.view.layoutIfNeeded()
+            }, completion: {res in })
         
     }
     
