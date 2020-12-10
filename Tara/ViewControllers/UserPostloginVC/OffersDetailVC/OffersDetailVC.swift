@@ -13,6 +13,7 @@ class OffersDetailVC: BaseVC {
     
     // MARK: - IBOutlets
     //===========================
+    @IBOutlet weak var btnsBottomConst: NSLayoutConstraint!
     @IBOutlet weak var totalPriceLbl: UILabel!
     @IBOutlet weak var unitLbl: UILabel!
     @IBOutlet weak var unitPriceLbl: UILabel!
@@ -111,6 +112,8 @@ extension OffersDetailVC {
     }
     
     private func setupTextAndFont(){
+        btnsBottomConst.constant = -90
+        titleLbl.text = LocalizedString.proposalDetails.localized
         titleLbl.font = AppFonts.NunitoSansBold.withSize(17.0)
         [totalPriceLbl,unitLbl,unitPriceLbl,brandsLbl].forEach({$0?.textColor = AppColors.fontTertiaryColor})
     }
@@ -202,6 +205,10 @@ extension OffersDetailVC : OffersDetailVMDelegate {
                 rejectBtn.isHidden = true
             }
         }
+        self.btnsBottomConst.constant = 16
+        UIView.animate(withDuration: 1.0, animations: {
+            self.view.layoutIfNeeded()
+        }, completion: {res in })
     }
     
     func getOfferDetailFailed(error: String) {

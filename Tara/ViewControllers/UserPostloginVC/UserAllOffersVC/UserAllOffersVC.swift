@@ -14,6 +14,7 @@ class UserAllOffersVC: BaseVC {
     // MARK: - IBOutlets
     //===========================
     
+    @IBOutlet weak var payBtnBottomConst: NSLayoutConstraint!
     @IBOutlet weak var payNowBtn: AppButton!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var mainTableView: UITableView!
@@ -125,6 +126,8 @@ extension UserAllOffersVC {
     }
     
     private func setupTextAndFont(){
+        payBtnBottomConst.constant = -90
+        titleLbl.text = LocalizedString.allOffers.localized
         titleLbl.font = AppFonts.NunitoSansBold.withSize(17.0)
     }
     
@@ -279,6 +282,10 @@ extension UserAllOffersVC : UserAllOfferVMDelegate {
     func getUserBidDataSuccess(message: String){
         self.setUpPaymentStatus()
         mainTableView.reloadData()
+        self.payBtnBottomConst.constant = 16
+        UIView.animate(withDuration: 1.0, animations: {
+            self.view.layoutIfNeeded()
+        }, completion: {res in })
     }
     
     func getUserBidDataFailed(error:String){

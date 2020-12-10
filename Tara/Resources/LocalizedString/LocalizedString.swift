@@ -470,6 +470,9 @@ enum LocalizedString : String {
     case offers
     case need_Help
     case download_Invoice
+    case what_service_are_you_looking_for
+    case allOffers
+    case proposalDetails
 }
 
 

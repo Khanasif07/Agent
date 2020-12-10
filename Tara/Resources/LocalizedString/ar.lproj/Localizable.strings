@@ -309,7 +309,7 @@
 "no" = "No";
 "viewDetails" = "View Details";
 "hiUser" = "Hi, User";
-"hi" = "Hi, ";
+"hi" = "مرحبا, ";
 "toContinuePerformingThisAction" = "To continue performing this action, please complete your profile";
 "successfullyRequested" = "Successfully Requested";
 "yourRequestForTyreServiceHasBeenSubmittedSuccessfully" = "Your request for tyre service has been submitted successfully.";
@@ -433,4 +433,3 @@
 "paid_Caps" = "PAID";
 "refunded" = "Payment Refunded";
 "failed" = "Payment Failed";
-
