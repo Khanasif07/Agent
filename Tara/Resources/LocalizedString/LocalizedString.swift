@@ -453,6 +453,18 @@ enum LocalizedString : String {
     case are_you_sure_you_want_to_logout
     case to_continue_performing_this_action_please_complete_your_profile
    
+    // MARK: - Updated Screen
+    //==============================
+    case requestSeen
+    case bid_Received
+    case lowest_Bid
+    case nearest_Bid
+    case request_Detail
+    case unit
+    case tyres
+    case leave_us_a_message_desc
+    case do_you_have_an_issue_with_service
+    case mode_Of_Payment
 }
 
 

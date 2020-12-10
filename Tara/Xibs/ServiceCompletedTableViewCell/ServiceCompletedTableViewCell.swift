@@ -24,6 +24,7 @@ class ServiceCompletedTableViewCell: UITableViewCell {
     //MARK:-Life Cycle
     override func awakeFromNib() {
         super.awakeFromNib()
+        amountPaidLbl.text = LocalizedString.amountPaid.localized + ":"
         // Initialization code
     }
     

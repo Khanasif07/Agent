@@ -14,6 +14,7 @@ class ContactUsVC: BaseVC {
     // MARK: - IBOutlets
     //===========================
  
+    @IBOutlet weak var descLbl: UILabel!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var subjectTextField: SkyFloatingLabelTextField!
     @IBOutlet weak var containerView: UIView!
@@ -83,6 +84,8 @@ extension ContactUsVC {
     
     private func setupTextAndFont(){
         titleLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
+        titleLbl.text = LocalizedString.contactUs.localized
+        descLbl.text = LocalizedString.leave_us_a_message_desc.localized
       
     }
 }

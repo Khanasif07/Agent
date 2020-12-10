@@ -26,6 +26,11 @@ class UserServiceRequestVC: BaseVC {
     // MARK: - IBOutlets
     //===========================
  
+    @IBOutlet weak var requestDetailLbl: UILabel!
+    @IBOutlet weak var nearestBidLbl: UILabel!
+    @IBOutlet weak var lowestBidLbl: UILabel!
+    @IBOutlet weak var bidReceivedLbl: UILabel!
+    @IBOutlet weak var requestSeenLbl: UILabel!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var requestSeenValueLbl: UILabel!
     @IBOutlet weak var bidRecivedValueLbl: UILabel!
@@ -135,15 +140,20 @@ extension UserServiceRequestVC {
     private func textSetUp(){
         viewAllBtn.isEnabled = true
         [tyreSizeValueLbl,unitValueLblb,brandsValueLbl].forEach({$0?.textColor = AppColors.fontTertiaryColor})
-        unitValueLblb.text = "Unit:"
+        unitValueLblb.text = LocalizedString.unit.localized + ":"
         brandsLbl.text = LocalizedString.brands.localized
-        titleLbl.text =  self.viewModel.serviceType == "Tyres" ? LocalizedString.tyreServiceRequest.localized: self.viewModel.serviceType == "Battery" ? LocalizedString.batteryServiceRequest.localized : LocalizedString.oilServiceRequest.localized
-        tyreSizeLbl.text = self.viewModel.serviceType == "Tyres" ? (LocalizedString.tyreSize.localized) : (LocalizedString.vehicleDetails.localized + ":")
-        productImgView.isHidden = self.viewModel.serviceType == "Tyres"
-        let logoBackGroundColor =  self.viewModel.serviceType == "Tyres" ? AppColors.blueLightColor : self.viewModel.serviceType == "Battery" ? AppColors.redLightColor : AppColors.grayLightColor
-        bottomLineView.isHidden = self.viewModel.serviceType == "Tyres"
+        titleLbl.text =  self.viewModel.serviceType == LocalizedString.tyres.localized ? LocalizedString.tyreServiceRequest.localized: self.viewModel.serviceType == LocalizedString.battery.localized ? LocalizedString.batteryServiceRequest.localized : LocalizedString.oilServiceRequest.localized
+        tyreSizeLbl.text = self.viewModel.serviceType == LocalizedString.tyres.localized ? (LocalizedString.tyreSize.localized) : (LocalizedString.vehicleDetails.localized + ":")
+        productImgView.isHidden = self.viewModel.serviceType == LocalizedString.tyres.localized
+        let logoBackGroundColor =  self.viewModel.serviceType == LocalizedString.tyres.localized ? AppColors.blueLightColor : self.viewModel.serviceType == LocalizedString.battery.localized ? AppColors.redLightColor : AppColors.grayLightColor
+        bottomLineView.isHidden = self.viewModel.serviceType == LocalizedString.tyres.localized
         self.productImgView.backgroundColor = logoBackGroundColor
-        let logoImg =  self.viewModel.serviceType == "Tyres" ? #imageLiteral(resourceName: "radialCarTireI151") : self.viewModel.serviceType == "Battery" ? #imageLiteral(resourceName: "icBattery") : #imageLiteral(resourceName: "icOil")
+        let logoImg =  self.viewModel.serviceType == LocalizedString.tyres.localized ? #imageLiteral(resourceName: "radialCarTireI151") : self.viewModel.serviceType == LocalizedString.battery.localized ? #imageLiteral(resourceName: "icBattery") : #imageLiteral(resourceName: "icOil")
+        requestSeenLbl.text = LocalizedString.requestSeen.localized
+        bidReceivedLbl.text = LocalizedString.bidReceived.localized
+        lowestBidLbl.text = LocalizedString.lowest_Bid.localized
+        nearestBidLbl.text = LocalizedString.nearest_Bid.localized
+        requestDetailLbl.text = LocalizedString.request_Detail.localized
         self.mainImgView.image = logoImg
     }
     
@@ -234,10 +244,9 @@ extension UserServiceRequestVC: UserServiceRequestVMDelegate{
             lowestBidValueLbl.text = viewModel.userRequestDetail.lowestBid?.description
         }
         bidRecivedValueLbl.text = viewModel.userRequestDetail.totalBids?.description
-//        let distanceMiles = getMiles(meters: viewModel.userRequestDetail.nearestBidder ?? 0.0)
         let distance = viewModel.userRequestDetail.nearestBidder ?? 0.0
         nearestBidderValueLbl.text = "\(distance.truncate(places: 2))"
-        if self.viewModel.serviceType == "Tyres"{
+        if self.viewModel.serviceType == LocalizedString.tyres.localized{
             tyreSizeValueLbl.text = "\(model.width ?? 0)W " + "\(model.rimSize ?? 0)R " + "\(model.profile ?? 0)P"
         } else{
             tyreSizeValueLbl.text  =  "\(model.make ?? "") " + "\(model.model ?? "") " + "\(model.year ?? 0)"
@@ -251,7 +260,7 @@ extension UserServiceRequestVC: UserServiceRequestVMDelegate{
         }else {
             countryAndBrandStackView.isHidden = false
         }
-        let logoImg =  self.viewModel.serviceType == "Tyres" ? #imageLiteral(resourceName: "radialCarTireI151") : self.viewModel.serviceType == "Battery" ? #imageLiteral(resourceName: "icBattery") : #imageLiteral(resourceName: "icOil")
+        let logoImg =  self.viewModel.serviceType == LocalizedString.tyres.localized ? #imageLiteral(resourceName: "radialCarTireI151") : self.viewModel.serviceType == LocalizedString.battery.localized ? #imageLiteral(resourceName: "icBattery") : #imageLiteral(resourceName: "icOil")
         productImgView.isHidden = model.images.isEmpty
         bottomLineView.isHidden = model.images.isEmpty
         self.productImgView.setImage_kf(imageString: model.images.first ?? "", placeHolderImage: logoImg, loader: false)

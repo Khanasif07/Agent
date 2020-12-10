@@ -453,3 +453,16 @@
 "a_verification_link_will_be_send_to_your_email_address" = "A verification link will be send to your email address";
 "are_you_sure_you_want_to_logout" = "Are you sure you want to logout?";
 "to_continue_performing_this_action_please_complete_your_profile" = "To continue performing this action, please complete your profile";
+
+// MARK: - Updated Screen
+//==============================
+"requestSeen" = "Request Seen";
+"bid_Received" = "Bid Received";
+"lowest_Bid" = "Lowest Bid";
+"nearest_Bid" = "Nearest Bidder";
+"request_Detail" = "Request Detail";
+"unit" = "Unit";
+"tyres" = "Tyres";
+"leave_us_a_message_desc" = "Leave us a message, we will get contact with you as soon as possible";
+"do_you_have_an_issue_with_service" = "Do you have an issue with service?";
+"mode_Of_Payment" = "Mode of Payment";

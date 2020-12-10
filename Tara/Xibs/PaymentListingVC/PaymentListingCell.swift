@@ -24,6 +24,8 @@ class PaymentListingCell: UITableViewCell {
     //MARk:- Life Cycle
     override func awakeFromNib() {
         super.awakeFromNib()
+        amountPaidLbl.text = LocalizedString.amountPaid.localized + ":"
+        modeOfPaymentLbl.text = LocalizedString.mode_Of_Payment.localized  + ":"
     }
     
     override func layoutSubviews() {

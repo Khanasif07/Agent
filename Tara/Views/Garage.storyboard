@@ -1993,8 +1993,8 @@ Service Center</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ivX-gW-0RT">
                                 <rect key="frame" x="0.0" y="44" width="414" height="56"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tyre Service Request" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DR0-v8-Zal">
-                                        <rect key="frame" x="127" y="21" width="160" height="20"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DR0-v8-Zal">
+                                        <rect key="frame" x="192.5" y="21" width="29" height="20"/>
                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -2454,6 +2454,7 @@ Service Center</string>
                         <viewLayoutGuide key="safeArea" id="glr-CI-w7P"/>
                     </view>
                     <connections>
+                        <outlet property="bidReceivedLbl" destination="Ryf-qA-Zt2" id="4Re-QR-bHV"/>
                         <outlet property="bidRecivedValueLbl" destination="ITW-eh-1rO" id="oqe-lr-Nw3"/>
                         <outlet property="bottomContainerView" destination="qgX-G2-8Al" id="hkO-eR-ugg"/>
                         <outlet property="bottomLineView" destination="R4Y-cN-07A" id="ai8-BB-jQX"/>
@@ -2461,12 +2462,16 @@ Service Center</string>
                         <outlet property="brandsValueLbl" destination="Si3-59-xPR" id="Jcw-sh-EM3"/>
                         <outlet property="cancelBtn" destination="h1o-s4-PBe" id="IBh-cD-K8L"/>
                         <outlet property="countryAndBrandStackView" destination="hq6-Pa-d6D" id="CIe-GU-SkP"/>
+                        <outlet property="lowestBidLbl" destination="5Dw-LD-Kpy" id="21N-1S-K5F"/>
                         <outlet property="lowestBidValueLbl" destination="ZoU-x0-HqE" id="TIU-4h-mB8"/>
                         <outlet property="mainImgView" destination="1HE-RU-LpJ" id="tNE-Xi-48e"/>
+                        <outlet property="nearestBidLbl" destination="YsH-eH-kGk" id="v3Z-0h-UA5"/>
                         <outlet property="nearestBidderValueLbl" destination="Rg6-IC-VNX" id="mhb-qz-H23"/>
                         <outlet property="productImgView" destination="kZw-UU-Lqk" id="JQf-O0-K3b"/>
+                        <outlet property="requestDetailLbl" destination="PMW-Rc-J3u" id="ZN4-He-p3L"/>
                         <outlet property="requestNoLbl" destination="YRY-nQ-8lE" id="lPd-Zt-r5o"/>
                         <outlet property="requestNoValueLbl" destination="o7v-iC-6Gk" id="OHR-EW-tw9"/>
+                        <outlet property="requestSeenLbl" destination="vgO-ij-lg1" id="JNK-op-R00"/>
                         <outlet property="requestSeenValueLbl" destination="ZPq-wf-eOR" id="goR-Ph-qNR"/>
                         <outlet property="sarLbl" destination="jTk-xT-1GN" id="c6Q-yL-ueY"/>
                         <outlet property="titleLbl" destination="DR0-v8-Zal" id="9F7-yK-QD9"/>

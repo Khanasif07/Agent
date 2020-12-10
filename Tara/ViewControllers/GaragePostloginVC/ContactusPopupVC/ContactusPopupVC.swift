@@ -61,6 +61,7 @@ extension ContactusPopupVC {
     
     private func setupTextAndFont(){
         titleLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
+        titleLbl.text = LocalizedString.do_you_have_an_issue_with_service.localized
       
     }
 }

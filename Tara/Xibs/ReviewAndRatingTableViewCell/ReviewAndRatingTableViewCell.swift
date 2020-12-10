@@ -36,7 +36,6 @@ class ReviewAndRatingTableViewCell: UITableViewCell {
         reviewRatingLbl.font = AppFonts.NunitoSansSemiBold.withSize(13.0)
         reviewReportedLbl.font = AppFonts.NunitoSansBold.withSize(13.0)
         reviewReasonLbl.font = AppFonts.NunitoSansBold.withSize(13.0)
-        
         reviewRatingLbl.text = LocalizedString.reviewAndRatings.localized
     }
     
