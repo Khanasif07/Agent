@@ -39,6 +39,7 @@ class ServiceCompletedTableViewCell: UITableViewCell {
             userImgView.setImage_kf(imageString: model.userImage ?? "", placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
             userImgView.contentMode = .scaleToFill
             userNameLbl.text = model.userName
+            amountValueLbl.text = "\(model.amountPaid ?? 0.0)" + " SAR"
             userImgView.round()
             ratingLbl.text = (model.isRated ?? false) ? (model.rating?.description ?? "") : "No Rating"
           
@@ -46,6 +47,7 @@ class ServiceCompletedTableViewCell: UITableViewCell {
             userImgView.contentMode = .scaleToFill
             userImgView.setImage_kf(imageString: model.garageLogo ?? "", placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
             userNameLbl.text = model.garageName
+            amountValueLbl.text = "\(model.amountPaid ?? 0.0)" + " SAR"
             if let rating = model.rating {
                 ratingLbl.text = (rating.description) //+ "/5"
 
