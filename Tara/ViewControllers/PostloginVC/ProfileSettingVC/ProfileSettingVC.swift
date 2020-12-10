@@ -213,9 +213,9 @@ extension ProfileSettingVC {
     }
     
     private func performCleanUp() {
-        let lang  = AppUserDefaults.value(forKey: .currentLanguage).stringValue
+        let lang  = AppUserDefaults.value(forKey: .language).stringValue
         AppUserDefaults.removeAllValues()
-        AppUserDefaults.save(value: lang, forKey: .currentLanguage)
+        AppUserDefaults.save(value: lang, forKey: .language)
         AppUserDefaults.save(value: true, forKey: .isLanguageSelect)
         UserModel.main = UserModel()
         UNUserNotificationCenter.current().removeAllDeliveredNotifications()

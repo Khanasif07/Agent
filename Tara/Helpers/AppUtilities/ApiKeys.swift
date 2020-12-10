@@ -112,6 +112,8 @@ enum ApiKey {
     static var minvideoCount: String{ return "minvideoCount"}
     static var emailVerifyToken: String { return "emailVerifyToken" }
     static var canChangePassword: String { return "canChangePassword" }
+    static var commission: String { return "commission" }
+    static var logoUrl: String { return "logoUrl" }
     
     static var isAlreadyRated: String { return " isAlreadyRated "}
     static var isvideoPurchased: String { return " isvideoPurchased"}
@@ -158,6 +160,9 @@ enum ApiKey {
     static var brands: String { return "brands" }
     static var district : String { return "district" }
     static var garageProfile : String { return "garageProfile" }
+    static var garageName : String { return "garageName" }
+    static var garageAddress : String { return "garageAddress" }
+    static var isgarageProfileComplete : String { return "isgarageProfileComplete" }
     static var garageModel : String { return "garageModel" }
     static var serviceName : String { return "serviceName" }
     

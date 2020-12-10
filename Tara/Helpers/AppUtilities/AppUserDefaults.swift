@@ -80,7 +80,6 @@ extension AppUserDefaults {
         case authorization
         case accesstoken
         case isLanguageSelect
-        case currentLanguage
         case isGuestMode
         case tutorialDisplayed
         case userType
@@ -103,6 +102,8 @@ extension AppUserDefaults {
         case longitude
         case language
         case loggedOut
+        case garageName
+        case garageAddress
         case name
         case userId
         case contactFetchDate

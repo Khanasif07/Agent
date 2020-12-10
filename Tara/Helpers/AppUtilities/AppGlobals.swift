@@ -71,7 +71,7 @@ var isPhoneNoVerified : Bool {
 }
 
 // for Language
-var selectedLanguage =  AppUserDefaults.value(forKey: .currentLanguage).stringValue
+var selectedLanguage =  AppUserDefaults.value(forKey: .language).stringValue
 
 var firestoreServerUrl: String {
     #if ENV_DEV

@@ -43,8 +43,9 @@ enum AppNetworking {
                                     let msg = jsonDataDict[ApiKey.message] as? String
                                     AppRouter.showAlert(alertMessage: msg ?? "",isHitLogOutApi: false)
                                     UserModel.main = UserModel()
+                                    let lang  = AppUserDefaults.value(forKey: .language).stringValue
                                     AppUserDefaults.removeAllValues()
-                                    AppUserDefaults.save(value: LocalizedString.english.localized, forKey: .currentLanguage)
+                                    AppUserDefaults.save(value: lang, forKey: .language)
                                 }else{
                                     success(JSON(jsonDataDict))
                                 }

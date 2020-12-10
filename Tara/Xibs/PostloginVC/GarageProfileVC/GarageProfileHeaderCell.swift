@@ -57,15 +57,15 @@ class GarageProfileHeaderCell: UITableViewCell {
     }
     
     func populateData(model: GarageProfilePreFillModel,userModel: UserModel){
-        profileImgView.setImage_kf(imageString: model.logoUrl, placeHolderImage: #imageLiteral(resourceName: "icImg"), loader: true)
-        userNameLbl.text = model.name.isEmpty ? "N/A" : "\(model.name)"
+        profileImgView.setImage_kf(imageString: userModel.logoUrl, placeHolderImage: #imageLiteral(resourceName: "icImg"), loader: true)
+        userNameLbl.text = userModel.garageName.isEmpty ? "N/A" : "\(userModel.garageName)"
         userPhoneNoLbl.text = userModel.phoneNo.isEmpty ? "N/A" : "\(userModel.countryCode)" + "  \(userModel.phoneNo)"
         userEmailLbl.text = userModel.email.isEmpty ? "N/A" : userModel.email
         phoneNoVerifiedView.isHidden = !userModel.phoneVerified
         phoneVerifyBtn.isHidden = userModel.phoneVerified || model.phoneNo.isEmpty
         emailVerifiedView.isHidden = !userModel.emailVerified
         emailVerifyBtn.isHidden = userModel.emailVerified || userModel.email.isEmpty
-        addressLbl.text = GarageProfileModel.shared.address
+        addressLbl.text = userModel.garageAddress
         mainCollView.reloadData()
     }
     
