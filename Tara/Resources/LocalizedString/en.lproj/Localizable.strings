@@ -460,9 +460,14 @@
 "bid_Received" = "Bid Received";
 "lowest_Bid" = "Lowest Bid";
 "nearest_Bid" = "Nearest Bidder";
+"bid_Amount" = "Bid Amount";
 "request_Detail" = "Request Detail";
 "unit" = "Unit";
 "tyres" = "Tyres";
 "leave_us_a_message_desc" = "Leave us a message, we will get contact with you as soon as possible";
 "do_you_have_an_issue_with_service" = "Do you have an issue with service?";
 "mode_Of_Payment" = "Mode of Payment";
+"request_No" = "Request No";
+"offers" = "Offers";
+"need_Help" = "Need Help?";
+"download_Invoice" = "Download Invoice";

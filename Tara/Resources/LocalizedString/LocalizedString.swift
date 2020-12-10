@@ -294,6 +294,7 @@ enum LocalizedString : String {
     case regNo
     case serviceStatus
     case requests
+    case request_No
     case enterBiddingAmount
     case placeBid
     case biddingAmountOnceSubmittedWillNeverBeChanged
@@ -459,12 +460,16 @@ enum LocalizedString : String {
     case bid_Received
     case lowest_Bid
     case nearest_Bid
+    case bid_Amount
     case request_Detail
     case unit
     case tyres
     case leave_us_a_message_desc
     case do_you_have_an_issue_with_service
     case mode_Of_Payment
+    case offers
+    case need_Help
+    case download_Invoice
 }
 
 

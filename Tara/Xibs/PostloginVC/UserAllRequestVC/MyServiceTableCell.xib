@@ -299,8 +299,10 @@
             <connections>
                 <outlet property="bottomView" destination="NZg-1Z-DeH" id="yyP-Gz-Mrw"/>
                 <outlet property="dataContainerView" destination="U6d-Bh-mQ8" id="B2T-yQ-2uv"/>
+                <outlet property="downloadInvoiceBtn" destination="oU8-uJ-kjk" id="lRx-B4-Arv"/>
                 <outlet property="lineView" destination="XBR-my-ybZ" id="XtM-AZ-ODG"/>
                 <outlet property="logoImgView" destination="rd9-kM-CYU" id="JO0-lZ-aGg"/>
+                <outlet property="needHelpBtn" destination="zOY-wK-E0W" id="NUt-hB-UWx"/>
                 <outlet property="offerLbl" destination="l5Q-8h-TKi" id="XJd-n4-icq"/>
                 <outlet property="offerView" destination="k7s-Ry-uSz" id="hh1-IS-G4U"/>
                 <outlet property="otpContainerStackView" destination="C2T-ru-VZR" id="SWc-zP-Xjg"/>
