@@ -114,7 +114,7 @@ enum ApiKey {
     static var canChangePassword: String { return "canChangePassword" }
     static var commission: String { return "commission" }
     static var logoUrl: String { return "logoUrl" }
-    
+    static var accepted : String { return "accepted" }
     static var isAlreadyRated: String { return " isAlreadyRated "}
     static var isvideoPurchased: String { return " isvideoPurchased"}
     static var videosPurchased: String { return "videosPurchased"}

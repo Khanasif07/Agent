@@ -345,6 +345,7 @@
 "width" = "Width";
 "rimSize" = "Rim Size";
 "quantity" = "Quantity";
+"quantityShort" = "Qty";
 "enter_number_of_tyre_you_want" = "Enter number of tyre you want";
 "oilType" = "Oil type";
 "selectType" = "Select type";
@@ -474,3 +475,6 @@
 "what_service_are_you_looking_for" = "What service are you looking for?";
 "allOffers" = "All Offers";
 "proposalDetails" = "Proposal Details";
+"viewProposal" = "View Proposal";
+"miles" = "Miles";
+"total_Amount" = "Total Amount";

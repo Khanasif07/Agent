@@ -97,16 +97,16 @@ extension UserAllOffersVC {
         if let acceptedModel = viewModel.userBidListingArr.first{
             switch acceptedModel.paymentStatus {
             case .pending:
-                payNowBtn.setTitle(LocalizedString.pay.localized + " " + "\(acceptedModel.getMinAmount().0)" + " SAR", for: .normal)
+                payNowBtn.setTitle(LocalizedString.pay.localized + " " + "\(acceptedModel.getMinAmount().0)" +  " " + LocalizedString.sar.localized, for: .normal)
                 payNowBtn.isUserInteractionEnabled = true
             case .paid:
                 payNowBtn.setTitle(LocalizedString.paid.localized, for: .normal)
                 payNowBtn.isUserInteractionEnabled = false
             case .refunded:
-                payNowBtn.setTitle(LocalizedString.pay.localized + " " + "\(acceptedModel.getMinAmount().0)" + " SAR", for: .normal)
+                payNowBtn.setTitle(LocalizedString.pay.localized + " " + "\(acceptedModel.getMinAmount().0)" + " " + LocalizedString.sar.localized, for: .normal)
                 payNowBtn.isUserInteractionEnabled = true
             case .failed:
-                payNowBtn.setTitle(LocalizedString.pay.localized + " " + "\(acceptedModel.getMinAmount().0)" + " SAR", for: .normal)
+                payNowBtn.setTitle(LocalizedString.pay.localized + " " + "\(acceptedModel.getMinAmount().0)" +  " " + LocalizedString.sar.localized, for: .normal)
                 payNowBtn.isUserInteractionEnabled = true
             case .none:
                 payNowBtn.isHidden = true
@@ -281,11 +281,12 @@ extension UserAllOffersVC : UserAllOfferVMDelegate {
     
     func getUserBidDataSuccess(message: String){
         self.setUpPaymentStatus()
-        mainTableView.reloadData()
         self.payBtnBottomConst.constant = 16
-        UIView.animate(withDuration: 1.0, animations: {
+        UIView.animate(withDuration: 0.25, animations: {
             self.view.layoutIfNeeded()
-        }, completion: {res in })
+        }, completion: {res in
+            self.mainTableView.reloadData()
+        })
     }
     
     func getUserBidDataFailed(error:String){

@@ -47,6 +47,7 @@ class UserNotificationVC: BaseVC {
 extension UserNotificationVC {
     
     private func initialSetup() {
+        NotificationCenter.default.addObserver(self, selector: #selector(hitNotificationApi), name: Notification.Name.NotificationUpdate, object: nil)
         titleLbl.text = LocalizedString.notifications.localized
         mainTableView.delegate = self
         mainTableView.dataSource = self
@@ -58,13 +59,14 @@ extension UserNotificationVC {
         mainTableView.registerCell(with: UserNotificationTableViewCell.self)
         mainTableView.registerCell(with: ProfileGuestTableCell.self)
         mainTableView.contentInset = UIEdgeInsets(top: 8.0, left: 0, bottom: 0, right: 0)
-        NotificationCenter.default.addObserver(self, selector: #selector(hitNotificationApi), name: Notification.Name.NotificationUpdate, object: nil)
         hitApi()
     }
     
     public func hitApi(){
+        if isUserLoggedin {
         let params = [ApiKey.page: "1",ApiKey.limit : "20"]
         viewModel.fetchNotificationListing(params: params, loader: false)
+        }
     }
     
     

@@ -283,6 +283,7 @@ enum LocalizedString : String {
     case oilImage
     case selectNumberOfUnitYouWant
     case viewTutorial
+    case viewProposal
     case underDevelopment
     case pleaseSelectServices
     case pleaseSelectServiceCenterImage
@@ -461,6 +462,7 @@ enum LocalizedString : String {
     case lowest_Bid
     case nearest_Bid
     case bid_Amount
+    case total_Amount
     case request_Detail
     case unit
     case tyres
@@ -473,6 +475,8 @@ enum LocalizedString : String {
     case what_service_are_you_looking_for
     case allOffers
     case proposalDetails
+    case miles
+    case quantityShort
 }
 
 
