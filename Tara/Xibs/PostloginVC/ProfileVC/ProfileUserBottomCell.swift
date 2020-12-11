@@ -65,7 +65,7 @@ extension ProfileUserBottomCell: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.selectImageArray.endIndex
+        return self.selectItemArray.endIndex
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

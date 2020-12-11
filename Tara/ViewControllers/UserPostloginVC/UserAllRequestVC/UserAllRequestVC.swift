@@ -213,7 +213,7 @@ extension UserAllRequestVC : UITableViewDelegate, UITableViewDataSource {
                 cell.populateData(model: self.viewModel.userRequestListing[indexPath.row])
                 cell.downloadInvoiceBtnTapped = {[weak self] in
                    guard let `self` = self else { return }
-                    self.viewModel.fetchPaymentInvoiceData(params: [ApiKey.requestId: self.viewModel.userRequestListing[indexPath.row].requestID])
+                    self.viewModel.fetchPaymentInvoiceData(params: [ApiKey.requestId: self.viewModel.userRequestListing[indexPath.row].id])
                 }
                 cell.needHelpBtnTapped = { [weak self] in
                     guard let `self` = self else { return }
@@ -265,7 +265,7 @@ extension UserAllRequestVC : UITableViewDelegate, UITableViewDataSource {
 //===========================
 extension UserAllRequestVC: UserAllRequestVMDelegate{
     func fetchPaymentInvoiceSuccess(message: String) {
-        
+        CommonFunctions.showToastWithMessage(message)
     }
     
     func fetchPaymentInvoiceFailed(error: String) {

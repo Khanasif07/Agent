@@ -836,6 +836,8 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                     receiverOfferCell.acceptBtn.isHidden = false
                     receiverOfferCell.rejectBtn.isHidden = false
                     receiverOfferCell.acceptBtn.isUserInteractionEnabled = true
+                    receiverOfferCell.acceptBtn.backgroundColor = AppColors.appRedColor
+                    receiverOfferCell.acceptBtn.setTitleColor(.white, for: .normal)
                     receiverOfferCell.acceptBtn.setTitle(LocalizedString.accept.localized, for: .normal)
                     receiverOfferCell.rejectBtn.setTitle(LocalizedString.reject.localized, for: .normal)
                 }
@@ -843,17 +845,23 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                     receiverOfferCell.acceptBtn.isHidden = false
                     receiverOfferCell.acceptBtn.isUserInteractionEnabled = false
                     receiverOfferCell.acceptBtn.setTitle(LocalizedString.offerAccepted.localized, for: .normal)
+                    receiverOfferCell.acceptBtn.backgroundColor = .clear
+                    receiverOfferCell.acceptBtn.setTitleColor(AppColors.appRedColor, for: .normal)
                     receiverOfferCell.rejectBtn.isHidden = true
                 }
                 else if model.messageStatus == 3 { //offer rejected
                     receiverOfferCell.acceptBtn.isHidden = false
                     receiverOfferCell.acceptBtn.isUserInteractionEnabled = false
                     receiverOfferCell.acceptBtn.setTitle(LocalizedString.offerRejected.localized, for: .normal)
+                    receiverOfferCell.acceptBtn.backgroundColor = .clear
+                    receiverOfferCell.acceptBtn.setTitleColor(AppColors.appRedColor, for: .normal)
                     receiverOfferCell.rejectBtn.isHidden = true
                 }else {
                     receiverOfferCell.acceptBtn.isHidden = false
                     receiverOfferCell.acceptBtn.isUserInteractionEnabled = false
                     receiverOfferCell.acceptBtn.setTitle(LocalizedString.offerExpired.localized, for: .normal)
+                    receiverOfferCell.acceptBtn.backgroundColor = .clear
+                    receiverOfferCell.acceptBtn.setTitleColor(AppColors.appRedColor, for: .normal)
                     receiverOfferCell.rejectBtn.isHidden = true
                 }
                 
@@ -891,12 +899,16 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                     receiverPaymentCell.payNowBtn.isHidden = false
                     receiverPaymentCell.payNowBtn.isUserInteractionEnabled = false
                     receiverPaymentCell.payNowBtn.setTitle(LocalizedString.paymentPaid.localized, for: .normal)
+                    receiverPaymentCell.payNowBtn.backgroundColor = .clear
+                    receiverPaymentCell.payNowBtn.setTitleColor(AppColors.appRedColor, for: .normal)
                     receiverPaymentCell.declineBtn.isHidden = true
                 }
                 else if model.messageStatus == 3 { //payment Decline
                     receiverPaymentCell.payNowBtn.isHidden = false
                     receiverPaymentCell.payNowBtn.isUserInteractionEnabled = false
                     receiverPaymentCell.payNowBtn.setTitle(LocalizedString.paymentDeclined.localized, for: .normal)
+                    receiverPaymentCell.payNowBtn.backgroundColor = .clear
+                    receiverPaymentCell.payNowBtn.setTitleColor(AppColors.appRedColor, for: .normal)
                     receiverPaymentCell.declineBtn.isHidden = true
                 }
                 receiverPaymentCell.amountLabel.text = "\(model.price)"
@@ -986,12 +998,16 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                 
                 if model.messageStatus == 1 {// hide both button
                     senderOfferCell.btnStackView.isHidden = true
+                    senderOfferCell.acceptBtn.backgroundColor = AppColors.appRedColor
+                    senderOfferCell.acceptBtn.setTitleColor(.white, for: .normal)
                 }
                 else if model.messageStatus == 2 { //offer accpted
                     senderOfferCell.btnStackView.isHidden = false
                     senderOfferCell.acceptBtn.isHidden = false
                     senderOfferCell.acceptBtn.isUserInteractionEnabled = false
                     senderOfferCell.acceptBtn.setTitle(LocalizedString.offerAccepted.localized, for: .normal)
+                    senderOfferCell.acceptBtn.backgroundColor = .clear
+                    senderOfferCell.acceptBtn.setTitleColor(AppColors.appRedColor, for: .normal)
                     senderOfferCell.rejectBtn.isHidden = true
                 }
                 else if model.messageStatus == 3 { //offer rejected
@@ -999,12 +1015,16 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                     senderOfferCell.acceptBtn.isHidden = false
                     senderOfferCell.acceptBtn.isUserInteractionEnabled = false
                     senderOfferCell.acceptBtn.setTitle(LocalizedString.offerRejected.localized, for: .normal)
+                    senderOfferCell.acceptBtn.backgroundColor = .clear
+                    senderOfferCell.acceptBtn.setTitleColor(AppColors.appRedColor, for: .normal)
                     senderOfferCell.rejectBtn.isHidden = true
                 } else {
                     senderOfferCell.btnStackView.isHidden = false
                     senderOfferCell.acceptBtn.isHidden = false
                     senderOfferCell.acceptBtn.isUserInteractionEnabled = false
                     senderOfferCell.acceptBtn.setTitle(LocalizedString.offerExpired.localized, for: .normal)
+                    senderOfferCell.acceptBtn.backgroundColor = .clear
+                    senderOfferCell.acceptBtn.setTitleColor(AppColors.appRedColor, for: .normal)
                     senderOfferCell.rejectBtn.isHidden = true
                 }
                 senderOfferCell.userNameLbl.text = LocalizedString.you.localized
@@ -1027,6 +1047,8 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                     receiverPaymentCell.payNowBtn.isHidden = false
                     receiverPaymentCell.payNowBtn.isUserInteractionEnabled = false
                     receiverPaymentCell.payNowBtn.setTitle(LocalizedString.paymentPaid.localized, for: .normal)
+                    receiverPaymentCell.payNowBtn.backgroundColor = .clear
+                    receiverPaymentCell.payNowBtn.setTitleColor(AppColors.appRedColor, for: .normal)
                     receiverPaymentCell.declineBtn.isHidden = true
                 }
                 else if model.messageStatus == 3 { //payment Decline
@@ -1034,6 +1056,8 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                     receiverPaymentCell.payNowBtn.isHidden = false
                     receiverPaymentCell.payNowBtn.isUserInteractionEnabled = false
                     receiverPaymentCell.payNowBtn.setTitle(LocalizedString.paymentDeclined.localized, for: .normal)
+                    receiverPaymentCell.payNowBtn.backgroundColor = .clear
+                    receiverPaymentCell.payNowBtn.setTitleColor(AppColors.appRedColor, for: .normal)
                     receiverPaymentCell.declineBtn.isHidden = true
                 }
                 receiverPaymentCell.amountLabel.text = "\(model.price)"
@@ -1989,6 +2013,13 @@ extension OneToOneChatVC : OneToOneChatViewModelDelegate{
             
             str.append(NSAttributedString(string: LocalizedString.sar.localized, attributes: [NSAttributedString.Key.foregroundColor: AppColors.successGreenColor,NSAttributedString.Key.font: AppFonts.NunitoSansSemiBold.withSize(12.0)]))
             amountValueLbl.attributedText = str
+            UIView.animate(withDuration: 0.50, animations: {
+                self.view.layoutIfNeeded()
+            }, completion: {res in
+                CommonFunctions.delay(delay: 0.1) {
+                    self.scrollMsgToBottom(animated: true)
+                }
+            })
         }
         else if chatUserType == .user{
             tableViewTopConstraint.constant = chatViewModel.chatData.id.isEmpty  ? 0.0 : 124.0
@@ -1999,11 +2030,15 @@ extension OneToOneChatVC : OneToOneChatViewModelDelegate{
             garageRatingLbl.text = (chatViewModel.chatData.garageRating?.truncate(places: 1).description ?? "")
             garageAddressLbl.text = chatViewModel.chatData.garageAddress
             garageNameLbl.text = chatViewModel.chatData.garageName
+            UIView.animate(withDuration: 0.50, animations: {
+                self.view.layoutIfNeeded()
+            }, completion: {res in
+                CommonFunctions.delay(delay: 0.1) {
+                    self.scrollMsgToBottom(animated: true)
+                }
+            })
         }
         self.setUpPaymentStatus()
-        CommonFunctions.delay(delay: 0.1) {
-              self.scrollMsgToBottom(animated: true)
-        }
     }
     
     func acceptRejectEditedBidSuccess(msg: String,totalAmount: Double) {

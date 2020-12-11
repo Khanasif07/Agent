@@ -62,8 +62,16 @@ class ProfileVC: BaseVC {
 extension ProfileVC {
     
     private func initialSetup() {
-        self.hitProfileApi(loader: true)
+        self.managedChangePasswordState()
         self.tableViewSetUp()
+        self.hitProfileApi(loader: true)
+    }
+    
+    private func managedChangePasswordState(){
+        if !UserModel.main.canChangePassword {
+        self.selectItemArray = [LocalizedString.service_history.localized,LocalizedString.payments.localized,LocalizedString.settings.localized]
+        self.selectImageArray =  [#imageLiteral(resourceName: "serviceHistory"),#imageLiteral(resourceName: "payment"),#imageLiteral(resourceName: "profileSettting")]
+        }
     }
     
     private func tableViewSetUp(){

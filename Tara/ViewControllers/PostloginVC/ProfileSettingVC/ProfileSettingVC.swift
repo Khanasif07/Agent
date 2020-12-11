@@ -38,10 +38,10 @@ class ProfileSettingVC: BaseVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.switchProfileTitle()
         DispatchQueue.main.async {
             self.mainTableView.reloadData()
         }
-        switchProfileTitle()
         self.tabBarController?.tabBar.isHidden = true
         self.tabBarController?.tabBar.isTranslucent = true
     }
@@ -63,7 +63,7 @@ class ProfileSettingVC: BaseVC {
 extension ProfileSettingVC {
     
     private func initialSetup() {
-        switchProfileTitle()
+        self.switchProfileTitle()
         self.tableViewSetUp()
         viewModel.delegate = self
     }
@@ -98,6 +98,7 @@ extension ProfileSettingVC {
                         }
                         self.hitGarageSwitchApi()
                     }
+                    
                     cell.contactUsTapped = { [weak self]  in
                         guard let `self` = self else { return }
                         AppRouter.goToContactUsVC(vc: self)
@@ -151,6 +152,12 @@ extension ProfileSettingVC {
                         guard let `self` = self else { return }
                         self.hitGarageSwitchApi()
                     }
+                    
+                    cell.contactUsTapped = { [weak self]  in
+                        guard let `self` = self else { return }
+                        AppRouter.goToContactUsVC(vc: self)
+                    }
+                    
                     cell.changeLanguageTapped = { [weak self]  in
                         guard let `self` = self else { return }
                         AppRouter.goToChangeLanguageVC(vc: self)
@@ -174,7 +181,7 @@ extension ProfileSettingVC {
                     cell.changePassword = { [weak self]  in
                         guard let `self` = self else { return }
                         if UserModel.main.canChangePassword {
-                        AppRouter.goToChangePasswordVC(vc: self)
+                            AppRouter.goToChangePasswordVC(vc: self)
                         }
                     }
                     return cell
@@ -240,7 +247,19 @@ extension ProfileSettingVC {
         } else {
             self.switchProfileString = LocalizedString.switchProfileToUser.localized
         }
-        self.selectItemArray = [LocalizedString.aboutUs.localized,LocalizedString.terms_Condition.localized,LocalizedString.privacy_policy.localized,LocalizedString.contactUs.localized,LocalizedString.changeLanguage.localized,switchProfileString, isCurrentUserType == .user ?  LocalizedString.help.localized : LocalizedString.change_password.localized,LocalizedString.faq.localized,LocalizedString.referFriend.localized]
+        self.selectItemArray = [LocalizedString.aboutUs.localized,LocalizedString.terms_Condition.localized,LocalizedString.privacy_policy.localized,LocalizedString.contactUs.localized,LocalizedString.changeLanguage.localized,switchProfileString, isCurrentUserType == .user ?  LocalizedString.help.localized : LocalizedString.change_password.localized,LocalizedString.faq.localized]
+        if !UserModel.main.canChangePassword {
+            if self.selectItemArray.contains(LocalizedString.change_password.localized){
+                self.selectItemArray.removeAll { (value) -> Bool in
+                    return value == LocalizedString.change_password.localized
+                }
+            }
+            if self.selectImageArray.contains(#imageLiteral(resourceName: "changePassword")){
+                self.selectImageArray.removeAll { (imgValue) -> Bool in
+                    return imgValue == #imageLiteral(resourceName: "changePassword")
+                }
+            }
+        }
     }
 }
 // MARK: - Extension For TableView
