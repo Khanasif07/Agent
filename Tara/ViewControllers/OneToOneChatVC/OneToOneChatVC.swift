@@ -693,6 +693,8 @@ extension OneToOneChatVC: UITextViewDelegate{
                 paymentBtn.setTitle(LocalizedString.payNow.localized , for: .normal)
                 paymentBtn.isUserInteractionEnabled = true
             }
+        } else{
+               paymentBtn.isHidden = true
         }
     }
 }
@@ -1985,7 +1987,7 @@ extension OneToOneChatVC : OneToOneChatViewModelDelegate{
                 .foregroundColor: AppColors.successGreenColor
             ])
             
-            str.append(NSAttributedString(string: "SAR", attributes: [NSAttributedString.Key.foregroundColor: AppColors.successGreenColor,NSAttributedString.Key.font: AppFonts.NunitoSansSemiBold.withSize(12.0)]))
+            str.append(NSAttributedString(string: LocalizedString.sar.localized, attributes: [NSAttributedString.Key.foregroundColor: AppColors.successGreenColor,NSAttributedString.Key.font: AppFonts.NunitoSansSemiBold.withSize(12.0)]))
             amountValueLbl.attributedText = str
         }
         else if chatUserType == .user{
@@ -1994,7 +1996,7 @@ extension OneToOneChatVC : OneToOneChatViewModelDelegate{
             garageImgView.setImage_kf(imageString: chatViewModel.chatData.garageLogo, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
             garageRequestNoValueLbl.text = chatViewModel.chatData.requestId
             garageAmountValueLbl.text = chatViewModel.chatData.totalAmount?.description
-            garageRatingLbl.text = (chatViewModel.chatData.garageRating?.truncate(places: 1).description ?? "") //+ "/5"
+            garageRatingLbl.text = (chatViewModel.chatData.garageRating?.truncate(places: 1).description ?? "")
             garageAddressLbl.text = chatViewModel.chatData.garageAddress
             garageNameLbl.text = chatViewModel.chatData.garageName
         }

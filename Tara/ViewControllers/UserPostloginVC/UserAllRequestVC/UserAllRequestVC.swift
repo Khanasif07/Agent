@@ -212,8 +212,8 @@ extension UserAllRequestVC : UITableViewDelegate, UITableViewDataSource {
                 let cell = tableView.dequeueCell(with: MyServiceTableCell.self, indexPath: indexPath)
                 cell.populateData(model: self.viewModel.userRequestListing[indexPath.row])
                 cell.downloadInvoiceBtnTapped = {[weak self] in
-                    self?.showAlert(msg: LocalizedString.underDevelopment.localized)
-                    
+                   guard let `self` = self else { return }
+                    self.viewModel.fetchPaymentInvoiceData(params: [ApiKey.requestId: self.viewModel.userRequestListing[indexPath.row].requestID])
                 }
                 cell.needHelpBtnTapped = { [weak self] in
                     guard let `self` = self else { return }
@@ -264,18 +264,27 @@ extension UserAllRequestVC : UITableViewDelegate, UITableViewDataSource {
 // MARK: - Extension For TableView
 //===========================
 extension UserAllRequestVC: UserAllRequestVMDelegate{
+    func fetchPaymentInvoiceSuccess(message: String) {
+        
+    }
+    
+    func fetchPaymentInvoiceFailed(error: String) {
+        CommonFunctions.showToastWithMessage(error)
+    }
+    
     func getUserMyRequestDataSuccess(message: String){
         self.mainTableView.reloadData()
     }
     func mgetUserMyRequestDataFailed(error:String){
-        ToastView.shared.showLongToast(self.view, msg: error)
+         CommonFunctions.showToastWithMessage(error)
     }
     
     func resendRequsetSuccess(message: String) {
         
     }
+    
     func resendRequsetFailure(error: String) {
-        
+         CommonFunctions.showToastWithMessage(error)
     }
 }
 

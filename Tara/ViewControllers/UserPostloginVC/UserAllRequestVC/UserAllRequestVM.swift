@@ -16,6 +16,8 @@ protocol UserAllRequestVMDelegate: class {
     func mgetUserMyRequestDataFailed(error:String)
     func resendRequsetSuccess(message: String)
     func resendRequsetFailure(error: String)
+    func fetchPaymentInvoiceSuccess(message: String)
+    func fetchPaymentInvoiceFailed(error:String)
 
 }
 
@@ -52,6 +54,15 @@ class UserAllRequestVM{
         }
     }
     
+    func fetchPaymentInvoiceData(params: JSONDictionary,loader: Bool = true){
+        WebServices.fetchPaymentInvoiceApi(parameters: params,loader: loader,success: { (json) in
+            let msg = json[ApiKey.message].stringValue
+            self.delegate?.fetchPaymentInvoiceSuccess(message: msg)
+        }) { (error) -> (Void) in
+            self.delegate?.fetchPaymentInvoiceSuccess(message: error.localizedDescription)
+        }
+    }
+    
     func parseToMakeListingData(result: JSON) {
         if let jsonString = result[ApiKey.data][ApiKey.result].rawString(), let data = jsonString.data(using: .utf8) {
             do {
@@ -62,7 +73,7 @@ class UserAllRequestVM{
                     self.delegate?.getUserMyRequestDataSuccess(message: "")
                     return
                 }
-                let modelList = try! JSONDecoder().decode([UserServiceRequestModel].self, from: data)
+                let modelList = try JSONDecoder().decode([UserServiceRequestModel].self, from: data)
                 printDebug(modelList)
                 currentPage = result[ApiKey.data][ApiKey.page].intValue
                 isRequestinApi = false
