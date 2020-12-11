@@ -163,10 +163,8 @@ extension ProfileVC {
                 self.mainTableView.isScrollEnabled = false
                 return 1
             }
-        } else {
-            self.mainTableView.isScrollEnabled = false
-            return 1
         }
+        return 1
     }
     
     public func hitProfileApi(loader: Bool){

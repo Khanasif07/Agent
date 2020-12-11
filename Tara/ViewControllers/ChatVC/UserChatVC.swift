@@ -99,8 +99,10 @@ extension UserChatVC {
     
     private func getNoOfRowsInSection() -> Int {
         if isUserLoggedin {
+            self.mainTableView.isScrollEnabled = true
             return searchInboxListing.endIndex
         } else {
+            self.mainTableView.isScrollEnabled = false
             return 1
         }
     }

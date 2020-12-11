@@ -77,8 +77,10 @@ extension UserNotificationVC {
     
     private func getNoOfRowsInSection() -> Int {
         if isUserLoggedin {
+            self.mainTableView.isScrollEnabled = true
             return viewModel.notificationListingArr.endIndex + (self.viewModel.showPaginationLoader ?  1: 0)
         } else {
+            self.mainTableView.isScrollEnabled = false
             return 1
         }
     }
