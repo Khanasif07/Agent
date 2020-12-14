@@ -7,11 +7,15 @@
 //
 
 import UIKit
+import FirebaseStorage
+import FirebaseFirestore
+
 
 class ProfileSettingVC: BaseVC {
     
     // MARK: - IBOutlets
     //===========================
+    public let db = Firestore.firestore()
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var mainTableView: UITableView!
     
@@ -23,7 +27,7 @@ class ProfileSettingVC: BaseVC {
     var selectItemArray1 = [LocalizedString.logout.localized]
     var selectImageArray1: [UIImage] = [#imageLiteral(resourceName: "logout")]
     var viewModel = GarageRegistrationVM()
-
+    
     // MARK: - Lifecycle
     //===========================
     override func viewDidLoad() {
@@ -108,7 +112,7 @@ extension ProfileSettingVC {
                         AppRouter.goToChangeLanguageVC(vc: self)
                     }
                     cell.aboutusTapped = { [weak self]  in
-                    guard let `self` = self else { return }
+                        guard let `self` = self else { return }
                         AppRouter.goToWebVC(vc: self, screenType: .aboutUs)
                     }
                     
@@ -164,17 +168,17 @@ extension ProfileSettingVC {
                     }
                     
                     cell.aboutusTapped = { [weak self]  in
-                    guard let `self` = self else { return }
+                        guard let `self` = self else { return }
                         AppRouter.goToWebVC(vc: self, screenType: .aboutUs)
                     }
                     
                     cell.termConditionTapped = { [weak self]  in
-                    guard let `self` = self else { return }
+                        guard let `self` = self else { return }
                         AppRouter.goToWebVC(vc: self, screenType: .termsCondition)
                     }
                     
                     cell.privacyPolicyTapped = { [weak self]  in
-                    guard let `self` = self else { return }
+                        guard let `self` = self else { return }
                         AppRouter.goToWebVC(vc: self, screenType: .privacyPolicy)
                     }
                     
@@ -220,6 +224,13 @@ extension ProfileSettingVC {
     }
     
     private func performCleanUp() {
+        let userId = AppUserDefaults.value(forKey: .userId).stringValue
+        db.collection(ApiKey.users)
+            .document(userId).updateData([ApiKey.deviceToken : ""]) { (error) in
+                if let err = error {
+                    print(err.localizedDescription)
+                } else {}
+        }
         let lang  = AppUserDefaults.value(forKey: .language).stringValue
         AppUserDefaults.removeAllValues()
         AppUserDefaults.save(value: lang, forKey: .language)
