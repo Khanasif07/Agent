@@ -17,6 +17,7 @@ class WebViewController: BaseVC {
         case privacyPolicy
         case termsCondition
         case payment
+        case downloadInvoice
         
         var text :String {
             switch self {
@@ -28,6 +29,8 @@ class WebViewController: BaseVC {
                 return LocalizedString.terms_Condition.localized
             case .payment:
                 return LocalizedString.payments.localized
+            case .downloadInvoice:
+                return LocalizedString.download_Invoice.localized
             }
         }
         
@@ -41,6 +44,8 @@ class WebViewController: BaseVC {
                 return "https://google.com"
             case .payment:
                 return baseUrl + WebServices.EndPoint.payment.rawValue
+            case .downloadInvoice:
+                return "https://google.com"
                 
             }
         }
@@ -57,6 +62,7 @@ class WebViewController: BaseVC {
     var webView : WKWebView!
     var request : URLRequest!
     var requestId : String = ""
+    var pdfUrl  : String = ""
     
     // MARK: - Lifecycle
     //===========================
@@ -101,6 +107,12 @@ class WebViewController: BaseVC {
     private func loadUrl() {
         if webViewType == .payment{
             guard let url = URL(string: webViewType.url + "/" + self.requestId) else {return}
+            request = URLRequest(url: url)
+            webView.load(request)
+            return
+        }
+        if webViewType == .downloadInvoice{
+            guard let url = URL(string: pdfUrl) else {return}
             request = URLRequest(url: url)
             webView.load(request)
             return

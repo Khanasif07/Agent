@@ -16,7 +16,7 @@ protocol UserAllRequestVMDelegate: class {
     func mgetUserMyRequestDataFailed(error:String)
     func resendRequsetSuccess(message: String)
     func resendRequsetFailure(error: String)
-    func fetchPaymentInvoiceSuccess(message: String)
+    func fetchPaymentInvoiceSuccess(message: String,pdfUrl: String)
     func fetchPaymentInvoiceFailed(error:String)
 
 }
@@ -57,9 +57,10 @@ class UserAllRequestVM{
     func fetchPaymentInvoiceData(params: JSONDictionary,loader: Bool = true){
         WebServices.fetchPaymentInvoiceApi(parameters: params,loader: loader,success: { (json) in
             let msg = json[ApiKey.message].stringValue
-            self.delegate?.fetchPaymentInvoiceSuccess(message: msg)
+            let pdfUrl = json[ApiKey.data][ApiKey.url].stringValue
+            self.delegate?.fetchPaymentInvoiceSuccess(message: msg,pdfUrl: pdfUrl)
         }) { (error) -> (Void) in
-            self.delegate?.fetchPaymentInvoiceSuccess(message: error.localizedDescription)
+            self.delegate?.fetchPaymentInvoiceFailed(error: error.localizedDescription)
         }
     }
     
