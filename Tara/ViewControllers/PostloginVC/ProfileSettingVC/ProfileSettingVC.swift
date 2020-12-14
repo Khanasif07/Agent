@@ -229,15 +229,17 @@ extension ProfileSettingVC {
             .document(userId).updateData([ApiKey.deviceToken : ""]) { (error) in
                 if let err = error {
                     print(err.localizedDescription)
-                } else {}
+                } else {
+                    let lang  = AppUserDefaults.value(forKey: .language).stringValue
+                    AppUserDefaults.removeAllValues()
+                    AppUserDefaults.save(value: lang, forKey: .language)
+                    AppUserDefaults.save(value: true, forKey: .isLanguageSelect)
+                    AppUserDefaults.save(value: DeviceDetail.deviceToken, forKey: .fcmToken)
+                    UserModel.main = UserModel()
+                    UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+                    SocketIOManager.shared.closeConnection()
+                }
         }
-        let lang  = AppUserDefaults.value(forKey: .language).stringValue
-        AppUserDefaults.removeAllValues()
-        AppUserDefaults.save(value: lang, forKey: .language)
-        AppUserDefaults.save(value: true, forKey: .isLanguageSelect)
-        UserModel.main = UserModel()
-        UNUserNotificationCenter.current().removeAllDeliveredNotifications()
-        SocketIOManager.shared.closeConnection()
     }
     
     private func showLogoutPopUp(){
