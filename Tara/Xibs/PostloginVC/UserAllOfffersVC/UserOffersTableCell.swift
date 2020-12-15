@@ -37,6 +37,10 @@ class UserOffersTableCell: UITableViewCell {
         super.awakeFromNib()
         ratingView.backgroundColor = AppColors.fontTertiaryColor
         logoImgView.backgroundColor = AppColors.fontTertiaryColor
+        bALbl.text = LocalizedString.bid_Amount.localized
+        tALbl.text = LocalizedString.total_Amount.localized
+        distanceLbl.text = LocalizedString.distance.localized
+        quantityLbl.text = LocalizedString.quantityShort.localized
         rejectBtn.isBorderSelected = true
         viewProposalBtn.isEnabled = true
         blurView.isHidden = true
@@ -77,15 +81,19 @@ class UserOffersTableCell: UITableViewCell {
         let totalAmount = String((model.getMinAmount().1) * Int(model.getMinAmount().0))
         tAValueLbl.attributedText = getAttributedString(value: totalAmount,attributedLabel: tAValueLbl)
         logoImgView.setImage_kf(imageString: model.logo ?? "")
-        //        model.status != "accepted" ?  : ()
         if isBidAccepted {
-            model.status == "accepted" ? changeWithBlurView(isAdded: true) : changeWithBlurView(isAdded: false)
-            viewProposalBtn.setTitle(model.status == "accepted" ? "Chat" : "View Proposal", for: .normal)
+            model.status == ApiKey.accepted ? changeWithBlurView(isAdded: true) : changeWithBlurView(isAdded: false)
+            viewProposalBtn.setTitle(model.status == ApiKey.accepted ? LocalizedString.chat.localized : LocalizedString.viewProposal.localized, for: .normal)
         }
         else {
             changeWithBlurView(isAdded: true)
-            viewProposalBtn.setTitle("View Proposal", for: .normal)
-            
+            viewProposalBtn.setTitle(LocalizedString.viewProposal.localized, for: .normal)
+        }
+        
+        if let paymentStatus = model.paymentStatus{
+            if paymentStatus == .paid{
+                rejectBtn.isHidden = true
+            }
         }
     }
     
@@ -98,14 +106,14 @@ class UserOffersTableCell: UITableViewCell {
                 .font: AppFonts.NunitoSansBold.withSize(17.0),
                 .foregroundColor: AppColors.fontPrimaryColor
             ])
-            str.append(NSAttributedString(string: "Miles", attributes: [NSAttributedString.Key.foregroundColor: AppColors.fontSecondaryColor,NSAttributedString.Key.font: AppFonts.NunitoSansSemiBold.withSize(12.0)]))
+            str.append(NSAttributedString(string: LocalizedString.miles.localized, attributes: [NSAttributedString.Key.foregroundColor: AppColors.fontSecondaryColor,NSAttributedString.Key.font: AppFonts.NunitoSansSemiBold.withSize(12.0)]))
             
         case BAValueLbl:
             str = NSMutableAttributedString(string: value, attributes: [
                 .font: AppFonts.NunitoSansBold.withSize(17.0),
                 .foregroundColor: AppColors.successGreenColor
             ])
-            str.append(NSAttributedString(string: "SAR", attributes: [NSAttributedString.Key.foregroundColor: AppColors.successGreenColor,NSAttributedString.Key.font: AppFonts.NunitoSansSemiBold.withSize(12.0)]))
+            str.append(NSAttributedString(string: LocalizedString.sar.localized, attributes: [NSAttributedString.Key.foregroundColor: AppColors.successGreenColor,NSAttributedString.Key.font: AppFonts.NunitoSansSemiBold.withSize(12.0)]))
            
             str.append(NSAttributedString(string: "/Piece", attributes: [NSAttributedString.Key.foregroundColor: AppColors.fontSecondaryColor,NSAttributedString.Key.font: AppFonts.NunitoSansSemiBold.withSize(12.0)]))
             
@@ -114,7 +122,7 @@ class UserOffersTableCell: UITableViewCell {
                  .font: AppFonts.NunitoSansBold.withSize(17.0),
                  .foregroundColor: AppColors.fontPrimaryColor
              ])
-             str.append(NSAttributedString(string: "SAR", attributes: [NSAttributedString.Key.foregroundColor: AppColors.fontPrimaryColor,NSAttributedString.Key.font: AppFonts.NunitoSansSemiBold.withSize(12.0)]))
+            str.append(NSAttributedString(string: LocalizedString.sar.localized, attributes: [NSAttributedString.Key.foregroundColor: AppColors.fontPrimaryColor,NSAttributedString.Key.font: AppFonts.NunitoSansSemiBold.withSize(12.0)]))
             
         default:
             break

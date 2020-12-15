@@ -45,6 +45,7 @@
 "chooseLanguage" = "Choose Language";
 "login_with_emailId" = "Login with Email Id";
 "accept" = "Accept";
+"reject" = "Reject";
 "accepted" = "Accepted";
 "thisBidIsProposedBy" = "This bid is proposed by ";
 "asPerYourTyreService" = " as per your tyre\nservice request.";
@@ -271,8 +272,10 @@
 "serviceOn" = "Serviced On";
 "offerAccepted" = "Offer Accepted";
 "offerRejected" = "Offer Rejected";
+"offerExpired" = "Offer Expired";
 "offerReceived" = "Offer Received";
 "noOffers" = "No Offers";
+"noNotificationAvailable" = "No notification available";
 "garageDetails" = "Garage Details";
 "requestNumber" = "Request Number";
 "fromDate" = "From Date";
@@ -306,6 +309,7 @@
 "openForBidding" = "open For Bidding";
 "resend" = "Resend";
 "no" = "No";
+"yes" = "Yes";
 "viewDetails" = "View Details";
 "hiUser" = "Hi, User";
 "hi" = "Hi, ";
@@ -341,6 +345,7 @@
 "width" = "Width";
 "rimSize" = "Rim Size";
 "quantity" = "Quantity";
+"quantityShort" = "Qty";
 "enter_number_of_tyre_you_want" = "Enter number of tyre you want";
 "oilType" = "Oil type";
 "selectType" = "Select type";
@@ -404,6 +409,8 @@
 "newRequest" = "New Request";
 "service_sheduled_for_today" = "Services Scheduled for Today";
 "today_Revenue" = "Today’s Revenue";
+"today" = "Today";
+"yesterday" = "Yesterday";
 "requests" = "Requests";
 "allRequests" = "All Requests";
 "bookedRequests" = "Booked Requests";
@@ -412,6 +419,7 @@
 //==============================
 "holdThisToRecord" = "Hold this to record";
 "block" = "Block";
+"blockUser" = "Block User";
 "unBlock" = "UnBlock";
 "are_you_sure_you_want_to_block_this_user" = "Are you sure you want to block this user?";
 "are_you_sure_you_want_to_unblock_this_user" = "Are you sure you want to unblock this user?";
@@ -423,10 +431,50 @@
 // MARK: - Chat Screen
 //==============================
 "payNow" = "Pay Now";
+"pay" = "Pay";
 "decline" = "Decline";
 "paymentPaid" = "Payment Paid";
 "paymentDeclined" = "Payment Declined";
 "pending" = "Payment Pending";
 "paid" = "Payment Paid";
+"paid_Caps" = "PAID";
 "refunded" = "Payment Refunded";
 "failed" = "Payment Failed";
+"you" = "You";
+"delete" = "Delete";
+"delete_Message" = "Delete Message";
+"do_you_want_to_delete_message" = "Do you want to delete message?";
+"offerSmall" = "offer";
+"paymentSmall" = "payment";
+"successful" = "Successful";
+"password_has_been_reset_successfully" = "Password has been reset successfully";
+"otp_Verified" = "OTP Verified";
+"you_have_successfully_verified_your_mobile_no" = "You have successfully verified your mobile no.";
+"verify_email" = "Verify Email";
+"a_verification_link_will_be_send_to_your_email_address" = "A verification link will be send to your email address";
+"are_you_sure_you_want_to_logout" = "Are you sure you want to logout?";
+"to_continue_performing_this_action_please_complete_your_profile" = "To continue performing this action, please complete your profile";
+
+// MARK: - Updated Screen
+//==============================
+"requestSeen" = "Request Seen";
+"bid_Received" = "Bid Received";
+"lowest_Bid" = "Lowest Bid";
+"nearest_Bid" = "Nearest Bidder";
+"bid_Amount" = "Bid Amount";
+"request_Detail" = "Request Detail";
+"unit" = "Unit";
+"tyres" = "Tyres";
+"leave_us_a_message_desc" = "Leave us a message, we will get contact with you as soon as possible";
+"do_you_have_an_issue_with_service" = "Do you have an issue with service?";
+"mode_Of_Payment" = "Mode of Payment";
+"request_No" = "Request No";
+"offers" = "Offers";
+"need_Help" = "Need Help?";
+"download_Invoice" = "Download Invoice";
+"what_service_are_you_looking_for" = "What service are you looking for?";
+"allOffers" = "All Offers";
+"proposalDetails" = "Proposal Details";
+"viewProposal" = "View Proposal";
+"miles" = "Miles";
+"total_Amount" = "Total Amount";

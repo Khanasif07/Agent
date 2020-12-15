@@ -270,6 +270,7 @@
 "batteryServices" = "Battery Services";
 "serviceOn" = "Serviced On";
 "offerAccepted" = "Offer Accepted";
+"offerExpired" = "Offer Expired";
 "offerRejected" = "Offer Rejected";
 "offerReceived" = "Offer Received";
 "noOffers" = "No Offers";
@@ -308,7 +309,7 @@
 "no" = "No";
 "viewDetails" = "View Details";
 "hiUser" = "Hi, User";
-"hi" = "Hi, ";
+"hi" = "مرحبا, ";
 "toContinuePerformingThisAction" = "To continue performing this action, please complete your profile";
 "successfullyRequested" = "Successfully Requested";
 "yourRequestForTyreServiceHasBeenSubmittedSuccessfully" = "Your request for tyre service has been submitted successfully.";
@@ -423,6 +424,12 @@
 // MARK: - Chat Screen
 //==============================
 "payNow" = "Pay Now";
+"pay" = "Pay";
 "decline" = "Decline";
 "paymentPaid" = "Payment Paid";
 "paymentDeclined" = "Payment Declined";
+"pending" = "Payment Pending";
+"paid" = "Payment Paid";
+"paid_Caps" = "PAID";
+"refunded" = "Payment Refunded";
+"failed" = "Payment Failed";

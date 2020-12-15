@@ -73,9 +73,6 @@ class BookedRequestTableCell: UITableViewCell {
     }
 
     func bindData(_ model: GarageRequestModel) {
-//        let date = (model.createdAt)?.toDate(dateFormat: Date.DateFormat.givenDateFormat.rawValue) ?? Date()
-//        serviceTimeLbl.text = date.timeAgoSince
-
         let date = (model.createdAt)?.breakCompletDate(outPutFormat: Date.DateFormat.profileFormat.rawValue, inputFormat: Date.DateFormat.yyyyMMddTHHmmsssssz.rawValue)
         serviceTimeLbl.text = date
         
@@ -107,6 +104,14 @@ class BookedRequestTableCell: UITableViewCell {
         }else {
             startServiceBtn.setTitle(LocalizedString.startService.localized, for: .normal)
             startServiceBtn.isUserInteractionEnabled = true
+        }
+        
+        if let paymentStatus = model.paymentStatus{
+            if paymentStatus == .paid || paymentStatus == .refunded{
+                startServiceBtn.isEnabled = true
+            } else {
+                startServiceBtn.isEnabled = false
+            }
         }
     }
 }

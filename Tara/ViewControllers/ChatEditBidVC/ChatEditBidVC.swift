@@ -10,7 +10,7 @@ import UIKit
 import DZNEmptyDataSet
 
 protocol ChatEditBidVCDelegate : class{
-    func bidEditSuccess(price: Int)
+    func bidEditSuccess(price: Double)
 }
 
 class ChatEditBidVC: BaseVC {
@@ -36,7 +36,7 @@ class ChatEditBidVC: BaseVC {
     // MARK: - Variables
     //===========================
     var quantity : Int = 0
-    var amount : Int = 0
+    var amount : Double = 0
     var bidStatus : BidStatus = .bidFinalsed
     var selectedCountry: String  = ""
     var acceptedProposalId : String  = ""
@@ -71,7 +71,7 @@ class ChatEditBidVC: BaseVC {
             dict[ApiKey.brandName] = model.name
             dict[ApiKey.brandId] = model.id
             self.acceptedProposalId = model.bidId ?? ""
-            self.amount = Int(model.amount ?? 0)
+            self.amount = Double(model.amount ?? 0) * Double(quantity)
             if brandsType == .countryBrands {
                 dict[ApiKey.countryId] = model.countryId
                 dict[ApiKey.countryName] = model.countryName

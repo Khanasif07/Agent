@@ -23,7 +23,7 @@ struct UserBidModel: Codable {
     var garageRequestId : String?
     let logo: String?
     let garageRating: Double?
-    let paymentStatus: PaymentStatus
+    let paymentStatus: PaymentStatus?
     
     enum CodingKeys: String, CodingKey {
         case id = "_id"

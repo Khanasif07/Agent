@@ -29,16 +29,19 @@ class ProfileSettingVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
+        self.mainTableView.reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.mainTableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        switchProfileTitle()
+        self.switchProfileTitle()
+        DispatchQueue.main.async {
+            self.mainTableView.reloadData()
+        }
         self.tabBarController?.tabBar.isHidden = true
         self.tabBarController?.tabBar.isTranslucent = true
     }
@@ -60,7 +63,7 @@ class ProfileSettingVC: BaseVC {
 extension ProfileSettingVC {
     
     private func initialSetup() {
-        switchProfileTitle()
+        self.switchProfileTitle()
         self.tableViewSetUp()
         viewModel.delegate = self
     }
@@ -88,18 +91,22 @@ extension ProfileSettingVC {
                     cell.switchProfileToGarage = {  [weak self]  in
                         guard let `self` = self else { return }
                         if !UserModel.main.phoneNoAdded {
-                            self.showAlertWithAction(title: "", msg: "To continue performing this action, please complete your profile", cancelTitle: "Cancel", actionTitle: LocalizedString.ok.localized, actioncompletion: {
+                            self.showAlertWithAction(title: "", msg: LocalizedString.to_continue_performing_this_action_please_complete_your_profile.localized, cancelTitle: LocalizedString.cancel.localized, actionTitle: LocalizedString.ok.localized, actioncompletion: {
                                 AppRouter.goToEditProfileVC(vc: self, model: UserModel.main, isEditProfileFrom: .garage)
                             })
                             return
                         }
                         self.hitGarageSwitchApi()
                     }
+                    
+                    cell.contactUsTapped = { [weak self]  in
+                        guard let `self` = self else { return }
+                        AppRouter.goToContactUsVC(vc: self)
+                    }
                     cell.changeLanguageTapped = { [weak self]  in
                         guard let `self` = self else { return }
                         AppRouter.goToChangeLanguageVC(vc: self)
                     }
-                    
                     cell.aboutusTapped = { [weak self]  in
                     guard let `self` = self else { return }
                         AppRouter.goToWebVC(vc: self, screenType: .aboutUs)
@@ -145,6 +152,12 @@ extension ProfileSettingVC {
                         guard let `self` = self else { return }
                         self.hitGarageSwitchApi()
                     }
+                    
+                    cell.contactUsTapped = { [weak self]  in
+                        guard let `self` = self else { return }
+                        AppRouter.goToContactUsVC(vc: self)
+                    }
+                    
                     cell.changeLanguageTapped = { [weak self]  in
                         guard let `self` = self else { return }
                         AppRouter.goToChangeLanguageVC(vc: self)
@@ -167,7 +180,9 @@ extension ProfileSettingVC {
                     
                     cell.changePassword = { [weak self]  in
                         guard let `self` = self else { return }
-                        AppRouter.goToChangePasswordVC(vc: self)
+                        if UserModel.main.canChangePassword {
+                            AppRouter.goToChangePasswordVC(vc: self)
+                        }
                     }
                     return cell
                 default:
@@ -205,9 +220,9 @@ extension ProfileSettingVC {
     }
     
     private func performCleanUp() {
-        let lang  = AppUserDefaults.value(forKey: .currentLanguage).stringValue
+        let lang  = AppUserDefaults.value(forKey: .language).stringValue
         AppUserDefaults.removeAllValues()
-        AppUserDefaults.save(value: lang, forKey: .currentLanguage)
+        AppUserDefaults.save(value: lang, forKey: .language)
         AppUserDefaults.save(value: true, forKey: .isLanguageSelect)
         UserModel.main = UserModel()
         UNUserNotificationCenter.current().removeAllDeliveredNotifications()
@@ -215,7 +230,7 @@ extension ProfileSettingVC {
     }
     
     private func showLogoutPopUp(){
-        self.showAlertWithAction(title: "Logout", msg: "Are you sure you want to logout?", cancelTitle: "Cancel", actionTitle: LocalizedString.ok.localized, actioncompletion: {
+        self.showAlertWithAction(title: LocalizedString.logout.localized, msg: LocalizedString.are_you_sure_you_want_to_logout.localized, cancelTitle: LocalizedString.cancel.localized, actionTitle: LocalizedString.ok.localized, actioncompletion: {
             WebServices.logout(parameters: [:], success: { (message) in
                 self.performCleanUp()
                 AppUserDefaults.save(value: "3", forKey: .currentUserType)
@@ -232,7 +247,19 @@ extension ProfileSettingVC {
         } else {
             self.switchProfileString = LocalizedString.switchProfileToUser.localized
         }
-        self.selectItemArray = [LocalizedString.aboutUs.localized,LocalizedString.terms_Condition.localized,LocalizedString.privacy_policy.localized,LocalizedString.contactUs.localized,LocalizedString.changeLanguage.localized,switchProfileString, isCurrentUserType == .user ?  LocalizedString.help.localized : LocalizedString.change_password.localized,LocalizedString.faq.localized,LocalizedString.referFriend.localized]
+        self.selectItemArray = [LocalizedString.aboutUs.localized,LocalizedString.terms_Condition.localized,LocalizedString.privacy_policy.localized,LocalizedString.contactUs.localized,LocalizedString.changeLanguage.localized,switchProfileString, isCurrentUserType == .user ?  LocalizedString.help.localized : LocalizedString.change_password.localized,LocalizedString.faq.localized]
+        if !UserModel.main.canChangePassword {
+            if self.selectItemArray.contains(LocalizedString.change_password.localized){
+                self.selectItemArray.removeAll { (value) -> Bool in
+                    return value == LocalizedString.change_password.localized
+                }
+            }
+            if self.selectImageArray.contains(#imageLiteral(resourceName: "changePassword")){
+                self.selectImageArray.removeAll { (imgValue) -> Bool in
+                    return imgValue == #imageLiteral(resourceName: "changePassword")
+                }
+            }
+        }
     }
 }
 // MARK: - Extension For TableView

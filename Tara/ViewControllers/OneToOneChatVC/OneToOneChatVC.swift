@@ -86,6 +86,7 @@ class OneToOneChatVC: BaseVC {
     @IBOutlet weak var editBidBtn: UIButton!
     @IBOutlet weak var btnContaninerView: UIView!
     
+    @IBOutlet weak var paymentBtn: AppButton!
     @IBOutlet weak var progressVIew: UIProgressView!
     @IBOutlet weak var audioCancelBtn: UIButton!
     @IBOutlet weak var audioRecordBtn: UIButton!
@@ -187,6 +188,11 @@ class OneToOneChatVC: BaseVC {
         _ = touch.location(in: self.view)
     }
     
+    @IBAction func paymentBtnAction(_ sender: UIButton) {
+         self.messageId = ""
+         AppRouter.goToWebVC(vc: self, screenType: .payment,requestId: self.requestId)
+    }
+    
     @IBAction func backButtonTapped(_ sender: UIButton) {
         self.pop()
     }
@@ -253,9 +259,9 @@ class OneToOneChatVC: BaseVC {
     }
     
     @IBAction func blockBtnAction(_ sender: UIButton) {
-        showAlertWithAction(title: !isBlockedByMe ? LocalizedString.block.localized : LocalizedString.unBlock.localized, msg: !isBlockedByMe ?  LocalizedString.are_you_sure_you_want_to_block_this_user.localized : LocalizedString.are_you_sure_you_want_to_unblock_this_user.localized , cancelTitle: "No", actionTitle: "Yes", actioncompletion: {
+        showAlertWithAction(title: !isBlockedByMe ? LocalizedString.block.localized : LocalizedString.unBlock.localized, msg: !isBlockedByMe ?  LocalizedString.are_you_sure_you_want_to_block_this_user.localized : LocalizedString.are_you_sure_you_want_to_unblock_this_user.localized , cancelTitle: LocalizedString.no.localized, actionTitle: LocalizedString.yes.localized, actioncompletion: {
             self.btnContaninerView.isHidden = true
-            if self.unblockBtn.titleLabel?.text == "Block User"{
+            if self.unblockBtn.titleLabel?.text == LocalizedString.blockUser.localized{
                 self.db.collection(ApiKey.block)
                     .document(self.currentUserId)
                     .collection(ApiKey.chat)
@@ -357,10 +363,28 @@ extension OneToOneChatVC {
     }
     
     @objc func paymentSucessfullyDone(){
-    self.db.collection(ApiKey.messages).document(self.getRoomId()).collection(ApiKey.chat).document(self.messageId).updateData([ApiKey.messageStatus : 2]) { (error) in
-            if let err = error {
-                print(err.localizedDescription)
-            } else {}
+        if self.messageId.isEmpty {
+            self.getChatData()
+            guard self.messageListing.endIndex > 0, self.messageListing[self.messageListing.endIndex - 1].endIndex > 0 else { return }
+            for messageArray in self.messageListing{
+                for message in messageArray{
+                    if message.messageType == MessageType.payment.rawValue && message.messageStatus != 2 {
+                        self.db.collection(ApiKey.messages).document(self.getRoomId()).collection(ApiKey.chat).document(message.messageId).updateData([ApiKey.messageStatus : 2]) { (error) in
+                            if let err = error {
+                                print(err.localizedDescription)
+                            } else {}
+                        }
+                    }
+                }
+            }
+        }
+        else {
+            self.db.collection(ApiKey.messages).document(self.getRoomId()).collection(ApiKey.chat).document(self.messageId).updateData([ApiKey.messageStatus : 2]) { (error) in
+                if let err = error {
+                    print(err.localizedDescription)
+                } else {}
+                self.getChatData()
+            }
         }
     }
     
@@ -454,7 +478,7 @@ extension OneToOneChatVC {
         messageTextView.tintColor = AppColors.appRedColor
     }
     
-    private func sendMessage(msgType: String = MessageType.text.rawValue ,price: Int = 0,isPush: Bool = true) {
+    private func sendMessage(msgType: String = MessageType.text.rawValue ,price: Double = 0,isPush: Bool = true) {
         self.view.endEditing(true)
         let txt = self.messageTextView.text.byRemovingLeadingTrailingWhiteSpaces
         if isBlockedByMe {
@@ -498,9 +522,7 @@ extension OneToOneChatVC {
             self.scrollMsgToBottom()
         }
         if requestId.isEmpty{tableViewTopConstraint.constant = 0.0}
-        tableViewTopConstraint.constant =  isCurrentUserType == .garage ? (chatViewModel.chatData.id.isEmpty ? 0.0 : 80.0)  : (chatViewModel.chatData.id.isEmpty ? 0.0 : 124.0)
-        
-        
+        tableViewTopConstraint.constant =  chatUserType == .garage ? (chatViewModel.chatData.id.isEmpty ? 0.0 : 80.0)  : (chatViewModel.chatData.id.isEmpty ? 0.0 : 124.0)
         UIView.animate(withDuration: duration) { self.view.layoutIfNeeded() }
     }
     
@@ -653,6 +675,28 @@ extension OneToOneChatVC: UITextViewDelegate{
             }
         }
     }
+    
+    private func setUpPaymentStatus(){
+        if let paymentStatus = chatViewModel.chatData.paymentStatus{
+            switch paymentStatus {
+            case .pending:
+                paymentBtn.setTitle(LocalizedString.payNow.localized , for: .normal)
+                paymentBtn.isUserInteractionEnabled = true
+            case .paid:
+                paymentBtn.setTitle(LocalizedString.paid.localized, for: .normal)
+                paymentBtn.isUserInteractionEnabled = false
+                editBidBtn.isHidden = true
+            case .refunded:
+                paymentBtn.setTitle(LocalizedString.payNow.localized, for: .normal)
+                paymentBtn.isUserInteractionEnabled = true
+            case .failed:
+                paymentBtn.setTitle(LocalizedString.payNow.localized , for: .normal)
+                paymentBtn.isUserInteractionEnabled = true
+            }
+        } else{
+               paymentBtn.isHidden = true
+        }
+    }
 }
 
 //MARK:- TABLEVIEW DELEGATES AND DATASOURCE
@@ -679,9 +723,9 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
         let dayCell = tableView.dequeueCell(with: DayValueCell.self)
         let dateVal =  messageListing[section].first?.messageTime.dateValue() ?? Date()
         if dateVal.isToday {
-            dayCell.dateLabel.text = "Today"
+            dayCell.dateLabel.text = LocalizedString.today.localized
         } else if dateVal.isYesterday {
-            dayCell.dateLabel.text = "Yesterday"
+            dayCell.dateLabel.text = LocalizedString.yesterday.localized
         } else {
             dayCell.dateLabel.text = dateVal.convertToDefaultString()
         }
@@ -792,21 +836,32 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                     receiverOfferCell.acceptBtn.isHidden = false
                     receiverOfferCell.rejectBtn.isHidden = false
                     receiverOfferCell.acceptBtn.isUserInteractionEnabled = true
-                    receiverOfferCell.acceptBtn.setTitle("Accept", for: .normal)
-                    receiverOfferCell.rejectBtn.setTitle("Reject", for: .normal)
-                    
-                    
+                    receiverOfferCell.acceptBtn.backgroundColor = AppColors.appRedColor
+                    receiverOfferCell.acceptBtn.setTitleColor(.white, for: .normal)
+                    receiverOfferCell.acceptBtn.setTitle(LocalizedString.accept.localized, for: .normal)
+                    receiverOfferCell.rejectBtn.setTitle(LocalizedString.reject.localized, for: .normal)
                 }
                 else if model.messageStatus == 2 { //offer accpted
                     receiverOfferCell.acceptBtn.isHidden = false
                     receiverOfferCell.acceptBtn.isUserInteractionEnabled = false
-                    receiverOfferCell.acceptBtn.setTitle("Offer Accepted", for: .normal)
+                    receiverOfferCell.acceptBtn.setTitle(LocalizedString.offerAccepted.localized, for: .normal)
+                    receiverOfferCell.acceptBtn.backgroundColor = .clear
+                    receiverOfferCell.acceptBtn.setTitleColor(AppColors.appRedColor, for: .normal)
                     receiverOfferCell.rejectBtn.isHidden = true
                 }
                 else if model.messageStatus == 3 { //offer rejected
                     receiverOfferCell.acceptBtn.isHidden = false
                     receiverOfferCell.acceptBtn.isUserInteractionEnabled = false
-                    receiverOfferCell.acceptBtn.setTitle("Offer Rejected", for: .normal)
+                    receiverOfferCell.acceptBtn.setTitle(LocalizedString.offerRejected.localized, for: .normal)
+                    receiverOfferCell.acceptBtn.backgroundColor = .clear
+                    receiverOfferCell.acceptBtn.setTitleColor(AppColors.appRedColor, for: .normal)
+                    receiverOfferCell.rejectBtn.isHidden = true
+                }else {
+                    receiverOfferCell.acceptBtn.isHidden = false
+                    receiverOfferCell.acceptBtn.isUserInteractionEnabled = false
+                    receiverOfferCell.acceptBtn.setTitle(LocalizedString.offerExpired.localized, for: .normal)
+                    receiverOfferCell.acceptBtn.backgroundColor = .clear
+                    receiverOfferCell.acceptBtn.setTitleColor(AppColors.appRedColor, for: .normal)
                     receiverOfferCell.rejectBtn.isHidden = true
                 }
                 
@@ -844,12 +899,16 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                     receiverPaymentCell.payNowBtn.isHidden = false
                     receiverPaymentCell.payNowBtn.isUserInteractionEnabled = false
                     receiverPaymentCell.payNowBtn.setTitle(LocalizedString.paymentPaid.localized, for: .normal)
+                    receiverPaymentCell.payNowBtn.backgroundColor = .clear
+                    receiverPaymentCell.payNowBtn.setTitleColor(AppColors.appRedColor, for: .normal)
                     receiverPaymentCell.declineBtn.isHidden = true
                 }
                 else if model.messageStatus == 3 { //payment Decline
                     receiverPaymentCell.payNowBtn.isHidden = false
                     receiverPaymentCell.payNowBtn.isUserInteractionEnabled = false
                     receiverPaymentCell.payNowBtn.setTitle(LocalizedString.paymentDeclined.localized, for: .normal)
+                    receiverPaymentCell.payNowBtn.backgroundColor = .clear
+                    receiverPaymentCell.payNowBtn.setTitleColor(AppColors.appRedColor, for: .normal)
                     receiverPaymentCell.declineBtn.isHidden = true
                 }
                 receiverPaymentCell.amountLabel.text = "\(model.price)"
@@ -939,12 +998,16 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                 
                 if model.messageStatus == 1 {// hide both button
                     senderOfferCell.btnStackView.isHidden = true
+                    senderOfferCell.acceptBtn.backgroundColor = AppColors.appRedColor
+                    senderOfferCell.acceptBtn.setTitleColor(.white, for: .normal)
                 }
                 else if model.messageStatus == 2 { //offer accpted
                     senderOfferCell.btnStackView.isHidden = false
                     senderOfferCell.acceptBtn.isHidden = false
                     senderOfferCell.acceptBtn.isUserInteractionEnabled = false
                     senderOfferCell.acceptBtn.setTitle(LocalizedString.offerAccepted.localized, for: .normal)
+                    senderOfferCell.acceptBtn.backgroundColor = .clear
+                    senderOfferCell.acceptBtn.setTitleColor(AppColors.appRedColor, for: .normal)
                     senderOfferCell.rejectBtn.isHidden = true
                 }
                 else if model.messageStatus == 3 { //offer rejected
@@ -952,9 +1015,19 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                     senderOfferCell.acceptBtn.isHidden = false
                     senderOfferCell.acceptBtn.isUserInteractionEnabled = false
                     senderOfferCell.acceptBtn.setTitle(LocalizedString.offerRejected.localized, for: .normal)
+                    senderOfferCell.acceptBtn.backgroundColor = .clear
+                    senderOfferCell.acceptBtn.setTitleColor(AppColors.appRedColor, for: .normal)
+                    senderOfferCell.rejectBtn.isHidden = true
+                } else {
+                    senderOfferCell.btnStackView.isHidden = false
+                    senderOfferCell.acceptBtn.isHidden = false
+                    senderOfferCell.acceptBtn.isUserInteractionEnabled = false
+                    senderOfferCell.acceptBtn.setTitle(LocalizedString.offerExpired.localized, for: .normal)
+                    senderOfferCell.acceptBtn.backgroundColor = .clear
+                    senderOfferCell.acceptBtn.setTitleColor(AppColors.appRedColor, for: .normal)
                     senderOfferCell.rejectBtn.isHidden = true
                 }
-                senderOfferCell.userNameLbl.text = "You"
+                senderOfferCell.userNameLbl.text = LocalizedString.you.localized
                 senderOfferCell.userImgView.setImage_kf(imageString: UserModel.main.image, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
                 senderOfferCell.priceLbl.text = "\(model.price)"
                 self.setTapGesture(view: senderOfferCell.msgContainerView, indexPath: indexPath)
@@ -974,6 +1047,8 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                     receiverPaymentCell.payNowBtn.isHidden = false
                     receiverPaymentCell.payNowBtn.isUserInteractionEnabled = false
                     receiverPaymentCell.payNowBtn.setTitle(LocalizedString.paymentPaid.localized, for: .normal)
+                    receiverPaymentCell.payNowBtn.backgroundColor = .clear
+                    receiverPaymentCell.payNowBtn.setTitleColor(AppColors.appRedColor, for: .normal)
                     receiverPaymentCell.declineBtn.isHidden = true
                 }
                 else if model.messageStatus == 3 { //payment Decline
@@ -981,11 +1056,13 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                     receiverPaymentCell.payNowBtn.isHidden = false
                     receiverPaymentCell.payNowBtn.isUserInteractionEnabled = false
                     receiverPaymentCell.payNowBtn.setTitle(LocalizedString.paymentDeclined.localized, for: .normal)
+                    receiverPaymentCell.payNowBtn.backgroundColor = .clear
+                    receiverPaymentCell.payNowBtn.setTitleColor(AppColors.appRedColor, for: .normal)
                     receiverPaymentCell.declineBtn.isHidden = true
                 }
                 receiverPaymentCell.amountLabel.text = "\(model.price)"
                 receiverPaymentCell.receiverImgView.setImage_kf(imageString: UserModel.main.image, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
-                receiverPaymentCell.receiverNameLbl.text = "You"
+                receiverPaymentCell.receiverNameLbl.text = LocalizedString.you.localized
                 receiverPaymentCell.receiverImgView.backgroundColor = AppColors.fontTertiaryColor
                 return receiverPaymentCell
             default:
@@ -1000,10 +1077,9 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
     private func reloadTableViewToBottom() {
         messagesTableView.reloadData()
         self.view.layoutIfNeeded()
-        CommonFunctions.delay(delay: 0.33) {
+        CommonFunctions.delay(delay: 0.2) {
             self.scrollMsgToBottom(animated: true)
         }
-        //        self.scrollMsgToBottom()
     }
     
     private func reloadTableViewToBottomWithFooter() {
@@ -1103,7 +1179,7 @@ extension OneToOneChatVC: UIImagePickerControllerDelegate, UINavigationControlle
         guard let indexPath = self.messagesTableView.indexPath(forItem: gestureRecognizer.view ?? UIView()) else { return }
         if self.messageListing[indexPath.section][indexPath.row].senderId != self.currentUserId { return }
         guard !selectedIndexPaths.isEmpty else {
-            showAlertWithAction(title: "Delete Message", msg: "Do you want to delete message?", cancelTitle: "No", actionTitle: "Delete", actioncompletion: {
+            showAlertWithAction(title: LocalizedString.delete_Message.localized, msg: LocalizedString.do_you_want_to_delete_message.localized, cancelTitle: LocalizedString.no.localized, actionTitle: LocalizedString.delete.localized, actioncompletion: {
                 if indexPath.section == self.messageListing.endIndex - 1 &&  indexPath.row == self.messageListing[indexPath.section].endIndex - 1{
                     self.deleteMessages(index: indexPath)
                     self.updateInboxTimeStamp()
@@ -1413,7 +1489,7 @@ extension OneToOneChatVC{
     }
     
     /// Mark:- Creating a message node
-    private func createMessage(msgType: String = "text",price: Int = 0){
+    private func createMessage(msgType: String = "text",price: Double = 0){
         
         if msgType == MessageType.payment.rawValue {
             FirestoreController.createLastMessageNode(roomId:roomId,messageText: messageTextView.text.byRemovingLeadingTrailingWhiteSpaces ,messageTime:FieldValue.serverTimestamp(), messageId:getMessageId(),messageType: msgType, messageStatus:1,senderId:inboxModel.userId , receiverId: currentUserId, mediaUrl: "",blocked:amIBlocked, thumbNailURL: "", messageDuration: 0,price: price, amIBlocked: amIBlocked)
@@ -1566,9 +1642,10 @@ extension OneToOneChatVC{
                         if let senderTypingStatus =  typingDict[self.inboxModel.userId] as? Bool{
                             if (senderTypingStatus) {
                                 self.footerViewSetUp(isFooter: true)
-                                self.reloadTableViewToBottomWithFooter()
                             } else {
                                 self.footerViewSetUp(isFooter: false)
+                            }
+                            CommonFunctions.delay(delay: 0.2) {
                                 self.reloadTableViewToBottomWithFooter()
                             }
                         }
@@ -1600,7 +1677,7 @@ extension OneToOneChatVC{
                         return
                     }
                     //                    if !message.blocked {
-                    if message.messageType != "offer" && message.messageType != "payment" {
+                    if message.messageType != LocalizedString.offerSmall.localized && message.messageType !=  LocalizedString.paymentSmall.localized  {
                         if message.senderId == self.inboxModel.userId {                            self.db.collection(ApiKey.messages).document(self.getRoomId()).collection(ApiKey.chat).document(message.messageId).updateData([ApiKey.messageStatus : 3]) { (error) in
                             if let err = error {
                                 print(err.localizedDescription)
@@ -1637,7 +1714,7 @@ extension OneToOneChatVC{
                         return
                     }
                     //                    if !message.blocked  {
-                    if message.messageType != "offer" && message.messageType != "payment" {
+                    if message.messageType != LocalizedString.offerSmall.localized && message.messageType != LocalizedString.paymentSmall.localized {
                         
                         if message.senderId == self.inboxModel.userId {
                             
@@ -1934,8 +2011,15 @@ extension OneToOneChatVC : OneToOneChatViewModelDelegate{
                 .foregroundColor: AppColors.successGreenColor
             ])
             
-            str.append(NSAttributedString(string: "SAR", attributes: [NSAttributedString.Key.foregroundColor: AppColors.successGreenColor,NSAttributedString.Key.font: AppFonts.NunitoSansSemiBold.withSize(12.0)]))
+            str.append(NSAttributedString(string: LocalizedString.sar.localized, attributes: [NSAttributedString.Key.foregroundColor: AppColors.successGreenColor,NSAttributedString.Key.font: AppFonts.NunitoSansSemiBold.withSize(12.0)]))
             amountValueLbl.attributedText = str
+            UIView.animate(withDuration: 0.50, animations: {
+                self.view.layoutIfNeeded()
+            }, completion: {res in
+                CommonFunctions.delay(delay: 0.1) {
+                    self.scrollMsgToBottom(animated: true)
+                }
+            })
         }
         else if chatUserType == .user{
             tableViewTopConstraint.constant = chatViewModel.chatData.id.isEmpty  ? 0.0 : 124.0
@@ -1943,21 +2027,26 @@ extension OneToOneChatVC : OneToOneChatViewModelDelegate{
             garageImgView.setImage_kf(imageString: chatViewModel.chatData.garageLogo, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
             garageRequestNoValueLbl.text = chatViewModel.chatData.requestId
             garageAmountValueLbl.text = chatViewModel.chatData.totalAmount?.description
-            garageRatingLbl.text = (chatViewModel.chatData.garageRating?.truncate(places: 1).description ?? "") //+ "/5"
+            garageRatingLbl.text = (chatViewModel.chatData.garageRating?.truncate(places: 1).description ?? "")
             garageAddressLbl.text = chatViewModel.chatData.garageAddress
             garageNameLbl.text = chatViewModel.chatData.garageName
+            UIView.animate(withDuration: 0.50, animations: {
+                self.view.layoutIfNeeded()
+            }, completion: {res in
+                CommonFunctions.delay(delay: 0.1) {
+                    self.scrollMsgToBottom(animated: true)
+                }
+            })
         }
-        CommonFunctions.delay(delay: 0.0) {
-              self.scrollMsgToBottom(animated: true)
-        }
+        self.setUpPaymentStatus()
     }
     
-    func acceptRejectEditedBidSuccess(msg: String,totalAmount: Int) {
+    func acceptRejectEditedBidSuccess(msg: String,totalAmount: Double) {
         CommonFunctions.showToastWithMessage(msg)
         if acceptedRejectBtnStatus {
             self.messageTextView.text = MessageType.payment.rawValue
             self.sendMessage(msgType: MessageType.payment.rawValue,price: totalAmount, isPush: false)
-            self.postMessageToFirestoreForPush(body: "Offer Accepted", image: "")
+            self.postMessageToFirestoreForPush(body: LocalizedString.offerAccepted.localized, image: "")
             self.db.collection(ApiKey.messages).document(self.getRoomId()).collection(ApiKey.chat).document(self.messageId).updateData([ApiKey.messageStatus : 2]) { (error) in
                 if let err = error {
                     print(err.localizedDescription)
@@ -1980,10 +2069,34 @@ extension OneToOneChatVC : OneToOneChatViewModelDelegate{
 
 //MARK:- ChatEditBidVCDelegate
 extension OneToOneChatVC : ChatEditBidVCDelegate {
-    func bidEditSuccess(price: Int) {
+    func bidEditSuccess(price: Double) {
         if isBlockedByMe {
             CommonFunctions.showToastWithMessage( LocalizedString.PLEASEUNBLOCKUSERTOSENDMESSAGES.localized)
             return
+        }
+        guard self.messageListing.endIndex > 0, self.messageListing[self.messageListing.endIndex - 1].endIndex > 0 else {
+            self.messageTextView.text = MessageType.offer.rawValue
+            sendMessage(msgType: MessageType.offer.rawValue,price: price,isPush: false)
+            return }
+        let messageModel = self.messageListing[self.messageListing.endIndex - 1][self.messageListing[self.messageListing.endIndex - 1].endIndex - 1]
+        if messageModel.messageType == MessageType.offer.rawValue{
+            self.db.collection(ApiKey.messages).document(self.getRoomId()).collection(ApiKey.chat).document(messageModel.messageId).updateData([ApiKey.messageStatus : 4]) { (error) in
+                if let err = error {
+                    print(err.localizedDescription)
+                } else {}
+            }
+        }else{
+            for messageArray in self.messageListing{
+                for message in messageArray{
+                    if message.messageType == MessageType.offer.rawValue && message.messageStatus != 4 {
+                        self.db.collection(ApiKey.messages).document(self.getRoomId()).collection(ApiKey.chat).document(message.messageId).updateData([ApiKey.messageStatus : 4]) { (error) in
+                            if let err = error {
+                                print(err.localizedDescription)
+                            } else {}
+                        }
+                    }
+                }
+            }
         }
         self.messageTextView.text = MessageType.offer.rawValue
         sendMessage(msgType: MessageType.offer.rawValue,price: price,isPush: false)

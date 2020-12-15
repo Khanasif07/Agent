@@ -25,10 +25,12 @@ struct ChatModel: Codable {
     let userImage, id: String
     let requestId: String?
     let isServiceStarted : Bool?
+    let paymentStatus : PaymentStatus?
     
     enum CodingKeys: String, CodingKey {
         case garageName, longitude, latitude, garageImage, totalAmount, address, requestId
         case garageID = "garageId"
+        case paymentStatus
         case garageAddress
         case userID = "userId"
         case garageOwner
@@ -57,5 +59,6 @@ struct ChatModel: Codable {
         garageLogo = ""
         userImage = ""
         requestId = ""
+        paymentStatus = .pending
     }
 }

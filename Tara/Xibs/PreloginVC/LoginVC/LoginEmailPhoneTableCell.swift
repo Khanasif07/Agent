@@ -67,7 +67,7 @@ class LoginEmailPhoneTableCell: UITableViewCell {
     }
     
     public func addBottomViewToBottom(){
-        self.signUpBtn.addBottomBorderWithColorDefault(color: AppColors.appRedColor, height: 1)
+        self.signUpBtn.addBottomBorderWithColor(color: AppColors.appRedColor, height: 1)
     }
     
     @objc func secureTextField(_ sender: UIButton){

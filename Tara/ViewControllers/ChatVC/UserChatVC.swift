@@ -67,6 +67,7 @@ extension UserChatVC {
         self.tableViewSetUp()
         self.textFieldSetUp()
         self.topViewHConst.constant = isUserLoggedin ? 82.0 : 0.0
+        self.buttonView.isHidden = !isUserLoggedin
         if isUserLoggedin {
         self.getInboxListing()
         }
@@ -98,8 +99,10 @@ extension UserChatVC {
     
     private func getNoOfRowsInSection() -> Int {
         if isUserLoggedin {
+            self.mainTableView.isScrollEnabled = true
             return searchInboxListing.endIndex
         } else {
+            self.mainTableView.isScrollEnabled = false
             return 1
         }
     }

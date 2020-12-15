@@ -12,7 +12,7 @@ enum LocalizedString : String {
     
     // MARK:- App Title
     //===================
-    case appTitle = "NewProject"
+    case appTitle = "TARA"
     case ok = "ok"
     case dot = "\u{2022}"
     case logout
@@ -127,6 +127,7 @@ enum LocalizedString : String {
     case batteryServices
     case offerAccepted
     case offerRejected
+    case offerExpired
     case offerReceived
     case noOffers
     case costLowToHigh
@@ -282,6 +283,7 @@ enum LocalizedString : String {
     case oilImage
     case selectNumberOfUnitYouWant
     case viewTutorial
+    case viewProposal
     case underDevelopment
     case pleaseSelectServices
     case pleaseSelectServiceCenterImage
@@ -293,6 +295,7 @@ enum LocalizedString : String {
     case regNo
     case serviceStatus
     case requests
+    case request_No
     case enterBiddingAmount
     case placeBid
     case biddingAmountOnceSubmittedWillNeverBeChanged
@@ -339,6 +342,7 @@ enum LocalizedString : String {
     case make_Payment_to_get_hassle_free_service
     case block
     case unBlock
+    case blockUser
     case are_you_sure_you_want_to_block_this_user = "are_you_sure_you_want_to_block_this_user"
     case are_you_sure_you_want_to_unblock_this_user = "are_you_sure_you_want_to_unblock_this_user"
     case holdThisToRecord
@@ -350,11 +354,13 @@ enum LocalizedString : String {
     case regNumber
     case requestedBy
     case noDataFound
+    case noNotificationAvailable
     case payableAmount
     case carReceived
     case inGarage
     case readyToBeTaken
     case delivered
+    case delete
     case inABid
     case bidFinalised
     case closedForBid
@@ -363,6 +369,7 @@ enum LocalizedString : String {
     case openForBidding
     case resend
     case no
+    case yes
     case viewDetails
     case hiUser
     case toContinuePerformingThisAction
@@ -377,6 +384,7 @@ enum LocalizedString : String {
     case verifyPhone
     case unitPriceShouldNotBeEmpty
     case accept
+    case reject
     case accepted
     case asPerYourTyreService
     case thisBidIsProposedBy
@@ -399,6 +407,8 @@ enum LocalizedString : String {
     case newRequest
     case service_sheduled_for_today
     case today_Revenue
+    case today
+    case yesterday
     case allRequests
     case bookedRequests
     case serviceCompleted
@@ -426,10 +436,47 @@ enum LocalizedString : String {
     case paymentPaid
     case paymentDeclined
     case pending
+    case pay
     case paid
+    case paid_Caps
     case refunded
     case failed
+    case you
+    case delete_Message
+    case do_you_want_to_delete_message
+    case offerSmall
+    case paymentSmall
+    case successful
+    case password_has_been_reset_successfully
+    case otp_Verified
+    case you_have_successfully_verified_your_mobile_no
+    case verify_email
+    case a_verification_link_will_be_send_to_your_email_address
+    case are_you_sure_you_want_to_logout
+    case to_continue_performing_this_action_please_complete_your_profile
    
+    // MARK: - Updated Screen
+    //==============================
+    case requestSeen
+    case bid_Received
+    case lowest_Bid
+    case nearest_Bid
+    case bid_Amount
+    case total_Amount
+    case request_Detail
+    case unit
+    case tyres
+    case leave_us_a_message_desc
+    case do_you_have_an_issue_with_service
+    case mode_Of_Payment
+    case offers
+    case need_Help
+    case download_Invoice
+    case what_service_are_you_looking_for
+    case allOffers
+    case proposalDetails
+    case miles
+    case quantityShort
 }
 
 

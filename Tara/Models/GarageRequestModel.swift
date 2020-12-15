@@ -112,6 +112,19 @@ enum PaymentStatus: String, Codable{
             return LocalizedString.refunded.localized
         }
     }
+    
+    var textColor : UIColor {
+        switch self {
+        case .pending:
+            return AppColors.appRedColor
+        case .paid:
+            return AppColors.appRedColor
+        case .failed:
+            return AppColors.appRedColor
+        case .refunded:
+            return AppColors.appRedColor
+        }
+    }
 }
 
 enum ServiceState : String, Codable{
@@ -164,11 +177,16 @@ struct GarageRequestModel: Codable {
     let userLatitude: Double?
     let userImage: String?
     let userId: String?
+    let paymentMode : String?
     let userAddress: String?
     let requestDocId : String?
     let payableAmount : Double?
+    let amountPaid: Double?
+    let amount : Double?
+    let refundedAmount : Double?
     let requestedBy : String?
     var serviceStatus: ServiceState? // for car Received, in Progress, complete, ready to be taken
+    var paymentStatus : PaymentStatus?
     let garageName: String?
     let logo : String?
     let isServiceStarted: Bool?
@@ -192,6 +210,11 @@ struct GarageRequestModel: Codable {
     enum CodingKeys: String, CodingKey {
         case createdAt
         case userId
+        case paymentStatus
+        case refundedAmount
+        case paymentMode
+        case amountPaid
+        case amount
         case id = "_id"
         case requestType
         case ratingDetails
@@ -205,6 +228,7 @@ struct GarageRequestModel: Codable {
     init() {
         userId = ""
         createdAt = ""
+        paymentMode = ""
         id = ""
         requestType = .battery
         requestID = ""
@@ -227,9 +251,12 @@ struct GarageRequestModel: Codable {
         userImage = ""
         userLatitude = 0.0
         userLongitude = 0.0
+        amount = 0.0
         userAddress = ""
         requestDocId = ""
         payableAmount = 0.0
+        amountPaid = 0.0
+        refundedAmount = 0.0
         requestedBy = ""
         logo = ""
         rating = 0
@@ -247,6 +274,7 @@ struct GarageRequestModel: Codable {
         isServiceStarted = false
         isServiceCompleted = false
         garageLogo = ""
+        paymentStatus = .pending
     }
 }
 

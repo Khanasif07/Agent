@@ -19,8 +19,8 @@ class ProfileVC: BaseVC {
     // MARK: - Variables
     //===========================
     var viewModel = ProfileVM()
-    var selectItemArray = [LocalizedString.service_history.localized,LocalizedString.payments.localized,LocalizedString.saved_cards.localized,LocalizedString.change_password.localized,LocalizedString.settings.localized]
-    var selectImageArray: [UIImage] = [#imageLiteral(resourceName: "serviceHistory"),#imageLiteral(resourceName: "payment"),#imageLiteral(resourceName: "savedCard"),#imageLiteral(resourceName: "group"),#imageLiteral(resourceName: "profileSettting")]
+    var selectItemArray = [LocalizedString.service_history.localized,LocalizedString.payments.localized,LocalizedString.change_password.localized,LocalizedString.settings.localized]
+    var selectImageArray: [UIImage] = [#imageLiteral(resourceName: "serviceHistory"),#imageLiteral(resourceName: "payment"),#imageLiteral(resourceName: "group"),#imageLiteral(resourceName: "profileSettting")]
     
     // MARK: - Lifecycle
     //===========================
@@ -36,11 +36,13 @@ class ProfileVC: BaseVC {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.mainTableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        DispatchQueue.main.async {
+             self.mainTableView.reloadData()
+        }
         setNeedsStatusBarAppearanceUpdate()
         self.tabBarController?.tabBar.isHidden = false
     }
@@ -60,8 +62,16 @@ class ProfileVC: BaseVC {
 extension ProfileVC {
     
     private func initialSetup() {
-        self.hitProfileApi(loader: true)
+        self.managedChangePasswordState()
         self.tableViewSetUp()
+        self.hitProfileApi(loader: true)
+    }
+    
+    private func managedChangePasswordState(){
+        if !UserModel.main.canChangePassword {
+        self.selectItemArray = [LocalizedString.service_history.localized,LocalizedString.payments.localized,LocalizedString.settings.localized]
+        self.selectImageArray =  [#imageLiteral(resourceName: "serviceHistory"),#imageLiteral(resourceName: "payment"),#imageLiteral(resourceName: "profileSettting")]
+        }
     }
     
     private func tableViewSetUp(){
@@ -110,7 +120,13 @@ extension ProfileVC {
                     }
                     cell.changePassword = { [weak self]  in
                         guard let `self` = self else { return }
+                        if UserModel.main.canChangePassword {
                         AppRouter.goToChangePasswordVC(vc: self)
+                        }
+                    }
+                    cell.paymentsBtnTapped = { [weak self]  in
+                        guard let `self` = self else { return }
+                        AppRouter.goToServiceCompletedVC(vc: self, screenType: .payments)
                     }
                     cell.serviceHistroyTapped = { [weak self]  in
                         guard let `self` = self else { return }
@@ -155,10 +171,8 @@ extension ProfileVC {
                 self.mainTableView.isScrollEnabled = false
                 return 1
             }
-        } else {
-            self.mainTableView.isScrollEnabled = false
-            return 1
         }
+        return 1
     }
     
     public func hitProfileApi(loader: Bool){

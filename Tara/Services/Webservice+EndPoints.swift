@@ -106,6 +106,10 @@ extension WebServices {
         //MARK:-Payments
         case userServicePayment = "user/services/payment"
         case payment = "user/pay"
+        case userPaymentList = "user/paymentsListUser"
+        case garagePaymentList = "user/paymentsListGarage"
+        case userPaymentInvoice = "user/services/userInvoice"
+        
         
         
         var path : String {

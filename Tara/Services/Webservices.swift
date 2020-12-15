@@ -723,7 +723,7 @@ extension WebServices{
     }
     
     
-    // MARK:- Make Listing Data
+    // MARK:- User MyRequest Listing Data
     //=================
     static func getUserMyRequestData(parameters: JSONDictionary, loader: Bool,
                                      success: @escaping SuccessResponse,
@@ -742,7 +742,26 @@ extension WebServices{
         }
     }
     
-    // MARK:- UserMyRequestDetail Data
+    // MARK:- Fetch Payment Invoice Data
+    //=================
+    static func fetchPaymentInvoiceApi(parameters: JSONDictionary, loader: Bool,
+                                     success: @escaping SuccessResponse,
+                                     failure: @escaping FailureResponse) {
+        self.commonGetAPI(parameters: parameters,endPoint: .userPaymentInvoice, loader:loader, success: { (json) in
+            let code = json[ApiKey.statusCode].intValue
+            let msg = json[ApiKey.message].stringValue
+            switch code {
+            case ApiCode.success:
+                success(json)
+            default:
+                failure(NSError(code: code, localizedDescription: msg))
+            }
+        }) { (error) -> (Void) in
+            failure(error)
+        }
+    }
+    
+    // MARK:- User MyRequestDetail Data
     //=================
     static func getUserMyRequestDetailData(parameters: JSONDictionary,
                                            success: @escaping SuccessResponse,
@@ -1058,6 +1077,17 @@ extension WebServices{
                                                success: @escaping SuccessResponse,
                                                failure: @escaping FailureResponse) {
         self.commonGetAPI(parameters: parameters, endPoint: .garageCompletedServices,loader: loader, success: { (json) in
+            success(json)
+        }) { (error) -> (Void) in
+            failure(error)
+        }
+    }
+    
+    //MARK:- Payment Listing Api
+    static func getPaymentsServicesList(parameters: JSONDictionary,loader: Bool = false,endPoint: EndPoint,
+                                               success: @escaping SuccessResponse,
+                                               failure: @escaping FailureResponse) {
+        self.commonGetAPI(parameters: parameters, endPoint: endPoint,loader: loader, success: { (json) in
             success(json)
         }) { (error) -> (Void) in
             failure(error)

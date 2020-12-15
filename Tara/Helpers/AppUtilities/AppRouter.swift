@@ -45,9 +45,9 @@ enum AppRouter {
             case .garage:
                 AppRouter.goToGarageHome()
             default:
-                let lang = AppUserDefaults.value(forKey: .currentLanguage).stringValue
+                let lang = AppUserDefaults.value(forKey: .language).stringValue
                 AppUserDefaults.removeAllValues()
-                AppUserDefaults.save(value: lang, forKey: .currentLanguage)
+                AppUserDefaults.save(value: lang, forKey: .language)
                 AppUserDefaults.save(value: true, forKey: .isLanguageSelect)
             }
         } else {
@@ -176,11 +176,6 @@ enum AppRouter {
         scene.isEditProfileFrom = isEditProfileFrom
         scene.viewModel.countryCode = countryCode
         scene.viewModel.phoneNo = phoneNo
-        vc.navigationController?.pushViewController(scene, animated: true)
-    }
-    
-    static func goToDovelopmentVC(vc: UIViewController){
-        let scene = UnderDevelopmentVC.instantiate(fromAppStoryboard: .Prelogin)
         vc.navigationController?.pushViewController(scene, animated: true)
     }
     
@@ -409,7 +404,7 @@ enum AppRouter {
     }
    
     
-    static func goToServiceStatusVC(vc: UIViewController, requestId : String,requestType : Category, serviceNo: String){
+    static func goToServiceStatusVC(vc: UIViewController, requestId : String,requestType : Category = .tyres, serviceNo: String = ""){
         let scene = ServiceStatusVC.instantiate(fromAppStoryboard: .GarageRequest)
         scene.requestId = requestId
         scene.serviceNo = serviceNo
@@ -603,6 +598,55 @@ enum AppRouter {
             }
         }
     }
+    
+    // Redirect  to  Garage  Service Completed screen
+    static func goToGarageServiceCompletedVCThroughNotification(){
+        guard let nav: UINavigationController = AppDelegate.shared.window?.rootViewController as? UINavigationController else { return }
+        if let homeScene = nav.hasViewController(ofKind: GarageTabBarController.self) as? GarageTabBarController {
+            homeScene.selectedIndex = 4
+            let navigationController = UINavigationController(rootViewController: homeScene)
+            navigationController.setNavigationBarHidden(true, animated: false)
+            defaultSetAsWindowRoot(navigationController)
+            let serviceScene = ServiceCompletedVC.instantiate(fromAppStoryboard: .GarageRequest)
+            serviceScene.screenType = ServiceCompletedVC.ScreenType.serviceComplete
+            navigationController.pushViewController(serviceScene, animated: true)
+        } else {
+            if let vwController = (nav.hasViewController(ofKind: ServiceCompletedVC.self) as? ServiceCompletedVC) {
+                vwController.screenType = ServiceCompletedVC.ScreenType.serviceComplete
+                nav.popToViewController(vwController, animated: true)
+                return
+            } else {
+                let serviceScene = ServiceCompletedVC.instantiate(fromAppStoryboard: .GarageRequest)
+                serviceScene.screenType = ServiceCompletedVC.ScreenType.serviceComplete
+                nav.pushViewController(serviceScene, animated: true)
+            }
+        }
+    }
+    
+    // Redirect  to  Garage Service Status screen
+    static func goToGarageServiceStatusVCThroughNotification(requestId : String){
+        guard let nav: UINavigationController = AppDelegate.shared.window?.rootViewController as? UINavigationController else { return }
+        if let homeScene = nav.hasViewController(ofKind: UserTabBarController.self) as? GarageTabBarController {
+            homeScene.selectedIndex = 1
+            let navigationController = UINavigationController(rootViewController: homeScene)
+            navigationController.setNavigationBarHidden(true, animated: false)
+            defaultSetAsWindowRoot(navigationController)
+            let serviceScene = ServiceStatusVC.instantiate(fromAppStoryboard: .GarageRequest)
+            serviceScene.requestId = requestId
+            navigationController.pushViewController(serviceScene, animated: true)
+        } else {
+            if let vwController = (nav.hasViewController(ofKind: ServiceStatusVC.self) as? ServiceStatusVC) {
+                vwController.requestId = requestId
+                nav.popToViewController(vwController, animated: true)
+                return
+            } else {
+                let serviceScene = ServiceStatusVC.instantiate(fromAppStoryboard: .GarageRequest)
+                serviceScene.requestId = requestId
+                nav.pushViewController(serviceScene, animated: true)
+            }
+        }
+    }
+       
     
     static func goToOilBrandsVC(vc: UIViewController){
         let scene = OilBrandsVC.instantiate(fromAppStoryboard: .UserHomeScreen)

@@ -19,8 +19,8 @@ class GarageProfileVC: BaseVC {
     // MARK: - Variables
     //===========================
     var viewModel = ProfileVM()
-    var selectItemArray = [LocalizedString.service_Completed.localized,LocalizedString.payments.localized,LocalizedString.bank_Account.localized,LocalizedString.my_Subscription.localized,LocalizedString.settings.localized]
-    var selectImageArray: [UIImage] = [#imageLiteral(resourceName: "serviceHistory"),#imageLiteral(resourceName: "payment"),#imageLiteral(resourceName: "savedCard"),#imageLiteral(resourceName: "icSub"),#imageLiteral(resourceName: "profileSettting")]
+    var selectItemArray = [LocalizedString.service_Completed.localized,LocalizedString.payments.localized,LocalizedString.bank_Account.localized,LocalizedString.settings.localized]
+    var selectImageArray: [UIImage] = [#imageLiteral(resourceName: "serviceHistory"),#imageLiteral(resourceName: "payment"),#imageLiteral(resourceName: "savedCard"),#imageLiteral(resourceName: "profileSettting")]
     
     // MARK: - Lifecycle
     //===========================
@@ -36,11 +36,13 @@ class GarageProfileVC: BaseVC {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        //self.mainTableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        DispatchQueue.main.async {
+            self.mainTableView.reloadData()
+        }
         setNeedsStatusBarAppearanceUpdate()
         self.tabBarController?.tabBar.isHidden = false
     }
@@ -84,8 +86,7 @@ extension GarageProfileVC {
                 let cell = tableView.dequeueCell(with: GarageProfileHeaderCell.self, indexPath: indexPath)
                 cell.categoryNameArray = self.viewModel.preFillModel.services
                 cell.catNameArr = self.viewModel.preFillModel.getBrandAndServiceName()
-
-                cell.populateData(model: self.viewModel.preFillModel,userModel: UserModel.main )
+                cell.populateData(model: self.viewModel.preFillModel,userModel: UserModel().fetchUserModel(dict: AppUserDefaults.value(forKey: .fullUserProfile).dictionaryObject!) )
                 cell.phoneVerifyBtnTapped = { [weak self] (sender) in
                     guard let `self` = self else { return }
                     self.showPhoneVerificationPopUp()
@@ -111,13 +112,17 @@ extension GarageProfileVC {
                     guard let `self` = self else { return }
                     AppRouter.goToProfileSettingVC(vc: self)
                 }
-             
+                cell.paymentsBtnTapped = { [weak self]  in
+                    guard let `self` = self else { return }
+                    AppRouter.goToServiceCompletedVC(vc: self,screenType: .payments)
+                }
                 cell.serviceCompletedTapped = { [weak self]  in
                     guard let `self` = self else { return }
                     AppRouter.goToServiceCompletedVC(vc: self,screenType: .serviceComplete)
                 }
                 cell.bankAccTapped = { [weak self]  in
-                    self?.showAlert(msg: LocalizedString.underDevelopment.localized)
+                    guard let `self` = self else { return }
+                    AppRouter.goToServiceCompletedVC(vc: self,screenType: .bankAccount)
                 }
                 
                 return cell

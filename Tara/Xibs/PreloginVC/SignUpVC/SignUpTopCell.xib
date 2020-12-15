@@ -260,8 +260,8 @@
                                             <action selector="signUpAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="bQL-Vc-X20"/>
                                         </connections>
                                     </button>
-                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="6hL-9Z-rW5">
-                                        <rect key="frame" x="53.5" y="65" width="225" height="32"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="2.5" translatesAutoresizingMaskIntoConstraints="NO" id="6hL-9Z-rW5">
+                                        <rect key="frame" x="56.5" y="65" width="219.5" height="32"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have an account?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nMq-pR-FNf">
                                                 <rect key="frame" x="0.0" y="6.5" width="165" height="19.5"/>
@@ -270,10 +270,10 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="1uU-0k-SFn">
-                                                <rect key="frame" x="165" y="0.0" width="60" height="32"/>
+                                                <rect key="frame" x="167.5" y="0.0" width="52" height="32"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K4q-oS-r53">
-                                                        <rect key="frame" x="0.0" y="0.0" width="60" height="32"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="52" height="32"/>
                                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="14"/>
                                                         <state key="normal" title="SIGN IN"/>
                                                         <connections>
@@ -281,9 +281,6 @@
                                                         </connections>
                                                     </button>
                                                 </subviews>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="60" id="Xjz-Em-4cZ"/>
-                                                </constraints>
                                             </stackView>
                                         </subviews>
                                     </stackView>

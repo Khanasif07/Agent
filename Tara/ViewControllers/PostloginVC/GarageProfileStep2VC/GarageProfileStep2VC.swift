@@ -162,7 +162,7 @@ extension GarageProfileStep2VC {
         saveAndContinueBtn.titleLabel?.font =  AppFonts.NunitoSansSemiBold.withSize(16.0)
 
 //        serviceCenterNameLbl.text = LocalizedString.installationPriceRange.localized
-        titleLbl.text = fromGarage == .editGarageProfile ? "Edit Profile" : LocalizedString.completeProfile.localized
+        titleLbl.text = fromGarage == .editGarageProfile ? LocalizedString.editProfile.localized : LocalizedString.completeProfile.localized
         headingLbl.text = LocalizedString.serviceCenterImage.localized
         helpBtn.setTitle(LocalizedString.help.localized, for: .normal)
         saveAndContinueBtn.setTitle(LocalizedString.saveContinue.localized, for: .normal)

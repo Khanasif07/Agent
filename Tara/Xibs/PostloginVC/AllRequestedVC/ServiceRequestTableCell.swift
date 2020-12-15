@@ -67,23 +67,22 @@ class ServiceRequestTableCell: UITableViewCell {
         tyreSizeLbl.textColor = AppColors.fontTertiaryColor
         statusLbl.textColor = AppColors.fontTertiaryColor
         rejectRequestBtn.isBorderSelected = true
-        brandsLbl.text = "Brand: "
-        tyreSizeLbl.text = "Tyre Size: "
-        statusLbl.text = "Status"
-        
+        brandsLbl.text = LocalizedString.brands.localized + ": "
+        tyreSizeLbl.text = LocalizedString.tyreSize.localized + ": "
+        statusLbl.text = LocalizedString.status.localized
     }
     
     func bindData(_ model: GarageRequestModel) {
         let date = (model.createdAt)?.toDate(dateFormat: Date.DateFormat.givenDateFormat.rawValue) ?? Date()
         serviceTimeLbl.text = date.timeAgoSince
         if model.requestType == .tyres {
-            tyreSizeLbl.text = "Tyre Size: "
+            tyreSizeLbl.text = LocalizedString.tyreSize.localized + ": "
             sizeDetailLbl.text = "\(model.width ?? 0)w/" + "\(model.rimSize ?? 0)r/" + "\(model.profile ?? 0)p"
         }else if model.requestType == .battery {
-            tyreSizeLbl.text = "Battery: "
+            tyreSizeLbl.text = LocalizedString.battery.localized + ": "
             sizeDetailLbl.text = "\(model.make ?? "") M/ " + "\(model.model ?? "") M/ " + "\(model.year ?? 0) Y"
         }else {
-            tyreSizeLbl.text = "Oil: "
+            tyreSizeLbl.text = LocalizedString.oil.localized + ": "
             sizeDetailLbl.text = "\(model.make ?? "") M/ " + "\(model.model ?? "") M/ " + "\(model.year ?? 0) Y"
         }
      
@@ -91,10 +90,10 @@ class ServiceRequestTableCell: UITableViewCell {
             brandsLbl.isHidden = true
             brandDetailLbl.isHidden = true
         }else if model.preferredCountries?.count == 0{
-            brandsLbl.text = "Brand: "
+            brandsLbl.text = LocalizedString.brands.localized + ": "
             brandDetailLbl.attributedText = getAttributedString(data: model.preferredBrands ?? [])
         }else {
-            brandsLbl.text = "Countries: "
+            brandsLbl.text = LocalizedString.countries.localized + ": "
             brandDetailLbl.attributedText = getAttributedString(data :model.preferredCountries ?? [])
         }
         let logoImg =  model.requestType == .tyres ? #imageLiteral(resourceName: "maskGroup") : model.requestType == .battery ? #imageLiteral(resourceName: "icBattery") : #imageLiteral(resourceName: "icOil")
@@ -105,7 +104,7 @@ class ServiceRequestTableCell: UITableViewCell {
         statusValueLbl.text = model.bidStatus?.text
         statusValueLbl.textColor = model.bidStatus?.textColor
     
-        let str = (model.requestType) == .tyres ? "Tyre" : model.requestType?.rawValue
+        let str = (model.requestType) == .tyres ? LocalizedString.tyre.localized + ": " : model.requestType?.rawValue
         serviceTyeLbl.text = (str ?? "") + LocalizedString.serviceRequest.localized
         
         if model.bidStatus == .bidFinalsed || model.bidStatus == .bidPlaced {
@@ -115,14 +114,14 @@ class ServiceRequestTableCell: UITableViewCell {
                 .font: AppFonts.NunitoSansBold.withSize(17.0),
                 .foregroundColor: AppColors.successGreenColor
             ])
-            str.append(NSAttributedString(string: "SAR", attributes: [NSAttributedString.Key.foregroundColor: AppColors.successGreenColor,NSAttributedString.Key.font: AppFonts.NunitoSansSemiBold.withSize(12.0)]))
+            str.append(NSAttributedString(string: LocalizedString.sar.localized, attributes: [NSAttributedString.Key.foregroundColor: AppColors.successGreenColor,NSAttributedString.Key.font: AppFonts.NunitoSansSemiBold.withSize(12.0)]))
             bidAmountValueLbl.attributedText = str
         }else {
             bidAmountStackView.isHidden = true
         }
         if model.bidStatus == .bidPlaced || model.bidStatus == .bidClosed{
             rejectRequestBtn.isHidden = true
-            placeBidBtn.setTitle("Cancel Bid", for: .normal)
+            placeBidBtn.setTitle(LocalizedString.cancelBid.localized, for: .normal)
             placeBidBtn.setTitleColor(AppColors.appRedColor, for: .normal)
             placeBidBtn.backgroundColor = .clear
             placeBidBtn.borderColor = AppColors.fontTertiaryColor
@@ -138,12 +137,12 @@ class ServiceRequestTableCell: UITableViewCell {
                 }
                 placeBidBtn.isHidden = false
                 rejectRequestBtn.isBorderSelected = true
-                placeBidBtn.setTitle("Chat", for: .normal)
-                rejectRequestBtn.setTitle("Reject", for: .normal)
+                placeBidBtn.setTitle(LocalizedString.chat.localized, for: .normal)
+                rejectRequestBtn.setTitle(LocalizedString.reject.localized, for: .normal)
             }else {
                 rejectRequestBtn.isHidden = false
                 placeBidBtn.isEnabled = true
-                placeBidBtn.setTitle("Place a Bid", for: .normal)
+                placeBidBtn.setTitle(LocalizedString.placeABid.localized + ": ", for: .normal)
                 placeBidBtn.isHidden = false
             }
         }
@@ -152,6 +151,12 @@ class ServiceRequestTableCell: UITableViewCell {
             bottomStackView.isHidden = true
         }else {
             bottomStackView.isHidden = false
+        }
+        
+        if let paymentStatus = model.paymentStatus{
+            if paymentStatus == .paid{
+                rejectRequestBtn.isHidden = true
+            }
         }
     }
     

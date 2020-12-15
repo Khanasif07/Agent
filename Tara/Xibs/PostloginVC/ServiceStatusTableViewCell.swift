@@ -11,9 +11,9 @@ import UIKit
 class ServiceStatusTableViewCell: UITableViewCell {
     
     //MARK:-IBOutlet
-    @IBOutlet weak var serviceStatusLbl: UILabel!
     
-    @IBOutlet weak var bottomDashedVIew: CustomDashedView!
+    @IBOutlet weak var refundedPaymentView: UIStackView!
+    @IBOutlet weak var serviceStatusLbl: UILabel!
     @IBOutlet weak var ratingContainerView: UIView!
     @IBOutlet weak var reviewLbl: UILabel!
     @IBOutlet weak var noRatingContainerView: UIView!
@@ -33,6 +33,7 @@ class ServiceStatusTableViewCell: UITableViewCell {
     @IBOutlet weak var completeUpdateBtn: AppButton!
     @IBOutlet weak var takenUpdateBtn: AppButton!
     
+    @IBOutlet weak var refundedAmountLbl: UILabel!
     @IBOutlet weak var paymentStatusLbl: UILabel!
     @IBOutlet weak var amountPaidlbl: UILabel!
     @IBOutlet weak var paidLbl: UILabel!
@@ -181,15 +182,15 @@ class ServiceStatusTableViewCell: UITableViewCell {
             self.noRatingContainerView.isHidden = true
         }
         self.ratingContainerView.isHidden = (model.ratingDetails?._id?.isEmpty ?? true)
-        self.bottomDashedVIew.isHidden =  self.noRatingContainerView.isHidden && self.ratingContainerView.isHidden
+//        self.bottomDashedVIew.isHidden =  self.noRatingContainerView.isHidden && self.ratingContainerView.isHidden
         
         if (model.ratingDetails?._id?.isEmpty ?? true) {
             if isNoBtnTapped {
                 self.noRatingContainerView.isHidden = !(model.isServiceCompleted ?? true)
-                self.bottomDashedVIew.isHidden = !(model.isServiceCompleted ?? true)
+//                self.bottomDashedVIew.isHidden = !(model.isServiceCompleted ?? true)
             }else {
                 self.noRatingContainerView.isHidden = true
-                self.bottomDashedVIew.isHidden = true
+//                self.bottomDashedVIew.isHidden = true
             }
         }
 
@@ -273,6 +274,13 @@ class ServiceStatusTableViewCell: UITableViewCell {
         if isServiceCompleted {
             carRecievedStackView.isHidden = true
         }
+        if let paymentStatus = model.paymentStatus{
+            self.paidLbl.textColor = (paymentStatus.textColor)
+            self.paidLbl.text = (paymentStatus == .paid ) ? LocalizedString.paid_Caps.localized : paymentStatus.text
+            self.amountLbl.text = "\(model.amountPaid ?? 0.0)" + " SAR"
+            self.refundedPaymentView.isHidden = !(paymentStatus == .refunded)
+        }
+       
     }
     
     //MARK:- IBActions

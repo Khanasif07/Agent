@@ -164,7 +164,7 @@ extension ResetPasswordVC: UITextFieldDelegate{
 //===============================
 extension ResetPasswordVC: ResetPasswordVMDelegate{
     func resetPasswordSuccess(message: String) {
-        AppRouter.showSuccessPopUp(vc: self, title: "Successful", desc: "Password has been reset successfully")
+        AppRouter.showSuccessPopUp(vc: self, title: LocalizedString.successful.localized, desc: LocalizedString.password_has_been_reset_successfully.localized)
     }
     
     func resetPasswordFailed(error: String) {
