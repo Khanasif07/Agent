@@ -364,7 +364,9 @@ extension UserAllRequestVC : URLSessionDownloadDelegate {
         print("downloadLocation:", location)
         // create destination URL with the original pdf name
         guard let url = downloadTask.originalRequest?.url else { return }
-        let documentsPath = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
+        let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+
+//        let documentsPath = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
         let destinationURL = documentsPath.appendingPathComponent(url.lastPathComponent)
         // delete original copy
         try? FileManager.default.removeItem(at: destinationURL)
