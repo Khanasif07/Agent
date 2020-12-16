@@ -218,7 +218,7 @@ extension UserAllRequestVC : UITableViewDelegate, UITableViewDataSource {
                 }
                 cell.needHelpBtnTapped = { [weak self] in
                     guard let `self` = self else { return }
-                    AppRouter.goToOneToOneChatVC(self, userId: AppConstants.adminId, requestId: "", name: LocalizedString.supportChat.localized, image: "", unreadMsgs: 0, isSupportChat: true,garageUserId: isCurrentUserType == .garage ? UserModel.main.id : "" )
+                    AppRouter.goToOneToOneChatVC(self, userId: AppConstants.adminId, requestId: "", name: LocalizedString.supportChat.localized, image: "", unreadMsgs: 0, isSupportChat: true,garageUserId: isCurrentUserType == .garage ? UserModel.main.id : AppConstants.adminId )
                     
                 }
                 return cell
@@ -266,7 +266,7 @@ extension UserAllRequestVC : UITableViewDelegate, UITableViewDataSource {
 //===========================
 extension UserAllRequestVC: UserAllRequestVMDelegate{
     func fetchPaymentInvoiceSuccess(message: String,pdfUrl: String) {
-        self.downloadPdfFromUrl(urlString: "")
+        self.downloadPdfFromUrl(urlString: pdfUrl)
     }
     
     func fetchPaymentInvoiceFailed(error: String) {
@@ -352,7 +352,7 @@ extension UserAllRequestVC : DZNEmptyDataSetSource,DZNEmptyDataSetDelegate {
 extension UserAllRequestVC : URLSessionDownloadDelegate {
     
     func downloadPdfFromUrl(urlString: String){
-        guard let url = URL(string: "https://www.tutorialspoint.com/swift/swift_tutorial.pdf") else { return }
+        guard let url = URL(string: urlString) else { return }
         
         let urlSession = URLSession(configuration: .default, delegate: self, delegateQueue: OperationQueue())
         

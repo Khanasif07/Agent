@@ -35,6 +35,7 @@ enum EventListnerKeys : String ,Codable {
     case payment_recieved_by_garage =  "PAYMENT_RECEIVED"
     case payment_refunded    = "PAYMENT_REFUNDED"
     case rating_received = "NEW_RATING"
+    case admin  = "Admin"
 }
 
 class SocketIOManager: NSObject {
