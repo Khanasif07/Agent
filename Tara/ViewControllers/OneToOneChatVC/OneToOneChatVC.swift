@@ -44,7 +44,6 @@ class OneToOneChatVC: BaseVC {
     private var deleteTime = Timestamp.init(date: Date())
     private var userInfo = [String:Any]()
     var roomId = ""
-    var lastMessageModel : [String:Any] = [:]
     let currentUserId = AppUserDefaults.value(forKey: .uid).stringValue
     var messageListing = [[Message]]()
     var isRoom = false
@@ -142,6 +141,9 @@ class OneToOneChatVC: BaseVC {
         FirestoreController.isReceiverBlocked(senderId: currentUserId, receiverId: inboxModel.userId) { (bool) in
             self.isBlockedByMe = bool
         }
+        FirestoreController.checkIsBlock(receiverId: inboxModel.userId) { (bool) in
+           self.amIBlocked = bool
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -189,7 +191,7 @@ class OneToOneChatVC: BaseVC {
     }
     
     @IBAction func paymentBtnAction(_ sender: UIButton) {
-        if isBlockedByMe {
+        if isBlockedByMe || amIBlocked {
             CommonFunctions.showToastWithMessage( LocalizedString.PLEASEUNBLOCKUSERTOPERFORMTHISACTION.localized)
             return
         }
@@ -887,7 +889,7 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                 let receiverPaymentCell = tableView.dequeueCell(with: PaymentCardCell.self)
                 receiverPaymentCell.payNowBtnAction = {[weak self] (sender) in
                     guard let `self` = self else { return }
-                    if self.isBlockedByMe {
+                    if self.isBlockedByMe || self.amIBlocked {
                         CommonFunctions.showToastWithMessage( LocalizedString.PLEASEUNBLOCKUSERTOPERFORMTHISACTION.localized)
                         return
                     }
@@ -897,7 +899,7 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                 
                 receiverPaymentCell.declineBtnAction = {[weak self] (sender) in
                     guard let `self` = self else { return }
-                    if self.isBlockedByMe {
+                    if self.isBlockedByMe || self.amIBlocked {
                         CommonFunctions.showToastWithMessage( LocalizedString.PLEASEUNBLOCKUSERTOPERFORMTHISACTION.localized)
                         return
                     }
