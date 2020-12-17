@@ -189,8 +189,12 @@ class OneToOneChatVC: BaseVC {
     }
     
     @IBAction func paymentBtnAction(_ sender: UIButton) {
-         self.messageId = ""
-         AppRouter.goToWebVC(vc: self, screenType: .payment,requestId: self.requestId)
+        if isBlockedByMe {
+            CommonFunctions.showToastWithMessage( LocalizedString.PLEASEUNBLOCKUSERTOPERFORMTHISACTION.localized)
+            return
+        }
+        self.messageId = ""
+        AppRouter.goToWebVC(vc: self, screenType: .payment,requestId: self.requestId)
     }
     
     @IBAction func backButtonTapped(_ sender: UIButton) {
@@ -820,6 +824,10 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                 let receiverOfferCell = tableView.dequeueCell(with: ReceiverOfferCell.self)
                 receiverOfferCell.acceptBtnTapped = {[weak self] in
                     guard let `self` = self else { return }
+                    if self.isBlockedByMe {
+                        CommonFunctions.showToastWithMessage( LocalizedString.PLEASEUNBLOCKUSERTOPERFORMTHISACTION.localized)
+                        return
+                    }
                     self.messageId = model.messageId
                     self.acceptedRejectBtnStatus = true
                     self.chatViewModel.acceptRejectEditedBid(params: [ApiKey.requestId: self.requestId,ApiKey.status: true], loader: true)
@@ -827,6 +835,10 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                 
                 receiverOfferCell.rejectBtnTapped = {[weak self] in
                     guard let `self` = self else { return }
+                    if self.isBlockedByMe {
+                        CommonFunctions.showToastWithMessage( LocalizedString.PLEASEUNBLOCKUSERTOPERFORMTHISACTION.localized)
+                        return
+                    }
                     self.acceptedRejectBtnStatus = false
                     self.messageId = model.messageId
                     self.chatViewModel.acceptRejectEditedBid(params: [ApiKey.requestId: self.requestId,ApiKey.status: false], loader: false)
@@ -875,12 +887,20 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                 let receiverPaymentCell = tableView.dequeueCell(with: PaymentCardCell.self)
                 receiverPaymentCell.payNowBtnAction = {[weak self] (sender) in
                     guard let `self` = self else { return }
+                    if self.isBlockedByMe {
+                        CommonFunctions.showToastWithMessage( LocalizedString.PLEASEUNBLOCKUSERTOPERFORMTHISACTION.localized)
+                        return
+                    }
                     self.messageId = model.messageId
                     AppRouter.goToWebVC(vc: self, screenType: .payment,requestId: self.requestId)
                 }
                 
                 receiverPaymentCell.declineBtnAction = {[weak self] (sender) in
                     guard let `self` = self else { return }
+                    if self.isBlockedByMe {
+                        CommonFunctions.showToastWithMessage( LocalizedString.PLEASEUNBLOCKUSERTOPERFORMTHISACTION.localized)
+                        return
+                    }
                     self.messageId = model.messageId
                     self.db.collection(ApiKey.messages).document(self.getRoomId()).collection(ApiKey.chat).document(self.messageId).updateData([ApiKey.messageStatus : 3]) { (error) in
                         if let err = error {

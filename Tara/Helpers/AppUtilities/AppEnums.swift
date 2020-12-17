@@ -41,6 +41,7 @@ enum PushNotificationType: String {
     case PAYMENT_RECEIVED_BY_GARAGE =  "PAYMENT_RECEIVED"
     case PAYMENT_REFUNDED = "PAYMENT_REFUNDED"
     case RATING_RECEIVED = "NEW_RATING"
+    case RATING_UPDATED = "RATING_UPDATED" 
     case other
 }
 

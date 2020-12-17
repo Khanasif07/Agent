@@ -264,7 +264,8 @@
 "byDate" = "By Date";
 "byServiceType" = "By Service Type";
 "byStatus" = "By Status";
-"PLEASEUNBLOCKUSERTOSENDMESSAGES" = "PLEASE UNBLOCK USER TO SEND MESSAGES";
+"PLEASEUNBLOCKUSERTOSENDMESSAGES" = "Please unblock user to send messages";
+"PLEASEUNBLOCKUSERTOPERFORMTHISACTION" = "Please unblock user to perform this action";
 "service" = " Service";
 "tyreServices" = "Tyre Services";
 "oilSevices" = "Oil Sevices";

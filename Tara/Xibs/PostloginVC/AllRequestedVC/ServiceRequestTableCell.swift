@@ -142,7 +142,7 @@ class ServiceRequestTableCell: UITableViewCell {
             }else {
                 rejectRequestBtn.isHidden = false
                 placeBidBtn.isEnabled = true
-                placeBidBtn.setTitle(LocalizedString.placeABid.localized + ": ", for: .normal)
+                placeBidBtn.setTitle(LocalizedString.placeABid.localized, for: .normal)
                 placeBidBtn.isHidden = false
             }
         }

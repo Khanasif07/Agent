@@ -160,4 +160,8 @@ extension WebViewController: WKUIDelegate,WKNavigationDelegate {
     func webViewDidClose(_ webView: WKWebView) {
         printDebug("web view close")
     }
+    
+    func scrollViewWillBeginZooming(_ scrollView: UIScrollView, with view: UIView?) {
+             scrollView.pinchGestureRecognizer?.isEnabled = false
+    }
 }

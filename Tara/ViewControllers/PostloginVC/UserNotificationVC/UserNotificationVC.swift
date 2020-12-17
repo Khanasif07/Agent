@@ -163,7 +163,7 @@ extension UserNotificationVC : UITableViewDelegate, UITableViewDataSource {
             default:
                 break
             }
-        case .rating_received:
+        case .rating_received,.rating_updated:
             if isCurrentUserType == .garage {
              AppRouter.goToServiceCompletedVC(vc: self,screenType: .serviceComplete)
             }
