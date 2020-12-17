@@ -70,6 +70,7 @@ class UserAllRequestVC: BaseVC {
 extension UserAllRequestVC {
     
     private func initialSetup() {
+        NotificationCenter.default.addObserver(self, selector: #selector(paymentSucessfullyDone), name: Notification.Name.PaymentSucessfullyDone, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(newBidSocketSuccess), name: Notification.Name.NewBidSocketSuccess, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(userServiceAcceptRejectSuccess), name: Notification.Name.UserServiceAcceptRejectSuccess, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ServiceRequestSuccess), name: Notification.Name.ServiceRequestSuccess, object: nil)
@@ -146,6 +147,14 @@ extension UserAllRequestVC {
     }
     
     @objc func ServiceRequestSuccess(){
+        if filterApplied {
+            getFilterData(data: filterArr,loader: false)
+        }else {
+            self.hitListingApi()
+        }
+    }
+    
+    @objc func paymentSucessfullyDone(){
         if filterApplied {
             getFilterData(data: filterArr,loader: false)
         }else {

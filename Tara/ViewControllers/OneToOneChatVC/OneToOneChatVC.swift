@@ -526,7 +526,7 @@ extension OneToOneChatVC {
             self.scrollMsgToBottom()
         }
         if requestId.isEmpty{tableViewTopConstraint.constant = 0.0}
-        tableViewTopConstraint.constant =  chatUserType == .garage ? (chatViewModel.chatData.id.isEmpty ? 0.0 : 80.0)  : (chatViewModel.chatData.id.isEmpty ? 0.0 : 124.0)
+        tableViewTopConstraint.constant =  chatUserType == .garage ? (chatViewModel.chatData.id.isEmpty ? 0.0 : 72.0)  : (chatViewModel.chatData.id.isEmpty ? 0.0 : 135.0)
         UIView.animate(withDuration: duration) { self.view.layoutIfNeeded() }
     }
     
@@ -2020,7 +2020,7 @@ extension OneToOneChatVC : OneToOneChatViewModelDelegate{
     func chatDataSuccess(msg: String) {
         if self.chatUserType == .garage {
             self.editBidBtn.isHidden = (chatViewModel.chatData.isServiceStarted ?? true)
-            tableViewTopConstraint.constant = chatViewModel.chatData.id.isEmpty ? 0.0 : 80.0
+            tableViewTopConstraint.constant = chatViewModel.chatData.id.isEmpty ? 0.0 : 72.0
             userRequestView.isHidden = false
             userNameLbl.text = chatViewModel.chatData.userName
             numberOfServiceLbl.text = chatViewModel.chatData.totalRequests.description + " Services"
@@ -2042,7 +2042,7 @@ extension OneToOneChatVC : OneToOneChatViewModelDelegate{
             })
         }
         else if chatUserType == .user{
-            tableViewTopConstraint.constant = chatViewModel.chatData.id.isEmpty  ? 0.0 : 124.0
+            tableViewTopConstraint.constant = chatViewModel.chatData.id.isEmpty  ? 0.0 : 135.0
             garageTopView.isHidden = false
             garageImgView.setImage_kf(imageString: chatViewModel.chatData.garageLogo, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
             garageRequestNoValueLbl.text = chatViewModel.chatData.requestId
