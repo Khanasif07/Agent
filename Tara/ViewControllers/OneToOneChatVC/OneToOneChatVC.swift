@@ -2003,12 +2003,12 @@ extension OneToOneChatVC:  AVAudioRecorderDelegate, AVAudioPlayerDelegate {
 extension OneToOneChatVC : OneToOneChatViewModelDelegate{
     func chatDataFailure(msg: String, statusCode: Int) {
         if statusCode == 400 {
-            userRequestView.isHidden = true
             bottomVIewWithMsg.isHidden = false
             editBidBtn.isHidden = true
             textContainerInnerView.borderWidth = 0.0
             return
         }
+        garageTopView.isHidden = true
         userRequestView.isHidden = true
         CommonFunctions.showToastWithMessage(msg)
     }

@@ -172,6 +172,7 @@ extension ProfileVC {
                 return 1
             }
         }
+        self.mainTableView.isScrollEnabled = false
         return 1
     }
     
