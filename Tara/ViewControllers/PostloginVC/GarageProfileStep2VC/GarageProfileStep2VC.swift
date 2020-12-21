@@ -87,16 +87,15 @@ class GarageProfileStep2VC: BaseVC {
         AppRouter.goToAddAccountVC(vc: self, screenType: .garageProfile)
     }
     
-       func reloadCollectionViewWithUIUpdation(){
-        if GarageProfileModel.shared.serviceCenterImages.endIndex > 2 {
-            DispatchQueue.main.async {
-                self.collViewHeightConst.constant = 90 * 2
-            }
+    func reloadCollectionViewWithUIUpdation(){
+        DispatchQueue.main.async {
+            self.collViewHeightConst.constant = GarageProfileModel.shared.serviceCenterImages.endIndex > 2 ? 90 * 2 : 90
         }
         DispatchQueue.main.async {
             self.mainCollView.reloadData()
         }
     }
+    
     @objc func addImageBtnTapped(_ sender: UIButton) {
        if !self.hasImageUploaded{
            self.showAlert(msg: LocalizedString.wait_Img_Upload.localized)

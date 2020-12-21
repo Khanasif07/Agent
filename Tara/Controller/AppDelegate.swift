@@ -52,8 +52,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate , MessagingDelegate , UNUs
     
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
         print(fcmToken ?? "")
-        AppUserDefaults.save(value: fcmToken ?? "" , forKey: .fcmToken) // Used for saving device token
-        DeviceDetail.deviceToken = fcmToken ?? ""
+        // Used for saving device token
+        if let deviceToken = fcmToken{
+            AppUserDefaults.save(value: deviceToken , forKey: .fcmToken)
+            DeviceDetail.deviceToken = deviceToken
+        }
     }
     
     // Setup IQKeyboard Manager (Third party for handling keyboard in app)

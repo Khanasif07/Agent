@@ -192,7 +192,7 @@ class OneToOneChatVC: BaseVC {
     
     @IBAction func paymentBtnAction(_ sender: UIButton) {
         if isBlockedByMe || amIBlocked {
-            CommonFunctions.showToastWithMessage( LocalizedString.PLEASEUNBLOCKUSERTOPERFORMTHISACTION.localized)
+            CommonFunctions.showToastWithMessage( isBlockedByMe ? LocalizedString.PLEASEUNBLOCKUSERTOPERFORMTHISACTION.localized : LocalizedString.you_can_not_perform_this_action_as_you_are_blocked.localized)
             return
         }
         self.messageId = ""
