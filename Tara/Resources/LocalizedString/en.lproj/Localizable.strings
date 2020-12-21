@@ -266,6 +266,7 @@
 "byStatus" = "By Status";
 "PLEASEUNBLOCKUSERTOSENDMESSAGES" = "Please unblock user to send messages";
 "PLEASEUNBLOCKUSERTOPERFORMTHISACTION" = "Please unblock user to perform this action";
+"you_can_not_perform_this_action_as_you_are_blocked" = "You can not perform this action as the garage has blocked you";
 "service" = " Service";
 "tyreServices" = "Tyre Services";
 "oilSevices" = "Oil Sevices";

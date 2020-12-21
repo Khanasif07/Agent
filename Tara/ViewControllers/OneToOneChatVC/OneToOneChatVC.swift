@@ -890,7 +890,7 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                 receiverPaymentCell.payNowBtnAction = {[weak self] (sender) in
                     guard let `self` = self else { return }
                     if self.isBlockedByMe || self.amIBlocked {
-                        CommonFunctions.showToastWithMessage( LocalizedString.PLEASEUNBLOCKUSERTOPERFORMTHISACTION.localized)
+                        CommonFunctions.showToastWithMessage( self.isBlockedByMe ? LocalizedString.PLEASEUNBLOCKUSERTOPERFORMTHISACTION.localized : LocalizedString.you_can_not_perform_this_action_as_you_are_blocked.localized)
                         return
                     }
                     self.messageId = model.messageId
@@ -900,7 +900,7 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                 receiverPaymentCell.declineBtnAction = {[weak self] (sender) in
                     guard let `self` = self else { return }
                     if self.isBlockedByMe || self.amIBlocked {
-                        CommonFunctions.showToastWithMessage( LocalizedString.PLEASEUNBLOCKUSERTOPERFORMTHISACTION.localized)
+                        CommonFunctions.showToastWithMessage( self.isBlockedByMe ? LocalizedString.PLEASEUNBLOCKUSERTOPERFORMTHISACTION.localized : LocalizedString.you_can_not_perform_this_action_as_you_are_blocked.localized)
                         return
                     }
                     self.messageId = model.messageId
@@ -914,6 +914,8 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                     receiverPaymentCell.payNowBtn.isHidden = false
                     receiverPaymentCell.declineBtn.isHidden = false
                     receiverPaymentCell.payNowBtn.isUserInteractionEnabled = true
+                    receiverPaymentCell.payNowBtn.backgroundColor = AppColors.successGreenColor
+                    receiverPaymentCell.payNowBtn.setTitleColor(.white, for: .normal)
                     receiverPaymentCell.payNowBtn.setTitle(LocalizedString.payNow.localized, for: .normal)
                     receiverPaymentCell.declineBtn.setTitle(LocalizedString.decline.localized, for: .normal)
                 }

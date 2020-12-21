@@ -340,6 +340,7 @@ enum LocalizedString : String {
     case save
     case PLEASEUNBLOCKUSERTOSENDMESSAGES
     case PLEASEUNBLOCKUSERTOPERFORMTHISACTION
+    case you_can_not_perform_this_action_as_you_are_blocked
     case make_Payment_to_get_hassle_free_service
     case block
     case unBlock

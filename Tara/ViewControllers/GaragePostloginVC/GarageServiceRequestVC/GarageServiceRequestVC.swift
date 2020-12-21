@@ -92,7 +92,7 @@ class GarageServiceRequestVC: BaseVC {
         if bidAmountValid {
             switch sender.titleLabel?.text {
             case "Edit":
-                self.placeBidBtn.setTitle("Place Bid", for: .normal)
+                self.placeBidBtn.setTitle(LocalizedString.placeBid.localized, for: .normal)
                 self.mainTableView.reloadData()
             default:
                 if bidStatus == .bidPlaced{
@@ -150,29 +150,32 @@ extension GarageServiceRequestVC {
     
     private func bidStatusSetUp(){
         placeBidBtn.setTitle((bidStatus == .bidPlaced) ? LocalizedString.edit.localized : LocalizedString.placeBid.localized, for: .normal)
-        titleLbl.text =  self.viewModel.requestType == "Tyres" ? LocalizedString.tyreServiceRequest.localized : self.viewModel.requestType == "Battery" ? LocalizedString.batteryServiceRequest.localized : LocalizedString.oilServiceRequest.localized
+        titleLbl.text =  self.viewModel.requestType == LocalizedString.tyres.localized ? LocalizedString.tyreServiceRequest.localized : self.viewModel.requestType == LocalizedString.battery.localized ? LocalizedString.batteryServiceRequest.localized : LocalizedString.oilServiceRequest.localized
         switch bidStatus {
         case .bidFinalsed:
             placeBidBtn.isHidden  = true
+            requestBtn.isHidden = false
+            //reject button show
         case .bidClosed:
             placeBidBtn.isHidden  = true
             requestBtn.isHidden = true
             self.mainTableView.tableFooterView?.height = 0
         case .bidPlaced:
             requestBtn.isHidden = false
-            placeBidBtn.setTitle("Edit", for: .normal)
+            placeBidBtn.setTitle(LocalizedString.edit.localized, for: .normal)
         case .bidRejected:
             placeBidBtn.isHidden  = false
             requestBtn.isHidden = false
-            placeBidBtn.setTitle("Place Bid", for: .normal)
+            placeBidBtn.setTitle(LocalizedString.placeBid.localized, for: .normal)
         case .openForBidding:
             placeBidBtn.isHidden  = false
             requestBtn.isHidden = false
-            placeBidBtn.setTitle("Place Bid", for: .normal)
+            placeBidBtn.setTitle(LocalizedString.placeBid.localized, for: .normal)
         }
         if let paymentStatus = self.viewModel.garageRequestDetailArr?.paymentStatus {
-           if paymentStatus == .paid {
+           if paymentStatus == .paid || paymentStatus == .refunded {
                 requestBtn.isHidden = true
+                self.mainTableView.tableFooterView?.height = 0
             }
         }
     }
@@ -474,7 +477,13 @@ extension GarageServiceRequestVC :GarageServiceRequestVMDelegate {
         }
         self.viewModel.countryBrandsDict.append([self.selectedCountry : viewModel.brandsListings])
         self.getPlacedBidData()
-        self.mainTableView.reloadData()
+        //
+        UIView.animate(withDuration: 1.0, animations: {
+            self.view.layoutIfNeeded()
+        }, completion: {res in
+            self.mainTableView.reloadData()
+        })
+        //
     }
     
     func brandListingFailed(error:String) {
