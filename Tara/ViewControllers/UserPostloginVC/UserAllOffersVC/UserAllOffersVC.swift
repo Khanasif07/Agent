@@ -115,6 +115,8 @@ extension UserAllOffersVC {
             } else {
                 payNowBtn.isHidden = true
             }
+        } else {
+             payNowBtn.isHidden = true
         }
     }
     
