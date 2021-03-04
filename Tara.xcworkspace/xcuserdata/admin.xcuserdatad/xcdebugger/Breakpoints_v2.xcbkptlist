@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "6689E56F-2097-4493-A894-81B3752E7FCA"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D23B8134-9C4E-4147-A0D1-040C5EA4FAC7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tara/ViewControllers/OneToOneChatVC/OneToOneChatVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1649"
+            endingLineNumber = "1649"
+            landmarkName = "startSenderBlockListener()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D23B8134-9C4E-4147-A0D1-040C5EA4FAC7 - 8855e52f83d37a08"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Tara.OneToOneChatVC.(startSenderBlockListener in _481FF371130993B5FDD5D5B801133242)() -&gt; ()"
+                  moduleName = "Tara"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Developer/ArabianTyres/Tara/ViewControllers/OneToOneChatVC/OneToOneChatVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1649"
+                  endingLineNumber = "1649"
+                  offsetFromSymbolStart = "31">
+               </Location>
+               <Location
+                  uuid = "D23B8134-9C4E-4147-A0D1-040C5EA4FAC7 - 836c0decb91ffb01"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRDocumentSnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Tara.OneToOneChatVC.(startSenderBlockListener in _481FF371130993B5FDD5D5B801133242)() -&gt; ()"
+                  moduleName = "Tara"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Developer/ArabianTyres/Tara/ViewControllers/OneToOneChatVC/OneToOneChatVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1649"
+                  endingLineNumber = "1649"
+                  offsetFromSymbolStart = "261">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
