@@ -30,7 +30,8 @@ class FirestoreController:NSObject{
         if emailId.isEmpty{
             emailId = "\(userId)" + "@tara.com"
         }
-        Auth.auth().signIn(withEmail: emailId, password: password) { (result, error) in
+        let defaultPassword = "Tara@123"
+        Auth.auth().signIn(withEmail: emailId, password: defaultPassword) { (result, error) in
             if let err = error {
                 failure(err.localizedDescription, (err as NSError).code)
             } else {

@@ -139,11 +139,15 @@ class ServiceRequestTableCell: UITableViewCell {
                 rejectRequestBtn.isBorderSelected = true
                 placeBidBtn.setTitle(LocalizedString.chat.localized, for: .normal)
                 rejectRequestBtn.setTitle(LocalizedString.reject.localized, for: .normal)
+                placeBidBtn.borderColor = .clear
+                placeBidBtn.borderWidth = 0.0
             }else {
                 rejectRequestBtn.isHidden = false
                 placeBidBtn.isEnabled = true
-                placeBidBtn.setTitle(LocalizedString.placeABid.localized + ": ", for: .normal)
+                placeBidBtn.setTitle(LocalizedString.placeABid.localized, for: .normal)
                 placeBidBtn.isHidden = false
+                placeBidBtn.borderColor = .clear
+                placeBidBtn.borderWidth = 0.0
             }
         }
         

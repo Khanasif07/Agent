@@ -70,6 +70,7 @@ class UserAllRequestVC: BaseVC {
 extension UserAllRequestVC {
     
     private func initialSetup() {
+        NotificationCenter.default.addObserver(self, selector: #selector(paymentSucessfullyDone), name: Notification.Name.PaymentSucessfullyDone, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(newBidSocketSuccess), name: Notification.Name.NewBidSocketSuccess, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(userServiceAcceptRejectSuccess), name: Notification.Name.UserServiceAcceptRejectSuccess, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ServiceRequestSuccess), name: Notification.Name.ServiceRequestSuccess, object: nil)
@@ -153,6 +154,14 @@ extension UserAllRequestVC {
         }
     }
     
+    @objc func paymentSucessfullyDone(){
+        if filterApplied {
+            getFilterData(data: filterArr,loader: false)
+        }else {
+            self.hitListingApi()
+        }
+    }
+    
     @objc func userServiceAcceptRejectSuccess(){
         if filterApplied {
             getFilterData(data: filterArr,loader: false)
@@ -218,7 +227,7 @@ extension UserAllRequestVC : UITableViewDelegate, UITableViewDataSource {
                 }
                 cell.needHelpBtnTapped = { [weak self] in
                     guard let `self` = self else { return }
-                    AppRouter.goToOneToOneChatVC(self, userId: AppConstants.adminId, requestId: "", name: LocalizedString.supportChat.localized, image: "", unreadMsgs: 0, isSupportChat: true,garageUserId: isCurrentUserType == .garage ? UserModel.main.id : "" )
+                    AppRouter.goToOneToOneChatVC(self, userId: AppConstants.adminId, requestId: "", name: LocalizedString.supportChat.localized, image: "", unreadMsgs: 0, isSupportChat: true,garageUserId: isCurrentUserType == .garage ? UserModel.main.id : AppConstants.adminId )
                     
                 }
                 return cell
@@ -266,7 +275,7 @@ extension UserAllRequestVC : UITableViewDelegate, UITableViewDataSource {
 //===========================
 extension UserAllRequestVC: UserAllRequestVMDelegate{
     func fetchPaymentInvoiceSuccess(message: String,pdfUrl: String) {
-        self.downloadPdfFromUrl(urlString: "")
+        self.downloadPdfFromUrl(urlString: pdfUrl)
     }
     
     func fetchPaymentInvoiceFailed(error: String) {
@@ -352,7 +361,7 @@ extension UserAllRequestVC : DZNEmptyDataSetSource,DZNEmptyDataSetDelegate {
 extension UserAllRequestVC : URLSessionDownloadDelegate {
     
     func downloadPdfFromUrl(urlString: String){
-        guard let url = URL(string: "https://www.tutorialspoint.com/swift/swift_tutorial.pdf") else { return }
+        guard let url = URL(string: urlString) else { return }
         
         let urlSession = URLSession(configuration: .default, delegate: self, delegateQueue: OperationQueue())
         
@@ -364,7 +373,9 @@ extension UserAllRequestVC : URLSessionDownloadDelegate {
         print("downloadLocation:", location)
         // create destination URL with the original pdf name
         guard let url = downloadTask.originalRequest?.url else { return }
-        let documentsPath = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
+        let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+
+//        let documentsPath = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
         let destinationURL = documentsPath.appendingPathComponent(url.lastPathComponent)
         // delete original copy
         try? FileManager.default.removeItem(at: destinationURL)

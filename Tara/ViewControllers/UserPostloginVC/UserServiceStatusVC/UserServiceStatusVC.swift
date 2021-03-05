@@ -95,7 +95,7 @@ extension UserServiceStatusVC: UITableViewDelegate,UITableViewDataSource{
                 cell.populateData(sectionArr[indexPath.row], model: viewModel.serviceDetailData ?? GarageRequestModel())
                 cell.helpBtnTapped = {[weak self] in
                     guard let `self` = self else {return}
-                    AppRouter.goToOneToOneChatVC(self, userId: AppConstants.adminId, requestId: "", name: LocalizedString.supportChat.localized, image: "", unreadMsgs: 0, isSupportChat: true,garageUserId: isCurrentUserType == .garage ? UserModel.main.id : "" )
+                    AppRouter.goToOneToOneChatVC(self, userId: AppConstants.adminId, requestId: "", name: LocalizedString.supportChat.localized, image: "", unreadMsgs: 0, isSupportChat: true,garageUserId: isCurrentUserType == .garage ? UserModel.main.id : AppConstants.adminId )
                 }
                 return cell
                 
@@ -135,7 +135,7 @@ extension UserServiceStatusVC: UITableViewDelegate,UITableViewDataSource{
 extension UserServiceStatusVC: UserServiceStatusVMDelegate {
     
     func getAdminIdSuccess(id: String, name: String, image: String) {
-            AppRouter.goToOneToOneChatVC(self, userId: id, requestId: "", name: LocalizedString.supportChat.localized, image: image, unreadMsgs: 0, isSupportChat: true)
+        AppRouter.goToOneToOneChatVC(self, userId: id, requestDetailId: "", requestId: "", name: LocalizedString.supportChat.localized,image: isCurrentUserType == .garage ? UserModel.main.id : AppConstants.adminId ,  unreadMsgs: 0, isSupportChat: true)
     }
     
     func getAdminIdFailed(error: String) {

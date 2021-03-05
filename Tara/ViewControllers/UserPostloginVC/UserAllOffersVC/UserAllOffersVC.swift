@@ -95,22 +95,28 @@ extension UserAllOffersVC {
     
     private func setUpPaymentStatus(){
         if let acceptedModel = viewModel.userBidListingArr.first{
-            switch acceptedModel.paymentStatus {
-            case .pending:
-                payNowBtn.setTitle(LocalizedString.pay.localized + " " + "\(acceptedModel.getMinAmount().0)" +  " " + LocalizedString.sar.localized, for: .normal)
-                payNowBtn.isUserInteractionEnabled = true
-            case .paid:
-                payNowBtn.setTitle(LocalizedString.paid.localized, for: .normal)
-                payNowBtn.isUserInteractionEnabled = false
-            case .refunded:
-                payNowBtn.setTitle(LocalizedString.pay.localized + " " + "\(acceptedModel.getMinAmount().0)" + " " + LocalizedString.sar.localized, for: .normal)
-                payNowBtn.isUserInteractionEnabled = true
-            case .failed:
-                payNowBtn.setTitle(LocalizedString.pay.localized + " " + "\(acceptedModel.getMinAmount().0)" +  " " + LocalizedString.sar.localized, for: .normal)
-                payNowBtn.isUserInteractionEnabled = true
-            case .none:
+            if acceptedModel.status == ApiKey.accepted {
+                switch acceptedModel.paymentStatus {
+                case .pending:
+                    payNowBtn.setTitle(LocalizedString.pay.localized + " " + "\(acceptedModel.getMinAmount().0)" +  " " + LocalizedString.sar.localized, for: .normal)
+                    payNowBtn.isUserInteractionEnabled = true
+                case .paid:
+                    payNowBtn.setTitle(LocalizedString.paid.localized, for: .normal)
+                    payNowBtn.isUserInteractionEnabled = false
+                case .refunded:
+                    payNowBtn.setTitle(LocalizedString.pay.localized + " " + "\(acceptedModel.getMinAmount().0)" + " " + LocalizedString.sar.localized, for: .normal)
+                    payNowBtn.isUserInteractionEnabled = true
+                case .failed:
+                    payNowBtn.setTitle(LocalizedString.pay.localized + " " + "\(acceptedModel.getMinAmount().0)" +  " " + LocalizedString.sar.localized, for: .normal)
+                    payNowBtn.isUserInteractionEnabled = true
+                case .none:
+                    payNowBtn.isHidden = true
+                }
+            } else {
                 payNowBtn.isHidden = true
             }
+        } else {
+             payNowBtn.isHidden = true
         }
     }
     
@@ -198,7 +204,7 @@ extension UserAllOffersVC : UITableViewDelegate, UITableViewDataSource {
         } else {
             let cell = tableView.dequeueCell(with: UserOffersTableCell.self, indexPath: indexPath)
             let isAccepted = viewModel.userBidListingArr.contains { (model) -> Bool in
-                return model.status == "accepted"
+                return model.status == ApiKey.accepted
             }
             cell.bindData(viewModel.userBidListingArr[indexPath.row], isBidAccepted : isAccepted)
             

@@ -44,7 +44,6 @@ class OneToOneChatVC: BaseVC {
     private var deleteTime = Timestamp.init(date: Date())
     private var userInfo = [String:Any]()
     var roomId = ""
-    var lastMessageModel : [String:Any] = [:]
     let currentUserId = AppUserDefaults.value(forKey: .uid).stringValue
     var messageListing = [[Message]]()
     var isRoom = false
@@ -142,6 +141,9 @@ class OneToOneChatVC: BaseVC {
         FirestoreController.isReceiverBlocked(senderId: currentUserId, receiverId: inboxModel.userId) { (bool) in
             self.isBlockedByMe = bool
         }
+        FirestoreController.checkIsBlock(receiverId: inboxModel.userId) { (bool) in
+           self.amIBlocked = bool
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -189,8 +191,12 @@ class OneToOneChatVC: BaseVC {
     }
     
     @IBAction func paymentBtnAction(_ sender: UIButton) {
-         self.messageId = ""
-         AppRouter.goToWebVC(vc: self, screenType: .payment,requestId: self.requestId)
+        if isBlockedByMe || amIBlocked {
+            CommonFunctions.showToastWithMessage( isBlockedByMe ? LocalizedString.PLEASEUNBLOCKUSERTOPERFORMTHISACTION.localized : LocalizedString.you_can_not_perform_this_action_as_you_are_blocked.localized)
+            return
+        }
+        self.messageId = ""
+        AppRouter.goToWebVC(vc: self, screenType: .payment,requestId: self.requestId)
     }
     
     @IBAction func backButtonTapped(_ sender: UIButton) {
@@ -364,19 +370,10 @@ extension OneToOneChatVC {
     
     @objc func paymentSucessfullyDone(){
         if self.messageId.isEmpty {
-            self.getChatData()
             guard self.messageListing.endIndex > 0, self.messageListing[self.messageListing.endIndex - 1].endIndex > 0 else { return }
-            for messageArray in self.messageListing{
-                for message in messageArray{
-                    if message.messageType == MessageType.payment.rawValue && message.messageStatus != 2 {
-                        self.db.collection(ApiKey.messages).document(self.getRoomId()).collection(ApiKey.chat).document(message.messageId).updateData([ApiKey.messageStatus : 2]) { (error) in
-                            if let err = error {
-                                print(err.localizedDescription)
-                            } else {}
-                        }
-                    }
-                }
-            }
+            self.makeOfferAsExpired()
+            self.makePaymentAsPaidAndExpired()
+            self.getChatData()
         }
         else {
             self.db.collection(ApiKey.messages).document(self.getRoomId()).collection(ApiKey.chat).document(self.messageId).updateData([ApiKey.messageStatus : 2]) { (error) in
@@ -522,7 +519,7 @@ extension OneToOneChatVC {
             self.scrollMsgToBottom()
         }
         if requestId.isEmpty{tableViewTopConstraint.constant = 0.0}
-        tableViewTopConstraint.constant =  chatUserType == .garage ? (chatViewModel.chatData.id.isEmpty ? 0.0 : 80.0)  : (chatViewModel.chatData.id.isEmpty ? 0.0 : 124.0)
+        tableViewTopConstraint.constant =  chatUserType == .garage ? (chatViewModel.chatData.id.isEmpty ? 0.0 : 72.0)  : (chatViewModel.chatData.id.isEmpty ? 0.0 : 135.0)
         UIView.animate(withDuration: duration) { self.view.layoutIfNeeded() }
     }
     
@@ -820,6 +817,10 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                 let receiverOfferCell = tableView.dequeueCell(with: ReceiverOfferCell.self)
                 receiverOfferCell.acceptBtnTapped = {[weak self] in
                     guard let `self` = self else { return }
+                    if self.isBlockedByMe {
+                        CommonFunctions.showToastWithMessage( LocalizedString.PLEASEUNBLOCKUSERTOPERFORMTHISACTION.localized)
+                        return
+                    }
                     self.messageId = model.messageId
                     self.acceptedRejectBtnStatus = true
                     self.chatViewModel.acceptRejectEditedBid(params: [ApiKey.requestId: self.requestId,ApiKey.status: true], loader: true)
@@ -827,6 +828,10 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                 
                 receiverOfferCell.rejectBtnTapped = {[weak self] in
                     guard let `self` = self else { return }
+                    if self.isBlockedByMe {
+                        CommonFunctions.showToastWithMessage( LocalizedString.PLEASEUNBLOCKUSERTOPERFORMTHISACTION.localized)
+                        return
+                    }
                     self.acceptedRejectBtnStatus = false
                     self.messageId = model.messageId
                     self.chatViewModel.acceptRejectEditedBid(params: [ApiKey.requestId: self.requestId,ApiKey.status: false], loader: false)
@@ -856,7 +861,7 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                     receiverOfferCell.acceptBtn.backgroundColor = .clear
                     receiverOfferCell.acceptBtn.setTitleColor(AppColors.appRedColor, for: .normal)
                     receiverOfferCell.rejectBtn.isHidden = true
-                }else {
+                }else { //offer expired
                     receiverOfferCell.acceptBtn.isHidden = false
                     receiverOfferCell.acceptBtn.isUserInteractionEnabled = false
                     receiverOfferCell.acceptBtn.setTitle(LocalizedString.offerExpired.localized, for: .normal)
@@ -875,12 +880,28 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                 let receiverPaymentCell = tableView.dequeueCell(with: PaymentCardCell.self)
                 receiverPaymentCell.payNowBtnAction = {[weak self] (sender) in
                     guard let `self` = self else { return }
+                    if self.isBlockedByMe || self.amIBlocked {
+                        CommonFunctions.showToastWithMessage( self.isBlockedByMe ? LocalizedString.PLEASEUNBLOCKUSERTOPERFORMTHISACTION.localized : LocalizedString.you_can_not_perform_this_action_as_you_are_blocked.localized)
+                        return
+                    }
+                    if self.chatViewModel.chatData.id.isEmpty{
+                        CommonFunctions.showToastWithMessage(LocalizedString.you_can_not_perform_this_action_as_request_rejected.localized)
+                        return
+                    }
                     self.messageId = model.messageId
                     AppRouter.goToWebVC(vc: self, screenType: .payment,requestId: self.requestId)
                 }
                 
                 receiverPaymentCell.declineBtnAction = {[weak self] (sender) in
                     guard let `self` = self else { return }
+                    if self.isBlockedByMe || self.amIBlocked {
+                        CommonFunctions.showToastWithMessage( self.isBlockedByMe ? LocalizedString.PLEASEUNBLOCKUSERTOPERFORMTHISACTION.localized : LocalizedString.you_can_not_perform_this_action_as_you_are_blocked.localized)
+                        return
+                    }
+                    if self.chatViewModel.chatData.id.isEmpty{
+                        CommonFunctions.showToastWithMessage(LocalizedString.you_can_not_perform_this_action_as_request_rejected.localized)
+                        return
+                    }
                     self.messageId = model.messageId
                     self.db.collection(ApiKey.messages).document(self.getRoomId()).collection(ApiKey.chat).document(self.messageId).updateData([ApiKey.messageStatus : 3]) { (error) in
                         if let err = error {
@@ -889,13 +910,17 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                     }
                 }
                 if model.messageStatus == 1 {// show both button
+                    receiverPaymentCell.buttonsView.isHidden = false
                     receiverPaymentCell.payNowBtn.isHidden = false
                     receiverPaymentCell.declineBtn.isHidden = false
                     receiverPaymentCell.payNowBtn.isUserInteractionEnabled = true
+                    receiverPaymentCell.payNowBtn.backgroundColor = AppColors.successGreenColor
+                    receiverPaymentCell.payNowBtn.setTitleColor(.white, for: .normal)
                     receiverPaymentCell.payNowBtn.setTitle(LocalizedString.payNow.localized, for: .normal)
                     receiverPaymentCell.declineBtn.setTitle(LocalizedString.decline.localized, for: .normal)
                 }
                 else if model.messageStatus == 2 { //payment paid accpted
+                    receiverPaymentCell.buttonsView.isHidden = false
                     receiverPaymentCell.payNowBtn.isHidden = false
                     receiverPaymentCell.payNowBtn.isUserInteractionEnabled = false
                     receiverPaymentCell.payNowBtn.setTitle(LocalizedString.paymentPaid.localized, for: .normal)
@@ -904,12 +929,15 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                     receiverPaymentCell.declineBtn.isHidden = true
                 }
                 else if model.messageStatus == 3 { //payment Decline
+                    receiverPaymentCell.buttonsView.isHidden = false
                     receiverPaymentCell.payNowBtn.isHidden = false
                     receiverPaymentCell.payNowBtn.isUserInteractionEnabled = false
                     receiverPaymentCell.payNowBtn.setTitle(LocalizedString.paymentDeclined.localized, for: .normal)
                     receiverPaymentCell.payNowBtn.backgroundColor = .clear
                     receiverPaymentCell.payNowBtn.setTitleColor(AppColors.appRedColor, for: .normal)
                     receiverPaymentCell.declineBtn.isHidden = true
+                } else { //payment Expired
+                    receiverPaymentCell.buttonsView.isHidden = true
                 }
                 receiverPaymentCell.amountLabel.text = "\(model.price)"
                 receiverPaymentCell.receiverImgView.setImage_kf(imageString: userImage, placeHolderImage: isSupportChat ? #imageLiteral(resourceName: "splashUpdated") : #imageLiteral(resourceName: "placeHolder"), loader: false)
@@ -1059,6 +1087,8 @@ extension OneToOneChatVC: UITableViewDelegate, UITableViewDataSource {
                     receiverPaymentCell.payNowBtn.backgroundColor = .clear
                     receiverPaymentCell.payNowBtn.setTitleColor(AppColors.appRedColor, for: .normal)
                     receiverPaymentCell.declineBtn.isHidden = true
+                } else { // payment expired
+                    receiverPaymentCell.buttonsView.isHidden = true
                 }
                 receiverPaymentCell.amountLabel.text = "\(model.price)"
                 receiverPaymentCell.receiverImgView.setImage_kf(imageString: UserModel.main.image, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
@@ -1978,14 +2008,17 @@ extension OneToOneChatVC:  AVAudioRecorderDelegate, AVAudioPlayerDelegate {
 // Chat View Model
 extension OneToOneChatVC : OneToOneChatViewModelDelegate{
     func chatDataFailure(msg: String, statusCode: Int) {
+        garageTopView.isHidden = true
+        userRequestView.isHidden = true
         if statusCode == 400 {
-            userRequestView.isHidden = true
+            self.makeOfferAsExpired()
+            self.makePaymentAsPaidAndExpired(isExpired: true)
+            chatViewModel.chatData = ChatModel()
             bottomVIewWithMsg.isHidden = false
             editBidBtn.isHidden = true
             textContainerInnerView.borderWidth = 0.0
             return
         }
-        userRequestView.isHidden = true
         CommonFunctions.showToastWithMessage(msg)
     }
     
@@ -2000,7 +2033,7 @@ extension OneToOneChatVC : OneToOneChatViewModelDelegate{
     func chatDataSuccess(msg: String) {
         if self.chatUserType == .garage {
             self.editBidBtn.isHidden = (chatViewModel.chatData.isServiceStarted ?? true)
-            tableViewTopConstraint.constant = chatViewModel.chatData.id.isEmpty ? 0.0 : 80.0
+            tableViewTopConstraint.constant = chatViewModel.chatData.id.isEmpty ? 0.0 : 72.0
             userRequestView.isHidden = false
             userNameLbl.text = chatViewModel.chatData.userName
             numberOfServiceLbl.text = chatViewModel.chatData.totalRequests.description + " Services"
@@ -2022,7 +2055,7 @@ extension OneToOneChatVC : OneToOneChatViewModelDelegate{
             })
         }
         else if chatUserType == .user{
-            tableViewTopConstraint.constant = chatViewModel.chatData.id.isEmpty  ? 0.0 : 124.0
+            tableViewTopConstraint.constant = chatViewModel.chatData.id.isEmpty  ? 0.0 : 135.0
             garageTopView.isHidden = false
             garageImgView.setImage_kf(imageString: chatViewModel.chatData.garageLogo, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
             garageRequestNoValueLbl.text = chatViewModel.chatData.requestId
@@ -2050,8 +2083,11 @@ extension OneToOneChatVC : OneToOneChatViewModelDelegate{
             self.db.collection(ApiKey.messages).document(self.getRoomId()).collection(ApiKey.chat).document(self.messageId).updateData([ApiKey.messageStatus : 2]) { (error) in
                 if let err = error {
                     print(err.localizedDescription)
-                } else {}
-                self.getChatData()
+                } else {
+                    self.makeOfferAsExpired()
+//                    self.makePaymentAsPaidOrDeclined(isDeclined: true)
+                    self.getChatData()
+                }
             }
         }else {
             self.db.collection(ApiKey.messages).document(self.getRoomId()).collection(ApiKey.chat).document(self.messageId).updateData([ApiKey.messageStatus : 3]) { (error) in
@@ -2079,17 +2115,47 @@ extension OneToOneChatVC : ChatEditBidVCDelegate {
             sendMessage(msgType: MessageType.offer.rawValue,price: price,isPush: false)
             return }
         let messageModel = self.messageListing[self.messageListing.endIndex - 1][self.messageListing[self.messageListing.endIndex - 1].endIndex - 1]
-        if messageModel.messageType == MessageType.offer.rawValue{
+        if messageModel.messageType == MessageType.offer.rawValue  &&  messageModel.messageStatus != 4 && messageModel.messageStatus != 2 && messageModel.messageStatus != 3{
             self.db.collection(ApiKey.messages).document(self.getRoomId()).collection(ApiKey.chat).document(messageModel.messageId).updateData([ApiKey.messageStatus : 4]) { (error) in
                 if let err = error {
                     print(err.localizedDescription)
                 } else {}
             }
         }else{
-            for messageArray in self.messageListing{
-                for message in messageArray{
-                    if message.messageType == MessageType.offer.rawValue && message.messageStatus != 4 {
+            self.makeOfferAsExpired()
+        }
+        self.messageTextView.text = MessageType.offer.rawValue
+        sendMessage(msgType: MessageType.offer.rawValue,price: price,isPush: false)
+    }
+    
+    private func makeOfferAsExpired(){
+        for messageArray in self.messageListing{
+            for message in messageArray{
+                if message.messageType == MessageType.offer.rawValue && message.messageStatus != 4 && message.messageStatus != 2 && message.messageStatus != 3 {
+                    self.db.collection(ApiKey.messages).document(self.getRoomId()).collection(ApiKey.chat).document(message.messageId).updateData([ApiKey.messageStatus : 4]) { (error) in
+                        if let err = error {
+                            print(err.localizedDescription)
+                        } else {}
+                    }
+                }
+            }
+        }
+    }
+    
+    private func makePaymentAsPaidAndExpired(isExpired: Bool = false){
+        for messageArray in self.messageListing{
+            for message in messageArray{
+                if isExpired {
+                    if message.messageType == MessageType.payment.rawValue && message.messageStatus != 3 && message.messageStatus != 2 && message.messageStatus != 4{
                         self.db.collection(ApiKey.messages).document(self.getRoomId()).collection(ApiKey.chat).document(message.messageId).updateData([ApiKey.messageStatus : 4]) { (error) in
+                            if let err = error {
+                                print(err.localizedDescription)
+                            } else {}
+                        }
+                    }
+                } else {
+                    if message.messageType == MessageType.payment.rawValue && message.messageStatus != 2 && message.messageStatus != 3  && message.messageStatus != 4{
+                        self.db.collection(ApiKey.messages).document(self.getRoomId()).collection(ApiKey.chat).document(message.messageId).updateData([ApiKey.messageStatus : 2]) { (error) in
                             if let err = error {
                                 print(err.localizedDescription)
                             } else {}
@@ -2098,7 +2164,5 @@ extension OneToOneChatVC : ChatEditBidVCDelegate {
                 }
             }
         }
-        self.messageTextView.text = MessageType.offer.rawValue
-        sendMessage(msgType: MessageType.offer.rawValue,price: price,isPush: false)
     }
 }

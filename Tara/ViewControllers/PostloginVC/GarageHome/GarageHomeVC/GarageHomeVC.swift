@@ -10,14 +10,16 @@ import UIKit
 
 struct GarageDataValue{
     var requestCount:Int
+    var revenue: Double
     var name:String
     var requestColor: UIColor
     var backgroundColor: UIColor
     
     
-    init(requestCount:Int,name:String,requestColor: UIColor,backgroundColor: UIColor) {
+    init(requestCount:Int,revenue: Double,name:String,requestColor: UIColor,backgroundColor: UIColor) {
         self.requestCount = requestCount
         self.name = name
+        self.revenue = revenue
         self.requestColor = requestColor
         self.backgroundColor = backgroundColor
     }
@@ -58,7 +60,7 @@ class GarageHomeVC: BaseVC {
     //===========================
     @IBAction func chatBtnAction(_ sender: UIButton) {
        // viewModel.getAdminId(dict: [:], loader: true)
-        AppRouter.goToOneToOneChatVC(self, userId: AppConstants.adminId, requestId: "", name: LocalizedString.supportChat.localized , image: "", unreadMsgs: 0, isSupportChat: true,garageUserId: isCurrentUserType == .garage ? UserModel.main.id : "")
+        AppRouter.goToOneToOneChatVC(self, userId: AppConstants.adminId, requestId: "", name: LocalizedString.supportChat.localized , image: "", unreadMsgs: 0, isSupportChat: true,garageUserId: isCurrentUserType == .garage ? UserModel.main.id : AppConstants.adminId)
     }
     
     @IBAction func reviewBtnAction(_ sender: UIButton) {
@@ -93,10 +95,10 @@ extension GarageHomeVC {
         self.ratingValueLbl.textColor = AppColors.fontTertiaryColor
         self.totalRatingLbl.textColor = AppColors.fontTertiaryColor
 
-        self.dataArray = [GarageDataValue(requestCount: self.viewModel.garageHomeModel.acceptedRequets, name: LocalizedString.requestAccepted.localized,requestColor: UIColor(r: 6, g: 130, b: 191, alpha: 1.0),backgroundColor: UIColor(r: 230, g: 240, b: 245, alpha: 1.0) ),
-                          GarageDataValue(requestCount: self.viewModel.garageHomeModel.newRequests, name: LocalizedString.newRequest.localized,requestColor: UIColor(r: 52 , g: 88, b: 158, alpha: 1.0),backgroundColor: UIColor(r: 230, g: 240, b: 245, alpha: 1.0)),
-                          GarageDataValue(requestCount: 0, name: LocalizedString.ongoingServices.localized,requestColor: UIColor(r: 210, g: 103, b: 9, alpha: 1.0),backgroundColor: UIColor(r: 253 , g: 237, b: 223, alpha: 1.0)),GarageDataValue(requestCount: 0, name: LocalizedString.serviceCompleted.localized,requestColor: UIColor(r: 210, g: 103, b: 9, alpha: 1.0),backgroundColor: UIColor(r: 253 , g: 237, b: 223, alpha: 1.0)),
-                          GarageDataValue(requestCount: 0, name:LocalizedString.today_Revenue.localized,requestColor: UIColor(r: 44, g: 182, b: 16, alpha: 1.0),backgroundColor: UIColor(r: 239 , g: 246, b: 231, alpha: 1.0))]
+        self.dataArray = [GarageDataValue(requestCount: self.viewModel.garageHomeModel.acceptedRequets, revenue: 0.0, name: LocalizedString.requestAccepted.localized,requestColor: UIColor(r: 6, g: 130, b: 191, alpha: 1.0),backgroundColor: UIColor(r: 230, g: 240, b: 245, alpha: 1.0) ),
+                          GarageDataValue(requestCount: self.viewModel.garageHomeModel.newRequests, revenue: 0.0, name: LocalizedString.newRequest.localized,requestColor: UIColor(r: 52 , g: 88, b: 158, alpha: 1.0),backgroundColor: UIColor(r: 230, g: 240, b: 245, alpha: 1.0)),
+                          GarageDataValue(requestCount: 0, revenue: 0.0, name: LocalizedString.ongoingServices.localized,requestColor: UIColor(r: 210, g: 103, b: 9, alpha: 1.0),backgroundColor: UIColor(r: 253 , g: 237, b: 223, alpha: 1.0)),GarageDataValue(requestCount: 0, revenue: 0.0, name: LocalizedString.serviceCompleted.localized,requestColor: UIColor(r: 210, g: 103, b: 9, alpha: 1.0),backgroundColor: UIColor(r: 253 , g: 237, b: 223, alpha: 1.0)),
+                          GarageDataValue(requestCount: 0, revenue: self.viewModel.garageHomeModel.revenue, name:LocalizedString.today_Revenue.localized,requestColor: UIColor(r: 210, g: 103, b: 9, alpha: 1.0),backgroundColor: UIColor(r: 239 , g: 246, b: 231, alpha: 1.0))]
     }
     
     private func tableViewSetUp(){
@@ -142,7 +144,8 @@ extension GarageHomeVC : UICollectionViewDelegate, UICollectionViewDataSource,UI
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (collectionView.frame.width - 15.0) / 2, height: 210)
+        return (self.dataArray.endIndex - 1  == indexPath.row) ? CGSize(width: (collectionView.frame.width), height: 210)
+             : CGSize(width: (collectionView.frame.width - 15.0) / 2, height: 210)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -178,10 +181,10 @@ extension GarageHomeVC:  GarageHomeVMDelegate{
     }
     
     func getGarageHomeDataSuccess(msg: String) {
-         self.dataArray = [GarageDataValue(requestCount: self.viewModel.garageHomeModel.acceptedRequets, name: LocalizedString.requestAccepted.localized,requestColor: UIColor(r: 6, g: 130, b: 191, alpha: 1.0),backgroundColor: UIColor(r: 230, g: 240, b: 245, alpha: 1.0) ),
-                                 GarageDataValue(requestCount: self.viewModel.garageHomeModel.newRequests, name: LocalizedString.newRequest.localized,requestColor: UIColor(r: 52 , g: 88, b: 158, alpha: 1.0),backgroundColor: UIColor(r: 230, g: 240, b: 245, alpha: 1.0)),
-                                 GarageDataValue(requestCount: self.viewModel.garageHomeModel.ongoingServices, name: LocalizedString.ongoingServices.localized,requestColor: UIColor(r: 210, g: 103, b: 9, alpha: 1.0),backgroundColor: UIColor(r: 253 , g: 237, b: 223, alpha: 1.0)),GarageDataValue(requestCount: self.viewModel.garageHomeModel.servicesCompletedToday, name: LocalizedString.serviceCompleted.localized,requestColor: UIColor(r: 44, g: 182, b: 16, alpha: 1.0),backgroundColor: UIColor(r: 239 , g: 246, b: 231, alpha: 1.0)),
-                                 GarageDataValue(requestCount: 0, name: LocalizedString.today_Revenue.localized,requestColor: UIColor(r: 216, g: 91, b: 134, alpha: 1.0),backgroundColor: UIColor(r: 253 , g: 219, b: 219, alpha: 1.0))]
+        self.dataArray = [GarageDataValue(requestCount: self.viewModel.garageHomeModel.acceptedRequets, revenue: 0.0, name: LocalizedString.requestAccepted.localized,requestColor: UIColor(r: 6, g: 130, b: 191, alpha: 1.0),backgroundColor: UIColor(r: 230, g: 240, b: 245, alpha: 1.0) ),
+                          GarageDataValue(requestCount: self.viewModel.garageHomeModel.newRequests, revenue: 0.0, name: LocalizedString.newRequest.localized,requestColor: UIColor(r: 52 , g: 88, b: 158, alpha: 1.0),backgroundColor: UIColor(r: 230, g: 240, b: 245, alpha: 1.0)),
+                          GarageDataValue(requestCount: self.viewModel.garageHomeModel.ongoingServices, revenue: 0.0, name: LocalizedString.ongoingServices.localized,requestColor: UIColor(r: 210, g: 103, b: 9, alpha: 1.0),backgroundColor: UIColor(r: 253 , g: 237, b: 223, alpha: 1.0)),GarageDataValue(requestCount: self.viewModel.garageHomeModel.servicesCompletedToday, revenue: 0.0, name: LocalizedString.serviceCompleted.localized,requestColor: UIColor(r: 44, g: 182, b: 16, alpha: 1.0),backgroundColor: UIColor(r: 239 , g: 246, b: 231, alpha: 1.0)),
+                          GarageDataValue(requestCount: 0, revenue: self.viewModel.garageHomeModel.revenue, name: LocalizedString.today_Revenue.localized,requestColor:  UIColor(r: 44, g: 182, b: 16, alpha: 1.0),backgroundColor: UIColor(r: 253 , g: 219, b: 219, alpha: 1.0))]
        
         ratingValueLbl.text = self.viewModel.garageHomeModel.averageRating.truncate(places: 1).description
         totalRatingLbl.text = "(\(self.viewModel.garageHomeModel.ratingCount.description))"

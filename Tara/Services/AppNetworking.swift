@@ -127,6 +127,14 @@ enum AppNetworking {
             let strToken: String = AppUserDefaults.value(forKey: .accesstoken).stringValue
             if !strToken.isEmpty {
                 updatedHeaders[ApiKey.authorization] =  "Bearer \(strToken)"
+                let language = AppUserDefaults.value(forKey: .language).intValue
+                guard let selectedLang = AppLanguage(rawValue: language) else { return  updatedHeaders["lang"] = "EN" }
+                switch selectedLang {
+                case .english:
+                    updatedHeaders["lang"] = "EN"
+                case .arabic:
+                    updatedHeaders["lang"] = "AR"
+                }
             }
         }
         request.allHTTPHeaderFields = updatedHeaders

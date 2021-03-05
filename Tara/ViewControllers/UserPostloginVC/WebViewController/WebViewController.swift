@@ -89,15 +89,16 @@ class WebViewController: BaseVC {
         setupView()
         loadUrl()
         titleLbl.text = webViewType.text
-        
     }
     
     
     private func setupView() {
         let webConfig = WKWebViewConfiguration()
         webView = WKWebView(frame: self.view.bounds, configuration: webConfig)
+        webView.scrollView.delegate = self
         webView.configuration.preferences.javaScriptEnabled = true
         webView.uiDelegate = self
+        webView.addGestureRecognizer(DisableDoubleTapRecognizer())
         webView.backgroundColor = .white
         containerView.addSubview(webView)
         webView.uiDelegate = self
@@ -124,7 +125,7 @@ class WebViewController: BaseVC {
     
 }
 
-extension WebViewController: WKUIDelegate,WKNavigationDelegate {
+extension WebViewController: WKUIDelegate,WKNavigationDelegate,UIScrollViewDelegate {
     func webView(_ webView: WKWebView, shouldPreviewElement elementInfo: WKPreviewElementInfo) -> Bool {
         return true
     }
@@ -159,5 +160,38 @@ extension WebViewController: WKUIDelegate,WKNavigationDelegate {
     
     func webViewDidClose(_ webView: WKWebView) {
         printDebug("web view close")
+    }
+    
+    func scrollViewWillBeginZooming(_ scrollView: UIScrollView, with view: UIView?) {
+             scrollView.pinchGestureRecognizer?.isEnabled = false
+    }
+    
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return nil
+    }
+    
+    func scrollViewDidZoom(_ scrollView: UIScrollView) {
+        scrollView.setZoomScale(1.0, animated: false)
+    }
+    
+    func scrollViewDidEndZooming(_ scrollView: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
+         scrollView.pinchGestureRecognizer?.isEnabled = false
+    }
+}
+
+//MARK:- Disbale double tap gesture
+//================================
+class DisableDoubleTapRecognizer : UITapGestureRecognizer, UIGestureRecognizerDelegate{
+    override init(target: Any?, action: Selector?) {
+        super.init(target: target, action: action)
+    }
+    
+    init() {
+        super.init(target:nil, action: nil)
+        self.numberOfTapsRequired = 2;
+        self.delegate = self;
+    }
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true;
     }
 }

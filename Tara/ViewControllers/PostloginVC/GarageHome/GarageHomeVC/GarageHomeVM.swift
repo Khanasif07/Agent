@@ -16,6 +16,7 @@ struct GarageHomeModel {
     var ratingCount: Int
     var averageRating : Double
     var ongoingServices : Int
+    var revenue : Double
     var servicesCompletedToday : Int
     
     init() {
@@ -29,6 +30,7 @@ struct GarageHomeModel {
         self.averageRating = json[ApiKey.averageRating].doubleValue
         self.garageId = json[ApiKey.garageId].stringValue
         self.ongoingServices = json[ApiKey.ongoingServices].intValue
+        self.revenue = json[ApiKey.revenue].doubleValue
         self.servicesCompletedToday = json[ApiKey.servicesCompletedToday].intValue
 
     }

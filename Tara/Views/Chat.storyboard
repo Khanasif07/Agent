@@ -554,9 +554,9 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gPd-wa-xrD" customClass="AppButton" customModule="Tara" customModuleProvider="target">
-                                        <rect key="frame" x="281.5" y="98" width="116.5" height="30"/>
+                                        <rect key="frame" x="256.5" y="98" width="141.5" height="30"/>
                                         <color key="backgroundColor" name="appRedColor"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                         <state key="normal" title="N/A">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -572,7 +572,7 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.95640581849999995" green="0.94911783930000004" blue="0.9488303065" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="gPd-wa-xrD" firstAttribute="leading" relation="lessThanOrEqual" secondItem="Opo-7I-QwF" secondAttribute="trailing" constant="100" id="2zE-bQ-hAS"/>
+                                    <constraint firstItem="gPd-wa-xrD" firstAttribute="leading" relation="lessThanOrEqual" secondItem="Opo-7I-QwF" secondAttribute="trailing" constant="75" id="2zE-bQ-hAS"/>
                                     <constraint firstAttribute="trailing" secondItem="gPd-wa-xrD" secondAttribute="trailing" constant="16" id="3mk-kJ-1b5"/>
                                     <constraint firstItem="gPd-wa-xrD" firstAttribute="centerY" secondItem="Opo-7I-QwF" secondAttribute="centerY" id="48c-wZ-5EL"/>
                                     <constraint firstItem="Opo-7I-QwF" firstAttribute="top" secondItem="Da9-Ls-ekl" secondAttribute="bottom" constant="17" id="6ee-ya-yDU"/>

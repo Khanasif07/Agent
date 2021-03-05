@@ -69,7 +69,7 @@ class UserAllOfferVM{
                     self.delegate?.getUserBidDataSuccess(message: "")
                     return
                 }
-                let modelList = try! JSONDecoder().decode([UserBidModel].self, from: data)
+                let modelList = try JSONDecoder().decode([UserBidModel].self, from: data)
                 printDebug(modelList)
                 currentPage = result[ApiKey.data][ApiKey.page].intValue
                 isRequestinApi = false

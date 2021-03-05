@@ -28,7 +28,7 @@ class GarageHomeCollCell: UICollectionViewCell {
         self.requestTypeLbl.textColor = .black
         self.requestTypeLbl.text = model.name
         self.requestCountLbl.textColor = model.requestColor
-        self.requestCountLbl.text = "\(model.requestCount)"
+        self.requestCountLbl.text = LocalizedString.today_Revenue.localized == "\(model.name)" ? "\(model.revenue)" : "\(model.requestCount)"
         self.dataContainerView.backgroundColor = model.backgroundColor
         self.sarLbl.isHidden = !(LocalizedString.today_Revenue.localized == "\(model.name)")
     }

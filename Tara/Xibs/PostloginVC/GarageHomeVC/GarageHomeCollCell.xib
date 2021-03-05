@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -15,7 +16,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="GarageHomeCollCell" customModule="ArabianTyres" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="GarageHomeCollCell" customModule="Tara" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="195" height="210"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -29,23 +30,23 @@
                                 <rect key="frame" x="0.0" y="0.0" width="195" height="210"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="FFM-In-3AS">
-                                        <rect key="frame" x="58.5" y="35" width="78" height="103"/>
+                                        <rect key="frame" x="5" y="35" width="185" height="103"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SCb-kB-kZT">
-                                                <rect key="frame" x="0.0" y="0.0" width="78" height="82"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" translatesAutoresizingMaskIntoConstraints="NO" id="SCb-kB-kZT">
+                                                <rect key="frame" x="73" y="0.0" width="39" height="82"/>
                                                 <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="70"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SAR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RwT-cL-iP4">
-                                                <rect key="frame" x="21" y="82" width="36" height="21"/>
+                                                <rect key="frame" x="74.5" y="82" width="36" height="21"/>
                                                 <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="18"/>
                                                 <color key="textColor" name="outgoingMessageBackground"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Request Accepte" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C1S-VY-eLo">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C1S-VY-eLo">
                                         <rect key="frame" x="10" y="138" width="175" height="16.5"/>
                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="14"/>
                                         <nil key="textColor"/>
@@ -57,8 +58,10 @@
                                     <constraint firstItem="FFM-In-3AS" firstAttribute="top" secondItem="Bf5-a5-dbv" secondAttribute="top" constant="35" id="6uk-Mv-KUk"/>
                                     <constraint firstItem="C1S-VY-eLo" firstAttribute="centerX" secondItem="Bf5-a5-dbv" secondAttribute="centerX" id="9LW-MW-Qpl"/>
                                     <constraint firstItem="FFM-In-3AS" firstAttribute="centerX" secondItem="Bf5-a5-dbv" secondAttribute="centerX" id="Bs6-dg-Pjk"/>
+                                    <constraint firstItem="FFM-In-3AS" firstAttribute="leading" secondItem="Bf5-a5-dbv" secondAttribute="leading" constant="5" id="HCK-86-KaJ"/>
                                     <constraint firstItem="C1S-VY-eLo" firstAttribute="top" secondItem="FFM-In-3AS" secondAttribute="bottom" id="HMI-dx-0Ma"/>
                                     <constraint firstItem="C1S-VY-eLo" firstAttribute="leading" secondItem="Bf5-a5-dbv" secondAttribute="leading" constant="10" id="ILk-7H-m9f"/>
+                                    <constraint firstAttribute="trailing" secondItem="FFM-In-3AS" secondAttribute="trailing" constant="5" id="dLb-bm-Cq4"/>
                                     <constraint firstAttribute="trailing" secondItem="C1S-VY-eLo" secondAttribute="trailing" constant="10" id="dn0-T3-Mkn"/>
                                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="C1S-VY-eLo" secondAttribute="bottom" constant="5" id="qoU-Eo-A48"/>
                                 </constraints>

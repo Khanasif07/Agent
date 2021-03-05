@@ -70,15 +70,15 @@ class UserOffersTableCell: UITableViewCell {
     }
     
     func bindData(_ model: UserBidModel,isBidAccepted : Bool) {
-        ratingLbl.text = model.garageRating?.description
+        ratingLbl.text = String(format: "%.1f", (model.garageRating ?? 0.0))
         offerSubTitleLbl.text = model.garageAddress ?? "N/A"
         let distance = model.distance ?? 0.0
         distanceValueLbl.attributedText =  getAttributedString(value: "\(distance.truncate(places: 3))",attributedLabel: distanceValueLbl)
         offerTitleLbl.text = model.garageName
         quantityValueLbl.text = model.getMinAmount().1.description
-        BAValueLbl.attributedText = getAttributedString(value: model.getMinAmount().0.description,attributedLabel: BAValueLbl)
+        BAValueLbl.attributedText = getAttributedString(value: model.getMinAmount().2.description,attributedLabel: BAValueLbl)
         
-        let totalAmount = String((model.getMinAmount().1) * Int(model.getMinAmount().0))
+        let totalAmount = String((model.getMinAmount().0))
         tAValueLbl.attributedText = getAttributedString(value: totalAmount,attributedLabel: tAValueLbl)
         logoImgView.setImage_kf(imageString: model.logo ?? "")
         if isBidAccepted {

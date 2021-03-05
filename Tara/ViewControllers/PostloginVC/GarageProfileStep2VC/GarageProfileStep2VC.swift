@@ -61,6 +61,7 @@ class GarageProfileStep2VC: BaseVC {
         }else{
                 customCollViewHeightConstraint.constant = 60.0
         }
+        self.reloadCollectionViewWithUIUpdation()
     }
 
     // MARK: - IBActions
@@ -71,7 +72,7 @@ class GarageProfileStep2VC: BaseVC {
     }
 
     @IBAction func helpBtnAction(_ sender: UIButton) {
-        AppRouter.goToOneToOneChatVC(self, userId: AppConstants.adminId, requestId: "", name: LocalizedString.supportChat.localized, image: "", unreadMsgs: 0, isSupportChat: true,garageUserId: isCurrentUserType == .garage ? UserModel.main.id : "" )
+        AppRouter.goToOneToOneChatVC(self, userId: AppConstants.adminId, requestId: "", name: LocalizedString.supportChat.localized, image: "", unreadMsgs: 0, isSupportChat: true,garageUserId: isCurrentUserType == .garage ? UserModel.main.id : AppConstants.adminId )
     }
     
     @IBAction func saveAndContinueAction(_ sender: UIButton) {
@@ -86,16 +87,15 @@ class GarageProfileStep2VC: BaseVC {
         AppRouter.goToAddAccountVC(vc: self, screenType: .garageProfile)
     }
     
-       func reloadCollectionViewWithUIUpdation(){
-        if GarageProfileModel.shared.serviceCenterImages.endIndex > 2 {
-            DispatchQueue.main.async {
-                self.collViewHeightConst.constant = 90 * 2
-            }
+    func reloadCollectionViewWithUIUpdation(){
+        DispatchQueue.main.async {
+            self.collViewHeightConst.constant = GarageProfileModel.shared.serviceCenterImages.endIndex > 2 ? 90 * 2 : 90
         }
         DispatchQueue.main.async {
             self.mainCollView.reloadData()
         }
     }
+    
     @objc func addImageBtnTapped(_ sender: UIButton) {
        if !self.hasImageUploaded{
            self.showAlert(msg: LocalizedString.wait_Img_Upload.localized)
@@ -134,26 +134,9 @@ extension GarageProfileStep2VC {
         setupCustomView()
         saveAndContinueBtn.isEnabled = true
         self.collViewSetUp()
-        handleRangeSlider()
         setPreFilledData()
     }
-    
-    private func handleRangeSlider(){
-//        rangeSlider.minLabelFont = AppFonts.NunitoSansSemiBold.withSize(12.0)
-//        rangeSlider.maxLabelFont = AppFonts.NunitoSansSemiBold.withSize(12.0)
-//        rangeSlider.handleImage = #imageLiteral(resourceName: "slider")
-//        rangeSlider.delegate = self
-//        rangeSlider.minValue = 500
-//        rangeSlider.maxValue = 2500
-//        rangeSlider.selectedMinimum = 500
-//        rangeSlider.selectedMaximum = 800
-//        rangeSlider.selectedHandleDiameterMultiplier = 1
-//        let formatter = NumberFormatter()
-//        formatter.positiveSuffix = "SAR"
-//        rangeSlider.numberFormatterOverride = formatter
-    }
-    
-    
+ 
     private func setupTextAndFont(){
 //        serviceCenterNameLbl.font = AppFonts.NunitoSansSemiBold.withSize(13.0)
         titleLbl.font = AppFonts.NunitoSansBold.withSize(17.0)
@@ -318,7 +301,7 @@ extension GarageProfileStep2VC: UICollectionViewDelegate,UICollectionViewDataSou
             return cardSizeForItemAt(collectionView,layout: collectionViewLayout,indexPath: indexPath)
 
         }else {
-            return CGSize(width: (self.mainCollView.frame.width / 3) - 5, height: 80.0)
+            return CGSize(width: (self.mainCollView.frame.width / 3) - 10.0, height: 80.0)
         }
     }
     
@@ -353,15 +336,6 @@ extension GarageProfileStep2VC: UICollectionViewDelegate,UICollectionViewDataSou
         return 10.0
     }
 }
-
-//extension GarageProfileStep2VC : TTRangeSliderDelegate{
-//    func didEndTouches(in sender: TTRangeSlider!) {
-//        GarageProfileModel.shared.maxInstallationPrice = Int(sender.selectedMaximum.rounded())
-//        GarageProfileModel.shared.minInstallationPrice = Int(sender.selectedMinimum.rounded())
-//        printDebug(sender.selectedMinimum.rounded())
-//        printDebug(sender.selectedMaximum.rounded())
-//    }
-//}
 
 // MARK: - UIImagePickerControllerDelegate
 //===========================
