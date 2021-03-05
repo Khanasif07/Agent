@@ -480,7 +480,14 @@ enum LocalizedString : String {
     case proposalDetails
     case miles
     case quantityShort
+    
+    case whatTyreOfTyreAreYouLookingFor
+    case searchWithCar
+    case chooseTheSizeOfTyre
+    case notSureAboutTheSize
+    case chatWithExpert
 }
+
 
 
 extension LocalizedString {
@@ -491,7 +498,7 @@ extension LocalizedString {
         guard let selectedLang = AppLanguage(rawValue: language) else { return self.rawValue.localizedString(lang: "en") }
         switch selectedLang {
         case .english:
-            return self.rawValue.localizedString(lang: "en")
+            return "english" + self.rawValue.localizedString(lang: "en")
         case .arabic:
             return self.rawValue.localizedString(lang: "ar")
         }

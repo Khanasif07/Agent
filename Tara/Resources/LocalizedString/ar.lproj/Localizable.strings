@@ -433,3 +433,9 @@
 "paid_Caps" = "PAID";
 "refunded" = "Payment Refunded";
 "failed" = "Payment Failed";
+
+"whatTyreOfTyreAreYouLookingFor" = "What type of a tyre are you\nlooking for?";
+"searchWithCar" = "Search with Car";
+"chooseTheSizeOfTyre" = "Choose the size of tire";
+"notSureAboutTheSize" = "Not sure about the size?";
+"chatWithExpert" = "Chat with Expert";

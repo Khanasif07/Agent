@@ -481,3 +481,10 @@
 "viewProposal" = "View Proposal";
 "miles" = "Miles";
 "total_Amount" = "Total Amount";
+
+
+"whatTyreOfTyreAreYouLookingFor" = "What type of a tyre are you\nlooking for?";
+"searchWithCar" = "Search with Car";
+"chooseTheSizeOfTyre" = "Choose the size of tyre";
+"notSureAboutTheSize" = "Not sure about the size?";
+"chatWithExpert" = "Chat with Expert";
