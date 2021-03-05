@@ -100,6 +100,10 @@ extension HomeVC {
     }
     
     public func isComeFromGuestUser(){
+        
+        //Hide support chat option for Guest user
+        self.helpBtn.isHidden = true
+        
         if !TyreRequestModel.shared.quantity.isEmpty {
             if !UserModel.main.phoneNoAdded && isUserLoggedin {
                 self.showAlertWithAction(title: "", msg: "To continue performing this action, please complete your profile", cancelTitle: "Cancel", actionTitle: LocalizedString.ok.localized, actioncompletion: {
