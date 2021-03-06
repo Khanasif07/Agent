@@ -17,6 +17,9 @@ class CompleteProfileStep1: BaseVC {
     // MARK: - IBOutlets
     //===========================
     @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet weak var addLogo: UILabel!
+    @IBOutlet weak var locationBtn: UIButton!
+    @IBOutlet weak var dragPointerToSetLbl: UILabel!
     @IBOutlet weak var centreNameLbl: UILabel!
     @IBOutlet weak var distTxtField: SkyFloatingLabelTextField!
     @IBOutlet weak var addressTxtField: SkyFloatingLabelTextField!
@@ -116,12 +119,20 @@ extension CompleteProfileStep1 {
     private func initialSetup() {
         self.setUpTextField()
         self.prepareMap()
+        setupText()
        // self.setAddress()
         self.mapView.isMyLocationEnabled = true
         viewModel.delegate = self
-        titleLbl.text = fromGarage == .editGarageProfile ? "Edit Profile" : "Complete Profile"
         saveContinueBtn.isEnabled = addBtnStatus()
         self.viewModel.getMyProfileData(params: [:])
+    }
+    
+    private func setupText() {
+        addLogo.text = LocalizedString.addLogo.localized
+        titleLbl.text = fromGarage == .editGarageProfile ? LocalizedString.editProfile.localized : LocalizedString.completeProfile.localized
+        dragPointerToSetLbl.text = LocalizedString.dragPointerToSetExactLocation.localized
+        locationBtn.setTitle(LocalizedString.location.localized, for: .normal)
+        saveContinueBtn.setTitle(LocalizedString.saveContinue.localized, for: .normal)
     }
     
     public func setUpTextField(){

@@ -39,7 +39,8 @@ class ProfileGuestTableCell: UITableViewCell {
     }
     
     private func setupText() {
-        loginBtn.setTitle(LocalizedString.login.localized, for: .normal)
+        loginBtn.setTitle(LocalizedString.log_in.localized, for: .normal)
+        welcomeToTaraLbl.text = LocalizedString.welcomeToTara.localized
         createNewAccountBtn.setTitle(LocalizedString.createNewAccount.localized, for: .normal)
     }
     

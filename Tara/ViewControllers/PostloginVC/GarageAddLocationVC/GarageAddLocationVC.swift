@@ -20,7 +20,11 @@ class GarageAddLocationVC: BaseVC {
     @IBOutlet weak var garageName: UILabel!
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var saveContinueBtn: AppButton!
-    
+    @IBOutlet weak var serviceCenterLbl: UILabel!
+    @IBOutlet weak var locationBtn: UIButton!
+    @IBOutlet weak var dragPointerLbl: UILabel!
+    @IBOutlet weak var helpBtn: UIButton!
+
     // MARK: - Variables
     //===========================
     var locationValue = LocationController.sharedLocationManager.locationManager.location?.coordinate ?? CLLocationCoordinate2D(latitude: 18.052238, longitude: 77.24334)
@@ -52,7 +56,7 @@ class GarageAddLocationVC: BaseVC {
         super.viewDidAppear(animated)
         self.isMarkerAnimation = true
     }
-    
+
     // MARK: - IBActions
     //===========================
     
@@ -93,6 +97,7 @@ extension GarageAddLocationVC {
     private func initialSetup() {
         self.prepareMap()
         self.setAddress()
+        setupText()
         logoImgView.image = GarageProfileModel.shared.logo
         garageName.text = GarageProfileModel.shared.serviceCenterName
         self.saveContinueBtn.isEnabled = false
@@ -152,6 +157,17 @@ extension GarageAddLocationVC {
         CommonFunctions.delay(delay: 1.0) {
             self.isMarkerAnimation = true
         }
+    }
+    
+    
+    private func setupText() {
+        titleLbl.text = LocalizedString.addLocation.localized
+        descLbl.text = LocalizedString.thisAllAboutMyServiceCenter.localized
+        serviceCenterLbl.text = LocalizedString.serviceCenterAddress.localized
+        dragPointerLbl.text = LocalizedString.dragPointerToSetExactLocation.localized
+        locationBtn.setTitle(LocalizedString.location.localized, for: .normal)
+        helpBtn.setTitle(LocalizedString.help.localized, for: .normal)
+        saveContinueBtn.setTitle(LocalizedString.saveContinue.localized, for: .normal)
     }
     
     private func openSettingApp(message: String) {
