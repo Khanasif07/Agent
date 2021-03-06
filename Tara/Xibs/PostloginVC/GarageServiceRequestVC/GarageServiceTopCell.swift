@@ -51,6 +51,11 @@ class GarageServiceTopCell: UITableViewCell {
         serviceDetailLbl.textColor = AppColors.fontTertiaryColor
         requestedOnLbl.textColor = AppColors.fontTertiaryColor
         requestCreatedLbl.textColor = AppColors.fontTertiaryColor
+        requestCreatedLbl.text = LocalizedString.requestCreatedBy.localized
+        requestedOnLbl.text = LocalizedString.requestedOn.localized
+        serviceDetailLbl.text = LocalizedString.serviceDetails.localized
+        productImgLbl.text = LocalizedString.productImage.localized
+        addressLbl.text = LocalizedString.address.localized
         productImgView.isUserInteractionEnabled = true
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(singleTap))
         self.productImgView.addGestureRecognizer(tapGesture)
@@ -88,16 +93,16 @@ class GarageServiceTopCell: UITableViewCell {
         let type = model.requestType ?? .battery
         switch type {
         case .tyres:
-            tyreSizeValueLbl.text = "Width \(model.width ?? 0), " + "Rim \(model.rimSize ?? 0), " + "Profile \(model.profile ?? 0)"
-            tyreSizeLbl.text = "Tyre Size:"
+            tyreSizeValueLbl.text = "\(LocalizedString.width.localized) \(model.width ?? 0), " + "\(LocalizedString.rim.localized) \(model.rimSize ?? 0), " + "\(LocalizedString.profile.localized) \(model.profile ?? 0)"
+            tyreSizeLbl.text = LocalizedString.tyreSize.localized
             
         case .oil:
-            tyreSizeValueLbl.text = "Vechicle Make \(model.make ?? ""), " + "Vechicle Model \(model.model ?? ""), " + "Product Year \(model.year ?? 0)"
-            tyreSizeLbl.text = "Oil:"
+            tyreSizeValueLbl.text = "\(LocalizedString.vechicleMake.localized) \(model.make ?? ""), " + "\(LocalizedString.vechicleModel.localized) \(model.model ?? ""), " + "\(LocalizedString.productYear.localized) \(model.year ?? 0)"
+            tyreSizeLbl.text = LocalizedString.oil.localized + ":"
             
         case .battery:
-            tyreSizeValueLbl.text = "Vechicle Make \(model.make ?? ""), " + "Vechicle Model \(model.model ?? ""), " + "Vechicle Year \(model.year ?? 0)"
-            tyreSizeLbl.text = "Battery:"
+            tyreSizeValueLbl.text = "\(LocalizedString.vechicleMake.localized) \(model.make ?? ""), " + "\(LocalizedString.vechicleModel.localized) \(model.model ?? ""), " + "\(LocalizedString.vechicleYear.localized) \(model.year ?? 0)"
+            tyreSizeLbl.text = LocalizedString.battery.localized + ":"
         }
     }
 }

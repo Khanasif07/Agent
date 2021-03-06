@@ -74,7 +74,7 @@ class MyServiceTableCell: UITableViewCell {
         statusValueLineView.backgroundColor =  (model.isServiceStarted ?? false) ?  model.serviceStatus?.textColor : model.status.textColor
         statusView.isHidden = model.status == .pending
         paymentStatusLbl.isHidden = model.status == .pending
-        self.serviceTypeLbl.text = model.requestType + " Service Request"
+        self.serviceTypeLbl.text = model.requestType + LocalizedString.serviceRequest.localized
         let logoImg =  model.requestType == LocalizedString.tyres.localized ? #imageLiteral(resourceName: "maskGroup") : model.requestType == LocalizedString.battery.localized ? #imageLiteral(resourceName: "icBattery") : #imageLiteral(resourceName: "icOil")
         let logoBackGroundColor =  model.requestType == LocalizedString.tyres.localized ? AppColors.blueLightColor : model.requestType == LocalizedString.battery.localized ? AppColors.redLightColor : AppColors.grayLightColor
         self.logoImgView.backgroundColor = logoBackGroundColor
@@ -84,7 +84,7 @@ class MyServiceTableCell: UITableViewCell {
         let date = (model.createdAt).breakCompletDate(outPutFormat: Date.DateFormat.profileFormat.rawValue, inputFormat: Date.DateFormat.yyyyMMddTHHmmsssssz.rawValue)
     
         let time = getTimeFromDate(date: model.createdAt)
-        self.timeLbl.text = time + " on " + date
+        self.timeLbl.text = time + " \(LocalizedString.on.localized) " + date
         if model.status == .expired || model.status == .cancelled{
             bottomView.isHidden = true
         }else {

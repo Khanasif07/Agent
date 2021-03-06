@@ -111,10 +111,10 @@ extension RegistraionPendingVC {
             subHeadingLbl.text = LocalizedString.yourRegistrationRequestIsStillUnder.localized
             imgView.image = #imageLiteral(resourceName: "group3874")
             let date = time.toDate(dateFormat: Date.DateFormat.givenDateFormat.rawValue) ?? Date()
-            if time == "Just now" {
-                headingLbl.text = "We’ve received your registration request Just now"
+            if time == LocalizedString.justNow.localized {
+                headingLbl.text = LocalizedString.weHaveReceivedYourRegistrationRequest.localized  + " " + LocalizedString.justNow.localized
             }else {
-                headingLbl.text = "We’ve received your registration request \(date.timeAgoSince)."
+                headingLbl.text = LocalizedString.weHaveReceivedYourRegistrationRequest.localized + " \(date.timeAgoSince)."
             }
             mobileNotVerifyLbl.isHidden = true
             inappropriateLbl.isHidden = true
@@ -123,7 +123,7 @@ extension RegistraionPendingVC {
             viewTutorailBtn.isHidden = true
             bottomStackView.isHidden = false
             let date = (time).breakCompletDate(outPutFormat: Date.DateFormat.profileFormat.rawValue, inputFormat: Date.DateFormat.yyyyMMddTHHmmsssssz.rawValue)
-             headingLbl.text = "Your Registration Request\nmade on \(date) has been Rejected\ndue to following reasons: "
+            headingLbl.text = LocalizedString.yourRegistrationRequestMadeOn.localized + " \(date) " + LocalizedString.hasBeenRejectedDueToFollowingReasons.localized
             if reason.endIndex == 0 {
                 [emailLbl,mobileNotVerifyLbl,inappropriateLbl].forEach({$0?.isHidden = true})
             } else if reason.endIndex == 1{
@@ -154,9 +154,8 @@ extension RegistraionPendingVC {
             subHeadingLbl.isHidden = true
             completeProfileBtn.isHidden = false
             let date = (time).breakCompletDate(outPutFormat: Date.DateFormat.profileFormat.rawValue, inputFormat: Date.DateFormat.yyyyMMddTHHmmsssssz.rawValue)
-           
-            headingLbl.text = "Your Registration Request\nmade on \(date) has been Accepted.\nKindly complete your profile"
-//            headingLbl.text = LocalizedString.yourRegRequestHasBeenAccepted.localized
+            
+            headingLbl.text = LocalizedString.yourRegistrationRequestMadeOn.localized + " \(date) " + LocalizedString.hasBeenAcceptedKindlyCompleteYourProfile.localized
             completeProfileBtn.setTitle(LocalizedString.completeProfile.localized, for: .normal)
             imgView.image = #imageLiteral(resourceName: "group3875")
             mobileNotVerifyLbl.isHidden = true
@@ -168,7 +167,7 @@ extension RegistraionPendingVC {
     }
 
     private func setupTextAndFont(){
-        nameLbl.text = "Hi! " + UserModel.main.name
+        nameLbl.text = LocalizedString.hi.localized + UserModel.main.name
         nameLbl.font = AppFonts.NunitoSansBold.withSize(21.0)
         headingLbl.font = AppFonts.NunitoSansRegular.withSize(15.0)
         subHeadingLbl.font = AppFonts.NunitoSansRegular.withSize(15.0)

@@ -55,10 +55,23 @@ enum ListingType {
     case countries
 }
 
-enum Category : String,Codable{
+enum Category : String, Codable{
     case oil = "Oil"
     case tyres = "Tyres"
     case battery = "Battery"
+    
+    var textValue : String{
+        switch self {
+            
+        case .oil:
+            return LocalizedString.oil.localized
+        case .tyres:
+            return LocalizedString.tyres.localized
+        case .battery:
+            return LocalizedString.battery.localized
+
+        }
+    }
 }
 
 enum GarageProfile {

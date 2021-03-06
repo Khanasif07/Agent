@@ -864,7 +864,6 @@ Service Center</string>
                                         <state key="normal" image="icBackward"/>
                                         <connections>
                                             <action selector="backBtnAction:" destination="KzW-Im-RfD" eventType="touchUpInside" id="6fg-cM-fc7"/>
-                                            <action selector="backBtnAction:" destination="ned-sa-trC" eventType="touchUpInside" id="B4F-74-O5A"/>
                                             <action selector="backBtnAction:" destination="IEa-y3-gUO" eventType="touchUpInside" id="cPY-gg-n2J"/>
                                         </connections>
                                     </button>
@@ -1452,7 +1451,6 @@ Service Center</string>
                                         </state>
                                         <connections>
                                             <action selector="doneBtnAction:" destination="MNi-yC-bfm" eventType="touchUpInside" id="ZzR-wj-pmO"/>
-                                            <action selector="helpBtnAction:" destination="scS-Gl-fMP" eventType="touchUpInside" id="0fW-Qp-wdI"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MPs-CA-54U">
@@ -1527,6 +1525,7 @@ Service Center</string>
                         <outlet property="clearAllBtn" destination="kOg-AZ-Tvd" id="jMC-84-DPV"/>
                         <outlet property="doneBtn" destination="Lae-om-5mI" id="l6p-fD-ydG"/>
                         <outlet property="mainTableView" destination="uYP-Ud-A6E" id="ZIs-XY-gQC"/>
+                        <outlet property="servicesLbl" destination="1vx-jJ-JBO" id="ntS-wW-V2y"/>
                         <outlet property="titleLbl" destination="bYw-TO-MdX" id="1bK-wd-St9"/>
                     </connections>
                 </viewController>
@@ -1564,9 +1563,7 @@ Service Center</string>
                                                         </state>
                                                         <state key="selected" image="selectFilter"/>
                                                         <connections>
-                                                            <action selector="doneBtnAction:" destination="MNi-yC-bfm" eventType="touchUpInside" id="GBn-OE-Yuo"/>
                                                             <action selector="filterBtnAction:" destination="hx6-O5-oOB" eventType="touchUpInside" id="FIi-P8-UAX"/>
-                                                            <action selector="helpBtnAction:" destination="scS-Gl-fMP" eventType="touchUpInside" id="klr-5o-kDK"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -1854,8 +1851,6 @@ Service Center</string>
                                         </state>
                                         <connections>
                                             <action selector="crossBtnAction:" destination="Mcn-DD-kFJ" eventType="touchUpInside" id="PLj-sV-obp"/>
-                                            <action selector="doneBtnAction:" destination="MNi-yC-bfm" eventType="touchUpInside" id="0b1-iW-L8L"/>
-                                            <action selector="helpBtnAction:" destination="scS-Gl-fMP" eventType="touchUpInside" id="rc5-lV-iUk"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FfI-FI-X2a">
@@ -2328,13 +2323,13 @@ Service Center</string>
                                                                         <rect key="frame" x="0.0" y="0.0" width="350" height="16.5"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Brands:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Gn-L4-1CK">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="54.5" height="16.5"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="45.5" height="16.5"/>
                                                                                 <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="13"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NA" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Si3-59-xPR">
-                                                                                <rect key="frame" x="57.5" y="0.0" width="292.5" height="16.5"/>
+                                                                                <rect key="frame" x="48.5" y="0.0" width="301.5" height="16.5"/>
                                                                                 <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="14"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
@@ -2656,8 +2651,6 @@ Service Center</string>
                                         <connections>
                                             <action selector="crossBtnAction:" destination="rdR-by-uSg" eventType="touchUpInside" id="Ojc-Hf-1Tz"/>
                                             <action selector="crossBtnAction:" destination="Mcn-DD-kFJ" eventType="touchUpInside" id="aQa-Og-Wv5"/>
-                                            <action selector="doneBtnAction:" destination="MNi-yC-bfm" eventType="touchUpInside" id="JaH-MS-0AS"/>
-                                            <action selector="helpBtnAction:" destination="scS-Gl-fMP" eventType="touchUpInside" id="kt6-vx-VuJ"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FeR-0v-Okj">
