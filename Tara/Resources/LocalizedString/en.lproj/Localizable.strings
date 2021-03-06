@@ -549,3 +549,17 @@
 "vechicleMake" = "Vechicle Make";
 "vechicleModel" = "Vechicle Model";
 "vechicleYear" = "Vechicle Year";
+"suitableFor" = "Suitable For";
+"please_select_vehicle_width" = "Please select vehicle width";
+"please_select_vehicle_profile" = "Please select vehicle profile";
+"please_fill_the_options_to_place_bid" = "Please fill the options to place bid";
+"unitPrice" = "Unit Price";
+"unBlockUser" = "UnBlock User";
+"offerPrice" = "Offer Price";
+"paymentRequest" = "Payment Request";
+"photo_Attachment" = "Photo Attachment";
+"audio_Attachment" = "Audio Attachment";
+"editBid" = "Edit Bid";
+"paybleAmt" = "Payble Amt";
+"previousService" = "Previous Service";
+"request_Rejected" = "Request Rejected";
