@@ -520,8 +520,6 @@ enum LocalizedString : String {
     case productImage
     case address
     case rim
-    case vechicleMake
-    case vechicleModel
     case vechicleYear
     case suitableFor
     case please_select_vehicle_width
