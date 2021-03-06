@@ -44,7 +44,7 @@ class GarageServiceBrandsCell: UITableViewCell,UITextFieldDelegate {
         }
         if  bidStatus == .bidPlaced {
             rightIcon.isHidden = true
-            if placeBidBtnStatus != "Place Bid" {
+            if placeBidBtnStatus != LocalizedString.placeBid.localized {
                 unitPrizeTextFiled.isUserInteractionEnabled = false
 //                setBlurView(isBlur: !(model.isSelected ?? false))
             } else{

@@ -175,6 +175,7 @@
                 <outlet property="acceptBtn" destination="gai-aB-y1V" id="GdV-nP-PuH"/>
                 <outlet property="btnStackView" destination="V87-hi-fGN" id="bDg-7u-CR6"/>
                 <outlet property="msgContainerView" destination="YqA-gp-fZK" id="4Vh-Ft-Uzi"/>
+                <outlet property="offerPriceLbl" destination="DAg-Y2-knR" id="k4a-NY-dPZ"/>
                 <outlet property="priceLbl" destination="8rI-TH-Jv7" id="ate-gw-68J"/>
                 <outlet property="rejectBtn" destination="u4D-7l-RDQ" id="xW1-en-EH9"/>
                 <outlet property="userImgView" destination="ed8-Ne-l9b" id="gVB-8Y-wwV"/>

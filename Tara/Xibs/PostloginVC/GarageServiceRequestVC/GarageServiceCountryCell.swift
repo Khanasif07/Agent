@@ -19,12 +19,19 @@ class GarageServiceCountryCell: UITableViewCell {
     var countryBtnTapped : ((String)->())?
     var indexPath: IndexPath?
     
+    @IBOutlet weak var unitPriceLbl: UILabel!
+    @IBOutlet weak var unitLbl: UILabel!
+    @IBOutlet weak var brandsLbl: UILabel!
     @IBOutlet weak var countryCollView: UICollectionView!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var brandsStackView: UIView!
     
      override func awakeFromNib() {
            super.awakeFromNib()
+        brandsLbl.text = LocalizedString.brands.localized
+        unitLbl.text = LocalizedString.unit.localized
+        unitPriceLbl.text = LocalizedString.unitPrice.localized
+        titleLbl.text = LocalizedString.please_fill_the_options_to_place_bid.localized
            countryCollView.registerCell(with: FacilityCollectionViewCell.self)
            countryCollView.delegate = self
            countryCollView.dataSource = self

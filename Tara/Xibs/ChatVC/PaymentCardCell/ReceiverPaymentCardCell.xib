@@ -241,6 +241,7 @@
                 <outlet property="msgLabel" destination="9ed-aQ-Yfz" id="V8w-1L-at4"/>
                 <outlet property="payNowBtn" destination="yiG-aO-vFW" id="xPm-5J-9aH"/>
                 <outlet property="paymentRequestLabel" destination="maS-SQ-fhV" id="ca8-E8-rkv"/>
+                <outlet property="paymentRequestLbl" destination="maS-SQ-fhV" id="Fo8-2g-e5z"/>
                 <outlet property="receiverImgView" destination="LLS-PJ-Iqf" id="wMh-ZM-knp"/>
                 <outlet property="receiverNameLbl" destination="pJ1-14-1aK" id="e9D-4i-15m"/>
             </connections>

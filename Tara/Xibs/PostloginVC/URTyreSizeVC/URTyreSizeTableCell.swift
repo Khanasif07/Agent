@@ -23,7 +23,7 @@ class URTyreSizeTableCell: UITableViewCell {
     
     public func  populateData(isPowerSelected: Bool,model: TyreSizeModel){
         self.tyreSizeLbl.text = "\(model.width)" + "/ " +  "\(model.profile)"  + "R - " + "\(model.rimSize)"
-        self.tyreVehicleLbl.text =  "Suitable For :" + TyreRequestModel.shared.makeName + "," + TyreRequestModel.shared.modelName
+        self.tyreVehicleLbl.text = LocalizedString.suitableFor.localized + " :" + TyreRequestModel.shared.makeName + "," + TyreRequestModel.shared.modelName
         radioBtn.isSelected = isPowerSelected
     }
     

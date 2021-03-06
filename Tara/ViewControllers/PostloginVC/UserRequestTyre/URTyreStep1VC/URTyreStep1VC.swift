@@ -201,7 +201,7 @@ extension URTyreStep1VC: UITextFieldDelegate{
             return true
         } else if textField == profileTxtField {
             if TyreRequestModel.shared.width.isEmpty{
-                ToastView.shared.showLongToast(self.view, msg: "Please select vehicle width")
+                ToastView.shared.showLongToast(self.view, msg: LocalizedString.please_select_vehicle_width.localized)
                 return false
             }
             if let text = textField.text {
@@ -217,7 +217,7 @@ extension URTyreStep1VC: UITextFieldDelegate{
             return true
         } else if textField == rimSizeTxtField {
             if TyreRequestModel.shared.profile.isEmpty{
-                ToastView.shared.showLongToast(self.view, msg: "Please select vehicle profile")
+                ToastView.shared.showLongToast(self.view, msg: LocalizedString.please_select_vehicle_profile.localized)
                 return false
             }
             if let text = textField.text {

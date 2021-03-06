@@ -15,7 +15,7 @@ class PaymentCardCell: UITableViewCell {
     var declineBtnAction : ((UIButton)->())?
     
     //    MARK: OUTLETS
-    //    =============
+    //    =============Make Payment to get hassle free service.
     @IBOutlet weak var receiverNameLbl: UILabel!
     @IBOutlet weak var receiverImgView: UIImageView!
     @IBOutlet weak var msgContainerView: UIView!
@@ -31,6 +31,9 @@ class PaymentCardCell: UITableViewCell {
     //    ===============
     override func awakeFromNib() {
         super.awakeFromNib()
+        payNowBtn.setTitle(LocalizedString.payNow.localized, for: .normal)
+        declineBtn.setTitle(LocalizedString.decline.localized, for: .normal)
+        paymentRequestLabel.text = LocalizedString.paymentRequest.localized
         msgLabel.text = LocalizedString.make_Payment_to_get_hassle_free_service.localized
     }
     
