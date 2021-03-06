@@ -508,6 +508,9 @@ enum LocalizedString : String {
     case model
     case selectVehicleMake
     case selectVehicleModel
+    case suitableFor
+    case please_select_vehicle_width
+    case please_select_vehicle_profile
 }
 
 

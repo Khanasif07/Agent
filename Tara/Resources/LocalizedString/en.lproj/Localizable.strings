@@ -510,5 +510,6 @@
 "model" = "Model";
 "selectVehicleMake" = "Select vehicle make";
 "selectVehicleModel" = "Select vehicle model";
-
-
+"suitableFor" = "Suitable For";
+"please_select_vehicle_width" = "Please select vehicle width";
+"please_select_vehicle_profile" = "Please select vehicle profile";
