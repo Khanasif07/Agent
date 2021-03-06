@@ -486,6 +486,7 @@ enum LocalizedString : String {
     case chooseTheSizeOfTyre
     case notSureAboutTheSize
     case chatWithExpert
+    case createNewAccount
 }
 
 
