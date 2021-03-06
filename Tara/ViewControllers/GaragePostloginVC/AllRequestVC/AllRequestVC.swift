@@ -151,10 +151,10 @@ extension AllRequestVC : UITableViewDelegate, UITableViewDataSource {
             cell.placeBidBtnTapped = {[weak self] (sender) in
                 guard let `self` = self else {return}
                 switch sender.titleLabel?.text {
-                case "Cancel Bid":
+                case LocalizedString.cancelBid.localized:
                     self.requestId = self.viewModel.garageRequestListing[indexPath.row].id ?? ""
                     self.viewModel.cancelBid(params:[ApiKey.garageRequestId : self.requestId])
-                case "Chat":
+                case LocalizedString.chat.localized:
                     self.clearFilterOnTabChange = false
                     AppRouter.goToOneToOneChatVC(self, userId: self.viewModel.garageRequestListing[indexPath.row].userId ?? "" ,requestDetailId:self.viewModel.garageRequestListing[indexPath.row].id ?? "",requestId: self.viewModel.garageRequestListing[indexPath.row].requestDocId ?? "", name: self.viewModel.garageRequestListing[indexPath.row].userName ?? "", image: self.viewModel.garageRequestListing[indexPath.row].userImage ?? "", unreadMsgs: 0,garageUserId: isCurrentUserType == .garage ? UserModel.main.id : self.viewModel.garageRequestListing[indexPath.row].userId ?? "")
                 default:

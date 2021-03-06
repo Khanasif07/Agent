@@ -129,7 +129,7 @@ extension AddAccountVC {
             checkBtn.isHidden = true
             lblContainerView.isHidden = true
             
-            titleLbl.text = fromGarage == .editGarageProfile ? "Edit Profile" : LocalizedString.completeProfile.localized
+            titleLbl.text = fromGarage == .editGarageProfile ? LocalizedString.editProfile.localized : LocalizedString.completeProfile.localized
             registerBtn.setTitle(LocalizedString.submit.localized, for: .normal)
             helpBtn.setTitle(nil, for: .normal) 
             helpBtn.setImage(#imageLiteral(resourceName: "group3887"), for: .normal)

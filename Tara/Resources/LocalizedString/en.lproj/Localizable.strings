@@ -510,5 +510,18 @@
 "model" = "Model";
 "selectVehicleMake" = "Select vehicle make";
 "selectVehicleModel" = "Select vehicle model";
-
-
+"justNow" = "Just now";
+"weHaveReceivedYourRegistrationRequest" = "We’ve received your registration request";
+"yourRegistrationRequestMadeOn" = "Your Registration Request\nmade on";
+"hasBeenRejectedDueToFollowingReasons" = "has been Rejected\ndue to following reasons: ";
+"hasBeenAcceptedKindlyCompleteYourProfile" = "has been Accepted.\nKindly complete your profile";
+"selectFacility" = "Select Facility";
+"services" = "Services";
+"on" = "on";
+"requestedOn" = "Requested On";
+"productImage" = "Product Image:";
+"address" = "Address";
+"rim" = "Rim";
+"vechicleMake" = "Vechicle Make";
+"vechicleModel" = "Vechicle Model";
+"vechicleYear" = "Vechicle Year";

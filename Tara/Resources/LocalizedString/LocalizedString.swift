@@ -508,6 +508,21 @@ enum LocalizedString : String {
     case model
     case selectVehicleMake
     case selectVehicleModel
+    case justNow
+    case weHaveReceivedYourRegistrationRequest
+    case yourRegistrationRequestMadeOn
+    case hasBeenRejectedDueToFollowingReasons
+    case hasBeenAcceptedKindlyCompleteYourProfile
+    case selectFacility
+    case services
+    case on
+    case requestedOn
+    case productImage
+    case address
+    case rim
+    case vechicleMake
+    case vechicleModel
+    case vechicleYear
 }
 
 

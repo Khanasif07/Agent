@@ -22,6 +22,7 @@ class FacilityVC: BaseVC {
     @IBOutlet weak var doneBtn: UIButton!
     @IBOutlet weak var clearAllBtn: UIButton!
     @IBOutlet weak var mainTableView: UITableView!
+    @IBOutlet weak var servicesLbl: UILabel!
 
     // MARK: - Variables
     //===========================
@@ -75,6 +76,8 @@ extension FacilityVC {
     }
 
     private func setupTextAndFont(){
+        titleLbl.text = LocalizedString.selectFacility.localized
+        servicesLbl.text = LocalizedString.services.localized
         cancelBtn.titleLabel?.font =  AppFonts.NunitoSansSemiBold.withSize(17.0)
         doneBtn.titleLabel?.font =  AppFonts.NunitoSansSemiBold.withSize(17.0)
         clearAllBtn.titleLabel?.font =  AppFonts.NunitoSansSemiBold.withSize(12.0)
