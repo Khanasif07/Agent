@@ -121,16 +121,16 @@ extension BrandsListingVC {
         buttonView.addTarget(self, action: #selector(clear(_:)), for: .touchUpInside)
         buttonView.imageEdgeInsets = UIEdgeInsets(top: 0, left: -5, bottom: 0, right: 5)
         searchTxtField.setButtonToRightView(btn: buttonView, selectedImage: #imageLiteral(resourceName: "cancel"), normalImage: #imageLiteral(resourceName: "cancel"), size: CGSize(width: 20, height: 20))
-        searchTxtField.placeholder = (listingType == .brands) ? "Search Brand by name" : "Search Country by name"
+        searchTxtField.placeholder = (listingType == .brands) ? LocalizedString.search_Brand_by_name.localized : LocalizedString.search_Country_by_name.localized
     }
     
     private func hitBrandListingApi(loader:Bool){
-        let type = categoryType == .tyres ? "Tyres" : (categoryType == .battery ? "Battery" : "Oil")
+        let type = categoryType == .tyres ? LocalizedString.tyres.localized : (categoryType == .battery ? LocalizedString.battery.localized : LocalizedString.oil.localized)
         self.viewModel.getBrandListingData(params: [ApiKey.page: "1",ApiKey.limit : "100",ApiKey.type: type],loader: loader)
     }
     
     private func hitCountryListingApi(loader:Bool){
-        self.viewModel.getCountryListingData(params: [ApiKey.page: "1",ApiKey.limit : "100",ApiKey.type: "Tyres"],loader: loader)
+        self.viewModel.getCountryListingData(params: [ApiKey.page: "1",ApiKey.limit : "100",ApiKey.type: LocalizedString.tyres.localized],loader: loader)
     }
     
     private func setupTextAndFont(){
@@ -178,7 +178,7 @@ extension BrandsListingVC : UITableViewDelegate, UITableViewDataSource {
         view.bottomView.backgroundColor = #colorLiteral(red: 0.9294117647, green: 0.9294117647, blue: 0.9294117647, alpha: 1)
         view.categoryName.text = listingType == .brands ? self.viewModel.searchBrandListing[section].name : self.viewModel.searchCountryListing[section].name
         if   (listingType == .brands) {
-            if self.viewModel.searchBrandListing[section].name == "All Brands" {
+            if self.viewModel.searchBrandListing[section].name == LocalizedString.allBrands.localized {
                 view.arrowImg.isHidden = true }else {
                 view.arrowImg.isHidden = false
                 view.arrowImg.setImage_kf(imageString: self.viewModel.searchBrandListing[section].iconImage, placeHolderImage: #imageLiteral(resourceName: "terms"), loader: false)

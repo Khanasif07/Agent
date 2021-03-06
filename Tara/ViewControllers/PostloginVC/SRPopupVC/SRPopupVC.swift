@@ -94,6 +94,8 @@ extension SRPopupVC {
     }
 
     private func setupTextAndFont(){
+        ignoreBtn.setTitle(LocalizedString.ignore.localized, for: .normal)
+        viewBtn.setTitle(LocalizedString.view.localized, for: .normal)
         serviceTypeLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
         distanceLbl.font = AppFonts.NunitoSansSemiBold.withSize(13.0)
         timeLbl.font = AppFonts.NunitoSansBold.withSize(22.0)

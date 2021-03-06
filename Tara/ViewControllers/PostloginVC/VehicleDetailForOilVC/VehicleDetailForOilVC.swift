@@ -171,6 +171,7 @@ extension VehicleDetailForOilVC {
         numberOfUnitLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
 
         heading.text = LocalizedString.enteryYourVehicleDetails.localized
+        uploadImgLbl.text = LocalizedString.uploadImage.localized
         heading.font = AppFonts.NunitoSansBold.withSize(21.0)
         vehicleDetailLbl.text = LocalizedString.vehicleDetails.localized
         subHeading.text = LocalizedString.wellGetYouOilAccordingToTheProvidedDetails.localized

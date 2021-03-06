@@ -14,6 +14,8 @@ class GarageRequestPopupVC: BaseVC {
  
     // MARK: - IBOutlets
     //===========================
+    @IBOutlet weak var disLbl: UILabel!
+    @IBOutlet weak var bidAmtLbl: UILabel!
     @IBOutlet weak var userImgView: UIImageView!
     @IBOutlet weak var serviceTypeLbl: UILabel!
     @IBOutlet weak var distanceLbl: UILabel!
@@ -95,6 +97,10 @@ extension GarageRequestPopupVC {
     }
     
     private func setupTextAndFont(){
+        viewBtn.setTitle(LocalizedString.view.localized, for: .normal)
+        ignoreBtn.setTitle(LocalizedString.ignore.localized, for: .normal)
+        disLbl.text = LocalizedString.distance.localized
+        bidAmtLbl.text = LocalizedString.bid_Amount.localized
         serviceTypeLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
         distanceLbl.font = AppFonts.NunitoSansSemiBold.withSize(13.0)
         timeLbl.font = AppFonts.NunitoSansBold.withSize(22.0)

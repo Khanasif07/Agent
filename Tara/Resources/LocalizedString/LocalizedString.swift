@@ -522,6 +522,16 @@ enum LocalizedString : String {
     case paybleAmt
     case previousService
     case request_Rejected
+    case to_continue_performing_this_action_please_login
+    case batteryImage
+    case uploadImage
+    case your_request_for_battery_service_has_been_submited_successfully
+    case your_request_for_oil_service_has_been_submited_successfully
+    case allBrands
+    case search_Brand_by_name
+    case search_Country_by_name
+    case ignore
+    case view
 }
 
 

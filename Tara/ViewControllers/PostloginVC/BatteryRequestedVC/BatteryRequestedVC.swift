@@ -77,7 +77,7 @@ class BatteryRequestedVC: BaseVC {
     
     @IBAction func requestBtnAction(_ sender: UIButton) {
         if !isUserLoggedin{
-            showAlertWithAction(title: "", msg:  "To continue performing this action, please login", cancelTitle: LocalizedString.cancel.localized, actionTitle: LocalizedString.ok.localized, actioncompletion: {
+            showAlertWithAction(title: "", msg:  LocalizedString.to_continue_performing_this_action_please_login.localized, cancelTitle: LocalizedString.cancel.localized, actionTitle: LocalizedString.ok.localized, actioncompletion: {
                 AppRouter.goToLoginVC(vc: self)
             }) {}
         }else {
@@ -222,7 +222,7 @@ extension BatteryRequestedVC :UITextFieldDelegate{
 extension BatteryRequestedVC : LocationPopUpVMDelegate {
     func postBatteryRequestSuccess(message: String){
          NotificationCenter.default.post(name: Notification.Name.ServiceRequestSuccess, object: nil)
-         AppRouter.showSuccessPopUp(vc: self, title: "Successfully Requested", desc: "Your request for battery service has been submited successfully.")
+        AppRouter.showSuccessPopUp(vc: self, title: LocalizedString.successfullyRequested.localized, desc: LocalizedString.your_request_for_battery_service_has_been_submited_successfully.localized)
     }
     
     func postBatteryRequestFailed(error:String){

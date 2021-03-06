@@ -476,3 +476,13 @@
 "paybleAmt" = "Payble Amt";
 "previousService" = "Previous Service";
 "request_Rejected" = "Request Rejected";
+"to_continue_performing_this_action_please_login" = "To continue performing this action, please login";
+"batteryImage" = "Battery Image";
+"uploadImage" = "Upload Image";
+"your_request_for_battery_service_has_been_submited_successfully" = "Your request for battery service has been submited successfully.";
+"your_request_for_oil_service_has_been_submited_successfully"= "Your request for oil service has been submited successfully.";
+"allBrands" = "All Brands";
+"search_Brand_by_name" = "Search Brand by name";
+"search_Country_by_name" = "Search Country by name";
+"ignore" = "Ignore";
+"view" = "View";

@@ -146,6 +146,8 @@ extension VehicleDetailForBatteryVC {
         enterVehicleDetailLbl.text = LocalizedString.enteryYourVehicleDetails.localized
         wellGetYouLbl.text = LocalizedString.wellGetYouExactTyreSize.localized
         nextBtn.setTitle(LocalizedString.next.localized, for: .normal)
+        uploadImgLbl.text = LocalizedString.uploadImage.localized
+        batteryImgLbl.text = LocalizedString.batteryImage.localized
         numberOfBatteryLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
         vehicleDetailLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
         batteryImgLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
