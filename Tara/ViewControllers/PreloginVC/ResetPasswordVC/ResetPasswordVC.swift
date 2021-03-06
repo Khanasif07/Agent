@@ -13,6 +13,7 @@ class ResetPasswordVC: BaseVC {
     
     // MARK: - IBOutlets
     //===========================
+    @IBOutlet weak var pleaseSetNewPasswordLbl: UILabel!
     @IBOutlet weak var dataContainerView: UIView!
     @IBOutlet weak var submitBtn: UIButton!
     @IBOutlet weak var titlelbl: UILabel!
@@ -69,6 +70,8 @@ extension ResetPasswordVC {
     
     private func initialSetup() {
         self.viewModel.delegate = self
+        self.pleaseSetNewPasswordLbl.text = LocalizedString.pleaseSetNewPassword.localized
+        self.titlelbl.text = LocalizedString.resetPassword.localized
         self.setUpTextField()
     }
     
@@ -94,6 +97,7 @@ extension ResetPasswordVC {
         show1.isSelected = false
         show1.addTarget(self, action: #selector(secureTextField1(_:)), for: .touchUpInside)
         self.newPassTxtField.setButtonToRightView(btn: show1, selectedImage: #imageLiteral(resourceName: "icPasswordView"), normalImage: #imageLiteral(resourceName: "icPasswordHide"), size: CGSize(width: 22, height: 22))
+      self.submitBtn.setTitle(LocalizedString.submit.localized, for: .normal)
         self.submitBtn.isEnabled = false
     }
     

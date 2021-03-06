@@ -481,12 +481,22 @@ enum LocalizedString : String {
     case miles
     case quantityShort
     
+    //Updated Localized String
+    case please_Enter_Your_Mobile_Number_with_Country_Code
     case whatTyreOfTyreAreYouLookingFor
     case searchWithCar
     case chooseTheSizeOfTyre
     case notSureAboutTheSize
     case chatWithExpert
     case createNewAccount
+    case pleaseSetNewPassword
+    case resetPassword
+    case selectCountryCode
+    case oneTimePassword
+    case pleaseEnter4DigitOtpCode
+    case resendOtp
+    case welcomeToTara
+    case login_with_Social_Accounts
 }
 
 

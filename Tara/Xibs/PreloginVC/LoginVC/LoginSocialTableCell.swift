@@ -27,6 +27,7 @@ class LoginSocialTableCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.loginSocialLbl.text = LocalizedString.login_with_Social_Accounts.localized
         self.setUpButtonInset()
     
 

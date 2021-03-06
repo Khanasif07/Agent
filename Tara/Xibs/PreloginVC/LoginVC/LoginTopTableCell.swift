@@ -19,6 +19,7 @@ class LoginTopTableCell: UITableViewCell {
         frontView.backgroundColor = AppColors.fontTertiaryColor.withAlphaComponent(0.5)
         backView.backgroundColor = AppColors.fontTertiaryColor.withAlphaComponent(0.5)
         welcomeToTaraLbl.textColor = AppColors.fontTertiaryColor.withAlphaComponent(0.5)
+        welcomeToTaraLbl.text = LocalizedString.welcomeToTara.localized
         welcomeToTaraLbl.font = AppFonts.NunitoSansBold.withSize(15.0)
     }
 }

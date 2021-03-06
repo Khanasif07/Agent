@@ -38,7 +38,6 @@ class LoginEmailPhoneTableCell: UITableViewCell {
     }
     
     
-    
     public func setUpTextField(){
         self.dontHaveAccountLbl.text = LocalizedString.dont_have_an_account.localized
         self.forgotPassBtn.setTitle(LocalizedString.forgotPassword.localized, for: .normal)
