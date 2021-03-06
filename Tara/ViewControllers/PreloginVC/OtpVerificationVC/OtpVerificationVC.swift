@@ -13,6 +13,8 @@ class OtpVerificationVC: BaseVC {
     
     // MARK: - IBOutlets
     //===========================
+    @IBOutlet weak var pleaseEnter4DigitOtpCodeLbl: UILabel!
+    @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var phoneNoLbl: UILabel!
     @IBOutlet weak var countryCodeLbl: UILabel!
     @IBOutlet weak var timerLbl: UILabel!
@@ -110,6 +112,11 @@ extension OtpVerificationVC {
     }
     
     private func setupText() {
+        self.verifyBtn.setTitle(LocalizedString.verify.localized, for: .normal)
+
+    self.resendBtn.setTitle(LocalizedString.resendOtp.localized, for: .normal)
+        self.pleaseEnter4DigitOtpCodeLbl.text = LocalizedString.pleaseEnter4DigitOtpCode.localized
+        self.titleLbl.text = LocalizedString.oneTimePassword.localized
         self.phoneNoLbl.text = self.viewModel.phoneNo
         self.countryCodeLbl.text = self.viewModel.countryCode
     }

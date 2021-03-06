@@ -961,8 +961,10 @@ your old password.</string>
                     <connections>
                         <outlet property="countryCodeLbl" destination="Aik-Bx-a9b" id="Y4v-Ag-7NV"/>
                         <outlet property="phoneNoLbl" destination="9PK-qt-tD0" id="eWF-ho-0b1"/>
+                        <outlet property="pleaseEnter4DigitOtpCodeLbl" destination="2iY-qc-c0S" id="Q3C-87-aGZ"/>
                         <outlet property="resendBtn" destination="aaq-lG-6Pa" id="6lo-hY-USA"/>
                         <outlet property="timerLbl" destination="eKh-ZH-kwB" id="zqH-Ab-B6O"/>
+                        <outlet property="titleLbl" destination="Qbl-gZ-qJm" id="3VK-nm-QA5"/>
                         <outlet property="verifyBtn" destination="CTa-Ma-kmt" id="sNH-R9-E49"/>
                         <outletCollection property="txtFieldViews" destination="Hmz-It-fdL" collectionClass="NSMutableArray" id="p7L-av-OdG"/>
                         <outletCollection property="txtFieldViews" destination="Fsj-HV-scl" collectionClass="NSMutableArray" id="KG4-lP-Hqn"/>
@@ -1087,6 +1089,7 @@ your old password.</string>
                         <outlet property="dropDownbutton" destination="e4t-mY-b2p" id="BcF-UE-feL"/>
                         <outlet property="searchTxtField" destination="5PL-NE-4Jw" id="huo-Ua-RsW"/>
                         <outlet property="tableView" destination="TmH-gZ-zPC" id="PM9-2N-akC"/>
+                        <outlet property="titleLbl" destination="HXy-jI-E7C" id="PMB-gb-PQI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XI0-4g-oci" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1131,7 +1134,7 @@ your old password.</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lbe-Gg-Af8">
                                 <rect key="frame" x="0.0" y="100" width="414" height="796"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Set New Password" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cYf-Qc-N7o" userLabel="Please Enter Your  9 Digit Mobile Number with Country Code">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Set New Password" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cYf-Qc-N7o">
                                         <rect key="frame" x="16" y="41" width="382" height="19.5"/>
                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="14"/>
                                         <color key="textColor" red="0.54117647059999996" green="0.58431372550000005" blue="0.61960784310000006" alpha="1" colorSpace="calibratedRGB"/>
@@ -1224,6 +1227,7 @@ your old password.</string>
                         <outlet property="confirmTxtField" destination="xKa-QF-8OD" id="Udh-mN-luI"/>
                         <outlet property="dataContainerView" destination="IWn-2N-oyc" id="DJo-hO-rg3"/>
                         <outlet property="newPassTxtField" destination="FwJ-sY-qMM" id="RFq-N1-yK0"/>
+                        <outlet property="pleaseSetNewPasswordLbl" destination="cYf-Qc-N7o" id="iBx-DT-SoT"/>
                         <outlet property="submitBtn" destination="et7-VC-c2c" id="VDH-rn-rva"/>
                         <outlet property="titlelbl" destination="5RJ-GB-cJt" id="qTb-TJ-xO0"/>
                     </connections>

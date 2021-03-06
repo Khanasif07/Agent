@@ -488,6 +488,14 @@ enum LocalizedString : String {
     case chooseTheSizeOfTyre
     case notSureAboutTheSize
     case chatWithExpert
+    case pleaseSetNewPassword
+    case resetPassword
+    case selectCountryCode
+    case oneTimePassword
+    case pleaseEnter4DigitOtpCode
+    case resendOtp
+    case welcomeToTara
+    case login_with_Social_Accounts
 }
 
 

@@ -441,4 +441,11 @@
 "chooseTheSizeOfTyre" = "Choose the size of tire";
 "notSureAboutTheSize" = "Not sure about the size?";
 "chatWithExpert" = "Chat with Expert";
-
+"pleaseSetNewPassword" = "Please Set New Password";
+"resetPassword" = "Reset Password";
+"selectCountryCode" = "Select Country Code";
+"oneTimePassword" = "One Time Password";
+"pleaseEnter4DigitOtpCode" = "Please Enter 4 Digit OTP Send to ";
+"resendOtp" = "Resend Otp";
+"welcomeToTara" = "WELCOME TO";
+"login_with_Social_Accounts" = "Login with Social Accounts";

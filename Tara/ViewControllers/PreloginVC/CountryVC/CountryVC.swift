@@ -12,6 +12,7 @@ class CountryVC: BaseVC {
     
     // MARK: - IBOutlets
     //===========================
+    @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var searchTxtField: ATCTextField!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var dropDownbutton: UIButton!
@@ -53,6 +54,7 @@ extension CountryVC {
     }
     
     private func textFieldSetUp(){
+        self.titleLbl.text = LocalizedString.selectCountryCode.localized
         self.dropDownbutton.tintColor = AppColors.fontPrimaryColor
         let show1 = UIButton()
         show1.isSelected = false
