@@ -41,6 +41,8 @@ class UserOffersTableCell: UITableViewCell {
         tALbl.text = LocalizedString.total_Amount.localized
         distanceLbl.text = LocalizedString.distance.localized
         quantityLbl.text = LocalizedString.quantityShort.localized
+        rejectBtn.setTitle(LocalizedString.reject.localized, for: .normal)
+        viewProposalBtn.setTitle(LocalizedString.viewProposal.localized, for: .normal)
         rejectBtn.isBorderSelected = true
         viewProposalBtn.isEnabled = true
         blurView.isHidden = true

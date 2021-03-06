@@ -2463,6 +2463,7 @@ Service Center</string>
                         <outlet property="lowestBidLbl" destination="5Dw-LD-Kpy" id="21N-1S-K5F"/>
                         <outlet property="lowestBidValueLbl" destination="ZoU-x0-HqE" id="TIU-4h-mB8"/>
                         <outlet property="mainImgView" destination="1HE-RU-LpJ" id="tNE-Xi-48e"/>
+                        <outlet property="mileLbl" destination="cGk-MU-sAY" id="Wp3-IT-GBh"/>
                         <outlet property="nearestBidLbl" destination="YsH-eH-kGk" id="v3Z-0h-UA5"/>
                         <outlet property="nearestBidderValueLbl" destination="Rg6-IC-VNX" id="mhb-qz-H23"/>
                         <outlet property="productImgView" destination="kZw-UU-Lqk" id="JQf-O0-K3b"/>
@@ -2585,7 +2586,6 @@ Service Center</string>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="payNowBtnAction:" destination="NOc-i9-deg" eventType="touchUpInside" id="LGs-b5-Nf4"/>
-                                    <action selector="viewAllBtnAction:" destination="Yme-aY-fPF" eventType="touchUpInside" id="e08-2N-v5i"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -2650,7 +2650,6 @@ Service Center</string>
                                         </state>
                                         <connections>
                                             <action selector="crossBtnAction:" destination="rdR-by-uSg" eventType="touchUpInside" id="Ojc-Hf-1Tz"/>
-                                            <action selector="crossBtnAction:" destination="Mcn-DD-kFJ" eventType="touchUpInside" id="aQa-Og-Wv5"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FeR-0v-Okj">

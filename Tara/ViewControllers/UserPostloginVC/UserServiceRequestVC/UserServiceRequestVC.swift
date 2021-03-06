@@ -33,6 +33,7 @@ class UserServiceRequestVC: BaseVC {
     @IBOutlet weak var bidReceivedLbl: UILabel!
     @IBOutlet weak var requestSeenLbl: UILabel!
     @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet weak var mileLbl: UILabel!
     @IBOutlet weak var requestSeenValueLbl: UILabel!
     @IBOutlet weak var bidRecivedValueLbl: UILabel!
     @IBOutlet weak var lowestBidValueLbl: UILabel!
@@ -139,6 +140,9 @@ extension UserServiceRequestVC {
     }
     
     private func textSetUp(){
+        unitLbl.text = LocalizedString.unit.localized
+        requestNoLbl.text = LocalizedString.request_No.localized
+        mileLbl.text = LocalizedString.miles.localized
         self.buttonsBottomConst.constant = -90
         viewAllBtn.isEnabled = true
         [tyreSizeValueLbl,unitValueLblb,brandsValueLbl].forEach({$0?.textColor = AppColors.fontTertiaryColor})
