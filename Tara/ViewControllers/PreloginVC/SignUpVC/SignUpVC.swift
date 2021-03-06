@@ -14,6 +14,7 @@ class SignUpVC: BaseVC {
     // MARK: - IBOutlets
     //===========================
     
+    @IBOutlet weak var signupLbl: UILabel!
     @IBOutlet weak var skipSignUpBtn: UIButton!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var mainTableView: UITableView!

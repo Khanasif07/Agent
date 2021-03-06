@@ -480,6 +480,9 @@ enum LocalizedString : String {
     case proposalDetails
     case miles
     case quantityShort
+    
+    //Updated Localized String
+    case please_Enter_Your_Mobile_Number_with_Country_Code
 }
 
 

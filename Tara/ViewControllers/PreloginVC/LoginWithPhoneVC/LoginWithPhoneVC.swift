@@ -90,6 +90,7 @@ extension LoginWithPhoneVC {
     private func initialSetup() {
         self.viewModel.delegate = self
         self.setupTextField()
+        self.enterDigitLbl.text = LocalizedString.please_Enter_Your_Mobile_Number_with_Country_Code.localized
         self.sendOtpBtnStatus(enable: false)
         if self.loginOption == .forgotPassword {
             self.loginTitle.text = LocalizedString.forgotPassword.localized

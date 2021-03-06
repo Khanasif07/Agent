@@ -12,6 +12,7 @@ class LoginVC: BaseVC {
     
     // MARK: - IBOutlets
     //===========================
+    @IBOutlet weak var skipLoginAndContinueBtn: UIButton!
     @IBOutlet weak var mainTableView: UITableView!
     @IBOutlet var footerView: UIView!
     
