@@ -109,7 +109,7 @@ extension LoginVC {
     }
     
     private func showEmailVerificationPopUp(){
-        self.showAlertWithAction(title: LocalizedString.verify_email.localized, msg: LocalizedString.a_verification_link_will_be_send_to_your_email_address.localized, cancelTitle: LocalizedString.cancel.localized, actionTitle: LocalizedString.send.localized, actioncompletion: {
+        self.showAlertWithAction(title: LocalizedString.verifyEmail.localized, msg: LocalizedString.aVerificationLinkWillBeSendToYourEmailAddress.localized, cancelTitle: LocalizedString.cancel.localized, actionTitle: LocalizedString.send.localized, actioncompletion: {
         }){self.dismiss(animated: true, completion: nil)}
     }
 }

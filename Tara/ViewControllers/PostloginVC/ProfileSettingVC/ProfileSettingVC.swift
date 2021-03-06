@@ -100,7 +100,7 @@ extension ProfileSettingVC {
                     cell.switchProfileToGarage = {  [weak self]  in
                         guard let `self` = self else { return }
                         if !UserModel.main.phoneNoAdded {
-                            self.showAlertWithAction(title: "", msg: LocalizedString.to_continue_performing_this_action_please_complete_your_profile.localized, cancelTitle: LocalizedString.cancel.localized, actionTitle: LocalizedString.ok.localized, actioncompletion: {
+                            self.showAlertWithAction(title: "", msg: LocalizedString.toContinuePerformingThisAction.localized, cancelTitle: LocalizedString.cancel.localized, actionTitle: LocalizedString.ok.localized, actioncompletion: {
                                 AppRouter.goToEditProfileVC(vc: self, model: UserModel.main, isEditProfileFrom: .garage)
                             })
                             return
