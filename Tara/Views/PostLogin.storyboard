@@ -403,9 +403,12 @@ Service Center</string>
                         <viewLayoutGuide key="safeArea" id="rlz-UL-OuF"/>
                     </view>
                     <connections>
+                        <outlet property="addImageOfServiceCenterLbl" destination="eSD-71-Bqs" id="82D-k6-BqT"/>
+                        <outlet property="addressAndLocationTextLbl" destination="94u-lM-Evs" id="qeR-xn-mQE"/>
                         <outlet property="collViewHeightConst" destination="cPQ-vH-6bP" id="5GK-8Y-p4A"/>
                         <outlet property="descLbl" destination="kLB-9F-ymz" id="RM8-7n-cBZ"/>
                         <outlet property="garageName" destination="pDl-hg-iGF" id="7K3-Xx-0F3"/>
+                        <outlet property="helpBtn" destination="WB8-9b-PWR" id="vvv-eW-cqQ"/>
                         <outlet property="locationTextLbl" destination="LH8-JT-RVv" id="lfw-ic-Kr5"/>
                         <outlet property="logoImgView" destination="Fxo-jU-7gH" id="ISn-1k-zc3"/>
                         <outlet property="mainCollView" destination="BHo-7E-5iV" id="pFC-e3-PW7"/>
@@ -683,11 +686,15 @@ Service Center</string>
                     </view>
                     <connections>
                         <outlet property="descLbl" destination="N5i-yw-9yY" id="jkD-c9-HCX"/>
+                        <outlet property="dragPointerLbl" destination="x9s-zb-Vpm" id="Iis-xL-Nz7"/>
                         <outlet property="garageName" destination="FBk-Ky-n4Z" id="nf0-LW-FLM"/>
+                        <outlet property="helpBtn" destination="Jxr-kh-Aja" id="yaZ-xn-JeB"/>
+                        <outlet property="locationBtn" destination="iIC-vp-HTe" id="qYA-eX-i6Q"/>
                         <outlet property="logoImgView" destination="9mc-dm-VHI" id="zQ9-cc-AWt"/>
                         <outlet property="mapView" destination="qzc-Zr-8CD" id="uCn-Tu-1yH"/>
                         <outlet property="saveContinueBtn" destination="KSH-R0-zEV" id="HEF-W1-DDB"/>
                         <outlet property="serviceAddresslbl" destination="RXM-qq-QJK" id="Dus-ZI-P0J"/>
+                        <outlet property="serviceCenterLbl" destination="0kV-7F-tKk" id="j5w-0F-egK"/>
                         <outlet property="titleLbl" destination="I3T-sU-MGv" id="DaT-MW-9EN"/>
                     </connections>
                 </viewController>
@@ -801,6 +808,7 @@ Service Center</string>
                         <viewLayoutGuide key="safeArea" id="qHi-aL-MTu"/>
                     </view>
                     <connections>
+                        <outlet property="cancelBtn" destination="Nad-DQ-pea" id="iGz-jB-qDB"/>
                         <outlet property="mainTableView" destination="7wC-9o-uzW" id="kXJ-At-Bha"/>
                         <outlet property="searchTxtField" destination="h1s-lD-PlJ" id="03E-nW-pEX"/>
                         <outlet property="titleLbl" destination="TLT-sU-e8i" id="aJb-Bz-bJG"/>
@@ -1090,11 +1098,14 @@ Service Center</string>
                         <viewLayoutGuide key="safeArea" id="HId-uY-FTs"/>
                     </view>
                     <connections>
+                        <outlet property="addLogo" destination="rdE-Yu-JNf" id="Y6t-1D-sPk"/>
                         <outlet property="addressTxtField" destination="59h-hN-omL" id="34U-71-JZZ"/>
                         <outlet property="centreNameLbl" destination="Yae-qx-JWU" id="oxR-i5-L0q"/>
                         <outlet property="dashedView" destination="sfv-hM-apI" id="Oeo-Mv-yfN"/>
                         <outlet property="distTxtField" destination="GaQ-fh-PT5" id="Tnr-2g-MCr"/>
+                        <outlet property="dragPointerToSetLbl" destination="2Tb-y2-Ngy" id="kIY-0N-rYc"/>
                         <outlet property="editLogoBtn" destination="T2B-MG-ztU" id="ePN-OI-s1B"/>
+                        <outlet property="locationBtn" destination="inQ-S5-Bdf" id="U8G-l9-gpT"/>
                         <outlet property="logoImgView" destination="oJc-BN-aA7" id="qhJ-yb-lwm"/>
                         <outlet property="mapView" destination="vP4-Jb-GA6" id="p2h-aq-S8k"/>
                         <outlet property="nameTxtField" destination="ELg-Rl-MOn" id="xu3-6j-iis"/>

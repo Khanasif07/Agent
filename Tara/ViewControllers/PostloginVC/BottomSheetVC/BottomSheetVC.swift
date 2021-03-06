@@ -57,12 +57,12 @@ class BottomSheetVC: BaseVC {
     private func hitApi(){
         isApiHitInProcess = false
         if   (vehicleDetailtype == .make) {
-            self.headingLbl.text = "Make"
-            self.searchTxtField.placeholder = "Select vehicle make"
+            self.headingLbl.text = LocalizedString.make.localized
+            self.searchTxtField.placeholder = LocalizedString.selectVehicleMake.localized
             self.hitMakeListingApi()
         } else {
-            self.headingLbl.text = "Model"
-            self.searchTxtField.placeholder = "Select vehicle model"
+            self.headingLbl.text = LocalizedString.model.localized
+            self.searchTxtField.placeholder = LocalizedString.selectVehicleModel.localized
             self.hitModelListingApi()
         }
     }
@@ -95,6 +95,10 @@ class BottomSheetVC: BaseVC {
         tableViewSetUp()
         headingLbl.font = AppFonts.NunitoSansSemiBold.withSize(17.0)
         addTapGesture()
+        setupText()
+    }
+    
+    private func setupText(){
     }
     
     private func tableViewSetUp(){

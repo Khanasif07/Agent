@@ -67,9 +67,14 @@ class ProfileSettingVC: BaseVC {
 extension ProfileSettingVC {
     
     private func initialSetup() {
-        self.switchProfileTitle()
-        self.tableViewSetUp()
+        switchProfileTitle()
+        setupText()
+        tableViewSetUp()
         viewModel.delegate = self
+    }
+    
+    private func setupText() {
+        titleLbl.text = LocalizedString.settings.localized
     }
     
     private func tableViewSetUp(){

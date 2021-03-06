@@ -490,6 +490,7 @@
 "chooseTheSizeOfTyre" = "Choose the size of tyre";
 "notSureAboutTheSize" = "Not sure about the size?";
 "chatWithExpert" = "Chat with Expert";
+"createNewAccount" = "Create New Account";
 "pleaseSetNewPassword" = "Please Set New Password";
 "resetPassword" = "Reset Password";
 "selectCountryCode" = "Select Country Code";
@@ -498,3 +499,16 @@
 "resendOtp" = "Resend Otp";
 "welcomeToTara" = "WELCOME TO";
 "login_with_Social_Accounts" = "Login with Social Accounts";
+"log_in" = "Log in";
+"addImages" = "Add Images";
+"addressAndLocation" = "Address & Location";
+"addImagesOfServiceCenter" = "Add Images of service center";
+"addLocation" = "Add Location";
+"dragPointerToSetExactLocation" = "Drag pointer to set exact location of your service center";
+"searchBankByName" = "Search bank by name";
+"make" = "Make";
+"model" = "Model";
+"selectVehicleMake" = "Select vehicle make";
+"selectVehicleModel" = "Select vehicle model";
+
+

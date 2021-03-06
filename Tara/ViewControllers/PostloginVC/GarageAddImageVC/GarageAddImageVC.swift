@@ -17,12 +17,15 @@ class GarageAddImageVC: BaseVC {
     @IBOutlet weak var saveContinueBtn: AppButton!
     @IBOutlet weak var collViewHeightConst: NSLayoutConstraint!
     @IBOutlet weak var locationTextLbl: UILabel!
+    @IBOutlet weak var addressAndLocationTextLbl: UILabel!
+    @IBOutlet weak var addImageOfServiceCenterLbl: UILabel!
     @IBOutlet weak var descLbl: UILabel!
     @IBOutlet weak var mainCollView: UICollectionView!
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var logoImgView: UIImageView!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var garageName: UILabel!
+    @IBOutlet weak var helpBtn: UIButton!
 
     
     // MARK: - Variables
@@ -87,6 +90,7 @@ extension GarageAddImageVC {
         self.collViewSetUp()
         self.prepareMap()
         self.setAddress()
+        self.setupText()
         self.reloadCollectionViewWithUIUpdation()
         self.saveContinueBtn.isEnabled = false
         logoImgView.image = GarageProfileModel.shared.logo
@@ -158,6 +162,15 @@ extension GarageAddImageVC {
         DispatchQueue.main.async {
             self.mainCollView.reloadData()
         }
+    }
+    
+    func setupText() {
+        titleLbl.text = LocalizedString.addImages.localized
+        descLbl.text = LocalizedString.thisAllAboutMyServiceCenter.localized
+        addressAndLocationTextLbl.text = LocalizedString.addressAndLocation.localized
+        addImageOfServiceCenterLbl.text = LocalizedString.addImagesOfServiceCenter.localized
+        helpBtn.setTitle(LocalizedString.help.localized, for: .normal)
+        saveContinueBtn.setTitle(LocalizedString.saveContinue.localized, for: .normal)
     }
 }
 // MARK: - Map and cluster Functions

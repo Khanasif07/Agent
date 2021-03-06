@@ -22,6 +22,7 @@ class ProfileGuestTableCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        setupText()
         loginBtn.isEnabled = true
         frontView.backgroundColor = AppColors.fontTertiaryColor.withAlphaComponent(0.5)
         backView.backgroundColor = AppColors.fontTertiaryColor.withAlphaComponent(0.5)
@@ -37,6 +38,11 @@ class ProfileGuestTableCell: UITableViewCell {
         self.dataContainerView.addShadow(cornerRadius: 4, color: UIColor.black16, offset: CGSize(width: 0.5, height: 0.5), opacity: 1, shadowRadius: 4)
     }
     
+    private func setupText() {
+        loginBtn.setTitle(LocalizedString.log_in.localized, for: .normal)
+        welcomeToTaraLbl.text = LocalizedString.welcomeToTara.localized
+        createNewAccountBtn.setTitle(LocalizedString.createNewAccount.localized, for: .normal)
+    }
     
     @IBAction func loginBtnAction(_ sender: UIButton) {
         if let handle = loginBtnTapped{

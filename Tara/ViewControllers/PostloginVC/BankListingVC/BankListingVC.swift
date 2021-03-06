@@ -14,7 +14,8 @@ class BankListingVC: BaseVC {
     @IBOutlet weak var mainTableView: UITableView!
     @IBOutlet weak var searchTxtField: ATCTextField!
     @IBOutlet weak var titleLbl: UILabel!
-    
+    @IBOutlet weak var cancelBtn: UIButton!
+
     // MARK: - Variables
     //===========================
     var viewModel = BankListingVM()
@@ -44,11 +45,18 @@ class BankListingVC: BaseVC {
 extension BankListingVC {
     
     private func initialSetup() {
-        self.textFieldSetUp()
+        textFieldSetUp()
+        setupText()
         mainTableView.registerCell(with: BankListingTableCell.self)
         mainTableView.delegate = self
         mainTableView.dataSource = self
         viewModel.getBankData()
+    }
+    
+    private func setupText(){
+        titleLbl.text = LocalizedString.selectBank.localized
+        cancelBtn.setTitle(LocalizedString.cancel.localized, for: .normal)
+        searchTxtField.placeholder =  LocalizedString.searchBankByName.localized
     }
     
     private func textFieldSetUp(){
