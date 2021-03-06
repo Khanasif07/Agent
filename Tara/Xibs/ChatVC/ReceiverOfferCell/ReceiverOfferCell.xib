@@ -172,6 +172,7 @@
             <connections>
                 <outlet property="acceptBtn" destination="5Uw-5x-Mf2" id="tW4-fY-bJ3"/>
                 <outlet property="msgContainerView" destination="7T7-rS-tQb" id="tF2-GC-pdO"/>
+                <outlet property="offerPriceLbl" destination="VAM-cU-SdJ" id="Ynp-5N-0gW"/>
                 <outlet property="priceLbl" destination="tDl-6Z-DeP" id="1E2-WO-fLG"/>
                 <outlet property="rejectBtn" destination="Sur-6E-MdE" id="ss3-Fe-APW"/>
                 <outlet property="userImgView" destination="0Bx-N1-lmh" id="FSz-t5-cTI"/>

@@ -83,6 +83,7 @@ extension UserChatVC {
     }
     
     private func textFieldSetUp(){
+        self.titleLbl.text = LocalizedString.chat.localized
         buttonView.isHidden = false
         buttonView.addTarget(self, action: #selector(clear(_:)), for: .touchUpInside)
         buttonView.imageEdgeInsets = UIEdgeInsets(top: 0, left: -5, bottom: 0, right: 5)

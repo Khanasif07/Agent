@@ -27,6 +27,8 @@ class ProfileGuestTableCell: UITableViewCell {
         frontView.backgroundColor = AppColors.fontTertiaryColor.withAlphaComponent(0.5)
         backView.backgroundColor = AppColors.fontTertiaryColor.withAlphaComponent(0.5)
         welcomeToTaraLbl.textColor = AppColors.fontTertiaryColor.withAlphaComponent(0.5)
+        
+        welcomeToTaraLbl.text = LocalizedString.welcomeToTara.localized
         createNewAccountBtn.setTitleColor(AppColors.fontSecondaryColor, for: .normal)
         welcomeToTaraLbl.font = AppFonts.NunitoSansBold.withSize(15.0)
 

@@ -511,6 +511,17 @@ enum LocalizedString : String {
     case suitableFor
     case please_select_vehicle_width
     case please_select_vehicle_profile
+    case please_fill_the_options_to_place_bid
+    case unitPrice
+    case unBlockUser
+    case offerPrice
+    case paymentRequest
+    case photo_Attachment
+    case audio_Attachment
+    case editBid
+    case paybleAmt
+    case previousService
+    case request_Rejected
 }
 
 

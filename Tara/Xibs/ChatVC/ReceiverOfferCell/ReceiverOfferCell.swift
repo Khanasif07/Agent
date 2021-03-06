@@ -10,6 +10,7 @@ import UIKit
 
 class ReceiverOfferCell: UITableViewCell {
     
+    @IBOutlet weak var offerPriceLbl: UILabel!
     @IBOutlet weak var userNameLbl: UILabel!
     @IBOutlet weak var priceLbl: UILabel!
     @IBOutlet weak var userImgView: UIImageView!
@@ -22,6 +23,9 @@ class ReceiverOfferCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        acceptBtn.setTitle(LocalizedString.accept.localized, for: .normal)
+        rejectBtn.setTitle(LocalizedString.reject.localized, for: .normal)
+        offerPriceLbl.text = LocalizedString.offerPrice.localized
     }
     
     override func layoutSubviews() {

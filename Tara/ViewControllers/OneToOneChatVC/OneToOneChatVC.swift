@@ -71,7 +71,7 @@ class OneToOneChatVC: BaseVC {
     //for block case
     var isBlockedByMe = false {
         didSet {
-            unblockBtn.setTitle(isBlockedByMe ? "Unblock User" : "Block User", for: .normal)
+            unblockBtn.setTitle(isBlockedByMe ? LocalizedString.unBlockUser.localized : LocalizedString.blockUser.localized, for: .normal)
         }
     }
     var amIBlocked = false
@@ -126,6 +126,7 @@ class OneToOneChatVC: BaseVC {
     @IBOutlet weak var garageImgView: UIImageView!
     @IBOutlet weak var garageTopView: UIView!
     
+    @IBOutlet weak var requestRejectedLbl: UILabel!
     
     //MARK: VIEW LIFE CYCLE
     //=====================
@@ -332,8 +333,14 @@ extension OneToOneChatVC {
         } else {
             self.chatUserType = .user
         }
+        editBidBtn.setTitle(LocalizedString.editBid.localized, for: .normal)
         editBidBtn.isHidden = !(self.chatUserType == .garage)
         editBtn.isHidden = isSupportChat
+        garageRequestNoLbl.text = LocalizedString.request_No.localized
+        garagePayableAmountLbl.text = LocalizedString.paybleAmt.localized
+        payableAmtLbl.text = LocalizedString.paybleAmt.localized
+        previousServiceLbl.text = LocalizedString.previousService.localized + ":"
+        requestRejectedLbl.text = LocalizedString.request_Rejected.localized
     }
     
     private func addTapGestureToAudioBtn() {
@@ -1538,7 +1545,7 @@ extension OneToOneChatVC{
     
     private func createMediaMessage(url: String, imageURL: String = "", type: String) {
         FirestoreController.createMessageNode(roomId: self.roomId, messageText: "", messageTime: FieldValue.serverTimestamp(), messageId: self.getMessageId(), messageType: type, messageStatus: 1, senderId: self.currentUserId, receiverId: self.inboxModel.userId, mediaUrl: url, blocked: amIBlocked, thumbNailURL: imageURL,messageDuration: self.chatViewModel.totalTime, price: 0)
-        let attachmentText = type == MessageType.image.rawValue ? "Photo Attachment" : "Audio Attachment"
+        let attachmentText = type == MessageType.image.rawValue ? LocalizedString.photo_Attachment.localized : LocalizedString.audio_Attachment.localized
         FirestoreController.createLastMessageNode(roomId: self.roomId, messageText: attachmentText, messageTime: FieldValue.serverTimestamp(), messageId: self.getMessageId(), messageType: type, messageStatus: 1, senderId: self.currentUserId, receiverId: self.inboxModel.userId, mediaUrl: url, blocked: amIBlocked, thumbNailURL: imageURL,messageDuration: self.chatViewModel.totalTime,price: 0, amIBlocked: amIBlocked)
     }
     
@@ -2036,7 +2043,7 @@ extension OneToOneChatVC : OneToOneChatViewModelDelegate{
             tableViewTopConstraint.constant = chatViewModel.chatData.id.isEmpty ? 0.0 : 72.0
             userRequestView.isHidden = false
             userNameLbl.text = chatViewModel.chatData.userName
-            numberOfServiceLbl.text = chatViewModel.chatData.totalRequests.description + " Services"
+            numberOfServiceLbl.text = chatViewModel.chatData.totalRequests.description + " " + LocalizedString.service.localized
             userImgView.setImage_kf(imageString: chatViewModel.chatData.userImage, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
             var str: NSMutableAttributedString = NSMutableAttributedString()
             str = NSMutableAttributedString(string: chatViewModel.chatData.totalAmount?.description ?? "\(0)", attributes: [

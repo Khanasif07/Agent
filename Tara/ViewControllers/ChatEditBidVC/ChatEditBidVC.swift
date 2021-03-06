@@ -25,6 +25,7 @@ class ChatEditBidVC: BaseVC {
         case onlyBrands
     }
     
+    @IBOutlet weak var acceptBtn: AppButton!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet var headerView: UIView!
     @IBOutlet weak var mainTableView: UITableView!
@@ -380,6 +381,7 @@ extension ChatEditBidVC :GarageServiceRequestVMDelegate {
     func updateDataSource() {
         var apiHit : Bool = true
         let serviceType = viewModel.garageRequestDetailArr?.requestType
+        acceptBtn.setTitle(LocalizedString.accept.localized, for: .normal)
         titleLbl.text = serviceType == .tyres ? LocalizedString.tyreServiceRequest.localized : serviceType == .battery ? LocalizedString.batteryServiceRequest.localized :  LocalizedString.oilServiceRequest.localized
         if !(viewModel.garageRequestDetailArr?.preferredCountries?.isEmpty ?? true) {
             apiHit = false
