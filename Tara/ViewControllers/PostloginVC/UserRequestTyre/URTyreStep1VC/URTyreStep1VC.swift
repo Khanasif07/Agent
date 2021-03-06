@@ -18,11 +18,14 @@ class URTyreStep1VC: BaseVC {
     @IBOutlet weak var nextBtn: AppButton!
     @IBOutlet weak var chooseSizeLbl: UILabel!
     @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet weak var numberOfTyreLbl: UILabel!
+    @IBOutlet weak var notSureAboutSizeLbl: UILabel!
+    @IBOutlet weak var chatWithExpertBtn: UIButton!
     @IBOutlet weak var rimSizeTxtField: SkyFloatingLabelTextField!
     @IBOutlet weak var profileTxtField: SkyFloatingLabelTextField!
     @IBOutlet weak var widthTxtField: SkyFloatingLabelTextField!
     @IBOutlet weak var numberTyreTxtField: SkyFloatingLabelTextField!
-    
+
     
     // MARK: - Variables
     //===========================
@@ -66,7 +69,7 @@ class URTyreStep1VC: BaseVC {
     }
     
     @IBAction func chatWithExpert(_ sender: UIButton) {
-        showAlert(msg: "Under Development")
+        showAlert(msg: LocalizedString.underDevelopment.localized)
     }
     
     @IBAction func findRightAction(_ sender: UIButton) {
@@ -89,13 +92,30 @@ extension URTyreStep1VC {
         self.pickerViewSetUp()
         self.setUpTextField()
         self.textFieldSetUp()
+        self.setupText()
+    }
+    
+    public func setupText(){
+        titleLbl.text = LocalizedString.whatTyreOfTyreAreYouLookingFor.localized
+        chooseSizeLbl.text = LocalizedString.chooseTheSizeOfTyre.localized
+        numberOfTyreLbl.text = LocalizedString.numberOfTyre.localized
+        notSureAboutSizeLbl.text = LocalizedString.notSureAboutTheSize.localized
+        
+        findRightBtn.setTitle(LocalizedString.searchWithCar.localized, for: .normal)
+        nextBtn.setTitle(LocalizedString.next.localized, for: .normal)
+        chatWithExpertBtn.setTitle(LocalizedString.chatWithExpert.localized, for: .normal)
     }
     
     public func setUpTextField(){
         
-        self.widthTxtField.title = LocalizedString.width.localized
-        self.profileTxtField.title = LocalizedString.profile.localized
-        self.rimSizeTxtField.title = LocalizedString.rimSize.localized
+//        self.widthTxtField.title = LocalizedString.width.localized
+//        self.profileTxtField.title = LocalizedString.profile.localized
+//        self.rimSizeTxtField.title = LocalizedString.rimSize.localized
+        
+        self.widthTxtField.placeholder = LocalizedString.width.localized
+        self.profileTxtField.placeholder = LocalizedString.profile.localized
+        self.rimSizeTxtField.placeholder = LocalizedString.rimSize.localized
+        
         self.widthTxtField.selectedTitle = LocalizedString.width.localized
         self.profileTxtField.selectedTitle = LocalizedString.profile.localized
         self.rimSizeTxtField.selectedTitle = LocalizedString.rimSize.localized
