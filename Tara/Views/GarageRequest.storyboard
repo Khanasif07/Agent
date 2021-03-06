@@ -526,11 +526,11 @@ start Servicing</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UG1-Hv-3dW">
-                                        <rect key="frame" x="353" y="17" width="46" height="28"/>
+                                        <rect key="frame" x="352" y="17" width="47" height="28"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="46" id="SWi-Id-u6y"/>
                                             <constraint firstAttribute="height" constant="28" id="e3Q-ps-OTb"/>
                                         </constraints>
+                                        <inset key="contentEdgeInsets" minX="4" minY="0.0" maxX="4" maxY="0.0"/>
                                         <state key="normal" title="Reset">
                                             <color key="titleColor" name="appRedColor"/>
                                         </state>
@@ -709,6 +709,7 @@ start Servicing</string>
                         <outlet property="canceBtn" destination="IRt-Dr-vYe" id="3Yx-Dw-fcQ"/>
                         <outlet property="filterLbl" destination="wyd-cL-Z1G" id="Mum-kB-mWe"/>
                         <outlet property="mainTableView" destination="eeo-FW-2O3" id="FDg-uc-tyl"/>
+                        <outlet property="resetBtn" destination="UG1-Hv-3dW" id="LNv-PS-1td"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CFq-ZE-XQd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -910,10 +911,9 @@ start Servicing</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OdN-KF-wBC">
-                                        <rect key="frame" x="353" y="17" width="46" height="28"/>
+                                        <rect key="frame" x="360" y="17" width="39" height="28"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="28" id="KFo-SV-j9Z"/>
-                                            <constraint firstAttribute="width" constant="46" id="ecO-aS-9Cv"/>
                                         </constraints>
                                         <state key="normal" title="Reset">
                                             <color key="titleColor" name="appRedColor"/>
@@ -965,7 +965,6 @@ start Servicing</string>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="applyBtnAction:" destination="Rvf-KP-WP7" eventType="touchUpInside" id="ZAp-r8-blS"/>
-                                    <action selector="saveBtnBtnAction:" destination="K8Q-hi-fID" eventType="touchUpInside" id="4TO-r4-utv"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -986,7 +985,9 @@ start Servicing</string>
                     </view>
                     <connections>
                         <outlet property="applyFilterBtn" destination="U0M-3J-9ag" id="Ppr-JF-LRV"/>
+                        <outlet property="cancelBtn" destination="kwa-aF-mVq" id="kXr-wV-oie"/>
                         <outlet property="mainTableView" destination="k2h-TK-8e1" id="deb-nx-rlw"/>
+                        <outlet property="resetBtn" destination="OdN-KF-wBC" id="iF0-PF-MOJ"/>
                         <outlet property="titleLbl" destination="7e4-c6-Rrn" id="g3S-0z-ivr"/>
                     </connections>
                 </viewController>
@@ -1364,9 +1365,8 @@ start Servicing</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jTa-tp-Wzi">
-                                        <rect key="frame" x="353" y="17" width="46" height="28"/>
+                                        <rect key="frame" x="360" y="17" width="39" height="28"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="46" id="0AP-aa-acz"/>
                                             <constraint firstAttribute="height" constant="28" id="gmT-Qc-alT"/>
                                         </constraints>
                                         <state key="normal" title="Reset">
@@ -1418,9 +1418,7 @@ start Servicing</string>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="applyBtnAction:" destination="Rvf-KP-WP7" eventType="touchUpInside" id="2dG-07-YoW"/>
                                     <action selector="applyBtnAction:" destination="gX5-Kd-C6r" eventType="touchUpInside" id="zeL-zY-RXf"/>
-                                    <action selector="saveBtnBtnAction:" destination="K8Q-hi-fID" eventType="touchUpInside" id="A2F-99-8bD"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1444,6 +1442,7 @@ start Servicing</string>
                         <outlet property="canceBtn" destination="aJC-ji-Sgo" id="UdO-Ce-eML"/>
                         <outlet property="filterLbl" destination="ZoO-1N-HAy" id="cL1-7I-4l5"/>
                         <outlet property="mainTableView" destination="hpr-Li-VpX" id="hq3-9D-LBt"/>
+                        <outlet property="resetBtn" destination="jTa-tp-Wzi" id="Wbz-xX-pwW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="86g-nA-d4E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1825,7 +1824,6 @@ start Servicing</string>
                                                     <color key="titleColor" name="appRedColor"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="cancelBtnAction:" destination="Gko-LG-hth" eventType="touchUpInside" id="2JB-UZ-XyS"/>
                                                     <action selector="doneBtnAction:" destination="coh-WY-qHM" eventType="touchUpInside" id="mCz-h3-khV"/>
                                                 </connections>
                                             </button>
@@ -1877,6 +1875,7 @@ start Servicing</string>
                         <viewLayoutGuide key="safeArea" id="UKs-Lz-kmz"/>
                     </view>
                     <connections>
+                        <outlet property="doneBtn" destination="9o7-Js-aBG" id="Lhv-Qm-HnN"/>
                         <outlet property="pickerView" destination="1e6-hX-aJW" id="gy8-ID-lYV"/>
                         <outlet property="titleLbl" destination="9r9-SE-78v" id="lXw-ET-AZQ"/>
                     </connections>

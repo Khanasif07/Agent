@@ -16,7 +16,8 @@ class MyServiceFilterVC: BaseVC {
     @IBOutlet weak var canceBtn: UIButton!
     @IBOutlet weak var applyBtn: UIButton!
     @IBOutlet weak var mainTableView: UITableView!
-    
+    @IBOutlet weak var resetBtn: UIButton!
+
     // MARK: - Variables
     //===================
     let viewModel = SRFliterVM()
@@ -103,12 +104,13 @@ extension MyServiceFilterVC {
     }
     
     private func setupTextAndFont() {
-        
+        resetBtn.setTitle(LocalizedString.reset.localized, for: .normal)
         filterLbl.text = LocalizedString.filters.localized
         canceBtn.setTitle(LocalizedString.cancel.localized, for: .normal)
         applyBtn.setTitle(LocalizedString.applyFilters.localized, for: .normal)
         
         filterLbl.font = AppFonts.NunitoSansBold.withSize(17.0)
+        resetBtn.titleLabel?.font = AppFonts.NunitoSansSemiBold.withSize(17.0)
         canceBtn.titleLabel?.font = AppFonts.NunitoSansSemiBold.withSize(17.0)
         applyBtn.titleLabel?.font = AppFonts.NunitoSansSemiBold.withSize(17.0)
         

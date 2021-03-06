@@ -520,7 +520,7 @@ enum LocalizedString : String {
     case productImage
     case address
     case rim
-    case vechicleYear
+    case vehicleYear
     case suitableFor
     case please_select_vehicle_width
     case please_select_vehicle_profile
@@ -535,6 +535,26 @@ enum LocalizedString : String {
     case paybleAmt
     case previousService
     case request_Rejected
+    case at
+    case garage
+    case pleaseShowThisCodeToTheGarageToStartYourService
+    case reset
+    case serviceNo
+    case amountRefunded
+    case carServiceInProgress
+    case carServiceCompleted
+    case carReadyToBeTaken
+    case review
+    case noRating
+    case notSatisfying
+    case threatsOfVoilance
+    case defamation
+    case obscenity
+    case inappropriateReview
+    case reasonOfReport
+    case goToChat
+    case sendMessage
+    case subject
 }
 
 

@@ -72,7 +72,7 @@ extension ServiceStatusVC {
     private func setupTextAndFont(){
         self.serviceNo = self.viewModel.bookedRequestDetail?.requestID ?? ""
         titleLbl.font = AppFonts.NunitoSansBold.withSize(17.0)
-        titleLbl.text = "Service No. " + serviceNo
+        titleLbl.text = LocalizedString.serviceNo.localized + ". " + serviceNo
     }
     
     @objc func paymentSucessfullyDone(){

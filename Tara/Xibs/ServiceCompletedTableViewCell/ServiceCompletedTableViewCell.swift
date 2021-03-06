@@ -34,26 +34,26 @@ class ServiceCompletedTableViewCell: UITableViewCell {
     }
     
     func bindData(_ model: GarageRequestModel, screenType: ServiceCompletedVC.ScreenType) {
-        let type = model.requestType == .tyres ? "Tyre" : model.requestType?.rawValue
+        let type = model.requestType == .tyres ? LocalizedString.tyre.localized : model.requestType?.rawValue
         serviceTypeLbl.text = (type ?? "") + LocalizedString.service.localized
         if screenType == .serviceComplete {
             userImgView.setImage_kf(imageString: model.userImage ?? "", placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
             userImgView.contentMode = .scaleToFill
             userNameLbl.text = model.userName
-            amountValueLbl.text = "\(model.amountPaid ?? 0.0)" + " SAR"
+            amountValueLbl.text = "\(model.amountPaid ?? 0.0)" + " " + LocalizedString.sar.localized
             userImgView.round()
-            ratingLbl.text = (model.isRated ?? false) ? (model.rating?.description ?? "") : "No Rating"
+            ratingLbl.text = (model.isRated ?? false) ? (model.rating?.description ?? "") : LocalizedString.noRating.localized
           
         }else {
             userImgView.contentMode = .scaleToFill
             userImgView.setImage_kf(imageString: model.garageLogo ?? "", placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
             userNameLbl.text = model.garageName
-            amountValueLbl.text = "\(model.amountPaid ?? 0.0)" + " SAR"
+            amountValueLbl.text = "\(model.amountPaid ?? 0.0)" + " " + LocalizedString.sar.localized
             if let rating = model.rating {
                 ratingLbl.text = (rating.description) //+ "/5"
 
             }else {
-                ratingLbl.text = "No Rating"
+                ratingLbl.text = LocalizedString.noRating.localized
             }
         }
         let date = (model.serviceCompletedOn)?.breakCompletDate(outPutFormat: Date.DateFormat.ddMMyyyy.rawValue, inputFormat: Date.DateFormat.yyyyMMddTHHmmsssssz.rawValue)

@@ -35,7 +35,7 @@ class DistanceSliderCollViewCell: UICollectionViewCell {
         rangeSlider.selectedMaximum = 5
         rangeSlider.selectedHandleDiameterMultiplier = 1
         let formatter = NumberFormatter()
-        formatter.positiveSuffix = "Miles"
+        formatter.positiveSuffix = LocalizedString.miles.localized
         rangeSlider.numberFormatterOverride = formatter
     }
 }

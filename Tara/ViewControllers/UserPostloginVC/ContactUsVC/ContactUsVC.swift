@@ -83,6 +83,8 @@ extension ContactUsVC {
     }
     
     private func setupTextAndFont(){
+        subjectTextField.placeholder = LocalizedString.subject.localized
+        sendMessageBtn.setTitle(LocalizedString.sendMessage.localized, for: .normal)
         titleLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
         titleLbl.text = LocalizedString.contactUs.localized
         descLbl.text = LocalizedString.leave_us_a_message_desc.localized

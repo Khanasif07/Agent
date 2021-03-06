@@ -40,26 +40,26 @@ class ServiceDetailTableViewCell: UITableViewCell {
         let type = model.requestType ?? .battery
         switch type {
         case .tyres:
-            tyreSizeValueLbl.text = "Width \(model.width ?? 0), " + "Rim \(model.rimSize ?? 0), " + "Profile \(model.profile ?? 0)"
-            tyreSizeLbl.text = "Tyre Size:"
+            tyreSizeValueLbl.text = "\(LocalizedString.width.localized) \(model.width ?? 0), " + "\(LocalizedString.rim.localized) \(model.rimSize ?? 0), " + "\(LocalizedString.profile.localized) \(model.profile ?? 0)"
+            tyreSizeLbl.text = LocalizedString.tyreSize.localized + ":"
             
         case .oil:
-            tyreSizeValueLbl.text = "Vechicle Make \(model.make ?? ""), " + "Vechicle Model \(model.model ?? ""), " + "Product Year \(model.year ?? 0)"
-            tyreSizeLbl.text = "Oil:"
+            tyreSizeValueLbl.text = "\(LocalizedString.vehicleMake.localized) \(model.make ?? ""), " + "\(LocalizedString.vehicleModel.localized) \(model.model ?? ""), " + "\(LocalizedString.productYear.localized) \(model.year ?? 0)"
+            tyreSizeLbl.text = LocalizedString.oil.localized + ":"
             
         case .battery:
-            tyreSizeValueLbl.text = "Vechicle Make \(model.make ?? ""), " + "Vechicle Model \(model.model ?? ""), " + "Vechicle Year \(model.year ?? 0)"
-            tyreSizeLbl.text = "Battery:"
+            tyreSizeValueLbl.text = "\(LocalizedString.vehicleMake.localized) \(model.make ?? ""), " + "\(LocalizedString.vehicleModel.localized) \(model.model ?? ""), " + "\(LocalizedString.vehicleYear.localized) \(model.year ?? 0)"
+            tyreSizeLbl.text = LocalizedString.battery.localized + ":"
       
         }
 
         if !(model.preferredBrands?.isEmpty ?? true) {
-            preferBrandLbl.text = "Preferred Brand:"
+            preferBrandLbl.text = LocalizedString.preferredBrand.localized + ":"
             preferBrandValueLbl.text = model.preferredBrands?.map{($0).name}.joined(separator: ", ")
         }
         
         if !(model.preferredCountries?.isEmpty ?? true) {
-            preferBrandLbl.text = "Countries:"
+            preferBrandLbl.text = LocalizedString.countries.localized + ":"
             preferBrandValueLbl.text = model.preferredCountries?.map{($0).name}.joined(separator: ", ")
         }
     }

@@ -50,6 +50,7 @@ class ReViewListingVC: BaseVC {
 extension ReViewListingVC {
     
     private func initialSetup() {
+        setupTextAndFont()
         viewModel.delegate = self
         mainTableView.delegate = self
         mainTableView.dataSource = self
@@ -64,7 +65,7 @@ extension ReViewListingVC {
 
     private func setupTextAndFont(){
         titleLbl.font = AppFonts.NunitoSansBold.withSize(17.0)
-        titleLbl.text = LocalizedString.rateService.localized
+        titleLbl.text = LocalizedString.review.localized
     }
     
     private func hitApi(loader: Bool = false) {

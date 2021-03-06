@@ -17,6 +17,7 @@ class SRFilterVC: BaseVC {
     @IBOutlet weak var canceBtn: UIButton!
     @IBOutlet weak var applyBtn: UIButton!
     @IBOutlet weak var mainTableView: UITableView!
+    @IBOutlet weak var resetBtn: UIButton!
 
     // MARK: - Variables
     //===================
@@ -100,7 +101,7 @@ extension SRFilterVC {
     }
     
     private func setupTextAndFont() {
-        
+        resetBtn.setTitle(LocalizedString.reset.localized, for: .normal)
         filterLbl.text = LocalizedString.filters.localized
         canceBtn.setTitle(LocalizedString.cancel.localized, for: .normal)
         applyBtn.setTitle(LocalizedString.applyFilters.localized, for: .normal)
