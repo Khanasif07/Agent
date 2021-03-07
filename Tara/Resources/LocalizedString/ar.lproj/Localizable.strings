@@ -448,13 +448,13 @@
 
 //Updated
 "please_Enter_Your_Mobile_Number_with_Country_Code" =  "Please Enter Your Mobile Number with Country Code";
-"whatTyreOfTyreAreYouLookingFor" = "What type of a tyre are you\nlooking for?";
+"whatTyreOfTyreAreYouLookingFor" = "What type of a tire are you\nlooking for?";
 "searchWithCar" = "Search with Car";
 "chooseTheSizeOfTyre" = "Choose the size of tire";
 "notSureAboutTheSize" = "Not sure about the size?";
 "chatWithExpert" = "Chat with Expert";
 "createNewAccount" = "Create New Account";
-"pleaseSetNewPassword" = "Please Set New Password";
+"pleaseSetNewPassword" = "Please Set a New Password";
 "resetPassword" = "Reset Password";
 "selectCountryCode" = "Select Country Code";
 "oneTimePassword" = "One Time Password";
@@ -497,7 +497,7 @@
 "photo_Attachment" = "Photo Attachment";
 "audio_Attachment" = "Audio Attachment";
 "editBid" = "Edit Bid";
-"paybleAmt" = "Payble Amt";
+"paybleAmt" = "Payable Amt";
 "previousService" = "Previous Service";
 "request_Rejected" = "Request Rejected";
 "at" = "at";
