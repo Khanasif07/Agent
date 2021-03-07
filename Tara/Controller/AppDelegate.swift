@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , MessagingDelegate , UNUs
         fatalError("invalid access of AppDelegate")
     }
     var currentLocation : CLLocation?
-    
+  
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         sleep(2)
         self.setUpKeyboardSetup()
