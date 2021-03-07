@@ -16,6 +16,8 @@ class OfferFilterVC: BaseVC {
     @IBOutlet weak var applyFilterBtn: AppButton!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var mainTableView: UITableView!
+    @IBOutlet weak var resetBtn: UIButton!
+    @IBOutlet weak var cancelBtn: UIButton!
 
     // MARK: - Variables
     //===========================
@@ -95,6 +97,10 @@ extension OfferFilterVC {
     private func setupTextAndFont(){
         titleLbl.font = AppFonts.NunitoSansBold.withSize(17.0)
         titleLbl.text = LocalizedString.filters.localized
+        applyFilterBtn.setTitle(LocalizedString.applyFilters.localized, for: .normal)
+        cancelBtn.setTitle(LocalizedString.cancel.localized, for: .normal)
+        resetBtn.setTitle(LocalizedString.reset.localized, for: .normal)
+
     }
     
     func updateDataSouce(_ filterValue:String , indexPath : IndexPath) {

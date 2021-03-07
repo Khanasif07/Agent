@@ -34,11 +34,11 @@ class PaymentListingCell: UITableViewCell {
     }
     
     func bindData(_ model: GarageRequestModel, screenType: ServiceCompletedVC.ScreenType) {
-        let type = model.requestType == .tyres ? "Tyre" : model.requestType?.rawValue
+        let type = model.requestType == .tyres ? LocalizedString.tyre.localized : model.requestType?.rawValue
         serviceTypeLbl.text = (type ?? "") + LocalizedString.service.localized
         requestIdLbl.text = "#" + "\(model.requestID ?? "")"
         typeOfPaymentLbl.text = "\(model.paymentMode ?? "")"
-        amountValueLbl.text =  "\(model.amount ?? 0.0)" + " SAR"
+        amountValueLbl.text =  "\(model.amount ?? 0.0)" + " " + LocalizedString.sar.localized
         let date = (model.createdAt)?.breakCompletDate(outPutFormat: Date.DateFormat.ddMMyyyy.rawValue, inputFormat: Date.DateFormat.yyyyMMddTHHmmsssssz.rawValue)
         timeLbl.text = date
         

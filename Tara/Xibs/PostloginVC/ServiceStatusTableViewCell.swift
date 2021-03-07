@@ -18,11 +18,14 @@ class ServiceStatusTableViewCell: UITableViewCell {
     @IBOutlet weak var reviewLbl: UILabel!
     @IBOutlet weak var noRatingContainerView: UIView!
     @IBOutlet weak var ratingLbl: UILabel!
+   
     @IBOutlet weak var carReceivedLbl: UILabel!
     @IBOutlet weak var progressLbl: UILabel!
     @IBOutlet weak var completeLbl: UILabel!
     @IBOutlet weak var takenLbl: UILabel!
-    
+    @IBOutlet weak var amtRefundLbl: UILabel!
+    @IBOutlet weak var paymentStatusLbl: UILabel!
+
     @IBOutlet weak var carReceivedStepBtn: UIButton!
     @IBOutlet weak var progressStepBtn: UIButton!
     @IBOutlet weak var completeStepBtn: UIButton!
@@ -34,7 +37,6 @@ class ServiceStatusTableViewCell: UITableViewCell {
     @IBOutlet weak var takenUpdateBtn: AppButton!
     
     @IBOutlet weak var refundedAmountLbl: UILabel!
-    @IBOutlet weak var paymentStatusLbl: UILabel!
     @IBOutlet weak var amountPaidlbl: UILabel!
     @IBOutlet weak var paidLbl: UILabel!
     @IBOutlet weak var amountLbl: UILabel!
@@ -63,6 +65,7 @@ class ServiceStatusTableViewCell: UITableViewCell {
     }
 
     private func setupFontAndText() {
+        
         serviceStatusLbl.font = AppFonts.NunitoSansSemiBold.withSize(13.0)
         serviceStatusLbl.text = LocalizedString.serviceStatus.localized
         
@@ -72,10 +75,19 @@ class ServiceStatusTableViewCell: UITableViewCell {
         amountPaidlbl.font = AppFonts.NunitoSansBold.withSize(13.0)
         amountPaidlbl.text = LocalizedString.amountPaid.localized
         
+        amtRefundLbl.font = AppFonts.NunitoSansBold.withSize(13.0)
+        amtRefundLbl.text = LocalizedString.amountRefunded.localized
+
+        
         carReceivedLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
         progressLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
         completeLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
         takenLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
+      
+        carReceivedLbl.text = LocalizedString.carReceived.localized
+        progressLbl.text    = LocalizedString.carServiceInProgress.localized
+        completeLbl.text    = LocalizedString.carServiceCompleted.localized
+        takenLbl.text       = LocalizedString.carReadyToBeTaken.localized
         
         [carReceivedUpdateBtn,progressUpdateBtn,completeUpdateBtn,takenUpdateBtn].forEach { (btn) in
             btn?.titleLabel?.font = AppFonts.NunitoSansSemiBold.withSize(14.0)
@@ -277,7 +289,7 @@ class ServiceStatusTableViewCell: UITableViewCell {
         if let paymentStatus = model.paymentStatus{
             self.paidLbl.textColor = (paymentStatus.textColor)
             self.paidLbl.text = (paymentStatus == .paid ) ? LocalizedString.paid_Caps.localized : paymentStatus.text
-            self.amountLbl.text = "\(model.amountPaid ?? 0.0)" + " SAR"
+            self.amountLbl.text = "\(model.amountPaid ?? 0.0)" + " " + LocalizedString.sar.localized
             self.refundedPaymentView.isHidden = !(paymentStatus == .refunded)
         }
        

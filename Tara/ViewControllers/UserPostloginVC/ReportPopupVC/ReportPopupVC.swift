@@ -27,10 +27,17 @@ class ReportPopupVC: BaseVC {
     //===========================
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var pickerView: UIPickerView!
-    
+    @IBOutlet weak var doneBtn: UIButton!
+
     // MARK: - Variables
     //=================
-    var dataArr : [String] = ["Not Satisfying", "Threats of Voilance", "Defamation", "Obscenity", "Inappropriate Review"]
+      
+    var dataArr : [String] = [LocalizedString.notSatisfying.localized,
+                              LocalizedString.threatsOfVoilance.localized,
+                              LocalizedString.defamation.localized,
+                              LocalizedString.obscenity.localized,
+                              LocalizedString.inappropriateReview.localized]
+    
     var pickerSelectedValue : String = ""
     var delegate :PickerDataDelegate?
     
@@ -73,9 +80,14 @@ extension ReportPopupVC :UIPickerViewDelegate, UIPickerViewDataSource{
     func initialSetup() {
         pickerView.delegate = self
         pickerView.dataSource = self
-        
+        setupText()
     }
     
+    func setupText() {
+        doneBtn.setTitle(LocalizedString.done.localized, for: .normal)
+        titleLbl.text = LocalizedString.reasonOfReport.localized
+      
+    }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1

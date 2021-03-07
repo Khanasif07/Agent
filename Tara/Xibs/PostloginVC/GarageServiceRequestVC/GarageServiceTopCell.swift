@@ -97,11 +97,11 @@ class GarageServiceTopCell: UITableViewCell {
             tyreSizeLbl.text = LocalizedString.tyreSize.localized
             
         case .oil:
-            tyreSizeValueLbl.text = "\(LocalizedString.vechicleMake.localized) \(model.make ?? ""), " + "\(LocalizedString.vechicleModel.localized) \(model.model ?? ""), " + "\(LocalizedString.productYear.localized) \(model.year ?? 0)"
+            tyreSizeValueLbl.text = "\(LocalizedString.vehicleMake.localized) \(model.make ?? ""), " + "\(LocalizedString.vehicleModel.localized) \(model.model ?? ""), " + "\(LocalizedString.productYear.localized) \(model.year ?? 0)"
             tyreSizeLbl.text = LocalizedString.oil.localized + ":"
             
         case .battery:
-            tyreSizeValueLbl.text = "\(LocalizedString.vechicleMake.localized) \(model.make ?? ""), " + "\(LocalizedString.vechicleModel.localized) \(model.model ?? ""), " + "\(LocalizedString.vechicleYear.localized) \(model.year ?? 0)"
+            tyreSizeValueLbl.text = "\(LocalizedString.vehicleMake.localized) \(model.make ?? ""), " + "\(LocalizedString.vehicleModel.localized) \(model.model ?? ""), " + "\(LocalizedString.vehicleYear.localized) \(model.year ?? 0)"
             tyreSizeLbl.text = LocalizedString.battery.localized + ":"
         }
     }

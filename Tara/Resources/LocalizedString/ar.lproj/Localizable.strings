@@ -244,7 +244,7 @@
 "requestAcceptedOn" = "Request Accepted On";
 "paybleAmount" = "Payble Amount";
 "serviceDetails" = "Service Details";
-"tyreSize" = "Tyre Size:";
+"tyreSize" = "Tyre Size";
 "preferredBrand" = "Preferred Brand:";
 "startService" = "Start Service";
 "chat" = "Chat";
@@ -264,7 +264,7 @@
 "byServiceType" = "By Service Type";
 "byStatus" = "By Status";
 "PLEASEUNBLOCKUSERTOSENDMESSAGES" = "PLEASE UNBLOCK USER TO SEND MESSAGES";
-"service" = " Service";
+"service" = "Service";
 "tyreServices" = "Tyre Services";
 "oilSevices" = "Oil Sevices";
 "batteryServices" = "Battery Services";
@@ -430,9 +430,21 @@
 "paymentDeclined" = "Payment Declined";
 "pending" = "Payment Pending";
 "paid" = "Payment Paid";
+
 "paid_Caps" = "PAID";
 "refunded" = "Payment Refunded";
 "failed" = "Payment Failed";
+"delete_Message" = "Delete Message";
+"do_you_want_to_delete_message" = "Do you want to delete message?";
+"offerSmall" = "offer";
+"paymentSmall" = "payment";
+"successful" = "Successful";
+"password_has_been_reset_successfully" = "Password has been reset successfully";
+"otp_Verified" = "OTP Verified";
+"you_have_successfully_verified_your_mobile_no" = "You have successfully verified your mobile no.";
+"are_you_sure_you_want_to_logout" = "Are you sure you want to logout?";
+
+
 
 //Updated
 "please_Enter_Your_Mobile_Number_with_Country_Code" =  "Please Enter Your Mobile Number with Country Code";
@@ -450,7 +462,6 @@
 "resendOtp" = "Resend Otp";
 "welcomeToTara" = "WELCOME TO";
 "login_with_Social_Accounts" = "Login with Social Accounts";
-"are_you_sure_you_want_to_logout" = "Are you sure you want to logout?";
 "log_in" = "Log in";
 "addImages" = "Add Images";
 "addressAndLocation" = "Address & Location";
@@ -474,9 +485,7 @@
 "productImage" = "Product Image:";
 "address" = "Address";
 "rim" = "Rim";
-"vechicleMake" = "Vechicle Make";
-"vechicleModel" = "Vechicle Model";
-"vechicleYear" = "Vechicle Year";
+"vehicleYear" = "Vehicle Year";
 "suitableFor" = "Suitable For";
 "please_select_vehicle_width" = "Please select vehicle width";
 "please_select_vehicle_profile" = "Please select vehicle profile";
@@ -501,3 +510,23 @@
 "search_Country_by_name" = "Search Country by name";
 "ignore" = "Ignore";
 "view" = "View";
+"at" = "at";
+"garage" = "Garage";
+"pleaseShowThisCodeToTheGarageToStartYourService" = "Please show this code to the garage to start your service";
+"reset" = "Reset";
+"serviceNo" = "Service No";
+"amountRefunded" = "Amount Refunded";
+"carServiceInProgress" = "Car service in progress";
+"carServiceCompleted" = "Car service completed";
+"carReadyToBeTaken" = "Car ready to be taken";
+"review" = "Review";
+"noRating" = "No Rating";
+"notSatisfying" = "Not Satisfying";
+"threatsOfVoilance" = "Threats of Voilance";
+"defamation" = "Defamation";
+"obscenity" = "Obscenity";
+"inappropriateReview" = "Inappropriate Review";
+"reasonOfReport" = "Reason of Report";
+"goToChat" = "Go to chat";
+"sendMessage" = "Send Message";
+"subject" = "Subject";

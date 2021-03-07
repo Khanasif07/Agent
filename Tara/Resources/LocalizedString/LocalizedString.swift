@@ -453,10 +453,7 @@ enum LocalizedString : String {
     case password_has_been_reset_successfully
     case otp_Verified
     case you_have_successfully_verified_your_mobile_no
-    case verify_email
-    case a_verification_link_will_be_send_to_your_email_address
     case are_you_sure_you_want_to_logout
-    case to_continue_performing_this_action_please_complete_your_profile
    
     // MARK: - Updated Screen
     //==============================
@@ -520,9 +517,7 @@ enum LocalizedString : String {
     case productImage
     case address
     case rim
-    case vechicleMake
-    case vechicleModel
-    case vechicleYear
+    case vehicleYear
     case suitableFor
     case please_select_vehicle_width
     case please_select_vehicle_profile
@@ -547,6 +542,26 @@ enum LocalizedString : String {
     case search_Country_by_name
     case ignore
     case view
+    case at
+    case garage
+    case pleaseShowThisCodeToTheGarageToStartYourService
+    case reset
+    case serviceNo
+    case amountRefunded
+    case carServiceInProgress
+    case carServiceCompleted
+    case carReadyToBeTaken
+    case review
+    case noRating
+    case notSatisfying
+    case threatsOfVoilance
+    case defamation
+    case obscenity
+    case inappropriateReview
+    case reasonOfReport
+    case goToChat
+    case sendMessage
+    case subject
 }
 
 

@@ -43,7 +43,7 @@ class ReviewTableViewCell: UITableViewCell {
         garageSecondImgView.isHidden = true
 //        garageSecondImgView.setImage_kf(imageString: model.images?.last ?? "")
         imgStackView.isHidden = model.images?.isEmpty ?? false
-        serviceTypeLbl.text = "Service: " + (model.serviceType ?? "") + " Service"
+        serviceTypeLbl.text = LocalizedString.service.localized + ": " + (model.serviceType ?? "") + " " + LocalizedString.service.localized
       
         let date = (model.createdAt)?.breakCompletDate(outPutFormat: Date.DateFormat.profileFormat.rawValue, inputFormat: Date.DateFormat.yyyyMMddTHHmmsssssz.rawValue)
         dateLbl.text = date

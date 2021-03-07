@@ -112,6 +112,7 @@ extension OffersDetailVC {
     }
     
     private func setupTextAndFont(){
+        self.rejectBtn.setTitle(LocalizedString.reject.localized, for: .normal)
         btnsBottomConst.constant = -90
         titleLbl.text = LocalizedString.proposalDetails.localized
         titleLbl.font = AppFonts.NunitoSansBold.withSize(17.0)
