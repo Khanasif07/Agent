@@ -530,3 +530,5 @@
 "goToChat" = "Go to chat";
 "sendMessage" = "Send Message";
 "subject" = "Subject";
+"leave_us_a_message_desc" = "Leave us a message, we will get contact with you as soon as possible";
+"what_service_are_you_looking_for" = "What service are you looking for?";
