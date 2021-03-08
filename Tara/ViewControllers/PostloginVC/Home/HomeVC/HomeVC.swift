@@ -56,6 +56,10 @@ class HomeVC: BaseVC {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
         setNeedsStatusBarAppearanceUpdate()
+        
+        DispatchQueue.main.async {
+            self.helpBtn.isHidden = !isUserLoggedin
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -104,8 +108,10 @@ extension HomeVC {
     }
     
     public func isComeFromGuestUser(){
+
         if !TyreRequestModel.shared.quantity.isEmpty {
             if !UserModel.main.phoneNoAdded && isUserLoggedin {
+
                 self.showAlertWithAction(title: "", msg: LocalizedString.toContinuePerformingThisAction.localized, cancelTitle: LocalizedString.cancel.localized, actionTitle: LocalizedString.ok.localized, actioncompletion: {
                     AppRouter.goToEditProfileVC(vc: self, model: UserModel.main, isEditProfileFrom: .home)
                 })
