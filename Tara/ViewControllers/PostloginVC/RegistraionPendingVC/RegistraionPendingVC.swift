@@ -25,7 +25,6 @@ class RegistraionPendingVC : BaseVC {
     @IBOutlet weak var headingLbl: UILabel!
     @IBOutlet weak var subHeadingLbl: UILabel!
     @IBOutlet weak var completeProfileBtn: AppButton!
-    @IBOutlet weak var viewTutorailBtn: UIButton!
 
     @IBOutlet weak var emailLbl: UILabel!
     @IBOutlet weak var mobileNotVerifyLbl: UILabel!
@@ -105,7 +104,6 @@ extension RegistraionPendingVC {
         switch screenType {
             
         case .pending:
-            viewTutorailBtn.isHidden = true
             bottomStackView.isHidden = true
             completeProfileBtn.isHidden = true
             subHeadingLbl.text = LocalizedString.yourRegistrationRequestIsStillUnder.localized
@@ -120,7 +118,6 @@ extension RegistraionPendingVC {
             inappropriateLbl.isHidden = true
 
         case .rejected:
-            viewTutorailBtn.isHidden = true
             bottomStackView.isHidden = false
             let date = (time).breakCompletDate(outPutFormat: Date.DateFormat.profileFormat.rawValue, inputFormat: Date.DateFormat.yyyyMMddTHHmmsssssz.rawValue)
             headingLbl.text = LocalizedString.yourRegistrationRequestMadeOn.localized + " \(date) " + LocalizedString.hasBeenRejectedDueToFollowingReasons.localized
@@ -149,7 +146,6 @@ extension RegistraionPendingVC {
             imgView.image = #imageLiteral(resourceName: "group3873")
 
         case .accept:
-            viewTutorailBtn.isHidden = false
             bottomStackView.isHidden = true
             subHeadingLbl.isHidden = true
             completeProfileBtn.isHidden = false
@@ -176,8 +172,6 @@ extension RegistraionPendingVC {
         mobileNotVerifyLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
         inappropriateLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
 
-        viewTutorailBtn.titleLabel?.font =  AppFonts.NunitoSansSemiBold.withSize(16.0)
-        viewTutorailBtn.setTitle(LocalizedString.viewTutorial.localized, for: .normal)
         completeProfileBtn.titleLabel?.font =  AppFonts.NunitoSansSemiBold.withSize(16.0)
         completeProfileBtn.setTitle(LocalizedString.saveContinue.localized, for: .normal)
 

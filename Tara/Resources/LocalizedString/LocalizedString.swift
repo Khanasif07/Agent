@@ -574,7 +574,7 @@ extension LocalizedString {
         guard let selectedLang = AppLanguage(rawValue: language) else { return self.rawValue.localizedString(lang: "en") }
         switch selectedLang {
         case .english:
-            return "english" + self.rawValue.localizedString(lang: "en")
+            return self.rawValue.localizedString(lang: "en")
         case .arabic:
             return self.rawValue.localizedString(lang: "ar")
         }

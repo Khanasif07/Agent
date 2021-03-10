@@ -56,12 +56,20 @@ class HomeVC: BaseVC {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
         setNeedsStatusBarAppearanceUpdate()
+        
+        helpBtn.isHidden = !isUserLoggedin
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.dataSetUp()
         self.mainCollView.reloadData()
+        helpBtn.isHidden = !isUserLoggedin
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        helpBtn.isHidden = !isUserLoggedin
     }
     
     // MARK: - IBActions
