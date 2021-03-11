@@ -275,6 +275,10 @@ enum ApiKey {
     static var gcm_notification_bidRequestId : String {return "gcm.notification.bidRequestId"}
     static var gcm_notification_userRole : String {return "gcm.notification.userRole"}
     static var gcm_notification_userImage : String {return "gcm.notification.userImage" }
+    
+    static var tyres  : String {return "Tyres" }
+    static var oil  : String {return "Oil" }
+    static var battery  : String {return "Battery" }
    
 }
 //MARK:- Api Code

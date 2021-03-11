@@ -125,12 +125,12 @@ extension BrandsListingVC {
     }
     
     private func hitBrandListingApi(loader:Bool){
-        let type = categoryType == .tyres ? LocalizedString.tyres.localized : (categoryType == .battery ? LocalizedString.battery.localized : LocalizedString.oil.localized)
+        let type = categoryType == .tyres ? ApiKey.tyres : (categoryType == .battery ? ApiKey.battery : ApiKey.oil)
         self.viewModel.getBrandListingData(params: [ApiKey.page: "1",ApiKey.limit : "100",ApiKey.type: type],loader: loader)
     }
     
     private func hitCountryListingApi(loader:Bool){
-        self.viewModel.getCountryListingData(params: [ApiKey.page: "1",ApiKey.limit : "100",ApiKey.type: LocalizedString.tyres.localized],loader: loader)
+        self.viewModel.getCountryListingData(params: [ApiKey.page: "1",ApiKey.limit : "100",ApiKey.type: ApiKey.tyres],loader: loader)
     }
     
     private func setupTextAndFont(){
