@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CMp-XE-JrL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CMp-XE-JrL">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -85,7 +85,7 @@
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W5P-O1-mcC">
                                                 <rect key="frame" x="345" y="35.5" width="41" height="48"/>
-                                                <state key="normal" image="group3811"/>
+                                                <state key="normal" image="group3813"/>
                                                 <connections>
                                                     <action selector="helpBtnTapped:" destination="YRH-GU-vSd" eventType="touchUpInside" id="NOT-aJ-pYm"/>
                                                 </connections>
@@ -279,7 +279,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="group3811" width="41" height="48"/>
+        <image name="group3813" width="41" height="48"/>
         <image name="home" width="60" height="60"/>
         <image name="notification" width="34" height="34"/>
         <image name="profile" width="34" height="34"/>

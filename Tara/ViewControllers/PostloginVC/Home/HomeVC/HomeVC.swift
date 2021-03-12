@@ -100,9 +100,9 @@ extension HomeVC {
             self.userNameLbl.text = LocalizedString.hiUser.localized
         }
         descLbl.text = LocalizedString.what_service_are_you_looking_for.localized
-        self.dataArray = [DataValue(image: #imageLiteral(resourceName: "maskGroup"), name: LocalizedString.tyre.localized,productColor: UIColor(r: 230, g: 240, b: 245, alpha: 1.0)),
-                     DataValue(image: #imageLiteral(resourceName: "oil"), name: LocalizedString.oil.localized,productColor: UIColor(r: 233 , g: 235, b: 239, alpha: 1.0)),
-                     DataValue(image: #imageLiteral(resourceName: "battery"), name: LocalizedString.battery.localized,productColor: UIColor(r: 253, g: 237, b: 223, alpha: 1.0))]
+        self.dataArray = [DataValue(image: #imageLiteral(resourceName: "icTyre"), name: LocalizedString.tyre.localized,productColor: UIColor(r: 230, g: 240, b: 245, alpha: 1.0)),
+                     DataValue(image: #imageLiteral(resourceName: "icOil"), name: LocalizedString.oil.localized,productColor: UIColor(r: 233 , g: 235, b: 239, alpha: 1.0)),
+                     DataValue(image: #imageLiteral(resourceName: "icBattery"), name: LocalizedString.battery.localized,productColor: UIColor(r: 253, g: 237, b: 223, alpha: 1.0))]
     }
     
     private func collectionViewSetUp(){

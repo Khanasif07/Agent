@@ -39,7 +39,7 @@
 
 // MARK: - Tutorial Screen
 //==============================
-"tutorialTitle1" = "A hassle free car tyre repair service";
+"tutorialTitle1" = "A hassle free car tire repair service";
 "tutorialTitle2" = "Battery is the lifeline of any vehicle";
 "tutorialTitle3" = "A high quality oil is the lifeline of any vehicle";
 "chooseLanguage" = "Choose Language";
@@ -196,15 +196,15 @@
 "enterVehicleModel" = "Enter Vehicle Model";
 "enterModelYear" = "Enter Model Year";
 "enteryYourVehicleDetails" = "Enter your Vehicle Details";
-"wellGetYouExactTyreSize" = "We’ll get you exact tyre size according to the\nprovided details";
+"wellGetYouExactTyreSize" = "We’ll get you exact tire size according to the\nprovided details";
 "vehicleMake" = "Vehicle Make";
 "vehicleModel" = "Vehicle Model";
 "modelYear" = "Model Year";
-"thePreferredOriginForMytyreWouldBe" = "The preferred Origin for my\ntyre would be";
-"setYourPreferencesAmongTyreBrandOrCountryOrigin" = "Set your preferences among tyre brand or\ncountry origin";
-"tyreBrand" = "Tyre Brand";
+"thePreferredOriginForMytyreWouldBe" = "The preferred Origin for my\ntire would be";
+"setYourPreferencesAmongTyreBrandOrCountryOrigin" = "Set your preferences among tire brand or\ncountry origin";
+"tyreBrand" = "Tire Brand";
 "countryOrigin" = "Country Origin";
-"selectTyreBrand" = "Select Tyre Brands";
+"selectTyreBrand" = "Select Tire Brands";
 "selectCountryOrigin" = "Select Country Origin";
 "brands" = "Brands";
 "origin" = "Origin";
@@ -223,7 +223,7 @@
 "ongoingServices" = "Ongoing Services";
 "ongoingService" = "Ongoing Service";
 "update" = "Update";
-"tyreServiceRequest" = "Tyre Service Request";
+"tyreServiceRequest" = "Tire Service Request";
 "batteryServiceRequest" = "Battery Service Request";
 "oilServiceRequest" = "Oil Service Request";
 "regNo" = "Reg. No.";
@@ -245,7 +245,7 @@
 "requestAcceptedOn" = "Request Accepted On";
 "paybleAmount" = "Payble Amount";
 "serviceDetails" = "Service Details";
-"tyreSize" = "Tyre Size";
+"tyreSize" = "Tire Size";
 "preferredBrand" = "Preferred Brand:";
 "startService" = "Start Service";
 "chat" = "Chat";
@@ -269,7 +269,7 @@
 "you_can_not_perform_this_action_as_you_are_blocked" = "You can not perform this action as the garage has blocked you";
 "you_can_not_perform_this_action_as_request_rejected" = "You can't perform this action as the request has rejected";
 "service" = "Service";
-"tyreServices" = "Tyre Services";
+"tyreServices" = "Tire Services";
 "oilSevices" = "Oil Sevices";
 "batteryServices" = "Battery Services";
 "serviceOn" = "Serviced On";
@@ -318,7 +318,7 @@
 "hi" = "Hi, ";
 "toContinuePerformingThisAction" = "To continue performing this action, please complete your profile";
 "successfullyRequested" = "Successfully Requested";
-"yourRequestForTyreServiceHasBeenSubmittedSuccessfully" = "Your request for tyre service has been submitted successfully.";
+"yourRequestForTyreServiceHasBeenSubmittedSuccessfully" = "Your request for tire service has been submitted successfully.";
 "yourRequestForBatteryServiceHasBeenSubmitted" = "Your request for battery service has been submitted successfully.";
 "yourRequestForOilServiceHasBeenSubmitted" = "Your request for oil service has been submitted successfully.";
  // MARK: - Home  VC Values
@@ -349,13 +349,13 @@
 "rimSize" = "Rim Size";
 "quantity" = "Quantity";
 "quantityShort" = "Qty";
-"enter_number_of_tyre_you_want" = "Enter number of tyre you want";
+"enter_number_of_tyre_you_want" = "Enter number of tire you want";
 "oilType" = "Oil type";
 "selectType" = "Select type";
-"selectTyreSize" = "Select Tyre Size";
+"selectTyreSize" = "Select Tire Size";
 "weHaveFoundSutiableTyreForYourVehicleAsPerTheProvidedDetails" = "We have found sutiable tyres for your vehicle as per the provided details.";
 
-"pleaseSelectAnyTyreToProceed" = "Please select any tyre to proceed";
+"pleaseSelectAnyTyreToProceed" = "Please select any tire to proceed";
 
 "selectViscosity" = "Select Viscosity";
 "weHaveFoundSutiableOilViscosity" = "We have found sutiable oil viscosity for your vehicle as per the provided details.";
@@ -394,7 +394,7 @@
 "unitPriceShouldNotBeEmpty" = "Unit Price should not be 0 or empty";
 "cancelBid" = "Cancel Bid";
 "milesAway" = " miles away";
-"hereIsYourOTPForTyreService" = "Here is your OTP for Tyre Service\n";
+"hereIsYourOTPForTyreService" = "Here is your OTP for Tire Service\n";
 
 
 
