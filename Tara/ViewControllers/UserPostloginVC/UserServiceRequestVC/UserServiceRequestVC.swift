@@ -154,7 +154,7 @@ extension UserServiceRequestVC {
         let logoBackGroundColor =  self.viewModel.serviceType == LocalizedString.tyres.localized ? AppColors.blueLightColor : self.viewModel.serviceType == LocalizedString.battery.localized ? AppColors.redLightColor : AppColors.grayLightColor
         bottomLineView.isHidden = self.viewModel.serviceType == LocalizedString.tyres.localized
         self.productImgView.backgroundColor = logoBackGroundColor
-        let logoImg =  self.viewModel.serviceType == LocalizedString.tyres.localized ? #imageLiteral(resourceName: "radialCarTireI151") : self.viewModel.serviceType == LocalizedString.battery.localized ? #imageLiteral(resourceName: "icBattery") : #imageLiteral(resourceName: "icOil")
+        let logoImg =  self.viewModel.serviceType == LocalizedString.tyres.localized ? #imageLiteral(resourceName: "icTyre") : self.viewModel.serviceType == LocalizedString.battery.localized ? #imageLiteral(resourceName: "icBattery") : #imageLiteral(resourceName: "icOil")
         requestSeenLbl.text = LocalizedString.requestSeen.localized
         bidReceivedLbl.text = LocalizedString.bidReceived.localized
         lowestBidLbl.text = LocalizedString.lowest_Bid.localized

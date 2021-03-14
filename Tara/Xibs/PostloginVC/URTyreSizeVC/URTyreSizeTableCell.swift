@@ -40,7 +40,7 @@ class URTyreSizeTableCell: UITableViewCell {
            mainImgView.image =  #imageLiteral(resourceName: "icOil")
             break
         case .tyres:
-            mainImgView.image = #imageLiteral(resourceName: "radialCarTireI151")
+            mainImgView.image = #imageLiteral(resourceName: "icTyre")
             break
         case .battery:
             break
