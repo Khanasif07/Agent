@@ -266,7 +266,7 @@ extension UserServiceRequestVC: UserServiceRequestVMDelegate{
         }else {
             countryAndBrandStackView.isHidden = false
         }
-        let logoImg =  self.viewModel.serviceType == LocalizedString.tyres.localized ? #imageLiteral(resourceName: "radialCarTireI151") : self.viewModel.serviceType == LocalizedString.battery.localized ? #imageLiteral(resourceName: "icBattery") : #imageLiteral(resourceName: "icOil")
+        let logoImg =  self.viewModel.serviceType == LocalizedString.tyres.localized ? #imageLiteral(resourceName: "icTyre") : self.viewModel.serviceType == LocalizedString.battery.localized ? #imageLiteral(resourceName: "icBattery") : #imageLiteral(resourceName: "icOil")
         productImgView.isHidden = model.images.isEmpty
         bottomLineView.isHidden = model.images.isEmpty
         self.productImgView.setImage_kf(imageString: model.images.first ?? "", placeHolderImage: logoImg, loader: false)

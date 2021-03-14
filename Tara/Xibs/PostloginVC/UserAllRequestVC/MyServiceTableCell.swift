@@ -75,7 +75,7 @@ class MyServiceTableCell: UITableViewCell {
         statusView.isHidden = model.status == .pending
         paymentStatusLbl.isHidden = model.status == .pending
         self.serviceTypeLbl.text = model.requestType + LocalizedString.serviceRequest.localized
-        let logoImg =  model.requestType == LocalizedString.tyres.localized ? #imageLiteral(resourceName: "maskGroup") : model.requestType == LocalizedString.battery.localized ? #imageLiteral(resourceName: "icBattery") : #imageLiteral(resourceName: "icOil")
+        let logoImg =  model.requestType == LocalizedString.tyres.localized ? #imageLiteral(resourceName: "icTyre") : model.requestType == LocalizedString.battery.localized ? #imageLiteral(resourceName: "icBattery") : #imageLiteral(resourceName: "icOil")
         let logoBackGroundColor =  model.requestType == LocalizedString.tyres.localized ? AppColors.blueLightColor : model.requestType == LocalizedString.battery.localized ? AppColors.redLightColor : AppColors.grayLightColor
         self.logoImgView.backgroundColor = logoBackGroundColor
         self.logoImgView.image = logoImg
