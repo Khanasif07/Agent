@@ -113,11 +113,11 @@ extension GarageRequestPopupVC {
         userImgView.setImage_kf(imageString: requestData?.userImage ?? "", placeHolderImage: #imageLiteral(resourceName: "placeHolder"))
         switch requestData?.distance {
         case .double(let distance):
-            distanceLbl.text =  "\(distance.truncate(places: 2))" + " miles"
+            distanceLbl.text =  "\(distance.truncate(places: 2))" + " \(LocalizedString.miles.localized)"
         default:
             break
         }
-        bidAmountLbl.text = (requestData?.amount?.description ?? "") + " SAR"
+        bidAmountLbl.text = (requestData?.amount?.description ?? "") + " \(LocalizedString.sar.localized)"
         
         var str: NSMutableAttributedString = NSMutableAttributedString()
             str = NSMutableAttributedString(string: requestData?.garageName ?? "", attributes: [
@@ -125,7 +125,7 @@ extension GarageRequestPopupVC {
                            .foregroundColor: AppColors.fontPrimaryColor
                        ])
             
-            str.append(NSAttributedString(string: " placed a bid on your service request", attributes: [NSAttributedString.Key.foregroundColor: AppColors.fontSecondaryColor,NSAttributedString.Key.font: AppFonts.NunitoSansSemiBold.withSize(13.0)]))
+        str.append(NSAttributedString(string: " \(requestData?.message ?? "")", attributes: [NSAttributedString.Key.foregroundColor: AppColors.fontSecondaryColor,NSAttributedString.Key.font: AppFonts.NunitoSansSemiBold.withSize(13.0)]))
         serviceTypeLbl.attributedText = str
     }
     
