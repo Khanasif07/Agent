@@ -566,6 +566,10 @@
 "sendMessage" = "أرسل الرسالة";
 "subject" = "العنوان";
 
+
+//Updated Localized String
+"type_your_message_here" = "Type your message here";
+"view_All_Offer" = "View All Offers";
 "minutesAgo" = "minutes ago";
 "oneMinuteAgo" = "1 minute ago";
 "oneHourAgo" = "1 hour ago";
@@ -582,4 +586,5 @@
 "search" = "Search";
 "myRatings" =  "تقييماتي:";
 "more" = "More";
-"verify" = "تأكيد";
+"total_price" = "Total Price";
+"please_select_one_option_to_proceed" = "Please select any one option to proceed.";

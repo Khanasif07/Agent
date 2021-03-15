@@ -150,6 +150,8 @@ extension VehicleDetailForBatteryVC {
         batteryImgLbl.text = LocalizedString.batteryImage.localized
         numberOfBatteryLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
         vehicleDetailLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
+        vehicleDetailLbl.text = LocalizedString.vehicleDetails.localized
+        numberOfBatteryLbl.text = LocalizedString.numberOfBattery.localized
         batteryImgLbl.font = AppFonts.NunitoSansBold.withSize(14.0)
         enterVehicleDetailLbl.font = AppFonts.NunitoSansBold.withSize(21.0)
         wellGetYouLbl.font = AppFonts.NunitoSansBold.withSize(14.0)

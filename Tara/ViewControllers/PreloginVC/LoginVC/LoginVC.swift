@@ -72,6 +72,7 @@ extension LoginVC {
     }
     
     public func tableViewSetUp(){
+        self.skipLoginAndContinueBtn.setTitle(LocalizedString.sKIP_LOGIN_CONTINUE.localized, for: .normal)
         self.mainTableView.delegate = self
         self.mainTableView.dataSource = self
         self.mainTableView.tableFooterView = footerView

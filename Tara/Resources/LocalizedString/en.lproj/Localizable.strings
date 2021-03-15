@@ -64,7 +64,7 @@
 "signup" = "Sign up";
 "signup_with_social_accounts" = "Sign up with Social Accounts";
 "Login_with_social_accounts" = "Login with Social Accounts";
-"sKIP_LOGIN_CONTINUE" = "Continue without Sign in";
+"sKIP_LOGIN_CONTINUE" = "SKIP LOGIN & CONTINUE";
 "skip_signup_continue" = "SKIP SIGN UP & CONTINUE";
 "dont_have_an_account" = "Don’t have an account?";
 "imageUploadingFailed" = "Image uploading failed";
@@ -566,6 +566,9 @@
 "sendMessage" = "Send Message";
 "subject" = "Subject";
 
+//Updated Localized String
+"type_your_message_here" = "Type your message here";
+"view_All_Offer" = "View All Offers";
 "minutesAgo" = "minutes ago";
 "oneMinuteAgo" = "1 minute ago";
 "oneHourAgo" = "1 hour ago";
@@ -582,4 +585,5 @@
 "search" = "Search";
 "myRatings" =  "My Ratings:";
 "more" = "More";
-"verify" = "Verify";
+"total_price" = "Total Price";
+"please_select_one_option_to_proceed" = "Please select any one option to proceed.";

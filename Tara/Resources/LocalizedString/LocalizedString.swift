@@ -563,6 +563,9 @@ enum LocalizedString : String {
     case sendMessage
     case subject
     
+     //Updated Localized String
+    case type_your_message_here
+    case view_All_Offer
     case minutesAgo
     case oneMinuteAgo
     case oneHourAgo
@@ -579,7 +582,8 @@ enum LocalizedString : String {
     case search
     case myRatings
     case more
-    case verify
+    case total_price
+    case please_select_one_option_to_proceed
 }
 
 

@@ -27,7 +27,7 @@ class OffersDetailVC: BaseVC {
     @IBOutlet weak var mainTableView: UITableView!
     @IBOutlet weak var countryCollView: UICollectionView!
     @IBOutlet weak var unitPrizeView: UIView!
-
+    @IBOutlet weak var pleaseSelectOneOptionLbl: UILabel!
     // MARK: - Variables
     //===========================
     var viewModel = OffersDetailVM()
@@ -112,6 +112,13 @@ extension OffersDetailVC {
     }
     
     private func setupTextAndFont(){
+        totalPriceLbl.text = LocalizedString.total_price.localized
+        unitLbl.text = LocalizedString.unit.localized
+        unitPriceLbl.text = LocalizedString.unitPrice.localized
+        brandsLbl.text = LocalizedString.brands.localized
+        
+        pleaseSelectOneOptionLbl.text = LocalizedString.please_select_one_option_to_proceed.localized
+        
         self.rejectBtn.setTitle(LocalizedString.reject.localized, for: .normal)
         btnsBottomConst.constant = -90
         titleLbl.text = LocalizedString.proposalDetails.localized
