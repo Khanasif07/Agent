@@ -571,8 +571,13 @@ enum LocalizedString : String {
     case lastWeek
     case secondsAgo
     case weeksAgo
+    case lastMonth
+    case monthsAgo
+    case lastYear
     case rejectRequest
-
+    case type_Your_Message_Here
+    case search
+    case myRatings
 }
 
 

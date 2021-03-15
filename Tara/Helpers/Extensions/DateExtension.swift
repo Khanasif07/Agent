@@ -224,15 +224,15 @@ extension Date {
         }
         
         if let year = components.year, year >= 1 {
-            return "Last year"
+            return LocalizedString.lastYear.localized
         }
         
         if let month = components.month, month >= 2 {
-            return "\(month) months ago"
+            return "\(month) " + LocalizedString.monthsAgo.localized
         }
         
         if let month = components.month, month >= 1 {
-            return "Last month"
+            return LocalizedString.lastMonth.localized
         }
         
         if let week = components.weekOfYear, week >= 2 {

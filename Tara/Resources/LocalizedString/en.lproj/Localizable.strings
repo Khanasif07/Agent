@@ -574,4 +574,10 @@
 "lastWeek" = "Last week";
 "secondsAgo" = "seconds ago";
 "weeksAgo" = "weeks ago";
+"lastMonth" = "Last month";
+"monthsAgo" = "months ago";
+"lastYear" = "Last year";
 "rejectRequest" = "Reject Request";
+"type_Your_Message_Here" = "Type your message here";
+"search" = "Search";
+"myRatings" =  "My Ratings:";
