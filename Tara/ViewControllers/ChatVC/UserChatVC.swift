@@ -88,6 +88,7 @@ extension UserChatVC {
         buttonView.addTarget(self, action: #selector(clear(_:)), for: .touchUpInside)
         buttonView.imageEdgeInsets = UIEdgeInsets(top: 0, left: -5, bottom: 0, right: 5)
         searchTextField.setButtonToRightView(btn: buttonView, selectedImage: #imageLiteral(resourceName: "cancel"), normalImage: #imageLiteral(resourceName: "icon"), size: CGSize(width: 20, height: 20))
+        searchTextField.placeholder = LocalizedString.search.localized
     }
     
     @objc private func clear(_ sender: UIButton) {

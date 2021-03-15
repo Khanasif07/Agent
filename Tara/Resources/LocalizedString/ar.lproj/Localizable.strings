@@ -192,7 +192,7 @@
 "done" = "تم";
 "clearAll" = "مسح الكل";
 "uploadGarageLogo" = " شعار الورشة";
-"enterVehicleMake" = "Vehicle Make";
+"enterVehicleMake" = "ماركة السيارة";
 "enterVehicleModel" = "موديل السيارة";
 "enterModelYear" = "سنة الصنع";
 "enteryYourVehicleDetails" = "أدخل تفاصيل سيارتك";
@@ -277,7 +277,7 @@
 "offerExpired" = "العرض انتهى";
 "offerRejected" = "العرض مرفوض";
 "offerReceived" = "استلمنا العرض";
-"noNotificationAvailable" = "No notification available";
+"noNotificationAvailable" = "لا يوجد إشعارات";
 "noOffers" = "مافي عروض";
 "garageDetails" = "تفاصيل الورشة";
 "requestNumber" = "رقم الطلب";
@@ -312,7 +312,7 @@
 "openForBidding" = "مفتوح لتقديم العروض";
 "resend" = "إعادة إرسال";
 "no" = "لا";
-"yes" = "Yes";
+"yes" = "ايوة";
 "viewDetails" = "عرض التفاصيل";
 "hiUser" = "أهلا!";
 "hi" = "مرحبا, ";
@@ -422,7 +422,7 @@
 //==============================
 "holdThisToRecord" = "اضغط هنا للتسجيل";
 "block" = "تحظر";
-"blockUser" = "Block User";
+"blockUser" = "حظر المستخدم";
 "unBlock" = "ألغي الحظر ";
 "are_you_sure_you_want_to_block_this_user" = "هل انت متأكد إنك تبغا تحظر هذا المستخدم ؟";
 "are_you_sure_you_want_to_unblock_this_user" = "انت متأكد انك تبغى تلغي الحظر لهذا المستخدم؟";
@@ -465,7 +465,7 @@
 "bid_Amount" = "قيمة العرض";
 "request_Detail" = "تفاصيل الطلب";
 "unit" = "الوحدة";
-"tyres" = "Tires";
+"tyres" = "إطارات";
 "leave_us_a_message_desc" = "اترك لنا رسالة، حنرد عليك في أسرع وقت ممكن";
 "do_you_have_an_issue_with_service" = "عندك مشكلة مع الخدمة؟";
 "mode_Of_Payment" = "طريقة الدفع";
@@ -570,3 +570,18 @@
 //Updated Localized String
 "type_your_message_here" = "Type your message here";
 "view_All_Offer" = "View All Offers";
+"minutesAgo" = "minutes ago";
+"oneMinuteAgo" = "1 minute ago";
+"oneHourAgo" = "1 hour ago";
+"hoursAgo" = "hours ago";
+"daysAgo" = "days ago";
+"lastWeek" = "Last week";
+"secondsAgo" = "seconds ago";
+"weeksAgo" = "weeks ago";
+"lastMonth" = "Last month";
+"monthsAgo" = "months ago";
+"lastYear" = "Last year";
+"rejectRequest" = "رفض الطلبt";
+"type_Your_Message_Here" = "Type your message here";
+"search" = "Search";
+"myRatings" =  "تقييماتي:";

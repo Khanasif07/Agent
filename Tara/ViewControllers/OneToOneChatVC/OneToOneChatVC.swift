@@ -307,6 +307,7 @@ extension OneToOneChatVC {
         setupAudioMessages()
         getChatData()
         setUpChatUserType()
+        messageLabel.text = LocalizedString.type_Your_Message_Here.localized
         let tap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped(_:)))
         containerScrollView.addGestureRecognizer(tap)
         let topViewTap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped(_:)))
@@ -480,6 +481,7 @@ extension OneToOneChatVC {
         titleLabel.text = firstName
         messageTextView.delegate = self
         messageTextView.tintColor = AppColors.appRedColor
+        
     }
     
     private func sendMessage(msgType: String = MessageType.text.rawValue ,price: Double = 0,isPush: Bool = true) {
