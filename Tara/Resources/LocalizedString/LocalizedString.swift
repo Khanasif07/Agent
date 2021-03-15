@@ -578,6 +578,8 @@ enum LocalizedString : String {
     case type_Your_Message_Here
     case search
     case myRatings
+    case more
+    case verify
 }
 
 

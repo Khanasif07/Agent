@@ -17,6 +17,7 @@ class GarageHomeCollCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        sarLbl.text = LocalizedString.sar.localized
     }
     
     override func layoutSubviews() {
