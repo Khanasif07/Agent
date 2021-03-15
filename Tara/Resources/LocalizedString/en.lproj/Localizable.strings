@@ -565,3 +565,12 @@
 "goToChat" = "Go to chat";
 "sendMessage" = "Send Message";
 "subject" = "Subject";
+
+"minutesAgo" = "minutes ago";
+"oneMinuteAgo" = "1 minute ago";
+"oneHourAgo" = "1 hour ago";
+"hoursAgo" = "hours ago";
+"daysAgo" = "days ago";
+"lastWeek" = "Last week";
+"secondsAgo" = "seconds ago";
+"weeksAgo" = "weeks ago";

@@ -236,42 +236,43 @@ extension Date {
         }
         
         if let week = components.weekOfYear, week >= 2 {
-            return "\(week) weeks ago"
+            return "\(week) " + LocalizedString.weeksAgo.localized
         }
         
         if let week = components.weekOfYear, week >= 1 {
-            return "Last week"
+            return LocalizedString.lastWeek.localized
         }
         
         if let day = components.day, day >= 2 {
-            return "\(day) days ago"
+            return "\(day) " + LocalizedString.daysAgo.localized
         }
         
         if let day = components.day, day >= 1 {
-            return "Yesterday"
+            return LocalizedString.yesterday.localized
         }
+       
         
         if let hour = components.hour, hour >= 2 {
-            return "\(hour) hours ago"
+            return "\(hour) " + LocalizedString.hoursAgo.localized
         }
         
         if let hour = components.hour, hour >= 1 {
-            return "1 hour ago"
+            return LocalizedString.oneHourAgo.localized
         }
         
         if let minute = components.minute, minute >= 2 {
-            return "\(minute) minutes ago"
+        return "\(minute) " + LocalizedString.minutesAgo.localized
         }
         
         if let minute = components.minute, minute >= 1 {
-            return "1 minute ago"
+        return LocalizedString.oneMinuteAgo.localized
         }
         
         if let second = components.second, second >= 3 {
-            return "\(second) seconds ago"
+            return "\(second) " + LocalizedString.secondsAgo.localized
         }
         
-        return "Just now"
+        return LocalizedString.justNow.localized
     }
 }
 

@@ -192,7 +192,7 @@
 "done" = "تم";
 "clearAll" = "مسح الكل";
 "uploadGarageLogo" = " شعار الورشة";
-"enterVehicleMake" = "Vehicle Make";
+"enterVehicleMake" = "ماركة السيارة";
 "enterVehicleModel" = "موديل السيارة";
 "enterModelYear" = "سنة الصنع";
 "enteryYourVehicleDetails" = "أدخل تفاصيل سيارتك";
@@ -277,7 +277,7 @@
 "offerExpired" = "العرض انتهى";
 "offerRejected" = "العرض مرفوض";
 "offerReceived" = "استلمنا العرض";
-"noNotificationAvailable" = "No notification available";
+"noNotificationAvailable" = "لا يوجد إشعارات";
 "noOffers" = "مافي عروض";
 "garageDetails" = "تفاصيل الورشة";
 "requestNumber" = "رقم الطلب";
@@ -565,3 +565,12 @@
 "goToChat" = "روح للدردشة";
 "sendMessage" = "أرسل الرسالة";
 "subject" = "العنوان";
+
+"minutesAgo" = "minutes ago";
+"oneMinuteAgo" = "1 minute ago";
+"oneHourAgo" = "1 hour ago";
+"hoursAgo" = "hours ago";
+"daysAgo" = "days ago";
+"lastWeek" = "Last week";
+"secondsAgo" = "seconds ago";
+"weeksAgo" = "weeks ago";
