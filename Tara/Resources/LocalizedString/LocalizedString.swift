@@ -581,6 +581,7 @@ enum LocalizedString : String {
     case type_Your_Message_Here
     case search
     case myRatings
+    case more
     case total_price
     case please_select_one_option_to_proceed
 }

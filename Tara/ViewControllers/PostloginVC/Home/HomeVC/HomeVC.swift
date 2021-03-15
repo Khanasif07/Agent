@@ -20,7 +20,6 @@ struct DataValue{
     }
 }
 
-
 class HomeVC: BaseVC {
     
     // MARK: - IBOutlets

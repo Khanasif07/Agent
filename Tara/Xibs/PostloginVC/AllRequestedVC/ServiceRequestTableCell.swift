@@ -176,7 +176,7 @@ class ServiceRequestTableCell: UITableViewCell {
                 .foregroundColor: AppColors.fontPrimaryColor
             ])
         }else {
-            let count = "+\(data.count - 2) More"
+            let count = "+\(data.count - 2) " + LocalizedString.more.localized
             str = NSMutableAttributedString(string: "\(data[0].name), \(data[1].name) ", attributes: [
                 .font: AppFonts.NunitoSansBold.withSize(12.0),
                 .foregroundColor: AppColors.fontPrimaryColor
