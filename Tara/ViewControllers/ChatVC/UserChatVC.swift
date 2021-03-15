@@ -147,7 +147,7 @@ extension UserChatVC {
             let model = searchInboxListing[indexPath.row]
             let messageCell = mainTableView.dequeueCell(with: InboxTableViewCell.self)
             if model.chatType == ApiKey.single {
-                messageCell.userNameLbl.text = model.firstName
+                messageCell.userNameLbl.text = (model.firstName == LocalizedString.supportChat.localized) ? LocalizedString.supportChat.localized : model.firstName
                 messageCell.lastMsgLbl.text = model.lastMessage
                 messageCell.userImgView.setImage_kf(imageString: model.receiverImgURL, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: true)
                 messageCell.timeLbl.text = model.timeStamp.dateValue().convertToTimeString()

@@ -478,7 +478,7 @@ extension OneToOneChatVC {
         textContainerInnerView.borderWidth = 1.0
         self.sendButton.backgroundColor = AppColors.fontTertiaryColor
         bottomContainerView.isUserInteractionEnabled = true
-        titleLabel.text = firstName
+        titleLabel.text = (isSupportChat) ? LocalizedString.supportChat.localized : firstName
         messageTextView.delegate = self
         messageTextView.tintColor = AppColors.appRedColor
         
