@@ -562,6 +562,10 @@ enum LocalizedString : String {
     case goToChat
     case sendMessage
     case subject
+    
+     //Updated Localized String
+    case type_your_message_here
+    case view_All_Offer
 }
 
 

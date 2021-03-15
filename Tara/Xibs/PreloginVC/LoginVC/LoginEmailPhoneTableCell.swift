@@ -76,6 +76,7 @@ class LoginEmailPhoneTableCell: UITableViewCell {
     
     public func setUpColor(){
         self.phoneNoBtn.setTitleColor(AppColors.appRedColor, for: .normal)
+        self.phoneNoBtn.setTitle(LocalizedString.usePhoneNumber.localized, for: .normal)
         self.signInBtn.setTitleColor(UIColor.white, for: .normal)
         self.signInBtn.backgroundColor = AppColors.primaryBlueColor
         self.forgotPassBtn.setTitleColor(AppColors.fontTertiaryColor, for: .normal)

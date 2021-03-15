@@ -565,3 +565,8 @@
 "goToChat" = "روح للدردشة";
 "sendMessage" = "أرسل الرسالة";
 "subject" = "العنوان";
+
+
+//Updated Localized String
+"type_your_message_here" = "Type your message here";
+"view_All_Offer" = "View All Offers";
