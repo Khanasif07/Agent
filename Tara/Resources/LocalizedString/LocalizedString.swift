@@ -571,7 +571,7 @@ enum LocalizedString : String {
     case lastWeek
     case secondsAgo
     case weeksAgo
-
+    case rejectRequest
 
 }
 

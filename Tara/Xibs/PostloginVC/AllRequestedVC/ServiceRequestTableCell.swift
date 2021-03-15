@@ -70,6 +70,8 @@ class ServiceRequestTableCell: UITableViewCell {
         brandsLbl.text = LocalizedString.brands.localized + ": "
         tyreSizeLbl.text = LocalizedString.tyreSize.localized + ": "
         statusLbl.text = LocalizedString.status.localized
+        rejectRequestBtn.setTitle(LocalizedString.reject.localized, for: .normal)
+        bidAmountLbl.text = LocalizedString.bid_Amount.localized
     }
     
     func bindData(_ model: GarageRequestModel) {

@@ -35,32 +35,32 @@ enum AppRouter {
     // MARK: - Show Landing Screen
     //===========================
     static func checkAppInitializationFlow() {
-//        goToTestingVC()
-//        return
-        if isUserLoggedin {
-            SocketIOManager.shared.establishConnection()
-            switch isCurrentUserType {
-            case .user:
-                AppRouter.goToUserHome()
-            case .garage:
-                AppRouter.goToGarageHome()
-            default:
-                let lang = AppUserDefaults.value(forKey: .language).stringValue
-                AppUserDefaults.removeAllValues()
-                AppUserDefaults.save(value: lang, forKey: .language)
-                AppUserDefaults.save(value: true, forKey: .isLanguageSelect)
-            }
-        } else {
-            if AppUserDefaults.value(forKey: .isLanguageSelect).boolValue {
-                AppRouter.goToUserHome()
-            }else{
-                self.makeChooseLanguageVCRoot()
-            }
-        }
+        goToTestingVC()
+        return
+//        if isUserLoggedin {
+//            SocketIOManager.shared.establishConnection()
+//            switch isCurrentUserType {
+//            case .user:
+//                AppRouter.goToUserHome()
+//            case .garage:
+//                AppRouter.goToGarageHome()
+//            default:
+//                let lang = AppUserDefaults.value(forKey: .language).stringValue
+//                AppUserDefaults.removeAllValues()
+//                AppUserDefaults.save(value: lang, forKey: .language)
+//                AppUserDefaults.save(value: true, forKey: .isLanguageSelect)
+//            }
+//        } else {
+//            if AppUserDefaults.value(forKey: .isLanguageSelect).boolValue {
+//                AppRouter.goToUserHome()
+//            }else{
+//                self.makeChooseLanguageVCRoot()
+//            }
+//        }
     }
     
     static func goToTestingVC(){
-        let scene = ContactUsVC.instantiate(fromAppStoryboard: .GarageRequest)
+        let scene = ChatEditBidVC.instantiate(fromAppStoryboard: .Chat)
         setAsWindowRoot(scene)
     }
     

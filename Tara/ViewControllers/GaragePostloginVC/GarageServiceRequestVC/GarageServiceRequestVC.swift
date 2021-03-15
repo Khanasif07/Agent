@@ -146,6 +146,7 @@ extension GarageServiceRequestVC {
     private func textSetUp(){
         requestBtn.isBorderSelected = true
         placeBidBtn.isEnabled = true
+        requestBtn.setTitle(LocalizedString.rejectRequest.localized, for: .normal)
     }
     
     private func bidStatusSetUp(){

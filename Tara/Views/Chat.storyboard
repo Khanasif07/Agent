@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kSb-bi-wAD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kSb-bi-wAD">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -39,7 +39,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wbz-ok-9no">
-                                        <rect key="frame" x="188.5" y="16.5" width="37" height="23.5"/>
+                                        <rect key="frame" x="188.5" y="18" width="37" height="20"/>
                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -855,9 +855,13 @@
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <connections>
                         <outlet property="acceptBtn" destination="vDh-y6-SQb" id="MIi-G0-DfP"/>
+                        <outlet property="brandsLbl" destination="I9y-Qp-iYi" id="H5W-7g-yAL"/>
                         <outlet property="headerView" destination="35l-lJ-gMI" id="sQA-Gb-fZc"/>
                         <outlet property="mainTableView" destination="QSZ-iF-KiY" id="Jqv-eF-bvf"/>
+                        <outlet property="pleaseFillOptionLbl" destination="tYC-df-CbU" id="Def-3R-XOk"/>
                         <outlet property="titleLbl" destination="rZi-B8-i2n" id="BbW-bg-9Rc"/>
+                        <outlet property="unitLbl" destination="WWx-tv-mHF" id="APJ-wF-WsJ"/>
+                        <outlet property="unitPriceLbl" destination="s05-FL-Bz5" id="Bms-IS-J3x"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MhY-cb-1zX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -866,10 +870,10 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="4ff-AM-N7z">
-                            <rect key="frame" x="16" y="16" width="387" height="18"/>
+                            <rect key="frame" x="16" y="16" width="387" height="15.5"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please fill the options to edit bid." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tYC-df-CbU">
-                                    <rect key="frame" x="0.0" y="0.0" width="196" height="18"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="190" height="15.5"/>
                                     <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="13"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -877,7 +881,7 @@
                             </subviews>
                         </stackView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PcM-0w-Ea2">
-                            <rect key="frame" x="16" y="44" width="387" height="59"/>
+                            <rect key="frame" x="16" y="41.5" width="387" height="59"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="L90-gU-dRo">
                                     <rect key="frame" x="80" y="13" width="291" height="18"/>
