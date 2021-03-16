@@ -64,7 +64,7 @@
 "signup" = "Sign up";
 "signup_with_social_accounts" = "Sign up with Social Accounts";
 "Login_with_social_accounts" = "Login with Social Accounts";
-"sKIP_LOGIN_CONTINUE" = "Continue without Sign in";
+"sKIP_LOGIN_CONTINUE" = "SKIP LOGIN & CONTINUE";
 "skip_signup_continue" = "SKIP SIGN UP & CONTINUE";
 "dont_have_an_account" = "Don’t have an account?";
 "imageUploadingFailed" = "Image uploading failed";
@@ -465,7 +465,7 @@
 "bid_Amount" = "Bid Amount";
 "request_Detail" = "Request Detail";
 "unit" = "Unit";
-"tyres" = "Tyres";
+"tyres" = "Tires";
 "leave_us_a_message_desc" = "Leave us a message, we will get contact with you as soon as possible";
 "do_you_have_an_issue_with_service" = "Do you have an issue with service?";
 "mode_Of_Payment" = "Mode of Payment";
@@ -508,20 +508,11 @@
 "model" = "Model";
 "selectVehicleMake" = "Select vehicle make";
 "selectVehicleModel" = "Select vehicle model";
-"suitableFor" = "Suitable For";
-"please_select_vehicle_width" = "Please select vehicle width";
-"please_select_vehicle_profile" = "Please select vehicle profile";
-"please_fill_the_options_to_place_bid" = "Please fill the options to place bid";
 "unitPrice" = "Unit Price";
 "unBlockUser" = "UnBlock User";
 "offerPrice" = "Offer Price";
 "paymentRequest" = "Payment Request";
-"photo_Attachment" = "Photo Attachment";
 "audio_Attachment" = "Audio Attachment";
-"editBid" = "Edit Bid";
-"paybleAmt" = "Payble Amt";
-"previousService" = "Previous Service";
-"request_Rejected" = "Request Rejected";
 "to_continue_performing_this_action_please_login" = "To continue performing this action, please login";
 "batteryImage" = "Battery Image";
 "uploadImage" = "Upload Image";
@@ -544,18 +535,12 @@
 "productImage" = "Product Image:";
 "address" = "Address";
 "rim" = "Rim";
-
 "vehicleYear" = "Vehicle Year";
 "suitableFor" = "Suitable For";
 "please_select_vehicle_width" = "Please select vehicle width";
 "please_select_vehicle_profile" = "Please select vehicle profile";
 "please_fill_the_options_to_place_bid" = "Please fill the options to place bid";
-"unitPrice" = "Unit Price";
-"unBlockUser" = "UnBlock User";
-"offerPrice" = "Offer Price";
-"paymentRequest" = "Payment Request";
 "photo_Attachment" = "Photo Attachment";
-"audio_Attachment" = "Audio Attachment";
 "editBid" = "Edit Bid";
 "paybleAmt" = "Payable Amt";
 "previousService" = "Previous Service";
@@ -580,3 +565,25 @@
 "goToChat" = "Go to chat";
 "sendMessage" = "Send Message";
 "subject" = "Subject";
+
+//Updated Localized String
+"type_your_message_here" = "Type your message here";
+"view_All_Offer" = "View All Offers";
+"minutesAgo" = "minutes ago";
+"oneMinuteAgo" = "1 minute ago";
+"oneHourAgo" = "1 hour ago";
+"hoursAgo" = "hours ago";
+"daysAgo" = "days ago";
+"lastWeek" = "Last week";
+"secondsAgo" = "seconds ago";
+"weeksAgo" = "weeks ago";
+"lastMonth" = "Last month";
+"monthsAgo" = "months ago";
+"lastYear" = "Last year";
+"rejectRequest" = "Reject Request";
+"type_Your_Message_Here" = "Type your message here";
+"search" = "Search";
+"myRatings" =  "My Ratings:";
+"more" = "More";
+"total_price" = "Total Price";
+"please_select_one_option_to_proceed" = "Please select any one option to proceed.";

@@ -562,6 +562,28 @@ enum LocalizedString : String {
     case goToChat
     case sendMessage
     case subject
+    
+     //Updated Localized String
+    case type_your_message_here
+    case view_All_Offer
+    case minutesAgo
+    case oneMinuteAgo
+    case oneHourAgo
+    case hoursAgo
+    case daysAgo
+    case lastWeek
+    case secondsAgo
+    case weeksAgo
+    case lastMonth
+    case monthsAgo
+    case lastYear
+    case rejectRequest
+    case type_Your_Message_Here
+    case search
+    case myRatings
+    case more
+    case total_price
+    case please_select_one_option_to_proceed
 }
 
 

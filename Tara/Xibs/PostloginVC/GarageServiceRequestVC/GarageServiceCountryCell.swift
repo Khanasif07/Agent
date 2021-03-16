@@ -26,16 +26,20 @@ class GarageServiceCountryCell: UITableViewCell {
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var brandsStackView: UIView!
     
-     override func awakeFromNib() {
-           super.awakeFromNib()
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        setupText()
+        countryCollView.registerCell(with: FacilityCollectionViewCell.self)
+        countryCollView.delegate = self
+        countryCollView.dataSource = self
+    }
+    
+    private func setupText() {
         brandsLbl.text = LocalizedString.brands.localized
         unitLbl.text = LocalizedString.unit.localized
         unitPriceLbl.text = LocalizedString.unitPrice.localized
         titleLbl.text = LocalizedString.please_fill_the_options_to_place_bid.localized
-           countryCollView.registerCell(with: FacilityCollectionViewCell.self)
-           countryCollView.delegate = self
-           countryCollView.dataSource = self
-       }
+    }
 }
 
 

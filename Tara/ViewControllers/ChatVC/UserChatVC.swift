@@ -88,6 +88,7 @@ extension UserChatVC {
         buttonView.addTarget(self, action: #selector(clear(_:)), for: .touchUpInside)
         buttonView.imageEdgeInsets = UIEdgeInsets(top: 0, left: -5, bottom: 0, right: 5)
         searchTextField.setButtonToRightView(btn: buttonView, selectedImage: #imageLiteral(resourceName: "cancel"), normalImage: #imageLiteral(resourceName: "icon"), size: CGSize(width: 20, height: 20))
+        searchTextField.placeholder = LocalizedString.search.localized
     }
     
     @objc private func clear(_ sender: UIButton) {
@@ -146,7 +147,7 @@ extension UserChatVC {
             let model = searchInboxListing[indexPath.row]
             let messageCell = mainTableView.dequeueCell(with: InboxTableViewCell.self)
             if model.chatType == ApiKey.single {
-                messageCell.userNameLbl.text = model.firstName
+                messageCell.userNameLbl.text = (model.firstName == LocalizedString.supportChat.localized) ? LocalizedString.supportChat.localized : model.firstName
                 messageCell.lastMsgLbl.text = model.lastMessage
                 messageCell.userImgView.setImage_kf(imageString: model.receiverImgURL, placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: true)
                 messageCell.timeLbl.text = model.timeStamp.dateValue().convertToTimeString()

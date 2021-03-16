@@ -145,6 +145,8 @@ extension UserServiceRequestVC {
         mileLbl.text = LocalizedString.miles.localized
         self.buttonsBottomConst.constant = -90
         viewAllBtn.isEnabled = true
+        cancelBtn.setTitle(LocalizedString.cancel.localized, for: .normal)
+        viewAllBtn.setTitle(LocalizedString.view_All_Offer.localized, for: .normal)
         [tyreSizeValueLbl,unitValueLblb,brandsValueLbl].forEach({$0?.textColor = AppColors.fontTertiaryColor})
         unitValueLblb.text = LocalizedString.unit.localized + ":"
         brandsLbl.text = LocalizedString.brands.localized

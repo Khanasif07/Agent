@@ -45,6 +45,7 @@
 "chooseLanguage" = "إختار اللغة";
 "login_with_emailId" = "تسجيل الدخول بالايميل";
 "accept" = "قبول";
+"reject" = "رفض";
 "accepted" = "قبول";
 "thisBidIsProposedBy" = "قبول ";
 "asPerYourTyreService" = " قبول";
@@ -191,7 +192,7 @@
 "done" = "تم";
 "clearAll" = "مسح الكل";
 "uploadGarageLogo" = " شعار الورشة";
-"enterVehicleMake" = "Vehicle Make";
+"enterVehicleMake" = "ماركة السيارة";
 "enterVehicleModel" = "موديل السيارة";
 "enterModelYear" = "سنة الصنع";
 "enteryYourVehicleDetails" = "أدخل تفاصيل سيارتك";
@@ -264,6 +265,9 @@
 "byServiceType" = "حسب نوع الخدمة";
 "byStatus" = "حسب الحالة";
 "PLEASEUNBLOCKUSERTOSENDMESSAGES" = "يرجى إلغاء حظر المستخدم لإرسال الرسائل";
+"PLEASEUNBLOCKUSERTOPERFORMTHISACTION" = "Please unblock user to perform this action";
+"you_can_not_perform_this_action_as_you_are_blocked" = "You can not perform this action as the garage has blocked you";
+"you_can_not_perform_this_action_as_request_rejected" = "You can't perform this action as the request has rejected";
 "service" = "الخدمة";
 "tyreServices" = "خدمة الإطار";
 "oilSevices" = "خدمة الزيت";
@@ -273,6 +277,7 @@
 "offerExpired" = "العرض انتهى";
 "offerRejected" = "العرض مرفوض";
 "offerReceived" = "استلمنا العرض";
+"noNotificationAvailable" = "لا يوجد إشعارات";
 "noOffers" = "مافي عروض";
 "garageDetails" = "تفاصيل الورشة";
 "requestNumber" = "رقم الطلب";
@@ -307,6 +312,7 @@
 "openForBidding" = "مفتوح لتقديم العروض";
 "resend" = "إعادة إرسال";
 "no" = "لا";
+"yes" = "ايوة";
 "viewDetails" = "عرض التفاصيل";
 "hiUser" = "أهلا!";
 "hi" = "مرحبا, ";
@@ -342,6 +348,7 @@
 "width" = "العرض";
 "rimSize" = "مقاس الجنط";
 "quantity" = "الكمية";
+"quantityShort" = "الكمية";
 "enter_number_of_tyre_you_want" = "أدخل رقم الإطار الذي تريده"; //translated
 "oilType" = "نوع الزيت"; //trnaslated
 "selectType" = "اختر صنف"; //translated
@@ -405,6 +412,8 @@
 "newRequest" = "طلب جديد";
 "service_sheduled_for_today" = "الخدمات المجدولة لليوم"; //translated
 "today_Revenue" = "إيرادات اليوم";
+"today" = "اليوم";
+"yesterday" = "أمس";
 "requests" = "الطلبات";
 "allRequests" = "كل الطلبات";
 "bookedRequests" = "الطلبات المحجوزة";
@@ -413,6 +422,7 @@
 //==============================
 "holdThisToRecord" = "اضغط هنا للتسجيل";
 "block" = "تحظر";
+"blockUser" = "حظر المستخدم";
 "unBlock" = "ألغي الحظر ";
 "are_you_sure_you_want_to_block_this_user" = "هل انت متأكد إنك تبغا تحظر هذا المستخدم ؟";
 "are_you_sure_you_want_to_unblock_this_user" = "انت متأكد انك تبغى تلغي الحظر لهذا المستخدم؟";
@@ -430,10 +440,11 @@
 "paymentDeclined" = "تم رفض الدفع";
 "pending" = "الدفعة معلقة";
 "paid" = "المبلغ المدفوع";
-
 "paid_Caps" = "مدفوع";
 "refunded" = "رجعناالدفعة";
 "failed" = "فشل في الدفعd";
+"you" = "You";
+"delete" = "Delete";
 "delete_Message" = "ألغي الرسالة";
 "do_you_want_to_delete_message" = "هل تريد حذف الرسالة؟";
 "offerSmall" = "عرض";
@@ -444,6 +455,30 @@
 "you_have_successfully_verified_your_mobile_no" = "نجحت في التحقق من \\ n رقم جوالك";
 "are_you_sure_you_want_to_logout" = "متأكد إنك حتسجل الخروج؟";
 
+
+// MARK: - Updated Screen
+//==============================
+"requestSeen" = "تمت مشاهدة الطلب";
+"bid_Received" = "استلمنا العرض";
+"lowest_Bid" = "أقل عرض";
+"nearest_Bid" = "أقرب عرض";
+"bid_Amount" = "قيمة العرض";
+"request_Detail" = "تفاصيل الطلب";
+"unit" = "الوحدة";
+"tyres" = "إطارات";
+"leave_us_a_message_desc" = "اترك لنا رسالة، حنرد عليك في أسرع وقت ممكن";
+"do_you_have_an_issue_with_service" = "عندك مشكلة مع الخدمة؟";
+"mode_Of_Payment" = "طريقة الدفع";
+"request_No" = "رقم الطلب";
+"offers" = "عروض";
+"need_Help" = "تحتاج مساعدة؟";
+"download_Invoice" = "تحميل الفاتورة";
+"allOffers" = "كل العروض";
+"what_service_are_you_looking_for" = "أيش الخدمة المطلوبة؟";
+"proposalDetails" = "تفاصيل العرض";
+"viewProposal" = "مشاهدة الاقتراح";
+"miles" = "كيلومترات";
+"total_Amount" = "المبلغ الإجمالي";
 
 
 //Updated
@@ -530,5 +565,26 @@
 "goToChat" = "روح للدردشة";
 "sendMessage" = "أرسل الرسالة";
 "subject" = "العنوان";
-"leave_us_a_message_desc" = "اترك لنا رسالة، حنرد عليك في أسرع وقت ممكن";
-"what_service_are_you_looking_for" = "أيش الخدمة المطلوبة؟";
+
+
+//Updated Localized String
+"type_your_message_here" = "Type your message here";
+"view_All_Offer" = "View All Offers";
+"minutesAgo" = "minutes ago";
+"oneMinuteAgo" = "1 minute ago";
+"oneHourAgo" = "1 hour ago";
+"hoursAgo" = "hours ago";
+"daysAgo" = "days ago";
+"lastWeek" = "Last week";
+"secondsAgo" = "seconds ago";
+"weeksAgo" = "weeks ago";
+"lastMonth" = "Last month";
+"monthsAgo" = "months ago";
+"lastYear" = "Last year";
+"rejectRequest" = "رفض الطلبt";
+"type_Your_Message_Here" = "Type your message here";
+"search" = "Search";
+"myRatings" =  "تقييماتي:";
+"more" = "More";
+"total_price" = "Total Price";
+"please_select_one_option_to_proceed" = "Please select any one option to proceed.";

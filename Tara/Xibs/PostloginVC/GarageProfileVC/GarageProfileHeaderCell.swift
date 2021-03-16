@@ -35,6 +35,7 @@ class GarageProfileHeaderCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        locationLbl.text = LocalizedString.location.localized + ":"
         profileImgView.backgroundColor = AppColors.fontTertiaryColor
         mainCollView.registerCell(with: FacilityCollectionViewCell.self)
         mainCollView.delegate = self

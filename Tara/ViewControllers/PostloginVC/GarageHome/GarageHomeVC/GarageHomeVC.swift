@@ -90,6 +90,8 @@ extension GarageHomeVC {
             self.titleLbl.text = LocalizedString.hiUser.localized
         }
         
+        self.myRatingLbl.text = LocalizedString.myRatings.localized
+        
         self.currentDateLbl.textColor = AppColors.fontTertiaryColor
         self.myRatingLbl.textColor = AppColors.fontTertiaryColor
         self.ratingValueLbl.textColor = AppColors.fontTertiaryColor

@@ -60,7 +60,7 @@ enum AppRouter {
     }
     
     static func goToTestingVC(){
-        let scene = ContactUsVC.instantiate(fromAppStoryboard: .GarageRequest)
+        let scene = ChatEditBidVC.instantiate(fromAppStoryboard: .Chat)
         setAsWindowRoot(scene)
     }
     

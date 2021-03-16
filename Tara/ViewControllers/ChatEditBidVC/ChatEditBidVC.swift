@@ -29,7 +29,10 @@ class ChatEditBidVC: BaseVC {
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet var headerView: UIView!
     @IBOutlet weak var mainTableView: UITableView!
-    
+    @IBOutlet weak var unitPriceLbl: UILabel!
+    @IBOutlet weak var unitLbl: UILabel!
+    @IBOutlet weak var brandsLbl: UILabel!
+    @IBOutlet weak var pleaseFillOptionLbl: UILabel!
     
     // MARK: - IBOutlets
     //===========================
@@ -111,6 +114,7 @@ extension ChatEditBidVC {
         viewModel.delegate = self
         self.tableViewSetUp()
         hitApi()
+        setupText()
     }
     
     private func tableViewSetUp(){
@@ -122,6 +126,13 @@ extension ChatEditBidVC {
         self.mainTableView.registerCell(with: GarageServiceBrandsCell.self)
         self.mainTableView.tableHeaderView = headerView
         self.mainTableView.tableHeaderView?.height = 102.5
+    }
+    
+    private func setupText() {
+        brandsLbl.text = LocalizedString.brands.localized
+        unitLbl.text = LocalizedString.unit.localized
+        unitPriceLbl.text = LocalizedString.unitPrice.localized
+        pleaseFillOptionLbl.text = LocalizedString.please_fill_the_options_to_place_bid.localized
     }
     
     private func hitApi(){
