@@ -568,23 +568,23 @@
 
 
 //Updated Localized String
-"type_your_message_here" = "Type your message here";
-"view_All_Offer" = "View All Offers";
-"minutesAgo" = "minutes ago";
-"oneMinuteAgo" = "1 minute ago";
-"oneHourAgo" = "1 hour ago";
-"hoursAgo" = "hours ago";
-"daysAgo" = "days ago";
-"lastWeek" = "Last week";
-"secondsAgo" = "seconds ago";
-"weeksAgo" = "weeks ago";
-"lastMonth" = "Last month";
-"monthsAgo" = "months ago";
-"lastYear" = "Last year";
+"type_your_message_here" = "اكتب رسالتك هنا";
+"view_All_Offer" = "مشاهدة جميع العروض";
+"minutesAgo" = "دقائق مضت";
+"oneMinuteAgo" = "منذ 1 دقيقة";
+"oneHourAgo" = "منذ 1 ساعة";
+"hoursAgo" = "منذ ساعات";
+"daysAgo" = "أيام مضت";
+"lastWeek" = "الاسبوع الماضي";
+"secondsAgo" = "منذ ثوانى";
+"weeksAgo" = "منذ أسابيع";
+"lastMonth" = "الشهر الماضي";
+"monthsAgo" = "منذ اشهر";
+"lastYear" = "العام الماضي";
 "rejectRequest" = "رفض الطلبt";
-"type_Your_Message_Here" = "Type your message here";
-"search" = "Search";
+"type_Your_Message_Here" = "اكتب رسالتك هنا";
+"search" = "بحث";
 "myRatings" =  "تقييماتي:";
-"more" = "More";
-"total_price" = "Total Price";
-"please_select_one_option_to_proceed" = "Please select any one option to proceed.";
+"more" = "أكثر";
+"total_price" = "السعر الكلي";
+"please_select_one_option_to_proceed" = "الرجاء تحديد أي خيار واحد للمتابعة";
