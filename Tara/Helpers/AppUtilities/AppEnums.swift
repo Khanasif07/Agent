@@ -240,7 +240,7 @@ enum FilterScreen {
            switch self {
             
            case .byServiceType:
-            return ["Tyres",
+            return ["Tires",
                     "Oil",
                     "Battery"]
             
@@ -249,7 +249,7 @@ enum FilterScreen {
                     "received",
                     "noOffer"]
            case .allRequestServiceType:
-            return ["Tyres",
+            return ["Tires",
                     "Oil",
                     "Battery"]
            case .allRequestByStatus:

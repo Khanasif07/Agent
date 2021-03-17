@@ -48,7 +48,7 @@
 "reject" = "Reject";
 "accepted" = "Accepted";
 "thisBidIsProposedBy" = "This bid is proposed by ";
-"asPerYourTyreService" = " as per your tyre\nservice request.";
+"asPerYourTyreService" = " as per your tire\nservice request.";
 "status" = "Status";
 
 // MARK: - Login VC Values
@@ -212,7 +212,7 @@
 "brandName" = "Brand’s Name";
 "selectCountry" = "Select Country";
 "countryName" = "Country’s Name";
-"arabianTyresWantToAccessYourCurrentLocation" = "Arabian Tyres want to access\nyour current location";
+"arabianTyresWantToAccessYourCurrentLocation" = "Arabian Tires want to access\nyour current location";
 "allowCureentLocationWillHelpYouInGettingGreatOffers" = "Allow current location will help you\nin getting great offers";
 "allow" = "Allow";
 "installationPriceRange" = "Installation Price Range";
@@ -323,7 +323,7 @@
 "yourRequestForOilServiceHasBeenSubmitted" = "Your request for oil service has been submitted successfully.";
  // MARK: - Home  VC Values
 //==============================
-"tyre" = "Tyre";
+"tyre" = "Tire";
 "oil" = "Oil";
 "battery" = "Battery";
 "yourRegRequestHasBeenAccepted" = "Your Registration Request has been Accepted. Kindly complete your profile";
@@ -353,7 +353,7 @@
 "oilType" = "Oil type";
 "selectType" = "Select type";
 "selectTyreSize" = "Select Tire Size";
-"weHaveFoundSutiableTyreForYourVehicleAsPerTheProvidedDetails" = "We have found sutiable tyres for your vehicle as per the provided details.";
+"weHaveFoundSutiableTyreForYourVehicleAsPerTheProvidedDetails" = "We have found sutiable tires for your vehicle as per the provided details.";
 
 "pleaseSelectAnyTyreToProceed" = "Please select any tire to proceed";
 
@@ -369,12 +369,12 @@
 "countries" = "Countries";
 "chooseYourVehicleDetails" = "Choose Your Vehicle Details";
 "wellGetYouOilAccordingToTheProvidedDetails" = "We’ll get you oil according to the\nprovided details";
-"numberOfTyre" = "Number of Tyre";
+"numberOfTyre" = "Number of Tire";
 "edit" = "Edit";
 "submitRequest" = "Submit Request";
-"youAreRequestingForTyreServiceWith" = "You are requesting for tyre\nService With";
-"sizeOfTyre" = "Size of tyre";
-"originOfTyre" = "Origin of Tyre";
+"youAreRequestingForTyreServiceWith" = "You are requesting for tire\nService With";
+"sizeOfTyre" = "Size of tire";
+"originOfTyre" = "Origin of Tire";
 "productYear" = "Product Year";
 "skipAndSubmit" = "Skip & Submit ";
 "chooseQuantity" = "Choose Quantity";

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -54,7 +55,7 @@
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="1000" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oL0-bx-igE">
                                                 <rect key="frame" x="16" y="330" width="382" height="57.5"/>
-                                                <string key="text">What type of a tyre are you
+                                                <string key="text">What type of a tire are you
 looking for?</string>
                                                 <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="21"/>
                                                 <color key="textColor" red="0.10980392160000001" green="0.1137254902" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -63,7 +64,7 @@ looking for?</string>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="7eO-67-Xcd">
                                                 <rect key="frame" x="309" y="382.5" width="89" height="21"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6wN-jc-MsM">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6wN-jc-MsM">
                                                         <rect key="frame" x="0.0" y="0.0" width="89" height="20"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="20" id="J2M-hA-Jhe"/>
@@ -91,8 +92,8 @@ looking for?</string>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K2c-h9-JtS">
                                                 <rect key="frame" x="16" y="411.5" width="382" height="388"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose the size of tyre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xVw-Ps-Lcx">
-                                                        <rect key="frame" x="16" y="16" width="147.5" height="19.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose the size of tire" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xVw-Ps-Lcx">
+                                                        <rect key="frame" x="16" y="16" width="143.5" height="19.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="19.5" id="BZI-SD-nWr"/>
                                                         </constraints>
@@ -152,7 +153,7 @@ looking for?</string>
                                                                 <rect key="frame" x="303" y="0.0" width="47" height="50"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="R" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kKe-wd-t5e">
-                                                                        <rect key="frame" x="0.0" y="22.5" width="15" height="17"/>
+                                                                        <rect key="frame" x="0.0" y="18.5" width="15" height="17"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="15" id="nHz-qW-ZNd"/>
                                                                         </constraints>
@@ -182,7 +183,7 @@ looking for?</string>
                                                             <constraint firstItem="qqM-dv-eQM" firstAttribute="width" secondItem="O3U-dG-Uaz" secondAttribute="width" id="ICZ-QD-eC5"/>
                                                         </constraints>
                                                     </stackView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LH3-Us-so6" customClass="AppButton" customModule="Tara" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LH3-Us-so6" customClass="AppButton" customModule="Tara" customModuleProvider="target">
                                                         <rect key="frame" x="216" y="316" width="150" height="56"/>
                                                         <color key="backgroundColor" red="0.090196078430000007" green="0.1450980392" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
@@ -206,7 +207,7 @@ looking for?</string>
                                                             <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="ZfE-Ba-aRb">
                                                                 <rect key="frame" x="0.0" y="0.0" width="0.0" height="21"/>
                                                                 <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="frU-qL-MHq">
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="frU-qL-MHq">
                                                                         <rect key="frame" x="0.0" y="0.0" width="0.0" height="20"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="20" id="YWl-wU-SXI"/>
@@ -237,7 +238,7 @@ looking for?</string>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="mv7-Vg-OE3">
                                                                 <rect key="frame" x="148.5" y="0.0" width="94" height="21"/>
                                                                 <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3DP-Ok-PvF">
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3DP-Ok-PvF">
                                                                         <rect key="frame" x="0.0" y="0.0" width="94" height="20"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="20" id="4g5-dC-TO1"/>
@@ -264,8 +265,8 @@ looking for?</string>
                                                             </stackView>
                                                         </subviews>
                                                     </stackView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of tyre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bwz-fa-8mT">
-                                                        <rect key="frame" x="16" y="196.5" width="98" height="19.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of tire" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bwz-fa-8mT">
+                                                        <rect key="frame" x="16" y="196.5" width="94" height="19.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="19.5" id="vt7-JD-IpM"/>
                                                         </constraints>
@@ -281,7 +282,7 @@ looking for?</string>
                                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                         <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Enter number of tyre you want"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Enter number of tire you want"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="feu-eZ-cGu" customClass="CustomDashedView" customModule="Tara" customModuleProvider="target">
@@ -292,7 +293,7 @@ looking for?</string>
                                                         </constraints>
                                                     </view>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstItem="Ipp-51-wjs" firstAttribute="leading" secondItem="K2c-h9-JtS" secondAttribute="leading" constant="16" id="13W-jN-DHN"/>
                                                     <constraint firstItem="xVw-Ps-Lcx" firstAttribute="leading" secondItem="K2c-h9-JtS" secondAttribute="leading" constant="16" id="1qS-ps-30j"/>
@@ -376,7 +377,8 @@ looking for?</string>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="5Hh-Kn-yiW"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="5Hh-Kn-yiW" firstAttribute="trailing" secondItem="p0m-1a-SuG" secondAttribute="trailing" id="Cwc-oc-iZU"/>
                             <constraint firstItem="dFF-Bw-U7f" firstAttribute="leading" secondItem="5Hh-Kn-yiW" secondAttribute="leading" id="Wln-LR-xl3"/>
@@ -386,7 +388,6 @@ looking for?</string>
                             <constraint firstItem="p0m-1a-SuG" firstAttribute="bottom" secondItem="gjf-mI-Kea" secondAttribute="bottom" id="rtR-0V-pQY"/>
                             <constraint firstItem="dFF-Bw-U7f" firstAttribute="top" secondItem="5Hh-Kn-yiW" secondAttribute="top" id="yMh-6I-AsR"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="5Hh-Kn-yiW"/>
                     </view>
                     <connections>
                         <outlet property="chatWithExpertBtn" destination="3DP-Ok-PvF" id="P88-9a-kBP"/>
@@ -433,8 +434,8 @@ looking for?</string>
                                                     <action selector="backBtnAction:" destination="qAh-dG-X0L" eventType="touchUpInside" id="NJr-OX-zLk"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Tyre Size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8tI-R7-F0D">
-                                                <rect key="frame" x="145.5" y="10.5" width="123.5" height="23.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Tire Size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8tI-R7-F0D">
+                                                <rect key="frame" x="147" y="10.5" width="120" height="23.5"/>
                                                 <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -447,7 +448,7 @@ looking for?</string>
                                                 </constraints>
                                             </imageView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="19w-ad-hIW"/>
                                             <constraint firstItem="8tI-R7-F0D" firstAttribute="centerY" secondItem="pz0-46-Txp" secondAttribute="centerY" id="I9z-xo-M44"/>
@@ -470,13 +471,13 @@ looking for?</string>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cUO-Eb-1MQ">
                                                 <rect key="frame" x="16" y="16" width="382" height="38.5"/>
-                                                <string key="text">We have found sutiable tyres for your vehicle as per
+                                                <string key="text">We have found sutiable tires for your vehicle as per
 the provided details.</string>
                                                 <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="14"/>
                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please select any tyre to proceed" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="REk-X6-7Cp">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please select any tire to proceed" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="REk-X6-7Cp">
                                                 <rect key="frame" x="16" y="86.5" width="382" height="19.5"/>
                                                 <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="14"/>
                                                 <nil key="textColor"/>
@@ -498,7 +499,7 @@ the provided details.</string>
                                         <rect key="frame" x="0.0" y="165" width="414" height="653"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aYp-8G-iQa" customClass="AppButton" customModule="Tara" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aYp-8G-iQa" customClass="AppButton" customModule="Tara" customModuleProvider="target">
                                         <rect key="frame" x="22" y="747" width="370" height="56"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -513,7 +514,7 @@ the provided details.</string>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <color key="backgroundColor" systemColor="lightTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="evX-7d-dGv" secondAttribute="bottom" id="08c-u4-8x4"/>
                                     <constraint firstItem="pz0-46-Txp" firstAttribute="leading" secondItem="7wG-zy-NOb" secondAttribute="leading" id="7I1-La-JWJ"/>
@@ -533,7 +534,8 @@ the provided details.</string>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Dwg-tn-5kn"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Dwg-tn-5kn" firstAttribute="top" secondItem="7wG-zy-NOb" secondAttribute="top" id="BaR-Sh-mAt"/>
                             <constraint firstItem="7wG-zy-NOb" firstAttribute="leading" secondItem="Dwg-tn-5kn" secondAttribute="leading" id="N90-5C-hVr"/>
@@ -541,7 +543,6 @@ the provided details.</string>
                             <constraint firstItem="7wG-zy-NOb" firstAttribute="bottom" secondItem="Dwg-tn-5kn" secondAttribute="bottom" id="myv-P7-URC"/>
                             <constraint firstItem="Dwg-tn-5kn" firstAttribute="trailing" secondItem="7wG-zy-NOb" secondAttribute="trailing" id="vto-ji-ih1"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Dwg-tn-5kn"/>
                     </view>
                     <connections>
                         <outlet property="bottomDescLbl" destination="REk-X6-7Cp" id="0nx-s8-8em"/>
@@ -556,11 +557,31 @@ the provided details.</string>
             <point key="canvasLocation" x="842" y="110"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="Bat-Cc-1TR">
+            <size key="intrinsicContentSize" width="32" height="41.609671875000004"/>
+        </designable>
+        <designable name="gjX-b0-YvN">
+            <size key="intrinsicContentSize" width="350" height="41.609671875000004"/>
+        </designable>
+        <designable name="igh-xn-3Cu">
+            <size key="intrinsicContentSize" width="32" height="41.609671875000004"/>
+        </designable>
+        <designable name="kLV-ob-3jx">
+            <size key="intrinsicContentSize" width="32" height="41.609671875000004"/>
+        </designable>
+    </designables>
     <resources>
         <image name="group3813" width="41" height="48"/>
         <image name="icArrow" width="30" height="30"/>
         <image name="icBackward" width="36" height="34"/>
         <image name="icTyre" width="135" height="135"/>
         <image name="line" width="11" height="33"/>
+        <systemColor name="lightTextColor">
+            <color white="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
