@@ -46,6 +46,7 @@ class MyServiceTableCell: UITableViewCell {
         requestNoValueLbl.textColor = AppColors.linkTextColor
         requestNoLbl.text = LocalizedString.request_No.localized + ":"
         statusLbl.text = LocalizedString.status.localized + ":"
+        otpLbl.text = LocalizedString.otp.localized
         needHelpBtn.setTitle(LocalizedString.need_Help.localized, for: .normal)
         downloadInvoiceBtn.setTitle(LocalizedString.download_Invoice.localized, for: .normal)
         lineView.isHidden = true

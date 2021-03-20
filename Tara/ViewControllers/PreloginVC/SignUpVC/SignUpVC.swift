@@ -63,6 +63,7 @@ class SignUpVC: BaseVC {
 extension SignUpVC {
     
     private func initialSetup() {
+        signupLbl.text = LocalizedString.signup.localized
         self.viewModel.delegate = self
         self.tableViewSetUp()
         self.setUpButton()
