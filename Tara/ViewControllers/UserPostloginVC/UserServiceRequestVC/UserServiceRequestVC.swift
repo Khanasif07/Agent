@@ -150,13 +150,13 @@ extension UserServiceRequestVC {
         [tyreSizeValueLbl,unitValueLblb,brandsValueLbl].forEach({$0?.textColor = AppColors.fontTertiaryColor})
         unitValueLblb.text = LocalizedString.unit.localized + ":"
         brandsLbl.text = LocalizedString.brands.localized
-        titleLbl.text =  self.viewModel.serviceType == LocalizedString.tyres.localized ? LocalizedString.tyreServiceRequest.localized: self.viewModel.serviceType == LocalizedString.battery.localized ? LocalizedString.batteryServiceRequest.localized : LocalizedString.oilServiceRequest.localized
+        titleLbl.text =  self.viewModel.serviceType == "Tyres" ? LocalizedString.tyreServiceRequest.localized: self.viewModel.serviceType == "Battery" ? LocalizedString.batteryServiceRequest.localized : LocalizedString.oilServiceRequest.localized
         tyreSizeLbl.text = self.viewModel.serviceType == LocalizedString.tyres.localized ? (LocalizedString.tyreSize.localized) : (LocalizedString.vehicleDetails.localized + ":")
         productImgView.isHidden = self.viewModel.serviceType == LocalizedString.tyres.localized
-        let logoBackGroundColor =  self.viewModel.serviceType == LocalizedString.tyres.localized ? AppColors.blueLightColor : self.viewModel.serviceType == LocalizedString.battery.localized ? AppColors.redLightColor : AppColors.grayLightColor
+        let logoBackGroundColor =  self.viewModel.serviceType == "Tyres" ? AppColors.blueLightColor : self.viewModel.serviceType == "Battery" ? AppColors.redLightColor : AppColors.grayLightColor
         bottomLineView.isHidden = self.viewModel.serviceType == LocalizedString.tyres.localized
         self.productImgView.backgroundColor = logoBackGroundColor
-        let logoImg =  self.viewModel.serviceType == LocalizedString.tyres.localized ? #imageLiteral(resourceName: "icTyre") : self.viewModel.serviceType == LocalizedString.battery.localized ? #imageLiteral(resourceName: "icBattery") : #imageLiteral(resourceName: "icOil")
+        let logoImg =  self.viewModel.serviceType == "Tyres" ? #imageLiteral(resourceName: "icTyre") : self.viewModel.serviceType == "Battery" ? #imageLiteral(resourceName: "icBattery") : #imageLiteral(resourceName: "icOil")
         requestSeenLbl.text = LocalizedString.requestSeen.localized
         bidReceivedLbl.text = LocalizedString.bidReceived.localized
         lowestBidLbl.text = LocalizedString.lowest_Bid.localized

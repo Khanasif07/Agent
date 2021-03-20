@@ -76,10 +76,10 @@ class MyServiceTableCell: UITableViewCell {
         statusView.isHidden = model.status == .pending
         paymentStatusLbl.isHidden = model.status == .pending
 
-        self.serviceTypeLbl.text = model.requestType + LocalizedString.serviceRequest.localized
-        let logoImg =  model.requestType == LocalizedString.tyres.localized ? #imageLiteral(resourceName: "icTyre") : model.requestType == LocalizedString.battery.localized ? #imageLiteral(resourceName: "icBattery") : #imageLiteral(resourceName: "icOil")
+//        self.serviceTypeLbl.text = model.requestType + LocalizedString.serviceRequest.localized
+        let logoImg =  model.requestType == "Tyres" ? #imageLiteral(resourceName: "icTyre") : model.requestType == "Battery" ? #imageLiteral(resourceName: "icBattery") : #imageLiteral(resourceName: "icOil")
 
-//        self.serviceTypeLbl.text = (model.requestType == LocalizedString.tyres.localized ? LocalizedString.tyres.localized  : model.requestType == LocalizedString.battery.localized ? LocalizedString.battery.localized : LocalizedString.oil.localized) + LocalizedString.serviceRequest.localized
+        self.serviceTypeLbl.text = (model.requestType == "Tyres" ? LocalizedString.tyres.localized  : model.requestType == "Battery" ? LocalizedString.battery.localized : LocalizedString.oil.localized) + LocalizedString.serviceRequest.localized
         
         let logoBackGroundColor =  model.requestType == LocalizedString.tyres.localized ? AppColors.blueLightColor : model.requestType == LocalizedString.battery.localized ? AppColors.redLightColor : AppColors.grayLightColor
         self.logoImgView.backgroundColor = logoBackGroundColor
