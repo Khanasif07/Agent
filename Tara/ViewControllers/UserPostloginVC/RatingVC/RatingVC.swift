@@ -121,6 +121,7 @@ extension RatingVC {
         uploadAnyPicLbl.text = LocalizedString.uploadAnyPictureOfYourExperience.localized
         garageNameLbl.text = garageName + " " + LocalizedString.garageQuestionMark.localized
         
+        txtView.textAlignment = CommonFunctions.isEnglishSelected() ? .left : .right
     }
     
     private func prefilledData(){

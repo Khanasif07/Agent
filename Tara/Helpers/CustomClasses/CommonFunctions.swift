@@ -188,6 +188,7 @@ class CommonFunctions {
             textField.titleLabel.textAlignment = CommonFunctions.isEnglishSelected() ? .left : .right
         }
     }
+
     class func setupTextFieldAlignment(_ txtArr : [ATCTextField]){
         txtArr.forEach { (textField) in
             textField.textAlignment = CommonFunctions.isEnglishSelected() ? .left : .right

@@ -665,6 +665,7 @@
                 <outlet property="completeStepBtn" destination="tVw-m3-xDV" id="8Is-Jt-PlI"/>
                 <outlet property="completeUpdateBtn" destination="XbJ-H6-NOp" id="VUD-6n-syT"/>
                 <outlet property="completedLineView" destination="pUJ-KL-TGo" id="C2D-DB-wlj"/>
+                <outlet property="editBtn" destination="Svr-aQ-ltf" id="pBt-lu-Qod"/>
                 <outlet property="noBtn" destination="OVE-is-Qer" id="4JW-rT-CFr"/>
                 <outlet property="noRatingContainerView" destination="t43-Ex-QqX" id="a4m-i0-eva"/>
                 <outlet property="paidLbl" destination="Vrj-RX-oyv" id="xe9-CV-ZzS"/>
@@ -672,6 +673,7 @@
                 <outlet property="progressLbl" destination="8Dp-T8-Xqr" id="qBm-Pk-KL8"/>
                 <outlet property="progressStepBtn" destination="2sN-cu-q6c" id="4nP-pa-kVc"/>
                 <outlet property="progressUpdateBtn" destination="dZP-yT-KaP" id="iL3-Cq-drr"/>
+                <outlet property="ratingAndReviewLbl" destination="NwF-nS-H2d" id="1pK-xv-woa"/>
                 <outlet property="ratingContainerView" destination="vlR-O3-ReE" id="BUa-g3-JNN"/>
                 <outlet property="ratingLbl" destination="ZBM-9r-4lA" id="bYy-xJ-V8J"/>
                 <outlet property="readyToBeTakenLineView" destination="Z6b-Mx-bH0" id="GCw-zc-7hc"/>

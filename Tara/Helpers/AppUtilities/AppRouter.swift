@@ -35,8 +35,8 @@ enum AppRouter {
     // MARK: - Show Landing Screen
     //===========================
     static func checkAppInitializationFlow() {
-     //   goToTestingVC()
-   //     return
+//        goToTestingVC()
+//        return
         if isUserLoggedin {
             SocketIOManager.shared.establishConnection()
             switch isCurrentUserType {
@@ -60,7 +60,7 @@ enum AppRouter {
     }
     
     static func goToTestingVC(){
-        let scene = CompleteProfileStep1.instantiate(fromAppStoryboard: .PostLogin)
+        let scene = RatingVC.instantiate(fromAppStoryboard: .GarageRequest)
         setAsWindowRoot(scene)
     }
     

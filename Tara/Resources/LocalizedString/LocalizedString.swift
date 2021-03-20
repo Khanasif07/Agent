@@ -592,6 +592,7 @@ enum LocalizedString : String {
     case serviceStarted
     case readyToPick
     case carReceived_QM
+    case ratingAndReview
 }
 
 
