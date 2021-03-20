@@ -584,6 +584,10 @@ enum LocalizedString : String {
     case more
     case total_price
     case please_select_one_option_to_proceed
+    case ongoing
+    case _pending
+    case completed
+    case cancelled
 }
 
 

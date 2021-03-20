@@ -588,3 +588,8 @@
 "more" = "أكثر";
 "total_price" = "السعر الكلي";
 "please_select_one_option_to_proceed" = "الرجاء تحديد أي خيار واحد للمتابعة";
+
+"ongoing" = "جاري التنفيذ";
+"_pending" = "Pending";
+"completed" = "Completed";
+"cancelled" = "ألغيت";
