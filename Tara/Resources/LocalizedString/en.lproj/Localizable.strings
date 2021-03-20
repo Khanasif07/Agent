@@ -75,7 +75,7 @@
 // MARK: - Validation Messages
 //==================================
 "newPassword" = "New Password";
-"pleaseEnterValidEmail" = "Please enter a valid email address";
+"pleaseEnterValidEmail" = "Enter a valid Email address";
 "pleaseEnterValidPassword" = "Please enter a valid password (Minimum 6 and max 25 characters, one uppercase and one number)";
 "nameShouldBeAtleastMinCharacters" = "Minimum length of first name should be greater than or equal to 3";
 "phoneNoShouldBeAtleastMinCharacters" = "Phone number length must be 8 to 14 charcters long";
@@ -238,7 +238,7 @@
 "otp" = "Otp ";
 "to" = "to ";
 "verify" = "Verify";
-"pleaseVerifyTheSameInOrderToStartServicing" = "please verify the same in order to\nstart Servicing";
+"pleaseVerifyTheSameInOrderToStartServicing" = "Please verify the order to start servicing";
 "filters" = "Filters";
 "apply" = "Apply";
 "requestCreatedBy" = "Request Created By";
@@ -348,7 +348,7 @@
 "width" = "Width";
 "rimSize" = "Rim Size";
 "quantity" = "Quantity";
-"quantityShort" = "Qty";
+"quantityShort" = "Quantity";
 "enter_number_of_tyre_you_want" = "Enter number of tire you want";
 "oilType" = "Oil type";
 "selectType" = "Select type";
@@ -362,27 +362,27 @@
 "pleaseSelectAnyViscosityToProceed" = "Please select any viscosity to proceed";
 "next" = "Next";
 "proceed" = "Proceed";
-"thePreferredBrandForBatteryWouldBe" = "The preferred brand for battery\nwould be";
-"chooseBatteryBrands" = "Choose BatteryBrands";
+"thePreferredBrandForBatteryWouldBe" = "The preferred battery brand is ";
+"chooseBatteryBrands" = "Choose Battery Brand";
 "enterNumber" = "Enter number";
 "country" = "Country";
 "countries" = "Countries";
 "chooseYourVehicleDetails" = "Choose Your Vehicle Details";
-"wellGetYouOilAccordingToTheProvidedDetails" = "We’ll get you oil according to the\nprovided details";
+"wellGetYouOilAccordingToTheProvidedDetails" = "We have found suitable oil for your vehicle as per the provided details.";
 "numberOfTyre" = "Number of Tire";
 "edit" = "Edit";
 "submitRequest" = "Submit Request";
-"youAreRequestingForTyreServiceWith" = "You are requesting for tire\nService With";
+"youAreRequestingForTyreServiceWith" = "You’ve requested Tire \\n Service with";
 "sizeOfTyre" = "Size of tire";
 "originOfTyre" = "Origin of Tire";
-"productYear" = "Product Year";
+"productYear" = "Production Year";
 "skipAndSubmit" = "Skip & Submit ";
 "chooseQuantity" = "Choose Quantity";
 "vehicleDetails" = "Vehicle Details";
-"batteyRequest" = "You are requesting for Battery\nService With";
-"oilRequest"  = "You are requesting for Oil\nService With";
+"batteyRequest" = "You’ve requested Battery \\n Service with";
+"oilRequest"  = "You’ve requested Oil \\n Service with";
 "batteryBrand" = "Battery Brands";
-"numberOfBattery" = "Number of Battery";
+"numberOfBattery" = "Number of Batteries";
 "oilBrands" = "Oil Brands";
 "numberOfUnit" = "Number of Unit";
 "oilImage" = "Oil Image";
@@ -393,7 +393,7 @@
 "verifyPhone" = "Verify Phone";
 "unitPriceShouldNotBeEmpty" = "Unit Price should not be 0 or empty";
 "cancelBid" = "Cancel Bid";
-"milesAway" = " miles away";
+"milesAway" = " Kilometers away";
 "hereIsYourOTPForTyreService" = "Here is your OTP for Tire Service\n";
 
 
@@ -427,7 +427,7 @@
 "are_you_sure_you_want_to_block_this_user" = "Are you sure you want to block this user?";
 "are_you_sure_you_want_to_unblock_this_user" = "Are you sure you want to unblock this user?";
 "no_service_request_available" = "No service request available";
-"kindly_provide_the_access_to_record_audio" = "Kindly provide the access to record audio";
+"kindly_provide_the_access_to_record_audio" = "Kindly provide access to record audio";
 "please_enter_different_amount_to_edit_bid" = "Please enter different amount to edit bid";
 "make_Payment_to_get_hassle_free_service" = "Make Payment to get hassle free service";
 
@@ -468,7 +468,7 @@
 "tyres" = "Tires";
 "leave_us_a_message_desc" = "Leave us a message, we will get contact with you as soon as possible";
 "do_you_have_an_issue_with_service" = "Do you have an issue with service?";
-"mode_Of_Payment" = "Mode of Payment";
+"mode_Of_Payment" = "Payment Method";
 "request_No" = "Request No";
 "offers" = "Offers";
 "need_Help" = "Need Help?";
@@ -477,7 +477,7 @@
 "allOffers" = "All Offers";
 "proposalDetails" = "Proposal Details";
 "viewProposal" = "View Proposal";
-"miles" = "Miles";
+"miles" = "Kilometers ";
 "total_Amount" = "Total Amount";
 
 
@@ -487,7 +487,7 @@
 "searchWithCar" = "Search with Car";
 "chooseTheSizeOfTyre" = "Choose the size of tire";
 "notSureAboutTheSize" = "Not sure about the size?";
-"chatWithExpert" = "Chat with Expert";
+"chatWithExpert" = "Chat with an expert.";
 "createNewAccount" = "Create New Account";
 "pleaseSetNewPassword" = "Please Set a New Password";
 "resetPassword" = "Reset Password";
@@ -586,7 +586,7 @@
 "myRatings" =  "My Ratings:";
 "more" = "More";
 "total_price" = "Total Price";
-"please_select_one_option_to_proceed" = "Please select any one option to proceed.";
+"please_select_one_option_to_proceed" = "Please select any option to proceed.";
 
 "ongoing" = "Ongoing";
 "_pending" = "Pending";
