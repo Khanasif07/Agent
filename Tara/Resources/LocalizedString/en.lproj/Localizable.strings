@@ -23,7 +23,7 @@
 "english" = "English";
 "arabic" = "عربى";
 "continueTitle" = "Continue";
-"logout" = "Logout";
+"logout" = "Sign out";
 "mobileNo" = "Mobile Number";
 "name" = "Name";
 "gallery" = "Gallery";
@@ -65,7 +65,7 @@
 "signup_with_social_accounts" = "Sign up with Social Accounts";
 "Login_with_social_accounts" = "Login with Social Accounts";
 "sKIP_LOGIN_CONTINUE" = "SKIP LOGIN & CONTINUE";
-"skip_signup_continue" = "SKIP SIGN UP & CONTINUE";
+"skip_signup_continue" = "Continue without Sign up";
 "dont_have_an_account" = "Don’t have an account?";
 "imageUploadingFailed" = "Image uploading failed";
 "accountNumberAreNotSame" = "Account number doesn't match";
@@ -109,7 +109,7 @@
 "wait_Img_Upload" = "Please wait until media has finished uploading";
 // MARK: - Signup VC Values
 //==============================
-"bySigningDec" = "By Signing Up you are agree to our";
+"bySigningDec" = "By Signing Up you are agreeing to our";
 "tos" = " ToS "; 
 "privacyPolicy" = "Privacy Policy";
 
@@ -139,23 +139,23 @@
 
 "garageRegistration" = "Garage Registration";
 "startRegistration" = "Start Registration";
-"requirementToRegister" = "Requirement to register\nyour garage";
+"requirementToRegister" = "Requirements for registering\nyour garage";
 
 "garageLogo" = "1. Garage Logo";
 "authorisedNameOfServiceCenter" = "2. Authorised Name of Service Center";
 "locationOfYourServiceCenter" = "3. Location of your Service center";
 "imagesOfyourServiceCenter" = "4. Images of your Service Center";
-"govtIssuedlicensesandDocuments" = "5. Govt. Issued licenses and Documents";
+"govtIssuedlicensesandDocuments" = "5. Government Issued licenses and documents.";
 
 "garageLogoDesc" = "You will have to upload a logo Image(JPG/JPEG) of your Garage or Service center.";
 "authorisedNameOfServiceCenterDesc" = "You will be entering the authorised name of your Garage or Service Center.";
 "locationOfYourServiceCenterDesc" = "You will have to mark the exact location of your Garage or Service center on provided MAP.";
 "imagesOfyourServiceCenterDesc" = "Upload Multiple Images(JPG/JPEG) of your Garage or Service center.";
-"govtIssuedlicensesandDocumentsDesc" = "You will have to upload several Documents like Commercial Registration Doc., Vat certificate, Municipality License and ID of the owner";
+"govtIssuedlicensesandDocumentsDesc" = "You will have to upload the following documents: Commercial Registration,VAT Certificate,Municipal License and ID of the owner.";
 
 "addDetails" = "Add Details";
-"thisAllAboutMyServiceCenter" = "This is all about my\nService Center";
-"addFollowingGarageDetails" = "Add following garage details";
+"thisAllAboutMyServiceCenter" = "These are all the details about my service center";
+"addFollowingGarageDetails" = "Add garage details";
 "addLogo" = "Add Logo";
 "saveContinue" = "Save & Continue";
 "enterServiceCenterName" = "Enter Service Center Name";
@@ -164,8 +164,8 @@
 "registerAgain" = "Register Again";
 "completeProfile" = "Complete Profile";
 "yourRegistrationRequestIsStillUnder" = "your registration request is still under review we’ll let you know when it’s done";
-"addFollowingGovtIssuedLicenceOrDocumentsHereForVerification" = "Add Following Govt Issued Licence or Documents Here for verification";
-"govtIssuedDoc" = "Govt. Issued Doc";
+"addFollowingGovtIssuedLicenceOrDocumentsHereForVerification" = "Add Following Government Issued Licenses or Documents here for verification";
+"govtIssuedDoc" = "Government Issued Documents";
 "commercialRegister" = "Commercial Register";
 "vatCertificate" = "Vat certificate";
 "idOfTheOwner" = "ID of the owner";
@@ -306,7 +306,7 @@
 "delivered" = "Delivered";
 "inABid" = "In a Bid";
 "bidFinalised" = "Bid Finalised";
-"closedForBid" = "Closed for Bid";
+"closedForBid" = "Closed for bidding";
 "expired" = "Expired";
 "bidClosed" = "Bid Closed";
 "openForBidding" = "open For Bidding";
@@ -329,9 +329,9 @@
 "yourRegRequestHasBeenAccepted" = "Your Registration Request has been Accepted. Kindly complete your profile";
 "garageQuestionMark" = "Garage?";
 "supportChat" = "Support Chat";
-"pleaseUploadAtlestOneImage" = "please upload atlest one image";
+"pleaseUploadAtlestOneImage" = "Please upload atleast an image";
 "vehicle" = "Vehicle";
-"regNumber" = "Reg. Number";
+"regNumber" = "Registration number";
 "payableAmount" = "Payable Amount";
 "requestedBy" = "Requested By:";
  // MARK: - Complete profile 1  VC Values
@@ -388,8 +388,8 @@
 "oilImage" = "Oil Image";
 "selectNumberOfUnitYouWant" = "Select number of unit you want";
 "verifyEmail" = "Verify Email";
-"anOTPWillBeSendToYourPhoneNumber" = "An OTP will be send to your phone number";
-"aVerificationLinkWillBeSendToYourEmailAddress" = "A verification link will be send to your email address";
+"anOTPWillBeSendToYourPhoneNumber" = "An OTP has been sent to your Mobile Number";
+"aVerificationLinkWillBeSendToYourEmailAddress" = "A verification link has been sent to your email address";
 "verifyPhone" = "Verify Phone";
 "unitPriceShouldNotBeEmpty" = "Unit Price should not be 0 or empty";
 "cancelBid" = "Cancel Bid";
@@ -427,7 +427,7 @@
 "are_you_sure_you_want_to_block_this_user" = "Are you sure you want to block this user?";
 "are_you_sure_you_want_to_unblock_this_user" = "Are you sure you want to unblock this user?";
 "no_service_request_available" = "No service request available";
-"kindly_provide_the_access_to_record_audio" = "Kindly provide the access to record audio";
+"kindly_provide_the_access_to_record_audio" = "Kindly provide access to record audio";
 "please_enter_different_amount_to_edit_bid" = "Please enter different amount to edit bid";
 "make_Payment_to_get_hassle_free_service" = "Make Payment to get hassle free service";
 
@@ -453,7 +453,7 @@
 "password_has_been_reset_successfully" = "Password has been reset successfully";
 "otp_Verified" = "OTP Verified";
 "you_have_successfully_verified_your_mobile_no" = "You have successfully verified your mobile no.";
-"are_you_sure_you_want_to_logout" = "Are you sure you want to logout?";
+"are_you_sure_you_want_to_logout" = "Are you sure you want to Sign out?";
 
 
 // MARK: - Updated Screen
@@ -466,7 +466,7 @@
 "request_Detail" = "Request Detail";
 "unit" = "Unit";
 "tyres" = "Tires";
-"leave_us_a_message_desc" = "Leave us a message, we will get contact with you as soon as possible";
+"leave_us_a_message_desc" = "Leave us a message, we will get back to you as soon as possible.";
 "do_you_have_an_issue_with_service" = "Do you have an issue with service?";
 "mode_Of_Payment" = "Mode of Payment";
 "request_No" = "Request No";
@@ -493,14 +493,14 @@
 "resetPassword" = "Reset Password";
 "selectCountryCode" = "Select Country Code";
 "oneTimePassword" = "One Time Password";
-"pleaseEnter4DigitOtpCode" = "Please Enter 4 Digit OTP Send to ";
+"pleaseEnter4DigitOtpCode" = "Please enter the 4 Digit OTP sent to ";
 "resendOtp" = "Resend Otp";
 "welcomeToTara" = "WELCOME TO";
 "login_with_Social_Accounts" = "Login with Social Accounts";
 "log_in" = "Log in";
 "addImages" = "Add Images";
 "addressAndLocation" = "Address & Location";
-"addImagesOfServiceCenter" = "Add Images of service center";
+"addImagesOfServiceCenter" = "Add Images of the Service Center";
 "addLocation" = "Add Location";
 "dragPointerToSetExactLocation" = "Drag pointer to set exact location of your service center";
 "searchBankByName" = "Search bank by name";
@@ -542,7 +542,7 @@
 "please_fill_the_options_to_place_bid" = "Please fill the options to place bid";
 "photo_Attachment" = "Photo Attachment";
 "editBid" = "Edit Bid";
-"paybleAmt" = "Payable Amt";
+"paybleAmt" = "Payable Amount";
 "previousService" = "Previous Service";
 "request_Rejected" = "Request Rejected";
 "at" = "at";
