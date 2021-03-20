@@ -54,6 +54,7 @@ extension CountryVC {
     }
     
     private func textFieldSetUp(){
+        self.dropDownbutton.setTitle(LocalizedString.cancel.localized, for: .normal)
         self.titleLbl.text = LocalizedString.selectCountryCode.localized
         self.dropDownbutton.tintColor = AppColors.fontPrimaryColor
         let show1 = UIButton()

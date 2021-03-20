@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -16,14 +17,14 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="105" id="KGk-i7-Jjw" customClass="URTyreSizeTableCell" customModule="Tara" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="332" height="208"/>
+            <rect key="frame" x="0.0" y="0.0" width="332" height="227.5"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="332" height="208"/>
+                <rect key="frame" x="0.0" y="0.0" width="332" height="227.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a6d-ha-D8x">
-                        <rect key="frame" x="16" y="4" width="300" height="200"/>
+                        <rect key="frame" x="16" y="4" width="300" height="219.5"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DSH-Zw-f3g">
                                 <rect key="frame" x="8" y="8" width="30" height="30"/>
@@ -35,16 +36,16 @@
                                 <state key="selected" image="group3815"/>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icTyre" translatesAutoresizingMaskIntoConstraints="NO" id="2uv-1P-9vy">
-                                <rect key="frame" x="50" y="11" width="200" height="178"/>
+                                <rect key="frame" x="50" y="11" width="200" height="135"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="178" id="STd-H2-Htu"/>
+                                    <constraint firstAttribute="width" secondItem="2uv-1P-9vy" secondAttribute="height" multiplier="40:27" id="kRc-DM-vpv"/>
                                     <constraint firstAttribute="width" constant="200" id="maq-vM-X5b"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PGE-Om-MfH">
-                                <rect key="frame" x="8" y="137.5" width="284" height="54.5"/>
+                                <rect key="frame" x="8" y="157" width="284" height="54.5"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="yBf-Cx-UMD">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="yBf-Cx-UMD">
                                         <rect key="frame" x="8" y="8" width="268" height="38.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="B290 205/55 R16" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BDk-FD-WAI">
@@ -64,6 +65,7 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.54117647058823526" green="0.58431372549019611" blue="0.61960784313725492" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="54.5" id="5YH-dM-j7H"/>
                                     <constraint firstAttribute="trailing" secondItem="yBf-Cx-UMD" secondAttribute="trailing" constant="8" id="HDh-D8-d19"/>
                                     <constraint firstAttribute="bottom" secondItem="yBf-Cx-UMD" secondAttribute="bottom" constant="8" id="Oup-Ut-Vxc"/>
                                     <constraint firstItem="yBf-Cx-UMD" firstAttribute="leading" secondItem="PGE-Om-MfH" secondAttribute="leading" constant="8" id="P6I-1z-LCB"/>
@@ -71,17 +73,16 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="2uv-1P-9vy" firstAttribute="top" secondItem="a6d-ha-D8x" secondAttribute="top" constant="11" id="4eG-4C-tDF"/>
-                            <constraint firstAttribute="bottom" secondItem="2uv-1P-9vy" secondAttribute="bottom" constant="11" id="5yj-Dg-1yU"/>
                             <constraint firstItem="PGE-Om-MfH" firstAttribute="leading" secondItem="a6d-ha-D8x" secondAttribute="leading" constant="8" id="8SB-Fo-W9T"/>
                             <constraint firstItem="2uv-1P-9vy" firstAttribute="centerX" secondItem="a6d-ha-D8x" secondAttribute="centerX" id="CwK-c8-1DO"/>
                             <constraint firstAttribute="bottom" secondItem="PGE-Om-MfH" secondAttribute="bottom" constant="8" id="K3F-rr-DAD"/>
                             <constraint firstItem="DSH-Zw-f3g" firstAttribute="top" secondItem="a6d-ha-D8x" secondAttribute="top" constant="8" id="KN7-oE-MtE"/>
                             <constraint firstItem="DSH-Zw-f3g" firstAttribute="leading" secondItem="a6d-ha-D8x" secondAttribute="leading" constant="8" id="MGj-Tv-oJq"/>
                             <constraint firstAttribute="trailing" secondItem="PGE-Om-MfH" secondAttribute="trailing" constant="8" id="Mey-5I-ZaF"/>
-                            <constraint firstItem="2uv-1P-9vy" firstAttribute="centerY" secondItem="a6d-ha-D8x" secondAttribute="centerY" id="nZZ-Mj-Eam"/>
+                            <constraint firstItem="PGE-Om-MfH" firstAttribute="top" secondItem="2uv-1P-9vy" secondAttribute="bottom" constant="11" id="xWs-eB-NbE"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -108,5 +109,8 @@
         <image name="group3815" width="30" height="30"/>
         <image name="icTyre" width="135" height="135"/>
         <image name="roundUnSelected" width="24" height="24"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

@@ -68,6 +68,7 @@ extension GarageProfileVC {
     }
     
     private func tableViewSetUp(){
+        self.titleLbl.text = LocalizedString.profile.localized
         self.mainImgView.setImage_kf(imageString: self.viewModel.preFillModel.logoUrl, placeHolderImage:#imageLiteral(resourceName: "union"), loader: true)
         self.mainTableView.delegate = self
         self.mainTableView.dataSource = self

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -238,7 +239,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By Signing Up you are agree to our ToS  &amp; Privacy Policy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tkA-wv-5cV">
-                                <rect key="frame" x="22" y="329" width="327" height="18"/>
+                                <rect key="frame" x="22" y="329" width="332" height="18"/>
                                 <fontDescription key="fontDescription" name="NunitoSans-Regular" family="Nunito Sans" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -246,7 +247,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="ghA-Xe-4dn">
                                 <rect key="frame" x="22" y="355" width="332" height="97"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3LF-ss-gdK" customClass="AppButton" customModule="Tara" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3LF-ss-gdK" customClass="AppButton" customModule="Tara" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="332" height="56"/>
                                         <color key="backgroundColor" red="0.12941176469999999" green="0.19215686269999999" blue="0.4823529412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -272,7 +273,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="1uU-0k-SFn">
                                                 <rect key="frame" x="167.5" y="0.0" width="52" height="32"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K4q-oS-r53">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K4q-oS-r53">
                                                         <rect key="frame" x="0.0" y="0.0" width="52" height="32"/>
                                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="14"/>
                                                         <state key="normal" title="SIGN IN"/>
@@ -290,14 +291,14 @@
                                     <constraint firstItem="3LF-ss-gdK" firstAttribute="leading" secondItem="ghA-Xe-4dn" secondAttribute="leading" id="TOb-UL-ueO"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eoE-5x-FzW">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eoE-5x-FzW">
                                 <rect key="frame" x="22" y="148" width="74" height="30"/>
                                 <connections>
                                     <action selector="countryPickerAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="HrB-Tq-dC8"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="w08-0j-mw4" secondAttribute="trailing" constant="22" id="6Xr-Mv-dn9"/>
                             <constraint firstItem="ghA-Xe-4dn" firstAttribute="top" secondItem="tkA-wv-5cV" secondAttribute="bottom" constant="8" id="6ya-fh-oAf"/>
@@ -312,6 +313,7 @@
                             <constraint firstItem="tkA-wv-5cV" firstAttribute="leading" secondItem="w08-0j-mw4" secondAttribute="leading" id="mFV-RW-goR"/>
                             <constraint firstItem="w08-0j-mw4" firstAttribute="top" secondItem="rxu-7h-N5W" secondAttribute="top" constant="5" id="tDZ-73-nxr"/>
                             <constraint firstItem="ghA-Xe-4dn" firstAttribute="leading" secondItem="w08-0j-mw4" secondAttribute="leading" id="ttD-F0-eRQ"/>
+                            <constraint firstItem="tkA-wv-5cV" firstAttribute="trailing" secondItem="w08-0j-mw4" secondAttribute="trailing" id="uoA-Fb-yvx"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -339,7 +341,27 @@
             <point key="canvasLocation" x="115.94202898550725" y="111.83035714285714"/>
         </tableViewCell>
     </objects>
+    <designables>
+        <designable name="1vP-6Q-req">
+            <size key="intrinsicContentSize" width="332" height="41.609671875000004"/>
+        </designable>
+        <designable name="Kcz-Gw-53b">
+            <size key="intrinsicContentSize" width="332" height="41.609671875000004"/>
+        </designable>
+        <designable name="KlE-OE-HuT">
+            <size key="intrinsicContentSize" width="230" height="41.609671875000004"/>
+        </designable>
+        <designable name="iwq-3H-gLo">
+            <size key="intrinsicContentSize" width="332" height="41.609671875000004"/>
+        </designable>
+        <designable name="yfi-po-mPk">
+            <size key="intrinsicContentSize" width="332" height="41.609671875000004"/>
+        </designable>
+    </designables>
     <resources>
         <image name="group3714" width="24" height="24"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
