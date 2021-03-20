@@ -29,7 +29,8 @@ class LoginSocialTableCell: UITableViewCell {
         super.awakeFromNib()
         self.loginSocialLbl.text = LocalizedString.login_with_Social_Accounts.localized
         self.setUpButtonInset()
-    
+        faceboookBtn.semanticContentAttribute = .forceLeftToRight
+        googleBtn.semanticContentAttribute = .forceLeftToRight
 
     }
     
