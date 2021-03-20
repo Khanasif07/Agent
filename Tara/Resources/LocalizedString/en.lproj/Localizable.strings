@@ -587,3 +587,8 @@
 "more" = "More";
 "total_price" = "Total Price";
 "please_select_one_option_to_proceed" = "Please select any one option to proceed.";
+
+"ongoing" = "Ongoing";
+"_pending" = "Pending";
+"completed" = "Completed";
+"cancelled" = "Cancelled";

@@ -19,17 +19,17 @@ enum ServiceStatus : String,Codable {
     
     var text :String{
         switch self {
-            
+          
         case .pending:
-            return "Pending"
+            return LocalizedString._pending.localized
         case .ongoing:
-            return "Ongoing"
+            return LocalizedString.ongoing.localized
         case .cancelled:
-            return "Cancelled"
+            return LocalizedString.cancelled.localized
         case .completed:
-            return "Completed"
+            return LocalizedString.completed.localized
         default:
-            return "Expired"
+            return LocalizedString.expired.localized
         }
     }
     
