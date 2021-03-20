@@ -56,11 +56,11 @@ enum AppRouter {
             }else{
                 self.makeChooseLanguageVCRoot()
             }
-        }
+//        }
     }
     
     static func goToTestingVC(){
-        let scene = RatingVC.instantiate(fromAppStoryboard: .GarageRequest)
+        let scene = ContactUsVC.instantiate(fromAppStoryboard: .GarageRequest)
         setAsWindowRoot(scene)
     }
     

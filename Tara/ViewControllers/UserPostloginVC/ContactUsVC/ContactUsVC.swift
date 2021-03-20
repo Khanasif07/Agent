@@ -82,6 +82,7 @@ extension ContactUsVC {
         subjectTextField.font = AppFonts.NunitoSansBold.withSize(14.0)
         
         CommonFunctions.setupTextFieldAlignment([subjectTextField])
+        customTextView.tView.textAlignment = CommonFunctions.isEnglishSelected() ? .left : .right
     }
     
     private func setupTextAndFont(){
