@@ -86,7 +86,7 @@ extension UserChatVC {
         self.titleLbl.text = LocalizedString.chat.localized
         buttonView.isHidden = false
         buttonView.addTarget(self, action: #selector(clear(_:)), for: .touchUpInside)
-        buttonView.imageEdgeInsets = UIEdgeInsets(top: 0, left: -5, bottom: 0, right: 5)
+        buttonView.imageEdgeInsets = UIEdgeInsets(top: 0, left:  AppUserDefaults.value(forKey: .language) == 1 ? 10 : -10, bottom: 0, right:  AppUserDefaults.value(forKey: .language) == 1 ? -10 : 10)
         searchTextField.setButtonToRightView(btn: buttonView, selectedImage: #imageLiteral(resourceName: "cancel"), normalImage: #imageLiteral(resourceName: "icon"), size: CGSize(width: 20, height: 20))
         searchTextField.placeholder = LocalizedString.search.localized
     }
