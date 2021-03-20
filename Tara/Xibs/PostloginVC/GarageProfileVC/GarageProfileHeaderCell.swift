@@ -58,6 +58,8 @@ class GarageProfileHeaderCell: UITableViewCell {
     }
     
     func populateData(model: GarageProfilePreFillModel,userModel: UserModel){
+        phoneVerifyBtn.setTitle(LocalizedString.verify.localized, for: .normal)
+        emailVerifyBtn.setTitle(LocalizedString.verify.localized, for: .normal)
         profileImgView.setImage_kf(imageString: userModel.logoUrl, placeHolderImage: #imageLiteral(resourceName: "icImg"), loader: true)
         userNameLbl.text = userModel.garageName.isEmpty ? "N/A" : "\(userModel.garageName)"
         userPhoneNoLbl.text = userModel.phoneNo.isEmpty ? "N/A" : "\(userModel.countryCode)" + "  \(userModel.phoneNo)"
