@@ -100,6 +100,7 @@ extension ResetPasswordVC {
         self.newPassTxtField.setButtonToRightView(btn: show1, selectedImage: #imageLiteral(resourceName: "icPasswordView"), normalImage: #imageLiteral(resourceName: "icPasswordHide"), size: CGSize(width: 22, height: 22))
       self.submitBtn.setTitle(LocalizedString.submit.localized, for: .normal)
         self.submitBtn.isEnabled = false
+        CommonFunctions.setupTextFieldAlignment([newPassTxtField, confirmTxtField])
     }
     
     @objc func secureTextField(_ sender: UIButton){

@@ -88,6 +88,7 @@ extension ChangePasswordVC {
             txtField?.textColor = AppColors.fontPrimaryColor
             txtField?.setupPasswordTextField()
         }
+        CommonFunctions.setupTextFieldAlignment([oldPasswordTextField, newPasswordTextField, confirmPassWordTextField])
     }
     
     private func setupTextFont() {

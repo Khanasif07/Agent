@@ -42,7 +42,7 @@ class VehicleDetailForOilVC: BaseVC {
     var titleArr : [String] = [LocalizedString.vehicleMake.localized,
                                  LocalizedString.vehicleModel.localized,
                                  LocalizedString.productYear.localized,
-                                 ""
+                                 LocalizedString.selectNumberOfUnitYouWant.localized
     ]
     
     var selectedMakeArr: [MakeModel] = []

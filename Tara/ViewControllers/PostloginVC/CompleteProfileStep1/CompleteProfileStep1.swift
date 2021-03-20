@@ -151,6 +151,8 @@ extension CompleteProfileStep1 {
         [nameTxtField,distTxtField,addressTxtField].forEach({$0?.placeholderColor = AppColors.fontSecondaryColor})
         [nameTxtField,distTxtField,addressTxtField].forEach({$0?.delegate = self})
         self.saveContinueBtn.setTitle(LocalizedString.saveContinue.localized, for: .normal)
+        
+        CommonFunctions.setupTextFieldAlignment([nameTxtField, distTxtField, addressTxtField, nameTxtField])
 //        self.saveContinueBtn.isEnabled = false
     }
     

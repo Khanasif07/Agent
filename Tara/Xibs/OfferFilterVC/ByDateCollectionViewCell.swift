@@ -51,7 +51,7 @@ class ByDateCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         setupTextField()
         datePicker.addTarget(self, action: #selector(handleDatePicker(_:)), for: .valueChanged)
-
+   
     }
 
     private func setupTextField() {
@@ -68,6 +68,8 @@ class ByDateCollectionViewCell: UICollectionViewCell {
             txtField?.textColor = AppColors.fontPrimaryColor
             txtField?.inputView = datePicker
         }
+        CommonFunctions.setupTextFieldAlignment([fromDateTextField, endDateTextField])
+
     }
     
     private func getDateString(selectDate : Date)-> String {

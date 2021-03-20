@@ -48,7 +48,7 @@ class VehicleDetailForBatteryVC: BaseVC {
     var titleArr : [String] = [LocalizedString.vehicleMake.localized,
                                LocalizedString.vehicleModel.localized,
                                LocalizedString.productYear.localized,
-                               ""
+                               LocalizedString.chooseQuantity.localized
     ]
     fileprivate var hasImageUploaded = true {
         didSet {
