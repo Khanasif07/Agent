@@ -337,3 +337,21 @@ extension URTyreStep1VC: URTyreStep1VMDelegate {
     }
     
 }
+
+
+//MARK:- ATCTextField
+//==========================
+class ATCCTextField: SkyFloatingLabelTextField {
+    
+    var padding = UIEdgeInsets(top: 5, left:  AppUserDefaults.value(forKey: .language) == 1 ? 22.5 : 0.0, bottom: -5, right: AppUserDefaults.value(forKey: .language) == 1 ? 0.0 : 22.5)
+   
+    override open func textRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.inset(by: padding)
+    }
+    override open func placeholderRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.inset(by: padding)
+    }
+    override open func editingRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.inset(by: padding)
+    }
+}
