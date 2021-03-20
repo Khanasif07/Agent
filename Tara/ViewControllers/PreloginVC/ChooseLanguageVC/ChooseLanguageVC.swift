@@ -79,6 +79,9 @@ class ChooseLanguageVC: BaseVC {
         self.continueBtn.isEnabled = true
         AppUserDefaults.save(value: 0, forKey: .language)
         AppUserDefaults.save(value: true, forKey: .isLanguageSelect)
+        UIView.appearance().semanticContentAttribute = .forceLeftToRight
+        UITextField.appearance().semanticContentAttribute = .forceLeftToRight
+        UITextField.appearance().textAlignment = .left
     }
     
     @IBAction func arabicBtnAction(_ sender: UIButton) {
@@ -93,6 +96,9 @@ class ChooseLanguageVC: BaseVC {
         self.continueBtn.isEnabled = true
         AppUserDefaults.save(value: 1, forKey: .language)
         AppUserDefaults.save(value: true, forKey: .isLanguageSelect)
+        UIView.appearance().semanticContentAttribute = .forceRightToLeft
+        UITextField.appearance().semanticContentAttribute = .forceRightToLeft
+        UITextField.appearance().textAlignment = .right
     }
     
     @IBAction func scrollToNextPage(_ sender: UIButton) {

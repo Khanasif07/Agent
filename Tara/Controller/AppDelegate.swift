@@ -33,6 +33,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate , MessagingDelegate , UNUs
         sleep(2)
         self.setUpKeyboardSetup()
         self.setUpTextField()
+        
+        UIView.appearance().semanticContentAttribute = AppUserDefaults.value(forKey: .language) == 1 ? .forceRightToLeft : .forceLeftToRight
+        
         self.registerPushNotification()
         AWSS3Manager.shared.setupAmazonS3(withPoolID: AppConstants.awss3PoolId)
         self.getGoogleInfoPlist()
@@ -85,7 +88,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate , MessagingDelegate , UNUs
         UITabBar.appearance().isTranslucent = false
         //        UITabBar.appearance().barTintColor = AppColors.primaryBlueColor
         UITabBar.appearance().tintColor = UIColor.white
-        
+        UITextField.appearance().semanticContentAttribute = AppUserDefaults.value(forKey: .language) == 1 ? .forceRightToLeft : .forceLeftToRight
+        UITextField.appearance().textAlignment = AppUserDefaults.value(forKey: .language) == 1 ? .right : .left
     }
     
     func setUpAppearance(){
@@ -146,7 +150,10 @@ extension AppDelegate {
     func getGoogleInfoPlist() {
         var filePath = ""
         #if ENV_DEV
-        filePath = Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist")!
+        filePath = Bundle.main.path(forResource: "GoogleService-Info-Prod", ofType: "plist")!
+//        filePath = Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist")!
+        #elseif ENV_STAG
+        filePath = Bundle.main.path(forResource: "GoogleService-Info-Prod", ofType: "plist")!
         #elseif ENV_QA
         filePath = Bundle.main.path(forResource: "GoogleService-Info-QA", ofType: "plist")!
         #elseif ENV_PROD
