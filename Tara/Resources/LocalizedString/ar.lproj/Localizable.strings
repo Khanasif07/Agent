@@ -121,7 +121,7 @@
 "saved_cards" = "البطاقات المحفوظة";
 "added_location" = "ضيف موقعك";
 "change_password" = "غير كلمة المرور";
-"status" = "الحالة:";
+"status" = "الحالة";
 
 // MARK: - Profile Setting VC Values
 //==============================
@@ -595,3 +595,4 @@
 "cancelled" = "ألغيت";
 "serviceStarted" = "Service started";
 "readyToPick" = "Ready to pick";
+"carReceived_QM" = "استلمت السيارة؟";
