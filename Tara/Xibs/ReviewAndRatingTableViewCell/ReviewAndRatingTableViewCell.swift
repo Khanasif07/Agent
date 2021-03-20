@@ -37,6 +37,7 @@ class ReviewAndRatingTableViewCell: UITableViewCell {
         reviewReportedLbl.font = AppFonts.NunitoSansBold.withSize(13.0)
         reviewReasonLbl.font = AppFonts.NunitoSansBold.withSize(13.0)
         reviewRatingLbl.text = LocalizedString.reviewAndRatings.localized
+        reportReviewBtn.setTitle(LocalizedString.reportReview.localized, for: .normal)
     }
     
     @IBAction func reportReviewBtnAction(_ sender: UIButton) {
@@ -73,8 +74,8 @@ class ReviewAndRatingTableViewCell: UITableViewCell {
                 reportReviewBtn.isHidden = true
                 let date = (model.reportedTime)?.breakCompletDate(outPutFormat: Date.DateFormat.profileFormat.rawValue, inputFormat: Date.DateFormat.yyyyMMddTHHmmsssssz.rawValue)
                 
-                reviewReportedLbl.text = "Review Reported on " + (date ?? "")
-                reviewReasonLbl.text = "Reason: " + (model.reportReason ?? "")
+                reviewReportedLbl.text = LocalizedString.reviewReportedOn.localized + " " + (date ?? "")
+                reviewReasonLbl.text = LocalizedString.reason.localized + " " + (model.reportReason ?? "")
             }
             else {
                 reportReviewBtn.isHidden = false

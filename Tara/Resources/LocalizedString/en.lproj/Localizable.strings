@@ -596,3 +596,6 @@
 "readyToPick" = "Ready to pick";
 "carReceived_QM" = "Car Received?";
 "ratingAndReview" = "Rating and Review";
+"reviewReportedOn" = "Review Reported on";
+"reason" = "Reason:";
+"reportReview" = "Report Review";

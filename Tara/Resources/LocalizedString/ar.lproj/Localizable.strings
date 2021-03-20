@@ -597,3 +597,6 @@
 "readyToPick" = "Ready to pick";
 "carReceived_QM" = "استلمت السيارة؟";
 "ratingAndReview" = "التقييم والمراجعة";
+"reviewReportedOn" = "تم الإبلاغ عن المراجعة بتاريخ";
+"reason" = "السبب:";
+"reportReview" = "التبليغ عن مراجعة";
