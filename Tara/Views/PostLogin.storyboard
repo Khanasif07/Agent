@@ -1890,31 +1890,31 @@ Service Center</string>
     </scenes>
     <designables>
         <designable name="3y4-WA-o5N">
-            <size key="intrinsicContentSize" width="374" height="39.220703125"/>
+            <size key="intrinsicContentSize" width="32" height="34"/>
         </designable>
         <designable name="59h-hN-omL">
-            <size key="intrinsicContentSize" width="340" height="39.220703125"/>
+            <size key="intrinsicContentSize" width="218" height="34"/>
         </designable>
         <designable name="8MS-QA-T5r">
-            <size key="intrinsicContentSize" width="342" height="39.220703125"/>
+            <size key="intrinsicContentSize" width="32" height="34"/>
         </designable>
         <designable name="ELg-Rl-MOn">
-            <size key="intrinsicContentSize" width="340" height="39.220703125"/>
+            <size key="intrinsicContentSize" width="203" height="34"/>
         </designable>
         <designable name="EZ1-AZ-NFm">
-            <size key="intrinsicContentSize" width="374" height="39.220703125"/>
+            <size key="intrinsicContentSize" width="32" height="34"/>
         </designable>
         <designable name="GaQ-fh-PT5">
-            <size key="intrinsicContentSize" width="340" height="39.220703125"/>
+            <size key="intrinsicContentSize" width="223" height="34"/>
         </designable>
         <designable name="Ihc-Ve-f2a">
-            <size key="intrinsicContentSize" width="342" height="39.220703125"/>
+            <size key="intrinsicContentSize" width="32" height="34"/>
         </designable>
         <designable name="QzO-R5-7Px">
-            <size key="intrinsicContentSize" width="342" height="39.220703125"/>
+            <size key="intrinsicContentSize" width="32" height="34"/>
         </designable>
         <designable name="hy7-CQ-ZtL">
-            <size key="intrinsicContentSize" width="320" height="39.220703125"/>
+            <size key="intrinsicContentSize" width="93.5" height="34"/>
         </designable>
     </designables>
     <resources>

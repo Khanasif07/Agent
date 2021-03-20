@@ -59,7 +59,9 @@ extension CountryVC {
         self.dropDownbutton.tintColor = AppColors.fontPrimaryColor
         let show1 = UIButton()
         show1.isSelected = false
+        show1.imageEdgeInsets = UIEdgeInsets(top: 0, left: -15, bottom: 0, right: 15)
         self.searchTxtField.setButtonToRightView(btn: show1, selectedImage: #imageLiteral(resourceName: "icon"), normalImage: #imageLiteral(resourceName: "icon"), size: CGSize(width: 30, height: 30))
+        CommonFunctions.setupTextFieldAlignment([searchTxtField])
     }
 }
 
@@ -103,7 +105,8 @@ extension CountryVC: UITableViewDataSource{
 //MARK:- ATCTextField
 //==========================
 class ATCTextField: UITextField {
-    let padding = UIEdgeInsets(top: 0, left: 16.0, bottom: 0, right: 8)
+    var padding = UIEdgeInsets(top: 5, left:  AppUserDefaults.value(forKey: .language) == 1 ? 22.5 : 0.0, bottom: -5, right: AppUserDefaults.value(forKey: .language) == 1 ? 0.0 : 22.5)
+   
     override open func textRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.inset(by: padding)
     }

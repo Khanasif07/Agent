@@ -51,6 +51,8 @@ class ProfileUserHeaderCell: UITableViewCell {
         phoneNoVerifiedView.isHidden = !model.phoneVerified
         phoneVerifyBtn.isHidden = model.phoneVerified || model.phoneNo.isEmpty
         emailVerifiedView.isHidden = !model.emailVerified
+        emailVerifyBtn.setTitle(LocalizedString.verify.localized, for: .normal)
+        phoneVerifyBtn.setTitle(LocalizedString.verify.localized, for: .normal)
         emailVerifyBtn.isHidden = model.emailVerified || model.email.isEmpty
        
     }
