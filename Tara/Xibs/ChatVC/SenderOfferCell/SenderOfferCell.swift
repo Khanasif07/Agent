@@ -18,6 +18,8 @@ class SenderOfferCell: UITableViewCell {
     @IBOutlet weak var acceptBtn: UIButton!
     @IBOutlet weak var rejectBtn: UIButton!
     @IBOutlet weak var btnStackView: UIStackView!
+    @IBOutlet weak var sarLbl: UILabel!
+
 //    @IBOutlet weak var deliveredImgview: UIImageView!
 //    @IBOutlet weak var readImageView: UIImageView!
 
@@ -28,6 +30,7 @@ class SenderOfferCell: UITableViewCell {
         super.awakeFromNib()
         acceptBtn.setTitle(LocalizedString.accept.localized, for: .normal)
         rejectBtn.setTitle(LocalizedString.reject.localized, for: .normal)
+        sarLbl.text = LocalizedString.sar.localized
         offerPriceLbl.text = LocalizedString.offerPrice.localized
         btnStackView.isHidden = true
     }

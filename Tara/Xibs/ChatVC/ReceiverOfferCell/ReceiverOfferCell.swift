@@ -17,6 +17,7 @@ class ReceiverOfferCell: UITableViewCell {
     @IBOutlet weak var msgContainerView: UIView!
     @IBOutlet weak var acceptBtn: UIButton!
     @IBOutlet weak var rejectBtn: UIButton!
+    @IBOutlet weak var sarLbl: UILabel!
 
     var acceptBtnTapped:(()->())?
     var rejectBtnTapped:(()->())?
@@ -26,6 +27,7 @@ class ReceiverOfferCell: UITableViewCell {
         acceptBtn.setTitle(LocalizedString.accept.localized, for: .normal)
         rejectBtn.setTitle(LocalizedString.reject.localized, for: .normal)
         offerPriceLbl.text = LocalizedString.offerPrice.localized
+        sarLbl.text = LocalizedString.sar.localized
     }
     
     override func layoutSubviews() {

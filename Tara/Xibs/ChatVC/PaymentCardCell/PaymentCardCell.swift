@@ -26,7 +26,8 @@ class PaymentCardCell: UITableViewCell {
     @IBOutlet weak var payNowBtn: UIButton!
     @IBOutlet weak var declineBtn: UIButton!
     @IBOutlet weak var bottomContainerView: UIView!
-    
+    @IBOutlet weak var sarLabel : UILabel!
+
     //    MARK: Life Cycle
     //    ===============
     override func awakeFromNib() {
@@ -35,6 +36,8 @@ class PaymentCardCell: UITableViewCell {
         declineBtn.setTitle(LocalizedString.decline.localized, for: .normal)
         paymentRequestLabel.text = LocalizedString.paymentRequest.localized
         msgLabel.text = LocalizedString.make_Payment_to_get_hassle_free_service.localized
+        sarLabel.text = LocalizedString.sar.localized
+
     }
     
     override func layoutSubviews() {
