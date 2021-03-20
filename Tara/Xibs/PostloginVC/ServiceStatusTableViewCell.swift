@@ -46,6 +46,10 @@ class ServiceStatusTableViewCell: UITableViewCell {
     @IBOutlet weak var completedLineView: UIView!
     @IBOutlet weak var readyToBeTakenLineView: UIView!
 
+    @IBOutlet weak var carRecievedLbl: UILabel!
+    @IBOutlet weak var yesBtn: UIButton!
+    @IBOutlet weak var noBtn: UIButton!
+
 
     //MARK:-Variables
     var carReceivedUpdateBtnTapped : (()->())?
@@ -88,6 +92,9 @@ class ServiceStatusTableViewCell: UITableViewCell {
         progressLbl.text    = LocalizedString.carServiceInProgress.localized
         completeLbl.text    = LocalizedString.carServiceCompleted.localized
         takenLbl.text       = LocalizedString.carReadyToBeTaken.localized
+        carRecievedLbl.text = LocalizedString.carReceived_QM.localized
+        yesBtn.setTitle(LocalizedString.yes.localized, for: .normal)
+        noBtn.setTitle(LocalizedString.no.localized, for: .normal)
         
         [carReceivedUpdateBtn,progressUpdateBtn,completeUpdateBtn,takenUpdateBtn].forEach { (btn) in
             btn?.titleLabel?.font = AppFonts.NunitoSansSemiBold.withSize(14.0)

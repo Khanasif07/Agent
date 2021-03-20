@@ -594,3 +594,4 @@
 "cancelled" = "Cancelled";
 "serviceStarted" = "Service started";
 "readyToPick" = "Ready to pick";
+"carReceived_QM" = "Car Received?";
