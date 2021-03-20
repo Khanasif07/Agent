@@ -59,19 +59,20 @@ enum ServiceStatuss : String,Codable {
     case completed
     
     var text :String{
+       
         switch self {
         case .start_service:
-            return "Service started"//"Car Received"
+            return LocalizedString.serviceStarted.localized//"Car Received"
         case .in_progress:
-            return "In garage"//"In Garage"
+            return LocalizedString.inGarage.localized  //"In Garage"
         case .ready_to_be_taken:
-            return "Ready to pick"//"Service Completed"
+            return LocalizedString.readyToPick.localized//"Service Completed"
         case .delivered:
-            return "Delivered"//"Delivered"
+            return LocalizedString.delivered.localized//"Delivered"
         case .car_received:
-            return "Car Received"
+            return LocalizedString.carReceived.localized
         default:
-            return "Completed"
+            return LocalizedString.completed.localized
         }
     }
     

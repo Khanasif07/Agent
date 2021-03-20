@@ -592,3 +592,5 @@
 "_pending" = "Pending";
 "completed" = "Completed";
 "cancelled" = "Cancelled";
+"serviceStarted" = "Service started";
+"readyToPick" = "Ready to pick";

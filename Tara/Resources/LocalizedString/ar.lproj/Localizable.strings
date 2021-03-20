@@ -593,3 +593,5 @@
 "_pending" = "Pending";
 "completed" = "Completed";
 "cancelled" = "ألغيت";
+"serviceStarted" = "Service started";
+"readyToPick" = "Ready to pick";
