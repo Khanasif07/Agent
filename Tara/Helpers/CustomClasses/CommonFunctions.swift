@@ -171,6 +171,8 @@ class CommonFunctions {
         AppUserDefaults.save(value: lang, forKey: .language)
         isCurrentUserType == .garage ? AppRouter.goToGarageHome() :  AppRouter.goToUserHome()
         UIView.appearance().semanticContentAttribute = lang == 1 ? .forceRightToLeft : .forceLeftToRight
+        UITextField.appearance().semanticContentAttribute = lang == 1 ? .forceRightToLeft : .forceLeftToRight
+        UITextField.appearance().textAlignment = lang == 1 ? .right : .left
     }
     
     //Return true if Selected Language is English otherwise false

@@ -25,6 +25,7 @@ class LoginVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
+
         setNeedsStatusBarAppearanceUpdate()
     }
     

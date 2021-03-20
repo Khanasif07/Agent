@@ -46,6 +46,7 @@ class SocketIOManager: NSObject {
     
     var baseSocketUrl: String {
         #if ENV_DEV
+        return "https://arabiantyersstgapi.appskeeper.com"
         return "https://arabiantyersdevapi.appskeeper.com"
         #elseif ENV_STAG
         return "https://arabiantyersstgapi.appskeeper.com"
