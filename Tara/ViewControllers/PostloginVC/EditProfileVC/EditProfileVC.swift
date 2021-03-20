@@ -98,12 +98,6 @@ extension EditProfileVC: UITextFieldDelegate {
         self.viewModel.delegate = self
         setupTextFont()
         userImage.round()
-//        if isEditProfileFrom == .home || isEditProfileFrom == .garage {
-//            saveBtn.isEnabled = false
-//        }else {
-//            saveBtn.isEnabled = true
-//
-//        }
         saveBtn.isEnabled = !self.viewModel.userModel.phoneNo.isEmpty
         setUpTextField()
         prefilledData()

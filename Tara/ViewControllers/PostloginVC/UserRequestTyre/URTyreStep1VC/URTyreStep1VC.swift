@@ -93,6 +93,7 @@ extension URTyreStep1VC {
         self.setUpTextField()
         self.textFieldSetUp()
         self.setupText()
+        CommonFunctions.setupTextFieldAlignment([rimSizeTxtField,profileTxtField,widthTxtField,numberTyreTxtField])
     }
     
     public func setupText(){

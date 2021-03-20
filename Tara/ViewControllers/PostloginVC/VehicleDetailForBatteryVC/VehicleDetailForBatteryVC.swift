@@ -140,6 +140,7 @@ extension VehicleDetailForBatteryVC {
         self.quantityPicker.delegate = self
         self.yearPicker.dataArray = self.setUpYearPickerView()
         self.quantityPicker.dataArray = self.setUpNumberOfBatteryPickerView()
+        CommonFunctions.setupTextFieldAlignment([vehicleMakeTextField,vehicleModelTextField,productYearTextField,batteryNumberTextField])
     }
     
     private func setupTextFont() {

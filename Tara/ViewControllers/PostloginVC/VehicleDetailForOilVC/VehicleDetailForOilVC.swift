@@ -162,6 +162,7 @@ extension VehicleDetailForOilVC {
         self.quantityPicker.delegate = self
         self.yearPicker.dataArray = self.setUpYearPickerView()
         self.quantityPicker.dataArray = self.setUpNumberOfBatteryPickerView()
+        CommonFunctions.setupTextFieldAlignment([vehicleMakeTextField,vehicleModelTextField,productYearTextField,numberOfUnitTextField])
     }
     
     private func setupTextFont() {
