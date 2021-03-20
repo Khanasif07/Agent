@@ -76,6 +76,7 @@ extension PlaceBidPopUpVC {
         notNowBtn.titleLabel?.font = AppFonts.NunitoSansSemiBold.withSize(16.0)
         placeBidBtn.titleLabel?.font = AppFonts.NunitoSansSemiBold.withSize(16.0)
 
+        CommonFunctions.setupTextFieldAlignment([amountTextField])
     }
 }
 

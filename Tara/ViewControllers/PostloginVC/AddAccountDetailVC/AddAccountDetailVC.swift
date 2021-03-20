@@ -117,6 +117,7 @@ extension AddAccountDetailVC {
         selectYourBankTextField.setImageToRightView(img: #imageLiteral(resourceName: "group3689"), size: CGSize(width: 15.0, height: 15.0))
         enterAccountNumberTextField.keyboardType = .numberPad
         confirmAccountNumberTextField.keyboardType = .numberPad
+        CommonFunctions.setupTextFieldAlignment([selectYourBankTextField, enterAccountNumberTextField, confirmAccountNumberTextField])
     }
     
     private func setData() {

@@ -80,6 +80,8 @@ extension ContactUsVC {
         subjectTextField.selectedTitleColor = AppColors.fontTertiaryColor
         subjectTextField.placeholderFont = AppFonts.NunitoSansBold.withSize(14.0)
         subjectTextField.font = AppFonts.NunitoSansBold.withSize(14.0)
+        
+        CommonFunctions.setupTextFieldAlignment([subjectTextField])
     }
     
     private func setupTextAndFont(){

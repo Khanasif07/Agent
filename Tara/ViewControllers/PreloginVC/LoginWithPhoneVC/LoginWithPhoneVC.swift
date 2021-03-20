@@ -114,6 +114,8 @@ extension LoginWithPhoneVC {
         self.phoneTextField.selectedLineColor =
             AppColors.fontTertiaryColor
         self.phoneTextField.selectedTitleColor = AppColors.fontTertiaryColor
+        CommonFunctions.setupTextFieldAlignment([phoneTextField])
+        
     }
     
     public func sendOtpBtnStatus(enable: Bool){

@@ -87,6 +87,7 @@ extension VechicleDetailVC {
         self.yearPicker.dataArray = self.setUpYearPickerView()
         self.modelYearTextField.inputView = yearPicker
         modelYearTextField.keyboardType = .numberPad
+        CommonFunctions.setupTextFieldAlignment([vehicleMakeTextField, vehicleModelTextField, modelYearTextField])
     }
     
     private func setupTextFont() {
