@@ -1257,13 +1257,13 @@ your old password.</string>
     </scenes>
     <designables>
         <designable name="FwJ-sY-qMM">
-            <size key="intrinsicContentSize" width="335" height="39.220703125"/>
+            <size key="intrinsicContentSize" width="140.5" height="26.5"/>
         </designable>
         <designable name="kWA-M8-J66">
-            <size key="intrinsicContentSize" width="231" height="41.609671875000004"/>
+            <size key="intrinsicContentSize" width="143.5" height="29"/>
         </designable>
         <designable name="xKa-QF-8OD">
-            <size key="intrinsicContentSize" width="335" height="39.220703125"/>
+            <size key="intrinsicContentSize" width="158" height="26.5"/>
         </designable>
     </designables>
     <resources>

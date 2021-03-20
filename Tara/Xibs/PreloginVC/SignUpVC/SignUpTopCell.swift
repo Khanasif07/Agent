@@ -31,6 +31,7 @@ class SignUpTopCell: UITableViewCell {
         self.setUpTextField()
         self.setUpAttributedString()
         self.addBottomViewToBottom()
+        CommonFunctions.setupTextFieldAlignment([confirmPassTxtField,passTxtField,mobNoTxtField,emailIdTxtField,nameTxtField])
     }
     
     private func setUpAttributedString(){
@@ -63,6 +64,8 @@ class SignUpTopCell: UITableViewCell {
         self.passTxtField.placeholder = LocalizedString.password.localized
         self.confirmPassTxtField.placeholder = LocalizedString.confirmPassword.localized
         self.nameTxtField.placeholder = LocalizedString.enterYourName.localized
+        self.nameTxtField.title = LocalizedString.enterYourName.localized
+        self.nameTxtField.selectedTitle = LocalizedString.enterYourName.localized
         self.mobNoTxtField.placeholder = LocalizedString.enterYourMobNumber.localized
         self.mobNoTxtField.title = LocalizedString.mobileNo.localized
         self.mobNoTxtField.selectedTitle = LocalizedString.mobileNo.localized

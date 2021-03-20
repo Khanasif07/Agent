@@ -88,6 +88,7 @@ class LoginWithPhoneVC: BaseVC {
 extension LoginWithPhoneVC {
     
     private func initialSetup() {
+        CommonFunctions.setupTextFieldAlignment([phoneTextField])
         self.viewModel.delegate = self
         self.setupTextField()
         self.enterDigitLbl.text = LocalizedString.please_Enter_Your_Mobile_Number_with_Country_Code.localized

@@ -30,6 +30,7 @@ class LoginEmailPhoneTableCell: UITableViewCell {
         self.setUpColor()
         self.setUpTextField()
         self.addBottomViewToBottom()
+        CommonFunctions.setupTextFieldAlignment([emailTxtField,passTxtField])
     }
     
     override func layoutSubviews() {

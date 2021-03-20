@@ -73,6 +73,7 @@ extension ResetPasswordVC {
         self.pleaseSetNewPasswordLbl.text = LocalizedString.pleaseSetNewPassword.localized
         self.titlelbl.text = LocalizedString.resetPassword.localized
         self.setUpTextField()
+        CommonFunctions.setupTextFieldAlignment([confirmTxtField,newPassTxtField])
     }
     
     public func setUpTextField(){
