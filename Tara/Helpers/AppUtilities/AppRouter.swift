@@ -56,7 +56,7 @@ enum AppRouter {
             }else{
                 self.makeChooseLanguageVCRoot()
             }
-//        }
+        }
     }
     
     static func goToTestingVC(){

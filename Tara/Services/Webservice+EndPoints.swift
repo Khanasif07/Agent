@@ -14,7 +14,7 @@ import Foundation
 var firebase_push_Url = "https://fcm.googleapis.com/fcm/send"
 var baseUrl: String {
     #if ENV_DEV
-//    return "https://arabiantyersstgapi.appskeeper.com/api/v1/"
+    return "https://arabiantyersqaapi.appskeeper.com/api/v1/"
     return "https://arabiantyersdevapi.appskeeper.com/api/v1/"
     #elseif ENV_STAG
     return "https://arabiantyersstgapi.appskeeper.com/api/v1/"
