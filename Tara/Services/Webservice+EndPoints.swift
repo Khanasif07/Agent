@@ -16,12 +16,12 @@ var baseUrl: String {
     #if ENV_DEV
     return "https://arabiantyersstgapi.appskeeper.com/api/v1/"
     return "https://arabiantyersdevapi.appskeeper.com/api/v1/"
-    #elseif ENV_STAG
-    return "https://arabiantyersstgapi.appskeeper.com/api/v1/"
     #elseif ENV_QA
     return "https://arabiantyersqaapi.appskeeper.com/api/v1/"
-    #elseif ENV_PROD
+    #elseif ENV_STAG
     return "https://arabiantyersstgapi.appskeeper.com/api/v1/"
+    #elseif ENV_PROD
+    return "https://api.tara-auto.com/api/v1/"
     #else
     return ""
     #endif

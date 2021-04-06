@@ -152,10 +152,10 @@ extension AppDelegate {
         #if ENV_DEV
         filePath = Bundle.main.path(forResource: "GoogleService-Info-Prod", ofType: "plist")!
 //        filePath = Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist")!
-        #elseif ENV_STAG
-        filePath = Bundle.main.path(forResource: "GoogleService-Info-Prod", ofType: "plist")!
         #elseif ENV_QA
         filePath = Bundle.main.path(forResource: "GoogleService-Info-QA", ofType: "plist")!
+        #elseif ENV_STAG
+        filePath = Bundle.main.path(forResource: "GoogleService-Info-Prod", ofType: "plist")!
         #elseif ENV_PROD
         filePath = Bundle.main.path(forResource: "GoogleService-Info-Prod", ofType: "plist")!
         #else
