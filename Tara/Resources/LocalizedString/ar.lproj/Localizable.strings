@@ -349,7 +349,7 @@
 "rimSize" = "مقاس الجنط";
 "quantity" = "الكمية";
 "quantityShort" = "الكمية";
-"enter_number_of_tyre_you_want" = "أدخل رقم الإطار الذي تريده"; //translated
+"enter_number_of_tyre_you_want" = "حدد عدد الوحدات التي تريدها";
 "oilType" = "نوع الزيت"; //trnaslated
 "selectType" = "اختر صنف"; //translated
 "selectTyreSize" = "إختار مقاس الإطار";
@@ -368,7 +368,7 @@
 "country" = "البلد";
 "countries" = "البلد";
 "chooseYourVehicleDetails" = "إختارمعلومات سيارتك";
-"wellGetYouOilAccordingToTheProvidedDetails" = "لقينا لك الزيت المناسب لسيارتك بناءً على التفاصيل المقدمة ";
+"wellGetYouOilAccordingToTheProvidedDetails" = "لقينا لك الزيت المناسب لسيارتك بناءً على التفاصيل المقدمة";
 "numberOfTyre" = "عدد الإطارات";
 "edit" = "تعديل";
 "submitRequest" = "تقديم الطلب";
@@ -377,7 +377,7 @@
 "originOfTyre" = "مصدر الإطار";
 "productYear" = "سنة الإنتاج";
 "skipAndSubmit" = "تخطي وإرسال";
-"chooseQuantity" = "إختار الكمية";
+"chooseQuantity" = "حدد عدد الوحدات التي تريدها";
 "vehicleDetails" = "تفاصيل السيارة";
 "batteyRequest" = "طلبت خدمة البطارية مع";
 "oilRequest"  = "طلبت خدمة الزيت مع";
@@ -386,7 +386,7 @@
 "oilBrands" = "العلامات التجارية للزيت";
 "numberOfUnit" = "عدد الوحدات";
 "oilImage" = "صورة الزيت";
-"selectNumberOfUnitYouWant" = "حدد رقم الوحدة التي تريدها"; //translated
+"selectNumberOfUnitYouWant" = "حدد عدد الوحدات التي تريدها";
 "verifyEmail" = "أكد الإيميل";
 "anOTPWillBeSendToYourPhoneNumber" = "تم إرسال رمز مؤقت لجوالك";
 "aVerificationLinkWillBeSendToYourEmailAddress" = "رسلنا لك رابط التحقق لإيميلك";
@@ -487,7 +487,7 @@
 "searchWithCar" = "ابحث بالسيارة";
 "chooseTheSizeOfTyre" = "إختار مقاس الإطار";
 "notSureAboutTheSize" = "مو متأكد من المقاس؟ ";
-"chatWithExpert" = "دردشة مع الخبير";
+"chatWithExpert" = "دردش مع الخبير";
 "createNewAccount" = "سوي حساب جديد";
 "pleaseSetNewPassword" = "الرجاء تعيين كلمة مرور جديدة";
 "resetPassword" = "غيّر كلمة المرور";

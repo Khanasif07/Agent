@@ -27,7 +27,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.945865667688-17hgjjn4tgqikhmcq7ufigggcqta2t75</string>
+				<string>com.googleusercontent.apps.54007076081-84cso06j4vqo3pq1ef7gq9b79vd7lkf1</string>
 			</array>
 		</dict>
 		<dict>
@@ -35,7 +35,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb331106654612712</string>
+				<string>fb267648971573037</string>
 			</array>
 		</dict>
 		<dict>
@@ -50,9 +50,9 @@
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>FacebookAppID</key>
-	<string>331106654612712</string>
+	<string>267648971573037</string>
 	<key>FacebookDisplayName</key>
-	<string>ArabianTyres</string>
+	<string>Tara</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSRequiresIPhoneOS</key>

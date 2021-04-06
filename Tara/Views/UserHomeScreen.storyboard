@@ -679,11 +679,10 @@ Service With</string>
                                                 <color key="textColor" red="0.54117647058823526" green="0.58431372549019611" blue="0.61960784313725492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fsY-Ra-4Op">
-                                                <rect key="frame" x="370" y="439.5" width="28" height="18"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fsY-Ra-4Op">
+                                                <rect key="frame" x="368" y="439.5" width="30" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="18" id="aEd-Gy-0Jm"/>
-                                                    <constraint firstAttribute="width" constant="28" id="wt0-Yw-gap"/>
                                                 </constraints>
                                                 <state key="normal" title="Edit">
                                                     <color key="titleColor" red="0.090196078431372548" green="0.14509803921568626" blue="0.3529411764705882" alpha="1" colorSpace="calibratedRGB"/>
@@ -862,10 +861,9 @@ Service With</string>
                                                 <color key="textColor" red="0.54117647059999996" green="0.58431372550000005" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Md-6e-9CN">
-                                                <rect key="frame" x="370" y="555" width="28" height="18"/>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Md-6e-9CN">
+                                                <rect key="frame" x="368" y="555" width="30" height="18"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="28" id="A50-ln-Hxy"/>
                                                     <constraint firstAttribute="height" constant="18" id="oJe-g0-c25"/>
                                                 </constraints>
                                                 <state key="normal" title="Edit">
@@ -899,11 +897,10 @@ Service With</string>
                                                 <color key="textColor" red="0.54117647058823526" green="0.58431372549019611" blue="0.61960784313725492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5H4-I0-ZIL">
-                                                <rect key="frame" x="370" y="653.5" width="28" height="18"/>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5H4-I0-ZIL">
+                                                <rect key="frame" x="368" y="653.5" width="30" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="18" id="6cy-xX-603"/>
-                                                    <constraint firstAttribute="width" constant="28" id="oOW-m2-1Sa"/>
                                                 </constraints>
                                                 <state key="normal" title="Edit">
                                                     <color key="titleColor" red="0.090196078430000007" green="0.1450980392" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -1106,8 +1103,8 @@ Service With</string>
                                                     <constraint firstItem="gsZ-4T-w6B" firstAttribute="leading" secondItem="TpH-aw-Ohx" secondAttribute="leading" id="ubv-sn-8Ka"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="1000" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="et1-wn-PWV">
-                                                <rect key="frame" x="16" y="363" width="382" height="50.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="1000" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="et1-wn-PWV">
+                                                <rect key="frame" x="32" y="363" width="275.5" height="50.5"/>
                                                 <string key="text">The preferred brand for my oil 
 would be</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
@@ -1118,7 +1115,7 @@ would be</string>
                                                 <rect key="frame" x="16" y="439.5" width="382" height="218"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose Oil Brands" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hoh-SW-ZGl">
-                                                        <rect key="frame" x="16" y="16" width="350" height="18"/>
+                                                        <rect key="frame" x="16" y="16" width="127" height="18"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <color key="textColor" red="0.10980392156862745" green="0.11372549019607843" blue="0.14117647058823529" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -1175,11 +1172,11 @@ would be</string>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstItem="FyD-mS-Aav" firstAttribute="top" secondItem="Hoh-SW-ZGl" secondAttribute="bottom" constant="20" id="45S-3L-tQF"/>
-                                                    <constraint firstAttribute="trailing" secondItem="Hoh-SW-ZGl" secondAttribute="trailing" constant="16" id="9Lq-dC-ncu"/>
+                                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Hoh-SW-ZGl" secondAttribute="trailing" constant="16" id="9Lq-dC-ncu"/>
                                                     <constraint firstItem="Hoh-SW-ZGl" firstAttribute="top" secondItem="9WK-kP-wGh" secondAttribute="top" constant="16" id="9Sj-SL-3cP"/>
+                                                    <constraint firstAttribute="trailing" secondItem="FyD-mS-Aav" secondAttribute="trailing" constant="16" id="PHK-TJ-DQG"/>
                                                     <constraint firstItem="UHf-D2-ya1" firstAttribute="top" secondItem="FyD-mS-Aav" secondAttribute="bottom" constant="32" id="Q40-1N-3zH"/>
                                                     <constraint firstItem="FyD-mS-Aav" firstAttribute="leading" secondItem="Hoh-SW-ZGl" secondAttribute="leading" id="QFd-Zj-ASF"/>
-                                                    <constraint firstItem="FyD-mS-Aav" firstAttribute="trailing" secondItem="Hoh-SW-ZGl" secondAttribute="trailing" id="WJF-1M-AMw"/>
                                                     <constraint firstAttribute="trailing" secondItem="UHf-D2-ya1" secondAttribute="trailing" constant="16" id="grY-N5-qn6"/>
                                                     <constraint firstAttribute="bottom" secondItem="UHf-D2-ya1" secondAttribute="bottom" constant="16" id="lcL-2i-YaB"/>
                                                     <constraint firstItem="Hoh-SW-ZGl" firstAttribute="leading" secondItem="9WK-kP-wGh" secondAttribute="leading" constant="16" id="qco-zo-Gwn"/>
@@ -1193,15 +1190,15 @@ would be</string>
                                         </subviews>
                                         <color key="backgroundColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstItem="et1-wn-PWV" firstAttribute="leading" secondItem="w5T-Rv-1Gf" secondAttribute="leading" constant="16" id="A75-Lv-4rm"/>
+                                            <constraint firstAttribute="trailing" secondItem="9WK-kP-wGh" secondAttribute="trailing" constant="16" id="0qv-7T-dZu"/>
+                                            <constraint firstItem="et1-wn-PWV" firstAttribute="leading" secondItem="w5T-Rv-1Gf" secondAttribute="leading" constant="32" id="A75-Lv-4rm"/>
                                             <constraint firstAttribute="trailing" secondItem="TpH-aw-Ohx" secondAttribute="trailing" id="Fne-Ko-P8O"/>
-                                            <constraint firstItem="9WK-kP-wGh" firstAttribute="trailing" secondItem="et1-wn-PWV" secondAttribute="trailing" id="LSq-fN-W6n"/>
-                                            <constraint firstAttribute="trailing" secondItem="et1-wn-PWV" secondAttribute="trailing" constant="16" id="MSs-Oi-XgZ"/>
+                                            <constraint firstItem="9WK-kP-wGh" firstAttribute="leading" secondItem="w5T-Rv-1Gf" secondAttribute="leading" constant="16" id="IrH-Co-23V"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="et1-wn-PWV" secondAttribute="trailing" constant="16" id="MSs-Oi-XgZ"/>
                                             <constraint firstItem="TpH-aw-Ohx" firstAttribute="top" secondItem="w5T-Rv-1Gf" secondAttribute="top" id="OCr-Qe-fMv"/>
                                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="9WK-kP-wGh" secondAttribute="bottom" priority="998" constant="50" id="X8l-vh-gu1"/>
                                             <constraint firstItem="TpH-aw-Ohx" firstAttribute="leading" secondItem="w5T-Rv-1Gf" secondAttribute="leading" id="awU-oO-YIT"/>
                                             <constraint firstItem="N2I-H3-evf" firstAttribute="width" secondItem="w5T-Rv-1Gf" secondAttribute="width" multiplier="140/414" id="qJl-0O-oWd"/>
-                                            <constraint firstItem="9WK-kP-wGh" firstAttribute="leading" secondItem="et1-wn-PWV" secondAttribute="leading" id="sHg-YQ-GVF"/>
                                             <constraint firstItem="et1-wn-PWV" firstAttribute="top" secondItem="TpH-aw-Ohx" secondAttribute="bottom" id="tnL-vP-rX1"/>
                                             <constraint firstItem="9WK-kP-wGh" firstAttribute="top" secondItem="et1-wn-PWV" secondAttribute="bottom" constant="26" id="yoX-yN-Atc"/>
                                         </constraints>
@@ -1643,15 +1640,15 @@ would be</string>
                                                         <rect key="frame" x="207" y="0.0" width="207" height="280"/>
                                                         <color key="backgroundColor" red="0.54117647058823526" green="0.58431372549019611" blue="0.61960784313725492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </view>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="genericHybridCarI051" translatesAutoresizingMaskIntoConstraints="NO" id="kNB-Re-5wc">
-                                                        <rect key="frame" x="77" y="76" width="337" height="408"/>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icBattery" translatesAutoresizingMaskIntoConstraints="NO" id="kNB-Re-5wc">
+                                                        <rect key="frame" x="139.5" y="184.5" width="135" height="135"/>
                                                     </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="bottom" secondItem="niA-rL-rum" secondAttribute="bottom" constant="50" id="VkA-hk-BGN"/>
-                                                    <constraint firstItem="kNB-Re-5wc" firstAttribute="centerY" secondItem="niA-rL-rum" secondAttribute="centerY" multiplier="2" id="cHo-Tr-ugi"/>
-                                                    <constraint firstAttribute="trailing" secondItem="kNB-Re-5wc" secondAttribute="trailing" id="dha-Z3-l7b"/>
+                                                    <constraint firstItem="kNB-Re-5wc" firstAttribute="centerY" secondItem="niA-rL-rum" secondAttribute="centerY" multiplier="1.8" id="cHo-Tr-ugi"/>
+                                                    <constraint firstAttribute="centerX" secondItem="kNB-Re-5wc" secondAttribute="centerX" id="dha-Z3-l7b"/>
                                                     <constraint firstItem="niA-rL-rum" firstAttribute="top" secondItem="PQW-kl-epL" secondAttribute="top" id="fXz-iW-Vxp"/>
                                                     <constraint firstItem="niA-rL-rum" firstAttribute="width" secondItem="PQW-kl-epL" secondAttribute="width" multiplier="0.5" id="tbU-ka-lY8"/>
                                                     <constraint firstAttribute="trailing" secondItem="niA-rL-rum" secondAttribute="trailing" id="wmh-Mz-gu6"/>
@@ -2035,11 +2032,10 @@ Service With</string>
                                                 <color key="textColor" red="0.54117647059999996" green="0.58431372550000005" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IfZ-pf-6Nq">
-                                                <rect key="frame" x="370" y="439.5" width="28" height="18"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IfZ-pf-6Nq">
+                                                <rect key="frame" x="368" y="439.5" width="30" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="18" id="ciG-TE-Oc8"/>
-                                                    <constraint firstAttribute="width" constant="28" id="yKD-aB-10z"/>
                                                 </constraints>
                                                 <state key="normal" title="Edit">
                                                     <color key="titleColor" red="0.090196078430000007" green="0.1450980392" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -2190,11 +2186,10 @@ Service With</string>
                                                 <color key="textColor" red="0.54117647059999996" green="0.58431372550000005" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fsg-fA-q9F">
-                                                <rect key="frame" x="370" y="555" width="28" height="18"/>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fsg-fA-q9F">
+                                                <rect key="frame" x="368" y="555" width="30" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="18" id="YgH-gi-En5"/>
-                                                    <constraint firstAttribute="width" constant="28" id="naJ-T0-C5x"/>
                                                 </constraints>
                                                 <state key="normal" title="Edit">
                                                     <color key="titleColor" red="0.090196078430000007" green="0.1450980392" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -2227,11 +2222,10 @@ Service With</string>
                                                 <color key="textColor" red="0.54117647059999996" green="0.58431372550000005" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wkH-uV-dPa">
-                                                <rect key="frame" x="370" y="653.5" width="28" height="18"/>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wkH-uV-dPa">
+                                                <rect key="frame" x="368" y="653.5" width="30" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="18" id="9Zi-pL-izs"/>
-                                                    <constraint firstAttribute="width" constant="28" id="beM-2a-oT0"/>
                                                 </constraints>
                                                 <state key="normal" title="Edit">
                                                     <color key="titleColor" red="0.090196078430000007" green="0.1450980392" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -2439,11 +2433,10 @@ Service With</string>
                                                 <color key="textColor" red="0.54117647059999996" green="0.58431372550000005" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="srm-n7-nIf">
-                                                <rect key="frame" x="370" y="439.5" width="28" height="18"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="srm-n7-nIf">
+                                                <rect key="frame" x="368" y="439.5" width="30" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="18" id="8e0-7G-9gV"/>
-                                                    <constraint firstAttribute="width" constant="28" id="ru4-U3-YDa"/>
                                                 </constraints>
                                                 <state key="normal" title="Edit">
                                                     <color key="titleColor" red="0.090196078430000007" green="0.1450980392" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -2594,11 +2587,10 @@ Service With</string>
                                                 <color key="textColor" red="0.54117647059999996" green="0.58431372550000005" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dYd-Ec-TAa">
-                                                <rect key="frame" x="370" y="555" width="28" height="18"/>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dYd-Ec-TAa">
+                                                <rect key="frame" x="368" y="555" width="30" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="18" id="1pW-iV-0jL"/>
-                                                    <constraint firstAttribute="width" constant="28" id="wR3-Rn-PbO"/>
                                                 </constraints>
                                                 <state key="normal" title="Edit">
                                                     <color key="titleColor" red="0.090196078430000007" green="0.1450980392" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -2611,7 +2603,7 @@ Service With</string>
                                                 <rect key="frame" x="16" y="581.5" width="382" height="55"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EVS-1Z-2f3">
-                                                        <rect key="frame" x="16" y="27.5" width="350" height="0.0"/>
+                                                        <rect key="frame" x="16" y="27.5" width="0.0" height="0.0"/>
                                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="14"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -2621,7 +2613,7 @@ Service With</string>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="55" id="2TR-Gf-ZQq"/>
                                                     <constraint firstItem="EVS-1Z-2f3" firstAttribute="centerY" secondItem="X20-gk-8sk" secondAttribute="centerY" id="a8C-MG-mST"/>
-                                                    <constraint firstAttribute="trailing" secondItem="EVS-1Z-2f3" secondAttribute="trailing" constant="16" id="cIT-2X-EMR"/>
+                                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="EVS-1Z-2f3" secondAttribute="trailing" constant="16" id="cIT-2X-EMR"/>
                                                     <constraint firstItem="EVS-1Z-2f3" firstAttribute="leading" secondItem="X20-gk-8sk" secondAttribute="leading" constant="16" id="i8Z-hL-93Q"/>
                                                 </constraints>
                                             </view>
@@ -2631,10 +2623,9 @@ Service With</string>
                                                 <color key="textColor" red="0.54117647059999996" green="0.58431372550000005" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VsX-La-KDG">
-                                                <rect key="frame" x="370" y="653.5" width="28" height="18"/>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VsX-La-KDG">
+                                                <rect key="frame" x="368" y="653.5" width="30" height="18"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="28" id="1YU-IO-Xup"/>
                                                     <constraint firstAttribute="height" constant="18" id="eFf-Rg-4ZZ"/>
                                                 </constraints>
                                                 <state key="normal" title="Edit">
@@ -2814,16 +2805,16 @@ Service With</string>
                                                         <rect key="frame" x="207" y="0.0" width="207" height="280"/>
                                                         <color key="backgroundColor" red="0.54117647058823526" green="0.58431372549019611" blue="0.61960784313725492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </view>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="genericHybridCarI051" translatesAutoresizingMaskIntoConstraints="NO" id="R5h-Sw-Whb">
-                                                        <rect key="frame" x="77" y="76" width="337" height="408"/>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icOil" translatesAutoresizingMaskIntoConstraints="NO" id="R5h-Sw-Whb">
+                                                        <rect key="frame" x="139.5" y="184.5" width="135" height="135"/>
                                                     </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="ZKT-dc-U6w" secondAttribute="trailing" id="Nm4-dY-VRm"/>
-                                                    <constraint firstItem="R5h-Sw-Whb" firstAttribute="centerY" secondItem="ZKT-dc-U6w" secondAttribute="centerY" multiplier="2" id="V2h-fL-vkY"/>
+                                                    <constraint firstItem="R5h-Sw-Whb" firstAttribute="centerY" secondItem="ZKT-dc-U6w" secondAttribute="centerY" multiplier="1.8" id="V2h-fL-vkY"/>
                                                     <constraint firstItem="ZKT-dc-U6w" firstAttribute="width" secondItem="CbB-tC-11y" secondAttribute="width" multiplier="0.5" id="dxY-QP-zzN"/>
-                                                    <constraint firstAttribute="trailing" secondItem="R5h-Sw-Whb" secondAttribute="trailing" id="fkP-QV-Dkl"/>
+                                                    <constraint firstAttribute="centerX" secondItem="R5h-Sw-Whb" secondAttribute="centerX" id="fkP-QV-Dkl"/>
                                                     <constraint firstAttribute="bottom" secondItem="ZKT-dc-U6w" secondAttribute="bottom" constant="50" id="koJ-eE-lhw"/>
                                                     <constraint firstItem="ZKT-dc-U6w" firstAttribute="top" secondItem="CbB-tC-11y" secondAttribute="top" id="nxR-PM-K6f"/>
                                                 </constraints>
@@ -2834,10 +2825,8 @@ Service With</string>
                                                 <color key="textColor" red="0.10980392160000001" green="0.1137254902" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QdX-3M-FeR">
-                                                <rect key="frame" x="16" y="379.5" width="382" height="33.5"/>
-                                                <string key="text">We’ll get you exact Battery according to the
-provided details</string>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="We’ll get you exact Battery according to the provided details" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QdX-3M-FeR">
+                                                <rect key="frame" x="16" y="379.5" width="286.5" height="33.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" red="0.54117647059999996" green="0.58431372550000005" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -3081,17 +3070,17 @@ provided details</string>
                                         <color key="backgroundColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="cDz-YS-FAZ" firstAttribute="leading" secondItem="gG3-QA-0s7" secondAttribute="leading" constant="16" id="1hQ-IN-XRI"/>
-                                            <constraint firstItem="QdX-3M-FeR" firstAttribute="leading" secondItem="cDz-YS-FAZ" secondAttribute="leading" id="56n-1i-b13"/>
-                                            <constraint firstItem="QdX-3M-FeR" firstAttribute="trailing" secondItem="cDz-YS-FAZ" secondAttribute="trailing" id="5W8-6V-8kZ"/>
                                             <constraint firstItem="cDz-YS-FAZ" firstAttribute="top" secondItem="CbB-tC-11y" secondAttribute="bottom" id="5bz-h4-PBz"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="QdX-3M-FeR" secondAttribute="trailing" constant="16" id="Ae0-dm-nbZ"/>
+                                            <constraint firstItem="aFA-MJ-oP6" firstAttribute="trailing" secondItem="cDz-YS-FAZ" secondAttribute="trailing" id="HDn-8t-en4"/>
                                             <constraint firstAttribute="trailing" secondItem="cDz-YS-FAZ" secondAttribute="trailing" constant="16" id="Olu-cS-SRb"/>
                                             <constraint firstItem="aFA-MJ-oP6" firstAttribute="top" secondItem="QdX-3M-FeR" secondAttribute="bottom" constant="25" id="WD0-8K-Vmh"/>
                                             <constraint firstItem="CbB-tC-11y" firstAttribute="top" secondItem="gG3-QA-0s7" secondAttribute="top" id="aFP-1I-Vzb"/>
                                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="aFA-MJ-oP6" secondAttribute="bottom" priority="999" constant="50" id="bhR-dW-nuw"/>
+                                            <constraint firstItem="QdX-3M-FeR" firstAttribute="leading" secondItem="gG3-QA-0s7" secondAttribute="leading" constant="16" id="jAq-el-YeB"/>
+                                            <constraint firstItem="aFA-MJ-oP6" firstAttribute="leading" secondItem="cDz-YS-FAZ" secondAttribute="leading" id="pBM-M3-CWs"/>
                                             <constraint firstItem="X1b-Fm-y9G" firstAttribute="width" secondItem="gG3-QA-0s7" secondAttribute="width" multiplier="150/414" id="tUf-sh-844"/>
                                             <constraint firstAttribute="trailing" secondItem="CbB-tC-11y" secondAttribute="trailing" id="u7e-Po-Ud4"/>
-                                            <constraint firstItem="aFA-MJ-oP6" firstAttribute="trailing" secondItem="QdX-3M-FeR" secondAttribute="trailing" id="uZd-g9-QmL"/>
-                                            <constraint firstItem="aFA-MJ-oP6" firstAttribute="leading" secondItem="QdX-3M-FeR" secondAttribute="leading" id="w0f-KO-BUl"/>
                                             <constraint firstItem="QdX-3M-FeR" firstAttribute="top" secondItem="cDz-YS-FAZ" secondAttribute="bottom" constant="24" id="wIo-xR-wyh"/>
                                             <constraint firstItem="CbB-tC-11y" firstAttribute="leading" secondItem="gG3-QA-0s7" secondAttribute="leading" id="yKh-E2-LB2"/>
                                         </constraints>

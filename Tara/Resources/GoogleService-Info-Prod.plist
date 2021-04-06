@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>810802692238-0t0nl3ij3r2tdp5l12705ooh059413q6.apps.googleusercontent.com</string>
+	<string>54007076081-84cso06j4vqo3pq1ef7gq9b79vd7lkf1.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.810802692238-0t0nl3ij3r2tdp5l12705ooh059413q6</string>
+	<string>com.googleusercontent.apps.54007076081-84cso06j4vqo3pq1ef7gq9b79vd7lkf1</string>
 	<key>API_KEY</key>
-	<string>AIzaSyCBEN482IJU66m1Sg1-vGiiVfwlOrgUV3w</string>
+	<string>AIzaSyBCoD6Kx9JgRbePKiVYDPzaCCMwJBTaMmk</string>
 	<key>GCM_SENDER_ID</key>
-	<string>810802692238</string>
+	<string>54007076081</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.tara.betaapp</string>
+	<string>com.tara</string>
 	<key>PROJECT_ID</key>
-	<string>tara-production</string>
+	<string>tara-fcaf4</string>
 	<key>STORAGE_BUCKET</key>
-	<string>tara-production.appspot.com</string>
+	<string>tara-fcaf4.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:810802692238:ios:426f1508b637bb86a7c9df</string>
-	<key>DATABASE_URL</key>
-	<string>https://tara-production.firebaseio.com</string>
+	<string>1:54007076081:ios:55769cb8d899d3ce5e4550</string>
 </dict>
 </plist>

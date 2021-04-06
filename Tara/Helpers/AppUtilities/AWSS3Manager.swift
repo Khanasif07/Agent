@@ -18,16 +18,16 @@ class AWSS3Manager {
     
     static let shared = AWSS3Manager() // 4
     private init () { }
-    let bucketName = "appinventiv-development/iOS" //5
+    let bucketName = "Tara-app/iOS" //5
     
     
     //MARK: Setting S3 server with the credentials...
     //MARK: =========================================
     func setupAmazonS3(withPoolID poolID: String) {
         
-        let credentialsProvider = AWSCognitoCredentialsProvider( regionType: .USEast1,
+        let credentialsProvider = AWSCognitoCredentialsProvider( regionType: .USEast2,
                                                                  identityPoolId: poolID)
-        let configuration = AWSServiceConfiguration(region:.USEast1, credentialsProvider:credentialsProvider)
+        let configuration = AWSServiceConfiguration(region:.USEast2, credentialsProvider:credentialsProvider)
         AWSServiceManager.default().defaultServiceConfiguration = configuration
     }
     

@@ -150,7 +150,7 @@ extension AppDelegate {
     func getGoogleInfoPlist() {
         var filePath = ""
         #if ENV_DEV
-        filePath = Bundle.main.path(forResource: "GoogleService-Info-QA", ofType: "plist")!
+        filePath = Bundle.main.path(forResource: "GoogleService-Info-Prod", ofType: "plist")!
 //        filePath = Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist")!
         #elseif ENV_STAG
         filePath = Bundle.main.path(forResource: "GoogleService-Info-Prod", ofType: "plist")!
@@ -168,13 +168,13 @@ extension AppDelegate {
         }
     }
     
-    func getGoogleClientID() {
-        let filePath = Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist")!
-        if let options = FirebaseOptions(contentsOfFile: filePath) {
-            GoogleLoginController.shared.configure(withClientId: options.clientID ?? "")
-            GIDSignIn.sharedInstance().clientID = options.clientID
-        }
-    }
+//    func getGoogleClientID() {
+//        let filePath = Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist")!
+//        if let options = FirebaseOptions(contentsOfFile: filePath) {
+//            GoogleLoginController.shared.configure(withClientId: options.clientID ?? "")
+//            GIDSignIn.sharedInstance().clientID = options.clientID
+//        }
+//    }
 }
 
 //MARK:- Push Notification

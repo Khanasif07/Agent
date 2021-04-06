@@ -91,6 +91,7 @@ extension CustomTextView : UITextViewDelegate {
         tView.translatesAutoresizingMaskIntoConstraints = false
         floatLbl.font = AppFonts.NunitoSansRegular.withSize(14.0)
         tView.font =  AppFonts.NunitoSansBold.withSize(14.0)
+        tView.textAlignment = AppUserDefaults.value(forKey: .language) == 1 ? .right : .left
     }
     
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {

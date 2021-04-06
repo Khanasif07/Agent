@@ -21,6 +21,7 @@ class VechicleDetailVC: BaseVC {
     @IBOutlet weak var wellGetYouLbl: UILabel!
     @IBOutlet weak var submitBtn: AppButton!
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var headerImageView: UIImageView!
     
     // MARK: - Variables
     //===========================

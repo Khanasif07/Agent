@@ -200,7 +200,7 @@
 "vehicleMake" = "Vehicle Make";
 "vehicleModel" = "Vehicle Model";
 "modelYear" = "Model Year";
-"thePreferredOriginForMytyreWouldBe" = "The preferred Origin for my\ntire would be";
+"thePreferredOriginForMytyreWouldBe" = "The Preferred Origin for my\ntire would be";
 "setYourPreferencesAmongTyreBrandOrCountryOrigin" = "Set your preferences among tire brand or\ncountry origin";
 "tyreBrand" = "Tire Brand";
 "countryOrigin" = "Country Origin";
@@ -269,16 +269,16 @@
 "you_can_not_perform_this_action_as_you_are_blocked" = "You can not perform this action as the garage has blocked you";
 "you_can_not_perform_this_action_as_request_rejected" = "You can't perform this action as the request has rejected";
 "service" = "Service";
-"tyreServices" = "Tire Services";
-"oilSevices" = "Oil Sevices";
-"batteryServices" = "Battery Services";
+"tyreServices" = "Tire Service";
+"oilSevices" = "Oil Sevice";
+"batteryServices" = "Battery Service";
 "serviceOn" = "Serviced On";
 "offerAccepted" = "Offer Accepted";
 "offerRejected" = "Offer Rejected";
 "offerExpired" = "Offer Expired";
 "offerReceived" = "Offer Received";
 "noOffers" = "No Offers";
-"noNotificationAvailable" = "No notification available";
+"noNotificationAvailable" = "No Notifications Available";
 "garageDetails" = "Garage Details";
 "requestNumber" = "Request Number";
 "fromDate" = "From Date";
@@ -343,13 +343,13 @@
 "serviceCenterAddress" = "Service Center Address";
 "chooseOilType" = "Choose Oil Type";
 "theTypeOfOilAreYouLookingFor" = "The type of oil are you\nlooking for?";
-"thePreferredBrandForMyOilWouldBe" = "The preferred brand for my oil\nwould be";
+"thePreferredBrandForMyOilWouldBe" = "The Preferred oil brand is";
 "chooseOilBrand" = "Choose Oil Brands";
 "width" = "Width";
 "rimSize" = "Rim Size";
 "quantity" = "Quantity";
 "quantityShort" = "Quantity";
-"enter_number_of_tyre_you_want" = "Enter number of tire you want";
+"enter_number_of_tyre_you_want" = "Choose Quantity";
 "oilType" = "Oil type";
 "selectType" = "Select type";
 "selectTyreSize" = "Select Tire Size";
@@ -369,7 +369,7 @@
 "countries" = "Countries";
 "chooseYourVehicleDetails" = "Choose Your Vehicle Details";
 "wellGetYouOilAccordingToTheProvidedDetails" = "We have found suitable oil for your vehicle as per the provided details.";
-"numberOfTyre" = "Number of Tire";
+"numberOfTyre" = "Number of Tires";
 "edit" = "Edit";
 "submitRequest" = "Submit Request";
 "youAreRequestingForTyreServiceWith" = "You’ve requested Tire \\n Service with";
@@ -384,9 +384,9 @@
 "batteryBrand" = "Battery Brands";
 "numberOfBattery" = "Number of Batteries";
 "oilBrands" = "Oil Brands";
-"numberOfUnit" = "Number of Unit";
+"numberOfUnit" = "Number of Units";
 "oilImage" = "Oil Image";
-"selectNumberOfUnitYouWant" = "Select number of unit you want";
+"selectNumberOfUnitYouWant" = "Choose Quantity";
 "verifyEmail" = "Verify Email";
 "anOTPWillBeSendToYourPhoneNumber" = "An OTP has been sent to your Mobile Number";
 "aVerificationLinkWillBeSendToYourEmailAddress" = "A verification link has been sent to your email address";
@@ -483,9 +483,9 @@
 
 //Updated
 "please_Enter_Your_Mobile_Number_with_Country_Code" =  "Please Enter Your Mobile Number with Country Code";
-"whatTyreOfTyreAreYouLookingFor" = "What type of a tire are you\nlooking for?";
+"whatTyreOfTyreAreYouLookingFor" = "What type of tire are you\nlooking for?";
 "searchWithCar" = "Search with Car";
-"chooseTheSizeOfTyre" = "Choose the size of tire";
+"chooseTheSizeOfTyre" = "Choose the size";
 "notSureAboutTheSize" = "Not sure about the size?";
 "chatWithExpert" = "Chat with an expert.";
 "createNewAccount" = "Create New Account";
