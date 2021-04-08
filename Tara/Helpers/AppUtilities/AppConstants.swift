@@ -20,8 +20,8 @@ enum AppConstants {
     static var whiteSpace           = " "
     static let facebookAppId = "267648971573037"// Prod; //"331106654612712"//testing
     static let AppPassword = "Tara@123"
-    static let googleId = "54007076081-84cso06j4vqo3pq1ef7gq9b79vd7lkf1.apps.googleusercontent.com" // Prod; //"945865667688-17hgjjn4tgqikhmcq7ufigggcqta2t75.apps.googleusercontent.com"//testing
+    static let googleClientId = "54007076081-naglk75b8d7gcvgsn4orvbl2t8boekoe.apps.googleusercontent.com" // Prod; //"945865667688-17hgjjn4tgqikhmcq7ufigggcqta2t75.apps.googleusercontent.com"//testing
     static var awss3PoolId          =  "us-east-2:d52903e7-5429-40a6-8bf0-8defffee8ca3" //Prod; //b1f250f2-66a7-4d07-96e9-01817149a439"//testing
-    static var googlePlaceApiKey = "AIzaSyAmeRcKb4_NVo6ROBq9dwcqJfTydaGitdY"//testing
+    static var googlePlaceApiKey = "AIzaSyAeHCdFnjKMwgX_onuOWMFMunyHPhHdZ-Ii"//"AIzaSyDpcU2g4P8-dJrVQBYsyRmpWzCIMxUGdZE"//Prod //"AIzaSyAmeRcKb4_NVo6ROBq9dwcqJfTydaGitdY"//testing
     static var adminId = ""
 }

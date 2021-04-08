@@ -3,9 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>54007076081-84cso06j4vqo3pq1ef7gq9b79vd7lkf1.apps.googleusercontent.com</string>
+	<string>54007076081-naglk75b8d7gcvgsn4orvbl2t8boekoe.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.54007076081-84cso06j4vqo3pq1ef7gq9b79vd7lkf1</string>
+	<string>com.googleusercontent.apps.54007076081-naglk75b8d7gcvgsn4orvbl2t8boekoe</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>54007076081-96ppee2rf47m38ko9p3h97alt9213onn.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
 	<string>AIzaSyBCoD6Kx9JgRbePKiVYDPzaCCMwJBTaMmk</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +15,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.tara</string>
+	<string>com.tara.app</string>
 	<key>PROJECT_ID</key>
 	<string>tara-fcaf4</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,6 +31,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:54007076081:ios:55769cb8d899d3ce5e4550</string>
+	<string>1:54007076081:ios:834d140f27cd712d5e4550</string>
+	<key>DATABASE_URL</key>
+	<string>https://tara-fcaf4-default-rtdb.firebaseio.com</string>
 </dict>
 </plist>

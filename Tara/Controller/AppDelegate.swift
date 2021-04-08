@@ -42,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , MessagingDelegate , UNUs
         Messaging.messaging().delegate = self
         GMSServices.provideAPIKey(AppConstants.googlePlaceApiKey)
         GMSPlacesClient.provideAPIKey(AppConstants.googlePlaceApiKey)
-        GoogleLoginController.shared.configure(withClientId: AppConstants.googleId)
+        GoogleLoginController.shared.configure(withClientId: AppConstants.googleClientId)
         removeAllNotifications()
         AppRouter.checkAppInitializationFlow()
         guard let unreadCount = AppUserDefaults.value(forKey: .unreadCount).int else {
