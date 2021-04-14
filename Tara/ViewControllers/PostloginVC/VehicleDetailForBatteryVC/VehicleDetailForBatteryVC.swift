@@ -105,6 +105,7 @@ class VehicleDetailForBatteryVC: BaseVC {
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         batteryImgContainerView.isUserInteractionEnabled = true
         batteryImgContainerView.addGestureRecognizer(tap)
+        
     }
     
     @objc func handleTap(_ sender: UITapGestureRecognizer?) {
@@ -145,7 +146,7 @@ extension VehicleDetailForBatteryVC {
     
     private func setupTextFont() {
         enterVehicleDetailLbl.text = LocalizedString.enteryYourVehicleDetails.localized
-        wellGetYouLbl.text = LocalizedString.wellGetYouExactTyreSize.localized
+        wellGetYouLbl.text = LocalizedString.wellGetYouExactBatterySize.localized
         nextBtn.setTitle(LocalizedString.next.localized, for: .normal)
         uploadImgLbl.text = LocalizedString.uploadImage.localized
         batteryImgLbl.text = LocalizedString.batteryImage.localized

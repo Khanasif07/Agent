@@ -116,7 +116,7 @@
 //==============================
 "my_vehicle" = "سيارتي";
 "my_Services" = "خدماتي";
-"service_history" = "تاريخ الخدمة";
+"service_history" = "الخدمات السابقة";
 "payments" = "المدفوعات";
 "saved_cards" = "البطاقات المحفوظة";
 "added_location" = "ضيف موقعك";
@@ -128,8 +128,8 @@
 "aboutUs" = "من نحن";
 "terms_Condition" = "الشروط والأحكام";
 "privacy_policy" = "سياسة الخصوصية";
-"contactUs" = "اتصل فينا";
-"changeLanguage" = "غير اللغة";
+"contactUs" = "تواصل معنا";
+"changeLanguage" = "تغيير اللغة";
 "switchProfileTogarage" = "غير لحساب الورشة";
 "switchProfileToUser" = "حول لحساب مستخدم";
 "createGarageProfile" = "إنشاء حساب الورشة";
@@ -139,7 +139,7 @@
 
 "garageRegistration" = "تسجيل الورشة";
 "startRegistration" = "ابدأ التسجيل";
-"requirementToRegister" = "شروط تسجيل \\n ورشتك";
+"requirementToRegister" = "شروط تسجيل ورشتك";
 
 "garageLogo" = "1. شعار الورشة";
 "authorisedNameOfServiceCenter" = "2. الإسم الرسمي لمركز الخدمة";
@@ -154,7 +154,7 @@
 "govtIssuedlicensesandDocumentsDesc" = "لازم تحمل المستندات التالية: السجل التجاري،شهادة ضريبة القيمة المضافة،رخصة البلدية وهوية المالك.";
 
 "addDetails" = "ضيف التفاصيل";
-"thisAllAboutMyServiceCenter" = "هذا كل شيء عن \\n مركز الخدمة الخاص بي";
+"thisAllAboutMyServiceCenter" = "هذا كل شيء عن مركز الخدمة الخاص بي";
 "addFollowingGarageDetails" = "ضيف تفاصيل الورشة المطلوبة";
 "addLogo" = "ضيف الشعار";
 "saveContinue" = "حفظ ومتابعة";
@@ -197,10 +197,11 @@
 "enterModelYear" = "سنة الصنع";
 "enteryYourVehicleDetails" = "أدخل تفاصيل سيارتك";
 "wellGetYouExactTyreSize" = "حنجيب لك مقاس الإطار المناسب بناء على التفاصيل الي كتبتها";
+"wellGetYouExactBatterySize" = "حنجيب لك مقاس الإطار المناسب بناء على التفاصيل الي كتبتها";
 "vehicleMake" = "ماركة السيارة";
 "vehicleModel" = "موديل السيارة";
 "modelYear" = "سنة الصنع";
-"thePreferredOriginForMytyreWouldBe" = "الأصل المفضل لـ \\ n إطاري هو";
+"thePreferredOriginForMytyreWouldBe" = "ايش نوع الإطار الي تدور عليه؟";
 "setYourPreferencesAmongTyreBrandOrCountryOrigin" = "إختار العلامة التجارية و بلد المصدر المفضل لإطارك";
 "tyreBrand" = "العلامات التجارية للإطار";
 "countryOrigin" = "بلد المصدر";
@@ -315,7 +316,7 @@
 "yes" = "ايوة";
 "viewDetails" = "عرض التفاصيل";
 "hiUser" = "أهلا!";
-"hi" = "مرحبا, ";
+"hi" = "أهلاً, ";
 "toContinuePerformingThisAction" = "كمل حسابك، عشان تنفذ هذه العملية";
 "successfullyRequested" = "تم طلبه بنجاح";
 "yourRequestForTyreServiceHasBeenSubmittedSuccessfully" = "تم تقديم طلبك لخدمة الإطار بنجاح.";
@@ -324,8 +325,8 @@
  // MARK: - Home  VC Values
 //==============================
 "tyre" = "الإطار";
-"oil" = "الزيت";
-"battery" = "البطارية";
+"oil" = "البطارية";
+"battery" = "الزيت";
 "yourRegRequestHasBeenAccepted" = "تم قبول طلب التسجيل الخاص بك. يرجى إكمال ملف التعريف الخاص بك";
 "garageQuestionMark" = "الورشة";
 "supportChat" = "دردشة الدعم";
@@ -349,7 +350,7 @@
 "rimSize" = "مقاس الجنط";
 "quantity" = "الكمية";
 "quantityShort" = "الكمية";
-"enter_number_of_tyre_you_want" = "حدد عدد الوحدات التي تريدها";
+"enter_number_of_tyre_you_want" = "الكمية";
 "oilType" = "نوع الزيت"; //trnaslated
 "selectType" = "اختر صنف"; //translated
 "selectTyreSize" = "إختار مقاس الإطار";
@@ -372,12 +373,12 @@
 "numberOfTyre" = "عدد الإطارات";
 "edit" = "تعديل";
 "submitRequest" = "تقديم الطلب";
-"youAreRequestingForTyreServiceWith" = "أنت تطلب خدمة الإطارات مع"; //translated
+"youAreRequestingForTyreServiceWith" = "طلبت خدمة الإطار مع";
 "sizeOfTyre" = "مقاس الإطار";
 "originOfTyre" = "مصدر الإطار";
 "productYear" = "سنة الإنتاج";
 "skipAndSubmit" = "تخطي وإرسال";
-"chooseQuantity" = "حدد عدد الوحدات التي تريدها";
+"chooseQuantity" = "الكمية";
 "vehicleDetails" = "تفاصيل السيارة";
 "batteyRequest" = "طلبت خدمة البطارية مع";
 "oilRequest"  = "طلبت خدمة الزيت مع";
@@ -386,7 +387,7 @@
 "oilBrands" = "العلامات التجارية للزيت";
 "numberOfUnit" = "عدد الوحدات";
 "oilImage" = "صورة الزيت";
-"selectNumberOfUnitYouWant" = "حدد عدد الوحدات التي تريدها";
+"selectNumberOfUnitYouWant" = "الكمية";
 "verifyEmail" = "أكد الإيميل";
 "anOTPWillBeSendToYourPhoneNumber" = "تم إرسال رمز مؤقت لجوالك";
 "aVerificationLinkWillBeSendToYourEmailAddress" = "رسلنا لك رابط التحقق لإيميلك";
@@ -450,9 +451,9 @@
 "offerSmall" = "عرض";
 "paymentSmall" = "المدفوعات";
 "successful" = "ناجح";
-"password_has_been_reset_successfully" = "نجحت في إعادة تعيين \\ n كلمة المرور القديمة";
+"password_has_been_reset_successfully" = "نجحت في إعادة تعيين كلمة المرور القديمة";
 "otp_Verified" = "تم التأكد من الرمز المؤقت";
-"you_have_successfully_verified_your_mobile_no" = "نجحت في التحقق من \\ n رقم جوالك";
+"you_have_successfully_verified_your_mobile_no" = "نجحت في التحقق من رقم جوالك";
 "are_you_sure_you_want_to_logout" = "متأكد إنك حتسجل الخروج؟";
 
 

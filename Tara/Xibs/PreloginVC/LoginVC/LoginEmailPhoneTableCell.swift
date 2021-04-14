@@ -79,7 +79,7 @@ class LoginEmailPhoneTableCell: UITableViewCell {
         self.phoneNoBtn.setTitleColor(AppColors.appRedColor, for: .normal)
         self.phoneNoBtn.setTitle(LocalizedString.usePhoneNumber.localized, for: .normal)
         self.signInBtn.setTitleColor(UIColor.white, for: .normal)
-        self.signInBtn.backgroundColor = AppColors.primaryBlueColor
+        self.signInBtn.backgroundColor = AppColors.appRedColor
         self.forgotPassBtn.setTitleColor(AppColors.fontTertiaryColor, for: .normal)
         self.signUpBtn.setTitleColor(AppColors.appRedColor, for: .normal)
         self.signInBtn.isEnabled = false

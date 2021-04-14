@@ -54,7 +54,7 @@ extension GarageTabBarController {
     private func initialSetup() {
         self.bottomSafeArea = UIDevice.current.hasNotch ? 34.0 : 0.0
         self.navigationController?.navigationBar.isHidden = true
-        UITabBar.appearance().tintColor = AppColors.primaryBlueColor
+        UITabBar.appearance().tintColor = AppColors.appRedColor
         UITabBar.appearance().unselectedItemTintColor = AppColors.fontTertiaryColor
         self.tabBar.backgroundColor = UIColor.white
         self.selectedIndex = 0

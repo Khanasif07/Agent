@@ -75,7 +75,7 @@ class SignUpTopCell: UITableViewCell {
         self.signUpBtn.setTitle(LocalizedString.signup.localized, for: .normal)
         self.signInBtn.setTitle(LocalizedString.sign_in_Cap.localized, for: .normal)
         self.signInBtn.setTitleColor(AppColors.appRedColor, for: .normal)
-        self.signUpBtn.backgroundColor = AppColors.primaryBlueColor
+        self.signUpBtn.backgroundColor = AppColors.appRedColor
         self.signUpBtn.isEnabled = false
         self.passTxtField.isSecureTextEntry = true
         self.confirmPassTxtField.isSecureTextEntry = true

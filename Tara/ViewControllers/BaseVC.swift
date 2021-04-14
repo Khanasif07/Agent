@@ -13,7 +13,7 @@ class BaseVC: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        IQKeyboardManager.shared.toolbarTintColor = AppColors.primaryBlueColor
+        IQKeyboardManager.shared.toolbarTintColor = AppColors.appRedColor
         self.navigationController?.navigationBar.isHidden = true
     }
 }

@@ -224,6 +224,7 @@ enum LocalizedString : String {
     case enterModelYear
     case enteryYourVehicleDetails
     case wellGetYouExactTyreSize
+    case wellGetYouExactBatterySize
     case vehicleMake
     case vehicleModel
     case modelYear

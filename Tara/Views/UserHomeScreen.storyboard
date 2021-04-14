@@ -263,7 +263,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="1000" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sbI-me-tj6">
-                                                <rect key="frame" x="16" y="363" width="382" height="50.5"/>
+                                                <rect key="frame" x="16" y="363" width="247" height="50.5"/>
                                                 <string key="text">The preferred Origin for my
 tire would be</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
@@ -271,7 +271,7 @@ tire would be</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O7F-cR-ZbX">
-                                                <rect key="frame" x="16" y="460.5" width="382" height="33.5"/>
+                                                <rect key="frame" x="16" y="460.5" width="208" height="33.5"/>
                                                 <string key="text">Set your preferences among tire
 brand or country origin</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -282,7 +282,7 @@ brand or country origin</string>
                                                 <rect key="frame" x="16" y="519" width="382" height="389"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="vCx-ks-sWz">
-                                                        <rect key="frame" x="8" y="12" width="358" height="30"/>
+                                                        <rect key="frame" x="8" y="12" width="115" height="30"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xbm-Qc-X7M">
                                                                 <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
@@ -297,7 +297,7 @@ brand or country origin</string>
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tire Brand" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ah5-jn-amh">
-                                                                <rect key="frame" x="36" y="0.0" width="322" height="30"/>
+                                                                <rect key="frame" x="36" y="0.0" width="79" height="30"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -319,7 +319,7 @@ brand or country origin</string>
                                                         </constraints>
                                                     </view>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="XiY-SO-HAj">
-                                                        <rect key="frame" x="10" y="185" width="354" height="30"/>
+                                                        <rect key="frame" x="10" y="185" width="147" height="30"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RMw-vn-ibp">
                                                                 <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
@@ -334,7 +334,7 @@ brand or country origin</string>
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Country Origin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7EK-Kg-wyw">
-                                                                <rect key="frame" x="36" y="0.0" width="318" height="30"/>
+                                                                <rect key="frame" x="36" y="0.0" width="111" height="30"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -342,7 +342,7 @@ brand or country origin</string>
                                                         </subviews>
                                                     </stackView>
                                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VJ7-5D-Ehm" customClass="CustomTextView" customModule="Tara" customModuleProvider="target">
-                                                        <rect key="frame" x="10" y="227" width="354" height="60"/>
+                                                        <rect key="frame" x="10" y="227" width="356" height="60"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="SMr-dW-9DY"/>
@@ -392,19 +392,19 @@ brand or country origin</string>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstItem="XiY-SO-HAj" firstAttribute="trailing" secondItem="3qy-xx-0lY" secondAttribute="trailing" id="0et-9o-R6n"/>
                                                     <constraint firstItem="3qy-xx-0lY" firstAttribute="leading" secondItem="vCx-ks-sWz" secondAttribute="leading" constant="2" id="2KX-nH-teh"/>
                                                     <constraint firstItem="vCx-ks-sWz" firstAttribute="top" secondItem="KiL-Zd-HpC" secondAttribute="top" constant="12" id="5VA-x3-3q5"/>
-                                                    <constraint firstItem="3qy-xx-0lY" firstAttribute="trailing" secondItem="vCx-ks-sWz" secondAttribute="trailing" constant="-2" id="7PI-fK-egB"/>
                                                     <constraint firstItem="VJ7-5D-Ehm" firstAttribute="top" secondItem="XiY-SO-HAj" secondAttribute="bottom" constant="12" id="Bmf-5K-vUS"/>
                                                     <constraint firstItem="XiY-SO-HAj" firstAttribute="leading" secondItem="3qy-xx-0lY" secondAttribute="leading" id="C2t-CY-S9W"/>
                                                     <constraint firstItem="VJ7-5D-Ehm" firstAttribute="leading" secondItem="XiY-SO-HAj" secondAttribute="leading" id="CbZ-0F-lGZ"/>
                                                     <constraint firstItem="QNP-th-VCb" firstAttribute="top" secondItem="3qy-xx-0lY" secondAttribute="bottom" constant="26" id="Eci-gg-FH1"/>
                                                     <constraint firstItem="XiY-SO-HAj" firstAttribute="top" secondItem="QNP-th-VCb" secondAttribute="bottom" constant="20" id="KEE-EQ-Kee"/>
+                                                    <constraint firstAttribute="trailing" secondItem="3qy-xx-0lY" secondAttribute="trailing" constant="18" id="N4l-wg-JfL"/>
                                                     <constraint firstAttribute="bottom" secondItem="MZA-VQ-uBX" secondAttribute="bottom" constant="16" id="NAt-LC-vdu"/>
-                                                    <constraint firstAttribute="trailing" secondItem="vCx-ks-sWz" secondAttribute="trailing" constant="16" id="WFH-qJ-9Gg"/>
-                                                    <constraint firstItem="VJ7-5D-Ehm" firstAttribute="trailing" secondItem="XiY-SO-HAj" secondAttribute="trailing" id="dwE-gI-Lqt"/>
+                                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="vCx-ks-sWz" secondAttribute="trailing" constant="16" id="WFH-qJ-9Gg"/>
+                                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="XiY-SO-HAj" secondAttribute="trailing" constant="16" id="kYV-fj-lFD"/>
                                                     <constraint firstItem="vCx-ks-sWz" firstAttribute="leading" secondItem="KiL-Zd-HpC" secondAttribute="leading" constant="8" id="lCm-mT-NSd"/>
+                                                    <constraint firstAttribute="trailing" secondItem="VJ7-5D-Ehm" secondAttribute="trailing" constant="16" id="mdM-Hz-fsc"/>
                                                     <constraint firstItem="MZA-VQ-uBX" firstAttribute="top" secondItem="VJ7-5D-Ehm" secondAttribute="bottom" constant="30" id="mpC-Uk-kvd"/>
                                                     <constraint firstItem="QNP-th-VCb" firstAttribute="leading" secondItem="KiL-Zd-HpC" secondAttribute="leading" id="nZk-EC-FhP"/>
                                                     <constraint firstAttribute="trailing" secondItem="QNP-th-VCb" secondAttribute="trailing" id="qcv-ut-PlC"/>
@@ -421,12 +421,12 @@ brand or country origin</string>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="ZDv-0L-9va" secondAttribute="trailing" id="0Ow-CL-yLF"/>
                                             <constraint firstItem="KiL-Zd-HpC" firstAttribute="leading" secondItem="O7F-cR-ZbX" secondAttribute="leading" id="DPN-ca-WVL"/>
-                                            <constraint firstItem="O7F-cR-ZbX" firstAttribute="trailing" secondItem="sbI-me-tj6" secondAttribute="trailing" id="FKO-pU-r9D"/>
-                                            <constraint firstItem="KiL-Zd-HpC" firstAttribute="trailing" secondItem="O7F-cR-ZbX" secondAttribute="trailing" id="FTK-KE-IYc"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="O7F-cR-ZbX" secondAttribute="trailing" constant="16" id="GMJ-pA-hYn"/>
+                                            <constraint firstAttribute="trailing" secondItem="KiL-Zd-HpC" secondAttribute="trailing" constant="16" id="J5V-Hv-P2t"/>
                                             <constraint firstItem="O7F-cR-ZbX" firstAttribute="leading" secondItem="sbI-me-tj6" secondAttribute="leading" id="P4v-1Q-eA0"/>
                                             <constraint firstItem="ZDv-0L-9va" firstAttribute="leading" secondItem="diB-ne-4fC" secondAttribute="leading" id="XaH-ak-JCz"/>
                                             <constraint firstItem="ZDv-0L-9va" firstAttribute="top" secondItem="diB-ne-4fC" secondAttribute="top" id="Xos-Mn-T2v"/>
-                                            <constraint firstAttribute="trailing" secondItem="sbI-me-tj6" secondAttribute="trailing" constant="16" id="Zy6-gI-KgR"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="sbI-me-tj6" secondAttribute="trailing" constant="16" id="Zy6-gI-KgR"/>
                                             <constraint firstItem="O7F-cR-ZbX" firstAttribute="top" secondItem="sbI-me-tj6" secondAttribute="bottom" constant="47" id="apD-Va-YTd"/>
                                             <constraint firstAttribute="trailing" secondItem="MZA-VQ-uBX" secondAttribute="trailing" constant="32" id="ayZ-gY-Ssl"/>
                                             <constraint firstItem="sbI-me-tj6" firstAttribute="top" secondItem="ZDv-0L-9va" secondAttribute="bottom" id="dIi-ia-pJh"/>
@@ -563,7 +563,7 @@ in getting great offers</string>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lsd-fy-pG3" customClass="AppButton" customModule="Tara" customModuleProvider="target">
                                                         <rect key="frame" x="131" y="0.0" width="115" height="48"/>
-                                                        <color key="backgroundColor" red="0.090196078431372548" green="0.14509803921568626" blue="0.3529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" red="0.87843137250000003" green="0.13725490200000001" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
                                                         <state key="normal" title="Allow">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
@@ -725,21 +725,12 @@ Service With</string>
                                                                             </stackView>
                                                                         </subviews>
                                                                     </stackView>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="line" translatesAutoresizingMaskIntoConstraints="NO" id="BfT-30-oBC">
-                                                                        <rect key="frame" x="114" y="12" width="11" height="36"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="height" constant="36" id="O8I-Lq-Ukr"/>
-                                                                        </constraints>
-                                                                    </imageView>
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="60" id="8gs-cU-WZO"/>
                                                                     <constraint firstItem="LPM-vE-Q2s" firstAttribute="leading" secondItem="Yx5-Gl-qXZ" secondAttribute="leading" constant="10" id="Np9-Qf-Zx8"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="BfT-30-oBC" secondAttribute="trailing" id="fXb-uH-HLE"/>
                                                                     <constraint firstItem="LPM-vE-Q2s" firstAttribute="centerY" secondItem="Yx5-Gl-qXZ" secondAttribute="centerY" id="lAF-PE-Npe"/>
-                                                                    <constraint firstItem="BfT-30-oBC" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="LPM-vE-Q2s" secondAttribute="trailing" constant="1" id="nFU-tQ-JPd"/>
-                                                                    <constraint firstItem="BfT-30-oBC" firstAttribute="centerY" secondItem="Yx5-Gl-qXZ" secondAttribute="centerY" id="xlx-5h-Gh8"/>
                                                                 </constraints>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -1472,7 +1463,7 @@ looking for?</string>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="1000" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6V9-yo-hxZ">
-                                                <rect key="frame" x="16" y="363" width="382" height="50.5"/>
+                                                <rect key="frame" x="16" y="363" width="282.5" height="50.5"/>
                                                 <string key="text">The preferred brand for battery
 would be</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
@@ -1483,7 +1474,7 @@ would be</string>
                                                 <rect key="frame" x="16" y="439.5" width="382" height="218"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose BatteryBrands" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gLo-7g-fqh">
-                                                        <rect key="frame" x="16" y="16" width="350" height="18"/>
+                                                        <rect key="frame" x="16" y="16" width="154.5" height="18"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <color key="textColor" red="0.10980392160000001" green="0.1137254902" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -1540,11 +1531,11 @@ would be</string>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="bottom" secondItem="xre-Kg-1kS" secondAttribute="bottom" constant="16" id="5v4-Dv-DfZ"/>
+                                                    <constraint firstAttribute="trailing" secondItem="FO3-KN-4yW" secondAttribute="trailing" constant="16" id="6o7-uS-JG7"/>
                                                     <constraint firstItem="FO3-KN-4yW" firstAttribute="leading" secondItem="gLo-7g-fqh" secondAttribute="leading" id="7Xb-tE-NWc"/>
                                                     <constraint firstAttribute="trailing" secondItem="xre-Kg-1kS" secondAttribute="trailing" constant="16" id="UCo-DR-2dU"/>
                                                     <constraint firstItem="FO3-KN-4yW" firstAttribute="top" secondItem="gLo-7g-fqh" secondAttribute="bottom" constant="20" id="iTV-eq-0Yc"/>
-                                                    <constraint firstAttribute="trailing" secondItem="gLo-7g-fqh" secondAttribute="trailing" constant="16" id="ord-3T-jq9"/>
-                                                    <constraint firstItem="FO3-KN-4yW" firstAttribute="trailing" secondItem="gLo-7g-fqh" secondAttribute="trailing" id="pfs-O4-A0L"/>
+                                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="gLo-7g-fqh" secondAttribute="trailing" constant="16" id="ord-3T-jq9"/>
                                                     <constraint firstItem="gLo-7g-fqh" firstAttribute="top" secondItem="qq7-ho-bZL" secondAttribute="top" constant="16" id="vim-eE-Mdh"/>
                                                     <constraint firstItem="xre-Kg-1kS" firstAttribute="top" secondItem="FO3-KN-4yW" secondAttribute="bottom" constant="32" id="wxg-jG-9FC"/>
                                                     <constraint firstItem="gLo-7g-fqh" firstAttribute="leading" secondItem="qq7-ho-bZL" secondAttribute="leading" constant="16" id="ydD-z8-bxg"/>
@@ -1558,10 +1549,10 @@ would be</string>
                                         </subviews>
                                         <color key="backgroundColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstItem="qq7-ho-bZL" firstAttribute="trailing" secondItem="6V9-yo-hxZ" secondAttribute="trailing" id="8H3-CO-tUd"/>
+                                            <constraint firstAttribute="trailing" secondItem="qq7-ho-bZL" secondAttribute="trailing" constant="16" id="7nW-2t-umH"/>
                                             <constraint firstItem="0wO-jI-30C" firstAttribute="leading" secondItem="XBS-hA-wWx" secondAttribute="leading" id="AFL-tU-3eL"/>
                                             <constraint firstItem="6V9-yo-hxZ" firstAttribute="leading" secondItem="XBS-hA-wWx" secondAttribute="leading" constant="16" id="BYp-yU-LXr"/>
-                                            <constraint firstAttribute="trailing" secondItem="6V9-yo-hxZ" secondAttribute="trailing" constant="16" id="DUE-Ch-oFG"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="6V9-yo-hxZ" secondAttribute="trailing" constant="16" id="DUE-Ch-oFG"/>
                                             <constraint firstItem="0wO-jI-30C" firstAttribute="top" secondItem="XBS-hA-wWx" secondAttribute="top" id="ID5-C0-g3n"/>
                                             <constraint firstItem="6V9-yo-hxZ" firstAttribute="top" secondItem="0wO-jI-30C" secondAttribute="bottom" id="QlT-Kz-yEd"/>
                                             <constraint firstAttribute="trailing" secondItem="0wO-jI-30C" secondAttribute="trailing" id="YCd-Et-R6r"/>
@@ -1655,13 +1646,13 @@ would be</string>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Enter your Vehicle Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BJI-Cr-zTC">
-                                                <rect key="frame" x="16" y="330" width="382" height="25.5"/>
+                                                <rect key="frame" x="16" y="330" width="232" height="25.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                 <color key="textColor" red="0.10980392160000001" green="0.1137254902" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p91-SQ-bhR">
-                                                <rect key="frame" x="16" y="379.5" width="382" height="33.5"/>
+                                                <rect key="frame" x="16" y="379.5" width="282.5" height="33.5"/>
                                                 <string key="text">We’ll get you exact Battery according to the
 provided details</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1910,16 +1901,16 @@ provided details</string>
                                         <color key="backgroundColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="PQW-kl-epL" firstAttribute="leading" secondItem="U5z-fm-r2l" secondAttribute="leading" id="53G-cV-X0M"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="p91-SQ-bhR" secondAttribute="trailing" constant="16" id="5rq-Ay-9gw"/>
                                             <constraint firstItem="YVZ-o3-0Rl" firstAttribute="leading" secondItem="p91-SQ-bhR" secondAttribute="leading" id="AOs-Mf-yqZ"/>
                                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="YVZ-o3-0Rl" secondAttribute="bottom" priority="999" constant="50" id="AbX-Mw-cD6"/>
                                             <constraint firstItem="PQW-kl-epL" firstAttribute="top" secondItem="U5z-fm-r2l" secondAttribute="top" id="FSC-JU-qzU"/>
                                             <constraint firstItem="p91-SQ-bhR" firstAttribute="leading" secondItem="BJI-Cr-zTC" secondAttribute="leading" id="IEu-rS-tns"/>
-                                            <constraint firstItem="p91-SQ-bhR" firstAttribute="trailing" secondItem="BJI-Cr-zTC" secondAttribute="trailing" id="OUr-jt-TRV"/>
-                                            <constraint firstItem="YVZ-o3-0Rl" firstAttribute="trailing" secondItem="p91-SQ-bhR" secondAttribute="trailing" id="TKX-vF-beH"/>
                                             <constraint firstItem="ZNh-b5-vay" firstAttribute="width" secondItem="U5z-fm-r2l" secondAttribute="width" multiplier="150/414" id="XLQ-iJ-S22"/>
-                                            <constraint firstAttribute="trailing" secondItem="BJI-Cr-zTC" secondAttribute="trailing" constant="16" id="Xao-Ez-nDs"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="BJI-Cr-zTC" secondAttribute="trailing" constant="16" id="Xao-Ez-nDs"/>
                                             <constraint firstItem="BJI-Cr-zTC" firstAttribute="top" secondItem="PQW-kl-epL" secondAttribute="bottom" id="ZOU-bc-d4x"/>
                                             <constraint firstItem="BJI-Cr-zTC" firstAttribute="leading" secondItem="U5z-fm-r2l" secondAttribute="leading" constant="16" id="eMe-Oy-8Ef"/>
+                                            <constraint firstAttribute="trailing" secondItem="YVZ-o3-0Rl" secondAttribute="trailing" constant="16" id="faB-lQ-86H"/>
                                             <constraint firstItem="YVZ-o3-0Rl" firstAttribute="top" secondItem="p91-SQ-bhR" secondAttribute="bottom" constant="25" id="iH3-20-m4T"/>
                                             <constraint firstAttribute="trailing" secondItem="PQW-kl-epL" secondAttribute="trailing" id="kZC-Md-K6X"/>
                                             <constraint firstItem="p91-SQ-bhR" firstAttribute="top" secondItem="BJI-Cr-zTC" secondAttribute="bottom" constant="24" id="nZg-QU-egu"/>
@@ -3866,7 +3857,6 @@ Service With</string>
         <image name="icOil" width="135" height="135"/>
         <image name="icRim" width="36.5" height="36"/>
         <image name="icTyre" width="135" height="135"/>
-        <image name="line" width="11" height="33"/>
         <image name="roundUnSelected" width="24" height="24"/>
         <namedColor name="appRedColor">
             <color red="0.87800002098083496" green="0.13699999451637268" blue="0.25900000333786011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

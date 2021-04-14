@@ -86,7 +86,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , MessagingDelegate , UNUs
         UIBarButtonItem.appearance().tintColor = AppColors.fontPrimaryColor
         
         UITabBar.appearance().isTranslucent = false
-        //        UITabBar.appearance().barTintColor = AppColors.primaryBlueColor
+        //        UITabBar.appearance().barTintColor = AppColors.appRedColor
         UITabBar.appearance().tintColor = UIColor.white
         UITextField.appearance().semanticContentAttribute = AppUserDefaults.value(forKey: .language) == 1 ? .forceRightToLeft : .forceLeftToRight
         UITextField.appearance().textAlignment = AppUserDefaults.value(forKey: .language) == 1 ? .right : .left

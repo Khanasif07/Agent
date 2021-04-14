@@ -126,7 +126,7 @@
 // MARK: - Profile Setting VC Values
 //==============================
 "aboutUs" = "About us";
-"terms_Condition" = "Terms & Conditions";
+"terms_Condition" = "Terms of Service";
 "privacy_policy" = "Privacy Policy";
 "contactUs" = "Contact us";
 "changeLanguage" = "Change Language";
@@ -197,6 +197,7 @@
 "enterModelYear" = "Enter Model Year";
 "enteryYourVehicleDetails" = "Enter your Vehicle Details";
 "wellGetYouExactTyreSize" = "We’ll get you exact tire size according to the\nprovided details";
+"wellGetYouExactBatterySize" = "We’ll get you exact battery size according to the\nprovided details";
 "vehicleMake" = "Vehicle Make";
 "vehicleModel" = "Vehicle Model";
 "modelYear" = "Model Year";
@@ -372,15 +373,15 @@
 "numberOfTyre" = "Number of Tires";
 "edit" = "Edit";
 "submitRequest" = "Submit Request";
-"youAreRequestingForTyreServiceWith" = "You’ve requested Tire \\n Service with";
+"youAreRequestingForTyreServiceWith" = "You’ve requested Tire\nService with";
 "sizeOfTyre" = "Size of tire";
 "originOfTyre" = "Origin of Tire";
 "productYear" = "Production Year";
 "skipAndSubmit" = "Skip & Submit ";
 "chooseQuantity" = "Choose Quantity";
 "vehicleDetails" = "Vehicle Details";
-"batteyRequest" = "You’ve requested Battery \\n Service with";
-"oilRequest"  = "You’ve requested Oil \\n Service with";
+"batteyRequest" = "You’ve requested Battery\nService with";
+"oilRequest"  = "You’ve requested Oil\nService with";
 "batteryBrand" = "Battery Brands";
 "numberOfBattery" = "Number of Batteries";
 "oilBrands" = "Oil Brands";
@@ -485,7 +486,7 @@
 "please_Enter_Your_Mobile_Number_with_Country_Code" =  "Please Enter Your Mobile Number with Country Code";
 "whatTyreOfTyreAreYouLookingFor" = "What type of tire are you\nlooking for?";
 "searchWithCar" = "Search with Car";
-"chooseTheSizeOfTyre" = "Choose the size";
+"chooseTheSizeOfTyre" = "Choose tire size";
 "notSureAboutTheSize" = "Not sure about the size?";
 "chatWithExpert" = "Chat with an expert.";
 "createNewAccount" = "Create New Account";

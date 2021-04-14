@@ -35,7 +35,7 @@ class ServiceCompletedTableViewCell: UITableViewCell {
     
     func bindData(_ model: GarageRequestModel, screenType: ServiceCompletedVC.ScreenType) {
         let type = model.requestType == .tyres ? LocalizedString.tyre.localized : model.requestType?.rawValue
-        serviceTypeLbl.text = (type ?? "") + LocalizedString.service.localized
+        serviceTypeLbl.text = (type ?? "") + " " + LocalizedString.service.localized
         if screenType == .serviceComplete {
             userImgView.setImage_kf(imageString: model.userImage ?? "", placeHolderImage: #imageLiteral(resourceName: "placeHolder"), loader: false)
             userImgView.contentMode = .scaleToFill
