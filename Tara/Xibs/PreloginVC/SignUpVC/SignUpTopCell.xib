@@ -111,13 +111,13 @@
                                                 <rect key="frame" x="0.0" y="21" width="74" height="30"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+91" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YC9-W7-YfV">
-                                                        <rect key="frame" x="0.0" y="0.0" width="25.5" height="30"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="24" height="30"/>
                                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="14"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uMS-5y-193">
-                                                        <rect key="frame" x="25.5" y="0.0" width="48.5" height="30"/>
+                                                        <rect key="frame" x="24" y="0.0" width="50" height="30"/>
                                                         <state key="normal" image="group3714"/>
                                                     </button>
                                                 </subviews>
@@ -239,13 +239,13 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By Signing Up you are agree to our ToS  &amp; Privacy Policy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tkA-wv-5cV">
-                                <rect key="frame" x="22" y="329" width="332" height="18"/>
+                                <rect key="frame" x="22" y="329" width="332" height="15.5"/>
                                 <fontDescription key="fontDescription" name="NunitoSans-Regular" family="Nunito Sans" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="ghA-Xe-4dn">
-                                <rect key="frame" x="22" y="355" width="332" height="97"/>
+                                <rect key="frame" x="22" y="352.5" width="332" height="99.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3LF-ss-gdK" customClass="AppButton" customModule="Tara" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="332" height="56"/>
@@ -262,19 +262,19 @@
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="2.5" translatesAutoresizingMaskIntoConstraints="NO" id="6hL-9Z-rW5">
-                                        <rect key="frame" x="56.5" y="65" width="219.5" height="32"/>
+                                        <rect key="frame" x="57.5" y="65" width="217" height="34.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have an account?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nMq-pR-FNf">
-                                                <rect key="frame" x="0.0" y="6.5" width="165" height="19.5"/>
+                                                <rect key="frame" x="0.0" y="9" width="162.5" height="16.5"/>
                                                 <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="14"/>
                                                 <color key="textColor" red="0.54117647059999996" green="0.58431372550000005" blue="0.61960784310000006" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="1uU-0k-SFn">
-                                                <rect key="frame" x="167.5" y="0.0" width="52" height="32"/>
+                                                <rect key="frame" x="165" y="3" width="52" height="29"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K4q-oS-r53">
-                                                        <rect key="frame" x="0.0" y="0.0" width="52" height="32"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="52" height="29"/>
                                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="14"/>
                                                         <state key="normal" title="SIGN IN"/>
                                                         <connections>
@@ -343,19 +343,19 @@
     </objects>
     <designables>
         <designable name="1vP-6Q-req">
-            <size key="intrinsicContentSize" width="332" height="41.609671875000004"/>
+            <size key="intrinsicContentSize" width="332" height="38.823671875000002"/>
         </designable>
         <designable name="Kcz-Gw-53b">
-            <size key="intrinsicContentSize" width="332" height="41.609671875000004"/>
+            <size key="intrinsicContentSize" width="332" height="38.823671875000002"/>
         </designable>
         <designable name="KlE-OE-HuT">
-            <size key="intrinsicContentSize" width="230" height="41.609671875000004"/>
+            <size key="intrinsicContentSize" width="230" height="38.823671875000002"/>
         </designable>
         <designable name="iwq-3H-gLo">
-            <size key="intrinsicContentSize" width="332" height="41.609671875000004"/>
+            <size key="intrinsicContentSize" width="332" height="38.823671875000002"/>
         </designable>
         <designable name="yfi-po-mPk">
-            <size key="intrinsicContentSize" width="332" height="41.609671875000004"/>
+            <size key="intrinsicContentSize" width="332" height="38.823671875000002"/>
         </designable>
     </designables>
     <resources>

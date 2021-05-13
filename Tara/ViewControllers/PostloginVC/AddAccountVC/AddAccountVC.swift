@@ -85,11 +85,12 @@ class AddAccountVC: BaseVC {
     
     @objc func handleTermAndConditionTap(_ sender: UITapGestureRecognizer) {
         printDebug("term and condition tap")
+        AppRouter.goToWebVC(vc: self, screenType: .privacyPolicy)
     }
     
     @objc func handleprivacyPolicyTap(_ sender: UITapGestureRecognizer) {
         printDebug("privacy policy tap")
-        
+        AppRouter.goToWebVC(vc: self, screenType: .privacyPolicy)
     }
     
     func setPreFillData() {

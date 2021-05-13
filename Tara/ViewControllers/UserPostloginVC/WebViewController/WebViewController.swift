@@ -39,9 +39,9 @@ class WebViewController: BaseVC {
             case .aboutUs:
                 return "https://google.com"
             case .privacyPolicy:
-                return "https://google.com"
+                return "https://admin.tara-auto.com/privacy-policy"
             case .termsCondition:
-                return "https://google.com"
+                return "https://admin.tara-auto.com/term-and-condition"
             case .payment:
                 return baseUrl + WebServices.EndPoint.payment.rawValue
             case .downloadInvoice:

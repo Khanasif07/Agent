@@ -197,7 +197,7 @@
 "enterModelYear" = "سنة الصنع";
 "enteryYourVehicleDetails" = "أدخل تفاصيل سيارتك";
 "wellGetYouExactTyreSize" = "حنجيب لك مقاس الإطار المناسب بناء على التفاصيل الي كتبتها";
-"wellGetYouExactBatterySize" = "حنجيب لك مقاس الإطار المناسب بناء على التفاصيل الي كتبتها";
+"wellGetYouExactBatterySize" = "لقينا لك البطارية المناسبة حسب التفاصيل المقدمة";
 "vehicleMake" = "ماركة السيارة";
 "vehicleModel" = "موديل السيارة";
 "modelYear" = "سنة الصنع";
@@ -225,7 +225,7 @@
 "ongoingService" = "الخدمات الحالية";
 "update" = "تحديث";
 "tyreServiceRequest" = "طلب خدمة الإطار";
-"batteryServiceRequest" = "طلب خدمة البطارية";
+"batteryServiceRequest" = "طلب خدمة بطارية";
 "oilServiceRequest" = "طلب خدمة الزيت";
 "regNo" = "رقم اللوحة";
 "serviceStatus" = "حالة الخدمة";
@@ -325,8 +325,8 @@
  // MARK: - Home  VC Values
 //==============================
 "tyre" = "الإطار";
-"oil" = "البطارية";
-"battery" = "الزيت";
+"oil" = "الزيت";
+"battery" = "البطارية";
 "yourRegRequestHasBeenAccepted" = "تم قبول طلب التسجيل الخاص بك. يرجى إكمال ملف التعريف الخاص بك";
 "garageQuestionMark" = "الورشة";
 "supportChat" = "دردشة الدعم";

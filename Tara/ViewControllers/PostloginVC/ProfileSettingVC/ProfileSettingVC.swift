@@ -22,8 +22,8 @@ class ProfileSettingVC: BaseVC {
     // MARK: - Variables
     //===========================
     var switchProfileString = isCurrentUserType == .user ? LocalizedString.switchProfileTogarage.localized : LocalizedString.switchProfileToUser.localized
-    var selectItemArray = [LocalizedString.aboutUs.localized,LocalizedString.terms_Condition.localized,LocalizedString.privacy_policy.localized,LocalizedString.contactUs.localized,LocalizedString.changeLanguage.localized,LocalizedString.switchProfileTogarage.localized,LocalizedString.help.localized,LocalizedString.faq.localized]
-    var selectImageArray: [UIImage] = [#imageLiteral(resourceName: "favicon2"),#imageLiteral(resourceName: "terms"),#imageLiteral(resourceName: "privacyPolicy"),#imageLiteral(resourceName: "contactUs"),#imageLiteral(resourceName: "icLanguage"),#imageLiteral(resourceName: "switchProfile"),isCurrentUserType == .user ? #imageLiteral(resourceName: "ic_help") : #imageLiteral(resourceName: "changePassword") , #imageLiteral(resourceName: "faq")]
+    var selectItemArray = [LocalizedString.terms_Condition.localized,LocalizedString.privacy_policy.localized,LocalizedString.contactUs.localized,LocalizedString.changeLanguage.localized,LocalizedString.switchProfileTogarage.localized,LocalizedString.help.localized]
+    var selectImageArray: [UIImage] = [#imageLiteral(resourceName: "terms"),#imageLiteral(resourceName: "privacyPolicy"),#imageLiteral(resourceName: "contactUs"),#imageLiteral(resourceName: "icLanguage"),#imageLiteral(resourceName: "switchProfile"),isCurrentUserType == .user ? #imageLiteral(resourceName: "ic_help") : #imageLiteral(resourceName: "changePassword")]
     var selectItemArray1 = [LocalizedString.logout.localized]
     var selectImageArray1: [UIImage] = [#imageLiteral(resourceName: "logout")]
     var viewModel = GarageRegistrationVM()
@@ -265,7 +265,7 @@ extension ProfileSettingVC {
         } else {
             self.switchProfileString = LocalizedString.switchProfileToUser.localized
         }
-        self.selectItemArray = [LocalizedString.aboutUs.localized,LocalizedString.terms_Condition.localized,LocalizedString.privacy_policy.localized,LocalizedString.contactUs.localized,LocalizedString.changeLanguage.localized,switchProfileString, isCurrentUserType == .user ?  LocalizedString.help.localized : LocalizedString.change_password.localized,LocalizedString.faq.localized]
+        self.selectItemArray = [LocalizedString.terms_Condition.localized,LocalizedString.privacy_policy.localized,LocalizedString.contactUs.localized,LocalizedString.changeLanguage.localized,switchProfileString, isCurrentUserType == .user ?  LocalizedString.help.localized : LocalizedString.change_password.localized]
         if !UserModel.main.canChangePassword {
             if self.selectItemArray.contains(LocalizedString.change_password.localized){
                 self.selectItemArray.removeAll { (value) -> Bool in

@@ -197,7 +197,7 @@
 "enterModelYear" = "Enter Model Year";
 "enteryYourVehicleDetails" = "Enter your Vehicle Details";
 "wellGetYouExactTyreSize" = "We’ll get you exact tire size according to the\nprovided details";
-"wellGetYouExactBatterySize" = "We’ll get you exact battery size according to the\nprovided details";
+"wellGetYouExactBatterySize" = "We have found suitable battery for your vehicle as per the provided details.";
 "vehicleMake" = "Vehicle Make";
 "vehicleModel" = "Vehicle Model";
 "modelYear" = "Model Year";
