@@ -227,6 +227,9 @@
 "tyreServiceRequest" = "Tire Service Request";
 "batteryServiceRequest" = "Battery Service Request";
 "oilServiceRequest" = "Oil Service Request";
+"tireService" = "Tire Service";
+"oilService" = "Oil Service";
+"batteryService" = "Battery Service";
 "regNo" = "Reg. No.";
 "serviceStatus" = "Service Status";
 "enterBiddingAmount" = "Enter Bidding Amount";

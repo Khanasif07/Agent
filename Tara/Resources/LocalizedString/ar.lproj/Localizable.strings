@@ -227,6 +227,9 @@
 "tyreServiceRequest" = "طلب خدمة الإطار";
 "batteryServiceRequest" = "طلب خدمة بطارية";
 "oilServiceRequest" = "طلب خدمة الزيت";
+"tireService" = "خدمة الإطار";
+"oilService" = "خدمة الزيت";
+"batteryService" = "خدمة البطارية";
 "regNo" = "رقم اللوحة";
 "serviceStatus" = "حالة الخدمة";
 "enterBiddingAmount" = "قيمة العرض";

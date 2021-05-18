@@ -293,6 +293,9 @@ enum LocalizedString : String {
     case tyreServiceRequest
     case batteryServiceRequest
     case oilServiceRequest
+    case tireService
+    case oilService
+    case batteryService
     case regNo
     case serviceStatus
     case requests

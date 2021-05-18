@@ -18,7 +18,7 @@ class AWSS3Manager {
     
     static let shared = AWSS3Manager() // 4
     private init () { }
-    let bucketName = "Tara-app/iOS" //5
+    let bucketName = "tara-app" //5
     
     
     //MARK: Setting S3 server with the credentials...

@@ -256,7 +256,7 @@ extension AppDelegate {
     func application(_ app: UIApplication, open url: URL,
                      options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         if let scheme = url.scheme,
-            scheme.localizedCaseInsensitiveCompare("com.tara") == .orderedSame,
+            scheme.localizedCaseInsensitiveCompare("com.tara.app") == .orderedSame,
             let view = url.host {
             var parameters: [String: String] = [:]
             URLComponents(url: url, resolvingAgainstBaseURL: false)?.queryItems?.forEach {

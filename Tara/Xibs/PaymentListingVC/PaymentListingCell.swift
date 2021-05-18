@@ -34,8 +34,21 @@ class PaymentListingCell: UITableViewCell {
     }
     
     func bindData(_ model: GarageRequestModel, screenType: ServiceCompletedVC.ScreenType) {
-        let type = model.requestType?.rawValue == "Tyres" ? LocalizedString.tyre.localized : ( model.requestType?.rawValue == "Battery" ? LocalizedString.battery.localized : LocalizedString.oil.localized )
-        serviceTypeLbl.text = (type ) + " " + LocalizedString.service.localized
+        
+        var type = ""
+        switch model.requestType?.rawValue {
+        
+        case "Tyres":
+            type = LocalizedString.tireService.localized
+            
+        case "Battery":
+            type = LocalizedString.batteryService.localized
+            
+        default:
+            type = LocalizedString.oilService.localized
+        }
+//        let type = model.requestType?.rawValue == "Tyres" ? LocalizedString.tyre.localized : ( model.requestType?.rawValue == "Battery" ? LocalizedString.battery.localized : LocalizedString.oil.localized)
+        serviceTypeLbl.text = type
         requestIdLbl.text = "#" + "\(model.requestID ?? "")"
         typeOfPaymentLbl.text = "\(model.paymentMode ?? "")"
         amountValueLbl.text =  "\(model.amount ?? 0.0)" + " " + LocalizedString.sar.localized

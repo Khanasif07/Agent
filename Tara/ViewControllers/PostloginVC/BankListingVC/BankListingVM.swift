@@ -30,13 +30,25 @@ class BankListingVM{
     }
     
     func getBankData() {
-        filteredBank = bankData.sorted(by: { (bank1, bank2) -> Bool in
-            if let name1 = bank1[BankKeys.name.rawValue],
-                let name2 = bank2[BankKeys.name.rawValue] {
-                return name1 < name2
-            }else{
-                return true
-            }
-        })
+        
+        if AppUserDefaults.value(forKey: .language) == 1 {
+            filteredBank = bankDataArabic.sorted(by: { (bank1, bank2) -> Bool in
+                if let name1 = bank1[BankKeys.name.rawValue],
+                    let name2 = bank2[BankKeys.name.rawValue] {
+                    return name1 < name2
+                }else{
+                    return true
+                }
+            })
+        } else {
+            filteredBank = bankDataEnglish.sorted(by: { (bank1, bank2) -> Bool in
+                if let name1 = bank1[BankKeys.name.rawValue],
+                    let name2 = bank2[BankKeys.name.rawValue] {
+                    return name1 < name2
+                }else{
+                    return true
+                }
+            })
+        }
     }
 }
