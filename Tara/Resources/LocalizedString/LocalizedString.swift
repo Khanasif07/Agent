@@ -242,6 +242,7 @@ enum LocalizedString : String {
     case countryName
     case arabianTyresWantToAccessYourCurrentLocation
     case allowCureentLocationWillHelpYouInGettingGreatOffers
+    case locationIsMandatoryAllowFromSettingsPopUpText
     case allow
     case installationPriceRange
     case chooseOilType

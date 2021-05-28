@@ -63,15 +63,15 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>Tara needs permisson</string>
+	<string>Tara needs permisson to access camera to upload profile picture and product images</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Tara needs permisson</string>
+	<string>Tara App needs location permission to show you the better results near to your location.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Tara needs permisson</string>
+	<string>Tara App needs location permission to show you the better results near to your location.</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>Tara needs permisson</string>
+	<string>Tara app needs microphone permission so you can send the audio notes in chat.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Tara needs permisson</string>
+	<string>Tara App needs access to phone storage to download the invoice.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>NunitoSans-Regular.ttf</string>

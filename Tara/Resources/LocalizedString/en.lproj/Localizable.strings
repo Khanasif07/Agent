@@ -214,7 +214,8 @@
 "selectCountry" = "Select Country";
 "countryName" = "Country’s Name";
 "arabianTyresWantToAccessYourCurrentLocation" = "Arabian Tires want to access\nyour current location";
-"allowCureentLocationWillHelpYouInGettingGreatOffers" = "Allow current location will help you\nin getting great offers";
+"locationIsMandatoryAllowFromSettingsPopUpText" = "Location is mandatory to create a service request.\n\nThis will let the app know your location and will share your request to the nearby garages.\n\nPlease allow Location access from Settings to place request";
+"allowCureentLocationWillHelpYouInGettingGreatOffers" = "Tara App needs location permission to show you the\nbetter results near to your location";
 "allow" = "Allow";
 "installationPriceRange" = "Installation Price Range";
 "viewTutorial" = "View Tutorial";

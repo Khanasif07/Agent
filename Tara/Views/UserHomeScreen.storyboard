@@ -526,7 +526,7 @@ your current location</string>
                                                     <constraint firstAttribute="height" constant="1" id="wUp-Gw-nOU"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YWJ-24-7va">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YWJ-24-7va">
                                                 <rect key="frame" x="54" y="251.5" width="246" height="41"/>
                                                 <string key="text">Allow cureent location will help you
 in getting great offers</string>
@@ -588,6 +588,7 @@ in getting great offers</string>
                                             <constraint firstItem="YWJ-24-7va" firstAttribute="trailing" secondItem="mXQ-p8-Ige" secondAttribute="trailing" id="JSo-iM-UD0"/>
                                             <constraint firstItem="YrE-7V-h17" firstAttribute="centerX" secondItem="D8I-Az-m9l" secondAttribute="centerX" id="Vj8-qc-waj"/>
                                             <constraint firstItem="mXQ-p8-Ige" firstAttribute="trailing" secondItem="yuP-X2-SAc" secondAttribute="trailing" id="cgk-gm-Vci"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="YWJ-24-7va" secondAttribute="trailing" constant="15" id="col-3e-Osn"/>
                                             <constraint firstItem="YrE-7V-h17" firstAttribute="top" secondItem="D8I-Az-m9l" secondAttribute="top" constant="35" id="nqj-tk-2hq"/>
                                             <constraint firstItem="yuP-X2-SAc" firstAttribute="top" secondItem="YrE-7V-h17" secondAttribute="bottom" constant="42" id="oo5-jU-0Bw"/>
                                             <constraint firstItem="8kL-fQ-FnG" firstAttribute="top" secondItem="YWJ-24-7va" secondAttribute="bottom" constant="28" id="qKT-5o-RrN"/>
@@ -3527,7 +3528,6 @@ Service With</string>
                     </view>
                     <connections>
                         <outlet property="bidAmountLbl" destination="owi-fA-lh5" id="0he-8w-Qmo"/>
-                        <outlet property="bidAmt" destination="eIq-aN-Yxo" id="EvW-FY-8gR"/>
                         <outlet property="bidAmtLbl" destination="eIq-aN-Yxo" id="kcf-jN-YxL"/>
                         <outlet property="casCadFirstView" destination="Yoe-cB-c3x" id="YbD-s2-uwe"/>
                         <outlet property="casCadSecondView" destination="OWx-AU-Q29" id="hie-zS-F15"/>

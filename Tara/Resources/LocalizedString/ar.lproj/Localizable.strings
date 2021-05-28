@@ -214,6 +214,7 @@
 "selectCountry" = "إختار الدولة";
 "countryName" = "إسم الدولة";
 "arabianTyresWantToAccessYourCurrentLocation" = "طارة تريد الحصول على موقعك الحالي";
+"locationIsMandatoryAllowFromSettingsPopUpText" = " تحديد الموقع إلزامي لإنشاء طلب خدمة\n\n تحديد الموقع يسمح للتطبيق معرفة موقعك وسيقوم بمشاركة طلبك مع مراكز الخدمة القريبة من موقعك\n\nيرجى السماح بالوصول إلى الموقع من الإعدادات لتقديم الطلب";
 "allowCureentLocationWillHelpYouInGettingGreatOffers" = "سماح الوصول لموقعك الحالي حيساعد تجيك عروض رائعة";
 "allow" = "السماح";
 "installationPriceRange" = "نطاق سعر التركيب:";

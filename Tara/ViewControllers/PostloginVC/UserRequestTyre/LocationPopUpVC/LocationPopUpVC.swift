@@ -122,12 +122,15 @@ extension LocationPopUpVC {
     }
     
     private func openSettingApp() {
-            guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
-                return
-            }
-            if UIApplication.shared.canOpenURL(settingsUrl) {
-                UIApplication.shared.open(settingsUrl, options: [:], completionHandler: nil)
-            }
+        
+        self.alertPromptToAllowAccessViaSetting(LocalizedString.locationIsMandatoryAllowFromSettingsPopUpText.localized)
+        
+//            guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+//                return
+//            }
+//            if UIApplication.shared.canOpenURL(settingsUrl) {
+//                UIApplication.shared.open(settingsUrl, options: [:], completionHandler: nil)
+//            }
     }
     
     private func setAddress() {
