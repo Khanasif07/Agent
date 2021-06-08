@@ -54,25 +54,25 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Enter your Vehicle Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sc6-54-Obf">
-                                                <rect key="frame" x="16" y="330" width="382" height="25.5"/>
+                                                <rect key="frame" x="10" y="330" width="388" height="25.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                 <color key="textColor" red="0.10980392156862745" green="0.11372549019607843" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="We’ll get you exact tire size according to the provided details" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="atX-iJ-7BI">
-                                                <rect key="frame" x="16" y="402.5" width="382" height="33.5"/>
+                                                <rect key="frame" x="10" y="390.5" width="393" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" red="0.54117647058823526" green="0.58431372549019611" blue="0.61960784313725492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m9I-SM-bEW">
-                                                <rect key="frame" x="16" y="461" width="382" height="318"/>
+                                                <rect key="frame" x="10" y="432.5" width="388" height="318"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="mNo-iy-rPp">
-                                                        <rect key="frame" x="15" y="24" width="352" height="190"/>
+                                                        <rect key="frame" x="15" y="24" width="358" height="190"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M4B-OF-SvN" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                                <rect key="frame" x="0.0" y="0.0" width="352" height="50"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="358" height="50"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="50" id="j1b-W1-lAE"/>
                                                                 </constraints>
@@ -91,7 +91,7 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </textField>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A7v-bd-Osh" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                                <rect key="frame" x="0.0" y="70" width="352" height="50"/>
+                                                                <rect key="frame" x="0.0" y="70" width="358" height="50"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                                 <userDefinedRuntimeAttributes>
@@ -107,7 +107,7 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </textField>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Oqm-Xd-acc" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                                <rect key="frame" x="0.0" y="140" width="352" height="50"/>
+                                                                <rect key="frame" x="0.0" y="140" width="358" height="50"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                                 <userDefinedRuntimeAttributes>
@@ -125,7 +125,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9oA-c1-FJU" customClass="AppButton" customModule="Tara" customModuleProvider="target">
-                                                        <rect key="frame" x="217" y="246" width="150" height="56"/>
+                                                        <rect key="frame" x="223" y="246" width="150" height="56"/>
                                                         <color key="backgroundColor" red="0.090196078430000007" green="0.1450980392" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="56" id="XHE-Rh-P9Y"/>
@@ -165,16 +165,16 @@
                                             <constraint firstItem="m9I-SM-bEW" firstAttribute="leading" secondItem="atX-iJ-7BI" secondAttribute="leading" id="F29-Sg-8oO"/>
                                             <constraint firstItem="2Y3-jH-3Vg" firstAttribute="leading" secondItem="uFS-a9-2Be" secondAttribute="leading" id="GmQ-xt-oI5"/>
                                             <constraint firstItem="2Y3-jH-3Vg" firstAttribute="height" secondItem="uFS-a9-2Be" secondAttribute="height" multiplier="300/814" id="LWF-to-SHD"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="atX-iJ-7BI" secondAttribute="trailing" constant="8" id="UfU-Rf-1fO"/>
                                             <constraint firstItem="Sc6-54-Obf" firstAttribute="top" secondItem="2Y3-jH-3Vg" secondAttribute="bottom" id="VXY-Gp-6gZ"/>
                                             <constraint firstAttribute="trailing" secondItem="Sc6-54-Obf" secondAttribute="trailing" constant="16" id="VmX-mT-QiA"/>
-                                            <constraint firstItem="atX-iJ-7BI" firstAttribute="trailing" secondItem="Sc6-54-Obf" secondAttribute="trailing" id="XYv-0q-4Zr"/>
                                             <constraint firstItem="9oA-c1-FJU" firstAttribute="width" secondItem="uFS-a9-2Be" secondAttribute="width" multiplier="150/414" id="Yov-Bf-JBN"/>
-                                            <constraint firstItem="atX-iJ-7BI" firstAttribute="top" secondItem="Sc6-54-Obf" secondAttribute="bottom" constant="47" id="hNS-gi-G36"/>
-                                            <constraint firstItem="Sc6-54-Obf" firstAttribute="leading" secondItem="uFS-a9-2Be" secondAttribute="leading" constant="16" id="hqY-Cq-qdA"/>
+                                            <constraint firstItem="atX-iJ-7BI" firstAttribute="top" secondItem="Sc6-54-Obf" secondAttribute="bottom" constant="35" id="hNS-gi-G36"/>
+                                            <constraint firstItem="Sc6-54-Obf" firstAttribute="leading" secondItem="uFS-a9-2Be" secondAttribute="leading" constant="10" id="hqY-Cq-qdA"/>
+                                            <constraint firstItem="m9I-SM-bEW" firstAttribute="trailing" secondItem="Sc6-54-Obf" secondAttribute="trailing" id="o48-pT-gJV"/>
                                             <constraint firstItem="m9I-SM-bEW" firstAttribute="top" secondItem="atX-iJ-7BI" secondAttribute="bottom" constant="25" id="qrm-qv-YAa"/>
                                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="m9I-SM-bEW" secondAttribute="bottom" constant="50" id="s9o-Bk-f5b"/>
                                             <constraint firstAttribute="trailing" secondItem="2Y3-jH-3Vg" secondAttribute="trailing" id="wkH-7Y-vrp"/>
-                                            <constraint firstItem="m9I-SM-bEW" firstAttribute="trailing" secondItem="atX-iJ-7BI" secondAttribute="trailing" id="y2b-Wg-fuJ"/>
                                             <constraint firstItem="atX-iJ-7BI" firstAttribute="leading" secondItem="Sc6-54-Obf" secondAttribute="leading" id="ywh-dY-qID"/>
                                         </constraints>
                                     </view>
@@ -3813,7 +3813,7 @@ Service With</string>
             <size key="intrinsicContentSize" width="350" height="39.220703125"/>
         </designable>
         <designable name="A7v-bd-Osh">
-            <size key="intrinsicContentSize" width="352" height="39.220703125"/>
+            <size key="intrinsicContentSize" width="358" height="39.220703125"/>
         </designable>
         <designable name="Cna-6j-9Gp">
             <size key="intrinsicContentSize" width="350" height="39.220703125"/>
@@ -3825,10 +3825,10 @@ Service With</string>
             <size key="intrinsicContentSize" width="350" height="39.220703125"/>
         </designable>
         <designable name="M4B-OF-SvN">
-            <size key="intrinsicContentSize" width="352" height="39.220703125"/>
+            <size key="intrinsicContentSize" width="358" height="39.220703125"/>
         </designable>
         <designable name="Oqm-Xd-acc">
-            <size key="intrinsicContentSize" width="352" height="39.220703125"/>
+            <size key="intrinsicContentSize" width="358" height="39.220703125"/>
         </designable>
         <designable name="SQr-zc-Q0Y">
             <size key="intrinsicContentSize" width="350" height="39.220703125"/>
