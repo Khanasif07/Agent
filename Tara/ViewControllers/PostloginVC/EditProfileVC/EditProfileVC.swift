@@ -128,7 +128,7 @@ extension EditProfileVC: UITextFieldDelegate {
         self.nameTextField.text = self.viewModel.userModel.name
         self.emailTextField.text = self.viewModel.userModel.email
         self.mobileNoTextField.text = self.viewModel.userModel.phoneNo
-        self.viewModel.userModel.countryCode = self.viewModel.userModel.countryCode.isEmpty ? "+91" : self.viewModel.userModel.countryCode
+        self.viewModel.userModel.countryCode = self.viewModel.userModel.countryCode.isEmpty ? "+966" : self.viewModel.userModel.countryCode
         countryCodeLbl.text = self.viewModel.userModel.countryCode
         self.userImage.setImage_kf(imageString: self.viewModel.userModel.image, placeHolderImage:#imageLiteral(resourceName: "placeHolder"), loader: false)
     }

@@ -23,7 +23,7 @@ class LoginWithPhoneViewModel {
     // MARK: Variables
     //=================================
     var isComefromForgotpass : Bool = false
-    var countryCode: String = "+91"
+    var countryCode: String = "+966"
     var phoneNo: String  = ""
     weak var delegate: LoginWithPhoneVMDelegate?
     var loginModel = UserModel()

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -38,7 +39,7 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="joU-9Q-abf">
                                 <rect key="frame" x="308" y="9" width="24" height="24"/>
-                                <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" systemColor="systemYellowColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="joU-9Q-abf" secondAttribute="height" multiplier="1:1" id="vrx-3y-rOR"/>
                                     <constraint firstAttribute="height" constant="24" id="wda-rm-sNv"/>
@@ -68,7 +69,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="kew-OS-N5e">
                                                 <rect key="frame" x="0.0" y="0.0" width="188" height="22"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+971 784403399" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jCe-se-8gj">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+966 784403399" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jCe-se-8gj">
                                                         <rect key="frame" x="0.0" y="0.0" width="105" height="22"/>
                                                         <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="13"/>
                                                         <color key="textColor" red="0.54117647059999996" green="0.58431372550000005" blue="0.61960784310000006" alpha="1" colorSpace="calibratedRGB"/>
@@ -85,7 +86,7 @@
                                                                     <constraint firstAttribute="width" secondItem="6Cq-to-TnA" secondAttribute="height" id="7HW-xQ-xIF"/>
                                                                 </constraints>
                                                             </imageView>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8zM-tk-CyJ">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8zM-tk-CyJ">
                                                                 <rect key="frame" x="24" y="0.0" width="51" height="22"/>
                                                                 <color key="backgroundColor" red="0.87450980389999999" green="0.89411764709999997" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <constraints>
@@ -94,7 +95,7 @@
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="13"/>
                                                                 <state key="normal" title="Verify">
-                                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                    <color key="titleColor" systemColor="darkTextColor"/>
                                                                 </state>
                                                                 <connections>
                                                                     <action selector="phoneVerifyBtnAction:" destination="hFs-WT-674" eventType="touchUpInside" id="Zai-D5-R4a"/>
@@ -124,7 +125,7 @@
                                                                     <constraint firstAttribute="width" secondItem="AhK-XL-QXa" secondAttribute="height" id="g7E-TE-vpn"/>
                                                                 </constraints>
                                                             </imageView>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nze-9U-nz3">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nze-9U-nz3">
                                                                 <rect key="frame" x="24" y="0.0" width="51" height="22"/>
                                                                 <color key="backgroundColor" red="0.87450980389999999" green="0.89411764709999997" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <constraints>
@@ -133,7 +134,7 @@
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="NunitoSans-SemiBold" family="Nunito Sans" pointSize="13"/>
                                                                 <state key="normal" title="Verify">
-                                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                    <color key="titleColor" systemColor="darkTextColor"/>
                                                                 </state>
                                                                 <connections>
                                                                     <action selector="emailVerifyBtnAction:" destination="hFs-WT-674" eventType="touchUpInside" id="Qhi-AC-sID"/>
@@ -176,7 +177,7 @@
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="XGg-mJ-hI5">
                                 <rect key="frame" x="8" y="144" width="333" height="50"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="6K0-Fc-9jF"/>
                                 </constraints>
@@ -188,7 +189,7 @@
                                 </collectionViewFlowLayout>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="3O9-dG-yfM" secondAttribute="trailing" constant="9" id="3ay-QV-AqW"/>
                             <constraint firstItem="3O9-dG-yfM" firstAttribute="leading" secondItem="i3S-V2-fWS" secondAttribute="leading" id="3kt-sr-9XB"/>
@@ -218,8 +219,8 @@
                     <constraint firstItem="KbM-BV-1jA" firstAttribute="leading" secondItem="RU8-A8-4Wl" secondAttribute="leading" constant="16" id="o5F-jp-RiQ"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="JrV-cw-qFJ"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="addressLbl" destination="zgI-DT-l2n" id="Z6Y-ux-mcO"/>
                 <outlet property="collViewHeightConst" destination="6K0-Fc-9jF" id="dGR-s1-EWK"/>
@@ -243,5 +244,17 @@
         <image name="editProfile" width="12" height="14"/>
         <image name="icImg" width="32.5" height="32"/>
         <image name="tickIcon" width="8" height="6"/>
+        <systemColor name="darkTextColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="darkTextColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

@@ -1325,7 +1325,7 @@ Service Center</string>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LDv-Dx-D4s">
                                                                 <rect key="frame" x="0.0" y="0.0" width="49" height="50"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+912" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QTI-cX-vBs">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+966" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QTI-cX-vBs">
                                                                         <rect key="frame" x="0.0" y="22.5" width="49" height="19.5"/>
                                                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="14"/>
                                                                         <nil key="textColor"/>
@@ -1375,7 +1375,7 @@ Service Center</string>
                                                     </stackView>
                                                 </subviews>
                                             </stackView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zgv-gd-WVS">
+                                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zgv-gd-WVS">
                                                 <rect key="frame" x="20" y="250" width="49" height="50"/>
                                                 <connections>
                                                     <action selector="countryCodeTapped:" destination="Gei-PQ-cT4" eventType="touchUpInside" id="faz-BJ-dqg"/>
@@ -1472,7 +1472,7 @@ Service Center</string>
                                 <rect key="frame" x="0.0" y="44" width="414" height="56"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SfA-fj-mvj">
-                                        <rect key="frame" x="136" y="19" width="142" height="23.5"/>
+                                        <rect key="frame" x="137.5" y="21" width="139.5" height="20"/>
                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1663,7 +1663,7 @@ Service Center</string>
                                 <rect key="frame" x="0.0" y="44" width="414" height="56"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change Language" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NTh-mk-Nam">
-                                        <rect key="frame" x="136" y="19" width="142" height="23.5"/>
+                                        <rect key="frame" x="137.5" y="21" width="139.5" height="20"/>
                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1707,7 +1707,7 @@ Service Center</string>
                                         <rect key="frame" x="20" y="40" width="334" height="30"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="W56-DL-GG5">
-                                                <rect key="frame" x="0.0" y="0.0" width="136" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="138.5" height="30"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8wc-6i-sV0">
                                                         <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
@@ -1722,7 +1722,7 @@ Service Center</string>
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="English" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qlb-Af-QGI">
-                                                        <rect key="frame" x="32" y="0.0" width="104" height="30"/>
+                                                        <rect key="frame" x="32" y="0.0" width="106.5" height="30"/>
                                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -1730,7 +1730,7 @@ Service Center</string>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="OtC-z5-I7u">
-                                                <rect key="frame" x="196" y="0.0" width="138" height="30"/>
+                                                <rect key="frame" x="198.5" y="0.0" width="135.5" height="30"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ca3-qv-7wD">
                                                         <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
@@ -1745,7 +1745,7 @@ Service Center</string>
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="عربى" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3co-HE-L1X">
-                                                        <rect key="frame" x="32" y="0.0" width="106" height="30"/>
+                                                        <rect key="frame" x="32" y="0.0" width="103.5" height="30"/>
                                                         <fontDescription key="fontDescription" name="NunitoSans-Bold" family="Nunito Sans" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>

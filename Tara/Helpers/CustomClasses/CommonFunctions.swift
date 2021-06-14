@@ -126,7 +126,7 @@ class CommonFunctions {
 //                }
 //            }
 //        }
-//        return "+91"
+//        return "+966"
 //    }
     
     class func leftViewModeWithPadding(image:UIImage,height:CGFloat,width:CGFloat,leading:CGFloat,gap:CGFloat)->UIView{

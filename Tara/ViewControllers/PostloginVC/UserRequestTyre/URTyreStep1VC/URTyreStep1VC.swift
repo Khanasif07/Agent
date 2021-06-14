@@ -69,7 +69,13 @@ class URTyreStep1VC: BaseVC {
     }
     
     @IBAction func chatWithExpert(_ sender: UIButton) {
-        showAlert(msg: LocalizedString.underDevelopment.localized)
+        if isUserLoggedin {
+        AppRouter.goToOneToOneChatVC(self, userId: AppConstants.adminId, requestId: "", name: LocalizedString.supportChat.localized, image: "", unreadMsgs: 0, isSupportChat: true,garageUserId: isCurrentUserType == .garage ? UserModel.main.id : AppConstants.adminId )
+        } else {
+            showAlertWithAction(title: "", msg:  LocalizedString.to_continue_performing_this_action_please_login.localized, cancelTitle: LocalizedString.cancel.localized, actionTitle: LocalizedString.ok.localized, actioncompletion: {
+                AppRouter.goToLoginVC(vc: self)
+            }) {}
+        }
     }
     
     @IBAction func findRightAction(_ sender: UIButton) {

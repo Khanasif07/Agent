@@ -105,7 +105,7 @@ extension LoginWithPhoneVC {
     }
     
     public func setupTextField(){
-        self.countryCodeLbl.text = "+91"
+        self.countryCodeLbl.text = "+966"
         self.phoneTextField.keyboardType = .numberPad
         self.phoneTextField.delegate = self
         self.phoneTextField.title = LocalizedString.phoneNumber.localized

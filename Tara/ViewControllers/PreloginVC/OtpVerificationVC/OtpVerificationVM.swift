@@ -34,7 +34,7 @@ class OtpVerificationVM{
     var isComeForVerifyPassword: Bool = false
     var isComeFromSignupScreen: Bool = false
     var isComeFromEditProfile: Bool = false
-    var countryCode: String = "+91"
+    var countryCode: String = "+966"
     var resetToken: String = ""
     var phoneNo: String = ""
     weak var delegate: OtpVerificationVMDelegate?
