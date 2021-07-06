@@ -24,6 +24,31 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>TaraRichPushNotifications.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>52</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>8481F9F82500AA9A00AB6EFB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>84B5D89C2693552B009D4464</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>84B5D9D9269377D9009D4464</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 	</dict>
 </dict>
 </plist>

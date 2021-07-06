@@ -196,6 +196,8 @@
 		848AF19E254D91EB00F6FB83 /* EditProfileVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848AF19D254D91EB00F6FB83 /* EditProfileVM.swift */; };
 		8495E9442509C824003CA43D /* ProfileVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8495E9432509C824003CA43D /* ProfileVM.swift */; };
 		84A6B7C3256DF91B002D2775 /* OneToOneChatVC+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A6B7C2256DF91B002D2775 /* OneToOneChatVC+Extension.swift */; };
+		84B5D9DD269377D9009D4464 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B5D9DC269377D9009D4464 /* NotificationService.swift */; };
+		84B5D9E1269377D9009D4464 /* TaraRichPushNotifications.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 84B5D9DA269377D9009D4464 /* TaraRichPushNotifications.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		84B629AC25120FF50080A7C2 /* InterConnectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B629AB25120FF50080A7C2 /* InterConnectivity.swift */; };
 		84B629AE251212FC0080A7C2 /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B629AD251212FC0080A7C2 /* ImageModel.swift */; };
 		84B629B12512262C0080A7C2 /* GarageAddLocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B629B02512262C0080A7C2 /* GarageAddLocationVC.swift */; };
@@ -380,6 +382,30 @@
 		BC7E2C0AD49BF4E3D1F426B5 /* Pods_Tara.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87C28A2FABCB3D22226632AC /* Pods_Tara.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		84B5D9DF269377D9009D4464 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8481F9F12500AA9A00AB6EFB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 84B5D9D9269377D9009D4464;
+			remoteInfo = TaraRichPushNotifications;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		847582FE268BD4C600839BB2 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				84B5D9E1269377D9009D4464 /* TaraRichPushNotifications.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0DB69EB761B7BF21E1CD2115 /* Pods-Tara.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tara.debug.xcconfig"; path = "Target Support Files/Pods-Tara/Pods-Tara.debug.xcconfig"; sourceTree = "<group>"; };
 		2A0ECF7C0177035F6EB0F654 /* Pods-Tara.stg.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tara.stg.xcconfig"; path = "Target Support Files/Pods-Tara/Pods-Tara.stg.xcconfig"; sourceTree = "<group>"; };
@@ -494,6 +520,7 @@
 		8470D1F9251B36C700790768 /* GarageProfileHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GarageProfileHeaderCell.xib; sourceTree = "<group>"; };
 		8473414D254ADD470083E8D1 /* InboxTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxTableViewCell.swift; sourceTree = "<group>"; };
 		8473414E254ADD470083E8D1 /* InboxTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InboxTableViewCell.xib; sourceTree = "<group>"; };
+		84758316268D0C8A00839BB2 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		847BC422250774E100EEEFDC /* ResetPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordVC.swift; sourceTree = "<group>"; };
 		847BC424250796CB00EEEFDC /* ResetPasswordVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordVM.swift; sourceTree = "<group>"; };
 		847C35A72535689B009F1ACF /* OffersDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffersDetailVM.swift; sourceTree = "<group>"; };
@@ -574,6 +601,9 @@
 		848AF19D254D91EB00F6FB83 /* EditProfileVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileVM.swift; sourceTree = "<group>"; };
 		8495E9432509C824003CA43D /* ProfileVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVM.swift; sourceTree = "<group>"; };
 		84A6B7C2256DF91B002D2775 /* OneToOneChatVC+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OneToOneChatVC+Extension.swift"; sourceTree = "<group>"; };
+		84B5D9DA269377D9009D4464 /* TaraRichPushNotifications.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TaraRichPushNotifications.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		84B5D9DC269377D9009D4464 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		84B5D9DE269377D9009D4464 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84B629AB25120FF50080A7C2 /* InterConnectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterConnectivity.swift; sourceTree = "<group>"; };
 		84B629AD251212FC0080A7C2 /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
 		84B629B02512262C0080A7C2 /* GarageAddLocationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageAddLocationVC.swift; sourceTree = "<group>"; };
@@ -773,12 +803,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		84B5D9D7269377D9009D4464 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		32D66392341C96B2BA0DF553 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				84758316268D0C8A00839BB2 /* NetworkExtension.framework */,
 				87C28A2FABCB3D22226632AC /* Pods_Tara.framework */,
 			);
 			name = Frameworks;
@@ -1317,6 +1355,7 @@
 			isa = PBXGroup;
 			children = (
 				8481F9FB2500AA9A00AB6EFB /* Tara */,
+				84B5D9DB269377D9009D4464 /* TaraRichPushNotifications */,
 				8481F9FA2500AA9A00AB6EFB /* Products */,
 				73B26F1832ADD457C1B2EEF9 /* Pods */,
 				32D66392341C96B2BA0DF553 /* Frameworks */,
@@ -1327,6 +1366,7 @@
 			isa = PBXGroup;
 			children = (
 				8481F9F92500AA9A00AB6EFB /* Tara.app */,
+				84B5D9DA269377D9009D4464 /* TaraRichPushNotifications.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1766,6 +1806,15 @@
 				A43B53A82524B5AC00447B24 /* GarageDashBoardAndRequest */,
 			);
 			path = GaragePostloginVC;
+			sourceTree = "<group>";
+		};
+		84B5D9DB269377D9009D4464 /* TaraRichPushNotifications */ = {
+			isa = PBXGroup;
+			children = (
+				84B5D9DC269377D9009D4464 /* NotificationService.swift */,
+				84B5D9DE269377D9009D4464 /* Info.plist */,
+			);
+			path = TaraRichPushNotifications;
 			sourceTree = "<group>";
 		};
 		84B629AF251225EB0080A7C2 /* GarageAddLocationVC */ = {
@@ -2487,15 +2536,34 @@
 				A66388142DF211E967B3E450 /* [CP] Embed Pods Frameworks */,
 				A091B7F167016AFC6CDC455C /* [CP] Copy Pods Resources */,
 				A471287F256B8CA200586BE9 /* ShellScript */,
+				847582FE268BD4C600839BB2 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				84B5D9E0269377D9009D4464 /* PBXTargetDependency */,
 			);
 			name = Tara;
 			productName = ArabianTyres;
 			productReference = 8481F9F92500AA9A00AB6EFB /* Tara.app */;
 			productType = "com.apple.product-type.application";
+		};
+		84B5D9D9269377D9009D4464 /* TaraRichPushNotifications */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 84B5D9E2269377D9009D4464 /* Build configuration list for PBXNativeTarget "TaraRichPushNotifications" */;
+			buildPhases = (
+				84B5D9D6269377D9009D4464 /* Sources */,
+				84B5D9D7269377D9009D4464 /* Frameworks */,
+				84B5D9D8269377D9009D4464 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TaraRichPushNotifications;
+			productName = TaraRichPushNotifications;
+			productReference = 84B5D9DA269377D9009D4464 /* TaraRichPushNotifications.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -2503,12 +2571,15 @@
 		8481F9F12500AA9A00AB6EFB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1130;
+				LastSwiftUpdateCheck = 1220;
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = Admin;
 				TargetAttributes = {
 					8481F9F82500AA9A00AB6EFB = {
 						CreatedOnToolsVersion = 11.3;
+					};
+					84B5D9D9269377D9009D4464 = {
+						CreatedOnToolsVersion = 12.2;
 					};
 				};
 			};
@@ -2527,6 +2598,7 @@
 			projectRoot = "";
 			targets = (
 				8481F9F82500AA9A00AB6EFB /* Tara */,
+				84B5D9D9269377D9009D4464 /* TaraRichPushNotifications */,
 			);
 		};
 /* End PBXProject section */
@@ -2634,6 +2706,13 @@
 				A45034AB255D4A7400FB5951 /* SenderOfferCell.xib in Resources */,
 				A413B9702509E7400004C534 /* Garage.storyboard in Resources */,
 				8481FA732500C04800AB6EFB /* Prelogin.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		84B5D9D8269377D9009D4464 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2997,7 +3076,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		84B5D9D6269377D9009D4464 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84B5D9DD269377D9009D4464 /* NotificationService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		84B5D9E0269377D9009D4464 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 84B5D9D9269377D9009D4464 /* TaraRichPushNotifications */;
+			targetProxy = 84B5D9DF269377D9009D4464 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		8481FA072500AA9B00AB6EFB /* LaunchScreen.storyboard */ = {
@@ -3141,6 +3236,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0DB69EB761B7BF21E1CD2115 /* Pods-Tara.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Tara/ArabianTyres.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -3155,7 +3251,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.01;
+				MARKETING_VERSION = 1.02;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tara.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = TaraDev;
@@ -3169,6 +3265,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E7E08BC58C8F29ACF642F2D5 /* Pods-Tara.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Tara/ArabianTyres.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
@@ -3183,7 +3280,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.01;
+				MARKETING_VERSION = 1.02;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tara.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = TaraAppStore;
@@ -3192,6 +3289,127 @@
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
+		};
+		84B5D9E3269377D9009D4464 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 2UB5MK9933;
+				INFOPLIST_FILE = TaraRichPushNotifications/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.02;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tara.app.richpush;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = TaraRichPush_Dev;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		84B5D9E4269377D9009D4464 /* QA */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 2UB5MK9933;
+				INFOPLIST_FILE = TaraRichPushNotifications/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.02;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tara.app.richpush;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = TaraRichPush_AppStore;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = QA;
+		};
+		84B5D9E5269377D9009D4464 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 2UB5MK9933;
+				INFOPLIST_FILE = TaraRichPushNotifications/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.02;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tara.app.richpush;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = TaraRichPush_AppStore;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		84B5D9E6269377D9009D4464 /* Prod */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 2UB5MK9933;
+				INFOPLIST_FILE = TaraRichPushNotifications/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.02;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tara.app.richpush;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = TaraRichPush_AppStore;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Prod;
+		};
+		84B5D9E7269377D9009D4464 /* Stg */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 2UB5MK9933;
+				INFOPLIST_FILE = TaraRichPushNotifications/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.02;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tara.app.richpush;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = TaraRichPush_AppStore;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Stg;
 		};
 		84D4CB232563E1D4005EB8AD /* QA */ = {
 			isa = XCBuildConfiguration;
@@ -3258,6 +3476,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A12D33C76F5797086FF88B2E /* Pods-Tara.qa.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Tara/ArabianTyres.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
@@ -3272,7 +3491,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.01;
+				MARKETING_VERSION = 1.02;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tara.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = TaraAppStore;
@@ -3342,6 +3561,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2A0ECF7C0177035F6EB0F654 /* Pods-Tara.stg.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Tara/ArabianTyres.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
@@ -3356,7 +3576,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.01;
+				MARKETING_VERSION = 1.02;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tara.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = TaraAppStore;
@@ -3426,6 +3646,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 33BF1FA33CB24886074AD566 /* Pods-Tara.prod.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Tara/ArabianTyres.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
@@ -3440,7 +3661,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.01;
+				MARKETING_VERSION = 1.02;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tara.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = TaraAppStore;
@@ -3473,6 +3694,18 @@
 				8481FA0F2500AA9B00AB6EFB /* Release */,
 				84D4CB282563E20F005EB8AD /* Prod */,
 				84D4CB262563E1FA005EB8AD /* Stg */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		84B5D9E2269377D9009D4464 /* Build configuration list for PBXNativeTarget "TaraRichPushNotifications" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84B5D9E3269377D9009D4464 /* Debug */,
+				84B5D9E4269377D9009D4464 /* QA */,
+				84B5D9E5269377D9009D4464 /* Release */,
+				84B5D9E6269377D9009D4464 /* Prod */,
+				84B5D9E7269377D9009D4464 /* Stg */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

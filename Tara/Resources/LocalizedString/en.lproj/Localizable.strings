@@ -76,7 +76,7 @@
 //==================================
 "newPassword" = "New Password";
 "pleaseEnterValidEmail" = "Enter a valid Email address";
-"pleaseEnterValidPassword" = "Please enter a valid password (Minimum 6 and max 25 characters, one uppercase and one number)";
+"pleaseEnterValidPassword" = "Please enter a valid password (Minimum 6 and max 25 characters, one uppercase, one lowercase and one number)";
 "nameShouldBeAtleastMinCharacters" = "Minimum length of first name should be greater than or equal to 3";
 "phoneNoShouldBeAtleastMinCharacters" = "Phone number length must be 8 to 14 charcters long";
 "pleaseEnterEmail" = "Please enter email address";
